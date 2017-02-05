@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9077D4771E476BF5003BBAA4 /* Wroclaw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 9077D4761E476BF5003BBAA4 /* Wroclaw.gpx */; };
+		9077D4791E476F49003BBAA4 /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9077D4781E476F49003BBAA4 /* CLAuthorizationStatus.swift */; };
+		9077D47D1E47C4C4003BBAA4 /* LocationManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9077D47C1E47C4C4003BBAA4 /* LocationManagerHelper.swift */; };
 		9097749E1E467F3A00653192 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9097749D1E467F3A00653192 /* Assets.xcassets */; };
 		909774A01E467F4800653192 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9097749F1E467F4800653192 /* Info.plist */; };
 		909774A21E467F5000653192 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909774A11E467F5000653192 /* AppDelegate.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9077D4761E476BF5003BBAA4 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
+		9077D4781E476F49003BBAA4 /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
+		9077D47C1E47C4C4003BBAA4 /* LocationManagerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerHelper.swift; sourceTree = "<group>"; };
 		9097747E1E467CFC00653192 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9097749D1E467F3A00653192 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9097749F1E467F4800653192 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,6 +47,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9077D4751E476BB7003BBAA4 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				9077D4761E476BF5003BBAA4 /* Wroclaw.gpx */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
+		9077D47A1E47705F003BBAA4 /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				9077D4781E476F49003BBAA4 /* CLAuthorizationStatus.swift */,
+			);
+			path = MapKit;
+			sourceTree = "<group>";
+		};
+		9077D47B1E477067003BBAA4 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				909774BB1E46A58100653192 /* UIView.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		909774751E467CFC00653192 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				9097749D1E467F3A00653192 /* Assets.xcassets */,
+				9077D4751E476BB7003BBAA4 /* Locations */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -107,7 +138,8 @@
 		909774981E467DB800653192 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				909774BB1E46A58100653192 /* UIView.swift */,
+				9077D47A1E47705F003BBAA4 /* MapKit */,
+				9077D47B1E477067003BBAA4 /* UIKit */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -115,6 +147,7 @@
 		909774991E467DC200653192 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9077D47C1E47C4C4003BBAA4 /* LocationManagerHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -215,6 +248,7 @@
 				9097749E1E467F3A00653192 /* Assets.xcassets in Resources */,
 				909774A01E467F4800653192 /* Info.plist in Resources */,
 				909774B11E467F7D00653192 /* Main.storyboard in Resources */,
+				9077D4771E476BF5003BBAA4 /* Wroclaw.gpx in Resources */,
 				909774B01E467F7D00653192 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,8 +261,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				909774AB1E467F6B00653192 /* MainController.swift in Sources */,
+				9077D4791E476F49003BBAA4 /* CLAuthorizationStatus.swift in Sources */,
 				909774BC1E46A58100653192 /* UIView.swift in Sources */,
 				909774A21E467F5000653192 /* AppDelegate.swift in Sources */,
+				9077D47D1E47C4C4003BBAA4 /* LocationManagerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +426,7 @@
 				909774921E467CFC00653192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

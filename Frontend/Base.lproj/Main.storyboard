@@ -37,6 +37,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="94" height="44"/>
                                                     <inset key="imageEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
                                                     <state key="normal" title="Current" image="vecLocation_empty"/>
+                                                    <connections>
+                                                        <action selector="currentLocationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U9E-Sc-10f"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ss-yZ-LxP">
                                                     <rect key="frame" x="94" y="0.0" width="93.5" height="44"/>
@@ -86,6 +89,7 @@
                         <outlet property="buttonFavorites" destination="jit-RH-cFu" id="fyO-X9-EGW"/>
                         <outlet property="buttonSearch" destination="1ss-yZ-LxP" id="NP9-xc-nu9"/>
                         <outlet property="buttonSettings" destination="B1W-rm-rPx" id="ACH-eP-7JH"/>
+                        <outlet property="mapView" destination="dN8-pk-EOK" id="3f9-Tc-YcK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -4,10 +4,13 @@
 //
 
 import UIKit
+import MapKit
 
 class MainController: UIViewController {
 
-  //MARK: Properties
+  //MARK: - Properties
+
+  @IBOutlet weak var mapView: MKMapView!
 
   @IBOutlet weak var buttonCurrentLocation: UIButton!
   @IBOutlet weak var buttonSearch: UIButton!
@@ -19,20 +22,35 @@ class MainController: UIViewController {
     return [self.buttonCurrentLocation, self.buttonSearch, self.buttonFavorites, self.buttonSettings]
   }()
 
-  //MARK: Overriden
+  //MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
     self.applyVisualStyles()
   }
 
-  //MARK: Gesture recognizers
-  
-  
-  //MARK: Methods
+  override func viewDidAppear(_ animated: Bool) {
+    MapKitHelper.requestInUseAuthorizationIfNeeded()
+    self.mapView.showsUserLocation = true
+  }
+
+  //MARK: - Actions
+
+  @IBAction func currentLocationButtonPressed(_ sender: UIButton) {
+    if !MapKitHelper.authorizationStatus.allowsLocalization {
+      MapKitHelper.presentAlertToChangeAuthorization(parent: self)
+    }
+
+    if MapKitHelper.authorizationStatus.allowsLocalization {
+      //do something
+    }
+  }
+
+  //MARK: - Methods
 
 }
+
+//MARK: - User interface
 
 extension MainController {
 
