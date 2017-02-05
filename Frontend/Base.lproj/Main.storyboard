@@ -35,26 +35,26 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-fm-B92">
                                                     <rect key="frame" x="0.0" y="0.0" width="94" height="44"/>
-                                                    <inset key="imageEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                                    <state key="normal" title="Current" image="vecLocation_empty"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                                    <state key="normal" image="vecLocation_empty"/>
                                                     <connections>
                                                         <action selector="currentLocationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U9E-Sc-10f"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ss-yZ-LxP">
                                                     <rect key="frame" x="94" y="0.0" width="93.5" height="44"/>
-                                                    <inset key="imageEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                                    <state key="normal" title="Search" image="vecSearch"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                                    <state key="normal" image="vecSearch"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jit-RH-cFu">
                                                     <rect key="frame" x="187.5" y="0.0" width="94" height="44"/>
-                                                    <inset key="imageEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                                    <state key="normal" title="Favorites" image="vecFavorites1"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                                    <state key="normal" image="vecFavorites1"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1W-rm-rPx">
                                                     <rect key="frame" x="281.5" y="0.0" width="93.5" height="44"/>
-                                                    <inset key="imageEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
-                                                    <state key="normal" title="Settings" image="vecSettings"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                                    <state key="normal" image="vecSettings"/>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -98,9 +98,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="vecFavorites1" width="202" height="200"/>
-        <image name="vecLocation_empty" width="203" height="200"/>
-        <image name="vecSearch" width="202" height="200"/>
-        <image name="vecSettings" width="202" height="200"/>
+        <image name="vecFavorites1" width="24" height="24"/>
+        <image name="vecLocation_empty" width="24" height="24"/>
+        <image name="vecSearch" width="24" height="24"/>
+        <image name="vecSettings" width="24" height="24"/>
     </resources>
 </document>
