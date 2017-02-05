@@ -21,26 +21,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swf-Wp-xtr">
-                                <rect key="frame" x="163" y="323" width="50" height="21"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dN8-pk-EOK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUs-g8-ViY">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kK2-En-m7E">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="P6H-wf-afc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-fm-B92">
+                                                    <rect key="frame" x="0.0" y="0.0" width="94" height="44"/>
+                                                    <state key="normal" title="Loc"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ss-yZ-LxP">
+                                                    <rect key="frame" x="94" y="0.0" width="93.5" height="44"/>
+                                                    <state key="normal" title="Add"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jit-RH-cFu">
+                                                    <rect key="frame" x="187.5" y="0.0" width="94" height="44"/>
+                                                    <state key="normal" title="List"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1W-rm-rPx">
+                                                    <rect key="frame" x="281.5" y="0.0" width="93.5" height="44"/>
+                                                    <state key="normal" title="Config"/>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="P6H-wf-afc" secondAttribute="bottom" id="7uL-dI-IvX"/>
+                                        <constraint firstItem="P6H-wf-afc" firstAttribute="top" secondItem="kK2-En-m7E" secondAttribute="top" id="BNG-6w-cDG"/>
+                                        <constraint firstItem="P6H-wf-afc" firstAttribute="leading" secondItem="kK2-En-m7E" secondAttribute="leading" id="sDa-3c-YjJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="P6H-wf-afc" secondAttribute="trailing" id="tuZ-3r-dXb"/>
+                                    </constraints>
+                                </view>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="NmV-tI-nfY"/>
-                                    <constraint firstAttribute="height" constant="21" id="W0o-EX-TN2"/>
+                                    <constraint firstAttribute="height" constant="44" id="PPp-P0-lx7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Swf-Wp-xtr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="VlL-9d-0Fq"/>
-                            <constraint firstItem="Swf-Wp-xtr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lb8-bn-2MA"/>
+                            <constraint firstAttribute="trailing" secondItem="dN8-pk-EOK" secondAttribute="trailing" id="G3O-HS-LEC"/>
+                            <constraint firstItem="dN8-pk-EOK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GcW-DX-qJm"/>
+                            <constraint firstItem="dN8-pk-EOK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PqB-Di-Waj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dN8-pk-EOK" secondAttribute="bottom" id="Vzn-64-MW4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VUs-g8-ViY" secondAttribute="bottom" id="edi-7f-Ka4"/>
+                            <constraint firstItem="VUs-g8-ViY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="n0g-T9-hmX"/>
+                            <constraint firstAttribute="trailing" secondItem="VUs-g8-ViY" secondAttribute="trailing" id="uY7-nw-eWd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonContainer" destination="VUs-g8-ViY" id="nNz-zC-pD7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
         </scene>
     </scenes>
 </document>
