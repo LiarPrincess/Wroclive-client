@@ -33,21 +33,25 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="P6H-wf-afc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-fm-B92">
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-fm-B92">
                                                     <rect key="frame" x="0.0" y="0.0" width="94" height="44"/>
-                                                    <state key="normal" title="Loc"/>
+                                                    <inset key="imageEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                                    <state key="normal" title="Current" image="vecLocation_empty"/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ss-yZ-LxP">
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ss-yZ-LxP">
                                                     <rect key="frame" x="94" y="0.0" width="93.5" height="44"/>
-                                                    <state key="normal" title="Add"/>
+                                                    <inset key="imageEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                                    <state key="normal" title="Search" image="vecSearch"/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jit-RH-cFu">
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jit-RH-cFu">
                                                     <rect key="frame" x="187.5" y="0.0" width="94" height="44"/>
-                                                    <state key="normal" title="List"/>
+                                                    <inset key="imageEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                                    <state key="normal" title="Favorites" image="vecFavorites1"/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1W-rm-rPx">
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1W-rm-rPx">
                                                     <rect key="frame" x="281.5" y="0.0" width="93.5" height="44"/>
-                                                    <state key="normal" title="Config"/>
+                                                    <inset key="imageEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                                    <state key="normal" title="Settings" image="vecSettings"/>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -78,6 +82,10 @@
                     </view>
                     <connections>
                         <outlet property="buttonContainer" destination="VUs-g8-ViY" id="nNz-zC-pD7"/>
+                        <outlet property="buttonCurrentLocation" destination="bQr-fm-B92" id="S3D-6S-9Vg"/>
+                        <outlet property="buttonFavorites" destination="jit-RH-cFu" id="fyO-X9-EGW"/>
+                        <outlet property="buttonSearch" destination="1ss-yZ-LxP" id="NP9-xc-nu9"/>
+                        <outlet property="buttonSettings" destination="B1W-rm-rPx" id="ACH-eP-7JH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -85,4 +93,10 @@
             <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="vecFavorites1" width="202" height="200"/>
+        <image name="vecLocation_empty" width="203" height="200"/>
+        <image name="vecSearch" width="202" height="200"/>
+        <image name="vecSettings" width="202" height="200"/>
+    </resources>
 </document>
