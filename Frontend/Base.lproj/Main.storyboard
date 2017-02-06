@@ -21,9 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dN8-pk-EOK">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izC-dL-rTA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </mapView>
+                                <connections>
+                                    <segue destination="Ie6-CT-bCS" kind="embed" id="QUL-2o-tOS"/>
+                                </connections>
+                            </containerView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUs-g8-ViY">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kK2-En-m7E">
@@ -74,11 +77,11 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="dN8-pk-EOK" secondAttribute="trailing" id="G3O-HS-LEC"/>
-                            <constraint firstItem="dN8-pk-EOK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GcW-DX-qJm"/>
-                            <constraint firstItem="dN8-pk-EOK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PqB-Di-Waj"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dN8-pk-EOK" secondAttribute="bottom" id="Vzn-64-MW4"/>
+                            <constraint firstItem="izC-dL-rTA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LnD-7z-Jxc"/>
+                            <constraint firstAttribute="trailing" secondItem="izC-dL-rTA" secondAttribute="trailing" id="OMf-mh-Nif"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="izC-dL-rTA" secondAttribute="bottom" id="TCY-fZ-nIR"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VUs-g8-ViY" secondAttribute="bottom" id="edi-7f-Ka4"/>
+                            <constraint firstItem="izC-dL-rTA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gHU-9m-e9Y"/>
                             <constraint firstItem="VUs-g8-ViY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="n0g-T9-hmX"/>
                             <constraint firstAttribute="trailing" secondItem="VUs-g8-ViY" secondAttribute="trailing" id="uY7-nw-eWd"/>
                         </constraints>
@@ -89,12 +92,43 @@
                         <outlet property="buttonFavorites" destination="jit-RH-cFu" id="fyO-X9-EGW"/>
                         <outlet property="buttonSearch" destination="1ss-yZ-LxP" id="NP9-xc-nu9"/>
                         <outlet property="buttonSettings" destination="B1W-rm-rPx" id="ACH-eP-7JH"/>
-                        <outlet property="mapView" destination="dN8-pk-EOK" id="3f9-Tc-YcK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+        </scene>
+        <!--Map Controller-->
+        <scene sceneID="JdO-xO-7ID">
+            <objects>
+                <viewController id="Ie6-CT-bCS" customClass="MapController" customModule="Kek" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JcD-qx-Hqe"/>
+                        <viewControllerLayoutGuide type="bottom" id="6IE-yc-i4L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YBP-kb-qNl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="joN-NQ-Yg4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6IE-yc-i4L" firstAttribute="top" secondItem="joN-NQ-Yg4" secondAttribute="bottom" id="Qvg-wx-EHU"/>
+                            <constraint firstItem="joN-NQ-Yg4" firstAttribute="leading" secondItem="YBP-kb-qNl" secondAttribute="leading" id="SPe-UZ-K07"/>
+                            <constraint firstAttribute="trailing" secondItem="joN-NQ-Yg4" secondAttribute="trailing" id="j41-JD-8wr"/>
+                            <constraint firstItem="joN-NQ-Yg4" firstAttribute="top" secondItem="JcD-qx-Hqe" secondAttribute="bottom" id="pbb-HE-bXT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="joN-NQ-Yg4" id="wnb-0S-fLK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j46-oe-XOU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="876" y="38.23088455772114"/>
         </scene>
     </scenes>
     <resources>

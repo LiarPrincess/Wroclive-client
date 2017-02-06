@@ -10,9 +10,9 @@ class MapKitHelper {
 
   private static let locationManager = CLLocationManager()
 
-  static var authorizationStatus: CLAuthorizationStatus { return CLLocationManager.authorizationStatus() }
+  //MARK: - Authorization
 
-  //MARK: - Request authorization
+  static var authorizationStatus: CLAuthorizationStatus { return CLLocationManager.authorizationStatus() }
 
   static func requestInUseAuthorizationIfNeeded() {
     guard self.authorizationStatus != .restricted || self.authorizationStatus != .denied else {
@@ -42,5 +42,9 @@ class MapKitHelper {
 
     controller.present(alertController, animated: true, completion: nil)
   }
+
+  //MARK: - Location
+
+  static var currentLocation: CLLocation? { return locationManager.location }
 
 }

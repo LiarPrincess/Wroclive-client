@@ -10,7 +10,7 @@ class MainController: UIViewController {
 
   //MARK: - Properties
 
-  @IBOutlet weak var mapView: MKMapView!
+  var mapController: MapControllerProtocol? = MapControllerMock()
 
   @IBOutlet weak var buttonCurrentLocation: UIButton!
   @IBOutlet weak var buttonSearch: UIButton!
@@ -26,27 +26,15 @@ class MainController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     self.applyVisualStyles()
-  }
-
-  override func viewDidAppear(_ animated: Bool) {
-    MapKitHelper.requestInUseAuthorizationIfNeeded()
-    self.mapView.showsUserLocation = true
   }
 
   //MARK: - Actions
 
   @IBAction func currentLocationButtonPressed(_ sender: UIButton) {
-    if !MapKitHelper.authorizationStatus.allowsLocalization {
-      MapKitHelper.presentAlertToChangeAuthorization(parent: self)
-    }
-
-    if MapKitHelper.authorizationStatus.allowsLocalization {
-      //do something
-    }
+    self.mapController?.centerOnUserLocation()
   }
-
-  //MARK: - Methods
 
 }
 
