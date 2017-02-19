@@ -53,5 +53,6 @@ Carthage/Build
 fastlane/report.xml
 fastlane/screenshots
 
-# Michal
-xcuserdata/
+#Custom
+Packages
+Build
