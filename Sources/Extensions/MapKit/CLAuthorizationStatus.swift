@@ -10,6 +10,7 @@ import MapKit
 
 extension CLAuthorizationStatus {
   public var allowsLocalization: Bool { return self == .authorizedWhenInUse || self == .authorizedAlways }
+  public var forbidsLocalization: Bool { return self == .denied || self == .restricted }
 }
 
 //MARK: - CustomStringConvertible
