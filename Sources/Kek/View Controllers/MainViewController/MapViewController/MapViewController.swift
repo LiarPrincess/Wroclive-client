@@ -5,10 +5,13 @@
 
 import UIKit
 import MapKit
+import ReSwift
 
 class MapViewController: UIViewController {
 
   //MARK: - Properties
+
+  fileprivate var state = AppState()
 
   fileprivate lazy var locationManager: CLLocationManager = {
     let locationManager = CLLocationManager()
@@ -24,18 +27,48 @@ class MapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    self.mapView.delegate = self
+
+    self.requestInUseAuthorizationIfNeeded()
     let center = self.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.032564)
     mapView.region = MKCoordinateRegionMakeWithDistance(center, 2500.0, 2500.0)
   }
 
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    
-    self.requestInUseAuthorizationIfNeeded()
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    store.subscribe(self)
   }
 
-  //MARK: - Methods
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    store.unsubscribe(self)
+  }
 
+}
+
+//MARK: - StoreSubscriber
+
+extension MapViewController: StoreSubscriber {
+
+  func newState(state: AppState) {
+    if self.state.trackingMode != state.trackingMode {
+      self.mapView.userTrackingMode = state.trackingMode
+    }
+
+    //finally at the end update remembered state
+    self.state = state
+  }
+
+}
+
+//MARK: - MKMapViewDelegate
+
+extension MapViewController: MKMapViewDelegate {
+  func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+    if mode != self.state.trackingMode {
+      store.dispatch(SetUserTrackingMode(mode))
+    }
+  }
 }
 
 //MARK: - MapKit
