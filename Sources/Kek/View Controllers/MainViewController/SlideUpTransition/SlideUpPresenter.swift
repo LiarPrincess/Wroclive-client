@@ -6,10 +6,11 @@
 import Foundation
 import UIKit
 
-
 class SlideUpPresenter : UIPresentationController {
 
   //MARK: - Properties
+  
+  typealias Constants = MainViewControllerConstants
 
   private var dimmingView: UIView?
   private var relativeHeight: CGFloat
@@ -39,14 +40,14 @@ class SlideUpPresenter : UIPresentationController {
     }
 
     self.dimmingView = UIView(frame: CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height))
-    self.dimmingView!.backgroundColor = .darkGray
+    self.dimmingView!.backgroundColor = Constants.SlideUpTransition.DimmingView.color
     self.dimmingView!.alpha = 0
 
     containerView.addSubview(self.dimmingView!)
     self.dimmingView!.addSubview(presentedViewController.view)
 
     coordinator.animate(alongsideTransition: { [weak self] context in
-      self!.dimmingView!.alpha = 0.5
+      self!.dimmingView!.alpha = Constants.SlideUpTransition.DimmingView.alpha
     }, completion: nil)
   }
 

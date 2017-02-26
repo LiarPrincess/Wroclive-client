@@ -7,23 +7,15 @@ import UIKit
 import MapKit
 import ReSwift
 
-fileprivate struct UserTrackingButtonImages {
-  static let none              = "vecUserTracking_None"
-  static let follow            = "vecUserTracking_Follow"
-  static let followWithHeading = "vecUserTracking_Follow"
-}
-
-fileprivate struct Segues {
-  static let showBookmarksViewController = "ShowBookmarksViewController"
-}
-
 class MainViewController: UIViewController {
 
   //MARK: - Properties
 
+  typealias Constants = MainViewControllerConstants
+
   fileprivate var state: AppState?
 
-  fileprivate var bookmarkTransitionDelegate = SlideUpTransitionDelegate(withRelativeHeight: 0.75)
+  fileprivate var bookmarkTransitionDelegate = SlideUpTransitionDelegate(withRelativeHeight: Constants.BookmarksViewController.relativeHeight)
 
   @IBOutlet weak var buttonUserTracking: UIButton!
   @IBOutlet weak var buttonSearch: UIButton!
@@ -56,7 +48,7 @@ class MainViewController: UIViewController {
 
   override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
     //we will manage those transitions with state changes
-    if identifier == Segues.showBookmarksViewController {
+    if identifier == Constants.Segues.showBookmarksViewController {
       return false
     }
 
@@ -107,11 +99,11 @@ extension MainViewController: StoreSubscriber {
 
     switch state.trackingMode {
     case .none:
-      imageName = UserTrackingButtonImages.none
+      imageName = Constants.MainViewController.UserTrackingImages.none
     case .follow:
-      imageName = UserTrackingButtonImages.follow
+      imageName = Constants.MainViewController.UserTrackingImages.follow
     case .followWithHeading:
-      imageName = UserTrackingButtonImages.followWithHeading
+      imageName = Constants.MainViewController.UserTrackingImages.followWithHeading
     }
 
     self.buttonUserTracking.setImage(UIImage(named: imageName), for: .normal)
@@ -123,9 +115,9 @@ extension MainViewController: StoreSubscriber {
     }
 
     if state.bookmarksState.visible {
-      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let storyboard = UIStoryboard(name: Constants.Storyboards.Main, bundle: nil)
 
-      let bookmarkViewController = storyboard.instantiateViewController(withIdentifier: BookmarksViewController.identifier)
+      let bookmarkViewController = storyboard.instantiateViewController(withIdentifier: Constants.BookmarksViewController.identifier)
       bookmarkViewController.modalPresentationStyle = .custom
       bookmarkViewController.transitioningDelegate = self.bookmarkTransitionDelegate
 

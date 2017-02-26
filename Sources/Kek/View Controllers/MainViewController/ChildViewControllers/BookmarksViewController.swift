@@ -10,8 +10,6 @@ class BookmarksViewController: UIViewController {
 
   //MARK: - Properties
 
-  static let identifier = "BookmarksViewController"
-
   //MARK: - Overriden
 
   override func viewWillAppear(_ animated: Bool) {

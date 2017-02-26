@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9007618B1E6320E400263112 /* SetBookmarksVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9007618A1E6320E400263112 /* SetBookmarksVisibility.swift */; };
+		9007618E1E632DF800263112 /* MainViewControllerConstatnts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9007618D1E632DF800263112 /* MainViewControllerConstatnts.swift */; };
 		902812D61E59DDC800F26027 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9028129C1E59DDC800F26027 /* AppDelegate.swift */; };
 		902812D81E59DDC800F26027 /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902812A11E59DDC800F26027 /* CLAuthorizationStatus.swift */; };
 		902812D91E59DDC800F26027 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902812A21E59DDC800F26027 /* CLLocationManager.swift */; };
@@ -71,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		9007618A1E6320E400263112 /* SetBookmarksVisibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetBookmarksVisibility.swift; sourceTree = "<group>"; };
+		9007618D1E632DF800263112 /* MainViewControllerConstatnts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstatnts.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9028129C1E59DDC800F26027 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9028129E1E59DDC800F26027 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				903075BE1E5E491000DF4996 /* SlideUpTransition */,
 				903075BB1E5E451700DF4996 /* ChildViewControllers */,
 				902812D11E59DDC800F26027 /* MainViewController.swift */,
+				9007618D1E632DF800263112 /* MainViewControllerConstatnts.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 			files = (
 				903075BD1E5E45D000DF4996 /* BookmarksViewController.swift in Sources */,
 				903075B31E59F88F00DF4996 /* ApplicableAction.swift in Sources */,
+				9007618E1E632DF800263112 /* MainViewControllerConstatnts.swift in Sources */,
 				903075B01E59F88F00DF4996 /* SetUserTrackingMode.swift in Sources */,
 				902812FB1E59DDC800F26027 /* MainViewController.swift in Sources */,
 				9007618B1E6320E400263112 /* SetBookmarksVisibility.swift in Sources */,

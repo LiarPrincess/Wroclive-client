@@ -8,8 +8,10 @@ import UIKit
 
 class SlideUpPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
+  typealias Constants = MainViewControllerConstants
+
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-    return 0.35
+    return Constants.SlideUpTransition.AnimationDuration.present
   }
 
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -35,8 +37,10 @@ class SlideUpPresentationTransition: NSObject, UIViewControllerAnimatedTransitio
 
 class SlideUpDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
+  typealias Constants = MainViewControllerConstants
+
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-    return 0.6
+    return Constants.SlideUpTransition.AnimationDuration.dismiss
   }
 
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
