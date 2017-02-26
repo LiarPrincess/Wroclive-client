@@ -10,11 +10,11 @@ struct AppReducer: Reducer {
 
   func handleAction(action: Action, state: AppState?) -> AppState {
     guard let action = action as? ApplicableAction else {
-      fatalError("")
+      fatalError("State changing action must be applicable!")
     }
 
     guard let state = state else {
-      fatalError("")
+      fatalError("Undefined state as an action reciever!")
     }
 
     return action.apply(state: state)

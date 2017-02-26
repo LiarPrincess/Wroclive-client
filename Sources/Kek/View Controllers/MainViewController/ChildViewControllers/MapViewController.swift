@@ -52,7 +52,7 @@ extension MapViewController: StoreSubscriber {
 
   func newState(state: AppState) {
     if self.state.trackingMode != state.trackingMode {
-      self.mapView.userTrackingMode = state.trackingMode
+      self.mapView.setUserTrackingMode(state.trackingMode, animated: true)
     }
 
     //finally at the end update remembered state

@@ -48,7 +48,7 @@
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                                     <state key="normal" image="vecUserTracking_None"/>
                                                     <connections>
-                                                        <action selector="userTrackingButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cug-za-oPC"/>
+                                                        <action selector="userTrackingButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U2t-lI-pa8"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ss-yZ-LxP">
@@ -60,6 +60,10 @@
                                                     <rect key="frame" x="187.5" y="0.0" width="94" height="44"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                                     <state key="normal" image="vecFavorites1"/>
+                                                    <connections>
+                                                        <action selector="bookmarksButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HWR-iu-BZm"/>
+                                                        <segue destination="DMY-ib-klv" kind="show" identifier="ShowBookmarksViewController" id="KN0-dl-VWb"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1W-rm-rPx">
                                                     <rect key="frame" x="281.5" y="0.0" width="93.5" height="44"/>
@@ -96,7 +100,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="buttonFavorites" destination="jit-RH-cFu" id="W8f-qw-nEg"/>
+                        <outlet property="buttonBookmarks" destination="jit-RH-cFu" id="KaD-9Q-a9T"/>
+                        <outlet property="buttonContainerView" destination="VUs-g8-ViY" id="szC-Is-of7"/>
                         <outlet property="buttonSearch" destination="1ss-yZ-LxP" id="Ouw-KV-RjU"/>
                         <outlet property="buttonSettings" destination="B1W-rm-rPx" id="Y9h-k1-cZt"/>
                         <outlet property="buttonUserTracking" destination="bQr-fm-B92" id="Ffr-I1-wKc"/>
@@ -138,7 +143,49 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j46-oe-XOU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="825.33733133433293"/>
+            <point key="canvasLocation" x="804" y="38"/>
+        </scene>
+        <!--Bookmarks View Controller-->
+        <scene sceneID="Tdp-Qy-YH9">
+            <objects>
+                <viewController storyboardIdentifier="BookmarksViewController" id="DMY-ib-klv" customClass="BookmarksViewController" customModule="Kek" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E7E-eN-8zt"/>
+                        <viewControllerLayoutGuide type="bottom" id="v2U-fk-jMK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QiU-yd-e8z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGd-AQ-ofp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="HOV-It-60g"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Favourites" id="tRs-Zh-ifk">
+                                        <barButtonItem key="leftBarButtonItem" title="Edit" id="idW-iT-WzE"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Close" id="Dzk-1q-wVM">
+                                            <connections>
+                                                <action selector="closeButtonPressed:" destination="DMY-ib-klv" id="dYw-Qa-ea6"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gGd-AQ-ofp" secondAttribute="trailing" id="AAe-DA-BAm"/>
+                            <constraint firstItem="gGd-AQ-ofp" firstAttribute="leading" secondItem="QiU-yd-e8z" secondAttribute="leading" id="ECT-J3-Oj6"/>
+                            <constraint firstItem="gGd-AQ-ofp" firstAttribute="top" secondItem="E7E-eN-8zt" secondAttribute="bottom" id="or6-SB-Pfv"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RTq-X9-a19" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="342" y="824"/>
         </scene>
     </scenes>
     <resources>

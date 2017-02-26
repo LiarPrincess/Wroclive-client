@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9007618B1E6320E400263112 /* SetBookmarksVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9007618A1E6320E400263112 /* SetBookmarksVisibility.swift */; };
 		902812D61E59DDC800F26027 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9028129C1E59DDC800F26027 /* AppDelegate.swift */; };
-		902812D71E59DDC800F26027 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9028129E1E59DDC800F26027 /* Info.plist */; };
 		902812D81E59DDC800F26027 /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902812A11E59DDC800F26027 /* CLAuthorizationStatus.swift */; };
 		902812D91E59DDC800F26027 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902812A21E59DDC800F26027 /* CLLocationManager.swift */; };
 		902812DA1E59DDC800F26027 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902812A51E59DDC800F26027 /* Assets.xcassets */; };
@@ -19,27 +19,58 @@
 		902812FC1E59DDC800F26027 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902812D31E59DDC800F26027 /* MapViewController.swift */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
-		902813031E59DE5200F26027 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* ReSwift.framework */; };
 		902813051E59E6C200F26027 /* MKUserTrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902813041E59E6C200F26027 /* MKUserTrackingMode.swift */; };
 		903075B01E59F88F00DF4996 /* SetUserTrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903075AB1E59F88F00DF4996 /* SetUserTrackingMode.swift */; };
 		903075B11E59F88F00DF4996 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903075AC1E59F88F00DF4996 /* AppReducer.swift */; };
 		903075B21E59F88F00DF4996 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903075AD1E59F88F00DF4996 /* AppState.swift */; };
 		903075B31E59F88F00DF4996 /* ApplicableAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903075AF1E59F88F00DF4996 /* ApplicableAction.swift */; };
-		OBJ_50 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Action.swift */; };
-		OBJ_51 /* CombinedReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CombinedReducer.swift */; };
-		OBJ_52 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Middleware.swift */; };
-		OBJ_53 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Reducer.swift */; };
-		OBJ_54 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* State.swift */; };
-		OBJ_55 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Store.swift */; };
-		OBJ_56 /* StoreSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* StoreSubscriber.swift */; };
-		OBJ_57 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* StoreType.swift */; };
-		OBJ_58 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Subscription.swift */; };
-		OBJ_59 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Assertions.swift */; };
-		OBJ_60 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Coding.swift */; };
-		OBJ_61 /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* TypeHelper.swift */; };
+		903075B61E5A4DF000DF4996 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903075B51E5A4DF000DF4996 /* Types.swift */; };
+		903075BD1E5E45D000DF4996 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903075BC1E5E45D000DF4996 /* BookmarksViewController.swift */; };
+		903075F01E5FA4B600DF4996 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903075E91E5FA4B600DF4996 /* ReSwift.framework */; };
+		903075F11E5FA4B600DF4996 /* ReSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 903075E91E5FA4B600DF4996 /* ReSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		903075F51E5FA4BF00DF4996 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Action.swift */; };
+		903075F61E5FA4BF00DF4996 /* CombinedReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CombinedReducer.swift */; };
+		903075F71E5FA4BF00DF4996 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Middleware.swift */; };
+		903075F81E5FA4BF00DF4996 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Reducer.swift */; };
+		903075F91E5FA4BF00DF4996 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* State.swift */; };
+		903075FA1E5FA4BF00DF4996 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Store.swift */; };
+		903075FB1E5FA4BF00DF4996 /* StoreSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* StoreSubscriber.swift */; };
+		903075FC1E5FA4BF00DF4996 /* StoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* StoreType.swift */; };
+		903075FD1E5FA4BF00DF4996 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Subscription.swift */; };
+		903075FE1E5FA4C300DF4996 /* Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Assertions.swift */; };
+		903075FF1E5FA4C300DF4996 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Coding.swift */; };
+		903076001E5FA4C300DF4996 /* TypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* TypeHelper.swift */; };
+		90E85B661E61853900B9413B /* SlideUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E85B621E61853900B9413B /* SlideUpPresenter.swift */; };
+		90E85B671E61853900B9413B /* SlideUpTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E85B631E61853900B9413B /* SlideUpTransition.swift */; };
+		90E85B681E61853900B9413B /* SlideUpTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E85B641E61853900B9413B /* SlideUpTransitionDelegate.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		903075EE1E5FA4B600DF4996 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 903075E81E5FA4B600DF4996;
+			remoteInfo = ReSwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		903075D71E5FA42A00DF4996 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				903075F11E5FA4B600DF4996 /* ReSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		9007618A1E6320E400263112 /* SetBookmarksVisibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetBookmarksVisibility.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9028129C1E59DDC800F26027 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9028129E1E59DDC800F26027 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +89,13 @@
 		903075AC1E59F88F00DF4996 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		903075AD1E59F88F00DF4996 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		903075AF1E59F88F00DF4996 /* ApplicableAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicableAction.swift; sourceTree = "<group>"; };
+		903075B51E5A4DF000DF4996 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Types.swift; path = Sources/Kek/Data/Types/Types.swift; sourceTree = SOURCE_ROOT; };
+		903075BC1E5E45D000DF4996 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		903075E91E5FA4B600DF4996 /* ReSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		903076131E5FA75000DF4996 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90E85B621E61853900B9413B /* SlideUpPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideUpPresenter.swift; path = "Sources/Kek/View Controllers/MainViewController/SlideUpTransition/SlideUpPresenter.swift"; sourceTree = SOURCE_ROOT; };
+		90E85B631E61853900B9413B /* SlideUpTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideUpTransition.swift; path = "Sources/Kek/View Controllers/MainViewController/SlideUpTransition/SlideUpTransition.swift"; sourceTree = SOURCE_ROOT; };
+		90E85B641E61853900B9413B /* SlideUpTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideUpTransitionDelegate.swift; path = "Sources/Kek/View Controllers/MainViewController/SlideUpTransition/SlideUpTransitionDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		OBJ_10 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		OBJ_11 /* CombinedReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedReducer.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
@@ -70,7 +108,6 @@
 		OBJ_20 /* Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assertions.swift; sourceTree = "<group>"; };
 		OBJ_21 /* Coding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coding.swift; sourceTree = "<group>"; };
 		OBJ_22 /* TypeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeHelper.swift; sourceTree = "<group>"; };
-		OBJ_43 /* ReSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,15 +116,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902813031E59DE5200F26027 /* ReSwift.framework in Frameworks */,
+				903075F01E5FA4B600DF4996 /* ReSwift.framework in Frameworks */,
 				902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */,
 				902813001E59DE4800F26027 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_62 /* Frameworks */ = {
+		903075E51E5FA4B600DF4996 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,14 +132,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9007618C1E632CBA00263112 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				903075B51E5A4DF000DF4996 /* Types.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
 		9028129A1E59DDC800F26027 /* Kek */ = {
 			isa = PBXGroup;
 			children = (
 				902812A41E59DDC800F26027 /* Resources */,
 				9028129B1E59DDC800F26027 /* Application Delegates */,
 				9028129D1E59DDC800F26027 /* Configuration */,
+				903075B41E5A4D6F00DF4996 /* Data */,
+				903075A91E59F88F00DF4996 /* Redux */,
 				9028129F1E59DDC800F26027 /* Extensions */,
-				903075A91E59F88F00DF4996 /* State */,
 				902812CF1E59DDC800F26027 /* View Controllers */,
 				902812CA1E59DDC800F26027 /* Storyboards */,
 			);
@@ -188,18 +234,11 @@
 		902812D01E59DDC800F26027 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
-				902812D21E59DDC800F26027 /* MapViewController */,
+				903075BE1E5E491000DF4996 /* SlideUpTransition */,
+				903075BB1E5E451700DF4996 /* ChildViewControllers */,
 				902812D11E59DDC800F26027 /* MainViewController.swift */,
 			);
 			path = MainViewController;
-			sourceTree = "<group>";
-		};
-		902812D21E59DDC800F26027 /* MapViewController */ = {
-			isa = PBXGroup;
-			children = (
-				902812D31E59DDC800F26027 /* MapViewController.swift */,
-			);
-			path = MapViewController;
 			sourceTree = "<group>";
 		};
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
@@ -211,7 +250,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		903075A91E59F88F00DF4996 /* State */ = {
+		903075A91E59F88F00DF4996 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
 				903075AE1E59F88F00DF4996 /* Protocols */,
@@ -219,13 +258,14 @@
 				903075AC1E59F88F00DF4996 /* AppReducer.swift */,
 				903075AD1E59F88F00DF4996 /* AppState.swift */,
 			);
-			path = State;
+			path = Redux;
 			sourceTree = "<group>";
 		};
 		903075AA1E59F88F00DF4996 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
 				903075AB1E59F88F00DF4996 /* SetUserTrackingMode.swift */,
+				9007618A1E6320E400263112 /* SetBookmarksVisibility.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -236,6 +276,34 @@
 				903075AF1E59F88F00DF4996 /* ApplicableAction.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		903075B41E5A4D6F00DF4996 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9007618C1E632CBA00263112 /* Types */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		903075BB1E5E451700DF4996 /* ChildViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				902812D31E59DDC800F26027 /* MapViewController.swift */,
+				903075BC1E5E45D000DF4996 /* BookmarksViewController.swift */,
+			);
+			path = ChildViewControllers;
+			sourceTree = "<group>";
+		};
+		903075BE1E5E491000DF4996 /* SlideUpTransition */ = {
+			isa = PBXGroup;
+			children = (
+				90E85B621E61853900B9413B /* SlideUpPresenter.swift */,
+				90E85B631E61853900B9413B /* SlideUpTransition.swift */,
+				90E85B641E61853900B9413B /* SlideUpTransitionDelegate.swift */,
+			);
+			name = SlideUpTransition;
+			path = ModalSheet;
 			sourceTree = "<group>";
 		};
 		OBJ_19 /* Utils */ = {
@@ -258,8 +326,8 @@
 		OBJ_42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_43 /* ReSwift.framework */,
 				902812881E59DD8500F26027 /* Kek.app */,
+				903075E91E5FA4B600DF4996 /* ReSwift.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -289,6 +357,7 @@
 			children = (
 				OBJ_9 /* CoreTypes */,
 				OBJ_19 /* Utils */,
+				903076131E5FA75000DF4996 /* Info.plist */,
 			);
 			name = ReSwift;
 			path = "Packages/ReSwift-3.0.0/ReSwift";
@@ -312,6 +381,16 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		903075E61E5FA4B600DF4996 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		902812871E59DD8500F26027 /* Kek */ = {
 			isa = PBXNativeTarget;
@@ -320,22 +399,26 @@
 				902812841E59DD8500F26027 /* Sources */,
 				902812851E59DD8500F26027 /* Frameworks */,
 				902812861E59DD8500F26027 /* Resources */,
+				903075D71E5FA42A00DF4996 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				903075EF1E5FA4B600DF4996 /* PBXTargetDependency */,
 			);
 			name = Kek;
 			productName = Kek;
 			productReference = 902812881E59DD8500F26027 /* Kek.app */;
 			productType = "com.apple.product-type.application";
 		};
-		OBJ_45 /* ReSwift */ = {
+		903075E81E5FA4B600DF4996 /* ReSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_46 /* Build configuration list for PBXNativeTarget "ReSwift" */;
+			buildConfigurationList = 903075F21E5FA4B600DF4996 /* Build configuration list for PBXNativeTarget "ReSwift" */;
 			buildPhases = (
-				OBJ_49 /* Sources */,
-				OBJ_62 /* Frameworks */,
+				903075E41E5FA4B600DF4996 /* Sources */,
+				903075E51E5FA4B600DF4996 /* Frameworks */,
+				903075E61E5FA4B600DF4996 /* Headers */,
+				903075E71E5FA4B600DF4996 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -343,7 +426,7 @@
 			);
 			name = ReSwift;
 			productName = ReSwift;
-			productReference = OBJ_43 /* ReSwift.framework */;
+			productReference = 903075E91E5FA4B600DF4996 /* ReSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -356,6 +439,11 @@
 				LastUpgradeCheck = 9999;
 				TargetAttributes = {
 					902812871E59DD8500F26027 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = AEAQ6C3MPC;
+						ProvisioningStyle = Automatic;
+					};
+					903075E81E5FA4B600DF4996 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = AEAQ6C3MPC;
 						ProvisioningStyle = Automatic;
@@ -375,7 +463,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				OBJ_45 /* ReSwift */,
+				903075E81E5FA4B600DF4996 /* ReSwift */,
 				902812871E59DD8500F26027 /* Kek */,
 			);
 		};
@@ -390,7 +478,13 @@
 				902812F91E59DDC800F26027 /* LaunchScreen.storyboard in Resources */,
 				902812DB1E59DDC800F26027 /* Wroclaw.gpx in Resources */,
 				902812FA1E59DDC800F26027 /* Main.storyboard in Resources */,
-				902812D71E59DDC800F26027 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		903075E71E5FA4B600DF4996 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,39 +495,53 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				903075BD1E5E45D000DF4996 /* BookmarksViewController.swift in Sources */,
 				903075B31E59F88F00DF4996 /* ApplicableAction.swift in Sources */,
 				903075B01E59F88F00DF4996 /* SetUserTrackingMode.swift in Sources */,
 				902812FB1E59DDC800F26027 /* MainViewController.swift in Sources */,
+				9007618B1E6320E400263112 /* SetBookmarksVisibility.swift in Sources */,
+				90E85B661E61853900B9413B /* SlideUpPresenter.swift in Sources */,
+				90E85B681E61853900B9413B /* SlideUpTransitionDelegate.swift in Sources */,
 				902813051E59E6C200F26027 /* MKUserTrackingMode.swift in Sources */,
 				903075B21E59F88F00DF4996 /* AppState.swift in Sources */,
 				902812D81E59DDC800F26027 /* CLAuthorizationStatus.swift in Sources */,
+				90E85B671E61853900B9413B /* SlideUpTransition.swift in Sources */,
 				902812D61E59DDC800F26027 /* AppDelegate.swift in Sources */,
 				902812D91E59DDC800F26027 /* CLLocationManager.swift in Sources */,
 				903075B11E59F88F00DF4996 /* AppReducer.swift in Sources */,
+				903075B61E5A4DF000DF4996 /* Types.swift in Sources */,
 				902812FC1E59DDC800F26027 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_49 /* Sources */ = {
+		903075E41E5FA4B600DF4996 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
+			buildActionMask = 2147483647;
 			files = (
-				OBJ_50 /* Action.swift in Sources */,
-				OBJ_51 /* CombinedReducer.swift in Sources */,
-				OBJ_52 /* Middleware.swift in Sources */,
-				OBJ_53 /* Reducer.swift in Sources */,
-				OBJ_54 /* State.swift in Sources */,
-				OBJ_55 /* Store.swift in Sources */,
-				OBJ_56 /* StoreSubscriber.swift in Sources */,
-				OBJ_57 /* StoreType.swift in Sources */,
-				OBJ_58 /* Subscription.swift in Sources */,
-				OBJ_59 /* Assertions.swift in Sources */,
-				OBJ_60 /* Coding.swift in Sources */,
-				OBJ_61 /* TypeHelper.swift in Sources */,
+				903075F71E5FA4BF00DF4996 /* Middleware.swift in Sources */,
+				903075FF1E5FA4C300DF4996 /* Coding.swift in Sources */,
+				903075FC1E5FA4BF00DF4996 /* StoreType.swift in Sources */,
+				903075F51E5FA4BF00DF4996 /* Action.swift in Sources */,
+				903075FB1E5FA4BF00DF4996 /* StoreSubscriber.swift in Sources */,
+				903076001E5FA4C300DF4996 /* TypeHelper.swift in Sources */,
+				903075F81E5FA4BF00DF4996 /* Reducer.swift in Sources */,
+				903075FA1E5FA4BF00DF4996 /* Store.swift in Sources */,
+				903075FD1E5FA4BF00DF4996 /* Subscription.swift in Sources */,
+				903075F91E5FA4BF00DF4996 /* State.swift in Sources */,
+				903075FE1E5FA4C300DF4996 /* Assertions.swift in Sources */,
+				903075F61E5FA4BF00DF4996 /* CombinedReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		903075EF1E5FA4B600DF4996 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 903075E81E5FA4B600DF4996 /* ReSwift */;
+			targetProxy = 903075EE1E5FA4B600DF4996 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		902812CB1E59DDC800F26027 /* LaunchScreen.storyboard */ = {
@@ -458,6 +566,7 @@
 		902812981E59DD8500F26027 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -509,6 +618,7 @@
 		902812991E59DD8500F26027 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -554,6 +664,125 @@
 			};
 			name = Release;
 		};
+		903075F31E5FA4B600DF4996 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AEAQ6C3MPC;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Packages/ReSwift-3.0.0/ReSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = NoPoint.ReSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		903075F41E5FA4B600DF4996 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AEAQ6C3MPC;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Packages/ReSwift-3.0.0/ReSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = NoPoint.ReSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -596,46 +825,6 @@
 			};
 			name = Release;
 		};
-		OBJ_47 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Kek.xcodeproj/ReSwift_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = ReSwift;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				TARGET_NAME = ReSwift;
-			};
-			name = Debug;
-		};
-		OBJ_48 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = Kek.xcodeproj/ReSwift_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = ReSwift;
-				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				TARGET_NAME = ReSwift;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -648,20 +837,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+		903075F21E5FA4B600DF4996 /* Build configuration list for PBXNativeTarget "ReSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				903075F31E5FA4B600DF4996 /* Debug */,
+				903075F41E5FA4B600DF4996 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		OBJ_2 /* Build configuration list for PBXProject "Kek" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_3 /* Debug */,
 				OBJ_4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		OBJ_46 /* Build configuration list for PBXNativeTarget "ReSwift" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_47 /* Debug */,
-				OBJ_48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

@@ -1,4 +1,4 @@
-//
+
 //  Created by NoPoint
 //  Copyright © 2017 NoPoint. All rights reserved.
 //
@@ -6,7 +6,7 @@
 import UIKit
 import ReSwift
 
-let store = Store<AppState>(reducer: AppReducer(), state: AppState())
+let store = Store<AppState>(reducer: AppReducer(), state: .initial)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
