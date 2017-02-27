@@ -25,6 +25,9 @@ struct MainViewControllerConstants {
     struct AnimationDuration {
       static let present: TimeInterval = 0.35
       static let dismiss: TimeInterval = 0.60
+
+      //division between 'sliding down modal' and 'showing up toolbar' phases
+      static let dismissTimingDistribution: TimeInterval = 0.55
     }
 
     struct DimmingView {

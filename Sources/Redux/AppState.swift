@@ -26,13 +26,13 @@ struct BookmarksState: StateType {
 
 extension AppState {
   static var initial: AppState {
-    let line4 = Line(name: "4", vechicleType: .tram)
-    let line20 = Line(name: "20", vechicleType: .tram)
+    let line4 = Line(name: "4", type: .tram)
+    let line20 = Line(name: "20", type: .tram)
 
-    let lineA = Line(name: "A", vechicleType: .bus)
-    let line125 = Line(name: "125", vechicleType: .bus)
-    let line325 = Line(name: "325", vechicleType: .bus)
-    let line107 = Line(name: "107", vechicleType: .bus)
+    let lineA = Line(name: "A", type: .bus)
+    let line125 = Line(name: "125", type: .bus)
+    let line325 = Line(name: "325", type: .bus)
+    let line107 = Line(name: "107", type: .bus)
 
     var result = AppState()
     result.bookmarksState.bookmarks.append(Bookmark(name: "Uczelnia", lines: [line4, line20, line125]))

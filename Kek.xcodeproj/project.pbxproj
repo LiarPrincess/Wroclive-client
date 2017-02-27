@@ -15,9 +15,11 @@
 		90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */; };
 		90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */; };
 		90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6EA1E63AE34007B583F /* Logger.swift */; };
+		90ABD6EF1E64C5F1007B583F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6EE1E64C5F1007B583F /* Line.swift */; };
+		90ABD6F11E64C624007B583F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6F01E64C624007B583F /* Bookmark.swift */; };
+		90ABD6F51E64CCDC007B583F /* VehiclePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6F41E64CCDC007B583F /* VehiclePosition.swift */; };
 		90DAB4CA1E639C2000B38E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4841E639C2000B38E42 /* AppDelegate.swift */; };
 		90DAB4CB1E639C2000B38E42 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90DAB4861E639C2000B38E42 /* Info.plist */; };
-		90DAB4CC1E639C2000B38E42 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4891E639C2000B38E42 /* Types.swift */; };
 		90DAB4D01E639C2000B38E42 /* SetBookmarksVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4921E639C2000B38E42 /* SetBookmarksVisibility.swift */; };
 		90DAB4D11E639C2000B38E42 /* SetUserTrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4931E639C2000B38E42 /* SetUserTrackingMode.swift */; };
 		90DAB4D21E639C2000B38E42 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4941E639C2000B38E42 /* AppReducer.swift */; };
@@ -85,9 +87,11 @@
 		90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKUserTrackingMode.swift; sourceTree = "<group>"; };
 		90ABD6EA1E63AE34007B583F /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Logging/Logger.swift; sourceTree = "<group>"; };
-		90DAB4841E639C2000B38E42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		90ABD6EE1E64C5F1007B583F /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		90ABD6F01E64C624007B583F /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		90ABD6F41E64CCDC007B583F /* VehiclePosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePosition.swift; sourceTree = "<group>"; };
+		90DAB4841E639C2000B38E42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../Application delegates/AppDelegate.swift"; sourceTree = "<group>"; };
 		90DAB4861E639C2000B38E42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		90DAB4891E639C2000B38E42 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		90DAB4921E639C2000B38E42 /* SetBookmarksVisibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetBookmarksVisibility.swift; sourceTree = "<group>"; };
 		90DAB4931E639C2000B38E42 /* SetUserTrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserTrackingMode.swift; sourceTree = "<group>"; };
 		90DAB4941E639C2000B38E42 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -210,11 +214,12 @@
 			name = Logging;
 			sourceTree = "<group>";
 		};
-		90DAB4831E639C2000B38E42 /* Application Delegates */ = {
+		90DAB4831E639C2000B38E42 /* Application delegates */ = {
 			isa = PBXGroup;
 			children = (
 				90DAB4841E639C2000B38E42 /* AppDelegate.swift */,
 			);
+			name = "Application delegates";
 			path = "Application Delegates";
 			sourceTree = "<group>";
 		};
@@ -229,17 +234,19 @@
 		90DAB4871E639C2000B38E42 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				90DAB4881E639C2000B38E42 /* Types */,
+				90DAB4881E639C2000B38E42 /* Core types */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		90DAB4881E639C2000B38E42 /* Types */ = {
+		90DAB4881E639C2000B38E42 /* Core types */ = {
 			isa = PBXGroup;
 			children = (
-				90DAB4891E639C2000B38E42 /* Types.swift */,
+				90ABD6EE1E64C5F1007B583F /* Line.swift */,
+				90ABD6F41E64CCDC007B583F /* VehiclePosition.swift */,
+				90ABD6F01E64C624007B583F /* Bookmark.swift */,
 			);
-			path = Types;
+			path = "Core types";
 			sourceTree = "<group>";
 		};
 		90DAB4901E639C2000B38E42 /* Redux */ = {
@@ -422,7 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				90DAB4981E639C2000B38E42 /* Resources */,
-				90DAB4831E639C2000B38E42 /* Application Delegates */,
+				90DAB4831E639C2000B38E42 /* Application delegates */,
 				90DAB4851E639C2000B38E42 /* Configuration */,
 				90DAB4871E639C2000B38E42 /* Data */,
 				90DAB4901E639C2000B38E42 /* Redux */,
@@ -588,8 +595,10 @@
 				90DAB4D41E639C2000B38E42 /* ApplicableAction.swift in Sources */,
 				90DAB4F51E639C2000B38E42 /* MainViewController.swift in Sources */,
 				90DAB4F71E639C2000B38E42 /* SlideUpPresenter.swift in Sources */,
+				90ABD6F51E64CCDC007B583F /* VehiclePosition.swift in Sources */,
 				90DAB4F81E639C2000B38E42 /* SlideUpTransition.swift in Sources */,
 				90DAB4D11E639C2000B38E42 /* SetUserTrackingMode.swift in Sources */,
+				90ABD6EF1E64C5F1007B583F /* Line.swift in Sources */,
 				90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */,
 				90DAB4CA1E639C2000B38E42 /* AppDelegate.swift in Sources */,
 				90DAB4D31E639C2000B38E42 /* AppState.swift in Sources */,
@@ -600,9 +609,9 @@
 				90DAB4F31E639C2000B38E42 /* BookmarksViewController.swift in Sources */,
 				90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */,
 				90DAB4F41E639C2000B38E42 /* MapViewController.swift in Sources */,
+				90ABD6F11E64C624007B583F /* Bookmark.swift in Sources */,
 				90DAB4D21E639C2000B38E42 /* AppReducer.swift in Sources */,
 				90ABD6E61E63AE0A007B583F /* CLAuthorizationStatus.swift in Sources */,
-				90DAB4CC1E639C2000B38E42 /* Types.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

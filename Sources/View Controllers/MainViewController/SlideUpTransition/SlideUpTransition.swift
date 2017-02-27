@@ -58,11 +58,13 @@ class SlideUpDismissTransition: NSObject, UIViewControllerAnimatedTransitioning 
 
     let duration = transitionDuration(using: transitionContext)
     UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: .calculationModeCubic, animations: {
-      UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.6) {
+      let slideDownDuration = Constants.AnimationDuration.dismissTimingDistribution
+
+      UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: slideDownDuration) {
         modalViewController.view.transform = offScreenTransform
       }
 
-      UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.4) {
+      UIView.addKeyframe(withRelativeStartTime: slideDownDuration, relativeDuration: 1.0 - slideDownDuration) {
         toolbar.transform = onScreenTransform
       }
     }, completion: { completed in
