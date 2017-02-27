@@ -11,12 +11,13 @@
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		90ABD6E61E63AE0A007B583F /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6E21E63AE0A007B583F /* CLAuthorizationStatus.swift */; };
+		90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */; };
+		90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */; };
+		90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6EA1E63AE34007B583F /* Logger.swift */; };
 		90DAB4CA1E639C2000B38E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4841E639C2000B38E42 /* AppDelegate.swift */; };
 		90DAB4CB1E639C2000B38E42 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90DAB4861E639C2000B38E42 /* Info.plist */; };
 		90DAB4CC1E639C2000B38E42 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4891E639C2000B38E42 /* Types.swift */; };
-		90DAB4CD1E639C2000B38E42 /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB48C1E639C2000B38E42 /* CLAuthorizationStatus.swift */; };
-		90DAB4CE1E639C2000B38E42 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB48D1E639C2000B38E42 /* CLLocationManager.swift */; };
-		90DAB4CF1E639C2000B38E42 /* MKUserTrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB48E1E639C2000B38E42 /* MKUserTrackingMode.swift */; };
 		90DAB4D01E639C2000B38E42 /* SetBookmarksVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4921E639C2000B38E42 /* SetBookmarksVisibility.swift */; };
 		90DAB4D11E639C2000B38E42 /* SetUserTrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4931E639C2000B38E42 /* SetUserTrackingMode.swift */; };
 		90DAB4D21E639C2000B38E42 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4941E639C2000B38E42 /* AppReducer.swift */; };
@@ -80,12 +81,13 @@
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		90ABD6E21E63AE0A007B583F /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
+		90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
+		90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKUserTrackingMode.swift; sourceTree = "<group>"; };
+		90ABD6EA1E63AE34007B583F /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Logging/Logger.swift; sourceTree = "<group>"; };
 		90DAB4841E639C2000B38E42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90DAB4861E639C2000B38E42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90DAB4891E639C2000B38E42 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
-		90DAB48C1E639C2000B38E42 /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
-		90DAB48D1E639C2000B38E42 /* CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
-		90DAB48E1E639C2000B38E42 /* MKUserTrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKUserTrackingMode.swift; sourceTree = "<group>"; };
 		90DAB4921E639C2000B38E42 /* SetBookmarksVisibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetBookmarksVisibility.swift; sourceTree = "<group>"; };
 		90DAB4931E639C2000B38E42 /* SetUserTrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUserTrackingMode.swift; sourceTree = "<group>"; };
 		90DAB4941E639C2000B38E42 /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -165,6 +167,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		90ABD6DF1E63AE0A007B583F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				90ABD6E91E63AE17007B583F /* Logging */,
+				90ABD6E01E63AE0A007B583F /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		90ABD6E01E63AE0A007B583F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				90ABD6E11E63AE0A007B583F /* MapKit */,
+				90ABD6E51E63AE0A007B583F /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		90ABD6E11E63AE0A007B583F /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				90ABD6E21E63AE0A007B583F /* CLAuthorizationStatus.swift */,
+				90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */,
+				90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */,
+			);
+			path = MapKit;
+			sourceTree = "<group>";
+		};
+		90ABD6E51E63AE0A007B583F /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		90ABD6E91E63AE17007B583F /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				90ABD6EA1E63AE34007B583F /* Logger.swift */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
 		90DAB4831E639C2000B38E42 /* Application Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,32 +242,6 @@
 			path = Types;
 			sourceTree = "<group>";
 		};
-		90DAB48A1E639C2000B38E42 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				90DAB48B1E639C2000B38E42 /* MapKit */,
-				90DAB48F1E639C2000B38E42 /* UIKit */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		90DAB48B1E639C2000B38E42 /* MapKit */ = {
-			isa = PBXGroup;
-			children = (
-				90DAB48C1E639C2000B38E42 /* CLAuthorizationStatus.swift */,
-				90DAB48D1E639C2000B38E42 /* CLLocationManager.swift */,
-				90DAB48E1E639C2000B38E42 /* MKUserTrackingMode.swift */,
-			);
-			path = MapKit;
-			sourceTree = "<group>";
-		};
-		90DAB48F1E639C2000B38E42 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
 		90DAB4901E639C2000B38E42 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,8 +256,8 @@
 		90DAB4911E639C2000B38E42 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				90DAB4921E639C2000B38E42 /* SetBookmarksVisibility.swift */,
 				90DAB4931E639C2000B38E42 /* SetUserTrackingMode.swift */,
+				90DAB4921E639C2000B38E42 /* SetBookmarksVisibility.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -346,10 +365,10 @@
 		90DAB4C01E639C2000B38E42 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				90DAB4C61E639C2000B38E42 /* SlideUpTransition */,
 				90DAB4C11E639C2000B38E42 /* ChildViewControllers */,
 				90DAB4C41E639C2000B38E42 /* MainViewController.swift */,
 				90DAB4C51E639C2000B38E42 /* MainViewControllerConstatnts.swift */,
-				90DAB4C61E639C2000B38E42 /* SlideUpTransition */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -407,7 +426,7 @@
 				90DAB4851E639C2000B38E42 /* Configuration */,
 				90DAB4871E639C2000B38E42 /* Data */,
 				90DAB4901E639C2000B38E42 /* Redux */,
-				90DAB48A1E639C2000B38E42 /* Extensions */,
+				90ABD6DF1E63AE0A007B583F /* Utils */,
 				90DAB4BF1E639C2000B38E42 /* View Controllers */,
 				90DAB4BA1E639C2000B38E42 /* Storyboards */,
 			);
@@ -571,17 +590,18 @@
 				90DAB4F71E639C2000B38E42 /* SlideUpPresenter.swift in Sources */,
 				90DAB4F81E639C2000B38E42 /* SlideUpTransition.swift in Sources */,
 				90DAB4D11E639C2000B38E42 /* SetUserTrackingMode.swift in Sources */,
-				90DAB4CF1E639C2000B38E42 /* MKUserTrackingMode.swift in Sources */,
+				90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */,
 				90DAB4CA1E639C2000B38E42 /* AppDelegate.swift in Sources */,
 				90DAB4D31E639C2000B38E42 /* AppState.swift in Sources */,
 				90DAB4F91E639C2000B38E42 /* SlideUpTransitionDelegate.swift in Sources */,
 				90DAB4F61E639C2000B38E42 /* MainViewControllerConstatnts.swift in Sources */,
+				90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */,
 				90DAB4D01E639C2000B38E42 /* SetBookmarksVisibility.swift in Sources */,
 				90DAB4F31E639C2000B38E42 /* BookmarksViewController.swift in Sources */,
+				90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */,
 				90DAB4F41E639C2000B38E42 /* MapViewController.swift in Sources */,
-				90DAB4CE1E639C2000B38E42 /* CLLocationManager.swift in Sources */,
-				90DAB4CD1E639C2000B38E42 /* CLAuthorizationStatus.swift in Sources */,
 				90DAB4D21E639C2000B38E42 /* AppReducer.swift in Sources */,
+				90ABD6E61E63AE0A007B583F /* CLAuthorizationStatus.swift in Sources */,
 				90DAB4CC1E639C2000B38E42 /* Types.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

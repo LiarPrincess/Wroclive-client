@@ -81,12 +81,10 @@ extension MapViewController {
     let authorizationStatus = self.locationManager.authorizationStatus
 
     guard !authorizationStatus.forbidsLocalization else {
-      print("Location services were forbidden by user.")
       return
     }
 
     guard authorizationStatus == .notDetermined else {
-      print("Location services permissions already granted")
       return
     }
 
