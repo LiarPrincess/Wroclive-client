@@ -10,7 +10,7 @@ class SlideUpPresenter : UIPresentationController {
 
   //MARK: - Properties
   
-  typealias Constants = MainViewControllerConstants
+  typealias Constants = MainViewControllerConstants.SlideUpTransition
 
   private var dimmingView: UIView?
   private var relativeHeight: CGFloat
@@ -40,14 +40,14 @@ class SlideUpPresenter : UIPresentationController {
     }
 
     self.dimmingView = UIView(frame: CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height))
-    self.dimmingView!.backgroundColor = Constants.SlideUpTransition.DimmingView.color
+    self.dimmingView!.backgroundColor = Constants.DimmingView.color
     self.dimmingView!.alpha = 0
 
     containerView.addSubview(self.dimmingView!)
     self.dimmingView!.addSubview(presentedViewController.view)
 
     coordinator.animate(alongsideTransition: { [weak self] context in
-      self!.dimmingView!.alpha = Constants.SlideUpTransition.DimmingView.alpha
+      self!.dimmingView!.alpha = Constants.DimmingView.alpha
     }, completion: nil)
   }
 

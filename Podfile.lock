@@ -1,0 +1,17 @@
+PODS:
+  - ReSwift (3.0.0)
+  - XCGLogger (4.0.0):
+    - XCGLogger/Core (= 4.0.0)
+  - XCGLogger/Core (4.0.0)
+
+DEPENDENCIES:
+  - ReSwift (~> 3.0.0)
+  - XCGLogger (~> 4.0.0)
+
+SPEC CHECKSUMS:
+  ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
+  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
+
+PODFILE CHECKSUM: 5d47bf86b620979144b43d2318b3b822ce216fad
+
+COCOAPODS: 1.2.0
