@@ -6,7 +6,8 @@
 import UIKit
 import ReSwift
 
-let store = Store<AppState>(reducer: AppReducer(), state: .initial)
+fileprivate let reducer = CombinedReducer([UserTrackingReducer(), BookmarksReducer()])
+let store = Store<AppState>(reducer: reducer, state: .initial)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

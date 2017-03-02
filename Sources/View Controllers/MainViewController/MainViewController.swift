@@ -13,8 +13,6 @@ class MainViewController: UIViewController {
 
   typealias Constants = MainViewControllerConstants
 
-  fileprivate var state: AppState?
-
   fileprivate var bookmarkTransitionDelegate = SlideUpTransitionDelegate(withRelativeHeight: Constants.BookmarksViewController.relativeHeight)
 
   @IBOutlet weak var buttonUserTracking: UIButton!
@@ -58,18 +56,7 @@ class MainViewController: UIViewController {
   //MARK: - Actions
 
   @IBAction func userTrackingButtonPressed(_ sender: Any) {
-    var nextTrackingMode: MKUserTrackingMode = .none
-
-    switch self.state!.trackingMode {
-    case .none:
-      nextTrackingMode = .follow
-    case .follow:
-      nextTrackingMode = .followWithHeading
-    default:
-      nextTrackingMode = .none
-    }
-
-    store.dispatch(SetUserTrackingMode(nextTrackingMode))
+    store.dispatch(ToggleUserTrackingMode())
   }
 
   @IBAction func bookmarksButtonPressed(_ sender: Any) {
@@ -83,18 +70,11 @@ class MainViewController: UIViewController {
 extension MainViewController: StoreSubscriber {
 
   func newState(state: AppState) {
-    updateUserTrackingMode(state)
-    updateBookmarksVisibility(state)
-
-    //finally at the end update remembered state
-    self.state = state
+    self.updateUserTrackingButton(state)
+    self.updateBookmarksVisibility(state)
   }
 
-  private func updateUserTrackingMode(_ state: AppState) {
-    guard self.state == nil || self.state!.trackingMode != state.trackingMode else {
-      return
-    }
-
+  private func updateUserTrackingButton(_ state: AppState) {
     var imageName = ""
 
     switch state.trackingMode {
@@ -110,10 +90,6 @@ extension MainViewController: StoreSubscriber {
   }
 
   private func updateBookmarksVisibility(_ state: AppState) {
-    guard self.state == nil || self.state!.bookmarksState.visible != state.bookmarksState.visible else {
-      return
-    }
-
     if state.bookmarksState.visible {
       let storyboard = UIStoryboard(name: Constants.Storyboards.Main, bundle: nil)
 

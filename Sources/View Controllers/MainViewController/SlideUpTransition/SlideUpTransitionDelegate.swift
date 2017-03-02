@@ -6,6 +6,7 @@
 import Foundation
 import UIKit
 
+//source: http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
 class SlideUpTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
   //MARK: - Properties
