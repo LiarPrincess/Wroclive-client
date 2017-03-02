@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
 
   typealias Constants = MainViewControllerConstants
 
-  fileprivate var bookmarkTransitionDelegate = SlideUpTransitionDelegate(withRelativeHeight: Constants.BookmarksViewController.relativeHeight)
+  fileprivate var bookmarkTransitionDelegate = ModalCardTransitionDelegate(withRelativeHeight: Constants.BookmarksViewController.relativeHeight)
 
   @IBOutlet weak var buttonUserTracking: UIButton!
   @IBOutlet weak var buttonSearch: UIButton!

@@ -6,11 +6,11 @@
 import Foundation
 import UIKit
 
-class SlideUpPresenter : UIPresentationController {
+class ModalCardPresenter : UIPresentationController {
 
   //MARK: - Properties
   
-  typealias Constants = MainViewControllerConstants.SlideUpTransition
+  typealias Constants = MainViewControllerConstants.ModalCardTransition
 
   private var dimmingView: UIView?
   private var relativeHeight: CGFloat

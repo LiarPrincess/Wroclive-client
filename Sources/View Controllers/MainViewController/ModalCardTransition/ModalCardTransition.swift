@@ -6,9 +6,9 @@
 import Foundation
 import UIKit
 
-class SlideUpPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class ModalCardPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
-  typealias Constants = MainViewControllerConstants.SlideUpTransition
+  typealias Constants = MainViewControllerConstants.ModalCardTransition
 
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     return Constants.AnimationDuration.present
@@ -35,9 +35,9 @@ class SlideUpPresentationTransition: NSObject, UIViewControllerAnimatedTransitio
 
 }
 
-class SlideUpDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class ModalCardDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
-  typealias Constants = MainViewControllerConstants.SlideUpTransition
+  typealias Constants = MainViewControllerConstants.ModalCardTransition
 
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     return Constants.AnimationDuration.dismiss

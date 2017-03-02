@@ -21,7 +21,7 @@ struct MainViewControllerConstants {
 
   //MARK: - Transitions
 
-  struct SlideUpTransition {
+  struct ModalCardTransition {
     struct AnimationDuration {
       static let present: TimeInterval = 0.35
       static let dismiss: TimeInterval = 0.60

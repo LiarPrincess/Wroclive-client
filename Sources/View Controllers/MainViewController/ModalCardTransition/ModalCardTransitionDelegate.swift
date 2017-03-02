@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 
 //source: http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
-class SlideUpTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
+class ModalCardTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
   //MARK: - Properties
 
@@ -23,17 +23,17 @@ class SlideUpTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate
   //MARK: - Transition
 
   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    return SlideUpPresentationTransition()
+    return ModalCardPresentationTransition()
   }
 
   func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    return SlideUpDismissTransition()
+    return ModalCardDismissTransition()
   }
 
   //MARK: - Presentation
 
   func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-    return SlideUpPresenter(forPresented: presented, presenting: presenting, relativeHeight: self.relativeHeight)
+    return ModalCardPresenter(forPresented: presented, presenting: presenting, relativeHeight: self.relativeHeight)
   }
 
 }

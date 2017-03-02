@@ -10,6 +10,9 @@
 		154034383A94518E3E5D9AD4 /* Pods_Kek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
+		90794F141E68ABD000F7DC35 /* ModalCardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90794F111E68ABD000F7DC35 /* ModalCardPresenter.swift */; };
+		90794F151E68ABD000F7DC35 /* ModalCardTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90794F121E68ABD000F7DC35 /* ModalCardTransition.swift */; };
+		90794F161E68ABD000F7DC35 /* ModalCardTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90794F131E68ABD000F7DC35 /* ModalCardTransitionDelegate.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		908FEE661E64F1EB003B12DC /* BookmarksModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FEE651E64F1EB003B12DC /* BookmarksModule.swift */; };
 		908FEE681E64F718003B12DC /* UserTrackingModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FEE671E64F718003B12DC /* UserTrackingModule.swift */; };
@@ -30,10 +33,7 @@
 		90DAB4F31E639C2000B38E42 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C21E639C2000B38E42 /* BookmarksViewController.swift */; };
 		90DAB4F41E639C2000B38E42 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C31E639C2000B38E42 /* MapViewController.swift */; };
 		90DAB4F51E639C2000B38E42 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C41E639C2000B38E42 /* MainViewController.swift */; };
-		90DAB4F61E639C2000B38E42 /* MainViewControllerConstatnts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C51E639C2000B38E42 /* MainViewControllerConstatnts.swift */; };
-		90DAB4F71E639C2000B38E42 /* SlideUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C71E639C2000B38E42 /* SlideUpPresenter.swift */; };
-		90DAB4F81E639C2000B38E42 /* SlideUpTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C81E639C2000B38E42 /* SlideUpTransition.swift */; };
-		90DAB4F91E639C2000B38E42 /* SlideUpTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C91E639C2000B38E42 /* SlideUpTransitionDelegate.swift */; };
+		90DAB4F61E639C2000B38E42 /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C51E639C2000B38E42 /* MainViewControllerConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +55,9 @@
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		90794F111E68ABD000F7DC35 /* ModalCardPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalCardPresenter.swift; path = "Sources/View Controllers/MainViewController/ModalCardTransition/ModalCardPresenter.swift"; sourceTree = SOURCE_ROOT; };
+		90794F121E68ABD000F7DC35 /* ModalCardTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalCardTransition.swift; path = "Sources/View Controllers/MainViewController/ModalCardTransition/ModalCardTransition.swift"; sourceTree = SOURCE_ROOT; };
+		90794F131E68ABD000F7DC35 /* ModalCardTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalCardTransitionDelegate.swift; path = "Sources/View Controllers/MainViewController/ModalCardTransition/ModalCardTransitionDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		908FEE651E64F1EB003B12DC /* BookmarksModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksModule.swift; sourceTree = "<group>"; };
 		908FEE671E64F718003B12DC /* UserTrackingModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTrackingModule.swift; sourceTree = "<group>"; };
 		90ABD6E21E63AE0A007B583F /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
@@ -74,10 +77,7 @@
 		90DAB4C21E639C2000B38E42 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		90DAB4C31E639C2000B38E42 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		90DAB4C41E639C2000B38E42 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		90DAB4C51E639C2000B38E42 /* MainViewControllerConstatnts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstatnts.swift; sourceTree = "<group>"; };
-		90DAB4C71E639C2000B38E42 /* SlideUpPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpPresenter.swift; sourceTree = "<group>"; };
-		90DAB4C81E639C2000B38E42 /* SlideUpTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpTransition.swift; sourceTree = "<group>"; };
-		90DAB4C91E639C2000B38E42 /* SlideUpTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpTransitionDelegate.swift; sourceTree = "<group>"; };
+		90DAB4C51E639C2000B38E42 /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -256,10 +256,10 @@
 		90DAB4C01E639C2000B38E42 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
-				90DAB4C61E639C2000B38E42 /* SlideUpTransition */,
+				90DAB4C61E639C2000B38E42 /* ModalCardTransition */,
 				90DAB4C11E639C2000B38E42 /* ChildViewControllers */,
 				90DAB4C41E639C2000B38E42 /* MainViewController.swift */,
-				90DAB4C51E639C2000B38E42 /* MainViewControllerConstatnts.swift */,
+				90DAB4C51E639C2000B38E42 /* MainViewControllerConstants.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -273,13 +273,14 @@
 			path = ChildViewControllers;
 			sourceTree = "<group>";
 		};
-		90DAB4C61E639C2000B38E42 /* SlideUpTransition */ = {
+		90DAB4C61E639C2000B38E42 /* ModalCardTransition */ = {
 			isa = PBXGroup;
 			children = (
-				90DAB4C71E639C2000B38E42 /* SlideUpPresenter.swift */,
-				90DAB4C81E639C2000B38E42 /* SlideUpTransition.swift */,
-				90DAB4C91E639C2000B38E42 /* SlideUpTransitionDelegate.swift */,
+				90794F111E68ABD000F7DC35 /* ModalCardPresenter.swift */,
+				90794F121E68ABD000F7DC35 /* ModalCardTransition.swift */,
+				90794F131E68ABD000F7DC35 /* ModalCardTransitionDelegate.swift */,
 			);
+			name = ModalCardTransition;
 			path = SlideUpTransition;
 			sourceTree = "<group>";
 		};
@@ -452,19 +453,19 @@
 			files = (
 				908FEE661E64F1EB003B12DC /* BookmarksModule.swift in Sources */,
 				90DAB4F51E639C2000B38E42 /* MainViewController.swift in Sources */,
-				90DAB4F71E639C2000B38E42 /* SlideUpPresenter.swift in Sources */,
+				90794F141E68ABD000F7DC35 /* ModalCardPresenter.swift in Sources */,
 				90ABD6F51E64CCDC007B583F /* VehiclePosition.swift in Sources */,
-				90DAB4F81E639C2000B38E42 /* SlideUpTransition.swift in Sources */,
 				90ABD6EF1E64C5F1007B583F /* Line.swift in Sources */,
 				90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */,
 				90DAB4CA1E639C2000B38E42 /* AppDelegate.swift in Sources */,
 				90DAB4D31E639C2000B38E42 /* AppState.swift in Sources */,
-				90DAB4F91E639C2000B38E42 /* SlideUpTransitionDelegate.swift in Sources */,
-				90DAB4F61E639C2000B38E42 /* MainViewControllerConstatnts.swift in Sources */,
+				90DAB4F61E639C2000B38E42 /* MainViewControllerConstants.swift in Sources */,
 				908FEE681E64F718003B12DC /* UserTrackingModule.swift in Sources */,
 				90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */,
+				90794F161E68ABD000F7DC35 /* ModalCardTransitionDelegate.swift in Sources */,
 				90DAB4F31E639C2000B38E42 /* BookmarksViewController.swift in Sources */,
 				90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */,
+				90794F151E68ABD000F7DC35 /* ModalCardTransition.swift in Sources */,
 				90DAB4F41E639C2000B38E42 /* MapViewController.swift in Sources */,
 				90ABD6F11E64C624007B583F /* Bookmark.swift in Sources */,
 				90ABD6E61E63AE0A007B583F /* CLAuthorizationStatus.swift in Sources */,
