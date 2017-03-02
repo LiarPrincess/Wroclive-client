@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
 
   typealias Constants = MainViewControllerConstants
 
-  fileprivate var searchTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: Constants.SearchViewController.relativeHeight)
+  fileprivate var searchTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: Constants.LineSelectionViewController.relativeHeight)
   fileprivate var bookmarkTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: Constants.BookmarksViewController.relativeHeight)
 
   @IBOutlet weak var buttonUserTracking: UIButton!
@@ -64,7 +64,7 @@ class MainViewController: UIViewController {
   }
 
   @IBAction func searchButtonPressed(_ sender: Any) {
-    store.dispatch(SetSearchVisibility(true))
+    store.dispatch(SetLineSelectionVisibility(true))
   }
 
   @IBAction func bookmarksButtonPressed(_ sender: Any) {
@@ -81,7 +81,7 @@ extension MainViewController: StoreSubscriber {
     let userTrackingImage = self.getUserTrackingImage(for: state.trackingMode)
     self.buttonUserTracking.setImage(UIImage(named: userTrackingImage), for: .normal)
 
-    if state.searchState.visible {
+    if state.lineSelectionState.visible {
       self.showSearchPanel()
     }
 
@@ -102,7 +102,7 @@ extension MainViewController: StoreSubscriber {
   }
 
   private func showSearchPanel() {
-    self.showCardPanel(withIdentifier: Constants.SearchViewController.identifier, delegate: self.searchTransitionDelegate)
+    self.showCardPanel(withIdentifier: Constants.LineSelectionViewController.identifier, delegate: self.searchTransitionDelegate)
   }
 
   private func showBookmarksPanel() {

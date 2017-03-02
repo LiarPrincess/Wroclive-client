@@ -6,7 +6,7 @@
 import UIKit
 import ReSwift
 
-class BookmarksPanelViewController: UIViewController {
+class BookmarksViewController: UIViewController {
 
   //MARK: - Properties
 
@@ -32,7 +32,7 @@ class BookmarksPanelViewController: UIViewController {
 
 //MARK: - StoreSubscriber
 
-extension BookmarksPanelViewController: StoreSubscriber {
+extension BookmarksViewController: StoreSubscriber {
 
   func newState(state: BookmarksState) {
     guard state.visible else {

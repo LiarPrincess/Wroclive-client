@@ -6,9 +6,9 @@
 import Foundation
 import ReSwift
 
-//MARK: - SearchState
+//MARK: - LineSelectionState
 
-struct SearchState: StateType {
+struct LineSelectionState: StateType {
   var visible = false
   var avaiableLines = [Line]()
 }

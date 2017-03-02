@@ -12,7 +12,7 @@ import ReSwift
 struct AppState: StateType {
   var trackingMode: MKUserTrackingMode = .none
 
-  var searchState = SearchState()
+  var lineSelectionState = LineSelectionState()
   var bookmarksState = BookmarksState()
 
 }
@@ -30,12 +30,12 @@ extension AppState {
     let line107 = Line(name: "107", type: .bus)
 
     var result = AppState()
-    result.searchState.avaiableLines.append(line4)
-    result.searchState.avaiableLines.append(line20)
-    result.searchState.avaiableLines.append(lineA)
-    result.searchState.avaiableLines.append(line125)
-    result.searchState.avaiableLines.append(line325)
-    result.searchState.avaiableLines.append(line107)
+    result.lineSelectionState.avaiableLines.append(line4)
+    result.lineSelectionState.avaiableLines.append(line20)
+    result.lineSelectionState.avaiableLines.append(lineA)
+    result.lineSelectionState.avaiableLines.append(line125)
+    result.lineSelectionState.avaiableLines.append(line325)
+    result.lineSelectionState.avaiableLines.append(line107)
     result.bookmarksState.bookmarks.append(Bookmark(name: "Uczelnia", lines: [line4, line20, line125]))
     result.bookmarksState.bookmarks.append(Bookmark(name: "Praca", lines: [line4, line20, lineA, line125, line325, line107]))
     return result

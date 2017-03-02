@@ -8,7 +8,7 @@ import ReSwift
 
 //MARK: - Actions
 
-struct SetSearchVisibility: Action {
+struct SetLineSelectionVisibility: Action {
   var visiblity: Bool
 
   init(_ visiblity: Bool) {
@@ -18,15 +18,15 @@ struct SetSearchVisibility: Action {
 
 //MARK: - Reducer
 
-struct SearchReducer: Reducer {
+struct LineSelectionReducer: Reducer {
 
   func handleAction(action: Action, state: AppState?) -> AppState {
     var state = state ?? AppState()
 
     switch action {
 
-    case let action as SetSearchVisibility:
-      state.searchState.visible = action.visiblity
+    case let action as SetLineSelectionVisibility:
+      state.lineSelectionState.visible = action.visiblity
 
     default:
       break

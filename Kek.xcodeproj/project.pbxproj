@@ -13,14 +13,16 @@
 		9039408B1E68BB4000873FBD /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940881E68BB4000873FBD /* CardPanelPresenter.swift */; };
 		9039408C1E68BB4000873FBD /* CardPanelTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940891E68BB4000873FBD /* CardPanelTransition.swift */; };
 		9039408D1E68BB4000873FBD /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9039408A1E68BB4000873FBD /* CardPanelTransitionDelegate.swift */; };
+		903940901E68C84300873FBD /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9039408F1E68C84300873FBD /* Logging.swift */; };
+		903940921E68C8B100873FBD /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940911E68C8B100873FBD /* Configuration.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907E45C11E68B3AD00DA8781 /* BookmarksModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E45BC1E68B3AD00DA8781 /* BookmarksModule.swift */; };
-		907E45C21E68B3AD00DA8781 /* SearchModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E45BD1E68B3AD00DA8781 /* SearchModule.swift */; };
+		907E45C21E68B3AD00DA8781 /* LineSelectionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E45BD1E68B3AD00DA8781 /* LineSelectionModule.swift */; };
 		907E45C31E68B3AD00DA8781 /* UserTrackingModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E45BE1E68B3AD00DA8781 /* UserTrackingModule.swift */; };
 		907E45C41E68B3AD00DA8781 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E45C01E68B3AD00DA8781 /* AppState.swift */; };
-		907E45C61E68B3E900DA8781 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E45C51E68B3E900DA8781 /* SearchState.swift */; };
+		907E45C61E68B3E900DA8781 /* LineSelectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E45C51E68B3E900DA8781 /* LineSelectionState.swift */; };
 		907E45C81E68B3F400DA8781 /* BookmarksState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E45C71E68B3F400DA8781 /* BookmarksState.swift */; };
-		907E45CA1E68B48D00DA8781 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E45C91E68B48D00DA8781 /* SearchViewController.swift */; };
+		907E45CA1E68B48D00DA8781 /* LineSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E45C91E68B48D00DA8781 /* LineSelectionViewController.swift */; };
 		90ABD6E61E63AE0A007B583F /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6E21E63AE0A007B583F /* CLAuthorizationStatus.swift */; };
 		90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */; };
 		90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */; };
@@ -29,12 +31,11 @@
 		90ABD6F11E64C624007B583F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6F01E64C624007B583F /* Bookmark.swift */; };
 		90ABD6F51E64CCDC007B583F /* VehiclePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6F41E64CCDC007B583F /* VehiclePosition.swift */; };
 		90DAB4CA1E639C2000B38E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4841E639C2000B38E42 /* AppDelegate.swift */; };
-		90DAB4CB1E639C2000B38E42 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90DAB4861E639C2000B38E42 /* Info.plist */; };
 		90DAB4D51E639C2000B38E42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90DAB4991E639C2000B38E42 /* Assets.xcassets */; };
 		90DAB4D61E639C2000B38E42 /* Wroclaw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 90DAB49B1E639C2000B38E42 /* Wroclaw.gpx */; };
 		90DAB4F11E639C2000B38E42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90DAB4BB1E639C2000B38E42 /* LaunchScreen.storyboard */; };
 		90DAB4F21E639C2000B38E42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90DAB4BD1E639C2000B38E42 /* Main.storyboard */; };
-		90DAB4F31E639C2000B38E42 /* BookmarksPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C21E639C2000B38E42 /* BookmarksPanelViewController.swift */; };
+		90DAB4F31E639C2000B38E42 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C21E639C2000B38E42 /* BookmarksViewController.swift */; };
 		90DAB4F41E639C2000B38E42 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C31E639C2000B38E42 /* MapViewController.swift */; };
 		90DAB4F51E639C2000B38E42 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C41E639C2000B38E42 /* MainViewController.swift */; };
 		90DAB4F61E639C2000B38E42 /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4C51E639C2000B38E42 /* MainViewControllerConstants.swift */; };
@@ -62,13 +63,15 @@
 		903940881E68BB4000873FBD /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
 		903940891E68BB4000873FBD /* CardPanelTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransition.swift; sourceTree = "<group>"; };
 		9039408A1E68BB4000873FBD /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
+		9039408F1E68C84300873FBD /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		903940911E68C8B100873FBD /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		907E45BC1E68B3AD00DA8781 /* BookmarksModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksModule.swift; sourceTree = "<group>"; };
-		907E45BD1E68B3AD00DA8781 /* SearchModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchModule.swift; sourceTree = "<group>"; };
+		907E45BD1E68B3AD00DA8781 /* LineSelectionModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionModule.swift; sourceTree = "<group>"; };
 		907E45BE1E68B3AD00DA8781 /* UserTrackingModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTrackingModule.swift; sourceTree = "<group>"; };
 		907E45C01E68B3AD00DA8781 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		907E45C51E68B3E900DA8781 /* SearchState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
+		907E45C51E68B3E900DA8781 /* LineSelectionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionState.swift; sourceTree = "<group>"; };
 		907E45C71E68B3F400DA8781 /* BookmarksState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksState.swift; sourceTree = "<group>"; };
-		907E45C91E68B48D00DA8781 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		907E45C91E68B48D00DA8781 /* LineSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewController.swift; sourceTree = "<group>"; };
 		90ABD6E21E63AE0A007B583F /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
 		90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKUserTrackingMode.swift; sourceTree = "<group>"; };
@@ -82,7 +85,7 @@
 		90DAB49B1E639C2000B38E42 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90DAB4BC1E639C2000B38E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90DAB4BE1E639C2000B38E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		90DAB4C21E639C2000B38E42 /* BookmarksPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksPanelViewController.swift; sourceTree = "<group>"; };
+		90DAB4C21E639C2000B38E42 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		90DAB4C31E639C2000B38E42 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		90DAB4C41E639C2000B38E42 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		90DAB4C51E639C2000B38E42 /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
@@ -133,11 +136,19 @@
 			path = CardPanelTransition;
 			sourceTree = "<group>";
 		};
+		9039408E1E68C81200873FBD /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				9039408F1E68C84300873FBD /* Logging.swift */,
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
 		907E45BB1E68B3AD00DA8781 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				907E45BE1E68B3AD00DA8781 /* UserTrackingModule.swift */,
-				907E45BD1E68B3AD00DA8781 /* SearchModule.swift */,
+				907E45BD1E68B3AD00DA8781 /* LineSelectionModule.swift */,
 				907E45BC1E68B3AD00DA8781 /* BookmarksModule.swift */,
 			);
 			path = Modules;
@@ -147,7 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				907E45C01E68B3AD00DA8781 /* AppState.swift */,
-				907E45C51E68B3E900DA8781 /* SearchState.swift */,
+				907E45C51E68B3E900DA8781 /* LineSelectionState.swift */,
 				907E45C71E68B3F400DA8781 /* BookmarksState.swift */,
 			);
 			path = State;
@@ -235,7 +246,9 @@
 			isa = PBXGroup;
 			children = (
 				907E45BF1E68B3AD00DA8781 /* State */,
+				9039408E1E68C81200873FBD /* Middleware */,
 				907E45BB1E68B3AD00DA8781 /* Modules */,
+				903940911E68C8B100873FBD /* Configuration.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -289,8 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				90DAB4C31E639C2000B38E42 /* MapViewController.swift */,
-				907E45C91E68B48D00DA8781 /* SearchViewController.swift */,
-				90DAB4C21E639C2000B38E42 /* BookmarksPanelViewController.swift */,
+				907E45C91E68B48D00DA8781 /* LineSelectionViewController.swift */,
+				90DAB4C21E639C2000B38E42 /* BookmarksViewController.swift */,
 			);
 			path = ChildViewControllers;
 			sourceTree = "<group>";
@@ -403,7 +416,6 @@
 				90DAB4F11E639C2000B38E42 /* LaunchScreen.storyboard in Resources */,
 				90DAB4D61E639C2000B38E42 /* Wroclaw.gpx in Resources */,
 				90DAB4F21E639C2000B38E42 /* Main.storyboard in Resources */,
-				90DAB4CB1E639C2000B38E42 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,22 +475,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				90DAB4F51E639C2000B38E42 /* MainViewController.swift in Sources */,
+				903940901E68C84300873FBD /* Logging.swift in Sources */,
 				907E45C41E68B3AD00DA8781 /* AppState.swift in Sources */,
 				90ABD6F51E64CCDC007B583F /* VehiclePosition.swift in Sources */,
 				90ABD6EF1E64C5F1007B583F /* Line.swift in Sources */,
-				907E45C61E68B3E900DA8781 /* SearchState.swift in Sources */,
+				907E45C61E68B3E900DA8781 /* LineSelectionState.swift in Sources */,
 				90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */,
 				90DAB4CA1E639C2000B38E42 /* AppDelegate.swift in Sources */,
 				90DAB4F61E639C2000B38E42 /* MainViewControllerConstants.swift in Sources */,
 				9039408D1E68BB4000873FBD /* CardPanelTransitionDelegate.swift in Sources */,
 				90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */,
 				9039408B1E68BB4000873FBD /* CardPanelPresenter.swift in Sources */,
-				90DAB4F31E639C2000B38E42 /* BookmarksPanelViewController.swift in Sources */,
-				907E45CA1E68B48D00DA8781 /* SearchViewController.swift in Sources */,
-				907E45C21E68B3AD00DA8781 /* SearchModule.swift in Sources */,
+				90DAB4F31E639C2000B38E42 /* BookmarksViewController.swift in Sources */,
+				907E45CA1E68B48D00DA8781 /* LineSelectionViewController.swift in Sources */,
+				907E45C21E68B3AD00DA8781 /* LineSelectionModule.swift in Sources */,
 				90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */,
 				90DAB4F41E639C2000B38E42 /* MapViewController.swift in Sources */,
 				90ABD6F11E64C624007B583F /* Bookmark.swift in Sources */,
+				903940921E68C8B100873FBD /* Configuration.swift in Sources */,
 				907E45C31E68B3AD00DA8781 /* UserTrackingModule.swift in Sources */,
 				907E45C81E68B3F400DA8781 /* BookmarksState.swift in Sources */,
 				90ABD6E61E63AE0A007B583F /* CLAuthorizationStatus.swift in Sources */,

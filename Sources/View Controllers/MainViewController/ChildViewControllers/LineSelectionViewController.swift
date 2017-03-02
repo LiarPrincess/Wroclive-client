@@ -6,7 +6,7 @@
 import Foundation
 import ReSwift
 
-class SearchPanelViewController: UIViewController {
+class LineSelectionViewController: UIViewController {
 
   //MARK: - Properties
 
@@ -14,7 +14,7 @@ class SearchPanelViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    store.subscribe(self) { state in state.searchState }
+    store.subscribe(self) { state in state.lineSelectionState }
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -25,16 +25,16 @@ class SearchPanelViewController: UIViewController {
   //MARK: - Actions
 
   @IBAction func closeButtonPressed(_ sender: Any) {
-    store.dispatch(SetSearchVisibility(false))
+    store.dispatch(SetLineSelectionVisibility(false))
   }
 
 }
 
 //MARK: - StoreSubscriber
 
-extension SearchPanelViewController: StoreSubscriber {
+extension LineSelectionViewController: StoreSubscriber {
 
-  func newState(state: SearchState) {
+  func newState(state: LineSelectionState) {
     guard state.visible else {
       self.dismiss(animated: true, completion: nil)
       return

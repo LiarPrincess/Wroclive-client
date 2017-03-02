@@ -4,10 +4,6 @@
 //
 
 import UIKit
-import ReSwift
-
-fileprivate let reducer = CombinedReducer([UserTrackingReducer(), SearchReducer(), BookmarksReducer()])
-let store = Store<AppState>(reducer: reducer, state: .initial)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

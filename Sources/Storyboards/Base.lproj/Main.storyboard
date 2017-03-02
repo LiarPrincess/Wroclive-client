@@ -149,10 +149,10 @@
             </objects>
             <point key="canvasLocation" x="804" y="38"/>
         </scene>
-        <!--Search Panel View Controller-->
+        <!--Line Selection View Controller-->
         <scene sceneID="IZJ-Kt-ufg">
             <objects>
-                <viewController storyboardIdentifier="SearchPanelViewController" id="XhW-rS-mLG" customClass="SearchPanelViewController" customModule="Kek" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LineSelectionViewController" id="XhW-rS-mLG" customClass="LineSelectionViewController" customModule="Kek" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qcq-Bs-qNJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wAo-rw-Haw"/>
@@ -167,7 +167,7 @@
                                     <constraint firstAttribute="height" constant="44" id="vID-7E-1bA"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Search" id="QGh-ev-ZbH">
+                                    <navigationItem title="Select lines" id="QGh-ev-ZbH">
                                         <barButtonItem key="rightBarButtonItem" title="Close" id="jBG-3q-cLD">
                                             <connections>
                                                 <action selector="closeButtonPressed:" destination="XhW-rS-mLG" id="AaP-4N-Fgf"/>
@@ -190,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="-334" y="824"/>
         </scene>
-        <!--Bookmarks Panel View Controller-->
+        <!--Bookmarks View Controller-->
         <scene sceneID="Tdp-Qy-YH9">
             <objects>
-                <viewController storyboardIdentifier="BookmarksPanelViewController" id="DMY-ib-klv" customClass="BookmarksPanelViewController" customModule="Kek" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookmarksViewController" id="DMY-ib-klv" customClass="BookmarksViewController" customModule="Kek" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E7E-eN-8zt"/>
                         <viewControllerLayoutGuide type="bottom" id="v2U-fk-jMK"/>

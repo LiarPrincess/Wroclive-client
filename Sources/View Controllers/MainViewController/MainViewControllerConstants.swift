@@ -51,13 +51,13 @@ struct MainViewControllerConstants {
     //todo
   }
 
-  struct SearchViewController {
-    static let identifier = "SearchPanelViewController"
+  struct LineSelectionViewController {
+    static let identifier = "LineSelectionViewController"
     static let relativeHeight: CGFloat = 0.90
   }
 
   struct BookmarksViewController {
-    static let identifier = "BookmarksPanelViewController"
+    static let identifier = "BookmarksViewController"
     static let relativeHeight: CGFloat = 0.75
   }
 
