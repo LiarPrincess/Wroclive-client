@@ -16,12 +16,13 @@ struct MainViewControllerConstants {
   }
 
   struct Segues {
+    static let showSearchViewController = "ShowSearchViewController"
     static let showBookmarksViewController = "ShowBookmarksViewController"
   }
 
   //MARK: - Transitions
 
-  struct ModalCardTransition {
+  struct CardPanelTransition {
     struct AnimationDuration {
       static let present: TimeInterval = 0.35
       static let dismiss: TimeInterval = 0.60
@@ -38,15 +39,6 @@ struct MainViewControllerConstants {
 
   //MARK: - ViewControllers
 
-  struct BookmarksViewController {
-    static let identifier = "BookmarksViewController"
-    static let relativeHeight: CGFloat = 0.75
-  }
-
-  struct MapViewController {
-    //todo
-  }
-
   struct MainViewController {
     struct UserTrackingImages {
       static let none              = "vecUserTracking_None"
@@ -54,4 +46,19 @@ struct MainViewControllerConstants {
       static let followWithHeading = "vecUserTracking_Follow"
     }
   }
+
+  struct MapViewController {
+    //todo
+  }
+
+  struct SearchViewController {
+    static let identifier = "SearchPanelViewController"
+    static let relativeHeight: CGFloat = 0.90
+  }
+
+  struct BookmarksViewController {
+    static let identifier = "BookmarksPanelViewController"
+    static let relativeHeight: CGFloat = 0.75
+  }
+
 }

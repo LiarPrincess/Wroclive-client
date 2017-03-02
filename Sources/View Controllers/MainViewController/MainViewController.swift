@@ -13,7 +13,8 @@ class MainViewController: UIViewController {
 
   typealias Constants = MainViewControllerConstants
 
-  fileprivate var bookmarkTransitionDelegate = ModalCardTransitionDelegate(withRelativeHeight: Constants.BookmarksViewController.relativeHeight)
+  fileprivate var searchTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: Constants.SearchViewController.relativeHeight)
+  fileprivate var bookmarkTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: Constants.BookmarksViewController.relativeHeight)
 
   @IBOutlet weak var buttonUserTracking: UIButton!
   @IBOutlet weak var buttonSearch: UIButton!
@@ -46,7 +47,10 @@ class MainViewController: UIViewController {
 
   override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
     //we will manage those transitions with state changes
-    if identifier == Constants.Segues.showBookmarksViewController {
+    let searchSegueIdentifier = Constants.Segues.showSearchViewController
+    let bookmarkSegueIdentifier = Constants.Segues.showBookmarksViewController
+
+    if identifier == searchSegueIdentifier || identifier == bookmarkSegueIdentifier {
       return false
     }
 
@@ -57,6 +61,10 @@ class MainViewController: UIViewController {
 
   @IBAction func userTrackingButtonPressed(_ sender: Any) {
     store.dispatch(ToggleUserTrackingMode())
+  }
+
+  @IBAction func searchButtonPressed(_ sender: Any) {
+    store.dispatch(SetSearchVisibility(true))
   }
 
   @IBAction func bookmarksButtonPressed(_ sender: Any) {
@@ -70,35 +78,45 @@ class MainViewController: UIViewController {
 extension MainViewController: StoreSubscriber {
 
   func newState(state: AppState) {
-    self.updateUserTrackingButton(state)
-    self.updateBookmarksVisibility(state)
-  }
+    let userTrackingImage = self.getUserTrackingImage(for: state.trackingMode)
+    self.buttonUserTracking.setImage(UIImage(named: userTrackingImage), for: .normal)
 
-  private func updateUserTrackingButton(_ state: AppState) {
-    var imageName = ""
-
-    switch state.trackingMode {
-    case .none:
-      imageName = Constants.MainViewController.UserTrackingImages.none
-    case .follow:
-      imageName = Constants.MainViewController.UserTrackingImages.follow
-    case .followWithHeading:
-      imageName = Constants.MainViewController.UserTrackingImages.followWithHeading
+    if state.searchState.visible {
+      self.showSearchPanel()
     }
 
-    self.buttonUserTracking.setImage(UIImage(named: imageName), for: .normal)
-  }
-
-  private func updateBookmarksVisibility(_ state: AppState) {
     if state.bookmarksState.visible {
-      let storyboard = UIStoryboard(name: Constants.Storyboards.Main, bundle: nil)
-
-      let bookmarkViewController = storyboard.instantiateViewController(withIdentifier: Constants.BookmarksViewController.identifier)
-      bookmarkViewController.modalPresentationStyle = .custom
-      bookmarkViewController.transitioningDelegate = self.bookmarkTransitionDelegate
-
-      self.present(bookmarkViewController, animated: true, completion: nil)
+      self.showBookmarksPanel()
     }
+  }
+
+  private func getUserTrackingImage(for trackingMode: MKUserTrackingMode) -> String {
+    switch trackingMode {
+    case .none:
+      return Constants.MainViewController.UserTrackingImages.none
+    case .follow:
+      return Constants.MainViewController.UserTrackingImages.follow
+    case .followWithHeading:
+      return Constants.MainViewController.UserTrackingImages.followWithHeading
+    }
+  }
+
+  private func showSearchPanel() {
+    self.showCardPanel(withIdentifier: Constants.SearchViewController.identifier, delegate: self.searchTransitionDelegate)
+  }
+
+  private func showBookmarksPanel() {
+    self.showCardPanel(withIdentifier: Constants.BookmarksViewController.identifier, delegate: self.bookmarkTransitionDelegate)
+  }
+
+  private func showCardPanel(withIdentifier identifier: String, delegate transitioningDelegate: UIViewControllerTransitioningDelegate) {
+    let storyboard = UIStoryboard(name: Constants.Storyboards.Main, bundle: nil)
+
+    let modalViewController = storyboard.instantiateViewController(withIdentifier: identifier)
+    modalViewController.modalPresentationStyle = .custom
+    modalViewController.transitioningDelegate = transitioningDelegate
+
+    self.present(modalViewController, animated: true, completion: nil)
   }
 
 }
@@ -108,7 +126,7 @@ extension MainViewController: StoreSubscriber {
 extension MainViewController {
 
   func applyVisualStyles() {
-    
+
     //[buttons] center images
     for button in self.allButtons {
       let verticalInset = button.bounds.height / 4.0
@@ -116,5 +134,5 @@ extension MainViewController {
       button.imageView?.contentMode = .scaleAspectFit
     }
   }
-
+  
 }

@@ -55,6 +55,10 @@
                                                     <rect key="frame" x="94" y="0.0" width="93.5" height="44"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                                     <state key="normal" image="vecSearch"/>
+                                                    <connections>
+                                                        <action selector="searchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d85-0h-SSR"/>
+                                                        <segue destination="XhW-rS-mLG" kind="show" identifier="ShowSearchViewController" id="oWs-BP-QWk"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jit-RH-cFu">
                                                     <rect key="frame" x="187.5" y="0.0" width="94" height="44"/>
@@ -145,10 +149,51 @@
             </objects>
             <point key="canvasLocation" x="804" y="38"/>
         </scene>
-        <!--Bookmarks View Controller-->
+        <!--Search Panel View Controller-->
+        <scene sceneID="IZJ-Kt-ufg">
+            <objects>
+                <viewController storyboardIdentifier="SearchPanelViewController" id="XhW-rS-mLG" customClass="SearchPanelViewController" customModule="Kek" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qcq-Bs-qNJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wAo-rw-Haw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fdf-Ov-FWU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vme-aO-KXn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="vID-7E-1bA"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Search" id="QGh-ev-ZbH">
+                                        <barButtonItem key="rightBarButtonItem" title="Close" id="jBG-3q-cLD">
+                                            <connections>
+                                                <action selector="closeButtonPressed:" destination="XhW-rS-mLG" id="AaP-4N-Fgf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vme-aO-KXn" firstAttribute="leading" secondItem="Fdf-Ov-FWU" secondAttribute="leading" id="71a-vV-TMQ"/>
+                            <constraint firstAttribute="trailing" secondItem="vme-aO-KXn" secondAttribute="trailing" id="IMl-FL-Zcy"/>
+                            <constraint firstItem="vme-aO-KXn" firstAttribute="top" secondItem="Fdf-Ov-FWU" secondAttribute="top" id="d2C-rW-gYr"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O1Q-R5-shu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-334" y="824"/>
+        </scene>
+        <!--Bookmarks Panel View Controller-->
         <scene sceneID="Tdp-Qy-YH9">
             <objects>
-                <viewController storyboardIdentifier="BookmarksViewController" id="DMY-ib-klv" customClass="BookmarksViewController" customModule="Kek" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookmarksPanelViewController" id="DMY-ib-klv" customClass="BookmarksPanelViewController" customModule="Kek" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E7E-eN-8zt"/>
                         <viewControllerLayoutGuide type="bottom" id="v2U-fk-jMK"/>

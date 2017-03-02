@@ -6,9 +6,9 @@
 import Foundation
 import UIKit
 
-class ModalCardPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
-  typealias Constants = MainViewControllerConstants.ModalCardTransition
+  typealias Constants = MainViewControllerConstants.CardPanelTransition
 
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     return Constants.AnimationDuration.present
@@ -35,9 +35,9 @@ class ModalCardPresentationTransition: NSObject, UIViewControllerAnimatedTransit
 
 }
 
-class ModalCardDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
-  typealias Constants = MainViewControllerConstants.ModalCardTransition
+  typealias Constants = MainViewControllerConstants.CardPanelTransition
 
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     return Constants.AnimationDuration.dismiss

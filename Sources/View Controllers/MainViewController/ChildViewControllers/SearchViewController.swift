@@ -3,10 +3,10 @@
 //  Copyright © 2017 NoPoint. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import ReSwift
 
-class BookmarksViewController: UIViewController {
+class SearchPanelViewController: UIViewController {
 
   //MARK: - Properties
 
@@ -14,7 +14,7 @@ class BookmarksViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    store.subscribe(self) { state in state.bookmarksState }
+    store.subscribe(self) { state in state.searchState }
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -25,16 +25,16 @@ class BookmarksViewController: UIViewController {
   //MARK: - Actions
 
   @IBAction func closeButtonPressed(_ sender: Any) {
-    store.dispatch(SetBookmarksVisibility(false))
+    store.dispatch(SetSearchVisibility(false))
   }
 
 }
 
 //MARK: - StoreSubscriber
 
-extension BookmarksViewController: StoreSubscriber {
+extension SearchPanelViewController: StoreSubscriber {
 
-  func newState(state: BookmarksState) {
+  func newState(state: SearchState) {
     guard state.visible else {
       self.dismiss(animated: true, completion: nil)
       return
@@ -42,5 +42,5 @@ extension BookmarksViewController: StoreSubscriber {
 
     //code
   }
-
+  
 }

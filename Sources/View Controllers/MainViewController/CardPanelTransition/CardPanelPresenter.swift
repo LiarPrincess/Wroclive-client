@@ -6,11 +6,11 @@
 import Foundation
 import UIKit
 
-class ModalCardPresenter : UIPresentationController {
+class CardPanelPresenter : UIPresentationController {
 
   //MARK: - Properties
   
-  typealias Constants = MainViewControllerConstants.ModalCardTransition
+  typealias Constants = MainViewControllerConstants.CardPanelTransition
 
   private var dimmingView: UIView?
   private var relativeHeight: CGFloat

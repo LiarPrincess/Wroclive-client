@@ -27,7 +27,6 @@ struct BookmarksReducer: Reducer {
       
     case let action as SetBookmarksVisibility:
       state.bookmarksState.visible = action.visiblity
-//      state.visible = action.visiblity
 
     default:
       break
