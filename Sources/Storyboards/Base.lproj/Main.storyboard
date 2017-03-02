@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -188,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O1Q-R5-shu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-334" y="824"/>
+            <point key="canvasLocation" x="-335.19999999999999" y="823.53823088455783"/>
         </scene>
         <!--Bookmarks View Controller-->
         <scene sceneID="Tdp-Qy-YH9">
@@ -218,19 +219,68 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a9t-qY-K1J">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookmarkTableCellViewIdentifier" rowHeight="63" id="Fxx-AB-uEb" customClass="BookmarksTableViewCell" customModule="Kek" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="63"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fxx-AB-uEb" id="lTM-mq-V9T">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmark name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfp-dp-KnR">
+                                                    <rect key="frame" x="38" y="8" width="299" height="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lines..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cae-V8-pww">
+                                                    <rect key="frame" x="30" y="35" width="315" height="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mfp-dp-KnR" firstAttribute="leading" secondItem="lTM-mq-V9T" secondAttribute="leadingMargin" constant="30" id="AKh-XG-45p"/>
+                                                <constraint firstItem="Cae-V8-pww" firstAttribute="top" secondItem="mfp-dp-KnR" secondAttribute="bottom" constant="6" id="Cfd-ti-prO"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mfp-dp-KnR" secondAttribute="trailing" constant="30" id="leu-Uv-reB"/>
+                                                <constraint firstItem="Cae-V8-pww" firstAttribute="leading" secondItem="lTM-mq-V9T" secondAttribute="leading" constant="30" id="m7i-Uw-4Cl"/>
+                                                <constraint firstAttribute="bottom" secondItem="Cae-V8-pww" secondAttribute="bottom" constant="6" id="qFm-1y-txa"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cae-V8-pww" secondAttribute="trailing" constant="30" id="t5K-9y-pWF"/>
+                                                <constraint firstItem="mfp-dp-KnR" firstAttribute="top" secondItem="lTM-mq-V9T" secondAttribute="topMargin" id="yy7-0j-bYs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelLines" destination="Cae-V8-pww" id="WJt-fD-iQg"/>
+                                            <outlet property="labelName" destination="mfp-dp-KnR" id="TSg-U3-lIq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="a9t-qY-K1J" firstAttribute="leading" secondItem="QiU-yd-e8z" secondAttribute="leading" id="9Cg-T1-ku4"/>
                             <constraint firstAttribute="trailing" secondItem="gGd-AQ-ofp" secondAttribute="trailing" id="AAe-DA-BAm"/>
                             <constraint firstItem="gGd-AQ-ofp" firstAttribute="leading" secondItem="QiU-yd-e8z" secondAttribute="leading" id="ECT-J3-Oj6"/>
+                            <constraint firstAttribute="trailing" secondItem="a9t-qY-K1J" secondAttribute="trailing" id="FPc-Os-W6W"/>
+                            <constraint firstItem="a9t-qY-K1J" firstAttribute="top" secondItem="gGd-AQ-ofp" secondAttribute="bottom" id="YtT-Xt-eeP"/>
                             <constraint firstItem="gGd-AQ-ofp" firstAttribute="top" secondItem="E7E-eN-8zt" secondAttribute="bottom" id="or6-SB-Pfv"/>
+                            <constraint firstItem="v2U-fk-jMK" firstAttribute="top" secondItem="a9t-qY-K1J" secondAttribute="bottom" id="z5B-9d-FmR"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="bookmarksTableView" destination="a9t-qY-K1J" id="ZFK-da-aL3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RTq-X9-a19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342" y="824"/>
+            <point key="canvasLocation" x="341.60000000000002" y="823.53823088455783"/>
         </scene>
     </scenes>
     <resources>

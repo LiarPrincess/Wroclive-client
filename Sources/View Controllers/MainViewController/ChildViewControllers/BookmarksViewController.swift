@@ -10,7 +10,21 @@ class BookmarksViewController: UIViewController {
 
   //MARK: - Properties
 
+  typealias Constants = MainViewControllerConstants.BookmarksViewController
+
+  let state = AppState.initial
+  var bookmarks: [Bookmark] { return self.state.bookmarksState.bookmarks }
+
+  @IBOutlet weak var bookmarksTableView: UITableView!
+
   //MARK: - Overriden
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    self.bookmarksTableView.dataSource = self
+    self.bookmarksTableView.delegate = self
+  }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -41,6 +55,36 @@ extension BookmarksViewController: StoreSubscriber {
     }
 
     //code
+  }
+
+}
+
+//MARK: - TableView
+
+extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.bookmarks.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.bookmarksTableCellViewIdentifier, for: indexPath) as? BookmarksTableViewCell  else {
+      fatalError("The dequeued cell is not an instance of BookmarksTableViewCell")
+    }
+
+    let bookmark = bookmarks[indexPath.row]
+    cell.labelName.text = bookmark.name
+    cell.labelLines.text = bookmark.lines.description
+
+    return cell
+  }
+
+  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    return tableView.rowHeight
+  }
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return UITableViewAutomaticDimension
   }
 
 }

@@ -59,6 +59,8 @@ struct MainViewControllerConstants {
   struct BookmarksViewController {
     static let identifier = "BookmarksViewController"
     static let relativeHeight: CGFloat = 0.75
+
+    static let bookmarksTableCellViewIdentifier = "BookmarkTableCellViewIdentifier"
   }
 
 }
