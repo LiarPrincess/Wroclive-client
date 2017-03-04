@@ -7,16 +7,15 @@ import UIKit
 import MapKit
 import ReSwift
 
-fileprivate struct StoryboardConstants {
+fileprivate struct MainViewControllerConstants {
+
   static let StoryboardName = "Main"
 
   struct Segues {
-    static let showSearchViewController = "ShowSearchViewController"
+    static let showLineSelectionViewController = "ShowSearchViewController"
     static let showBookmarksViewController = "ShowBookmarksViewController"
   }
-}
 
-fileprivate struct MainViewConstants {
   struct UserTrackingImages {
     static let none              = "vecUserTracking_None"
     static let follow            = "vecUserTracking_Follow"
@@ -33,8 +32,11 @@ class MainViewController: UIViewController {
 
   //MARK: - Properties
 
-  fileprivate var searchTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: MainViewConstants.Modal.lineSelectionRelativeHeight)
-  fileprivate var bookmarkTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: MainViewConstants.Modal.bookmarksRelativeHeight)
+  fileprivate var lineSelectionViewControler: LineSelectionViewController?
+  fileprivate var lineSelectionTransitionDelegate:CardPanelTransitionDelegate?
+
+  fileprivate var bookmarksViewController: BookmarksViewController?
+  fileprivate var bookmarksTransitionDelegate: CardPanelTransitionDelegate?
 
   @IBOutlet weak var buttonUserTracking: UIButton!
   @IBOutlet weak var buttonSearch: UIButton!
@@ -67,10 +69,10 @@ class MainViewController: UIViewController {
 
   override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
     //we will manage those transitions with state changes
-    let searchSegueIdentifier = StoryboardConstants.Segues.showSearchViewController
-    let bookmarkSegueIdentifier = StoryboardConstants.Segues.showBookmarksViewController
+    let lineSelectionSegueIdentifier = MainViewControllerConstants.Segues.showLineSelectionViewController
+    let bookmarkSegueIdentifier = MainViewControllerConstants.Segues.showBookmarksViewController
 
-    if identifier == searchSegueIdentifier || identifier == bookmarkSegueIdentifier {
+    if identifier == lineSelectionSegueIdentifier || identifier == bookmarkSegueIdentifier {
       return false
     }
 
@@ -94,7 +96,6 @@ class MainViewController: UIViewController {
   //MARK: - Methods
 
   fileprivate func customizeAppearance() {
-
     //[buttons] center images
     for button in self.allButtons {
       let verticalInset = button.bounds.height / 4.0
@@ -114,7 +115,7 @@ extension MainViewController: StoreSubscriber {
     self.buttonUserTracking.setImage(UIImage(named: userTrackingImage), for: .normal)
 
     if state.lineSelectionState.visible {
-      self.showSearchPanel()
+      self.showLineSelectionPanel()
     }
 
     if state.bookmarksState.visible {
@@ -125,30 +126,39 @@ extension MainViewController: StoreSubscriber {
   private func getUserTrackingImage(for trackingMode: MKUserTrackingMode) -> String {
     switch trackingMode {
     case .none:
-      return MainViewConstants.UserTrackingImages.none
+      return MainViewControllerConstants.UserTrackingImages.none
     case .follow:
-      return MainViewConstants.UserTrackingImages.follow
+      return MainViewControllerConstants.UserTrackingImages.follow
     case .followWithHeading:
-      return MainViewConstants.UserTrackingImages.followWithHeading
+      return MainViewControllerConstants.UserTrackingImages.followWithHeading
     }
   }
 
-  private func showSearchPanel() {
-    self.showCardPanel(withIdentifier: LineSelectionViewController.identifier, delegate: self.searchTransitionDelegate)
+  private func showLineSelectionPanel() {
+    if self.lineSelectionViewControler == nil {
+      self.lineSelectionTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: MainViewControllerConstants.Modal.lineSelectionRelativeHeight)
+      self.lineSelectionViewControler = self.createModalPanel(withIdentifier: LineSelectionViewController.identifier, delegate: self.lineSelectionTransitionDelegate!) as? LineSelectionViewController
+    }
+
+    self.present(self.lineSelectionViewControler!, animated: true, completion: nil)
   }
 
   private func showBookmarksPanel() {
-    self.showCardPanel(withIdentifier: BookmarksViewController.identifier, delegate: self.bookmarkTransitionDelegate)
+    if self.bookmarksViewController == nil {
+      self.bookmarksTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: MainViewControllerConstants.Modal.bookmarksRelativeHeight)
+      self.bookmarksViewController = self.createModalPanel(withIdentifier: BookmarksViewController.identifier, delegate: self.bookmarksTransitionDelegate!) as? BookmarksViewController
+    }
+
+    self.present(self.bookmarksViewController!, animated: true, completion: nil)
   }
 
-  private func showCardPanel(withIdentifier identifier: String, delegate transitioningDelegate: UIViewControllerTransitioningDelegate) {
-    let storyboard = UIStoryboard(name: StoryboardConstants.StoryboardName, bundle: nil)
+  private func createModalPanel(withIdentifier identifier: String, delegate: CardPanelTransitionDelegate) -> UIViewController {
+    let storyboard = UIStoryboard(name: MainViewControllerConstants.StoryboardName, bundle: nil)
 
-    let modalViewController = storyboard.instantiateViewController(withIdentifier: identifier)
-    modalViewController.modalPresentationStyle = .custom
-    modalViewController.transitioningDelegate = transitioningDelegate
-
-    self.present(modalViewController, animated: true, completion: nil)
+    let modalViewControler = storyboard.instantiateViewController(withIdentifier: identifier)
+    modalViewControler.modalPresentationStyle = .custom
+    modalViewControler.transitioningDelegate = delegate
+    return modalViewControler
   }
 
 }

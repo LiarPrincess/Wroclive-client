@@ -64,6 +64,7 @@ class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitionin
         toolbar.transform = onScreenTransform
       }
     }, completion: { completed in
+      modalViewController.view.transform = CGAffineTransform.identity
       transitionContext.completeTransition(completed)
     })
   }
