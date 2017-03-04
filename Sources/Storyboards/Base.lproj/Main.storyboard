@@ -169,23 +169,88 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Select lines" id="QGh-ev-ZbH">
-                                        <barButtonItem key="rightBarButtonItem" title="Close" id="jBG-3q-cLD">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="jBG-3q-cLD">
                                             <connections>
-                                                <action selector="closeButtonPressed:" destination="XhW-rS-mLG" id="AaP-4N-Fgf"/>
+                                                <action selector="doneButtonPressed:" destination="XhW-rS-mLG" id="AaP-4N-Fgf"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RsW-I8-soQ">
+                                <rect key="frame" x="41" y="52" width="293" height="615"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="13g-QM-nBZ">
+                                    <size key="itemSize" width="50" height="30"/>
+                                    <size key="headerReferenceSize" width="50" height="21"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LineSelectionCell" id="UVc-7k-dZ3" customClass="LineSelectionCell" customModule="Kek" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="21" width="50" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXz-8W-Jbz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="FXz-8W-Jbz" secondAttribute="trailing" id="CGd-Ul-G95"/>
+                                            <constraint firstAttribute="bottom" secondItem="FXz-8W-Jbz" secondAttribute="bottom" id="MOm-v9-fMG"/>
+                                            <constraint firstItem="FXz-8W-Jbz" firstAttribute="leading" secondItem="UVc-7k-dZ3" secondAttribute="leading" id="VgK-qH-Y4R"/>
+                                            <constraint firstItem="FXz-8W-Jbz" firstAttribute="top" secondItem="UVc-7k-dZ3" secondAttribute="top" id="fnx-gy-L6v"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="label" destination="FXz-8W-Jbz" id="Qg5-FA-mDJ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LineSelectionHeaderCell" id="7Rb-mA-HHJ" customClass="LineSelectionHeaderCell" customModule="Kek" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="293" height="21"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPE-ba-bfg">
+                                            <rect key="frame" x="20" y="0.0" width="253" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="WPE-ba-bfg" firstAttribute="leading" secondItem="7Rb-mA-HHJ" secondAttribute="leading" constant="20" id="Sxt-IS-5TV"/>
+                                        <constraint firstAttribute="trailing" secondItem="WPE-ba-bfg" secondAttribute="trailing" constant="20" id="Yw0-8g-E74"/>
+                                        <constraint firstAttribute="bottom" secondItem="WPE-ba-bfg" secondAttribute="bottom" id="hkn-Rg-8Sd"/>
+                                        <constraint firstItem="WPE-ba-bfg" firstAttribute="top" secondItem="7Rb-mA-HHJ" secondAttribute="top" id="xIg-LP-vOs"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="label" destination="WPE-ba-bfg" id="xzY-SG-XBh"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vme-aO-KXn" firstAttribute="leading" secondItem="Fdf-Ov-FWU" secondAttribute="leading" id="71a-vV-TMQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RsW-I8-soQ" secondAttribute="trailing" constant="25" id="AwP-C1-pmu"/>
                             <constraint firstAttribute="trailing" secondItem="vme-aO-KXn" secondAttribute="trailing" id="IMl-FL-Zcy"/>
+                            <constraint firstItem="wAo-rw-Haw" firstAttribute="top" secondItem="RsW-I8-soQ" secondAttribute="bottom" id="Qa3-nF-pdJ"/>
+                            <constraint firstItem="RsW-I8-soQ" firstAttribute="top" secondItem="vme-aO-KXn" secondAttribute="bottom" constant="8" id="byu-0q-pC2"/>
                             <constraint firstItem="vme-aO-KXn" firstAttribute="top" secondItem="Fdf-Ov-FWU" secondAttribute="top" id="d2C-rW-gYr"/>
+                            <constraint firstItem="RsW-I8-soQ" firstAttribute="leading" secondItem="Fdf-Ov-FWU" secondAttribute="leadingMargin" constant="25" id="hK0-pn-ZuK"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="RsW-I8-soQ" id="d00-3h-ozd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O1Q-R5-shu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -221,11 +286,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookmarkTableCellViewIdentifier" rowHeight="87" id="Fxx-AB-uEb" customClass="BookmarksTableViewCell" customModule="Kek" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookmarkCell" rowHeight="87" id="Fxx-AB-uEb" customClass="BookmarkCell" customModule="Kek" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fxx-AB-uEb" id="lTM-mq-V9T">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bookmark name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfp-dp-KnR">

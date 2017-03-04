@@ -6,8 +6,8 @@
 import UIKit
 import ReSwift
 
-fileprivate struct BookmarksViewControllerConstants {
-  static let cellViewIdentifier = "BookmarkTableCellViewIdentifier"
+fileprivate struct BookmarksConstants {
+  static let cellIdentifier = "BookmarkCell"
 }
 
 class BookmarksViewController: UIViewController {
@@ -27,7 +27,6 @@ class BookmarksViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
     self.tableView.dataSource = self
     self.tableView.delegate = self
   }
@@ -74,7 +73,7 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarksViewControllerConstants.cellViewIdentifier, for: indexPath) as? BookmarksTableViewCell  else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarksConstants.cellIdentifier, for: indexPath) as? BookmarkCell  else {
       fatalError("The dequeued cell is not an instance of BookmarksTableViewCell")
     }
 
@@ -95,7 +94,7 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     return UITableViewAutomaticDimension
   }
 
-  private func customizeAppearance(_ cell: BookmarksTableViewCell) {
+  private func customizeAppearance(_ cell: BookmarkCell) {
     cell.labelName.font = UIFont.customPreferredFont(forTextStyle: .headline)
     cell.labelTramLines.font = UIFont.customPreferredFont(forTextStyle: .subheadline)
     cell.labelBusLines.font  = UIFont.customPreferredFont(forTextStyle: .subheadline)

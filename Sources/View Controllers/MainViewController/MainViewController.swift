@@ -16,7 +16,7 @@ fileprivate struct StoryboardConstants {
   }
 }
 
-struct MainViewControllerConstants {
+fileprivate struct MainViewConstants {
   struct UserTrackingImages {
     static let none              = "vecUserTracking_None"
     static let follow            = "vecUserTracking_Follow"
@@ -33,8 +33,8 @@ class MainViewController: UIViewController {
 
   //MARK: - Properties
 
-  fileprivate var searchTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: MainViewControllerConstants.Modal.lineSelectionRelativeHeight)
-  fileprivate var bookmarkTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: MainViewControllerConstants.Modal.bookmarksRelativeHeight)
+  fileprivate var searchTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: MainViewConstants.Modal.lineSelectionRelativeHeight)
+  fileprivate var bookmarkTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: MainViewConstants.Modal.bookmarksRelativeHeight)
 
   @IBOutlet weak var buttonUserTracking: UIButton!
   @IBOutlet weak var buttonSearch: UIButton!
@@ -125,11 +125,11 @@ extension MainViewController: StoreSubscriber {
   private func getUserTrackingImage(for trackingMode: MKUserTrackingMode) -> String {
     switch trackingMode {
     case .none:
-      return MainViewControllerConstants.UserTrackingImages.none
+      return MainViewConstants.UserTrackingImages.none
     case .follow:
-      return MainViewControllerConstants.UserTrackingImages.follow
+      return MainViewConstants.UserTrackingImages.follow
     case .followWithHeading:
-      return MainViewControllerConstants.UserTrackingImages.followWithHeading
+      return MainViewConstants.UserTrackingImages.followWithHeading
     }
   }
 

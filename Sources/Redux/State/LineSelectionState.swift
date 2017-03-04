@@ -10,5 +10,5 @@ import ReSwift
 
 struct LineSelectionState: StateType {
   var visible = false
-  var avaiableLines = [Line]()
+  var availableLines = [Line]()
 }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		154034383A94518E3E5D9AD4 /* Pods_Kek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */; };
 		9006CDC81E6B0A8D00B6E57B /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDC71E6B0A8D00B6E57B /* UIBarButtonItem.swift */; };
+		9006CDCB1E6B207500B6E57B /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */; };
+		9006CDCD1E6B209D00B6E57B /* LineSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDCC1E6B209D00B6E57B /* LineSelectionCell.swift */; };
+		9006CDCF1E6B396600B6E57B /* LineSelectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDCE1E6B396600B6E57B /* LineSelectionHeaderCell.swift */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		9039408B1E68BB4000873FBD /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940881E68BB4000873FBD /* CardPanelPresenter.swift */; };
@@ -16,7 +19,6 @@
 		9039408D1E68BB4000873FBD /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9039408A1E68BB4000873FBD /* CardPanelTransitionDelegate.swift */; };
 		903940901E68C84300873FBD /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9039408F1E68C84300873FBD /* Logging.swift */; };
 		903940921E68C8B100873FBD /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940911E68C8B100873FBD /* Configuration.swift */; };
-		903940951E68D1DA00873FBD /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940941E68D1DA00873FBD /* BookmarkTableViewCell.swift */; };
 		907BBCD51E6A2F5D00DE7D1D /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907BBCD41E6A2F5C00DE7D1D /* UIFont.swift */; };
 		907BBCD71E6B014D00DE7D1D /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907BBCD61E6B014D00DE7D1D /* UINavigationBar.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -61,6 +63,9 @@
 /* Begin PBXFileReference section */
 		278E1D09A47B558EB5FEB26D /* Pods-Kek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.debug.xcconfig"; sourceTree = "<group>"; };
 		9006CDC71E6B0A8D00B6E57B /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
+		9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
+		9006CDCC1E6B209D00B6E57B /* LineSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCell.swift; sourceTree = "<group>"; };
+		9006CDCE1E6B396600B6E57B /* LineSelectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionHeaderCell.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -69,7 +74,6 @@
 		9039408A1E68BB4000873FBD /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
 		9039408F1E68C84300873FBD /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		903940911E68C8B100873FBD /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		903940941E68D1DA00873FBD /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 		907BBCD41E6A2F5C00DE7D1D /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		907BBCD61E6B014D00DE7D1D /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		907E45BC1E68B3AD00DA8781 /* BookmarksModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksModule.swift; sourceTree = "<group>"; };
@@ -122,6 +126,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9006CDC91E6B207500B6E57B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9006CDCC1E6B209D00B6E57B /* LineSelectionCell.swift */,
+				9006CDCE1E6B396600B6E57B /* LineSelectionHeaderCell.swift */,
+				9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,14 +162,6 @@
 				9039408F1E68C84300873FBD /* Logging.swift */,
 			);
 			path = Middleware;
-			sourceTree = "<group>";
-		};
-		903940931E68D19F00873FBD /* TableCells */ = {
-			isa = PBXGroup;
-			children = (
-				903940941E68D1DA00873FBD /* BookmarkTableViewCell.swift */,
-			);
-			path = TableCells;
 			sourceTree = "<group>";
 		};
 		907E45BB1E68B3AD00DA8781 /* Modules */ = {
@@ -307,9 +313,9 @@
 		90DAB4C01E639C2000B38E42 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
-				903940871E68BB4000873FBD /* CardPanelTransition */,
-				903940931E68D19F00873FBD /* TableCells */,
+				9006CDC91E6B207500B6E57B /* Cells */,
 				90DAB4C11E639C2000B38E42 /* ChildViewControllers */,
+				903940871E68BB4000873FBD /* CardPanelTransition */,
 				90DAB4C41E639C2000B38E42 /* MainViewController.swift */,
 			);
 			path = MainViewController;
@@ -496,12 +502,15 @@
 				907BBCD71E6B014D00DE7D1D /* UINavigationBar.swift in Sources */,
 				903940901E68C84300873FBD /* Logging.swift in Sources */,
 				907E45C41E68B3AD00DA8781 /* AppState.swift in Sources */,
+				9006CDCF1E6B396600B6E57B /* LineSelectionHeaderCell.swift in Sources */,
 				90ABD6F51E64CCDC007B583F /* VehiclePosition.swift in Sources */,
 				90ABD6EF1E64C5F1007B583F /* Line.swift in Sources */,
 				907E45C61E68B3E900DA8781 /* LineSelectionState.swift in Sources */,
 				90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */,
+				9006CDCD1E6B209D00B6E57B /* LineSelectionCell.swift in Sources */,
 				90DAB4CA1E639C2000B38E42 /* AppDelegate.swift in Sources */,
 				9039408D1E68BB4000873FBD /* CardPanelTransitionDelegate.swift in Sources */,
+				9006CDCB1E6B207500B6E57B /* BookmarkCell.swift in Sources */,
 				90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */,
 				9039408B1E68BB4000873FBD /* CardPanelPresenter.swift in Sources */,
 				90DAB4F31E639C2000B38E42 /* BookmarksViewController.swift in Sources */,
@@ -517,7 +526,6 @@
 				907BBCD51E6A2F5D00DE7D1D /* UIFont.swift in Sources */,
 				9039408C1E68BB4000873FBD /* CardPanelTransition.swift in Sources */,
 				907E45C11E68B3AD00DA8781 /* BookmarksModule.swift in Sources */,
-				903940951E68D1DA00873FBD /* BookmarkTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

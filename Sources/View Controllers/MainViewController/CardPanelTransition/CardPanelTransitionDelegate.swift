@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-struct CardPanelTransitionConstants {
+struct CardPanelConstants {
   struct AnimationDuration {
     static let present: TimeInterval = 0.35
     static let dismiss: TimeInterval = 0.60

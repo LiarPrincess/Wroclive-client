@@ -49,8 +49,11 @@ extension AppState {
     let lineN551 = Line(name: "N551", type: .bus)
     let busLines = [lineN9, lineN11, lineN13, lineN15, lineN21, lineN26, lineN44, lineN47, lineN87, lineN89, lineN91, lineN155, lineN343, lineN551]
 
+    let allLines = tramLines + busLines
+
     var result = AppState()
-    result.bookmarksState.bookmarks.append(Bookmark(name: "Savoy St", lines: tramLines + busLines))
+    result.lineSelectionState.availableLines = allLines
+    result.bookmarksState.bookmarks.append(Bookmark(name: "Savoy St", lines: allLines))
     return result
   }
 }

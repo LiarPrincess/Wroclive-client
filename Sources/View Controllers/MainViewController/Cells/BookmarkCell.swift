@@ -5,7 +5,7 @@
 
 import UIKit
 
-class BookmarksTableViewCell: UITableViewCell {
+class BookmarkCell: UITableViewCell {
 
   //MARK: - Properties
 

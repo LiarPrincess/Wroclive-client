@@ -8,9 +8,25 @@ import MapKit
 
 //MARK: - VehicleType
 
-enum VehicleType {
+enum VehicleType: Int {
   case tram
   case bus
+}
+
+extension VehicleType: CustomStringConvertible {
+  var description: String {
+    switch self {
+    case .tram:
+      return "tram"
+
+    case .bus:
+      return "bus"
+    }
+  }
+}
+
+extension VehicleType: CustomDebugStringConvertible {
+  var debugDescription: String { return self.description }
 }
 
 //MARK: - Line
