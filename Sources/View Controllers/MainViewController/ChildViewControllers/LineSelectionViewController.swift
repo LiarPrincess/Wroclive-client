@@ -11,9 +11,9 @@ struct LineSelectionViewControllerConstants {
   static let headerCellIdentifier = "LineSelectionHeaderCell"
 
   struct Cell {
-    static let minCellWidth: CGFloat = 44.0
+    static let minCellWidth: CGFloat = 50.0
     static let margin: CGFloat = 5.0
-    static let cornerRadius: CGFloat = 2.0
+    static let cornerRadius: CGFloat = 4.0
   }
 }
 
@@ -27,12 +27,14 @@ class LineSelectionViewController: UIViewController {
 
   fileprivate var dataSource = LineSelectionDataSource()
 
+  @IBOutlet weak var vehicleTypeSelection: UISegmentedControl!
   @IBOutlet weak var collectionView: UICollectionView!
 
   //MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.customizeAppearance()
     self.collectionView.dataSource = self.dataSource
     self.collectionView.delegate = self
   }
@@ -51,6 +53,16 @@ class LineSelectionViewController: UIViewController {
 
   @IBAction func doneButtonPressed(_ sender: Any) {
     store.dispatch(SetLineSelectionVisibility(false))
+  }
+
+  @IBAction func vehicleTypeChanged(_ sender: Any) {
+    let selected = self.vehicleTypeSelection.selectedSegmentIndex
+  }
+
+  //MARK: - Methods
+
+  fileprivate func customizeAppearance() {
+    self.vehicleTypeSelection.font = UIFont.customPreferredFont(forTextStyle: .body)
   }
 
 }
@@ -80,7 +92,6 @@ extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
       fatalError("Invalid cell type passed to LineSelectionViewController.UICollectionViewDelegateFlowLayout")
     }
 
-    cell.label.font = UIFont.customPreferredFont(forTextStyle: .body)
     cell.label.textColor = self.view.tintColor
 
     //round corners

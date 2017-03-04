@@ -21,6 +21,8 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LineSelectionViewControllerConstants.cellIdentifier, for: indexPath) as! LineSelectionCell
 
+    cell.label.font = UIFont.customPreferredFont(forTextStyle: .body)
+
     let line = self.availableLines[indexPath.row]
     cell.label.text = line.name
     return cell

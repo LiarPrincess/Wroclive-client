@@ -23,6 +23,10 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
       fatalError("The dequeued cell is not an instance of BookmarkCell")
     }
 
+    cell.labelName.font = UIFont.customPreferredFont(forTextStyle: .headline)
+    cell.labelTramLines.font = UIFont.customPreferredFont(forTextStyle: .body)
+    cell.labelBusLines.font  = UIFont.customPreferredFont(forTextStyle: .body)
+
     let bookmark = self.bookmarks[indexPath.row]
     cell.labelName.text = bookmark.name
     cell.labelTramLines.text = prepareBookmarkLabel(bookmark, for: .tram)

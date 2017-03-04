@@ -77,10 +77,6 @@ extension BookmarksViewController: UITableViewDelegate {
       fatalError("Invalid cell type passed to BookmarksViewController.UITableViewDelegate")
     }
 
-    cell.labelName.font = UIFont.customPreferredFont(forTextStyle: .headline)
-    cell.labelTramLines.font = UIFont.customPreferredFont(forTextStyle: .body)
-    cell.labelBusLines.font  = UIFont.customPreferredFont(forTextStyle: .body)
-
     cell.labelTramLines.textColor = self.view.tintColor
     cell.labelBusLines.textColor = self.view.tintColor
   }
