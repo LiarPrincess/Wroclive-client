@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     log.info("Starting application")
 
     UINavigationBar.titleFont = UIFont.customPreferredFont(forTextStyle: .headline)
-    UIBarButtonItem.font = UIFont.customPreferredFont(forTextStyle: .body)
+    UIBarButtonItem.font = UIFont.customPreferredFont(forTextStyle: .subheadline)
 
     window?.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.25, alpha: 1.0)
 

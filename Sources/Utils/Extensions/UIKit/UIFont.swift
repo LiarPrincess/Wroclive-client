@@ -18,10 +18,10 @@ extension UIFont {
       return self.boldCustomFont(ofSize: 18.0)
 
     case UIFontTextStyle.subheadline:
-      return self.customFont(ofSize: 15.0)
+      return self.customFont(ofSize: 17.0)
 
     case UIFontTextStyle.body:
-      return self.customFont(ofSize: 17.0)
+      return self.customFont(ofSize: 15.0)
 
     default:
       fatalError("Custom font style not specified for \(style)")

@@ -78,8 +78,8 @@ extension BookmarksViewController: UITableViewDelegate {
     }
 
     cell.labelName.font = UIFont.customPreferredFont(forTextStyle: .headline)
-    cell.labelTramLines.font = UIFont.customPreferredFont(forTextStyle: .subheadline)
-    cell.labelBusLines.font  = UIFont.customPreferredFont(forTextStyle: .subheadline)
+    cell.labelTramLines.font = UIFont.customPreferredFont(forTextStyle: .body)
+    cell.labelBusLines.font  = UIFont.customPreferredFont(forTextStyle: .body)
 
     cell.labelTramLines.textColor = self.view.tintColor
     cell.labelBusLines.textColor = self.view.tintColor

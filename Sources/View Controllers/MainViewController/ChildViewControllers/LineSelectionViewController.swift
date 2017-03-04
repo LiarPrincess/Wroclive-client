@@ -10,19 +10,10 @@ struct LineSelectionViewControllerConstants {
   static let cellIdentifier = "LineSelectionCell"
   static let headerCellIdentifier = "LineSelectionHeaderCell"
 
-  struct SectionHeader {
-    static let width: CGFloat = 0.0
-    static let height: CGFloat = 40.0
-  }
-
   struct Cell {
-    static let width: CGFloat = 44.0
-    static let height: CGFloat = 30.0
-
+    static let minCellWidth: CGFloat = 44.0
+    static let margin: CGFloat = 5.0
     static let cornerRadius: CGFloat = 2.0
-
-    static let minVerticalMargin: CGFloat = 5.0
-    static let minHorizontalMargin: CGFloat = 5.0
   }
 }
 
@@ -100,15 +91,30 @@ extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: LineSelectionViewControllerConstants.Cell.width, height: LineSelectionViewControllerConstants.Cell.height)
+    //number of sections: n
+    //number of margins: (n-1)
+
+    //totalWidth = n * cellWidth + (n-1) * margins
+    //-> n = (totalWidth + margin) / (cellWidth + margin)
+    //-> cellWidth = (totalWidth - (n-1) * margin) / n
+
+    let totalWidth = collectionView.bounds.width
+    let margin = LineSelectionViewControllerConstants.Cell.margin
+    let minCellWidth = LineSelectionViewControllerConstants.Cell.minCellWidth
+
+    let numSections = floor((totalWidth + margin) / (minCellWidth + margin))
+    let width = (totalWidth - (numSections - 1) * margin) / numSections
+
+    let goldenRatio: CGFloat = 1.6180
+    return CGSize(width: floor(width), height: floor(width / goldenRatio))
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return LineSelectionViewControllerConstants.Cell.minHorizontalMargin
+    return LineSelectionViewControllerConstants.Cell.margin
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return LineSelectionViewControllerConstants.Cell.minVerticalMargin
+    return LineSelectionViewControllerConstants.Cell.margin
   }
   
 }
