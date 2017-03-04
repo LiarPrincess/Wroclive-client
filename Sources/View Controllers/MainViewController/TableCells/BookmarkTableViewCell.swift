@@ -10,6 +10,7 @@ class BookmarksTableViewCell: UITableViewCell {
   //MARK: - Properties
 
   @IBOutlet weak var labelName: UILabel!
-  @IBOutlet weak var labelLines: UILabel!
+  @IBOutlet weak var labelTramLines: UILabel!
+  @IBOutlet weak var labelBusLines: UILabel!
 
 }

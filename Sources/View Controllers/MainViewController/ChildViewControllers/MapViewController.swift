@@ -11,6 +11,8 @@ class MapViewController: UIViewController {
 
   //MARK: - Properties
 
+  fileprivate var isUpdatingWithNewState = false
+
   fileprivate lazy var locationManager: CLLocationManager = {
     let locationManager = CLLocationManager()
     locationManager.distanceFilter = 5.0
@@ -49,11 +51,13 @@ class MapViewController: UIViewController {
 extension MapViewController: StoreSubscriber {
 
   func newState(state: AppState) {
-    self.updateUserTracking(state)
-  }
+    self.isUpdatingWithNewState = true
 
-  private func updateUserTracking(_ state: AppState) {
-   self.mapView.setUserTrackingMode(state.trackingMode, animated: true)
+    if state.trackingMode != self.mapView.userTrackingMode {
+      self.mapView.setUserTrackingMode(state.trackingMode, animated: true)
+    }
+
+    self.isUpdatingWithNewState = false
   }
 
 }
@@ -63,9 +67,8 @@ extension MapViewController: StoreSubscriber {
 extension MapViewController: MKMapViewDelegate {
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-    //code vs user invoked change
-    let isUserInvokedChange = !animated
-    if isUserInvokedChange {
+    //this method will be also called when we set tracking mode in code, but then we dont want to post the action
+    if !self.isUpdatingWithNewState {
       store.dispatch(SetUserTrackingMode(mode))
     }
   }

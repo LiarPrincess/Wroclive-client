@@ -72,10 +72,12 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
       fatalError("The dequeued cell is not an instance of BookmarksTableViewCell")
     }
 
-    let bookmark = bookmarks[indexPath.row]
+    let bookmark = self.bookmarks[indexPath.row]
     cell.labelName.text = bookmark.name
-    cell.labelLines.text = bookmark.lines.description
+    cell.labelTramLines.text = bookmark.lines.filter { $0.type == .tram }.map { $0.name }.joined(separator: "  ")
+    cell.labelBusLines.text = bookmark.lines.filter { $0.type == .bus }.map { $0.name }.joined(separator: "  ")
 
+    self.applyVisualStyles(cell)
     return cell
   }
 
@@ -85,6 +87,15 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableViewAutomaticDimension
+  }
+
+  private func applyVisualStyles(_ cell: BookmarksTableViewCell) {
+    cell.labelName.font = UIFont.customPreferredFont(forTextStyle: .headline)
+    cell.labelTramLines.font = UIFont.customPreferredFont(forTextStyle: .subheadline)
+    cell.labelBusLines.font  = UIFont.customPreferredFont(forTextStyle: .subheadline)
+
+    cell.labelTramLines.textColor = self.view.tintColor
+    cell.labelBusLines.textColor = self.view.tintColor
   }
 
 }
