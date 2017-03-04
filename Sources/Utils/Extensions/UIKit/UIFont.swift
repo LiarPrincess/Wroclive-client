@@ -20,23 +20,23 @@ extension UIFont {
     case UIFontTextStyle.subheadline:
       return self.customFont(ofSize: 15.0)
 
-//    case UIFontTextStyle.body:
-//      return self.customFont(ofSize: 17.0)
+    case UIFontTextStyle.body:
+      return self.customFont(ofSize: 17.0)
 
     default:
       fatalError("Custom font style not specified for \(style)")
     }
   }
 
-  class func customFont(ofSize fontSize: CGFloat) -> UIFont {
+  fileprivate class func customFont(ofSize fontSize: CGFloat) -> UIFont {
     return UIFont(name: CustomFont.regular, size: fontSize)!
   }
 
-  class func boldCustomFont(ofSize fontSize: CGFloat) -> UIFont {
+  fileprivate class func boldCustomFont(ofSize fontSize: CGFloat) -> UIFont {
     return UIFont(name: CustomFont.demiBold, size: fontSize)!
   }
 
-  class func italicCustomFont(ofSize fontSize: CGFloat) -> UIFont {
+  fileprivate class func italicCustomFont(ofSize fontSize: CGFloat) -> UIFont {
     return UIFont(name: CustomFont.italic, size: fontSize)!
   }
 

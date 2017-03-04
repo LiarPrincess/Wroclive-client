@@ -6,24 +6,30 @@
 import UIKit
 import ReSwift
 
+fileprivate struct BookmarksViewControllerConstants {
+  static let cellViewIdentifier = "BookmarkTableCellViewIdentifier"
+}
+
 class BookmarksViewController: UIViewController {
+
+  //MARK: - Static
+
+  static let identifier = "BookmarksViewController"
 
   //MARK: - Properties
 
-  typealias Constants = MainViewControllerConstants.BookmarksViewController
+  fileprivate var bookmarks = [Bookmark]()
 
-  let state = AppState.initial
-  var bookmarks: [Bookmark] { return self.state.bookmarksState.bookmarks }
-
-  @IBOutlet weak var bookmarksTableView: UITableView!
+  @IBOutlet weak var navigationBar: UINavigationBar!
+  @IBOutlet weak var tableView: UITableView!
 
   //MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.bookmarksTableView.dataSource = self
-    self.bookmarksTableView.delegate = self
+    self.tableView.dataSource = self
+    self.tableView.delegate = self
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +60,7 @@ extension BookmarksViewController: StoreSubscriber {
       return
     }
 
-    //code
+    self.bookmarks = state.bookmarks
   }
 
 }
@@ -68,16 +74,16 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.bookmarksTableCellViewIdentifier, for: indexPath) as? BookmarksTableViewCell  else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarksViewControllerConstants.cellViewIdentifier, for: indexPath) as? BookmarksTableViewCell  else {
       fatalError("The dequeued cell is not an instance of BookmarksTableViewCell")
     }
+
+    self.customizeAppearance(cell)
 
     let bookmark = self.bookmarks[indexPath.row]
     cell.labelName.text = bookmark.name
     cell.labelTramLines.text = bookmark.lines.filter { $0.type == .tram }.map { $0.name }.joined(separator: "  ")
     cell.labelBusLines.text = bookmark.lines.filter { $0.type == .bus }.map { $0.name }.joined(separator: "  ")
-
-    self.applyVisualStyles(cell)
     return cell
   }
 
@@ -89,7 +95,7 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     return UITableViewAutomaticDimension
   }
 
-  private func applyVisualStyles(_ cell: BookmarksTableViewCell) {
+  private func customizeAppearance(_ cell: BookmarksTableViewCell) {
     cell.labelName.font = UIFont.customPreferredFont(forTextStyle: .headline)
     cell.labelTramLines.font = UIFont.customPreferredFont(forTextStyle: .subheadline)
     cell.labelBusLines.font  = UIFont.customPreferredFont(forTextStyle: .subheadline)

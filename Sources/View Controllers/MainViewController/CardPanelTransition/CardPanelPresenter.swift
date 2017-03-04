@@ -10,8 +10,6 @@ class CardPanelPresenter : UIPresentationController {
 
   //MARK: - Properties
   
-  typealias Constants = MainViewControllerConstants.CardPanelTransition
-
   private var dimmingView: UIView?
   private var relativeHeight: CGFloat
 
@@ -40,14 +38,14 @@ class CardPanelPresenter : UIPresentationController {
     }
 
     self.dimmingView = UIView(frame: CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height))
-    self.dimmingView!.backgroundColor = Constants.DimmingView.color
+    self.dimmingView!.backgroundColor = CardPanelTransitionConstants.DimmingView.color
     self.dimmingView!.alpha = 0
 
     containerView.addSubview(self.dimmingView!)
     self.dimmingView!.addSubview(presentedViewController.view)
 
     coordinator.animate(alongsideTransition: { [weak self] context in
-      self!.dimmingView!.alpha = Constants.DimmingView.alpha
+      self!.dimmingView!.alpha = CardPanelTransitionConstants.DimmingView.alpha
     }, completion: nil)
   }
 

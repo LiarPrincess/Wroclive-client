@@ -7,14 +7,34 @@ import UIKit
 import MapKit
 import ReSwift
 
+fileprivate struct StoryboardConstants {
+  static let StoryboardName = "Main"
+
+  struct Segues {
+    static let showSearchViewController = "ShowSearchViewController"
+    static let showBookmarksViewController = "ShowBookmarksViewController"
+  }
+}
+
+struct MainViewControllerConstants {
+  struct UserTrackingImages {
+    static let none              = "vecUserTracking_None"
+    static let follow            = "vecUserTracking_Follow"
+    static let followWithHeading = "vecUserTracking_Follow"
+  }
+
+  struct Modal {
+    static let lineSelectionRelativeHeight: CGFloat = 0.90
+    static let bookmarksRelativeHeight: CGFloat = 0.75
+  }
+}
+
 class MainViewController: UIViewController {
 
   //MARK: - Properties
 
-  typealias Constants = MainViewControllerConstants
-
-  fileprivate var searchTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: Constants.LineSelectionViewController.relativeHeight)
-  fileprivate var bookmarkTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: Constants.BookmarksViewController.relativeHeight)
+  fileprivate var searchTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: MainViewControllerConstants.Modal.lineSelectionRelativeHeight)
+  fileprivate var bookmarkTransitionDelegate = CardPanelTransitionDelegate(withRelativeHeight: MainViewControllerConstants.Modal.bookmarksRelativeHeight)
 
   @IBOutlet weak var buttonUserTracking: UIButton!
   @IBOutlet weak var buttonSearch: UIButton!
@@ -30,7 +50,7 @@ class MainViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.applyVisualStyles()
+    self.customizeAppearance()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -47,8 +67,8 @@ class MainViewController: UIViewController {
 
   override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
     //we will manage those transitions with state changes
-    let searchSegueIdentifier = Constants.Segues.showSearchViewController
-    let bookmarkSegueIdentifier = Constants.Segues.showBookmarksViewController
+    let searchSegueIdentifier = StoryboardConstants.Segues.showSearchViewController
+    let bookmarkSegueIdentifier = StoryboardConstants.Segues.showBookmarksViewController
 
     if identifier == searchSegueIdentifier || identifier == bookmarkSegueIdentifier {
       return false
@@ -69,6 +89,18 @@ class MainViewController: UIViewController {
 
   @IBAction func bookmarksButtonPressed(_ sender: Any) {
     store.dispatch(SetBookmarksVisibility(true))
+  }
+
+  //MARK: - Methods
+
+  fileprivate func customizeAppearance() {
+
+    //[buttons] center images
+    for button in self.allButtons {
+      let verticalInset = button.bounds.height / 4.0
+      button.imageEdgeInsets = UIEdgeInsets(top: verticalInset, left: 0.0, bottom: verticalInset, right: 0.0)
+      button.imageView?.contentMode = .scaleAspectFit
+    }
   }
 
 }
@@ -93,24 +125,24 @@ extension MainViewController: StoreSubscriber {
   private func getUserTrackingImage(for trackingMode: MKUserTrackingMode) -> String {
     switch trackingMode {
     case .none:
-      return Constants.MainViewController.UserTrackingImages.none
+      return MainViewControllerConstants.UserTrackingImages.none
     case .follow:
-      return Constants.MainViewController.UserTrackingImages.follow
+      return MainViewControllerConstants.UserTrackingImages.follow
     case .followWithHeading:
-      return Constants.MainViewController.UserTrackingImages.followWithHeading
+      return MainViewControllerConstants.UserTrackingImages.followWithHeading
     }
   }
 
   private func showSearchPanel() {
-    self.showCardPanel(withIdentifier: Constants.LineSelectionViewController.identifier, delegate: self.searchTransitionDelegate)
+    self.showCardPanel(withIdentifier: LineSelectionViewController.identifier, delegate: self.searchTransitionDelegate)
   }
 
   private func showBookmarksPanel() {
-    self.showCardPanel(withIdentifier: Constants.BookmarksViewController.identifier, delegate: self.bookmarkTransitionDelegate)
+    self.showCardPanel(withIdentifier: BookmarksViewController.identifier, delegate: self.bookmarkTransitionDelegate)
   }
 
   private func showCardPanel(withIdentifier identifier: String, delegate transitioningDelegate: UIViewControllerTransitioningDelegate) {
-    let storyboard = UIStoryboard(name: Constants.Storyboards.Main, bundle: nil)
+    let storyboard = UIStoryboard(name: StoryboardConstants.StoryboardName, bundle: nil)
 
     let modalViewController = storyboard.instantiateViewController(withIdentifier: identifier)
     modalViewController.modalPresentationStyle = .custom
@@ -119,20 +151,4 @@ extension MainViewController: StoreSubscriber {
     self.present(modalViewController, animated: true, completion: nil)
   }
 
-}
-
-//MARK: - User interface
-
-extension MainViewController {
-
-  func applyVisualStyles() {
-
-    //[buttons] center images
-    for button in self.allButtons {
-      let verticalInset = button.bounds.height / 4.0
-      button.imageEdgeInsets = UIEdgeInsets(top: verticalInset, left: 0.0, bottom: verticalInset, right: 0.0)
-      button.imageView?.contentMode = .scaleAspectFit
-    }
-  }
-  
 }

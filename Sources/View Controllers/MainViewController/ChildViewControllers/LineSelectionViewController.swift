@@ -8,6 +8,10 @@ import ReSwift
 
 class LineSelectionViewController: UIViewController {
 
+  //MARK: - Static
+
+  static let identifier = "LineSelectionViewController"
+
   //MARK: - Properties
 
   //MARK: - Overriden

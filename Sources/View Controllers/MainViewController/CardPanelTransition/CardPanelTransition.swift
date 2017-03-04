@@ -8,10 +8,8 @@ import UIKit
 
 class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
-  typealias Constants = MainViewControllerConstants.CardPanelTransition
-
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-    return Constants.AnimationDuration.present
+    return CardPanelTransitionConstants.AnimationDuration.present
   }
 
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -37,10 +35,8 @@ class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransit
 
 class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
-  typealias Constants = MainViewControllerConstants.CardPanelTransition
-
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-    return Constants.AnimationDuration.dismiss
+    return CardPanelTransitionConstants.AnimationDuration.dismiss
   }
 
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -58,7 +54,7 @@ class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitionin
 
     let duration = transitionDuration(using: transitionContext)
     UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: .calculationModeCubic, animations: {
-      let slideDownDuration = Constants.AnimationDuration.dismissTimingDistribution
+      let slideDownDuration = CardPanelTransitionConstants.AnimationDuration.dismissTimingDistribution
 
       UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: slideDownDuration) {
         modalViewController.view.transform = offScreenTransform
