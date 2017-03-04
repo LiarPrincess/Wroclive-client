@@ -12,6 +12,8 @@
 		9006CDCB1E6B207500B6E57B /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */; };
 		9006CDCD1E6B209D00B6E57B /* LineSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDCC1E6B209D00B6E57B /* LineSelectionCell.swift */; };
 		9006CDCF1E6B396600B6E57B /* LineSelectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDCE1E6B396600B6E57B /* LineSelectionHeaderCell.swift */; };
+		9006CDD21E6B46C600B6E57B /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDD11E6B46C600B6E57B /* BookmarksDataSource.swift */; };
+		9006CDD41E6B487D00B6E57B /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDD31E6B487D00B6E57B /* Line.swift */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		9039408B1E68BB4000873FBD /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940881E68BB4000873FBD /* CardPanelPresenter.swift */; };
@@ -33,9 +35,8 @@
 		90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */; };
 		90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */; };
 		90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6EA1E63AE34007B583F /* Logger.swift */; };
-		90ABD6EF1E64C5F1007B583F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6EE1E64C5F1007B583F /* Line.swift */; };
+		90ABD6EF1E64C5F1007B583F /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6EE1E64C5F1007B583F /* VehicleType.swift */; };
 		90ABD6F11E64C624007B583F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6F01E64C624007B583F /* Bookmark.swift */; };
-		90ABD6F51E64CCDC007B583F /* VehiclePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ABD6F41E64CCDC007B583F /* VehiclePosition.swift */; };
 		90DAB4CA1E639C2000B38E42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAB4841E639C2000B38E42 /* AppDelegate.swift */; };
 		90DAB4D51E639C2000B38E42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90DAB4991E639C2000B38E42 /* Assets.xcassets */; };
 		90DAB4D61E639C2000B38E42 /* Wroclaw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 90DAB49B1E639C2000B38E42 /* Wroclaw.gpx */; };
@@ -66,6 +67,8 @@
 		9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
 		9006CDCC1E6B209D00B6E57B /* LineSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCell.swift; sourceTree = "<group>"; };
 		9006CDCE1E6B396600B6E57B /* LineSelectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionHeaderCell.swift; sourceTree = "<group>"; };
+		9006CDD11E6B46C600B6E57B /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
+		9006CDD31E6B487D00B6E57B /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -87,9 +90,8 @@
 		90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKUserTrackingMode.swift; sourceTree = "<group>"; };
 		90ABD6EA1E63AE34007B583F /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Logging/Logger.swift; sourceTree = "<group>"; };
-		90ABD6EE1E64C5F1007B583F /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		90ABD6EE1E64C5F1007B583F /* VehicleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
 		90ABD6F01E64C624007B583F /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
-		90ABD6F41E64CCDC007B583F /* VehiclePosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePosition.swift; sourceTree = "<group>"; };
 		90DAB4841E639C2000B38E42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../Application delegates/AppDelegate.swift"; sourceTree = "<group>"; };
 		90DAB4861E639C2000B38E42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90DAB4991E639C2000B38E42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 				9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		9006CDD01E6B469600B6E57B /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				9006CDD11E6B46C600B6E57B /* BookmarksDataSource.swift */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
@@ -258,8 +268,8 @@
 		90DAB4881E639C2000B38E42 /* Core types */ = {
 			isa = PBXGroup;
 			children = (
-				90ABD6EE1E64C5F1007B583F /* Line.swift */,
-				90ABD6F41E64CCDC007B583F /* VehiclePosition.swift */,
+				90ABD6EE1E64C5F1007B583F /* VehicleType.swift */,
+				9006CDD31E6B487D00B6E57B /* Line.swift */,
 				90ABD6F01E64C624007B583F /* Bookmark.swift */,
 			);
 			path = "Core types";
@@ -314,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				9006CDC91E6B207500B6E57B /* Cells */,
+				9006CDD01E6B469600B6E57B /* DataSources */,
 				90DAB4C11E639C2000B38E42 /* ChildViewControllers */,
 				903940871E68BB4000873FBD /* CardPanelTransition */,
 				90DAB4C41E639C2000B38E42 /* MainViewController.swift */,
@@ -503,8 +514,7 @@
 				903940901E68C84300873FBD /* Logging.swift in Sources */,
 				907E45C41E68B3AD00DA8781 /* AppState.swift in Sources */,
 				9006CDCF1E6B396600B6E57B /* LineSelectionHeaderCell.swift in Sources */,
-				90ABD6F51E64CCDC007B583F /* VehiclePosition.swift in Sources */,
-				90ABD6EF1E64C5F1007B583F /* Line.swift in Sources */,
+				90ABD6EF1E64C5F1007B583F /* VehicleType.swift in Sources */,
 				907E45C61E68B3E900DA8781 /* LineSelectionState.swift in Sources */,
 				90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */,
 				9006CDCD1E6B209D00B6E57B /* LineSelectionCell.swift in Sources */,
@@ -515,8 +525,10 @@
 				9039408B1E68BB4000873FBD /* CardPanelPresenter.swift in Sources */,
 				90DAB4F31E639C2000B38E42 /* BookmarksViewController.swift in Sources */,
 				907E45CA1E68B48D00DA8781 /* LineSelectionViewController.swift in Sources */,
+				9006CDD21E6B46C600B6E57B /* BookmarksDataSource.swift in Sources */,
 				907E45C21E68B3AD00DA8781 /* LineSelectionModule.swift in Sources */,
 				90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */,
+				9006CDD41E6B487D00B6E57B /* Line.swift in Sources */,
 				90DAB4F41E639C2000B38E42 /* MapViewController.swift in Sources */,
 				90ABD6F11E64C624007B583F /* Bookmark.swift in Sources */,
 				903940921E68C8B100873FBD /* Configuration.swift in Sources */,

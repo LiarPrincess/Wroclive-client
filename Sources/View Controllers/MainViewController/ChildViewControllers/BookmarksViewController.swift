@@ -6,7 +6,7 @@
 import UIKit
 import ReSwift
 
-fileprivate struct BookmarksConstants {
+struct BookmarksViewControllerConstants {
   static let cellIdentifier = "BookmarkCell"
 }
 
@@ -18,7 +18,7 @@ class BookmarksViewController: UIViewController {
 
   //MARK: - Properties
 
-  fileprivate var bookmarks = [Bookmark]()
+  fileprivate let bookmarksDataSource = BookmarksDataSource()
 
   @IBOutlet weak var navigationBar: UINavigationBar!
   @IBOutlet weak var tableView: UITableView!
@@ -27,7 +27,7 @@ class BookmarksViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.tableView.dataSource = self
+    self.tableView.dataSource = self.bookmarksDataSource
     self.tableView.delegate = self
   }
 
@@ -59,39 +59,21 @@ extension BookmarksViewController: StoreSubscriber {
       return
     }
 
-    self.bookmarks = state.bookmarks
+    if self.bookmarksDataSource.bookmarks != state.bookmarks {
+      self.bookmarksDataSource.bookmarks = state.bookmarks
+    }
   }
 
 }
 
-//MARK: - TableView
+//MARK: - TableViewDelegate
 
-extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
+extension BookmarksViewController: UITableViewDelegate {
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.bookmarks.count
-  }
+  //MARK: - Display
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarksConstants.cellIdentifier, for: indexPath) as? BookmarkCell  else {
-      fatalError("The dequeued cell is not an instance of BookmarksTableViewCell")
-    }
-
-    self.customizeAppearance(cell)
-
-    let bookmark = self.bookmarks[indexPath.row]
-    cell.labelName.text = bookmark.name
-    cell.labelTramLines.text = bookmark.lines.filter { $0.type == .tram }.map { $0.name }.joined(separator: "  ")
-    cell.labelBusLines.text = bookmark.lines.filter { $0.type == .bus }.map { $0.name }.joined(separator: "  ")
-    return cell
-  }
-
-  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return tableView.rowHeight
-  }
-
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableViewAutomaticDimension
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    self.customizeAppearance(cell as! BookmarkCell)
   }
 
   private func customizeAppearance(_ cell: BookmarkCell) {
@@ -101,6 +83,16 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
 
     cell.labelTramLines.textColor = self.view.tintColor
     cell.labelBusLines.textColor = self.view.tintColor
+  }
+
+  //MARK: - Height
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return UITableViewAutomaticDimension
+  }
+
+  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    return tableView.rowHeight
   }
 
 }
