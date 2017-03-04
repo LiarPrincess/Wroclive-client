@@ -18,7 +18,7 @@ class BookmarksViewController: UIViewController {
 
   //MARK: - Properties
 
-  fileprivate let bookmarksDataSource = BookmarksDataSource()
+  fileprivate let dataSource = BookmarksDataSource()
 
   @IBOutlet weak var navigationBar: UINavigationBar!
   @IBOutlet weak var tableView: UITableView!
@@ -27,7 +27,7 @@ class BookmarksViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.tableView.dataSource = self.bookmarksDataSource
+    self.tableView.dataSource = self.dataSource
     self.tableView.delegate = self
   }
 
@@ -59,8 +59,8 @@ extension BookmarksViewController: StoreSubscriber {
       return
     }
 
-    if self.bookmarksDataSource.bookmarks != state.bookmarks {
-      self.bookmarksDataSource.bookmarks = state.bookmarks
+    if self.dataSource.bookmarks != state.bookmarks {
+      self.dataSource.bookmarks = state.bookmarks
     }
   }
 
@@ -73,10 +73,10 @@ extension BookmarksViewController: UITableViewDelegate {
   //MARK: - Display
 
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    self.customizeAppearance(cell as! BookmarkCell)
-  }
+    guard let cell = cell as? BookmarkCell else {
+      fatalError("Invalid cell type passed to BookmarksViewController.UITableViewDelegate")
+    }
 
-  private func customizeAppearance(_ cell: BookmarkCell) {
     cell.labelName.font = UIFont.customPreferredFont(forTextStyle: .headline)
     cell.labelTramLines.font = UIFont.customPreferredFont(forTextStyle: .subheadline)
     cell.labelBusLines.font  = UIFont.customPreferredFont(forTextStyle: .subheadline)
