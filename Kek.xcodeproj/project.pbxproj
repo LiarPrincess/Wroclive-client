@@ -23,6 +23,8 @@
 		903940901E68C84300873FBD /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9039408F1E68C84300873FBD /* Logging.swift */; };
 		903940921E68C8B100873FBD /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940911E68C8B100873FBD /* Configuration.swift */; };
 		906B51741E6B6A68008D52B8 /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906B51731E6B6A68008D52B8 /* UISegmentedControl.swift */; };
+		906B51761E6B910F008D52B8 /* CardPanelInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906B51751E6B910F008D52B8 /* CardPanelInteractiveTransition.swift */; };
+		906B51781E6C015E008D52B8 /* DismissableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906B51771E6C015E008D52B8 /* DismissableViewController.swift */; };
 		907BBCD51E6A2F5D00DE7D1D /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907BBCD41E6A2F5C00DE7D1D /* UIFont.swift */; };
 		907BBCD71E6B014D00DE7D1D /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907BBCD61E6B014D00DE7D1D /* UINavigationBar.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -81,6 +83,8 @@
 		9039408F1E68C84300873FBD /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		903940911E68C8B100873FBD /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		906B51731E6B6A68008D52B8 /* UISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
+		906B51751E6B910F008D52B8 /* CardPanelInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelInteractiveTransition.swift; sourceTree = "<group>"; };
+		906B51771E6C015E008D52B8 /* DismissableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableViewController.swift; sourceTree = "<group>"; };
 		907BBCD41E6A2F5C00DE7D1D /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		907BBCD61E6B014D00DE7D1D /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		907E45BC1E68B3AD00DA8781 /* BookmarksModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksModule.swift; sourceTree = "<group>"; };
@@ -164,8 +168,10 @@
 		903940871E68BB4000873FBD /* CardPanelTransition */ = {
 			isa = PBXGroup;
 			children = (
+				906B51771E6C015E008D52B8 /* DismissableViewController.swift */,
 				903940881E68BB4000873FBD /* CardPanelPresenter.swift */,
 				903940891E68BB4000873FBD /* CardPanelTransition.swift */,
+				906B51751E6B910F008D52B8 /* CardPanelInteractiveTransition.swift */,
 				9039408A1E68BB4000873FBD /* CardPanelTransitionDelegate.swift */,
 			);
 			path = CardPanelTransition;
@@ -516,6 +522,8 @@
 			files = (
 				90DAB4F51E639C2000B38E42 /* MainViewController.swift in Sources */,
 				9006CDC81E6B0A8D00B6E57B /* UIBarButtonItem.swift in Sources */,
+				906B51761E6B910F008D52B8 /* CardPanelInteractiveTransition.swift in Sources */,
+				906B51781E6C015E008D52B8 /* DismissableViewController.swift in Sources */,
 				907BBCD71E6B014D00DE7D1D /* UINavigationBar.swift in Sources */,
 				903940901E68C84300873FBD /* Logging.swift in Sources */,
 				907E45C41E68B3AD00DA8781 /* AppState.swift in Sources */,

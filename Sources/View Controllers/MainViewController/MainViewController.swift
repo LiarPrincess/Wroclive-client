@@ -158,6 +158,7 @@ extension MainViewController: StoreSubscriber {
     let modalViewControler = storyboard.instantiateViewController(withIdentifier: identifier)
     modalViewControler.modalPresentationStyle = .custom
     modalViewControler.transitioningDelegate = delegate
+    delegate.wire(modalViewControler)
     return modalViewControler
   }
 
