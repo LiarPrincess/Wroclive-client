@@ -13,7 +13,8 @@ struct CardPanelConstants {
   }
 
   struct Interactive {
-    static let minVelocityToFinish: CGFloat = 50.0
+    static let minVelocityToFinish: CGFloat = 100.0
+    static let minProgressToFinish: CGFloat = 0.2
   }
 
   struct Presenter {
@@ -28,18 +29,14 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
   //MARK: - Properties
 
   private let relativeHeight: CGFloat
-  private let swipeInteractionController = CardPanelInteractiveTransition()
+  private let interactiveTransition: CardPanelInteractiveTransition
 
   //MARK: - Init
 
-  init(withRelativeHeight relativeHeight: CGFloat) {
+  init(for viewController: UIViewController, withRelativeHeight relativeHeight: CGFloat) {
     self.relativeHeight = relativeHeight
+    self.interactiveTransition = CardPanelInteractiveTransition(for: viewController)
     super.init()
-
-  }
-
-  func wire(_ vc: UIViewController) {
-    self.swipeInteractionController.wireToViewController(viewController: vc)
   }
 
   //MARK: - Transition
@@ -55,7 +52,7 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
   //MARK: - Interactive transition
 
   func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-    return swipeInteractionController.hasStarted ? swipeInteractionController : nil
+    return interactiveTransition.hasStarted ? interactiveTransition : nil
   }
 
   //MARK: - Presentation

@@ -36,15 +36,17 @@ class BookmarksViewController: UIViewController {
     store.subscribe(self) { state in state.bookmarksState }
   }
 
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
+  override func viewDidDisappear(_ animated: Bool) {
+    //hack: FIRST dismiss THEN dispatch action (reason: dismiss in InteractiveTransition controller)
+    store.dispatch(SetBookmarksVisibility(false))
+    super.viewDidDisappear(animated)
     store.unsubscribe(self)
   }
 
   //MARK: - Actions
 
   @IBAction func closeButtonPressed(_ sender: Any) {
-    store.dispatch(SetBookmarksVisibility(false))
+    self.dismiss(animated: true, completion: nil)
   }
 
 }
@@ -55,7 +57,6 @@ extension BookmarksViewController: StoreSubscriber {
 
   func newState(state: BookmarksState) {
     guard state.visible else {
-      self.dismiss(animated: true, completion: nil)
       return
     }
 

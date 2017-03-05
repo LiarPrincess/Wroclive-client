@@ -14,8 +14,11 @@ class CardPanelInteractiveTransition: UIPercentDrivenInteractiveTransition {
 
   private weak var viewController: UIViewController!
 
-  func wireToViewController(viewController: UIViewController!) {
+  //MARK: - Init
+
+  init(for viewController: UIViewController) {
     self.viewController = viewController
+    super.init()
 
     let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
     viewController.view.addGestureRecognizer(gestureRecognizer)
@@ -30,16 +33,7 @@ class CardPanelInteractiveTransition: UIPercentDrivenInteractiveTransition {
     switch gesture.state {
     case .began:
       hasStarted = true
-
-      if let _ = viewController as? BookmarksViewController {
-        store.dispatch(SetBookmarksVisibility(false))
-      }
-
-      if let _ = viewController as? LineSelectionViewController {
-        store.dispatch(SetLineSelectionVisibility(false))
-      }
-
-//      viewController.dismiss(animated: true, completion: nil)
+      viewController.dismiss(animated: true, completion: nil)
 
     case .changed:
       self.update(percent)
@@ -47,14 +41,15 @@ class CardPanelInteractiveTransition: UIPercentDrivenInteractiveTransition {
     case .cancelled:
       hasStarted = false
       cancel()
-      print("cancelled")
 
     case .ended:
       hasStarted = false
 
-      let velocity = gesture.velocity(in: gesture.view)
-      velocity.y > CardPanelConstants.Interactive.minVelocityToFinish ? finish() : cancel()
-      print("ended(velocity: \(velocity.y))")
+      let minVelocityToFinish = CardPanelConstants.Interactive.minVelocityToFinish
+      let minProgressToFinish = CardPanelConstants.Interactive.minProgressToFinish
+
+      let velocity = gesture.velocity(in: gesture.view).y
+      percent > minProgressToFinish || velocity > minVelocityToFinish ? finish() : cancel()
 
     default:
       break

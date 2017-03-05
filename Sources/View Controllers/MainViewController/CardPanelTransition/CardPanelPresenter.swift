@@ -13,7 +13,7 @@ class CardPanelPresenter : UIPresentationController {
   private var dimmingView: UIView?
   private var relativeHeight: CGFloat
 
-  //MARK: - Constructors
+  //MARK: - Init
 
   init(forPresented presented: UIViewController, presenting: UIViewController?, relativeHeight: CGFloat) {
     self.relativeHeight = relativeHeight
@@ -45,7 +45,7 @@ class CardPanelPresenter : UIPresentationController {
     containerView.addSubview(self.presentedViewController.view)
 
     coordinator.animate(alongsideTransition: { [weak self] context in
-      self!.dimmingView!.alpha = CardPanelConstants.Presenter.backgroundAlpha
+      self?.dimmingView!.alpha = CardPanelConstants.Presenter.backgroundAlpha
     }, completion: nil)
   }
 
@@ -55,13 +55,13 @@ class CardPanelPresenter : UIPresentationController {
     }
 
     coordinator.animate(alongsideTransition: { [weak self] context in
-      self!.dimmingView!.alpha = 0
+      self?.dimmingView!.alpha = 0
     }, completion: nil)
   }
 
   override func dismissalTransitionDidEnd(_ completed: Bool) {
     if completed {
-      self.dimmingView!.removeFromSuperview()
+      self.dimmingView?.removeFromSuperview()
       self.dimmingView = nil
     }
   }

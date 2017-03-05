@@ -46,8 +46,6 @@ class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitionin
     offScreenFrame.origin.y = transitionContext.containerView.bounds.height
 
     //animation
-    modalViewController.view.frame = onScreenFrame
-
     let duration = transitionDuration(using: transitionContext)
     let options: UIViewAnimationOptions = transitionContext.isInteractive ? .curveLinear : .curveEaseInOut
 

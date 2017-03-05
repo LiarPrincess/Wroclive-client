@@ -45,6 +45,8 @@ class LineSelectionViewController: UIViewController {
   }
 
   override func viewWillDisappear(_ animated: Bool) {
+    //hack: FIRST dismiss THEN dispatch action (reason: dismiss in InteractiveTransition controller)
+    store.dispatch(SetLineSelectionVisibility(false))
     super.viewWillDisappear(animated)
     store.unsubscribe(self)
   }
@@ -52,11 +54,11 @@ class LineSelectionViewController: UIViewController {
   //MARK: - Actions
 
   @IBAction func doneButtonPressed(_ sender: Any) {
-    store.dispatch(SetLineSelectionVisibility(false))
+    self.dismiss(animated: true, completion: nil)
   }
 
   @IBAction func vehicleTypeChanged(_ sender: Any) {
-    let selected = self.vehicleTypeSelection.selectedSegmentIndex
+    //let selected = self.vehicleTypeSelection.selectedSegmentIndex
   }
 
   //MARK: - Methods
@@ -73,7 +75,6 @@ extension LineSelectionViewController: StoreSubscriber {
 
   func newState(state: LineSelectionState) {
     guard state.visible else {
-      self.dismiss(animated: true, completion: nil)
       return
     }
 
