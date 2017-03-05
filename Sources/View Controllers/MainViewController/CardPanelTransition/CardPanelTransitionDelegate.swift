@@ -15,9 +15,9 @@ struct CardPanelConstants {
     static let dismissTimingDistribution: TimeInterval = 0.55
   }
 
-  struct DimmingView {
-    static let color: UIColor = .darkGray
-    static let alpha: CGFloat = 0.5
+  struct Presenter {
+    static let backgroundColor: UIColor = .darkGray
+    static let backgroundAlpha: CGFloat = 0.5
   }
 }
 

@@ -15,17 +15,16 @@ class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransit
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
     let modalViewController = transitionContext.viewController(forKey: .to)!
 
-    let modalOnScreenFrame = transitionContext.finalFrame(for: modalViewController)
-    var modalOffScreenFrame = modalOnScreenFrame
-    modalOffScreenFrame.origin.y = transitionContext.containerView.bounds.height
+    let onScreenFrame = transitionContext.finalFrame(for: modalViewController)
+    var offScreenFrame = onScreenFrame
+    offScreenFrame.origin.y = transitionContext.containerView.bounds.height
 
     //animation
-    modalViewController.view.frame = modalOffScreenFrame
-    transitionContext.containerView.addSubview(modalViewController.view)
+    modalViewController.view.frame = offScreenFrame
 
     let duration = transitionDuration(using: transitionContext)
     UIView.animate(withDuration: duration, delay: 0.0, options: .curveEaseInOut, animations: {
-      modalViewController.view.frame = modalOnScreenFrame
+      modalViewController.view.frame = onScreenFrame
     }, completion: { completed in
       transitionContext.completeTransition(completed)
     })
@@ -40,31 +39,20 @@ class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitionin
   }
 
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-    let mainViewController = transitionContext.viewController(forKey: .to)! as! MainViewController
+//    let mainViewController = transitionContext.viewController(forKey: .to)! as! MainViewController
     let modalViewController = transitionContext.viewController(forKey: .from)!
 
     let onScreenTransform = CGAffineTransform.identity
     let offScreenTransform = CGAffineTransform(translationX: 0, y: transitionContext.containerView.bounds.height)
 
     //animation
-    let toolbar = mainViewController.buttonContainerView!
-
-    toolbar.transform = offScreenTransform
     modalViewController.view.transform = onScreenTransform
 
     let duration = transitionDuration(using: transitionContext)
-    UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: .calculationModeCubic, animations: {
-      let slideDownDuration = CardPanelConstants.AnimationDuration.dismissTimingDistribution
-
-      UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: slideDownDuration) {
-        modalViewController.view.transform = offScreenTransform
-      }
-
-      UIView.addKeyframe(withRelativeStartTime: slideDownDuration, relativeDuration: 1.0 - slideDownDuration) {
-        toolbar.transform = onScreenTransform
-      }
+    UIView.animate(withDuration: duration, delay: 0.0, options: .curveEaseInOut, animations: {
+      modalViewController.view.transform = offScreenTransform
     }, completion: { completed in
-      modalViewController.view.transform = CGAffineTransform.identity
+      modalViewController.view.transform = onScreenTransform
       transitionContext.completeTransition(completed)
     })
   }
