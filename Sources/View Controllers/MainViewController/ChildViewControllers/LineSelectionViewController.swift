@@ -35,19 +35,20 @@ class LineSelectionViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.customizeAppearance()
+
     self.collectionView.dataSource = self.dataSource
     self.collectionView.delegate = self
+
+    //we need to 'subscribe' in 'viewDidLoad' as interaction controller will call 'viewWillAppear' multiple times
+    store.subscribe(self, selector: { $0.lineSelectionState })
   }
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    store.subscribe(self) { state in state.lineSelectionState }
-  }
 
   override func viewWillDisappear(_ animated: Bool) {
-    //hack: FIRST dismiss THEN dispatch action (reason: dismiss in InteractiveTransition controller)
-    store.dispatch(SetLineSelectionVisibility(false))
     super.viewWillDisappear(animated)
+
+    //we need to 'unsubscribe' in 'viewDidDisappear' as interaction controller will call 'viewWillDisappear' even when gesture was cancelled
+    store.dispatch(SetLineSelectionVisibility(false))
     store.unsubscribe(self)
   }
 
@@ -55,10 +56,6 @@ class LineSelectionViewController: UIViewController {
 
   @IBAction func doneButtonPressed(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
-  }
-
-  @IBAction func vehicleTypeChanged(_ sender: Any) {
-    //let selected = self.vehicleTypeSelection.selectedSegmentIndex
   }
 
   //MARK: - Methods

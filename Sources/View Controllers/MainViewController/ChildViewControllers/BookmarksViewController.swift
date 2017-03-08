@@ -27,20 +27,20 @@ class BookmarksViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
     self.tableView.dataSource = self.dataSource
     self.tableView.delegate = self
-  }
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    store.subscribe(self) { state in state.bookmarksState }
+    //we need to 'subscribe' in 'viewDidLoad' as interaction controller will call 'viewWillAppear' multiple times
+    store.subscribe(self, selector: { $0.bookmarksState })
   }
 
   override func viewDidDisappear(_ animated: Bool) {
-    //hack: FIRST dismiss THEN dispatch action (reason: dismiss in InteractiveTransition controller)
-    store.dispatch(SetBookmarksVisibility(false))
     super.viewDidDisappear(animated)
+
+    //we need to 'unsubscribe' in 'viewDidDisappear' as interaction controller will call 'viewWillDisappear' even when gesture was cancelled
     store.unsubscribe(self)
+    store.dispatch(SetBookmarksVisibility(false))
   }
 
   //MARK: - Actions

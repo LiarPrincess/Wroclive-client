@@ -11,7 +11,6 @@
 		9006CDC81E6B0A8D00B6E57B /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDC71E6B0A8D00B6E57B /* UIBarButtonItem.swift */; };
 		9006CDCB1E6B207500B6E57B /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */; };
 		9006CDCD1E6B209D00B6E57B /* LineSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDCC1E6B209D00B6E57B /* LineSelectionCell.swift */; };
-		9006CDCF1E6B396600B6E57B /* LineSelectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDCE1E6B396600B6E57B /* LineSelectionHeaderCell.swift */; };
 		9006CDD21E6B46C600B6E57B /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDD11E6B46C600B6E57B /* BookmarksDataSource.swift */; };
 		9006CDD41E6B487D00B6E57B /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDD31E6B487D00B6E57B /* Line.swift */; };
 		9006CDD61E6B4DA700B6E57B /* LineSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDD51E6B4DA700B6E57B /* LineSelectionDataSource.swift */; };
@@ -69,7 +68,6 @@
 		9006CDC71E6B0A8D00B6E57B /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
 		9006CDCC1E6B209D00B6E57B /* LineSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCell.swift; sourceTree = "<group>"; };
-		9006CDCE1E6B396600B6E57B /* LineSelectionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionHeaderCell.swift; sourceTree = "<group>"; };
 		9006CDD11E6B46C600B6E57B /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
 		9006CDD31E6B487D00B6E57B /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		9006CDD51E6B4DA700B6E57B /* LineSelectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionDataSource.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				9006CDCC1E6B209D00B6E57B /* LineSelectionCell.swift */,
-				9006CDCE1E6B396600B6E57B /* LineSelectionHeaderCell.swift */,
 				9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */,
 			);
 			path = Cells;
@@ -523,7 +520,6 @@
 				907BBCD71E6B014D00DE7D1D /* UINavigationBar.swift in Sources */,
 				903940901E68C84300873FBD /* Logging.swift in Sources */,
 				907E45C41E68B3AD00DA8781 /* AppState.swift in Sources */,
-				9006CDCF1E6B396600B6E57B /* LineSelectionHeaderCell.swift in Sources */,
 				90ABD6EF1E64C5F1007B583F /* VehicleType.swift in Sources */,
 				907E45C61E68B3E900DA8781 /* LineSelectionState.swift in Sources */,
 				9006CDD61E6B4DA700B6E57B /* LineSelectionDataSource.swift in Sources */,

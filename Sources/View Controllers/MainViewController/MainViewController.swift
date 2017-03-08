@@ -32,10 +32,7 @@ class MainViewController: UIViewController {
 
   //MARK: - Properties
 
-  fileprivate var lineSelectionViewControler: LineSelectionViewController?
   fileprivate var lineSelectionTransitionDelegate:CardPanelTransitionDelegate?
-
-  fileprivate var bookmarksViewController: BookmarksViewController?
   fileprivate var bookmarksTransitionDelegate: CardPanelTransitionDelegate?
 
   @IBOutlet weak var buttonUserTracking: UIButton!
@@ -135,35 +132,31 @@ extension MainViewController: StoreSubscriber {
   }
 
   private func showLineSelectionPanel() {
-    if self.lineSelectionViewControler == nil {
-      let relativeHeight = MainViewControllerConstants.Modal.lineSelectionRelativeHeight
-      let identifier = LineSelectionViewController.identifier
+    let relativeHeight = MainViewControllerConstants.Modal.lineSelectionRelativeHeight
+    let identifier = LineSelectionViewController.identifier
 
-      let storyboard = UIStoryboard(name: MainViewControllerConstants.StoryboardName, bundle: nil)
-      self.lineSelectionViewControler = storyboard.instantiateViewController(withIdentifier: identifier) as? LineSelectionViewController
-      self.lineSelectionTransitionDelegate = CardPanelTransitionDelegate(for: self.lineSelectionViewControler!, withRelativeHeight: relativeHeight)
+    let storyboard = UIStoryboard(name: MainViewControllerConstants.StoryboardName, bundle: nil)
+    let modalViewController = storyboard.instantiateViewController(withIdentifier: identifier) as! LineSelectionViewController
 
-      self.lineSelectionViewControler!.modalPresentationStyle = .custom
-      self.lineSelectionViewControler!.transitioningDelegate = self.lineSelectionTransitionDelegate!
-    }
+    self.lineSelectionTransitionDelegate = CardPanelTransitionDelegate(for: modalViewController, withRelativeHeight: relativeHeight)
+    modalViewController.modalPresentationStyle = .custom
+    modalViewController.transitioningDelegate = self.lineSelectionTransitionDelegate!
 
-    self.present(self.lineSelectionViewControler!, animated: true, completion: nil)
+    self.present(modalViewController, animated: true, completion: nil)
   }
 
   private func showBookmarksPanel() {
-    if self.bookmarksViewController == nil {
-      let relativeHeight = MainViewControllerConstants.Modal.bookmarksRelativeHeight
-      let identifier = BookmarksViewController.identifier
-      
-      let storyboard = UIStoryboard(name: MainViewControllerConstants.StoryboardName, bundle: nil)
-      self.bookmarksViewController = storyboard.instantiateViewController(withIdentifier: identifier) as? BookmarksViewController
-      self.bookmarksTransitionDelegate = CardPanelTransitionDelegate(for: self.bookmarksViewController!, withRelativeHeight: relativeHeight)
+    let relativeHeight = MainViewControllerConstants.Modal.bookmarksRelativeHeight
+    let identifier = BookmarksViewController.identifier
 
-      self.bookmarksViewController!.modalPresentationStyle = .custom
-      self.bookmarksViewController!.transitioningDelegate = self.bookmarksTransitionDelegate!
-    }
+    let storyboard = UIStoryboard(name: MainViewControllerConstants.StoryboardName, bundle: nil)
+    let modalViewController = storyboard.instantiateViewController(withIdentifier: identifier) as! BookmarksViewController
 
-    self.present(self.bookmarksViewController!, animated: true, completion: nil)
+    self.bookmarksTransitionDelegate = CardPanelTransitionDelegate(for: modalViewController, withRelativeHeight: relativeHeight)
+    modalViewController.modalPresentationStyle = .custom
+    modalViewController.transitioningDelegate = self.bookmarksTransitionDelegate!
+
+    self.present(modalViewController, animated: true, completion: nil)
   }
 
 }
