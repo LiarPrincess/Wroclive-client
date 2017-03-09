@@ -47,6 +47,7 @@ extension AppState {
     let allLines = tramLines + busLines
 
     var result = AppState()
+    result.lineSelectionState.filteredLines = tramLines
     result.lineSelectionState.availableLines = allLines
     result.bookmarksState.bookmarks.append(Bookmark(name: "Savoy St", lines: allLines))
     result.bookmarksState.bookmarks.append(Bookmark(name: "Savoy St", lines: allLines))

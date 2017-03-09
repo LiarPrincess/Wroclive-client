@@ -8,7 +8,11 @@ import ReSwift
 
 //MARK: - LineSelectionState
 
-struct LineSelectionState: StateType {
+struct LineSelectionState {
   var visible = false
+
+  var vehicleTypeFilter: VehicleType = .tram
+  var filteredLines = [Line]()
+
   var availableLines = [Line]()
 }

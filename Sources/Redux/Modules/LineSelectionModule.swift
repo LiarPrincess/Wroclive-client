@@ -16,6 +16,14 @@ struct SetLineSelectionVisibility: Action {
   }
 }
 
+struct SetLineSelectionFilter: Action {
+  var vehicleType: VehicleType
+
+  init(_ vehicleType: VehicleType) {
+    self.vehicleType = vehicleType
+  }
+}
+
 //MARK: - Reducer
 
 struct LineSelectionReducer: Reducer {
@@ -27,6 +35,10 @@ struct LineSelectionReducer: Reducer {
 
     case let action as SetLineSelectionVisibility:
       state.lineSelectionState.visible = action.visiblity
+
+    case let action as SetLineSelectionFilter:
+      state.lineSelectionState.vehicleTypeFilter = action.vehicleType
+      state.lineSelectionState.filteredLines = state.lineSelectionState.availableLines.filter { $0.type == action.vehicleType }
 
     default:
       break

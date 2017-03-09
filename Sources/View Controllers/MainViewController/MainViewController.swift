@@ -32,6 +32,8 @@ class MainViewController: UIViewController {
 
   //MARK: - Properties
 
+  fileprivate var state: AppState?
+
   fileprivate var lineSelectionTransitionDelegate:CardPanelTransitionDelegate?
   fileprivate var bookmarksTransitionDelegate: CardPanelTransitionDelegate?
 
@@ -108,16 +110,27 @@ class MainViewController: UIViewController {
 extension MainViewController: StoreSubscriber {
 
   func newState(state: AppState) {
-    let userTrackingImage = self.getUserTrackingImage(for: state.trackingMode)
-    self.buttonUserTracking.setImage(UIImage(named: userTrackingImage), for: .normal)
+    if self.state == nil || self.state!.trackingMode != state.trackingMode {
+      let userTrackingImage = self.getUserTrackingImage(for: state.trackingMode)
+      self.buttonUserTracking.setImage(UIImage(named: userTrackingImage), for: .normal)
 
-    if state.lineSelectionState.visible {
-      self.showLineSelectionPanel()
     }
 
-    if state.bookmarksState.visible {
-      self.showBookmarksPanel()
+    let lineSelectionState = state.lineSelectionState
+    if self.state == nil || self.state!.lineSelectionState.visible != lineSelectionState.visible {
+      if lineSelectionState.visible {
+        self.showLineSelectionPanel()
+      }
     }
+
+    let bookmarksState = state.bookmarksState
+    if self.state == nil || self.state!.bookmarksState.visible != bookmarksState.visible {
+      if state.bookmarksState.visible {
+        self.showBookmarksPanel()
+      }
+    }
+
+    self.state = state
   }
 
   private func getUserTrackingImage(for trackingMode: MKUserTrackingMode) -> String {

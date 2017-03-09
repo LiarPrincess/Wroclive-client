@@ -10,12 +10,12 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
 
   //MARK: - Properties
 
-  var availableLines = [Line]()
+  var lines = [Line]()
 
   //MARK: - UICollectionViewDataSource
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return self.availableLines.count
+    return self.lines.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -23,7 +23,7 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
 
     cell.label.font = UIFont.customPreferredFont(forTextStyle: .body)
 
-    let line = self.availableLines[indexPath.row]
+    let line = self.lines[indexPath.row]
     cell.label.text = line.name
     return cell
   }

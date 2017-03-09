@@ -43,8 +43,7 @@ class LineSelectionViewController: UIViewController {
     store.subscribe(self, selector: { $0.lineSelectionState })
   }
 
-
-  override func viewWillDisappear(_ animated: Bool) {
+  override func viewDidDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
 
     //we need to 'unsubscribe' in 'viewDidDisappear' as interaction controller will call 'viewWillDisappear' even when gesture was cancelled
@@ -56,6 +55,13 @@ class LineSelectionViewController: UIViewController {
 
   @IBAction func doneButtonPressed(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
+  }
+
+  @IBAction func vehicleTypeFilterChanged(_ sender: Any) {
+    let selectedIndex = self.vehicleTypeSelection.selectedSegmentIndex
+    let vehicleType: VehicleType = selectedIndex == 0 ? .tram : .bus
+
+    store.dispatch(SetLineSelectionFilter(vehicleType))
   }
 
   //MARK: - Methods
@@ -75,8 +81,9 @@ extension LineSelectionViewController: StoreSubscriber {
       return
     }
 
-    if self.dataSource.availableLines != state.availableLines {
-      self.dataSource.availableLines = state.availableLines
+    if self.dataSource.lines != state.filteredLines {
+      self.dataSource.lines = state.filteredLines
+      self.collectionView.reloadData()
     }
   }
 }

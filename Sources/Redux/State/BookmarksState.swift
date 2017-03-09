@@ -8,7 +8,7 @@ import ReSwift
 
 //MARK: - BookmarksState
 
-struct BookmarksState: StateType {
+struct BookmarksState {
   var visible = false
   var bookmarks = [Bookmark]()
 }
