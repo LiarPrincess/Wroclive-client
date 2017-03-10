@@ -36,6 +36,11 @@ struct LineSelectionReducer: Reducer {
     case let action as SetLineSelectionVisibility:
       state.lineSelectionState.visible = action.visiblity
 
+      //select .tram filter when we open the control
+      if action.visiblity {
+        state.lineSelectionState.vehicleTypeFilter = .tram
+      }
+
     case let action as SetLineSelectionFilter:
       state.lineSelectionState.vehicleTypeFilter = action.vehicleType
       state.lineSelectionState.filteredLines = state.lineSelectionState.availableLines.filter { $0.type == action.vehicleType }

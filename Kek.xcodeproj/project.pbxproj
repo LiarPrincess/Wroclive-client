@@ -16,6 +16,7 @@
 		9006CDD61E6B4DA700B6E57B /* LineSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDD51E6B4DA700B6E57B /* LineSelectionDataSource.swift */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
+		902CEAB11E72A106003F54D5 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CEAB01E72A106003F54D5 /* Predicates.swift */; };
 		9039408B1E68BB4000873FBD /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940881E68BB4000873FBD /* CardPanelPresenter.swift */; };
 		9039408C1E68BB4000873FBD /* CardPanelTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940891E68BB4000873FBD /* CardPanelTransition.swift */; };
 		9039408D1E68BB4000873FBD /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9039408A1E68BB4000873FBD /* CardPanelTransitionDelegate.swift */; };
@@ -74,6 +75,7 @@
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		902CEAB01E72A106003F54D5 /* Predicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		903940881E68BB4000873FBD /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
 		903940891E68BB4000873FBD /* CardPanelTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransition.swift; sourceTree = "<group>"; };
 		9039408A1E68BB4000873FBD /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		902CEAAF1E72A02B003F54D5 /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				902CEAB01E72A106003F54D5 /* Predicates.swift */,
+			);
+			path = Operators;
+			sourceTree = "<group>";
+		};
 		903940871E68BB4000873FBD /* CardPanelTransition */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +214,7 @@
 			children = (
 				90ABD6E91E63AE17007B583F /* Logging */,
 				90ABD6E01E63AE0A007B583F /* Extensions */,
+				902CEAAF1E72A02B003F54D5 /* Operators */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -540,6 +551,7 @@
 				90DAB4F41E639C2000B38E42 /* MapViewController.swift in Sources */,
 				90ABD6F11E64C624007B583F /* Bookmark.swift in Sources */,
 				903940921E68C8B100873FBD /* Configuration.swift in Sources */,
+				902CEAB11E72A106003F54D5 /* Predicates.swift in Sources */,
 				907E45C31E68B3AD00DA8781 /* UserTrackingModule.swift in Sources */,
 				907E45C81E68B3F400DA8781 /* BookmarksState.swift in Sources */,
 				90ABD6E61E63AE0A007B583F /* CLAuthorizationStatus.swift in Sources */,

@@ -10,7 +10,19 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
 
   //MARK: - Properties
 
-  var lines = [Line]()
+  fileprivate var lines = [Line]()
+
+  var availableLines = [Line]() {
+    didSet {
+      self.lines = self.applyFilterAndOrder(self.availableLines)
+    }
+  }
+
+  var vehicleTypeFilter: VehicleType? {
+    didSet {
+      self.lines = self.applyFilterAndOrder(self.availableLines)
+    }
+  }
 
   //MARK: - UICollectionViewDataSource
 
@@ -26,6 +38,40 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
     let line = self.lines[indexPath.row]
     cell.label.text = line.name
     return cell
+  }
+
+}
+
+//MARK: - Filtering and ordering
+
+extension LineSelectionDataSource {
+
+  fileprivate func applyFilterAndOrder(_ lines: [Line]) -> [Line] {
+    return self.sort(self.applyFilter(lines))
+  }
+
+  //MARK: - Filter
+
+  private typealias LineFilter = (Line) -> Bool
+
+  fileprivate func applyFilter(_ lines: [Line]) -> [Line] {
+    var filter: LineFilter = { _ in return true }
+
+    if let vehicleTypeFilter = self.vehicleTypeFilter {
+      filter += { $0.type == vehicleTypeFilter }
+    }
+
+    return lines.filter(filter)
+  }
+
+  //MARK: - Order
+
+  private func sort(_ lines: [Line]) -> [Line] {
+    let nameSort = { (lhs: Line, rhs: Line) in return lhs.name > rhs.name }
+
+    let tramLines = lines.filter { $0.type == .tram }.sorted(by: nameSort)
+    let busLines = lines.filter {$0.type == .bus }.sorted(by: nameSort)
+    return tramLines + busLines
   }
 
 }

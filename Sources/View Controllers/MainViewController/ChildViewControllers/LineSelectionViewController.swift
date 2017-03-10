@@ -27,6 +27,11 @@ class LineSelectionViewController: UIViewController {
 
   fileprivate var dataSource = LineSelectionDataSource()
 
+  var vehicleType: VehicleType {
+    get { return self.vehicleTypeSelection.selectedSegmentIndex == 0 ? .tram : .bus }
+    set { self.vehicleTypeSelection.selectedSegmentIndex = newValue == .tram ? 0 : 1 }
+  }
+
   @IBOutlet weak var vehicleTypeSelection: UISegmentedControl!
   @IBOutlet weak var collectionView: UICollectionView!
 
@@ -58,10 +63,7 @@ class LineSelectionViewController: UIViewController {
   }
 
   @IBAction func vehicleTypeFilterChanged(_ sender: Any) {
-    let selectedIndex = self.vehicleTypeSelection.selectedSegmentIndex
-    let vehicleType: VehicleType = selectedIndex == 0 ? .tram : .bus
-
-    store.dispatch(SetLineSelectionFilter(vehicleType))
+    store.dispatch(SetLineSelectionFilter(self.vehicleType))
   }
 
   //MARK: - Methods
@@ -81,11 +83,29 @@ extension LineSelectionViewController: StoreSubscriber {
       return
     }
 
-    if self.dataSource.lines != state.filteredLines {
-      self.dataSource.lines = state.filteredLines
+    //data source
+
+    var shouldReloadData = false
+
+    if self.dataSource.availableLines != state.availableLines {
+      self.dataSource.availableLines = state.availableLines
+      shouldReloadData = true
+    }
+
+    if self.dataSource.vehicleTypeFilter != state.vehicleTypeFilter {
+      if self.vehicleType != state.vehicleTypeFilter {
+        self.vehicleType = state.vehicleTypeFilter
+      }
+
+      self.dataSource.vehicleTypeFilter = state.vehicleTypeFilter
+      shouldReloadData = true
+    }
+
+    if shouldReloadData {
       self.collectionView.reloadData()
     }
   }
+
 }
 
 //MARK: - CollectionViewDelegateFlowLayout
@@ -118,11 +138,11 @@ extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
     let margin = LineSelectionViewControllerConstants.Cell.margin
     let minCellWidth = LineSelectionViewControllerConstants.Cell.minCellWidth
 
-    let numSections = floor((totalWidth + margin) / (minCellWidth + margin))
-    let width = (totalWidth - (numSections - 1) * margin) / numSections
+    let numSectionsThatFit = floor((totalWidth + margin) / (minCellWidth + margin))
+    let cellWidth = (totalWidth - (numSectionsThatFit - 1) * margin) / numSectionsThatFit
 
     let goldenRatio: CGFloat = 1.6180
-    return CGSize(width: floor(width), height: floor(width / goldenRatio))
+    return CGSize(width: floor(cellWidth), height: floor(cellWidth / goldenRatio))
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
