@@ -14,5 +14,4 @@ struct AppState: StateType {
 
   var lineSelectionState = LineSelectionState()
   var bookmarksState = BookmarksState()
-
 }

@@ -7,14 +7,14 @@ import Foundation
 
 struct Line {
   let name: String
-  let type: VehicleType
+  let type: LineType
 }
 
 //MARK: - Equatable
 
 extension Line: Equatable {
   static func ==(lhs: Line, rhs: Line) -> Bool {
-    return lhs.type == rhs.type && lhs.name == rhs.name
+    return lhs.name == rhs.name && lhs.type == rhs.type
   }
 }
 

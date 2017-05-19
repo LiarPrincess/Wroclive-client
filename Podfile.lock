@@ -1,17 +1,17 @@
 PODS:
-  - ReSwift (3.0.0)
+  - SnapKit (3.2.0)
   - XCGLogger (4.0.0):
     - XCGLogger/Core (= 4.0.0)
   - XCGLogger/Core (4.0.0)
 
 DEPENDENCIES:
-  - ReSwift (~> 3.0.0)
+  - SnapKit (~> 3.2.0)
   - XCGLogger (~> 4.0.0)
 
 SPEC CHECKSUMS:
-  ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: 5d47bf86b620979144b43d2318b3b822ce216fad
+PODFILE CHECKSUM: 15235ddccdc39bcb96363fe2544cd142478be8e5
 
 COCOAPODS: 1.2.0

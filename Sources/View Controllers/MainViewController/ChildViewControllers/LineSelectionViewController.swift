@@ -7,9 +7,10 @@ import Foundation
 import ReSwift
 
 struct LineSelectionViewControllerConstants {
-  static let cellIdentifier = "LineSelectionCell"
-  static let headerCellIdentifier = "LineSelectionHeaderCell"
-
+  struct CellIdentifiers {
+    static let line = "LineSelection_Line"
+  }
+  
   struct Cell {
     static let minCellWidth: CGFloat = 50.0
     static let margin: CGFloat = 5.0
@@ -114,7 +115,7 @@ extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     guard let cell = cell as? LineSelectionCell else {
-      fatalError("Invalid cell type passed to LineSelectionViewController.UICollectionViewDelegateFlowLayout")
+      fatalError("Invalid cell type passed to '\(#function)'")
     }
 
     cell.label.textColor = self.view.tintColor

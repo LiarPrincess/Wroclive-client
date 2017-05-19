@@ -7,7 +7,7 @@ import Foundation
 import XCGLogger
 
 let log: XCGLogger = {
-  let log = XCGLogger(identifier: "com.noPoint.Kek", includeDefaultDestinations: false)
+  let log = XCGLogger(identifier: "com.kekapp", includeDefaultDestinations: false)
 
   let consoleDestination = ConsoleDestination(identifier: log.identifier + ".console")
   consoleDestination.outputLevel = .debug

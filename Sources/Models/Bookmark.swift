@@ -6,7 +6,7 @@
 import Foundation
 
 struct Bookmark {
-  let name: String
+  let name:  String
   let lines: [Line]
 }
 

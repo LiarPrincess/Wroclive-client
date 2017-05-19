@@ -14,13 +14,13 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
 
   var availableLines = [Line]() {
     didSet {
-      self.lines = self.applyFilterAndOrder(self.availableLines)
+      self.lines = self.filterAndOrder(self.availableLines)
     }
   }
 
   var vehicleTypeFilter: VehicleType? {
     didSet {
-      self.lines = self.applyFilterAndOrder(self.availableLines)
+      self.lines = self.filterAndOrder(self.availableLines)
     }
   }
 
@@ -31,7 +31,10 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LineSelectionViewControllerConstants.cellIdentifier, for: indexPath) as! LineSelectionCell
+    let identifier = LineSelectionViewControllerConstants.CellIdentifiers.line
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? LineSelectionCell else {
+      fatalError("The dequeued cell is not an instance of LineSelectionCell")
+    }
 
     cell.label.font = UIFont.customPreferredFont(forTextStyle: .body)
 
@@ -46,7 +49,7 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
 
 extension LineSelectionDataSource {
 
-  fileprivate func applyFilterAndOrder(_ lines: [Line]) -> [Line] {
+  fileprivate func filterAndOrder(_ lines: [Line]) -> [Line] {
     return self.sort(self.applyFilter(lines))
   }
 
@@ -70,7 +73,7 @@ extension LineSelectionDataSource {
     let nameSort = { (lhs: Line, rhs: Line) in return lhs.name > rhs.name }
 
     let tramLines = lines.filter { $0.type == .tram }.sorted(by: nameSort)
-    let busLines = lines.filter {$0.type == .bus }.sorted(by: nameSort)
+    let busLines = lines.filter { $0.type == .bus }.sorted(by: nameSort)
     return tramLines + busLines
   }
 
