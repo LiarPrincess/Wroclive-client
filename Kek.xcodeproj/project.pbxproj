@@ -13,15 +13,18 @@
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		902CEAB11E72A106003F54D5 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CEAB01E72A106003F54D5 /* Predicates.swift */; };
-		9039408B1E68BB4000873FBD /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940881E68BB4000873FBD /* CardPanelPresenter.swift */; };
-		9039408C1E68BB4000873FBD /* CardPanelTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903940891E68BB4000873FBD /* CardPanelTransition.swift */; };
-		9039408D1E68BB4000873FBD /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9039408A1E68BB4000873FBD /* CardPanelTransitionDelegate.swift */; };
+		9034B37D1ED1AB6E00387221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9034B37C1ED1AB6E00387221 /* Assets.xcassets */; };
+		9034B3821ED1ABC500387221 /* BookmarksModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B3801ED1ABC500387221 /* BookmarksModule.swift */; };
+		9034B3921ED1AC4400387221 /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B3861ED1AC4400387221 /* BookmarkCell.swift */; };
+		9034B3931ED1AC4400387221 /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B3871ED1AC4400387221 /* BookmarksDataSource.swift */; };
+		9034B3941ED1AC4400387221 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B3881ED1AC4400387221 /* BookmarksViewController.swift */; };
+		9034B3951ED1AC4400387221 /* CardPanelInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B38A1ED1AC4400387221 /* CardPanelInteractiveTransition.swift */; };
+		9034B3961ED1AC4400387221 /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B38B1ED1AC4400387221 /* CardPanelPresenter.swift */; };
+		9034B3971ED1AC4400387221 /* CardPanelTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B38C1ED1AC4400387221 /* CardPanelTransition.swift */; };
+		9034B3981ED1AC4400387221 /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B38D1ED1AC4400387221 /* CardPanelTransitionDelegate.swift */; };
+		9034B3991ED1AC4400387221 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B38F1ED1AC4400387221 /* MainViewController.swift */; };
+		9034B39A1ED1AC4400387221 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B3911ED1AC4400387221 /* MapViewController.swift */; };
 		906B51741E6B6A68008D52B8 /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906B51731E6B6A68008D52B8 /* UISegmentedControl.swift */; };
-		906B51761E6B910F008D52B8 /* CardPanelInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906B51751E6B910F008D52B8 /* CardPanelInteractiveTransition.swift */; };
-		90788FF01ECE32BC00BD6CC4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90788FEF1ECE32BC00BD6CC4 /* MapViewController.swift */; };
-		90788FF31ECF527500BD6CC4 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90788FF21ECF527500BD6CC4 /* BookmarksViewController.swift */; };
-		90788FF41ECF5CEB00BD6CC4 /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDD11E6B46C600B6E57B /* BookmarksDataSource.swift */; };
-		90788FF51ECF5E8800BD6CC4 /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */; };
 		907BBCD51E6A2F5D00DE7D1D /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907BBCD41E6A2F5C00DE7D1D /* UIFont.swift */; };
 		907BBCD71E6B014D00DE7D1D /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907BBCD61E6B014D00DE7D1D /* UINavigationBar.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -32,9 +35,6 @@
 		90C2E47F1ECB62F700C1809F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C2E47C1ECB62F700C1809F /* Bookmark.swift */; };
 		90C2E4801ECB62F700C1809F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C2E47D1ECB62F700C1809F /* Line.swift */; };
 		90C2E4811ECB62F700C1809F /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C2E47E1ECB62F700C1809F /* LineType.swift */; };
-		90D89C941ECE257900F4DA10 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D89C931ECE257900F4DA10 /* MainViewController.swift */; };
-		90DAB4D51E639C2000B38E42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90DAB4991E639C2000B38E42 /* Assets.xcassets */; };
-		90DDA6D31ED1097E00394E64 /* BookmarksModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DDA6D21ED1097E00394E64 /* BookmarksModule.swift */; };
 		90DDA6D51ED1143900394E64 /* LineSubtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DDA6D41ED1143900394E64 /* LineSubtype.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,32 +55,40 @@
 /* Begin PBXFileReference section */
 		278E1D09A47B558EB5FEB26D /* Pods-Kek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.debug.xcconfig"; sourceTree = "<group>"; };
 		9006CDC71E6B0A8D00B6E57B /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
-		9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkCell.swift; path = "../View Controllers/MainViewController/Cells/BookmarkCell.swift"; sourceTree = "<group>"; };
-		9006CDCC1E6B209D00B6E57B /* LineSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCell.swift; sourceTree = "<group>"; };
-		9006CDD11E6B46C600B6E57B /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarksDataSource.swift; path = "../View Controllers/MainViewController/DataSources/BookmarksDataSource.swift"; sourceTree = "<group>"; };
-		9006CDD51E6B4DA700B6E57B /* LineSelectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionDataSource.swift; sourceTree = "<group>"; };
 		901E66F41ECE204D00690D42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		901E66F51ECE204D00690D42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		902CEAB01E72A106003F54D5 /* Predicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
-		903940881E68BB4000873FBD /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardPanelPresenter.swift; path = "../View Controllers/MainViewController/CardPanelTransition/CardPanelPresenter.swift"; sourceTree = "<group>"; };
-		903940891E68BB4000873FBD /* CardPanelTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardPanelTransition.swift; path = "../View Controllers/MainViewController/CardPanelTransition/CardPanelTransition.swift"; sourceTree = "<group>"; };
-		9039408A1E68BB4000873FBD /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardPanelTransitionDelegate.swift; path = "../View Controllers/MainViewController/CardPanelTransition/CardPanelTransitionDelegate.swift"; sourceTree = "<group>"; };
-		9039408F1E68C84300873FBD /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
-		903940911E68C8B100873FBD /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		9034B37C1ED1AB6E00387221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9034B3801ED1ABC500387221 /* BookmarksModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksModule.swift; sourceTree = "<group>"; };
+		9034B3861ED1AC4400387221 /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
+		9034B3871ED1AC4400387221 /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
+		9034B3881ED1AC4400387221 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		9034B38A1ED1AC4400387221 /* CardPanelInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelInteractiveTransition.swift; sourceTree = "<group>"; };
+		9034B38B1ED1AC4400387221 /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
+		9034B38C1ED1AC4400387221 /* CardPanelTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransition.swift; sourceTree = "<group>"; };
+		9034B38D1ED1AC4400387221 /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
+		9034B38F1ED1AC4400387221 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9034B3911ED1AC4400387221 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9034B39D1ED1AC4F00387221 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		9034B39F1ED1AC4F00387221 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		9034B3A11ED1AC4F00387221 /* UserTrackingModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTrackingModule.swift; sourceTree = "<group>"; };
+		9034B3A31ED1AC4F00387221 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		9034B3A41ED1AC4F00387221 /* BookmarksModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksModule.swift; sourceTree = "<group>"; };
+		9034B3A51ED1AC4F00387221 /* LineSelectionModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionModule.swift; sourceTree = "<group>"; };
+		9034B3A81ED1AC4F00387221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9034B3AA1ED1AC4F00387221 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9034B3AE1ED1AC4F00387221 /* LineSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCell.swift; sourceTree = "<group>"; };
+		9034B3B01ED1AC4F00387221 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		9034B3B11ED1AC4F00387221 /* LineSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewController.swift; sourceTree = "<group>"; };
+		9034B3B21ED1AC4F00387221 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9034B3B41ED1AC4F00387221 /* LineSelectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionDataSource.swift; sourceTree = "<group>"; };
+		9034B3B51ED1AC4F00387221 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		906B51731E6B6A68008D52B8 /* UISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
-		906B51751E6B910F008D52B8 /* CardPanelInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardPanelInteractiveTransition.swift; path = "../View Controllers/MainViewController/CardPanelTransition/CardPanelInteractiveTransition.swift"; sourceTree = "<group>"; };
-		90788FEF1ECE32BC00BD6CC4 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		90788FF21ECF527500BD6CC4 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		907BBCD41E6A2F5C00DE7D1D /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		907BBCD61E6B014D00DE7D1D /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
-		907E45BE1E68B3AD00DA8781 /* UserTrackingModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTrackingModule.swift; path = Modules/UserTrackingModule.swift; sourceTree = "<group>"; };
-		907E45C01E68B3AD00DA8781 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = State/AppState.swift; sourceTree = "<group>"; };
-		907E45C51E68B3E900DA8781 /* LineSelectionModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LineSelectionModule.swift; path = State/LineSelectionModule.swift; sourceTree = "<group>"; };
-		907E45C71E68B3F400DA8781 /* BookmarksModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarksModule.swift; path = State/BookmarksModule.swift; sourceTree = "<group>"; };
-		907E45C91E68B48D00DA8781 /* LineSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewController.swift; sourceTree = "<group>"; };
 		90ABD6E21E63AE0A007B583F /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
 		90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKUserTrackingMode.swift; sourceTree = "<group>"; };
@@ -88,15 +96,7 @@
 		90C2E47C1ECB62F700C1809F /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90C2E47D1ECB62F700C1809F /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		90C2E47E1ECB62F700C1809F /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
-		90D89C931ECE257900F4DA10 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		90DAB4991E639C2000B38E42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90DAB49B1E639C2000B38E42 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
-		90DAB4BC1E639C2000B38E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		90DAB4BE1E639C2000B38E42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		90DAB4C21E639C2000B38E42 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
-		90DAB4C31E639C2000B38E42 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		90DAB4C41E639C2000B38E42 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		90DDA6D21ED1097E00394E64 /* BookmarksModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksModule.swift; sourceTree = "<group>"; };
 		90DDA6D41ED1143900394E64 /* LineSubtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSubtype.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,39 +125,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9006CDC91E6B207500B6E57B /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				9006CDCC1E6B209D00B6E57B /* LineSelectionCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		9006CDD01E6B469600B6E57B /* DataSources */ = {
-			isa = PBXGroup;
-			children = (
-				9006CDD51E6B4DA700B6E57B /* LineSelectionDataSource.swift */,
-			);
-			path = DataSources;
-			sourceTree = "<group>";
-		};
 		901E66F31ECE204D00690D42 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				9034B37C1ED1AB6E00387221 /* Assets.xcassets */,
 				901E66F41ECE204D00690D42 /* AppDelegate.swift */,
 				901E66F51ECE204D00690D42 /* Info.plist */,
 			);
 			name = App;
 			path = Sources/App;
 			sourceTree = SOURCE_ROOT;
-		};
-		901E66F81ECE207000690D42 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				90F093901ECE2218008598E3 /* Main */,
-			);
-			path = Views;
-			sourceTree = "<group>";
 		};
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -177,27 +154,185 @@
 			path = Operators;
 			sourceTree = "<group>";
 		};
-		903940871E68BB4000873FBD /* CardPanelTransition */ = {
+		9034B37E1ED1ABC500387221 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				9034B37F1ED1ABC500387221 /* Functional */,
+				9034B3811ED1ABC500387221 /* Usability */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		9034B37F1ED1ABC500387221 /* Functional */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3801ED1ABC500387221 /* BookmarksModule.swift */,
+			);
+			path = Functional;
+			sourceTree = "<group>";
+		};
+		9034B3811ED1ABC500387221 /* Usability */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = CardPanelTransition;
+			path = Usability;
 			sourceTree = "<group>";
 		};
-		9039408E1E68C81200873FBD /* Middleware */ = {
+		9034B3831ED1AC4400387221 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9039408F1E68C84300873FBD /* Logging.swift */,
+				9034B3841ED1AC4400387221 /* Main */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9034B3841ED1AC4400387221 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3901ED1AC4400387221 /* Map */,
+				9034B38E1ED1AC4400387221 /* Line selection */,
+				9034B3851ED1AC4400387221 /* Bookmarks */,
+				9034B3891ED1AC4400387221 /* Card panel transition */,
+				9034B38F1ED1AC4400387221 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9034B3851ED1AC4400387221 /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3861ED1AC4400387221 /* BookmarkCell.swift */,
+				9034B3871ED1AC4400387221 /* BookmarksDataSource.swift */,
+				9034B3881ED1AC4400387221 /* BookmarksViewController.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		9034B3891ED1AC4400387221 /* Card panel transition */ = {
+			isa = PBXGroup;
+			children = (
+				9034B38A1ED1AC4400387221 /* CardPanelInteractiveTransition.swift */,
+				9034B38B1ED1AC4400387221 /* CardPanelPresenter.swift */,
+				9034B38C1ED1AC4400387221 /* CardPanelTransition.swift */,
+				9034B38D1ED1AC4400387221 /* CardPanelTransitionDelegate.swift */,
+			);
+			path = "Card panel transition";
+			sourceTree = "<group>";
+		};
+		9034B38E1ED1AC4400387221 /* Line selection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Line selection";
+			sourceTree = "<group>";
+		};
+		9034B3901ED1AC4400387221 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3911ED1AC4400387221 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		9034B39B1ED1AC4F00387221 /* _ */ = {
+			isa = PBXGroup;
+			children = (
+				9034B39C1ED1AC4F00387221 /* Redux */,
+				9034B3A61ED1AC4F00387221 /* Storyboards */,
+				9034B3AB1ED1AC4F00387221 /* View Controllers */,
+			);
+			path = _;
+			sourceTree = "<group>";
+		};
+		9034B39C1ED1AC4F00387221 /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				9034B39D1ED1AC4F00387221 /* Configuration.swift */,
+				9034B39E1ED1AC4F00387221 /* Middleware */,
+				9034B3A01ED1AC4F00387221 /* Modules */,
+				9034B3A21ED1AC4F00387221 /* State */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
+		9034B39E1ED1AC4F00387221 /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				9034B39F1ED1AC4F00387221 /* Logging.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
 		};
-		90788FF11ECE42AF00BD6CC4 /* Modules */ = {
+		9034B3A01ED1AC4F00387221 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				90DDA6D11ED1096200394E64 /* Functional */,
+				9034B3A11ED1AC4F00387221 /* UserTrackingModule.swift */,
 			);
-			name = Modules;
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		9034B3A21ED1AC4F00387221 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3A31ED1AC4F00387221 /* AppState.swift */,
+				9034B3A41ED1AC4F00387221 /* BookmarksModule.swift */,
+				9034B3A51ED1AC4F00387221 /* LineSelectionModule.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		9034B3A61ED1AC4F00387221 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3A71ED1AC4F00387221 /* LaunchScreen.storyboard */,
+				9034B3A91ED1AC4F00387221 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		9034B3AB1ED1AC4F00387221 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3AC1ED1AC4F00387221 /* MainViewController */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9034B3AC1ED1AC4F00387221 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3AD1ED1AC4F00387221 /* Cells */,
+				9034B3AF1ED1AC4F00387221 /* ChildViewControllers */,
+				9034B3B31ED1AC4F00387221 /* DataSources */,
+				9034B3B51ED1AC4F00387221 /* MainViewController.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		9034B3AD1ED1AC4F00387221 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3AE1ED1AC4F00387221 /* LineSelectionCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9034B3AF1ED1AC4F00387221 /* ChildViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3B01ED1AC4F00387221 /* BookmarksViewController.swift */,
+				9034B3B11ED1AC4F00387221 /* LineSelectionViewController.swift */,
+				9034B3B21ED1AC4F00387221 /* MapViewController.swift */,
+			);
+			path = ChildViewControllers;
+			sourceTree = "<group>";
+		};
+		9034B3B31ED1AC4F00387221 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				9034B3B41ED1AC4F00387221 /* LineSelectionDataSource.swift */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		90ABD6DF1E63AE0A007B583F /* Utils */ = {
@@ -259,139 +394,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		90DAB4901E639C2000B38E42 /* Redux */ = {
-			isa = PBXGroup;
-			children = (
-				9039408E1E68C81200873FBD /* Middleware */,
-				907E45C01E68B3AD00DA8781 /* AppState.swift */,
-				907E45C51E68B3E900DA8781 /* LineSelectionModule.swift */,
-				907E45C71E68B3F400DA8781 /* BookmarksModule.swift */,
-				907E45BE1E68B3AD00DA8781 /* UserTrackingModule.swift */,
-				903940911E68C8B100873FBD /* Configuration.swift */,
-			);
-			path = Redux;
-			sourceTree = "<group>";
-		};
-		90DAB4981E639C2000B38E42 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				90DAB49A1E639C2000B38E42 /* Locations */,
-				90DAB4991E639C2000B38E42 /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		90DAB49A1E639C2000B38E42 /* Locations */ = {
 			isa = PBXGroup;
 			children = (
 				90DAB49B1E639C2000B38E42 /* Wroclaw.gpx */,
 			);
-			path = Locations;
-			sourceTree = "<group>";
-		};
-		90DAB4BA1E639C2000B38E42 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				90DAB4BD1E639C2000B38E42 /* Main.storyboard */,
-				90DAB4BB1E639C2000B38E42 /* LaunchScreen.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		90DAB4BF1E639C2000B38E42 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				90DAB4C01E639C2000B38E42 /* MainViewController */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		90DAB4C01E639C2000B38E42 /* MainViewController */ = {
-			isa = PBXGroup;
-			children = (
-				903940871E68BB4000873FBD /* CardPanelTransition */,
-				9006CDC91E6B207500B6E57B /* Cells */,
-				9006CDD01E6B469600B6E57B /* DataSources */,
-				90DAB4C11E639C2000B38E42 /* ChildViewControllers */,
-				90DAB4C41E639C2000B38E42 /* MainViewController.swift */,
-			);
-			path = MainViewController;
-			sourceTree = "<group>";
-		};
-		90DAB4C11E639C2000B38E42 /* ChildViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				90DAB4C31E639C2000B38E42 /* MapViewController.swift */,
-				907E45C91E68B48D00DA8781 /* LineSelectionViewController.swift */,
-				90DAB4C21E639C2000B38E42 /* BookmarksViewController.swift */,
-			);
-			path = ChildViewControllers;
-			sourceTree = "<group>";
-		};
-		90DDA6D11ED1096200394E64 /* Functional */ = {
-			isa = PBXGroup;
-			children = (
-				90DDA6D21ED1097E00394E64 /* BookmarksModule.swift */,
-			);
-			name = Functional;
-			sourceTree = "<group>";
-		};
-		90F093901ECE2218008598E3 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				90F093911ECE2225008598E3 /* Map */,
-				90F093921ECE222D008598E3 /* Line selection */,
-				90F093931ECE2245008598E3 /* Bookmarks */,
-				90F093941ECE2253008598E3 /* Card panel transition */,
-				90D89C931ECE257900F4DA10 /* MainViewController.swift */,
-			);
-			name = Main;
-			sourceTree = "<group>";
-		};
-		90F093911ECE2225008598E3 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				90788FEF1ECE32BC00BD6CC4 /* MapViewController.swift */,
-			);
-			name = Map;
-			sourceTree = "<group>";
-		};
-		90F093921ECE222D008598E3 /* Line selection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Line selection";
-			sourceTree = "<group>";
-		};
-		90F093931ECE2245008598E3 /* Bookmarks */ = {
-			isa = PBXGroup;
-			children = (
-				9006CDCA1E6B207500B6E57B /* BookmarkCell.swift */,
-				9006CDD11E6B46C600B6E57B /* BookmarksDataSource.swift */,
-				90788FF21ECF527500BD6CC4 /* BookmarksViewController.swift */,
-			);
-			name = Bookmarks;
-			sourceTree = "<group>";
-		};
-		90F093941ECE2253008598E3 /* Card panel transition */ = {
-			isa = PBXGroup;
-			children = (
-				903940881E68BB4000873FBD /* CardPanelPresenter.swift */,
-				903940891E68BB4000873FBD /* CardPanelTransition.swift */,
-				906B51751E6B910F008D52B8 /* CardPanelInteractiveTransition.swift */,
-				9039408A1E68BB4000873FBD /* CardPanelTransitionDelegate.swift */,
-			);
-			name = "Card panel transition";
-			sourceTree = "<group>";
-		};
-		90F093951ECE240E008598E3 /* _ */ = {
-			isa = PBXGroup;
-			children = (
-				90DAB4901E639C2000B38E42 /* Redux */,
-				90DAB4BF1E639C2000B38E42 /* View Controllers */,
-				90DAB4BA1E639C2000B38E42 /* Storyboards */,
-			);
-			name = _;
+			name = Locations;
+			path = Sources/Resources/Locations;
 			sourceTree = "<group>";
 		};
 		OBJ_41 /* Tests */ = {
@@ -414,6 +423,7 @@
 			children = (
 				OBJ_7 /* Sources */,
 				OBJ_41 /* Tests */,
+				90DAB49A1E639C2000B38E42 /* Locations */,
 				4A3B2CBD6F0B3CF6ADE0EBAE /* Pods */,
 				902812FE1E59DE4800F26027 /* Frameworks */,
 				OBJ_42 /* Products */,
@@ -423,13 +433,12 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9034B39B1ED1AC4F00387221 /* _ */,
 				901E66F31ECE204D00690D42 /* App */,
-				90DAB4981E639C2000B38E42 /* Resources */,
 				90DAB4871E639C2000B38E42 /* Models */,
-				90788FF11ECE42AF00BD6CC4 /* Modules */,
-				90F093951ECE240E008598E3 /* _ */,
+				9034B37E1ED1ABC500387221 /* Modules */,
 				90ABD6DF1E63AE0A007B583F /* Utils */,
-				901E66F81ECE207000690D42 /* Views */,
+				9034B3831ED1AC4400387221 /* Views */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -497,7 +506,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90DAB4D51E639C2000B38E42 /* Assets.xcassets in Resources */,
+				9034B37D1ED1AB6E00387221 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,48 +565,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9034B3941ED1AC4400387221 /* BookmarksViewController.swift in Sources */,
+				9034B3991ED1AC4400387221 /* MainViewController.swift in Sources */,
 				90DDA6D51ED1143900394E64 /* LineSubtype.swift in Sources */,
-				90788FF31ECF527500BD6CC4 /* BookmarksViewController.swift in Sources */,
 				9006CDC81E6B0A8D00B6E57B /* UIBarButtonItem.swift in Sources */,
-				906B51761E6B910F008D52B8 /* CardPanelInteractiveTransition.swift in Sources */,
 				907BBCD71E6B014D00DE7D1D /* UINavigationBar.swift in Sources */,
+				9034B3921ED1AC4400387221 /* BookmarkCell.swift in Sources */,
 				90C2E47F1ECB62F700C1809F /* Bookmark.swift in Sources */,
+				9034B39A1ED1AC4400387221 /* MapViewController.swift in Sources */,
+				9034B3931ED1AC4400387221 /* BookmarksDataSource.swift in Sources */,
 				901E66F61ECE204D00690D42 /* AppDelegate.swift in Sources */,
-				90DDA6D31ED1097E00394E64 /* BookmarksModule.swift in Sources */,
+				9034B3981ED1AC4400387221 /* CardPanelTransitionDelegate.swift in Sources */,
 				90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */,
-				9039408D1E68BB4000873FBD /* CardPanelTransitionDelegate.swift in Sources */,
-				90788FF01ECE32BC00BD6CC4 /* MapViewController.swift in Sources */,
+				9034B3961ED1AC4400387221 /* CardPanelPresenter.swift in Sources */,
+				9034B3951ED1AC4400387221 /* CardPanelInteractiveTransition.swift in Sources */,
 				90C2E4811ECB62F700C1809F /* LineType.swift in Sources */,
 				906B51741E6B6A68008D52B8 /* UISegmentedControl.swift in Sources */,
-				90788FF41ECF5CEB00BD6CC4 /* BookmarksDataSource.swift in Sources */,
 				90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */,
-				9039408B1E68BB4000873FBD /* CardPanelPresenter.swift in Sources */,
+				9034B3821ED1ABC500387221 /* BookmarksModule.swift in Sources */,
 				90C2E4801ECB62F700C1809F /* Line.swift in Sources */,
 				90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */,
 				902CEAB11E72A106003F54D5 /* Predicates.swift in Sources */,
 				90ABD6E61E63AE0A007B583F /* CLAuthorizationStatus.swift in Sources */,
-				90D89C941ECE257900F4DA10 /* MainViewController.swift in Sources */,
-				90788FF51ECF5E8800BD6CC4 /* BookmarkCell.swift in Sources */,
+				9034B3971ED1AC4400387221 /* CardPanelTransition.swift in Sources */,
 				907BBCD51E6A2F5D00DE7D1D /* UIFont.swift in Sources */,
-				9039408C1E68BB4000873FBD /* CardPanelTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		90DAB4BB1E639C2000B38E42 /* LaunchScreen.storyboard */ = {
+		9034B3A71ED1AC4F00387221 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				90DAB4BC1E639C2000B38E42 /* Base */,
+				9034B3A81ED1AC4F00387221 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		90DAB4BD1E639C2000B38E42 /* Main.storyboard */ = {
+		9034B3A91ED1AC4F00387221 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				90DAB4BE1E639C2000B38E42 /* Base */,
+				9034B3AA1ED1AC4F00387221 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

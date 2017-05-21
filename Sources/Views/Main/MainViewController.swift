@@ -6,9 +6,6 @@
 import UIKit
 import SnapKit
 
-// reusable cell identifier (register.*cell)
-// collection.registerClass(ThumbnailCell.self, forCellWithReuseIdentifier: ThumbnailIdentifier)
-
 // DynamicFontHelper.defaultHelper.DeviceFont
 
 class MainViewController: UIViewController {
