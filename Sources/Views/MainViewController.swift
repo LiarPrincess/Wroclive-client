@@ -22,30 +22,39 @@ class MainViewController: UIViewController {
   let bookmarksButton = UIButton()
   let configurationButton = UIButton()
 
+  var bookmarksTransitionDelegate: UIViewControllerTransitioningDelegate?
+
   //MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.initMapViewController()
-    self.initToolbar()
+    self.initMapView()
+    self.initToolbarView()
   }
 
   //MARK: - Actions
 
-  @objc fileprivate func userTrackingButtonTapped() {
+  @objc fileprivate func userTrackingButtonPressed() {
     log.info("userTrackingButtonTapped")
   }
 
-  @objc fileprivate func lineSearchButtonTapped() {
+  @objc fileprivate func lineSearchButtonPressed() {
     log.info("lineSearchButtonTapped")
   }
 
-  @objc fileprivate func bookmarksButtonTapped() {
-    log.info("bookmarksButtonTapped")
+  @objc fileprivate func bookmarksButtonPressed() {
+    let relativeHeight = CGFloat(0.75)
+    let modalViewController = BookmarksViewController()
+
+    self.bookmarksTransitionDelegate = CardPanelTransitionDelegate(for: modalViewController, withRelativeHeight: relativeHeight)
+    modalViewController.modalPresentationStyle = .custom
+    modalViewController.transitioningDelegate = self.bookmarksTransitionDelegate!
+
+    self.present(modalViewController, animated: true, completion: nil)
   }
 
-  @objc fileprivate func configurationButtonTapped() {
+  @objc fileprivate func configurationButtonPressed() {
     log.info("configurationButtonTapped")
   }
 
@@ -55,21 +64,21 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
 
-  fileprivate func initMapViewController() {
-    addChildViewController(mapViewController)
-    view.addSubview(mapViewController.view)
+  fileprivate func initMapView() {
+    self.addChildViewController(self.mapViewController)
+    self.view.addSubview(self.mapViewController.view)
 
-    mapViewController.view.snp.makeConstraints { make in
+    self.mapViewController.view.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
 
-    mapViewController.didMove(toParentViewController: self)
+    self.mapViewController.didMove(toParentViewController: self)
   }
 
-  fileprivate func initToolbar() {
+  fileprivate func initToolbarView() {
     let blur = UIBlurEffect(style: .extraLight)
     let blurView = UIVisualEffectView(effect: blur)
-    view.addSubview(blurView)
+    self.view.addSubview(blurView)
 
     blurView.snp.makeConstraints { make -> Void in
       make.left.right.bottom.equalToSuperview()
@@ -99,31 +108,31 @@ extension MainViewController {
   }
 
   private func addToolbarButtons(_ toolbar: UIStackView) {
-    func applyCommmonSettings(_ button: UIButton) {
-      button.contentMode = .scaleAspectFit
-      button.contentHorizontalAlignment = .center
-      button.contentVerticalAlignment = .center
-    }
+    applyCommmonSettings(self.userTrackingButton)
+    self.userTrackingButton.setImage(#imageLiteral(resourceName: "vecUserTracking_None"), for: .normal)
+    self.userTrackingButton.addTarget(self, action: #selector(userTrackingButtonPressed), for: .touchUpInside)
 
-    applyCommmonSettings(userTrackingButton)
-    userTrackingButton.setImage(#imageLiteral(resourceName: "vecUserTracking_None"), for: .normal)
-    userTrackingButton.addTarget(self, action: #selector(userTrackingButtonTapped), for: .touchUpInside)
+    applyCommmonSettings(self.lineSearchButton)
+    self.lineSearchButton.setImage(#imageLiteral(resourceName: "vecSearch"), for: .normal)
+    self.lineSearchButton.addTarget(self, action: #selector(lineSearchButtonPressed), for: .touchUpInside)
 
-    applyCommmonSettings(lineSearchButton)
-    lineSearchButton.setImage(#imageLiteral(resourceName: "vecSearch"), for: .normal)
-    lineSearchButton.addTarget(self, action: #selector(lineSearchButtonTapped), for: .touchUpInside)
+    applyCommmonSettings(self.bookmarksButton)
+    self.bookmarksButton.setImage(#imageLiteral(resourceName: "vecFavorites1"), for: .normal)
+    self.bookmarksButton.addTarget(self, action: #selector(bookmarksButtonPressed), for: .touchUpInside)
 
-    applyCommmonSettings(bookmarksButton)
-    bookmarksButton.setImage(#imageLiteral(resourceName: "vecFavorites1"), for: .normal)
-    bookmarksButton.addTarget(self, action: #selector(bookmarksButtonTapped), for: .touchUpInside)
+    applyCommmonSettings(self.configurationButton)
+    self.configurationButton.setImage(#imageLiteral(resourceName: "vecSettings"), for: .normal)
+    self.configurationButton.addTarget(self, action: #selector(configurationButtonPressed), for: .touchUpInside)
 
-    applyCommmonSettings(configurationButton)
-    configurationButton.setImage(#imageLiteral(resourceName: "vecSettings"), for: .normal)
-    configurationButton.addTarget(self, action: #selector(configurationButtonTapped), for: .touchUpInside)
+    toolbar.addArrangedSubview(self.userTrackingButton)
+    toolbar.addArrangedSubview(self.lineSearchButton)
+    toolbar.addArrangedSubview(self.bookmarksButton)
+    toolbar.addArrangedSubview(self.configurationButton)
+  }
 
-    toolbar.addArrangedSubview(userTrackingButton)
-    toolbar.addArrangedSubview(lineSearchButton)
-    toolbar.addArrangedSubview(bookmarksButton)
-    toolbar.addArrangedSubview(configurationButton)
+  private func applyCommmonSettings(_ button: UIButton) {
+    button.contentMode = .scaleAspectFit
+    button.contentHorizontalAlignment = .center
+    button.contentVerticalAlignment = .center
   }
 }

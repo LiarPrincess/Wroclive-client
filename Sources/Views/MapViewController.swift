@@ -23,15 +23,15 @@ class MapViewController: UIViewController {
   //MARK: - UI Init
 
   private func initMapView() {
-    mapView.mapType = .standard
-    mapView.showsBuildings = true
-    mapView.showsCompass = true
-    mapView.showsScale = false
-    mapView.showsTraffic = false
-    mapView.showsUserLocation = true
-    view.addSubview(mapView)
+    self.mapView.mapType = .standard
+    self.mapView.showsBuildings = true
+    self.mapView.showsCompass = true
+    self.mapView.showsScale = false
+    self.mapView.showsTraffic = false
+    self.mapView.showsUserLocation = true
+    self.view.addSubview(self.mapView)
 
-    mapView.snp.makeConstraints { make in
+    self.mapView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
   }

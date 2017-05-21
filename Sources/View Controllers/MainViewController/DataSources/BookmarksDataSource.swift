@@ -19,25 +19,23 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarksViewControllerConstants.cellIdentifier, for: indexPath) as? BookmarkCell  else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarkCell.identifier, for: indexPath) as? BookmarkCell  else {
       fatalError("The dequeued cell is not an instance of BookmarkCell")
     }
 
-    cell.labelName.font = UIFont.customPreferredFont(forTextStyle: .headline)
-    cell.labelTramLines.font = UIFont.customPreferredFont(forTextStyle: .body)
-    cell.labelBusLines.font  = UIFont.customPreferredFont(forTextStyle: .body)
-
     let bookmark = self.bookmarks[indexPath.row]
-    cell.labelName.text = bookmark.name
-    cell.labelTramLines.text = prepareBookmarkLabel(bookmark, for: .tram)
-    cell.labelBusLines.text = prepareBookmarkLabel(bookmark, for: .bus)
+    cell.bookmarkName.text = bookmark.name
+    cell.tramLines.text = concatLineNames(bookmark.lines, withType: .tram)
+    cell.busLines.text = concatLineNames(bookmark.lines, withType: .bus)
     return cell
   }
 
   //MARK: - Methods
 
-  private func prepareBookmarkLabel(_ bookmark: Bookmark, for vehicleType: VehicleType) -> String {
-    return bookmark.lines.filter { $0.type == vehicleType } .map { $0.name }.joined(separator: "  ")
+  private func concatLineNames(_ lines: [Line], withType lineType: LineType) -> String {
+    return lines.filter { $0.type == lineType }
+                .map { $0.name }
+                .joined(separator: "  ")
   }
 
 }
