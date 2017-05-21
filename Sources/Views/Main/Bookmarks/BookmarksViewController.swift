@@ -14,15 +14,28 @@ class BookmarksViewController: UIViewController {
   let closeButton = UIBarButtonItem()
   let editButton = UIBarButtonItem()
 
+  let bookmarksManager: BookmarksManagerProtocol
+
   let bookmarksTable = UITableView()
   let bookmarksDataSource = BookmarksDataSource()
+
+  //MARK: - Init
+
+  init(_ bookmarksManager: BookmarksManagerProtocol) {
+    self.bookmarksManager = bookmarksManager
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   //MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.bookmarksDataSource.bookmarks = BookmarksModule.sharedInstance.getAll()
+    self.bookmarksDataSource.bookmarks = self.bookmarksManager.getBookmarks()
 
     self.view.backgroundColor = UIColor.white
     self.initNavigationBar()

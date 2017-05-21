@@ -14,7 +14,7 @@
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		902CEAB11E72A106003F54D5 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CEAB01E72A106003F54D5 /* Predicates.swift */; };
 		9034B37D1ED1AB6E00387221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9034B37C1ED1AB6E00387221 /* Assets.xcassets */; };
-		9034B3821ED1ABC500387221 /* BookmarksModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B3801ED1ABC500387221 /* BookmarksModule.swift */; };
+		9034B3821ED1ABC500387221 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B3801ED1ABC500387221 /* BookmarksManager.swift */; };
 		9034B3921ED1AC4400387221 /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B3861ED1AC4400387221 /* BookmarkCell.swift */; };
 		9034B3931ED1AC4400387221 /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B3871ED1AC4400387221 /* BookmarksDataSource.swift */; };
 		9034B3941ED1AC4400387221 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034B3881ED1AC4400387221 /* BookmarksViewController.swift */; };
@@ -62,7 +62,7 @@
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		902CEAB01E72A106003F54D5 /* Predicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		9034B37C1ED1AB6E00387221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9034B3801ED1ABC500387221 /* BookmarksModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksModule.swift; sourceTree = "<group>"; };
+		9034B3801ED1ABC500387221 /* BookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		9034B3861ED1AC4400387221 /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
 		9034B3871ED1AC4400387221 /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
 		9034B3881ED1AC4400387221 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		9034B37F1ED1ABC500387221 /* Functional */ = {
 			isa = PBXGroup;
 			children = (
-				9034B3801ED1ABC500387221 /* BookmarksModule.swift */,
+				9034B3801ED1ABC500387221 /* BookmarksManager.swift */,
 			);
 			path = Functional;
 			sourceTree = "<group>";
@@ -582,7 +582,7 @@
 				90C2E4811ECB62F700C1809F /* LineType.swift in Sources */,
 				906B51741E6B6A68008D52B8 /* UISegmentedControl.swift in Sources */,
 				90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */,
-				9034B3821ED1ABC500387221 /* BookmarksModule.swift in Sources */,
+				9034B3821ED1ABC500387221 /* BookmarksManager.swift in Sources */,
 				90C2E4801ECB62F700C1809F /* Line.swift in Sources */,
 				90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */,
 				902CEAB11E72A106003F54D5 /* Predicates.swift in Sources */,

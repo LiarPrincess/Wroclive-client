@@ -5,24 +5,19 @@
 
 import Foundation
 
-class BookmarksModule {
-
-  //MARK: - Singleton
-
-  public static let sharedInstance = BookmarksModule()
-
-  //MARK: - Init
-
-  private init() {}
-
+protocol BookmarksManagerProtocol {
   //MARK: - Create
   //MARK: - Retrive
+  func getBookmarks() -> [Bookmark]
   //MARK: - Update
   //MARK: - Delete
+}
 
-  //MARK: - Methods
+class BookmarksManager: BookmarksManagerProtocol {
 
-  public func getAll() -> [Bookmark] {
+  //MARK: - BookmarksManagerProtocol
+
+  public func getBookmarks() -> [Bookmark] {
 
     let line1 = Line(name: "1", type: .tram, subtype: .regular)
     let line2 = Line(name: "2", type: .tram, subtype: .regular)
