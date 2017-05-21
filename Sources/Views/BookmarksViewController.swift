@@ -43,7 +43,6 @@ class BookmarksViewController: UIViewController {
 
 //MARK: - TableViewDelegate
 
-
 extension BookmarksViewController: UITableViewDelegate {
 
   //MARK: - Display
@@ -53,8 +52,11 @@ extension BookmarksViewController: UITableViewDelegate {
       fatalError("Invalid cell type passed to BookmarksViewController.UITableViewDelegate")
     }
 
-//    cell.tramLines.textColor = self.view.tintColor
-//    cell.busLines.textColor = self.view.tintColor
+    cell.tramLines.isHidden = cell.tramLines.text?.isEmpty ?? true
+    cell.tramLines.textColor = self.view.tintColor
+
+    cell.busLines.isHidden = cell.busLines.text?.isEmpty ?? true
+    cell.busLines.textColor = self.view.tintColor
   }
 
   //MARK: - Height

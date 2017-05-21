@@ -25,14 +25,14 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
 
     let bookmark = self.bookmarks[indexPath.row]
     cell.bookmarkName.text = bookmark.name
-    cell.tramLines.text = concatLineNames(bookmark.lines, withType: .tram)
-    cell.busLines.text = concatLineNames(bookmark.lines, withType: .bus)
+    cell.tramLines.text = concatLineNames(bookmark.lines, ofType: .tram)
+    cell.busLines.text = concatLineNames(bookmark.lines, ofType: .bus)
     return cell
   }
 
   //MARK: - Methods
 
-  private func concatLineNames(_ lines: [Line], withType lineType: LineType) -> String {
+  private func concatLineNames(_ lines: [Line], ofType lineType: LineType) -> String {
     return lines.filter { $0.type == lineType }
                 .map { $0.name }
                 .joined(separator: "  ")

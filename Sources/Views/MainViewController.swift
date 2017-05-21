@@ -108,19 +108,19 @@ extension MainViewController {
   }
 
   private func addToolbarButtons(_ toolbar: UIStackView) {
-    applyCommmonSettings(self.userTrackingButton)
+    applyToolbarButtonSettings(self.userTrackingButton)
     self.userTrackingButton.setImage(#imageLiteral(resourceName: "vecUserTracking_None"), for: .normal)
     self.userTrackingButton.addTarget(self, action: #selector(userTrackingButtonPressed), for: .touchUpInside)
 
-    applyCommmonSettings(self.lineSearchButton)
+    applyToolbarButtonSettings(self.lineSearchButton)
     self.lineSearchButton.setImage(#imageLiteral(resourceName: "vecSearch"), for: .normal)
     self.lineSearchButton.addTarget(self, action: #selector(lineSearchButtonPressed), for: .touchUpInside)
 
-    applyCommmonSettings(self.bookmarksButton)
+    applyToolbarButtonSettings(self.bookmarksButton)
     self.bookmarksButton.setImage(#imageLiteral(resourceName: "vecFavorites1"), for: .normal)
     self.bookmarksButton.addTarget(self, action: #selector(bookmarksButtonPressed), for: .touchUpInside)
 
-    applyCommmonSettings(self.configurationButton)
+    applyToolbarButtonSettings(self.configurationButton)
     self.configurationButton.setImage(#imageLiteral(resourceName: "vecSettings"), for: .normal)
     self.configurationButton.addTarget(self, action: #selector(configurationButtonPressed), for: .touchUpInside)
 
@@ -130,7 +130,7 @@ extension MainViewController {
     toolbar.addArrangedSubview(self.configurationButton)
   }
 
-  private func applyCommmonSettings(_ button: UIButton) {
+  private func applyToolbarButtonSettings(_ button: UIButton) {
     button.contentMode = .scaleAspectFit
     button.contentHorizontalAlignment = .center
     button.contentVerticalAlignment = .center
