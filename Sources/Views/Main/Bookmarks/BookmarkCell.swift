@@ -35,6 +35,18 @@ class BookmarkCell: UITableViewCell {
 extension BookmarkCell {
 
   fileprivate func initLayout() {
+    self.initStackView()
+    
+    self.initLabel(self.bookmarkName)
+    self.initLabel(self.tramLines)
+    self.initLabel(self.busLines)
+
+    self.stackView.addArrangedSubview(self.bookmarkName)
+    self.stackView.addArrangedSubview(self.tramLines)
+    self.stackView.addArrangedSubview(self.busLines)
+  }
+
+  private func initStackView() {
     self.stackView.axis = .vertical
     self.stackView.alignment = .fill
     self.stackView.spacing = 5.0
@@ -44,17 +56,9 @@ extension BookmarkCell {
     self.stackView.snp.makeConstraints { make in
       make.edges.equalToSuperview().inset(UIEdgeInsets(top: 5.0, left: 30.0, bottom: 5.0, right: 30.0))
     }
-
-    applyLabelSettings(self.bookmarkName)
-    applyLabelSettings(self.tramLines)
-    applyLabelSettings(self.busLines)
-
-    self.stackView.addArrangedSubview(self.bookmarkName)
-    self.stackView.addArrangedSubview(self.tramLines)
-    self.stackView.addArrangedSubview(self.busLines)
   }
 
-  private func applyLabelSettings(_ label: UILabel) {
+  private func initLabel(_ label: UILabel) {
     label.numberOfLines = 0
     label.textAlignment = .center
   }

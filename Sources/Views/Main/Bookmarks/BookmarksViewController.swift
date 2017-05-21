@@ -34,12 +34,12 @@ class BookmarksViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.initDataSource()
+    self.initLayout()
+  }
 
+  private func initDataSource() {
     self.bookmarksDataSource.bookmarks = self.bookmarksManager.getBookmarks()
-
-    self.view.backgroundColor = UIColor.white
-    self.initNavigationBar()
-    self.initBookmarksTable()
   }
 
   //MARK: - Actions
@@ -88,7 +88,13 @@ extension BookmarksViewController: UITableViewDelegate {
 
 extension BookmarksViewController {
 
-  fileprivate func initNavigationBar() {
+  fileprivate func initLayout() {
+    self.view.backgroundColor = UIColor.white
+    self.initNavigationBar()
+    self.initBookmarksTable()
+  }
+
+  private func initNavigationBar() {
     self.view.addSubview(self.navigationBar)
 
     navigationBar.snp.makeConstraints { make in
@@ -111,7 +117,7 @@ extension BookmarksViewController {
     navigationItem.rightBarButtonItem = self.closeButton
   }
 
-  fileprivate func initBookmarksTable() {
+  private func initBookmarksTable() {
     self.bookmarksTable.register(BookmarkCell.self, forCellReuseIdentifier: BookmarkCell.identifier)
     self.bookmarksTable.dataSource = self.bookmarksDataSource
     self.bookmarksTable.delegate = self

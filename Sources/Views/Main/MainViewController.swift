@@ -27,9 +27,7 @@ class MainViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    self.initMapView()
-    self.initToolbarView()
+    self.initLayout()
   }
 
   //MARK: - Actions
@@ -63,7 +61,12 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
 
-  fileprivate func initMapView() {
+  fileprivate func initLayout() {
+    self.initMapView()
+    self.initToolbarView()
+  }
+
+  private func initMapView() {
     self.addChildViewController(self.mapViewController)
     self.view.addSubview(self.mapViewController.view)
 
@@ -74,7 +77,7 @@ extension MainViewController {
     self.mapViewController.didMove(toParentViewController: self)
   }
 
-  fileprivate func initToolbarView() {
+  private func initToolbarView() {
     let blur = UIBlurEffect(style: .extraLight)
     let blurView = UIVisualEffectView(effect: blur)
     self.view.addSubview(blurView)
@@ -107,19 +110,19 @@ extension MainViewController {
   }
 
   private func addToolbarButtons(_ toolbar: UIStackView) {
-    applyToolbarButtonSettings(self.userTrackingButton)
+    initToolbarButton(self.userTrackingButton)
     self.userTrackingButton.setImage(#imageLiteral(resourceName: "vecUserTracking_None"), for: .normal)
     self.userTrackingButton.addTarget(self, action: #selector(userTrackingButtonPressed), for: .touchUpInside)
 
-    applyToolbarButtonSettings(self.lineSearchButton)
+    initToolbarButton(self.lineSearchButton)
     self.lineSearchButton.setImage(#imageLiteral(resourceName: "vecSearch"), for: .normal)
     self.lineSearchButton.addTarget(self, action: #selector(lineSearchButtonPressed), for: .touchUpInside)
 
-    applyToolbarButtonSettings(self.bookmarksButton)
+    initToolbarButton(self.bookmarksButton)
     self.bookmarksButton.setImage(#imageLiteral(resourceName: "vecFavorites1"), for: .normal)
     self.bookmarksButton.addTarget(self, action: #selector(bookmarksButtonPressed), for: .touchUpInside)
 
-    applyToolbarButtonSettings(self.configurationButton)
+    initToolbarButton(self.configurationButton)
     self.configurationButton.setImage(#imageLiteral(resourceName: "vecSettings"), for: .normal)
     self.configurationButton.addTarget(self, action: #selector(configurationButtonPressed), for: .touchUpInside)
 
@@ -129,7 +132,7 @@ extension MainViewController {
     toolbar.addArrangedSubview(self.configurationButton)
   }
 
-  private func applyToolbarButtonSettings(_ button: UIButton) {
+  private func initToolbarButton(_ button: UIButton) {
     button.contentMode = .scaleAspectFit
     button.contentHorizontalAlignment = .center
     button.contentVerticalAlignment = .center
