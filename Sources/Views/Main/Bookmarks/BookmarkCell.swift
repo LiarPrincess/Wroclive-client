@@ -49,7 +49,7 @@ extension BookmarkCell {
   private func initStackView() {
     self.stackView.axis = .vertical
     self.stackView.alignment = .fill
-    self.stackView.spacing = 5.0
+    self.stackView.spacing = 2.0
     self.stackView.distribution = .equalSpacing
     self.addSubview(self.stackView)
 

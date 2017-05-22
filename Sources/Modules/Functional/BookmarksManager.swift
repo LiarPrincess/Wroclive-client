@@ -15,6 +15,10 @@ protocol BookmarksManagerProtocol {
 
 class BookmarksManager: BookmarksManagerProtocol {
 
+  //MARK: - Singleton
+
+  static let instance: BookmarksManagerProtocol = BookmarksManager()
+
   //MARK: - BookmarksManagerProtocol
 
   public func getBookmarks() -> [Bookmark] {
