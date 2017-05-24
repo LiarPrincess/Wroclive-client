@@ -19,8 +19,6 @@ class MainViewController: UIViewController {
   let bookmarksButton = UIButton()
   let configurationButton = UIButton()
 
-  let bookmarksManager: BookmarksManagerProtocol = BookmarksManager()
-
   var bookmarksTransitionDelegate: UIViewControllerTransitioningDelegate?
 
   //MARK: - Overriden
@@ -42,7 +40,7 @@ class MainViewController: UIViewController {
 
   @objc fileprivate func bookmarksButtonPressed() {
     let relativeHeight = CGFloat(0.75)
-    let modalViewController = BookmarksViewController(bookmarksManager)
+    let modalViewController = BookmarksViewController()
 
     self.bookmarksTransitionDelegate = CardPanelTransitionDelegate(for: modalViewController, withRelativeHeight: relativeHeight)
     modalViewController.modalPresentationStyle = .custom

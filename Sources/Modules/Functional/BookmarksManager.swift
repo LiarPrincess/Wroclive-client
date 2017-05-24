@@ -6,11 +6,8 @@
 import Foundation
 
 protocol BookmarksManagerProtocol {
-  //MARK: - Create
-  //MARK: - Retrive
   func getBookmarks() -> [Bookmark]
-  //MARK: - Update
-  //MARK: - Delete
+  func saveBookmarks(_ bookmarks: [Bookmark])
 }
 
 class BookmarksManager: BookmarksManagerProtocol {
@@ -19,10 +16,27 @@ class BookmarksManager: BookmarksManagerProtocol {
 
   static let instance: BookmarksManagerProtocol = BookmarksManager()
 
+  //MARK: - Properties
+
+  private var bookmarks = BookmarksManager.testData()
+
+  //MARK: - Init
+
+  private init() { }
+
   //MARK: - BookmarksManagerProtocol
 
-  public func getBookmarks() -> [Bookmark] {
+  func getBookmarks() -> [Bookmark] {
+    return self.bookmarks
+  }
 
+  func saveBookmarks(_ bookmarks: [Bookmark]) {
+    self.bookmarks = bookmarks
+  }
+
+  //MARK: - Methods
+
+  private static func testData() -> [Bookmark] {
     let line1 = Line(name: "1", type: .tram, subtype: .regular)
     let line2 = Line(name: "2", type: .tram, subtype: .regular)
     let line3 = Line(name: "3", type: .tram, subtype: .regular)
@@ -67,7 +81,7 @@ class BookmarksManager: BookmarksManagerProtocol {
     let line319 = Line(name: "319", type: .bus, subtype: .regular)
     let line325 = Line(name: "325", type: .bus, subtype: .regular)
     let line331 = Line(name: "331", type: .bus, subtype: .regular)
-    
+
     let line602 = Line(name: "602", type: .bus, subtype: .suburban)
     let line607 = Line(name: "607", type: .bus, subtype: .suburban)
     let line609 = Line(name: "609", type: .bus, subtype: .suburban)

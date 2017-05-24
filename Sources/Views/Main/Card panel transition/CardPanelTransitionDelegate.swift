@@ -23,7 +23,8 @@ struct CardPanelConstants {
   }
 }
 
-//source: http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
+// source: http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
+
 class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
   //MARK: - Properties
@@ -33,9 +34,9 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
 
   //MARK: - Init
 
-  init(for viewController: UIViewController, withRelativeHeight relativeHeight: CGFloat) {
+  init(for presentable: CardPanelPresentable, withRelativeHeight relativeHeight: CGFloat) {
     self.relativeHeight = relativeHeight
-    self.interactiveTransition = CardPanelInteractiveTransition(for: viewController)
+    self.interactiveTransition = CardPanelInteractiveTransition(for: presentable)
     super.init()
   }
 

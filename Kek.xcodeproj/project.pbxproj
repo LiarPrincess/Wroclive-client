@@ -36,6 +36,7 @@
 		90C2E4801ECB62F700C1809F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C2E47D1ECB62F700C1809F /* Line.swift */; };
 		90C2E4811ECB62F700C1809F /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C2E47E1ECB62F700C1809F /* LineType.swift */; };
 		90DDA6D51ED1143900394E64 /* LineSubtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DDA6D41ED1143900394E64 /* LineSubtype.swift */; };
+		90EB66AE1ED62A6900118571 /* CardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB66AD1ED62A6900118571 /* CardPanelPresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -98,6 +99,7 @@
 		90C2E47E1ECB62F700C1809F /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
 		90DAB49B1E639C2000B38E42 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90DDA6D41ED1143900394E64 /* LineSubtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSubtype.swift; sourceTree = "<group>"; };
+		90EB66AD1ED62A6900118571 /* CardPanelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentable.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -151,7 +153,8 @@
 			children = (
 				902CEAB01E72A106003F54D5 /* Predicates.swift */,
 			);
-			path = Operators;
+			name = Operators;
+			path = ../Utils/Operators;
 			sourceTree = "<group>";
 		};
 		9034B37E1ED1ABC500387221 /* Modules */ = {
@@ -212,9 +215,10 @@
 		9034B3891ED1AC4400387221 /* Card panel transition */ = {
 			isa = PBXGroup;
 			children = (
-				9034B38A1ED1AC4400387221 /* CardPanelInteractiveTransition.swift */,
+				90EB66AD1ED62A6900118571 /* CardPanelPresentable.swift */,
 				9034B38B1ED1AC4400387221 /* CardPanelPresenter.swift */,
 				9034B38C1ED1AC4400387221 /* CardPanelTransition.swift */,
+				9034B38A1ED1AC4400387221 /* CardPanelInteractiveTransition.swift */,
 				9034B38D1ED1AC4400387221 /* CardPanelTransitionDelegate.swift */,
 			);
 			path = "Card panel transition";
@@ -238,6 +242,7 @@
 		9034B39B1ED1AC4F00387221 /* _ */ = {
 			isa = PBXGroup;
 			children = (
+				90834B5F1ED3B272000F1495 /* Utils */,
 				9034B39C1ED1AC4F00387221 /* Redux */,
 				9034B3A61ED1AC4F00387221 /* Storyboards */,
 				9034B3AB1ED1AC4F00387221 /* View Controllers */,
@@ -336,12 +341,20 @@
 			path = DataSources;
 			sourceTree = "<group>";
 		};
+		90834B5F1ED3B272000F1495 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				90ABD6E11E63AE0A007B583F /* MapKit */,
+				902CEAAF1E72A02B003F54D5 /* Operators */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		90ABD6DF1E63AE0A007B583F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				90ABD6E91E63AE17007B583F /* Logging */,
 				90ABD6E01E63AE0A007B583F /* Extensions */,
-				902CEAAF1E72A02B003F54D5 /* Operators */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -349,7 +362,6 @@
 		90ABD6E01E63AE0A007B583F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				90ABD6E11E63AE0A007B583F /* MapKit */,
 				90ABD6E51E63AE0A007B583F /* UIKit */,
 			);
 			path = Extensions;
@@ -362,7 +374,8 @@
 				90ABD6E31E63AE0A007B583F /* CLLocationManager.swift */,
 				90ABD6E41E63AE0A007B583F /* MKUserTrackingMode.swift */,
 			);
-			path = MapKit;
+			name = MapKit;
+			path = ../Utils/Extensions/MapKit;
 			sourceTree = "<group>";
 		};
 		90ABD6E51E63AE0A007B583F /* UIKit */ = {
@@ -565,6 +578,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90EB66AE1ED62A6900118571 /* CardPanelPresentable.swift in Sources */,
 				9034B3941ED1AC4400387221 /* BookmarksViewController.swift in Sources */,
 				9034B3991ED1AC4400387221 /* MainViewController.swift in Sources */,
 				90DDA6D51ED1143900394E64 /* LineSubtype.swift in Sources */,

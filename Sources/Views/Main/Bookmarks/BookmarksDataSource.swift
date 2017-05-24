@@ -10,9 +10,15 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
 
   //MARK: - Properties
 
-  var bookmarks = [Bookmark]()
+  private var bookmarks: [Bookmark]
 
-  //MARK: - UITableViewDataSource
+  //MARK: - Init
+
+  override init() {
+    self.bookmarks = BookmarksManager.instance.getBookmarks()
+  }
+
+  //MARK: - Data source
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.bookmarks.count
@@ -23,10 +29,6 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
       fatalError("The dequeued cell is not an instance of BookmarkCell")
     }
 
-    cell.bookmarkName.font = FontManager.instance.bookmarkCellTitle
-    cell.tramLines.font = FontManager.instance.bookmarkCellContent
-    cell.busLines.font = FontManager.instance.bookmarkCellContent
-
     let bookmark = self.bookmarks[indexPath.row]
     cell.bookmarkName.text = bookmark.name
     cell.tramLines.text = concatLineNames(bookmark.lines, ofType: .tram)
@@ -34,12 +36,36 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
     return cell
   }
 
-  //MARK: - Methods
-
   private func concatLineNames(_ lines: [Line], ofType lineType: LineType) -> String {
     return lines.filter { $0.type == lineType }
-                .map { $0.name }
-                .joined(separator: "  ")
+      .map { $0.name }
+      .joined(separator: "  ")
+  }
+
+  //MARK: - Moving/reordering
+
+  func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+
+  func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    let bookmark = self.bookmarks.remove(at: sourceIndexPath.row)
+    self.bookmarks.insert(bookmark, at: destinationIndexPath.row)
+    BookmarksManager.instance.saveBookmarks(self.bookmarks)
+  }
+
+  //MARK: - Editing
+
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      self.bookmarks.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+      BookmarksManager.instance.saveBookmarks(self.bookmarks)
+    }
   }
 
 }

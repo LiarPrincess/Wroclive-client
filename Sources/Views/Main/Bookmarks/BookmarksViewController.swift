@@ -12,46 +12,43 @@ class BookmarksViewController: UIViewController {
 
   let navigationBar = UINavigationBar()
   let closeButton = UIBarButtonItem()
-  let editButton = UIBarButtonItem()
-
-  let bookmarksManager: BookmarksManagerProtocol
 
   let bookmarksTable = UITableView()
   let bookmarksDataSource = BookmarksDataSource()
-
-  //MARK: - Init
-
-  init(_ bookmarksManager: BookmarksManagerProtocol) {
-    self.bookmarksManager = bookmarksManager
-    super.init(nibName: nil, bundle: nil)
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
 
   //MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.initDataSource()
     self.initLayout()
   }
 
-  private func initDataSource() {
-    self.bookmarksDataSource.bookmarks = self.bookmarksManager.getBookmarks()
+  override func setEditing(_ editing: Bool, animated: Bool) {
+    super.setEditing(editing, animated: animated)
+    self.bookmarksTable.setEditing(editing, animated: true)
   }
 
   //MARK: - Actions
 
   @objc fileprivate func editButtonPressed() {
-    log.info("editButtonPressed")
+    self.setEditing(true, animated: true)
+  }
+
+  @objc fileprivate func editCommitButtonPressed() {
+    self.setEditing(false, animated: true)
   }
 
   @objc fileprivate func closeButtonPressed() {
     self.dismiss(animated: true, completion: nil)
   }
 
+}
+
+//MARK: - CardPanelPresentable
+
+extension BookmarksViewController: CardPanelPresentable {
+  var contentView: UIView { return self.view }
+  var interactionTarget: UIView { return self.navigationBar }
 }
 
 //MARK: - TableViewDelegate
@@ -66,10 +63,7 @@ extension BookmarksViewController: UITableViewDelegate {
     }
 
     cell.tramLines.isHidden = cell.tramLines.text?.isEmpty ?? true
-    cell.tramLines.textColor = self.view.tintColor
-
     cell.busLines.isHidden = cell.busLines.text?.isEmpty ?? true
-    cell.busLines.textColor = self.view.tintColor
   }
 
   //MARK: - Height
@@ -101,24 +95,21 @@ extension BookmarksViewController {
       make.left.right.top.equalToSuperview()
     }
 
-    let navigationItem = UINavigationItem(title: "Bookmarks")
-    navigationBar.pushItem(navigationItem, animated: false)
-
-    self.editButton.style = .plain
-    self.editButton.title = "Edit"
-    self.editButton.target = self
-    self.editButton.action = #selector(editButtonPressed)
-    navigationItem.leftBarButtonItem = self.editButton
+    self.navigationItem.title = "Bookmarks"
+    self.navigationBar.pushItem(navigationItem, animated: false)
 
     self.closeButton.style = .plain
     self.closeButton.title = "Close"
     self.closeButton.target = self
     self.closeButton.action = #selector(closeButtonPressed)
-    navigationItem.rightBarButtonItem = self.closeButton
+
+    self.navigationItem.setLeftBarButton(self.editButtonItem, animated: false)
+    self.navigationItem.setRightBarButton(self.closeButton, animated: false)
   }
 
   private func initBookmarksTable() {
     self.bookmarksTable.register(BookmarkCell.self, forCellReuseIdentifier: BookmarkCell.identifier)
+    self.bookmarksTable.separatorInset = .zero
     self.bookmarksTable.dataSource = self.bookmarksDataSource
     self.bookmarksTable.delegate = self
     self.view.addSubview(self.bookmarksTable)

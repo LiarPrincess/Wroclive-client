@@ -12,28 +12,28 @@ class CardPanelInteractiveTransition: UIPercentDrivenInteractiveTransition {
 
   var hasStarted = false
 
-  private weak var viewController: UIViewController!
+  private weak var presentable: CardPanelPresentable!
 
   //MARK: - Init
 
-  init(for viewController: UIViewController) {
-    self.viewController = viewController
+  init(for presentable: CardPanelPresentable) {
+    self.presentable = presentable
     super.init()
 
     let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
-    self.viewController.view.addGestureRecognizer(gestureRecognizer)
+    self.presentable.interactionTarget.addGestureRecognizer(gestureRecognizer)
   }
 
   //MARK: - Gesture recognizers
 
   func handleGesture(gesture: UIPanGestureRecognizer) {
     let translation = gesture.translation(in: gesture.view)
-    let percent = translation.y / gesture.view!.bounds.size.height
+    let percent = translation.y / self.presentable.contentView.bounds.size.height
 
     switch gesture.state {
     case .began:
       self.hasStarted = true
-      self.viewController.dismiss(animated: true, completion: nil)
+      self.presentable.dismiss(animated: true, completion: nil)
 
     case .changed:
       self.update(percent)

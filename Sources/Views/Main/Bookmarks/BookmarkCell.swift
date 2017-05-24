@@ -28,6 +28,13 @@ class BookmarkCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
+  //MARK: - Overriden
+
+  // disable alpha, so we dont end up with transparent cells when reordering
+  override var alpha: CGFloat {
+    didSet { super.alpha = 1 }
+  }
+
 }
 
 //MARK: - UI Init
@@ -40,6 +47,14 @@ extension BookmarkCell {
     self.initLabel(self.bookmarkName)
     self.initLabel(self.tramLines)
     self.initLabel(self.busLines)
+
+    self.bookmarkName.font = FontManager.instance.bookmarkCellTitle
+    self.tramLines.font = FontManager.instance.bookmarkCellContent
+    self.busLines.font = FontManager.instance.bookmarkCellContent
+
+    let textColor = UIApplication.shared.keyWindow!.tintColor
+    self.tramLines.textColor = textColor
+    self.busLines.textColor = textColor
 
     self.stackView.addArrangedSubview(self.bookmarkName)
     self.stackView.addArrangedSubview(self.tramLines)
@@ -54,7 +69,7 @@ extension BookmarkCell {
     self.addSubview(self.stackView)
 
     self.stackView.snp.makeConstraints { make in
-      make.edges.equalToSuperview().inset(UIEdgeInsets(top: 5.0, left: 30.0, bottom: 5.0, right: 30.0))
+      make.edges.equalToSuperview().inset(UIEdgeInsets(top: 5.0, left: 40.0, bottom: 5.0, right: 40.0))
     }
   }
 
