@@ -30,16 +30,8 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
     }
 
     let bookmark = self.bookmarks[indexPath.row]
-    cell.bookmarkName.text = bookmark.name
-    cell.tramLines.text = concatLineNames(bookmark.lines, ofType: .tram)
-    cell.busLines.text = concatLineNames(bookmark.lines, ofType: .bus)
+    cell.setUp(with: BookmarkCellViewModel(bookmark))
     return cell
-  }
-
-  private func concatLineNames(_ lines: [Line], ofType lineType: LineType) -> String {
-    return lines.filter { $0.type == lineType }
-      .map { $0.name }
-      .joined(separator: "  ")
   }
 
   //MARK: - Moving/reordering

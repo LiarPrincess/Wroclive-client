@@ -55,17 +55,6 @@ extension BookmarksViewController: CardPanelPresentable {
 
 extension BookmarksViewController: UITableViewDelegate {
 
-  //MARK: - Display
-
-  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    guard let cell = cell as? BookmarkCell else {
-      fatalError("Invalid cell type passed to BookmarksViewController.UITableViewDelegate")
-    }
-
-    cell.tramLines.isHidden = cell.tramLines.text?.isEmpty ?? true
-    cell.busLines.isHidden = cell.busLines.text?.isEmpty ?? true
-  }
-
   //MARK: - Height
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

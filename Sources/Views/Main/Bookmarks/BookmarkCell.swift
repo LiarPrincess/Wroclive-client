@@ -6,6 +6,29 @@
 import UIKit
 import SnapKit
 
+//MARK: - BookmarkCellViewModel
+
+struct BookmarkCellViewModel {
+  let bookmarkName: String
+  let tramLines: String
+  let busLines: String
+
+  init(_ bookmark: Bookmark) {
+    self.bookmarkName = bookmark.name
+    self.tramLines = BookmarkCellViewModel.concatLineNames(bookmark.lines, ofType: .tram)
+    self.busLines = BookmarkCellViewModel.concatLineNames(bookmark.lines, ofType: .bus)
+  }
+
+  private static func concatLineNames(_ lines: [Line], ofType lineType: LineType) -> String {
+    return lines.filter { $0.type == lineType }
+      .map { $0.name }
+      .joined(separator: "  ")
+  }
+  
+}
+
+//MARK: - BookmarkCell
+
 class BookmarkCell: UITableViewCell {
 
   //MARK: - Properties
@@ -13,9 +36,9 @@ class BookmarkCell: UITableViewCell {
   static let identifier = "BookmarkCell"
 
   fileprivate let stackView = UIStackView()
-  let bookmarkName = UILabel()
-  let tramLines = UILabel()
-  let busLines = UILabel()
+  fileprivate let bookmarkName = UILabel()
+  fileprivate let tramLines = UILabel()
+  fileprivate let busLines = UILabel()
 
   //MARK: - Init
 
@@ -33,6 +56,18 @@ class BookmarkCell: UITableViewCell {
   // disable alpha, so we dont end up with transparent cells when reordering
   override var alpha: CGFloat {
     didSet { super.alpha = 1 }
+  }
+
+  //MARK: - Methods
+
+  func setUp(with viewModel: BookmarkCellViewModel) {
+    self.bookmarkName.text = viewModel.bookmarkName
+
+    self.tramLines.text = viewModel.tramLines
+    self.tramLines.isHidden = viewModel.tramLines.isEmpty
+
+    self.busLines.text = viewModel.busLines
+    self.busLines.isHidden = viewModel.busLines.isEmpty
   }
 
 }
