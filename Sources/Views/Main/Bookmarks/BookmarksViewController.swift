@@ -20,6 +20,7 @@ class BookmarksViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.initDataSource()
     self.initLayout()
   }
 
@@ -71,6 +72,10 @@ extension BookmarksViewController: UITableViewDelegate {
 
 extension BookmarksViewController {
 
+  fileprivate func initDataSource() {
+    self.bookmarksDataSource.bookmarks = BookmarksManager.instance.getBookmarks()
+  }
+
   fileprivate func initLayout() {
     self.view.backgroundColor = UIColor.white
     self.initNavigationBar()
@@ -97,7 +102,7 @@ extension BookmarksViewController {
   }
 
   private func initBookmarksTable() {
-    self.bookmarksTable.register(BookmarkCell.self, forCellReuseIdentifier: BookmarkCell.identifier)
+    self.bookmarksTable.register(BookmarkCell.self)
     self.bookmarksTable.separatorInset = .zero
     self.bookmarksTable.dataSource = self.bookmarksDataSource
     self.bookmarksTable.delegate = self

@@ -10,13 +10,7 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
 
   //MARK: - Properties
 
-  private var bookmarks: [Bookmark]
-
-  //MARK: - Init
-
-  override init() {
-    self.bookmarks = BookmarksManager.instance.getBookmarks()
-  }
+  var bookmarks = [Bookmark]()
 
   //MARK: - Data source
 
@@ -25,11 +19,9 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarkCell.identifier, for: indexPath) as? BookmarkCell  else {
-      fatalError("The dequeued cell is not an instance of BookmarkCell")
-    }
-
+    let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as BookmarkCell
     let bookmark = self.bookmarks[indexPath.row]
+
     cell.setUp(with: BookmarkCellViewModel(bookmark))
     return cell
   }

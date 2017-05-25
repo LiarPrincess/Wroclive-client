@@ -37,6 +37,7 @@
 		90C2E4811ECB62F700C1809F /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C2E47E1ECB62F700C1809F /* LineType.swift */; };
 		90DDA6D51ED1143900394E64 /* LineSubtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DDA6D41ED1143900394E64 /* LineSubtype.swift */; };
 		90EB66AE1ED62A6900118571 /* CardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB66AD1ED62A6900118571 /* CardPanelPresentable.swift */; };
+		90EB66B61ED7943A00118571 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB66B51ED7943A00118571 /* ReusableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -100,6 +101,7 @@
 		90DAB49B1E639C2000B38E42 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90DDA6D41ED1143900394E64 /* LineSubtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSubtype.swift; sourceTree = "<group>"; };
 		90EB66AD1ED62A6900118571 /* CardPanelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentable.swift; sourceTree = "<group>"; };
+		90EB66B51ED7943A00118571 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -355,6 +357,7 @@
 			children = (
 				90ABD6E91E63AE17007B583F /* Logging */,
 				90ABD6E01E63AE0A007B583F /* Extensions */,
+				90EB66B31ED7943A00118571 /* UI */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -414,6 +417,22 @@
 			);
 			name = Locations;
 			path = Sources/Resources/Locations;
+			sourceTree = "<group>";
+		};
+		90EB66B31ED7943A00118571 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				90EB66B41ED7943A00118571 /* Reusable */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		90EB66B41ED7943A00118571 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				90EB66B51ED7943A00118571 /* ReusableCell.swift */,
+			);
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 		OBJ_41 /* Tests */ = {
@@ -590,6 +609,7 @@
 				9034B3931ED1AC4400387221 /* BookmarksDataSource.swift in Sources */,
 				901E66F61ECE204D00690D42 /* AppDelegate.swift in Sources */,
 				9034B3981ED1AC4400387221 /* CardPanelTransitionDelegate.swift in Sources */,
+				90EB66B61ED7943A00118571 /* ReusableCell.swift in Sources */,
 				90ABD6E71E63AE0A007B583F /* CLLocationManager.swift in Sources */,
 				9034B3961ED1AC4400387221 /* CardPanelPresenter.swift in Sources */,
 				9034B3951ED1AC4400387221 /* CardPanelInteractiveTransition.swift in Sources */,

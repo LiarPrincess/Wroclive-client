@@ -33,8 +33,6 @@ class BookmarkCell: UITableViewCell {
 
   //MARK: - Properties
 
-  static let identifier = "BookmarkCell"
-
   fileprivate let stackView = UIStackView()
   fileprivate let bookmarkName = UILabel()
   fileprivate let tramLines = UILabel()
