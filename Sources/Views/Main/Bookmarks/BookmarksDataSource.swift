@@ -28,7 +28,7 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as BookmarkCell
     let bookmark = self.bookmarks[indexPath.row]
 
-    cell.setUp(with: BookmarkCellViewModel(bookmark))
+    cell.setUp(with: BookmarkCellViewModel(from: bookmark))
     return cell
   }
 

@@ -6,8 +6,6 @@
 import UIKit
 import SnapKit
 
-// DynamicFontHelper.defaultHelper.DeviceFont
-
 class MainViewController: UIViewController {
 
   //MARK: - Properties
@@ -19,6 +17,7 @@ class MainViewController: UIViewController {
   let bookmarksButton = UIButton()
   let configurationButton = UIButton()
 
+  var lineSelectionTransitionDelegate: UIViewControllerTransitioningDelegate?
   var bookmarksTransitionDelegate: UIViewControllerTransitioningDelegate?
 
   //MARK: - Overriden
@@ -31,22 +30,29 @@ class MainViewController: UIViewController {
   //MARK: - Actions
 
   @objc fileprivate func userTrackingButtonPressed() {
-    log.info("userTrackingButtonTapped")
+    log.info("userTrackingButtonPressed")
   }
 
-  @objc fileprivate func lineSearchButtonPressed() {
-    log.info("lineSearchButtonTapped")
+  @objc fileprivate func lineSelectionButtonPressed() {
+    let relativeHeight = CGFloat(0.90)
+    let controller = LineSelectionViewController()
+
+    self.lineSelectionTransitionDelegate = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
+    controller.modalPresentationStyle = .custom
+    controller.transitioningDelegate = self.lineSelectionTransitionDelegate!
+
+    self.present(controller, animated: true, completion: nil)
   }
 
   @objc fileprivate func bookmarksButtonPressed() {
     let relativeHeight = CGFloat(0.75)
-    let modalViewController = BookmarksViewController()
+    let controller = BookmarksViewController()
 
-    self.bookmarksTransitionDelegate = CardPanelTransitionDelegate(for: modalViewController, withRelativeHeight: relativeHeight)
-    modalViewController.modalPresentationStyle = .custom
-    modalViewController.transitioningDelegate = self.bookmarksTransitionDelegate!
+    self.bookmarksTransitionDelegate = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
+    controller.modalPresentationStyle = .custom
+    controller.transitioningDelegate = self.bookmarksTransitionDelegate!
 
-    self.present(modalViewController, animated: true, completion: nil)
+    self.present(controller, animated: true, completion: nil)
   }
 
   @objc fileprivate func configurationButtonPressed() {
@@ -114,7 +120,7 @@ extension MainViewController {
 
     initToolbarButton(self.lineSearchButton)
     self.lineSearchButton.setImage(#imageLiteral(resourceName: "vecSearch"), for: .normal)
-    self.lineSearchButton.addTarget(self, action: #selector(lineSearchButtonPressed), for: .touchUpInside)
+    self.lineSearchButton.addTarget(self, action: #selector(lineSelectionButtonPressed), for: .touchUpInside)
 
     initToolbarButton(self.bookmarksButton)
     self.bookmarksButton.setImage(#imageLiteral(resourceName: "vecFavorites1"), for: .normal)

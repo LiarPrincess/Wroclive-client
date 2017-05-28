@@ -13,7 +13,7 @@ struct BookmarkCellViewModel {
   let tramLines: String
   let busLines: String
 
-  init(_ bookmark: Bookmark) {
+  init(from bookmark: Bookmark) {
     self.bookmarkName = bookmark.name
     self.tramLines = BookmarkCellViewModel.concatLineNames(bookmark.lines, ofType: .tram)
     self.busLines = BookmarkCellViewModel.concatLineNames(bookmark.lines, ofType: .bus)

@@ -11,9 +11,9 @@ class BookmarksViewController: UIViewController {
   //MARK: - Properties
 
   let navigationBar = UINavigationBar()
-  let closeButton = UIBarButtonItem()
+  let closeButton   = UIBarButtonItem()
 
-  let bookmarksTable = UITableView()
+  let bookmarksTable      = UITableView()
   let bookmarksDataSource = BookmarksDataSource()
 
   //MARK: - Overriden
@@ -45,7 +45,7 @@ class BookmarksViewController: UIViewController {
 //MARK: - CardPanelPresentable
 
 extension BookmarksViewController: CardPanelPresentable {
-  var contentView: UIView { return self.view }
+  var contentView:       UIView { return self.view }
   var interactionTarget: UIView { return self.navigationBar }
 }
 
@@ -73,7 +73,8 @@ extension BookmarksViewController: BookmarksDataSourceDelegate {
       self.navigationItem.setLeftBarButton(nil, animated: true)
       self.bookmarksTable.separatorStyle = .none
       self.bookmarksTable.backgroundView?.isHidden = false
-    } else {
+    }
+    else {
       self.navigationItem.setLeftBarButton(self.editButtonItem, animated: true)
       self.bookmarksTable.separatorStyle = .singleLine
       self.bookmarksTable.backgroundView?.isHidden = true
@@ -84,11 +85,6 @@ extension BookmarksViewController: BookmarksDataSourceDelegate {
 //MARK: - UI Init
 
 extension BookmarksViewController {
-
-  fileprivate enum LayoutMode {
-    case showData
-    case showPlaceholder
-  }
 
   fileprivate func initLayout() {
     self.view.backgroundColor = UIColor.white
@@ -130,16 +126,17 @@ extension BookmarksViewController {
   }
 
   private func createBookmarksTablePlaceholder() -> UIView {
-    let placeholder = UIView()
-
-    func configure(_ label: UILabel) {
+    func createPlaceholderLabel() -> UILabel {
+      let label = UILabel()
       label.textAlignment = .center
       label.numberOfLines = 0
+      return label
     }
 
-    let topLabel = UILabel()
-    configure(topLabel)
-    topLabel.text = "You have no\nbookmarks saved"
+    let placeholder = UIView()
+
+    let topLabel = createPlaceholderLabel()
+    topLabel.text = "You have not saved\nany bookmarks"
     topLabel.font = FontManager.instance.bookmarkPlaceholderTitle
     placeholder.addSubview(topLabel)
 
@@ -148,8 +145,7 @@ extension BookmarksViewController {
       make.left.right.equalToSuperview()
     }
 
-    let bottomLabel = UILabel()
-    configure(bottomLabel)
+    let bottomLabel = createPlaceholderLabel()
     bottomLabel.text = "To add bookmark press\n'Save' when searching (X)\nfor lines."
     bottomLabel.font = FontManager.instance.bookmarkPlaceholderContent
     placeholder.addSubview(bottomLabel)

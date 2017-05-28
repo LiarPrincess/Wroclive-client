@@ -19,6 +19,9 @@ class FontManager {
   private(set) var navigationBar:     UIFont!
   private(set) var navigationBarItem: UIFont!
 
+  private(set) var lineSelectionCellContent:      UIFont!
+  private(set) var lineSelectionLineTypeSelector: UIFont!
+
   private(set) var bookmarkCellTitle:          UIFont!
   private(set) var bookmarkCellContent:        UIFont!
   private(set) var bookmarkPlaceholderTitle:   UIFont!
@@ -42,8 +45,11 @@ class FontManager {
     //let defaultMediumFontSize = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .footnote).pointSize // 12pt -> 13pt -> 19pt
     //let defaultSmallFontSize = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .caption2).pointSize  // 11pt -> 11pt -> 17pt
 
-    self.navigationBar = self.customFontBold(ofSize: defaultStandardFontSize + 1.0)
+    self.navigationBar     = self.customFontBold(ofSize: defaultStandardFontSize + 1.0)
     self.navigationBarItem = self.customFont(ofSize: defaultStandardFontSize)
+
+    self.lineSelectionCellContent      = self.customFont(ofSize: defaultStandardFontSize)
+    self.lineSelectionLineTypeSelector = self.customFont(ofSize: defaultStandardFontSize - 1.0)
 
     self.bookmarkCellTitle          = self.customFontBold(ofSize: defaultStandardFontSize + 1.0)
     self.bookmarkCellContent        = self.customFont(ofSize: defaultStandardFontSize - 1.0)
