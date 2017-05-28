@@ -29,15 +29,12 @@ class BookmarksViewController: UIViewController {
     self.bookmarksTable.setEditing(editing, animated: true)
   }
 
+  private func initDataSource() {
+    self.bookmarksDataSource.delegate = self
+    self.bookmarksDataSource.bookmarks = BookmarksManager.instance.getBookmarks()
+  }
+
   //MARK: - Actions
-
-  @objc fileprivate func editButtonPressed() {
-    self.setEditing(true, animated: true)
-  }
-
-  @objc fileprivate func editCommitButtonPressed() {
-    self.setEditing(false, animated: true)
-  }
 
   @objc fileprivate func closeButtonPressed() {
     self.dismiss(animated: true, completion: nil)
@@ -56,7 +53,7 @@ extension BookmarksViewController: CardPanelPresentable {
 
 extension BookmarksViewController: UITableViewDelegate {
 
-  //MARK: - Height
+  //MARK: Height
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableViewAutomaticDimension
@@ -65,15 +62,32 @@ extension BookmarksViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     return tableView.rowHeight
   }
-  
+
+}
+
+//MARK: - BookmarksDataSourceDelegate
+
+extension BookmarksViewController: BookmarksDataSourceDelegate {
+  func bookmarksDataSource(_ dataSource: BookmarksDataSource, didChangeRowCount rowCount: Int) {
+    if rowCount == 0 {
+      self.navigationItem.setLeftBarButton(nil, animated: true)
+      self.bookmarksTable.separatorStyle = .none
+      self.bookmarksTable.backgroundView?.isHidden = false
+    } else {
+      self.navigationItem.setLeftBarButton(self.editButtonItem, animated: true)
+      self.bookmarksTable.separatorStyle = .singleLine
+      self.bookmarksTable.backgroundView?.isHidden = true
+    }
+  }
 }
 
 //MARK: - UI Init
 
 extension BookmarksViewController {
 
-  fileprivate func initDataSource() {
-    self.bookmarksDataSource.bookmarks = BookmarksManager.instance.getBookmarks()
+  fileprivate enum LayoutMode {
+    case showData
+    case showPlaceholder
   }
 
   fileprivate func initLayout() {
@@ -104,6 +118,7 @@ extension BookmarksViewController {
   private func initBookmarksTable() {
     self.bookmarksTable.register(BookmarkCell.self)
     self.bookmarksTable.separatorInset = .zero
+    self.bookmarksTable.backgroundView = self.createBookmarksTablePlaceholder()
     self.bookmarksTable.dataSource = self.bookmarksDataSource
     self.bookmarksTable.delegate = self
     self.view.addSubview(self.bookmarksTable)
@@ -112,6 +127,39 @@ extension BookmarksViewController {
       make.top.equalTo(self.navigationBar.snp.bottom)
       make.left.right.bottom.equalToSuperview()
     }
+  }
+
+  private func createBookmarksTablePlaceholder() -> UIView {
+    let placeholder = UIView()
+
+    func configure(_ label: UILabel) {
+      label.textAlignment = .center
+      label.numberOfLines = 0
+    }
+
+    let topLabel = UILabel()
+    configure(topLabel)
+    topLabel.text = "You have no\nbookmarks saved"
+    topLabel.font = FontManager.instance.bookmarkPlaceholderTitle
+    placeholder.addSubview(topLabel)
+
+    topLabel.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(30.0)
+      make.left.right.equalToSuperview()
+    }
+
+    let bottomLabel = UILabel()
+    configure(bottomLabel)
+    bottomLabel.text = "To add bookmark press\n'Save' when searching (X)\nfor lines."
+    bottomLabel.font = FontManager.instance.bookmarkPlaceholderContent
+    placeholder.addSubview(bottomLabel)
+
+    bottomLabel.snp.makeConstraints { make in
+      make.top.equalTo(topLabel.snp.bottom).offset(8.0)
+      make.left.right.equalToSuperview()
+    }
+
+    return placeholder
   }
 
 }

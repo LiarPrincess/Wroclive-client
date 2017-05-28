@@ -35,8 +35,8 @@ class BookmarkCell: UITableViewCell {
 
   fileprivate let stackView = UIStackView()
   fileprivate let bookmarkName = UILabel()
-  fileprivate let tramLines = UILabel()
-  fileprivate let busLines = UILabel()
+  fileprivate let tramLines    = UILabel()
+  fileprivate let busLines     = UILabel()
 
   //MARK: - Init
 
@@ -85,10 +85,6 @@ extension BookmarkCell {
     self.tramLines.font = FontManager.instance.bookmarkCellContent
     self.busLines.font = FontManager.instance.bookmarkCellContent
 
-    let textColor = UIApplication.shared.keyWindow!.tintColor
-    self.tramLines.textColor = textColor
-    self.busLines.textColor = textColor
-
     self.stackView.addArrangedSubview(self.bookmarkName)
     self.stackView.addArrangedSubview(self.tramLines)
     self.stackView.addArrangedSubview(self.busLines)
@@ -97,7 +93,7 @@ extension BookmarkCell {
   private func initStackView() {
     self.stackView.axis = .vertical
     self.stackView.alignment = .fill
-    self.stackView.spacing = 2.0
+    self.stackView.spacing = 5.0
     self.stackView.distribution = .equalSpacing
     self.addSubview(self.stackView)
 

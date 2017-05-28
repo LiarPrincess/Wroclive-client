@@ -6,15 +6,21 @@
 import Foundation
 import UIKit
 
+protocol BookmarksDataSourceDelegate: class {
+  func bookmarksDataSource(_ dataSource: BookmarksDataSource, didChangeRowCount rowCount: Int)
+}
+
 class BookmarksDataSource: NSObject, UITableViewDataSource {
 
   //MARK: - Properties
 
   var bookmarks = [Bookmark]()
+  weak var delegate: BookmarksDataSourceDelegate?
 
   //MARK: - Data source
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    self.delegateDidChangeRowCount()
     return self.bookmarks.count
   }
 
@@ -49,7 +55,14 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
       self.bookmarks.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .automatic)
       BookmarksManager.instance.saveBookmarks(self.bookmarks)
+      self.delegateDidChangeRowCount()
     }
+  }
+
+  //MARK: - Methods
+
+  func delegateDidChangeRowCount() {
+    delegate?.bookmarksDataSource(self, didChangeRowCount: self.bookmarks.count)
   }
 
 }
