@@ -154,8 +154,8 @@ extension LineSelectionViewController {
   }
 
   private func initLinesCollection() {
+    self.lineCollection.register(LineSelectionCell.self)
     self.lineCollection.backgroundColor = UIColor.white
-    self.lineCollection.register(LineSelectionCell.self, forCellWithReuseIdentifier: "LineSelectionCell")
     self.lineCollection.allowsSelection = true
     self.lineCollection.allowsMultipleSelection = true
     //self.lineCollection.dataSource will be set later in self.updateLineCollectionDataSource()
