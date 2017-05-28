@@ -10,14 +10,26 @@ protocol BookmarksDataSourceDelegate: class {
   func bookmarksDataSource(_ dataSource: BookmarksDataSource, didChangeRowCount rowCount: Int)
 }
 
-class BookmarksDataSource: NSObject, UITableViewDataSource {
+class BookmarksDataSource: NSObject {
 
   //MARK: - Properties
 
   var bookmarks = [Bookmark]()
   weak var delegate: BookmarksDataSourceDelegate?
 
-  //MARK: - Data source
+  //MARK: - Methods
+
+  fileprivate func delegateDidChangeRowCount() {
+    delegate?.bookmarksDataSource(self, didChangeRowCount: self.bookmarks.count)
+  }
+
+}
+
+//MARK: - BookmarksDataSource
+
+extension BookmarksDataSource: UITableViewDataSource {
+
+  //MARK: - Data
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     self.delegateDidChangeRowCount()
@@ -55,14 +67,8 @@ class BookmarksDataSource: NSObject, UITableViewDataSource {
       self.bookmarks.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .automatic)
       BookmarksManager.instance.saveBookmarks(self.bookmarks)
+      
       self.delegateDidChangeRowCount()
     }
   }
-
-  //MARK: - Methods
-
-  func delegateDidChangeRowCount() {
-    delegate?.bookmarksDataSource(self, didChangeRowCount: self.bookmarks.count)
-  }
-
 }

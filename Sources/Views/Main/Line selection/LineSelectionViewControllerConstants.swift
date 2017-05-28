@@ -35,4 +35,17 @@ struct LineSelectionViewControllerConstants {
     static let tram = 0
     static let bus  = 1
   }
+
+  static func sectionOrder(for subtype: LineSubtype) -> Int {
+    switch subtype {
+    case .express:   return 0
+    case .regular:   return 1
+    case .hour:      return 2
+    case .suburban:  return 3
+    case .zone:      return 4
+    case .limited:   return 5
+    case .temporary: return 6
+    case .night:     return 7
+    }
+  }
 }
