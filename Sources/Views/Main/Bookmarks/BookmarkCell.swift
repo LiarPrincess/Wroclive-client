@@ -81,9 +81,13 @@ extension BookmarkCell {
     self.initLabel(self.tramLines)
     self.initLabel(self.busLines)
 
+    let textColor = UIApplication.shared.keyWindow!.tintColor
+    self.tramLines.textColor = textColor
+    self.busLines.textColor = textColor
+
     self.bookmarkName.font = FontManager.instance.bookmarkCellTitle
-    self.tramLines.font = FontManager.instance.bookmarkCellContent
-    self.busLines.font = FontManager.instance.bookmarkCellContent
+    self.tramLines.font    = FontManager.instance.bookmarkCellContent
+    self.busLines.font     = FontManager.instance.bookmarkCellContent
 
     self.stackView.addArrangedSubview(self.bookmarkName)
     self.stackView.addArrangedSubview(self.tramLines)

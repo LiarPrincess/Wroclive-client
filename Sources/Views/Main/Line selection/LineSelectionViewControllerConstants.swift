@@ -20,19 +20,23 @@ struct LineSelectionViewControllerConstants {
     }
 
     struct LineCollection {
-      static let topOffset:    CGFloat = 16.0
-      static let bottomOffset: CGFloat = 16.0
-    }
+      static let topOffset: CGFloat = 16.0
 
-    struct CellHeader {
-      static let height: CGFloat = 44.0
-    }
+      struct Section {
+        static let insets            = UIEdgeInsets(top: 8.0,        left: Content.leftOffset, bottom:  8.0, right: Content.rightOffset)
+        static let lastSectionInsets = UIEdgeInsets(top: insets.top, left: insets.left,        bottom: 32.0, right: insets.right)
+      }
 
-    struct Cell {
-      static let cornerRadius: CGFloat =  4.0
-      static let borderWidth:  CGFloat =  1.0
-      static let margin:       CGFloat =  4.0
-      static let minWidth:     CGFloat = 55.0
+      struct CellHeader {
+        static let height: CGFloat = 44.0
+      }
+
+      struct Cell {
+        static let cornerRadius: CGFloat =  4.0
+        static let borderWidth:  CGFloat =  1.0
+        static let margin:       CGFloat =  4.0
+        static let minWidth:     CGFloat = 55.0
+      }
     }
   }
 

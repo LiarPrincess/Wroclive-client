@@ -56,8 +56,8 @@ extension LineSelectionCell {
     self.lineName.textAlignment = .center
     self.lineName.textColor     = tintColor
 
-    self.layer.cornerRadius = Constants.Layout.Cell.cornerRadius
-    self.layer.borderWidth  = Constants.Layout.Cell.borderWidth
+    self.layer.cornerRadius = Constants.Layout.LineCollection.Cell.cornerRadius
+    self.layer.borderWidth  = Constants.Layout.LineCollection.Cell.borderWidth
     self.layer.borderColor  = tintColor?.cgColor
     self.clipsToBounds      = true
 

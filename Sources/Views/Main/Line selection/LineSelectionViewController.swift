@@ -17,8 +17,12 @@ class LineSelectionViewController: UIViewController {
   let saveButton    = UIBarButtonItem()
   let searchButton  = UIBarButtonItem()
 
-  let lineTypeSelector = UISegmentedControl()
-  let lineCollection   = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+  let lineTypeSelector     = UISegmentedControl()
+  let lineCollectionLayout = UICollectionViewFlowLayout()
+
+  lazy var lineCollection: UICollectionView = {
+    return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.lineCollectionLayout)
+  }()
 
   let tramsDataSource = LineSelectionDataSource()
   let busesDataSource = LineSelectionDataSource()
@@ -76,7 +80,7 @@ extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
   //MARK: - Size
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return CGSize(width: collectionView.bounds.width, height: Constants.Layout.CellHeader.height)
+    return CGSize(width: collectionView.bounds.width, height: Constants.Layout.LineCollection.CellHeader.height)
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -88,8 +92,8 @@ extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
     //-> cellWidth = (totalWidth - (n-1) * margin) / n
 
     let totalWidth   = collectionView.bounds.width
-    let margin       = Constants.Layout.Cell.margin
-    let minCellWidth = Constants.Layout.Cell.minWidth
+    let margin       = Constants.Layout.LineCollection.Cell.margin
+    let minCellWidth = Constants.Layout.LineCollection.Cell.minWidth
 
     let numSectionsThatFit = floor((totalWidth + margin) / (minCellWidth + margin))
     let cellWidth          = (totalWidth - (numSectionsThatFit - 1) * margin) / numSectionsThatFit
@@ -101,19 +105,20 @@ extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
   //MARK: - Margin
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return Constants.Layout.Cell.margin
+    return Constants.Layout.LineCollection.Cell.margin
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return Constants.Layout.Cell.margin
+    return Constants.Layout.LineCollection.Cell.margin
   }
 
   //MARK: - Content placement
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    let leftOffset  = Constants.Layout.Content.leftOffset
-    let rightOffset = Constants.Layout.Content.rightOffset
-    return UIEdgeInsets(top: 0.0, left: leftOffset, bottom: 0.0, right: rightOffset)
+    typealias sectionConstants = Constants.Layout.LineCollection.Section
+
+    let isLastSection = section == (collectionView.numberOfSections - 1)
+    return isLastSection ? sectionConstants.lastSectionInsets : sectionConstants.insets
   }
 
 }
@@ -183,7 +188,7 @@ extension LineSelectionViewController {
     self.lineCollection.snp.makeConstraints { make in
       make.top.equalTo(self.lineTypeSelector.snp.bottom).offset(Constants.Layout.LineCollection.topOffset)
       make.left.right.equalToSuperview()
-      make.bottom.equalToSuperview().offset(-Constants.Layout.LineCollection.bottomOffset)
+      make.bottom.equalToSuperview()
     }
   }
 

@@ -65,6 +65,21 @@ extension LineSelectionSectionCreator {
 
   fileprivate func sort(lines: [Line]) -> [Line] {
     return lines.sorted { (lhs, rhs) in
+      let lhsNum = Int(lhs.name)
+      let rhsNum = Int(rhs.name)
+
+      if let lhsNum = lhsNum, let rhsNum = rhsNum {
+        return lhsNum < rhsNum
+      }
+
+      if let _ = lhsNum {
+        return true
+      }
+
+      if let _ = rhsNum {
+        return false
+      }
+
       return lhs.name.caseInsensitiveCompare(rhs.name) == .orderedAscending
     }
   }
@@ -90,11 +105,11 @@ extension LineSelectionSectionCreator {
     switch subtype {
     case .express:   return 0
     case .regular:   return 1
+      
+    case .night:     return 2
+    case .suburban:  return 3
 
-    case .hour:      return 2
-    case .night:     return 3
-    case .suburban:  return 4
-
+    case .hour:      return 4
     case .zone:      return 5
     case .limited:   return 6
     case .temporary: return 7
