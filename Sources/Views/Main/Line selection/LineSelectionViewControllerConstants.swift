@@ -32,7 +32,7 @@ struct LineSelectionViewControllerConstants {
       static let cornerRadius: CGFloat =  4.0
       static let borderWidth:  CGFloat =  1.0
       static let margin:       CGFloat =  4.0
-      static let minWidth:     CGFloat = 50.0
+      static let minWidth:     CGFloat = 55.0
     }
   }
 

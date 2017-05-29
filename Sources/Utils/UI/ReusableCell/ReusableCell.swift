@@ -19,6 +19,6 @@ extension UITableViewCell: ReusableCell {
 
 //MARK: - UICollectionViewCell
 
-extension UICollectionViewCell : ReusableCell {
+extension UICollectionReusableView: ReusableCell {
   static var identifier: String { return String(describing: self) }
 }

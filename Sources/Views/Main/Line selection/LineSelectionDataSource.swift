@@ -39,14 +39,12 @@ extension LineSelectionDataSource: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     switch kind {
     case UICollectionElementKindSectionHeader:
-
-      let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                       withReuseIdentifier: "LineSelectionCellHeader",
-                                                                       for: indexPath) as! LineSelectionCellHeader
-
+      let view    = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectionCellHeader.self, kind: kind, for: indexPath)
       let section = self.sections[indexPath.section]
-      headerView.setUp(with: LineSelectionCellHeaderViewModel(from: section))
-      return headerView
+
+      view.setUp(with: LineSelectionCellHeaderViewModel(from: section))
+      return view
+
     default:
       fatalError("Unexpected element kind")
     }

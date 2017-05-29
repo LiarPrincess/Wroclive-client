@@ -141,7 +141,7 @@ extension BookmarksViewController {
     placeholder.addSubview(topLabel)
 
     topLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(30.0)
+      make.top.equalToSuperview().offset(30.0) // a little bith higher?
       make.left.right.equalToSuperview()
     }
 

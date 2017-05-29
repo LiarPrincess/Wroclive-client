@@ -42,6 +42,7 @@
 		90BF33431EDB67D500520FE7 /* LineSelectionCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF33421EDB67D500520FE7 /* LineSelectionCellHeader.swift */; };
 		90BF33451EDB6E8000520FE7 /* LineSelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF33441EDB6E8000520FE7 /* LineSelectionSection.swift */; };
 		90BF334A1EDB849200520FE7 /* LineSelectionSectionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF33491EDB849200520FE7 /* LineSelectionSectionCreator.swift */; };
+		90BF334C1EDC985F00520FE7 /* ReusableSuplementaryViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF334B1EDC985F00520FE7 /* ReusableSuplementaryViewContainer.swift */; };
 		90C2E47F1ECB62F700C1809F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C2E47C1ECB62F700C1809F /* Bookmark.swift */; };
 		90C2E4801ECB62F700C1809F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C2E47D1ECB62F700C1809F /* Line.swift */; };
 		90C2E4811ECB62F700C1809F /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C2E47E1ECB62F700C1809F /* LineType.swift */; };
@@ -113,6 +114,7 @@
 		90BF33421EDB67D500520FE7 /* LineSelectionCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCellHeader.swift; sourceTree = "<group>"; };
 		90BF33441EDB6E8000520FE7 /* LineSelectionSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSection.swift; sourceTree = "<group>"; };
 		90BF33491EDB849200520FE7 /* LineSelectionSectionCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionCreator.swift; sourceTree = "<group>"; };
+		90BF334B1EDC985F00520FE7 /* ReusableSuplementaryViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableSuplementaryViewContainer.swift; sourceTree = "<group>"; };
 		90C2E47C1ECB62F700C1809F /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90C2E47D1ECB62F700C1809F /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		90C2E47E1ECB62F700C1809F /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 			children = (
 				90BF333E1EDB554D00520FE7 /* ReusableCell.swift */,
 				90BF333F1EDB554D00520FE7 /* ReusableCellContainer.swift */,
+				90BF334B1EDC985F00520FE7 /* ReusableSuplementaryViewContainer.swift */,
 			);
 			path = ReusableCell;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				90BF33451EDB6E8000520FE7 /* LineSelectionSection.swift in Sources */,
 				90BE1DFA1EDB17BF00ABB1FD /* LineSelectionViewController.swift in Sources */,
 				90ABD6E81E63AE0A007B583F /* MKUserTrackingMode.swift in Sources */,
+				90BF334C1EDC985F00520FE7 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				9034B3821ED1ABC500387221 /* BookmarksManager.swift in Sources */,
 				90C2E4801ECB62F700C1809F /* Line.swift in Sources */,
 				90ABD6EB1E63AE34007B583F /* Logger.swift in Sources */,
