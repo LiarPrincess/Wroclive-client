@@ -52,14 +52,14 @@ extension LineSelectionCell {
     let tintColor = UIApplication.shared.keyWindow!.tintColor
 
     self.lineName.numberOfLines = 1
-    self.lineName.font = FontManager.instance.lineSelectionCellContent
+    self.lineName.font          = FontManager.instance.lineSelectionCellContent
     self.lineName.textAlignment = .center
-    self.lineName.textColor = tintColor
+    self.lineName.textColor     = tintColor
 
-    self.layer.cornerRadius = Constants.Cell.cornerRadius
-    self.layer.borderWidth = Constants.Cell.borderWidth
-    self.layer.borderColor = tintColor?.cgColor
-    self.clipsToBounds = true
+    self.layer.cornerRadius = Constants.Layout.Cell.cornerRadius
+    self.layer.borderWidth  = Constants.Layout.Cell.borderWidth
+    self.layer.borderColor  = tintColor?.cgColor
+    self.clipsToBounds      = true
 
     self.addSubview(self.lineName)
 

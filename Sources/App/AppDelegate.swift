@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    log.info("Starting application")
+    logger.info("Starting application")
 
     UINavigationBar.titleFont = FontManager.instance.navigationBar
     UIBarButtonItem.font = FontManager.instance.navigationBarItem

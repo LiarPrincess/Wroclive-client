@@ -6,7 +6,7 @@
 import Foundation
 import XCGLogger
 
-let log: XCGLogger = {
+let logger: XCGLogger = {
   let log = XCGLogger(identifier: "com.kekapp", includeDefaultDestinations: false)
 
   let consoleDestination = ConsoleDestination(identifier: log.identifier + ".console")

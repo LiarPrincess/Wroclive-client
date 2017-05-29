@@ -15,8 +15,8 @@ struct Line {
 
 extension Line: Equatable {
   static func ==(lhs: Line, rhs: Line) -> Bool {
-    return lhs.name == rhs.name
-        && lhs.type == rhs.type
+    return lhs.name    == rhs.name
+        && lhs.type    == rhs.type
         && lhs.subtype == rhs.subtype
   }
 }

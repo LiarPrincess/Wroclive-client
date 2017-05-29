@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
   //MARK: - Actions
 
   @objc fileprivate func userTrackingButtonPressed() {
-    log.info("userTrackingButtonPressed")
+    logger.info("userTrackingButtonPressed")
   }
 
   @objc fileprivate func lineSelectionButtonPressed() {
@@ -56,7 +56,7 @@ class MainViewController: UIViewController {
   }
 
   @objc fileprivate func configurationButtonPressed() {
-    log.info("configurationButtonTapped")
+    logger.info("configurationButtonTapped")
   }
 
 }

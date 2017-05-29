@@ -82,16 +82,16 @@ class LinesManager: LinesManagerProtocol {
     let line609 = Line(name: "609", type: .bus, subtype: .suburban)
     let line612 = Line(name: "612", type: .bus, subtype: .suburban)
 
-    let allBusExpress = [lineA, lineC, lineD, lineK, lineN]
-    let allBusRegular = [line100, line101, line102, line103, line104, line105, line106, line107, line109, line110]
-    let allBusNight = [line247, line248, line249, line250, line251]
+    let allBusExpress  = [lineA, lineC, lineD, lineK, lineN]
+    let allBusRegular  = [line100, line101, line102, line103, line104, line105, line106, line107, line109, line110]
+    let allBusNight    = [line247, line248, line249, line250, line251]
     let allBusRegular2 = [line305, line319, line325, line331]
     let allBusSuburban = [line602, line607, line609, line612]
 
     let allTrams = [line1, line2, line3, line4, line5, line6, line7, line8, line9, line0L, line0P, line31, line32, line33]
     let allBus = allBusExpress + allBusRegular + allBusNight + allBusRegular2 + allBusSuburban
 
-    return allTrams + allBus
+    return allTrams + allBus + allBus
   }
   
 }
