@@ -13,11 +13,17 @@ class LineSelectionViewController: UIViewController {
 
   //MARK: - Properties
 
-  let navigationBar = UINavigationBar()
-  let saveButton    = UIBarButtonItem()
-  let searchButton  = UIBarButtonItem()
+  let navigationBarBlur = UIBlurEffect(style: .extraLight)
 
-  let lineTypeSelector     = UISegmentedControl()
+  lazy var navigationBarBlurView: UIVisualEffectView =  {
+    return UIVisualEffectView(effect: self.navigationBarBlur)
+  }()
+
+  let navigationBar    = UINavigationBar()
+  let saveButton       = UIBarButtonItem()
+  let searchButton     = UIBarButtonItem()
+  let lineTypeSelector = UISegmentedControl()
+
   let lineCollectionLayout = UICollectionViewFlowLayout()
 
   lazy var lineCollection: UICollectionView = {
@@ -70,7 +76,7 @@ class LineSelectionViewController: UIViewController {
 
 extension LineSelectionViewController : CardPanelPresentable {
   var contentView:       UIView { return self.view }
-  var interactionTarget: UIView { return self.navigationBar }
+  var interactionTarget: UIView { return self.navigationBarBlurView }
 }
 
 //MARK: - CollectionViewDelegateFlowLayout
@@ -127,20 +133,45 @@ extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension LineSelectionViewController {
 
+  private typealias Layout = Constants.Layout
+
   fileprivate func initLayout() {
     self.view.backgroundColor = UIColor.white
     self.initNavigationBar()
-    self.initLineTypeSelector()
     self.initLinesCollection()
   }
 
   private func initNavigationBar() {
-    self.view.addSubview(self.navigationBar)
+    self.navigationBarBlurView.addBorder(at: .bottom)
+    self.view.addSubview(self.navigationBarBlurView)
 
-    navigationBar.snp.makeConstraints { make in
+    self.navigationBarBlurView.snp.makeConstraints { make in
       make.left.right.top.equalToSuperview()
     }
 
+    // remove background, so that blur view view can be seen
+    // see: https://developer.apple.com/library/content/samplecode/NavBar/Introduction/Intro.html#//apple_ref/doc/uid/DTS40007418-Intro-DontLinkElementID_2
+    self.initNavigationBarItem()
+    self.navigationBar.shadowImage = UIImage()
+    self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    self.navigationBarBlurView.addSubview(self.navigationBar)
+
+    self.navigationBar.snp.makeConstraints { make in
+      make.left.right.top.equalToSuperview()
+    }
+
+    self.initLineTypeSelector()
+    self.navigationBarBlurView.addSubview(self.lineTypeSelector)
+
+    self.lineTypeSelector.snp.makeConstraints { make in
+      make.top.equalTo(self.navigationBar.snp.bottom).offset(Layout.LineTypeSelector.topOffset)
+      make.left.equalToSuperview().offset(Layout.Content.leftOffset)
+      make.right.equalToSuperview().offset(-Layout.Content.rightOffset)
+      make.bottom.equalTo(self.navigationBarBlurView.snp.bottom).offset(-Layout.LineTypeSelector.bottomOffset)
+    }
+  }
+
+  private func initNavigationBarItem() {
     self.navigationItem.title = "Select lines"
     self.navigationBar.pushItem(navigationItem, animated: false)
 
@@ -148,13 +179,12 @@ extension LineSelectionViewController {
     self.saveButton.title  = "Save"
     self.saveButton.target = self
     self.saveButton.action = #selector(saveButtonPressed)
+    self.navigationItem.setLeftBarButton(self.saveButton, animated: false)
 
     self.searchButton.style  = .plain
     self.searchButton.title  = "Search"
     self.searchButton.target = self
     self.searchButton.action = #selector(searchButtonPressed)
-
-    self.navigationItem.setLeftBarButton(self.saveButton, animated: false)
     self.navigationItem.setRightBarButton(self.searchButton, animated: false)
   }
 
@@ -165,13 +195,6 @@ extension LineSelectionViewController {
 
     self.lineTypeSelector.addTarget(self, action: #selector(lineTypeChanged), for: .valueChanged)
     self.lineTypeSelector.font = FontManager.instance.lineSelectionLineTypeSelector
-    self.view.addSubview(self.lineTypeSelector)
-
-    self.lineTypeSelector.snp.makeConstraints { make in
-      make.top.equalTo(self.navigationBar.snp.bottom).offset(Constants.Layout.LineTypeSelector.topOffset)
-      make.left.equalToSuperview().offset(Constants.Layout.Content.leftOffset)
-      make.right.equalToSuperview().offset(-Constants.Layout.Content.rightOffset)
-    }
   }
 
   private func initLinesCollection() {
@@ -184,9 +207,10 @@ extension LineSelectionViewController {
     self.lineCollection.delegate = self
 
     self.view.addSubview(self.lineCollection)
+    self.view.sendSubview(toBack: self.lineCollection)
 
     self.lineCollection.snp.makeConstraints { make in
-      make.top.equalTo(self.lineTypeSelector.snp.bottom).offset(Constants.Layout.LineCollection.topOffset)
+      make.top.equalTo(self.navigationBarBlurView.snp.bottom)
       make.left.right.equalToSuperview()
       make.bottom.equalToSuperview()
     }

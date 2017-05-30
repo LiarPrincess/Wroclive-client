@@ -16,15 +16,14 @@ struct LineSelectionViewControllerConstants {
     }
 
     struct LineTypeSelector {
-      static let topOffset: CGFloat = 16.0
+      static let topOffset:    CGFloat =  4.0
+      static let bottomOffset: CGFloat = 10.0
     }
 
     struct LineCollection {
-      static let topOffset: CGFloat = 16.0
-
       struct Section {
-        static let insets            = UIEdgeInsets(top: 8.0,        left: Content.leftOffset, bottom:  8.0, right: Content.rightOffset)
-        static let lastSectionInsets = UIEdgeInsets(top: insets.top, left: insets.left,        bottom: 32.0, right: insets.right)
+        static let insets            = UIEdgeInsets(top: 0.0,        left: Content.leftOffset, bottom:  2.0, right: Content.rightOffset)
+        static let lastSectionInsets = UIEdgeInsets(top: insets.top, left: insets.left,        bottom: 28.0, right: insets.right)
       }
 
       struct CellHeader {

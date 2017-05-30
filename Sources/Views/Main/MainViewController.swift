@@ -84,20 +84,12 @@ extension MainViewController {
   private func initToolbarView() {
     let blur = UIBlurEffect(style: .extraLight)
     let blurView = UIVisualEffectView(effect: blur)
+    blurView.addBorder(at: .top)
     self.view.addSubview(blurView)
 
     blurView.snp.makeConstraints { make -> Void in
       make.left.right.bottom.equalToSuperview()
       make.height.equalTo(44.0)
-    }
-
-    let topBorder = UIView()
-    topBorder.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
-    blurView.addSubview(topBorder)
-
-    topBorder.snp.makeConstraints { make in
-      make.left.right.top.equalToSuperview()
-      make.height.equalTo(0.5)
     }
 
     let toolbar = UIStackView()
