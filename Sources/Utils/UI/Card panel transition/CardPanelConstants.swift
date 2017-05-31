@@ -19,7 +19,7 @@ struct CardPanelConstants {
 
   struct Presenter {
     static let backgroundColor: UIColor = .black
-    static let backgroundAlpha: CGFloat = 0.5
+    static let backgroundAlpha: CGFloat = 0.4
   }
 
 }
