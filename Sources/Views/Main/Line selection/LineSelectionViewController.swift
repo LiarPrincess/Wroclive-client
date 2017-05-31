@@ -86,7 +86,7 @@ extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
   //MARK: - Size
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return CGSize(width: collectionView.bounds.width, height: Constants.Layout.LineCollection.CellHeader.height)
+    return CGSize(width: collectionView.bounds.width, height: Constants.Layout.LineCollection.Section.headerHeight)
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -199,7 +199,7 @@ extension LineSelectionViewController {
 
   private func initLinesCollection() {
     self.lineCollection.register(LineSelectionCell.self)
-    self.lineCollection.registerSupplementary(LineSelectionCellHeader.self, ofKind: UICollectionElementKindSectionHeader)
+    self.lineCollection.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
     self.lineCollection.backgroundColor = UIColor.white
     self.lineCollection.allowsSelection = true
     self.lineCollection.allowsMultipleSelection = true

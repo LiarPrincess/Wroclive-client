@@ -91,7 +91,7 @@ extension LineSelectionSectionCreator {
   }
 
   private func order(for section: LineSelectionSection) -> Int {
-    return 1000 * order(for: section.lineType) + order(for: section.lineSubtype)
+    return 1000 * order(for: section.type) + order(for: section.subtype)
   }
 
   private func order(for type: LineType) -> Int {

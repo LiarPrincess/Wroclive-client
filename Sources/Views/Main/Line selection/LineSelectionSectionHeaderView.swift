@@ -7,19 +7,19 @@ import UIKit
 
 fileprivate typealias Constants = LineSelectionViewControllerConstants
 
-//MARK: - LineSelectionCellViewModel
+//MARK: - LineSelectionSectionHeaderViewModel
 
-struct LineSelectionCellHeaderViewModel {
+struct LineSelectionSectionHeaderViewModel {
   let sectionTitle: String
 
-  init(from section: LineSelectionSection) {
-    self.sectionTitle = String(describing: section.lineSubtype).capitalized
+  init(for type: LineType, _ subtype: LineSubtype) {
+    self.sectionTitle = String(describing: subtype).capitalized
   }
 }
 
-//MARK: - LineSelectionCellHeader
+//MARK: - LineSelectionSectionHeaderView
 
-class LineSelectionCellHeader: UICollectionReusableView {
+class LineSelectionSectionHeaderView: UICollectionReusableView {
 
   //MARK: - Properties
 
@@ -38,7 +38,7 @@ class LineSelectionCellHeader: UICollectionReusableView {
 
   //MARK: - Methods
 
-  func setUp(with viewModel: LineSelectionCellHeaderViewModel) {
+  func setUp(with viewModel: LineSelectionSectionHeaderViewModel) {
     self.sectionTitle.text = viewModel.sectionTitle
   }
 
@@ -46,11 +46,11 @@ class LineSelectionCellHeader: UICollectionReusableView {
 
 //MARK: - UI Init
 
-extension LineSelectionCellHeader {
+extension LineSelectionSectionHeaderView {
 
   fileprivate func initLayout() {
     self.sectionTitle.numberOfLines = 1
-    self.sectionTitle.font = FontManager.instance.lineSelectionCellHeader
+    self.sectionTitle.font = FontManager.instance.lineSelectionSectionHeader
     self.sectionTitle.textAlignment = .center
     self.addSubview(self.sectionTitle)
 

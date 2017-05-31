@@ -8,6 +8,20 @@ import UIKit
 
 fileprivate typealias Constants = LineSelectionViewControllerConstants
 
+//MARK: - LineSelectionSection
+
+struct LineSelectionSection {
+  let type:    LineType
+  let subtype: LineSubtype
+  let lines:   [Line]
+
+  init(_ type: LineType, _ subtype: LineSubtype, _ lines: [Line]) {
+    self.type    = type
+    self.subtype = subtype
+    self.lines   = lines
+  }
+}
+
 //MARK: - LineSelectionDataSource
 
 class LineSelectionDataSource: NSObject {
@@ -39,10 +53,10 @@ extension LineSelectionDataSource: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     switch kind {
     case UICollectionElementKindSectionHeader:
-      let view    = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectionCellHeader.self, kind: kind, for: indexPath)
+      let view    = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectionSectionHeaderView.self, kind: kind, for: indexPath)
       let section = self.sections[indexPath.section]
 
-      view.setUp(with: LineSelectionCellHeaderViewModel(from: section))
+      view.setUp(with: LineSelectionSectionHeaderViewModel(for: section.type, section.subtype))
       return view
 
     default:

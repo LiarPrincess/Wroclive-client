@@ -22,12 +22,10 @@ struct LineSelectionViewControllerConstants {
 
     struct LineCollection {
       struct Section {
+        static let headerHeight: CGFloat = 44.0
+
         static let insets            = UIEdgeInsets(top: 0.0,        left: Content.leftOffset, bottom:  2.0, right: Content.rightOffset)
         static let lastSectionInsets = UIEdgeInsets(top: insets.top, left: insets.left,        bottom: 28.0, right: insets.right)
-      }
-
-      struct CellHeader {
-        static let height: CGFloat = 44.0
       }
 
       struct Cell {

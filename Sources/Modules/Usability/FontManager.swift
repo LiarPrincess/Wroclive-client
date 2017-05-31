@@ -19,7 +19,7 @@ class FontManager {
   private(set) var navigationBar:     UIFont!
   private(set) var navigationBarItem: UIFont!
 
-  private(set) var lineSelectionCellHeader:       UIFont!
+  private(set) var lineSelectionSectionHeader:    UIFont!
   private(set) var lineSelectionCellContent:      UIFont!
   private(set) var lineSelectionLineTypeSelector: UIFont!
 
@@ -49,7 +49,7 @@ class FontManager {
     self.navigationBar     = self.customFontBold(ofSize: defaultStandardFontSize + 1.0)
     self.navigationBarItem = self.customFont(ofSize: defaultStandardFontSize)
 
-    self.lineSelectionCellHeader       = self.customFontBold(ofSize: defaultStandardFontSize + 1.0)
+    self.lineSelectionSectionHeader    = self.customFontBold(ofSize: defaultStandardFontSize + 1.0)
     self.lineSelectionCellContent      = self.customFont(ofSize: defaultStandardFontSize - 1.0)
     self.lineSelectionLineTypeSelector = self.customFont(ofSize: defaultStandardFontSize - 1.0)
 
