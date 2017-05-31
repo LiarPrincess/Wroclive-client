@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UIBarButtonItem.font = FontManager.instance.navigationBarItem
 
     window = UIWindow(frame: UIScreen.main.bounds)
-    window!.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.25, alpha: 1.0)
-    window!.backgroundColor = .white
+    window!.tintColor       = UIColor(red: 1.0, green: 0.25, blue: 0.25, alpha: 1.0)
+    window!.backgroundColor = UIColor.black
 
     let mainViewController = MainViewController()
     window!.rootViewController = mainViewController

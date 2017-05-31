@@ -13,12 +13,12 @@ struct CardPanelConstants {
   }
 
   struct Interactive {
-    static let minVelocityToFinish: CGFloat = 300.0
-    static let minProgressToFinish: CGFloat = 0.2
+    static let minVelocityToFinish: CGFloat = 450.0
+    static let minProgressToFinish: CGFloat =   0.2
   }
 
   struct Presenter {
-    static let backgroundColor: UIColor = .darkGray
+    static let backgroundColor: UIColor = .black
     static let backgroundAlpha: CGFloat = 0.5
   }
 

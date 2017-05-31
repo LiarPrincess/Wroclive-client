@@ -19,17 +19,19 @@ class CardPanelPresenter : UIPresentationController {
     super.init(presentedViewController: presented, presenting: presenting)
   }
 
-  //MARK: - Overriden
+  //MARK: - Frame
 
   override var frameOfPresentedViewInContainerView: CGRect {
     guard let containerView = self.containerView else {
       return super.frameOfPresentedViewInContainerView
     }
 
-    let height = containerView.bounds.height * relativeHeight
-    let y = containerView.bounds.height - height
-    return CGRect(x: 0.0, y: y, width: containerView.bounds.width, height: height)
+    let viewHeight    = containerView.bounds.height * relativeHeight
+    let viewTopOffset = containerView.bounds.height - viewHeight
+    return CGRect(x: 0.0, y: viewTopOffset, width: containerView.bounds.width, height: viewHeight)
   }
+
+  //MARK: - Presentation
 
   override func presentationTransitionWillBegin() {
     guard let containerView = self.containerView, let coordinator = presentingViewController.transitionCoordinator else {
@@ -47,6 +49,8 @@ class CardPanelPresenter : UIPresentationController {
       self?.dimmingView!.alpha = CardPanelConstants.Presenter.backgroundAlpha
     }, completion: nil)
   }
+
+  //MARK: - Dismiss
 
   override func dismissalTransitionWillBegin() {
     guard let coordinator = presentingViewController.transitionCoordinator else {
