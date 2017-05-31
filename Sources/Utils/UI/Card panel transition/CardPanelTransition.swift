@@ -14,7 +14,7 @@ class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransit
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
     let modalViewController = transitionContext.viewController(forKey: .to)!
 
-    let onScreenFrame = transitionContext.finalFrame(for: modalViewController)
+    let onScreenFrame  = transitionContext.finalFrame(for: modalViewController)
     var offScreenFrame = onScreenFrame
     offScreenFrame.origin.y = transitionContext.containerView.bounds.height
 
@@ -40,7 +40,7 @@ class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitionin
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
     let modalViewController = transitionContext.viewController(forKey: .from)!
 
-    let onScreenFrame = transitionContext.initialFrame(for: modalViewController)
+    let onScreenFrame  = transitionContext.initialFrame(for: modalViewController)
     var offScreenFrame = onScreenFrame
     offScreenFrame.origin.y = transitionContext.containerView.bounds.height
 

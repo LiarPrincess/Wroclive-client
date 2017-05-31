@@ -5,36 +5,19 @@
 
 import UIKit
 
-struct CardPanelConstants {
-  struct AnimationDuration {
-    static let present: TimeInterval = 0.35
-    static let dismiss: TimeInterval = 0.30
-  }
-
-  struct Interactive {
-    static let minVelocityToFinish: CGFloat = 300.0
-    static let minProgressToFinish: CGFloat = 0.2
-  }
-
-  struct Presenter {
-    static let backgroundColor: UIColor = .darkGray
-    static let backgroundAlpha: CGFloat = 0.5
-  }
-}
-
 // source: http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
 
 class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
   //MARK: - Properties
 
-  private let relativeHeight: CGFloat
+  private let relativeHeight:        CGFloat
   private let interactiveTransition: CardPanelInteractiveTransition
 
   //MARK: - Init
 
   init(for presentable: CardPanelPresentable, withRelativeHeight relativeHeight: CGFloat) {
-    self.relativeHeight = relativeHeight
+    self.relativeHeight        = relativeHeight
     self.interactiveTransition = CardPanelInteractiveTransition(for: presentable)
     super.init()
   }

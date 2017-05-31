@@ -5,8 +5,6 @@
 
 import UIKit
 
-//MARK: - CardPanelPresentable
-
 protocol CardPanelPresentable: class {
   var contentView:       UIView { get }
   var interactionTarget: UIView { get }

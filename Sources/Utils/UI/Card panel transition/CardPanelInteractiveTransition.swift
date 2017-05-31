@@ -11,7 +11,7 @@ class CardPanelInteractiveTransition: UIPercentDrivenInteractiveTransition {
 
   var hasStarted = false
 
-  private weak var presentable: CardPanelPresentable!
+  private weak var presentable: CardPanelPresentable?
 
   //MARK: - Init
 
@@ -20,19 +20,23 @@ class CardPanelInteractiveTransition: UIPercentDrivenInteractiveTransition {
     super.init()
 
     let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
-    self.presentable.interactionTarget.addGestureRecognizer(gestureRecognizer)
+    self.presentable?.interactionTarget.addGestureRecognizer(gestureRecognizer)
   }
 
   //MARK: - Gesture recognizers
 
   func handleGesture(gesture: UIPanGestureRecognizer) {
+    guard let presentable = self.presentable else {
+      return
+    }
+
     let translation = gesture.translation(in: gesture.view)
-    let percent = translation.y / self.presentable.contentView.bounds.size.height
+    let percent     = translation.y / presentable.contentView.bounds.size.height
 
     switch gesture.state {
     case .began:
       self.hasStarted = true
-      self.presentable.dismiss(animated: true, completion: nil)
+      presentable.dismiss(animated: true, completion: nil)
 
     case .changed:
       self.update(percent)
@@ -44,15 +48,25 @@ class CardPanelInteractiveTransition: UIPercentDrivenInteractiveTransition {
     case .ended:
       self.hasStarted = false
 
-      let minVelocityToFinish = CardPanelConstants.Interactive.minVelocityToFinish
-      let minProgressToFinish = CardPanelConstants.Interactive.minProgressToFinish
-
-      let velocity = gesture.velocity(in: gesture.view).y
-      percent > minProgressToFinish || velocity > minVelocityToFinish ? self.finish() : self.cancel()
+      if self.shouldFinish(gesture: gesture, completion: percent) {
+        self.finish()
+      }
+      else {
+        self.cancel()
+      }
 
     default:
       break
     }
+  }
+
+  //MARK: - Methods
+
+  private func shouldFinish(gesture: UIPanGestureRecognizer, completion percent: CGFloat) -> Bool {
+    typealias Constants = CardPanelConstants.Interactive
+
+    let velocity = gesture.velocity(in: gesture.view).y
+    return percent > Constants.minProgressToFinish || velocity > Constants.minVelocityToFinish
   }
 
 }
