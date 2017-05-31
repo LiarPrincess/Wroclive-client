@@ -8,6 +8,7 @@ import UIKit
 //MARK: - LineSelectionViewControllerConstants
 
 struct LineSelectionViewControllerConstants {
+
   struct Layout {
     struct Content {
       static let leftOffset:  CGFloat = 25.0
@@ -28,16 +29,14 @@ struct LineSelectionViewControllerConstants {
       }
 
       struct Cell {
-        static let cornerRadius: CGFloat =  4.0
-        static let borderWidth:  CGFloat =  1.0
-        static let margin:       CGFloat =  4.0
-        static let minWidth:     CGFloat = 55.0
+        static let width:     CGFloat = 50.0
+        static let height:    CGFloat = 44.0
+        static let minMargin: CGFloat = 5.0
+
+        static let cornerRadius: CGFloat = 4.0
+        static let borderWidth:  CGFloat = 1.0
       }
     }
   }
 
-  struct LineTypeIndex {
-    static let tram = 0
-    static let bus  = 1
-  }
 }

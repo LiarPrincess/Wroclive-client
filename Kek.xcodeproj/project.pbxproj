@@ -45,6 +45,7 @@
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9086D4201EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D41F1EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -119,6 +120,7 @@
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		9086D41F1EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerLayout.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -443,6 +445,7 @@
 				902331101EDF37F500FA8F43 /* LineSelectionSectionHeaderView.swift */,
 				9023310F1EDF37F500FA8F43 /* LineSelectionDataSource.swift */,
 				902331111EDF37F500FA8F43 /* LineSelectionViewController.swift */,
+				9086D41F1EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift */,
 				902331121EDF37F500FA8F43 /* LineSelectionViewControllerConstants.swift */,
 			);
 			path = "Line selection";
@@ -659,6 +662,7 @@
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				902331321EDF37F500FA8F43 /* LinesManager.swift in Sources */,
 				902331331EDF37F500FA8F43 /* FontManager.swift in Sources */,
+				9086D4201EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift in Sources */,
 				902331461EDF37F500FA8F43 /* LineSelectionSectionHeaderView.swift in Sources */,
 				902331421EDF37F500FA8F43 /* CardPanelTransition.swift in Sources */,
 				902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */,
