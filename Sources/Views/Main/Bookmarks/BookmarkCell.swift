@@ -61,10 +61,10 @@ class BookmarkCell: UITableViewCell {
   func setUp(with viewModel: BookmarkCellViewModel) {
     self.bookmarkName.text = viewModel.bookmarkName
 
-    self.tramLines.text = viewModel.tramLines
+    self.tramLines.text     = viewModel.tramLines
     self.tramLines.isHidden = viewModel.tramLines.isEmpty
 
-    self.busLines.text = viewModel.busLines
+    self.busLines.text     = viewModel.busLines
     self.busLines.isHidden = viewModel.busLines.isEmpty
   }
 
@@ -81,9 +81,9 @@ extension BookmarkCell {
     self.initLabel(self.tramLines)
     self.initLabel(self.busLines)
 
-    let textColor = UIApplication.shared.keyWindow!.tintColor
-    self.tramLines.textColor = textColor
-    self.busLines.textColor = textColor
+    let tintColor = UIApplication.shared.keyWindow!.tintColor
+    self.tramLines.textColor = tintColor
+    self.busLines.textColor  = tintColor
 
     self.bookmarkName.font = FontManager.instance.bookmarkCellTitle
     self.tramLines.font    = FontManager.instance.bookmarkCellContent
@@ -95,9 +95,9 @@ extension BookmarkCell {
   }
 
   private func initStackView() {
-    self.stackView.axis = .vertical
-    self.stackView.alignment = .fill
-    self.stackView.spacing = 5.0
+    self.stackView.axis         = .vertical
+    self.stackView.alignment    = .fill
+    self.stackView.spacing      = 5.0
     self.stackView.distribution = .equalSpacing
     self.addSubview(self.stackView)
 

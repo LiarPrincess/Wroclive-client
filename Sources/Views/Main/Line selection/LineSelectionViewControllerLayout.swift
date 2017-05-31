@@ -6,7 +6,7 @@
 import UIKit
 
 fileprivate typealias Constants = LineSelectionViewControllerConstants
-fileprivate typealias Layout = Constants.Layout
+fileprivate typealias Layout    = Constants.Layout
 
 //MARK: - UI Init
 
