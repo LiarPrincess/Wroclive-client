@@ -1,6 +1,6 @@
 //
-//  Created by NoPoint
-//  Copyright © 2017 NoPoint. All rights reserved.
+//  Created by Michal Matuszczyk
+//  Copyright © Michal Matuszczyk. All rights reserved.
 //
 
 import UIKit
