@@ -402,12 +402,12 @@
 			path = ReusableCell;
 			sourceTree = "<group>";
 		};
-		902331011EDF37F500FA8F43 /* Views */ = {
+		902331011EDF37F500FA8F43 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				902331021EDF37F500FA8F43 /* Main */,
 			);
-			path = Views;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		902331021EDF37F500FA8F43 /* Main */ = {
@@ -521,7 +521,7 @@
 				902330E81EDF37F500FA8F43 /* Models */,
 				902330ED1EDF37F500FA8F43 /* Modules */,
 				902330F31EDF37F500FA8F43 /* Utils */,
-				902331011EDF37F500FA8F43 /* Views */,
+				902331011EDF37F500FA8F43 /* ViewControllers */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
