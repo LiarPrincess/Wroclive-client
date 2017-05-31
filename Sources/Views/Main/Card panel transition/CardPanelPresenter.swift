@@ -3,14 +3,13 @@
 //  Copyright © 2017 NoPoint. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class CardPanelPresenter : UIPresentationController {
 
   //MARK: - Properties
   
-  private var dimmingView: UIView?
+  private var dimmingView:    UIView?
   private var relativeHeight: CGFloat
 
   //MARK: - Init

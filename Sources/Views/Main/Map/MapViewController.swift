@@ -5,6 +5,9 @@
 
 import UIKit
 import MapKit
+import SnapKit
+
+//MARK: - MapViewController
 
 class MapViewController: UIViewController {
 

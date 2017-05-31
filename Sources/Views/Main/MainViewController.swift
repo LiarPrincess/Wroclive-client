@@ -6,6 +6,8 @@
 import UIKit
 import SnapKit
 
+//MARK: - MainViewController
+
 class MainViewController: UIViewController {
 
   //MARK: - Properties

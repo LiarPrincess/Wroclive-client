@@ -3,7 +3,6 @@
 //  Copyright © 2017 NoPoint. All rights reserved.
 //
 
-import Foundation
 import XCGLogger
 
 let logger: XCGLogger = {
