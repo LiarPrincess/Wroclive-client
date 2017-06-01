@@ -49,6 +49,8 @@
 		9086D4311EDF65AC00E43D9A /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42B1EDF65AC00E43D9A /* CardPanelPresenter.swift */; };
 		9086D4321EDF65AC00E43D9A /* CardPanelTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42C1EDF65AC00E43D9A /* CardPanelTransition.swift */; };
 		9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */; };
+		9086D4351EE08D7E00E43D9A /* MainViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */; };
+		9086D4371EE08E0400E43D9A /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -127,6 +129,8 @@
 		9086D42B1EDF65AC00E43D9A /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
 		9086D42C1EDF65AC00E43D9A /* CardPanelTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransition.swift; sourceTree = "<group>"; };
 		9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
+		9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerLayout.swift; sourceTree = "<group>"; };
+		9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -417,6 +421,8 @@
 				902331031EDF37F500FA8F43 /* Bookmarks */,
 				902331161EDF37F500FA8F43 /* Map */,
 				902331151EDF37F500FA8F43 /* MainViewController.swift */,
+				9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */,
+				9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -664,6 +670,7 @@
 				9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				9086D42E1EDF65AC00E43D9A /* CardPanelConstants.swift in Sources */,
+				9086D4371EE08E0400E43D9A /* MainViewControllerConstants.swift in Sources */,
 				902331451EDF37F500FA8F43 /* LineSelectionDataSource.swift in Sources */,
 				9023313D1EDF37F500FA8F43 /* BookmarksDataSource.swift in Sources */,
 				902331481EDF37F500FA8F43 /* LineSelectionViewControllerConstants.swift in Sources */,
@@ -675,6 +682,7 @@
 				9086D4201EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift in Sources */,
 				902331461EDF37F500FA8F43 /* LineSelectionSectionHeaderView.swift in Sources */,
 				9086D4221EDF54A000E43D9A /* BookmarksViewControllerConstants.swift in Sources */,
+				9086D4351EE08D7E00E43D9A /* MainViewControllerLayout.swift in Sources */,
 				9086D4241EDF54AC00E43D9A /* BookmarksViewControllerLayout.swift in Sources */,
 				9086D4321EDF65AC00E43D9A /* CardPanelTransition.swift in Sources */,
 				902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */,
