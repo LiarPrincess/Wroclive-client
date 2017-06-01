@@ -44,15 +44,23 @@ extension MainViewController {
     self.configurationButton.target = self
     self.configurationButton.action = #selector(configurationButtonPressed)
 
-    let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    let toolbarItems = [self.userTrackingButton, flexible, self.lineSelectionButton, flexible, self.bookmarksButton, flexible, self.configurationButton]
-
     let toolbar = UIToolbar()
-    toolbar.setItems(toolbarItems, animated: false)
+    toolbar.setItems(self.spaceToolbarItems(), animated: false)
     self.view.addSubview(toolbar)
 
     toolbar.snp.makeConstraints { make in
       make.left.right.bottom.equalToSuperview()
     }
+  }
+
+  private func spaceToolbarItems() -> [UIBarButtonItem] {
+    let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+    var toolbarItems: [UIBarButtonItem] = []
+    toolbarItems += [flexible, self.userTrackingButton,  flexible, flexible]
+    toolbarItems += [flexible, self.lineSelectionButton, flexible, flexible]
+    toolbarItems += [flexible, self.bookmarksButton,     flexible, flexible]
+    toolbarItems += [flexible, self.configurationButton, flexible]
+    return toolbarItems
   }
 }
