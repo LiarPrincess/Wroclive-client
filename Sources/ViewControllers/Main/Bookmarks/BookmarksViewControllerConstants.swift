@@ -14,7 +14,7 @@ struct BookmarksViewControllerConstants {
     struct Cell {
 
       static let topOffset:    CGFloat = 8.0
-      static let bottomOffset: CGFloat = 8.0
+      static let bottomOffset: CGFloat = 6.0
 
       static let leftOffset:  CGFloat = 40.0
       static let rightOffset: CGFloat = leftOffset

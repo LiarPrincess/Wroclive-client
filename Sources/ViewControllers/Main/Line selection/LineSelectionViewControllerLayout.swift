@@ -83,8 +83,7 @@ extension LineSelectionViewController {
     //self.lineCollection.dataSource will be set later in self.updateLineCollectionDataSource()
     self.lineCollection.delegate = self
 
-    self.view.addSubview(self.lineCollection)
-    self.view.sendSubview(toBack: self.lineCollection)
+    self.view.insertSubview(self.lineCollection, belowSubview: self.navigationBarBlurView)
 
     self.lineCollection.snp.makeConstraints { make in
       make.top.equalTo(self.navigationBarBlurView.snp.bottom)

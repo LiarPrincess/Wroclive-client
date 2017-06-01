@@ -21,7 +21,7 @@
 		902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F61EDF37F500FA8F43 /* UIBarButtonItem.swift */; };
 		902331351EDF37F500FA8F43 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F71EDF37F500FA8F43 /* UINavigationBar.swift */; };
 		902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F81EDF37F500FA8F43 /* UISegmentedControl.swift */; };
-		902331371EDF37F500FA8F43 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F91EDF37F500FA8F43 /* UIView.swift */; };
+		902331371EDF37F500FA8F43 /* UIView_AddBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F91EDF37F500FA8F43 /* UIView_AddBorder.swift */; };
 		902331381EDF37F500FA8F43 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330FB1EDF37F500FA8F43 /* Logger.swift */; };
 		902331391EDF37F500FA8F43 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330FE1EDF37F500FA8F43 /* ReusableCell.swift */; };
 		9023313A1EDF37F500FA8F43 /* ReusableCellContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330FF1EDF37F500FA8F43 /* ReusableCellContainer.swift */; };
@@ -101,7 +101,7 @@
 		902330F61EDF37F500FA8F43 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		902330F71EDF37F500FA8F43 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		902330F81EDF37F500FA8F43 /* UISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
-		902330F91EDF37F500FA8F43 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		902330F91EDF37F500FA8F43 /* UIView_AddBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_AddBorder.swift; sourceTree = "<group>"; };
 		902330FB1EDF37F500FA8F43 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		902330FE1EDF37F500FA8F43 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		902330FF1EDF37F500FA8F43 /* ReusableCellContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCellContainer.swift; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 				902330F61EDF37F500FA8F43 /* UIBarButtonItem.swift */,
 				902330F71EDF37F500FA8F43 /* UINavigationBar.swift */,
 				902330F81EDF37F500FA8F43 /* UISegmentedControl.swift */,
-				902330F91EDF37F500FA8F43 /* UIView.swift */,
+				902330F91EDF37F500FA8F43 /* UIView_AddBorder.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -664,7 +664,7 @@
 				9023313A1EDF37F500FA8F43 /* ReusableCellContainer.swift in Sources */,
 				9023313B1EDF37F500FA8F43 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				902331391EDF37F500FA8F43 /* ReusableCell.swift in Sources */,
-				902331371EDF37F500FA8F43 /* UIView.swift in Sources */,
+				902331371EDF37F500FA8F43 /* UIView_AddBorder.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
 				902331381EDF37F500FA8F43 /* Logger.swift in Sources */,
 				9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */,

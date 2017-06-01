@@ -44,7 +44,7 @@ extension BookmarksViewController {
     self.bookmarksTable.separatorInset = .zero
     self.bookmarksTable.dataSource     = self.bookmarksDataSource
     self.bookmarksTable.delegate       = self
-    self.view.addSubview(self.bookmarksTable)
+    self.view.insertSubview(self.bookmarksTable, belowSubview: self.navigationBar)
 
     self.bookmarksTable.snp.makeConstraints { make in
       make.top.equalTo(self.navigationBar.snp.bottom)
