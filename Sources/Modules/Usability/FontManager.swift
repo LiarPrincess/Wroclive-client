@@ -54,8 +54,9 @@ class FontManager {
 
     self.bookmarkCellTitle          = self.customFontBold(ofSize: defaultStandardFontSize + 1.0)
     self.bookmarkCellContent        = self.customFont(ofSize: defaultStandardFontSize - 1.0)
+
     self.bookmarkPlaceholderTitle   = self.customFontBold(ofSize: defaultStandardFontSize + 1.0)
-    self.bookmarkPlaceholderContent = self.customFont(ofSize: defaultStandardFontSize) // caps?
+    self.bookmarkPlaceholderContent = self.customFont(ofSize: defaultStandardFontSize - 1.0)
   }
 
   private func customFont(ofSize fontSize: CGFloat) -> UIFont {

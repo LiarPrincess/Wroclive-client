@@ -6,20 +6,22 @@
 import UIKit
 import SnapKit
 
+fileprivate typealias Layout = BookmarksViewControllerConstants.Layout.Cell
+
 //MARK: - BookmarkCellViewModel
 
 struct BookmarkCellViewModel {
   let bookmarkName: String
-  let tramLines: String
-  let busLines: String
+  let tramLines:    String
+  let busLines:     String
 
   init(from bookmark: Bookmark) {
     self.bookmarkName = bookmark.name
-    self.tramLines = BookmarkCellViewModel.concatLineNames(bookmark.lines, ofType: .tram)
-    self.busLines = BookmarkCellViewModel.concatLineNames(bookmark.lines, ofType: .bus)
+    self.tramLines    = BookmarkCellViewModel.concatNames(bookmark.lines, ofType: .tram)
+    self.busLines     = BookmarkCellViewModel.concatNames(bookmark.lines, ofType: .bus)
   }
 
-  private static func concatLineNames(_ lines: [Line], ofType lineType: LineType) -> String {
+  private static func concatNames(_ lines: [Line], ofType lineType: LineType) -> String {
     return lines.filter { $0.type == lineType }
       .map { $0.name }
       .joined(separator: "  ")
@@ -33,7 +35,6 @@ class BookmarkCell: UITableViewCell {
 
   //MARK: - Properties
 
-  fileprivate let stackView = UIStackView()
   fileprivate let bookmarkName = UILabel()
   fileprivate let tramLines    = UILabel()
   fileprivate let busLines     = UILabel()
@@ -53,19 +54,32 @@ class BookmarkCell: UITableViewCell {
 
   // disable alpha, so we dont end up with transparent cells when reordering
   override var alpha: CGFloat {
-    didSet { super.alpha = 1 }
+    get { return 1.0 }
+    set { }
   }
 
   //MARK: - Methods
 
   func setUp(with viewModel: BookmarkCellViewModel) {
-    self.bookmarkName.text = viewModel.bookmarkName
+    self.bookmarkName.text  = viewModel.bookmarkName
 
+    let hasTramLines        = !viewModel.tramLines.isEmpty
     self.tramLines.text     = viewModel.tramLines
-    self.tramLines.isHidden = viewModel.tramLines.isEmpty
+    self.tramLines.isHidden = !hasTramLines
 
-    self.busLines.text     = viewModel.busLines
-    self.busLines.isHidden = viewModel.busLines.isEmpty
+    self.tramLines.snp.updateConstraints { make in
+      let topOffset = hasTramLines ? Layout.TramLines.topOffset : 0.0
+      make.top.equalTo(self.bookmarkName.snp.bottom).offset(topOffset)
+    }
+
+    let hasBusLines         = !viewModel.busLines.isEmpty
+    self.busLines.text      = viewModel.busLines
+    self.busLines.isHidden  = !hasBusLines
+
+    self.busLines.snp.updateConstraints { make in
+      let topOffset = hasBusLines ? Layout.BusLines.topOffset : 0.0
+      make.top.equalTo(self.tramLines.snp.bottom).offset(topOffset)
+    }
   }
 
 }
@@ -75,34 +89,39 @@ class BookmarkCell: UITableViewCell {
 extension BookmarkCell {
 
   fileprivate func initLayout() {
-    self.initStackView()
-    
-    self.initLabel(self.bookmarkName)
-    self.initLabel(self.tramLines)
-    self.initLabel(self.busLines)
-
     let tintColor = UIApplication.shared.keyWindow!.tintColor
-    self.tramLines.textColor = tintColor
-    self.busLines.textColor  = tintColor
 
+    self.initLabel(self.bookmarkName)
     self.bookmarkName.font = FontManager.instance.bookmarkCellTitle
-    self.tramLines.font    = FontManager.instance.bookmarkCellContent
-    self.busLines.font     = FontManager.instance.bookmarkCellContent
+    self.addSubview(self.bookmarkName)
 
-    self.stackView.addArrangedSubview(self.bookmarkName)
-    self.stackView.addArrangedSubview(self.tramLines)
-    self.stackView.addArrangedSubview(self.busLines)
-  }
+    self.bookmarkName.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(Layout.topOffset)
+      make.left.equalToSuperview().offset(Layout.leftOffset)
+      make.right.equalToSuperview().offset(-Layout.rightOffset)
+    }
 
-  private func initStackView() {
-    self.stackView.axis         = .vertical
-    self.stackView.alignment    = .fill
-    self.stackView.spacing      = 5.0
-    self.stackView.distribution = .equalSpacing
-    self.addSubview(self.stackView)
+    self.initLabel(self.tramLines)
+    self.tramLines.textColor = tintColor
+    self.tramLines.font      = FontManager.instance.bookmarkCellContent
+    self.addSubview(self.tramLines)
 
-    self.stackView.snp.makeConstraints { make in
-      make.edges.equalToSuperview().inset(UIEdgeInsets(top: 5.0, left: 40.0, bottom: 5.0, right: 40.0))
+    self.tramLines.snp.makeConstraints { make in
+      make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.TramLines.topOffset)
+      make.left.equalToSuperview().offset(Layout.leftOffset)
+      make.right.equalToSuperview().offset(-Layout.rightOffset)
+    }
+
+    self.initLabel(self.busLines)
+    self.busLines.textColor  = tintColor
+    self.busLines.font       = FontManager.instance.bookmarkCellContent
+    self.addSubview(self.busLines)
+
+    self.busLines.snp.makeConstraints { make in
+      make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.BusLines.topOffset)
+      make.left.equalToSuperview().offset(Layout.leftOffset)
+      make.right.equalToSuperview().offset(-Layout.rightOffset)
+      make.bottom.equalToSuperview().offset(-Layout.bottomOffset)
     }
   }
 
