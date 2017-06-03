@@ -5,10 +5,10 @@
 
 import UIKit
 
-fileprivate typealias Constants = LineSelectionViewControllerConstants
+fileprivate typealias Constants = SearchViewControllerConstants
 fileprivate typealias Layout    = Constants.Layout
 
-extension LineSelectionViewController {
+extension SearchViewController {
 
   func initLayout() {
     self.view.backgroundColor = UIColor.white

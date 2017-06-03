@@ -6,9 +6,9 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Constants = LineSelectionViewControllerConstants
+fileprivate typealias Constants = SearchViewControllerConstants
 
-class LineSelectionViewController: UIViewController {
+class SearchViewController: UIViewController {
 
   //MARK: - Properties
 
@@ -89,14 +89,14 @@ class LineSelectionViewController: UIViewController {
 
 //MARK: - CardPanelPresentable
 
-extension LineSelectionViewController : CardPanelPresentable {
+extension SearchViewController : CardPanelPresentable {
   var contentView:       UIView { return self.view }
   var interactionTarget: UIView { return self.navigationBarBlurView }
 }
 
 //MARK: - CollectionViewDelegateFlowLayout
 
-extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
   //MARK: - Size
 

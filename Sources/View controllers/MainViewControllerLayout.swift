@@ -28,9 +28,9 @@ extension MainViewController {
   fileprivate func initToolbarView() {
     self.userTrackingButton.mapView = self.mapViewController.mapView
 
-    self.lineSelectionButton.image  = #imageLiteral(resourceName: "vecSearch")
-    self.lineSelectionButton.target = self
-    self.lineSelectionButton.action = #selector(lineSelectionButtonPressed)
+    self.searchButton.image  = #imageLiteral(resourceName: "vecSearch")
+    self.searchButton.target = self
+    self.searchButton.action = #selector(searchButtonPressed)
 
     self.bookmarksButton.image  = #imageLiteral(resourceName: "vecFavorites1")
     self.bookmarksButton.target = self
@@ -55,7 +55,7 @@ extension MainViewController {
 
     var toolbarItems: [UIBarButtonItem] = []
     toolbarItems += [flexible, self.userTrackingButton,  flexible, flexible]
-    toolbarItems += [flexible, self.lineSelectionButton, flexible, flexible]
+    toolbarItems += [flexible, self.searchButton,        flexible, flexible]
     toolbarItems += [flexible, self.bookmarksButton,     flexible, flexible]
     toolbarItems += [flexible, self.configurationButton, flexible]
     return toolbarItems

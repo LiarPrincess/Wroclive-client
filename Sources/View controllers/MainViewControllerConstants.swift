@@ -8,8 +8,8 @@ import UIKit
 struct MainViewControllerConstants {
 
   struct CardPanel {
-    static let lineSelectionRelativeHeight: CGFloat = 0.90
-    static let bookmarksRelativeHeight:     CGFloat = 0.75
+    static let searchRelativeHeight:    CGFloat = 0.90
+    static let bookmarksRelativeHeight: CGFloat = 0.75
   }
 
 }

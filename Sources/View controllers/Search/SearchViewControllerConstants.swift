@@ -5,7 +5,7 @@
 
 import UIKit
 
-struct LineSelectionViewControllerConstants {
+struct SearchViewControllerConstants {
 
   struct Layout {
     struct Content {

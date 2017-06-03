@@ -16,12 +16,12 @@ class MainViewController: UIViewController {
   let mapViewController = MapViewController()
 
   let userTrackingButton  = MKUserTrackingBarButtonItem()
-  let lineSelectionButton = UIBarButtonItem()
+  let searchButton        = UIBarButtonItem()
   let bookmarksButton     = UIBarButtonItem()
   let configurationButton = UIBarButtonItem()
 
-  var lineSelectionTransitionDelegate: UIViewControllerTransitioningDelegate?
-  var bookmarksTransitionDelegate:     UIViewControllerTransitioningDelegate?
+  var searchTransitionDelegate:    UIViewControllerTransitioningDelegate?
+  var bookmarksTransitionDelegate: UIViewControllerTransitioningDelegate?
 
   //MARK: - Overriden
 
@@ -32,13 +32,13 @@ class MainViewController: UIViewController {
 
   //MARK: - Actions
 
-  @objc func lineSelectionButtonPressed() {
-    let relativeHeight = Constants.CardPanel.lineSelectionRelativeHeight
-    let controller     = LineSelectionViewController()
+  @objc func searchButtonPressed() {
+    let relativeHeight = Constants.CardPanel.searchRelativeHeight
+    let controller     = SearchViewController()
 
-    self.lineSelectionTransitionDelegate = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
-    controller.modalPresentationStyle    = .custom
-    controller.transitioningDelegate     = self.lineSelectionTransitionDelegate!
+    self.searchTransitionDelegate     = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
+    controller.modalPresentationStyle = .custom
+    controller.transitioningDelegate  = self.searchTransitionDelegate!
 
     self.present(controller, animated: true, completion: nil)
   }

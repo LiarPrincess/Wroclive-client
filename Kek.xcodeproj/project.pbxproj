@@ -18,9 +18,9 @@
 		9017C3611EE339FD00063377 /* LineSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34B1EE339FD00063377 /* LineSelectionDataSource.swift */; };
 		9017C3621EE339FD00063377 /* LineSelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34C1EE339FD00063377 /* LineSelectionSection.swift */; };
 		9017C3631EE339FD00063377 /* LineSelectionSectionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34D1EE339FD00063377 /* LineSelectionSectionCreator.swift */; };
-		9017C3641EE339FD00063377 /* LineSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34E1EE339FD00063377 /* LineSelectionViewController.swift */; };
-		9017C3651EE339FD00063377 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34F1EE339FD00063377 /* LineSelectionViewControllerConstants.swift */; };
-		9017C3661EE339FD00063377 /* LineSelectionViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3501EE339FD00063377 /* LineSelectionViewControllerLayout.swift */; };
+		9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34E1EE339FD00063377 /* SearchViewController.swift */; };
+		9017C3651EE339FD00063377 /* SearchViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34F1EE339FD00063377 /* SearchViewControllerConstants.swift */; };
+		9017C3661EE339FD00063377 /* SearchViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3501EE339FD00063377 /* SearchViewControllerLayout.swift */; };
 		9017C3671EE339FD00063377 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3511EE339FD00063377 /* MainViewController.swift */; };
 		9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */; };
 		9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */; };
@@ -95,9 +95,9 @@
 		9017C34B1EE339FD00063377 /* LineSelectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionDataSource.swift; sourceTree = "<group>"; };
 		9017C34C1EE339FD00063377 /* LineSelectionSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSection.swift; sourceTree = "<group>"; };
 		9017C34D1EE339FD00063377 /* LineSelectionSectionCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionCreator.swift; sourceTree = "<group>"; };
-		9017C34E1EE339FD00063377 /* LineSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewController.swift; sourceTree = "<group>"; };
-		9017C34F1EE339FD00063377 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
-		9017C3501EE339FD00063377 /* LineSelectionViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerLayout.swift; sourceTree = "<group>"; };
+		9017C34E1EE339FD00063377 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9017C34F1EE339FD00063377 /* SearchViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerConstants.swift; sourceTree = "<group>"; };
+		9017C3501EE339FD00063377 /* SearchViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerLayout.swift; sourceTree = "<group>"; };
 		9017C3511EE339FD00063377 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
 		9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerLayout.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				9017C3541EE339FD00063377 /* Map */,
-				9017C3441EE339FD00063377 /* Line selection */,
+				9017C3441EE339FD00063377 /* Search */,
 				9017C33E1EE339FD00063377 /* Bookmarks */,
 				9017C3511EE339FD00063377 /* MainViewController.swift */,
 				9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */,
@@ -221,16 +221,16 @@
 			path = Bookmarks;
 			sourceTree = "<group>";
 		};
-		9017C3441EE339FD00063377 /* Line selection */ = {
+		9017C3441EE339FD00063377 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				9017C3451EE339FD00063377 /* Cells */,
 				9017C34A1EE339FD00063377 /* Data source */,
-				9017C34E1EE339FD00063377 /* LineSelectionViewController.swift */,
-				9017C34F1EE339FD00063377 /* LineSelectionViewControllerConstants.swift */,
-				9017C3501EE339FD00063377 /* LineSelectionViewControllerLayout.swift */,
+				9017C34E1EE339FD00063377 /* SearchViewController.swift */,
+				9017C3501EE339FD00063377 /* SearchViewControllerLayout.swift */,
+				9017C34F1EE339FD00063377 /* SearchViewControllerConstants.swift */,
 			);
-			path = "Line selection";
+			path = Search;
 			sourceTree = "<group>";
 		};
 		9017C3451EE339FD00063377 /* Cells */ = {
@@ -778,7 +778,7 @@
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
 				9017C3611EE339FD00063377 /* LineSelectionDataSource.swift in Sources */,
-				9017C3641EE339FD00063377 /* LineSelectionViewController.swift in Sources */,
+				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
 				9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */,
 				9091D0C61EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				9086D4301EDF65AC00E43D9A /* CardPanelPresentable.swift in Sources */,
@@ -810,7 +810,7 @@
 				9017C3731EE33AE900063377 /* BookmarkCellLayout.swift in Sources */,
 				9091D0C71EE31FB800FC4F79 /* CardPanelPresenter.swift in Sources */,
 				9086D4491EE2DE8E00E43D9A /* LocationManager.swift in Sources */,
-				9017C3661EE339FD00063377 /* LineSelectionViewControllerLayout.swift in Sources */,
+				9017C3661EE339FD00063377 /* SearchViewControllerLayout.swift in Sources */,
 				9017C3621EE339FD00063377 /* LineSelectionSection.swift in Sources */,
 				9017C35F1EE339FD00063377 /* LineSelectionSectionHeaderView.swift in Sources */,
 				902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */,
@@ -823,7 +823,7 @@
 				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,
 				9086D44B1EE2DEA200E43D9A /* LocationManagerProtocol.swift in Sources */,
 				9091D0CA1EE31FD400FC4F79 /* CardPanelDismissTransition.swift in Sources */,
-				9017C3651EE339FD00063377 /* LineSelectionViewControllerConstants.swift in Sources */,
+				9017C3651EE339FD00063377 /* SearchViewControllerConstants.swift in Sources */,
 				902331351EDF37F500FA8F43 /* UINavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
