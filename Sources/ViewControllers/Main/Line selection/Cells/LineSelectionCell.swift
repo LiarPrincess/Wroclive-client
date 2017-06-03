@@ -8,18 +8,6 @@ import SnapKit
 
 fileprivate typealias Constants = LineSelectionViewControllerConstants
 
-//MARK: - LineSelectionCellViewModel
-
-struct LineSelectionCellViewModel {
-  let lineName: String
-
-  init(from line: Line) {
-    self.lineName = line.name
-  }
-}
-
-//MARK: - LineSelectionCell
-
 class LineSelectionCell: UICollectionViewCell {
 
   //MARK: - Properties

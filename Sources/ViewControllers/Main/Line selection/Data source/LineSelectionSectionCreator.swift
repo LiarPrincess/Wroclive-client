@@ -12,17 +12,31 @@ protocol LineSelectionSectionCreatorProtocol {
 //MARK: - LineSelectionSectionCreator
 
 class LineSelectionSectionCreator: LineSelectionSectionCreatorProtocol {
+
+  //MARK: - LineSelectionSectionCreatorProtocol
+
   func create(from lines:[Line]) -> [LineSelectionSection] {
     let sections = self.convertToSections(lines: lines)
     return self.sort(sections: sections)
   }
-}
 
-//MARK: - Convert
+  //MARK: - Convert
 
-extension LineSelectionSectionCreator {
+  private struct SectionId: Equatable, Hashable {
+    let lineType:    LineType
+    let lineSubtype: LineSubtype
 
-  fileprivate func convertToSections(lines: [Line]) -> [LineSelectionSection] {
+    public var hashValue: Int {
+      return 1000 * self.lineType.rawValue + self.lineSubtype.rawValue
+    }
+
+    public static func ==(lhs: SectionId, rhs: SectionId) -> Bool {
+      return lhs.lineType    == rhs.lineType
+          && lhs.lineSubtype == rhs.lineSubtype
+    }
+  }
+
+  private func convertToSections(lines: [Line]) -> [LineSelectionSection] {
     var linesByType = [SectionId: [Line]]()
 
     for line in lines {
@@ -41,25 +55,7 @@ extension LineSelectionSectionCreator {
     }
   }
 
-  private struct SectionId: Equatable, Hashable {
-    let lineType:    LineType
-    let lineSubtype: LineSubtype
-
-    public var hashValue: Int {
-      return 1000 * self.lineType.rawValue + self.lineSubtype.rawValue
-    }
-
-    public static func ==(lhs: SectionId, rhs: SectionId) -> Bool {
-      return lhs.lineType    == rhs.lineType
-          && lhs.lineSubtype == rhs.lineSubtype
-    }
-  }
-
-}
-
-//MARK: - Ordering
-
-extension LineSelectionSectionCreator {
+  //MARK: - Ordering
 
   fileprivate func sort(lines: [Line]) -> [Line] {
     return lines.sorted { (lhs, rhs) in
@@ -103,7 +99,7 @@ extension LineSelectionSectionCreator {
     switch subtype {
     case .express:   return 0
     case .regular:   return 1
-      
+
     case .night:     return 2
     case .suburban:  return 3
 

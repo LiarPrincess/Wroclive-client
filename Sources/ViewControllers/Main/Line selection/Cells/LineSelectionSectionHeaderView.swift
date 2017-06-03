@@ -8,18 +8,6 @@ import SnapKit
 
 fileprivate typealias Constants = LineSelectionViewControllerConstants
 
-//MARK: - LineSelectionSectionHeaderViewModel
-
-struct LineSelectionSectionHeaderViewModel {
-  let sectionTitle: String
-
-  init(for type: LineType, _ subtype: LineSubtype) {
-    self.sectionTitle = String(describing: subtype).capitalized
-  }
-}
-
-//MARK: - LineSelectionSectionHeaderView
-
 class LineSelectionSectionHeaderView: UICollectionReusableView {
 
   //MARK: - Properties

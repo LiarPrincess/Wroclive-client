@@ -8,15 +8,16 @@ import UIKit
 fileprivate typealias Constants = LineSelectionViewControllerConstants
 fileprivate typealias Layout    = Constants.Layout
 
-//MARK: - UI Init
-
 extension LineSelectionViewController {
 
   func initLayout() {
     self.view.backgroundColor = UIColor.white
     self.initNavigationBar()
-    self.initLinesCollection()
+    self.initTramCollection()
+    self.initBusCollection()
   }
+
+  //MARK: - Navigation bar
 
   private func initNavigationBar() {
     self.navigationBarBlurView.addBorder(at: .bottom)
@@ -74,22 +75,33 @@ extension LineSelectionViewController {
     self.lineTypeSelector.font = FontManager.instance.lineSelectionLineTypeSelector
   }
 
-  private func initLinesCollection() {
-    self.lineCollection.register(LineSelectionCell.self)
-    self.lineCollection.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
-    self.lineCollection.backgroundColor         = UIColor.white
-    self.lineCollection.allowsSelection         = true
-    self.lineCollection.allowsMultipleSelection = true
-    //self.lineCollection.dataSource will be set later in self.updateLineCollectionDataSource()
-    self.lineCollection.delegate = self
+  //MARK: - Collections
 
-    self.view.insertSubview(self.lineCollection, belowSubview: self.navigationBarBlurView)
+  private func initTramCollection() {
+    self.initCollectionCommon(self.tramCollection)
+    self.tramCollection.dataSource = self.tramDataSource
+  }
 
-    self.lineCollection.snp.makeConstraints { make in
+  private func initBusCollection() {
+    self.initCollectionCommon(self.busCollection)
+    self.busCollection.dataSource = self.busDataSource
+  }
+
+  private func initCollectionCommon(_ collection: UICollectionView) {
+    collection.register(LineSelectionCell.self)
+    collection.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
+    collection.backgroundColor         = UIColor.white
+    collection.allowsSelection         = true
+    collection.allowsMultipleSelection = true
+    collection.delegate = self
+
+    self.view.insertSubview(collection, belowSubview: self.navigationBarBlurView)
+
+    collection.snp.makeConstraints { make in
       make.top.equalTo(self.navigationBarBlurView.snp.bottom)
       make.left.right.equalToSuperview()
       make.bottom.equalToSuperview()
     }
   }
-  
+
 }

@@ -5,8 +5,6 @@
 
 import UIKit
 
-//MARK: - LineSelectionViewControllerConstants
-
 struct LineSelectionViewControllerConstants {
 
   struct Layout {

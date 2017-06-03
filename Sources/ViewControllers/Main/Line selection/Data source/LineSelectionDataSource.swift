@@ -7,23 +7,7 @@ import UIKit
 
 fileprivate typealias Constants = LineSelectionViewControllerConstants
 
-//MARK: - LineSelectionSection
-
-struct LineSelectionSection {
-  let type:    LineType
-  let subtype: LineSubtype
-  let lines:   [Line]
-
-  init(_ type: LineType, _ subtype: LineSubtype, _ lines: [Line]) {
-    self.type    = type
-    self.subtype = subtype
-    self.lines   = lines
-  }
-}
-
-//MARK: - LineSelectionDataSource
-
-class LineSelectionDataSource: NSObject {
+class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
 
   //MARK: - Properties
 
@@ -33,13 +17,8 @@ class LineSelectionDataSource: NSObject {
 
   fileprivate var sections = [LineSelectionSection]()
   fileprivate let sectionCreator: LineSelectionSectionCreatorProtocol = LineSelectionSectionCreator()
-}
 
-//MARK: - UICollectionViewDataSource
-
-extension LineSelectionDataSource: UICollectionViewDataSource {
-
-  //MARK: - Data
+  //MARK: - UICollectionViewDataSource
 
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return self.sections.count

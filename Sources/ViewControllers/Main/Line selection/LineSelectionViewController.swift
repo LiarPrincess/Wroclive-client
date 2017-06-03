@@ -8,8 +8,6 @@ import SnapKit
 
 fileprivate typealias Constants = LineSelectionViewControllerConstants
 
-//MARK: - LineSelectionViewController
-
 class LineSelectionViewController: UIViewController {
 
   //MARK: - Properties
@@ -23,21 +21,33 @@ class LineSelectionViewController: UIViewController {
   let navigationBar    = UINavigationBar()
   let saveButton       = UIBarButtonItem()
   let searchButton     = UIBarButtonItem()
+
+  //MARK: Line type
+
   let lineTypeSelector = UISegmentedControl()
-
-  let lineCollectionLayout = UICollectionViewFlowLayout()
-
-  lazy var lineCollection: UICollectionView = {
-    return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.lineCollectionLayout)
-  }()
-
-  let tramsDataSource = LineSelectionDataSource()
-  let busesDataSource = LineSelectionDataSource()
 
   struct LineTypeIndex {
     static let tram = 0
     static let bus  = 1
   }
+
+  //MARK: Tram
+
+  let tramDataSource       = LineSelectionDataSource()
+  let tramCollectionLayout = UICollectionViewFlowLayout()
+
+  lazy var tramCollection: UICollectionView = {
+    return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.tramCollectionLayout)
+  }()
+
+  //MARK: Bus
+
+  let busDataSource       = LineSelectionDataSource()
+  let busCollectionLayout = UICollectionViewFlowLayout()
+
+  lazy var busCollection: UICollectionView = {
+    return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.busCollectionLayout)
+  }()
 
   //MARK: - Overriden
 
@@ -45,13 +55,7 @@ class LineSelectionViewController: UIViewController {
     super.viewDidLoad()
     self.initDataSource()
     self.initLayout()
-    self.updateLineCollectionDataSource()
-  }
-
-  private func initDataSource() {
-    let lines = LinesManager.instance.getLines()
-    self.tramsDataSource.lines = lines.filter { $0.type == .tram }
-    self.busesDataSource.lines = lines.filter { $0.type == .bus }
+    self.updateLineCollectionVisibility()
   }
 
   //MARK: - Actions
@@ -65,16 +69,21 @@ class LineSelectionViewController: UIViewController {
   }
 
   @objc func lineTypeChanged() {
-    self.updateLineCollectionDataSource()
+    self.updateLineCollectionVisibility()
   }
 
   //MARK: - Methods
 
-  private func updateLineCollectionDataSource() {
-    let selectedIndex = self.lineTypeSelector.selectedSegmentIndex
-    let dataSource    = selectedIndex == LineTypeIndex.tram ? self.tramsDataSource : self.busesDataSource
+  private func initDataSource() {
+    let lines = LinesManager.instance.getLines()
+    self.tramDataSource.lines = lines.filter { $0.type == .tram }
+    self.busDataSource.lines  = lines.filter { $0.type == .bus }
+  }
 
-    self.lineCollection.dataSource = dataSource
+  private func updateLineCollectionVisibility() {
+    let selectedIndex = self.lineTypeSelector.selectedSegmentIndex
+    self.tramCollection.isHidden = selectedIndex != LineTypeIndex.tram
+    self.busCollection.isHidden  = selectedIndex != LineTypeIndex.bus
   }
 }
 
