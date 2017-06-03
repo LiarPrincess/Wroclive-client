@@ -1,6 +1,6 @@
 //
 //  Created by Michal Matuszczyk
-//  Copyright © Michal Matuszczyk. All rights reserved.
+//  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
 import XCGLogger
