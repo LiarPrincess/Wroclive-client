@@ -5,6 +5,7 @@
 
 import UIKit
 import SnapKit
+import MapKit
 
 fileprivate typealias Constants = MapViewControllerConstants
 

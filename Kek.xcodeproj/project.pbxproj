@@ -58,6 +58,7 @@
 		9086D44D1EE2DEC800E43D9A /* LocationManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D44C1EE2DEC800E43D9A /* LocationManagerConstants.swift */; };
 		9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D44E1EE2DF7800E43D9A /* LinesManagerProtocol.swift */; };
 		9086D4511EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4501EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift */; };
+		9091D0BB1EE3075500FC4F79 /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0BA1EE3075500FC4F79 /* LayoutGuide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -145,6 +146,7 @@
 		9086D44C1EE2DEC800E43D9A /* LocationManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerConstants.swift; sourceTree = "<group>"; };
 		9086D44E1EE2DF7800E43D9A /* LinesManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManagerProtocol.swift; sourceTree = "<group>"; };
 		9086D4501EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManagerProtocol.swift; sourceTree = "<group>"; };
+		9091D0BA1EE3075500FC4F79 /* LayoutGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutGuide.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -395,8 +397,9 @@
 		902330FC1EDF37F500FA8F43 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				902330FD1EDF37F500FA8F43 /* ReusableCell */,
 				9086D4271EDF65AC00E43D9A /* Card panel transition */,
+				902330FD1EDF37F500FA8F43 /* ReusableCell */,
+				9091D0B91EE3073200FC4F79 /* LayoutGuide */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -535,6 +538,14 @@
 				9086D44C1EE2DEC800E43D9A /* LocationManagerConstants.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		9091D0B91EE3073200FC4F79 /* LayoutGuide */ = {
+			isa = PBXGroup;
+			children = (
+				9091D0BA1EE3075500FC4F79 /* LayoutGuide.swift */,
+			);
+			path = LayoutGuide;
 			sourceTree = "<group>";
 		};
 		OBJ_41 /* Tests */ = {
@@ -714,6 +725,7 @@
 				902331371EDF37F500FA8F43 /* UIView_AddBorder.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
 				9086D4471EE2DE8E00E43D9A /* BookmarksManager.swift in Sources */,
+				9091D0BB1EE3075500FC4F79 /* LayoutGuide.swift in Sources */,
 				902331381EDF37F500FA8F43 /* Logger.swift in Sources */,
 				9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,

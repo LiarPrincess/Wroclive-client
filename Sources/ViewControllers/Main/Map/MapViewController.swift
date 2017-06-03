@@ -7,8 +7,6 @@ import UIKit
 import MapKit
 import SnapKit
 
-//MARK: - MapViewController
-
 class MapViewController: UIViewController {
 
   //MARK: - Properties
@@ -22,7 +20,17 @@ class MapViewController: UIViewController {
     self.initLayout()
   }
 
-  override func viewWillAppear(_ animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
+    self.startShowingUserLocation()
+  }
+
+  override var bottomLayoutGuide: UILayoutSupport {
+    return LayoutGuide(length: 44.0)
+  }
+
+  //MARK: - Methods
+
+  private func startShowingUserLocation() {
     LocationManager.instance.requestInUseAuthorization()
 
     let region = LocationManager.instance.getInitialRegion()
@@ -31,7 +39,12 @@ class MapViewController: UIViewController {
 
 }
 
+//MARK: - MKMapViewDelegate
+
 extension MapViewController: MKMapViewDelegate {
+
+  //MARK: - Tracking mode
+
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
     let authorizationStatus = LocationManager.instance.authorizationStatus
     let isAuthorizationDenied = authorizationStatus == .restricted || authorizationStatus == .denied
@@ -40,4 +53,5 @@ extension MapViewController: MKMapViewDelegate {
       LocationManager.instance.showChangeAuthorizationAlert(in: self)
     }
   }
+
 }
