@@ -51,6 +51,7 @@
 		9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */; };
 		9086D4351EE08D7E00E43D9A /* MainViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */; };
 		9086D4371EE08E0400E43D9A /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */; };
+		9086D43B1EE0B2B700E43D9A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D43A1EE0B2B700E43D9A /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -131,6 +132,7 @@
 		9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
 		9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerLayout.swift; sourceTree = "<group>"; };
 		9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
+		9086D43A1EE0B2B700E43D9A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -338,6 +340,7 @@
 			children = (
 				902330EF1EDF37F500FA8F43 /* BookmarksManager.swift */,
 				902330F01EDF37F500FA8F43 /* LinesManager.swift */,
+				9086D43A1EE0B2B700E43D9A /* LocationManager.swift */,
 			);
 			path = Functional;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				902331371EDF37F500FA8F43 /* UIView_AddBorder.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
 				902331381EDF37F500FA8F43 /* Logger.swift in Sources */,
+				9086D43B1EE0B2B700E43D9A /* LocationManager.swift in Sources */,
 				9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				9086D42E1EDF65AC00E43D9A /* CardPanelConstants.swift in Sources */,

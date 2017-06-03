@@ -5,6 +5,7 @@
 
 import UIKit
 import SnapKit
+import MapKit
 
 //MARK: - UI Init
 
@@ -27,9 +28,7 @@ extension MainViewController {
   }
 
   private func initToolbarView() {
-    self.userTrackingButton.image  = #imageLiteral(resourceName: "vecUserTracking_None")
-    self.userTrackingButton.target = self
-    self.userTrackingButton.action = #selector(userTrackingButtonPressed)
+    self.userTrackingButton.mapView = self.mapViewController.mapView
 
     self.lineSelectionButton.image  = #imageLiteral(resourceName: "vecSearch")
     self.lineSelectionButton.target = self

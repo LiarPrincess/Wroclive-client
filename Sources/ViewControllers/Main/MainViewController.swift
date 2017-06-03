@@ -5,6 +5,7 @@
 
 import UIKit
 import SnapKit
+import MapKit
 
 fileprivate typealias Constants = MainViewControllerConstants
 
@@ -16,7 +17,7 @@ class MainViewController: UIViewController {
 
   let mapViewController = MapViewController()
 
-  let userTrackingButton  = UIBarButtonItem()
+  let userTrackingButton  = MKUserTrackingBarButtonItem()
   let lineSelectionButton = UIBarButtonItem()
   let bookmarksButton     = UIBarButtonItem()
   let configurationButton = UIBarButtonItem()
@@ -32,10 +33,6 @@ class MainViewController: UIViewController {
   }
 
   //MARK: - Actions
-
-  @objc func userTrackingButtonPressed() {
-    logger.info("userTrackingButtonPressed")
-  }
 
   @objc func lineSelectionButtonPressed() {
     let relativeHeight = Constants.CardPanel.lineSelectionRelativeHeight
