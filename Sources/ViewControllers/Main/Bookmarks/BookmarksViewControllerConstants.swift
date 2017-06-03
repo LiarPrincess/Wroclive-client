@@ -19,12 +19,8 @@ struct BookmarksViewControllerConstants {
       static let leftOffset:  CGFloat = 40.0
       static let rightOffset: CGFloat = leftOffset
 
-      struct TramLines {
-        static let topOffset: CGFloat = 6.0
-      }
-
-      struct BusLines {
-        static let topOffset: CGFloat = 6.0
+      struct LinesLabel {
+        static let topOffset: CGFloat = 2.0
       }
     }
 

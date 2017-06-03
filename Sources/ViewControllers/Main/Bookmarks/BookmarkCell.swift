@@ -68,7 +68,7 @@ class BookmarkCell: UITableViewCell {
     self.tramLines.isHidden = !hasTramLines
 
     self.tramLines.snp.updateConstraints { make in
-      let topOffset = hasTramLines ? Layout.TramLines.topOffset : 0.0
+      let topOffset = hasTramLines ? Layout.LinesLabel.topOffset : 0.0
       make.top.equalTo(self.bookmarkName.snp.bottom).offset(topOffset)
     }
 
@@ -77,7 +77,7 @@ class BookmarkCell: UITableViewCell {
     self.busLines.isHidden  = !hasBusLines
 
     self.busLines.snp.updateConstraints { make in
-      let topOffset = hasBusLines ? Layout.BusLines.topOffset : 0.0
+      let topOffset = hasBusLines ? Layout.LinesLabel.topOffset : 0.0
       make.top.equalTo(self.tramLines.snp.bottom).offset(topOffset)
     }
   }
@@ -107,7 +107,7 @@ extension BookmarkCell {
     self.addSubview(self.tramLines)
 
     self.tramLines.snp.makeConstraints { make in
-      make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.TramLines.topOffset)
+      make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.LinesLabel.topOffset)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
@@ -118,7 +118,7 @@ extension BookmarkCell {
     self.addSubview(self.busLines)
 
     self.busLines.snp.makeConstraints { make in
-      make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.BusLines.topOffset)
+      make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.LinesLabel.topOffset)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
       make.bottom.equalToSuperview().offset(-Layout.bottomOffset)
