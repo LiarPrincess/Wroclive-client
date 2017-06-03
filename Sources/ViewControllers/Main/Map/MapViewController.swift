@@ -21,7 +21,7 @@ class MapViewController: UIViewController {
   }
 
   override func viewDidAppear(_ animated: Bool) {
-    self.startShowingUserLocation()
+    self.showUserLocation()
   }
 
   override var bottomLayoutGuide: UILayoutSupport {
@@ -30,7 +30,7 @@ class MapViewController: UIViewController {
 
   //MARK: - Methods
 
-  private func startShowingUserLocation() {
+  private func showUserLocation() {
     LocationManager.instance.requestInUseAuthorization()
 
     let region = LocationManager.instance.getInitialRegion()
@@ -47,10 +47,13 @@ extension MapViewController: MKMapViewDelegate {
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
     let authorizationStatus = LocationManager.instance.authorizationStatus
-    let isAuthorizationDenied = authorizationStatus == .restricted || authorizationStatus == .denied
 
-    if isAuthorizationDenied {
-      LocationManager.instance.showChangeAuthorizationAlert(in: self)
+    if authorizationStatus == .denied {
+      LocationManager.instance.showAlertForDeniedAuthorization(in: self)
+    }
+
+    if authorizationStatus == .restricted {
+      LocationManager.instance.showAlertForRestrictedAuthorization(in: self)
     }
   }
 

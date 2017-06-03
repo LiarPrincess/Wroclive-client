@@ -49,8 +49,8 @@ extension LocationManager: LocationManagerProtocol {
     self.locationManager.requestWhenInUseAuthorization()
   }
 
-  func showChangeAuthorizationAlert(in parent: UIViewController) {
-    let alertTitle      = "Background location access is disabled"
+  func showAlertForDeniedAuthorization(in parent: UIViewController) {
+    let alertTitle      = "Location access is disabled"
     let alertMessage    = "In order show your current location, please open this app settings and set location access to 'In use'."
     let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
   
@@ -63,6 +63,17 @@ extension LocationManager: LocationManagerProtocol {
       }
     }
     alertController.addAction(openAction)
+
+    parent.present(alertController, animated: true, completion: nil)
+  }
+
+  func showAlertForRestrictedAuthorization(in parent: UIViewController) {
+    let alertTitle      = "Location access is disabled"
+    let alertMessage    = "You can enable location access in your device settings."
+    let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+
+    let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    alertController.addAction(okAction)
 
     parent.present(alertController, animated: true, completion: nil)
   }

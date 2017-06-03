@@ -17,5 +17,6 @@ protocol LocationManagerProtocol {
   var authorizationStatus: CLAuthorizationStatus { get }
   
   func requestInUseAuthorization()
-  func showChangeAuthorizationAlert(in parent: UIViewController)
+  func showAlertForDeniedAuthorization(in parent: UIViewController)
+  func showAlertForRestrictedAuthorization(in parent: UIViewController)
 }

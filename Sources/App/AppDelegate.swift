@@ -14,13 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     logger.info("Starting application")
 
     UINavigationBar.titleFont = FontManager.instance.navigationBar
-    UIBarButtonItem.font = FontManager.instance.navigationBarItem
+    UIBarButtonItem.font      = FontManager.instance.navigationBarItem
 
     window = UIWindow(frame: UIScreen.main.bounds)
     window!.tintColor       = UIColor(red: 1.0, green: 0.25, blue: 0.25, alpha: 1.0)
     window!.backgroundColor = UIColor.black
 
-    let mainViewController = MainViewController()
+    let mainViewController     = MainViewController()
     window!.rootViewController = mainViewController
     window!.makeKeyAndVisible()
 

@@ -39,12 +39,12 @@ extension MainViewController {
     self.bookmarksButton.action = #selector(bookmarksButtonPressed)
 
     self.configurationButton.image  = #imageLiteral(resourceName: "vecSettings")
-    self.configurationButton.style = .done
+    self.configurationButton.style  = .done
     self.configurationButton.target = self
     self.configurationButton.action = #selector(configurationButtonPressed)
 
     let toolbar = UIToolbar()
-    toolbar.setItems(self.spaceToolbarItems(), animated: false)
+    toolbar.setItems(self.layoutToolbarItems(), animated: false)
     self.view.addSubview(toolbar)
 
     toolbar.snp.makeConstraints { make in
@@ -52,7 +52,7 @@ extension MainViewController {
     }
   }
 
-  private func spaceToolbarItems() -> [UIBarButtonItem] {
+  private func layoutToolbarItems() -> [UIBarButtonItem] {
     let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
     var toolbarItems: [UIBarButtonItem] = []
