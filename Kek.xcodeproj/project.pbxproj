@@ -15,8 +15,6 @@
 		9023312E1EDF37F500FA8F43 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EA1EDF37F500FA8F43 /* Line.swift */; };
 		9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EB1EDF37F500FA8F43 /* LineSubtype.swift */; };
 		902331301EDF37F500FA8F43 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EC1EDF37F500FA8F43 /* LineType.swift */; };
-		902331311EDF37F500FA8F43 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EF1EDF37F500FA8F43 /* BookmarksManager.swift */; };
-		902331321EDF37F500FA8F43 /* LinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F01EDF37F500FA8F43 /* LinesManager.swift */; };
 		902331331EDF37F500FA8F43 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F21EDF37F500FA8F43 /* FontManager.swift */; };
 		902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F61EDF37F500FA8F43 /* UIBarButtonItem.swift */; };
 		902331351EDF37F500FA8F43 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F71EDF37F500FA8F43 /* UINavigationBar.swift */; };
@@ -51,7 +49,15 @@
 		9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */; };
 		9086D4351EE08D7E00E43D9A /* MainViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */; };
 		9086D4371EE08E0400E43D9A /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */; };
-		9086D43B1EE0B2B700E43D9A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D43A1EE0B2B700E43D9A /* LocationManager.swift */; };
+		9086D43D1EE2D46400E43D9A /* MapViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D43C1EE2D46400E43D9A /* MapViewControllerLayout.swift */; };
+		9086D43F1EE2DB3C00E43D9A /* MapViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D43E1EE2DB3C00E43D9A /* MapViewControllerConstants.swift */; };
+		9086D4471EE2DE8E00E43D9A /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4421EE2DE8E00E43D9A /* BookmarksManager.swift */; };
+		9086D4481EE2DE8E00E43D9A /* LinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4441EE2DE8E00E43D9A /* LinesManager.swift */; };
+		9086D4491EE2DE8E00E43D9A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4461EE2DE8E00E43D9A /* LocationManager.swift */; };
+		9086D44B1EE2DEA200E43D9A /* LocationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D44A1EE2DEA200E43D9A /* LocationManagerProtocol.swift */; };
+		9086D44D1EE2DEC800E43D9A /* LocationManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D44C1EE2DEC800E43D9A /* LocationManagerConstants.swift */; };
+		9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D44E1EE2DF7800E43D9A /* LinesManagerProtocol.swift */; };
+		9086D4511EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4501EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,8 +102,6 @@
 		902330EA1EDF37F500FA8F43 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		902330EB1EDF37F500FA8F43 /* LineSubtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSubtype.swift; sourceTree = "<group>"; };
 		902330EC1EDF37F500FA8F43 /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
-		902330EF1EDF37F500FA8F43 /* BookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
-		902330F01EDF37F500FA8F43 /* LinesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManager.swift; sourceTree = "<group>"; };
 		902330F21EDF37F500FA8F43 /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		902330F61EDF37F500FA8F43 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		902330F71EDF37F500FA8F43 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
@@ -132,7 +136,15 @@
 		9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
 		9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerLayout.swift; sourceTree = "<group>"; };
 		9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
-		9086D43A1EE0B2B700E43D9A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9086D43C1EE2D46400E43D9A /* MapViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerLayout.swift; sourceTree = "<group>"; };
+		9086D43E1EE2DB3C00E43D9A /* MapViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerConstants.swift; sourceTree = "<group>"; };
+		9086D4421EE2DE8E00E43D9A /* BookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
+		9086D4441EE2DE8E00E43D9A /* LinesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManager.swift; sourceTree = "<group>"; };
+		9086D4461EE2DE8E00E43D9A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9086D44A1EE2DEA200E43D9A /* LocationManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerProtocol.swift; sourceTree = "<group>"; };
+		9086D44C1EE2DEC800E43D9A /* LocationManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerConstants.swift; sourceTree = "<group>"; };
+		9086D44E1EE2DF7800E43D9A /* LinesManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManagerProtocol.swift; sourceTree = "<group>"; };
+		9086D4501EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManagerProtocol.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -329,20 +341,10 @@
 		902330ED1EDF37F500FA8F43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				902330EE1EDF37F500FA8F43 /* Functional */,
+				9086D4401EE2DE8E00E43D9A /* Functional */,
 				902330F11EDF37F500FA8F43 /* Usability */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		902330EE1EDF37F500FA8F43 /* Functional */ = {
-			isa = PBXGroup;
-			children = (
-				902330EF1EDF37F500FA8F43 /* BookmarksManager.swift */,
-				902330F01EDF37F500FA8F43 /* LinesManager.swift */,
-				9086D43A1EE0B2B700E43D9A /* LocationManager.swift */,
-			);
-			path = Functional;
 			sourceTree = "<group>";
 		};
 		902330F11EDF37F500FA8F43 /* Usability */ = {
@@ -468,6 +470,8 @@
 			isa = PBXGroup;
 			children = (
 				902331171EDF37F500FA8F43 /* MapViewController.swift */,
+				9086D43C1EE2D46400E43D9A /* MapViewControllerLayout.swift */,
+				9086D43E1EE2DB3C00E43D9A /* MapViewControllerConstants.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -493,6 +497,44 @@
 				9086D4281EDF65AC00E43D9A /* CardPanelConstants.swift */,
 			);
 			path = "Card panel transition";
+			sourceTree = "<group>";
+		};
+		9086D4401EE2DE8E00E43D9A /* Functional */ = {
+			isa = PBXGroup;
+			children = (
+				9086D4411EE2DE8E00E43D9A /* Bookmarks */,
+				9086D4431EE2DE8E00E43D9A /* Lines */,
+				9086D4451EE2DE8E00E43D9A /* Location */,
+			);
+			path = Functional;
+			sourceTree = "<group>";
+		};
+		9086D4411EE2DE8E00E43D9A /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				9086D4421EE2DE8E00E43D9A /* BookmarksManager.swift */,
+				9086D4501EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		9086D4431EE2DE8E00E43D9A /* Lines */ = {
+			isa = PBXGroup;
+			children = (
+				9086D4441EE2DE8E00E43D9A /* LinesManager.swift */,
+				9086D44E1EE2DF7800E43D9A /* LinesManagerProtocol.swift */,
+			);
+			path = Lines;
+			sourceTree = "<group>";
+		};
+		9086D4451EE2DE8E00E43D9A /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				9086D4461EE2DE8E00E43D9A /* LocationManager.swift */,
+				9086D44A1EE2DEA200E43D9A /* LocationManagerProtocol.swift */,
+				9086D44C1EE2DEC800E43D9A /* LocationManagerConstants.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		OBJ_41 /* Tests */ = {
@@ -659,31 +701,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				9023314A1EDF37F500FA8F43 /* MainViewController.swift in Sources */,
+				9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */,
 				9023313C1EDF37F500FA8F43 /* BookmarkCell.swift in Sources */,
 				902331491EDF37F500FA8F43 /* LineSelectionSectionCreator.swift in Sources */,
 				9086D4301EDF65AC00E43D9A /* CardPanelPresentable.swift in Sources */,
 				902331441EDF37F500FA8F43 /* LineSelectionCell.swift in Sources */,
 				9023312D1EDF37F500FA8F43 /* Bookmark.swift in Sources */,
+				9086D4511EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift in Sources */,
 				9023313A1EDF37F500FA8F43 /* ReusableCellContainer.swift in Sources */,
 				9023313B1EDF37F500FA8F43 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				902331391EDF37F500FA8F43 /* ReusableCell.swift in Sources */,
 				902331371EDF37F500FA8F43 /* UIView_AddBorder.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
+				9086D4471EE2DE8E00E43D9A /* BookmarksManager.swift in Sources */,
 				902331381EDF37F500FA8F43 /* Logger.swift in Sources */,
-				9086D43B1EE0B2B700E43D9A /* LocationManager.swift in Sources */,
 				9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				9086D42E1EDF65AC00E43D9A /* CardPanelConstants.swift in Sources */,
 				9086D4371EE08E0400E43D9A /* MainViewControllerConstants.swift in Sources */,
 				902331451EDF37F500FA8F43 /* LineSelectionDataSource.swift in Sources */,
 				9023313D1EDF37F500FA8F43 /* BookmarksDataSource.swift in Sources */,
+				9086D4481EE2DE8E00E43D9A /* LinesManager.swift in Sources */,
 				902331481EDF37F500FA8F43 /* LineSelectionViewControllerConstants.swift in Sources */,
-				902331311EDF37F500FA8F43 /* BookmarksManager.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
+				9086D44D1EE2DEC800E43D9A /* LocationManagerConstants.swift in Sources */,
 				9086D42F1EDF65AC00E43D9A /* CardPanelInteractiveTransition.swift in Sources */,
-				902331321EDF37F500FA8F43 /* LinesManager.swift in Sources */,
 				902331331EDF37F500FA8F43 /* FontManager.swift in Sources */,
 				9086D4201EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift in Sources */,
+				9086D4491EE2DE8E00E43D9A /* LocationManager.swift in Sources */,
 				902331461EDF37F500FA8F43 /* LineSelectionSectionHeaderView.swift in Sources */,
 				9086D4221EDF54A000E43D9A /* BookmarksViewControllerConstants.swift in Sources */,
 				9086D4351EE08D7E00E43D9A /* MainViewControllerLayout.swift in Sources */,
@@ -693,6 +738,9 @@
 				9086D4311EDF65AC00E43D9A /* CardPanelPresenter.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */,
+				9086D43D1EE2D46400E43D9A /* MapViewControllerLayout.swift in Sources */,
+				9086D43F1EE2DB3C00E43D9A /* MapViewControllerConstants.swift in Sources */,
+				9086D44B1EE2DEA200E43D9A /* LocationManagerProtocol.swift in Sources */,
 				9023313E1EDF37F500FA8F43 /* BookmarksViewController.swift in Sources */,
 				902331471EDF37F500FA8F43 /* LineSelectionViewController.swift in Sources */,
 				9023314B1EDF37F500FA8F43 /* MapViewController.swift in Sources */,

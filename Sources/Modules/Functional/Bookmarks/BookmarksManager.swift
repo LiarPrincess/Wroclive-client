@@ -5,11 +5,6 @@
 
 import Foundation
 
-protocol BookmarksManagerProtocol {
-  func getBookmarks() -> [Bookmark]
-  func saveBookmarks(_ bookmarks: [Bookmark])
-}
-
 class BookmarksManager: BookmarksManagerProtocol {
 
   //MARK: - Singleton

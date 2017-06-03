@@ -5,10 +5,6 @@
 
 import Foundation
 
-protocol LinesManagerProtocol {
-  func getLines() -> [Line]
-}
-
 class LinesManager: LinesManagerProtocol {
 
   //MARK: - Singleton

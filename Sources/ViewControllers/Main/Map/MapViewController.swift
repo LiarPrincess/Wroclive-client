@@ -15,54 +15,29 @@ class MapViewController: UIViewController {
 
   let mapView = MKMapView()
 
-  fileprivate lazy var locationManager: CLLocationManager = {
-    let locationManager = CLLocationManager()
-    locationManager.distanceFilter = 5.0
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    return locationManager
-  }()
-
   //MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    // not in did load!
-    self.requestInUseAuthorizationIfNeeded()
-    let center = self.locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.032564)
-    mapView.region = MKCoordinateRegionMakeWithDistance(center, 2500.0, 2500.0)
-
     self.initLayout()
   }
 
-  //MARK: - UI Init
+  override func viewWillAppear(_ animated: Bool) {
+    LocationManager.instance.requestInUseAuthorization()
 
-  private func initLayout() {
-    self.mapView.mapType           = .standard
-    self.mapView.showsBuildings    = true
-    self.mapView.showsCompass      = true
-    self.mapView.showsScale        = false
-    self.mapView.showsTraffic      = false
-    self.mapView.showsUserLocation = true
-    self.view.addSubview(self.mapView)
+    let region = LocationManager.instance.getInitialRegion()
+    self.mapView.setRegion(region, animated: false)
+  }
 
-    self.mapView.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
+}
+
+extension MapViewController: MKMapViewDelegate {
+  func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+    let authorizationStatus = LocationManager.instance.authorizationStatus
+    let isAuthorizationDenied = authorizationStatus == .restricted || authorizationStatus == .denied
+
+    if isAuthorizationDenied {
+      LocationManager.instance.showChangeAuthorizationAlert(in: self)
     }
   }
-
-  func requestInUseAuthorizationIfNeeded() {
-    let authorizationStatus = CLLocationManager.authorizationStatus()
-
-//    guard !authorizationStatus.forbidsLocalization else {
-//      return
-//    }
-//
-//    guard authorizationStatus == .notDetermined else {
-//      return
-//    }
-
-    self.locationManager.requestWhenInUseAuthorization()
-  }
-
 }
