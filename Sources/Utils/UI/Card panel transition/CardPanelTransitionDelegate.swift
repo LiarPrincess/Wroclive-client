@@ -11,14 +11,14 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
 
   //MARK: - Properties
 
-  private let relativeHeight:        CGFloat
-  private let interactiveTransition: CardPanelInteractiveTransition
+  private let relativeHeight:               CGFloat
+  private let interactiveDismissTransition: CardPanelInteractiveDismissTransition
 
   //MARK: - Init
 
   init(for presentable: CardPanelPresentable, withRelativeHeight relativeHeight: CGFloat) {
     self.relativeHeight        = relativeHeight
-    self.interactiveTransition = CardPanelInteractiveTransition(for: presentable)
+    self.interactiveDismissTransition = CardPanelInteractiveDismissTransition(for: presentable)
     super.init()
   }
 
@@ -35,7 +35,7 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
   //MARK: - Interactive transition
 
   func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-    return interactiveTransition.hasStarted ? interactiveTransition : nil
+    return interactiveDismissTransition.hasStarted ? interactiveDismissTransition : nil
   }
 
   //MARK: - Presentation

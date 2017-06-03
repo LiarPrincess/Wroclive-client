@@ -8,6 +8,6 @@ import Foundation
 protocol LinesManagerProtocol {
   func getLines() -> [Line]
 
-  //func getSelectedLines()
-  //func setSelectedLines()
+  //func saveLineSelectionState(state: X)
+  //func getLineSelectionState()
 }

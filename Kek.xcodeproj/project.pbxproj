@@ -42,10 +42,7 @@
 		9086D4221EDF54A000E43D9A /* BookmarksViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4211EDF54A000E43D9A /* BookmarksViewControllerConstants.swift */; };
 		9086D4241EDF54AC00E43D9A /* BookmarksViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4231EDF54AC00E43D9A /* BookmarksViewControllerLayout.swift */; };
 		9086D42E1EDF65AC00E43D9A /* CardPanelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4281EDF65AC00E43D9A /* CardPanelConstants.swift */; };
-		9086D42F1EDF65AC00E43D9A /* CardPanelInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4291EDF65AC00E43D9A /* CardPanelInteractiveTransition.swift */; };
 		9086D4301EDF65AC00E43D9A /* CardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42A1EDF65AC00E43D9A /* CardPanelPresentable.swift */; };
-		9086D4311EDF65AC00E43D9A /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42B1EDF65AC00E43D9A /* CardPanelPresenter.swift */; };
-		9086D4321EDF65AC00E43D9A /* CardPanelTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42C1EDF65AC00E43D9A /* CardPanelTransition.swift */; };
 		9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */; };
 		9086D4351EE08D7E00E43D9A /* MainViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */; };
 		9086D4371EE08E0400E43D9A /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */; };
@@ -59,6 +56,10 @@
 		9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D44E1EE2DF7800E43D9A /* LinesManagerProtocol.swift */; };
 		9086D4511EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4501EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift */; };
 		9091D0BB1EE3075500FC4F79 /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0BA1EE3075500FC4F79 /* LayoutGuide.swift */; };
+		9091D0C61EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0C11EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift */; };
+		9091D0C71EE31FB800FC4F79 /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0C31EE31FB800FC4F79 /* CardPanelPresenter.swift */; };
+		9091D0C81EE31FB800FC4F79 /* CardPanelPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0C51EE31FB800FC4F79 /* CardPanelPresentationTransition.swift */; };
+		9091D0CA1EE31FD400FC4F79 /* CardPanelDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0C91EE31FD400FC4F79 /* CardPanelDismissTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -130,10 +131,7 @@
 		9086D4211EDF54A000E43D9A /* BookmarksViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerConstants.swift; sourceTree = "<group>"; };
 		9086D4231EDF54AC00E43D9A /* BookmarksViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerLayout.swift; sourceTree = "<group>"; };
 		9086D4281EDF65AC00E43D9A /* CardPanelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelConstants.swift; sourceTree = "<group>"; };
-		9086D4291EDF65AC00E43D9A /* CardPanelInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelInteractiveTransition.swift; sourceTree = "<group>"; };
 		9086D42A1EDF65AC00E43D9A /* CardPanelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentable.swift; sourceTree = "<group>"; };
-		9086D42B1EDF65AC00E43D9A /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
-		9086D42C1EDF65AC00E43D9A /* CardPanelTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransition.swift; sourceTree = "<group>"; };
 		9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
 		9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerLayout.swift; sourceTree = "<group>"; };
 		9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
@@ -147,6 +145,10 @@
 		9086D44E1EE2DF7800E43D9A /* LinesManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManagerProtocol.swift; sourceTree = "<group>"; };
 		9086D4501EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManagerProtocol.swift; sourceTree = "<group>"; };
 		9091D0BA1EE3075500FC4F79 /* LayoutGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutGuide.swift; sourceTree = "<group>"; };
+		9091D0C11EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelInteractiveDismissTransition.swift; sourceTree = "<group>"; };
+		9091D0C31EE31FB800FC4F79 /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
+		9091D0C51EE31FB800FC4F79 /* CardPanelPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentationTransition.swift; sourceTree = "<group>"; };
+		9091D0C91EE31FD400FC4F79 /* CardPanelDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelDismissTransition.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -492,10 +494,10 @@
 		9086D4271EDF65AC00E43D9A /* Card panel transition */ = {
 			isa = PBXGroup;
 			children = (
+				9091D0C21EE31FB800FC4F79 /* Presenter */,
+				9091D0C41EE31FB800FC4F79 /* Transition */,
+				9091D0C01EE31FB800FC4F79 /* InteractiveTransition */,
 				9086D42A1EDF65AC00E43D9A /* CardPanelPresentable.swift */,
-				9086D42B1EDF65AC00E43D9A /* CardPanelPresenter.swift */,
-				9086D42C1EDF65AC00E43D9A /* CardPanelTransition.swift */,
-				9086D4291EDF65AC00E43D9A /* CardPanelInteractiveTransition.swift */,
 				9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */,
 				9086D4281EDF65AC00E43D9A /* CardPanelConstants.swift */,
 			);
@@ -546,6 +548,31 @@
 				9091D0BA1EE3075500FC4F79 /* LayoutGuide.swift */,
 			);
 			path = LayoutGuide;
+			sourceTree = "<group>";
+		};
+		9091D0C01EE31FB800FC4F79 /* InteractiveTransition */ = {
+			isa = PBXGroup;
+			children = (
+				9091D0C11EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift */,
+			);
+			path = InteractiveTransition;
+			sourceTree = "<group>";
+		};
+		9091D0C21EE31FB800FC4F79 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9091D0C31EE31FB800FC4F79 /* CardPanelPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9091D0C41EE31FB800FC4F79 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				9091D0C51EE31FB800FC4F79 /* CardPanelPresentationTransition.swift */,
+				9091D0C91EE31FD400FC4F79 /* CardPanelDismissTransition.swift */,
+			);
+			path = Transition;
 			sourceTree = "<group>";
 		};
 		OBJ_41 /* Tests */ = {
@@ -712,7 +739,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9023314A1EDF37F500FA8F43 /* MainViewController.swift in Sources */,
+				9091D0C81EE31FB800FC4F79 /* CardPanelPresentationTransition.swift in Sources */,
 				9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */,
+				9091D0C61EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				9023313C1EDF37F500FA8F43 /* BookmarkCell.swift in Sources */,
 				902331491EDF37F500FA8F43 /* LineSelectionSectionCreator.swift in Sources */,
 				9086D4301EDF65AC00E43D9A /* CardPanelPresentable.swift in Sources */,
@@ -737,23 +766,22 @@
 				902331481EDF37F500FA8F43 /* LineSelectionViewControllerConstants.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				9086D44D1EE2DEC800E43D9A /* LocationManagerConstants.swift in Sources */,
-				9086D42F1EDF65AC00E43D9A /* CardPanelInteractiveTransition.swift in Sources */,
 				902331331EDF37F500FA8F43 /* FontManager.swift in Sources */,
 				9086D4201EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift in Sources */,
+				9091D0C71EE31FB800FC4F79 /* CardPanelPresenter.swift in Sources */,
 				9086D4491EE2DE8E00E43D9A /* LocationManager.swift in Sources */,
 				902331461EDF37F500FA8F43 /* LineSelectionSectionHeaderView.swift in Sources */,
 				9086D4221EDF54A000E43D9A /* BookmarksViewControllerConstants.swift in Sources */,
 				9086D4351EE08D7E00E43D9A /* MainViewControllerLayout.swift in Sources */,
 				9086D4241EDF54AC00E43D9A /* BookmarksViewControllerLayout.swift in Sources */,
-				9086D4321EDF65AC00E43D9A /* CardPanelTransition.swift in Sources */,
 				902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */,
-				9086D4311EDF65AC00E43D9A /* CardPanelPresenter.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */,
 				9086D43D1EE2D46400E43D9A /* MapViewControllerLayout.swift in Sources */,
 				9086D43F1EE2DB3C00E43D9A /* MapViewControllerConstants.swift in Sources */,
 				9086D44B1EE2DEA200E43D9A /* LocationManagerProtocol.swift in Sources */,
 				9023313E1EDF37F500FA8F43 /* BookmarksViewController.swift in Sources */,
+				9091D0CA1EE31FD400FC4F79 /* CardPanelDismissTransition.swift in Sources */,
 				902331471EDF37F500FA8F43 /* LineSelectionViewController.swift in Sources */,
 				9023314B1EDF37F500FA8F43 /* MapViewController.swift in Sources */,
 				902331351EDF37F500FA8F43 /* UINavigationBar.swift in Sources */,
@@ -830,7 +858,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = pl.kekapp.kek;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kekapp.kek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -882,7 +910,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = pl.kekapp.kek;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kekapp.kek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

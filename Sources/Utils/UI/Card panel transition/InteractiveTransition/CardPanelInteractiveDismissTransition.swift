@@ -5,7 +5,7 @@
 
 import UIKit
 
-class CardPanelInteractiveTransition: UIPercentDrivenInteractiveTransition {
+class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransition {
 
   //MARK: - Properties
 
@@ -21,6 +21,13 @@ class CardPanelInteractiveTransition: UIPercentDrivenInteractiveTransition {
 
     let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
     self.presentable?.interactionTarget.addGestureRecognizer(gestureRecognizer)
+  }
+
+  //MARK: - Overriden
+
+  override var completionSpeed: CGFloat {
+    get { return 1.0 - self.percentComplete }
+    set { }
   }
 
   //MARK: - Gesture recognizers

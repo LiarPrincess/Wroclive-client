@@ -72,7 +72,7 @@ extension LocationManager: LocationManagerProtocol {
     let alertMessage    = "You can enable location access in your device settings."
     let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
 
-    let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
     alertController.addAction(okAction)
 
     parent.present(alertController, animated: true, completion: nil)
