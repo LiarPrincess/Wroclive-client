@@ -77,8 +77,8 @@ extension LineSelectionViewController {
   private func initLinesCollection() {
     self.lineCollection.register(LineSelectionCell.self)
     self.lineCollection.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
-    self.lineCollection.backgroundColor = UIColor.white
-    self.lineCollection.allowsSelection = true
+    self.lineCollection.backgroundColor         = UIColor.white
+    self.lineCollection.allowsSelection         = true
     self.lineCollection.allowsMultipleSelection = true
     //self.lineCollection.dataSource will be set later in self.updateLineCollectionDataSource()
     self.lineCollection.delegate = self

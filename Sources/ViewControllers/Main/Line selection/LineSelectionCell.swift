@@ -24,7 +24,7 @@ class LineSelectionCell: UICollectionViewCell {
 
   //MARK: - Properties
 
-  fileprivate var lineName = UILabel()
+  var lineName = UILabel()
 
   //MARK: - Init
 
@@ -35,6 +35,14 @@ class LineSelectionCell: UICollectionViewCell {
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  //MARK: - Overriden
+
+  override var isSelected: Bool {
+    didSet {
+      self.lineName.textColor = isSelected ? UIColor.white : self.tintColor
+    }
   }
 
   //MARK: - Methods
@@ -50,7 +58,11 @@ class LineSelectionCell: UICollectionViewCell {
 extension LineSelectionCell {
 
   fileprivate func initLayout() {
-    let tintColor = UIApplication.shared.keyWindow!.tintColor
+    self.tintColor = UIApplication.shared.keyWindow!.tintColor
+
+    let back = UIView()
+    back.backgroundColor        = tintColor
+    self.selectedBackgroundView = back
 
     self.lineName.numberOfLines = 1
     self.lineName.font          = FontManager.instance.lineSelectionCellContent

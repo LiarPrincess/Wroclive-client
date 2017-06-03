@@ -119,4 +119,22 @@ extension LineSelectionViewController: UICollectionViewDelegateFlowLayout {
     return isLastSection ? sectionConstants.lastSectionInsets : sectionConstants.insets
   }
 
+  //MARK: - Selection
+
+  func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+
+  func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    logger.info("didSelectItemAt: \(indexPath)")
+  }
+
+  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    logger.info("didDeselectItemAt: \(indexPath)")
+  }
+
 }
