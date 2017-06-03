@@ -5,8 +5,6 @@
 
 import UIKit
 
-fileprivate typealias Constants = SearchViewControllerConstants
-
 class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
 
   //MARK: - Properties

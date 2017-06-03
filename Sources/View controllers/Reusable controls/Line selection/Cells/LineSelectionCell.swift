@@ -6,7 +6,7 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Constants = SearchViewControllerConstants
+fileprivate typealias Layout = LineSelectionControlConstants.Layout.Cell
 
 class LineSelectionCell: UICollectionViewCell {
 
@@ -56,8 +56,8 @@ extension LineSelectionCell {
     self.lineName.textAlignment = .center
     self.lineName.textColor     = self.tintColor
 
-    self.layer.cornerRadius = Constants.Layout.LineCollection.Cell.cornerRadius
-    self.layer.borderWidth  = Constants.Layout.LineCollection.Cell.borderWidth
+    self.layer.cornerRadius = Layout.cornerRadius
+    self.layer.borderWidth  = Layout.borderWidth
     self.layer.borderColor  = self.tintColor?.cgColor
     self.clipsToBounds      = true
 

@@ -6,8 +6,6 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Constants = SearchViewControllerConstants
-
 class LineSelectionSectionHeaderView: UICollectionReusableView {
 
   //MARK: - Properties

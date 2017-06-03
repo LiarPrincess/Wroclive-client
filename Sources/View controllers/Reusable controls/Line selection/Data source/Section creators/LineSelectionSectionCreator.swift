@@ -3,17 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-//MARK: - LineSelectionSectionCreatorProtocol
-
-protocol LineSelectionSectionCreatorProtocol {
-  func create(from lines:[Line]) -> [LineSelectionSection]
-}
-
-//MARK: - LineSelectionSectionCreator
-
 class LineSelectionSectionCreator: LineSelectionSectionCreatorProtocol {
-
-  //MARK: - LineSelectionSectionCreatorProtocol
 
   func create(from lines:[Line]) -> [LineSelectionSection] {
     let sections = self.convertToSections(lines: lines)

@@ -13,8 +13,13 @@ extension SearchViewController {
   func initLayout() {
     self.view.backgroundColor = UIColor.white
     self.initNavigationBar()
-    self.initTramCollection()
-    self.initBusCollection()
+
+    self.addLineSelectionControl(self.busSelectionControl)
+    self.busSelectionControl.view.backgroundColor = UIColor.red
+
+    self.addLineSelectionControl(self.tramSelectionControl)
+    self.tramSelectionControl.view.backgroundColor = UIColor.green
+
   }
 
   //MARK: - Navigation bar
@@ -75,33 +80,21 @@ extension SearchViewController {
     self.lineTypeSelector.font = FontManager.instance.lineSelectionLineTypeSelector
   }
 
-  //MARK: - Collections
+  //MARK: - Line selection
 
-  private func initTramCollection() {
-    self.initCollectionCommon(self.tramCollection)
-    self.tramCollection.dataSource = self.tramDataSource
-  }
+  fileprivate func addLineSelectionControl(_ control: LineSelectionControl) {
+    control.leftSectionInset  = Layout.Content.leftOffset
+    control.rightSectionInset = Layout.Content.rightOffset
 
-  private func initBusCollection() {
-    self.initCollectionCommon(self.busCollection)
-    self.busCollection.dataSource = self.busDataSource
-  }
+    self.addChildViewController(control)
+    self.view.insertSubview(control.view, belowSubview: self.navigationBarBlurView)
 
-  private func initCollectionCommon(_ collection: UICollectionView) {
-    collection.register(LineSelectionCell.self)
-    collection.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
-    collection.backgroundColor         = UIColor.white
-    collection.allowsSelection         = true
-    collection.allowsMultipleSelection = true
-    collection.delegate = self
-
-    self.view.insertSubview(collection, belowSubview: self.navigationBarBlurView)
-
-    collection.snp.makeConstraints { make in
+    control.view.snp.makeConstraints { make in
       make.top.equalTo(self.navigationBarBlurView.snp.bottom)
-      make.left.right.equalToSuperview()
-      make.bottom.equalToSuperview()
+      make.left.right.bottom.equalToSuperview()
     }
+
+    control.didMove(toParentViewController: self)
   }
 
 }
