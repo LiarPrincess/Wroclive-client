@@ -8,13 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		154034383A94518E3E5D9AD4 /* Pods_Kek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */; };
-		9017C3331EE32C4D00063377 /* LineSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C32E1EE32C4D00063377 /* LineSelectionCell.swift */; };
-		9017C3341EE32C4D00063377 /* LineSelectionSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C32F1EE32C4D00063377 /* LineSelectionSectionHeaderView.swift */; };
-		9017C3351EE32C4D00063377 /* LineSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3311EE32C4D00063377 /* LineSelectionDataSource.swift */; };
-		9017C3361EE32C4D00063377 /* LineSelectionSectionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3321EE32C4D00063377 /* LineSelectionSectionCreator.swift */; };
-		9017C3381EE32C6100063377 /* LineSelectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3371EE32C6100063377 /* LineSelectionCellViewModel.swift */; };
-		9017C33A1EE32C8200063377 /* LineSelectionSectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3391EE32C8200063377 /* LineSelectionSectionHeaderViewModel.swift */; };
-		9017C33C1EE32CB000063377 /* LineSelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C33B1EE32CB000063377 /* LineSelectionSection.swift */; };
+		9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksViewController.swift */; };
+		9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */; };
+		9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */; };
+		9017C35D1EE339FD00063377 /* LineSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3461EE339FD00063377 /* LineSelectionCell.swift */; };
+		9017C35E1EE339FD00063377 /* LineSelectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3471EE339FD00063377 /* LineSelectionCellViewModel.swift */; };
+		9017C35F1EE339FD00063377 /* LineSelectionSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3481EE339FD00063377 /* LineSelectionSectionHeaderView.swift */; };
+		9017C3601EE339FD00063377 /* LineSelectionSectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3491EE339FD00063377 /* LineSelectionSectionHeaderViewModel.swift */; };
+		9017C3611EE339FD00063377 /* LineSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34B1EE339FD00063377 /* LineSelectionDataSource.swift */; };
+		9017C3621EE339FD00063377 /* LineSelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34C1EE339FD00063377 /* LineSelectionSection.swift */; };
+		9017C3631EE339FD00063377 /* LineSelectionSectionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34D1EE339FD00063377 /* LineSelectionSectionCreator.swift */; };
+		9017C3641EE339FD00063377 /* LineSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34E1EE339FD00063377 /* LineSelectionViewController.swift */; };
+		9017C3651EE339FD00063377 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C34F1EE339FD00063377 /* LineSelectionViewControllerConstants.swift */; };
+		9017C3661EE339FD00063377 /* LineSelectionViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3501EE339FD00063377 /* LineSelectionViewControllerLayout.swift */; };
+		9017C3671EE339FD00063377 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3511EE339FD00063377 /* MainViewController.swift */; };
+		9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */; };
+		9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */; };
+		9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3551EE339FD00063377 /* MapViewController.swift */; };
+		9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */; };
+		9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3571EE339FD00063377 /* MapViewControllerLayout.swift */; };
+		9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C36E1EE33AA300063377 /* BookmarkCell.swift */; };
+		9017C3711EE33AB000063377 /* BookmarkCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3701EE33AB000063377 /* BookmarkCellViewModel.swift */; };
+		9017C3731EE33AE900063377 /* BookmarkCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3721EE33AE900063377 /* BookmarkCellLayout.swift */; };
+		9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3751EE33B8000063377 /* BookmarksDataSource.swift */; };
+		9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */; };
 		9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330E51EDF37F500FA8F43 /* AppDelegate.swift */; };
 		9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902330E61EDF37F500FA8F43 /* Assets.xcassets */; };
 		9023312C1EDF37F500FA8F43 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 902330E71EDF37F500FA8F43 /* Info.plist */; };
@@ -31,26 +48,12 @@
 		902331391EDF37F500FA8F43 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330FE1EDF37F500FA8F43 /* ReusableCell.swift */; };
 		9023313A1EDF37F500FA8F43 /* ReusableCellContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330FF1EDF37F500FA8F43 /* ReusableCellContainer.swift */; };
 		9023313B1EDF37F500FA8F43 /* ReusableSuplementaryViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902331001EDF37F500FA8F43 /* ReusableSuplementaryViewContainer.swift */; };
-		9023313C1EDF37F500FA8F43 /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902331041EDF37F500FA8F43 /* BookmarkCell.swift */; };
-		9023313D1EDF37F500FA8F43 /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902331051EDF37F500FA8F43 /* BookmarksDataSource.swift */; };
-		9023313E1EDF37F500FA8F43 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902331061EDF37F500FA8F43 /* BookmarksViewController.swift */; };
-		902331471EDF37F500FA8F43 /* LineSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902331111EDF37F500FA8F43 /* LineSelectionViewController.swift */; };
-		902331481EDF37F500FA8F43 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902331121EDF37F500FA8F43 /* LineSelectionViewControllerConstants.swift */; };
-		9023314A1EDF37F500FA8F43 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902331151EDF37F500FA8F43 /* MainViewController.swift */; };
-		9023314B1EDF37F500FA8F43 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902331171EDF37F500FA8F43 /* MapViewController.swift */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9086D4201EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D41F1EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift */; };
-		9086D4221EDF54A000E43D9A /* BookmarksViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4211EDF54A000E43D9A /* BookmarksViewControllerConstants.swift */; };
-		9086D4241EDF54AC00E43D9A /* BookmarksViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4231EDF54AC00E43D9A /* BookmarksViewControllerLayout.swift */; };
 		9086D42E1EDF65AC00E43D9A /* CardPanelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4281EDF65AC00E43D9A /* CardPanelConstants.swift */; };
 		9086D4301EDF65AC00E43D9A /* CardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42A1EDF65AC00E43D9A /* CardPanelPresentable.swift */; };
 		9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */; };
-		9086D4351EE08D7E00E43D9A /* MainViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */; };
-		9086D4371EE08E0400E43D9A /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */; };
-		9086D43D1EE2D46400E43D9A /* MapViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D43C1EE2D46400E43D9A /* MapViewControllerLayout.swift */; };
-		9086D43F1EE2DB3C00E43D9A /* MapViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D43E1EE2DB3C00E43D9A /* MapViewControllerConstants.swift */; };
 		9086D4471EE2DE8E00E43D9A /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4421EE2DE8E00E43D9A /* BookmarksManager.swift */; };
 		9086D4481EE2DE8E00E43D9A /* LinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4441EE2DE8E00E43D9A /* LinesManager.swift */; };
 		9086D4491EE2DE8E00E43D9A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4461EE2DE8E00E43D9A /* LocationManager.swift */; };
@@ -82,13 +85,30 @@
 /* Begin PBXFileReference section */
 		278E1D09A47B558EB5FEB26D /* Pods-Kek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.debug.xcconfig"; sourceTree = "<group>"; };
 		900037C11EDF34A400CE5C5B /* Test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Test.playground; sourceTree = "<group>"; };
-		9017C32E1EE32C4D00063377 /* LineSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCell.swift; sourceTree = "<group>"; };
-		9017C32F1EE32C4D00063377 /* LineSelectionSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionHeaderView.swift; sourceTree = "<group>"; };
-		9017C3311EE32C4D00063377 /* LineSelectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionDataSource.swift; sourceTree = "<group>"; };
-		9017C3321EE32C4D00063377 /* LineSelectionSectionCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionCreator.swift; sourceTree = "<group>"; };
-		9017C3371EE32C6100063377 /* LineSelectionCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCellViewModel.swift; sourceTree = "<group>"; };
-		9017C3391EE32C8200063377 /* LineSelectionSectionHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionHeaderViewModel.swift; sourceTree = "<group>"; };
-		9017C33B1EE32CB000063377 /* LineSelectionSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSection.swift; sourceTree = "<group>"; };
+		9017C3411EE339FD00063377 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerConstants.swift; sourceTree = "<group>"; };
+		9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerLayout.swift; sourceTree = "<group>"; };
+		9017C3461EE339FD00063377 /* LineSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCell.swift; sourceTree = "<group>"; };
+		9017C3471EE339FD00063377 /* LineSelectionCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCellViewModel.swift; sourceTree = "<group>"; };
+		9017C3481EE339FD00063377 /* LineSelectionSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionHeaderView.swift; sourceTree = "<group>"; };
+		9017C3491EE339FD00063377 /* LineSelectionSectionHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionHeaderViewModel.swift; sourceTree = "<group>"; };
+		9017C34B1EE339FD00063377 /* LineSelectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionDataSource.swift; sourceTree = "<group>"; };
+		9017C34C1EE339FD00063377 /* LineSelectionSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSection.swift; sourceTree = "<group>"; };
+		9017C34D1EE339FD00063377 /* LineSelectionSectionCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionCreator.swift; sourceTree = "<group>"; };
+		9017C34E1EE339FD00063377 /* LineSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewController.swift; sourceTree = "<group>"; };
+		9017C34F1EE339FD00063377 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
+		9017C3501EE339FD00063377 /* LineSelectionViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerLayout.swift; sourceTree = "<group>"; };
+		9017C3511EE339FD00063377 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
+		9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerLayout.swift; sourceTree = "<group>"; };
+		9017C3551EE339FD00063377 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerConstants.swift; sourceTree = "<group>"; };
+		9017C3571EE339FD00063377 /* MapViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerLayout.swift; sourceTree = "<group>"; };
+		9017C36E1EE33AA300063377 /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
+		9017C3701EE33AB000063377 /* BookmarkCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellViewModel.swift; sourceTree = "<group>"; };
+		9017C3721EE33AE900063377 /* BookmarkCellLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellLayout.swift; sourceTree = "<group>"; };
+		9017C3751EE33B8000063377 /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
+		9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSourceDelegate.swift; sourceTree = "<group>"; };
 		902330C41EDF37F500FA8F43 /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
 		902330C51EDF37F500FA8F43 /* CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		902330C61EDF37F500FA8F43 /* MKUserTrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKUserTrackingMode.swift; sourceTree = "<group>"; };
@@ -123,26 +143,12 @@
 		902330FE1EDF37F500FA8F43 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		902330FF1EDF37F500FA8F43 /* ReusableCellContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCellContainer.swift; sourceTree = "<group>"; };
 		902331001EDF37F500FA8F43 /* ReusableSuplementaryViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableSuplementaryViewContainer.swift; sourceTree = "<group>"; };
-		902331041EDF37F500FA8F43 /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
-		902331051EDF37F500FA8F43 /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
-		902331061EDF37F500FA8F43 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
-		902331111EDF37F500FA8F43 /* LineSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewController.swift; sourceTree = "<group>"; };
-		902331121EDF37F500FA8F43 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
-		902331151EDF37F500FA8F43 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		902331171EDF37F500FA8F43 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
-		9086D41F1EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerLayout.swift; sourceTree = "<group>"; };
-		9086D4211EDF54A000E43D9A /* BookmarksViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerConstants.swift; sourceTree = "<group>"; };
-		9086D4231EDF54AC00E43D9A /* BookmarksViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerLayout.swift; sourceTree = "<group>"; };
 		9086D4281EDF65AC00E43D9A /* CardPanelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelConstants.swift; sourceTree = "<group>"; };
 		9086D42A1EDF65AC00E43D9A /* CardPanelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentable.swift; sourceTree = "<group>"; };
 		9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
-		9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerLayout.swift; sourceTree = "<group>"; };
-		9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
-		9086D43C1EE2D46400E43D9A /* MapViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerLayout.swift; sourceTree = "<group>"; };
-		9086D43E1EE2DB3C00E43D9A /* MapViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerConstants.swift; sourceTree = "<group>"; };
 		9086D4421EE2DE8E00E43D9A /* BookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		9086D4441EE2DE8E00E43D9A /* LinesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManager.swift; sourceTree = "<group>"; };
 		9086D4461EE2DE8E00E43D9A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -190,23 +196,89 @@
 			path = Playgrounds;
 			sourceTree = "<group>";
 		};
-		9017C32D1EE32C4D00063377 /* Cells */ = {
+		9017C33D1EE339FD00063377 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9017C32E1EE32C4D00063377 /* LineSelectionCell.swift */,
-				9017C3371EE32C6100063377 /* LineSelectionCellViewModel.swift */,
-				9017C32F1EE32C4D00063377 /* LineSelectionSectionHeaderView.swift */,
-				9017C3391EE32C8200063377 /* LineSelectionSectionHeaderViewModel.swift */,
+				9017C3541EE339FD00063377 /* Map */,
+				9017C3441EE339FD00063377 /* Line selection */,
+				9017C33E1EE339FD00063377 /* Bookmarks */,
+				9017C3511EE339FD00063377 /* MainViewController.swift */,
+				9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */,
+				9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */,
+			);
+			path = "View controllers";
+			sourceTree = "<group>";
+		};
+		9017C33E1EE339FD00063377 /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				9017C36D1EE33AA300063377 /* Cells */,
+				9017C3741EE33B8000063377 /* Data source */,
+				9017C3411EE339FD00063377 /* BookmarksViewController.swift */,
+				9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */,
+				9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		9017C3441EE339FD00063377 /* Line selection */ = {
+			isa = PBXGroup;
+			children = (
+				9017C3451EE339FD00063377 /* Cells */,
+				9017C34A1EE339FD00063377 /* Data source */,
+				9017C34E1EE339FD00063377 /* LineSelectionViewController.swift */,
+				9017C34F1EE339FD00063377 /* LineSelectionViewControllerConstants.swift */,
+				9017C3501EE339FD00063377 /* LineSelectionViewControllerLayout.swift */,
+			);
+			path = "Line selection";
+			sourceTree = "<group>";
+		};
+		9017C3451EE339FD00063377 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9017C3461EE339FD00063377 /* LineSelectionCell.swift */,
+				9017C3471EE339FD00063377 /* LineSelectionCellViewModel.swift */,
+				9017C3481EE339FD00063377 /* LineSelectionSectionHeaderView.swift */,
+				9017C3491EE339FD00063377 /* LineSelectionSectionHeaderViewModel.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		9017C3301EE32C4D00063377 /* Data source */ = {
+		9017C34A1EE339FD00063377 /* Data source */ = {
 			isa = PBXGroup;
 			children = (
-				9017C33B1EE32CB000063377 /* LineSelectionSection.swift */,
-				9017C3321EE32C4D00063377 /* LineSelectionSectionCreator.swift */,
-				9017C3311EE32C4D00063377 /* LineSelectionDataSource.swift */,
+				9017C34C1EE339FD00063377 /* LineSelectionSection.swift */,
+				9017C34D1EE339FD00063377 /* LineSelectionSectionCreator.swift */,
+				9017C34B1EE339FD00063377 /* LineSelectionDataSource.swift */,
+			);
+			path = "Data source";
+			sourceTree = "<group>";
+		};
+		9017C3541EE339FD00063377 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				9017C3551EE339FD00063377 /* MapViewController.swift */,
+				9017C3571EE339FD00063377 /* MapViewControllerLayout.swift */,
+				9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		9017C36D1EE33AA300063377 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9017C36E1EE33AA300063377 /* BookmarkCell.swift */,
+				9017C3721EE33AE900063377 /* BookmarkCellLayout.swift */,
+				9017C3701EE33AB000063377 /* BookmarkCellViewModel.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9017C3741EE33B8000063377 /* Data source */ = {
+			isa = PBXGroup;
+			children = (
+				9017C3751EE33B8000063377 /* BookmarksDataSource.swift */,
+				9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */,
 			);
 			path = "Data source";
 			sourceTree = "<group>";
@@ -443,61 +515,6 @@
 			path = ReusableCell;
 			sourceTree = "<group>";
 		};
-		902331011EDF37F500FA8F43 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				902331021EDF37F500FA8F43 /* Main */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		902331021EDF37F500FA8F43 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				9023310D1EDF37F500FA8F43 /* Line selection */,
-				902331031EDF37F500FA8F43 /* Bookmarks */,
-				902331161EDF37F500FA8F43 /* Map */,
-				902331151EDF37F500FA8F43 /* MainViewController.swift */,
-				9086D4341EE08D7E00E43D9A /* MainViewControllerLayout.swift */,
-				9086D4361EE08E0400E43D9A /* MainViewControllerConstants.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		902331031EDF37F500FA8F43 /* Bookmarks */ = {
-			isa = PBXGroup;
-			children = (
-				902331041EDF37F500FA8F43 /* BookmarkCell.swift */,
-				902331051EDF37F500FA8F43 /* BookmarksDataSource.swift */,
-				902331061EDF37F500FA8F43 /* BookmarksViewController.swift */,
-				9086D4231EDF54AC00E43D9A /* BookmarksViewControllerLayout.swift */,
-				9086D4211EDF54A000E43D9A /* BookmarksViewControllerConstants.swift */,
-			);
-			path = Bookmarks;
-			sourceTree = "<group>";
-		};
-		9023310D1EDF37F500FA8F43 /* Line selection */ = {
-			isa = PBXGroup;
-			children = (
-				9017C32D1EE32C4D00063377 /* Cells */,
-				9017C3301EE32C4D00063377 /* Data source */,
-				902331111EDF37F500FA8F43 /* LineSelectionViewController.swift */,
-				9086D41F1EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift */,
-				902331121EDF37F500FA8F43 /* LineSelectionViewControllerConstants.swift */,
-			);
-			path = "Line selection";
-			sourceTree = "<group>";
-		};
-		902331161EDF37F500FA8F43 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				902331171EDF37F500FA8F43 /* MapViewController.swift */,
-				9086D43C1EE2D46400E43D9A /* MapViewControllerLayout.swift */,
-				9086D43E1EE2DB3C00E43D9A /* MapViewControllerConstants.swift */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,7 +644,7 @@
 				902330E81EDF37F500FA8F43 /* Models */,
 				902330ED1EDF37F500FA8F43 /* Modules */,
 				902330F31EDF37F500FA8F43 /* Utils */,
-				902331011EDF37F500FA8F43 /* ViewControllers */,
+				9017C33D1EE339FD00063377 /* View controllers */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -755,55 +772,58 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9023314A1EDF37F500FA8F43 /* MainViewController.swift in Sources */,
+				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
+				9017C3711EE33AB000063377 /* BookmarkCellViewModel.swift in Sources */,
 				9091D0C81EE31FB800FC4F79 /* CardPanelPresentationTransition.swift in Sources */,
+				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
+				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
+				9017C3611EE339FD00063377 /* LineSelectionDataSource.swift in Sources */,
+				9017C3641EE339FD00063377 /* LineSelectionViewController.swift in Sources */,
 				9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */,
-				9017C3341EE32C4D00063377 /* LineSelectionSectionHeaderView.swift in Sources */,
 				9091D0C61EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift in Sources */,
-				9023313C1EDF37F500FA8F43 /* BookmarkCell.swift in Sources */,
-				9017C3361EE32C4D00063377 /* LineSelectionSectionCreator.swift in Sources */,
 				9086D4301EDF65AC00E43D9A /* CardPanelPresentable.swift in Sources */,
 				9023312D1EDF37F500FA8F43 /* Bookmark.swift in Sources */,
+				9017C3601EE339FD00063377 /* LineSelectionSectionHeaderViewModel.swift in Sources */,
 				9086D4511EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift in Sources */,
-				9017C3351EE32C4D00063377 /* LineSelectionDataSource.swift in Sources */,
 				9023313A1EDF37F500FA8F43 /* ReusableCellContainer.swift in Sources */,
-				9017C33A1EE32C8200063377 /* LineSelectionSectionHeaderViewModel.swift in Sources */,
 				9023313B1EDF37F500FA8F43 /* ReusableSuplementaryViewContainer.swift in Sources */,
+				9017C35D1EE339FD00063377 /* LineSelectionCell.swift in Sources */,
 				902331391EDF37F500FA8F43 /* ReusableCell.swift in Sources */,
 				902331371EDF37F500FA8F43 /* UIView_AddBorder.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
 				9086D4471EE2DE8E00E43D9A /* BookmarksManager.swift in Sources */,
 				9091D0BB1EE3075500FC4F79 /* LayoutGuide.swift in Sources */,
+				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
 				902331381EDF37F500FA8F43 /* Logger.swift in Sources */,
 				9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */,
+				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
+				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
-				9017C33C1EE32CB000063377 /* LineSelectionSection.swift in Sources */,
 				9086D42E1EDF65AC00E43D9A /* CardPanelConstants.swift in Sources */,
-				9086D4371EE08E0400E43D9A /* MainViewControllerConstants.swift in Sources */,
-				9023313D1EDF37F500FA8F43 /* BookmarksDataSource.swift in Sources */,
 				9086D4481EE2DE8E00E43D9A /* LinesManager.swift in Sources */,
-				902331481EDF37F500FA8F43 /* LineSelectionViewControllerConstants.swift in Sources */,
-				9017C3381EE32C6100063377 /* LineSelectionCellViewModel.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				9086D44D1EE2DEC800E43D9A /* LocationManagerConstants.swift in Sources */,
+				9017C35E1EE339FD00063377 /* LineSelectionCellViewModel.swift in Sources */,
+				9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */,
+				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
 				902331331EDF37F500FA8F43 /* FontManager.swift in Sources */,
-				9086D4201EDF533B00E43D9A /* LineSelectionViewControllerLayout.swift in Sources */,
+				9017C3731EE33AE900063377 /* BookmarkCellLayout.swift in Sources */,
 				9091D0C71EE31FB800FC4F79 /* CardPanelPresenter.swift in Sources */,
 				9086D4491EE2DE8E00E43D9A /* LocationManager.swift in Sources */,
-				9086D4221EDF54A000E43D9A /* BookmarksViewControllerConstants.swift in Sources */,
-				9086D4351EE08D7E00E43D9A /* MainViewControllerLayout.swift in Sources */,
-				9086D4241EDF54AC00E43D9A /* BookmarksViewControllerLayout.swift in Sources */,
+				9017C3661EE339FD00063377 /* LineSelectionViewControllerLayout.swift in Sources */,
+				9017C3621EE339FD00063377 /* LineSelectionSection.swift in Sources */,
+				9017C35F1EE339FD00063377 /* LineSelectionSectionHeaderView.swift in Sources */,
 				902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */,
-				9086D43D1EE2D46400E43D9A /* MapViewControllerLayout.swift in Sources */,
-				9086D43F1EE2DB3C00E43D9A /* MapViewControllerConstants.swift in Sources */,
+				9017C3631EE339FD00063377 /* LineSelectionSectionCreator.swift in Sources */,
+				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
+				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
+				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
+				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,
 				9086D44B1EE2DEA200E43D9A /* LocationManagerProtocol.swift in Sources */,
-				9023313E1EDF37F500FA8F43 /* BookmarksViewController.swift in Sources */,
 				9091D0CA1EE31FD400FC4F79 /* CardPanelDismissTransition.swift in Sources */,
-				9017C3331EE32C4D00063377 /* LineSelectionCell.swift in Sources */,
-				902331471EDF37F500FA8F43 /* LineSelectionViewController.swift in Sources */,
-				9023314B1EDF37F500FA8F43 /* MapViewController.swift in Sources */,
+				9017C3651EE339FD00063377 /* LineSelectionViewControllerConstants.swift in Sources */,
 				902331351EDF37F500FA8F43 /* UINavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
