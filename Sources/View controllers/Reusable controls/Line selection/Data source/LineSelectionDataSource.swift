@@ -5,11 +5,11 @@
 
 import UIKit
 
-class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
+class LineSelectionDataSource: NSObject {
 
   //MARK: - Properties
 
-  private var viewModels: [LineSelectionSectionViewModel]
+  fileprivate var viewModels: [LineSelectionSectionViewModel]
 
   //MARK: - Init
 
@@ -17,7 +17,38 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
     self.viewModels = LineSelectionSectionViewModelFactory.create(from: lines)
   }
 
-  //MARK: - UICollectionViewDataSource
+  //MARK: - Methods
+
+  func index(of line: Line) -> IndexPath? {
+    guard let sectionIndex = self.viewModels.index(where: { $0.subtype == line.subtype }) else {
+      return nil
+    }
+
+    guard let itemIndex = self.viewModels[sectionIndex].lines.index(where: { $0 == line }) else {
+      return nil
+    }
+
+    return IndexPath(item: itemIndex, section: sectionIndex)
+  }
+
+  func line(at indexPath: IndexPath) -> Line? {
+    guard indexPath.section < self.viewModels.count else {
+      return nil
+    }
+
+    let section = self.viewModels[indexPath.section]
+    guard indexPath.row < section.lines.count else {
+      return nil
+    }
+
+    return section.lines[indexPath.row]
+  }
+
+}
+
+//MARK: - UICollectionViewDataSource
+
+extension LineSelectionDataSource: UICollectionViewDataSource {
 
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return self.viewModels.count
@@ -40,40 +71,13 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
       fatalError("Unexpected element kind")
     }
   }
-  
+
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(ofType: LineSelectionCell.self, forIndexPath: indexPath)
     let viewModel = self.viewModels[indexPath.section].lineViewModels[indexPath.row]
 
     cell.setUp(with: viewModel)
     return cell
-  }
-
-  //MARK: - Methods
-
-  func index(of line: Line) -> IndexPath? {
-    guard let sectionIndex = self.viewModels.index(where: { $0.subtype == line.subtype }) else {
-      return nil
-    }
-
-    guard let itemIndex = self.viewModels[sectionIndex].lines.index(where: { $0 == line }) else {
-      return nil
-    }
-
-    return IndexPath(item: itemIndex, section: sectionIndex)
-  }
-
-  func getLine(at indexPath: IndexPath) -> Line? {
-    guard indexPath.section < self.viewModels.count else {
-      return nil
-    }
-
-    let section = self.viewModels[indexPath.section]
-    guard indexPath.row < section.lines.count else {
-      return nil
-    }
-
-    return section.lines[indexPath.row]
   }
 
 }

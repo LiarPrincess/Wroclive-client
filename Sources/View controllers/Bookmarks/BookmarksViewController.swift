@@ -13,9 +13,10 @@ class BookmarksViewController: UIViewController {
   let navigationBar = UINavigationBar()
   let closeButton   = UIBarButtonItem()
 
+  var bookmarksDataSource: BookmarksDataSource!
+
   let bookmarksTable            = UITableView()
   let bookmarksTablePlaceholder = UIView()
-  let bookmarksDataSource       = BookmarksDataSource()
 
   //MARK: - Overriden
 
@@ -31,8 +32,8 @@ class BookmarksViewController: UIViewController {
   }
 
   private func initDataSource() {
-    self.bookmarksDataSource.delegate  = self
-    self.bookmarksDataSource.bookmarks = BookmarksManager.instance.getBookmarks()
+    let bookmarks            = BookmarksManager.instance.getBookmarks()
+    self.bookmarksDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
   }
 
   //MARK: - Actions

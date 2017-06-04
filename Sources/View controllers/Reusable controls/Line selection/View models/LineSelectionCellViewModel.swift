@@ -5,10 +5,9 @@
 
 struct LineSelectionCellViewModel {
   let line:     Line
-  let lineName: String
+  var lineName: String { return self.line.name }
 
   init(from line: Line) {
-    self.line     = line
-    self.lineName = line.name
+    self.line = line
   }
 }

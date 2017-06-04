@@ -9,13 +9,21 @@ class BookmarksDataSource: NSObject {
 
   //MARK: - Properties
 
-  var bookmarks = [Bookmark]()
   weak var delegate: BookmarksDataSourceDelegate?
+
+  fileprivate var viewModels: [BookmarkCellViewModel]
+
+  //MARK: - Init
+
+  init(with bookmarks: [Bookmark], delegate: BookmarksDataSourceDelegate? = nil) {
+    self.viewModels = bookmarks.map { BookmarkCellViewModel(from: $0) }
+    self.delegate   = delegate
+  }
 
   //MARK: - Methods
 
   fileprivate func delegateDidChangeRowCount() {
-    delegate?.bookmarksDataSource(self, didChangeRowCount: self.bookmarks.count)
+    delegate?.bookmarksDataSource(self, didChangeRowCount: self.viewModels.count)
   }
 
 }
@@ -28,14 +36,14 @@ extension BookmarksDataSource: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     self.delegateDidChangeRowCount()
-    return self.bookmarks.count
+    return self.viewModels.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(ofType: BookmarkCell.self, forIndexPath: indexPath)
-    let bookmark = self.bookmarks[indexPath.row]
+    let viewModel = self.viewModels[indexPath.row]
 
-    cell.setUp(with: BookmarkCellViewModel(from: bookmark))
+    cell.setUp(with: viewModel)
     return cell
   }
 
@@ -46,9 +54,9 @@ extension BookmarksDataSource: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-    let bookmark = self.bookmarks.remove(at: sourceIndexPath.row)
-    self.bookmarks.insert(bookmark, at: destinationIndexPath.row)
-    BookmarksManager.instance.saveBookmarks(self.bookmarks)
+    let bookmark = self.viewModels.remove(at: sourceIndexPath.row)
+    self.viewModels.insert(bookmark, at: destinationIndexPath.row)
+    BookmarksManager.instance.saveBookmarks(self.viewModels.map { $0.bookmark })
   }
 
   //MARK: - Editing
@@ -59,10 +67,10 @@ extension BookmarksDataSource: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      self.bookmarks.remove(at: indexPath.row)
+      self.viewModels.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .automatic)
-      BookmarksManager.instance.saveBookmarks(self.bookmarks)
-      
+
+      BookmarksManager.instance.saveBookmarks(self.viewModels.map { $0.bookmark })
       self.delegateDidChangeRowCount()
     }
   }

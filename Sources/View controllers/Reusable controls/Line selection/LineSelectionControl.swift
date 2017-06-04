@@ -111,7 +111,7 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if let lineSelectionDataSource = collectionView.dataSource as? LineSelectionDataSource {
-      if let line = lineSelectionDataSource.getLine(at: indexPath) {
+      if let line = lineSelectionDataSource.line(at: indexPath) {
         self.delegateDidSelect(line)
       }
     }
@@ -119,7 +119,7 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     if let lineSelectionDataSource = collectionView.dataSource as? LineSelectionDataSource {
-      if let line = lineSelectionDataSource.getLine(at: indexPath) {
+      if let line = lineSelectionDataSource.line(at: indexPath) {
         self.delegateDidDeselect(line)
       }
     }
