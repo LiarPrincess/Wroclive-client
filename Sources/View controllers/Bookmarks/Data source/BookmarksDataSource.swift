@@ -13,6 +13,8 @@ class BookmarksDataSource: NSObject {
 
   fileprivate var viewModels: [BookmarkCellViewModel]
 
+  var bookmarks: [Bookmark] { return self.viewModels.map { $0.bookmark } }
+
   //MARK: - Init
 
   init(with bookmarks: [Bookmark], delegate: BookmarksDataSourceDelegate? = nil) {
@@ -22,8 +24,12 @@ class BookmarksDataSource: NSObject {
 
   //MARK: - Methods
 
-  fileprivate func delegateDidChangeRowCount() {
-    delegate?.bookmarksDataSource(self, didChangeRowCount: self.viewModels.count)
+  fileprivate func delegateDidUpdateBookmarkCount() {
+    delegate?.didUpdateBookmarkCount(self)
+  }
+
+  fileprivate func delegateDidReorderBookmarks() {
+    delegate?.didReorderBookmarks(self)
   }
 
 }
@@ -35,7 +41,6 @@ extension BookmarksDataSource: UITableViewDataSource {
   //MARK: - Data
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    self.delegateDidChangeRowCount()
     return self.viewModels.count
   }
 
@@ -56,7 +61,7 @@ extension BookmarksDataSource: UITableViewDataSource {
   func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
     let bookmark = self.viewModels.remove(at: sourceIndexPath.row)
     self.viewModels.insert(bookmark, at: destinationIndexPath.row)
-    BookmarksManager.instance.saveBookmarks(self.viewModels.map { $0.bookmark })
+    self.delegateDidReorderBookmarks()
   }
 
   //MARK: - Editing
@@ -69,9 +74,7 @@ extension BookmarksDataSource: UITableViewDataSource {
     if editingStyle == .delete {
       self.viewModels.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .automatic)
-
-      BookmarksManager.instance.saveBookmarks(self.viewModels.map { $0.bookmark })
-      self.delegateDidChangeRowCount()
+      self.delegateDidUpdateBookmarkCount()
     }
   }
 }

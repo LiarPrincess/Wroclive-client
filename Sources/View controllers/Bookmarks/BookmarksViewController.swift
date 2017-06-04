@@ -24,6 +24,7 @@ class BookmarksViewController: UIViewController {
     super.viewDidLoad()
     self.initDataSource()
     self.initLayout()
+    self.updateLayoutAfterRowCountChanged()
   }
 
   override func setEditing(_ editing: Bool, animated: Bool) {
@@ -40,6 +41,23 @@ class BookmarksViewController: UIViewController {
 
   @objc func closeButtonPressed() {
     self.dismiss(animated: true, completion: nil)
+  }
+
+  //MARK: - Methods
+
+  fileprivate func updateLayoutAfterRowCountChanged() {
+    let bookmarks = self.bookmarksDataSource.bookmarks
+
+    if bookmarks.count == 0 {
+      self.navigationItem.setLeftBarButton(nil, animated: true)
+      self.bookmarksTable.separatorStyle      = .none
+      self.bookmarksTablePlaceholder.isHidden = false
+    }
+    else {
+      self.navigationItem.setLeftBarButton(self.editButtonItem, animated: true)
+      self.bookmarksTable.separatorStyle      = .singleLine
+      self.bookmarksTablePlaceholder.isHidden = true
+    }
   }
 
 }
@@ -70,16 +88,21 @@ extension BookmarksViewController: UITableViewDelegate {
 //MARK: - BookmarksDataSourceDelegate
 
 extension BookmarksViewController: BookmarksDataSourceDelegate {
-  func bookmarksDataSource(_ dataSource: BookmarksDataSource, didChangeRowCount rowCount: Int) {
-    if rowCount == 0 {
-      self.navigationItem.setLeftBarButton(nil, animated: true)
-      self.bookmarksTable.separatorStyle      = .none
-      self.bookmarksTablePlaceholder.isHidden = false
-    }
-    else {
-      self.navigationItem.setLeftBarButton(self.editButtonItem, animated: true)
-      self.bookmarksTable.separatorStyle      = .singleLine
-      self.bookmarksTablePlaceholder.isHidden = true
-    }
+
+  func didUpdateBookmarkCount(_ dataSource: BookmarksDataSource) {
+    self.updateLayoutAfterRowCountChanged()
+    self.saveBookmarks()
   }
+
+  func didReorderBookmarks(_ dataSource: BookmarksDataSource) {
+    self.saveBookmarks()
+  }
+
+  //MARK: Methods
+
+  private func saveBookmarks() {
+    let bookmarks = self.bookmarksDataSource.bookmarks
+    BookmarksManager.instance.saveBookmarks(bookmarks)
+  }
+
 }
