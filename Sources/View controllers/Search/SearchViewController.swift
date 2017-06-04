@@ -44,6 +44,11 @@ class SearchViewController: UIViewController {
     self.updateLineSelectionControlVisibility()
   }
 
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    self.updateLineSelectionInsets()
+  }
+
   override func viewWillDisappear(_ animated: Bool) {
     let state = SearchViewControllerState(selectedLines: self.selectedLines)
     SearchViewControllerStateManager.instance.saveState(state: state)

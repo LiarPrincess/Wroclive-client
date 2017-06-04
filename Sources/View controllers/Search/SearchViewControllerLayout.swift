@@ -17,6 +17,23 @@ extension SearchViewController {
     self.addLineSelectionControl(self.tramSelectionControl)
   }
 
+  func updateLineSelectionInsets() {
+    let navigationBarHeight = self.navigationBarBlurView.bounds.height
+
+    let topOffset   = navigationBarHeight
+    let leftOffset  = Layout.Content.leftOffset
+    let rightOffset = Layout.Content.rightOffset
+    let bottomInset = Layout.Content.bottomOffset
+
+    let contentInset          = UIEdgeInsets(top: topOffset, left: leftOffset, bottom: bottomInset, right: rightOffset)
+    let scrollIndicatorInsets = UIEdgeInsets(top: topOffset, left: 0.0,        bottom: 0.0,         right: 0.0)
+
+    self.tramSelectionControl.contentInset = contentInset
+    self.busSelectionControl.contentInset  = contentInset
+    self.tramSelectionControl.scrollIndicatorInsets = scrollIndicatorInsets
+    self.busSelectionControl.scrollIndicatorInsets  = scrollIndicatorInsets
+  }
+
   //MARK: - Navigation bar
 
   private func initNavigationBar() {
@@ -77,15 +94,11 @@ extension SearchViewController {
   //MARK: - Line selection
 
   fileprivate func addLineSelectionControl(_ control: LineSelectionControl) {
-    control.leftSectionInset  = Layout.Content.leftOffset
-    control.rightSectionInset = Layout.Content.rightOffset
-
     self.addChildViewController(control)
     self.view.insertSubview(control.view, belowSubview: self.navigationBarBlurView)
 
     control.view.snp.makeConstraints { make in
-      make.top.equalTo(self.navigationBarBlurView.snp.bottom)
-      make.left.right.bottom.equalToSuperview()
+      make.top.left.right.bottom.equalToSuperview()
     }
 
     control.didMove(toParentViewController: self)

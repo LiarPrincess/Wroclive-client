@@ -9,8 +9,9 @@ struct SearchViewControllerConstants {
 
   struct Layout {
     struct Content {
-      static let leftOffset:  CGFloat = 25.0
-      static let rightOffset: CGFloat = leftOffset
+      static let leftOffset:   CGFloat = 25.0
+      static let rightOffset:  CGFloat = leftOffset
+      static let bottomOffset: CGFloat = 28.0
     }
 
     struct LineTypeSelector {

@@ -10,9 +10,7 @@ struct LineSelectionControlConstants {
   struct Layout {
     struct Section {
       static let headerHeight: CGFloat = 44.0
-
-      static let insets            = UIEdgeInsets(top: 0.0,        left: 0.0,         bottom:  2.0, right: 0.0)
-      static let lastSectionInsets = UIEdgeInsets(top: insets.top, left: insets.left, bottom: 28.0, right: insets.right)
+      static let insets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 2.0, right: 0.0)
     }
 
     struct Cell {

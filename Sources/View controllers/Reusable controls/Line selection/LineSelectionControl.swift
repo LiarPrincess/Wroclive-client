@@ -22,8 +22,21 @@ class LineSelectionControl: UIViewController {
     return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.collectionViewLayout)
   }()
 
-  var leftSectionInset:  CGFloat = 0
-  var rightSectionInset: CGFloat = 0
+  var contentInset = UIEdgeInsets() {
+    didSet {
+      if self.collectionView.contentInset != self.contentInset {
+        self.collectionView.contentInset = self.contentInset
+      }
+    }
+  }
+
+  var scrollIndicatorInsets = UIEdgeInsets() {
+    didSet {
+      if self.collectionView.scrollIndicatorInsets != self.scrollIndicatorInsets {
+        self.collectionView.scrollIndicatorInsets = self.scrollIndicatorInsets
+      }
+    }
+  }
 
   //MARK: - Init
 
@@ -92,11 +105,7 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
   //MARK: - Content placement
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    let isLastSection = section == (collectionView.numberOfSections - 1)
-    var inset = isLastSection ? Layout.Section.lastSectionInsets : Layout.Section.insets
-    inset.left  += self.leftSectionInset
-    inset.right += self.rightSectionInset
-    return inset
+    return Layout.Section.insets
   }
 
   //MARK: - Selection
