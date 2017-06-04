@@ -5,8 +5,6 @@
 
 import UIKit
 
-//MARK: - BookmarksViewControllerConstants
-
 struct BookmarksViewControllerConstants {
 
   struct Layout {

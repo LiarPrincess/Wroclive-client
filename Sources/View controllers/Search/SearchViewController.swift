@@ -52,27 +52,7 @@ class SearchViewController: UIViewController {
   //MARK: - Actions
 
   @objc func saveButtonPressed() {
-    let alertController = UIAlertController(title: "Add bookmark", message: nil, preferredStyle: .alert)
-
-    alertController.addTextField { textField in
-      textField.placeholder            = "Name"
-      textField.autocapitalizationType = .sentences
-    }
-
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-    alertController.addAction(cancelAction)
-
-    let saveAction = UIAlertAction(title: "Save", style: .default) { [weak alertController, weak self] _ in
-      guard let nameTextField = alertController?.textFields![0], let selectedLines = self?.selectedLines else {
-        return
-      }
-
-      let name = nameTextField.text ?? ""
-      let bookmark = Bookmark(name: name, lines: selectedLines)
-      BookmarksManager.instance.add(bookmark: bookmark)
-    }
-    alertController.addAction(saveAction)
-
+    let alertController = SaveBookmarkAlert.create(forSaving: self.selectedLines)
     self.present(alertController, animated: true, completion: nil)
   }
 
