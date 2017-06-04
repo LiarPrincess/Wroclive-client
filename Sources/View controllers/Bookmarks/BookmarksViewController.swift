@@ -45,6 +45,11 @@ class BookmarksViewController: UIViewController {
 
   //MARK: - Methods
 
+  fileprivate func select(bookmark: Bookmark) {
+    logger.info("didSelect: \(bookmark.name)")
+    self.dismiss(animated: true, completion: nil)
+  }
+
   fileprivate func updateLayoutAfterRowCountChanged() {
     let bookmarks = self.bookmarksDataSource.bookmarks
 
@@ -81,6 +86,14 @@ extension BookmarksViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     return tableView.rowHeight
+  }
+
+  //MARK: - Selection
+
+  public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let bookmark = self.bookmarksDataSource.bookmark(at: indexPath) {
+      self.select(bookmark: bookmark)
+    }
   }
 
 }

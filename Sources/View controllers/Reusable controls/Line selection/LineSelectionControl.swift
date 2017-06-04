@@ -44,16 +44,6 @@ class LineSelectionControl: UIViewController {
     self.initLayout()
   }
 
-  //MARK: - Delegate
-
-  fileprivate func delegateDidSelect(_ line: Line) {
-    self.delegate?.lineSelectionControl(self, didSelect: line)
-  }
-
-  fileprivate func delegateDidDeselect(_ line: Line) {
-    self.delegate?.lineSelectionControl(self, didDeselect: line)
-  }
-
   //MARK: - Methods
 
   func select(line: Line) {
@@ -61,6 +51,16 @@ class LineSelectionControl: UIViewController {
       self.collectionView.selectItem(at: index, animated: false, scrollPosition: .centeredHorizontally)
       self.delegateDidSelect(line)
     }
+  }
+
+  //MARK: - Delegate methods
+
+  fileprivate func delegateDidSelect(_ line: Line) {
+    self.delegate?.lineSelectionControl(self, didSelect: line)
+  }
+
+  fileprivate func delegateDidDeselect(_ line: Line) {
+    self.delegate?.lineSelectionControl(self, didDeselect: line)
   }
 
 }

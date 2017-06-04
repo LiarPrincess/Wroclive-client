@@ -24,6 +24,20 @@ class BookmarksDataSource: NSObject {
 
   //MARK: - Methods
 
+  func bookmark(at indexPath: IndexPath) -> Bookmark? {
+    guard indexPath.section == 0 else {
+      return nil
+    }
+
+    guard indexPath.row < self.viewModels.count else {
+      return nil
+    }
+
+    return self.viewModels[indexPath.row].bookmark
+  }
+
+  //MARK: - Delegate methods
+
   fileprivate func delegateDidUpdateBookmarkCount() {
     delegate?.didUpdateBookmarkCount(self)
   }
