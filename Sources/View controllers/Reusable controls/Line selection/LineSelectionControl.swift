@@ -12,7 +12,22 @@ class LineSelectionControl: UIViewController {
   
   //MARK: - Properties
 
-  weak var delegate: LineSelectionControlDelegate?
+  var selectedLines: [Line] {
+    get {
+      let indexPaths = self.collectionView.indexPathsForSelectedItems
+      let lines = indexPaths?.map { self.collectionDataSource.line(at: $0) }.filter { $0 != nil }.map { $0! }
+      return lines ?? []
+    }
+    set {
+      for line in newValue {
+        if let index = self.collectionDataSource.index(of: line) {
+          self.collectionView.selectItem(at: index, animated: false, scrollPosition: [])
+        }
+      }
+    }
+  }
+
+  //MARK: Collection
 
   let collectionDataSource: LineSelectionDataSource
 
@@ -21,6 +36,8 @@ class LineSelectionControl: UIViewController {
   lazy var collectionView: UICollectionView = {
     return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.collectionViewLayout)
   }()
+
+  //MARK: Layout
 
   var contentInset = UIEdgeInsets() {
     didSet {
@@ -40,9 +57,8 @@ class LineSelectionControl: UIViewController {
 
   //MARK: - Init
 
-  init(withLines lines: [Line], delegate: LineSelectionControlDelegate? = nil) {
+  init(withLines lines: [Line]) {
     self.collectionDataSource = LineSelectionDataSource(with: lines)
-    self.delegate             = delegate
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -55,25 +71,6 @@ class LineSelectionControl: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
-  }
-
-  //MARK: - Methods
-
-  func select(line: Line) {
-    if let index = self.collectionDataSource.index(of: line) {
-      self.collectionView.selectItem(at: index, animated: false, scrollPosition: .centeredHorizontally)
-      self.delegateDidSelect(line)
-    }
-  }
-
-  //MARK: - Delegate methods
-
-  fileprivate func delegateDidSelect(_ line: Line) {
-    self.delegate?.lineSelectionControl(self, didSelect: line)
-  }
-
-  fileprivate func delegateDidDeselect(_ line: Line) {
-    self.delegate?.lineSelectionControl(self, didDeselect: line)
   }
 
 }
@@ -118,20 +115,4 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
     return true
   }
 
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if let lineSelectionDataSource = collectionView.dataSource as? LineSelectionDataSource {
-      if let line = lineSelectionDataSource.line(at: indexPath) {
-        self.delegateDidSelect(line)
-      }
-    }
-  }
-
-  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-    if let lineSelectionDataSource = collectionView.dataSource as? LineSelectionDataSource {
-      if let line = lineSelectionDataSource.line(at: indexPath) {
-        self.delegateDidDeselect(line)
-      }
-    }
-  }
-  
 }

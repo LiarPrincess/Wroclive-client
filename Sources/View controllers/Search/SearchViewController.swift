@@ -12,7 +12,19 @@ class SearchViewController: UIViewController {
 
   //MARK: - Properties
 
-  var selectedLines = [Line]()
+  var selectedLines: [Line] {
+    get {
+      let selectedTrams = self.tramSelectionControl.selectedLines
+      let selectedBuses = self.busSelectionControl.selectedLines
+      return selectedTrams + selectedBuses
+    }
+    set {
+      self.tramSelectionControl.selectedLines = newValue.filter { $0.type == .tram }
+      self.busSelectionControl.selectedLines  = newValue.filter { $0.type == .bus }
+    }
+  }
+
+  //MARK: Layout
 
   let navigationBarBlur = UIBlurEffect(style: .extraLight)
 
@@ -40,7 +52,7 @@ class SearchViewController: UIViewController {
     super.viewDidLoad()
     self.initLineSelectionControls()
     self.initLayout()
-    self.loadPreviousState()
+    self.restoreState()
     self.updateLineSelectionControlVisibility()
   }
 
@@ -50,8 +62,7 @@ class SearchViewController: UIViewController {
   }
 
   override func viewWillDisappear(_ animated: Bool) {
-    let state = SearchViewControllerState(selectedLines: self.selectedLines)
-    SearchViewControllerStateManager.instance.saveState(state: state)
+    self.saveState()
   }
 
   //MARK: - Actions
@@ -73,21 +84,8 @@ class SearchViewController: UIViewController {
 
   private func initLineSelectionControls() {
     let lines = LinesManager.instance.getLines()
-    let tramLines = lines.filter { $0.type == .tram }
-    let busLines = lines.filter { $0.type == .bus }
-
-    self.tramSelectionControl = LineSelectionControl(withLines: tramLines, delegate: self)
-    self.busSelectionControl  = LineSelectionControl(withLines: busLines, delegate: self)
-  }
-
-  private func loadPreviousState() {
-    self.lineTypeSelector.selectedSegmentIndex = LineTypeIndex.tram
-
-    let state = SearchViewControllerStateManager.instance.getState()
-    for line in state.selectedLines {
-      let control = line.type == .tram ? self.tramSelectionControl : self.busSelectionControl
-      control?.select(line: line)
-    }
+    self.tramSelectionControl = LineSelectionControl(withLines: lines.filter { $0.type == .tram })
+    self.busSelectionControl  = LineSelectionControl(withLines: lines.filter { $0.type == .bus })
   }
 
   private func updateLineSelectionControlVisibility() {
@@ -97,24 +95,24 @@ class SearchViewController: UIViewController {
   }
 }
 
+//MARK: - State
+
+extension SearchViewController {
+  fileprivate func restoreState() {
+    let state = SearchViewControllerStateManager.instance.getState()
+    self.lineTypeSelector.selectedSegmentIndex = LineTypeIndex.tram
+    self.selectedLines = state.selectedLines
+  }
+
+  fileprivate func saveState() {
+    let state = SearchViewControllerState(selectedLines: self.selectedLines)
+    SearchViewControllerStateManager.instance.saveState(state: state)
+  }
+}
+
 //MARK: - CardPanelPresentable
 
 extension SearchViewController : CardPanelPresentable {
   var contentView:       UIView { return self.view }
   var interactionTarget: UIView { return self.navigationBarBlurView }
-}
-
-//MARK: - LineSelectionControlDelegate
-
-extension SearchViewController: LineSelectionControlDelegate {
-
-  func lineSelectionControl(_ control: LineSelectionControl, didSelect line: Line) {
-    self.selectedLines.append(line)
-  }
-
-  func lineSelectionControl(_ control: LineSelectionControl, didDeselect line: Line) {
-    if let index = self.selectedLines.index(of: line) {
-      self.selectedLines.remove(at: index)
-    }
-  }
 }

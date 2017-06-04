@@ -6,9 +6,6 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Constants = LineSelectionControlConstants
-fileprivate typealias Layout    = Constants.Layout
-
 extension LineSelectionControl {
 
   func initLayout() {

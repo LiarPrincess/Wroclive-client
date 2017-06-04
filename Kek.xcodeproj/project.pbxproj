@@ -27,7 +27,6 @@
 		9017C38C1EE342A600063377 /* LineSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C38B1EE342A600063377 /* LineSelectionControl.swift */; };
 		9017C38E1EE342CD00063377 /* LineSelectionControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C38D1EE342CD00063377 /* LineSelectionControlConstants.swift */; };
 		9017C3901EE3433F00063377 /* LineSelectionControlLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C38F1EE3433F00063377 /* LineSelectionControlLayout.swift */; };
-		9017C3921EE3436400063377 /* LineSelectionControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3911EE3436400063377 /* LineSelectionControlDelegate.swift */; };
 		9017C3931EE34CF200063377 /* LineSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3811EE3428700063377 /* LineSelectionDataSource.swift */; };
 		9017C3961EE34CFC00063377 /* LineSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C37C1EE3428700063377 /* LineSelectionCell.swift */; };
 		9017C3981EE34D0200063377 /* LineSelectionSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C37E1EE3428700063377 /* LineSelectionSectionHeaderView.swift */; };
@@ -114,7 +113,6 @@
 		9017C38B1EE342A600063377 /* LineSelectionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionControl.swift; sourceTree = "<group>"; };
 		9017C38D1EE342CD00063377 /* LineSelectionControlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionControlConstants.swift; sourceTree = "<group>"; };
 		9017C38F1EE3433F00063377 /* LineSelectionControlLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionControlLayout.swift; sourceTree = "<group>"; };
-		9017C3911EE3436400063377 /* LineSelectionControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionControlDelegate.swift; sourceTree = "<group>"; };
 		9017C3A51EE370B100063377 /* SearchViewControllerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewControllerState.swift; path = ../SearchViewControllerState.swift; sourceTree = "<group>"; };
 		9017C3A81EE3718E00063377 /* SearchViewControllerStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerStateManager.swift; sourceTree = "<group>"; };
 		9017C3AA1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerStateManagerProtocol.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 				9017C37B1EE3428700063377 /* Cells */,
 				9017C3AC1EE3D63100063377 /* View models */,
 				9017C3801EE3428700063377 /* Data source */,
-				9017C3911EE3436400063377 /* LineSelectionControlDelegate.swift */,
 				9017C38B1EE342A600063377 /* LineSelectionControl.swift */,
 				9017C38F1EE3433F00063377 /* LineSelectionControlLayout.swift */,
 				9017C38D1EE342CD00063377 /* LineSelectionControlConstants.swift */,
@@ -897,7 +894,6 @@
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
 				9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
-				9017C3921EE3436400063377 /* LineSelectionControlDelegate.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,
 				9086D44B1EE2DEA200E43D9A /* LocationManagerProtocol.swift in Sources */,
 				9091D0CA1EE31FD400FC4F79 /* CardPanelDismissTransition.swift in Sources */,
