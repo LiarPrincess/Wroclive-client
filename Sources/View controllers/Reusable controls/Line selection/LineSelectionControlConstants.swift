@@ -14,9 +14,9 @@ struct LineSelectionControlConstants {
     }
 
     struct Cell {
-      static let width:     CGFloat = 50.0
-      static let height:    CGFloat = 44.0
-      static let minMargin: CGFloat = 5.0
+      static let width:     CGFloat = 61.0
+      static let height:    CGFloat = 55.0
+      static let minMargin: CGFloat =  5.0
 
       static let cornerRadius: CGFloat = 4.0
       static let borderWidth:  CGFloat = 1.0
