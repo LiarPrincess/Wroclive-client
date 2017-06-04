@@ -29,7 +29,7 @@ class LineSelectionCell: UICollectionViewCell {
 
   override var isSelected: Bool {
     didSet {
-      self.lineName.textColor = isSelected ? UIColor.white : self.tintColor
+      self.lineName.textColor = isSelected ? self.backgroundColor! : self.tintColor
     }
   }
 
@@ -46,7 +46,8 @@ class LineSelectionCell: UICollectionViewCell {
 extension LineSelectionCell {
 
   fileprivate func initLayout() {
-    self.tintColor = UIApplication.shared.keyWindow!.tintColor
+    self.tintColor       = UIApplication.shared.keyWindow!.tintColor
+    self.backgroundColor = UIColor.white
 
     self.selectedBackgroundView = UIView()
     self.selectedBackgroundView?.backgroundColor = self.tintColor

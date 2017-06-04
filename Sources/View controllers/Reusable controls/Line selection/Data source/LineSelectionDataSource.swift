@@ -48,4 +48,32 @@ class LineSelectionDataSource: NSObject, UICollectionViewDataSource {
     return cell
   }
 
+  //MARK: - Methods
+
+  func index(of line: Line) -> IndexPath? {
+    guard let sectionIndex = self.sections.index(where: { $0.subtype == line.subtype }) else {
+      return nil
+    }
+
+    let section = self.sections[sectionIndex]
+    guard let lineIndex = section.lines.index(where: { $0 == line }) else {
+      return nil
+    }
+
+    return IndexPath(item: lineIndex, section: sectionIndex)
+  }
+
+  func getLine(at indexPath: IndexPath) -> Line? {
+    guard indexPath.section < self.sections.count else {
+      return nil
+    }
+
+    let section = self.sections[indexPath.section]
+    guard indexPath.row < section.lines.count else {
+      return nil
+    }
+
+    return section.lines[indexPath.row]
+  }
+
 }

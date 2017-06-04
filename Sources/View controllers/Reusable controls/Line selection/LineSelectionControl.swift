@@ -12,6 +12,8 @@ class LineSelectionControl: UIViewController {
   
   //MARK: - Properties
 
+  var delegate: LineSelectionControlDelegate?
+
   let dataSource       = LineSelectionDataSource()
   let collectionLayout = UICollectionViewFlowLayout()
 
@@ -24,8 +26,9 @@ class LineSelectionControl: UIViewController {
 
   //MARK: - Init
 
-  init(withLines lines: [Line]) {
+  init(withLines lines: [Line], delegate: LineSelectionControlDelegate? = nil) {
     self.dataSource.lines = lines
+    self.delegate         = delegate
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -38,6 +41,25 @@ class LineSelectionControl: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
+  }
+
+  //MARK: - Delegate
+
+  fileprivate func delegateDidSelect(_ line: Line) {
+    self.delegate?.lineSelectionControl(self, didSelect: line)
+  }
+
+  fileprivate func delegateDidDeselect(_ line: Line) {
+    self.delegate?.lineSelectionControl(self, didDeselect: line)
+  }
+
+  //MARK: - Methods
+
+  func select(line: Line) {
+    if let index = self.dataSource.index(of: line) {
+      self.collection.selectItem(at: index, animated: false, scrollPosition: .centeredHorizontally)
+      self.delegateDidSelect(line)
+    }
   }
 
 }
@@ -71,7 +93,7 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     let isLastSection = section == (collectionView.numberOfSections - 1)
     var inset = isLastSection ? Layout.Section.lastSectionInsets : Layout.Section.insets
-    inset.left += self.leftSectionInset
+    inset.left  += self.leftSectionInset
     inset.right += self.rightSectionInset
     return inset
   }
@@ -87,11 +109,19 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
   }
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    logger.info("didSelectItemAt: \(indexPath)")
+    if let lineSelectionDataSource = collectionView.dataSource as? LineSelectionDataSource {
+      if let line = lineSelectionDataSource.getLine(at: indexPath) {
+        self.delegateDidSelect(line)
+      }
+    }
   }
 
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-    logger.info("didDeselectItemAt: \(indexPath)")
+    if let lineSelectionDataSource = collectionView.dataSource as? LineSelectionDataSource {
+      if let line = lineSelectionDataSource.getLine(at: indexPath) {
+        self.delegateDidDeselect(line)
+      }
+    }
   }
   
 }

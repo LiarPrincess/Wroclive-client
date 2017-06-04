@@ -5,14 +5,6 @@
 
 import Foundation
 
-//struct LineSelectionState {
-//  let lineType: LineType
-//  let lines: [Line]
-//}
-
 protocol LinesManagerProtocol {
   func getLines() -> [Line]
-
-  //func saveLineSelectionState(state: X)
-  //func getLineSelectionState()
 }

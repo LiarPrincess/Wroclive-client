@@ -12,6 +12,8 @@ class SearchViewController: UIViewController {
 
   //MARK: - Properties
 
+  var selectedLines = [Line]()
+
   let navigationBarBlur = UIBlurEffect(style: .extraLight)
 
   lazy var navigationBarBlurView: UIVisualEffectView =  {
@@ -21,6 +23,7 @@ class SearchViewController: UIViewController {
   let navigationBar    = UINavigationBar()
   let saveButton       = UIBarButtonItem()
   let searchButton     = UIBarButtonItem()
+  
   let lineTypeSelector = UISegmentedControl()
 
   var tramSelectionControl: LineSelectionControl!
@@ -37,7 +40,13 @@ class SearchViewController: UIViewController {
     super.viewDidLoad()
     self.initLineSelectionControls()
     self.initLayout()
+    self.loadPreviousState()
     self.updateLineSelectionControlVisibility()
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    let state = SearchViewControllerState(selectedLines: self.selectedLines)
+    SearchViewControllerStateManager.instance.saveState(state: state)
   }
 
   //MARK: - Actions
@@ -61,8 +70,18 @@ class SearchViewController: UIViewController {
     let tramLines = lines.filter { $0.type == .tram }
     let busLines = lines.filter { $0.type == .bus }
 
-    self.tramSelectionControl = LineSelectionControl(withLines: tramLines)
-    self.busSelectionControl  = LineSelectionControl(withLines: busLines)
+    self.tramSelectionControl = LineSelectionControl(withLines: tramLines, delegate: self)
+    self.busSelectionControl  = LineSelectionControl(withLines: busLines, delegate: self)
+  }
+
+  private func loadPreviousState() {
+    self.lineTypeSelector.selectedSegmentIndex = LineTypeIndex.tram
+
+    let state = SearchViewControllerStateManager.instance.getState()
+    for line in state.selectedLines {
+      let control = line.type == .tram ? self.tramSelectionControl : self.busSelectionControl
+      control?.select(line: line)
+    }
   }
 
   private func updateLineSelectionControlVisibility() {
@@ -77,4 +96,19 @@ class SearchViewController: UIViewController {
 extension SearchViewController : CardPanelPresentable {
   var contentView:       UIView { return self.view }
   var interactionTarget: UIView { return self.navigationBarBlurView }
+}
+
+//MARK: - LineSelectionControlDelegate
+
+extension SearchViewController: LineSelectionControlDelegate {
+
+  func lineSelectionControl(_ control: LineSelectionControl, didSelect line: Line) {
+    self.selectedLines.append(line)
+  }
+
+  func lineSelectionControl(_ control: LineSelectionControl, didDeselect line: Line) {
+    if let index = self.selectedLines.index(of: line) {
+      self.selectedLines.remove(at: index)
+    }
+  }
 }

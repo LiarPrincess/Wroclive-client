@@ -13,13 +13,8 @@ extension SearchViewController {
   func initLayout() {
     self.view.backgroundColor = UIColor.white
     self.initNavigationBar()
-
     self.addLineSelectionControl(self.busSelectionControl)
-    self.busSelectionControl.view.backgroundColor = UIColor.red
-
     self.addLineSelectionControl(self.tramSelectionControl)
-    self.tramSelectionControl.view.backgroundColor = UIColor.green
-
   }
 
   //MARK: - Navigation bar
@@ -74,7 +69,6 @@ extension SearchViewController {
   private func initLineTypeSelector() {
     self.lineTypeSelector.insertSegment(withTitle: "Trams", at: LineTypeIndex.tram, animated: false)
     self.lineTypeSelector.insertSegment(withTitle: "Buses", at: LineTypeIndex.bus, animated: false)
-    self.lineTypeSelector.selectedSegmentIndex = LineTypeIndex.tram
 
     self.lineTypeSelector.addTarget(self, action: #selector(lineTypeChanged), for: .valueChanged)
     self.lineTypeSelector.font = FontManager.instance.lineSelectionLineTypeSelector

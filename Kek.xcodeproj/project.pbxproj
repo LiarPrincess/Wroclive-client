@@ -28,7 +28,7 @@
 		9017C38C1EE342A600063377 /* LineSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C38B1EE342A600063377 /* LineSelectionControl.swift */; };
 		9017C38E1EE342CD00063377 /* LineSelectionControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C38D1EE342CD00063377 /* LineSelectionControlConstants.swift */; };
 		9017C3901EE3433F00063377 /* LineSelectionControlLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C38F1EE3433F00063377 /* LineSelectionControlLayout.swift */; };
-		9017C3921EE3436400063377 /* LineSelectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3911EE3436400063377 /* LineSelectionDelegate.swift */; };
+		9017C3921EE3436400063377 /* LineSelectionControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3911EE3436400063377 /* LineSelectionControlDelegate.swift */; };
 		9017C3931EE34CF200063377 /* LineSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3811EE3428700063377 /* LineSelectionDataSource.swift */; };
 		9017C3941EE34CF500063377 /* LineSelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3821EE3428700063377 /* LineSelectionSection.swift */; };
 		9017C3961EE34CFC00063377 /* LineSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C37C1EE3428700063377 /* LineSelectionCell.swift */; };
@@ -37,6 +37,9 @@
 		9017C3991EE34D0600063377 /* LineSelectionSectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C37F1EE3428700063377 /* LineSelectionSectionHeaderViewModel.swift */; };
 		9017C39D1EE3550000063377 /* LineSelectionSectionCreatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C39C1EE3550000063377 /* LineSelectionSectionCreatorProtocol.swift */; };
 		9017C39F1EE3553A00063377 /* LineSelectionSectionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C39E1EE3553A00063377 /* LineSelectionSectionCreator.swift */; };
+		9017C3A61EE370B100063377 /* SearchViewControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3A51EE370B100063377 /* SearchViewControllerState.swift */; };
+		9017C3A91EE3718E00063377 /* SearchViewControllerStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3A81EE3718E00063377 /* SearchViewControllerStateManager.swift */; };
+		9017C3AB1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3AA1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift */; };
 		9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330E51EDF37F500FA8F43 /* AppDelegate.swift */; };
 		9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902330E61EDF37F500FA8F43 /* Assets.xcassets */; };
 		9023312C1EDF37F500FA8F43 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 902330E71EDF37F500FA8F43 /* Info.plist */; };
@@ -116,9 +119,12 @@
 		9017C38B1EE342A600063377 /* LineSelectionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionControl.swift; sourceTree = "<group>"; };
 		9017C38D1EE342CD00063377 /* LineSelectionControlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionControlConstants.swift; sourceTree = "<group>"; };
 		9017C38F1EE3433F00063377 /* LineSelectionControlLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionControlLayout.swift; sourceTree = "<group>"; };
-		9017C3911EE3436400063377 /* LineSelectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionDelegate.swift; sourceTree = "<group>"; };
+		9017C3911EE3436400063377 /* LineSelectionControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionControlDelegate.swift; sourceTree = "<group>"; };
 		9017C39C1EE3550000063377 /* LineSelectionSectionCreatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionCreatorProtocol.swift; sourceTree = "<group>"; };
 		9017C39E1EE3553A00063377 /* LineSelectionSectionCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionCreator.swift; sourceTree = "<group>"; };
+		9017C3A51EE370B100063377 /* SearchViewControllerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewControllerState.swift; path = ../SearchViewControllerState.swift; sourceTree = "<group>"; };
+		9017C3A81EE3718E00063377 /* SearchViewControllerStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerStateManager.swift; sourceTree = "<group>"; };
+		9017C3AA1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerStateManagerProtocol.swift; sourceTree = "<group>"; };
 		902330C41EDF37F500FA8F43 /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
 		902330C51EDF37F500FA8F43 /* CLLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		902330C61EDF37F500FA8F43 /* MKUserTrackingMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKUserTrackingMode.swift; sourceTree = "<group>"; };
@@ -235,6 +241,7 @@
 		9017C3441EE339FD00063377 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				9017C3A71EE3716100063377 /* State */,
 				9017C34E1EE339FD00063377 /* SearchViewController.swift */,
 				9017C3501EE339FD00063377 /* SearchViewControllerLayout.swift */,
 				9017C34F1EE339FD00063377 /* SearchViewControllerConstants.swift */,
@@ -284,7 +291,7 @@
 			children = (
 				9017C37B1EE3428700063377 /* Cells */,
 				9017C3801EE3428700063377 /* Data source */,
-				9017C3911EE3436400063377 /* LineSelectionDelegate.swift */,
+				9017C3911EE3436400063377 /* LineSelectionControlDelegate.swift */,
 				9017C38B1EE342A600063377 /* LineSelectionControl.swift */,
 				9017C38F1EE3433F00063377 /* LineSelectionControlLayout.swift */,
 				9017C38D1EE342CD00063377 /* LineSelectionControlConstants.swift */,
@@ -320,6 +327,16 @@
 				9017C39E1EE3553A00063377 /* LineSelectionSectionCreator.swift */,
 			);
 			path = "Section creators";
+			sourceTree = "<group>";
+		};
+		9017C3A71EE3716100063377 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				9017C3A51EE370B100063377 /* SearchViewControllerState.swift */,
+				9017C3A81EE3718E00063377 /* SearchViewControllerStateManager.swift */,
+				9017C3AA1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift */,
+			);
+			path = State;
 			sourceTree = "<group>";
 		};
 		902330C11EDF37F500FA8F43 /* _ */ = {
@@ -813,11 +830,13 @@
 			files = (
 				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
 				9017C3711EE33AB000063377 /* BookmarkCellViewModel.swift in Sources */,
+				9017C3A61EE370B100063377 /* SearchViewControllerState.swift in Sources */,
 				9091D0C81EE31FB800FC4F79 /* CardPanelPresentationTransition.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
 				9017C3901EE3433F00063377 /* LineSelectionControlLayout.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
+				9017C3A91EE3718E00063377 /* SearchViewControllerStateManager.swift in Sources */,
 				9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */,
 				9091D0C61EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				9086D4301EDF65AC00E43D9A /* CardPanelPresentable.swift in Sources */,
@@ -846,6 +865,7 @@
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				9086D44D1EE2DEC800E43D9A /* LocationManagerConstants.swift in Sources */,
 				9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */,
+				9017C3AB1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift in Sources */,
 				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
 				902331331EDF37F500FA8F43 /* FontManager.swift in Sources */,
 				9017C3731EE33AE900063377 /* BookmarkCellLayout.swift in Sources */,
@@ -863,7 +883,7 @@
 				9017C3991EE34D0600063377 /* LineSelectionSectionHeaderViewModel.swift in Sources */,
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
-				9017C3921EE3436400063377 /* LineSelectionDelegate.swift in Sources */,
+				9017C3921EE3436400063377 /* LineSelectionControlDelegate.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,
 				9086D44B1EE2DEA200E43D9A /* LocationManagerProtocol.swift in Sources */,
 				9091D0CA1EE31FD400FC4F79 /* CardPanelDismissTransition.swift in Sources */,
