@@ -21,11 +21,15 @@ class BookmarksManager: BookmarksManagerProtocol {
 
   //MARK: - BookmarksManagerProtocol
 
-  func getBookmarks() -> [Bookmark] {
+  func add(bookmark: Bookmark) {
+    self.bookmarks.append(bookmark)
+  }
+
+  func getAll() -> [Bookmark] {
     return self.bookmarks
   }
 
-  func saveBookmarks(_ bookmarks: [Bookmark]) {
+  func save(bookmarks: [Bookmark]) {
     self.bookmarks = bookmarks
   }
 

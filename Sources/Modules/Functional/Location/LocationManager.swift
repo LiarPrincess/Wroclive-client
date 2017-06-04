@@ -57,7 +57,7 @@ extension LocationManager: LocationManagerProtocol {
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     alertController.addAction(cancelAction)
   
-    let openAction = UIAlertAction(title: "Open Settings", style: .default) { action in
+    let openAction = UIAlertAction(title: "Open Settings", style: .default) { _ in
       if let url = URL(string: UIApplicationOpenSettingsURLString) {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
       }

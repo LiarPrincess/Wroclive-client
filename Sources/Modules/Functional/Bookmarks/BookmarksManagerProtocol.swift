@@ -6,6 +6,7 @@
 import Foundation
 
 protocol BookmarksManagerProtocol {
-  func getBookmarks() -> [Bookmark]
-  func saveBookmarks(_ bookmarks: [Bookmark])
+  func add(bookmark: Bookmark)
+  func getAll() -> [Bookmark]
+  func save(bookmarks: [Bookmark])
 }
