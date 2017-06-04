@@ -14,6 +14,7 @@ extension LineSelectionControl {
     self.collectionView.backgroundColor         = UIColor.white
     self.collectionView.allowsSelection         = true
     self.collectionView.allowsMultipleSelection = true
+    self.collectionView.alwaysBounceVertical    = true
 
     self.collectionView.dataSource = self.collectionDataSource
     self.collectionView.delegate   = self
