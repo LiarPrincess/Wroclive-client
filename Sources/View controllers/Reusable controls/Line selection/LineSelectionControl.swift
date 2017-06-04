@@ -12,13 +12,14 @@ class LineSelectionControl: UIViewController {
   
   //MARK: - Properties
 
-  var delegate: LineSelectionControlDelegate?
+  weak var delegate: LineSelectionControlDelegate?
 
-  let dataSource       = LineSelectionDataSource()
-  let collectionLayout = UICollectionViewFlowLayout()
+  let collectionDataSource: LineSelectionDataSource
 
-  lazy var collection: UICollectionView = {
-    return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.collectionLayout)
+  let collectionViewLayout = UICollectionViewFlowLayout()
+
+  lazy var collectionView: UICollectionView = {
+    return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.collectionViewLayout)
   }()
 
   var leftSectionInset:  CGFloat = 0
@@ -27,8 +28,8 @@ class LineSelectionControl: UIViewController {
   //MARK: - Init
 
   init(withLines lines: [Line], delegate: LineSelectionControlDelegate? = nil) {
-    self.dataSource.lines = lines
-    self.delegate         = delegate
+    self.collectionDataSource = LineSelectionDataSource(with: lines)
+    self.delegate             = delegate
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -56,8 +57,8 @@ class LineSelectionControl: UIViewController {
   //MARK: - Methods
 
   func select(line: Line) {
-    if let index = self.dataSource.index(of: line) {
-      self.collection.selectItem(at: index, animated: false, scrollPosition: .centeredHorizontally)
+    if let index = self.collectionDataSource.index(of: line) {
+      self.collectionView.selectItem(at: index, animated: false, scrollPosition: .centeredHorizontally)
       self.delegateDidSelect(line)
     }
   }

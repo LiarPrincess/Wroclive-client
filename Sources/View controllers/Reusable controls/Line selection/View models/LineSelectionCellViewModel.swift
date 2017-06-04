@@ -4,9 +4,11 @@
 //
 
 struct LineSelectionCellViewModel {
+  let line:     Line
   let lineName: String
 
   init(from line: Line) {
+    self.line     = line
     self.lineName = line.name
   }
 }

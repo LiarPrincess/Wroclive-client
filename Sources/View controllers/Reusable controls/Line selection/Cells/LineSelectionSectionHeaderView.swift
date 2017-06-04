@@ -25,8 +25,8 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
 
   //MARK: - Methods
 
-  func setUp(with viewModel: LineSelectionSectionHeaderViewModel) {
-    self.sectionTitle.text = viewModel.sectionTitle
+  func setUp(with viewModel: LineSelectionSectionViewModel) {
+    self.sectionTitle.text = viewModel.subtypeName
   }
 
 }

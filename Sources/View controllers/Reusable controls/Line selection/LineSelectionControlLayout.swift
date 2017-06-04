@@ -12,18 +12,18 @@ fileprivate typealias Layout    = Constants.Layout
 extension LineSelectionControl {
 
   func initLayout() {
-    self.collection.register(LineSelectionCell.self)
-    self.collection.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
-    self.collection.backgroundColor         = UIColor.white
-    self.collection.allowsSelection         = true
-    self.collection.allowsMultipleSelection = true
+    self.collectionView.register(LineSelectionCell.self)
+    self.collectionView.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
+    self.collectionView.backgroundColor         = UIColor.white
+    self.collectionView.allowsSelection         = true
+    self.collectionView.allowsMultipleSelection = true
 
-    self.collection.dataSource = self.dataSource
-    self.collection.delegate   = self
+    self.collectionView.dataSource = self.collectionDataSource
+    self.collectionView.delegate   = self
 
-    self.view.addSubview(self.collection)
+    self.view.addSubview(self.collectionView)
 
-    self.collection.snp.makeConstraints { make in
+    self.collectionView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
   }
