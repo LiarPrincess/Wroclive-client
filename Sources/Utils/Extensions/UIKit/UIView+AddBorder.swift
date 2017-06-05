@@ -7,7 +7,7 @@ import UIKit
 
 //MARK: - BorderType
 
-enum BorderType {
+enum BorderEdge {
   case top
   case bottom
 }
@@ -16,7 +16,7 @@ enum BorderType {
 
 extension UIView {
 
-  func addBorder(at borderType: BorderType) {
+  func addBorder(at borderType: BorderEdge) {
     let view = UIView()
     view.backgroundColor = UIColor(white: 0.75, alpha: 1.0)
     self.addSubview(view)

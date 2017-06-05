@@ -6,6 +6,9 @@
 import UIKit
 import SnapKit
 
+fileprivate typealias Constants = BookmarksViewControllerConstants
+fileprivate typealias Layout    = Constants.Layout
+
 class BookmarksViewController: UIViewController {
 
   //MARK: - Properties
@@ -85,7 +88,7 @@ extension BookmarksViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return tableView.rowHeight
+    return Layout.Cell.estimatedHeight
   }
 
   //MARK: - Selection

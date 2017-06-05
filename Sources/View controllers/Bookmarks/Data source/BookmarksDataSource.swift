@@ -63,6 +63,7 @@ extension BookmarksDataSource: UITableViewDataSource {
     let viewModel = self.viewModels[indexPath.row]
 
     cell.setUp(with: viewModel)
+    cell.layoutIfNeeded()
     return cell
   }
 

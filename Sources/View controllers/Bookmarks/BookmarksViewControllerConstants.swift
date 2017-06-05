@@ -10,15 +10,23 @@ struct BookmarksViewControllerConstants {
   struct Layout {
 
     struct Cell {
-
       static let topOffset:    CGFloat = 8.0
       static let bottomOffset: CGFloat = 6.0
 
-      static let leftOffset:  CGFloat = 40.0
-      static let rightOffset: CGFloat = leftOffset
+      static let leftOffset:   CGFloat = 40.0
+      static let rightOffset:  CGFloat = leftOffset
 
-      struct LinesLabel {
-        static let topOffset: CGFloat = 2.0
+      static let estimatedHeight: CGFloat = 200.0
+
+      struct LineCell {
+        static let width:     CGFloat = 45.0
+        static let height:    CGFloat = 30.0
+        static let minMargin: CGFloat =  1.0
+
+      }
+
+      struct LineSection {
+        static let insets = UIEdgeInsets(top: 5.0, left: 0.0, bottom: 0.0, right: 0.0)
       }
     }
 

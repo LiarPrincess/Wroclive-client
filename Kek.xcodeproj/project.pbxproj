@@ -21,7 +21,6 @@
 		9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */; };
 		9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3571EE339FD00063377 /* MapViewControllerLayout.swift */; };
 		9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C36E1EE33AA300063377 /* BookmarkCell.swift */; };
-		9017C3731EE33AE900063377 /* BookmarkCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3721EE33AE900063377 /* BookmarkCellLayout.swift */; };
 		9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3751EE33B8000063377 /* BookmarksDataSource.swift */; };
 		9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */; };
 		9017C38C1EE342A600063377 /* LineSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C38B1EE342A600063377 /* LineSelectionControl.swift */; };
@@ -48,13 +47,16 @@
 		902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F61EDF37F500FA8F43 /* UIBarButtonItem.swift */; };
 		902331351EDF37F500FA8F43 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F71EDF37F500FA8F43 /* UINavigationBar.swift */; };
 		902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F81EDF37F500FA8F43 /* UISegmentedControl.swift */; };
-		902331371EDF37F500FA8F43 /* UIView_AddBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F91EDF37F500FA8F43 /* UIView_AddBorder.swift */; };
+		902331371EDF37F500FA8F43 /* UIView+AddBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F91EDF37F500FA8F43 /* UIView+AddBorder.swift */; };
 		902331381EDF37F500FA8F43 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330FB1EDF37F500FA8F43 /* Logger.swift */; };
 		902331391EDF37F500FA8F43 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330FE1EDF37F500FA8F43 /* ReusableCell.swift */; };
 		9023313A1EDF37F500FA8F43 /* ReusableCellContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330FF1EDF37F500FA8F43 /* ReusableCellContainer.swift */; };
 		9023313B1EDF37F500FA8F43 /* ReusableSuplementaryViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902331001EDF37F500FA8F43 /* ReusableSuplementaryViewContainer.swift */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
+		902D18B81EE5777C00F87B32 /* BookmarkCellLineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D18B71EE5777C00F87B32 /* BookmarkCellLineViewModel.swift */; };
+		902D18BA1EE57B4F00F87B32 /* BookmarkCellLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D18B91EE57B4F00F87B32 /* BookmarkCellLine.swift */; };
+		902D18C31EE5F40100F87B32 /* BookmarkCellLineCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D18C21EE5F40100F87B32 /* BookmarkCellLineCollectionView.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9086D42E1EDF65AC00E43D9A /* CardPanelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4281EDF65AC00E43D9A /* CardPanelConstants.swift */; };
 		9086D4301EDF65AC00E43D9A /* CardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D42A1EDF65AC00E43D9A /* CardPanelPresentable.swift */; };
@@ -104,7 +106,6 @@
 		9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerConstants.swift; sourceTree = "<group>"; };
 		9017C3571EE339FD00063377 /* MapViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerLayout.swift; sourceTree = "<group>"; };
 		9017C36E1EE33AA300063377 /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
-		9017C3721EE33AE900063377 /* BookmarkCellLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellLayout.swift; sourceTree = "<group>"; };
 		9017C3751EE33B8000063377 /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
 		9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSourceDelegate.swift; sourceTree = "<group>"; };
 		9017C37C1EE3428700063377 /* LineSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCell.swift; sourceTree = "<group>"; };
@@ -149,7 +150,7 @@
 		902330F61EDF37F500FA8F43 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		902330F71EDF37F500FA8F43 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		902330F81EDF37F500FA8F43 /* UISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
-		902330F91EDF37F500FA8F43 /* UIView_AddBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_AddBorder.swift; sourceTree = "<group>"; };
+		902330F91EDF37F500FA8F43 /* UIView+AddBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorder.swift"; sourceTree = "<group>"; };
 		902330FB1EDF37F500FA8F43 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		902330FE1EDF37F500FA8F43 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		902330FF1EDF37F500FA8F43 /* ReusableCellContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCellContainer.swift; sourceTree = "<group>"; };
@@ -157,6 +158,9 @@
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		902D18B71EE5777C00F87B32 /* BookmarkCellLineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellLineViewModel.swift; sourceTree = "<group>"; };
+		902D18B91EE57B4F00F87B32 /* BookmarkCellLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellLine.swift; sourceTree = "<group>"; };
+		902D18C21EE5F40100F87B32 /* BookmarkCellLineCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellLineCollectionView.swift; sourceTree = "<group>"; };
 		9086D4281EDF65AC00E43D9A /* CardPanelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelConstants.swift; sourceTree = "<group>"; };
 		9086D42A1EDF65AC00E43D9A /* CardPanelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentable.swift; sourceTree = "<group>"; };
 		9086D42D1EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
@@ -260,8 +264,9 @@
 		9017C36D1EE33AA300063377 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				902D18C11EE5F3F300F87B32 /* Line collection */,
 				9017C36E1EE33AA300063377 /* BookmarkCell.swift */,
-				9017C3721EE33AE900063377 /* BookmarkCellLayout.swift */,
+				902D18B91EE57B4F00F87B32 /* BookmarkCellLine.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				9017C3B41EE3DEF400063377 /* BookmarkCellViewModel.swift */,
+				902D18B71EE5777C00F87B32 /* BookmarkCellLineViewModel.swift */,
 			);
 			name = "View models";
 			path = "Sources/View controllers/Bookmarks/View models";
@@ -542,7 +548,7 @@
 				902330F61EDF37F500FA8F43 /* UIBarButtonItem.swift */,
 				902330F71EDF37F500FA8F43 /* UINavigationBar.swift */,
 				902330F81EDF37F500FA8F43 /* UISegmentedControl.swift */,
-				902330F91EDF37F500FA8F43 /* UIView_AddBorder.swift */,
+				902330F91EDF37F500FA8F43 /* UIView+AddBorder.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -583,6 +589,14 @@
 				D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		902D18C11EE5F3F300F87B32 /* Line collection */ = {
+			isa = PBXGroup;
+			children = (
+				902D18C21EE5F40100F87B32 /* BookmarkCellLineCollectionView.swift */,
+			);
+			path = "Line collection";
 			sourceTree = "<group>";
 		};
 		9086D4271EDF65AC00E43D9A /* Card panel transition */ = {
@@ -842,6 +856,7 @@
 			files = (
 				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
 				9017C3A61EE370B100063377 /* SearchViewControllerState.swift in Sources */,
+				902D18B81EE5777C00F87B32 /* BookmarkCellLineViewModel.swift in Sources */,
 				9091D0C81EE31FB800FC4F79 /* CardPanelPresentationTransition.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
@@ -857,7 +872,7 @@
 				9023313A1EDF37F500FA8F43 /* ReusableCellContainer.swift in Sources */,
 				9023313B1EDF37F500FA8F43 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				902331391EDF37F500FA8F43 /* ReusableCell.swift in Sources */,
-				902331371EDF37F500FA8F43 /* UIView_AddBorder.swift in Sources */,
+				902331371EDF37F500FA8F43 /* UIView+AddBorder.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
 				9086D4471EE2DE8E00E43D9A /* BookmarksManager.swift in Sources */,
 				9091D0BB1EE3075500FC4F79 /* LayoutGuide.swift in Sources */,
@@ -876,11 +891,11 @@
 				9086D4481EE2DE8E00E43D9A /* LinesManager.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				9086D44D1EE2DEC800E43D9A /* LocationManagerConstants.swift in Sources */,
+				902D18C31EE5F40100F87B32 /* BookmarkCellLineCollectionView.swift in Sources */,
 				9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */,
 				9017C3AB1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift in Sources */,
 				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
 				902331331EDF37F500FA8F43 /* FontManager.swift in Sources */,
-				9017C3731EE33AE900063377 /* BookmarkCellLayout.swift in Sources */,
 				9017C3931EE34CF200063377 /* LineSelectionDataSource.swift in Sources */,
 				9091D0C71EE31FB800FC4F79 /* CardPanelPresenter.swift in Sources */,
 				9086D4491EE2DE8E00E43D9A /* LocationManager.swift in Sources */,
@@ -888,6 +903,7 @@
 				902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */,
 				9017C38C1EE342A600063377 /* LineSelectionControl.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
+				902D18BA1EE57B4F00F87B32 /* BookmarkCellLine.swift in Sources */,
 				902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */,
 				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
 				9017C3B01EE3D69200063377 /* LineSelectionCellViewModel.swift in Sources */,

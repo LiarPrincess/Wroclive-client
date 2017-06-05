@@ -4,22 +4,18 @@
 //
 
 struct BookmarkCellViewModel {
-  let bookmark: Bookmark
+  let bookmark:     Bookmark
   var bookmarkName: String { return self.bookmark.name }
 
-  let tramLines:    String
-  let busLines:     String
+  var lines: [Line] { return self.bookmark.lines }
+  let lineViewModels: [[BookmarkCellLineViewModel]]
 
   init(from bookmark: Bookmark) {
-    self.bookmark  = bookmark
-    self.tramLines = BookmarkCellViewModel.concatNames(bookmark.lines, ofType: .tram)
-    self.busLines  = BookmarkCellViewModel.concatNames(bookmark.lines, ofType: .bus)
+    self.bookmark = bookmark
+
+    let tramViewModels = bookmark.lines.filter { $0.type == .tram }.map { BookmarkCellLineViewModel(from: $0) }
+    let busViewModels  = bookmark.lines.filter { $0.type == .bus  }.map { BookmarkCellLineViewModel(from: $0) }
+    self.lineViewModels = [tramViewModels, busViewModels]
   }
 
-  private static func concatNames(_ lines: [Line], ofType lineType: LineType) -> String {
-    return lines.filter { $0.type == lineType }
-      .map { $0.name }
-      .joined(separator: "  ")
-  }
-  
 }
