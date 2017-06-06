@@ -12,17 +12,9 @@ class BookmarkCell: UITableViewCell {
 
   //MARK: - Properties
 
-  var lineViewModels = [[BookmarkCellLineViewModel]]()
-
-  //MARK: Layout
-
   let bookmarkName = UILabel()
-
-  let collectionViewLayout = UICollectionViewFlowLayout()
-
-  lazy var collectionView: BookmarkCellLineCollectionView = {
-    return BookmarkCellLineCollectionView(frame: CGRect.zero, collectionViewLayout: self.collectionViewLayout)
-  }()
+  let tramLines    = UILabel()
+  let busLines     = UILabel()
 
   //MARK: - Init
 
@@ -47,11 +39,32 @@ class BookmarkCell: UITableViewCell {
 
   func setUp(with viewModel: BookmarkCellViewModel) {
     self.bookmarkName.text = viewModel.bookmarkName
-    self.lineViewModels    = viewModel.lineViewModels
-    self.collectionView.reloadData()
+    self.update(lineLabel: self.tramLines, with: viewModel.tramLines)
+    self.update(lineLabel: self.busLines, with: viewModel.busLines)
 
-    self.collectionView.invalidateIntrinsicContentSize()
-    self.invalidateIntrinsicContentSize()
+    // update constraints, so that the layout will not break when we hide label
+
+    self.tramLines.snp.updateConstraints { make in
+      let topOffset = viewModel.tramLines.isEmpty ? 0.0 : Layout.LinesLabel.topOffset
+      make.top.equalTo(self.bookmarkName.snp.bottom).offset(topOffset)
+    }
+
+    self.busLines.snp.updateConstraints { make in
+      let topOffset = viewModel.busLines.isEmpty ? 0.0 : Layout.LinesLabel.topOffset
+      make.top.equalTo(self.tramLines.snp.bottom).offset(topOffset)
+    }
+  }
+
+  private func update(lineLabel label: UILabel, with text: String) {
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.lineSpacing = Layout.LinesLabel.lineSpacing
+    paragraphStyle.alignment   = .center
+
+    let labelText = NSMutableAttributedString(string: text)
+    labelText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, labelText.length))
+
+    label.isHidden       = text.isEmpty
+    label.attributedText = labelText
   }
 
 }
@@ -61,90 +74,41 @@ class BookmarkCell: UITableViewCell {
 extension BookmarkCell {
 
   func initLayout() {
+    let tintColor = UIApplication.shared.keyWindow!.tintColor
+
     self.bookmarkName.numberOfLines = 0
     self.bookmarkName.textAlignment = .center
     self.bookmarkName.font          = FontManager.instance.bookmarkCellTitle
     self.addSubview(self.bookmarkName)
 
     self.bookmarkName.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.topOffset)
+      make.top.equalToSuperview().offset(Layout.BookmarkName.topOffset)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
 
-    self.collectionView.register(BookmarkCellLine.self)
-    self.collectionView.backgroundColor          = UIColor.white
-    self.collectionView.allowsSelection          = false
-    self.collectionView.allowsMultipleSelection  = false
-    self.collectionView.isUserInteractionEnabled = false
+    self.tramLines.numberOfLines = 0
+    self.tramLines.textColor     = tintColor
+    self.tramLines.font          = FontManager.instance.bookmarkCellContent
+    self.addSubview(self.tramLines)
 
-    self.collectionView.dataSource = self
-    self.collectionView.delegate   = self
-
-    self.addSubview(self.collectionView)
-
-    self.collectionView.snp.makeConstraints { make in
-      make.top.equalTo(self.bookmarkName.snp.bottom)
+    self.tramLines.snp.makeConstraints { make in
+      make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.LinesLabel.topOffset)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
-      make.bottom.equalToSuperview()
     }
-  }
 
-}
+    self.busLines.numberOfLines = 0
+    self.busLines.textColor     = tintColor
+    self.busLines.font          = FontManager.instance.bookmarkCellContent
+    self.addSubview(self.busLines)
 
-//MARK: - UICollectionViewDataSource
-
-extension BookmarkCell: UICollectionViewDataSource {
-
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return self.lineViewModels.count
-  }
-
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return self.lineViewModels[section].count
-  }
-
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell      = collectionView.dequeueReusableCell(ofType: BookmarkCellLine.self, forIndexPath: indexPath)
-    let viewModel = self.lineViewModels[indexPath.section][indexPath.row]
-
-    cell.setUp(with: viewModel)
-    return cell
-  }
-  
-}
-
-//MARK: - CollectionViewDelegateFlowLayout
-
-extension BookmarkCell: UICollectionViewDelegateFlowLayout {
-
-  //MARK: - Size
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let font = FontManager.instance.bookmarkCellContent!
-    let fontAttribute = [NSFontAttributeName: font]
-
-    let lineViewModel = self.lineViewModels[indexPath.section][indexPath.row]
-    let size = (lineViewModel.lineName as NSString).size(attributes: fontAttribute)
-
-    return CGSize(width: size.width + 10.0, height: size.height + 2.0)
-  }
-
-  //MARK: - Margin
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return Layout.LineCell.minMargin
-  }
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return Layout.LineCell.minMargin
-  }
-
-  //MARK: - Content placement
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return Layout.LineSection.insets
+    self.busLines.snp.makeConstraints { make in
+      make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.LinesLabel.topOffset)
+      make.left.equalToSuperview().offset(Layout.leftOffset)
+      make.right.equalToSuperview().offset(-Layout.rightOffset)
+      make.bottom.equalToSuperview().offset(-Layout.LinesLabel.bottomOffset)
+    }
   }
 
 }

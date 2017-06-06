@@ -7,15 +7,19 @@ struct BookmarkCellViewModel {
   let bookmark:     Bookmark
   var bookmarkName: String { return self.bookmark.name }
 
-  var lines: [Line] { return self.bookmark.lines }
-  let lineViewModels: [[BookmarkCellLineViewModel]]
+  let tramLines: String
+  let busLines:  String
 
   init(from bookmark: Bookmark) {
-    self.bookmark = bookmark
-
-    let tramViewModels = bookmark.lines.filter { $0.type == .tram }.map { BookmarkCellLineViewModel(from: $0) }
-    let busViewModels  = bookmark.lines.filter { $0.type == .bus  }.map { BookmarkCellLineViewModel(from: $0) }
-    self.lineViewModels = [tramViewModels, busViewModels]
+    self.bookmark  = bookmark
+    self.tramLines = BookmarkCellViewModel.concatNames(bookmark.lines, ofType: .tram)
+    self.busLines  = BookmarkCellViewModel.concatNames(bookmark.lines, ofType: .bus)
   }
 
+  private static func concatNames(_ lines: [Line], ofType lineType: LineType) -> String {
+    return lines
+      .filter { $0.type == lineType }
+      .map { $0.name }
+      .joined(separator: "   ")
+  }
 }
