@@ -31,25 +31,7 @@ struct LineSelectionSectionViewModelFactory {
 
   fileprivate static func sort(lines: [Line]) -> [Line] {
     return lines.sorted { (lhs, rhs) in
-      let lhsInt = Int(lhs.name)
-      let rhsInt = Int(rhs.name)
-
-      // both numbers
-      if let lhsNum = lhsInt, let rhsNum = rhsInt {
-        return lhsNum < rhsNum
-      }
-
-      // one is number
-      if let _ = lhsInt {
-        return true
-      }
-
-      if let _ = rhsInt {
-        return false
-      }
-
-      // none is number
-      return lhs.name.caseInsensitiveCompare(rhs.name) == .orderedAscending
+      return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
     }
   }
 
