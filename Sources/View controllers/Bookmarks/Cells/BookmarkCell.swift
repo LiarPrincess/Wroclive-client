@@ -47,7 +47,11 @@ class BookmarkCell: UITableViewCell {
 
   func setUp(with viewModel: BookmarkCellViewModel) {
     self.bookmarkName.text = viewModel.bookmarkName
-    self.lineViewModels        = viewModel.lineViewModels
+    self.lineViewModels    = viewModel.lineViewModels
+    self.collectionView.reloadData()
+
+    self.collectionView.invalidateIntrinsicContentSize()
+    self.invalidateIntrinsicContentSize()
   }
 
 }
@@ -118,7 +122,13 @@ extension BookmarkCell: UICollectionViewDelegateFlowLayout {
   //MARK: - Size
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: Layout.LineCell.width, height: Layout.LineCell.height)
+    let font = FontManager.instance.bookmarkCellContent!
+    let fontAttribute = [NSFontAttributeName: font]
+
+    let lineViewModel = self.lineViewModels[indexPath.section][indexPath.row]
+    let size = (lineViewModel.lineName as NSString).size(attributes: fontAttribute)
+
+    return CGSize(width: size.width + 10.0, height: size.height + 2.0)
   }
 
   //MARK: - Margin

@@ -22,11 +22,10 @@ struct BookmarksViewControllerConstants {
         static let width:     CGFloat = 45.0
         static let height:    CGFloat = 30.0
         static let minMargin: CGFloat =  1.0
-
       }
 
       struct LineSection {
-        static let insets = UIEdgeInsets(top: 5.0, left: 0.0, bottom: 0.0, right: 0.0)
+        static let insets = UIEdgeInsets(top: 5.0, left: 0.0, bottom: 5.0, right: 0.0)
       }
     }
 
