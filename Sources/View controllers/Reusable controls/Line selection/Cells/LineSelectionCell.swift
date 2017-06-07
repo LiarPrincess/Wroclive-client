@@ -53,7 +53,7 @@ extension LineSelectionCell {
     self.selectedBackgroundView?.backgroundColor = self.tintColor
 
     self.lineName.numberOfLines = 1
-    self.lineName.font          = FontManager.instance.lineSelectionCellContent
+    self.lineName.font          = Theme.current.font.body
     self.lineName.textAlignment = .center
     self.lineName.textColor     = self.tintColor
 

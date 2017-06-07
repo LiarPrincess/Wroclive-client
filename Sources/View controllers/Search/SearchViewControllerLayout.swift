@@ -88,7 +88,7 @@ extension SearchViewController {
     self.lineTypeSelector.insertSegment(withTitle: "Buses", at: LineTypeIndex.bus, animated: false)
 
     self.lineTypeSelector.addTarget(self, action: #selector(lineTypeChanged), for: .valueChanged)
-    self.lineTypeSelector.font = FontManager.instance.lineSelectionLineTypeSelector
+    self.lineTypeSelector.font = Theme.current.font.body
   }
 
   //MARK: - Line selection

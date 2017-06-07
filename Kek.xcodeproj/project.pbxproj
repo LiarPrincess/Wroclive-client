@@ -43,7 +43,6 @@
 		9023312E1EDF37F500FA8F43 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EA1EDF37F500FA8F43 /* Line.swift */; };
 		9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EB1EDF37F500FA8F43 /* LineSubtype.swift */; };
 		902331301EDF37F500FA8F43 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EC1EDF37F500FA8F43 /* LineType.swift */; };
-		902331331EDF37F500FA8F43 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F21EDF37F500FA8F43 /* FontManager.swift */; };
 		902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F61EDF37F500FA8F43 /* UIBarButtonItem.swift */; };
 		902331351EDF37F500FA8F43 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F71EDF37F500FA8F43 /* UINavigationBar.swift */; };
 		902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F81EDF37F500FA8F43 /* UISegmentedControl.swift */; };
@@ -70,6 +69,9 @@
 		9091D0C71EE31FB800FC4F79 /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0C31EE31FB800FC4F79 /* CardPanelPresenter.swift */; };
 		9091D0C81EE31FB800FC4F79 /* CardPanelPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0C51EE31FB800FC4F79 /* CardPanelPresentationTransition.swift */; };
 		9091D0CA1EE31FD400FC4F79 /* CardPanelDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0C91EE31FD400FC4F79 /* CardPanelDismissTransition.swift */; };
+		909EA4721EE8720C00870D52 /* FontProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EA4711EE8720C00870D52 /* FontProviderProtocol.swift */; };
+		909EA4921EE88AEC00870D52 /* AvenirFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EA4911EE88AEC00870D52 /* AvenirFontProvider.swift */; };
+		909EA4951EE88DE700870D52 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EA4941EE88DE700870D52 /* Theme.swift */; };
 		90DBB6441EE45F3300D997CF /* SaveBookmarkAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBB6431EE45F3300D997CF /* SaveBookmarkAlert.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,7 +145,6 @@
 		902330EA1EDF37F500FA8F43 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		902330EB1EDF37F500FA8F43 /* LineSubtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSubtype.swift; sourceTree = "<group>"; };
 		902330EC1EDF37F500FA8F43 /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
-		902330F21EDF37F500FA8F43 /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		902330F61EDF37F500FA8F43 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		902330F71EDF37F500FA8F43 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		902330F81EDF37F500FA8F43 /* UISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
@@ -170,6 +171,9 @@
 		9091D0C31EE31FB800FC4F79 /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
 		9091D0C51EE31FB800FC4F79 /* CardPanelPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentationTransition.swift; sourceTree = "<group>"; };
 		9091D0C91EE31FD400FC4F79 /* CardPanelDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelDismissTransition.swift; sourceTree = "<group>"; };
+		909EA4711EE8720C00870D52 /* FontProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontProviderProtocol.swift; sourceTree = "<group>"; };
+		909EA4911EE88AEC00870D52 /* AvenirFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvenirFontProvider.swift; sourceTree = "<group>"; };
+		909EA4941EE88DE700870D52 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		90DBB6431EE45F3300D997CF /* SaveBookmarkAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveBookmarkAlert.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -502,17 +506,9 @@
 			isa = PBXGroup;
 			children = (
 				9086D4401EE2DE8E00E43D9A /* Functional */,
-				902330F11EDF37F500FA8F43 /* Usability */,
+				909EA46B1EE8709600870D52 /* Theme */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		902330F11EDF37F500FA8F43 /* Usability */ = {
-			isa = PBXGroup;
-			children = (
-				902330F21EDF37F500FA8F43 /* FontManager.swift */,
-			);
-			path = Usability;
 			sourceTree = "<group>";
 		};
 		902330F31EDF37F500FA8F43 /* Utils */ = {
@@ -664,6 +660,32 @@
 				9091D0C91EE31FD400FC4F79 /* CardPanelDismissTransition.swift */,
 			);
 			path = Transition;
+			sourceTree = "<group>";
+		};
+		909EA46B1EE8709600870D52 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				909EA46E1EE870C000870D52 /* Font */,
+				909EA4931EE88DD500870D52 /* Color scheme */,
+				909EA4941EE88DE700870D52 /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		909EA46E1EE870C000870D52 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				909EA4911EE88AEC00870D52 /* AvenirFontProvider.swift */,
+				909EA4711EE8720C00870D52 /* FontProviderProtocol.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		909EA4931EE88DD500870D52 /* Color scheme */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Color scheme";
 			sourceTree = "<group>";
 		};
 		90DBB6421EE45F2100D997CF /* Save bookmark alert */ = {
@@ -862,6 +884,7 @@
 				902331381EDF37F500FA8F43 /* Logger.swift in Sources */,
 				9017C38E1EE342CD00063377 /* LineSelectionControlConstants.swift in Sources */,
 				9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */,
+				909EA4921EE88AEC00870D52 /* AvenirFontProvider.swift in Sources */,
 				90DBB6441EE45F3300D997CF /* SaveBookmarkAlert.swift in Sources */,
 				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
 				9017C3B21EE3D80A00063377 /* LineSelectionSectionViewModelFactory.swift in Sources */,
@@ -876,12 +899,13 @@
 				9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */,
 				9017C3AB1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift in Sources */,
 				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
-				902331331EDF37F500FA8F43 /* FontManager.swift in Sources */,
 				9017C3931EE34CF200063377 /* LineSelectionDataSource.swift in Sources */,
 				9091D0C71EE31FB800FC4F79 /* CardPanelPresenter.swift in Sources */,
 				9086D4491EE2DE8E00E43D9A /* LocationManager.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchViewControllerLayout.swift in Sources */,
 				902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */,
+				909EA4721EE8720C00870D52 /* FontProviderProtocol.swift in Sources */,
+				909EA4951EE88DE700870D52 /* Theme.swift in Sources */,
 				9017C38C1EE342A600063377 /* LineSelectionControl.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */,

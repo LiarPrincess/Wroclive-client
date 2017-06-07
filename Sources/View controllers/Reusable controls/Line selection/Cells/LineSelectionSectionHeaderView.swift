@@ -37,7 +37,7 @@ extension LineSelectionSectionHeaderView {
 
   fileprivate func initLayout() {
     self.subtypeName.numberOfLines = 0
-    self.subtypeName.font          = FontManager.instance.lineSelectionSectionHeader
+    self.subtypeName.font          = Theme.current.font.headline
     self.subtypeName.textAlignment = .center
     self.addSubview(self.subtypeName)
 

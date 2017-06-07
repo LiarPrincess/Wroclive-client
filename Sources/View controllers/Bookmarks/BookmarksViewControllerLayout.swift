@@ -63,7 +63,7 @@ extension BookmarksViewController {
 
     let topLabel = createPlaceholderLabel()
     topLabel.text = "You have not saved any bookmarks"
-    topLabel.font = FontManager.instance.bookmarkPlaceholderTitle
+    topLabel.font = Theme.current.font.headline
     self.bookmarksTablePlaceholder.addSubview(topLabel)
 
     topLabel.snp.makeConstraints { make in
@@ -73,7 +73,7 @@ extension BookmarksViewController {
 
     let bottomLabel = createPlaceholderLabel()
     bottomLabel.text = "To add bookmark press 'Save' when searching (X) for lines."
-    bottomLabel.font = FontManager.instance.bookmarkPlaceholderContent
+    bottomLabel.font = Theme.current.font.body
     self.bookmarksTablePlaceholder.addSubview(bottomLabel)
 
     bottomLabel.snp.makeConstraints { make in

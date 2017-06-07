@@ -78,7 +78,7 @@ extension BookmarkCell {
 
     self.bookmarkName.numberOfLines = 0
     self.bookmarkName.textAlignment = .center
-    self.bookmarkName.font          = FontManager.instance.bookmarkCellTitle
+    self.bookmarkName.font          = Theme.current.font.headline
     self.addSubview(self.bookmarkName)
 
     self.bookmarkName.snp.makeConstraints { make in
@@ -89,7 +89,7 @@ extension BookmarkCell {
 
     self.tramLines.numberOfLines = 0
     self.tramLines.textColor     = tintColor
-    self.tramLines.font          = FontManager.instance.bookmarkCellContent
+    self.tramLines.font          = Theme.current.font.body
     self.addSubview(self.tramLines)
 
     self.tramLines.snp.makeConstraints { make in
@@ -100,7 +100,7 @@ extension BookmarkCell {
 
     self.busLines.numberOfLines = 0
     self.busLines.textColor     = tintColor
-    self.busLines.font          = FontManager.instance.bookmarkCellContent
+    self.busLines.font          = Theme.current.font.body
     self.addSubview(self.busLines)
 
     self.busLines.snp.makeConstraints { make in
