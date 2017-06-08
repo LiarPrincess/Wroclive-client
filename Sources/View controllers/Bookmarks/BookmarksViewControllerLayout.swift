@@ -1,4 +1,4 @@
-//
+
 //  Created by Michal Matuszczyk
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
@@ -9,13 +9,15 @@ import SnapKit
 fileprivate typealias Constants = BookmarksViewControllerConstants
 fileprivate typealias Layout    = Constants.Layout
 
+//MARK: - Layout
+
 extension BookmarksViewController {
 
   func initLayout() {
-    self.view.backgroundColor = UIColor.white
     self.initNavigationBar()
     self.initBookmarksTable()
     self.initBookmarksTablePlaceholder()
+    self.applyTheme()
   }
 
   fileprivate func initNavigationBar() {
@@ -39,7 +41,7 @@ extension BookmarksViewController {
 
   fileprivate func initBookmarksTable() {
     self.bookmarksTable.register(BookmarkCell.self)
-    self.bookmarksTable.separatorInset = .zero
+    self.bookmarksTable.separatorInset = UIEdgeInsets(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
     self.bookmarksTable.dataSource     = self.bookmarksDataSource
     self.bookmarksTable.delegate       = self
     self.view.insertSubview(self.bookmarksTable, belowSubview: self.navigationBar)
@@ -51,42 +53,47 @@ extension BookmarksViewController {
   }
 
   fileprivate func initBookmarksTablePlaceholder() {
-    // we cant use 'self.bookmarksTable' as this would result in incorrect left <-> right constraints
-    self.view.addSubview(self.bookmarksTablePlaceholder)
+    // we cant use 'self.bookmarksTable.backgroundView' as this would result in incorrect left <-> right constraints
+    self.view.addSubview(self.placeholderView)
 
-    self.bookmarksTablePlaceholder.snp.makeConstraints { make in
+    self.placeholderView.snp.makeConstraints { make in
       make.top.equalTo(self.navigationBar.snp.bottom)
       make.left.equalToSuperview().offset(Layout.Placeholder.leftOffset)
       make.right.equalToSuperview().offset(-Layout.Placeholder.rightOffset)
       make.bottom.equalToSuperview()
     }
 
-    let topLabel = createPlaceholderLabel()
-    topLabel.text = "You have not saved any bookmarks"
-    topLabel.font = Theme.current.font.headline
-    self.bookmarksTablePlaceholder.addSubview(topLabel)
+    self.placeholderTopLabel.numberOfLines = 0
+    self.placeholderTopLabel.textAlignment = .center
+    self.placeholderTopLabel.text          = "You have not saved any bookmarks"
+    self.placeholderView.addSubview(self.placeholderTopLabel)
 
-    topLabel.snp.makeConstraints { make in
+    self.placeholderTopLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Placeholder.TopLabel.topOffset)
       make.left.right.equalToSuperview()
     }
 
-    let bottomLabel = createPlaceholderLabel()
-    bottomLabel.text = "To add bookmark press 'Save' when searching (X) for lines."
-    bottomLabel.font = Theme.current.font.body
-    self.bookmarksTablePlaceholder.addSubview(bottomLabel)
+    self.placeholderBottomLabel.numberOfLines = 0
+    self.placeholderBottomLabel.textAlignment = .center
+    self.placeholderBottomLabel.text          = "To add bookmark press 'Save' when searching (X) for lines."
+    self.placeholderView.addSubview(self.placeholderBottomLabel)
 
-    bottomLabel.snp.makeConstraints { make in
-      make.top.equalTo(topLabel.snp.bottom).offset(Layout.Placeholder.BottomLabel.topOffset)
+    self.placeholderBottomLabel.snp.makeConstraints { make in
+      make.top.equalTo(self.placeholderTopLabel.snp.bottom).offset(Layout.Placeholder.BottomLabel.topOffset)
       make.left.right.equalToSuperview()
     }
   }
 
-  fileprivate func createPlaceholderLabel() -> UILabel {
-    let label = UILabel()
-    label.textAlignment = .center
-    label.numberOfLines = 0
-    return label
+}
+
+//MARK: - Theme 
+
+extension BookmarksViewController {
+
+  func applyTheme() {
+    self.view.backgroundColor = UIColor.white
+    self.placeholderTopLabel.font    = Theme.current.font.headline
+    self.placeholderBottomLabel.font = Theme.current.font.body
   }
 
 }

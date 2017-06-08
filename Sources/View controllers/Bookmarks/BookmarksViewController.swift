@@ -17,9 +17,11 @@ class BookmarksViewController: UIViewController {
   let closeButton   = UIBarButtonItem()
 
   var bookmarksDataSource: BookmarksDataSource!
+  let bookmarksTable = UITableView()
 
-  let bookmarksTable            = UITableView()
-  let bookmarksTablePlaceholder = UIView()
+  let placeholderView        = UIView()
+  let placeholderTopLabel    = UILabel()
+  let placeholderBottomLabel = UILabel()
 
   //MARK: - Overriden
 
@@ -59,12 +61,12 @@ class BookmarksViewController: UIViewController {
     if bookmarks.count == 0 {
       self.navigationItem.setLeftBarButton(nil, animated: true)
       self.bookmarksTable.separatorStyle      = .none
-      self.bookmarksTablePlaceholder.isHidden = false
+      self.placeholderView.isHidden = false
     }
     else {
       self.navigationItem.setLeftBarButton(self.editButtonItem, animated: true)
       self.bookmarksTable.separatorStyle      = .singleLine
-      self.bookmarksTablePlaceholder.isHidden = true
+      self.placeholderView.isHidden = true
     }
   }
 

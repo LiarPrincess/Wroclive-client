@@ -69,7 +69,7 @@ class BookmarkCell: UITableViewCell {
 
 }
 
-//MARK: - UI Init
+//MARK: - Layout
 
 extension BookmarkCell {
 

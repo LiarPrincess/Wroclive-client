@@ -69,9 +69,14 @@
 		9091D0C71EE31FB800FC4F79 /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0C31EE31FB800FC4F79 /* CardPanelPresenter.swift */; };
 		9091D0C81EE31FB800FC4F79 /* CardPanelPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0C51EE31FB800FC4F79 /* CardPanelPresentationTransition.swift */; };
 		9091D0CA1EE31FD400FC4F79 /* CardPanelDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091D0C91EE31FD400FC4F79 /* CardPanelDismissTransition.swift */; };
-		909EA4721EE8720C00870D52 /* FontProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EA4711EE8720C00870D52 /* FontProviderProtocol.swift */; };
-		909EA4921EE88AEC00870D52 /* AvenirFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EA4911EE88AEC00870D52 /* AvenirFontProvider.swift */; };
-		909EA4951EE88DE700870D52 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EA4941EE88DE700870D52 /* Theme.swift */; };
+		90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* Theme.swift */; };
+		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
+		90AF2BDB1EE9E05C006E61D6 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BDA1EE9E05C006E61D6 /* Styles.swift */; };
+		90AF2BDD1EE9E06C006E61D6 /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BDC1EE9E06C006E61D6 /* Controls.swift */; };
+		90AF2BDF1EE9E12D006E61D6 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BDE1EE9E12D006E61D6 /* FontProvider.swift */; };
+		90AF2BE11EE9E186006E61D6 /* SystemFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */; };
+		90AF2BE31EE9E4ED006E61D6 /* Theme+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */; };
+		90AF2BE51EE9E786006E61D6 /* AvenirFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE41EE9E786006E61D6 /* AvenirFontProvider.swift */; };
 		90DBB6441EE45F3300D997CF /* SaveBookmarkAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBB6431EE45F3300D997CF /* SaveBookmarkAlert.swift */; };
 /* End PBXBuildFile section */
 
@@ -171,9 +176,14 @@
 		9091D0C31EE31FB800FC4F79 /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
 		9091D0C51EE31FB800FC4F79 /* CardPanelPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentationTransition.swift; sourceTree = "<group>"; };
 		9091D0C91EE31FD400FC4F79 /* CardPanelDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelDismissTransition.swift; sourceTree = "<group>"; };
-		909EA4711EE8720C00870D52 /* FontProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontProviderProtocol.swift; sourceTree = "<group>"; };
-		909EA4911EE88AEC00870D52 /* AvenirFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvenirFontProvider.swift; sourceTree = "<group>"; };
-		909EA4941EE88DE700870D52 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		90AF2BD31EE9DE00006E61D6 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		90AF2BDA1EE9E05C006E61D6 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		90AF2BDC1EE9E06C006E61D6 /* Controls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controls.swift; sourceTree = "<group>"; };
+		90AF2BDE1EE9E12D006E61D6 /* FontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
+		90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFontProvider.swift; sourceTree = "<group>"; };
+		90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Apply.swift"; sourceTree = "<group>"; };
+		90AF2BE41EE9E786006E61D6 /* AvenirFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvenirFontProvider.swift; sourceTree = "<group>"; };
 		90DBB6431EE45F3300D997CF /* SaveBookmarkAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveBookmarkAlert.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -506,7 +516,7 @@
 			isa = PBXGroup;
 			children = (
 				9086D4401EE2DE8E00E43D9A /* Functional */,
-				909EA46B1EE8709600870D52 /* Theme */,
+				90AF2BD21EE9DDE4006E61D6 /* Theme */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -662,30 +672,44 @@
 			path = Transition;
 			sourceTree = "<group>";
 		};
-		909EA46B1EE8709600870D52 /* Theme */ = {
+		90AF2BD21EE9DDE4006E61D6 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				909EA46E1EE870C000870D52 /* Font */,
-				909EA4931EE88DD500870D52 /* Color scheme */,
-				909EA4941EE88DE700870D52 /* Theme.swift */,
+				90AF2BD91EE9E04F006E61D6 /* Styles */,
+				90AF2BD51EE9DED4006E61D6 /* Color schemes */,
+				90AF2BD61EE9DED4006E61D6 /* Font providers */,
+				90AF2BD31EE9DE00006E61D6 /* Theme.swift */,
+				90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */,
 			);
-			path = Theme;
+			name = Theme;
+			path = Sources/Modules/Theme;
+			sourceTree = SOURCE_ROOT;
+		};
+		90AF2BD51EE9DED4006E61D6 /* Color schemes */ = {
+			isa = PBXGroup;
+			children = (
+				90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */,
+			);
+			path = "Color schemes";
 			sourceTree = "<group>";
 		};
-		909EA46E1EE870C000870D52 /* Font */ = {
+		90AF2BD61EE9DED4006E61D6 /* Font providers */ = {
 			isa = PBXGroup;
 			children = (
-				909EA4911EE88AEC00870D52 /* AvenirFontProvider.swift */,
-				909EA4711EE8720C00870D52 /* FontProviderProtocol.swift */,
+				90AF2BDE1EE9E12D006E61D6 /* FontProvider.swift */,
+				90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */,
+				90AF2BE41EE9E786006E61D6 /* AvenirFontProvider.swift */,
 			);
-			path = Font;
+			path = "Font providers";
 			sourceTree = "<group>";
 		};
-		909EA4931EE88DD500870D52 /* Color scheme */ = {
+		90AF2BD91EE9E04F006E61D6 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				90AF2BDA1EE9E05C006E61D6 /* Styles.swift */,
+				90AF2BDC1EE9E06C006E61D6 /* Controls.swift */,
 			);
-			path = "Color scheme";
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		90DBB6421EE45F2100D997CF /* Save bookmark alert */ = {
@@ -859,19 +883,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
 				9017C3A61EE370B100063377 /* SearchViewControllerState.swift in Sources */,
 				9091D0C81EE31FB800FC4F79 /* CardPanelPresentationTransition.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
+				90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */,
 				9017C3901EE3433F00063377 /* LineSelectionControlLayout.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
 				9017C3A91EE3718E00063377 /* SearchViewControllerStateManager.swift in Sources */,
+				90AF2BE51EE9E786006E61D6 /* AvenirFontProvider.swift in Sources */,
 				9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */,
 				9091D0C61EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift in Sources */,
+				90AF2BE11EE9E186006E61D6 /* SystemFontProvider.swift in Sources */,
 				9086D4301EDF65AC00E43D9A /* CardPanelPresentable.swift in Sources */,
 				9017C3961EE34CFC00063377 /* LineSelectionCell.swift in Sources */,
 				9023312D1EDF37F500FA8F43 /* Bookmark.swift in Sources */,
+				90AF2BE31EE9E4ED006E61D6 /* Theme+Apply.swift in Sources */,
 				9086D4511EE2DFCF00E43D9A /* BookmarksManagerProtocol.swift in Sources */,
 				9023313A1EDF37F500FA8F43 /* ReusableCellContainer.swift in Sources */,
 				9023313B1EDF37F500FA8F43 /* ReusableSuplementaryViewContainer.swift in Sources */,
@@ -884,7 +913,6 @@
 				902331381EDF37F500FA8F43 /* Logger.swift in Sources */,
 				9017C38E1EE342CD00063377 /* LineSelectionControlConstants.swift in Sources */,
 				9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */,
-				909EA4921EE88AEC00870D52 /* AvenirFontProvider.swift in Sources */,
 				90DBB6441EE45F3300D997CF /* SaveBookmarkAlert.swift in Sources */,
 				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
 				9017C3B21EE3D80A00063377 /* LineSelectionSectionViewModelFactory.swift in Sources */,
@@ -902,15 +930,16 @@
 				9017C3931EE34CF200063377 /* LineSelectionDataSource.swift in Sources */,
 				9091D0C71EE31FB800FC4F79 /* CardPanelPresenter.swift in Sources */,
 				9086D4491EE2DE8E00E43D9A /* LocationManager.swift in Sources */,
+				90AF2BDD1EE9E06C006E61D6 /* Controls.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchViewControllerLayout.swift in Sources */,
 				902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */,
-				909EA4721EE8720C00870D52 /* FontProviderProtocol.swift in Sources */,
-				909EA4951EE88DE700870D52 /* Theme.swift in Sources */,
 				9017C38C1EE342A600063377 /* LineSelectionControl.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */,
 				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
 				9017C3B01EE3D69200063377 /* LineSelectionCellViewModel.swift in Sources */,
+				90AF2BDB1EE9E05C006E61D6 /* Styles.swift in Sources */,
+				90AF2BDF1EE9E12D006E61D6 /* FontProvider.swift in Sources */,
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
 				9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
