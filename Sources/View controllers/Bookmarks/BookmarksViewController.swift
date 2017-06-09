@@ -38,6 +38,11 @@ class BookmarksViewController: UIViewController {
     self.updateLayoutAfterRowCountChanged()
   }
 
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    self.positionTableViewBelowHeaderView()
+  }
+
   override func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
 

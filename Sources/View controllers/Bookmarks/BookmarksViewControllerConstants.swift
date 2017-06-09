@@ -12,8 +12,8 @@ struct BookmarksViewControllerConstants {
     static let rightOffset: CGFloat = leftOffset
 
     struct Header {
-      static let height:            CGFloat = 75.0
-      static let bottomMargin:      CGFloat =  8.0
+      static let topPadding:        CGFloat = 32.0
+      static let bottomPadding:     CGFloat =  8.0
       static let horizontalSpacing: CGFloat =  8.0
     }
 

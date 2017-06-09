@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import SnapKit
 
 fileprivate typealias Constants = SearchViewControllerConstants
 fileprivate typealias Layout    = Constants.Layout
@@ -11,19 +12,20 @@ fileprivate typealias Layout    = Constants.Layout
 extension SearchViewController {
 
   func initLayout() {
-    self.view.backgroundColor = UIColor.white
-    self.initNavigationBar()
+    self.view.setStyle(.cardPanel)
+
+    self.initHeader()
     self.addLineSelectionControl(self.busSelectionControl)
     self.addLineSelectionControl(self.tramSelectionControl)
   }
 
-  func updateLineSelectionInsets() {
-    let navigationBarHeight = self.navigationBarBlurView.bounds.height
+  func positionCollectionViewsBelowHeaderView() {
+    let navigationBarHeight = self.headerView.bounds.height
 
     let topOffset   = navigationBarHeight
-    let leftOffset  = Layout.Content.leftOffset
-    let rightOffset = Layout.Content.rightOffset
-    let bottomInset = Layout.Content.bottomOffset
+    let leftOffset  = CGFloat(Layout.leftOffset)
+    let rightOffset = CGFloat(Layout.rightOffset)
+    let bottomInset = CGFloat(Layout.bottomOffset)
 
     let contentInset          = UIEdgeInsets(top: topOffset, left: leftOffset, bottom: bottomInset, right: rightOffset)
     let scrollIndicatorInsets = UIEdgeInsets(top: topOffset, left: 0.0,        bottom: 0.0,         right: 0.0)
@@ -34,71 +36,59 @@ extension SearchViewController {
     self.busSelectionControl.scrollIndicatorInsets  = scrollIndicatorInsets
   }
 
-  //MARK: - Navigation bar
+  //MARK: - Private
 
-  private func initNavigationBar() {
-    self.navigationBarBlurView.addBorder(at: .bottom)
-    self.view.addSubview(self.navigationBarBlurView)
+  private func initHeader() {
+    self.headerView.setStyle(.cardPanelHeader)
+    self.view.addSubview(self.headerView)
 
-    self.navigationBarBlurView.snp.makeConstraints { make in
-      make.left.right.top.equalToSuperview()
+    self.headerView.snp.makeConstraints { make in
+      make.left.top.right.equalToSuperview()
     }
 
-    // remove background, so that blur view view can be seen
-    // see: https://developer.apple.com/library/content/samplecode/NavBar/Introduction/Intro.html#//apple_ref/doc/uid/DTS40007418-Intro-DontLinkElementID_2
-    self.initNavigationBarItem()
-    self.navigationBar.shadowImage = UIImage()
-    self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-    self.navigationBarBlurView.addSubview(self.navigationBar)
+    self.cardTitle.setStyle(.headline)
+    self.cardTitle.text          = "Lines"
+    self.cardTitle.numberOfLines = 0
+    self.cardTitle.lineBreakMode = .byWordWrapping
+    self.headerView.addSubview(self.cardTitle)
 
-    self.navigationBar.snp.makeConstraints { make in
-      make.left.right.top.equalToSuperview()
+    self.cardTitle.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(Layout.Header.topPadding)
+      make.left.equalToSuperview().offset(Layout.leftOffset)
     }
 
-    self.initLineTypeSelector()
-    self.navigationBarBlurView.addSubview(self.lineTypeSelector)
+    self.searchButton.setStyle(.link)
+    self.searchButton.setTitle("Search", for: .normal)
+    self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
+    self.searchButton.setContentHuggingPriority(251.0, for: .horizontal)
+    self.headerView.addSubview(self.searchButton)
 
-    self.lineTypeSelector.snp.makeConstraints { make in
-      make.top.equalTo(self.navigationBar.snp.bottom).offset(Layout.LineTypeSelector.topOffset)
-      make.left.equalToSuperview().offset(Layout.Content.leftOffset)
-      make.right.equalToSuperview().offset(-Layout.Content.rightOffset)
-      make.bottom.equalTo(self.navigationBarBlurView.snp.bottom).offset(-Layout.LineTypeSelector.bottomOffset)
+    self.searchButton.snp.makeConstraints { make in
+      make.firstBaseline.equalTo(self.cardTitle.snp.firstBaseline)
+      make.left.equalTo(self.cardTitle.snp.right).inset(Layout.Header.horizontalSpacing)
+      make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
-  }
 
-  private func initNavigationBarItem() {
-    self.navigationItem.title = "Select lines"
-    self.navigationBar.pushItem(navigationItem, animated: false)
-
-    self.saveButton.style  = .plain
-    self.saveButton.title  = "Save"
-    self.saveButton.target = self
-    self.saveButton.action = #selector(saveButtonPressed)
-    self.navigationItem.setLeftBarButton(self.saveButton, animated: false)
-
-    self.searchButton.style  = .plain
-    self.searchButton.title  = "Search"
-    self.searchButton.target = self
-    self.searchButton.action = #selector(searchButtonPressed)
-    self.navigationItem.setRightBarButton(self.searchButton, animated: false)
-  }
-
-  private func initLineTypeSelector() {
+    self.lineTypeSelector.setStyle()
     self.lineTypeSelector.insertSegment(withTitle: "Trams", at: LineTypeIndex.tram, animated: false)
     self.lineTypeSelector.insertSegment(withTitle: "Buses", at: LineTypeIndex.bus, animated: false)
-
     self.lineTypeSelector.addTarget(self, action: #selector(lineTypeChanged), for: .valueChanged)
-    self.lineTypeSelector.font = Theme.current.font.body
+    self.headerView.addSubview(self.lineTypeSelector)
+
+    self.lineTypeSelector.snp.makeConstraints { make in
+      make.top.equalTo(self.cardTitle.snp.bottom).offset(Layout.Header.verticalSpacing)
+      make.left.equalToSuperview().offset(Layout.leftOffset)
+      make.right.equalToSuperview().offset(-Layout.rightOffset)
+      make.bottom.equalToSuperview().offset(-Layout.Header.bottomPadding)
+    }
   }
 
-  //MARK: - Line selection
-
-  fileprivate func addLineSelectionControl(_ control: LineSelectionControl) {
+  private func addLineSelectionControl(_ control: LineSelectionControl) {
     self.addChildViewController(control)
-    self.view.insertSubview(control.view, belowSubview: self.navigationBarBlurView)
+    self.view.insertSubview(control.view, belowSubview: self.headerView)
 
     control.view.snp.makeConstraints { make in
-      make.top.left.right.bottom.equalToSuperview()
+      make.edges.equalToSuperview()
     }
 
     control.didMove(toParentViewController: self)

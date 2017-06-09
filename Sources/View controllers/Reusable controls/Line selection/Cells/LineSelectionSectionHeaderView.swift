@@ -36,8 +36,8 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
 extension LineSelectionSectionHeaderView {
 
   fileprivate func initLayout() {
+    self.subtypeName.setStyle(.subheadline)
     self.subtypeName.numberOfLines = 0
-    self.subtypeName.font          = Theme.current.font.headline
     self.subtypeName.textAlignment = .center
     self.addSubview(self.subtypeName)
 

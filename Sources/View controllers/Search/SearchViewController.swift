@@ -26,15 +26,16 @@ class SearchViewController: UIViewController {
 
   //MARK: Layout
 
-  let navigationBarBlur = UIBlurEffect(style: .extraLight)
 
-  lazy var navigationBarBlurView: UIVisualEffectView =  {
-    return UIVisualEffectView(effect: self.navigationBarBlur)
+  let headerViewBlur = UIBlurEffect(style: .extraLight)
+
+  lazy var headerView: UIVisualEffectView =  {
+    return UIVisualEffectView(effect: self.headerViewBlur)
   }()
 
-  let navigationBar    = UINavigationBar()
-  let saveButton       = UIBarButtonItem()
-  let searchButton     = UIBarButtonItem()
+  let cardTitle    = UILabel()
+  let saveButton   = UIButton()
+  let searchButton = UIButton()
   
   let lineTypeSelector = UISegmentedControl()
 
@@ -58,7 +59,7 @@ class SearchViewController: UIViewController {
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    self.updateLineSelectionInsets()
+    self.positionCollectionViewsBelowHeaderView()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -114,5 +115,5 @@ extension SearchViewController {
 
 extension SearchViewController : CardPanelPresentable {
   var contentView:       UIView { return self.view }
-  var interactionTarget: UIView { return self.navigationBarBlurView }
+  var interactionTarget: UIView { return self.headerView }
 }

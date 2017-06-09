@@ -21,13 +21,23 @@ extension BookmarksViewController {
     self.initBookmarksTablePlaceholder()
   }
 
+  func positionTableViewBelowHeaderView() {
+    let headerHeight = self.headerView.bounds.height
+    let contentInset = UIEdgeInsets(top: headerHeight, left: 0.0, bottom: 0.0, right: 0.0)
+
+    self.bookmarksTable.contentInset          = contentInset
+    self.bookmarksTable.scrollIndicatorInsets = contentInset
+    self.bookmarksTable.contentOffset         = CGPoint(x: 0.0, y: -headerHeight)
+  }
+
+  //MARK: - Private
+  
   private func initHeader() {
     self.headerView.setStyle(.cardPanelHeader)
     self.view.addSubview(self.headerView)
 
     self.headerView.snp.makeConstraints { make in
       make.left.top.right.equalToSuperview()
-      make.height.equalTo(Layout.Header.height)
     }
 
     self.cardTitle.setStyle(.headline)
@@ -37,8 +47,9 @@ extension BookmarksViewController {
     self.headerView.addSubview(self.cardTitle)
 
     self.cardTitle.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(Layout.Header.topPadding)
+      make.bottom.equalToSuperview().offset(-Layout.Header.bottomPadding)
       make.left.equalToSuperview().offset(Layout.leftOffset)
-      make.bottom.equalToSuperview().offset(-Layout.Header.bottomMargin)
     }
 
     self.editButton.setStyle(.link)
@@ -48,20 +59,15 @@ extension BookmarksViewController {
     self.headerView.addSubview(self.editButton)
 
     self.editButton.snp.makeConstraints { make in
+      make.firstBaseline.equalTo(self.cardTitle.snp.firstBaseline)
       make.left.equalTo(self.cardTitle.snp.right).inset(Layout.Header.horizontalSpacing)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
-      make.bottom.equalToSuperview().offset(-Layout.Header.bottomMargin)
     }
   }
 
   private func initBookmarksTable() {
-    let contentInset = UIEdgeInsets(top: Layout.Header.height, left: 0.0, bottom: 0.0, right: 0.0)
-
     self.bookmarksTable.register(BookmarkCell.self)
-    self.bookmarksTable.contentInset          = contentInset
-    self.bookmarksTable.scrollIndicatorInsets = contentInset
-    self.bookmarksTable.contentOffset         = CGPoint(x: 0.0, y: -Layout.Header.height) // back to top
-    self.bookmarksTable.separatorInset        = UIEdgeInsets(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
+    self.bookmarksTable.separatorInset = UIEdgeInsets(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
     self.bookmarksTable.dataSource     = self.bookmarksDataSource
     self.bookmarksTable.delegate       = self
     self.view.insertSubview(self.bookmarksTable, belowSubview: self.headerView)

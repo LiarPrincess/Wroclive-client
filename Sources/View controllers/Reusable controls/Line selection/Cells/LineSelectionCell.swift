@@ -47,20 +47,19 @@ class LineSelectionCell: UICollectionViewCell {
 extension LineSelectionCell {
 
   fileprivate func initLayout() {
-    self.tintColor = UIApplication.shared.keyWindow!.tintColor
+    self.tintColor = Theme.current.colorScheme.primary
 
     self.selectedBackgroundView = UIView()
     self.selectedBackgroundView?.backgroundColor = self.tintColor
 
-    self.lineName.numberOfLines = 1
-    self.lineName.font          = Theme.current.font.body
-    self.lineName.textAlignment = .center
-    self.lineName.textColor     = self.tintColor
-
     self.layer.cornerRadius = Layout.cornerRadius
     self.layer.borderWidth  = Layout.borderWidth
-    self.layer.borderColor  = self.tintColor?.cgColor
+    self.layer.borderColor  = self.tintColor.cgColor
     self.clipsToBounds      = true
+
+    self.lineName.setStyle(.bodyPrimary)
+    self.lineName.numberOfLines = 1
+    self.lineName.textAlignment = .center
 
     self.addSubview(self.lineName)
 

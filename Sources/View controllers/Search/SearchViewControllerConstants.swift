@@ -8,15 +8,16 @@ import UIKit
 struct SearchViewControllerConstants {
 
   struct Layout {
-    struct Content {
-      static let leftOffset:   CGFloat = 25.0
-      static let rightOffset:  CGFloat = leftOffset
-      static let bottomOffset: CGFloat = 28.0
-    }
+    static let leftOffset:  CGFloat  = 16.0
+    static let rightOffset: CGFloat  = leftOffset
+    static let bottomOffset: CGFloat = 28.0
 
-    struct LineTypeSelector {
-      static let topOffset:    CGFloat =  4.0
-      static let bottomOffset: CGFloat = 10.0
+    struct Header {
+      static let topPadding:        CGFloat = 32.0
+      static let bottomPadding:     CGFloat = 16.0
+
+      static let verticalSpacing:   CGFloat =  8.0
+      static let horizontalSpacing: CGFloat =  8.0
     }
   }
 

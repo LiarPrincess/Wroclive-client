@@ -21,6 +21,12 @@ extension UIButton {
   }
 }
 
+extension UISegmentedControl {
+  func setStyle() {
+    Theme.current.apply(toSegmentedControl: self)
+  }
+}
+
 //MARK: - View
 
 extension UIView {

@@ -65,5 +65,10 @@ extension Theme {
       }
     }
   }
-  
+
+  func apply(toSegmentedControl segmentedControl: UISegmentedControl) {
+    segmentedControl.font      = self.font.body
+    segmentedControl.tintColor = self.colorScheme.primary
+  }
+
 }
