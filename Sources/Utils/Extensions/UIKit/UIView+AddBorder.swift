@@ -5,14 +5,10 @@
 
 import UIKit
 
-//MARK: - BorderType
-
 enum BorderEdge {
   case top
   case bottom
 }
-
-//MARK: - UIView
 
 extension UIView {
 

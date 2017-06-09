@@ -8,7 +8,7 @@ import UIKit
 //MARK: - Text
 
 extension UILabel {
-  func applyStyle(_ style: TextStyle) {
+  func setStyle(_ style: TextStyle) {
     Theme.current.apply(toLabel: self, style: style)
   }
 }
@@ -16,7 +16,7 @@ extension UILabel {
 //MARK: - Button
 
 extension UIButton {
-  func applyStyle(_ style: ButtonStyle) {
+  func setStyle(_ style: ButtonStyle) {
     Theme.current.apply(toButton: self, style: style)
   }
 }
@@ -24,7 +24,7 @@ extension UIButton {
 //MARK: - View
 
 extension UIView {
-  func applyStyle(_ style: ViewStyle) {
+  func setStyle(_ style: ViewStyle) {
     Theme.current.apply(toView: self, style: style)
   }
 }

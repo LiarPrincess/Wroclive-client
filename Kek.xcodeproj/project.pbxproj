@@ -76,7 +76,7 @@
 		90AF2BDF1EE9E12D006E61D6 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BDE1EE9E12D006E61D6 /* FontProvider.swift */; };
 		90AF2BE11EE9E186006E61D6 /* SystemFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */; };
 		90AF2BE31EE9E4ED006E61D6 /* Theme+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */; };
-		90AF2BE51EE9E786006E61D6 /* AvenirFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE41EE9E786006E61D6 /* AvenirFontProvider.swift */; };
+		90AF2BE71EE9E970006E61D6 /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE61EE9E970006E61D6 /* UIView+RoundCorners.swift */; };
 		90DBB6441EE45F3300D997CF /* SaveBookmarkAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBB6431EE45F3300D997CF /* SaveBookmarkAlert.swift */; };
 /* End PBXBuildFile section */
 
@@ -183,7 +183,7 @@
 		90AF2BDE1EE9E12D006E61D6 /* FontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
 		90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFontProvider.swift; sourceTree = "<group>"; };
 		90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Apply.swift"; sourceTree = "<group>"; };
-		90AF2BE41EE9E786006E61D6 /* AvenirFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvenirFontProvider.swift; sourceTree = "<group>"; };
+		90AF2BE61EE9E970006E61D6 /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
 		90DBB6431EE45F3300D997CF /* SaveBookmarkAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveBookmarkAlert.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -546,6 +546,7 @@
 				902330F71EDF37F500FA8F43 /* UINavigationBar.swift */,
 				902330F81EDF37F500FA8F43 /* UISegmentedControl.swift */,
 				902330F91EDF37F500FA8F43 /* UIView+AddBorder.swift */,
+				90AF2BE61EE9E970006E61D6 /* UIView+RoundCorners.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -698,7 +699,6 @@
 			children = (
 				90AF2BDE1EE9E12D006E61D6 /* FontProvider.swift */,
 				90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */,
-				90AF2BE41EE9E786006E61D6 /* AvenirFontProvider.swift */,
 			);
 			path = "Font providers";
 			sourceTree = "<group>";
@@ -893,7 +893,6 @@
 				9017C3901EE3433F00063377 /* LineSelectionControlLayout.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
 				9017C3A91EE3718E00063377 /* SearchViewControllerStateManager.swift in Sources */,
-				90AF2BE51EE9E786006E61D6 /* AvenirFontProvider.swift in Sources */,
 				9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */,
 				9091D0C61EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				90AF2BE11EE9E186006E61D6 /* SystemFontProvider.swift in Sources */,
@@ -914,6 +913,7 @@
 				9017C38E1EE342CD00063377 /* LineSelectionControlConstants.swift in Sources */,
 				9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */,
 				90DBB6441EE45F3300D997CF /* SaveBookmarkAlert.swift in Sources */,
+				90AF2BE71EE9E970006E61D6 /* UIView+RoundCorners.swift in Sources */,
 				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
 				9017C3B21EE3D80A00063377 /* LineSelectionSectionViewModelFactory.swift in Sources */,
 				9017C3AE1EE3D65600063377 /* LineSelectionSectionViewModel.swift in Sources */,

@@ -13,14 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     logger.info("Starting application")
 
-    UINavigationBar.titleFont = Theme.current.font.headline
-    UIBarButtonItem.font      = Theme.current.font.body
-
-    window = UIWindow(frame: UIScreen.main.bounds)
-    window!.tintColor       = UIColor(red: 1.0, green: 0.25, blue: 0.25, alpha: 1.0)
-    window!.backgroundColor = UIColor.black
-
     let mainViewController     = MainViewController()
+    window = UIWindow(frame: UIScreen.main.bounds)
     window!.rootViewController = mainViewController
     window!.makeKeyAndVisible()
 

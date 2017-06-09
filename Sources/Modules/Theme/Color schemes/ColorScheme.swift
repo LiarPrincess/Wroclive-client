@@ -6,19 +6,23 @@
 import UIKit
 
 struct ColorScheme {
-  let text:       UIColor
-  let primary:    UIColor
-  let background: UIColor
+  let text:    UIColor
+  let primary: UIColor
+
+  let background:         UIColor
+  let backgroundContrast: UIColor
 }
 
 extension ColorScheme {
 
   static var light: ColorScheme {
-    let text       = UIColor.black
-    let primary    = UIColor.black
-    let background = UIColor.white
+    return ColorScheme(
+      text:    UIColor.black,
+      primary: UIColor(red: 1.00, green: 0.22, blue: 0.14, alpha: 1.00),
 
-    return ColorScheme(text: text, primary: primary, background: background)
+      background:         UIColor.white,
+      backgroundContrast: UIColor.lightGray
+    )
   }
 
 }

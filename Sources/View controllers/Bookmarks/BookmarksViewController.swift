@@ -13,8 +13,14 @@ class BookmarksViewController: UIViewController {
 
   //MARK: - Properties
 
-  let navigationBar = UINavigationBar()
-  let closeButton   = UIBarButtonItem()
+  let headerViewBlur = UIBlurEffect(style: .extraLight)
+
+  lazy var headerView: UIVisualEffectView =  {
+    return UIVisualEffectView(effect: self.headerViewBlur)
+  }()
+
+  let cardTitle  = UILabel()
+  let editButton = UIButton()
 
   var bookmarksDataSource: BookmarksDataSource!
   let bookmarksTable = UITableView()
@@ -34,6 +40,21 @@ class BookmarksViewController: UIViewController {
 
   override func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
+
+    if editing {
+      self.editButton.setStyle(.linkBold)
+      self.editButton.setTitle("Done", for: .normal)
+
+      let hasSwipeToDeleteOpen = self.bookmarksTable.isEditing
+      if hasSwipeToDeleteOpen {
+        self.bookmarksTable.setEditing(false, animated: false)
+      }
+    }
+    else {
+      self.editButton.setStyle(.link)
+      self.editButton.setTitle("Edit", for: .normal)
+    }
+
     self.bookmarksTable.setEditing(editing, animated: true)
   }
 
@@ -44,8 +65,8 @@ class BookmarksViewController: UIViewController {
 
   //MARK: - Actions
 
-  @objc func closeButtonPressed() {
-    self.dismiss(animated: true, completion: nil)
+  @objc func editButtonPressed() {
+    self.setEditing(!self.isEditing, animated: true)
   }
 
   //MARK: - Methods
@@ -59,14 +80,14 @@ class BookmarksViewController: UIViewController {
     let bookmarks = self.bookmarksDataSource.bookmarks
 
     if bookmarks.count == 0 {
-      self.navigationItem.setLeftBarButton(nil, animated: true)
-      self.bookmarksTable.separatorStyle      = .none
-      self.placeholderView.isHidden = false
+      self.bookmarksTable.separatorStyle = .none
+      self.editButton.isHidden           = true
+      self.placeholderView.isHidden      = false
     }
     else {
-      self.navigationItem.setLeftBarButton(self.editButtonItem, animated: true)
-      self.bookmarksTable.separatorStyle      = .singleLine
-      self.placeholderView.isHidden = true
+      self.bookmarksTable.separatorStyle = .singleLine
+      self.editButton.isHidden           = false
+      self.placeholderView.isHidden      = true
     }
   }
 
@@ -76,7 +97,7 @@ class BookmarksViewController: UIViewController {
 
 extension BookmarksViewController: CardPanelPresentable {
   var contentView:       UIView { return self.view }
-  var interactionTarget: UIView { return self.navigationBar }
+  var interactionTarget: UIView { return self.headerView }
 }
 
 //MARK: - UITableViewDelegate
@@ -115,8 +136,6 @@ extension BookmarksViewController: BookmarksDataSourceDelegate {
   func didReorderBookmarks(_ dataSource: BookmarksDataSource) {
     self.saveBookmarks()
   }
-
-  //MARK: Methods
 
   private func saveBookmarks() {
     let bookmarks = self.bookmarksDataSource.bookmarks

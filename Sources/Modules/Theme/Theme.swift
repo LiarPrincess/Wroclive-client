@@ -13,7 +13,7 @@ class Theme {
 
   // Mark - Singleton
 
-  static let current = Theme(colorScheme: .light, font: AvenirFontProvider())
+  static let current = Theme(colorScheme: .light, font: SystemFontProvider())
 
   // Mark - Properties
 

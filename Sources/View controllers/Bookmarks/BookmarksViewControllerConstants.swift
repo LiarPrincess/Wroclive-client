@@ -8,10 +8,18 @@ import UIKit
 struct BookmarksViewControllerConstants {
 
   struct Layout {
+    static let leftOffset:  CGFloat = 16.0
+    static let rightOffset: CGFloat = leftOffset
+
+    struct Header {
+      static let height:            CGFloat = 75.0
+      static let bottomMargin:      CGFloat =  8.0
+      static let horizontalSpacing: CGFloat =  8.0
+    }
 
     struct Cell {
-      static let leftOffset:   CGFloat = 40.0
-      static let rightOffset:  CGFloat = leftOffset
+      static let leftOffset:  CGFloat = 45.0
+      static let rightOffset: CGFloat = leftOffset
 
       static let estimatedHeight: CGFloat = 200.0
 
@@ -20,23 +28,23 @@ struct BookmarksViewControllerConstants {
       }
 
       struct LinesLabel {
-        static let topOffset:    CGFloat = 6.0
-        static let bottomOffset: CGFloat = 7.0
+        static let topOffset:    CGFloat = 8.0
+        static let bottomOffset: CGFloat = 8.0
 
         static let lineSpacing:  CGFloat = 3.0
       }
     }
 
     struct Placeholder {
-      static let leftOffset:  CGFloat = 30.0
+      static let leftOffset:  CGFloat = 35.0
       static let rightOffset: CGFloat = leftOffset
 
       struct TopLabel {
-        static let topOffset: CGFloat = 25.0
+        static let topOffset: CGFloat = 35.0
       }
 
       struct BottomLabel {
-        static let topOffset: CGFloat = 8.0
+        static let topOffset: CGFloat = 15.0
       }
     }
   }

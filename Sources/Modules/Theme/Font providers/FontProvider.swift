@@ -9,6 +9,7 @@ protocol FontProvider {
   var headline:    UIFont { get }
   var subheadline: UIFont { get }
   var body:        UIFont { get }
+  var bodyBold:    UIFont { get }
 
   mutating func recalculateSizes()
 }

@@ -74,11 +74,9 @@ class BookmarkCell: UITableViewCell {
 extension BookmarkCell {
 
   func initLayout() {
-    let tintColor = UIApplication.shared.keyWindow!.tintColor
-
+    self.bookmarkName.setStyle(.subheadline)
     self.bookmarkName.numberOfLines = 0
     self.bookmarkName.textAlignment = .center
-    self.bookmarkName.font          = Theme.current.font.headline
     self.addSubview(self.bookmarkName)
 
     self.bookmarkName.snp.makeConstraints { make in
@@ -87,9 +85,9 @@ extension BookmarkCell {
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
 
+    self.tramLines.setStyle(.bodyPrimary)
     self.tramLines.numberOfLines = 0
-    self.tramLines.textColor     = tintColor
-    self.tramLines.font          = Theme.current.font.body
+    self.tramLines.textAlignment = .center
     self.addSubview(self.tramLines)
 
     self.tramLines.snp.makeConstraints { make in
@@ -98,9 +96,9 @@ extension BookmarkCell {
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
 
+    self.busLines.setStyle(.bodyPrimary)
     self.busLines.numberOfLines = 0
-    self.busLines.textColor     = tintColor
-    self.busLines.font          = Theme.current.font.body
+    self.busLines.textAlignment = .center
     self.addSubview(self.busLines)
 
     self.busLines.snp.makeConstraints { make in
