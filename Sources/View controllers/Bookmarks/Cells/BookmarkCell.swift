@@ -40,17 +40,17 @@ class BookmarkCell: UITableViewCell {
   func setUp(with viewModel: BookmarkCellViewModel) {
     self.bookmarkName.text = viewModel.bookmarkName
     self.update(lineLabel: self.tramLines, with: viewModel.tramLines)
-    self.update(lineLabel: self.busLines, with: viewModel.busLines)
+    self.update(lineLabel: self.busLines,  with: viewModel.busLines)
 
     // update constraints, so that the layout will not break when we hide label
 
     self.tramLines.snp.updateConstraints { make in
-      let topOffset = viewModel.tramLines.isEmpty ? 0.0 : Layout.LinesLabel.topOffset
+      let topOffset = viewModel.tramLines.isEmpty ? 0.0 : Layout.verticalSpacing
       make.top.equalTo(self.bookmarkName.snp.bottom).offset(topOffset)
     }
 
     self.busLines.snp.updateConstraints { make in
-      let topOffset = viewModel.busLines.isEmpty ? 0.0 : Layout.LinesLabel.topOffset
+      let topOffset = viewModel.busLines.isEmpty ? 0.0 : Layout.verticalSpacing
       make.top.equalTo(self.tramLines.snp.bottom).offset(topOffset)
     }
   }
@@ -80,7 +80,7 @@ extension BookmarkCell {
     self.addSubview(self.bookmarkName)
 
     self.bookmarkName.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.BookmarkName.topOffset)
+      make.top.equalToSuperview().offset(Layout.topPadding)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
@@ -91,7 +91,7 @@ extension BookmarkCell {
     self.addSubview(self.tramLines)
 
     self.tramLines.snp.makeConstraints { make in
-      make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.LinesLabel.topOffset)
+      make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.verticalSpacing)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
@@ -102,10 +102,10 @@ extension BookmarkCell {
     self.addSubview(self.busLines)
 
     self.busLines.snp.makeConstraints { make in
-      make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.LinesLabel.topOffset)
+      make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.verticalSpacing)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
-      make.bottom.equalToSuperview().offset(-Layout.LinesLabel.bottomOffset)
+      make.bottom.equalToSuperview().offset(-Layout.bottomPadding)
     }
   }
 

@@ -18,19 +18,17 @@ struct BookmarksViewControllerConstants {
     }
 
     struct Cell {
+      static let topPadding:    CGFloat = 12.0
+      static let bottomPadding: CGFloat = topPadding
+
       static let leftOffset:  CGFloat = 45.0
       static let rightOffset: CGFloat = leftOffset
 
-      static let estimatedHeight: CGFloat = 200.0
+      static let verticalSpacing: CGFloat = 12.0
 
-      struct BookmarkName {
-        static let topOffset: CGFloat = 8.0
-      }
+      static let estimatedHeight: CGFloat = 150.0
 
       struct LinesLabel {
-        static let topOffset:    CGFloat = 8.0
-        static let bottomOffset: CGFloat = 8.0
-
         static let lineSpacing:  CGFloat = 3.0
       }
     }

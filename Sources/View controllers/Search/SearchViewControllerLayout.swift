@@ -65,7 +65,7 @@ extension SearchViewController {
 
     self.searchButton.snp.makeConstraints { make in
       make.firstBaseline.equalTo(self.cardTitle.snp.firstBaseline)
-      make.left.equalTo(self.cardTitle.snp.right).inset(Layout.Header.horizontalSpacing)
+      make.left.equalTo(self.cardTitle.snp.right).inset(-Layout.Header.horizontalSpacing)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
 
