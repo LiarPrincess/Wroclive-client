@@ -59,7 +59,7 @@ extension BookmarksDataSource: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(ofType: BookmarkCell.self, forIndexPath: indexPath)
+    let cell      = tableView.dequeueReusableCell(ofType: BookmarkCell.self, forIndexPath: indexPath)
     let viewModel = self.viewModels[indexPath.row]
 
     cell.setUp(with: viewModel)

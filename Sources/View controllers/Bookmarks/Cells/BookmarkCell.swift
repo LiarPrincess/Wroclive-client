@@ -39,8 +39,9 @@ class BookmarkCell: UITableViewCell {
 
   func setUp(with viewModel: BookmarkCellViewModel) {
     self.bookmarkName.text = viewModel.bookmarkName
-    self.update(lineLabel: self.tramLines, with: viewModel.tramLines)
-    self.update(lineLabel: self.busLines,  with: viewModel.busLines)
+    self.setLineLabel(self.tramLines, text: viewModel.tramLines)
+    self.setLineLabel(self.busLines,  text: viewModel.busLines)
+
 
     // update constraints, so that the layout will not break when we hide label
 
@@ -55,7 +56,7 @@ class BookmarkCell: UITableViewCell {
     }
   }
 
-  private func update(lineLabel label: UILabel, with text: String) {
+  private func setLineLabel(_ label: UILabel, text: String) {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.lineSpacing = Layout.LinesLabel.lineSpacing
     paragraphStyle.alignment   = .center
@@ -77,7 +78,7 @@ extension BookmarkCell {
     self.bookmarkName.setStyle(.subheadline)
     self.bookmarkName.numberOfLines = 0
     self.bookmarkName.textAlignment = .center
-    self.addSubview(self.bookmarkName)
+    self.contentView.addSubview(self.bookmarkName)
 
     self.bookmarkName.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.topPadding)
@@ -88,7 +89,7 @@ extension BookmarkCell {
     self.tramLines.setStyle(.bodyPrimary)
     self.tramLines.numberOfLines = 0
     self.tramLines.textAlignment = .center
-    self.addSubview(self.tramLines)
+    self.contentView.addSubview(self.tramLines)
 
     self.tramLines.snp.makeConstraints { make in
       make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.verticalSpacing)
@@ -99,7 +100,7 @@ extension BookmarkCell {
     self.busLines.setStyle(.bodyPrimary)
     self.busLines.numberOfLines = 0
     self.busLines.textAlignment = .center
-    self.addSubview(self.busLines)
+    self.contentView.addSubview(self.busLines)
 
     self.busLines.snp.makeConstraints { make in
       make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.verticalSpacing)
