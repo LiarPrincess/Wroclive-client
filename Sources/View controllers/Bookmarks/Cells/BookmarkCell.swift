@@ -8,6 +8,10 @@ import SnapKit
 
 fileprivate typealias Layout = BookmarksViewControllerConstants.Layout.Cell
 
+// https://stackoverflow.com/a/25967370 - preferredMaxLayoutWidth
+// https://stackoverflow.com/a/18746930 - auto layout for UITableView
+// https://stackoverflow.com/a/2063776  - recalculate cell height
+
 class BookmarkCell: UITableViewCell {
 
   //MARK: - Properties
@@ -57,6 +61,32 @@ class BookmarkCell: UITableViewCell {
   override var alpha: CGFloat {
     get { return 1.0 }
     set { }
+  }
+
+  override func willTransition(to state: UITableViewCellStateMask) {
+    super.willTransition(to: state)
+    self.disallowIndentWhileEditing()
+  }
+
+  override func layoutSubviews() {
+    self.updateLabelPreferredWidths()
+    super.layoutSubviews()
+    self.disallowIndentWhileEditing()
+  }
+
+  private func updateLabelPreferredWidths() {
+    //hack: we need to calculate from cell not content view as content view will shrink on edit
+    let labelWidth = self.bounds.width - Layout.leftOffset - Layout.rightOffset
+    self.bookmarkName.preferredMaxLayoutWidth = labelWidth
+    self.tramLines.preferredMaxLayoutWidth    = labelWidth
+    self.busLines.preferredMaxLayoutWidth     = labelWidth
+  }
+
+  private func disallowIndentWhileEditing() {
+    if self.isEditing {
+      self.contentView.frame.origin.x   = self.bounds.minX
+      self.contentView.frame.size.width = self.bounds.maxX
+    }
   }
 
   private var didSetupConstraints = false
@@ -109,7 +139,7 @@ class BookmarkCell: UITableViewCell {
 
     // update constraints, so that the layout will not break when we hide label
     self.setNeedsUpdateConstraints()
-//    self.setNeedsLayout()
+    self.setNeedsLayout()
   }
 
   private func setLineLabel(_ label: UILabel, text: String) {
