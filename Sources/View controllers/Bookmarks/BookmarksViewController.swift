@@ -40,7 +40,23 @@ class BookmarksViewController: UIViewController {
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    self.positionTableViewBelowHeaderView()
+    self.positionTableViewContentBelowHeaderView()
+  }
+
+  func positionTableViewContentBelowHeaderView() {
+    let currentInset = self.bookmarksTable.contentInset
+    let headerHeight = self.headerView.bounds.height
+
+    if currentInset.top < headerHeight {
+      let newInset = UIEdgeInsets(top: headerHeight, left: currentInset.left, bottom: currentInset.bottom, right: currentInset.right)
+      self.bookmarksTable.contentInset          = newInset
+      self.bookmarksTable.scrollIndicatorInsets = newInset
+
+      // scroll up to preserve current scroll position
+      let currentOffset = self.bookmarksTable.contentOffset
+      let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
+      self.bookmarksTable.setContentOffset(newOffset, animated: false)
+    }
   }
 
   override func setEditing(_ editing: Bool, animated: Bool) {

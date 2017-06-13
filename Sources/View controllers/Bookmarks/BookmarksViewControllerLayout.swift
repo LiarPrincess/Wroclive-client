@@ -21,15 +21,6 @@ extension BookmarksViewController {
     self.initBookmarksTablePlaceholder()
   }
 
-  func positionTableViewBelowHeaderView() {
-    let headerHeight = self.headerView.bounds.height
-    let contentInset = UIEdgeInsets(top: headerHeight, left: 0.0, bottom: 0.0, right: 0.0)
-
-    self.bookmarksTable.contentInset          = contentInset
-    self.bookmarksTable.scrollIndicatorInsets = contentInset
-    self.bookmarksTable.contentOffset         = CGPoint(x: 0.0, y: -headerHeight)
-  }
-
   //MARK: - Private
   
   private func initHeader() {

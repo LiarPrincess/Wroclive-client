@@ -12,15 +12,39 @@ class BookmarkCell: UITableViewCell {
 
   //MARK: - Properties
 
-  let bookmarkName = UILabel()
-  let tramLines    = UILabel()
-  let busLines     = UILabel()
+  lazy var bookmarkName: UILabel = {
+    let label = UILabel()
+    label.setStyle(.subheadline)
+    label.numberOfLines = 0
+    label.textAlignment = .center
+    return label
+  }()
+
+  lazy var tramLines: UILabel = {
+    let label = UILabel()
+    label.setStyle(.bodyPrimary)
+    label.numberOfLines = 0
+    label.textAlignment = .center
+    return label
+  }()
+
+  lazy var busLines: UILabel = {
+    let label = UILabel()
+    label.setStyle(.bodyPrimary)
+    label.numberOfLines = 0
+    label.textAlignment = .center
+    return label
+  }()
 
   //MARK: - Init
 
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    self.initLayout()
+
+    self.contentView.addSubview(self.bookmarkName)
+    self.contentView.addSubview(self.tramLines)
+    self.contentView.addSubview(self.busLines)
+    self.setNeedsUpdateConstraints()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -35,6 +59,47 @@ class BookmarkCell: UITableViewCell {
     set { }
   }
 
+  private var didSetupConstraints = false
+
+  override func updateConstraints() {
+    if !self.didSetupConstraints {
+      self.bookmarkName.snp.makeConstraints { make in
+        make.top.equalToSuperview().offset(Layout.topPadding)
+        make.left.equalToSuperview().offset(Layout.leftOffset)
+        make.right.equalToSuperview().offset(-Layout.rightOffset)
+      }
+
+      self.tramLines.snp.makeConstraints { make in
+        make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.verticalSpacing)
+        make.left.equalToSuperview().offset(Layout.leftOffset)
+        make.right.equalToSuperview().offset(-Layout.rightOffset)
+      }
+
+      self.busLines.snp.makeConstraints { make in
+        make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.verticalSpacing)
+        make.left.equalToSuperview().offset(Layout.leftOffset)
+        make.right.equalToSuperview().offset(-Layout.rightOffset)
+        make.bottom.equalToSuperview().offset(-Layout.bottomPadding)
+      }
+
+      self.didSetupConstraints = true
+    }
+
+    self.tramLines.snp.updateConstraints { make in
+      let text = self.tramLines.text ?? ""
+      let topOffset = text.isEmpty ? 0.0 : Layout.verticalSpacing
+      make.top.equalTo(self.bookmarkName.snp.bottom).offset(topOffset)
+    }
+
+    self.busLines.snp.updateConstraints { make in
+      let text = self.busLines.text ?? ""
+      let topOffset = text.isEmpty ? 0.0 : Layout.verticalSpacing
+      make.top.equalTo(self.tramLines.snp.bottom).offset(topOffset)
+    }
+
+    super.updateConstraints()
+  }
+
   //MARK: - Methods
 
   func setUp(with viewModel: BookmarkCellViewModel) {
@@ -42,18 +107,9 @@ class BookmarkCell: UITableViewCell {
     self.setLineLabel(self.tramLines, text: viewModel.tramLines)
     self.setLineLabel(self.busLines,  text: viewModel.busLines)
 
-
     // update constraints, so that the layout will not break when we hide label
-
-    self.tramLines.snp.updateConstraints { make in
-      let topOffset = viewModel.tramLines.isEmpty ? 0.0 : Layout.verticalSpacing
-      make.top.equalTo(self.bookmarkName.snp.bottom).offset(topOffset)
-    }
-
-    self.busLines.snp.updateConstraints { make in
-      let topOffset = viewModel.busLines.isEmpty ? 0.0 : Layout.verticalSpacing
-      make.top.equalTo(self.tramLines.snp.bottom).offset(topOffset)
-    }
+    self.setNeedsUpdateConstraints()
+//    self.setNeedsLayout()
   }
 
   private func setLineLabel(_ label: UILabel, text: String) {
@@ -66,48 +122,6 @@ class BookmarkCell: UITableViewCell {
 
     label.isHidden       = text.isEmpty
     label.attributedText = labelText
-  }
-
-}
-
-//MARK: - Layout
-
-extension BookmarkCell {
-
-  func initLayout() {
-    self.bookmarkName.setStyle(.subheadline)
-    self.bookmarkName.numberOfLines = 0
-    self.bookmarkName.textAlignment = .center
-    self.contentView.addSubview(self.bookmarkName)
-
-    self.bookmarkName.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.topPadding)
-      make.left.equalToSuperview().offset(Layout.leftOffset)
-      make.right.equalToSuperview().offset(-Layout.rightOffset)
-    }
-
-    self.tramLines.setStyle(.bodyPrimary)
-    self.tramLines.numberOfLines = 0
-    self.tramLines.textAlignment = .center
-    self.contentView.addSubview(self.tramLines)
-
-    self.tramLines.snp.makeConstraints { make in
-      make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.verticalSpacing)
-      make.left.equalToSuperview().offset(Layout.leftOffset)
-      make.right.equalToSuperview().offset(-Layout.rightOffset)
-    }
-
-    self.busLines.setStyle(.bodyPrimary)
-    self.busLines.numberOfLines = 0
-    self.busLines.textAlignment = .center
-    self.contentView.addSubview(self.busLines)
-
-    self.busLines.snp.makeConstraints { make in
-      make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.verticalSpacing)
-      make.left.equalToSuperview().offset(Layout.leftOffset)
-      make.right.equalToSuperview().offset(-Layout.rightOffset)
-      make.bottom.equalToSuperview().offset(-Layout.bottomPadding)
-    }
   }
 
 }

@@ -99,7 +99,7 @@ class BookmarksManager: BookmarksManagerProtocol {
     let b2 = Bookmark(name: "All tram", lines: allTrams)
     let b3 = Bookmark(name: "All bus", lines: allBus)
 
-    return [b2, b3] + [b1, b2, b3]
+    return [b1, b2, b3, b1, b3, b2, b2, b1, b2, b3, b1, b2, b3, b1, b2]
   }
 
 }
