@@ -15,7 +15,7 @@ class BookmarksViewController: UIViewController {
 
   let headerViewBlur = UIBlurEffect(style: .extraLight)
 
-  lazy var headerView: UIVisualEffectView =  {
+  lazy var headerView: UIVisualEffectView = {
     return UIVisualEffectView(effect: self.headerViewBlur)
   }()
 

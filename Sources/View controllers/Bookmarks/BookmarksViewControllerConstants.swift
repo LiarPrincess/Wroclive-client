@@ -17,6 +17,11 @@ struct BookmarksViewControllerConstants {
       static let topPadding:        CGFloat = 32.0
       static let bottomPadding:     CGFloat =  8.0
       static let horizontalSpacing: CGFloat =  8.0
+
+      struct EditButton {
+        static let topPadding:  CGFloat = 15.0
+        static let leftPadding: CGFloat = 20.0
+      }
     }
 
     struct Cell {
