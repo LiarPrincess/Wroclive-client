@@ -14,7 +14,7 @@ extension MainViewController {
     self.initToolbarView()
   }
 
-  fileprivate func initMapView() {
+  private func initMapView() {
     self.addChildViewController(self.mapViewController)
     self.view.addSubview(self.mapViewController.view)
 
@@ -25,7 +25,7 @@ extension MainViewController {
     self.mapViewController.didMove(toParentViewController: self)
   }
 
-  fileprivate func initToolbarView() {
+  private func initToolbarView() {
     self.userTrackingButton.mapView = self.mapViewController.mapView
 
     self.searchButton.image  = #imageLiteral(resourceName: "vecSearch")
@@ -41,16 +41,16 @@ extension MainViewController {
     self.configurationButton.target = self
     self.configurationButton.action = #selector(configurationButtonPressed)
 
-    let toolbar = UIToolbar()
-    toolbar.setItems(self.layoutToolbarItems(), animated: false)
-    self.view.addSubview(toolbar)
+    self.toolbar.setStyle()
+    self.toolbar.setItems(self.layoutToolbarItems(), animated: false)
+    self.view.addSubview(self.toolbar)
 
-    toolbar.snp.makeConstraints { make in
+    self.toolbar.snp.makeConstraints { make in
       make.left.right.bottom.equalToSuperview()
     }
   }
 
-  fileprivate func layoutToolbarItems() -> [UIBarButtonItem] {
+  private func layoutToolbarItems() -> [UIBarButtonItem] {
     let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
     var toolbarItems: [UIBarButtonItem] = []

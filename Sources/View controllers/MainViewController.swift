@@ -15,6 +15,8 @@ class MainViewController: UIViewController {
 
   let mapViewController = MapViewController()
 
+  let toolbar             = UIToolbar()
+  
   let userTrackingButton  = MKUserTrackingBarButtonItem()
   let searchButton        = UIBarButtonItem()
   let bookmarksButton     = UIBarButtonItem()

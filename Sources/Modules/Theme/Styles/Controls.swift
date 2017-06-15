@@ -34,3 +34,9 @@ extension UIView {
     Theme.current.apply(toView: self, style: style)
   }
 }
+
+extension UIToolbar {
+  func setStyle() {
+    Theme.current.apply(toToolbar: self)
+  }
+}

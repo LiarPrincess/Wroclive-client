@@ -59,4 +59,8 @@ extension Theme {
     segmentedControl.tintColor = self.colorScheme.primary
   }
 
+  func apply(toToolbar toolbar: UIToolbar) {
+    toolbar.tintColor = self.colorScheme.primary
+  }
+
 }
