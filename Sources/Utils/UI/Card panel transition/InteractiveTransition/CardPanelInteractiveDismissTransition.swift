@@ -13,6 +13,12 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
 
   private weak var presentable: CardPanelPresentable?
 
+  // >= 1.0 will break animation! (reasons unknown)
+  override var completionSpeed: CGFloat {
+    get { return 0.8 }
+    set { }
+  }
+
   //MARK: - Init
 
   init(for presentable: CardPanelPresentable) {
