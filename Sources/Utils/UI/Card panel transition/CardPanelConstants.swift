@@ -12,9 +12,10 @@ struct CardPanelConstants {
     static let dismiss: TimeInterval = 0.30
   }
 
-  struct Interactive {
-    static let minVelocityToFinish: CGFloat = 450.0
-    static let minProgressToFinish: CGFloat =   0.2
+  struct FinishContitions {
+    static let minVelocityUp:   CGFloat = 150.0
+    static let minVelocityDown: CGFloat = 550.0
+    static let minProgress:     CGFloat =   0.5
   }
 
   struct Presenter {

@@ -23,13 +23,6 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
     self.presentable?.interactionTarget.addGestureRecognizer(gestureRecognizer)
   }
 
-  //MARK: - Overriden
-
-  override var completionSpeed: CGFloat {
-    get { return 1.0 - self.percentComplete }
-    set { }
-  }
-
   //MARK: - Gesture recognizers
 
   func handleGesture(gesture: UIPanGestureRecognizer) {
@@ -67,10 +60,14 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
   //MARK: - Methods
 
   private func shouldFinish(gesture: UIPanGestureRecognizer, completion percent: CGFloat) -> Bool {
-    typealias Constants = CardPanelConstants.Interactive
+    typealias Constants = CardPanelConstants.FinishContitions
 
     let velocity = gesture.velocity(in: gesture.view).y
-    return percent > Constants.minProgressToFinish || velocity > Constants.minVelocityToFinish
+    let isUp     = velocity < 0.0
+
+    if  isUp && velocity < -Constants.minVelocityUp   { return false }
+    if !isUp && velocity >  Constants.minVelocityDown { return true  }
+    return percent > Constants.minProgress
   }
 
 }
