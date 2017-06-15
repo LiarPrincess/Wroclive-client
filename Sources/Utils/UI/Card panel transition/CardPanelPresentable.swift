@@ -10,4 +10,12 @@ protocol CardPanelPresentable: class {
   var interactionTarget: UIView { get }
 
   func dismiss(animated flag: Bool, completion: (() -> Swift.Void)?)
+
+  func dismissalTransitionWillBegin()
+  func dismissalTransitionDidEnd(_ completed: Bool)
+}
+
+extension CardPanelPresentable {
+  func dismissalTransitionWillBegin() { }
+  func dismissalTransitionDidEnd(_ completed: Bool) { }
 }

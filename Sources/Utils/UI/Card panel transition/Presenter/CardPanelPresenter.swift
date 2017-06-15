@@ -57,12 +57,20 @@ class CardPanelPresenter : UIPresentationController {
       return
     }
 
+    if let presentable = self.presentedViewController as? CardPanelPresentable {
+      presentable.dismissalTransitionWillBegin()
+    }
+
     coordinator.animate(alongsideTransition: { [weak self] context in
       self?.dimmingView!.alpha = 0
     }, completion: nil)
   }
 
   override func dismissalTransitionDidEnd(_ completed: Bool) {
+    if let presentable = self.presentedViewController as? CardPanelPresentable {
+      presentable.dismissalTransitionDidEnd(completed)
+    }
+
     if completed {
       self.dimmingView?.removeFromSuperview()
       self.dimmingView = nil

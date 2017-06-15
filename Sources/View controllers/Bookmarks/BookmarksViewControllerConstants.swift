@@ -12,6 +12,8 @@ struct BookmarksViewControllerConstants {
     static let rightOffset: CGFloat = leftOffset
 
     struct Header {
+      static let chevronTopOffset:  CGFloat =  8.0
+
       static let topPadding:        CGFloat = 32.0
       static let bottomPadding:     CGFloat =  8.0
       static let horizontalSpacing: CGFloat =  8.0
@@ -45,6 +47,10 @@ struct BookmarksViewControllerConstants {
         static let topOffset: CGFloat = 15.0
       }
     }
+  }
+
+  struct Animations {
+    static let chevronDismisRelativeDuration: TimeInterval = 0.05
   }
 
 }

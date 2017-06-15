@@ -21,7 +21,7 @@ extension ColorScheme {
       primary: UIColor(red: 1.00, green: 0.22, blue: 0.14, alpha: 1.00),
 
       background:         UIColor.white,
-      backgroundContrast: UIColor.lightGray
+      backgroundContrast: UIColor(white: 0.8, alpha: 1.0)
     )
   }
 

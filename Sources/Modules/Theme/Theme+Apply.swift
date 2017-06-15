@@ -51,18 +51,6 @@ extension Theme {
 
     case .cardPanelHeader:
       view.addBorder(at: .bottom)
-
-      let promptView = UIView()
-      promptView.layer.cornerRadius = 2.0
-      promptView.backgroundColor    = UIColor(white: 0.8, alpha: 1.0)
-      view.addSubview(promptView)
-
-      promptView.snp.makeConstraints { make in
-        make.top.equalToSuperview().offset(8.0)
-        make.centerX.equalToSuperview()
-        make.width.equalTo(35.0)
-        make.height.equalTo(4.0)
-      }
     }
   }
 

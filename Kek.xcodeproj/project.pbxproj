@@ -77,6 +77,9 @@
 		90AF2BE11EE9E186006E61D6 /* SystemFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */; };
 		90AF2BE31EE9E4ED006E61D6 /* Theme+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */; };
 		90AF2BE71EE9E970006E61D6 /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE61EE9E970006E61D6 /* UIView+RoundCorners.swift */; };
+		90D7F48F1EF1C1A50031F5BA /* ChevronViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7F48E1EF1C1A50031F5BA /* ChevronViewState.swift */; };
+		90D7F4911EF1C1BA0031F5BA /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7F4901EF1C1BA0031F5BA /* ChevronView.swift */; };
+		90D7F4941EF1C3550031F5BA /* CGFloat+Rad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7F4931EF1C3550031F5BA /* CGFloat+Rad.swift */; };
 		90DBB6441EE45F3300D997CF /* SaveBookmarkAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBB6431EE45F3300D997CF /* SaveBookmarkAlert.swift */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +187,9 @@
 		90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFontProvider.swift; sourceTree = "<group>"; };
 		90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Apply.swift"; sourceTree = "<group>"; };
 		90AF2BE61EE9E970006E61D6 /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
+		90D7F48E1EF1C1A50031F5BA /* ChevronViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronViewState.swift; sourceTree = "<group>"; };
+		90D7F4901EF1C1BA0031F5BA /* ChevronView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
+		90D7F4931EF1C3550031F5BA /* CGFloat+Rad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Rad.swift"; sourceTree = "<group>"; };
 		90DBB6431EE45F3300D997CF /* SaveBookmarkAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveBookmarkAlert.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -535,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				902330F51EDF37F500FA8F43 /* UIKit */,
+				90D7F4921EF1C3390031F5BA /* CoreGraphics */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -565,6 +572,7 @@
 				9086D4271EDF65AC00E43D9A /* Card panel transition */,
 				902330FD1EDF37F500FA8F43 /* ReusableCell */,
 				9091D0B91EE3073200FC4F79 /* LayoutGuide */,
+				90D7F48D1EF1C1910031F5BA /* ChevronView */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -710,6 +718,23 @@
 				90AF2BDC1EE9E06C006E61D6 /* Controls.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		90D7F48D1EF1C1910031F5BA /* ChevronView */ = {
+			isa = PBXGroup;
+			children = (
+				90D7F4901EF1C1BA0031F5BA /* ChevronView.swift */,
+				90D7F48E1EF1C1A50031F5BA /* ChevronViewState.swift */,
+			);
+			path = ChevronView;
+			sourceTree = "<group>";
+		};
+		90D7F4921EF1C3390031F5BA /* CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				90D7F4931EF1C3550031F5BA /* CGFloat+Rad.swift */,
+			);
+			path = CoreGraphics;
 			sourceTree = "<group>";
 		};
 		90DBB6421EE45F2100D997CF /* Save bookmark alert */ = {
@@ -897,6 +922,7 @@
 				9091D0C61EE31FB800FC4F79 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				90AF2BE11EE9E186006E61D6 /* SystemFontProvider.swift in Sources */,
 				9086D4301EDF65AC00E43D9A /* CardPanelPresentable.swift in Sources */,
+				90D7F4911EF1C1BA0031F5BA /* ChevronView.swift in Sources */,
 				9017C3961EE34CFC00063377 /* LineSelectionCell.swift in Sources */,
 				9023312D1EDF37F500FA8F43 /* Bookmark.swift in Sources */,
 				90AF2BE31EE9E4ED006E61D6 /* Theme+Apply.swift in Sources */,
@@ -913,6 +939,7 @@
 				9017C38E1EE342CD00063377 /* LineSelectionControlConstants.swift in Sources */,
 				9086D4331EDF65AC00E43D9A /* CardPanelTransitionDelegate.swift in Sources */,
 				90DBB6441EE45F3300D997CF /* SaveBookmarkAlert.swift in Sources */,
+				90D7F48F1EF1C1A50031F5BA /* ChevronViewState.swift in Sources */,
 				90AF2BE71EE9E970006E61D6 /* UIView+RoundCorners.swift in Sources */,
 				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
 				9017C3B21EE3D80A00063377 /* LineSelectionSectionViewModelFactory.swift in Sources */,
@@ -935,6 +962,7 @@
 				902331361EDF37F500FA8F43 /* UISegmentedControl.swift in Sources */,
 				9017C38C1EE342A600063377 /* LineSelectionControl.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
+				90D7F4941EF1C3550031F5BA /* CGFloat+Rad.swift in Sources */,
 				902331341EDF37F500FA8F43 /* UIBarButtonItem.swift in Sources */,
 				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
 				9017C3B01EE3D69200063377 /* LineSelectionCellViewModel.swift in Sources */,

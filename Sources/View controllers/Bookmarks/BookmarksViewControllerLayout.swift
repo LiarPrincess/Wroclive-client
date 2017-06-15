@@ -31,6 +31,20 @@ extension BookmarksViewController {
       make.left.top.right.equalToSuperview()
     }
 
+    self.chevronView.state = .down
+    self.chevronView.color = Theme.current.colorScheme.backgroundContrast
+    self.chevronView.animationDuration = Constants.Animations.chevronDismisRelativeDuration
+    self.view.addSubview(chevronView)
+
+    self.chevronView.snp.makeConstraints { make in
+      let chevronViewSize = ChevronView.nominalSize
+
+      make.top.equalToSuperview().offset(Layout.Header.chevronTopOffset)
+      make.centerX.equalToSuperview()
+      make.width.equalTo(chevronViewSize.width)
+      make.height.equalTo(chevronViewSize.height)
+    }
+
     self.cardTitle.setStyle(.headline)
     self.cardTitle.text          = "Bookmarks"
     self.cardTitle.numberOfLines = 0

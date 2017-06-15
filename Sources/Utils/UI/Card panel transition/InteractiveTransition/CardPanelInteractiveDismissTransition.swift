@@ -55,12 +55,9 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
     case .ended:
       self.hasStarted = false
 
-      if self.shouldFinish(gesture: gesture, completion: percent) {
-        self.finish()
-      }
-      else {
-        self.cancel()
-      }
+      let shouldFinish = self.shouldFinish(gesture: gesture, completion: percent)
+      if shouldFinish { self.finish() }
+      else            { self.cancel() }
 
     default:
       break

@@ -19,8 +19,9 @@ class BookmarksViewController: UIViewController {
     return UIVisualEffectView(effect: self.headerViewBlur)
   }()
 
-  let cardTitle  = UILabel()
-  let editButton = UIButton()
+  let chevronView = ChevronView()
+  let cardTitle   = UILabel()
+  let editButton  = UIButton()
 
   var bookmarksDataSource: BookmarksDataSource!
   let bookmarksTable = UITableView()
@@ -119,6 +120,17 @@ class BookmarksViewController: UIViewController {
 extension BookmarksViewController: CardPanelPresentable {
   var contentView:       UIView { return self.view }
   var interactionTarget: UIView { return self.headerView }
+
+  func dismissalTransitionWillBegin() {
+    self.chevronView.setState(.flat, animated: true)
+  }
+
+  func dismissalTransitionDidEnd(_ completed: Bool) {
+    if !completed {
+      self.chevronView.setState(.down, animated: true)
+    }
+  }
+
 }
 
 //MARK: - UITableViewDelegate
