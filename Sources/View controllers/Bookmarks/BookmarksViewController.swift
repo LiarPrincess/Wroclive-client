@@ -23,7 +23,7 @@ class BookmarksViewController: UIViewController {
   let cardTitle   = UILabel()
   let editButton  = UIButton()
 
-  var bookmarksDataSource: BookmarksDataSource!
+  var bookmarksTableDataSource: BookmarksDataSource!
   let bookmarksTable = UITableView()
 
   let placeholderView        = UIView()
@@ -36,28 +36,12 @@ class BookmarksViewController: UIViewController {
     super.viewDidLoad()
     self.initDataSource()
     self.initLayout()
-    self.updateLayoutAfterRowCountChanged()
+    self.showPlaceholderIfEmpty()
   }
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    self.positionTableViewContentBelowHeaderView()
-  }
-
-  func positionTableViewContentBelowHeaderView() {
-    let currentInset = self.bookmarksTable.contentInset
-    let headerHeight = self.headerView.bounds.height
-
-    if currentInset.top < headerHeight {
-      let newInset = UIEdgeInsets(top: headerHeight, left: currentInset.left, bottom: currentInset.bottom, right: currentInset.right)
-      self.bookmarksTable.contentInset          = newInset
-      self.bookmarksTable.scrollIndicatorInsets = newInset
-
-      // scroll up to preserve current scroll position
-      let currentOffset = self.bookmarksTable.contentOffset
-      let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
-      self.bookmarksTable.setContentOffset(newOffset, animated: false)
-    }
+    self.insetTableViewContentBelowHeaderView()
   }
 
   override func setEditing(_ editing: Bool, animated: Bool) {
@@ -80,11 +64,6 @@ class BookmarksViewController: UIViewController {
     self.bookmarksTable.setEditing(editing, animated: true)
   }
 
-  private func initDataSource() {
-    let bookmarks            = BookmarksManager.instance.getAll()
-    self.bookmarksDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
-  }
-
   //MARK: - Actions
 
   @objc func editButtonPressed() {
@@ -98,8 +77,8 @@ class BookmarksViewController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
 
-  fileprivate func updateLayoutAfterRowCountChanged() {
-    let bookmarks = self.bookmarksDataSource.bookmarks
+  fileprivate func showPlaceholderIfEmpty() {
+    let bookmarks = self.bookmarksTableDataSource.bookmarks
 
     if bookmarks.count == 0 {
       self.bookmarksTable.separatorStyle = .none
@@ -110,6 +89,27 @@ class BookmarksViewController: UIViewController {
       self.bookmarksTable.separatorStyle = .singleLine
       self.editButton.isHidden           = false
       self.placeholderView.isHidden      = true
+    }
+  }
+
+  private func initDataSource() {
+    let bookmarks = BookmarksManager.instance.getAll()
+    self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
+  }
+
+  private func insetTableViewContentBelowHeaderView() {
+    let currentInset = self.bookmarksTable.contentInset
+    let headerHeight = self.headerView.bounds.height
+
+    if currentInset.top < headerHeight {
+      let newInset = UIEdgeInsets(top: headerHeight, left: currentInset.left, bottom: currentInset.bottom, right: currentInset.right)
+      self.bookmarksTable.contentInset          = newInset
+      self.bookmarksTable.scrollIndicatorInsets = newInset
+
+      // scroll up to preserve current scroll position
+      let currentOffset = self.bookmarksTable.contentOffset
+      let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
+      self.bookmarksTable.setContentOffset(newOffset, animated: false)
     }
   }
 
@@ -150,7 +150,7 @@ extension BookmarksViewController: UITableViewDelegate {
   //MARK: - Selection
 
   public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let bookmark = self.bookmarksDataSource.bookmark(at: indexPath) {
+    if let bookmark = self.bookmarksTableDataSource.bookmark(at: indexPath) {
       self.select(bookmark: bookmark)
     }
   }
@@ -162,7 +162,7 @@ extension BookmarksViewController: UITableViewDelegate {
 extension BookmarksViewController: BookmarksDataSourceDelegate {
 
   func didUpdateBookmarkCount(_ dataSource: BookmarksDataSource) {
-    self.updateLayoutAfterRowCountChanged()
+    self.showPlaceholderIfEmpty()
     self.saveBookmarks()
   }
 
@@ -171,7 +171,7 @@ extension BookmarksViewController: BookmarksDataSourceDelegate {
   }
 
   private func saveBookmarks() {
-    let bookmarks = self.bookmarksDataSource.bookmarks
+    let bookmarks = self.bookmarksTableDataSource.bookmarks
     BookmarksManager.instance.save(bookmarks: bookmarks)
   }
 

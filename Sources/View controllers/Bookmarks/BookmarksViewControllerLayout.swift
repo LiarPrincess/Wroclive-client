@@ -73,7 +73,7 @@ extension BookmarksViewController {
   private func initBookmarksTable() {
     self.bookmarksTable.register(BookmarkCell.self)
     self.bookmarksTable.separatorInset = UIEdgeInsets(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
-    self.bookmarksTable.dataSource     = self.bookmarksDataSource
+    self.bookmarksTable.dataSource     = self.bookmarksTableDataSource
     self.bookmarksTable.delegate       = self
     self.view.insertSubview(self.bookmarksTable, belowSubview: self.headerView)
 
