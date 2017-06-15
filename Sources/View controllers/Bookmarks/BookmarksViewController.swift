@@ -50,11 +50,7 @@ class BookmarksViewController: UIViewController {
     if editing {
       self.editButton.setStyle(.linkBold)
       self.editButton.setTitle("Done", for: .normal)
-
-      let hasSwipeToDeleteOpen = self.bookmarksTable.isEditing
-      if hasSwipeToDeleteOpen {
-        self.bookmarksTable.setEditing(false, animated: false)
-      }
+      self.closeSwipeToDelte()
     }
     else {
       self.editButton.setStyle(.link)
@@ -89,6 +85,13 @@ class BookmarksViewController: UIViewController {
       self.bookmarksTable.separatorStyle = .singleLine
       self.editButton.isHidden           = false
       self.placeholderView.isHidden      = true
+    }
+  }
+
+  private func closeSwipeToDelte() {
+    let hasSwipeToDeleteOpen = self.bookmarksTable.isEditing
+    if hasSwipeToDeleteOpen {
+      self.bookmarksTable.setEditing(false, animated: false)
     }
   }
 
