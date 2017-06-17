@@ -7,6 +7,7 @@ import UIKit
 import SnapKit
 
 fileprivate typealias Constants = SearchViewControllerConstants
+fileprivate typealias Layout    = Constants.Layout
 
 class SearchViewController: UIViewController {
 
@@ -54,12 +55,12 @@ class SearchViewController: UIViewController {
     self.initLineSelectionControls()
     self.initLayout()
     self.restoreState()
-    self.updateLineSelectionControlVisibility()
+    self.showCollectionViewFromSelector()
   }
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    self.positionCollectionViewsBelowHeaderView()
+    self.insetCollectionViewsBelowHeaderView()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -78,7 +79,7 @@ class SearchViewController: UIViewController {
   }
 
   @objc func lineTypeChanged() {
-    self.updateLineSelectionControlVisibility()
+    self.showCollectionViewFromSelector()
   }
 
   //MARK: - Methods
@@ -89,10 +90,33 @@ class SearchViewController: UIViewController {
     self.busSelectionControl  = LineSelectionControl(withLines: lines.filter { $0.type == .bus })
   }
 
-  private func updateLineSelectionControlVisibility() {
+  private func showCollectionViewFromSelector() {
     let selectedIndex = self.lineTypeSelector.selectedSegmentIndex
     self.tramSelectionControl.view.isHidden = selectedIndex != LineTypeIndex.tram
     self.busSelectionControl.view.isHidden  = selectedIndex != LineTypeIndex.bus
+  }
+
+  private func insetCollectionViewsBelowHeaderView() {
+    func fixInsets(in lineSelection: LineSelectionControl) {
+      let currentInset = lineSelection.contentInset
+      let headerHeight = self.headerView.bounds.height
+
+      if currentInset.top < headerHeight {
+        let topOffset   = headerHeight
+        let leftOffset  = Layout.leftOffset
+        let rightOffset = Layout.rightOffset
+        let bottomInset = Layout.bottomOffset
+
+        let contentInset          = UIEdgeInsets(top: topOffset, left: leftOffset, bottom: bottomInset, right: rightOffset)
+        let scrollIndicatorInsets = UIEdgeInsets(top: topOffset, left: 0.0,        bottom: 0.0,         right: 0.0)
+
+        lineSelection.contentInset          = contentInset
+        lineSelection.scrollIndicatorInsets = scrollIndicatorInsets
+      }
+    }
+
+    fixInsets(in: self.tramSelectionControl)
+    fixInsets(in: self.busSelectionControl)
   }
 }
 

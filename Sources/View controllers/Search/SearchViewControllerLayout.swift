@@ -19,23 +19,6 @@ extension SearchViewController {
     self.addLineSelectionControl(self.tramSelectionControl)
   }
 
-  func positionCollectionViewsBelowHeaderView() {
-    let navigationBarHeight = self.headerView.bounds.height
-
-    let topOffset   = navigationBarHeight
-    let leftOffset  = CGFloat(Layout.leftOffset)
-    let rightOffset = CGFloat(Layout.rightOffset)
-    let bottomInset = CGFloat(Layout.bottomOffset)
-
-    let contentInset          = UIEdgeInsets(top: topOffset, left: leftOffset, bottom: bottomInset, right: rightOffset)
-    let scrollIndicatorInsets = UIEdgeInsets(top: topOffset, left: 0.0,        bottom: 0.0,         right: 0.0)
-
-    self.tramSelectionControl.contentInset = contentInset
-    self.busSelectionControl.contentInset  = contentInset
-    self.tramSelectionControl.scrollIndicatorInsets = scrollIndicatorInsets
-    self.busSelectionControl.scrollIndicatorInsets  = scrollIndicatorInsets
-  }
-
   //MARK: - Private
 
   private func initHeader() {

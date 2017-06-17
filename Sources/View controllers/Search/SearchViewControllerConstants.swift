@@ -8,8 +8,8 @@ import UIKit
 struct SearchViewControllerConstants {
 
   struct Layout {
-    static let leftOffset:  CGFloat  = 16.0
-    static let rightOffset: CGFloat  = leftOffset
+    static let leftOffset:   CGFloat = 16.0
+    static let rightOffset:  CGFloat = leftOffset
     static let bottomOffset: CGFloat = 28.0
 
     struct Header {
