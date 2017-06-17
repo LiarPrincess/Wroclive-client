@@ -33,10 +33,19 @@ class SearchViewControllerStateManager: SearchViewControllerStateManagerProtocol
 
   private static func testData() -> SearchViewControllerState {
     let selectedLines = [
+      Line(name: "325", type: .bus, subtype: .regular),
       Line(name: "4", type: .tram, subtype: .regular),
-      Line(name: "A", type: .bus,  subtype: .express),
-      Line(name: "D", type: .bus,  subtype: .express),
-      Line(name: "K", type: .bus,  subtype: .express)
+      Line(name: "A", type: .bus, subtype: .express),
+      Line(name: "D", type: .bus, subtype: .express),
+      Line(name: "11", type: .tram, subtype: .regular),
+      Line(name: "14", type: .tram, subtype: .regular),
+      Line(name: "20", type: .tram, subtype: .regular),
+      Line(name: "24", type: .tram, subtype: .regular),
+      Line(name: "107", type: .bus, subtype: .regular),
+      Line(name: "125", type: .bus, subtype: .regular),
+      Line(name: "126", type: .bus, subtype: .regular),
+      Line(name: "127", type: .bus, subtype: .regular),
+      Line(name: "251", type: .bus, subtype: .night)
     ]
     return SearchViewControllerState(filter: .tram, selectedLines: selectedLines)
   }

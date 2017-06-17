@@ -23,10 +23,10 @@ class SearchViewController: UIViewController {
     return UIVisualEffectView(effect: self.headerViewBlur)
   }()
 
-  let chevronView  = ChevronView()
-  let cardTitle    = UILabel()
-  let saveButton   = UIButton()
-  let searchButton = UIButton()
+  let chevronView    = ChevronView()
+  let cardTitle      = UILabel()
+  let bookmarkButton = UIButton()
+  let searchButton   = UIButton()
   
   let lineTypeSelector = UISegmentedControl()
 
@@ -65,7 +65,7 @@ class SearchViewController: UIViewController {
 
   //MARK: - Actions
 
-  @objc func saveButtonPressed() {
+  @objc func bookmarkButtonPressed() {
     let alertController = SaveBookmarkAlert.create(forSaving: self.selectedLines)
     self.present(alertController, animated: true, completion: nil)
   }

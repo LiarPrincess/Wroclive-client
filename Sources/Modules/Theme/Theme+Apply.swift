@@ -37,13 +37,16 @@ extension Theme {
     case .linkBold:
       button.titleLabel?.font = self.font.bodyBold
       button.setTitleColor(self.colorScheme.primary, for: .normal)
+
+    case .templateImage:
+      button.tintColor = self.colorScheme.primary
     }
   }
 
   func apply(toView view: UIView, style: ViewStyle) {
     switch style {
-    case .background:
-      view.backgroundColor = self.colorScheme.background
+    case .alert:
+      view.tintColor = self.colorScheme.primary
 
     case .cardPanel :
       view.backgroundColor = self.colorScheme.background

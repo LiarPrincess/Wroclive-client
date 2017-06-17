@@ -11,6 +11,7 @@ class SaveBookmarkAlert {
 
   static func create(forSaving lines: [Line]) -> UIAlertController {
     let alertController = UIAlertController(title: "New bookmark", message: "Enter name for this bookmark.", preferredStyle: .alert)
+    alertController.view.setStyle(.alert)
 
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     alertController.addAction(cancelAction)

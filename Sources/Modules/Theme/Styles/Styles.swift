@@ -13,10 +13,11 @@ enum TextStyle {
 enum ButtonStyle {
   case link
   case linkBold
+  case templateImage
 }
 
 enum ViewStyle {
-  case background
+  case alert
   case cardPanel
   case cardPanelHeader
 }

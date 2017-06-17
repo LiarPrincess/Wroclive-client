@@ -53,19 +53,25 @@ extension SearchViewController {
       make.left.equalToSuperview().offset(Layout.leftOffset)
     }
 
+    self.bookmarkButton.setStyle(.templateImage)
+    self.bookmarkButton.setImage(#imageLiteral(resourceName: "vecFavorites1"), for: .normal)
+    self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
+    self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonPressed), for: .touchUpInside)
+    self.headerView.addSubview(self.bookmarkButton)
+
+    self.bookmarkButton.snp.makeConstraints { make in
+      make.lastBaseline.equalTo(self.cardTitle.snp.lastBaseline)
+      make.left.equalTo(self.cardTitle.snp.right)
+    }
+
     self.searchButton.setStyle(.link)
     self.searchButton.setTitle("Search", for: .normal)
-    self.searchButton.setContentHuggingPriority(251.0, for: .horizontal)
-    self.searchButton.contentEdgeInsets = Layout.Header.SearchButton.contentInsets
+    self.searchButton.contentEdgeInsets = Layout.Header.searchButtonInsets
     self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
     self.headerView.addSubview(self.searchButton)
 
-//self.cardTitle.backgroundColor = UIColor.green
-//self.searchButton.backgroundColor = UIColor.blue
-
     self.searchButton.snp.makeConstraints { make in
       make.lastBaseline.equalTo(self.cardTitle.snp.lastBaseline)
-      make.left.equalTo(self.cardTitle.snp.right).inset(-Layout.Header.horizontalSpacing)
       make.right.equalToSuperview()
     }
 
