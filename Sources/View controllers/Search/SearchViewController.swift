@@ -27,13 +27,13 @@ class SearchViewController: UIViewController {
 
   //MARK: Layout
 
-
   let headerViewBlur = UIBlurEffect(style: .extraLight)
 
   lazy var headerView: UIVisualEffectView =  {
     return UIVisualEffectView(effect: self.headerViewBlur)
   }()
 
+  let chevronView = ChevronView()
   let cardTitle    = UILabel()
   let saveButton   = UIButton()
   let searchButton = UIButton()
@@ -140,4 +140,15 @@ extension SearchViewController {
 extension SearchViewController : CardPanelPresentable {
   var contentView:       UIView { return self.view }
   var interactionTarget: UIView { return self.headerView }
+
+  func dismissalTransitionWillBegin() {
+    self.chevronView.setState(.flat, animated: true)
+  }
+
+  func dismissalTransitionDidEnd(_ completed: Bool) {
+    if !completed {
+      self.chevronView.setState(.down, animated: true)
+    }
+  }
+
 }
