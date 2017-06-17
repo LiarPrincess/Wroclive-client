@@ -39,6 +39,7 @@
 		902331381EDF37F500FA8F43 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330FB1EDF37F500FA8F43 /* Logger.swift */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
+		905E0F471EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E0F461EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9086D4471EE2DE8E00E43D9A /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4421EE2DE8E00E43D9A /* BookmarksManager.swift */; };
 		9086D4481EE2DE8E00E43D9A /* LinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4441EE2DE8E00E43D9A /* LinesManager.swift */; };
@@ -131,6 +132,7 @@
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		905E0F461EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfEquatable+ContainsAll.swift"; sourceTree = "<group>"; };
 		9086D4421EE2DE8E00E43D9A /* BookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		9086D4441EE2DE8E00E43D9A /* LinesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManager.swift; sourceTree = "<group>"; };
 		9086D4461EE2DE8E00E43D9A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			children = (
 				902330F51EDF37F500FA8F43 /* UIKit */,
 				90D7F4921EF1C3390031F5BA /* CoreGraphics */,
+				905E0F451EF5880100A418C2 /* Swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -365,6 +368,14 @@
 				D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		905E0F451EF5880100A418C2 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				905E0F461EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift */,
+			);
+			path = Swift;
 			sourceTree = "<group>";
 		};
 		9086D4401EE2DE8E00E43D9A /* Functional */ = {
@@ -804,6 +815,7 @@
 				90FA2C931EF5172300529331 /* ReusableCellContainer.swift in Sources */,
 				90AF2BE71EE9E970006E61D6 /* UIView+RoundCorners.swift in Sources */,
 				90FA2C951EF5172300529331 /* CardPanelConstants.swift in Sources */,
+				905E0F471EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift in Sources */,
 				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,

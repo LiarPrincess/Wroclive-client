@@ -13,17 +13,7 @@ class SearchViewController: UIViewController {
 
   //MARK: - Properties
 
-  var selectedLines: [Line] {
-    get {
-      let selectedTrams = self.tramSelectionControl.selectedLines
-      let selectedBuses = self.busSelectionControl.selectedLines
-      return selectedTrams + selectedBuses
-    }
-    set {
-      self.tramSelectionControl.selectedLines = newValue.filter { $0.type == .tram }
-      self.busSelectionControl.selectedLines  = newValue.filter { $0.type == .bus }
-    }
-  }
+  var selectedLines: [Line] { return self.tramSelectionControl.selectedLines + self.busSelectionControl.selectedLines }
 
   //MARK: Layout
 
@@ -33,17 +23,22 @@ class SearchViewController: UIViewController {
     return UIVisualEffectView(effect: self.headerViewBlur)
   }()
 
-  let chevronView = ChevronView()
+  let chevronView  = ChevronView()
   let cardTitle    = UILabel()
   let saveButton   = UIButton()
   let searchButton = UIButton()
   
   let lineTypeSelector = UISegmentedControl()
 
+  let lineSelectionPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
   var tramSelectionControl: LineSelectionControl!
   var busSelectionControl:  LineSelectionControl!
 
-  struct LineTypeIndex {
+  lazy var lineSelectionControls: [LineSelectionControl] = {
+    return [self.tramSelectionControl, self.busSelectionControl]
+  }()
+
+  struct LineSelectionControlsIndices {
     static let tram = 0
     static let bus  = 1
   }
@@ -52,10 +47,11 @@ class SearchViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.initLineSelectionControls()
+
+    let state = SearchViewControllerStateManager.instance.getState()
+    self.initLineSelectionControls(with: state)
     self.initLayout()
-    self.restoreState()
-    self.showCollectionViewFromSelector()
+    self.loadSelectorState(from: state)
   }
 
   override func viewDidLayoutSubviews() {
@@ -63,7 +59,7 @@ class SearchViewController: UIViewController {
     self.insetCollectionViewsBelowHeaderView()
   }
 
-  override func viewWillDisappear(_ animated: Bool) {
+  override func viewDidDisappear(_ animated: Bool) {
     self.saveState()
   }
 
@@ -79,21 +75,57 @@ class SearchViewController: UIViewController {
   }
 
   @objc func lineTypeChanged() {
-    self.showCollectionViewFromSelector()
+    self.updatePageViewFromSelector(animated: true)
   }
 
   //MARK: - Methods
 
-  private func initLineSelectionControls() {
-    let lines = LinesManager.instance.getLines()
-    self.tramSelectionControl = LineSelectionControl(withLines: lines.filter { $0.type == .tram })
-    self.busSelectionControl  = LineSelectionControl(withLines: lines.filter { $0.type == .bus })
+  //MARK: Update
+
+  fileprivate func updateSelectorFromPageView() {
+    guard let lineSelectionControl = self.lineSelectionPageViewController.viewControllers?.first as? LineSelectionControl else {
+      return
+    }
+
+    guard let index = self.lineSelectionControls.index(of: lineSelectionControl) else {
+      return
+    }
+
+    self.lineTypeSelector.selectedSegmentIndex = index
   }
 
-  private func showCollectionViewFromSelector() {
+  fileprivate func updatePageViewFromSelector(animated: Bool) {
     let selectedIndex = self.lineTypeSelector.selectedSegmentIndex
-    self.tramSelectionControl.view.isHidden = selectedIndex != LineTypeIndex.tram
-    self.busSelectionControl.view.isHidden  = selectedIndex != LineTypeIndex.bus
+
+    if selectedIndex == LineSelectionControlsIndices.tram {
+      let page      = self.tramSelectionControl!
+      let direction = UIPageViewControllerNavigationDirection.reverse
+      self.lineSelectionPageViewController.setViewControllers([page], direction: direction, animated: animated, completion: nil)
+    }
+    else {
+      let page      = self.busSelectionControl!
+      let direction = UIPageViewControllerNavigationDirection.forward
+      self.lineSelectionPageViewController.setViewControllers([page], direction: direction, animated: animated, completion: nil)
+    }
+  }
+
+  //MARK: State
+
+  private func initLineSelectionControls(with state: SearchViewControllerState) {
+    let lines = LinesManager.instance.getLines()
+
+    let tramLines             = lines.filter { $0.type == .tram }
+    let selectedTramLines     = state.selectedLines.filter { $0.type == .tram && tramLines.contains($0) }
+    self.tramSelectionControl = LineSelectionControl(withLines: tramLines, selected: selectedTramLines)
+
+    let busLines             = lines.filter { $0.type == .bus }
+    let selectedBusLines     = state.selectedLines.filter { $0.type == .bus && busLines.contains($0) }
+    self.busSelectionControl = LineSelectionControl(withLines: busLines, selected: selectedBusLines)
+  }
+
+  private func loadSelectorState(from state: SearchViewControllerState) {
+    self.lineTypeSelector.selectedSegmentIndex = LineSelectionControlsIndices.tram
+    self.updatePageViewFromSelector(animated: false)
   }
 
   private func insetCollectionViewsBelowHeaderView() {
@@ -118,18 +150,8 @@ class SearchViewController: UIViewController {
     fixInsets(in: self.tramSelectionControl)
     fixInsets(in: self.busSelectionControl)
   }
-}
 
-//MARK: - State
-
-extension SearchViewController {
-  fileprivate func restoreState() {
-    let state = SearchViewControllerStateManager.instance.getState()
-    self.lineTypeSelector.selectedSegmentIndex = LineTypeIndex.tram
-    self.selectedLines = state.selectedLines
-  }
-
-  fileprivate func saveState() {
+  private func saveState() {
     let state = SearchViewControllerState(selectedLines: self.selectedLines)
     SearchViewControllerStateManager.instance.saveState(state: state)
   }
@@ -148,6 +170,42 @@ extension SearchViewController : CardPanelPresentable {
   func dismissalTransitionDidEnd(_ completed: Bool) {
     if !completed {
       self.chevronView.setState(.down, animated: true)
+    }
+  }
+
+}
+
+// MARK: UIPageViewControllerDataSource
+
+extension SearchViewController: UIPageViewControllerDataSource {
+
+  func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    guard let index = self.lineSelectionControls.index(of: viewController as! LineSelectionControl) else {
+      return nil
+    }
+
+    let previousIndex = index - 1
+    return previousIndex >= 0 ? self.lineSelectionControls[previousIndex] : nil
+  }
+
+  func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    guard let index = self.lineSelectionControls.index(of: viewController as! LineSelectionControl) else {
+      return nil
+    }
+
+    let nextIndex = index + 1
+    return nextIndex < self.lineSelectionControls.count ? self.lineSelectionControls[nextIndex] : nil
+  }
+  
+}
+
+//MARK: - UIPageViewControllerDelegate
+
+extension SearchViewController: UIPageViewControllerDelegate {
+
+  func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    if completed {
+      self.updateSelectorFromPageView()
     }
   }
 

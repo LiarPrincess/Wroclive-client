@@ -15,8 +15,7 @@ extension SearchViewController {
     self.view.setStyle(.cardPanel)
 
     self.initHeader()
-    self.addLineSelectionControl(self.busSelectionControl)
-    self.addLineSelectionControl(self.tramSelectionControl)
+    self.initLineSelectionPageViewController()
   }
 
   //MARK: - Private
@@ -67,8 +66,8 @@ extension SearchViewController {
     }
 
     self.lineTypeSelector.setStyle()
-    self.lineTypeSelector.insertSegment(withTitle: "Trams", at: LineTypeIndex.tram, animated: false)
-    self.lineTypeSelector.insertSegment(withTitle: "Buses", at: LineTypeIndex.bus, animated: false)
+    self.lineTypeSelector.insertSegment(withTitle: "Trams", at: LineSelectionControlsIndices.tram, animated: false)
+    self.lineTypeSelector.insertSegment(withTitle: "Buses", at: LineSelectionControlsIndices.bus,  animated: false)
     self.lineTypeSelector.addTarget(self, action: #selector(lineTypeChanged), for: .valueChanged)
     self.headerView.addSubview(self.lineTypeSelector)
 
@@ -80,15 +79,18 @@ extension SearchViewController {
     }
   }
 
-  private func addLineSelectionControl(_ control: LineSelectionControl) {
-    self.addChildViewController(control)
-    self.view.insertSubview(control.view, belowSubview: self.headerView)
+  private func initLineSelectionPageViewController() {
+    self.lineSelectionPageViewController.dataSource = self
+    self.lineSelectionPageViewController.delegate   = self
 
-    control.view.snp.makeConstraints { make in
+    self.addChildViewController(self.lineSelectionPageViewController)
+    self.view.insertSubview(self.lineSelectionPageViewController.view, belowSubview: self.headerView)
+
+    self.lineSelectionPageViewController.view.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
 
-    control.didMove(toParentViewController: self)
+    self.lineSelectionPageViewController.didMove(toParentViewController: self)
   }
 
 }

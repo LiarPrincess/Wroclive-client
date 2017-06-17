@@ -12,20 +12,8 @@ class LineSelectionControl: UIViewController {
   
   //MARK: - Properties
 
-  var selectedLines: [Line] {
-    get {
-      let indexPaths = self.collectionView.indexPathsForSelectedItems
-      let lines = indexPaths?.map { self.collectionDataSource.line(at: $0) }.filter { $0 != nil }.map { $0! }
-      return lines ?? []
-    }
-    set {
-      for line in newValue {
-        if let index = self.collectionDataSource.index(of: line) {
-          self.collectionView.selectItem(at: index, animated: false, scrollPosition: [])
-        }
-      }
-    }
-  }
+  let lines:                          [Line]
+  fileprivate(set) var selectedLines: [Line]
 
   //MARK: Collection
 
@@ -39,25 +27,34 @@ class LineSelectionControl: UIViewController {
 
   //MARK: Layout
 
-  var contentInset = UIEdgeInsets() {
-    didSet {
-      if self.collectionView.contentInset != self.contentInset {
-        self.collectionView.contentInset = self.contentInset
+  var contentInset: UIEdgeInsets {
+    get { return self.collectionView.contentInset }
+    set {
+      if self.collectionView.contentInset != newValue {
+        self.collectionView.contentInset = newValue
       }
     }
   }
 
-  var scrollIndicatorInsets = UIEdgeInsets() {
-    didSet {
-      if self.collectionView.scrollIndicatorInsets != self.scrollIndicatorInsets {
-        self.collectionView.scrollIndicatorInsets = self.scrollIndicatorInsets
+  var scrollIndicatorInsets: UIEdgeInsets {
+    get { return self.collectionView.scrollIndicatorInsets }
+    set {
+      if self.collectionView.scrollIndicatorInsets != newValue {
+        self.collectionView.scrollIndicatorInsets = newValue
       }
     }
   }
 
   //MARK: - Init
 
-  init(withLines lines: [Line]) {
+  init(withLines lines: [Line], selected selectedLines: [Line]?) {
+    let isSelectedSubsetOfLines = selectedLines == nil || lines.containsAll(other: selectedLines!)
+    guard isSelectedSubsetOfLines else {
+      fatalError("Selected lines should be a subset of lines")
+    }
+
+    self.lines                = lines
+    self.selectedLines        = selectedLines ?? [Line]()
     self.collectionDataSource = LineSelectionDataSource(with: lines)
     super.init(nibName: nil, bundle: nil)
   }
@@ -71,6 +68,24 @@ class LineSelectionControl: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
+    self.refreshCollectionSelectedItems(animated: false)
+  }
+
+  //MARK: - Methods
+
+  private func refreshCollectionSelectedItems(animated: Bool) {
+    for line in self.lines {
+      if let indexPath = self.collectionDataSource.index(of: line) {
+        let isSelected = self.selectedLines.contains(line)
+
+        if isSelected {
+          self.collectionView.selectItem(at: indexPath, animated: animated, scrollPosition: [])
+        }
+        else {
+          self.collectionView.deselectItem(at: indexPath, animated: animated)
+        }
+      }
+    }
   }
 
 }
@@ -113,6 +128,18 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
     return true
+  }
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if let line = self.collectionDataSource.line(at: indexPath) {
+      self.selectedLines.append(line)
+    }
+  }
+
+  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    if let line  = self.collectionDataSource.line(at: indexPath), let index = self.selectedLines.index(of: line) {
+      self.selectedLines.remove(at: index)
+    }
   }
 
 }
