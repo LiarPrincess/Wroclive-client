@@ -4,9 +4,11 @@
 //
 
 struct SearchViewControllerState {
-  let selectedLines:    [Line]
+  let lineTypeFilter: LineType
+  let selectedLines:  [Line]
 
-  init(selectedLines: [Line]) {
-    self.selectedLines = selectedLines
+  init(filter lineTypeFilter: LineType, selectedLines: [Line]) {
+    self.lineTypeFilter = lineTypeFilter
+    self.selectedLines  = selectedLines
   }
 }

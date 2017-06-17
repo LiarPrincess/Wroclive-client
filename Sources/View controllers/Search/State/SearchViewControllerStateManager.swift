@@ -38,6 +38,6 @@ class SearchViewControllerStateManager: SearchViewControllerStateManagerProtocol
       Line(name: "D", type: .bus,  subtype: .express),
       Line(name: "K", type: .bus,  subtype: .express)
     ]
-    return SearchViewControllerState(selectedLines: selectedLines)
+    return SearchViewControllerState(filter: .tram, selectedLines: selectedLines)
   }
 }

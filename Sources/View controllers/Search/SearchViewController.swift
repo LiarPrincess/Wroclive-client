@@ -124,7 +124,8 @@ class SearchViewController: UIViewController {
   }
 
   private func loadSelectorState(from state: SearchViewControllerState) {
-    self.lineTypeSelector.selectedSegmentIndex = LineSelectionControlsIndices.tram
+    let isTramFilterSelected = state.lineTypeFilter == .tram
+    self.lineTypeSelector.selectedSegmentIndex = isTramFilterSelected ? LineSelectionControlsIndices.tram : LineSelectionControlsIndices.bus
     self.updatePageViewFromSelector(animated: false)
   }
 
@@ -152,7 +153,10 @@ class SearchViewController: UIViewController {
   }
 
   private func saveState() {
-    let state = SearchViewControllerState(selectedLines: self.selectedLines)
+    let isTramFilterSelected = self.lineTypeSelector.selectedSegmentIndex == LineSelectionControlsIndices.tram
+    let lineTypeFilter: LineType = isTramFilterSelected ? .tram : .bus
+
+    let state = SearchViewControllerState(filter: lineTypeFilter, selectedLines: self.selectedLines)
     SearchViewControllerStateManager.instance.saveState(state: state)
   }
 }
