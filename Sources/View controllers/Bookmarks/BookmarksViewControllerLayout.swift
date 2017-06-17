@@ -57,18 +57,17 @@ extension BookmarksViewController {
       make.left.equalToSuperview().offset(Layout.leftOffset)
     }
 
-    typealias EditContants = Layout.Header.EditButton
     self.editButton.setStyle(.link)
     self.editButton.setTitle("Edit", for: .normal)
     self.editButton.setContentHuggingPriority(251.0, for: .horizontal)
-    self.editButton.contentEdgeInsets = UIEdgeInsets(top: EditContants.topPadding, left: EditContants.leftPadding, bottom: 0.0, right: 0.0)
+    self.editButton.contentEdgeInsets = Layout.Header.EditButton.contentInsets
     self.editButton.addTarget(self, action: #selector(editButtonPressed), for: .touchUpInside)
     self.headerView.addSubview(self.editButton)
 
     self.editButton.snp.makeConstraints { make in
-      make.firstBaseline.equalTo(self.cardTitle.snp.firstBaseline)
+      make.lastBaseline.equalTo(self.cardTitle.snp.lastBaseline)
       make.left.equalTo(self.cardTitle.snp.right).inset(-Layout.Header.horizontalSpacing)
-      make.right.equalToSuperview().offset(-Layout.rightOffset)
+      make.right.equalToSuperview()
     }
   }
 

@@ -19,8 +19,7 @@ struct BookmarksViewControllerConstants {
       static let horizontalSpacing: CGFloat =  8.0
 
       struct EditButton {
-        static let topPadding:  CGFloat = 15.0
-        static let leftPadding: CGFloat = 20.0
+        static let contentInsets = UIEdgeInsets(top: 17.0, left: 20.0, bottom: Layout.Header.bottomPadding, right: Layout.rightOffset)
       }
     }
 
