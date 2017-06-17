@@ -64,6 +64,9 @@ extension BookmarksViewController {
     self.editButton.addTarget(self, action: #selector(editButtonPressed), for: .touchUpInside)
     self.headerView.addSubview(self.editButton)
 
+//self.cardTitle.backgroundColor = UIColor.green
+//self.editButton.backgroundColor = UIColor.blue
+
     self.editButton.snp.makeConstraints { make in
       make.lastBaseline.equalTo(self.cardTitle.snp.lastBaseline)
       make.left.equalTo(self.cardTitle.snp.right).inset(-Layout.Header.horizontalSpacing)

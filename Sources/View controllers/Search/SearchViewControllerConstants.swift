@@ -20,6 +20,10 @@ struct SearchViewControllerConstants {
 
       static let verticalSpacing:   CGFloat =  8.0
       static let horizontalSpacing: CGFloat =  8.0
+
+      struct SearchButton {
+        static let contentInsets = UIEdgeInsets(top: 17.0, left: 20.0, bottom: 4.0, right: Layout.rightOffset)
+      }
     }
   }
 

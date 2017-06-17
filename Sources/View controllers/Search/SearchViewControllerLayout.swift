@@ -55,14 +55,18 @@ extension SearchViewController {
 
     self.searchButton.setStyle(.link)
     self.searchButton.setTitle("Search", for: .normal)
-    self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
     self.searchButton.setContentHuggingPriority(251.0, for: .horizontal)
+    self.searchButton.contentEdgeInsets = Layout.Header.SearchButton.contentInsets
+    self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
     self.headerView.addSubview(self.searchButton)
 
+//self.cardTitle.backgroundColor = UIColor.green
+//self.searchButton.backgroundColor = UIColor.blue
+
     self.searchButton.snp.makeConstraints { make in
-      make.firstBaseline.equalTo(self.cardTitle.snp.firstBaseline)
+      make.lastBaseline.equalTo(self.cardTitle.snp.lastBaseline)
       make.left.equalTo(self.cardTitle.snp.right).inset(-Layout.Header.horizontalSpacing)
-      make.right.equalToSuperview().offset(-Layout.rightOffset)
+      make.right.equalToSuperview()
     }
 
     self.lineTypeSelector.setStyle()
