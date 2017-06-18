@@ -14,7 +14,7 @@ class LineSelectionDataSource: NSObject {
   //MARK: - Init
 
   init(with lines: [Line]) {
-    self.viewModels = LineSelectionSectionViewModelFactory.create(from: lines)
+    self.viewModels = LineSelectionSectionViewModelFactory.convert(lines)
   }
 
   //MARK: - Methods

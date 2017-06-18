@@ -5,9 +5,9 @@
 
 struct LineSelectionSectionViewModelFactory {
 
-  static func create(from lines: [Line]) -> [LineSelectionSectionViewModel] {
-    let viewModels = self.convertToViewModels(lines: lines)
-    return self.sort(viewModels: viewModels)
+  static func convert(_ lines: [Line]) -> [LineSelectionSectionViewModel] {
+    let viewModels = convertToViewModels(lines: lines)
+    return sortViewModels(viewModels)
   }
 
   //MARK: - Convert
@@ -16,32 +16,36 @@ struct LineSelectionSectionViewModelFactory {
     var linesBySubtype = [LineSubtype: [Line]]()
 
     for line in lines {
-      if let _ = linesBySubtype[line.subtype] {
-        linesBySubtype[line.subtype]!.append(line)
+      if var lines = linesBySubtype[line.subtype] {
+        lines.append(line)
+        linesBySubtype[line.subtype] = lines
       }
       else {
         linesBySubtype[line.subtype] = [line]
       }
     }
 
-    return linesBySubtype.map { return LineSelectionSectionViewModel(for: $0, with: self.sort(lines: $1)) }
+    return linesBySubtype.map { (subtype, lines) in
+      let linesSorted = sortLines(lines)
+      return LineSelectionSectionViewModel(for: subtype, with: linesSorted)
+    }
   }
 
   //MARK: - Sort
 
-  fileprivate static func sort(lines: [Line]) -> [Line] {
+  private static func sortLines(_ lines: [Line]) -> [Line] {
     return lines.sorted { (lhs, rhs) in
       return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
     }
   }
 
-  private static func sort(viewModels: [LineSelectionSectionViewModel]) -> [LineSelectionSectionViewModel] {
+  private static func sortViewModels(_ viewModels: [LineSelectionSectionViewModel]) -> [LineSelectionSectionViewModel] {
     return viewModels.sorted { (lhs, rhs) in
-      return order(for: lhs.subtype) < self.order(for: rhs.subtype)
+      return getSubtypeOrder(for: lhs.subtype) < getSubtypeOrder(for: rhs.subtype)
     }
   }
 
-  private static func order(for subtype: LineSubtype) -> Int {
+  private static func getSubtypeOrder(for subtype: LineSubtype) -> Int {
     switch subtype {
     case .express:   return 0
     case .regular:   return 1

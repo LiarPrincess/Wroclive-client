@@ -5,7 +5,7 @@
 
 struct LineSelectionCellViewModel {
   let line:     Line
-  var lineName: String { return self.line.name }
+  var lineName: String { return self.line.name.uppercased() }
 
   init(from line: Line) {
     self.line = line

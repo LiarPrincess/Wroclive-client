@@ -10,7 +10,7 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
 
   //MARK: - Properties
 
-  var subtypeName = UILabel()
+  var sectionName = UILabel()
 
   //MARK: - Init
 
@@ -26,7 +26,7 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
   //MARK: - Methods
 
   func setUp(with viewModel: LineSelectionSectionViewModel) {
-    self.subtypeName.text = viewModel.subtypeName
+    self.sectionName.text = viewModel.sectionName
   }
 
 }
@@ -36,12 +36,12 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
 extension LineSelectionSectionHeaderView {
 
   fileprivate func initLayout() {
-    self.subtypeName.setStyle(.subheadline)
-    self.subtypeName.numberOfLines = 0
-    self.subtypeName.textAlignment = .center
-    self.addSubview(self.subtypeName)
+    self.sectionName.setStyle(.subheadline)
+    self.sectionName.numberOfLines = 0
+    self.sectionName.textAlignment = .center
+    self.addSubview(self.sectionName)
 
-    self.subtypeName.snp.makeConstraints { make in
+    self.sectionName.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
   }

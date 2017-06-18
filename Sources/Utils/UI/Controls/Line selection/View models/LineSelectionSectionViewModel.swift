@@ -4,15 +4,15 @@
 //
 
 struct LineSelectionSectionViewModel {
+  let sectionName: String
   let subtype:     LineSubtype
-  let subtypeName: String
 
   let lines:          [Line]
   let lineViewModels: [LineSelectionCellViewModel]
 
   init(for subtype: LineSubtype, with lines: [Line]) {
     self.subtype     = subtype
-    self.subtypeName = String(describing: subtype).capitalized
+    self.sectionName = String(describing: subtype).capitalized
 
     self.lines          = lines
     self.lineViewModels = lines.map { LineSelectionCellViewModel(from: $0) }
