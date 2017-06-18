@@ -12,6 +12,8 @@ class LineSelectionControl: UIViewController {
   
   //MARK: - Properties
 
+  weak var delegate: LineSelectionControlDelegate?
+
   let lines:                          [Line]
   fileprivate(set) var selectedLines: [Line]
 
@@ -47,14 +49,16 @@ class LineSelectionControl: UIViewController {
 
   //MARK: - Init
 
-  init(withLines lines: [Line], selected selectedLines: [Line]?) {
-    let isSelectedSubsetOfLines = selectedLines == nil || lines.containsAll(other: selectedLines!)
+  init(withLines lines: [Line], selected selectedLines: [Line], delegate: LineSelectionControlDelegate? = nil) {
+    let isSelectedSubsetOfLines = lines.containsAll(other: selectedLines)
     guard isSelectedSubsetOfLines else {
       fatalError("Selected lines should be a subset of lines")
     }
 
+    self.delegate = delegate
+
     self.lines                = lines
-    self.selectedLines        = selectedLines ?? [Line]()
+    self.selectedLines        = selectedLines
     self.collectionDataSource = LineSelectionDataSource(with: lines)
     super.init(nibName: nil, bundle: nil)
   }
@@ -86,6 +90,16 @@ class LineSelectionControl: UIViewController {
         }
       }
     }
+  }
+
+  //MARK: Delegate
+
+  fileprivate func delegateDidSelect(line: Line) {
+    self.delegate?.control(self, didSelect: line)
+  }
+
+  fileprivate func delegateDidDeselect(line: Line) {
+    self.delegate?.control(self, didDeselect: line)
   }
 
 }
@@ -133,12 +147,14 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if let line = self.collectionDataSource.line(at: indexPath) {
       self.selectedLines.append(line)
+      self.delegateDidSelect(line: line)
     }
   }
 
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     if let line  = self.collectionDataSource.line(at: indexPath), let index = self.selectedLines.index(of: line) {
       self.selectedLines.remove(at: index)
+      self.delegateDidDeselect(line: line)
     }
   }
 

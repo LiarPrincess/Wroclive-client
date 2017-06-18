@@ -66,8 +66,16 @@ class SearchViewController: UIViewController {
   //MARK: - Actions
 
   @objc func bookmarkButtonPressed() {
-    let alertController = SaveBookmarkAlert.create(forSaving: self.selectedLines)
-    self.present(alertController, animated: true, completion: nil)
+    let selectedLines = self.selectedLines
+
+    if selectedLines.count > 0 {
+      let alert = SaveBookmarkAlert.create(forSaving: self.selectedLines)
+      self.present(alert, animated: true, completion: nil)
+    }
+    else {
+      let alert = NoLinesSelectedAlert.create()
+      self.present(alert, animated: true, completion: nil)
+    }
   }
 
   @objc func searchButtonPressed() {
@@ -109,7 +117,7 @@ class SearchViewController: UIViewController {
     }
   }
 
-  //MARK: State
+  //MARK: LineSelectionControls
 
   private func initLineSelectionControls(with state: SearchViewControllerState) {
     let lines = LinesManager.instance.getLines()
@@ -121,12 +129,6 @@ class SearchViewController: UIViewController {
     let busLines             = lines.filter { $0.type == .bus }
     let selectedBusLines     = state.selectedLines.filter { $0.type == .bus && busLines.contains($0) }
     self.busSelectionControl = LineSelectionControl(withLines: busLines, selected: selectedBusLines)
-  }
-
-  private func loadSelectorState(from state: SearchViewControllerState) {
-    let isTramFilterSelected = state.lineTypeFilter == .tram
-    self.lineTypeSelector.selectedSegmentIndex = isTramFilterSelected ? LineSelectionControlsIndices.tram : LineSelectionControlsIndices.bus
-    self.updatePageViewFromSelector(animated: false)
   }
 
   private func insetCollectionViewsBelowHeaderView() {
@@ -150,6 +152,14 @@ class SearchViewController: UIViewController {
 
     fixInsets(in: self.tramSelectionControl)
     fixInsets(in: self.busSelectionControl)
+  }
+
+  //MARK: State
+
+  private func loadSelectorState(from state: SearchViewControllerState) {
+    let isTramFilterSelected = state.lineTypeFilter == .tram
+    self.lineTypeSelector.selectedSegmentIndex = isTramFilterSelected ? LineSelectionControlsIndices.tram : LineSelectionControlsIndices.bus
+    self.updatePageViewFromSelector(animated: false)
   }
 
   private func saveState() {

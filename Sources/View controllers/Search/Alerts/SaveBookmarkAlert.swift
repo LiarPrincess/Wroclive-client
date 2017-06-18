@@ -40,13 +40,13 @@ class SaveBookmarkAlert {
   @objc private static func bookmarkNameChanged(_ sender: UITextField) {
     let isNameEmpty = sender.text?.isEmpty ?? false
 
-    if let alert = alertController(sender) {
-      let saveAction = alert.actions[1] //fml
+    if let alert = alertController(parentOf: sender) {
+      let saveAction = alert.actions[1] // fml
       saveAction.isEnabled = !isNameEmpty
     }
   }
 
-  private static func alertController(_ sender: UITextField) -> UIAlertController? {
+  private static func alertController(parentOf sender: UITextField) -> UIAlertController? {
     var responder: UIResponder! = sender
     while responder != nil && !(responder is UIAlertController) {
       responder = responder.next
