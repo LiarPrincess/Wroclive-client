@@ -19,6 +19,10 @@ class LineSelectionDataSource: NSObject {
 
   //MARK: - Methods
 
+  func sectionName(at section: Int) -> String? {
+    return section < self.viewModels.count ? self.viewModels[section].sectionName : nil
+  }
+
   func index(of line: Line) -> IndexPath? {
     guard let sectionIndex = self.viewModels.index(where: { $0.subtype == line.subtype }) else {
       return nil

@@ -6,6 +6,9 @@
 import UIKit
 import SnapKit
 
+fileprivate typealias Constants = LineSelectionControlConstants
+fileprivate typealias Layout    = Constants.Layout.SectionHeader
+
 class LineSelectionSectionHeaderView: UICollectionReusableView {
 
   //MARK: - Properties
@@ -39,10 +42,13 @@ extension LineSelectionSectionHeaderView {
     self.sectionName.setStyle(.subheadline)
     self.sectionName.numberOfLines = 0
     self.sectionName.textAlignment = .center
+    self.sectionName.isUserInteractionEnabled = false
+    
     self.addSubview(self.sectionName)
 
     self.sectionName.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
+      make.top.equalToSuperview().offset(Layout.topPadding)
+      make.left.right.equalToSuperview()
     }
   }
   

@@ -61,6 +61,7 @@
 		90AF2BE71EE9E970006E61D6 /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE61EE9E970006E61D6 /* UIView+RoundCorners.swift */; };
 		90AF8C791EF2D3FE000763B7 /* Wroclaw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */; };
 		90D7F4941EF1C3550031F5BA /* CGFloat+Rad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7F4931EF1C3550031F5BA /* CGFloat+Rad.swift */; };
+		90E927321EF9CC5C00B54789 /* UICollectionView+ContentWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E927311EF9CC5C00B54789 /* UICollectionView+ContentWidth.swift */; };
 		90FA2C861EF5172300529331 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FA2C641EF5172300529331 /* ChevronView.swift */; };
 		90FA2C871EF5172300529331 /* ChevronViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FA2C651EF5172300529331 /* ChevronViewState.swift */; };
 		90FA2C881EF5172300529331 /* LineSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FA2C681EF5172300529331 /* LineSelectionCell.swift */; };
@@ -155,6 +156,7 @@
 		90AF2BE61EE9E970006E61D6 /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
 		90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90D7F4931EF1C3550031F5BA /* CGFloat+Rad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Rad.swift"; sourceTree = "<group>"; };
+		90E927311EF9CC5C00B54789 /* UICollectionView+ContentWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ContentWidth.swift"; sourceTree = "<group>"; };
 		90FA2C641EF5172300529331 /* ChevronView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
 		90FA2C651EF5172300529331 /* ChevronViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronViewState.swift; sourceTree = "<group>"; };
 		90FA2C681EF5172300529331 /* LineSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCell.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				902330F81EDF37F500FA8F43 /* UISegmentedControl+Font.swift */,
 				902330F91EDF37F500FA8F43 /* UIView+AddBorder.swift */,
 				90AF2BE61EE9E970006E61D6 /* UIView+RoundCorners.swift */,
+				90E927311EF9CC5C00B54789 /* UICollectionView+ContentWidth.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
 				9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
+				90E927321EF9CC5C00B54789 /* UICollectionView+ContentWidth.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,
 				90FA2C9B1EF5172300529331 /* CardPanelPresentationTransition.swift in Sources */,
 				9086D44B1EE2DEA200E43D9A /* LocationManagerProtocol.swift in Sources */,

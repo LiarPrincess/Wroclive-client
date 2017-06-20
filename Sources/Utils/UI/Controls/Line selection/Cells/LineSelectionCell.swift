@@ -65,6 +65,7 @@ extension LineSelectionCell {
     self.lineName.setStyle(.body)
     self.lineName.numberOfLines = 1
     self.lineName.textAlignment = .center
+    self.lineName.isUserInteractionEnabled = false
 
     self.contentView.addSubview(self.lineName)
 

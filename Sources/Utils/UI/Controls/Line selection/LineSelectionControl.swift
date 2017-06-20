@@ -108,9 +108,7 @@ class LineSelectionControl: UIViewController {
     //solve for n:         n = (totalWidth + margin) / (cellWidth + margin)
     //solve for cellWidth: cellWidth = (totalWidth - (n-1) * margin) / n
 
-    let insets       = self.collectionView.contentInset
-    let totalWidth   = collectionView.bounds.width - insets.left - insets.right
-
+    let totalWidth   = self.collectionView.contentWidth
     let margin       = Layout.Cell.margin
     let minCellWidth = Layout.Cell.minSize
 
@@ -139,7 +137,18 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
   //MARK: - Size
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return CGSize(width: collectionView.bounds.width, height: Layout.Section.headerHeight)
+    let width = self.collectionView.contentWidth
+
+    guard let sectionName = self.collectionDataSource.sectionName(at: section) else {
+      return CGSize(width: width, height: Layout.SectionHeader.fallbackHeight)
+    }
+
+    let font           = Theme.current.font.subheadline
+    let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+    let boundingBox    = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+
+    let sectionHeight  = boundingBox.height + Layout.SectionHeader.topPadding + Layout.SectionHeader.bottomPadding
+    return CGSize(width: width, height: sectionHeight)
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -154,12 +163,6 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return Layout.Cell.margin
-  }
-
-  //MARK: - Content placement
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return Layout.Section.insets
   }
 
   //MARK: - Selection
