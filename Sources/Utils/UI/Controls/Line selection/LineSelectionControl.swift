@@ -34,6 +34,7 @@ class LineSelectionControl: UIViewController {
     set {
       if self.collectionView.contentInset != newValue {
         self.collectionView.contentInset = newValue
+        self.recalculateItemSize()
       }
     }
   }
@@ -75,6 +76,11 @@ class LineSelectionControl: UIViewController {
     self.refreshCollectionSelectedItems(animated: false)
   }
 
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    self.recalculateItemSize()
+  }
+
   //MARK: - Methods
 
   private func refreshCollectionSelectedItems(animated: Bool) {
@@ -90,6 +96,28 @@ class LineSelectionControl: UIViewController {
         }
       }
     }
+  }
+
+  fileprivate var itemSize = CGSize()
+
+  fileprivate func recalculateItemSize() {
+    //number of cells:   n
+    //number of margins: (n-1)
+
+    //totalWidth = n * cellWidth + (n-1) * margins
+    //solve for n:         n = (totalWidth + margin) / (cellWidth + margin)
+    //solve for cellWidth: cellWidth = (totalWidth - (n-1) * margin) / n
+
+    let insets       = self.collectionView.contentInset
+    let totalWidth   = collectionView.bounds.width - insets.left - insets.right
+
+    let margin       = Layout.Cell.margin
+    let minCellWidth = Layout.Cell.minSize
+
+    let numSectionsThatFit = floor((totalWidth + margin) / (minCellWidth + margin))
+    let cellWidth          = (totalWidth - (numSectionsThatFit - 1) * margin) / numSectionsThatFit
+
+    self.itemSize = CGSize(width: floor(cellWidth), height: floor(cellWidth))
   }
 
   //MARK: Delegate
@@ -115,17 +143,17 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: Layout.Cell.width, height: Layout.Cell.height)
+    return self.itemSize
   }
 
   //MARK: - Margin
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return Layout.Cell.minMargin
+    return Layout.Cell.margin
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return Layout.Cell.minMargin
+    return Layout.Cell.margin
   }
 
   //MARK: - Content placement

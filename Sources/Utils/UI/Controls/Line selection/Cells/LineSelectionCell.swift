@@ -19,6 +19,7 @@ class LineSelectionCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
+    self.updateTextColorForSelectionStatus()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -29,8 +30,9 @@ class LineSelectionCell: UICollectionViewCell {
 
   override var isSelected: Bool {
     didSet {
-      self.lineName.textColor = isSelected ? UIColor.white  : self.tintColor
-      self.backgroundColor    = isSelected ? self.tintColor : UIColor.white
+      if oldValue != self.isSelected { // performance
+        self.updateTextColorForSelectionStatus()
+      }
     }
   }
 
@@ -40,6 +42,15 @@ class LineSelectionCell: UICollectionViewCell {
     self.lineName.text = viewModel.lineName
   }
 
+  fileprivate func updateTextColorForSelectionStatus() {
+    if self.isSelected {
+      self.lineName.textColor = Theme.current.colorScheme.background
+    }
+    else {
+      self.lineName.textColor = Theme.current.colorScheme.text
+    }
+  }
+
 }
 
 //MARK: - UI Init
@@ -47,21 +58,15 @@ class LineSelectionCell: UICollectionViewCell {
 extension LineSelectionCell {
 
   fileprivate func initLayout() {
-    self.tintColor = Theme.current.colorScheme.primary
-
     self.selectedBackgroundView = UIView()
-    self.selectedBackgroundView?.backgroundColor = self.tintColor
+    self.selectedBackgroundView?.backgroundColor    = Theme.current.colorScheme.primary
+    self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
 
-    self.layer.cornerRadius = Layout.cornerRadius
-    self.layer.borderWidth  = Layout.borderWidth
-    self.layer.borderColor  = self.tintColor.cgColor
-    self.clipsToBounds      = true
-
-    self.lineName.setStyle(.bodyPrimary)
+    self.lineName.setStyle(.body)
     self.lineName.numberOfLines = 1
     self.lineName.textAlignment = .center
 
-    self.addSubview(self.lineName)
+    self.contentView.addSubview(self.lineName)
 
     self.lineName.snp.makeConstraints { make in
       make.edges.equalToSuperview()
