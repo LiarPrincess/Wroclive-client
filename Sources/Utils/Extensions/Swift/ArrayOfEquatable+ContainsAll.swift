@@ -6,7 +6,8 @@
 extension Array where Element: Equatable {
 
   func containsAll(other: [Element]) -> Bool {
-    return !other.contains { !self.contains($0) }
+    let otherContainsElementThatIDont = other.contains { !self.contains($0) }
+    return !otherContainsElementThatIDont
   }
 
 }

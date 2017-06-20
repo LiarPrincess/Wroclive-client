@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import SnapKit
 
 enum BorderEdge {
   case top
@@ -12,19 +13,19 @@ enum BorderEdge {
 
 extension UIView {
 
-  func addBorder(at borderType: BorderEdge) {
+  func addBorder(at borderEdge: BorderEdge) {
     let view = UIView()
-    view.backgroundColor = UIColor(white: 0.75, alpha: 1.0)
+    view.backgroundColor = Theme.current.colorScheme.backgroundContrast
     self.addSubview(view)
 
     view.snp.makeConstraints { make in
       make.left.right.equalToSuperview()
       make.height.equalTo(CGFloat(1) / UIScreen.main.scale)
 
-      if borderType == .top {
+      switch borderEdge {
+      case .top:
         make.top.equalToSuperview()
-      }
-      else {
+      case .bottom:
         make.bottom.equalToSuperview()
       }
     }
