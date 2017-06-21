@@ -11,13 +11,13 @@ fileprivate typealias Layout    = Constants.Layout
 
 class SearchViewController: UIViewController {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   var selectedLines: [Line] {
     return self.tramSelectionControl.selectedLines + self.busSelectionControl.selectedLines
   }
 
-  //MARK: Layout
+  // MARK: Layout
 
   let headerViewBlur = UIBlurEffect(style: .extraLight)
 
@@ -29,7 +29,7 @@ class SearchViewController: UIViewController {
   let cardTitle      = UILabel()
   let bookmarkButton = UIButton()
   let searchButton   = UIButton()
-  
+
   let lineTypeSelector = UISegmentedControl()
 
   let lineSelectionPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -45,7 +45,7 @@ class SearchViewController: UIViewController {
     static let bus  = 1
   }
 
-  //MARK: - Overriden
+  // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -65,7 +65,7 @@ class SearchViewController: UIViewController {
     self.saveState()
   }
 
-  //MARK: - Actions
+  // MARK: - Actions
 
   @objc func bookmarkButtonPressed() {
     let selectedLines = self.selectedLines
@@ -102,9 +102,9 @@ class SearchViewController: UIViewController {
     self.updatePageViewFromSelector(animated: true)
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
-  //MARK: Update
+  // MARK: Update
 
   fileprivate func updateSelectorFromPageView() {
     guard let lineSelectionControl = self.lineSelectionPageViewController.viewControllers?.first as? LineSelectionControl else {
@@ -133,7 +133,7 @@ class SearchViewController: UIViewController {
     }
   }
 
-  //MARK: LineSelectionControls
+  // MARK: LineSelectionControls
 
   private func initLineSelectionControls(with state: SearchViewControllerState) {
     let lines = LinesManager.instance.getLines()
@@ -170,7 +170,7 @@ class SearchViewController: UIViewController {
     fixInsets(in: self.busSelectionControl)
   }
 
-  //MARK: State
+  // MARK: State
 
   private func loadSelectorState(from state: SearchViewControllerState) {
     let isTramFilterSelected = state.lineTypeFilter == .tram
@@ -187,7 +187,7 @@ class SearchViewController: UIViewController {
   }
 }
 
-//MARK: - CardPanelPresentable
+// MARK: - CardPanelPresentable
 
 extension SearchViewController : CardPanelPresentable {
   var contentView:       UIView { return self.view }
@@ -226,10 +226,10 @@ extension SearchViewController: UIPageViewControllerDataSource {
     let nextIndex = index + 1
     return nextIndex < self.lineSelectionControls.count ? self.lineSelectionControls[nextIndex] : nil
   }
-  
+
 }
 
-//MARK: - UIPageViewControllerDelegate
+// MARK: - UIPageViewControllerDelegate
 
 extension SearchViewController: UIPageViewControllerDelegate {
 

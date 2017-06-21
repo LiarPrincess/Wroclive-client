@@ -18,5 +18,5 @@ struct LocationManagerConstants {
     static let location   = wroclaw
     static let regionSize = CLLocationDistance(2500.0)
   }
-  
+
 }

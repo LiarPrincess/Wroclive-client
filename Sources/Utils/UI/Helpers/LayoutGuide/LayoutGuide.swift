@@ -13,7 +13,7 @@ final class LayoutGuide: NSObject, UILayoutSupport {
   init(length: CGFloat) {
     self.length = length
   }
-  
+
   @available(iOS 9.0, *)
   var topAnchor: NSLayoutYAxisAnchor {
     return NSLayoutYAxisAnchor()

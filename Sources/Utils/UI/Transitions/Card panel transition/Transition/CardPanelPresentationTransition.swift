@@ -24,7 +24,7 @@ class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransit
     let duration = transitionDuration(using: transitionContext)
     UIView.animate(withDuration: duration, delay: 0.0, options: .curveEaseInOut, animations: {
       modalViewController.view.frame = onScreenFrame
-    }, completion: { completed in
+    }, completion: { _ in
       transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
     })
   }

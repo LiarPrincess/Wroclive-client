@@ -7,17 +7,17 @@ import UIKit
 
 class LineSelectionDataSource: NSObject {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   fileprivate var viewModels: [LineSelectionSectionViewModel]
 
-  //MARK: - Init
+  // MARK: - Init
 
   init(with lines: [Line]) {
     self.viewModels = LineSelectionSectionViewModelFactory.convert(lines)
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   func sectionName(at section: Int) -> String? {
     return section < self.viewModels.count ? self.viewModels[section].sectionName : nil
@@ -50,7 +50,7 @@ class LineSelectionDataSource: NSObject {
 
 }
 
-//MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 
 extension LineSelectionDataSource: UICollectionViewDataSource {
 

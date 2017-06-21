@@ -18,7 +18,7 @@ extension SearchViewController {
     self.initLineSelectionPageViewController()
   }
 
-  //MARK: - Private
+  // MARK: - Private
 
   private func initHeader() {
     self.headerView.setStyle(.cardPanelHeader)

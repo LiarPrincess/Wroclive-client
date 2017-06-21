@@ -9,15 +9,15 @@ fileprivate typealias Constants = LineSelectionControlConstants
 fileprivate typealias Layout    = Constants.Layout
 
 class LineSelectionControl: UIViewController {
-  
-  //MARK: - Properties
+
+  // MARK: - Properties
 
   weak var delegate: LineSelectionControlDelegate?
 
   let lines:                          [Line]
   fileprivate(set) var selectedLines: [Line]
 
-  //MARK: Collection
+  // MARK: Collection
 
   let collectionDataSource: LineSelectionDataSource
 
@@ -27,7 +27,7 @@ class LineSelectionControl: UIViewController {
     return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.collectionViewLayout)
   }()
 
-  //MARK: Layout
+  // MARK: Layout
 
   var contentInset: UIEdgeInsets {
     get { return self.collectionView.contentInset }
@@ -48,7 +48,7 @@ class LineSelectionControl: UIViewController {
     }
   }
 
-  //MARK: - Init
+  // MARK: - Init
 
   init(withLines lines: [Line], selected selectedLines: [Line], delegate: LineSelectionControlDelegate? = nil) {
     let isSelectedSubsetOfLines = lines.containsAll(other: selectedLines)
@@ -68,7 +68,7 @@ class LineSelectionControl: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
-  //MARK: - Overriden
+  // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -81,7 +81,7 @@ class LineSelectionControl: UIViewController {
     self.recalculateItemSize()
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   private func refreshCollectionSelectedItems(animated: Bool) {
     for line in self.lines {
@@ -118,7 +118,7 @@ class LineSelectionControl: UIViewController {
     self.itemSize = CGSize(width: floor(cellWidth), height: floor(cellWidth))
   }
 
-  //MARK: Delegate
+  // MARK: Delegate
 
   fileprivate func delegateDidSelect(line: Line) {
     self.delegate?.control(self, didSelect: line)
@@ -130,11 +130,11 @@ class LineSelectionControl: UIViewController {
 
 }
 
-//MARK: - CollectionViewDelegateFlowLayout
+// MARK: - CollectionViewDelegateFlowLayout
 
 extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
 
-  //MARK: - Size
+  // MARK: - Size
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
     let width = self.collectionView.contentWidth
@@ -157,7 +157,7 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
     return self.itemSize
   }
 
-  //MARK: - Margin
+  // MARK: - Margin
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return Layout.Cell.margin
@@ -167,7 +167,7 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
     return Layout.Cell.margin
   }
 
-  //MARK: - Selection
+  // MARK: - Selection
 
   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
     return true

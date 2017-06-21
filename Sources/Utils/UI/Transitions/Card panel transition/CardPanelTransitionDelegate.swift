@@ -9,12 +9,12 @@ import UIKit
 
 class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   private let relativeHeight:               CGFloat
   private let interactiveDismissTransition: CardPanelInteractiveDismissTransition
 
-  //MARK: - Init
+  // MARK: - Init
 
   init(for presentable: CardPanelPresentable, withRelativeHeight relativeHeight: CGFloat) {
     self.relativeHeight        = relativeHeight
@@ -22,7 +22,7 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
     super.init()
   }
 
-  //MARK: - Transition
+  // MARK: - Transition
 
   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
     return CardPanelPresentationTransition()
@@ -32,13 +32,13 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
     return CardPanelDismissTransition()
   }
 
-  //MARK: - Interactive transition
+  // MARK: - Interactive transition
 
   func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
     return interactiveDismissTransition.hasStarted ? interactiveDismissTransition : nil
   }
 
-  //MARK: - Presentation
+  // MARK: - Presentation
 
   func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
     return CardPanelPresenter(forPresented: presented, presenting: presenting, relativeHeight: self.relativeHeight)

@@ -7,19 +7,19 @@ import UIKit
 
 class CardPanelPresenter : UIPresentationController {
 
-  //MARK: - Properties
-  
+  // MARK: - Properties
+
   private var dimmingView:    UIView?
   private var relativeHeight: CGFloat
 
-  //MARK: - Init
+  // MARK: - Init
 
   init(forPresented presented: UIViewController, presenting: UIViewController?, relativeHeight: CGFloat) {
     self.relativeHeight = relativeHeight
     super.init(presentedViewController: presented, presenting: presenting)
   }
 
-  //MARK: - Frame
+  // MARK: - Frame
 
   override var frameOfPresentedViewInContainerView: CGRect {
     guard let containerView = self.containerView else {
@@ -31,7 +31,7 @@ class CardPanelPresenter : UIPresentationController {
     return CGRect(x: 0.0, y: viewTopOffset, width: containerView.bounds.width, height: viewHeight)
   }
 
-  //MARK: - Presentation
+  // MARK: - Presentation
 
   override func presentationTransitionWillBegin() {
     guard let containerView = self.containerView, let coordinator = presentingViewController.transitionCoordinator else {
@@ -45,12 +45,12 @@ class CardPanelPresenter : UIPresentationController {
     containerView.addSubview(self.dimmingView!)
     containerView.addSubview(self.presentedViewController.view)
 
-    coordinator.animate(alongsideTransition: { [weak self] context in
+    coordinator.animate(alongsideTransition: { [weak self] _ in
       self?.dimmingView!.alpha = CardPanelConstants.Presenter.backgroundAlpha
     }, completion: nil)
   }
 
-  //MARK: - Dismiss
+  // MARK: - Dismiss
 
   override func dismissalTransitionWillBegin() {
     guard let coordinator = presentingViewController.transitionCoordinator else {
@@ -61,7 +61,7 @@ class CardPanelPresenter : UIPresentationController {
       presentable.dismissalTransitionWillBegin()
     }
 
-    coordinator.animate(alongsideTransition: { [weak self] context in
+    coordinator.animate(alongsideTransition: { [weak self] _ in
       self?.dimmingView!.alpha = 0
     }, completion: nil)
   }

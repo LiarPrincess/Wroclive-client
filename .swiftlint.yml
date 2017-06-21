@@ -1,0 +1,18 @@
+# https://github.com/realm/SwiftLint
+
+disabled_rules:
+  - colon              # align properties
+  - comma              # align func parameters
+  - nesting            # nested structs
+
+  - line_length        # really?
+
+  - opening_brace      # allow if true { ... }
+  - statement_position # allow else in new line
+  
+  - void_return        # prefer () instead of Void
+
+included:
+  - Sources
+
+force_cast: warning

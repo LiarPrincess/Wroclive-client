@@ -15,7 +15,7 @@ enum TextInputAlertResult {
 
 class TextInputAlert {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   var title:   String?
   var message: String?
@@ -25,14 +25,14 @@ class TextInputAlert {
   var confirmButtonTitle = "Ok"
   var cancelButtonTitle  = "Cancel"
 
-  //MARK: - Init
+  // MARK: - Init
 
   init(title: String?, message: String?) {
     self.title   = title
     self.message = message
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   typealias TextInputAlertCompletion = (TextInputAlertResult) -> ()
 

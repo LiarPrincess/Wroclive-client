@@ -7,7 +7,7 @@ import UIKit
 
 class BookmarksDataSource: NSObject {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   weak var delegate: BookmarksDataSourceDelegate?
 
@@ -15,14 +15,14 @@ class BookmarksDataSource: NSObject {
 
   var bookmarks: [Bookmark] { return self.viewModels.map { $0.bookmark } }
 
-  //MARK: - Init
+  // MARK: - Init
 
   init(with bookmarks: [Bookmark], delegate: BookmarksDataSourceDelegate? = nil) {
     self.viewModels = bookmarks.map { BookmarkCellViewModel(from: $0) }
     self.delegate   = delegate
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   func bookmark(at indexPath: IndexPath) -> Bookmark? {
     guard indexPath.section == 0 else {
@@ -36,7 +36,7 @@ class BookmarksDataSource: NSObject {
     return self.viewModels[indexPath.row].bookmark
   }
 
-  //MARK: - Delegate methods
+  // MARK: - Delegate methods
 
   fileprivate func delegateDidUpdateBookmarkCount() {
     delegate?.didUpdateBookmarkCount(self)
@@ -48,11 +48,11 @@ class BookmarksDataSource: NSObject {
 
 }
 
-//MARK: - UITableViewDataSource
+// MARK: - UITableViewDataSource
 
 extension BookmarksDataSource: UITableViewDataSource {
 
-  //MARK: - Data
+  // MARK: - Data
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.viewModels.count
@@ -66,7 +66,7 @@ extension BookmarksDataSource: UITableViewDataSource {
     return cell
   }
 
-  //MARK: - Moving/reordering
+  // MARK: - Moving/reordering
 
   func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
     return true
@@ -78,7 +78,7 @@ extension BookmarksDataSource: UITableViewDataSource {
     self.delegateDidReorderBookmarks()
   }
 
-  //MARK: - Editing
+  // MARK: - Editing
 
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
     return true

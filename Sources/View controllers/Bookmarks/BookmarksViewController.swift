@@ -11,7 +11,7 @@ fileprivate typealias Layout    = Constants.Layout
 
 class BookmarksViewController: UIViewController {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   let headerViewBlur = UIBlurEffect(style: .extraLight)
 
@@ -30,7 +30,7 @@ class BookmarksViewController: UIViewController {
   let placeholderTopLabel    = UILabel()
   let placeholderBottomLabel = UILabel()
 
-  //MARK: - Overriden
+  // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -60,13 +60,13 @@ class BookmarksViewController: UIViewController {
     self.bookmarksTable.setEditing(editing, animated: true)
   }
 
-  //MARK: - Actions
+  // MARK: - Actions
 
   @objc func editButtonPressed() {
     self.setEditing(!self.isEditing, animated: true)
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   fileprivate func select(bookmark: Bookmark) {
     logger.info("didSelect: \(bookmark.name)")
@@ -118,7 +118,7 @@ class BookmarksViewController: UIViewController {
 
 }
 
-//MARK: - CardPanelPresentable
+// MARK: - CardPanelPresentable
 
 extension BookmarksViewController: CardPanelPresentable {
   var contentView:       UIView { return self.view }
@@ -136,11 +136,11 @@ extension BookmarksViewController: CardPanelPresentable {
 
 }
 
-//MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension BookmarksViewController: UITableViewDelegate {
 
-  //MARK: Height
+  // MARK: Height
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableViewAutomaticDimension
@@ -150,7 +150,7 @@ extension BookmarksViewController: UITableViewDelegate {
     return Layout.Cell.estimatedHeight
   }
 
-  //MARK: - Selection
+  // MARK: - Selection
 
   public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if let bookmark = self.bookmarksTableDataSource.bookmark(at: indexPath) {
@@ -160,7 +160,7 @@ extension BookmarksViewController: UITableViewDelegate {
 
 }
 
-//MARK: - BookmarksDataSourceDelegate
+// MARK: - BookmarksDataSourceDelegate
 
 extension BookmarksViewController: BookmarksDataSourceDelegate {
 

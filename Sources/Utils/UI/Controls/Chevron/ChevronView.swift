@@ -7,7 +7,7 @@ import UIKit
 
 class ChevronView : UIView {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   private let leftView  = UIView()
   private let rightView = UIView()
@@ -42,7 +42,7 @@ class ChevronView : UIView {
   /// Proposed size to match Apple 'look and feel'
   static var nominalSize: CGSize { return CGSize(width: 42, height: 15) }
 
-  //MARK: - Init
+  // MARK: - Init
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -59,7 +59,7 @@ class ChevronView : UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  //MARK: - Overriden
+  // MARK: - Overriden
 
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -89,7 +89,7 @@ class ChevronView : UIView {
     }
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   func setState(_ state: ChevronViewState, animated: Bool) {
     guard self._state != state else {
@@ -117,5 +117,5 @@ class ChevronView : UIView {
       UIView.performWithoutAnimation(rotateViews)
     }
   }
-  
+
 }

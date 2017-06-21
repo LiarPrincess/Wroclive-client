@@ -7,19 +7,19 @@ import Foundation
 
 class SearchViewControllerStateManager: SearchViewControllerStateManagerProtocol {
 
-  //MARK: - Singleton
+  // MARK: - Singleton
 
   static let instance: SearchViewControllerStateManagerProtocol = SearchViewControllerStateManager()
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   var state = SearchViewControllerStateManager.testData()
 
-  //MARK: - Init
+  // MARK: - Init
 
   private init() { }
 
-  //MARK: - StorageManagerProtocol
+  // MARK: - StorageManagerProtocol
 
   func saveState(state: SearchViewControllerState) {
     self.state = state
@@ -29,7 +29,7 @@ class SearchViewControllerStateManager: SearchViewControllerStateManagerProtocol
     return self.state
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   private static func testData() -> SearchViewControllerState {
     let selectedLines = [

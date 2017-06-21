@@ -5,19 +5,19 @@
 
 import UIKit
 
-//MARK: - ReusableCell
+// MARK: - ReusableCell
 
 protocol ReusableCell {
   static var identifier: String { get }
 }
 
-//MARK: - UITableViewCell
+// MARK: - UITableViewCell
 
 extension UITableViewCell: ReusableCell {
   static var identifier: String { return String(describing: self) }
 }
 
-//MARK: - UICollectionViewCell
+// MARK: - UICollectionViewCell
 
 extension UICollectionReusableView: ReusableCell {
   static var identifier: String { return String(describing: self) }

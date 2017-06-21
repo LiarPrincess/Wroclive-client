@@ -11,22 +11,22 @@ fileprivate typealias Layout    = Constants.Layout.SectionHeader
 
 class LineSelectionSectionHeaderView: UICollectionReusableView {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   var sectionName = UILabel()
 
-  //MARK: - Init
+  // MARK: - Init
 
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
   }
-  
+
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   func setUp(with viewModel: LineSelectionSectionViewModel) {
     self.sectionName.text = viewModel.sectionName
@@ -34,7 +34,7 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
 
 }
 
-//MARK: - UI Init
+// MARK: - UI Init
 
 extension LineSelectionSectionHeaderView {
 
@@ -43,7 +43,7 @@ extension LineSelectionSectionHeaderView {
     self.sectionName.numberOfLines = 0
     self.sectionName.textAlignment = .center
     self.sectionName.isUserInteractionEnabled = false
-    
+
     self.addSubview(self.sectionName)
 
     self.sectionName.snp.makeConstraints { make in
@@ -51,5 +51,5 @@ extension LineSelectionSectionHeaderView {
       make.left.right.equalToSuperview()
     }
   }
-  
+
 }

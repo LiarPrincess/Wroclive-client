@@ -14,7 +14,7 @@ fileprivate typealias Layout = BookmarksViewControllerConstants.Layout.Cell
 
 class BookmarkCell: UITableViewCell {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   lazy var bookmarkName: UILabel = {
     let label = UILabel()
@@ -40,7 +40,7 @@ class BookmarkCell: UITableViewCell {
     return label
   }()
 
-  //MARK: - Init
+  // MARK: - Init
 
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -55,7 +55,7 @@ class BookmarkCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  //MARK: - Overriden
+  // MARK: - Overriden
 
   // disable alpha, so we dont end up with transparent cells when reordering
   override var alpha: CGFloat {
@@ -130,7 +130,7 @@ class BookmarkCell: UITableViewCell {
     super.updateConstraints()
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   func setUp(with viewModel: BookmarkCellViewModel) {
     self.bookmarkName.text = viewModel.bookmarkName
@@ -148,7 +148,7 @@ class BookmarkCell: UITableViewCell {
     paragraphStyle.alignment   = .center
 
     let labelText = NSMutableAttributedString(string: text)
-    labelText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, labelText.length))
+    labelText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: labelText.length))
 
     label.isHidden       = text.isEmpty
     label.attributedText = labelText

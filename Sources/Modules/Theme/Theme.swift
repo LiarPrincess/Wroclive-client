@@ -5,10 +5,11 @@
 
 import UIKit
 
-let NotificationContentSizeCategoryChanged: String = "NotificationContentSizeCategoryChanged"
-let NotificationColorSchemeChanged:         String = "NotificationColorSchemeChanged"
+let notificationContentSizeCategoryChanged: String = "NotificationContentSizeCategoryChanged"
+let notificationColorSchemeChanged:         String = "NotificationColorSchemeChanged"
 
 // source: https://alttab.co/blog/2016/06/21/theming-ios-applications/
+
 class Theme {
 
   // Mark - Singleton
@@ -37,21 +38,21 @@ class Theme {
     self.stopObservingContentSizeCategory()
   }
 
-  //MARK: - Notifications
+  // MARK: - Notifications
 
   func notifyContentSizeCategoryChanged() {
-    let name = NSNotification.Name(rawValue: NotificationContentSizeCategoryChanged)
+    let name = NSNotification.Name(rawValue: notificationContentSizeCategoryChanged)
     NotificationCenter.default.post(Notification(name: name, object: nil))
   }
 
   func notifyColorSchemeChanged() {
-    let name = NSNotification.Name(rawValue: NotificationColorSchemeChanged)
+    let name = NSNotification.Name(rawValue: notificationColorSchemeChanged)
     NotificationCenter.default.post(Notification(name: name, object: nil))
   }
 
 }
 
-//MARK: - Content size category observer
+// MARK: - Content size category observer
 
 extension Theme {
   fileprivate func startObservingContentSizeCategory() {

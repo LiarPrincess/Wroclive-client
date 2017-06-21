@@ -16,7 +16,7 @@ enum LineSubtype: Int {
   case night
 }
 
-//MARK: - StringConvertible
+// MARK: - StringConvertible
 
 extension LineSubtype: CustomStringConvertible {
   var description: String {

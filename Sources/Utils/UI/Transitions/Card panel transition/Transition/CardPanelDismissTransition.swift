@@ -24,10 +24,10 @@ class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitionin
 
     UIView.animate(withDuration: duration, delay: 0.0, options: options, animations: {
       modalViewController.view.frame = offScreenFrame
-    }, completion: { completed in
+    }, completion: { _ in
       modalViewController.view.frame = onScreenFrame
       transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
     })
   }
-  
+
 }

@@ -10,7 +10,7 @@ struct LineSelectionSectionViewModelFactory {
     return sortViewModels(viewModels)
   }
 
-  //MARK: - Convert
+  // MARK: - Convert
 
   private static func convertToViewModels(lines: [Line]) -> [LineSelectionSectionViewModel] {
     var linesBySubtype = [LineSubtype: [Line]]()
@@ -31,7 +31,7 @@ struct LineSelectionSectionViewModelFactory {
     }
   }
 
-  //MARK: - Sort
+  // MARK: - Sort
 
   private static func sortLines(_ lines: [Line]) -> [Line] {
     return lines.sorted { (lhs, rhs) in

@@ -7,19 +7,19 @@ import Foundation
 
 class BookmarksManager: BookmarksManagerProtocol {
 
-  //MARK: - Singleton
+  // MARK: - Singleton
 
   static let instance: BookmarksManagerProtocol = BookmarksManager()
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   private var bookmarks = BookmarksManager.testData()
 
-  //MARK: - Init
+  // MARK: - Init
 
   private init() { }
 
-  //MARK: - BookmarksManagerProtocol
+  // MARK: - BookmarksManagerProtocol
 
   func add(bookmark: Bookmark) {
     self.bookmarks.append(bookmark)
@@ -33,7 +33,7 @@ class BookmarksManager: BookmarksManagerProtocol {
     self.bookmarks = bookmarks
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   private static func testData() -> [Bookmark] {
     let line1 = Line(name: "1", type: .tram, subtype: .regular)

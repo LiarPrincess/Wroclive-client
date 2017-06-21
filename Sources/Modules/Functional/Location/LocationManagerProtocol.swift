@@ -8,15 +8,16 @@ import MapKit
 
 protocol LocationManagerProtocol {
 
-  //MARK: - Initial region
+  // MARK: - Initial region
 
   func getInitialRegion() -> MKCoordinateRegion
 
-  //MARK: - Authorization
+  // MARK: - Authorization
 
   var authorizationStatus: CLAuthorizationStatus { get }
-  
+
   func requestInUseAuthorization()
   func showAlertForDeniedAuthorization(in parent: UIViewController)
   func showAlertForRestrictedAuthorization(in parent: UIViewController)
+
 }

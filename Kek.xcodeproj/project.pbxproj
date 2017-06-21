@@ -683,6 +683,7 @@
 				903075D71E5FA42A00DF4996 /* Embed Frameworks */,
 				7C6B10EE542CE6054AEF38F4 /* [CP] Embed Pods Frameworks */,
 				77687F7431E0E8C5EE44996A /* [CP] Copy Pods Resources */,
+				90C5EE3D1EFB2DFE007D11D5 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -785,6 +786,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kek/Pods-Kek-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		90C5EE3D1EFB2DFE007D11D5 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

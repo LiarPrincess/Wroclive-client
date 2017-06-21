@@ -9,11 +9,11 @@ import SnapKit
 
 class MapViewController: UIViewController {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   let mapView = MKMapView()
 
-  //MARK: - Overriden
+  // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,7 +28,7 @@ class MapViewController: UIViewController {
     return LayoutGuide(length: 44.0)
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   private func showUserLocation() {
     LocationManager.instance.requestInUseAuthorization()
@@ -39,11 +39,11 @@ class MapViewController: UIViewController {
 
 }
 
-//MARK: - MKMapViewDelegate
+// MARK: - MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
 
-  //MARK: - Tracking mode
+  // MARK: - Tracking mode
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
     let authorizationStatus = LocationManager.instance.authorizationStatus

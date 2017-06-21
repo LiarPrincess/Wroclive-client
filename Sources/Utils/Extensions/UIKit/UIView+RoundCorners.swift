@@ -6,7 +6,6 @@
 import UIKit
 
 extension UIView {
-
   func roundTopCorners(radius: CGFloat) {
     self.roundCorners([UIRectCorner.topLeft, UIRectCorner.topRight], radius: radius)
   }
@@ -25,5 +24,4 @@ extension UIView {
 
     self.layer.mask = maskLayer
   }
-
 }

@@ -5,7 +5,7 @@
 
 import UIKit
 
-//MARK: - ReusableCellContainer
+// MARK: - ReusableCellContainer
 
 protocol ReusableCellContainer {
   associatedtype CellType
@@ -28,7 +28,7 @@ extension ReusableCellContainer {
   }
 }
 
-//MARK: - UITableView
+// MARK: - UITableView
 
 extension UITableView: ReusableCellContainer {
   typealias CellType = UITableViewCell
@@ -42,7 +42,7 @@ extension UITableView: ReusableCellContainer {
   }
 }
 
-//MARK: - UICollectionView
+// MARK: - UICollectionView
 
 extension UICollectionView: ReusableCellContainer {
   typealias CellType = UICollectionViewCell

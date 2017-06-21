@@ -5,7 +5,7 @@
 
 import UIKit
 
-//MARK: - Text
+// MARK: - Text
 
 extension UILabel {
   func setStyle(_ style: TextStyle) {
@@ -13,7 +13,7 @@ extension UILabel {
   }
 }
 
-//MARK: - Button
+// MARK: - Button
 
 extension UIButton {
   func setStyle(_ style: ButtonStyle) {
@@ -27,7 +27,7 @@ extension UISegmentedControl {
   }
 }
 
-//MARK: - View
+// MARK: - View
 
 extension UIView {
   func setStyle(_ style: ViewStyle) {

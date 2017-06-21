@@ -10,7 +10,7 @@ enum LineType: Int {
   case bus
 }
 
-//MARK: - StringConvertible
+// MARK: - StringConvertible
 
 extension LineType: CustomStringConvertible {
   var description: String {

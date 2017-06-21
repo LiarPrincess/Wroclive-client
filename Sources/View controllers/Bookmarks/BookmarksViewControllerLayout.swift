@@ -9,7 +9,7 @@ import SnapKit
 fileprivate typealias Constants = BookmarksViewControllerConstants
 fileprivate typealias Layout    = Constants.Layout
 
-//MARK: - Layout
+// MARK: - Layout
 
 extension BookmarksViewController {
 
@@ -21,8 +21,8 @@ extension BookmarksViewController {
     self.initBookmarksTablePlaceholder()
   }
 
-  //MARK: - Private
-  
+  // MARK: - Private
+
   private func initHeader() {
     self.headerView.setStyle(.cardPanelHeader)
     self.view.addSubview(self.headerView)

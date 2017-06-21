@@ -7,25 +7,25 @@ import Foundation
 
 class LinesManager: LinesManagerProtocol {
 
-  //MARK: - Singleton
+  // MARK: - Singleton
 
   static let instance: LinesManagerProtocol = LinesManager()
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   private var lines = LinesManager.testData()
 
-  //MARK: - Init
+  // MARK: - Init
 
   private init() { }
 
-  //MARK: - LinesManagerProtocol
+  // MARK: - LinesManagerProtocol
 
   func getLines() -> [Line] {
     return self.lines
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   private static func testData() -> [Line] {
     return [
@@ -118,8 +118,8 @@ class LinesManager: LinesManagerProtocol {
       Line(name: "609", type: .bus, subtype: .suburban),
       Line(name: "612", type: .bus, subtype: .suburban),
       Line(name: "116", type: .bus, subtype: .regular),
-      Line(name: "128", type: .bus, subtype: .regular),
+      Line(name: "128", type: .bus, subtype: .regular)
     ]
   }
-  
+
 }

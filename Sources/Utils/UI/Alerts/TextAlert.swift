@@ -7,21 +7,21 @@ import UIKit
 
 class TextAlert {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   var title:   String?
   var message: String?
 
   var closeButtonTitle = "Close"
 
-  //MARK: - Init
+  // MARK: - Init
 
   init(title: String?, message: String?) {
     self.title   = title
     self.message = message
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   func present(in viewController: UIViewController, animated: Bool) {
     let alertController = UIAlertController(title: self.title, message: self.message, preferredStyle: .alert)

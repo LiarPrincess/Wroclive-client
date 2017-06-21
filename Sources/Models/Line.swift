@@ -11,17 +11,17 @@ struct Line {
   let subtype: LineSubtype
 }
 
-//MARK: - Equatable
+// MARK: - Equatable
 
 extension Line: Equatable {
-  static func ==(lhs: Line, rhs: Line) -> Bool {
+  static func == (lhs: Line, rhs: Line) -> Bool {
     return lhs.name    == rhs.name
         && lhs.type    == rhs.type
         && lhs.subtype == rhs.subtype
   }
 }
 
-//MARK: - StringConvertible
+// MARK: - StringConvertible
 
 extension Line: CustomStringConvertible {
   var description: String { return "(\(self.name), \(self.subtype) \(self.type))" }

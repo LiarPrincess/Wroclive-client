@@ -25,4 +25,3 @@ struct SystemFontProvider: FontProvider {
     self.bodyBold    = UIFont.systemFont(ofSize: defaultFontSize,        weight: UIFontWeightBold)
   }
 }
-

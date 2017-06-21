@@ -11,12 +11,12 @@ fileprivate typealias Constants = MainViewControllerConstants
 
 class MainViewController: UIViewController {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   let mapViewController = MapViewController()
 
   let toolbar             = UIToolbar()
-  
+
   let userTrackingButton  = MKUserTrackingBarButtonItem()
   let searchButton        = UIBarButtonItem()
   let bookmarksButton     = UIBarButtonItem()
@@ -25,14 +25,14 @@ class MainViewController: UIViewController {
   var searchTransitionDelegate:    UIViewControllerTransitioningDelegate?
   var bookmarksTransitionDelegate: UIViewControllerTransitioningDelegate?
 
-  //MARK: - Overriden
+  // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
   }
 
-  //MARK: - Actions
+  // MARK: - Actions
 
   @objc func searchButtonPressed() {
     let relativeHeight = Constants.CardPanel.searchRelativeHeight

@@ -10,23 +10,23 @@ fileprivate typealias Layout = LineSelectionControlConstants.Layout.Cell
 
 class LineSelectionCell: UICollectionViewCell {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   var lineName = UILabel()
 
-  //MARK: - Init
+  // MARK: - Init
 
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
     self.updateTextColorForSelectionStatus()
   }
-  
+
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  //MARK: - Overriden
+  // MARK: - Overriden
 
   override var isSelected: Bool {
     didSet {
@@ -36,7 +36,7 @@ class LineSelectionCell: UICollectionViewCell {
     }
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   func setUp(with viewModel: LineSelectionCellViewModel) {
     self.lineName.text = viewModel.lineName
@@ -53,7 +53,7 @@ class LineSelectionCell: UICollectionViewCell {
 
 }
 
-//MARK: - UI Init
+// MARK: - UI Init
 
 extension LineSelectionCell {
 

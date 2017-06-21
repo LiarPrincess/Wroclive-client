@@ -5,7 +5,7 @@
 
 import UIKit
 
-//MARK: - ReusableSuplementaryViewContainer
+// MARK: - ReusableSuplementaryViewContainer
 
 protocol ReusableSuplementaryViewContainer {
   func register(_ viewClass: Swift.AnyClass?, forSupplementaryViewOfKind elementKind: String, withReuseIdentifier identifier: String)
@@ -26,6 +26,6 @@ extension ReusableSuplementaryViewContainer {
   }
 }
 
-//MARK: - UICollectionView
+// MARK: - UICollectionView
 
 extension UICollectionView: ReusableSuplementaryViewContainer { }

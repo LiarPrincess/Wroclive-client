@@ -7,7 +7,7 @@ import UIKit
 
 class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransition {
 
-  //MARK: - Properties
+  // MARK: - Properties
 
   var hasStarted = false
 
@@ -19,7 +19,7 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
     set { }
   }
 
-  //MARK: - Init
+  // MARK: - Init
 
   init(for presentable: CardPanelPresentable) {
     self.presentable = presentable
@@ -29,7 +29,7 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
     self.presentable?.interactionTarget.addGestureRecognizer(gestureRecognizer)
   }
 
-  //MARK: - Gesture recognizers
+  // MARK: - Gesture recognizers
 
   func handleGesture(gesture: UIPanGestureRecognizer) {
     guard let presentable = self.presentable else {
@@ -63,7 +63,7 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
     }
   }
 
-  //MARK: - Methods
+  // MARK: - Methods
 
   private func shouldFinish(gesture: UIPanGestureRecognizer, completion percent: CGFloat) -> Bool {
     typealias Constants = CardPanelConstants.FinishContitions
