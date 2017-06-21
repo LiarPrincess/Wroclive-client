@@ -13,13 +13,15 @@ class SearchViewController: UIViewController {
 
   //MARK: - Properties
 
-  var selectedLines: [Line] { return self.tramSelectionControl.selectedLines + self.busSelectionControl.selectedLines }
+  var selectedLines: [Line] {
+    return self.tramSelectionControl.selectedLines + self.busSelectionControl.selectedLines
+  }
 
   //MARK: Layout
 
   let headerViewBlur = UIBlurEffect(style: .extraLight)
 
-  lazy var headerView: UIVisualEffectView =  {
+  lazy var headerView: UIVisualEffectView = {
     return UIVisualEffectView(effect: self.headerViewBlur)
   }()
 
@@ -69,12 +71,26 @@ class SearchViewController: UIViewController {
     let selectedLines = self.selectedLines
 
     if selectedLines.count > 0 {
-      let alert = SaveBookmarkAlert.create(forSaving: self.selectedLines)
-      self.present(alert, animated: true, completion: nil)
+      let nameInput = TextInputAlert(title: "New bookmark", message: "Enter name for this bookmark.")
+      nameInput.placeholder        = "Name"
+      nameInput.confirmButtonTitle = "Save"
+      nameInput.cancelButtonTitle  = "Cancel"
+
+      nameInput.present(in: self, animated: true) { [weak self] result in
+        guard let strongSelf = self else {
+          return
+        }
+
+        if case let .confirm(bookmarkName) = result {
+          let bookmark = Bookmark(name: bookmarkName, lines: strongSelf.selectedLines)
+          BookmarksManager.instance.add(bookmark: bookmark)
+        }
+      }
     }
     else {
-      let alert = NoLinesSelectedAlert.create()
-      self.present(alert, animated: true, completion: nil)
+      let alert = TextAlert(title: "No lines selected", message: "Please select some lines before trying to create bookmark.")
+      alert.closeButtonTitle = "Ok"
+      alert.present(in: self, animated: true)
     }
   }
 
