@@ -148,9 +148,9 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
     let textSize       = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
 
     typealias HeaderLayout = Layout.SectionHeader
-    let topPadding    = HeaderLayout.topPadding
-    let bottomPadding = HeaderLayout.bottomPadding
-    return CGSize(width: width, height: topPadding + textSize.height + bottomPadding)
+    let topInset    = HeaderLayout.topInset
+    let bottomInset = HeaderLayout.bottomInset
+    return CGSize(width: width, height: topInset + textSize.height + bottomInset)
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

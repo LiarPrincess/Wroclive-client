@@ -76,7 +76,7 @@ class BookmarkCell: UITableViewCell {
 
   private func updateLabelPreferredWidths() {
     //hack: we need to calculate from cell not content view as content view will shrink on edit
-    let labelWidth = self.bounds.width - Layout.leftOffset - Layout.rightOffset
+    let labelWidth = self.bounds.width - Layout.leftInset - Layout.rightInset
     self.bookmarkName.preferredMaxLayoutWidth = labelWidth
     self.tramLines.preferredMaxLayoutWidth    = labelWidth
     self.busLines.preferredMaxLayoutWidth     = labelWidth
@@ -94,22 +94,22 @@ class BookmarkCell: UITableViewCell {
   override func updateConstraints() {
     if !self.didSetupConstraints {
       self.bookmarkName.snp.makeConstraints { make in
-        make.top.equalToSuperview().offset(Layout.topPadding)
-        make.left.equalToSuperview().offset(Layout.leftOffset)
-        make.right.equalToSuperview().offset(-Layout.rightOffset)
+        make.top.equalToSuperview().offset(Layout.topInset)
+        make.left.equalToSuperview().offset(Layout.leftInset)
+        make.right.equalToSuperview().offset(-Layout.rightInset)
       }
 
       self.tramLines.snp.makeConstraints { make in
         make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.verticalSpacing)
-        make.left.equalToSuperview().offset(Layout.leftOffset)
-        make.right.equalToSuperview().offset(-Layout.rightOffset)
+        make.left.equalToSuperview().offset(Layout.leftInset)
+        make.right.equalToSuperview().offset(-Layout.rightInset)
       }
 
       self.busLines.snp.makeConstraints { make in
         make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.verticalSpacing)
-        make.left.equalToSuperview().offset(Layout.leftOffset)
-        make.right.equalToSuperview().offset(-Layout.rightOffset)
-        make.bottom.equalToSuperview().offset(-Layout.bottomPadding)
+        make.left.equalToSuperview().offset(Layout.leftInset)
+        make.right.equalToSuperview().offset(-Layout.rightInset)
+        make.bottom.equalToSuperview().offset(-Layout.bottomInset)
       }
 
       self.didSetupConstraints = true

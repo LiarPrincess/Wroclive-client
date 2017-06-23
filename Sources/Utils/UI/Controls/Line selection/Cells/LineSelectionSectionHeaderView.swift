@@ -47,7 +47,7 @@ extension LineSelectionSectionHeaderView {
     self.addSubview(self.sectionName)
 
     self.sectionName.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.topPadding)
+      make.top.equalToSuperview().offset(Layout.topInset)
       make.left.right.equalToSuperview()
     }
   }

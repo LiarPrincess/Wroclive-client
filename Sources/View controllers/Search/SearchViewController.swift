@@ -153,13 +153,13 @@ class SearchViewController: UIViewController {
       let headerHeight = self.headerView.bounds.height
 
       if currentInset.top < headerHeight {
-        let topOffset   = headerHeight
-        let leftOffset  = Layout.leftOffset
-        let rightOffset = Layout.rightOffset
-        let bottomInset = Layout.bottomOffset
+        let topInset    = headerHeight
+        let leftInset   = Layout.leftInset
+        let rightInset  = Layout.rightInset
+        let bottomInset = Layout.bottomInset
 
-        let contentInset          = UIEdgeInsets(top: topOffset, left: leftOffset, bottom: bottomInset, right: rightOffset)
-        let scrollIndicatorInsets = UIEdgeInsets(top: topOffset, left: 0.0,        bottom: 0.0,         right: 0.0)
+        let contentInset          = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+        let scrollIndicatorInsets = UIEdgeInsets(top: topInset, left: 0.0,       bottom: 0.0,         right: 0.0)
 
         lineSelection.contentInset          = contentInset
         lineSelection.scrollIndicatorInsets = scrollIndicatorInsets

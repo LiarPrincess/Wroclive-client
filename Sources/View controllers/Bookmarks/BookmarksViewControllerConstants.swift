@@ -8,40 +8,47 @@ import UIKit
 struct BookmarksViewControllerConstants {
 
   struct Layout {
-    static let leftOffset:  CGFloat = 16.0
-    static let rightOffset: CGFloat = leftOffset
+    static let leftInset:  CGFloat = 16.0
+    static let rightInset: CGFloat = leftInset
 
     struct Header {
-      static let chevronTopOffset:  CGFloat =  8.0
+      static let chevronY:  CGFloat =  8.0
 
-      static let topPadding:        CGFloat = 32.0
-      static let bottomPadding:     CGFloat =  8.0
-      static let horizontalSpacing: CGFloat =  8.0
+      static let topInset:    CGFloat = 32.0
+      static let bottomInset: CGFloat =  8.0
 
-      struct EditButton {
-        static let contentInsets = UIEdgeInsets(top: 17.0, left: 20.0, bottom: 4.0, right: Layout.rightOffset)
-      }
+      static let editButtonInsets = UIEdgeInsets(top: 20.0, left: Layout.rightInset, bottom: 4.0, right: Layout.rightInset)
     }
 
     struct Cell {
-      static let topPadding:    CGFloat = 9.0
-      static let bottomPadding: CGFloat = topPadding
+      
+      // topInset
+      // [name]
+      // verticalSpacing
+      // [linesLabel]
+      // verticalSpacing
+      // [linesLabel]
+      // bottomInset
 
-      static let leftOffset:  CGFloat = 50.0
-      static let rightOffset: CGFloat = leftOffset
+      static let topInset:    CGFloat = 12.0
+      static let bottomInset: CGFloat = topInset
 
-      static let verticalSpacing: CGFloat = 8.0
+      static let leftInset:  CGFloat = 50.0
+      static let rightInset: CGFloat = leftInset
+
+      static let verticalSpacing: CGFloat = 12.0
 
       static let estimatedHeight: CGFloat = 200.0
 
       struct LinesLabel {
-        static let lineSpacing:  CGFloat = 3.0
+        static let lineSpacing: CGFloat  = 10.0
       }
+
     }
 
     struct Placeholder {
-      static let leftOffset:  CGFloat = 35.0
-      static let rightOffset: CGFloat = leftOffset
+      static let leftInset:  CGFloat = 35.0
+      static let rightInset: CGFloat = leftInset
 
       struct TopLabel {
         static let topOffset: CGFloat = 35.0
@@ -54,7 +61,7 @@ struct BookmarksViewControllerConstants {
   }
 
   struct Animations {
-    static let chevronDismisRelativeDuration: TimeInterval = 0.05
+    static let chevronDismissRelativeDuration: TimeInterval = 0.05
   }
 
 }

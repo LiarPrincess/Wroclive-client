@@ -30,13 +30,13 @@ extension SearchViewController {
 
     self.chevronView.state = .down
     self.chevronView.color = Theme.current.colorScheme.backgroundContrast
-    self.chevronView.animationDuration = Constants.Animations.chevronDismisRelativeDuration
+    self.chevronView.animationDuration = Constants.Animations.chevronDismissRelativeDuration
     self.view.addSubview(chevronView)
 
     self.chevronView.snp.makeConstraints { make in
       let chevronViewSize = ChevronView.nominalSize
 
-      make.top.equalToSuperview().offset(Layout.Header.chevronTopOffset)
+      make.top.equalToSuperview().offset(Layout.Header.chevronY)
       make.centerX.equalToSuperview()
       make.width.equalTo(chevronViewSize.width)
       make.height.equalTo(chevronViewSize.height)
@@ -49,8 +49,8 @@ extension SearchViewController {
     self.headerView.addSubview(self.cardTitle)
 
     self.cardTitle.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.Header.topPadding)
-      make.left.equalToSuperview().offset(Layout.leftOffset)
+      make.top.equalToSuperview().offset(Layout.Header.topInset)
+      make.left.equalToSuperview().offset(Layout.leftInset)
     }
 
     self.bookmarkButton.setStyle(.templateImage)
@@ -83,9 +83,9 @@ extension SearchViewController {
 
     self.lineTypeSelector.snp.makeConstraints { make in
       make.top.equalTo(self.cardTitle.snp.bottom).offset(Layout.Header.verticalSpacing)
-      make.left.equalToSuperview().offset(Layout.leftOffset)
-      make.right.equalToSuperview().offset(-Layout.rightOffset)
-      make.bottom.equalToSuperview().offset(-Layout.Header.bottomPadding)
+      make.left.equalToSuperview().offset(Layout.leftInset)
+      make.right.equalToSuperview().offset(-Layout.rightInset)
+      make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
     }
   }
 

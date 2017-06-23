@@ -10,10 +10,10 @@ struct LineSelectionControlConstants {
   struct Layout {
 
     struct SectionHeader {
-      static let topPadding:    CGFloat = 28.0
-      static let bottomPadding: CGFloat = 12.0
+      static let topInset:    CGFloat = 16.0
+      static let bottomInset: CGFloat =  8.0
 
-      static let fallbackHeight: CGFloat = 55.0
+      static let fallbackHeight: CGFloat = topInset + 28.0 + bottomInset
     }
 
     struct Cell {

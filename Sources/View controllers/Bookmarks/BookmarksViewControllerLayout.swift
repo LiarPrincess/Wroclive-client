@@ -33,13 +33,13 @@ extension BookmarksViewController {
 
     self.chevronView.state = .down
     self.chevronView.color = Theme.current.colorScheme.backgroundContrast
-    self.chevronView.animationDuration = Constants.Animations.chevronDismisRelativeDuration
+    self.chevronView.animationDuration = Constants.Animations.chevronDismissRelativeDuration
     self.view.addSubview(chevronView)
 
     self.chevronView.snp.makeConstraints { make in
       let chevronViewSize = ChevronView.nominalSize
 
-      make.top.equalToSuperview().offset(Layout.Header.chevronTopOffset)
+      make.top.equalToSuperview().offset(Layout.Header.chevronY)
       make.centerX.equalToSuperview()
       make.width.equalTo(chevronViewSize.width)
       make.height.equalTo(chevronViewSize.height)
@@ -52,24 +52,19 @@ extension BookmarksViewController {
     self.headerView.addSubview(self.cardTitle)
 
     self.cardTitle.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.Header.topPadding)
-      make.bottom.equalToSuperview().offset(-Layout.Header.bottomPadding)
-      make.left.equalToSuperview().offset(Layout.leftOffset)
+      make.top.equalToSuperview().offset(Layout.Header.topInset)
+      make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
+      make.left.equalToSuperview().offset(Layout.leftInset)
     }
 
     self.editButton.setStyle(.link)
     self.editButton.setTitle("Edit", for: .normal)
-    self.editButton.setContentHuggingPriority(251.0, for: .horizontal)
-    self.editButton.contentEdgeInsets = Layout.Header.EditButton.contentInsets
+    self.editButton.contentEdgeInsets = Layout.Header.editButtonInsets
     self.editButton.addTarget(self, action: #selector(editButtonPressed), for: .touchUpInside)
     self.headerView.addSubview(self.editButton)
 
-//self.cardTitle.backgroundColor = UIColor.green
-//self.editButton.backgroundColor = UIColor.blue
-
     self.editButton.snp.makeConstraints { make in
       make.lastBaseline.equalTo(self.cardTitle.snp.lastBaseline)
-      make.left.equalTo(self.cardTitle.snp.right).inset(-Layout.Header.horizontalSpacing)
       make.right.equalToSuperview()
     }
   }
@@ -92,8 +87,8 @@ extension BookmarksViewController {
 
     self.placeholderView.snp.makeConstraints { make in
       make.top.equalTo(self.headerView.snp.bottom)
-      make.left.equalToSuperview().offset(Layout.Placeholder.leftOffset)
-      make.right.equalToSuperview().offset(-Layout.Placeholder.rightOffset)
+      make.left.equalToSuperview().offset(Layout.Placeholder.leftInset)
+      make.right.equalToSuperview().offset(-Layout.Placeholder.rightInset)
       make.bottom.equalToSuperview()
     }
 
