@@ -53,6 +53,10 @@ class ChevronView : UIView {
     self.addSubview(self.rightView)
     self.leftView.backgroundColor  = self.color
     self.rightView.backgroundColor = self.color
+
+    // see: https://stackoverflow.com/a/32579709
+    self.leftView.layer.allowsEdgeAntialiasing = true
+    self.rightView.layer.allowsEdgeAntialiasing = true
   }
 
   required init?(coder aDecoder: NSCoder) {
