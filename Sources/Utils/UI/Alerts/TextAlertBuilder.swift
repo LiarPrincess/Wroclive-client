@@ -5,31 +5,30 @@
 
 import UIKit
 
-class TextAlert {
+class TextAlertBuilder {
 
   // MARK: - Properties
 
-  var title:   String?
+  var title:   String
   var message: String?
 
   var closeButtonTitle = "Close"
 
   // MARK: - Init
 
-  init(title: String?, message: String?) {
-    self.title   = title
-    self.message = message
+  init(title: String) {
+    self.title = title
   }
 
   // MARK: - Methods
 
-  func present(in viewController: UIViewController, animated: Bool) {
+  func create() -> UIAlertController {
     let alertController = UIAlertController(title: self.title, message: self.message, preferredStyle: .alert)
     alertController.view.setStyle(.alert)
 
     let closeAction = UIAlertAction(title: self.closeButtonTitle, style: .default, handler: nil)
     alertController.addAction(closeAction)
 
-    viewController.present(alertController, animated: animated, completion: nil)
+    return alertController
   }
 }

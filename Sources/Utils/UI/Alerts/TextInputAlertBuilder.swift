@@ -13,11 +13,11 @@ enum TextInputAlertResult {
   case error
 }
 
-class TextInputAlert {
+class TextInputAlertBuilder {
 
   // MARK: - Properties
 
-  var title:   String?
+  var title:   String
   var message: String?
 
   var placeholder = ""
@@ -25,32 +25,32 @@ class TextInputAlert {
   var confirmButtonTitle = "Ok"
   var cancelButtonTitle  = "Cancel"
 
+  typealias TextInputAlertCompletion = (TextInputAlertResult) -> ()
+  var completion: TextInputAlertCompletion?
+
   // MARK: - Init
 
-  init(title: String?, message: String?) {
-    self.title   = title
-    self.message = message
+  init(title: String) {
+    self.title = title
   }
 
   // MARK: - Methods
 
-  typealias TextInputAlertCompletion = (TextInputAlertResult) -> ()
-
-  func present(in viewController: UIViewController, animated: Bool, completion: TextInputAlertCompletion? = nil) {
+  func create() -> UIAlertController {
     let alertController = UIAlertController(title: self.title, message: self.message, preferredStyle: .alert)
     alertController.view.setStyle(.alert)
 
     let cancelAction = UIAlertAction(title: self.cancelButtonTitle, style: .cancel) { _ in
-      completion?(.cancel)
+      self.completion?(.cancel)
     }
     alertController.addAction(cancelAction)
 
     let confirmAction = UIAlertAction(title: self.confirmButtonTitle, style: .default) { [weak alertController] _ in
       if let textField = alertController?.textFields?[0], let text = textField.text {
-        completion?(.confirm(text: text))
+        self.completion?(.confirm(text: text))
       }
       else {
-        completion?(.error)
+        self.completion?(.error)
       }
     }
     confirmAction.isEnabled = false
@@ -59,10 +59,10 @@ class TextInputAlert {
     alertController.addTextField { textField in
       textField.placeholder            = self.placeholder
       textField.autocapitalizationType = .sentences
-      textField.addTarget(TextInputAlert.self, action: #selector(TextInputAlert.textValueChanged(_:)), for: .editingChanged)
+      textField.addTarget(TextInputAlertBuilder.self, action: #selector(TextInputAlertBuilder.textValueChanged(_:)), for: .editingChanged)
     }
 
-    viewController.present(alertController, animated: animated, completion: nil)
+    return alertController
   }
 
   @objc private static func textValueChanged(_ sender: UITextField) {

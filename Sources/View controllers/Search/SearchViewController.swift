@@ -68,30 +68,7 @@ class SearchViewController: UIViewController {
   // MARK: - Actions
 
   @objc func bookmarkButtonPressed() {
-    let selectedLines = self.selectedLines
-
-    if selectedLines.count > 0 {
-      let nameInput = TextInputAlert(title: "New bookmark", message: "Enter name for this bookmark.")
-      nameInput.placeholder        = "Name"
-      nameInput.confirmButtonTitle = "Save"
-      nameInput.cancelButtonTitle  = "Cancel"
-
-      nameInput.present(in: self, animated: true) { [weak self] result in
-        guard let strongSelf = self else {
-          return
-        }
-
-        if case let .confirm(bookmarkName) = result {
-          let bookmark = Bookmark(name: bookmarkName, lines: strongSelf.selectedLines)
-          BookmarksManager.instance.add(bookmark: bookmark)
-        }
-      }
-    }
-    else {
-      let alert = TextAlert(title: "No lines selected", message: "Please select some lines before trying to create bookmark.")
-      alert.closeButtonTitle = "Ok"
-      alert.present(in: self, animated: true)
-    }
+    self.saveSelectedLinesAsBookmark()
   }
 
   @objc func searchButtonPressed() {
@@ -201,6 +178,58 @@ extension SearchViewController : CardPanelPresentable {
     if !completed {
       self.chevronView.setState(.down, animated: true)
     }
+  }
+}
+
+// MARK: - Add bookmark
+
+extension SearchViewController {
+
+  fileprivate func saveSelectedLinesAsBookmark() {
+    let selectedLines = self.selectedLines
+
+    if selectedLines.count > 0 {
+      self.showBookmarkCreationAlert()
+    }
+    else { self.showNoLinesSelectedAlert() }
+  }
+
+  private func showBookmarkCreationAlert() {
+    let nameAlertBuilder = TextInputAlertBuilder(title: "New bookmark")
+    nameAlertBuilder.message            = "Enter name for this bookmark."
+    nameAlertBuilder.placeholder        = "Name"
+    nameAlertBuilder.confirmButtonTitle = "Save"
+    nameAlertBuilder.cancelButtonTitle  = "Cancel"
+
+    nameAlertBuilder.completion = { [weak self] result in
+      guard let strongSelf = self else {
+        return
+      }
+
+      if case let .confirm(bookmarkName) = result {
+        let bookmark = Bookmark(name: bookmarkName, lines: strongSelf.selectedLines)
+        BookmarksManager.instance.add(bookmark: bookmark)
+
+        // if its the 1st bookmark then show some instructions
+        let bookmarks = BookmarksManager.instance.getAll()
+        if bookmarks.count == 1 {
+          let instructionsAlertBuilder = TextAlertBuilder(title: "Bookmark saved")
+          instructionsAlertBuilder.message          = "To view saved bookmarks select star from map view."
+          instructionsAlertBuilder.closeButtonTitle = "Got it!"
+
+          strongSelf.present(instructionsAlertBuilder.create(), animated: true, completion: nil)
+        }
+      }
+    }
+
+    self.present(nameAlertBuilder.create(), animated: true, completion: nil)
+  }
+
+  private func showNoLinesSelectedAlert() {
+    let alertBuilder              = TextAlertBuilder(title: "No lines selected")
+    alertBuilder.message          = "Please select some lines before trying to create bookmark."
+    alertBuilder.closeButtonTitle = "Ok"
+    self.present(alertBuilder.create(), animated: true, completion: nil)
   }
 
 }
