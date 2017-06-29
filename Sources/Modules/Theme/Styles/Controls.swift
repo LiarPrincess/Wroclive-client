@@ -5,15 +5,15 @@
 
 import UIKit
 
-// MARK: - Text
+// MARK: - Labels
 
 extension UILabel {
-  func setStyle(_ style: TextStyle) {
+  func setStyle(_ style: LabelStyle) {
     Theme.current.apply(toLabel: self, style: style)
   }
 }
 
-// MARK: - Button
+// MARK: - Buttons
 
 extension UIButton {
   func setStyle(_ style: ButtonStyle) {
@@ -27,7 +27,7 @@ extension UISegmentedControl {
   }
 }
 
-// MARK: - View
+// MARK: - Views
 
 extension UIView {
   func setStyle(_ style: ViewStyle) {

@@ -8,7 +8,7 @@ import SnapKit
 
 extension Theme {
 
-  func apply(toLabel label: UILabel, style: TextStyle) {
+  func apply(toLabel label: UILabel, style: LabelStyle) {
     switch style {
     case .headline:
       label.font      = self.font.headline

@@ -3,9 +3,10 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-enum TextStyle {
+enum LabelStyle {
   case headline
   case subheadline
+
   case body
   case bodyPrimary
 }
