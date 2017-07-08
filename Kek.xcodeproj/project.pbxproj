@@ -27,8 +27,9 @@
 		9017C3A91EE3718E00063377 /* SearchViewControllerStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3A81EE3718E00063377 /* SearchViewControllerStateManager.swift */; };
 		9017C3AB1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3AA1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift */; };
 		9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3B41EE3DEF400063377 /* BookmarkCellViewModel.swift */; };
-		9021F36C1F116B84000A6949 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F36B1F116B84000A6949 /* Bookmark.swift */; };
 		9021F36E1F116EAB000A6949 /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F36D1F116EAB000A6949 /* Managers.swift */; };
+		9021F3711F117C60000A6949 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3701F117C60000A6949 /* Bookmark.swift */; };
+		9021F3731F117C77000A6949 /* BookmarkLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3721F117C77000A6949 /* BookmarkLine.swift */; };
 		9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330E51EDF37F500FA8F43 /* AppDelegate.swift */; };
 		9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902330E61EDF37F500FA8F43 /* Assets.xcassets */; };
 		9023312C1EDF37F500FA8F43 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 902330E71EDF37F500FA8F43 /* Info.plist */; };
@@ -124,8 +125,9 @@
 		9017C3A81EE3718E00063377 /* SearchViewControllerStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerStateManager.swift; sourceTree = "<group>"; };
 		9017C3AA1EE3719C00063377 /* SearchViewControllerStateManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerStateManagerProtocol.swift; sourceTree = "<group>"; };
 		9017C3B41EE3DEF400063377 /* BookmarkCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellViewModel.swift; sourceTree = "<group>"; };
-		9021F36B1F116B84000A6949 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		9021F36D1F116EAB000A6949 /* Managers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
+		9021F3701F117C60000A6949 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		9021F3721F117C77000A6949 /* BookmarkLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkLine.swift; sourceTree = "<group>"; };
 		902330E51EDF37F500FA8F43 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902330E61EDF37F500FA8F43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902330E71EDF37F500FA8F43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -301,6 +303,15 @@
 			path = "Sources/View controllers/Bookmarks/View models";
 			sourceTree = SOURCE_ROOT;
 		};
+		9021F36F1F117C60000A6949 /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				9021F3701F117C60000A6949 /* Bookmark.swift */,
+				9021F3721F117C77000A6949 /* BookmarkLine.swift */,
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
 		902330E41EDF37F500FA8F43 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,10 +325,10 @@
 		902330E81EDF37F500FA8F43 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9021F36F1F117C60000A6949 /* Bookmarks */,
 				902330EA1EDF37F500FA8F43 /* Line.swift */,
 				902330EC1EDF37F500FA8F43 /* LineType.swift */,
 				902330EB1EDF37F500FA8F43 /* LineSubtype.swift */,
-				9021F36B1F116B84000A6949 /* Bookmark.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -820,6 +831,7 @@
 				9017C3A61EE370B100063377 /* SearchViewControllerState.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
+				9021F3731F117C77000A6949 /* BookmarkLine.swift in Sources */,
 				90FA2C891EF5172300529331 /* LineSelectionSectionHeaderView.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */,
 				90FA2C8D1EF5172300529331 /* LineSelectionControlLayout.swift in Sources */,
@@ -869,6 +881,7 @@
 				9021F36E1F116EAB000A6949 /* Managers.swift in Sources */,
 				90FA2C8C1EF5172300529331 /* LineSelectionControlConstants.swift in Sources */,
 				90FA2C8B1EF5172300529331 /* LineSelectionControl.swift in Sources */,
+				9021F3711F117C60000A6949 /* Bookmark.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				90D7F4941EF1C3550031F5BA /* CGFloat+Rad.swift in Sources */,
 				90FA2C8E1EF5172300529331 /* LineSelectionCellViewModel.swift in Sources */,
@@ -885,7 +898,6 @@
 				90FA2C9B1EF5172300529331 /* CardPanelPresentationTransition.swift in Sources */,
 				9086D44B1EE2DEA200E43D9A /* LocationManagerProtocol.swift in Sources */,
 				9017C3651EE339FD00063377 /* SearchViewControllerConstants.swift in Sources */,
-				9021F36C1F116B84000A6949 /* Bookmark.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

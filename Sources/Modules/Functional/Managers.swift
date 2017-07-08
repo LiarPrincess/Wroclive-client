@@ -12,7 +12,7 @@ struct Managers {
   static var bookmark: BookmarksManager {
     get {
       guard let bookmark = _bookmark else {
-        fatalError("Bookmark manager has not been registered")
+        fatalError("Bookmark manager has not been registered!")
       }
       return bookmark
     }

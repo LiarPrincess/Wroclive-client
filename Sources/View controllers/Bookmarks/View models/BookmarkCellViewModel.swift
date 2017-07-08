@@ -18,7 +18,7 @@ struct BookmarkCellViewModel {
     self.busLines  = BookmarkCellViewModel.concatNames(bookmark.lines, ofType: .bus)
   }
 
-  private static func concatNames(_ lines: [Line], ofType lineType: LineType) -> String {
+  private static func concatNames(_ lines: [BookmarkLine], ofType lineType: LineType) -> String {
     return lines
       .filter { $0.type == lineType }
       .map    { $0.name }

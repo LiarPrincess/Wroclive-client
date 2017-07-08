@@ -8,7 +8,7 @@ import Foundation
 struct Bookmark {
   let id:    Int
   let name:  String
-  let lines: [Line]
+  let lines: [BookmarkLine]
   let order: Int
 }
 
@@ -16,8 +16,7 @@ struct Bookmark {
 
 extension Bookmark: Equatable {
   static func == (lhs: Bookmark, rhs: Bookmark) -> Bool {
-    return lhs.name  == rhs.name
-        && lhs.lines == rhs.lines
+    return lhs.id == rhs.id
   }
 }
 
