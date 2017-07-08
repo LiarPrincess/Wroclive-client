@@ -25,19 +25,10 @@ struct LineSelectionSectionViewModelFactory {
       }
     }
 
-    return linesBySubtype.map { (subtype, lines) in
-      let linesSorted = sortLines(lines)
-      return LineSelectionSectionViewModel(for: subtype, with: linesSorted)
-    }
+    return linesBySubtype.map { LineSelectionSectionViewModel(for: $0, lines: $1) }
   }
 
   // MARK: - Sort
-
-  private static func sortLines(_ lines: [Line]) -> [Line] {
-    return lines.sorted { (lhs, rhs) in
-      return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
-    }
-  }
 
   private static func sortViewModels(_ viewModels: [LineSelectionSectionViewModel]) -> [LineSelectionSectionViewModel] {
     return viewModels.sorted { (lhs, rhs) in

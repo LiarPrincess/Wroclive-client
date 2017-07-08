@@ -10,11 +10,14 @@ struct LineSelectionSectionViewModel {
   let lines:          [Line]
   let lineViewModels: [LineSelectionCellViewModel]
 
-  init(for subtype: LineSubtype, with lines: [Line]) {
+  init(for subtype: LineSubtype, lines: [Line]) {
     self.subtype     = subtype
     self.sectionName = String(describing: subtype).capitalized
 
-    self.lines          = lines
-    self.lineViewModels = lines.map { LineSelectionCellViewModel(from: $0) }
+    let sortedLines = lines.sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
+
+    self.lines          = sortedLines
+    self.lineViewModels = sortedLines.map { LineSelectionCellViewModel(from: $0) }
   }
+
 }
