@@ -6,8 +6,10 @@
 import Foundation
 
 struct Bookmark {
+  let id:    Int
   let name:  String
   let lines: [Line]
+  let order: Int
 }
 
 // MARK: - Equatable

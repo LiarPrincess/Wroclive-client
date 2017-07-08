@@ -5,9 +5,6 @@
 
 import UIKit
 
-let notificationContentSizeCategoryChanged: String = "NotificationContentSizeCategoryChanged"
-let notificationColorSchemeChanged:         String = "NotificationColorSchemeChanged"
-
 // source: https://alttab.co/blog/2016/06/21/theming-ios-applications/
 
 class Theme {
@@ -18,13 +15,8 @@ class Theme {
 
   // Mark - Properties
 
-  var colorScheme: ColorScheme {
-    didSet { self.notifyColorSchemeChanged() }
-  }
-
-  var font: FontProvider {
-    didSet { self.notifyContentSizeCategoryChanged() }
-  }
+  fileprivate(set) var colorScheme: ColorScheme
+  fileprivate(set) var font: FontProvider
 
   // Mark - Init
 
@@ -36,18 +28,6 @@ class Theme {
 
   deinit {
     self.stopObservingContentSizeCategory()
-  }
-
-  // MARK: - Notifications
-
-  func notifyContentSizeCategoryChanged() {
-    let name = NSNotification.Name(rawValue: notificationContentSizeCategoryChanged)
-    NotificationCenter.default.post(Notification(name: name, object: nil))
-  }
-
-  func notifyColorSchemeChanged() {
-    let name = NSNotification.Name(rawValue: notificationColorSchemeChanged)
-    NotificationCenter.default.post(Notification(name: name, object: nil))
   }
 
 }
@@ -66,6 +46,5 @@ extension Theme {
 
   @objc func contentSizeCategoryDidChange(notification: NSNotification) {
     self.font.recalculateSizes()
-    self.notifyContentSizeCategoryChanged()
   }
 }

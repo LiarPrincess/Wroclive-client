@@ -3,6 +3,8 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
+fileprivate typealias Layout = BookmarksViewControllerConstants.Layout.Cell
+
 struct BookmarkCellViewModel {
   let bookmark:     Bookmark
   var bookmarkName: String { return self.bookmark.name }
@@ -18,9 +20,9 @@ struct BookmarkCellViewModel {
 
   private static func concatNames(_ lines: [Line], ofType lineType: LineType) -> String {
     return lines
-      .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
       .filter { $0.type == lineType }
-      .map { $0.name }
-      .joined(separator: "   ")
+      .map    { $0.name }
+      .sorted { $0.localizedStandardCompare($1) == .orderedAscending }
+      .joined(separator: Layout.LinesLabel.horizontalSpacing)
   }
 }

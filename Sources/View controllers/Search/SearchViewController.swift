@@ -206,12 +206,11 @@ extension SearchViewController {
         return
       }
 
-      if case let .confirm(bookmarkName) = result {
-        let bookmark = Bookmark(name: bookmarkName, lines: strongSelf.selectedLines)
-        BookmarksManager.instance.add(bookmark: bookmark)
+      if case let .confirm(name) = result {
+        Managers.bookmark.addNew(name: name, lines: strongSelf.selectedLines)
 
         // if its the 1st bookmark then show some instructions
-        let bookmarks = BookmarksManager.instance.getAll()
+        let bookmarks = Managers.bookmark.getAll()
         if bookmarks.count == 1 {
           let instructionsAlertBuilder = TextAlertBuilder(title: "Bookmark saved")
           instructionsAlertBuilder.message          = "To view saved bookmarks select star from map view."

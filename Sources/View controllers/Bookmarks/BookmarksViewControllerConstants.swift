@@ -41,6 +41,7 @@ struct BookmarksViewControllerConstants {
       static let estimatedHeight: CGFloat = 200.0
 
       struct LinesLabel {
+        static let horizontalSpacing:  String = "   "
         static let lineSpacing: CGFloat = 8.0
       }
 

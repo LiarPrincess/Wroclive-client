@@ -9,17 +9,15 @@ class BookmarksDataSource: NSObject {
 
   // MARK: - Properties
 
+  fileprivate(set) var bookmarks: [Bookmark]
+
   weak var delegate: BookmarksDataSourceDelegate?
-
-  fileprivate var viewModels: [BookmarkCellViewModel]
-
-  var bookmarks: [Bookmark] { return self.viewModels.map { $0.bookmark } }
 
   // MARK: - Init
 
   init(with bookmarks: [Bookmark], delegate: BookmarksDataSourceDelegate? = nil) {
-    self.viewModels = bookmarks.map { BookmarkCellViewModel(from: $0) }
-    self.delegate   = delegate
+    self.bookmarks = bookmarks.sorted { $0.order < $1.order }
+    self.delegate  = delegate
   }
 
   // MARK: - Methods
@@ -29,17 +27,17 @@ class BookmarksDataSource: NSObject {
       return nil
     }
 
-    guard indexPath.row < self.viewModels.count else {
+    guard indexPath.row < self.bookmarks.count else {
       return nil
     }
 
-    return self.viewModels[indexPath.row].bookmark
+    return self.bookmarks[indexPath.row]
   }
 
   // MARK: - Delegate methods
 
-  fileprivate func delegateDidUpdateBookmarkCount() {
-    delegate?.didUpdateBookmarkCount(self)
+  fileprivate func delegateDidChangedBookmarkCount() {
+    delegate?.didChangedBookmarkCount(self)
   }
 
   fileprivate func delegateDidReorderBookmarks() {
@@ -55,12 +53,14 @@ extension BookmarksDataSource: UITableViewDataSource {
   // MARK: - Data
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.viewModels.count
+    return self.bookmarks.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell      = tableView.dequeueReusableCell(ofType: BookmarkCell.self, forIndexPath: indexPath)
-    let viewModel = self.viewModels[indexPath.row]
+    let cell = tableView.dequeueReusableCell(ofType: BookmarkCell.self, forIndexPath: indexPath)
+
+    let bookmark  = self.bookmarks[indexPath.row]
+    let viewModel = BookmarkCellViewModel(from: bookmark)
 
     cell.setUp(with: viewModel)
     return cell
@@ -73,8 +73,9 @@ extension BookmarksDataSource: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-    let bookmark = self.viewModels.remove(at: sourceIndexPath.row)
-    self.viewModels.insert(bookmark, at: destinationIndexPath.row)
+    let bookmark = self.bookmarks.remove(at: sourceIndexPath.row)
+    self.bookmarks.insert(bookmark, at: destinationIndexPath.row)
+    self.recalculateBookmarkOrders()
     self.delegateDidReorderBookmarks()
   }
 
@@ -86,9 +87,22 @@ extension BookmarksDataSource: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      self.viewModels.remove(at: indexPath.row)
+      self.bookmarks.remove(at: indexPath.row)
+      self.recalculateBookmarkOrders()
+
       tableView.deleteRows(at: [indexPath], with: .automatic)
-      self.delegateDidUpdateBookmarkCount()
+      self.delegateDidChangedBookmarkCount()
     }
   }
+
+  // MARK: - Private
+
+  private func recalculateBookmarkOrders() {
+    self.bookmarks = self.bookmarks
+      .enumerated()
+      .map { (order, old) in
+        return Bookmark(id: old.id, name: old.name, lines: old.lines, order: order + 1)
+      }
+  }
+
 }

@@ -96,7 +96,7 @@ class BookmarksViewController: UIViewController {
   }
 
   private func initDataSource() {
-    let bookmarks = BookmarksManager.instance.getAll()
+    let bookmarks = Managers.bookmark.getAll()
     self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
   }
 
@@ -164,9 +164,9 @@ extension BookmarksViewController: UITableViewDelegate {
 
 extension BookmarksViewController: BookmarksDataSourceDelegate {
 
-  func didUpdateBookmarkCount(_ dataSource: BookmarksDataSource) {
-    self.showPlaceholderIfEmpty()
+  func didChangedBookmarkCount(_ dataSource: BookmarksDataSource) {
     self.saveBookmarks()
+    self.showPlaceholderIfEmpty()
   }
 
   func didReorderBookmarks(_ dataSource: BookmarksDataSource) {
@@ -175,7 +175,7 @@ extension BookmarksViewController: BookmarksDataSourceDelegate {
 
   private func saveBookmarks() {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
-    BookmarksManager.instance.save(bookmarks: bookmarks)
+    Managers.bookmark.save(bookmarks)
   }
 
 }

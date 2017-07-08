@@ -4,6 +4,6 @@
 //
 
 protocol BookmarksDataSourceDelegate: class {
-  func didUpdateBookmarkCount(_ dataSource: BookmarksDataSource)
+  func didChangedBookmarkCount(_ dataSource: BookmarksDataSource)
   func didReorderBookmarks(_ dataSource: BookmarksDataSource)
 }
