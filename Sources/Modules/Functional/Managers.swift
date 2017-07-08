@@ -5,6 +5,18 @@
 
 struct Managers {
 
-  static let bookmark: BookmarksManager = BookmarksManagerImplementation()
+  // MARK: - Bookmark
+
+  private static var _bookmark: BookmarksManager?
+
+  static var bookmark: BookmarksManager {
+    get {
+      guard let bookmark = _bookmark else {
+        fatalError("Bookmark manager has not been registered")
+      }
+      return bookmark
+    }
+    set { _bookmark = newValue }
+  }
 
 }

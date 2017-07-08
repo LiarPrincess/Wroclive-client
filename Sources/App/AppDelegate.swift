@@ -13,13 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     logger.info("Starting application")
 
+    self.registerManagers()
+
     let mainViewController = MainViewController()
-//    let mainViewController = SearchViewController()
-//    let mainViewController = BookmarksViewController()
     window = UIWindow(frame: UIScreen.main.bounds)
     window!.rootViewController = mainViewController
     window!.makeKeyAndVisible()
 
     return true
+  }
+
+  private func registerManagers() {
+    Managers.bookmark = BookmarksManagerImplementation()
   }
 }
