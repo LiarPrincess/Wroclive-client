@@ -13,18 +13,7 @@ struct LineSelectionSectionViewModelFactory {
   // MARK: - Convert
 
   private static func convertToViewModels(lines: [Line]) -> [LineSelectionSectionViewModel] {
-    var linesBySubtype = [LineSubtype: [Line]]()
-
-    for line in lines {
-      if var lines = linesBySubtype[line.subtype] {
-        lines.append(line)
-        linesBySubtype[line.subtype] = lines
-      }
-      else {
-        linesBySubtype[line.subtype] = [line]
-      }
-    }
-
+    let linesBySubtype = lines.groupedBy { $0.subtype }
     return linesBySubtype.map { LineSelectionSectionViewModel(for: $0, lines: $1) }
   }
 

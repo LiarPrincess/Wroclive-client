@@ -33,6 +33,7 @@
 		9021F3801F12AA40000A6949 /* SearchViewControllerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F37F1F12AA40000A6949 /* SearchViewControllerState.swift */; };
 		9021F3831F12AA77000A6949 /* SearchStateManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3811F12AA77000A6949 /* SearchStateManagerImpl.swift */; };
 		9021F3841F12AA77000A6949 /* SearchStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3821F12AA77000A6949 /* SearchStateManager.swift */; };
+		9021F3861F12B24E000A6949 /* Array+GroupedBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3851F12B24E000A6949 /* Array+GroupedBy.swift */; };
 		9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330E51EDF37F500FA8F43 /* AppDelegate.swift */; };
 		9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902330E61EDF37F500FA8F43 /* Assets.xcassets */; };
 		9023312C1EDF37F500FA8F43 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 902330E71EDF37F500FA8F43 /* Info.plist */; };
@@ -133,6 +134,7 @@
 		9021F37F1F12AA40000A6949 /* SearchViewControllerState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerState.swift; sourceTree = "<group>"; };
 		9021F3811F12AA77000A6949 /* SearchStateManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStateManagerImpl.swift; sourceTree = "<group>"; };
 		9021F3821F12AA77000A6949 /* SearchStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStateManager.swift; sourceTree = "<group>"; };
+		9021F3851F12B24E000A6949 /* Array+GroupedBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+GroupedBy.swift"; sourceTree = "<group>"; };
 		902330E51EDF37F500FA8F43 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902330E61EDF37F500FA8F43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902330E71EDF37F500FA8F43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -375,9 +377,9 @@
 		902330F41EDF37F500FA8F43 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				905E0F451EF5880100A418C2 /* Swift */,
 				902330F51EDF37F500FA8F43 /* UIKit */,
 				90D7F4921EF1C3390031F5BA /* CoreGraphics */,
-				905E0F451EF5880100A418C2 /* Swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -415,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				905E0F461EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift */,
+				9021F3851F12B24E000A6949 /* Array+GroupedBy.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				905E0F471EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift in Sources */,
 				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
+				9021F3861F12B24E000A6949 /* Array+GroupedBy.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				9086D4481EE2DE8E00E43D9A /* LinesManagerImpl.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
