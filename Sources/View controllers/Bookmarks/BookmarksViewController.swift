@@ -97,7 +97,7 @@ class BookmarksViewController: UIViewController {
   // MARK: - Methods
 
   fileprivate func select(bookmark: Bookmark) {
-    logger.info("didSelect: \(bookmark.name)")
+    Swift.print("didSelect: \(bookmark.name)")
     self.dismiss(animated: true, completion: nil)
   }
 

@@ -11,8 +11,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    logger.info("Starting application")
-
     self.registerManagers()
 
     let mainViewController = MainViewController()

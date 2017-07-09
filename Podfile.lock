@@ -5,21 +5,16 @@ PODS:
   - RealmSwift (2.8.3):
     - Realm (= 2.8.3)
   - SnapKit (3.2.0)
-  - XCGLogger (4.0.0):
-    - XCGLogger/Core (= 4.0.0)
-  - XCGLogger/Core (4.0.0)
 
 DEPENDENCIES:
   - RealmSwift (~> 2.8.3)
   - SnapKit (~> 3.2.0)
-  - XCGLogger (~> 4.0.0)
 
 SPEC CHECKSUMS:
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: e12dbe7fa2bf48b98589163346f9d1c792405017
+PODFILE CHECKSUM: 0d8bb8fdb2a96f4c7d6d811090c5df176720386c
 
 COCOAPODS: 1.2.0

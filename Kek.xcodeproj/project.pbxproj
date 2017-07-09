@@ -42,7 +42,6 @@
 		902331301EDF37F500FA8F43 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EC1EDF37F500FA8F43 /* LineType.swift */; };
 		902331361EDF37F500FA8F43 /* UISegmentedControl+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F81EDF37F500FA8F43 /* UISegmentedControl+Font.swift */; };
 		902331371EDF37F500FA8F43 /* UIView+AddBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330F91EDF37F500FA8F43 /* UIView+AddBorder.swift */; };
-		902331381EDF37F500FA8F43 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330FB1EDF37F500FA8F43 /* Logger.swift */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		905E0F471EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E0F461EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift */; };
@@ -143,7 +142,6 @@
 		902330EC1EDF37F500FA8F43 /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
 		902330F81EDF37F500FA8F43 /* UISegmentedControl+Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Font.swift"; sourceTree = "<group>"; };
 		902330F91EDF37F500FA8F43 /* UIView+AddBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorder.swift"; sourceTree = "<group>"; };
-		902330FB1EDF37F500FA8F43 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -368,7 +366,6 @@
 			isa = PBXGroup;
 			children = (
 				902330F41EDF37F500FA8F43 /* Extensions */,
-				902330FA1EDF37F500FA8F43 /* Logging */,
 				90FA2C401EF5167F00529331 /* UI */,
 			);
 			path = Utils;
@@ -395,14 +392,6 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		902330FA1EDF37F500FA8F43 /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-				902330FB1EDF37F500FA8F43 /* Logger.swift */,
-			);
-			path = Logging;
-			sourceTree = "<group>";
-		};
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,8 +405,8 @@
 		905E0F451EF5880100A418C2 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				905E0F461EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift */,
 				9021F3851F12B24E000A6949 /* Array+GroupedBy.swift */,
+				905E0F461EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -878,7 +867,6 @@
 				90FA2C991EF5172300529331 /* CardPanelPresenter.swift in Sources */,
 				90FA2C961EF5172300529331 /* CardPanelPresentable.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
-				902331381EDF37F500FA8F43 /* Logger.swift in Sources */,
 				90FA2C931EF5172300529331 /* ReusableCellContainer.swift in Sources */,
 				90AF2BE71EE9E970006E61D6 /* UIView+RoundCorners.swift in Sources */,
 				90FA2C951EF5172300529331 /* CardPanelConstants.swift in Sources */,

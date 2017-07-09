@@ -57,7 +57,7 @@ class MainViewController: UIViewController {
   }
 
   @objc func configurationButtonPressed() {
-    logger.info("configurationButtonPressed")
+    Swift.print("configurationButtonPressed")
   }
 
 }
