@@ -30,7 +30,7 @@ class SearchViewController: UIViewController {
   let bookmarkButton = UIButton()
   let searchButton   = UIButton()
 
-  let lineTypeSelector = UISegmentedControl()
+  let lineTypeSelector = LineTypeSelectionControl()
 
   let lineSelectionPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
   var tramSelectionControl: LineSelectionControl!
@@ -39,11 +39,6 @@ class SearchViewController: UIViewController {
   lazy var lineSelectionControls: [LineSelectionControl] = {
     return [self.tramSelectionControl, self.busSelectionControl]
   }()
-
-  struct LineSelectionControlsIndices {
-    static let tram = 0
-    static let bus  = 1
-  }
 
   // MARK: - Overriden
 
@@ -75,10 +70,6 @@ class SearchViewController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
 
-  @objc func lineTypeChanged() {
-    self.updatePageViewFromSelector(animated: true)
-  }
-
   // MARK: - Methods
 
   // MARK: Update
@@ -96,9 +87,7 @@ class SearchViewController: UIViewController {
   }
 
   fileprivate func updatePageViewFromSelector(animated: Bool) {
-    let selectedIndex = self.lineTypeSelector.selectedSegmentIndex
-
-    if selectedIndex == LineSelectionControlsIndices.tram {
+    if self.lineTypeSelector.value == .tram {
       let page      = self.tramSelectionControl!
       let direction = UIPageViewControllerNavigationDirection.reverse
       self.lineSelectionPageViewController.setViewControllers([page], direction: direction, animated: animated, completion: nil)
@@ -150,16 +139,15 @@ class SearchViewController: UIViewController {
   // MARK: State
 
   private func loadSelectorState(from state: SearchState) {
-    let isTramSelected = state.selectedLineType == .tram
-    self.lineTypeSelector.selectedSegmentIndex = isTramSelected ? LineSelectionControlsIndices.tram : LineSelectionControlsIndices.bus
+    self.lineTypeSelector.value = state.selectedLineType
     self.updatePageViewFromSelector(animated: false)
   }
 
   private func saveState() {
-    let isTramSelected = self.lineTypeSelector.selectedSegmentIndex == LineSelectionControlsIndices.tram
-    let lineType = isTramSelected ? LineType.tram : LineType.bus
+    let lineType = self.lineTypeSelector.value
+    let lines    = self.selectedLines
 
-    let state = SearchState(withSelected: lineType, lines: self.selectedLines)
+    let state = SearchState(withSelected: lineType, lines: lines)
     Managers.searchState.save(state)
   }
 }
@@ -178,6 +166,14 @@ extension SearchViewController : CardPanelPresentable {
     if !completed {
       self.chevronView.setState(.down, animated: true)
     }
+  }
+}
+
+// MARK: - LineTypeSelectionControlDelegate
+
+extension SearchViewController: LineTypeSelectionControlDelegate {
+  func lineTypeSelectionControl(control: LineTypeSelectionControl, didSelect lineType: LineType) {
+    self.updatePageViewFromSelector(animated: true)
   }
 }
 

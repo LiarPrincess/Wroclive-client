@@ -76,9 +76,7 @@ extension SearchViewController {
     }
 
     self.lineTypeSelector.setStyle()
-    self.lineTypeSelector.insertSegment(withTitle: "Trams", at: LineSelectionControlsIndices.tram, animated: false)
-    self.lineTypeSelector.insertSegment(withTitle: "Buses", at: LineSelectionControlsIndices.bus,  animated: false)
-    self.lineTypeSelector.addTarget(self, action: #selector(lineTypeChanged), for: .valueChanged)
+    self.lineTypeSelector.delegate = self
     self.headerView.addSubview(self.lineTypeSelector)
 
     self.lineTypeSelector.snp.makeConstraints { make in

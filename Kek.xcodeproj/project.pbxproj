@@ -65,6 +65,8 @@
 		9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F41E1F12CACB000A6949 /* SearchState.swift */; };
 		9021F4231F12CB1A000A6949 /* SearchStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4211F12CB1A000A6949 /* SearchStateManager.swift */; };
 		9021F4241F12CB1A000A6949 /* SearchStateManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4221F12CB1A000A6949 /* SearchStateManagerImpl.swift */; };
+		9021F4271F12CCB3000A6949 /* LineTypeSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4261F12CCB3000A6949 /* LineTypeSelectionControl.swift */; };
+		9021F4291F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4281F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift */; };
 		9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330E51EDF37F500FA8F43 /* AppDelegate.swift */; };
 		9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902330E61EDF37F500FA8F43 /* Assets.xcassets */; };
 		9023312C1EDF37F500FA8F43 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 902330E71EDF37F500FA8F43 /* Info.plist */; };
@@ -164,6 +166,8 @@
 		9021F41E1F12CACB000A6949 /* SearchState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
 		9021F4211F12CB1A000A6949 /* SearchStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStateManager.swift; sourceTree = "<group>"; };
 		9021F4221F12CB1A000A6949 /* SearchStateManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStateManagerImpl.swift; sourceTree = "<group>"; };
+		9021F4261F12CCB3000A6949 /* LineTypeSelectionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelectionControl.swift; sourceTree = "<group>"; };
+		9021F4281F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelectionControlDelegate.swift; sourceTree = "<group>"; };
 		902330E51EDF37F500FA8F43 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902330E61EDF37F500FA8F43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902330E71EDF37F500FA8F43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -368,6 +372,7 @@
 			children = (
 				9021F3E01F12C9EF000A6949 /* Chevron */,
 				9021F3E31F12C9EF000A6949 /* Line selection */,
+				9021F4251F12CC89000A6949 /* Line type selection */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -510,6 +515,15 @@
 				9021F4221F12CB1A000A6949 /* SearchStateManagerImpl.swift */,
 			);
 			path = "Search state";
+			sourceTree = "<group>";
+		};
+		9021F4251F12CC89000A6949 /* Line type selection */ = {
+			isa = PBXGroup;
+			children = (
+				9021F4261F12CCB3000A6949 /* LineTypeSelectionControl.swift */,
+				9021F4281F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift */,
+			);
+			path = "Line type selection";
 			sourceTree = "<group>";
 		};
 		902330E41EDF37F500FA8F43 /* App */ = {
@@ -847,6 +861,7 @@
 				9086D4511EE2DFCF00E43D9A /* BookmarksManager.swift in Sources */,
 				9021F4081F12C9EF000A6949 /* LineSelectionCell.swift in Sources */,
 				9021F3941F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift in Sources */,
+				9021F4271F12CCB3000A6949 /* LineTypeSelectionControl.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
 				9021F4141F12C9EF000A6949 /* ReusableCellContainer.swift in Sources */,
 				9021F40C1F12C9EF000A6949 /* LineSelectionControlConstants.swift in Sources */,
@@ -870,6 +885,7 @@
 				9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */,
 				9021F4161F12C9EF000A6949 /* CardPanelConstants.swift in Sources */,
 				9021F4151F12C9EF000A6949 /* ReusableSuplementaryViewContainer.swift in Sources */,
+				9021F4291F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift in Sources */,
 				90AF2BDD1EE9E06C006E61D6 /* Controls.swift in Sources */,
 				9021F41C1F12C9EF000A6949 /* CardPanelPresentationTransition.swift in Sources */,
 				9021F4111F12C9EF000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
