@@ -105,13 +105,12 @@ class BookmarksViewController: UIViewController {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
 
     if bookmarks.count == 0 {
-      self.bookmarksTable.separatorStyle = .none
       self.bookmarksTable.separatorColor = Theme.current.colorScheme.background
       self.editButton.isHidden           = true
       self.placeholderView.isHidden      = false
     }
     else {
-      self.bookmarksTable.separatorStyle = .singleLine
+      self.bookmarksTable.separatorColor = Theme.current.colorScheme.backgroundContrast
       self.editButton.isHidden           = false
       self.placeholderView.isHidden      = true
     }
