@@ -27,5 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Managers.bookmark    = BookmarksManagerImpl()
     Managers.lines       = LinesManagerImpl()
     Managers.searchState = SearchStateManagerImpl()
+    Managers.location    = LocationManagerImpl()
   }
 }

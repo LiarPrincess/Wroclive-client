@@ -47,4 +47,18 @@ struct Managers {
     set { _searchState = newValue }
   }
 
+  // MARK: - Location
+
+  private static var _location: LocationManager?
+
+  static var location: LocationManager {
+    get {
+      guard let location = _location else {
+        fatalError("Location manager has not been registered!")
+      }
+      return location
+    }
+    set { _location = newValue }
+  }
+
 }
