@@ -24,6 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func registerManagers() {
-    Managers.bookmark = BookmarksManagerImplementation()
+    Managers.bookmark = RealmBookmarksManager()
   }
 }

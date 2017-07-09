@@ -23,11 +23,8 @@ class BookmarksDataSource: NSObject {
   // MARK: - Methods
 
   func bookmark(at indexPath: IndexPath) -> Bookmark? {
-    guard indexPath.section == 0 else {
-      return nil
-    }
-
-    guard indexPath.row < self.bookmarks.count else {
+    let inRange = indexPath.row > 0 && indexPath.row < self.bookmarks.count
+    guard inRange else {
       return nil
     }
 
@@ -36,8 +33,8 @@ class BookmarksDataSource: NSObject {
 
   // MARK: - Delegate methods
 
-  fileprivate func delegateDidChangedBookmarkCount() {
-    delegate?.didChangedBookmarkCount(self)
+  fileprivate func delegateDidDelete(bookmark: Bookmark) {
+    delegate?.dataSource(self, didDelete: bookmark)
   }
 
   fileprivate func delegateDidReorderBookmarks() {
@@ -75,7 +72,6 @@ extension BookmarksDataSource: UITableViewDataSource {
   func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
     let bookmark = self.bookmarks.remove(at: sourceIndexPath.row)
     self.bookmarks.insert(bookmark, at: destinationIndexPath.row)
-    self.recalculateBookmarkOrders()
     self.delegateDidReorderBookmarks()
   }
 
@@ -87,22 +83,10 @@ extension BookmarksDataSource: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      self.bookmarks.remove(at: indexPath.row)
-      self.recalculateBookmarkOrders()
-
+      let bookmark = self.bookmarks.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .automatic)
-      self.delegateDidChangedBookmarkCount()
+      self.delegateDidDelete(bookmark: bookmark)
     }
-  }
-
-  // MARK: - Private
-
-  private func recalculateBookmarkOrders() {
-    self.bookmarks = self.bookmarks
-      .enumerated()
-      .map { (order, old) in
-        return Bookmark(id: old.id, name: old.name, lines: old.lines, order: order + 1)
-      }
   }
 
 }

@@ -6,7 +6,7 @@
 import Foundation
 
 struct Bookmark {
-  let id:    Int
+  let id:    String
   let name:  String
   let lines: [BookmarkLine]
   let order: Int

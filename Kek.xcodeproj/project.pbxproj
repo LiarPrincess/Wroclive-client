@@ -30,6 +30,9 @@
 		9021F36E1F116EAB000A6949 /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F36D1F116EAB000A6949 /* Managers.swift */; };
 		9021F3711F117C60000A6949 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3701F117C60000A6949 /* Bookmark.swift */; };
 		9021F3731F117C77000A6949 /* BookmarkLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3721F117C77000A6949 /* BookmarkLine.swift */; };
+		9021F3761F1180EE000A6949 /* RealmBookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3751F1180EE000A6949 /* RealmBookmarksManager.swift */; };
+		9021F3781F118202000A6949 /* BookmarkLineObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3771F118202000A6949 /* BookmarkLineObject.swift */; };
+		9021F37C1F1184D6000A6949 /* BookmarkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F37B1F1184D6000A6949 /* BookmarkObject.swift */; };
 		9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330E51EDF37F500FA8F43 /* AppDelegate.swift */; };
 		9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902330E61EDF37F500FA8F43 /* Assets.xcassets */; };
 		9023312C1EDF37F500FA8F43 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 902330E71EDF37F500FA8F43 /* Info.plist */; };
@@ -44,7 +47,6 @@
 		905E0F471EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905E0F461EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift */; };
 		9078F42E1F031443002D7DCD /* AvenirFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9086D4471EE2DE8E00E43D9A /* BookmarksManagerImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4421EE2DE8E00E43D9A /* BookmarksManagerImplementation.swift */; };
 		9086D4481EE2DE8E00E43D9A /* LinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4441EE2DE8E00E43D9A /* LinesManager.swift */; };
 		9086D4491EE2DE8E00E43D9A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4461EE2DE8E00E43D9A /* LocationManager.swift */; };
 		9086D44B1EE2DEA200E43D9A /* LocationManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D44A1EE2DEA200E43D9A /* LocationManagerProtocol.swift */; };
@@ -128,6 +130,9 @@
 		9021F36D1F116EAB000A6949 /* Managers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
 		9021F3701F117C60000A6949 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		9021F3721F117C77000A6949 /* BookmarkLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkLine.swift; sourceTree = "<group>"; };
+		9021F3751F1180EE000A6949 /* RealmBookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmBookmarksManager.swift; sourceTree = "<group>"; };
+		9021F3771F118202000A6949 /* BookmarkLineObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkLineObject.swift; sourceTree = "<group>"; };
+		9021F37B1F1184D6000A6949 /* BookmarkObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkObject.swift; sourceTree = "<group>"; };
 		902330E51EDF37F500FA8F43 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902330E61EDF37F500FA8F43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902330E71EDF37F500FA8F43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -142,7 +147,6 @@
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		905E0F461EF5880D00A418C2 /* ArrayOfEquatable+ContainsAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfEquatable+ContainsAll.swift"; sourceTree = "<group>"; };
 		9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvenirFontProvider.swift; sourceTree = "<group>"; };
-		9086D4421EE2DE8E00E43D9A /* BookmarksManagerImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManagerImplementation.swift; sourceTree = "<group>"; };
 		9086D4441EE2DE8E00E43D9A /* LinesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManager.swift; sourceTree = "<group>"; };
 		9086D4461EE2DE8E00E43D9A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9086D44A1EE2DEA200E43D9A /* LocationManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerProtocol.swift; sourceTree = "<group>"; };
@@ -312,6 +316,15 @@
 			path = Bookmarks;
 			sourceTree = "<group>";
 		};
+		9021F3741F1180E0000A6949 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				9021F37B1F1184D6000A6949 /* BookmarkObject.swift */,
+				9021F3771F118202000A6949 /* BookmarkLineObject.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		902330E41EDF37F500FA8F43 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,8 +426,9 @@
 		9086D4411EE2DE8E00E43D9A /* Bookmarks */ = {
 			isa = PBXGroup;
 			children = (
+				9021F3741F1180E0000A6949 /* Realm */,
 				9086D4501EE2DFCF00E43D9A /* BookmarksManager.swift */,
-				9086D4421EE2DE8E00E43D9A /* BookmarksManagerImplementation.swift */,
+				9021F3751F1180EE000A6949 /* RealmBookmarksManager.swift */,
 			);
 			path = Bookmarks;
 			sourceTree = "<group>";
@@ -832,10 +846,12 @@
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
 				9021F3731F117C77000A6949 /* BookmarkLine.swift in Sources */,
+				9021F37C1F1184D6000A6949 /* BookmarkObject.swift in Sources */,
 				90FA2C891EF5172300529331 /* LineSelectionSectionHeaderView.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */,
 				90FA2C8D1EF5172300529331 /* LineSelectionControlLayout.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
+				9021F3761F1180EE000A6949 /* RealmBookmarksManager.swift in Sources */,
 				9017C3A91EE3718E00063377 /* SearchViewControllerStateManager.swift in Sources */,
 				9090E88D1EF6B1D600B4D388 /* LineSelectionControlDelegate.swift in Sources */,
 				9086D44F1EE2DF7800E43D9A /* LinesManagerProtocol.swift in Sources */,
@@ -849,9 +865,9 @@
 				9086D4511EE2DFCF00E43D9A /* BookmarksManager.swift in Sources */,
 				902331371EDF37F500FA8F43 /* UIView+AddBorder.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
+				9021F3781F118202000A6949 /* BookmarkLineObject.swift in Sources */,
 				90FA2C991EF5172300529331 /* CardPanelPresenter.swift in Sources */,
 				90FA2C961EF5172300529331 /* CardPanelPresentable.swift in Sources */,
-				9086D4471EE2DE8E00E43D9A /* BookmarksManagerImplementation.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
 				902331381EDF37F500FA8F43 /* Logger.swift in Sources */,
 				90FA2C931EF5172300529331 /* ReusableCellContainer.swift in Sources */,

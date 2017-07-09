@@ -3,8 +3,10 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
+import Foundation
+
 struct BookmarkLine {
-  let id:      Int
+  let id:      String
   let name:    String
   let type:    LineType
   let subtype: LineSubtype

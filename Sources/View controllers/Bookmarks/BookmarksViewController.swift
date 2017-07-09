@@ -39,9 +39,30 @@ class BookmarksViewController: UIViewController {
     self.showPlaceholderIfEmpty()
   }
 
+  private func initDataSource() {
+    let bookmarks = Managers.bookmark.getAll()
+    self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
+  }
+
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     self.insetTableViewContentBelowHeaderView()
+  }
+
+  private func insetTableViewContentBelowHeaderView() {
+    let currentInset = self.bookmarksTable.contentInset
+    let headerHeight = self.headerView.bounds.height
+
+    if currentInset.top < headerHeight {
+      let newInset = UIEdgeInsets(top: headerHeight, left: currentInset.left, bottom: currentInset.bottom, right: currentInset.right)
+      self.bookmarksTable.contentInset          = newInset
+      self.bookmarksTable.scrollIndicatorInsets = newInset
+
+      // scroll up to preserve current scroll position
+      let currentOffset = self.bookmarksTable.contentOffset
+      let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
+      self.bookmarksTable.setContentOffset(newOffset, animated: false)
+    }
   }
 
   override func setEditing(_ editing: Bool, animated: Bool) {
@@ -58,6 +79,13 @@ class BookmarksViewController: UIViewController {
     }
 
     self.bookmarksTable.setEditing(editing, animated: true)
+  }
+
+  private func closeSwipeToDelte() {
+    let hasSwipeToDeleteOpen = self.bookmarksTable.isEditing
+    if hasSwipeToDeleteOpen {
+      self.bookmarksTable.setEditing(false, animated: false)
+    }
   }
 
   // MARK: - Actions
@@ -85,34 +113,6 @@ class BookmarksViewController: UIViewController {
       self.bookmarksTable.separatorStyle = .singleLine
       self.editButton.isHidden           = false
       self.placeholderView.isHidden      = true
-    }
-  }
-
-  private func closeSwipeToDelte() {
-    let hasSwipeToDeleteOpen = self.bookmarksTable.isEditing
-    if hasSwipeToDeleteOpen {
-      self.bookmarksTable.setEditing(false, animated: false)
-    }
-  }
-
-  private func initDataSource() {
-    let bookmarks = Managers.bookmark.getAll()
-    self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
-  }
-
-  private func insetTableViewContentBelowHeaderView() {
-    let currentInset = self.bookmarksTable.contentInset
-    let headerHeight = self.headerView.bounds.height
-
-    if currentInset.top < headerHeight {
-      let newInset = UIEdgeInsets(top: headerHeight, left: currentInset.left, bottom: currentInset.bottom, right: currentInset.right)
-      self.bookmarksTable.contentInset          = newInset
-      self.bookmarksTable.scrollIndicatorInsets = newInset
-
-      // scroll up to preserve current scroll position
-      let currentOffset = self.bookmarksTable.contentOffset
-      let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
-      self.bookmarksTable.setContentOffset(newOffset, animated: false)
     }
   }
 
@@ -164,18 +164,22 @@ extension BookmarksViewController: UITableViewDelegate {
 
 extension BookmarksViewController: BookmarksDataSourceDelegate {
 
-  func didChangedBookmarkCount(_ dataSource: BookmarksDataSource) {
-    self.saveBookmarks()
+  func dataSource(_ dataSource: BookmarksDataSource, didDelete bookmark: Bookmark) {
+    Managers.bookmark.delete(bookmark) // we are 'ok' with gaps in ordering
     self.showPlaceholderIfEmpty()
   }
 
   func didReorderBookmarks(_ dataSource: BookmarksDataSource) {
-    self.saveBookmarks()
+    let bookmarks = self.recalculateBookmarkOrders(dataSource.bookmarks)
+    Managers.bookmark.save(bookmarks)
   }
 
-  private func saveBookmarks() {
-    let bookmarks = self.bookmarksTableDataSource.bookmarks
-    Managers.bookmark.save(bookmarks)
+  private func recalculateBookmarkOrders(_ bookmarks: [Bookmark]) -> [Bookmark] {
+    return bookmarks
+      .enumerated()
+      .map { (order, old) in
+        return Bookmark(id: old.id, name: old.name, lines: old.lines, order: order + 1)
+    }
   }
 
 }

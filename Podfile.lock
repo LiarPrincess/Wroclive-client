@@ -1,25 +1,25 @@
 PODS:
-  - Realm (2.4.3):
-    - Realm/Headers (= 2.4.3)
-  - Realm/Headers (2.4.3)
-  - RealmSwift (2.4.3):
-    - Realm (= 2.4.3)
+  - Realm (2.8.3):
+    - Realm/Headers (= 2.8.3)
+  - Realm/Headers (2.8.3)
+  - RealmSwift (2.8.3):
+    - Realm (= 2.8.3)
   - SnapKit (3.2.0)
   - XCGLogger (4.0.0):
     - XCGLogger/Core (= 4.0.0)
   - XCGLogger/Core (4.0.0)
 
 DEPENDENCIES:
-  - RealmSwift (~> 2.4.3)
+  - RealmSwift (~> 2.8.3)
   - SnapKit (~> 3.2.0)
   - XCGLogger (~> 4.0.0)
 
 SPEC CHECKSUMS:
-  Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
-  RealmSwift: 30d49739ccb3385d201242736ca4dda56aec9dfc
+  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
+  RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: 7f27364643065b097b75bfb4c57f3ac5359d8c87
+PODFILE CHECKSUM: e12dbe7fa2bf48b98589163346f9d1c792405017
 
 COCOAPODS: 1.2.0
