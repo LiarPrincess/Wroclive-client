@@ -5,33 +5,25 @@
 
 import Foundation
 
-class SearchViewControllerStateManager: SearchViewControllerStateManagerProtocol {
-
-  // MARK: - Singleton
-
-  static let instance: SearchViewControllerStateManagerProtocol = SearchViewControllerStateManager()
+class SearchStateManagerImpl: SearchStateManager {
 
   // MARK: - Properties
 
-  var state = SearchViewControllerStateManager.testData()
-
-  // MARK: - Init
-
-  private init() { }
+  private var state = SearchStateManagerImpl.testData()
 
   // MARK: - StorageManagerProtocol
 
-  func saveState(state: SearchViewControllerState) {
+  func save(_ state: SearchState) {
     self.state = state
   }
 
-  func getState() -> SearchViewControllerState {
+  func getLatest() -> SearchState {
     return self.state
   }
 
   // MARK: - Methods
 
-  private static func testData() -> SearchViewControllerState {
+  private static func testData() -> SearchState {
     let selectedLines = [
       Line(name: "325", type: .bus, subtype: .regular),
       Line(name: "4", type: .tram, subtype: .regular),
@@ -47,6 +39,7 @@ class SearchViewControllerStateManager: SearchViewControllerStateManagerProtocol
       Line(name: "127", type: .bus, subtype: .regular),
       Line(name: "251", type: .bus, subtype: .night)
     ]
-    return SearchViewControllerState(filter: .tram, selectedLines: selectedLines)
+
+    return SearchState(withSelected: .tram, lines: selectedLines)
   }
 }

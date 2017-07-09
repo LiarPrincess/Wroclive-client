@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func registerManagers() {
-    Managers.bookmark = RealmBookmarksManager()
+    Managers.bookmark    = BookmarksManagerImpl()
+    Managers.lines       = LinesManagerImpl()
+    Managers.searchState = SearchStateManagerImpl()
   }
 }

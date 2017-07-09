@@ -5,7 +5,7 @@
 
 import RealmSwift
 
-class RealmBookmarksManager: BookmarksManager {
+class BookmarksManagerImpl: BookmarksManager {
 
   // MARK: - Properties
 

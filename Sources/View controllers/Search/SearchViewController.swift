@@ -50,7 +50,7 @@ class SearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let state = SearchViewControllerStateManager.instance.getState()
+    let state = Managers.searchState.getLatest()
     self.initLineSelectionControls(with: state)
     self.initLayout()
     self.loadSelectorState(from: state)
@@ -112,8 +112,8 @@ class SearchViewController: UIViewController {
 
   // MARK: LineSelectionControls
 
-  private func initLineSelectionControls(with state: SearchViewControllerState) {
-    let lines = LinesManager.instance.getLines()
+  private func initLineSelectionControls(with state: SearchState) {
+    let lines = Managers.lines.getAll()
 
     let tramLines             = lines.filter { $0.type == .tram }
     let selectedTramLines     = state.selectedLines.filter { $0.type == .tram && tramLines.contains($0) }
@@ -149,18 +149,18 @@ class SearchViewController: UIViewController {
 
   // MARK: State
 
-  private func loadSelectorState(from state: SearchViewControllerState) {
-    let isTramFilterSelected = state.lineTypeFilter == .tram
-    self.lineTypeSelector.selectedSegmentIndex = isTramFilterSelected ? LineSelectionControlsIndices.tram : LineSelectionControlsIndices.bus
+  private func loadSelectorState(from state: SearchState) {
+    let isTramSelected = state.selectedLineType == .tram
+    self.lineTypeSelector.selectedSegmentIndex = isTramSelected ? LineSelectionControlsIndices.tram : LineSelectionControlsIndices.bus
     self.updatePageViewFromSelector(animated: false)
   }
 
   private func saveState() {
-    let isTramFilterSelected = self.lineTypeSelector.selectedSegmentIndex == LineSelectionControlsIndices.tram
-    let lineTypeFilter: LineType = isTramFilterSelected ? .tram : .bus
+    let isTramSelected = self.lineTypeSelector.selectedSegmentIndex == LineSelectionControlsIndices.tram
+    let lineType = isTramSelected ? LineType.tram : LineType.bus
 
-    let state = SearchViewControllerState(filter: lineTypeFilter, selectedLines: self.selectedLines)
-    SearchViewControllerStateManager.instance.saveState(state: state)
+    let state = SearchState(withSelected: lineType, lines: self.selectedLines)
+    Managers.searchState.save(state)
   }
 }
 
