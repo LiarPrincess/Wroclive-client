@@ -23,7 +23,7 @@ class BookmarksDataSource: NSObject {
   // MARK: - Methods
 
   func bookmark(at indexPath: IndexPath) -> Bookmark? {
-    let inRange = indexPath.row > 0 && indexPath.row < self.bookmarks.count
+    let inRange = indexPath.row >= 0 && indexPath.row < self.bookmarks.count
     guard inRange else {
       return nil
     }
