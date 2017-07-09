@@ -7,7 +7,7 @@ import Foundation
 import RealmSwift
 
 class BookmarkLineObject: Object {
-  dynamic var id:      String = UUID().uuidString
+  dynamic var id:      String = UUID().uuidString // swiftlint:disable:this identifier_name
   dynamic var name:    String = ""
   dynamic var type:    Int    = 0
   dynamic var subtype: Int    = 0

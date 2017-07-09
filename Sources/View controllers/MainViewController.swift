@@ -22,8 +22,8 @@ class MainViewController: UIViewController {
   let bookmarksButton     = UIBarButtonItem()
   let configurationButton = UIBarButtonItem()
 
-  var searchTransitionDelegate:    UIViewControllerTransitioningDelegate?
-  var bookmarksTransitionDelegate: UIViewControllerTransitioningDelegate?
+  var searchTransitionDelegate:    UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var bookmarksTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
   // MARK: - Overriden
 

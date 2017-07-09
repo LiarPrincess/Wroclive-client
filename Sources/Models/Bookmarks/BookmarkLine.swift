@@ -6,7 +6,7 @@
 import Foundation
 
 struct BookmarkLine {
-  let id:      String
+  let id:      String // swiftlint:disable:this identifier_name
   let name:    String
   let type:    LineType
   let subtype: LineSubtype
