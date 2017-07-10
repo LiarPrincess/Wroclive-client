@@ -64,7 +64,6 @@
 		9021F4401F12D698000A6949 /* LineSelectionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4361F12D698000A6949 /* LineSelectionSectionViewModel.swift */; };
 		9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4371F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift */; };
 		9021F4431F12D6C5000A6949 /* LineSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4421F12D6C5000A6949 /* LineSelectionViewController.swift */; };
-		9021F4451F12D6EB000A6949 /* LineSelectionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4441F12D6EB000A6949 /* LineSelectionViewControllerDelegate.swift */; };
 		9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330E51EDF37F500FA8F43 /* AppDelegate.swift */; };
 		9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902330E61EDF37F500FA8F43 /* Assets.xcassets */; };
 		9023312C1EDF37F500FA8F43 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 902330E71EDF37F500FA8F43 /* Info.plist */; };
@@ -166,7 +165,6 @@
 		9021F4361F12D698000A6949 /* LineSelectionSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionViewModel.swift; sourceTree = "<group>"; };
 		9021F4371F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionSectionViewModelFactory.swift; sourceTree = "<group>"; };
 		9021F4421F12D6C5000A6949 /* LineSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewController.swift; sourceTree = "<group>"; };
-		9021F4441F12D6EB000A6949 /* LineSelectionViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerDelegate.swift; sourceTree = "<group>"; };
 		902330E51EDF37F500FA8F43 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902330E61EDF37F500FA8F43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902330E71EDF37F500FA8F43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -383,7 +381,6 @@
 			children = (
 				9021F42A1F12D698000A6949 /* Page */,
 				9021F4421F12D6C5000A6949 /* LineSelectionViewController.swift */,
-				9021F4441F12D6EB000A6949 /* LineSelectionViewControllerDelegate.swift */,
 				907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */,
 			);
 			path = "Line selection";
@@ -858,7 +855,6 @@
 				90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
 				9021F3761F1180EE000A6949 /* BookmarksManagerImpl.swift in Sources */,
-				9021F4451F12D6EB000A6949 /* LineSelectionViewControllerDelegate.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,
 				9086D44F1EE2DF7800E43D9A /* LinesManager.swift in Sources */,

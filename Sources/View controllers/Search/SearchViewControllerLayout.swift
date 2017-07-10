@@ -88,7 +88,7 @@ extension SearchViewController {
   }
 
   private func initLinesSelector() {
-    self.linesSelector.selectionDelegate = self
+    self.linesSelector.delegate = self
 
     self.addChildViewController(self.linesSelector)
     self.view.insertSubview(self.linesSelector.view, belowSubview: self.headerView)

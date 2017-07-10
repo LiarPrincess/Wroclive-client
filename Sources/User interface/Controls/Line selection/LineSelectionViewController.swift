@@ -9,8 +9,6 @@ class LineSelectionViewController: UIPageViewController {
 
   // MARK: - Properties
 
-  weak var selectionDelegate : LineSelectionViewControllerDelegate?
-
   var selectedLineType: LineType {
     get {
       // note that one of the pages is ALWAYS selected
@@ -53,14 +51,12 @@ class LineSelectionViewController: UIPageViewController {
 
   // MARK: - Init
 
-  init(withLines lines: [Line], delegate: LineSelectionViewControllerDelegate? = nil) {
+  init(withLines lines: [Line]) {
     self.tramPage = LineSelectionPage(withLines: lines.filter { $0.type == .tram })
     self.busPage  = LineSelectionPage(withLines: lines.filter { $0.type == .bus  })
 
     super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-
     self.dataSource = self
-    self.delegate   = self
   }
 
   required init?(coder: NSCoder) {
@@ -106,15 +102,5 @@ extension LineSelectionViewController: UIPageViewControllerDataSource {
 
     let nextIndex = index + 1
     return nextIndex < self.pages.count ? self.pages[nextIndex] : nil
-  }
-}
-
-// MARK: - UIPageViewControllerDelegate
-
-extension LineSelectionViewController: UIPageViewControllerDelegate {
-  func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-    if completed {
-      self.selectionDelegate?.lineSelectionViewController(controller: self, didChangePage: self.selectedLineType)
-    }
   }
 }

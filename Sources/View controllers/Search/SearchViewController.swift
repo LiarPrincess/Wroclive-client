@@ -155,8 +155,10 @@ extension SearchViewController: LineTypeSelectionControlDelegate {
 
 // MARK: - LineSelectionViewControllerDelegate
 
-extension SearchViewController: LineSelectionViewControllerDelegate {
-  func lineSelectionViewController(controller: LineSelectionViewController, didChangePage lineType: LineType) {
-    self.updateViewFromLineSelector()
+extension SearchViewController: UIPageViewControllerDelegate {
+  func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    if completed {
+      self.updateViewFromLineSelector()
+    }
   }
 }
