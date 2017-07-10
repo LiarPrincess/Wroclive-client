@@ -26,5 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Managers.lines       = LinesManagerImpl()
     Managers.searchState = SearchStateManagerImpl()
     Managers.location    = LocationManagerImpl()
+    Managers.alert       = AlertManagerImpl()
   }
 }

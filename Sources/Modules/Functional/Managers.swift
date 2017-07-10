@@ -8,4 +8,5 @@ struct Managers {
   static var lines:       LinesManager!
   static var searchState: SearchStateManager!
   static var location:    LocationManager!
+  static var alert:       AlertManager!
 }

@@ -66,7 +66,26 @@ class SearchViewController: UIViewController {
   // MARK: - Actions
 
   @objc func bookmarkButtonPressed() {
-    self.saveSelectedLinesAsBookmark()
+    let selectedLines = self.linesSelector.selectedLines
+
+    guard selectedLines.count > 0 else {
+      Managers.alert.showNoLinesSelectedAlert(in: self)
+      return
+    }
+
+    Managers.alert.showBookmarkNameInputAlert(in: self) { [weak self] name in
+      guard let strongSelf = self, let name = name else {
+        return
+      }
+
+      Managers.bookmark.addNew(name: name, lines: strongSelf.linesSelector.selectedLines)
+
+      // if its the 1st bookmark then show some instructions
+      let bookmarks = Managers.bookmark.getAll()
+      if bookmarks.count == 1 {
+        Managers.alert.showBookmarkInstructionsAlert(in: strongSelf)
+      }
+    }
   }
 
   @objc func searchButtonPressed() {
@@ -107,7 +126,6 @@ class SearchViewController: UIViewController {
       self.linesSelector.setLineType(lineType, animated: animated)
     }
   }
-
 }
 
 // MARK: - CardPanelPresentable
@@ -141,56 +159,4 @@ extension SearchViewController: LineSelectionViewControllerDelegate {
   func lineSelectionViewController(controller: LineSelectionViewController, didChangePage lineType: LineType) {
     self.updateViewFromLineSelector()
   }
-}
-
-// MARK: - Add bookmark
-
-extension SearchViewController {
-
-  fileprivate func saveSelectedLinesAsBookmark() {
-    let selectedLines = self.linesSelector.selectedLines
-
-    if selectedLines.count > 0 {
-      self.showBookmarkCreationAlert()
-    }
-    else { self.showNoLinesSelectedAlert() }
-  }
-
-  private func showBookmarkCreationAlert() {
-    let nameAlertBuilder = TextInputAlertBuilder(title: "New bookmark")
-    nameAlertBuilder.message            = "Enter name for this bookmark."
-    nameAlertBuilder.placeholder        = "Name"
-    nameAlertBuilder.confirmButtonTitle = "Save"
-    nameAlertBuilder.cancelButtonTitle  = "Cancel"
-
-    nameAlertBuilder.completion = { [weak self] result in
-      guard let strongSelf = self else {
-        return
-      }
-
-      if case let .confirm(name) = result {
-        Managers.bookmark.addNew(name: name, lines: strongSelf.linesSelector.selectedLines)
-
-        // if its the 1st bookmark then show some instructions
-        let bookmarks = Managers.bookmark.getAll()
-        if bookmarks.count == 1 {
-          let instructionsAlertBuilder = TextAlertBuilder(title: "Bookmark saved")
-          instructionsAlertBuilder.message          = "To view saved bookmarks select star from map view."
-          instructionsAlertBuilder.closeButtonTitle = "Got it!"
-
-          strongSelf.present(instructionsAlertBuilder.create(), animated: true, completion: nil)
-        }
-      }
-    }
-
-    self.present(nameAlertBuilder.create(), animated: true, completion: nil)
-  }
-
-  private func showNoLinesSelectedAlert() {
-    let alertBuilder              = TextAlertBuilder(title: "No lines selected")
-    alertBuilder.message          = "Please select some lines before trying to create bookmark."
-    alertBuilder.closeButtonTitle = "Ok"
-    self.present(alertBuilder.create(), animated: true, completion: nil)
-  }
-
 }

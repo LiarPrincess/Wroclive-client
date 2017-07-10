@@ -37,8 +37,6 @@
 		9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38F1F12C95D000A6949 /* UISegmentedControl+Font.swift */; };
 		9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3901F12C95D000A6949 /* UIView+AddBorder.swift */; };
 		9021F3981F12C95D000A6949 /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3911F12C95D000A6949 /* UIView+RoundCorners.swift */; };
-		9021F4041F12C9EF000A6949 /* TextAlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3DD1F12C9EF000A6949 /* TextAlertBuilder.swift */; };
-		9021F4051F12C9EF000A6949 /* TextInputAlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3DE1F12C9EF000A6949 /* TextInputAlertBuilder.swift */; };
 		9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3E11F12C9EF000A6949 /* ChevronView.swift */; };
 		9021F4071F12C9EF000A6949 /* ChevronViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3E21F12C9EF000A6949 /* ChevronViewState.swift */; };
 		9021F4121F12C9EF000A6949 /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3F31F12C9EF000A6949 /* LayoutGuide.swift */; };
@@ -78,6 +76,8 @@
 		9078F42E1F031443002D7DCD /* AvenirFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
+		907F70A31F141ADB00F43902 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F70A21F141ADB00F43902 /* AlertManager.swift */; };
+		907F70A51F141D3C00F43902 /* AlertManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F70A41F141D3C00F43902 /* AlertManagerImpl.swift */; };
 		9086D4481EE2DE8E00E43D9A /* LinesManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4441EE2DE8E00E43D9A /* LinesManagerImpl.swift */; };
 		9086D4491EE2DE8E00E43D9A /* LocationManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4461EE2DE8E00E43D9A /* LocationManagerImpl.swift */; };
 		9086D44B1EE2DEA200E43D9A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D44A1EE2DEA200E43D9A /* LocationManager.swift */; };
@@ -139,8 +139,6 @@
 		9021F38F1F12C95D000A6949 /* UISegmentedControl+Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Font.swift"; sourceTree = "<group>"; };
 		9021F3901F12C95D000A6949 /* UIView+AddBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorder.swift"; sourceTree = "<group>"; };
 		9021F3911F12C95D000A6949 /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
-		9021F3DD1F12C9EF000A6949 /* TextAlertBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAlertBuilder.swift; sourceTree = "<group>"; };
-		9021F3DE1F12C9EF000A6949 /* TextInputAlertBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputAlertBuilder.swift; sourceTree = "<group>"; };
 		9021F3E11F12C9EF000A6949 /* ChevronView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
 		9021F3E21F12C9EF000A6949 /* ChevronViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronViewState.swift; sourceTree = "<group>"; };
 		9021F3F31F12C9EF000A6949 /* LayoutGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutGuide.swift; sourceTree = "<group>"; };
@@ -180,6 +178,8 @@
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvenirFontProvider.swift; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
+		907F70A21F141ADB00F43902 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		907F70A41F141D3C00F43902 /* AlertManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManagerImpl.swift; sourceTree = "<group>"; };
 		9086D4441EE2DE8E00E43D9A /* LinesManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManagerImpl.swift; sourceTree = "<group>"; };
 		9086D4461EE2DE8E00E43D9A /* LocationManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerImpl.swift; sourceTree = "<group>"; };
 		9086D44A1EE2DEA200E43D9A /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -353,20 +353,10 @@
 			isa = PBXGroup;
 			children = (
 				9021F3F11F12C9EF000A6949 /* Helpers */,
-				9021F3DC1F12C9EF000A6949 /* Alerts */,
 				9021F3DF1F12C9EF000A6949 /* Controls */,
 				9021F3F81F12C9EF000A6949 /* Transitions */,
 			);
 			path = "User interface";
-			sourceTree = "<group>";
-		};
-		9021F3DC1F12C9EF000A6949 /* Alerts */ = {
-			isa = PBXGroup;
-			children = (
-				9021F3DD1F12C9EF000A6949 /* TextAlertBuilder.swift */,
-				9021F3DE1F12C9EF000A6949 /* TextInputAlertBuilder.swift */,
-			);
-			path = Alerts;
 			sourceTree = "<group>";
 		};
 		9021F3DF1F12C9EF000A6949 /* Controls */ = {
@@ -578,6 +568,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		907F70A11F141AC900F43902 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				907F70A21F141ADB00F43902 /* AlertManager.swift */,
+				907F70A41F141D3C00F43902 /* AlertManagerImpl.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 		9086D4401EE2DE8E00E43D9A /* Functional */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +584,7 @@
 				9086D4431EE2DE8E00E43D9A /* Lines */,
 				9086D4451EE2DE8E00E43D9A /* Location */,
 				9021F4201F12CB1A000A6949 /* Search state */,
+				907F70A11F141AC900F43902 /* Alerts */,
 				9021F36D1F116EAB000A6949 /* Managers.swift */,
 			);
 			path = Functional;
@@ -855,7 +855,6 @@
 				9021F3731F117C77000A6949 /* BookmarkLine.swift in Sources */,
 				9021F37C1F1184D6000A6949 /* BookmarkObject.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
-				9021F4041F12C9EF000A6949 /* TextAlertBuilder.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
 				9021F3761F1180EE000A6949 /* BookmarksManagerImpl.swift in Sources */,
@@ -884,6 +883,7 @@
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
 				9021F4231F12CB1A000A6949 /* SearchStateManager.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
+				907F70A51F141D3C00F43902 /* AlertManagerImpl.swift in Sources */,
 				9086D4481EE2DE8E00E43D9A /* LinesManagerImpl.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				9086D44D1EE2DEC800E43D9A /* LocationManagerConstants.swift in Sources */,
@@ -902,6 +902,7 @@
 				9021F4071F12C9EF000A6949 /* ChevronViewState.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchViewControllerLayout.swift in Sources */,
 				9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */,
+				907F70A31F141ADB00F43902 /* AlertManager.swift in Sources */,
 				907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */,
 				9021F36E1F116EAB000A6949 /* Managers.swift in Sources */,
 				9021F3711F117C60000A6949 /* Bookmark.swift in Sources */,
@@ -917,7 +918,6 @@
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
 				9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
-				9021F4051F12C9EF000A6949 /* TextInputAlertBuilder.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
 				9021F3981F12C95D000A6949 /* UIView+RoundCorners.swift in Sources */,
 				9021F4381F12D698000A6949 /* LineSelectionCell.swift in Sources */,
