@@ -7,6 +7,41 @@ import UIKit
 
 class AlertManagerImpl: AlertManager {
 
+  // MARK: - Location
+
+  func showDeniedAuthorizationAlert(in parent: UIViewController) {
+    let title   = "Location access is disabled"
+    let message = "In order show your current location, please open settings and set location access to 'In use'."
+
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.view.setStyle(.alert)
+
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    alert.addAction(cancelAction)
+
+    let openAction = UIAlertAction(title: "Open Settings", style: .default) { _ in
+      if let url = URL(string: UIApplicationOpenSettingsURLString) {
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+      }
+    }
+    alert.addAction(openAction)
+
+    parent.present(alert, animated: true, completion: nil)
+  }
+
+  func showRestrictedAuthorizationAlert(in parent: UIViewController) {
+    let title   = "Location access is disabled"
+    let message = "You can enable location access in your device settings."
+
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.view.setStyle(.alert)
+
+    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+    alert.addAction(okAction)
+
+    parent.present(alert, animated: true, completion: nil)
+  }
+
   // MARK: - Bookmarks
 
   func showNoLinesSelectedAlert(in parent: UIViewController) {

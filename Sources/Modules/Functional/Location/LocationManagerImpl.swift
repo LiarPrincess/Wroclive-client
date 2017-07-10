@@ -12,7 +12,7 @@ class LocationManagerImpl: LocationManager {
 
   // MARK: - Properties
 
-  fileprivate lazy var locationManager: CLLocationManager = {
+  private lazy var locationManager: CLLocationManager = {
     let locationManager = CLLocationManager()
     locationManager.distanceFilter  = Constants.Tracking.distanceFilter
     locationManager.desiredAccuracy = Constants.Tracking.accuracy
@@ -20,15 +20,13 @@ class LocationManagerImpl: LocationManager {
     return locationManager
   }()
 
-  // MARK: - Initial region
+  // MARK: - LocationManager
 
-  func getInitialRegion() -> MKCoordinateRegion {
+  func getCenter() -> MKCoordinateRegion {
     let center = self.locationManager.location?.coordinate ?? Constants.Default.location
-    let size = Constants.Default.regionSize
+    let size   = Constants.Default.regionSize
     return MKCoordinateRegionMakeWithDistance(center, size, size)
   }
-
-  // MARK: - Authorization
 
   var authorizationStatus: CLAuthorizationStatus {
     return CLLocationManager.authorizationStatus()
@@ -36,35 +34,6 @@ class LocationManagerImpl: LocationManager {
 
   func requestInUseAuthorization() {
     self.locationManager.requestWhenInUseAuthorization()
-  }
-
-  func showAlertForDeniedAuthorization(in parent: UIViewController) {
-    let alertTitle      = "Location access is disabled"
-    let alertMessage    = "In order show your current location, please open this app settings and set location access to 'In use'."
-    let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-    alertController.addAction(cancelAction)
-
-    let openAction = UIAlertAction(title: "Open Settings", style: .default) { _ in
-      if let url = URL(string: UIApplicationOpenSettingsURLString) {
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-      }
-    }
-    alertController.addAction(openAction)
-
-    parent.present(alertController, animated: true, completion: nil)
-  }
-
-  func showAlertForRestrictedAuthorization(in parent: UIViewController) {
-    let alertTitle      = "Location access is disabled"
-    let alertMessage    = "You can enable location access in your device settings."
-    let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-
-    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-    alertController.addAction(okAction)
-
-    parent.present(alertController, animated: true, completion: nil)
   }
 
 }

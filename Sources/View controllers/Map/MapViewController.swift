@@ -21,20 +21,14 @@ class MapViewController: UIViewController {
   }
 
   override func viewDidAppear(_ animated: Bool) {
-    self.showUserLocation()
+    Managers.location.requestInUseAuthorization()
+
+    let center = Managers.location.getCenter()
+    self.mapView.setRegion(center, animated: false)
   }
 
   override var bottomLayoutGuide: UILayoutSupport {
     return LayoutGuide(length: 44.0)
-  }
-
-  // MARK: - Methods
-
-  private func showUserLocation() {
-    Managers.location.requestInUseAuthorization()
-
-    let region = Managers.location.getInitialRegion()
-    self.mapView.setRegion(region, animated: false)
   }
 
 }
@@ -49,11 +43,11 @@ extension MapViewController: MKMapViewDelegate {
     let authorizationStatus = Managers.location.authorizationStatus
 
     if authorizationStatus == .denied {
-      Managers.location.showAlertForDeniedAuthorization(in: self)
+      Managers.alert.showDeniedAuthorizationAlert(in: self)
     }
 
     if authorizationStatus == .restricted {
-      Managers.location.showAlertForRestrictedAuthorization(in: self)
+      Managers.alert.showRestrictedAuthorizationAlert(in: self)
     }
   }
 

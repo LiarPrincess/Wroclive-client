@@ -13,9 +13,7 @@ struct LocationManagerConstants {
   }
 
   struct Default {
-    private static let wroclaw = CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.032564)
-
-    static let location   = wroclaw
+    static let location   = CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.032564)
     static let regionSize = CLLocationDistance(2500.0)
   }
 

@@ -7,6 +7,14 @@ import UIKit
 
 protocol AlertManager {
 
+  // MARK: - Location
+
+  /// Shows alert prompting for authorization change in settings
+  func showDeniedAuthorizationAlert(in parent: UIViewController)
+
+  /// Shows alert telling that it is not possible to show user location
+  func showRestrictedAuthorizationAlert(in parent: UIViewController)
+
   // MARK: - Add bookmark
 
   /// Shows alert notifying that bookmark cannot be created as no line was selected
