@@ -5,7 +5,7 @@
 
 import UIKit
 
-struct LineSelectionControlConstants {
+struct LineSelectionViewControllerConstants {
 
   struct Layout {
 
@@ -21,9 +21,7 @@ struct LineSelectionControlConstants {
       static let minSize: CGFloat = 50.0
 
       static let cornerRadius: CGFloat = 8.0
-      static let borderWidth:  CGFloat = 1.0
     }
 
   }
-
 }

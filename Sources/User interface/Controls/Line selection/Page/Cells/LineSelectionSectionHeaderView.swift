@@ -6,7 +6,7 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Constants = LineSelectionControlConstants
+fileprivate typealias Constants = LineSelectionViewControllerConstants
 fileprivate typealias Layout    = Constants.Layout.SectionHeader
 
 class LineSelectionSectionHeaderView: UICollectionReusableView {

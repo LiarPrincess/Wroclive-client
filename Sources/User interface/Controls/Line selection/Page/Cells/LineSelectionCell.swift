@@ -6,7 +6,7 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Layout = LineSelectionControlConstants.Layout.Cell
+fileprivate typealias Layout = LineSelectionViewControllerConstants.Layout.Cell
 
 class LineSelectionCell: UICollectionViewCell {
 

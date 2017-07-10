@@ -15,7 +15,7 @@ extension SearchViewController {
     self.view.setStyle(.cardPanel)
 
     self.initHeader()
-    self.initLineSelectionPageViewController()
+    self.initLinesSelector()
   }
 
   // MARK: - Private
@@ -87,18 +87,16 @@ extension SearchViewController {
     }
   }
 
-  private func initLineSelectionPageViewController() {
-    self.lineSelectionPageViewController.dataSource = self
-    self.lineSelectionPageViewController.delegate   = self
+  private func initLinesSelector() {
+    self.linesSelector.selectionDelegate = self
 
-    self.addChildViewController(self.lineSelectionPageViewController)
-    self.view.insertSubview(self.lineSelectionPageViewController.view, belowSubview: self.headerView)
+    self.addChildViewController(self.linesSelector)
+    self.view.insertSubview(self.linesSelector.view, belowSubview: self.headerView)
 
-    self.lineSelectionPageViewController.view.snp.makeConstraints { make in
+    self.linesSelector.view.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
 
-    self.lineSelectionPageViewController.didMove(toParentViewController: self)
+    self.linesSelector.didMove(toParentViewController: self)
   }
-
 }

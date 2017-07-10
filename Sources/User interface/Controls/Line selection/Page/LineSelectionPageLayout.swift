@@ -6,12 +6,12 @@
 import UIKit
 import SnapKit
 
-extension LineSelectionControl {
+extension LineSelectionPage {
 
   func initLayout() {
     self.collectionView.register(LineSelectionCell.self)
     self.collectionView.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
-    self.collectionView.backgroundColor         = UIColor.white
+    self.collectionView.backgroundColor         = Theme.current.colorScheme.background
     self.collectionView.allowsSelection         = true
     self.collectionView.allowsMultipleSelection = true
     self.collectionView.alwaysBounceVertical    = true

@@ -5,17 +5,15 @@
 
 import UIKit
 
-fileprivate typealias Constants = LineSelectionControlConstants
+fileprivate typealias Constants = LineSelectionViewControllerConstants
 fileprivate typealias Layout    = Constants.Layout
 
-class LineSelectionControl: UIViewController {
+class LineSelectionPage: UIViewController {
 
   // MARK: - Properties
 
-  weak var delegate: LineSelectionControlDelegate?
-
-  let lines:                          [Line]
-  fileprivate(set) var selectedLines: [Line]
+  let lines: [Line]
+  fileprivate(set) var selectedLines: [Line] = []
 
   // MARK: Collection
 
@@ -50,16 +48,8 @@ class LineSelectionControl: UIViewController {
 
   // MARK: - Init
 
-  init(withLines lines: [Line], selected selectedLines: [Line], delegate: LineSelectionControlDelegate? = nil) {
-    let isSelectedSubsetOfLines = lines.containsAll(other: selectedLines)
-    guard isSelectedSubsetOfLines else {
-      fatalError("Selected lines should be a subset of lines")
-    }
-
-    self.delegate = delegate
-
+  init(withLines lines: [Line]) {
     self.lines                = lines
-    self.selectedLines        = selectedLines
     self.collectionDataSource = LineSelectionDataSource(with: lines)
     super.init(nibName: nil, bundle: nil)
   }
@@ -73,7 +63,7 @@ class LineSelectionControl: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
-    self.refreshCollectionSelectedItems(animated: false)
+    self.setSelectedLines(self.selectedLines)
   }
 
   override func viewDidLayoutSubviews() {
@@ -81,28 +71,11 @@ class LineSelectionControl: UIViewController {
     self.recalculateItemSize()
   }
 
-  // MARK: - Methods
-
-  private func refreshCollectionSelectedItems(animated: Bool) {
-    for line in self.lines {
-      if let indexPath = self.collectionDataSource.index(of: line) {
-        let isSelected = self.selectedLines.contains(line)
-
-        if isSelected {
-          self.collectionView.selectItem(at: indexPath, animated: animated, scrollPosition: [])
-        }
-        else {
-          self.collectionView.deselectItem(at: indexPath, animated: animated)
-        }
-      }
-    }
-  }
-
   fileprivate var itemSize = CGSize()
 
-  fileprivate func recalculateItemSize() {
+  private func recalculateItemSize() {
     //number of cells:   n
-    //number of margins: (n-1)
+    //number of margins: n-1
 
     //totalWidth = n * cellWidth + (n-1) * margins
     //solve for n:         n = (totalWidth + margin) / (cellWidth + margin)
@@ -115,24 +88,28 @@ class LineSelectionControl: UIViewController {
     let numSectionsThatFit = floor((totalWidth + margin) / (minCellWidth + margin))
     let cellWidth          = (totalWidth - (numSectionsThatFit - 1) * margin) / numSectionsThatFit
 
-    self.itemSize = CGSize(width: floor(cellWidth), height: floor(cellWidth))
+    self.itemSize = CGSize(width: cellWidth, height: cellWidth)
   }
 
-  // MARK: Delegate
+  // MARK: - Methods
 
-  fileprivate func delegateDidSelect(line: Line) {
-    self.delegate?.control(self, didSelect: line)
+  func setSelectedLines(_ selectedLines: [Line]) {
+    self.selectedLines = selectedLines
+
+    for line in self.lines {
+      if let indexPath = self.collectionDataSource.index(of: line) {
+        let isSelected = self.selectedLines.contains(line)
+
+        if isSelected { self.collectionView.selectItem  (at: indexPath, animated: false, scrollPosition: []) }
+        else          { self.collectionView.deselectItem(at: indexPath, animated: false) }
+      }
+    }
   }
-
-  fileprivate func delegateDidDeselect(line: Line) {
-    self.delegate?.control(self, didDeselect: line)
-  }
-
 }
 
 // MARK: - CollectionViewDelegateFlowLayout
 
-extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
+extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
 
   // MARK: - Size
 
@@ -180,14 +157,12 @@ extension LineSelectionControl: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if let line = self.collectionDataSource.line(at: indexPath) {
       self.selectedLines.append(line)
-      self.delegateDidSelect(line: line)
     }
   }
 
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     if let line  = self.collectionDataSource.line(at: indexPath), let index = self.selectedLines.index(of: line) {
       self.selectedLines.remove(at: index)
-      self.delegateDidDeselect(line: line)
     }
   }
 

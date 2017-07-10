@@ -13,12 +13,6 @@ class SearchViewController: UIViewController {
 
   // MARK: - Properties
 
-  var selectedLines: [Line] {
-    return self.tramSelectionControl.selectedLines + self.busSelectionControl.selectedLines
-  }
-
-  // MARK: Layout
-
   let headerViewBlur = UIBlurEffect(style: .extraLight)
 
   lazy var headerView: UIVisualEffectView = {
@@ -32,28 +26,37 @@ class SearchViewController: UIViewController {
 
   let lineTypeSelector = LineTypeSelectionControl()
 
-  let lineSelectionPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-  var tramSelectionControl: LineSelectionControl!
-  var busSelectionControl:  LineSelectionControl!
-
-  lazy var lineSelectionControls: [LineSelectionControl] = {
-    return [self.tramSelectionControl, self.busSelectionControl]
+  lazy var linesSelector: LineSelectionViewController = {
+    let lines = Managers.lines.getAll()
+    return LineSelectionViewController(withLines: lines)
   }()
 
   // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    let state = Managers.searchState.getLatest()
-    self.initLineSelectionControls(with: state)
     self.initLayout()
-    self.loadSelectorState(from: state)
+    self.loadLastState()
   }
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    self.insetCollectionViewsBelowHeaderView()
+    self.insetLineSelectorBelowHeaderView()
+  }
+
+  private func insetLineSelectorBelowHeaderView() {
+    let currentInset = self.linesSelector.contentInset
+    let headerHeight = self.headerView.bounds.height
+
+    if currentInset.top < headerHeight {
+      let topInset    = headerHeight
+      let leftInset   = Layout.leftInset
+      let rightInset  = Layout.rightInset
+      let bottomInset = Layout.bottomInset
+
+      self.linesSelector.contentInset          = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+      self.linesSelector.scrollIndicatorInsets = UIEdgeInsets(top: topInset, left: 0.0,       bottom: 0.0,         right: 0.0)
+    }
   }
 
   override func viewDidDisappear(_ animated: Bool) {
@@ -70,86 +73,41 @@ class SearchViewController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
 
-  // MARK: - Methods
+  // MARK: - State
 
-  // MARK: Update
-
-  fileprivate func updateSelectorFromPageView() {
-    guard let lineSelectionControl = self.lineSelectionPageViewController.viewControllers?.first as? LineSelectionControl else {
-      return
-    }
-
-    guard let index = self.lineSelectionControls.index(of: lineSelectionControl) else {
-      return
-    }
-
-    self.lineTypeSelector.selectedSegmentIndex = index
-  }
-
-  fileprivate func updatePageViewFromSelector(animated: Bool) {
-    if self.lineTypeSelector.value == .tram {
-      let page      = self.tramSelectionControl!
-      let direction = UIPageViewControllerNavigationDirection.reverse
-      self.lineSelectionPageViewController.setViewControllers([page], direction: direction, animated: animated, completion: nil)
-    }
-    else {
-      let page      = self.busSelectionControl!
-      let direction = UIPageViewControllerNavigationDirection.forward
-      self.lineSelectionPageViewController.setViewControllers([page], direction: direction, animated: animated, completion: nil)
-    }
-  }
-
-  // MARK: LineSelectionControls
-
-  private func initLineSelectionControls(with state: SearchState) {
-    let lines = Managers.lines.getAll()
-
-    let tramLines             = lines.filter { $0.type == .tram }
-    let selectedTramLines     = state.selectedLines.filter { $0.type == .tram && tramLines.contains($0) }
-    self.tramSelectionControl = LineSelectionControl(withLines: tramLines, selected: selectedTramLines)
-
-    let busLines             = lines.filter { $0.type == .bus }
-    let selectedBusLines     = state.selectedLines.filter { $0.type == .bus && busLines.contains($0) }
-    self.busSelectionControl = LineSelectionControl(withLines: busLines, selected: selectedBusLines)
-  }
-
-  private func insetCollectionViewsBelowHeaderView() {
-    func fixInsets(in lineSelection: LineSelectionControl) {
-      let currentInset = lineSelection.contentInset
-      let headerHeight = self.headerView.bounds.height
-
-      if currentInset.top < headerHeight {
-        let topInset    = headerHeight
-        let leftInset   = Layout.leftInset
-        let rightInset  = Layout.rightInset
-        let bottomInset = Layout.bottomInset
-
-        let contentInset          = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-        let scrollIndicatorInsets = UIEdgeInsets(top: topInset, left: 0.0,       bottom: 0.0,         right: 0.0)
-
-        lineSelection.contentInset          = contentInset
-        lineSelection.scrollIndicatorInsets = scrollIndicatorInsets
-      }
-    }
-
-    fixInsets(in: self.tramSelectionControl)
-    fixInsets(in: self.busSelectionControl)
-  }
-
-  // MARK: State
-
-  private func loadSelectorState(from state: SearchState) {
-    self.lineTypeSelector.value = state.selectedLineType
-    self.updatePageViewFromSelector(animated: false)
+  private func loadLastState() {
+    let state = Managers.searchState.getLatest()
+    self.lineTypeSelector.value      = state.selectedLineType
+    self.linesSelector.selectedLines = state.selectedLines
+    self.updateViewFromLineTypeSelector(animated: false)
   }
 
   private func saveState() {
     let lineType = self.lineTypeSelector.value
-    let lines    = self.selectedLines
+    let lines    = self.linesSelector.selectedLines
 
     let state = SearchState(withSelected: lineType, lines: lines)
     Managers.searchState.save(state)
   }
+
+  // MARK: - Update methods
+
+  fileprivate func updateViewFromLineSelector() {
+    let lineType = self.linesSelector.selectedLineType
+
+    if self.lineTypeSelector.value != lineType {
+      self.lineTypeSelector.value = lineType
+    }
+  }
+
+  fileprivate func updateViewFromLineTypeSelector(animated: Bool) {
+    let lineType = self.lineTypeSelector.value
+
+    if lineType != self.linesSelector.selectedLineType {
+      self.linesSelector.setLineType(lineType, animated: animated)
+    }
+  }
+
 }
 
 // MARK: - CardPanelPresentable
@@ -173,7 +131,15 @@ extension SearchViewController : CardPanelPresentable {
 
 extension SearchViewController: LineTypeSelectionControlDelegate {
   func lineTypeSelectionControl(control: LineTypeSelectionControl, didSelect lineType: LineType) {
-    self.updatePageViewFromSelector(animated: true)
+    self.updateViewFromLineTypeSelector(animated: true)
+  }
+}
+
+// MARK: - LineSelectionViewControllerDelegate
+
+extension SearchViewController: LineSelectionViewControllerDelegate {
+  func lineSelectionViewController(controller: LineSelectionViewController, didChangePage lineType: LineType) {
+    self.updateViewFromLineSelector()
   }
 }
 
@@ -182,7 +148,7 @@ extension SearchViewController: LineTypeSelectionControlDelegate {
 extension SearchViewController {
 
   fileprivate func saveSelectedLinesAsBookmark() {
-    let selectedLines = self.selectedLines
+    let selectedLines = self.linesSelector.selectedLines
 
     if selectedLines.count > 0 {
       self.showBookmarkCreationAlert()
@@ -203,7 +169,7 @@ extension SearchViewController {
       }
 
       if case let .confirm(name) = result {
-        Managers.bookmark.addNew(name: name, lines: strongSelf.selectedLines)
+        Managers.bookmark.addNew(name: name, lines: strongSelf.linesSelector.selectedLines)
 
         // if its the 1st bookmark then show some instructions
         let bookmarks = Managers.bookmark.getAll()
@@ -225,42 +191,6 @@ extension SearchViewController {
     alertBuilder.message          = "Please select some lines before trying to create bookmark."
     alertBuilder.closeButtonTitle = "Ok"
     self.present(alertBuilder.create(), animated: true, completion: nil)
-  }
-
-}
-
-// MARK: UIPageViewControllerDataSource
-
-extension SearchViewController: UIPageViewControllerDataSource {
-
-  func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    guard let index = self.lineSelectionControls.index(of: viewController as! LineSelectionControl) else {
-      return nil
-    }
-
-    let previousIndex = index - 1
-    return previousIndex >= 0 ? self.lineSelectionControls[previousIndex] : nil
-  }
-
-  func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    guard let index = self.lineSelectionControls.index(of: viewController as! LineSelectionControl) else {
-      return nil
-    }
-
-    let nextIndex = index + 1
-    return nextIndex < self.lineSelectionControls.count ? self.lineSelectionControls[nextIndex] : nil
-  }
-
-}
-
-// MARK: - UIPageViewControllerDelegate
-
-extension SearchViewController: UIPageViewControllerDelegate {
-
-  func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-    if completed {
-      self.updateSelectorFromPageView()
-    }
   }
 
 }
