@@ -53,10 +53,10 @@ extension MainViewController {
   private func layoutToolbarItems() -> [UIBarButtonItem] {
     let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     return [
-      flexible, self.userTrackingButton,  flexible, flexible,
-      flexible, self.searchButton,        flexible, flexible,
-      flexible, self.bookmarksButton,     flexible, flexible,
-      flexible, self.configurationButton, flexible
+      self.userTrackingButton,  flexible,
+      self.searchButton,        flexible,
+      self.bookmarksButton,     flexible,
+      self.configurationButton
     ]
   }
 }
