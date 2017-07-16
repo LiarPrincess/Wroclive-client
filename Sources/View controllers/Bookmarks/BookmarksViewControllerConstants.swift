@@ -51,13 +51,7 @@ struct BookmarksViewControllerConstants {
       static let leftInset:  CGFloat = 35.0
       static let rightInset: CGFloat = leftInset
 
-      struct TopLabel {
-        static let topOffset: CGFloat = 35.0
-      }
-
-      struct BottomLabel {
-        static let topOffset: CGFloat = 15.0
-      }
+      static let labelsSpacing: CGFloat = 6.0
     }
   }
 
