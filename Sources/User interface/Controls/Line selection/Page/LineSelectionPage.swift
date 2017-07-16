@@ -10,14 +10,39 @@ fileprivate typealias Layout    = Constants.Layout
 
 class LineSelectionPage: UIViewController {
 
-  // MARK: - Properties
+// MARK: - Properties
 
-  let lines: [Line]
-  fileprivate(set) var selectedLines: [Line] = []
+  var lines: [Line] {
+    get { return self.collectionDataSource.lines }
+    set { self.collectionDataSource = LineSelectionDataSource(with: newValue) }
+  }
 
-  // MARK: Collection
+  var selectedLines: [Line] {
+    get {
+      return self.collectionView.indexPathsForSelectedItems?.flatMap {
+        return self.collectionDataSource.line(at: $0)
+      } ?? []
+    }
+    set {
+      for line in self.lines {
+        if let indexPath = self.collectionDataSource.index(of: line) {
+          let isSelected = newValue.contains(line)
 
-  let collectionDataSource: LineSelectionDataSource
+          if isSelected { self.collectionView.selectItem  (at: indexPath, animated: false, scrollPosition: []) }
+          else          { self.collectionView.deselectItem(at: indexPath, animated: false) }
+        }
+      } // end for(...)
+    }
+  }
+
+// MARK: Collection
+
+  private(set) var collectionDataSource: LineSelectionDataSource {
+    didSet {
+      self.collectionView.dataSource = self.collectionDataSource
+      self.collectionView.reloadData()
+    }
+  }
 
   let collectionViewLayout = UICollectionViewFlowLayout()
 
@@ -25,7 +50,7 @@ class LineSelectionPage: UIViewController {
     return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.collectionViewLayout)
   }()
 
-  // MARK: Layout
+// MARK: Layout
 
   var contentInset: UIEdgeInsets {
     get { return self.collectionView.contentInset }
@@ -46,10 +71,9 @@ class LineSelectionPage: UIViewController {
     }
   }
 
-  // MARK: - Init
+// MARK: - Init
 
   init(withLines lines: [Line]) {
-    self.lines                = lines
     self.collectionDataSource = LineSelectionDataSource(with: lines)
     super.init(nibName: nil, bundle: nil)
   }
@@ -58,12 +82,11 @@ class LineSelectionPage: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Overriden
+// MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
-    self.setSelectedLines(self.selectedLines)
   }
 
   override func viewDidLayoutSubviews() {
@@ -90,28 +113,13 @@ class LineSelectionPage: UIViewController {
 
     self.itemSize = CGSize(width: cellWidth, height: cellWidth)
   }
-
-  // MARK: - Methods
-
-  func setSelectedLines(_ selectedLines: [Line]) {
-    self.selectedLines = selectedLines
-
-    for line in self.lines {
-      if let indexPath = self.collectionDataSource.index(of: line) {
-        let isSelected = self.selectedLines.contains(line)
-
-        if isSelected { self.collectionView.selectItem  (at: indexPath, animated: false, scrollPosition: []) }
-        else          { self.collectionView.deselectItem(at: indexPath, animated: false) }
-      }
-    }
-  }
 }
 
 // MARK: - CollectionViewDelegateFlowLayout
 
 extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
 
-  // MARK: - Size
+// MARK: - Size
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
     let width = self.collectionView.contentWidth
@@ -134,7 +142,7 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
     return self.itemSize
   }
 
-  // MARK: - Margin
+// MARK: - Margin
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return Layout.Cell.margin
@@ -144,7 +152,7 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
     return Layout.Cell.margin
   }
 
-  // MARK: - Selection
+// MARK: - Selection
 
   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
     return true
@@ -152,18 +160,6 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
     return true
-  }
-
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if let line = self.collectionDataSource.line(at: indexPath) {
-      self.selectedLines.append(line)
-    }
-  }
-
-  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-    if let line  = self.collectionDataSource.line(at: indexPath), let index = self.selectedLines.index(of: line) {
-      self.selectedLines.remove(at: index)
-    }
   }
 
 }

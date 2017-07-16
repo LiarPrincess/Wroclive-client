@@ -9,6 +9,8 @@ class LineSelectionDataSource: NSObject {
 
   // MARK: - Properties
 
+  var lines: [Line] { return self.viewModels.flatMap { $0.lines } }
+
   fileprivate var viewModels: [LineSelectionSectionViewModel]
 
   // MARK: - Init

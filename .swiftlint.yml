@@ -2,15 +2,15 @@
 
 disabled_rules:
   - colon              # align properties
-  - comma              # align func parameters
-  - nesting            # nested structs
+  - comma              # align func params
+  - nesting            # nested constants
 
-  - line_length        # really?
+  - line_length        # nope
 
-  - opening_brace      # allow if true { ... }
-  - statement_position # allow else in new line
+  - opening_brace      # if true { ... }
+  - statement_position # else    { ... }
   
-  - void_return        # prefer () instead of Void
+  - void_return        # () not Void
 
 included:
   - Sources

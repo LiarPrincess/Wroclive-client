@@ -7,22 +7,30 @@ import UIKit
 
 class LineSelectionViewController: UIPageViewController {
 
-  // MARK: - Properties
+// MARK: - Properties
 
-  var selectedLineType: LineType {
+  var currentPage: LineType {
     get {
       // note that one of the pages is ALWAYS selected
       let page = self.viewControllers?.first as? LineSelectionPage
       return page == self.tramPage ? .tram : .bus
     }
-    set { self.setLineType(newValue, animated: false) }
+    set { self.setCurrentPage(newValue, animated: false) }
+  }
+
+  var lines: [Line] {
+    get { return self.tramPage.lines + self.busPage.lines }
+    set {
+      self.tramPage.lines = newValue.filter(.tram)
+      self.busPage.lines  = newValue.filter(.bus )
+    }
   }
 
   var selectedLines: [Line] {
     get { return self.tramPage.selectedLines + self.busPage.selectedLines }
     set {
-      self.tramPage.setSelectedLines(newValue.filter { $0.type == .tram })
-      self.busPage.setSelectedLines (newValue.filter { $0.type == .bus  })
+      self.tramPage.selectedLines = newValue.filter(.tram)
+      self.busPage.selectedLines  = newValue.filter(.bus )
     }
   }
 
@@ -49,13 +57,16 @@ class LineSelectionViewController: UIPageViewController {
     return [self.tramPage, self.busPage]
   }()
 
-  // MARK: - Init
+// MARK: - Init
 
   init(withLines lines: [Line]) {
-    self.tramPage = LineSelectionPage(withLines: lines.filter { $0.type == .tram })
-    self.busPage  = LineSelectionPage(withLines: lines.filter { $0.type == .bus  })
+    self.tramPage = LineSelectionPage(withLines: lines.filter(.tram))
+    self.busPage  = LineSelectionPage(withLines: lines.filter(.bus ))
 
     super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+
+    // load view so we can select/deselect cells right away
+    self.pages.forEach { _ = $0.view }
     self.dataSource = self
   }
 
@@ -63,16 +74,16 @@ class LineSelectionViewController: UIPageViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Override
+// MARK: - Override
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setViewControllers([self.tramPage], direction: .forward, animated: false, completion: nil)
   }
 
-  // MARK: - Methods
+// MARK: - Methods
 
-  func setLineType(_ lineType: LineType, animated: Bool) {
+  func setCurrentPage(_ lineType: LineType, animated: Bool) {
     typealias Direction = UIPageViewControllerNavigationDirection
 
     let isTram    = lineType == .tram

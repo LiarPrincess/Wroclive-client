@@ -22,10 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func registerManagers() {
-    Managers.bookmark    = BookmarksManagerImpl()
     Managers.lines       = LinesManagerImpl()
+    Managers.bookmark    = BookmarksManagerImpl()
     Managers.searchState = SearchStateManagerImpl()
     Managers.location    = LocationManagerImpl()
+    Managers.networking  = NetworkingManagerImpl()
     Managers.alert       = AlertManagerImpl()
   }
 }

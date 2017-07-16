@@ -4,9 +4,10 @@
 //
 
 struct Managers {
-  static var bookmark:    BookmarksManager!
   static var lines:       LinesManager!
+  static var bookmark:    BookmarksManager!
   static var searchState: SearchStateManager!
   static var location:    LocationManager!
+  static var networking:  NetworkingManager!
   static var alert:       AlertManager!
 }

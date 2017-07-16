@@ -5,6 +5,7 @@
 
 import UIKit
 import SnapKit
+import PromiseKit
 
 fileprivate typealias Constants = SearchViewControllerConstants
 fileprivate typealias Layout    = Constants.Layout
@@ -25,18 +26,14 @@ class SearchViewController: UIViewController {
   let searchButton   = UIButton()
 
   let lineTypeSelector = LineTypeSelectionControl()
-
-  lazy var linesSelector: LineSelectionViewController = {
-    let lines = Managers.lines.getAll()
-    return LineSelectionViewController(withLines: lines)
-  }()
+  let linesSelector    = LineSelectionViewController(withLines: [])
 
   // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
-    self.loadLastState()
+    self.loadData()
   }
 
   override func viewDidLayoutSubviews() {
@@ -89,16 +86,27 @@ class SearchViewController: UIViewController {
   }
 
   @objc func searchButtonPressed() {
+    Swift.print("didSelect: \(self.linesSelector.selectedLines)")
     self.dismiss(animated: true, completion: nil)
   }
 
   // MARK: - State
 
-  private func loadLastState() {
+  private func loadData() {
     let state = Managers.searchState.getLatest()
     self.lineTypeSelector.value      = state.selectedLineType
-    self.linesSelector.selectedLines = state.selectedLines
-    self.updateViewFromLineTypeSelector(animated: false)
+
+    _ = Managers.lines.getAll()
+    .then { lines -> [Line] in
+      self.linesSelector.lines         = lines
+      self.linesSelector.selectedLines = state.selectedLines
+      self.updateViewFromLineTypeSelector(animated: false)
+
+      return lines
+    }
+    .catch { error in
+      fatalError(error.localizedDescription)
+    }
   }
 
   private func saveState() {
@@ -112,7 +120,7 @@ class SearchViewController: UIViewController {
   // MARK: - Update methods
 
   fileprivate func updateViewFromLineSelector() {
-    let lineType = self.linesSelector.selectedLineType
+    let lineType = self.linesSelector.currentPage
 
     if self.lineTypeSelector.value != lineType {
       self.lineTypeSelector.value = lineType
@@ -122,8 +130,8 @@ class SearchViewController: UIViewController {
   fileprivate func updateViewFromLineTypeSelector(animated: Bool) {
     let lineType = self.lineTypeSelector.value
 
-    if lineType != self.linesSelector.selectedLineType {
-      self.linesSelector.setLineType(lineType, animated: animated)
+    if lineType != self.linesSelector.currentPage {
+      self.linesSelector.setCurrentPage(lineType, animated: animated)
     }
   }
 }
