@@ -28,12 +28,36 @@ class SearchViewController: UIViewController {
   let lineTypeSelector = LineTypeSelectionControl()
   let linesSelector    = LineSelectionViewController(withLines: [])
 
+  let placeholderView    = UIView()
+  let placeholderLabel   = UILabel()
+  let placeholderSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+
+  fileprivate enum ControlMode {
+    case loadingData, selectingLines
+  }
+
+  fileprivate var mode: ControlMode = .loadingData {
+    didSet {
+      switch self.mode {
+      case .loadingData:
+        self.placeholderSpinner.startAnimating()
+        self.placeholderView.isHidden    = false
+        self.linesSelector.view.isHidden = true
+
+      case .selectingLines:
+        self.placeholderSpinner.stopAnimating()
+        self.placeholderView.isHidden    = true
+        self.linesSelector.view.isHidden = false
+      }
+    }
+  }
+
   // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
-    self.loadData()
+    self.reloadData()
   }
 
   override func viewDidLayoutSubviews() {
@@ -66,7 +90,7 @@ class SearchViewController: UIViewController {
     let selectedLines = self.linesSelector.selectedLines
 
     guard selectedLines.count > 0 else {
-      Managers.alert.showNoLinesSelectedAlert(in: self)
+      Managers.alert.showBookmarkNoLinesSelectedAlert(in: self)
       return
     }
 
@@ -92,20 +116,24 @@ class SearchViewController: UIViewController {
 
   // MARK: - State
 
-  private func loadData() {
+  private func reloadData() {
+    self.mode = .loadingData
+
     let state = Managers.searchState.getLatest()
-    self.lineTypeSelector.value      = state.selectedLineType
+    self.lineTypeSelector.value = state.selectedLineType
 
     _ = Managers.lines.getAll()
     .then { lines -> [Line] in
       self.linesSelector.lines         = lines
       self.linesSelector.selectedLines = state.selectedLines
+
+      self.mode = .selectingLines
       self.updateViewFromLineTypeSelector(animated: false)
 
       return lines
     }
     .catch { error in
-      fatalError(error.localizedDescription)
+//      self.contentType = .connectionError(error: error)
     }
   }
 
@@ -120,16 +148,18 @@ class SearchViewController: UIViewController {
   // MARK: - Update methods
 
   fileprivate func updateViewFromLineSelector() {
-    let lineType = self.linesSelector.currentPage
+    guard self.mode == .selectingLines else { return }
 
+    let lineType = self.linesSelector.currentPage
     if self.lineTypeSelector.value != lineType {
       self.lineTypeSelector.value = lineType
     }
   }
 
   fileprivate func updateViewFromLineTypeSelector(animated: Bool) {
-    let lineType = self.lineTypeSelector.value
+    guard self.mode == .selectingLines else { return }
 
+    let lineType = self.lineTypeSelector.value
     if lineType != self.linesSelector.currentPage {
       self.linesSelector.setCurrentPage(lineType, animated: animated)
     }
@@ -156,7 +186,7 @@ extension SearchViewController : CardPanelPresentable {
 // MARK: - LineTypeSelectionControlDelegate
 
 extension SearchViewController: LineTypeSelectionControlDelegate {
-  func lineTypeSelectionControl(control: LineTypeSelectionControl, didSelect lineType: LineType) {
+  func lineTypeSelectionControl(_ control: LineTypeSelectionControl, didSelect lineType: LineType) {
     self.updateViewFromLineTypeSelector(animated: true)
   }
 }

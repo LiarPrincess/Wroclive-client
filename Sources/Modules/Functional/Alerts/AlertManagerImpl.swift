@@ -44,7 +44,7 @@ class AlertManagerImpl: AlertManager {
 
   // MARK: - Bookmarks
 
-  func showNoLinesSelectedAlert(in parent: UIViewController) {
+  func showBookmarkNoLinesSelectedAlert(in parent: UIViewController) {
     let title   = "No lines selected"
     let message = "Please select some lines before trying to create bookmark."
 

@@ -18,7 +18,7 @@ protocol AlertManager {
   // MARK: - Add bookmark
 
   /// Shows alert notifying that bookmark cannot be created as no line was selected
-  func showNoLinesSelectedAlert(in parent: UIViewController)
+  func showBookmarkNoLinesSelectedAlert(in parent: UIViewController)
 
   /// Shows alert for name input when creating new bookmark
   func showBookmarkNameInputAlert(in parent: UIViewController, completed: @escaping (String?) -> ())

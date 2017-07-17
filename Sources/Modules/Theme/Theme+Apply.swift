@@ -54,6 +54,7 @@ extension Theme {
 
     case .cardPanelHeader:
       view.addBorder(at: .bottom)
+      view.setContentHuggingPriority(900, for: .vertical)
     }
   }
 

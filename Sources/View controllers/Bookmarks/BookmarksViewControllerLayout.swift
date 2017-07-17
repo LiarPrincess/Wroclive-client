@@ -86,17 +86,8 @@ extension BookmarksViewController {
     self.view.addSubview(self.placeholderView)
 
     self.placeholderView.snp.makeConstraints { make in
-      make.top.equalTo(self.headerView.snp.bottom)
       make.left.equalToSuperview().offset(Layout.Placeholder.leftInset)
       make.right.equalToSuperview().offset(-Layout.Placeholder.rightInset)
-      make.bottom.equalToSuperview()
-    }
-
-    let placeholderContentView = UIView()
-    self.placeholderView.addSubview(placeholderContentView)
-
-    placeholderContentView.snp.makeConstraints { make in
-      make.left.right.equalToSuperview()
       make.centerY.equalTo(self.view)
     }
 
@@ -105,7 +96,7 @@ extension BookmarksViewController {
     self.placeholderTopLabel.textAlignment = .center
     self.placeholderTopLabel.lineBreakMode = .byWordWrapping
     self.placeholderTopLabel.text          = "You have not saved any bookmarks"
-    placeholderContentView.addSubview(self.placeholderTopLabel)
+    self.placeholderView.addSubview(self.placeholderTopLabel)
 
     self.placeholderTopLabel.snp.makeConstraints { make in
       make.left.top.right.equalToSuperview()
@@ -116,10 +107,10 @@ extension BookmarksViewController {
     self.placeholderBottomLabel.textAlignment = .center
     self.placeholderBottomLabel.lineBreakMode = .byWordWrapping
     self.placeholderBottomLabel.text          = "To add bookmark press 'Save' when selectings lines."
-    placeholderContentView.addSubview(self.placeholderBottomLabel)
+    self.placeholderView.addSubview(self.placeholderBottomLabel)
 
     self.placeholderBottomLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.placeholderTopLabel.snp.bottom).offset(Layout.Placeholder.labelsSpacing)
+      make.top.equalTo(self.placeholderTopLabel.snp.bottom).offset(Layout.Placeholder.verticalSpacing)
       make.left.bottom.right.equalToSuperview()
     }
   }

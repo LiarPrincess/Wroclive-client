@@ -6,6 +6,6 @@
 protocol LineTypeSelectionControlDelegate: class {
 
   /// Called after selection changed (programatically or by touch event)
-  func lineTypeSelectionControl(control: LineTypeSelectionControl, didSelect lineType: LineType)
+  func lineTypeSelectionControl(_ control: LineTypeSelectionControl, didSelect lineType: LineType)
 
 }

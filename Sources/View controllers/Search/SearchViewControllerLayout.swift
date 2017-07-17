@@ -16,6 +16,7 @@ extension SearchViewController {
 
     self.initHeader()
     self.initLinesSelector()
+    self.initLinesSelectorPlaceholder()
   }
 
   // MARK: - Private
@@ -98,5 +99,35 @@ extension SearchViewController {
     }
 
     self.linesSelector.didMove(toParentViewController: self)
+  }
+
+  private func initLinesSelectorPlaceholder() {
+    self.view.insertSubview(self.placeholderView, belowSubview: self.linesSelector.view)
+
+    self.placeholderView.snp.makeConstraints { make in
+      make.top.equalTo(self.headerView.snp.bottom)
+      make.left.equalToSuperview().offset(Layout.Placeholder.leftInset)
+      make.right.equalToSuperview().offset(-Layout.Placeholder.rightInset)
+      make.bottom.equalToSuperview()
+    }
+
+    self.placeholderView.addSubview(self.placeholderSpinner)
+
+    self.placeholderSpinner.snp.makeConstraints { make in
+      make.centerX.equalToSuperview()
+    }
+
+    self.placeholderLabel.setStyle(.body)
+    self.placeholderLabel.numberOfLines = 0
+    self.placeholderLabel.textAlignment = .center
+    self.placeholderLabel.lineBreakMode = .byWordWrapping
+    self.placeholderLabel.text          = "Loading…" // "Wczytywanie…"
+    self.placeholderView.addSubview(self.placeholderLabel)
+
+    self.placeholderLabel.snp.makeConstraints { make in
+      make.top.equalTo(self.placeholderSpinner.snp.bottom).offset(Layout.Placeholder.verticalSpacing)
+      make.left.right.equalToSuperview()
+      make.bottom.equalTo(self.placeholderView.snp.centerY)
+    }
   }
 }

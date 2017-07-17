@@ -8,7 +8,7 @@ import PromiseKit
 
 class NetworkingManagerImpl: NetworkingManager {
   func getLineDefinitions() -> Promise<[Line]> {
-    return after(interval: 1.0)
+    return after(interval: 2.0)
       .then { return testData }
   }
 }

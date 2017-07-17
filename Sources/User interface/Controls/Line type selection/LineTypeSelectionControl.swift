@@ -41,7 +41,6 @@ class LineTypeSelectionControl: UISegmentedControl {
     self.insertSegment(withTitle: "Buses", at: Indices.bus,  animated: false)
 
     self.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
-    self.value = .tram
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -57,7 +56,7 @@ class LineTypeSelectionControl: UISegmentedControl {
   // MARK: - Methods
 
   private func delegateDidSelect() {
-    self.delegate?.lineTypeSelectionControl(control: self, didSelect: self.value)
+    self.delegate?.lineTypeSelectionControl(self, didSelect: self.value)
   }
 
 }
