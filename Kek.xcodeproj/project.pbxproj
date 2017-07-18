@@ -95,6 +95,7 @@
 		90AF2BE11EE9E186006E61D6 /* SystemFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */; };
 		90AF2BE31EE9E4ED006E61D6 /* Theme+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */; };
 		90AF8C791EF2D3FE000763B7 /* Wroclaw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */; };
+		90F63BDE1F1EB7FF0093EC3A /* NetworkActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F63BDD1F1EB7FF0093EC3A /* NetworkActivityIndicatorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -200,6 +201,7 @@
 		90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFontProvider.swift; sourceTree = "<group>"; };
 		90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Apply.swift"; sourceTree = "<group>"; };
 		90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
+		90F63BDD1F1EB7FF0093EC3A /* NetworkActivityIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorManager.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -638,6 +640,7 @@
 		90A06C1C1F1A26E9009AD470 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				90F63BDC1F1EB7EB0093EC3A /* Activity indicator */,
 				90A06C1D1F1A2724009AD470 /* NetworkingManager.swift */,
 				90A06C1F1F1A2772009AD470 /* NetworkingManagerImpl.swift */,
 			);
@@ -690,6 +693,14 @@
 				90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */,
 			);
 			path = Locations;
+			sourceTree = "<group>";
+		};
+		90F63BDC1F1EB7EB0093EC3A /* Activity indicator */ = {
+			isa = PBXGroup;
+			children = (
+				90F63BDD1F1EB7FF0093EC3A /* NetworkActivityIndicatorManager.swift */,
+			);
+			path = "Activity indicator";
 			sourceTree = "<group>";
 		};
 		OBJ_41 /* Tests */ = {
@@ -878,6 +889,7 @@
 				9021F4401F12D698000A6949 /* LineSelectionSectionViewModel.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
 				9021F3731F117C77000A6949 /* BookmarkLine.swift in Sources */,
+				90F63BDE1F1EB7FF0093EC3A /* NetworkActivityIndicatorManager.swift in Sources */,
 				9021F37C1F1184D6000A6949 /* BookmarkObject.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */,

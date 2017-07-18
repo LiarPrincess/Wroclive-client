@@ -7,10 +7,24 @@ import Foundation
 import PromiseKit
 
 class NetworkingManagerImpl: NetworkingManager {
+
   func getLineDefinitions() -> Promise<[Line]> {
-    return after(interval: 2.0)
-      .then { return testData }
+    return self.withActivityIndicator { () -> Promise<[Line]> in
+        after(interval: 3.0)
+        .then { return testData }
+      }
   }
+
+  func withActivityIndicator<T>(funcToCall: @escaping () -> Promise<T>) -> Promise<T> {
+    return firstly {
+        NetworkActivityIndicatorManager.shared.incrementActivityCount()
+        return funcToCall()
+      }
+      .always {
+        NetworkActivityIndicatorManager.shared.decrementActivityCount()
+      }
+  }
+
 }
 
 fileprivate let testData: [Line] = [
