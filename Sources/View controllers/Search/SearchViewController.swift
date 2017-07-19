@@ -12,7 +12,7 @@ fileprivate typealias Layout    = Constants.Layout
 
 class SearchViewController: UIViewController {
 
-  // MARK: - Properties
+// MARK: - Properties
 
   let headerViewBlur = UIBlurEffect(style: .extraLight)
 
@@ -52,7 +52,7 @@ class SearchViewController: UIViewController {
     }
   }
 
-  // MARK: - Overriden
+// MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -84,7 +84,7 @@ class SearchViewController: UIViewController {
     self.saveState()
   }
 
-  // MARK: - Actions
+// MARK: - Actions
 
   @objc func bookmarkButtonPressed() {
     let selectedLines = self.linesSelector.selectedLines
@@ -102,9 +102,10 @@ class SearchViewController: UIViewController {
       Managers.bookmark.addNew(name: name, lines: strongSelf.linesSelector.selectedLines)
 
       // if its the 1st bookmark then show some instructions
-      let bookmarks = Managers.bookmark.getAll()
-      if bookmarks.count == 1 {
+      let hasSeenInstruction = Managers.bookmark.hasSeenInstruction
+      if !hasSeenInstruction {
         Managers.alert.showBookmarkInstructionsAlert(in: strongSelf)
+        Managers.bookmark.hasSeenInstruction = true
       }
     }
   }
@@ -114,7 +115,7 @@ class SearchViewController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
 
-  // MARK: - State
+// MARK: - Private - State
 
   private func reloadData() {
     self.mode = .loadingData
@@ -145,7 +146,7 @@ class SearchViewController: UIViewController {
     Managers.searchState.save(state)
   }
 
-  // MARK: - Update methods
+// MARK: - Private - Update methods
 
   fileprivate func updateViewFromLineSelector() {
     guard self.mode == .selectingLines else { return }

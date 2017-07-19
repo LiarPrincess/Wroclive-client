@@ -7,6 +7,18 @@ import RealmSwift
 
 class BookmarksManagerImpl: BookmarksManager {
 
+  // MARK: - Instructions
+
+  private let hasSeenInstructionKey = "hasSeenBookmarkInstruction"
+
+  var hasSeenInstruction: Bool {
+    get { return UserDefaults.standard.bool(forKey: hasSeenInstructionKey) }
+    set {
+      UserDefaults.standard.set(newValue, forKey: hasSeenInstructionKey)
+      UserDefaults.standard.synchronize()
+    }
+  }
+
   // MARK: - Properties
 
   private let realm: Realm
@@ -20,6 +32,8 @@ class BookmarksManagerImpl: BookmarksManager {
       fatalError(error.localizedDescription)
     }
   }
+
+  // MARK: - CRUD
 
   // MARK: - Add new
 

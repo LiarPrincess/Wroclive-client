@@ -15,7 +15,9 @@ class NetworkingManagerImpl: NetworkingManager {
       }
   }
 
-  func withActivityIndicator<T>(funcToCall: @escaping () -> Promise<T>) -> Promise<T> {
+// MARK: - Private - Activity indicator
+
+  private func withActivityIndicator<T>(funcToCall: @escaping () -> Promise<T>) -> Promise<T> {
     return firstly {
         NetworkActivityIndicatorManager.shared.incrementActivityCount()
         return funcToCall()
