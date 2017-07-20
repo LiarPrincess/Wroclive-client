@@ -5,6 +5,7 @@
 
 import UIKit
 import MapKit
+import PromiseKit
 
 fileprivate typealias Constants = LocationManagerConstants
 
@@ -22,10 +23,12 @@ class LocationManagerImpl: LocationManager {
 
   // MARK: - LocationManager
 
-  func getCenter() -> MKCoordinateRegion {
-    let center = self.locationManager.location?.coordinate ?? Constants.Default.location
-    let size   = Constants.Default.regionSize
-    return MKCoordinateRegionMakeWithDistance(center, size, size)
+  func getCenter() -> Promise<MKCoordinateRegion> {
+    return Promise { fulfill, _ in
+      let center = self.locationManager.location?.coordinate ?? Constants.Default.location
+      let size   = Constants.Default.regionSize
+      fulfill(MKCoordinateRegionMakeWithDistance(center, size, size))
+    }
   }
 
   var authorizationStatus: CLAuthorizationStatus {

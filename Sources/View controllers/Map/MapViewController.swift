@@ -6,6 +6,7 @@
 import UIKit
 import MapKit
 import SnapKit
+import PromiseKit
 
 class MapViewController: UIViewController {
 
@@ -21,10 +22,12 @@ class MapViewController: UIViewController {
   }
 
   override func viewDidAppear(_ animated: Bool) {
-    Managers.location.requestInUseAuthorization()
-
-    let center = Managers.location.getCenter()
-    self.mapView.setRegion(center, animated: false)
+    _ = firstly { () -> Promise<Void> in
+      Managers.location.requestInUseAuthorization()
+      return Promise(value: ())
+    }
+    .then { _ in return Managers.location.getCenter() }
+    .then { center in self.mapView.setRegion(center, animated: false) }
   }
 
   override var bottomLayoutGuide: UILayoutSupport {
