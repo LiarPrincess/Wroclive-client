@@ -71,6 +71,8 @@
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */; };
 		90678F5F1F1FFB4500CAEEDD /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90678F5E1F1FFB4500CAEEDD /* Bookmark.swift */; };
+		9071F2361F21479F00CA1EE6 /* LineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9071F2351F21479F00CA1EE6 /* LineParser.swift */; };
+		9071F2391F215B8300CA1EE6 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9071F2381F215B8300CA1EE6 /* NetworkingError.swift */; };
 		9078F42E1F031443002D7DCD /* AvenirFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
@@ -175,6 +177,8 @@
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfLine+FilterByType.swift"; sourceTree = "<group>"; };
 		90678F5E1F1FFB4500CAEEDD /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		9071F2351F21479F00CA1EE6 /* LineParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineParser.swift; sourceTree = "<group>"; };
+		9071F2381F215B8300CA1EE6 /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvenirFontProvider.swift; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
 		907F70A21F141ADB00F43902 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -560,6 +564,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9071F2341F2143A800CA1EE6 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				9071F2351F21479F00CA1EE6 /* LineParser.swift */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		9071F2371F215B6F00CA1EE6 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				9071F2381F215B8300CA1EE6 /* NetworkingError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		907F70A11F141AC900F43902 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,6 +636,8 @@
 			isa = PBXGroup;
 			children = (
 				90F63BDC1F1EB7EB0093EC3A /* Activity indicator */,
+				9071F2341F2143A800CA1EE6 /* Parsers */,
+				9071F2371F215B6F00CA1EE6 /* Errors */,
 				90A06C1D1F1A2724009AD470 /* NetworkingManager.swift */,
 				90A06C1F1F1A2772009AD470 /* NetworkingManagerImpl.swift */,
 			);
@@ -857,6 +879,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9071F2361F21479F00CA1EE6 /* LineParser.swift in Sources */,
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90678F5F1F1FFB4500CAEEDD /* Bookmark.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
@@ -887,6 +910,7 @@
 				9021F4141F12C9EF000A6949 /* ReusableCellContainer.swift in Sources */,
 				9021F4131F12C9EF000A6949 /* ReusableCell.swift in Sources */,
 				9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */,
+				9071F2391F215B8300CA1EE6 /* NetworkingError.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
 				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
