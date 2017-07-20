@@ -14,13 +14,12 @@ struct BookmarkCellViewModel {
 
   init(from bookmark: Bookmark) {
     self.bookmark  = bookmark
-    self.tramLines = BookmarkCellViewModel.concatNames(bookmark.lines, ofType: .tram)
-    self.busLines  = BookmarkCellViewModel.concatNames(bookmark.lines, ofType: .bus)
+    self.tramLines = BookmarkCellViewModel.concatNames(bookmark.lines.filter(.tram))
+    self.busLines  = BookmarkCellViewModel.concatNames(bookmark.lines.filter(.bus ))
   }
 
-  private static func concatNames(_ lines: [BookmarkLine], ofType lineType: LineType) -> String {
+  private static func concatNames(_ lines: [Line]) -> String {
     return lines
-      .filter { $0.type == lineType }
       .map    { $0.name }
       .sorted { $0.localizedStandardCompare($1) == .orderedAscending }
       .joined(separator: Layout.LinesLabel.horizontalSpacing)

@@ -16,7 +16,7 @@ class BookmarksDataSource: NSObject {
   // MARK: - Init
 
   init(with bookmarks: [Bookmark], delegate: BookmarksDataSourceDelegate? = nil) {
-    self.bookmarks = bookmarks.sorted { $0.order < $1.order }
+    self.bookmarks = bookmarks
     self.delegate  = delegate
   }
 

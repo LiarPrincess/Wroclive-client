@@ -10,24 +10,16 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (4.2.2):
     - PromiseKit/CorePromise
-  - Realm (2.8.3):
-    - Realm/Headers (= 2.8.3)
-  - Realm/Headers (2.8.3)
-  - RealmSwift (2.8.3):
-    - Realm (= 2.8.3)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
   - PromiseKit (~> 4.0)
-  - RealmSwift (~> 2.8.3)
   - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
   PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
-  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
-  RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 285e6f4c42ef14fa58282fef3d51f28fb048edc9
+PODFILE CHECKSUM: 2d05833f1bc836a8896263df9f9af4f8fd5e2181
 
 COCOAPODS: 1.2.0

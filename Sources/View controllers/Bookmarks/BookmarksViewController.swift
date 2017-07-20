@@ -165,21 +165,17 @@ extension BookmarksViewController: UITableViewDelegate {
 extension BookmarksViewController: BookmarksDataSourceDelegate {
 
   func dataSource(_ dataSource: BookmarksDataSource, didDelete bookmark: Bookmark) {
-    Managers.bookmark.delete(bookmark) // we are 'ok' with gaps in ordering
+    self.saveBookmarks()
     self.showPlaceholderIfEmpty()
   }
 
   func didReorderBookmarks(_ dataSource: BookmarksDataSource) {
-    let bookmarks = self.recalculateBookmarkOrders(dataSource.bookmarks)
-    Managers.bookmark.save(bookmarks)
+    self.saveBookmarks()
   }
 
-  private func recalculateBookmarkOrders(_ bookmarks: [Bookmark]) -> [Bookmark] {
-    return bookmarks
-      .enumerated()
-      .map { (order, old) in
-        return Bookmark(id: old.id, name: old.name, lines: old.lines, order: order + 1)
-    }
+  private func saveBookmarks() {
+    let bookmarks = self.bookmarksTableDataSource.bookmarks
+    Managers.bookmark.save(bookmarks)
   }
 
 }

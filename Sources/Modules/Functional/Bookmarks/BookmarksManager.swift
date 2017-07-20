@@ -12,7 +12,7 @@ protocol BookmarksManager {
   /// Has user seen 'To view bookmarks go to...' message?
   var hasSeenInstruction: Bool { get set }
 
-// MARK: - CRUD
+// MARK: - CRU
 
   /// Create new user-defined bookmark
   @discardableResult
@@ -23,8 +23,5 @@ protocol BookmarksManager {
 
   /// Updates definitions of all of the provided bookmarks
   func save(_ bookmarks: [Bookmark])
-
-  /// Delete selected bookmark
-  func delete(_ bookmark: Bookmark)
 
 }

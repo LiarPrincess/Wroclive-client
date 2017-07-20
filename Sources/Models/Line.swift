@@ -5,28 +5,51 @@
 
 import Foundation
 
-struct Line {
+fileprivate struct PropertyKeys {
+  static let name    = "name"
+  static let type    = "type"
+  static let subtype = "subtype"
+}
+
+class Line: NSObject, NSCoding {
+
+  // MARK: - Properties
+
   let name:    String
   let type:    LineType
   let subtype: LineSubtype
-}
 
-// MARK: - Equatable
+  // MARK: - Init
 
-extension Line: Equatable {
-  static func == (lhs: Line, rhs: Line) -> Bool {
-    return lhs.name    == rhs.name
-        && lhs.type    == rhs.type
-        && lhs.subtype == rhs.subtype
+  init(name: String, type: LineType, subtype: LineSubtype) {
+    self.name    = name
+    self.type    = type
+    self.subtype = subtype
   }
-}
 
-// MARK: - StringConvertible
+  // MARK: - NSCoding
 
-extension Line: CustomStringConvertible {
-  var description: String { return "(\(self.name), \(self.subtype) \(self.type))" }
-}
+  required convenience init?(coder aDecoder: NSCoder) {
+    guard let name    = aDecoder.decodeObject(forKey: PropertyKeys.name) as? String,
+          let type    = LineType   (rawValue: aDecoder.decodeInteger(forKey: PropertyKeys.type)),
+          let subtype = LineSubtype(rawValue: aDecoder.decodeInteger(forKey: PropertyKeys.subtype))
+    else { return nil }
 
-extension Line: CustomDebugStringConvertible {
-  var debugDescription: String { return self.description }
+    self.init(name: name, type: type, subtype: subtype)
+  }
+
+  func encode(with aCoder: NSCoder) {
+    aCoder.encode(self.name,             forKey: PropertyKeys.name)
+    aCoder.encode(self.type.rawValue,    forKey: PropertyKeys.type)
+    aCoder.encode(self.subtype.rawValue, forKey: PropertyKeys.subtype)
+  }
+
+  // MARK: - Equals
+
+  override func isEqual(_ object: Any?) -> Bool {
+    guard let other = object as? Line else { return false }
+    return self.name   == other.name
+        && self.type   == other.type
+       && self.subtype == other.subtype
+  }
 }

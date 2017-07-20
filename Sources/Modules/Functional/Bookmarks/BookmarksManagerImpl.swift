@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import RealmSwift
+import Foundation
 
 class BookmarksManagerImpl: BookmarksManager {
 
@@ -19,94 +19,35 @@ class BookmarksManagerImpl: BookmarksManager {
     }
   }
 
-  // MARK: - Properties
+  // MARK: - CRU
 
-  private let realm: Realm
+  private lazy var bookmarks: [Bookmark] = {
+    return NSKeyedUnarchiver.unarchiveObject(withFile: self.archive.path) as? [Bookmark] ?? []
+  }()
 
-  // MARK: - Init
-
-  init() {
-    do {
-      self.realm = try Realm()
-    } catch let error {
-      fatalError(error.localizedDescription)
-    }
-  }
-
-  // MARK: - CRUD
-
-  // MARK: - Add new
+  private var archive: URL = {
+    let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    return documentsDirectory.appendingPathComponent("bookmarks")
+  }()
 
   @discardableResult
   func addNew(name: String, lines: [Line]) -> Bookmark {
-    do {
-      let bookmarkObject = self.createNewBookmarkObject(name: name, lines: lines)
+    let bookmark = Bookmark(name: name, lines: lines)
 
-      try self.realm.write {
-        self.realm.add(bookmarkObject)
-      }
+    var bookmarks = self.bookmarks
+    bookmarks.append(bookmark)
+    self.save(bookmarks)
 
-      return Bookmark(realmObject: bookmarkObject)
-    }
-    catch let error {
-      fatalError(error.localizedDescription)
-    }
+    return bookmark
   }
-
-  private func createNewBookmarkObject(name: String, lines: [Line]) -> BookmarkObject {
-    let maxOrder = self.realm.objects(BookmarkObject.self).max(ofProperty: "order") ?? 0
-
-    let result   = BookmarkObject()
-    result.name  = name
-    result.order = maxOrder + 1
-    result.lines.append(objectsIn: lines.map { line in
-      let bookmarkLineObject     = BookmarkLineObject()
-      // bookmarkLineObject.id   = default
-      bookmarkLineObject.name    = line.name
-      bookmarkLineObject.type    = line.type.rawValue
-      bookmarkLineObject.subtype = line.subtype.rawValue
-      return bookmarkLineObject
-    })
-
-    return result
-  }
-
-  // MARK: - Get all
 
   func getAll() -> [Bookmark] {
-    let bookmarkObjects = self.realm.objects(BookmarkObject.self)
-    return bookmarkObjects.map { Bookmark(realmObject: $0) }
+    return self.bookmarks
   }
-
-  // MARK: - Save
 
   func save(_ bookmarks: [Bookmark]) {
-    do {
-      let bookmarkObjects = bookmarks.map { BookmarkObject(bookmark: $0) }
-
-      try self.realm.write {
-        self.realm.add(bookmarkObjects, update: true)
-      }
-    }
-    catch let error {
-      fatalError(error.localizedDescription)
-    }
-  }
-
-  // MARK: - Delete
-
-  func delete(_ bookmark: Bookmark) {
-    guard let bookmarkObject = self.realm.object(ofType: BookmarkObject.self, forPrimaryKey: bookmark.id) else {
-      return
-    }
-
-    do {
-      try self.realm.write {
-        self.realm.delete(bookmarkObject)
-      }
-    } catch let error {
-      fatalError(error.localizedDescription)
-    }
+    self.bookmarks = bookmarks
+    NSKeyedArchiver.archiveRootObject(bookmarks, toFile: self.archive.path)
   }
 
 }
