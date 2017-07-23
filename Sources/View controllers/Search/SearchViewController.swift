@@ -14,6 +14,8 @@ class SearchViewController: UIViewController {
 
   // MARK: - Properties
 
+  weak var delegate: SearchViewControllerDelegate?
+
   let headerViewBlur = UIBlurEffect(style: .extraLight)
 
   lazy var headerView: UIVisualEffectView = {
@@ -111,7 +113,8 @@ class SearchViewController: UIViewController {
   }
 
   @objc func searchButtonPressed() {
-    Swift.print("didSelect: \(self.linesSelector.selectedLines)")
+    let selectedLines = self.linesSelector.selectedLines
+    self.delegate?.searchViewController(self, didSelect: selectedLines)
     self.dismiss(animated: true, completion: nil)
   }
 

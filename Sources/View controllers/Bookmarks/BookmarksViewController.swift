@@ -13,6 +13,8 @@ class BookmarksViewController: UIViewController {
 
   // MARK: - Properties
 
+  weak var delegate: BookmarksViewControllerDelegate?
+
   let headerViewBlur = UIBlurEffect(style: .extraLight)
 
   lazy var headerView: UIVisualEffectView = {
@@ -94,12 +96,13 @@ class BookmarksViewController: UIViewController {
     self.setEditing(!self.isEditing, animated: true)
   }
 
-  // MARK: - Methods
-
-  fileprivate func select(bookmark: Bookmark) {
-    Swift.print("didSelect: \(bookmark.name)")
+  fileprivate func selectBookmark(_ bookmark: Bookmark) {
+    self.delegate?.bookmarksViewController(self, didSelect: bookmark)
     self.dismiss(animated: true, completion: nil)
   }
+
+
+  // MARK: - (Private) Placeholder
 
   fileprivate func showPlaceholderIfEmpty() {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
@@ -154,7 +157,7 @@ extension BookmarksViewController: UITableViewDelegate {
 
   public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if let bookmark = self.bookmarksTableDataSource.bookmark(at: indexPath) {
-      self.select(bookmark: bookmark)
+      self.selectBookmark(bookmark)
     }
   }
 

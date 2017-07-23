@@ -35,8 +35,9 @@ class MainViewController: UIViewController {
   // MARK: - Actions
 
   @objc func searchButtonPressed() {
-    let relativeHeight = Constants.CardPanel.searchRelativeHeight
-    let controller     = SearchViewController()
+    let relativeHeight  = Constants.CardPanel.searchRelativeHeight
+    let controller      = SearchViewController()
+    controller.delegate = self
 
     self.searchTransitionDelegate     = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
     controller.modalPresentationStyle = .custom
@@ -46,8 +47,9 @@ class MainViewController: UIViewController {
   }
 
   @objc func bookmarksButtonPressed() {
-    let relativeHeight = Constants.CardPanel.bookmarksRelativeHeight
-    let controller     = BookmarksViewController()
+    let relativeHeight  = Constants.CardPanel.bookmarksRelativeHeight
+    let controller      = BookmarksViewController()
+    controller.delegate = self
 
     self.bookmarksTransitionDelegate  = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
     controller.modalPresentationStyle = .custom
@@ -58,6 +60,32 @@ class MainViewController: UIViewController {
 
   @objc func configurationButtonPressed() {
     Swift.print("configurationButtonPressed")
+  }
+
+  // MARK: - Tracking
+
+  fileprivate func startTracking(_ lines: [Line]) {
+    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(lines)")
+  }
+
+}
+
+// MARK: - SearchViewControllerDelegate
+
+extension MainViewController: SearchViewControllerDelegate {
+
+  func searchViewController(_ controller: SearchViewController, didSelect lines: [Line]) {
+    self.startTracking(lines)
+  }
+
+}
+
+// MARK: - BookmarksViewControllerDelegate
+
+extension MainViewController: BookmarksViewControllerDelegate {
+
+  func bookmarksViewController(_ controller: BookmarksViewController, didSelect bookmark: Bookmark) {
+    self.startTracking(bookmark.lines)
   }
 
 }
