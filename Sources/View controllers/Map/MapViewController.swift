@@ -34,6 +34,12 @@ class MapViewController: UIViewController {
     return LayoutGuide(length: 44.0)
   }
 
+  // MARK: - Vehicle locations
+
+  func updateVehicleLocations(_ locations: [VehicleLocation]) {
+    self.mapView.addAnnotations(locations)
+  }
+
 }
 
 // MARK: - MKMapViewDelegate
@@ -52,6 +58,26 @@ extension MapViewController: MKMapViewDelegate {
     if authorizationStatus == .restricted {
       Managers.alert.showRestrictedAuthorizationAlert(in: self)
     }
+  }
+
+  // MARK: - Annotations
+
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    guard let vehicleLocation = annotation as? VehicleLocation else {
+      return nil
+    }
+
+    let identifier = "vehicleLocation"
+    if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView {
+      dequeuedView.annotation = annotation
+      return dequeuedView
+    }
+
+    let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+    view.animatesDrop = false
+//    view.image = nil
+    view.isDraggable = false
+    return view
   }
 
 }

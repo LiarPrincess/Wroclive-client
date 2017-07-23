@@ -10,6 +10,7 @@
 		154034383A94518E3E5D9AD4 /* Pods_Kek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */; };
 		9007E35B1F251753006A2F8F /* SearchViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9007E35A1F251753006A2F8F /* SearchViewControllerDelegate.swift */; };
 		9007E35D1F251971006A2F8F /* BookmarksViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9007E35C1F251971006A2F8F /* BookmarksViewControllerDelegate.swift */; };
+		9007E35F1F252916006A2F8F /* VehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9007E35E1F252916006A2F8F /* VehicleLocation.swift */; };
 		9011D2311F1A992E007C46EF /* LinesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9011D2301F1A992E007C46EF /* LinesCache.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksViewController.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */; };
@@ -117,6 +118,7 @@
 		278E1D09A47B558EB5FEB26D /* Pods-Kek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.debug.xcconfig"; sourceTree = "<group>"; };
 		9007E35A1F251753006A2F8F /* SearchViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerDelegate.swift; sourceTree = "<group>"; };
 		9007E35C1F251971006A2F8F /* BookmarksViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerDelegate.swift; sourceTree = "<group>"; };
+		9007E35E1F252916006A2F8F /* VehicleLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
 		9011D2301F1A992E007C46EF /* LinesCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesCache.swift; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerConstants.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 				902330EC1EDF37F500FA8F43 /* LineType.swift */,
 				902330EB1EDF37F500FA8F43 /* LineSubtype.swift */,
 				90678F5E1F1FFB4500CAEEDD /* Bookmark.swift */,
+				9007E35E1F252916006A2F8F /* VehicleLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -945,6 +948,7 @@
 				90AF2BDD1EE9E06C006E61D6 /* Controls.swift in Sources */,
 				9021F41C1F12C9EF000A6949 /* CardPanelPresentationTransition.swift in Sources */,
 				9021F4071F12C9EF000A6949 /* ChevronViewState.swift in Sources */,
+				9007E35F1F252916006A2F8F /* VehicleLocation.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchViewControllerLayout.swift in Sources */,
 				9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				907F70A31F141ADB00F43902 /* AlertManager.swift in Sources */,

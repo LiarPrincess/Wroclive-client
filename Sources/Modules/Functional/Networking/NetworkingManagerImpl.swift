@@ -5,6 +5,7 @@
 
 import Foundation
 import PromiseKit
+import MapKit
 
 class NetworkingManagerImpl: NetworkingManager {
 
@@ -24,7 +25,21 @@ class NetworkingManagerImpl: NetworkingManager {
       }
   }
 
-  // MARK: - Private - Activity indicator
+  func getVehicleLocations(_ lines: [Line]) -> Promise<[VehicleLocation]> {
+    let line = Line(name: "A", type: .bus, subtype: .express)
+
+    let loc0 = CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.02)
+    let loc1 = CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.03)
+    let loc2 = CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.04)
+
+    let vehicle0  = VehicleLocation(line: line, location: loc0, angle:   0.0)
+    let vehicle1  = VehicleLocation(line: line, location: loc1, angle:  90.0)
+    let vehicle2  = VehicleLocation(line: line, location: loc2, angle: 180.0)
+
+    return Promise(value: [vehicle0, vehicle1, vehicle2])
+  }
+
+  // MARK: - (Private) Activity indicator
 
   private func showActivityIndicator() -> Promise<Void> {
     return firstly {

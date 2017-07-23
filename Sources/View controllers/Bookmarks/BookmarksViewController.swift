@@ -101,7 +101,6 @@ class BookmarksViewController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
 
-
   // MARK: - (Private) Placeholder
 
   fileprivate func showPlaceholderIfEmpty() {

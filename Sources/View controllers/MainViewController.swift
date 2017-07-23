@@ -65,7 +65,10 @@ class MainViewController: UIViewController {
   // MARK: - Tracking
 
   fileprivate func startTracking(_ lines: [Line]) {
-    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(lines)")
+    _ = Managers.networking.getVehicleLocations(lines)
+    .then { locations in
+      self.mapViewController.updateVehicleLocations(locations)
+    }
   }
 
 }
