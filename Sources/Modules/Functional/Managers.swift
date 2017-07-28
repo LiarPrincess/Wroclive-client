@@ -6,8 +6,8 @@
 struct Managers {
   static var lines:       LinesManager!
   static var bookmark:    BookmarksManager!
-  static var searchState: SearchStateManager!
-  static var location:    LocationManager!
+  static var search:      SearchManager!
+  static var map:         MapManager!
   static var networking:  NetworkingManager!
   static var alert:       AlertManager!
 }

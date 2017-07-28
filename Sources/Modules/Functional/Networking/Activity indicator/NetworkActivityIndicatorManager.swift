@@ -12,11 +12,11 @@ public class NetworkActivityIndicatorManager {
     case notActive, delayingStart, active, delayingCompletion
   }
 
-// MARK: - Singleton
+  // MARK: - Singleton
 
   public static let shared = NetworkActivityIndicatorManager()
 
-// MARK: - Properties
+  // MARK: - Properties
 
   /// A boolean value indicating whether the network activity indicator is currently visible.
   public private(set) var isNetworkActivityIndicatorVisible: Bool = false {
@@ -63,7 +63,7 @@ public class NetworkActivityIndicatorManager {
 
   private let lock = NSLock()
 
-// MARK: - Internal - Initialization
+  // MARK: - Internal - Initialization
 
   private init() { }
 
@@ -72,7 +72,7 @@ public class NetworkActivityIndicatorManager {
     invalidateCompletionDelayTimer()
   }
 
-// MARK: - Activity Count
+  // MARK: - Activity Count
 
   /// Increments the number of active network requests.
   ///
@@ -100,7 +100,7 @@ public class NetworkActivityIndicatorManager {
     updateActivityIndicatorStateForNetworkActivityChange()
   }
 
-// MARK: - Private - Activity Indicator State
+  // MARK: - Private - Activity Indicator State
 
   private func updateActivityIndicatorStateForNetworkActivityChange() {
     switch activityIndicatorState {
@@ -116,7 +116,7 @@ public class NetworkActivityIndicatorManager {
     }
   }
 
-// MARK: - Private - Timers
+  // MARK: - Private - Timers
 
   private func scheduleStartDelayTimer() {
     let timer = Timer(

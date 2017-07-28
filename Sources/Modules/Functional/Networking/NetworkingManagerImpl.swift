@@ -9,7 +9,7 @@ import MapKit
 
 class NetworkingManagerImpl: NetworkingManager {
 
-  func getLineDefinitions() -> Promise<[Line]> {
+  func getAvailableLines() -> Promise<[Line]> {
     return self.showActivityIndicator()
       .then { _ -> URLDataPromise in
         let url     = "https://api.myjson.com/bins/veb5z"
@@ -25,7 +25,7 @@ class NetworkingManagerImpl: NetworkingManager {
       }
   }
 
-  func getVehicleLocations(_ lines: [Line]) -> Promise<[VehicleLocation]> {
+  func getVehicleLocations(for lines: [Line]) -> Promise<[VehicleLocation]> {
     let line = Line(name: "A", type: .bus, subtype: .express)
 
     let loc0 = CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.02)

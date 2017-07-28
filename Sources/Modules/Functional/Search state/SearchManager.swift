@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-protocol SearchStateManager {
+protocol SearchManager {
 
   /// Save current state
   func save(_ state: SearchState)

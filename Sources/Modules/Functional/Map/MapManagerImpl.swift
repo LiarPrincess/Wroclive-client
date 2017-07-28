@@ -7,9 +7,9 @@ import UIKit
 import MapKit
 import PromiseKit
 
-fileprivate typealias Constants = LocationManagerConstants
+fileprivate typealias Constants = MapManagerConstants
 
-class LocationManagerImpl: LocationManager {
+class MapManagerImpl: MapManager {
 
   // MARK: - Properties
 
@@ -23,7 +23,7 @@ class LocationManagerImpl: LocationManager {
 
   // MARK: - LocationManager
 
-  func getCenter() -> Promise<MKCoordinateRegion> {
+  func getDefaultRegion() -> Promise<MKCoordinateRegion> {
     return Promise { fulfill, _ in
       let center = self.locationManager.location?.coordinate ?? Constants.Default.location
       let size   = Constants.Default.regionSize

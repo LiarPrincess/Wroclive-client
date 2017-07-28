@@ -8,21 +8,21 @@ import PromiseKit
 
 public class LinesManagerImpl: LinesManager {
 
-// MARK: - Properties
+  // MARK: - Properties
 
   private let linesCache: LinesCache = {
     let hour: TimeInterval = 3600
     return LinesCache(expirationTime: 6 * hour)
   }()
 
-// MARK: - Get all
+  // MARK: - Get all
 
   func getAll() -> Promise<[Line]> {
     if let cachedLines = self.linesCache.value {
       return Promise(value: cachedLines)
     }
 
-    return Managers.networking.getLineDefinitions()
+    return Managers.networking.getAvailableLines()
       .then { lines -> Promise<[Line]> in
         self.linesCache.put(lines)
         return Promise(value: lines)

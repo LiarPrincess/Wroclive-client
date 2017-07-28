@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   private func registerManagers() {
     Managers.lines       = LinesManagerImpl()
     Managers.bookmark    = BookmarksManagerImpl()
-    Managers.searchState = SearchStateManagerImpl()
-    Managers.location    = LocationManagerImpl()
+    Managers.search      = SearchManagerImpl()
+    Managers.map         = MapManagerImpl()
     Managers.networking  = NetworkingManagerImpl()
     Managers.alert       = AlertManagerImpl()
   }

@@ -7,14 +7,14 @@ import Foundation
 
 class LinesCache {
 
-// MARK: - Properties
+  // MARK: - Properties
 
   let expirationTime: TimeInterval
 
   private var lines      = [Line]()
   private var updateTime = Date.distantPast
 
-// MARK: - Init
+  // MARK: - Init
 
   init(expirationTime: TimeInterval) {
     self.expirationTime = expirationTime
@@ -28,7 +28,7 @@ class LinesCache {
     return isExpired ? nil : self.lines
   }
 
-// MARK: - Methods
+  // MARK: - Methods
 
   final func put(_ lines: [Line]) {
     self.updateTime = Date()

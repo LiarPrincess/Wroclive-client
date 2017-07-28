@@ -7,10 +7,10 @@ import UIKit
 import MapKit
 import PromiseKit
 
-protocol LocationManager {
+protocol MapManager {
 
   /// Returns either: user location or city center
-  func getCenter() -> Promise<MKCoordinateRegion>
+  func getDefaultRegion() -> Promise<MKCoordinateRegion>
 
   /// Current authorization status
   var authorizationStatus: CLAuthorizationStatus { get }

@@ -7,12 +7,12 @@ import Foundation
 
 protocol BookmarksManager {
 
-// MARK: - Instructions
+  // MARK: - Instructions
 
   /// Has user seen 'To view bookmarks go to...' message?
   var hasSeenInstruction: Bool { get set }
 
-// MARK: - CRU
+  // MARK: - CRU
 
   /// Create new user-defined bookmark
   @discardableResult

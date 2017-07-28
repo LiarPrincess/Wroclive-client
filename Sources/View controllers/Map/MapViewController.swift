@@ -23,10 +23,10 @@ class MapViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     _ = firstly { () -> Promise<Void> in
-      Managers.location.requestInUseAuthorization()
+      Managers.map.requestInUseAuthorization()
       return Promise(value: ())
     }
-    .then { _ in return Managers.location.getCenter() }
+    .then { _ in return Managers.map.getDefaultRegion() }
     .then { center in self.mapView.setRegion(center, animated: false) }
   }
 
@@ -37,6 +37,7 @@ class MapViewController: UIViewController {
   // MARK: - Vehicle locations
 
   func updateVehicleLocations(_ locations: [VehicleLocation]) {
+    let mapAnnotations = self.mapView.annotations
     self.mapView.addAnnotations(locations)
   }
 
@@ -49,7 +50,7 @@ extension MapViewController: MKMapViewDelegate {
   // MARK: - Tracking mode
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-    let authorizationStatus = Managers.location.authorizationStatus
+    let authorizationStatus = Managers.map.authorizationStatus
 
     if authorizationStatus == .denied {
       Managers.alert.showDeniedAuthorizationAlert(in: self)

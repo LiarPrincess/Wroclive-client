@@ -7,7 +7,7 @@ import UIKit
 
 class LineSelectionViewController: UIPageViewController {
 
-// MARK: - Properties
+  // MARK: - Properties
 
   var currentPage: LineType {
     get {
@@ -57,7 +57,7 @@ class LineSelectionViewController: UIPageViewController {
     return [self.tramPage, self.busPage]
   }()
 
-// MARK: - Init
+  // MARK: - Init
 
   init(withLines lines: [Line]) {
     self.tramPage = LineSelectionPage(withLines: lines.filter(.tram))
@@ -74,14 +74,14 @@ class LineSelectionViewController: UIPageViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
-// MARK: - Override
+  // MARK: - Override
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setViewControllers([self.tramPage], direction: .forward, animated: false, completion: nil)
   }
 
-// MARK: - Methods
+  // MARK: - Methods
 
   func setCurrentPage(_ lineType: LineType, animated: Bool) {
     typealias Direction = UIPageViewControllerNavigationDirection

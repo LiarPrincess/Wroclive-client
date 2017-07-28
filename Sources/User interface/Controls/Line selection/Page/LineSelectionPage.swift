@@ -10,7 +10,7 @@ fileprivate typealias Layout    = Constants.Layout
 
 class LineSelectionPage: UIViewController {
 
-// MARK: - Properties
+  // MARK: - Properties
 
   var lines: [Line] {
     get { return self.collectionDataSource.lines }
@@ -35,7 +35,7 @@ class LineSelectionPage: UIViewController {
     }
   }
 
-// MARK: Collection
+  // MARK: Collection
 
   private(set) var collectionDataSource: LineSelectionDataSource {
     didSet {
@@ -50,7 +50,7 @@ class LineSelectionPage: UIViewController {
     return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.collectionViewLayout)
   }()
 
-// MARK: Layout
+  // MARK: Layout
 
   var contentInset: UIEdgeInsets {
     get { return self.collectionView.contentInset }
@@ -71,7 +71,7 @@ class LineSelectionPage: UIViewController {
     }
   }
 
-// MARK: - Init
+  // MARK: - Init
 
   init(withLines lines: [Line]) {
     self.collectionDataSource = LineSelectionDataSource(with: lines)
@@ -82,7 +82,7 @@ class LineSelectionPage: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
-// MARK: - Overriden
+  // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -119,7 +119,7 @@ class LineSelectionPage: UIViewController {
 
 extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
 
-// MARK: - Size
+  // MARK: - Size
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
     let width = self.collectionView.contentWidth
@@ -142,7 +142,7 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
     return self.itemSize
   }
 
-// MARK: - Margin
+  // MARK: - Margin
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return Layout.Cell.margin
@@ -152,7 +152,7 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
     return Layout.Cell.margin
   }
 
-// MARK: - Selection
+  // MARK: - Selection
 
   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
     return true

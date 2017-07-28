@@ -9,9 +9,9 @@ import PromiseKit
 protocol NetworkingManager {
 
   /// Get all currently available lines
-  func getLineDefinitions() -> Promise<[Line]>
+  func getAvailableLines() -> Promise<[Line]>
 
   /// Get current vehicle locations for selected lines
-  func getVehicleLocations(_ lines: [Line]) -> Promise<[VehicleLocation]>
+  func getVehicleLocations(for lines: [Line]) -> Promise<[VehicleLocation]>
 
 }

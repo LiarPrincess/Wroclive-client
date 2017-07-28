@@ -10,9 +10,9 @@ class VehicleLocation: NSObject {
 
   // MARK: - Properties
 
-  let line:       Line
+  let line:     Line
   let location: CLLocationCoordinate2D
-  let angle:      CLLocationDirection
+  let angle:    CLLocationDirection
 
   // MARK: - init
 

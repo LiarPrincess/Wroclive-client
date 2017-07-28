@@ -5,11 +5,11 @@
 
 import Foundation
 
-class SearchStateManagerImpl: SearchStateManager {
+class SearchManagerImpl: SearchManager {
 
   // MARK: - Properties
 
-  private var state = SearchStateManagerImpl.testData()
+  private var state = SearchManagerImpl.testData()
 
   // MARK: - StorageManagerProtocol
 

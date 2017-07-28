@@ -123,7 +123,7 @@ class SearchViewController: UIViewController {
   private func reloadData() {
     self.mode = .loadingData
 
-    let state = Managers.searchState.getLatest()
+    let state = Managers.search.getLatest()
     self.lineTypeSelector.value = state.selectedLineType
 
     _ = Managers.lines.getAll()
@@ -146,7 +146,7 @@ class SearchViewController: UIViewController {
     let lines    = self.linesSelector.selectedLines
 
     let state = SearchState(withSelected: lineType, lines: lines)
-    Managers.searchState.save(state)
+    Managers.search.save(state)
   }
 
   // MARK: - Private - Update methods
