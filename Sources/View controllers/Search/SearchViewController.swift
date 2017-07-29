@@ -101,13 +101,13 @@ class SearchViewController: UIViewController {
         return
       }
 
-      Managers.bookmark.addNew(name: name, lines: selectedLines)
+      Managers.bookmarks.addNew(name: name, lines: selectedLines)
 
       // if its the 1st bookmark then show some instructions
-      let hasSeenInstruction = Managers.bookmark.hasSeenInstruction
+      let hasSeenInstruction = Managers.bookmarks.hasSeenInstruction
       if !hasSeenInstruction {
         Managers.alert.showBookmarkInstructionsAlert(in: strongSelf)
-        Managers.bookmark.hasSeenInstruction = true
+        Managers.bookmarks.hasSeenInstruction = true
       }
     }
   }
@@ -132,7 +132,7 @@ class SearchViewController: UIViewController {
 
   private func refreshAvailableLines(_ selectedLines: [Line]) {
     self.mode = .loadingData
-    _ = Managers.lines.getAll()
+    _ = Managers.network.getAvailableLines()
       .then { lines -> () in
         guard self.isVisible else { return }
         self.linesSelector.lines         = lines

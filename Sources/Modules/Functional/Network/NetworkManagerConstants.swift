@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct NetworkingManagerConstants {
+struct NetworkManagerConstants {
 
   struct Endpoints {
     static let lines = "http://192.168.1.100:8080/lines"

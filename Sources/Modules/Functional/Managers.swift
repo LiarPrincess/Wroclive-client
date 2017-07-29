@@ -4,10 +4,9 @@
 //
 
 struct Managers {
-  static var lines:       LinesManager!
-  static var bookmark:    BookmarksManager!
-  static var search:      SearchManager!
-  static var map:         MapManager!
-  static var networking:  NetworkingManager!
-  static var alert:       AlertManager!
+  static var map:       MapManager!
+  static var search:    SearchManager!
+  static var bookmarks: BookmarksManager!
+  static var alert:     AlertManager!
+  static var network:   NetworkManager!
 }

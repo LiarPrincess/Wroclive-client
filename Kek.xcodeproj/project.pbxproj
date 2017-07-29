@@ -10,7 +10,6 @@
 		154034383A94518E3E5D9AD4 /* Pods_Kek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */; };
 		9007E35B1F251753006A2F8F /* SearchViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9007E35A1F251753006A2F8F /* SearchViewControllerDelegate.swift */; };
 		9007E35D1F251971006A2F8F /* BookmarksViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9007E35C1F251971006A2F8F /* BookmarksViewControllerDelegate.swift */; };
-		9011D2311F1A992E007C46EF /* LinesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9011D2301F1A992E007C46EF /* LinesCache.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksViewController.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */; };
 		9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */; };
@@ -50,8 +49,6 @@
 		9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4021F12C9EF000A6949 /* CardPanelDismissTransition.swift */; };
 		9021F41C1F12C9EF000A6949 /* CardPanelPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4031F12C9EF000A6949 /* CardPanelPresentationTransition.swift */; };
 		9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F41E1F12CACB000A6949 /* SearchState.swift */; };
-		9021F4231F12CB1A000A6949 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4211F12CB1A000A6949 /* SearchManager.swift */; };
-		9021F4241F12CB1A000A6949 /* SearchManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4221F12CB1A000A6949 /* SearchManagerImpl.swift */; };
 		9021F4271F12CCB3000A6949 /* LineTypeSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4261F12CCB3000A6949 /* LineTypeSelectionControl.swift */; };
 		9021F4291F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4281F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift */; };
 		9021F4381F12D698000A6949 /* LineSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F42C1F12D698000A6949 /* LineSelectionCell.swift */; };
@@ -71,15 +68,12 @@
 		902331301EDF37F500FA8F43 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EC1EDF37F500FA8F43 /* LineType.swift */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
-		902C03EB1F2BF29900CA2F39 /* NetworkingManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C03EA1F2BF29900CA2F39 /* NetworkingManagerConstants.swift */; };
 		903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */; };
 		9078F42E1F031443002D7DCD /* AvenirFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
 		907F70A31F141ADB00F43902 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F70A21F141ADB00F43902 /* AlertManager.swift */; };
 		907F70A51F141D3C00F43902 /* AlertManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F70A41F141D3C00F43902 /* AlertManagerImpl.swift */; };
-		9086D4481EE2DE8E00E43D9A /* LinesManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4441EE2DE8E00E43D9A /* LinesManagerImpl.swift */; };
-		9086D44F1EE2DF7800E43D9A /* LinesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D44E1EE2DF7800E43D9A /* LinesManager.swift */; };
 		9086D4511EE2DFCF00E43D9A /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4501EE2DFCF00E43D9A /* BookmarksManager.swift */; };
 		90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* Theme.swift */; };
 		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
@@ -91,14 +85,17 @@
 		90AF8C791EF2D3FE000763B7 /* Wroclaw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
 		90B1DAA41F2BD97800FAE18A /* VehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA31F2BD97800FAE18A /* VehicleLocation.swift */; };
-		90B1DABC1F2BDAC900FAE18A /* NetworkActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAB51F2BDAC900FAE18A /* NetworkActivityIndicatorManager.swift */; };
-		90B1DABE1F2BDAC900FAE18A /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAB81F2BDAC900FAE18A /* NetworkingManager.swift */; };
-		90B1DABF1F2BDAC900FAE18A /* NetworkingManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAB91F2BDAC900FAE18A /* NetworkingManagerImpl.swift */; };
-		90B1DAC01F2BDAC900FAE18A /* LineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DABB1F2BDAC900FAE18A /* LineParser.swift */; };
-		90B1DAC21F2BDAF600FAE18A /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAC11F2BDAF600FAE18A /* NetworkingError.swift */; };
 		90B1DAC71F2BDC3000FAE18A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAC41F2BDC3000FAE18A /* MapManager.swift */; };
 		90B1DAC81F2BDC3000FAE18A /* MapManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAC51F2BDC3000FAE18A /* MapManagerConstants.swift */; };
 		90B1DAC91F2BDC3000FAE18A /* MapManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAC61F2BDC3000FAE18A /* MapManagerImpl.swift */; };
+		90F86F841F2CB44700F9272E /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F821F2CB44700F9272E /* SearchManager.swift */; };
+		90F86F851F2CB44700F9272E /* SearchManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F831F2CB44700F9272E /* SearchManagerImpl.swift */; };
+		90F86F901F2CB4F800F9272E /* NetworkActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F881F2CB4F800F9272E /* NetworkActivityIndicatorManager.swift */; };
+		90F86F911F2CB4F800F9272E /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F891F2CB4F800F9272E /* NetworkingError.swift */; };
+		90F86F921F2CB4F800F9272E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F8A1F2CB4F800F9272E /* NetworkManager.swift */; };
+		90F86F931F2CB4F800F9272E /* NetworkManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F8B1F2CB4F800F9272E /* NetworkManagerConstants.swift */; };
+		90F86F941F2CB4F800F9272E /* NetworkManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F8C1F2CB4F800F9272E /* NetworkManagerImpl.swift */; };
+		90F86F951F2CB4F800F9272E /* LineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F8E1F2CB4F800F9272E /* LineParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -119,7 +116,6 @@
 		278E1D09A47B558EB5FEB26D /* Pods-Kek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.debug.xcconfig"; sourceTree = "<group>"; };
 		9007E35A1F251753006A2F8F /* SearchViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerDelegate.swift; sourceTree = "<group>"; };
 		9007E35C1F251971006A2F8F /* BookmarksViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerDelegate.swift; sourceTree = "<group>"; };
-		9011D2301F1A992E007C46EF /* LinesCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesCache.swift; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerConstants.swift; sourceTree = "<group>"; };
 		9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerLayout.swift; sourceTree = "<group>"; };
@@ -159,8 +155,6 @@
 		9021F4021F12C9EF000A6949 /* CardPanelDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelDismissTransition.swift; sourceTree = "<group>"; };
 		9021F4031F12C9EF000A6949 /* CardPanelPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentationTransition.swift; sourceTree = "<group>"; };
 		9021F41E1F12CACB000A6949 /* SearchState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
-		9021F4211F12CB1A000A6949 /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
-		9021F4221F12CB1A000A6949 /* SearchManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManagerImpl.swift; sourceTree = "<group>"; };
 		9021F4261F12CCB3000A6949 /* LineTypeSelectionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelectionControl.swift; sourceTree = "<group>"; };
 		9021F4281F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelectionControlDelegate.swift; sourceTree = "<group>"; };
 		9021F42C1F12D698000A6949 /* LineSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionCell.swift; sourceTree = "<group>"; };
@@ -181,14 +175,11 @@
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
-		902C03EA1F2BF29900CA2F39 /* NetworkingManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManagerConstants.swift; sourceTree = "<group>"; };
 		903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfLine+FilterByType.swift"; sourceTree = "<group>"; };
 		9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvenirFontProvider.swift; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
 		907F70A21F141ADB00F43902 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		907F70A41F141D3C00F43902 /* AlertManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManagerImpl.swift; sourceTree = "<group>"; };
-		9086D4441EE2DE8E00E43D9A /* LinesManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManagerImpl.swift; sourceTree = "<group>"; };
-		9086D44E1EE2DF7800E43D9A /* LinesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesManager.swift; sourceTree = "<group>"; };
 		9086D4501EE2DFCF00E43D9A /* BookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		90AF2BD31EE9DE00006E61D6 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
@@ -200,14 +191,17 @@
 		90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90B1DAA31F2BD97800FAE18A /* VehicleLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
-		90B1DAB51F2BDAC900FAE18A /* NetworkActivityIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorManager.swift; sourceTree = "<group>"; };
-		90B1DAB81F2BDAC900FAE18A /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
-		90B1DAB91F2BDAC900FAE18A /* NetworkingManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManagerImpl.swift; sourceTree = "<group>"; };
-		90B1DABB1F2BDAC900FAE18A /* LineParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineParser.swift; sourceTree = "<group>"; };
-		90B1DAC11F2BDAF600FAE18A /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		90B1DAC41F2BDC3000FAE18A /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		90B1DAC51F2BDC3000FAE18A /* MapManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManagerConstants.swift; sourceTree = "<group>"; };
 		90B1DAC61F2BDC3000FAE18A /* MapManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManagerImpl.swift; sourceTree = "<group>"; };
+		90F86F821F2CB44700F9272E /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		90F86F831F2CB44700F9272E /* SearchManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManagerImpl.swift; sourceTree = "<group>"; };
+		90F86F881F2CB4F800F9272E /* NetworkActivityIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorManager.swift; sourceTree = "<group>"; };
+		90F86F891F2CB4F800F9272E /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		90F86F8A1F2CB4F800F9272E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		90F86F8B1F2CB4F800F9272E /* NetworkManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerConstants.swift; sourceTree = "<group>"; };
+		90F86F8C1F2CB4F800F9272E /* NetworkManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerImpl.swift; sourceTree = "<group>"; };
+		90F86F8E1F2CB4F800F9272E /* LineParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineParser.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -233,14 +227,6 @@
 				A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		9011D22F1F1A9922007C46EF /* LinesCache */ = {
-			isa = PBXGroup;
-			children = (
-				9011D2301F1A992E007C46EF /* LinesCache.swift */,
-			);
-			path = LinesCache;
 			sourceTree = "<group>";
 		};
 		9017C33D1EE339FD00063377 /* View controllers */ = {
@@ -476,15 +462,6 @@
 			path = "Search state";
 			sourceTree = "<group>";
 		};
-		9021F4201F12CB1A000A6949 /* Search state */ = {
-			isa = PBXGroup;
-			children = (
-				9021F4211F12CB1A000A6949 /* SearchManager.swift */,
-				9021F4221F12CB1A000A6949 /* SearchManagerImpl.swift */,
-			);
-			path = "Search state";
-			sourceTree = "<group>";
-		};
 		9021F4251F12CC89000A6949 /* Line type selection */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,12 +564,11 @@
 		9086D4401EE2DE8E00E43D9A /* Functional */ = {
 			isa = PBXGroup;
 			children = (
-				9086D4411EE2DE8E00E43D9A /* Bookmarks */,
-				9086D4431EE2DE8E00E43D9A /* Lines */,
 				90B1DAC31F2BDC3000FAE18A /* Map */,
-				9021F4201F12CB1A000A6949 /* Search state */,
+				90F86F811F2CB44700F9272E /* Search */,
+				9086D4411EE2DE8E00E43D9A /* Bookmarks */,
 				907F70A11F141AC900F43902 /* Alerts */,
-				90B1DAB31F2BDAC900FAE18A /* Networking */,
+				90F86F861F2CB4F800F9272E /* Network */,
 				9021F36D1F116EAB000A6949 /* Managers.swift */,
 			);
 			path = Functional;
@@ -605,16 +581,6 @@
 				9021F3751F1180EE000A6949 /* BookmarksManagerImpl.swift */,
 			);
 			path = Bookmarks;
-			sourceTree = "<group>";
-		};
-		9086D4431EE2DE8E00E43D9A /* Lines */ = {
-			isa = PBXGroup;
-			children = (
-				9011D22F1F1A9922007C46EF /* LinesCache */,
-				9086D44E1EE2DF7800E43D9A /* LinesManager.swift */,
-				9086D4441EE2DE8E00E43D9A /* LinesManagerImpl.swift */,
-			);
-			path = Lines;
 			sourceTree = "<group>";
 		};
 		90AF2BD21EE9DDE4006E61D6 /* Theme */ = {
@@ -682,35 +648,6 @@
 			path = Sources/Models/Locations;
 			sourceTree = SOURCE_ROOT;
 		};
-		90B1DAB31F2BDAC900FAE18A /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				90B1DAB41F2BDAC900FAE18A /* Activity indicator */,
-				90B1DABA1F2BDAC900FAE18A /* Parsers */,
-				90B1DAC11F2BDAF600FAE18A /* NetworkingError.swift */,
-				90B1DAB81F2BDAC900FAE18A /* NetworkingManager.swift */,
-				90B1DAB91F2BDAC900FAE18A /* NetworkingManagerImpl.swift */,
-				902C03EA1F2BF29900CA2F39 /* NetworkingManagerConstants.swift */,
-			);
-			path = Networking;
-			sourceTree = "<group>";
-		};
-		90B1DAB41F2BDAC900FAE18A /* Activity indicator */ = {
-			isa = PBXGroup;
-			children = (
-				90B1DAB51F2BDAC900FAE18A /* NetworkActivityIndicatorManager.swift */,
-			);
-			path = "Activity indicator";
-			sourceTree = "<group>";
-		};
-		90B1DABA1F2BDAC900FAE18A /* Parsers */ = {
-			isa = PBXGroup;
-			children = (
-				90B1DABB1F2BDAC900FAE18A /* LineParser.swift */,
-			);
-			path = Parsers;
-			sourceTree = "<group>";
-		};
 		90B1DAC31F2BDC3000FAE18A /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,6 +656,44 @@
 				90B1DAC51F2BDC3000FAE18A /* MapManagerConstants.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		90F86F811F2CB44700F9272E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				90F86F821F2CB44700F9272E /* SearchManager.swift */,
+				90F86F831F2CB44700F9272E /* SearchManagerImpl.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		90F86F861F2CB4F800F9272E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				90F86F871F2CB4F800F9272E /* Activity indicator */,
+				90F86F8D1F2CB4F800F9272E /* Parsers */,
+				90F86F891F2CB4F800F9272E /* NetworkingError.swift */,
+				90F86F8A1F2CB4F800F9272E /* NetworkManager.swift */,
+				90F86F8C1F2CB4F800F9272E /* NetworkManagerImpl.swift */,
+				90F86F8B1F2CB4F800F9272E /* NetworkManagerConstants.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		90F86F871F2CB4F800F9272E /* Activity indicator */ = {
+			isa = PBXGroup;
+			children = (
+				90F86F881F2CB4F800F9272E /* NetworkActivityIndicatorManager.swift */,
+			);
+			path = "Activity indicator";
+			sourceTree = "<group>";
+		};
+		90F86F8D1F2CB4F800F9272E /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				90F86F8E1F2CB4F800F9272E /* LineParser.swift */,
+			);
+			path = Parsers;
 			sourceTree = "<group>";
 		};
 		OBJ_41 /* Tests */ = {
@@ -901,11 +876,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
-				90B1DABE1F2BDAC900FAE18A /* NetworkingManager.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
-				90B1DABF1F2BDAC900FAE18A /* NetworkingManagerImpl.swift in Sources */,
 				9021F4401F12D698000A6949 /* LineSelectionSectionViewModel.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
@@ -914,38 +887,35 @@
 				9021F3761F1180EE000A6949 /* BookmarksManagerImpl.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,
-				9086D44F1EE2DF7800E43D9A /* LinesManager.swift in Sources */,
 				90AF2BE11EE9E186006E61D6 /* SystemFontProvider.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectionSectionHeaderView.swift in Sources */,
 				90AF2BE31EE9E4ED006E61D6 /* Theme+Apply.swift in Sources */,
 				90B1DAC81F2BDC3000FAE18A /* MapManagerConstants.swift in Sources */,
+				90F86F901F2CB4F800F9272E /* NetworkActivityIndicatorManager.swift in Sources */,
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
 				9078F42E1F031443002D7DCD /* AvenirFontProvider.swift in Sources */,
 				9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */,
 				9021F43B1F12D698000A6949 /* LineSelectionPage.swift in Sources */,
 				9086D4511EE2DFCF00E43D9A /* BookmarksManager.swift in Sources */,
+				90F86F931F2CB4F800F9272E /* NetworkManagerConstants.swift in Sources */,
 				9021F3941F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift in Sources */,
 				9021F4271F12CCB3000A6949 /* LineTypeSelectionControl.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
-				902C03EB1F2BF29900CA2F39 /* NetworkingManagerConstants.swift in Sources */,
 				9021F4141F12C9EF000A6949 /* ReusableCellContainer.swift in Sources */,
 				9021F4131F12C9EF000A6949 /* ReusableCell.swift in Sources */,
 				9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
 				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
-				90B1DAC01F2BDAC900FAE18A /* LineParser.swift in Sources */,
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
-				9021F4231F12CB1A000A6949 /* SearchManager.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
+				90F86F951F2CB4F800F9272E /* LineParser.swift in Sources */,
 				907F70A51F141D3C00F43902 /* AlertManagerImpl.swift in Sources */,
 				90B1DAC91F2BDC3000FAE18A /* MapManagerImpl.swift in Sources */,
-				9086D4481EE2DE8E00E43D9A /* LinesManagerImpl.swift in Sources */,
-				90B1DAC21F2BDAF600FAE18A /* NetworkingError.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
-				9011D2311F1A992E007C46EF /* LinesCache.swift in Sources */,
 				903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */,
 				9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */,
+				90F86F841F2CB44700F9272E /* SearchManager.swift in Sources */,
 				9021F43A1F12D698000A6949 /* LineSelectionDataSource.swift in Sources */,
 				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
@@ -954,6 +924,7 @@
 				9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */,
 				9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */,
 				9021F4161F12C9EF000A6949 /* CardPanelConstants.swift in Sources */,
+				90F86F921F2CB4F800F9272E /* NetworkManager.swift in Sources */,
 				9021F4431F12D6C5000A6949 /* LineSelectionViewController.swift in Sources */,
 				9007E35B1F251753006A2F8F /* SearchViewControllerDelegate.swift in Sources */,
 				9021F4151F12C9EF000A6949 /* ReusableSuplementaryViewContainer.swift in Sources */,
@@ -970,13 +941,15 @@
 				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */,
 				90B1DAC71F2BDC3000FAE18A /* MapManager.swift in Sources */,
-				9021F4241F12CB1A000A6949 /* SearchManagerImpl.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				90AF2BDB1EE9E05C006E61D6 /* Styles.swift in Sources */,
+				90F86F941F2CB4F800F9272E /* NetworkManagerImpl.swift in Sources */,
+				90F86F851F2CB44700F9272E /* SearchManagerImpl.swift in Sources */,
 				9021F43F1F12D698000A6949 /* LineSelectionCellViewModel.swift in Sources */,
 				90AF2BDF1EE9E12D006E61D6 /* FontProvider.swift in Sources */,
 				9021F4121F12C9EF000A6949 /* LayoutGuide.swift in Sources */,
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
+				90F86F911F2CB4F800F9272E /* NetworkingError.swift in Sources */,
 				9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
@@ -984,7 +957,6 @@
 				9021F4381F12D698000A6949 /* LineSelectionCell.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,
 				9017C3651EE339FD00063377 /* SearchViewControllerConstants.swift in Sources */,
-				90B1DABC1F2BDAC900FAE18A /* NetworkActivityIndicatorManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

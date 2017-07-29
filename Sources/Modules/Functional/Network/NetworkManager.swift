@@ -6,7 +6,7 @@
 import Foundation
 import PromiseKit
 
-protocol NetworkingManager {
+protocol NetworkManager {
 
   /// Get all currently available lines
   func getAvailableLines() -> Promise<[Line]>

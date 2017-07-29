@@ -42,7 +42,7 @@ class BookmarksViewController: UIViewController {
   }
 
   private func initDataSource() {
-    let bookmarks = Managers.bookmark.getAll()
+    let bookmarks = Managers.bookmarks.getAll()
     self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
   }
 
@@ -177,7 +177,7 @@ extension BookmarksViewController: BookmarksDataSourceDelegate {
 
   private func saveBookmarks() {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
-    Managers.bookmark.save(bookmarks)
+    Managers.bookmarks.save(bookmarks)
   }
 
 }

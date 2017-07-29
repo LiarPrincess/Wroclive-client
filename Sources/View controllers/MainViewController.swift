@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
   // MARK: - Tracking
 
   fileprivate func startTracking(_ lines: [Line]) {
-    _ = Managers.networking.getVehicleLocations(for: lines)
+    _ = Managers.network.getVehicleLocations(for: lines)
     .then { locations in
       self.mapViewController.updateVehicleLocations(locations)
     }
