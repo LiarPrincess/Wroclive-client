@@ -7,12 +7,12 @@ import UIKit
 
 protocol AlertManager {
 
-  // MARK: - Location
+  // MARK: - Map
 
-  /// Shows alert prompting for authorization change in settings
+  /// Prompt for authorization change in settings
   func showDeniedAuthorizationAlert(in parent: UIViewController)
 
-  /// Shows alert telling that it is not possible to show user location
+  /// Prompt that it is not possible to show user location
   func showRestrictedAuthorizationAlert(in parent: UIViewController)
 
   // MARK: - Add bookmark
@@ -20,10 +20,17 @@ protocol AlertManager {
   /// Shows alert notifying that bookmark cannot be created as no line was selected
   func showBookmarkNoLinesSelectedAlert(in parent: UIViewController)
 
-  /// Shows alert for name input when creating new bookmark
+  /// Prompt for name input when creating new bookmark
   func showBookmarkNameInputAlert(in parent: UIViewController, completed: @escaping (String?) -> ())
 
-  /// Shows alert that contains instructions how to use bookmarks
+  /// Show instructions how to use bookmarks
   func showBookmarkInstructionsAlert(in parent: UIViewController)
 
+  // MARK: - Network
+
+  /// Prompt user to check his/her network settings and try again
+  func showNoInternetAlert(in parent: UIViewController, retry: @escaping () -> ())
+
+  /// Show connection error alert and prompt to try again
+  func showNetworkingErrorAlert(in parent: UIViewController, retry: @escaping () -> ())
 }

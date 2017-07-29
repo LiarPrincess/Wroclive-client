@@ -4,6 +4,13 @@
 //
 
 enum NetworkingError: Error {
-  case invalidResponseFormat
-  case parsingError
+
+  /// No internet connection
+  case noInternet
+
+  /// Unable to connect to server
+  case connectionError
+
+  /// Response received from server was not valid
+  case invalidResponse
 }

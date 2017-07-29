@@ -43,4 +43,8 @@ struct SearchViewControllerConstants {
     static let chevronDismissRelativeDuration: TimeInterval = 0.05
   }
 
+  struct Network {
+    static let failedRequestDelay: TimeInterval = 5.0
+  }
+
 }

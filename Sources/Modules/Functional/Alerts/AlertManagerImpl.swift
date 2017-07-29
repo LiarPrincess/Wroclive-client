@@ -7,7 +7,7 @@ import UIKit
 
 class AlertManagerImpl: AlertManager {
 
-  // MARK: - Location
+  // MARK: - Map
 
   func showDeniedAuthorizationAlert(in parent: UIViewController) {
     let title   = "Location access is disabled"
@@ -108,6 +108,29 @@ class AlertManagerImpl: AlertManager {
 
     let closeAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
     alert.addAction(closeAction)
+
+    parent.present(alert, animated: true, completion: nil)
+  }
+
+  // MARK: - Network
+
+  func showNoInternetAlert(in parent: UIViewController, retry: @escaping () -> ()) {
+    let alert = UIAlertController(title: "Connection error", message: "Plese check your internet connection.", preferredStyle: .alert)
+    alert.view.setStyle(.alert)
+
+    let againAction = UIAlertAction(title: "Try again", style: .cancel)  { _ in retry() }
+    alert.addAction(againAction)
+
+    parent.present(alert, animated: true, completion: nil)
+
+  }
+
+  func showNetworkingErrorAlert(in parent: UIViewController, retry: @escaping () -> ()){
+    let alert = UIAlertController(title: "Connection error", message: "Could not connect to server.", preferredStyle: .alert)
+    alert.view.setStyle(.alert)
+
+    let againAction = UIAlertAction(title: "Try again", style: .cancel) { _ in retry() }
+    alert.addAction(againAction)
 
     parent.present(alert, animated: true, completion: nil)
   }

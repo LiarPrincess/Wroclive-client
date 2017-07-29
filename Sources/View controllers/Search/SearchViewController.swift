@@ -59,7 +59,7 @@ class SearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
-    self.reloadData()
+    self.loadLastState()
   }
 
   override func viewDidLayoutSubviews() {
@@ -120,25 +120,44 @@ class SearchViewController: UIViewController {
 
   // MARK: - Private - State
 
-  private func reloadData() {
+  private func loadLastState() {
     self.mode = .loadingData
 
     let state = Managers.search.getLatest()
     self.lineTypeSelector.value = state.selectedLineType
+    self.refreshAvailableLines(state.selectedLines)
+  }
 
+  private var isVisible: Bool { return self.isViewLoaded && self.view.window != nil }
+
+  private func refreshAvailableLines(_ selectedLines: [Line]) {
+    self.mode = .loadingData
     _ = Managers.lines.getAll()
-    .then { lines -> [Line] in
-      self.linesSelector.lines         = lines
-      self.linesSelector.selectedLines = state.selectedLines
+      .then { lines -> () in
+        guard self.isVisible else { return }
+        self.linesSelector.lines         = lines
+        self.linesSelector.selectedLines = selectedLines
 
-      self.mode = .selectingLines
-      self.updateViewFromLineTypeSelector(animated: false)
+        self.mode = .selectingLines
+        self.updateViewFromLineTypeSelector(animated: false)
+      }
+      .catch { error in
+        guard self.isVisible else { return }
 
-      return lines
-    }
-    .catch { error in
-//      self.contentType = .connectionError(error: error)
-    }
+        let retry: () -> () = {
+          let delay = Constants.Network.failedRequestDelay
+          DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+            self?.refreshAvailableLines(selectedLines)
+          }
+        }
+
+        switch error {
+        case NetworkingError.noInternet:
+          Managers.alert.showNoInternetAlert(in: self, retry: retry)
+        default:
+          Managers.alert.showNetworkingErrorAlert(in: self, retry: retry)
+        }
+      }
   }
 
   private func saveState() {

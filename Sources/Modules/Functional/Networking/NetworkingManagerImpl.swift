@@ -6,22 +6,43 @@
 import Foundation
 import PromiseKit
 import MapKit
+import ReachabilitySwift
+
+fileprivate typealias Constants = NetworkingManagerConstants
+fileprivate typealias Endpoints = Constants.Endpoints
 
 class NetworkingManagerImpl: NetworkingManager {
+
+  // MARK: - Properties
+
+  private let reachability = Reachability()
+
+  // MARK: - NetworkingManager
 
   func getAvailableLines() -> Promise<[Line]> {
     return self.showActivityIndicator()
       .then { _ -> URLDataPromise in
-        let url     = "https://api.myjson.com/bins/veb5z"
-        let request = URLRequest(url: URL(string: url)!)
+        let url     = URL(string: Endpoints.lines)
+        let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Constants.timeout)
         return URLSession.shared.dataTask(with: request)
       }
       .then { response in return response.asArray() }
       .then { responseData -> Promise<[Line]> in
         guard let data = responseData as? [[String: Any]] else {
-          return Promise(error: NetworkingError.invalidResponseFormat)
+          return Promise(error: NetworkingError.invalidResponse)
         }
         return LineParser.parse(data)
+      }
+      .recover { error -> Promise<[Line]> in
+        switch error {
+        case NetworkingError.invalidResponse: return Promise(error: error)
+        default:
+          if let reachability = self.reachability, !reachability.isReachable {
+            return Promise(error: NetworkingError.noInternet)
+          }
+
+          return Promise(error: NetworkingError.connectionError)
+        }
       }
   }
 

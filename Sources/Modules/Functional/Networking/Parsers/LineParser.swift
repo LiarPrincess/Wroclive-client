@@ -26,7 +26,7 @@ class LineParser {
 
           let lineType    = parseLineType(type),
           let lineSubtype = parseLineSubtype(subtype)
-    else { throw NetworkingError.parsingError }
+    else { throw NetworkingError.invalidResponse }
 
     return Line(name: name, type: lineType, subtype: lineSubtype)
   }
