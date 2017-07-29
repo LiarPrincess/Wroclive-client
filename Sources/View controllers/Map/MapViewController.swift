@@ -64,19 +64,34 @@ extension MapViewController: MKMapViewDelegate {
   // MARK: - Annotations
 
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    guard let vehicleLocation = annotation as? VehicleLocation else {
+    if let userLocationAnnotation = annotation as? MKUserLocation {
+      self.customizeUserLocationAnnotation(userLocationAnnotation)
       return nil
     }
 
+    if let vehicleLocation = annotation as? VehicleLocation {
+      return self.createVehicleLocationAnnotation(vehicleLocation)
+    }
+
+    return nil
+  }
+
+  private func customizeUserLocationAnnotation(_ userLocationAnnotation: MKUserLocation) {
+    userLocationAnnotation.title = nil
+    userLocationAnnotation.subtitle = nil
+  }
+
+  private func createVehicleLocationAnnotation(_ vehicleLocation: VehicleLocation) -> MKAnnotationView? {
     let identifier = "vehicleLocation"
+
     if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView {
-      dequeuedView.annotation = annotation
+      dequeuedView.annotation = vehicleLocation
       return dequeuedView
     }
 
-    let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+    let view = MKPinAnnotationView(annotation: vehicleLocation, reuseIdentifier: identifier)
     view.animatesDrop = false
-//    view.image = nil
+    // view.image = nil
     view.isDraggable = false
     return view
   }

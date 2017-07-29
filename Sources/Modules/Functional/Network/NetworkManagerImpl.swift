@@ -20,11 +20,6 @@ class NetworkManagerImpl: NetworkManager {
   // MARK: - NetworkingManager
 
   func getAvailableLines() -> Promise<[Line]> {
-    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
-    let z = URLCache.shared
-    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): before memory: \(z.currentMemoryUsage)")
-    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): before disc: \(z.currentDiskUsage)")
-
     return self.showActivityIndicator()
       .then { _ -> URLDataPromise in
         let url     = URL(string: Endpoints.lines)
@@ -33,9 +28,6 @@ class NetworkManagerImpl: NetworkManager {
       }
       .then { response in return response.asArray() }
       .then { responseData -> Promise<[Line]> in
-        Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): after memory: \(z.currentMemoryUsage)")
-        Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): after disc: \(z.currentDiskUsage)")
-
         guard let data = responseData as? [[String: Any]] else {
           return Promise(error: NetworkingError.invalidResponse)
         }

@@ -44,7 +44,7 @@ struct SearchViewControllerConstants {
   }
 
   struct Network {
-    static let failedRequestDelay: TimeInterval = 5.0
+    static let failedRequestDelay: TimeInterval = 3.0
   }
 
 }
