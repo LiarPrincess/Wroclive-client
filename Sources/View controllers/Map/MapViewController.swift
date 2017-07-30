@@ -90,6 +90,7 @@ extension MapViewController: MKMapViewDelegate {
     }
 
     let view = MKPinAnnotationView(annotation: vehicleLocation, reuseIdentifier: identifier)
+    view.annotation   = vehicleLocation
     view.animatesDrop = false
     // view.image = nil
     view.isDraggable = false

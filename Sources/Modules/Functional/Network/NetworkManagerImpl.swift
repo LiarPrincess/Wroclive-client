@@ -23,7 +23,8 @@ class NetworkManagerImpl: NetworkManager {
     return self.showActivityIndicator()
       .then { _ -> URLDataPromise in
         let url     = URL(string: Endpoints.lines)
-        let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Constants.timeout)
+        var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Constants.timeout)
+        request.httpMethod = "GET"
         return URLSession.shared.dataTask(with: request)
       }
       .then { response in return response.asArray() }
@@ -31,33 +32,29 @@ class NetworkManagerImpl: NetworkManager {
         guard let data = responseData as? [[String: Any]] else {
           return Promise(error: NetworkingError.invalidResponse)
         }
-        return LineParser.parse(data)
+        return LineRequestSerialization.parseResponse(data)
       }
-      .recover { error -> Promise<[Line]> in
-        switch error {
-        case NetworkingError.invalidResponse: return Promise(error: error)
-        default:
-          if let reachability = self.reachability, !reachability.isReachable {
-            return Promise(error: NetworkingError.noInternet)
-          }
-
-          return Promise(error: NetworkingError.connectionError)
-        }
-      }
+      .recover { return self.recoverError(error: $0) }
   }
 
   func getVehicleLocations(for lines: [Line]) -> Promise<[VehicleLocation]> {
-    let line = Line(name: "A", type: .bus, subtype: .express)
-
-    let loc0 = CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.02)
-    let loc1 = CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.03)
-    let loc2 = CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.04)
-
-    let vehicle0  = VehicleLocation(line: line, location: loc0, angle:   0.0)
-    let vehicle1  = VehicleLocation(line: line, location: loc1, angle:  90.0)
-    let vehicle2  = VehicleLocation(line: line, location: loc2, angle: 180.0)
-
-    return Promise(value: [vehicle0, vehicle1, vehicle2])
+    return LocationRequestSerialization.createRequest(lines)
+      .then { jsonData -> URLDataPromise in
+        let url     = URL(string: Endpoints.locations)
+        var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Constants.timeout)
+        request.httpMethod = "POST"
+        request.httpBody   = jsonData
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        return URLSession.shared.dataTask(with: request)
+      }
+      .then { response in return response.asArray() }
+      .then { responseData -> Promise<[VehicleLocation]> in
+        guard let data = responseData as? [[String: Any]] else {
+          return Promise(error: NetworkingError.invalidResponse)
+        }
+        return LocationRequestSerialization.parseResponse(data)
+      }
+      .recover { return self.recoverError(error: $0) }
   }
 
   // MARK: - (Private) Activity indicator
@@ -70,6 +67,20 @@ class NetworkManagerImpl: NetworkManager {
       .always {
         NetworkActivityIndicatorManager.shared.decrementActivityCount()
       }
+  }
+
+  // MARK: - (Private) Recover errors
+
+  private func recoverError<T>(error: Error) -> Promise<T> {
+    switch error {
+    case NetworkingError.invalidResponse: return Promise(error: error)
+    default:
+      if let reachability = self.reachability, !reachability.isReachable {
+        return Promise(error: NetworkingError.noInternet)
+      }
+
+      return Promise(error: NetworkingError.connectionError)
+    }
   }
 
 }

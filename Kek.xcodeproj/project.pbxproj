@@ -95,7 +95,8 @@
 		90F86F921F2CB4F800F9272E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F8A1F2CB4F800F9272E /* NetworkManager.swift */; };
 		90F86F931F2CB4F800F9272E /* NetworkManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F8B1F2CB4F800F9272E /* NetworkManagerConstants.swift */; };
 		90F86F941F2CB4F800F9272E /* NetworkManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F8C1F2CB4F800F9272E /* NetworkManagerImpl.swift */; };
-		90F86F951F2CB4F800F9272E /* LineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F8E1F2CB4F800F9272E /* LineParser.swift */; };
+		90F86F981F2E0BC800F9272E /* LineRequestSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F971F2E0BC800F9272E /* LineRequestSerialization.swift */; };
+		90F86F9A1F2E0E9800F9272E /* LocationRequestSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F991F2E0E9800F9272E /* LocationRequestSerialization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -201,7 +202,8 @@
 		90F86F8A1F2CB4F800F9272E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		90F86F8B1F2CB4F800F9272E /* NetworkManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerConstants.swift; sourceTree = "<group>"; };
 		90F86F8C1F2CB4F800F9272E /* NetworkManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerImpl.swift; sourceTree = "<group>"; };
-		90F86F8E1F2CB4F800F9272E /* LineParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineParser.swift; sourceTree = "<group>"; };
+		90F86F971F2E0BC800F9272E /* LineRequestSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineRequestSerialization.swift; sourceTree = "<group>"; };
+		90F86F991F2E0E9800F9272E /* LocationRequestSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRequestSerialization.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -671,7 +673,7 @@
 			isa = PBXGroup;
 			children = (
 				90F86F871F2CB4F800F9272E /* Activity indicator */,
-				90F86F8D1F2CB4F800F9272E /* Parsers */,
+				90F86F961F2E0BC800F9272E /* Serialization */,
 				90F86F891F2CB4F800F9272E /* NetworkingError.swift */,
 				90F86F8A1F2CB4F800F9272E /* NetworkManager.swift */,
 				90F86F8C1F2CB4F800F9272E /* NetworkManagerImpl.swift */,
@@ -688,12 +690,13 @@
 			path = "Activity indicator";
 			sourceTree = "<group>";
 		};
-		90F86F8D1F2CB4F800F9272E /* Parsers */ = {
+		90F86F961F2E0BC800F9272E /* Serialization */ = {
 			isa = PBXGroup;
 			children = (
-				90F86F8E1F2CB4F800F9272E /* LineParser.swift */,
+				90F86F971F2E0BC800F9272E /* LineRequestSerialization.swift */,
+				90F86F991F2E0E9800F9272E /* LocationRequestSerialization.swift */,
 			);
-			path = Parsers;
+			path = Serialization;
 			sourceTree = "<group>";
 		};
 		OBJ_41 /* Tests */ = {
@@ -876,6 +879,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
+				90F86F9A1F2E0E9800F9272E /* LocationRequestSerialization.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
@@ -909,7 +913,7 @@
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
-				90F86F951F2CB4F800F9272E /* LineParser.swift in Sources */,
+				90F86F981F2E0BC800F9272E /* LineRequestSerialization.swift in Sources */,
 				907F70A51F141D3C00F43902 /* AlertManagerImpl.swift in Sources */,
 				90B1DAC91F2BDC3000FAE18A /* MapManagerImpl.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,

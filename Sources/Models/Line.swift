@@ -53,3 +53,47 @@ class Line: NSObject, NSCoding {
        && self.subtype == other.subtype
   }
 }
+
+// MARK: - JSON
+
+enum LineParsingError: Error {
+  case invalidInput
+}
+
+extension Line {
+
+  convenience init(_ jsonData: [String: Any]) throws {
+    guard let name    = jsonData["name"]    as? String,
+          let type    = jsonData["type"]    as? String,
+          let subtype = jsonData["subtype"] as? String,
+
+          let lineType    = Line.parseLineType(type),
+          let lineSubtype = Line.parseLineSubtype(subtype)
+      else { throw LineParsingError.invalidInput }
+
+    self.init(name: name, type: lineType, subtype: lineSubtype)
+  }
+
+  private static func parseLineType(_ type: String) -> LineType? {
+    switch type.lowercased() {
+    case "tram": return .tram
+    case "bus" : return .bus
+    default:     return nil
+    }
+  }
+
+  private static func parseLineSubtype(_ subtype: String) -> LineSubtype? {
+    switch subtype.lowercased() {
+    case "regular":   return .regular
+    case "express":   return .express
+    case "hour":      return .hour
+    case "suburban":  return .suburban
+    case "zone":      return .zone
+    case "limited":   return .limited
+    case "temporary": return .temporary
+    case "night":     return .night
+    default:          return nil
+    }
+  }
+
+}

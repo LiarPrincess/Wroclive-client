@@ -10,16 +10,18 @@ class VehicleLocation: NSObject {
 
   // MARK: - Properties
 
-  let line:     Line
-  let location: CLLocationCoordinate2D
-  let angle:    CLLocationDirection
+  let vehicleId: String
+  let line:      Line
+  let location:  CLLocationCoordinate2D
+  let angle:     CLLocationDirection
 
-  // MARK: - init
+  // MARK: - Init
 
-  init(line: Line, location: CLLocationCoordinate2D, angle: CLLocationDirection) {
-    self.line     = line
-    self.location = location
-    self.angle    = angle
+  init(vehicleId: String, line: Line, location: CLLocationCoordinate2D, angle: CLLocationDirection) {
+    self.vehicleId = vehicleId
+    self.line      = line
+    self.location  = location
+    self.angle     = angle
   }
 }
 
