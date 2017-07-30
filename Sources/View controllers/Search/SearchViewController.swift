@@ -161,6 +161,9 @@ class SearchViewController: UIViewController {
   }
 
   private func saveState() {
+    // if we have not downloaded lines then avoid override of state
+    guard self.mode == .selectingLines else { return }
+
     let lineType = self.lineTypeSelector.value
     let lines    = self.linesSelector.selectedLines
 
