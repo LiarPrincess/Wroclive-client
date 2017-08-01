@@ -59,7 +59,6 @@ class SearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
-    self.loadLastState()
   }
 
   override func viewDidLayoutSubviews() {
@@ -80,6 +79,10 @@ class SearchViewController: UIViewController {
       self.linesSelector.contentInset          = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
       self.linesSelector.scrollIndicatorInsets = UIEdgeInsets(top: topInset, left: 0.0,       bottom: 0.0,         right: 0.0)
     }
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    self.loadLastState()
   }
 
   override func viewDidDisappear(_ animated: Bool) {
