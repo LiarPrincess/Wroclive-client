@@ -28,12 +28,6 @@ extension Endpoint {
   var headers:  HTTPHeaders?      { return nil }
 }
 
-extension Endpoint where RequestData == Void {
-  func encodeParameters(_ data: Void) -> Parameters? {
-    return nil
-  }
-}
-
 // MARK: - getDeviceIdentifier
 
 extension Endpoint {
