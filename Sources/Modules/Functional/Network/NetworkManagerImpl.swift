@@ -7,18 +7,18 @@ import Foundation
 import Alamofire
 import AlamofireNetworkActivityIndicator
 import PromiseKit
-import ReachabilitySwift
 
 class NetworkManagerImpl: NetworkManager {
 
   // MARK: - Properties
 
-  private let reachability = Reachability()
+  private let reachability = Alamofire.NetworkReachabilityManager(host: "www.google.com")
 
   // MARK: - Init
 
   init() {
     NetworkActivityIndicatorManager.shared.isEnabled = true
+    self.reachability?.startListening()
   }
 
   // MARK: - NetworkManager
@@ -40,9 +40,11 @@ class NetworkManagerImpl: NetworkManager {
       parameters: endpoint.encodeParameters(data),
       encoding: endpoint.parameterEncoding,
       headers: endpoint.headers
-    ).responseJSON()
-      .then { return endpoint.parseResponse($0) }
-      .recover { return self.recover($0) }
+    )
+    .validate()
+    .responseJSON()
+    .then { return endpoint.parseResponse($0) }
+    .recover { return self.recover($0) }
   }
 
   // MARK: - (Private) Recover errors
@@ -51,7 +53,8 @@ class NetworkManagerImpl: NetworkManager {
     switch error {
     case NetworkError.invalidResponse: return Promise(error: error)
     default:
-      if let reachability = self.reachability, !reachability.isReachable {
+      let isReachable = self.reachability?.isReachable ?? true
+      if !isReachable {
         return Promise(error: NetworkError.noInternet)
       }
 

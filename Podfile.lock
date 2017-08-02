@@ -16,7 +16,6 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (4.2.2):
     - PromiseKit/CorePromise
-  - ReachabilitySwift (3)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
@@ -24,16 +23,14 @@ DEPENDENCIES:
   - AlamofireNetworkActivityIndicator (~> 2.2)
   - PromiseKit (~> 4.0)
   - PromiseKit/Alamofire (~> 4.0)
-  - ReachabilitySwift (~> 3)
   - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireNetworkActivityIndicator: 81e1630e7cfed22a4e4e82a174c59e651dc4f8ca
   PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
-  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: ac0d128c3ded02b5ade0c82b45b78dbe095241c7
+PODFILE CHECKSUM: b45a411f294832748b6d4d127fb75b57171de736
 
 COCOAPODS: 1.2.0

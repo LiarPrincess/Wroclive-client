@@ -10,8 +10,6 @@ target 'Kek' do
   pod 'Alamofire',                         '~> 4.4'
   pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
 
-  pod 'ReachabilitySwift',                 '~> 3'
-
   pod 'PromiseKit',                        '~> 4.0'
   pod 'PromiseKit/Alamofire',              '~> 4.0'
 end
