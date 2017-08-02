@@ -59,6 +59,7 @@ class SearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
+    self.loadLastState()
   }
 
   override func viewDidLayoutSubviews() {
@@ -79,10 +80,6 @@ class SearchViewController: UIViewController {
       self.linesSelector.contentInset          = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
       self.linesSelector.scrollIndicatorInsets = UIEdgeInsets(top: topInset, left: 0.0,       bottom: 0.0,         right: 0.0)
     }
-  }
-
-  override func viewDidAppear(_ animated: Bool) {
-    self.loadLastState()
   }
 
   override func viewDidDisappear(_ animated: Bool) {
@@ -124,8 +121,6 @@ class SearchViewController: UIViewController {
   // MARK: - Private - State
 
   private func loadLastState() {
-    self.mode = .loadingData
-
     let state = Managers.search.getLatest()
     self.lineTypeSelector.value = state.selectedLineType
     self.refreshAvailableLines(state.selectedLines)
@@ -135,7 +130,8 @@ class SearchViewController: UIViewController {
 
   private func refreshAvailableLines(_ selectedLines: [Line]) {
     self.mode = .loadingData
-    _ = Managers.network.getAvailableLines()
+
+    firstly { return Managers.network.getAvailableLines() }
       .then { lines -> () in
         guard self.isVisible else { return }
         self.linesSelector.lines         = lines
@@ -155,7 +151,7 @@ class SearchViewController: UIViewController {
         }
 
         switch error {
-        case NetworkingError.noInternet:
+        case NetworkError.noInternet:
           Managers.alert.showNoInternetAlert(in: self, retry: retry)
         default:
           Managers.alert.showNetworkingErrorAlert(in: self, retry: retry)

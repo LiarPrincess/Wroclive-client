@@ -4,12 +4,10 @@
 //
 
 import Foundation
+import Alamofire
+import AlamofireNetworkActivityIndicator
 import PromiseKit
-import MapKit
 import ReachabilitySwift
-
-fileprivate typealias Constants = NetworkManagerConstants
-fileprivate typealias Endpoints = Constants.Endpoints
 
 class NetworkManagerImpl: NetworkManager {
 
@@ -17,69 +15,47 @@ class NetworkManagerImpl: NetworkManager {
 
   private let reachability = Reachability()
 
-  // MARK: - NetworkingManager
+  // MARK: - Init
+
+  init() {
+    NetworkActivityIndicatorManager.shared.isEnabled = true
+  }
+
+  // MARK: - NetworkManager
 
   func getAvailableLines() -> Promise<[Line]> {
-    return self.showActivityIndicator()
-      .then { _ -> URLDataPromise in
-        let url     = URL(string: Endpoints.lines)
-        var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Constants.timeout)
-        request.httpMethod = "GET"
-        return URLSession.shared.dataTask(with: request)
-      }
-      .then { response in return response.asArray() }
-      .then { responseData -> Promise<[Line]> in
-        guard let data = responseData as? [[String: Any]] else {
-          return Promise(error: NetworkingError.invalidResponse)
-        }
-        return LineRequestSerialization.parseResponse(data)
-      }
-      .recover { return self.recoverError(error: $0) }
+    let endpoint = AvailableLinesEndpoint()
+    return self.sendRequest(endpoint: endpoint, data: ())
   }
 
   func getVehicleLocations(for lines: [Line]) -> Promise<[VehicleLocation]> {
-    return LocationRequestSerialization.createRequest(lines)
-      .then { jsonData -> URLDataPromise in
-        let url     = URL(string: Endpoints.locations)
-        var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: Constants.timeout)
-        request.httpMethod = "POST"
-        request.httpBody   = jsonData
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        return URLSession.shared.dataTask(with: request)
-      }
-      .then { response in return response.asArray() }
-      .then { responseData -> Promise<[VehicleLocation]> in
-        guard let data = responseData as? [[String: Any]] else {
-          return Promise(error: NetworkingError.invalidResponse)
-        }
-        return LocationRequestSerialization.parseResponse(data)
-      }
-      .recover { return self.recoverError(error: $0) }
+    let endpoint = VehicleLocationEndpoint()
+    return self.sendRequest(endpoint: endpoint, data: lines)
   }
 
-  // MARK: - (Private) Activity indicator
-
-  private func showActivityIndicator() -> Promise<Void> {
-    return firstly {
-        NetworkActivityIndicatorManager.shared.incrementActivityCount()
-        return Promise(value: ())
-      }
-      .always {
-        NetworkActivityIndicatorManager.shared.decrementActivityCount()
-      }
+  func sendRequest<TEndpoint: Endpoint>(endpoint: TEndpoint, data: TEndpoint.RequestData) -> Promise<TEndpoint.ResponseData> {
+    return Alamofire.request(
+      endpoint.url,
+      method: endpoint.method,
+      parameters: endpoint.encodeParameters(data),
+      encoding: endpoint.parameterEncoding,
+      headers: endpoint.headers
+    ).responseJSON()
+      .then { return endpoint.parseResponse($0) }
+      .recover { return self.recover($0) }
   }
 
   // MARK: - (Private) Recover errors
 
-  private func recoverError<T>(error: Error) -> Promise<T> {
+  private func recover<T>(_ error: Error) -> Promise<T> {
     switch error {
-    case NetworkingError.invalidResponse: return Promise(error: error)
+    case NetworkError.invalidResponse: return Promise(error: error)
     default:
       if let reachability = self.reachability, !reachability.isReachable {
-        return Promise(error: NetworkingError.noInternet)
+        return Promise(error: NetworkError.noInternet)
       }
 
-      return Promise(error: NetworkingError.connectionError)
+      return Promise(error: NetworkError.connectionError)
     }
   }
 
