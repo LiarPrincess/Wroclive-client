@@ -115,6 +115,7 @@ class AlertManagerImpl: AlertManager {
   // MARK: - Network
 
   func showNoInternetAlert(in parent: UIViewController, retry: @escaping () -> ()) {
+
     let alert = UIAlertController(title: "Connection error", message: "Plese check your internet connection.", preferredStyle: .alert)
     alert.view.setStyle(.alert)
 
@@ -124,7 +125,7 @@ class AlertManagerImpl: AlertManager {
     parent.present(alert, animated: true, completion: nil)
   }
 
-  func showNetworkingErrorAlert(in parent: UIViewController, retry: @escaping () -> ()){
+  func showNetworkingErrorAlert(in parent: UIViewController, retry: @escaping () -> ()) {
     let alert = UIAlertController(title: "Connection error", message: "Could not connect to server.", preferredStyle: .alert)
     alert.view.setStyle(.alert)
 

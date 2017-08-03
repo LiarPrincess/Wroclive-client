@@ -114,8 +114,11 @@ class SearchViewController: UIViewController {
   }
 
   @objc func searchButtonPressed() {
-    let selectedLines = self.linesSelector.selectedLines
-    self.delegate?.searchViewController(self, didSelect: selectedLines)
+    if self.mode == .selectingLines {
+      let selectedLines = self.linesSelector.selectedLines
+      self.delegate?.searchViewController(self, didSelect: selectedLines)
+    }
+
     self.dismiss(animated: true, completion: nil)
   }
 

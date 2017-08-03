@@ -4,8 +4,9 @@
 //
 
 import UIKit
-import SnapKit
 import MapKit
+import SnapKit
+import PromiseKit
 
 fileprivate typealias Constants = MainViewControllerConstants
 
@@ -15,8 +16,7 @@ class MainViewController: UIViewController {
 
   let mapViewController = MapViewController()
 
-  let toolbar             = UIToolbar()
-
+  let toolbar = UIToolbar()
   let userTrackingButton  = MKUserTrackingBarButtonItem()
   let searchButton        = UIBarButtonItem()
   let bookmarksButton     = UIBarButtonItem()
@@ -24,6 +24,9 @@ class MainViewController: UIViewController {
 
   var searchTransitionDelegate:    UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
   var bookmarksTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+
+  var trackedLines:  [Line] = []
+  var trackingTimer: Timer?
 
   // MARK: - Overriden
 
@@ -62,13 +65,52 @@ class MainViewController: UIViewController {
     Swift.print("configurationButtonPressed")
   }
 
-  // MARK: - Tracking
+  // MARK: - Private - Tracking
 
   fileprivate func startTracking(_ lines: [Line]) {
-    _ = Managers.network.getVehicleLocations(for: lines)
-    .then { locations in
-      self.mapViewController.updateVehicleLocations(locations)
+    self.trackedLines = lines
+    self.startLocationUpdateTimer()
+  }
+
+  // MARK: - Private - Timers
+
+  private func startLocationUpdateTimer() {
+    self.stopLocationUpdateTimer()
+
+    let interval = Constants.locationUpdateInterval
+    self.trackingTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(trackingTimerFired), userInfo: nil, repeats: true)
+    self.trackingTimer?.tolerance = interval * 0.1
+
+    // manually perform first update
+    self.trackingTimer?.fire()
+  }
+
+  func trackingTimerFired(timer: Timer) {
+    guard timer.isValid else { return }
+
+    firstly   { return Managers.network.getVehicleLocations(for: self.trackedLines) }
+      .then   { self.mapViewController.updateVehicleLocations($0) }
+      .catch  { error in
+        self.stopLocationUpdateTimer()
+
+        let retry = { [weak self] in
+          let delay = Constants.failedRequestDelay
+          DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+            self?.startLocationUpdateTimer()
+          }
+        }
+
+        switch error {
+        case NetworkError.noInternet:
+          Managers.alert.showNoInternetAlert(in: self, retry: retry)
+        default:
+          Managers.alert.showNetworkingErrorAlert(in: self, retry: retry)
+        }
     }
+  }
+
+  private func stopLocationUpdateTimer() {
+    self.trackingTimer?.invalidate()
   }
 
 }

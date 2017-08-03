@@ -12,4 +12,6 @@ struct MainViewControllerConstants {
     static let bookmarksRelativeHeight: CGFloat = 0.75
   }
 
+  static let failedRequestDelay:     TimeInterval = 3.0
+  static let locationUpdateInterval: TimeInterval = 3.0
 }
