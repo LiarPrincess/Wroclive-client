@@ -13,11 +13,11 @@ class SearchManagerImpl: SearchManager {
 
   // MARK: - StorageManagerProtocol
 
-  func save(_ state: SearchState) {
+  func saveState(_ state: SearchState) {
     self.state = state
   }
 
-  func getLatest() -> SearchState {
+  func getSavedState() -> SearchState {
     return self.state
   }
 

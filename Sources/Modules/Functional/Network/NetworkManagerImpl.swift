@@ -47,7 +47,7 @@ class NetworkManagerImpl: NetworkManager {
     .recover { return self.recover($0) }
   }
 
-  // MARK: - (Private) Recover errors
+  // MARK: - Private - Recover errors
 
   private func recover<T>(_ error: Error) -> Promise<T> {
     switch error {

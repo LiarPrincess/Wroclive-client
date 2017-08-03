@@ -59,7 +59,7 @@ class SearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
-    self.loadLastState()
+    self.loadSavedState()
   }
 
   override func viewDidLayoutSubviews() {
@@ -83,6 +83,7 @@ class SearchViewController: UIViewController {
   }
 
   override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
     self.saveState()
   }
 
@@ -120,43 +121,42 @@ class SearchViewController: UIViewController {
 
   // MARK: - Private - State
 
-  private func loadLastState() {
-    let state = Managers.search.getLatest()
+  private func loadSavedState() {
+    let state = Managers.search.getSavedState()
     self.lineTypeSelector.value = state.selectedLineType
     self.refreshAvailableLines(state.selectedLines)
   }
-
-  private var isVisible: Bool { return self.isViewLoaded && self.view.window != nil }
 
   private func refreshAvailableLines(_ selectedLines: [Line]) {
     self.mode = .loadingData
 
     firstly { return Managers.network.getAvailableLines() }
-      .then { lines -> () in
-        guard self.isVisible else { return }
-        self.linesSelector.lines         = lines
-        self.linesSelector.selectedLines = selectedLines
+    .then { [weak self] lines -> () in
+      guard let strongSelf = self else { return }
 
-        self.mode = .selectingLines
-        self.updateViewFromLineTypeSelector(animated: false)
-      }
-      .catch { error in
-        guard self.isVisible else { return }
+      strongSelf.linesSelector.lines         = lines
+      strongSelf.linesSelector.selectedLines = selectedLines
 
-        let retry: () -> () = {
-          let delay = Constants.Network.failedRequestDelay
-          DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
-            self?.refreshAvailableLines(selectedLines)
-          }
-        }
+      strongSelf.mode = .selectingLines
+      strongSelf.updateViewFromLineTypeSelector(animated: false)
+    }
+    .catch { [weak self] error in
+      guard let strongSelf = self else { return }
 
-        switch error {
-        case NetworkError.noInternet:
-          Managers.alert.showNoInternetAlert(in: self, retry: retry)
-        default:
-          Managers.alert.showNetworkingErrorAlert(in: self, retry: retry)
+      let retry = { [weak self] in
+        let delay = Constants.Network.failedRequestDelay
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+          self?.refreshAvailableLines(selectedLines)
         }
       }
+
+      switch error {
+      case NetworkError.noInternet:
+        Managers.alert.showNoInternetAlert(in: strongSelf, retry: retry)
+      default:
+        Managers.alert.showNetworkingErrorAlert(in: strongSelf, retry: retry)
+      }
+    }
   }
 
   private func saveState() {
@@ -167,7 +167,7 @@ class SearchViewController: UIViewController {
     let lines    = self.linesSelector.selectedLines
 
     let state = SearchState(withSelected: lineType, lines: lines)
-    Managers.search.save(state)
+    Managers.search.saveState(state)
   }
 
   // MARK: - Private - Update methods

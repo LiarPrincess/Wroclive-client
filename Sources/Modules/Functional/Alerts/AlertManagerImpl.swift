@@ -122,7 +122,6 @@ class AlertManagerImpl: AlertManager {
     alert.addAction(againAction)
 
     parent.present(alert, animated: true, completion: nil)
-
   }
 
   func showNetworkingErrorAlert(in parent: UIViewController, retry: @escaping () -> ()){
