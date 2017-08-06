@@ -98,6 +98,7 @@
 		90F86F911F2CB4F800F9272E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F891F2CB4F800F9272E /* NetworkError.swift */; };
 		90F86F921F2CB4F800F9272E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F8A1F2CB4F800F9272E /* NetworkManager.swift */; };
 		90F86F941F2CB4F800F9272E /* NetworkManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F8C1F2CB4F800F9272E /* NetworkManagerImpl.swift */; };
+		90FAF0711F35D9440040E0AE /* VehicleLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAF0701F35D9440040E0AE /* VehicleLocationAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -206,6 +207,7 @@
 		90F86F891F2CB4F800F9272E /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		90F86F8A1F2CB4F800F9272E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		90F86F8C1F2CB4F800F9272E /* NetworkManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerImpl.swift; sourceTree = "<group>"; };
+		90FAF0701F35D9440040E0AE /* VehicleLocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationAnnotation.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -274,6 +276,7 @@
 		9017C3541EE339FD00063377 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				90FAF06F1F35D8C20040E0AE /* Annotations */,
 				9017C3551EE339FD00063377 /* MapViewController.swift */,
 				9017C3571EE339FD00063377 /* MapViewControllerLayout.swift */,
 				9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */,
@@ -702,6 +705,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		90FAF06F1F35D8C20040E0AE /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				90FAF0701F35D9440040E0AE /* VehicleLocationAnnotation.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
 		OBJ_41 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,6 +910,7 @@
 				90AF2BE31EE9E4ED006E61D6 /* Theme+Apply.swift in Sources */,
 				90B1DAC81F2BDC3000FAE18A /* MapManagerConstants.swift in Sources */,
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
+				90FAF0711F35D9440040E0AE /* VehicleLocationAnnotation.swift in Sources */,
 				9078F42E1F031443002D7DCD /* AvenirFontProvider.swift in Sources */,
 				9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */,
 				9021F43B1F12D698000A6949 /* LineSelectionPage.swift in Sources */,

@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import MapKit
 
 class VehicleLocation: NSObject {
 
@@ -12,23 +11,18 @@ class VehicleLocation: NSObject {
 
   let vehicleId: String
   let line:      Line
-  let location:  CLLocationCoordinate2D
-  let angle:     CLLocationDirection
+
+  let latitude:  Double
+  let longitude: Double
+  let angle:     Double
 
   // MARK: - Init
 
-  init(vehicleId: String, line: Line, location: CLLocationCoordinate2D, angle: CLLocationDirection) {
+  init(vehicleId: String, line: Line, latitude: Double, longitude: Double, angle: Double) {
     self.vehicleId = vehicleId
     self.line      = line
-    self.location  = location
+    self.latitude  = latitude
+    self.longitude = longitude
     self.angle     = angle
-  }
-}
-
-// MARK: - MKAnnotation
-
-extension VehicleLocation: MKAnnotation {
-  var coordinate: CLLocationCoordinate2D {
-    return self.location
   }
 }

@@ -22,12 +22,12 @@ class MapViewController: UIViewController {
   }
 
   override func viewDidAppear(_ animated: Bool) {
-    _ = firstly { () -> Promise<Void> in
+    firstly { () -> Promise<Void> in
       Managers.map.requestInUseAuthorization()
       return Promise(value: ())
     }
-    .then { _ in return Managers.map.getDefaultRegion() }
-    .then { center in self.mapView.setRegion(center, animated: false) }
+    .then { return Managers.map.getDefaultRegion() }
+    .then { self.mapView.setRegion($0, animated: false) }
   }
 
   override var bottomLayoutGuide: UILayoutSupport {
@@ -36,9 +36,38 @@ class MapViewController: UIViewController {
 
   // MARK: - Vehicle locations
 
-  func updateVehicleLocations(_ locations: [VehicleLocation]) {
-    let mapAnnotations = self.mapView.annotations
-    self.mapView.addAnnotations(locations)
+  func updateVehicleLocations(_ vehicleLocations: [VehicleLocation]) {
+    // remove annotations
+    let annotationsBeforeRemoval = self.getVehicleAnnotationsFromMap()
+
+    let toRemoveCount = annotationsBeforeRemoval.count - vehicleLocations.count
+    if toRemoveCount > 0 {
+      let annotationsToRemove = Array(annotationsBeforeRemoval.prefix(toRemoveCount))
+      self.mapView.removeAnnotations(annotationsToRemove)
+    }
+
+    // update/add annotations
+    let annotationsAfterRemoval = self.getVehicleAnnotationsFromMap()
+
+    var annotationsToAdd = [VehicleLocationAnnotation]()
+    for (index, vehicleLocation) in vehicleLocations.enumerated() {
+      if index < annotationsAfterRemoval.count {
+        annotationsAfterRemoval[index].fillFrom(vehicleLocation: vehicleLocation)
+      }
+      else {
+        let vehicleAnnotation = VehicleLocationAnnotation(from: vehicleLocation)
+        annotationsToAdd.append(vehicleAnnotation)
+      }
+    }
+
+    if annotationsToAdd.count > 0 {
+      self.mapView.addAnnotations(annotationsToAdd)
+    }
+  }
+
+  private func getVehicleAnnotationsFromMap() -> [VehicleLocationAnnotation] {
+    return self.mapView.annotations
+      .flatMap { return $0 as? VehicleLocationAnnotation }
   }
 
 }
@@ -64,37 +93,37 @@ extension MapViewController: MKMapViewDelegate {
   // MARK: - Annotations
 
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    if let userLocationAnnotation = annotation as? MKUserLocation {
-      self.customizeUserLocationAnnotation(userLocationAnnotation)
+    switch annotation {
+    case let userLocation as MKUserLocation:
+      userLocation.title    = nil
+      userLocation.subtitle = nil
+      return nil
+
+    case let vehicleLocation as VehicleLocationAnnotation:
+      return self.createVehicleLocationAnnotation(vehicleLocation)
+
+    default:
       return nil
     }
-
-    if let vehicleLocation = annotation as? VehicleLocation {
-      return self.createVehicleLocationAnnotation(vehicleLocation)
-    }
-
-    return nil
   }
 
-  private func customizeUserLocationAnnotation(_ userLocationAnnotation: MKUserLocation) {
-    userLocationAnnotation.title = nil
-    userLocationAnnotation.subtitle = nil
-  }
+  private func createVehicleLocationAnnotation(_ annotation: VehicleLocationAnnotation) -> MKAnnotationView? {
+    let identifier = "VehicleLocationAnnotation"
 
-  private func createVehicleLocationAnnotation(_ vehicleLocation: VehicleLocation) -> MKAnnotationView? {
-    let identifier = "vehicleLocation"
-
-    if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView {
-      dequeuedView.annotation = vehicleLocation
+    if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
+      dequeuedView.annotation = annotation
+//      dequeuedView.transform = CGAffineTransform(rotationAngle: CGFloat(vehicleLocation.angle))
       return dequeuedView
     }
 
-    let view = MKPinAnnotationView(annotation: vehicleLocation, reuseIdentifier: identifier)
-    view.annotation   = vehicleLocation
-    view.animatesDrop = false
-    // view.image = nil
-    view.isDraggable = false
-    return view
+    let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier) // MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+    annotationView.isDraggable    = false
+    annotationView.canShowCallout = false
+    annotationView.annotation     = annotation
+//    view.image = #imageLiteral(resourceName: "mapPin")
+//    view.transform = CGAffineTransform(rotationAngle: CGFloat(vehicleLocation.angle))
+
+    return annotationView
   }
 
 }

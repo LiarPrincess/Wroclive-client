@@ -77,6 +77,8 @@ class MainViewController: UIViewController {
   private func startLocationUpdateTimer() {
     self.stopLocationUpdateTimer()
 
+    guard self.trackedLines.count > 0 else { return }
+
     let interval = Constants.locationUpdateInterval
     self.trackingTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(trackingTimerFired), userInfo: nil, repeats: true)
     self.trackingTimer?.tolerance = interval * 0.1
@@ -88,24 +90,24 @@ class MainViewController: UIViewController {
   func trackingTimerFired(timer: Timer) {
     guard timer.isValid else { return }
 
-    firstly   { return Managers.network.getVehicleLocations(for: self.trackedLines) }
-      .then   { self.mapViewController.updateVehicleLocations($0) }
-      .catch  { error in
-        self.stopLocationUpdateTimer()
+    firstly { return Managers.network.getVehicleLocations(for: self.trackedLines) }
+    .then  { self.mapViewController.updateVehicleLocations($0) }
+    .catch { error in
+      self.stopLocationUpdateTimer()
 
-        let retry = { [weak self] in
-          let delay = Constants.failedRequestDelay
-          DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
-            self?.startLocationUpdateTimer()
-          }
+      let retry = { [weak self] in
+        let delay = Constants.failedRequestDelay
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+          self?.startLocationUpdateTimer()
         }
+      }
 
-        switch error {
-        case NetworkError.noInternet:
-          Managers.alert.showNoInternetAlert(in: self, retry: retry)
-        default:
-          Managers.alert.showNetworkingErrorAlert(in: self, retry: retry)
-        }
+      switch error {
+      case NetworkError.noInternet:
+        Managers.alert.showNoInternetAlert(in: self, retry: retry)
+      default:
+        Managers.alert.showNetworkingErrorAlert(in: self, retry: retry)
+      }
     }
   }
 

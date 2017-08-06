@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import MapKit
+import Foundation
 
 class LineLocationsParser {
 
@@ -25,9 +25,7 @@ class LineLocationsParser {
           let angle     = json["angle"]     as? Double
       else { throw NetworkError.invalidResponse }
 
-    let location  = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-    let direction = CLLocationDirection(angle)
-    return VehicleLocation(vehicleId: vehicleId, line: line, location: location, angle: direction)
+    return VehicleLocation(vehicleId: vehicleId, line: line, latitude: latitude, longitude: longitude, angle: angle)
   }
 
 }

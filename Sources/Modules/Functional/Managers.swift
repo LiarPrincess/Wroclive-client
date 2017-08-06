@@ -9,4 +9,6 @@ struct Managers {
   static var bookmarks: BookmarksManager!
   static var alert:     AlertManager!
   static var network:   NetworkManager!
+
+  private init() {}
 }
