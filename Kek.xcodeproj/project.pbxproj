@@ -80,6 +80,7 @@
 		907F70A31F141ADB00F43902 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F70A21F141ADB00F43902 /* AlertManager.swift */; };
 		907F70A51F141D3C00F43902 /* AlertManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F70A41F141D3C00F43902 /* AlertManagerImpl.swift */; };
 		9086D4511EE2DFCF00E43D9A /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9086D4501EE2DFCF00E43D9A /* BookmarksManager.swift */; };
+		90A913781F376E390095B873 /* VehicleLocationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleLocationAnnotationView.swift */; };
 		90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* Theme.swift */; };
 		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
 		90AF2BDB1EE9E05C006E61D6 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BDA1EE9E05C006E61D6 /* Styles.swift */; };
@@ -189,6 +190,7 @@
 		907F70A21F141ADB00F43902 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		907F70A41F141D3C00F43902 /* AlertManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManagerImpl.swift; sourceTree = "<group>"; };
 		9086D4501EE2DFCF00E43D9A /* BookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
+		90A913771F376E390095B873 /* VehicleLocationAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationAnnotationView.swift; sourceTree = "<group>"; };
 		90AF2BD31EE9DE00006E61D6 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		90AF2BDA1EE9E05C006E61D6 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -709,6 +711,7 @@
 			isa = PBXGroup;
 			children = (
 				90FAF0701F35D9440040E0AE /* VehicleLocationAnnotation.swift */,
+				90A913771F376E390095B873 /* VehicleLocationAnnotationView.swift */,
 			);
 			path = Annotations;
 			sourceTree = "<group>";
@@ -921,6 +924,7 @@
 				9021F4141F12C9EF000A6949 /* ReusableCellContainer.swift in Sources */,
 				9027431F1F31297400A3C0E0 /* Endpoint.swift in Sources */,
 				9021F4131F12C9EF000A6949 /* ReusableCell.swift in Sources */,
+				90A913781F376E390095B873 /* VehicleLocationAnnotationView.swift in Sources */,
 				902743221F3137C400A3C0E0 /* LinesParser.swift in Sources */,
 				9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,

@@ -14,7 +14,9 @@ class VehicleLocationAnnotation: NSObject, MKAnnotation {
   var line:      Line
 
   dynamic var coordinate: CLLocationCoordinate2D
-  dynamic var angle:      CLLocationDirection
+
+  var angle:    CGFloat
+  var angleRad: CGFloat { return self.angle.rad }
 
   // MARK: - Init
 
@@ -22,16 +24,16 @@ class VehicleLocationAnnotation: NSObject, MKAnnotation {
     self.vehicleId  = vehicleLocation.vehicleId
     self.line       = vehicleLocation.line
     self.coordinate = CLLocationCoordinate2D(latitude: vehicleLocation.latitude, longitude: vehicleLocation.longitude)
-    self.angle      = CLLocationDirection(vehicleLocation.angle)
+    self.angle      = CGFloat(vehicleLocation.angle)
   }
 
   // MARK: - Update
 
-  func fillFrom(vehicleLocation: VehicleLocation) {
+  func fillFrom(_ vehicleLocation: VehicleLocation) {
     self.vehicleId  = vehicleLocation.vehicleId
     self.line       = vehicleLocation.line
     self.coordinate = CLLocationCoordinate2D(latitude: vehicleLocation.latitude, longitude: vehicleLocation.longitude)
-    self.angle      = CLLocationDirection(vehicleLocation.angle)
+    self.angle      = CGFloat(vehicleLocation.angle)
   }
 
 }
