@@ -7,7 +7,7 @@ class LinesParser {
 
   private init() {}
 
-  static func parse(_ json: [String: Any]) throws -> Line {
+  static func parse(_ json: JSONDictionary) throws -> Line {
     guard let name          = json["name"]    as? String,
           let typeString    = json["type"]    as? String,
           let subtypeString = json["subtype"] as? String,

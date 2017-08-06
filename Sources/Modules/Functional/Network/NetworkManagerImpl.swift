@@ -8,6 +8,9 @@ import Alamofire
 import AlamofireNetworkActivityIndicator
 import PromiseKit
 
+typealias JSONDictionary =  [String : AnyObject]
+typealias JSONArray      = [[String : AnyObject]]
+
 class NetworkManagerImpl: NetworkManager {
 
   // MARK: - Properties
@@ -36,10 +39,10 @@ class NetworkManagerImpl: NetworkManager {
   func sendRequest<TEndpoint: Endpoint>(endpoint: TEndpoint, data: TEndpoint.RequestData) -> Promise<TEndpoint.ResponseData> {
     return Alamofire.request(
       endpoint.url,
-      method: endpoint.method,
+      method:     endpoint.method,
       parameters: endpoint.encodeParameters(data),
-      encoding: endpoint.parameterEncoding,
-      headers: endpoint.headers
+      encoding:   endpoint.parameterEncoding,
+      headers:    endpoint.headers
     )
     .validate()
     .responseJSON()

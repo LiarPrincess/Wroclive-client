@@ -9,16 +9,16 @@ class LineLocationsParser {
 
   private init() {}
 
-  static func parse(_ json: [String: Any]) throws -> [VehicleLocation] {
-    guard let lineJson     = json["line"]     as? [String: Any],
-          let vehiclesJson = json["vehicles"] as? [[String: Any]]
+  static func parse(_ json: JSONDictionary) throws -> [VehicleLocation] {
+    guard let lineJson     = json["line"]     as? JSONDictionary,
+          let vehiclesJson = json["vehicles"] as? JSONArray
       else { throw NetworkError.invalidResponse }
 
     let line = try LinesParser.parse(lineJson)
     return try vehiclesJson.map { return try LineLocationsParser.parseVehicleLocation(line, json: $0) }
   }
 
-  private static func parseVehicleLocation(_ line: Line, json: [String: Any]) throws -> VehicleLocation {
+  private static func parseVehicleLocation(_ line: Line, json: JSONDictionary) throws -> VehicleLocation {
     guard let vehicleId = json["vehicleId"] as? String,
           let latitude  = json["latitude"]  as? Double,
           let longitude = json["longitude"] as? Double,
