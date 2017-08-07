@@ -121,7 +121,7 @@ extension SearchViewController {
     self.placeholderLabel.numberOfLines = 0
     self.placeholderLabel.textAlignment = .center
     self.placeholderLabel.lineBreakMode = .byWordWrapping
-    self.placeholderLabel.text          = "Loading…" // "Wczytywanie…"
+    self.placeholderLabel.text          = "Loading…"
     self.placeholderView.addSubview(self.placeholderLabel)
 
     self.placeholderLabel.snp.makeConstraints { make in

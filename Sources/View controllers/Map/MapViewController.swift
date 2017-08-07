@@ -37,8 +37,8 @@ class MapViewController: UIViewController {
   // MARK: - Vehicle locations
 
   func updateVehicleLocations(_ vehicleLocations: [VehicleLocation]) {
-    // remove annotations
-    let annotationsBeforeRemoval = self.vehicleAnnotationsFromMap()
+    // remove excess annotations
+    let annotationsBeforeRemoval = self.availableVehicleAnnotations()
 
     let toRemoveCount = annotationsBeforeRemoval.count - vehicleLocations.count
     if toRemoveCount > 0 {
@@ -47,12 +47,12 @@ class MapViewController: UIViewController {
     }
 
     // update/add annotations
-    let annotationsAfterRemoval = self.vehicleAnnotationsFromMap()
+    let annotations = self.availableVehicleAnnotations() // after we removed
 
     var annotationsToAdd = [VehicleLocationAnnotation]()
     for (index, vehicleLocation) in vehicleLocations.enumerated() {
-      if index < annotationsAfterRemoval.count {
-        let annotation = annotationsAfterRemoval[index]
+      if index < annotations.count {
+        let annotation = annotations[index]
         annotation.fillFrom(vehicleLocation)
 
         // redraw view if it is visible
@@ -70,9 +70,8 @@ class MapViewController: UIViewController {
     }
   }
 
-  private func vehicleAnnotationsFromMap() -> [VehicleLocationAnnotation] {
-    return self.mapView.annotations
-      .flatMap { return $0 as? VehicleLocationAnnotation }
+  private func availableVehicleAnnotations() -> [VehicleLocationAnnotation] {
+    return self.mapView.annotations.flatMap { return $0 as? VehicleLocationAnnotation }
   }
 
 }
