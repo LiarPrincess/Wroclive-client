@@ -30,7 +30,7 @@ extension SearchViewController {
     }
 
     self.chevronView.state = .down
-    self.chevronView.color = Theme.current.colorScheme.backgroundContrast
+    self.chevronView.color = Theme.current.colorScheme.backgroundAccent
     self.chevronView.animationDuration = Constants.Animations.chevronDismissRelativeDuration
     self.view.addSubview(chevronView)
 
@@ -43,7 +43,7 @@ extension SearchViewController {
       make.height.equalTo(chevronViewSize.height)
     }
 
-    self.cardTitle.setStyle(.headline)
+    self.cardTitle.setStyle(.headline, color: .text)
     self.cardTitle.text          = "Lines"
     self.cardTitle.numberOfLines = 0
     self.cardTitle.lineBreakMode = .byWordWrapping
@@ -54,7 +54,7 @@ extension SearchViewController {
       make.left.equalToSuperview().offset(Layout.leftInset)
     }
 
-    self.bookmarkButton.setStyle(.templateImage)
+    self.bookmarkButton.setStyle(.templateImage, color: .tint)
     self.bookmarkButton.setImage(#imageLiteral(resourceName: "vecFavorites1"), for: .normal)
     self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
     self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonPressed), for: .touchUpInside)
@@ -65,7 +65,7 @@ extension SearchViewController {
       make.left.equalTo(self.cardTitle.snp.right)
     }
 
-    self.searchButton.setStyle(.link)
+    self.searchButton.setStyle(.text, color: .tint)
     self.searchButton.setTitle("Search", for: .normal)
     self.searchButton.contentEdgeInsets = Layout.Header.searchButtonInsets
     self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
@@ -117,7 +117,7 @@ extension SearchViewController {
       make.centerX.equalToSuperview()
     }
 
-    self.placeholderLabel.setStyle(.body)
+    self.placeholderLabel.setStyle(.body, color: .text)
     self.placeholderLabel.numberOfLines = 0
     self.placeholderLabel.textAlignment = .center
     self.placeholderLabel.lineBreakMode = .byWordWrapping

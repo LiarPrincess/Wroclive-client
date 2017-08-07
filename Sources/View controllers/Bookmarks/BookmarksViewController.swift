@@ -15,7 +15,7 @@ class BookmarksViewController: UIViewController {
 
   weak var delegate: BookmarksViewControllerDelegate?
 
-  let headerViewBlur = UIBlurEffect(style: .extraLight)
+  let headerViewBlur = UIBlurEffect(style: Theme.current.colorScheme.blurStyle)
 
   lazy var headerView: UIVisualEffectView = {
     return UIVisualEffectView(effect: self.headerViewBlur)
@@ -71,12 +71,12 @@ class BookmarksViewController: UIViewController {
     super.setEditing(editing, animated: animated)
 
     if editing {
-      self.editButton.setStyle(.linkBold)
+      self.editButton.setStyle(.textBold, color: .tint)
       self.editButton.setTitle("Done", for: .normal)
       self.closeSwipeToDelte()
     }
     else {
-      self.editButton.setStyle(.link)
+      self.editButton.setStyle(.text, color: .tint)
       self.editButton.setTitle("Edit", for: .normal)
     }
 
@@ -101,18 +101,18 @@ class BookmarksViewController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
 
-  // MARK: - (Private) Placeholder
+  // MARK: - Private - Placeholder
 
   fileprivate func showPlaceholderIfEmpty() {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
 
     if bookmarks.count == 0 {
-      self.bookmarksTable.separatorColor = Theme.current.colorScheme.background
+      self.bookmarksTable.setStyle(separatorStyle: .transparent)
       self.editButton.isHidden           = true
       self.placeholderView.isHidden      = false
     }
     else {
-      self.bookmarksTable.separatorColor = Theme.current.colorScheme.backgroundContrast
+      self.bookmarksTable.setStyle(separatorStyle: .accent)
       self.editButton.isHidden           = false
       self.placeholderView.isHidden      = true
     }

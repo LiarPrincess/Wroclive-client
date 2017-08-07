@@ -6,14 +6,12 @@
 enum LabelStyle {
   case headline
   case subheadline
-
   case body
-  case bodyPrimary
 }
 
 enum ButtonStyle {
-  case link
-  case linkBold
+  case text
+  case textBold
   case templateImage
 }
 
@@ -21,4 +19,9 @@ enum ViewStyle {
   case alert
   case cardPanel
   case cardPanelHeader
+}
+
+enum TableSeparatorStyle {
+  case accent
+  case transparent
 }

@@ -16,7 +16,7 @@ class Theme {
   // Mark - Properties
 
   fileprivate(set) var colorScheme: ColorScheme
-  fileprivate(set) var font: FontProvider
+  fileprivate(set) var font:        FontProvider
 
   // Mark - Init
 

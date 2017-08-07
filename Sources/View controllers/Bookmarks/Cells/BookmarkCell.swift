@@ -18,7 +18,7 @@ class BookmarkCell: UITableViewCell {
 
   lazy var bookmarkName: UILabel = {
     let label = UILabel()
-    label.setStyle(.subheadline)
+    label.setStyle(.subheadline, color: .text)
     label.numberOfLines = 0
     label.textAlignment = .center
     return label
@@ -26,7 +26,7 @@ class BookmarkCell: UITableViewCell {
 
   lazy var tramLines: UILabel = {
     let label = UILabel()
-    label.setStyle(.bodyPrimary)
+    label.setStyle(.body, color: .tint)
     label.numberOfLines = 0
     label.textAlignment = .center
     return label
@@ -34,7 +34,7 @@ class BookmarkCell: UITableViewCell {
 
   lazy var busLines: UILabel = {
     let label = UILabel()
-    label.setStyle(.bodyPrimary)
+    label.setStyle(.body, color: .tint)
     label.numberOfLines = 0
     label.textAlignment = .center
     return label
@@ -45,6 +45,7 @@ class BookmarkCell: UITableViewCell {
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+    self.backgroundColor = Theme.current.colorScheme.background
     self.contentView.addSubview(self.bookmarkName)
     self.contentView.addSubview(self.tramLines)
     self.contentView.addSubview(self.busLines)

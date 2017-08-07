@@ -36,19 +36,15 @@ class LineSelectionCell: UICollectionViewCell {
     }
   }
 
-  // MARK: - Methods
+  // MARK: - Private - Methods
 
   func setUp(with viewModel: LineSelectionCellViewModel) {
     self.lineName.text = viewModel.lineName
   }
 
   fileprivate func updateTextColorForSelectionStatus() {
-    if self.isSelected {
-      self.lineName.textColor = Theme.current.colorScheme.background
-    }
-    else {
-      self.lineName.textColor = Theme.current.colorScheme.text
-    }
+    let textColor: Color = self.isSelected ? .background : .text
+    self.lineName.setStyle(.body, color: textColor)
   }
 
 }
@@ -59,10 +55,10 @@ extension LineSelectionCell {
 
   fileprivate func initLayout() {
     self.selectedBackgroundView = UIView()
-    self.selectedBackgroundView?.backgroundColor    = Theme.current.colorScheme.primary
+    self.selectedBackgroundView?.backgroundColor    = Theme.current.colorScheme.tint
     self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
 
-    self.lineName.setStyle(.body)
+    self.lineName.setStyle(.body, color: .text)
     self.lineName.numberOfLines = 1
     self.lineName.textAlignment = .center
     self.lineName.isUserInteractionEnabled = false
