@@ -9,7 +9,7 @@ struct CardPanelConstants {
 
   struct AnimationDuration {
     static let present: TimeInterval = 0.35
-    static let dismiss: TimeInterval = 0.30
+    static let dismiss: TimeInterval = 0.25
   }
 
   struct FinishContitions {
