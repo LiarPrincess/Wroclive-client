@@ -19,9 +19,8 @@ class VehicleLocationEndpoint: Endpoint {
   // MARK: - Request
 
   func encodeParameters(_ data: [Line]) -> Parameters? {
-    var parameters = Parameters()
-    parameters["device_id"] = self.getDeviceIdentifier()
-    parameters["lines"]     = self.encodeLines(data)
+    var parameters      = Parameters()
+    parameters["lines"] = self.encodeLines(data)
     return parameters
   }
 

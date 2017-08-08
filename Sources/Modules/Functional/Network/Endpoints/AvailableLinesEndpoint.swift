@@ -12,16 +12,14 @@ class AvailableLinesEndpoint: Endpoint {
   // MARK: - Properties
 
   let url:               URLConvertible    = "http://192.168.1.100:8080/lines"
-  let method:            HTTPMethod        = .post
+  let method:            HTTPMethod        = .get
   let parameterEncoding: ParameterEncoding = JSONEncoding.default
   let headers:           HTTPHeaders?      = ["Accept": "application/json"]
 
   // MARK: - Request
 
   func encodeParameters(_ data: Void) -> Parameters? {
-    var parameters = Parameters()
-    parameters["device_id"] = self.getDeviceIdentifier()
-    return parameters
+    return nil
   }
 
   // MARK: - Response
