@@ -17,6 +17,15 @@ class NetworkManagerImpl: NetworkManager {
 
   private let reachability = Alamofire.NetworkReachabilityManager(host: "www.google.com")
 
+  private let session: SessionManager = {
+    var headers = Alamofire.SessionManager.defaultHTTPHeaders
+    headers["User-Agent"] = NetworkManagerImpl.createUserAgentString()
+
+    let configuration = URLSessionConfiguration.default
+    configuration.httpAdditionalHeaders = headers
+    return SessionManager(configuration: configuration)
+  }()
+
   // MARK: - Init
 
   init() {
@@ -36,8 +45,10 @@ class NetworkManagerImpl: NetworkManager {
     return self.sendRequest(endpoint: endpoint, data: lines)
   }
 
-  func sendRequest<TEndpoint: Endpoint>(endpoint: TEndpoint, data: TEndpoint.RequestData) -> Promise<TEndpoint.ResponseData> {
-    return Alamofire.request(
+  // MARK: - Private - Send request
+
+  private func sendRequest<TEndpoint: Endpoint>(endpoint: TEndpoint, data: TEndpoint.RequestData) -> Promise<TEndpoint.ResponseData> {
+    return self.session.request(
       endpoint.url,
       method:     endpoint.method,
       parameters: endpoint.encodeParameters(data),
@@ -49,8 +60,6 @@ class NetworkManagerImpl: NetworkManager {
     .then { return endpoint.parseResponse($0) }
     .recover { return self.recover($0) }
   }
-
-  // MARK: - Private - Recover errors
 
   private func recover<T>(_ error: Error) -> Promise<T> {
     switch error {
@@ -65,4 +74,26 @@ class NetworkManagerImpl: NetworkManager {
     }
   }
 
+  // MARK: - Private - User agent
+
+  // User-Agent Header; see https://tools.ietf.org/html/rfc7231#section-5.5.3
+  // Example: 'Kek/1.0 (com.kekapp.kek; iPhone iOS 10.3.1)'
+  private static func createUserAgentString() -> String {
+    let deviceOSVersion: String = {
+      let device = UIDevice.current
+      let model         = device.model         // iPhone, iPod touch
+      let systemName    = device.systemName    // iOS, watchOS, tvOS
+      let systemVersion = device.systemVersion // 1.2
+      return "\(model) \(systemName) \(systemVersion)"
+    }()
+
+    if let info = Bundle.main.infoDictionary {
+      let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
+      let appVersion = info["CFBundleShortVersionString"]     as? String ?? "Unknown"
+      let bundle     = info[kCFBundleIdentifierKey as String] as? String ?? "Unknown"
+      return "\(executable)/\(appVersion) (\(bundle); \(deviceOSVersion))"
+    }
+
+    return deviceOSVersion
+  }
 }
