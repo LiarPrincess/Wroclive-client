@@ -28,6 +28,29 @@ class MainViewController: UIViewController {
   var trackedLines:  [Line] = []
   var trackingTimer: Timer?
 
+  // MARK: - Init
+
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    self.observeAppStateToManageUpdateTimer()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+
+  private func observeAppStateToManageUpdateTimer() {
+    let didBecomeActive = NSNotification.Name.UIApplicationDidBecomeActive
+    NotificationCenter.default.addObserver(self, selector: #selector(startUpdateTimerWhenApplicationDidBecomeActive),  name: didBecomeActive,  object: nil)
+
+    let willResignActive = NSNotification.Name.UIApplicationWillResignActive
+    NotificationCenter.default.addObserver(self, selector: #selector(stopUpdateTimerWhenApplicationWillResignActive), name: willResignActive, object: nil)
+  }
+
   // MARK: - Overriden
 
   override func viewDidLoad() {
@@ -115,6 +138,15 @@ class MainViewController: UIViewController {
     self.trackingTimer?.invalidate()
   }
 
+  // MARK: - App state
+
+  func startUpdateTimerWhenApplicationDidBecomeActive(withNotification notification : NSNotification) {
+    self.startLocationUpdateTimer()
+  }
+
+  func stopUpdateTimerWhenApplicationWillResignActive(withNotification notification : NSNotification) {
+    self.stopLocationUpdateTimer()
+  }
 }
 
 // MARK: - SearchViewControllerDelegate
