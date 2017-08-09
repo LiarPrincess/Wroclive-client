@@ -9,37 +9,27 @@ class SearchManagerImpl: SearchManager {
 
   // MARK: - Properties
 
-  private var state = SearchManagerImpl.testData()
+  private lazy var state: SearchState = {
+    return NSKeyedUnarchiver.unarchiveObject(withFile: self.archive.path) as? SearchState
+      ?? SearchState(withSelected: .tram, lines: [])
+  }()
+
+  private var archive: URL = {
+    let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    return documentsDirectory.appendingPathComponent("search")
+  }()
 
   // MARK: - StorageManagerProtocol
 
   func saveState(_ state: SearchState) {
+    if state != self.state {
+      NSKeyedArchiver.archiveRootObject(state, toFile: self.archive.path)
+    }
+
     self.state = state
   }
 
   func getSavedState() -> SearchState {
     return self.state
-  }
-
-  // MARK: - Methods
-
-  private static func testData() -> SearchState {
-    let selectedLines = [
-      Line(name: "325", type: .bus, subtype: .regular),
-      Line(name: "4", type: .tram, subtype: .regular),
-      Line(name: "A", type: .bus, subtype: .express),
-      Line(name: "D", type: .bus, subtype: .express),
-      Line(name: "11", type: .tram, subtype: .regular),
-      Line(name: "14", type: .tram, subtype: .regular),
-      Line(name: "20", type: .tram, subtype: .regular),
-      Line(name: "24", type: .tram, subtype: .regular),
-      Line(name: "107", type: .bus, subtype: .regular),
-      Line(name: "125", type: .bus, subtype: .regular),
-      Line(name: "126", type: .bus, subtype: .regular),
-      Line(name: "127", type: .bus, subtype: .regular),
-      Line(name: "251", type: .bus, subtype: .night)
-    ]
-
-    return SearchState(withSelected: .tram, lines: selectedLines)
   }
 }
