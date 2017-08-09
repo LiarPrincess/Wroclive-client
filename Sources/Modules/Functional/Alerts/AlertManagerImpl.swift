@@ -5,76 +5,89 @@
 
 import UIKit
 
+fileprivate typealias Localization = AlertManagerImplLocalization
+fileprivate typealias LocalizationLocationDenied         = AlertManagerImplLocalization.Location.Denied
+fileprivate typealias LocalizationLocationGloballyDenied = AlertManagerImplLocalization.Location.DeniedGlobally
+fileprivate typealias LocalizationBookmarksNoLines       = AlertManagerImplLocalization.Bookmark.NoLinesSelected
+fileprivate typealias LocalizationBookmarksNameInput     = AlertManagerImplLocalization.Bookmark.NameInput
+fileprivate typealias LocalizationBookmarksInstructions  = AlertManagerImplLocalization.Bookmark.Instructions
+fileprivate typealias LocalizationNetworkNoInternet      = AlertManagerImplLocalization.Network.NoInternet
+fileprivate typealias LocalizationNetworkConnectionError = AlertManagerImplLocalization.Network.ConnectionError
+
 class AlertManagerImpl: AlertManager {
 
-  // MARK: - Map
+  // MARK: - Map - Denied
 
   func showDeniedLocationAuthorizationAlert(in parent: UIViewController) {
-    let title   = "Location access is disabled"
-    let message = "In order show your current location, please open settings and set location access to 'In use'."
+    let title   = LocalizationLocationDenied.title
+    let message = LocalizationLocationDenied.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.view.setStyle(.alert)
 
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-    alert.addAction(cancelAction)
-
-    let openAction = UIAlertAction(title: "Open Settings", style: .default) { _ in
+    let settingsAction = UIAlertAction(title: LocalizationLocationDenied.settings, style: .default) { _ in
       if let url = URL(string: UIApplicationOpenSettingsURLString) {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
       }
     }
-    alert.addAction(openAction)
+    alert.addAction(settingsAction)
 
-    parent.present(alert, animated: true, completion: nil)
-  }
-
-  func showGloballyDeniedLocationAuthorizationAlert(in parent: UIViewController) {
-    let title   = "Location access is disabled"
-    let message = "You can enable location access in your device settings."
-
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.view.setStyle(.alert)
-
-    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+    let okAction = UIAlertAction(title: LocalizationLocationDenied.ok, style: .default, handler: nil)
     alert.addAction(okAction)
 
     parent.present(alert, animated: true, completion: nil)
   }
 
-  // MARK: - Bookmarks
+  // MARK: - Map - Globally denied
 
-  func showBookmarkNoLinesSelectedAlert(in parent: UIViewController) {
-    let title   = "No lines selected"
-    let message = "Please select some lines before trying to create bookmark."
+  func showGloballyDeniedLocationAuthorizationAlert(in parent: UIViewController) {
+    let title   = LocalizationLocationGloballyDenied.title
+    let message = LocalizationLocationGloballyDenied.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.view.setStyle(.alert)
 
-    let closeAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-    alert.addAction(closeAction)
+    let okAction = UIAlertAction(title: LocalizationLocationGloballyDenied.ok, style: .default, handler: nil)
+    alert.addAction(okAction)
 
     parent.present(alert, animated: true, completion: nil)
   }
 
-  func showBookmarkNameInputAlert(in parent: UIViewController, completed: @escaping (String?) -> ()) {
-    let title   = "New bookmark"
-    let message = "Enter name for this bookmark."
+  // MARK: - Bookmarks - No lines selected
+
+  func showBookmarkNoLinesSelectedAlert(in parent: UIViewController) {
+    let title   = LocalizationBookmarksNoLines.title
+    let message = LocalizationBookmarksNoLines.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.view.setStyle(.alert)
 
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in completed(nil) }
+    let okAction = UIAlertAction(title: LocalizationBookmarksNoLines.ok, style: .default, handler: nil)
+    alert.addAction(okAction)
+
+    parent.present(alert, animated: true, completion: nil)
+  }
+
+  // MARK: - Bookmarks - Name input
+
+  func showBookmarkNameInputAlert(in parent: UIViewController, completed: @escaping (String?) -> ()) {
+    let title   = LocalizationBookmarksNameInput.title
+    let message = LocalizationBookmarksNameInput.content
+
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.view.setStyle(.alert)
+
+    let cancelAction = UIAlertAction(title: LocalizationBookmarksNameInput.cancel, style: .cancel) { _ in completed(nil) }
     alert.addAction(cancelAction)
 
-    let confirmAction = UIAlertAction(title: "Save", style: .default) { [weak alert] _ in
+    let confirmAction = UIAlertAction(title: LocalizationBookmarksNameInput.save, style: .default) { [weak alert] _ in
       completed(alert?.textFields?.first?.text)
     }
     confirmAction.isEnabled = false
     alert.addAction(confirmAction)
 
     alert.addTextField { textField in
-      textField.placeholder            = "Name"
+      textField.placeholder            = LocalizationBookmarksNameInput.placeholder
       textField.autocapitalizationType = .sentences
       textField.addTarget(AlertManagerImpl.self, action: #selector(AlertManagerImpl.enableConfirmIfTextNotEmpty(_:)), for: .editingChanged)
     }
@@ -99,37 +112,46 @@ class AlertManagerImpl: AlertManager {
     return responder as? UIAlertController
   }
 
+  // MARK: - Bookmarks - Instructions
+
   func showBookmarkInstructionsAlert(in parent: UIViewController) {
-    let title   = "Bookmark saved"
-    let message = "To view saved bookmarks select star from map view."
+    let title   = LocalizationBookmarksInstructions.title
+    let message = LocalizationBookmarksInstructions.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.view.setStyle(.alert)
 
-    let closeAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    let closeAction = UIAlertAction(title: LocalizationBookmarksInstructions.ok, style: .default, handler: nil)
     alert.addAction(closeAction)
 
     parent.present(alert, animated: true, completion: nil)
   }
 
-  // MARK: - Network
+  // MARK: - Network - No internet
 
   func showNoInternetAlert(in parent: UIViewController, retry: @escaping () -> ()) {
+    let title   = LocalizationNetworkNoInternet.title
+    let message = LocalizationNetworkNoInternet.content
 
-    let alert = UIAlertController(title: "Connection error", message: "Plese check your internet connection.", preferredStyle: .alert)
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.view.setStyle(.alert)
 
-    let againAction = UIAlertAction(title: "Try again", style: .cancel)  { _ in retry() }
+    let againAction = UIAlertAction(title: LocalizationNetworkNoInternet.tryAgain, style: .cancel)  { _ in retry() }
     alert.addAction(againAction)
 
     parent.present(alert, animated: true, completion: nil)
   }
 
+  // MARK: - Network - Networking
+
   func showNetworkingErrorAlert(in parent: UIViewController, retry: @escaping () -> ()) {
-    let alert = UIAlertController(title: "Connection error", message: "Could not connect to server.", preferredStyle: .alert)
+    let title   = LocalizationNetworkConnectionError.title
+    let message = LocalizationNetworkConnectionError.content
+
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.view.setStyle(.alert)
 
-    let againAction = UIAlertAction(title: "Try again", style: .cancel) { _ in retry() }
+    let againAction = UIAlertAction(title: LocalizationNetworkConnectionError.tryAgain, style: .cancel) { _ in retry() }
     alert.addAction(againAction)
 
     parent.present(alert, animated: true, completion: nil)

@@ -6,8 +6,9 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Constants = BookmarksViewControllerConstants
-fileprivate typealias Layout    = Constants.Layout
+fileprivate typealias Constants    = BookmarksViewControllerConstants
+fileprivate typealias Layout       = Constants.Layout
+fileprivate typealias Localization = Constants.Localization
 
 // MARK: - Layout
 
@@ -46,7 +47,7 @@ extension BookmarksViewController {
     }
 
     self.cardTitle.setStyle(.headline, color: .text)
-    self.cardTitle.text          = "Bookmarks"
+    self.cardTitle.text          = Localization.cardTitle
     self.cardTitle.numberOfLines = 0
     self.cardTitle.lineBreakMode = .byWordWrapping
     self.headerView.addSubview(self.cardTitle)
@@ -58,7 +59,7 @@ extension BookmarksViewController {
     }
 
     self.editButton.setStyle(.text, color: .tint)
-    self.editButton.setTitle("Edit", for: .normal)
+    self.editButton.setTitle(Localization.editEdit, for: .normal)
     self.editButton.contentEdgeInsets = Layout.Header.editButtonInsets
     self.editButton.addTarget(self, action: #selector(editButtonPressed), for: .touchUpInside)
     self.headerView.addSubview(self.editButton)
@@ -96,7 +97,7 @@ extension BookmarksViewController {
     self.placeholderTopLabel.numberOfLines = 0
     self.placeholderTopLabel.textAlignment = .center
     self.placeholderTopLabel.lineBreakMode = .byWordWrapping
-    self.placeholderTopLabel.text          = "You have not saved any bookmarks"
+    self.placeholderTopLabel.text          = Localization.placeholderTitle
     self.placeholderView.addSubview(self.placeholderTopLabel)
 
     self.placeholderTopLabel.snp.makeConstraints { make in
@@ -107,7 +108,7 @@ extension BookmarksViewController {
     self.placeholderBottomLabel.numberOfLines = 0
     self.placeholderBottomLabel.textAlignment = .center
     self.placeholderBottomLabel.lineBreakMode = .byWordWrapping
-    self.placeholderBottomLabel.text          = "To add bookmark press 'Save' when selectings lines."
+    self.placeholderBottomLabel.text          = Localization.placeholderContent
     self.placeholderView.addSubview(self.placeholderBottomLabel)
 
     self.placeholderBottomLabel.snp.makeConstraints { make in

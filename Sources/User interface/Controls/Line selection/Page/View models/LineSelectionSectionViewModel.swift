@@ -3,6 +3,8 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
+fileprivate typealias Localization = LineSelectionViewControllerConstants.Localization
+
 struct LineSelectionSectionViewModel {
   let sectionName: String
   let subtype:     LineSubtype
@@ -20,4 +22,16 @@ struct LineSelectionSectionViewModel {
     self.lineViewModels = sortedLines.map { LineSelectionCellViewModel(from: $0) }
   }
 
+  static func createSectionName(subtype: LineSubtype) -> String {
+    switch subtype {
+    case .regular:   return Localization.regular
+    case .express:   return Localization.express
+    case .peakHour:  return Localization.peakHour
+    case .suburban:  return Localization.suburban
+    case .zone:      return Localization.zone
+    case .limited:   return Localization.limited
+    case .temporary: return Localization.temporary
+    case .night:     return Localization.night
+    }
+  }
 }

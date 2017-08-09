@@ -1,0 +1,65 @@
+/*
+ Localization.strings
+ Created by Michal Matuszczyk
+
+ Copyright © 2017 Michal Matuszczyk. All rights reserved.
+
+ */
+
+/* Line type selection */
+"LineTypeSelection_Tram" = "Trams";
+"LineTypeSelection_Bus"  = "Buses";
+
+/* Line selection */
+"LineSelection_SectionName_Regular"   = "Regular";
+"LineSelection_SectionName_Express"   = "Express";
+"LineSelection_SectionName_PeakHour"  = "Peak-hour";
+"LineSelection_SectionName_Suburban"  = "Suburban";
+"LineSelection_SectionName_Zone"      = "Zone";
+"LineSelection_SectionName_Limited"   = "Limited";
+"LineSelection_SectionName_Temporary" = "Temporary";
+"LineSelection_SectionName_Night"     = "Night";
+
+/* Bookmarks */
+"Bookmarks_CardTitle" = "Bookmarks";
+"Bookmarks_Edit_Edit" = "Edit";
+"Bookmarks_Edit_Done" = "Done";
+"Bookmarks_Placeholder_Title"   = "You have not saved any bookmarks";
+"Bookmarks_Placeholder_Content" = "To add bookmark press <star> when selecting lines.";
+
+/* Search */
+"Search_CardTitle" = "Lines";
+"Search_Search"    = "Search";
+"Search_Loading"   = "Loading…";
+
+/* Alerts */
+"Alert_Denied_Title"    = "Location access is disabled";
+"Alert_Denied_Content"  = "In order show your current location, please open settings and set location access to 'In use'.";
+"Alert_Denied_Settings" = "Settings";
+"Alert_Denied_Ok"       = "OK";
+
+"Alert_GloballyDenied_Title"   = "Location access is disabled";
+"Alert_GloballyDenied_Content" = "You can enable location access in your device settings.";
+"Alert_GloballyDenied_Ok"      = "OK";
+
+"Alert_Bookmark_NoLinesSelected_Title"   = "No lines selected";
+"Alert_Bookmark_NoLinesSelected_Content" = "Please select some lines before trying to create bookmark.";
+"Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
+
+"Alert_Bookmark_NameInput_Title"       = "New bookmark";
+"Alert_Bookmark_NameInput_Content"     = "Enter name for this bookmark.";
+"Alert_Bookmark_NameInput_Placeholder" = "Name";
+"Alert_Bookmark_NameInput_Cancel"      = "Cancel";
+"Alert_Bookmark_NameInput_Save"        = "Save";
+
+"Alert_Bookmark_Instructions_Title"   = "Bookmark saved";
+"Alert_Bookmark_Instructions_Content" = "To view saved bookmarks select <star> from map view.";
+"Alert_Bookmark_Instructions_Ok"      = "OK";
+
+"Alert_Network_NoInternet_Title"    = "Connection error";
+"Alert_Network_NoInternet_Content"  = "Please check your internet connection.";
+"Alert_Network_NoInternet_TryAgain" = "Try again";
+
+"Alert_Network_ConnectionError_Title"    = "Connection error";
+"Alert_Network_ConnectionError_Content"  = "Could not connect to server.";
+"Alert_Network_ConnectionError_TryAgain" = "Try again";

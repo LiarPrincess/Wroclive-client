@@ -31,7 +31,7 @@ class LinesParser {
     switch subtype.uppercased() {
     case "REGULAR":   return .regular
     case "EXPRESS":   return .express
-    case "HOUR":      return .hour
+    case "HOUR":      return .peakHour
     case "SUBURBAN":  return .suburban
     case "ZONE":      return .zone
     case "LIMITED":   return .limited

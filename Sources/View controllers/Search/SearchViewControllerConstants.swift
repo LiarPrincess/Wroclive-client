@@ -47,4 +47,9 @@ struct SearchViewControllerConstants {
     static let failedRequestDelay: TimeInterval = 3.0
   }
 
+  struct Localization {
+    static var cardTitle: String { return NSLocalizedString("Search_CardTitle", comment: "") }
+    static var search:    String { return NSLocalizedString("Search_Search",    comment: "") }
+    static var loading:   String { return NSLocalizedString("Search_Loading",   comment: "") }
+  }
 }

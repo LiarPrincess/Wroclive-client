@@ -5,6 +5,8 @@
 
 import UIKit
 
+fileprivate typealias Localization = LineTypeSelectionControlConstants.Localization
+
 fileprivate struct Indices {
   static let tram = 0
   static let bus  = 1
@@ -37,8 +39,8 @@ class LineTypeSelectionControl: UISegmentedControl {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    self.insertSegment(withTitle: "Trams", at: Indices.tram, animated: false)
-    self.insertSegment(withTitle: "Buses", at: Indices.bus,  animated: false)
+    self.insertSegment(withTitle: Localization.tram, at: Indices.tram, animated: false)
+    self.insertSegment(withTitle: Localization.bus,  at: Indices.bus,  animated: false)
 
     self.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
   }

@@ -33,7 +33,7 @@ struct LineSelectionSectionViewModelFactory {
     case .night:     return 2
     case .suburban:  return 3
 
-    case .hour:      return 4
+    case .peakHour:  return 4
     case .zone:      return 5
     case .limited:   return 6
     case .temporary: return 7

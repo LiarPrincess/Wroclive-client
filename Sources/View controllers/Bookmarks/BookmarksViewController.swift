@@ -6,8 +6,9 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Constants = BookmarksViewControllerConstants
-fileprivate typealias Layout    = Constants.Layout
+fileprivate typealias Constants    = BookmarksViewControllerConstants
+fileprivate typealias Layout       = Constants.Layout
+fileprivate typealias Localization = Constants.Localization
 
 class BookmarksViewController: UIViewController {
 
@@ -72,12 +73,12 @@ class BookmarksViewController: UIViewController {
 
     if editing {
       self.editButton.setStyle(.textBold, color: .tint)
-      self.editButton.setTitle("Done", for: .normal)
+      self.editButton.setTitle(Localization.editDone, for: .normal)
       self.closeSwipeToDelte()
     }
     else {
       self.editButton.setStyle(.text, color: .tint)
-      self.editButton.setTitle("Edit", for: .normal)
+      self.editButton.setTitle(Localization.editEdit, for: .normal)
     }
 
     self.bookmarksTable.setEditing(editing, animated: true)
@@ -108,13 +109,13 @@ class BookmarksViewController: UIViewController {
 
     if bookmarks.count == 0 {
       self.bookmarksTable.setStyle(separatorStyle: .transparent)
-      self.editButton.isHidden           = true
-      self.placeholderView.isHidden      = false
+      self.editButton.isHidden      = true
+      self.placeholderView.isHidden = false
     }
     else {
       self.bookmarksTable.setStyle(separatorStyle: .accent)
-      self.editButton.isHidden           = false
-      self.placeholderView.isHidden      = true
+      self.editButton.isHidden      = false
+      self.placeholderView.isHidden = true
     }
   }
 

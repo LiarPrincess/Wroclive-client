@@ -8,7 +8,7 @@ import Foundation
 enum LineSubtype: Int {
   case regular
   case express
-  case hour
+  case peakHour
   case suburban
   case zone
   case limited
@@ -23,7 +23,7 @@ extension LineSubtype: CustomStringConvertible {
     switch self {
     case .regular:   return "regular"
     case .express:   return "express"
-    case .hour:      return "hour"
+    case .peakHour:  return "peak hour"
     case .suburban:  return "suburban"
     case .zone:      return "zone"
     case .limited:   return "limited"

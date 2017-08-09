@@ -6,8 +6,9 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Constants = SearchViewControllerConstants
-fileprivate typealias Layout    = Constants.Layout
+fileprivate typealias Constants    = SearchViewControllerConstants
+fileprivate typealias Layout       = Constants.Layout
+fileprivate typealias Localization = Constants.Localization
 
 extension SearchViewController {
 
@@ -44,7 +45,7 @@ extension SearchViewController {
     }
 
     self.cardTitle.setStyle(.headline, color: .text)
-    self.cardTitle.text          = "Lines"
+    self.cardTitle.text          = Localization.cardTitle
     self.cardTitle.numberOfLines = 0
     self.cardTitle.lineBreakMode = .byWordWrapping
     self.headerView.addSubview(self.cardTitle)
@@ -66,7 +67,7 @@ extension SearchViewController {
     }
 
     self.searchButton.setStyle(.text, color: .tint)
-    self.searchButton.setTitle("Search", for: .normal)
+    self.searchButton.setTitle(Localization.search, for: .normal)
     self.searchButton.contentEdgeInsets = Layout.Header.searchButtonInsets
     self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
     self.headerView.addSubview(self.searchButton)
@@ -121,7 +122,7 @@ extension SearchViewController {
     self.placeholderLabel.numberOfLines = 0
     self.placeholderLabel.textAlignment = .center
     self.placeholderLabel.lineBreakMode = .byWordWrapping
-    self.placeholderLabel.text          = "Loading…"
+    self.placeholderLabel.text          = Localization.loading
     self.placeholderView.addSubview(self.placeholderLabel)
 
     self.placeholderLabel.snp.makeConstraints { make in

@@ -94,6 +94,9 @@
 		90B1DAC71F2BDC3000FAE18A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAC41F2BDC3000FAE18A /* MapManager.swift */; };
 		90B1DAC81F2BDC3000FAE18A /* MapManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAC51F2BDC3000FAE18A /* MapManagerConstants.swift */; };
 		90B1DAC91F2BDC3000FAE18A /* MapManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAC61F2BDC3000FAE18A /* MapManagerImpl.swift */; };
+		90ED50EC1F3B7F5C00C782D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90ED50EE1F3B7F5C00C782D5 /* Localizable.strings */; };
+		90ED50F11F3B842C00C782D5 /* LineTypeSelectionControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ED50F01F3B842C00C782D5 /* LineTypeSelectionControlConstants.swift */; };
+		90ED50F61F3B991900C782D5 /* AlertManagerImplLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ED50F51F3B991900C782D5 /* AlertManagerImplLocalization.swift */; };
 		90F86F841F2CB44700F9272E /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F821F2CB44700F9272E /* SearchManager.swift */; };
 		90F86F851F2CB44700F9272E /* SearchManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F831F2CB44700F9272E /* SearchManagerImpl.swift */; };
 		90F86F911F2CB4F800F9272E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F86F891F2CB4F800F9272E /* NetworkError.swift */; };
@@ -204,6 +207,9 @@
 		90B1DAC41F2BDC3000FAE18A /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		90B1DAC51F2BDC3000FAE18A /* MapManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManagerConstants.swift; sourceTree = "<group>"; };
 		90B1DAC61F2BDC3000FAE18A /* MapManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManagerImpl.swift; sourceTree = "<group>"; };
+		90ED50ED1F3B7F5C00C782D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		90ED50F01F3B842C00C782D5 /* LineTypeSelectionControlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelectionControlConstants.swift; sourceTree = "<group>"; };
+		90ED50F51F3B991900C782D5 /* AlertManagerImplLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManagerImplLocalization.swift; sourceTree = "<group>"; };
 		90F86F821F2CB44700F9272E /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		90F86F831F2CB44700F9272E /* SearchManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManagerImpl.swift; sourceTree = "<group>"; };
 		90F86F891F2CB4F800F9272E /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -476,6 +482,7 @@
 			children = (
 				9021F4261F12CCB3000A6949 /* LineTypeSelectionControl.swift */,
 				9021F4281F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift */,
+				90ED50F01F3B842C00C782D5 /* LineTypeSelectionControlConstants.swift */,
 			);
 			path = "Line type selection";
 			sourceTree = "<group>";
@@ -547,6 +554,7 @@
 			children = (
 				9086D4401EE2DE8E00E43D9A /* Functional */,
 				90AF2BD21EE9DDE4006E61D6 /* Theme */,
+				90ED50E21F3B7CB700C782D5 /* Localization */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -586,6 +594,7 @@
 			children = (
 				907F70A21F141ADB00F43902 /* AlertManager.swift */,
 				907F70A41F141D3C00F43902 /* AlertManagerImpl.swift */,
+				90ED50F51F3B991900C782D5 /* AlertManagerImplLocalization.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -685,6 +694,14 @@
 				90B1DAC51F2BDC3000FAE18A /* MapManagerConstants.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		90ED50E21F3B7CB700C782D5 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				90ED50EE1F3B7F5C00C782D5 /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		90F86F811F2CB44700F9272E /* Search */ = {
@@ -802,7 +819,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = OBJ_5;
@@ -820,6 +836,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90ED50EC1F3B7F5C00C782D5 /* Localizable.strings in Resources */,
 				9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */,
 				90AF8C791EF2D3FE000763B7 /* Wroclaw.gpx in Resources */,
 				9023312C1EDF37F500FA8F43 /* Info.plist in Resources */,
@@ -897,6 +914,7 @@
 			files = (
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
+				90ED50F11F3B842C00C782D5 /* LineTypeSelectionControlConstants.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				9021F4401F12D698000A6949 /* LineSelectionSectionViewModel.swift in Sources */,
@@ -930,6 +948,7 @@
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
 				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
+				90ED50F61F3B991900C782D5 /* AlertManagerImplLocalization.swift in Sources */,
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				907F70A51F141D3C00F43902 /* AlertManagerImpl.swift in Sources */,
@@ -985,6 +1004,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		90ED50EE1F3B7F5C00C782D5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				90ED50ED1F3B7F5C00C782D5 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		902812981E59DD8500F26027 /* Debug */ = {
@@ -1099,6 +1129,7 @@
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1139,6 +1170,7 @@
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
