@@ -10,10 +10,10 @@ protocol AlertManager {
   // MARK: - Map
 
   /// Prompt for authorization change in settings
-  func showDeniedAuthorizationAlert(in parent: UIViewController)
+  func showDeniedLocationAuthorizationAlert(in parent: UIViewController)
 
   /// Prompt that it is not possible to show user location
-  func showRestrictedAuthorizationAlert(in parent: UIViewController)
+  func showGloballyDeniedLocationAuthorizationAlert(in parent: UIViewController)
 
   // MARK: - Add bookmark
 

@@ -86,11 +86,11 @@ extension MapViewController: MKMapViewDelegate {
     let authorizationStatus = Managers.map.authorizationStatus
 
     if authorizationStatus == .denied {
-      Managers.alert.showDeniedAuthorizationAlert(in: self)
+      Managers.alert.showDeniedLocationAuthorizationAlert(in: self)
     }
 
     if authorizationStatus == .restricted {
-      Managers.alert.showRestrictedAuthorizationAlert(in: self)
+      Managers.alert.showGloballyDeniedLocationAuthorizationAlert(in: self)
     }
   }
 

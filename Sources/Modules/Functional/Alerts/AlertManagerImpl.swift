@@ -9,7 +9,7 @@ class AlertManagerImpl: AlertManager {
 
   // MARK: - Map
 
-  func showDeniedAuthorizationAlert(in parent: UIViewController) {
+  func showDeniedLocationAuthorizationAlert(in parent: UIViewController) {
     let title   = "Location access is disabled"
     let message = "In order show your current location, please open settings and set location access to 'In use'."
 
@@ -29,7 +29,7 @@ class AlertManagerImpl: AlertManager {
     parent.present(alert, animated: true, completion: nil)
   }
 
-  func showRestrictedAuthorizationAlert(in parent: UIViewController) {
+  func showGloballyDeniedLocationAuthorizationAlert(in parent: UIViewController) {
     let title   = "Location access is disabled"
     let message = "You can enable location access in your device settings."
 
