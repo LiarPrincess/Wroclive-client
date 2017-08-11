@@ -1,0 +1,9 @@
+/*
+ Localization.strings
+ Created by Michal Matuszczyk
+
+ Copyright © 2017 Michal Matuszczyk. All rights reserved.
+
+ */
+
+"NSLocationWhenInUseUsageDescription" = "Twoje bieżące położenie będzie wyświetlane na mapie.";

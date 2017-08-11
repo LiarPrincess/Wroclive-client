@@ -33,13 +33,13 @@
 "Search_Loading"   = "Loading…";
 
 /* Alerts */
-"Alert_Denied_Title"    = "Location access is disabled";
-"Alert_Denied_Content"  = "In order show your current location, please open settings and set location access to 'In use'.";
+"Alert_Denied_Title"    = "Location Services Off";
+"Alert_Denied_Content"  = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
 "Alert_Denied_Settings" = "Settings";
 "Alert_Denied_Ok"       = "OK";
 
-"Alert_GloballyDenied_Title"   = "Location access is disabled";
-"Alert_GloballyDenied_Content" = "You can enable location access in your device settings.";
+"Alert_GloballyDenied_Title"   = "Location Services Off";
+"Alert_GloballyDenied_Content" = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
 "Alert_GloballyDenied_Ok"      = "OK";
 
 "Alert_Bookmark_NoLinesSelected_Title"   = "No lines selected";
@@ -56,10 +56,10 @@
 "Alert_Bookmark_Instructions_Content" = "To view saved bookmarks select <star> from map view.";
 "Alert_Bookmark_Instructions_Ok"      = "OK";
 
-"Alert_Network_NoInternet_Title"    = "Connection error";
+"Alert_Network_NoInternet_Title"    = "Unable to retrieve data";
 "Alert_Network_NoInternet_Content"  = "Please check your internet connection.";
 "Alert_Network_NoInternet_TryAgain" = "Try again";
 
-"Alert_Network_ConnectionError_Title"    = "Connection error";
+"Alert_Network_ConnectionError_Title"    = "Unable to retrieve data";
 "Alert_Network_ConnectionError_Content"  = "Could not connect to server.";
 "Alert_Network_ConnectionError_TryAgain" = "Try again";

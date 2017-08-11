@@ -1,0 +1,65 @@
+/*
+ Localization.strings
+ Created by Michal Matuszczyk
+
+ Copyright © 2017 Michal Matuszczyk. All rights reserved.
+
+ */
+
+/* Line type selection */
+"LineTypeSelection_Tram" = "Tramwaje";
+"LineTypeSelection_Bus"  = "Autobusy";
+
+/* Line selection */
+"LineSelection_SectionName_Regular"   = "Normalne";
+"LineSelection_SectionName_Express"   = "Pośpieszne";
+"LineSelection_SectionName_PeakHour"  = "Szczytowe";
+"LineSelection_SectionName_Suburban"  = "Podmiejskie";
+"LineSelection_SectionName_Zone"      = "Strefowe";
+"LineSelection_SectionName_Limited"   = "Zastępsze";
+"LineSelection_SectionName_Temporary" = "Tymczasowe";
+"LineSelection_SectionName_Night"     = "Nocne";
+
+/* Bookmarks */
+"Bookmarks_CardTitle" = "Zakładki";
+"Bookmarks_Edit_Edit" = "Edycja";
+"Bookmarks_Edit_Done" = "Gotowe";
+"Bookmarks_Placeholder_Title"   = "Brak zakładek";
+"Bookmarks_Placeholder_Content" = "By dodać zakładkę użyj <star> podczas wyboru linii.";
+
+/* Search */
+"Search_CardTitle" = "Linie";
+"Search_Search"    = "Szukaj";
+"Search_Loading"   = "Wczytywanie…";
+
+/* Alerts */
+"Alert_Denied_Title"    = "Usługi lokalizacji wyłączone";
+"Alert_Denied_Content"  = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
+"Alert_Denied_Settings" = "Ustawienia";
+"Alert_Denied_Ok"       = "OK";
+
+"Alert_GloballyDenied_Title"   = "Usługi lokalizacji wyłączone";
+"Alert_GloballyDenied_Content" = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
+"Alert_GloballyDenied_Ok"      = "OK";
+
+"Alert_Bookmark_NoLinesSelected_Title"   = "Nie wybrano żadnych linii";
+"Alert_Bookmark_NoLinesSelected_Content" = "Zanim dodasz zakładkę musisz zaznaczyc przynajmniej 1 linię.";
+"Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
+
+"Alert_Bookmark_NameInput_Title"       = "Nowa zakładka";
+"Alert_Bookmark_NameInput_Content"     = "Wprowadź nazwę nowej zakładki.";
+"Alert_Bookmark_NameInput_Placeholder" = "Nazwa";
+"Alert_Bookmark_NameInput_Cancel"      = "Anuluj";
+"Alert_Bookmark_NameInput_Save"        = "Zachowaj";
+
+"Alert_Bookmark_Instructions_Title"   = "Zakładka zapisana!";
+"Alert_Bookmark_Instructions_Content" = "By użyć zakładek naciśnij <star> z widoku mapy.";
+"Alert_Bookmark_Instructions_Ok"      = "OK";
+
+"Alert_Network_NoInternet_Title"    = "Nie można pobrać danych";
+"Alert_Network_NoInternet_Content"  = "Sprawdź swoje połączenie z internetem.";
+"Alert_Network_NoInternet_TryAgain" = "Spróbuj ponownie";
+
+"Alert_Network_ConnectionError_Title"    = "Nie można pobrać danych";
+"Alert_Network_ConnectionError_Content"  = "Błąd połączenia z serwerem.";
+"Alert_Network_ConnectionError_TryAgain" = "Spróbuj ponownie";

@@ -14,7 +14,7 @@ struct LineSelectionSectionViewModel {
 
   init(for subtype: LineSubtype, lines: [Line]) {
     self.subtype     = subtype
-    self.sectionName = String(describing: subtype).capitalized
+    self.sectionName = LineSelectionSectionViewModel.createSectionName(subtype: subtype)
 
     let sortedLines = lines.sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
 
