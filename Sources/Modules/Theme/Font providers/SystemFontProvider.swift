@@ -8,7 +8,6 @@ import UIKit
 struct SystemFontProvider: FontProvider {
   private(set) var headline    = UIFont()
   private(set) var subheadline = UIFont()
-
   private(set) var body        = UIFont()
   private(set) var bodyBold    = UIFont()
 

@@ -30,6 +30,9 @@ class LineTypeSelectionControl: UISegmentedControl {
     }
   }
 
+  /// Proposed height
+  static var nominalHeight: CGFloat { return 30.0 }
+
   // MARK: - Init
 
   init() {
