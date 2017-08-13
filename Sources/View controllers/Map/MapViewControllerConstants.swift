@@ -17,4 +17,8 @@ struct MapViewControllerConstants {
     static let showsUserLocation = true
   }
 
+  struct Layout {
+    static let pinImageSize = CGSize(width: 28.0, height: 28.0)
+  }
+
 }

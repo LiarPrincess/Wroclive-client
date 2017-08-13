@@ -55,8 +55,10 @@ extension SearchViewController {
       make.left.equalToSuperview().offset(Layout.leftInset)
     }
 
+    let bookmarkImage = StyleKit.drawStarImage(size: Layout.Header.bookmarkButtonSize, renderingMode: .alwaysTemplate)
+
     self.bookmarkButton.setStyle(.templateImage, color: .tint)
-    self.bookmarkButton.setImage(#imageLiteral(resourceName: "vecFavorites1"), for: .normal)
+    self.bookmarkButton.setImage(bookmarkImage, for: .normal)
     self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
     self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonPressed), for: .touchUpInside)
     self.headerView.addSubview(self.bookmarkButton)

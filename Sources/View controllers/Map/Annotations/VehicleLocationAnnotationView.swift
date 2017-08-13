@@ -6,6 +6,8 @@
 import MapKit
 import Foundation
 
+fileprivate typealias Layout = MapViewControllerConstants.Layout
+
 class VehicleLocationAnnotationView: MKAnnotationView {
 
   // MARK: - Init
@@ -16,7 +18,7 @@ class VehicleLocationAnnotationView: MKAnnotationView {
     self.transform      = CGAffineTransform(rotationAngle: vehicleLocation.angleRad)
     self.isDraggable    = false
     self.canShowCallout = false
-    self.image          = #imageLiteral(resourceName: "mapPin")
+    self.redraw()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -31,8 +33,13 @@ class VehicleLocationAnnotationView: MKAnnotationView {
   }
 
   func redraw() {
-    let vehicleLocationAnnotation = self.annotation! as! VehicleLocationAnnotation
-    self.transform = CGAffineTransform(rotationAngle: vehicleLocationAnnotation.angleRad)
+    let annotation = self.annotation! as! VehicleLocationAnnotation
+
+    let isBus = annotation.line.type == .bus
+    let color = isBus ? Theme.current.colorScheme.bus : Theme.current.colorScheme.tram
+
+    self.image     = StyleKit2.drawPinImage(size: Layout.pinImageSize, background: color, renderingMode: .alwaysTemplate)
+    self.transform = CGAffineTransform(rotationAngle: annotation.angleRad)
   }
 
 }

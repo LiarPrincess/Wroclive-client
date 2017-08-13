@@ -12,6 +12,10 @@ struct MainViewControllerConstants {
     static let bookmarksRelativeHeight: CGFloat = 0.75
   }
 
+  struct Layout {
+    static let toolbarImageSize = CGSize(width: 22.0, height: 22.0)
+  }
+
   static let failedRequestDelay:     TimeInterval = 3.0
   static let locationUpdateInterval: TimeInterval = 3.0
 }

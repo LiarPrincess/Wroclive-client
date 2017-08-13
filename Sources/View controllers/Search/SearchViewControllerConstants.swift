@@ -29,6 +29,8 @@ struct SearchViewControllerConstants {
 
       static let bookmarkButtonInsets = UIEdgeInsets(top: 15.0, left: 6.0,               bottom: 8.0, right: 16.0)
       static let searchButtonInsets   = UIEdgeInsets(top: 20.0, left: Layout.rightInset, bottom: 4.0, right: Layout.rightInset)
+
+      static let bookmarkButtonSize = CGSize(width: 23.0, height: 23.0)
     }
 
     struct Placeholder {

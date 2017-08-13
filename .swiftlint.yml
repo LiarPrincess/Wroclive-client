@@ -12,7 +12,11 @@ disabled_rules:
   
   - void_return        # () not Void
 
+force_cast: warning
+
 included:
   - Sources
 
-force_cast: warning
+excluded:
+  - Sources/App/Assets
+  
