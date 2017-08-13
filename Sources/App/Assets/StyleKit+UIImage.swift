@@ -6,6 +6,9 @@
 import UIKit
 
 extension StyleKit {
+
+  // MARK: - Draw images
+
   class func drawSearchImage(size: CGSize, renderingMode: UIImageRenderingMode) -> UIImage {
     return StyleKit.drawImage(size: size, renderingMode: renderingMode) {
       let frame = CGRect(origin: CGPoint(), size: size)
@@ -27,24 +30,19 @@ extension StyleKit {
     }
   }
 
+  class func drawPinImage(size: CGSize, background: UIColor, renderingMode: UIImageRenderingMode) -> UIImage {
+    return StyleKit.drawImage(size: size, renderingMode: renderingMode) {
+      let frame = CGRect(origin: CGPoint(), size: size)
+      StyleKit.drawPin(frame: frame, resizing: .aspectFit, background: background)
+    }
+  }
+
+  // MARK: - Private - Draw image
+
   private class func drawImage(size: CGSize, renderingMode: UIImageRenderingMode, draw: () -> Void) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(size, false, 0)
 
     draw()
-
-    let image = UIGraphicsGetImageFromCurrentImageContext()!.withRenderingMode(renderingMode)
-    UIGraphicsEndImageContext()
-
-    return image
-  }
-}
-
-extension StyleKit2 {
-  class func drawPinImage(size: CGSize, background: UIColor, renderingMode: UIImageRenderingMode) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0)
-
-    let frame = CGRect(origin: CGPoint(), size: size)
-    StyleKit2.drawPin(frame: frame, resizing: .aspectFit, background: background)
 
     let image = UIGraphicsGetImageFromCurrentImageContext()!.withRenderingMode(renderingMode)
     UIGraphicsEndImageContext()

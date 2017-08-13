@@ -38,7 +38,7 @@ class VehicleLocationAnnotationView: MKAnnotationView {
     let isBus = annotation.line.type == .bus
     let color = isBus ? Theme.current.colorScheme.bus : Theme.current.colorScheme.tram
 
-    self.image     = StyleKit2.drawPinImage(size: Layout.pinImageSize, background: color, renderingMode: .alwaysTemplate)
+    self.image     = StyleKit.drawPinImage(size: Layout.pinImageSize, background: color, renderingMode: .alwaysOriginal)
     self.transform = CGAffineTransform(rotationAngle: annotation.angleRad)
   }
 
