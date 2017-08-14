@@ -85,7 +85,8 @@ class MainViewController: UIViewController {
   }
 
   @objc func configurationButtonPressed() {
-    Swift.print("configurationButtonPressed")
+    let controller = ConfigurationViewController()
+    self.present(controller, animated: true, completion: nil)
   }
 
   // MARK: - Private - Tracking
