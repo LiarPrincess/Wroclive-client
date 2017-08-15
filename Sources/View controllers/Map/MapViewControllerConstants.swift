@@ -21,4 +21,5 @@ struct MapViewControllerConstants {
     static let pinImageSize = CGSize(width: 28.0, height: 28.0)
   }
 
+  static let minAngleChangeToRedraw: CGFloat = 3.0
 }

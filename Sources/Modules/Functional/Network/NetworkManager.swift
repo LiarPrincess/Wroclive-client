@@ -12,6 +12,6 @@ protocol NetworkManager {
   func getAvailableLines() -> Promise<[Line]>
 
   /// Get current vehicle locations for selected lines
-  func getVehicleLocations(for lines: [Line]) -> Promise<[VehicleLocation]>
+  func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]>
 
 }

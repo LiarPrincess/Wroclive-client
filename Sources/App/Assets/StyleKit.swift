@@ -253,7 +253,7 @@ public class StyleKit : NSObject {
   }
 
 
-  @objc dynamic public class func drawPin(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit, background: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)) {
+  @objc dynamic public class func drawPin( frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), color: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 
@@ -269,7 +269,7 @@ public class StyleKit : NSObject {
 
     //// Oval Drawing
     let ovalPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))
-    background.setFill()
+    color.setFill()
     ovalPath.fill()
 
 

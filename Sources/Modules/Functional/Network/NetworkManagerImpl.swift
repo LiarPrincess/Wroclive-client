@@ -40,7 +40,7 @@ class NetworkManagerImpl: NetworkManager {
     return self.sendRequest(endpoint: endpoint, data: ())
   }
 
-  func getVehicleLocations(for lines: [Line]) -> Promise<[VehicleLocation]> {
+  func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
     let endpoint = VehicleLocationEndpoint()
     return self.sendRequest(endpoint: endpoint, data: lines)
   }

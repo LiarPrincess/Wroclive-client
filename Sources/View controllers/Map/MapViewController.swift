@@ -36,11 +36,11 @@ class MapViewController: UIViewController {
 
   // MARK: - Vehicle locations
 
-  func updateVehicleLocations(_ vehicleLocations: [VehicleLocation]) {
+  func updateVehicleLocations(_ vehicles: [Vehicle]) {
     // remove excess annotations
     let annotationsBeforeRemoval = self.availableVehicleAnnotations()
 
-    let toRemoveCount = annotationsBeforeRemoval.count - vehicleLocations.count
+    let toRemoveCount = annotationsBeforeRemoval.count - vehicles.count
     if toRemoveCount > 0 {
       let annotationsToRemove = Array(annotationsBeforeRemoval.prefix(toRemoveCount))
       self.mapView.removeAnnotations(annotationsToRemove)
@@ -49,18 +49,18 @@ class MapViewController: UIViewController {
     // update/add annotations
     let annotations = self.availableVehicleAnnotations() // after we removed
 
-    var annotationsToAdd = [VehicleLocationAnnotation]()
-    for (index, vehicleLocation) in vehicleLocations.enumerated() {
+    var annotationsToAdd = [VehicleAnnotation]()
+    for (index, vehicle) in vehicles.enumerated() {
       if index < annotations.count {
         let annotation = annotations[index]
-        annotation.fillFrom(vehicleLocation)
+        annotation.fillFrom(vehicle)
 
         // redraw view if it is visible
-        let annotationView = self.mapView.view(for: annotation) as? VehicleLocationAnnotationView
+        let annotationView = self.mapView.view(for: annotation) as? VehicleAnnotationView
         annotationView?.redraw()
       }
       else {
-        let vehicleAnnotation = VehicleLocationAnnotation(from: vehicleLocation)
+        let vehicleAnnotation = VehicleAnnotation(from: vehicle)
         annotationsToAdd.append(vehicleAnnotation)
       }
     }
@@ -70,8 +70,8 @@ class MapViewController: UIViewController {
     }
   }
 
-  private func availableVehicleAnnotations() -> [VehicleLocationAnnotation] {
-    return self.mapView.annotations.flatMap { return $0 as? VehicleLocationAnnotation }
+  private func availableVehicleAnnotations() -> [VehicleAnnotation] {
+    return self.mapView.annotations.flatMap { return $0 as? VehicleAnnotation }
   }
 
 }
@@ -103,15 +103,15 @@ extension MapViewController: MKMapViewDelegate {
       userLocation.subtitle = nil
       return nil
 
-    case let vehicleLocationAnnotation as VehicleLocationAnnotation:
-      let identifier = "VehicleLocationAnnotationView"
+    case let vehicleAnnotation as VehicleAnnotation:
+      let identifier = "VehicleAnnotationView"
 
-      if let dequeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? VehicleLocationAnnotationView {
-        dequeuedView.setVehicleLocationAnnotation(vehicleLocationAnnotation)
+      if let dequeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? VehicleAnnotationView {
+        dequeuedView.setVehicleAnnotation(vehicleAnnotation)
         return dequeuedView
       }
 
-      return VehicleLocationAnnotationView(vehicleLocation: vehicleLocationAnnotation, reuseIdentifier: identifier)
+      return VehicleAnnotationView(vehicleAnnotation, reuseIdentifier: identifier)
 
     default:
       return nil

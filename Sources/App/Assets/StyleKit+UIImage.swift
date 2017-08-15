@@ -30,13 +30,6 @@ extension StyleKit {
     }
   }
 
-  class func drawPinImage(size: CGSize, background: UIColor, renderingMode: UIImageRenderingMode) -> UIImage {
-    return StyleKit.drawImage(size: size, renderingMode: renderingMode) {
-      let frame = CGRect(origin: CGPoint(), size: size)
-      StyleKit.drawPin(frame: frame, resizing: resizingBehavior, background: background)
-    }
-  }
-
   class func drawCloseImage(size: CGSize, renderingMode: UIImageRenderingMode) -> UIImage {
     return StyleKit.drawImage(size: size, renderingMode: renderingMode) {
       let frame = CGRect(origin: CGPoint(), size: size)

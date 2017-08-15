@@ -5,7 +5,7 @@
 
 import Foundation
 
-class VehicleLocation: NSObject {
+class Vehicle: NSObject {
 
   // MARK: - Properties
 
