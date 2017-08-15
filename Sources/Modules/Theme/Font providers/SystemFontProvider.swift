@@ -11,6 +11,9 @@ struct SystemFontProvider: FontProvider {
   private(set) var body        = UIFont()
   private(set) var bodyBold    = UIFont()
 
+  var headlineTracking:    CGFloat { return 0.50 }
+  var subheadlineTracking: CGFloat { return 0.25 }
+
   init() {
     self.recalculateSizes()
   }

@@ -74,7 +74,6 @@
 		903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
 		90665CBE1F430D7B00D8CFBC /* VehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* VehicleLocation.swift */; };
-		9078F42E1F031443002D7DCD /* AvenirFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907ECF181F3BB41900DB27DB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907ECF171F3BB41900DB27DB /* Info.plist */; };
 		907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
@@ -190,7 +189,6 @@
 		903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfLine+FilterByType.swift"; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* VehicleLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
-		9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvenirFontProvider.swift; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
 		907F70A21F141ADB00F43902 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -687,7 +685,6 @@
 			children = (
 				90AF2BDE1EE9E12D006E61D6 /* FontProvider.swift */,
 				90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */,
-				9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */,
 			);
 			path = "Font providers";
 			sourceTree = "<group>";
@@ -952,7 +949,6 @@
 				90B1DAC81F2BDC3000FAE18A /* MapManagerConstants.swift in Sources */,
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
 				90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */,
-				9078F42E1F031443002D7DCD /* AvenirFontProvider.swift in Sources */,
 				9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */,
 				9021F43B1F12D698000A6949 /* LineSelectionPage.swift in Sources */,
 				9086D4511EE2DFCF00E43D9A /* BookmarksManager.swift in Sources */,

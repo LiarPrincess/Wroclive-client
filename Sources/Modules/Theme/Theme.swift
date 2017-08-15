@@ -31,12 +31,11 @@ class Theme {
   // MARK: - Text attributes
 
   func textAttributes(for textStyle: TextStyle, color: Color) -> [String:Any] {
-    let result: [String:Any] = [
+    return [
       NSFontAttributeName:            self.fontValue(textStyle),
+      NSKernAttributeName:            self.trailingValue(textStyle),
       NSForegroundColorAttributeName: self.colorValue(color)
     ]
-
-    return result
   }
 
   private func colorValue(_ color: Color) -> UIColor {
@@ -56,6 +55,14 @@ class Theme {
     case .subheadline: return self.font.subheadline
     case .body:        return self.font.body
     case .bodyBold:    return self.font.bodyBold
+    }
+  }
+
+  private func trailingValue(_ textStyle: TextStyle) -> CGFloat {
+    switch textStyle {
+    case .headline:        return self.font.headlineTracking
+    case .subheadline:     return self.font.subheadlineTracking
+    case .body, .bodyBold: return 0.0
     }
   }
 
