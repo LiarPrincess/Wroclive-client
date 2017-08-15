@@ -29,8 +29,8 @@ extension ColorScheme {
       text:      UIColor.black,
       tint:      UIColor(red: 1.00, green: 0.22, blue: 0.14, alpha: 1.00),
 
-      bus:       UIColor(red: 1.00, green: 0.22, blue: 0.14, alpha: 1.00),
-      tram:      UIColor(red: 0.08, green: 0.48, blue: 0.98, alpha: 1.00),
+      bus:       UIColor(red: 0.80, green: 0.14, blue: 0.11, alpha: 1.00),
+      tram:      UIColor(red: 0.29, green: 0.52, blue: 0.82, alpha: 1.00),
 
       barStyle:  UIBarStyle.default,
       blurStyle: UIBlurEffectStyle.extraLight
@@ -43,7 +43,7 @@ extension ColorScheme {
       backgroundAccent: UIColor(white: 0.25, alpha: 1.0),
 
       text:      UIColor.white,
-      tint:      UIColor(red:0.09, green:0.61, blue:0.78, alpha:1.00),
+      tint:      UIColor(red: 0.09, green: 0.61, blue: 0.78, alpha: 1.00),
 
       bus:       UIColor(red: 0.99, green: 0.23, blue: 0.18, alpha: 1.00),
       tram:      UIColor(red: 0.08, green: 0.48, blue: 0.98, alpha: 1.00),
