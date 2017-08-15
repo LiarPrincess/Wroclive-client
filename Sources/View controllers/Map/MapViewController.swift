@@ -8,17 +8,35 @@ import MapKit
 import SnapKit
 import PromiseKit
 
+fileprivate typealias Constants = MapViewControllerConstants
+
 class MapViewController: UIViewController {
 
   // MARK: - Properties
 
-  let mapView = MKMapView()
+  var mapView: MKMapView = {
+    let result = MKMapView()
+    result.mapType           = Constants.MapView.mapType
+    result.showsBuildings    = Constants.MapView.showsBuildings
+    result.showsCompass      = Constants.MapView.showsCompass
+    result.showsScale        = Constants.MapView.showsScale
+    result.showsTraffic      = Constants.MapView.showsTraffic
+    result.showsUserLocation = Constants.MapView.showsUserLocation
+    result.tintColor         = UIColor(red: 0.00, green: 0.53, blue: 0.98, alpha: 1.00)
+    return result
+  }()
 
   // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.initLayout()
+
+    self.mapView.delegate = self
+    self.view.addSubview(self.mapView)
+
+    self.mapView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
   }
 
   override func viewDidAppear(_ animated: Bool) {

@@ -33,5 +33,4 @@ class VehicleAnnotation: NSObject, MKAnnotation {
     self.coordinate = CLLocationCoordinate2D(latitude: vehicle.latitude, longitude: vehicle.longitude)
     self.angle      = CGFloat(vehicle.angle)
   }
-
 }

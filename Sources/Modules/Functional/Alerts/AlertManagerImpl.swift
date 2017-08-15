@@ -23,7 +23,6 @@ class AlertManagerImpl: AlertManager {
     let message = LocalizationLocationDenied.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.view.setStyle(.alert)
 
     let settingsAction = UIAlertAction(title: LocalizationLocationDenied.settings, style: .default) { _ in
       if let url = URL(string: UIApplicationOpenSettingsURLString) {
@@ -45,7 +44,6 @@ class AlertManagerImpl: AlertManager {
     let message = LocalizationLocationGloballyDenied.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.view.setStyle(.alert)
 
     let okAction = UIAlertAction(title: LocalizationLocationGloballyDenied.ok, style: .default, handler: nil)
     alert.addAction(okAction)
@@ -60,7 +58,6 @@ class AlertManagerImpl: AlertManager {
     let message = LocalizationBookmarksNoLines.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.view.setStyle(.alert)
 
     let okAction = UIAlertAction(title: LocalizationBookmarksNoLines.ok, style: .default, handler: nil)
     alert.addAction(okAction)
@@ -75,7 +72,6 @@ class AlertManagerImpl: AlertManager {
     let message = LocalizationBookmarksNameInput.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.view.setStyle(.alert)
 
     let cancelAction = UIAlertAction(title: LocalizationBookmarksNameInput.cancel, style: .cancel) { _ in completed(nil) }
     alert.addAction(cancelAction)
@@ -119,7 +115,6 @@ class AlertManagerImpl: AlertManager {
     let message = LocalizationBookmarksInstructions.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.view.setStyle(.alert)
 
     let closeAction = UIAlertAction(title: LocalizationBookmarksInstructions.ok, style: .default, handler: nil)
     alert.addAction(closeAction)
@@ -134,7 +129,6 @@ class AlertManagerImpl: AlertManager {
     let message = LocalizationNetworkNoInternet.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.view.setStyle(.alert)
 
     let againAction = UIAlertAction(title: LocalizationNetworkNoInternet.tryAgain, style: .cancel)  { _ in retry() }
     alert.addAction(againAction)
@@ -149,12 +143,10 @@ class AlertManagerImpl: AlertManager {
     let message = LocalizationNetworkConnectionError.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.view.setStyle(.alert)
 
     let againAction = UIAlertAction(title: LocalizationNetworkConnectionError.tryAgain, style: .cancel) { _ in retry() }
     alert.addAction(againAction)
 
     parent.present(alert, animated: true, completion: nil)
   }
-
 }

@@ -13,7 +13,7 @@ fileprivate typealias Localization = Constants.Localization
 extension SearchViewController {
 
   func initLayout() {
-    self.view.setStyle(.cardPanel)
+    Theme.current.applyCardPanelStyle(self.view)
 
     self.initHeader()
     self.initLinesSelector()
@@ -23,7 +23,7 @@ extension SearchViewController {
   // MARK: - Private
 
   private func initHeader() {
-    self.headerView.setStyle(.cardPanelHeader)
+    Theme.current.applyCardPanelHeaderStyle(self.headerView)
     self.view.addSubview(self.headerView)
 
     self.headerView.snp.makeConstraints { make in
@@ -44,10 +44,10 @@ extension SearchViewController {
       make.height.equalTo(chevronViewSize.height)
     }
 
-    self.cardTitle.setStyle(.headline, color: .text)
-    self.cardTitle.text          = Localization.cardTitle
-    self.cardTitle.numberOfLines = 0
-    self.cardTitle.lineBreakMode = .byWordWrapping
+    let titleAttributes = Theme.current.textAttributes(for: .headline, color: .text)
+    self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
+    self.cardTitle.numberOfLines  = 0
+    self.cardTitle.lineBreakMode  = .byWordWrapping
     self.headerView.addSubview(self.cardTitle)
 
     self.cardTitle.snp.makeConstraints { make in
@@ -57,7 +57,7 @@ extension SearchViewController {
 
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.bookmarkButtonSize)
 
-    self.bookmarkButton.setStyle(.templateImage, color: .tint)
+    self.bookmarkButton.tintColor = Theme.current.colorScheme.tint
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
     self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
     self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonPressed), for: .touchUpInside)
@@ -68,8 +68,9 @@ extension SearchViewController {
       make.left.equalTo(self.cardTitle.snp.right)
     }
 
-    self.searchButton.setStyle(.text, color: .tint)
-    self.searchButton.setTitle(Localization.search, for: .normal)
+    let searchAttributes = Theme.current.textAttributes(for: .body, color: .tint)
+    let searchTitle      = NSAttributedString(string: Localization.search, attributes: searchAttributes)
+    self.searchButton.setAttributedTitle(searchTitle, for: .normal)
     self.searchButton.contentEdgeInsets = Layout.Header.searchButtonInsets
     self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
     self.headerView.addSubview(self.searchButton)
@@ -79,7 +80,6 @@ extension SearchViewController {
       make.right.equalToSuperview()
     }
 
-    self.lineTypeSelector.setStyle()
     self.lineTypeSelector.delegate = self
     self.headerView.addSubview(self.lineTypeSelector)
 
@@ -121,11 +121,11 @@ extension SearchViewController {
       make.centerX.equalToSuperview()
     }
 
-    self.placeholderLabel.setStyle(.body, color: .text)
-    self.placeholderLabel.numberOfLines = 0
-    self.placeholderLabel.textAlignment = .center
-    self.placeholderLabel.lineBreakMode = .byWordWrapping
-    self.placeholderLabel.text          = Localization.loading
+    let textAttributes = Theme.current.textAttributes(for: .body, color: .text)
+    self.placeholderLabel.attributedText = NSAttributedString(string: Localization.loading, attributes: textAttributes)
+    self.placeholderLabel.numberOfLines  = 0
+    self.placeholderLabel.textAlignment  = .center
+    self.placeholderLabel.lineBreakMode  = .byWordWrapping
     self.placeholderView.addSubview(self.placeholderLabel)
 
     self.placeholderLabel.snp.makeConstraints { make in

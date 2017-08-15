@@ -12,14 +12,13 @@ class LineSelectionCell: UICollectionViewCell {
 
   // MARK: - Properties
 
-  var lineName = UILabel()
+  fileprivate var lineNameLabel = UILabel()
 
   // MARK: - Init
 
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
-    self.updateTextColorForSelectionStatus()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -39,14 +38,19 @@ class LineSelectionCell: UICollectionViewCell {
   // MARK: - Private - Methods
 
   func setUp(with viewModel: LineSelectionCellViewModel) {
-    self.lineName.text = viewModel.lineName
+    self.setLineLabel(viewModel.lineName)
   }
 
-  fileprivate func updateTextColorForSelectionStatus() {
-    let textColor: Color = self.isSelected ? .background : .text
-    self.lineName.setStyle(.body, color: textColor)
+  private func updateTextColorForSelectionStatus() {
+    let text = self.lineNameLabel.attributedText?.string ?? self.lineNameLabel.text ?? ""
+    self.setLineLabel(text)
   }
 
+  private func setLineLabel(_ value: String) {
+    let color: Theme.Color = self.isSelected ? .background : .text
+    let textAttributes = Theme.current.textAttributes(for: .body, color: color)
+    self.lineNameLabel.attributedText = NSAttributedString(string: value, attributes: textAttributes)
+  }
 }
 
 // MARK: - UI Init
@@ -58,14 +62,13 @@ extension LineSelectionCell {
     self.selectedBackgroundView?.backgroundColor    = Theme.current.colorScheme.tint
     self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
 
-    self.lineName.setStyle(.body, color: .text)
-    self.lineName.numberOfLines = 1
-    self.lineName.textAlignment = .center
-    self.lineName.isUserInteractionEnabled = false
+    self.lineNameLabel.numberOfLines = 1
+    self.lineNameLabel.textAlignment = .center
+    self.lineNameLabel.isUserInteractionEnabled = false
 
-    self.contentView.addSubview(self.lineName)
+    self.contentView.addSubview(self.lineNameLabel)
 
-    self.lineName.snp.makeConstraints { make in
+    self.lineNameLabel.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
   }

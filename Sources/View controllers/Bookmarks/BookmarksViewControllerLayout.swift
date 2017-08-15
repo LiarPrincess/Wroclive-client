@@ -15,7 +15,7 @@ fileprivate typealias Localization = Constants.Localization
 extension BookmarksViewController {
 
   func initLayout() {
-    self.view.setStyle(.cardPanel)
+    Theme.current.applyCardPanelStyle(self.view)
 
     self.initHeader()
     self.initBookmarksTable()
@@ -25,7 +25,7 @@ extension BookmarksViewController {
   // MARK: - Private
 
   private func initHeader() {
-    self.headerView.setStyle(.cardPanelHeader)
+    Theme.current.applyCardPanelHeaderStyle(self.headerView)
     self.view.addSubview(self.headerView)
 
     self.headerView.snp.makeConstraints { make in
@@ -46,10 +46,10 @@ extension BookmarksViewController {
       make.height.equalTo(chevronViewSize.height)
     }
 
-    self.cardTitle.setStyle(.headline, color: .text)
-    self.cardTitle.text          = Localization.cardTitle
-    self.cardTitle.numberOfLines = 0
-    self.cardTitle.lineBreakMode = .byWordWrapping
+    let titleAttributes           = Theme.current.textAttributes(for: .headline, color: .text)
+    self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
+    self.cardTitle.numberOfLines  = 0
+    self.cardTitle.lineBreakMode  = .byWordWrapping
     self.headerView.addSubview(self.cardTitle)
 
     self.cardTitle.snp.makeConstraints { make in
@@ -58,8 +58,7 @@ extension BookmarksViewController {
       make.left.equalToSuperview().offset(Layout.leftInset)
     }
 
-    self.editButton.setStyle(.text, color: .tint)
-    self.editButton.setTitle(Localization.editEdit, for: .normal)
+    self.setEditButtonEdit()
     self.editButton.contentEdgeInsets = Layout.Header.editButtonInsets
     self.editButton.addTarget(self, action: #selector(editButtonPressed), for: .touchUpInside)
     self.headerView.addSubview(self.editButton)
@@ -93,22 +92,22 @@ extension BookmarksViewController {
       make.centerY.equalTo(self.view)
     }
 
-    self.placeholderTopLabel.setStyle(.subheadline, color: .text)
-    self.placeholderTopLabel.numberOfLines = 0
-    self.placeholderTopLabel.textAlignment = .center
-    self.placeholderTopLabel.lineBreakMode = .byWordWrapping
-    self.placeholderTopLabel.text          = Localization.placeholderTitle
+    let topTextAttributes = Theme.current.textAttributes(for: .subheadline, color: .text)
+    self.placeholderTopLabel.attributedText = NSAttributedString(string: Localization.placeholderTitle, attributes: topTextAttributes)
+    self.placeholderTopLabel.numberOfLines  = 0
+    self.placeholderTopLabel.textAlignment  = .center
+    self.placeholderTopLabel.lineBreakMode  = .byWordWrapping
     self.placeholderView.addSubview(self.placeholderTopLabel)
 
     self.placeholderTopLabel.snp.makeConstraints { make in
       make.left.top.right.equalToSuperview()
     }
 
-    self.placeholderBottomLabel.setStyle(.body, color: .text)
-    self.placeholderBottomLabel.numberOfLines = 0
-    self.placeholderBottomLabel.textAlignment = .center
-    self.placeholderBottomLabel.lineBreakMode = .byWordWrapping
-    self.placeholderBottomLabel.text          = Localization.placeholderContent
+    let bottomTextAttributes = Theme.current.textAttributes(for: .body, color: .text)
+    self.placeholderBottomLabel.attributedText = NSAttributedString(string: Localization.placeholderContent, attributes: bottomTextAttributes)
+    self.placeholderBottomLabel.numberOfLines  = 0
+    self.placeholderBottomLabel.textAlignment  = .center
+    self.placeholderBottomLabel.lineBreakMode  = .byWordWrapping
     self.placeholderView.addSubview(self.placeholderBottomLabel)
 
     self.placeholderBottomLabel.snp.makeConstraints { make in

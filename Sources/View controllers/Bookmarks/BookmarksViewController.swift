@@ -72,16 +72,24 @@ class BookmarksViewController: UIViewController {
     super.setEditing(editing, animated: animated)
 
     if editing {
-      self.editButton.setStyle(.textBold, color: .tint)
-      self.editButton.setTitle(Localization.editDone, for: .normal)
+      self.setEditButtonDone()
       self.closeSwipeToDelte()
     }
-    else {
-      self.editButton.setStyle(.text, color: .tint)
-      self.editButton.setTitle(Localization.editEdit, for: .normal)
-    }
+    else { self.setEditButtonEdit() }
 
     self.bookmarksTable.setEditing(editing, animated: true)
+  }
+
+  func setEditButtonEdit() {
+    let textAttributes = Theme.current.textAttributes(for: .body, color: .tint)
+    let title          = NSAttributedString(string: Localization.editEdit, attributes: textAttributes)
+    self.editButton.setAttributedTitle(title, for: .normal)
+  }
+
+  func setEditButtonDone() {
+    let textAttributes = Theme.current.textAttributes(for: .bodyBold, color: .tint)
+    let title          = NSAttributedString(string: Localization.editDone, attributes: textAttributes)
+    self.editButton.setAttributedTitle(title, for: .normal)
   }
 
   private func closeSwipeToDelte() {
@@ -108,12 +116,12 @@ class BookmarksViewController: UIViewController {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
 
     if bookmarks.count == 0 {
-      self.bookmarksTable.setStyle(separatorStyle: .transparent)
+      Theme.current.applyTableViewSeparatorStyle(self.bookmarksTable, separatorStyle: .transparent)
       self.editButton.isHidden      = true
       self.placeholderView.isHidden = false
     }
     else {
-      self.bookmarksTable.setStyle(separatorStyle: .accent)
+      Theme.current.applyTableViewSeparatorStyle(self.bookmarksTable, separatorStyle: .accent)
       self.editButton.isHidden      = false
       self.placeholderView.isHidden = true
     }

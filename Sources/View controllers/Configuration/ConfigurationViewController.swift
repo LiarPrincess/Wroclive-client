@@ -30,7 +30,7 @@ class ConfigurationViewController: UIViewController {
     let imageSize = CGSize(width: 22.0, height: 22.0)
     let closeImage = StyleKit.drawCloseTemplateImage(size: imageSize)
 
-    let navigationItem = UINavigationItem()
+    let navigationItem      = UINavigationItem()
     let closeNavigationItem = UIBarButtonItem(image: closeImage, style: .plain, target: self, action: #selector(closeButtonPressed))
     navigationItem.rightBarButtonItem = closeNavigationItem
     navigationBar.setItems([navigationItem], animated: false)

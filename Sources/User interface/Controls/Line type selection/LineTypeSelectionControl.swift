@@ -42,6 +42,9 @@ class LineTypeSelectionControl: UISegmentedControl {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
+    let textAttributes = Theme.current.textAttributes(for: .body, color: .tint)
+    self.setTitleTextAttributes(textAttributes, for: .normal)
+
     self.insertSegment(withTitle: Localization.tram, at: Indices.tram, animated: false)
     self.insertSegment(withTitle: Localization.bus,  at: Indices.bus,  animated: false)
 

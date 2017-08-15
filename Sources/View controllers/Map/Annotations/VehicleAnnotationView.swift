@@ -47,16 +47,12 @@ class VehicleAnnotationView: MKAnnotationView {
     }
   }
 
-  private func colorForLineType(_ lineType: LineType) -> UIColor {
-    let colorScheme = Theme.current.colorScheme
-    return lineType == .bus ? colorScheme.bus : colorScheme.tram
-  }
-
   private func updateImage(for annotation: VehicleAnnotation) {
-    let color = self.colorForLineType(annotation.line.type)
+    let colorScheme = Theme.current.colorScheme
+    let color       = annotation.line.type == .bus ? colorScheme.bus : colorScheme.tram
 
     let hasColorChanged = self.pinView.tintColor != color
-    let hasAngleChanged = abs(self.pinView.angle - annotation.angle) > Constants.minAngleChangeToRedraw
+    let hasAngleChanged = abs(self.pinView.angle - annotation.angle) > Constants.Pin.minAngleChangeToRedraw
 
     if hasColorChanged || hasAngleChanged {
       self.pinView.tintColor = color
@@ -66,13 +62,9 @@ class VehicleAnnotationView: MKAnnotationView {
   }
 
   private func updateLabel(for annotation: VehicleAnnotation) {
-    let color  = self.colorForLineType(annotation.line.type)
+    let color: Theme.Color = annotation.line.type == .bus ? .bus : .tram
 
-    let textAttributes: [String:Any] = [
-      NSFontAttributeName:            Theme.current.font.body,
-      NSForegroundColorAttributeName: color
-    ]
-
+    let textAttributes = Theme.current.textAttributes(for: .body, color: color)
     self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name, attributes: textAttributes)
     self.pinLabel.textAlignment  = .center
 

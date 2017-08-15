@@ -21,7 +21,6 @@
 		9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */; };
 		9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3551EE339FD00063377 /* MapViewController.swift */; };
 		9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */; };
-		9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3571EE339FD00063377 /* MapViewControllerLayout.swift */; };
 		9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C36E1EE33AA300063377 /* BookmarkCell.swift */; };
 		9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3751EE33B8000063377 /* BookmarksDataSource.swift */; };
 		9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */; };
@@ -88,11 +87,9 @@
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* Theme.swift */; };
 		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
-		90AF2BDB1EE9E05C006E61D6 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BDA1EE9E05C006E61D6 /* Styles.swift */; };
-		90AF2BDD1EE9E06C006E61D6 /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BDC1EE9E06C006E61D6 /* Controls.swift */; };
 		90AF2BDF1EE9E12D006E61D6 /* FontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BDE1EE9E12D006E61D6 /* FontProvider.swift */; };
 		90AF2BE11EE9E186006E61D6 /* SystemFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */; };
-		90AF2BE31EE9E4ED006E61D6 /* Theme+Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */; };
+		90AF2BE31EE9E4ED006E61D6 /* Theme+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* Theme+Enum.swift */; };
 		90AF8C791EF2D3FE000763B7 /* Wroclaw.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
 		90B1DAC71F2BDC3000FAE18A /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAC41F2BDC3000FAE18A /* MapManager.swift */; };
@@ -139,7 +136,6 @@
 		9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerLayout.swift; sourceTree = "<group>"; };
 		9017C3551EE339FD00063377 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerConstants.swift; sourceTree = "<group>"; };
-		9017C3571EE339FD00063377 /* MapViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerLayout.swift; sourceTree = "<group>"; };
 		9017C36E1EE33AA300063377 /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
 		9017C3751EE33B8000063377 /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
 		9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSourceDelegate.swift; sourceTree = "<group>"; };
@@ -206,11 +202,9 @@
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90AF2BD31EE9DE00006E61D6 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
-		90AF2BDA1EE9E05C006E61D6 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		90AF2BDC1EE9E06C006E61D6 /* Controls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controls.swift; sourceTree = "<group>"; };
 		90AF2BDE1EE9E12D006E61D6 /* FontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontProvider.swift; sourceTree = "<group>"; };
 		90AF2BE01EE9E186006E61D6 /* SystemFontProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFontProvider.swift; sourceTree = "<group>"; };
-		90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Apply.swift"; sourceTree = "<group>"; };
+		90AF2BE21EE9E4ED006E61D6 /* Theme+Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Enum.swift"; sourceTree = "<group>"; };
 		90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90B1DAC41F2BDC3000FAE18A /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
@@ -299,7 +293,6 @@
 			children = (
 				90FAF06F1F35D8C20040E0AE /* Annotations */,
 				9017C3551EE339FD00063377 /* MapViewController.swift */,
-				9017C3571EE339FD00063377 /* MapViewControllerLayout.swift */,
 				9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */,
 			);
 			path = Map;
@@ -672,11 +665,10 @@
 		90AF2BD21EE9DDE4006E61D6 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				90AF2BD91EE9E04F006E61D6 /* Styles */,
 				90AF2BD51EE9DED4006E61D6 /* Color schemes */,
 				90AF2BD61EE9DED4006E61D6 /* Font providers */,
 				90AF2BD31EE9DE00006E61D6 /* Theme.swift */,
-				90AF2BE21EE9E4ED006E61D6 /* Theme+Apply.swift */,
+				90AF2BE21EE9E4ED006E61D6 /* Theme+Enum.swift */,
 			);
 			name = Theme;
 			path = Sources/Modules/Theme;
@@ -698,15 +690,6 @@
 				9078F42D1F031443002D7DCD /* AvenirFontProvider.swift */,
 			);
 			path = "Font providers";
-			sourceTree = "<group>";
-		};
-		90AF2BD91EE9E04F006E61D6 /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-				90AF2BDA1EE9E05C006E61D6 /* Styles.swift */,
-				90AF2BDC1EE9E06C006E61D6 /* Controls.swift */,
-			);
-			path = Styles;
 			sourceTree = "<group>";
 		};
 		90AF8C771EF2D3FE000763B7 /* Locations */ = {
@@ -964,7 +947,7 @@
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,
 				90AF2BE11EE9E186006E61D6 /* SystemFontProvider.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectionSectionHeaderView.swift in Sources */,
-				90AF2BE31EE9E4ED006E61D6 /* Theme+Apply.swift in Sources */,
+				90AF2BE31EE9E4ED006E61D6 /* Theme+Enum.swift in Sources */,
 				9096CDC01F40725700FEF20A /* StyleKit.swift in Sources */,
 				90B1DAC81F2BDC3000FAE18A /* MapManagerConstants.swift in Sources */,
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
@@ -984,7 +967,6 @@
 				902743221F3137C400A3C0E0 /* LinesParser.swift in Sources */,
 				9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
-				9017C36C1EE339FD00063377 /* MapViewControllerLayout.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				90ED50F61F3B991900C782D5 /* AlertManagerImplLocalization.swift in Sources */,
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
@@ -1009,7 +991,6 @@
 				9021F4151F12C9EF000A6949 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				90665CBE1F430D7B00D8CFBC /* VehicleLocation.swift in Sources */,
 				9021F4291F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift in Sources */,
-				90AF2BDD1EE9E06C006E61D6 /* Controls.swift in Sources */,
 				9021F41C1F12C9EF000A6949 /* CardPanelPresentationTransition.swift in Sources */,
 				9021F4071F12C9EF000A6949 /* ChevronViewState.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchViewControllerLayout.swift in Sources */,
@@ -1023,7 +1004,6 @@
 				9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */,
 				90B1DAC71F2BDC3000FAE18A /* MapManager.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
-				90AF2BDB1EE9E05C006E61D6 /* Styles.swift in Sources */,
 				90F86F941F2CB4F800F9272E /* NetworkManagerImpl.swift in Sources */,
 				90F86F851F2CB44700F9272E /* SearchManagerImpl.swift in Sources */,
 				9021F43F1F12D698000A6949 /* LineSelectionCellViewModel.swift in Sources */,
