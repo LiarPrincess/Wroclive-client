@@ -30,15 +30,15 @@ extension MainViewController {
   private func initToolbarView() {
     self.userTrackingButton.mapView = self.mapViewController.mapView
 
-    self.searchButton.image  = StyleKit.drawSearchImage(size: Layout.toolbarImageSize, renderingMode: .alwaysTemplate)
+    self.searchButton.image  = StyleKit.drawSearchTemplateImage(size: Layout.toolbarImageSize)
     self.searchButton.target = self
     self.searchButton.action = #selector(searchButtonPressed)
 
-    self.bookmarksButton.image  = StyleKit.drawStarImage(size: Layout.toolbarImageSize, renderingMode: .alwaysTemplate)
+    self.bookmarksButton.image  = StyleKit.drawStarTemplateImage(size: Layout.toolbarImageSize)
     self.bookmarksButton.target = self
     self.bookmarksButton.action = #selector(bookmarksButtonPressed)
 
-    self.configurationButton.image  = StyleKit.drawCogwheelImage(size: Layout.toolbarImageSize, renderingMode: .alwaysTemplate)
+    self.configurationButton.image  = StyleKit.drawCogwheelTemplateImage(size: Layout.toolbarImageSize)
     self.configurationButton.style  = .done
     self.configurationButton.target = self
     self.configurationButton.action = #selector(configurationButtonPressed)

@@ -55,7 +55,7 @@ extension SearchViewController {
       make.left.equalToSuperview().offset(Layout.leftInset)
     }
 
-    let bookmarkImage = StyleKit.drawStarImage(size: Layout.Header.bookmarkButtonSize, renderingMode: .alwaysTemplate)
+    let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.bookmarkButtonSize)
 
     self.bookmarkButton.setStyle(.templateImage, color: .tint)
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)

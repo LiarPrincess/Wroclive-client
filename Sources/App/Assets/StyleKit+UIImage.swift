@@ -9,29 +9,29 @@ extension StyleKit {
 
   // MARK: - Draw images
 
-  class func drawSearchImage(size: CGSize, renderingMode: UIImageRenderingMode) -> UIImage {
-    return StyleKit.drawImage(size: size, renderingMode: renderingMode) {
+  class func drawSearchTemplateImage(size: CGSize) -> UIImage {
+    return StyleKit.drawImage(size: size, renderingMode: .alwaysTemplate) {
       let frame = CGRect(origin: CGPoint(), size: size)
       StyleKit.drawSearch(frame: frame, resizing: resizingBehavior)
     }
   }
 
-  class func drawStarImage(size: CGSize, renderingMode: UIImageRenderingMode) -> UIImage {
-    return StyleKit.drawImage(size: size, renderingMode: renderingMode) {
+  class func drawStarTemplateImage(size: CGSize) -> UIImage {
+    return StyleKit.drawImage(size: size, renderingMode: .alwaysTemplate) {
       let frame = CGRect(origin: CGPoint(), size: size)
       StyleKit.drawStar(frame: frame, resizing: resizingBehavior)
     }
   }
 
-  class func drawCogwheelImage(size: CGSize, renderingMode: UIImageRenderingMode) -> UIImage {
-    return StyleKit.drawImage(size: size, renderingMode: renderingMode) {
+  class func drawCogwheelTemplateImage(size: CGSize) -> UIImage {
+    return StyleKit.drawImage(size: size, renderingMode: .alwaysTemplate) {
       let frame = CGRect(origin: CGPoint(), size: size)
       StyleKit.drawCogwheel(frame: frame, resizing: resizingBehavior)
     }
   }
 
-  class func drawCloseImage(size: CGSize, renderingMode: UIImageRenderingMode) -> UIImage {
-    return StyleKit.drawImage(size: size, renderingMode: renderingMode) {
+  class func drawCloseTemplateImage(size: CGSize) -> UIImage {
+    return StyleKit.drawImage(size: size, renderingMode: .alwaysTemplate) {
       let frame = CGRect(origin: CGPoint(), size: size)
       StyleKit.drawClose(frame: frame, resizing: resizingBehavior)
     }
