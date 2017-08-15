@@ -29,9 +29,9 @@ class BookmarksViewController: UIViewController {
   var bookmarksTableDataSource: BookmarksDataSource!
   let bookmarksTable = UITableView()
 
-  let placeholderView        = UIView()
-  let placeholderTopLabel    = UILabel()
-  let placeholderBottomLabel = UILabel()
+  let placeholderView    = UIView()
+  let placeholderTitle   = UILabel()
+  let placeholderContent = UILabel()
 
   // MARK: - Overriden
 

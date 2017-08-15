@@ -93,27 +93,59 @@ extension BookmarksViewController {
     }
 
     let topTextAttributes = Theme.current.textAttributes(for: .subheadline, color: .text)
-    self.placeholderTopLabel.attributedText = NSAttributedString(string: Localization.placeholderTitle, attributes: topTextAttributes)
-    self.placeholderTopLabel.numberOfLines  = 0
-    self.placeholderTopLabel.textAlignment  = .center
-    self.placeholderTopLabel.lineBreakMode  = .byWordWrapping
-    self.placeholderView.addSubview(self.placeholderTopLabel)
+    self.placeholderTitle.attributedText = NSAttributedString(string: Localization.placeholderTitle, attributes: topTextAttributes)
+    self.placeholderTitle.numberOfLines  = 0
+    self.placeholderTitle.textAlignment  = .center
+    self.placeholderTitle.lineBreakMode  = .byWordWrapping
+    self.placeholderView.addSubview(self.placeholderTitle)
 
-    self.placeholderTopLabel.snp.makeConstraints { make in
+    self.placeholderTitle.snp.makeConstraints { make in
       make.left.top.right.equalToSuperview()
     }
 
-    let bottomTextAttributes = Theme.current.textAttributes(for: .body, color: .text)
-    self.placeholderBottomLabel.attributedText = NSAttributedString(string: Localization.placeholderContent, attributes: bottomTextAttributes)
-    self.placeholderBottomLabel.numberOfLines  = 0
-    self.placeholderBottomLabel.textAlignment  = .center
-    self.placeholderBottomLabel.lineBreakMode  = .byWordWrapping
-    self.placeholderView.addSubview(self.placeholderBottomLabel)
+    self.placeholderContent.attributedText = self.createPlaceholderContent()
+    self.placeholderContent.numberOfLines  = 0
+    self.placeholderContent.textAlignment  = .center
+    self.placeholderContent.lineBreakMode  = .byWordWrapping
+    self.placeholderView.addSubview(self.placeholderContent)
 
-    self.placeholderBottomLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.placeholderTopLabel.snp.bottom).offset(Layout.Placeholder.verticalSpacing)
+    self.placeholderContent.snp.makeConstraints { make in
+      make.top.equalTo(self.placeholderTitle.snp.bottom).offset(Layout.Placeholder.verticalSpacing)
       make.left.bottom.right.equalToSuperview()
     }
+  }
+
+  private func createPlaceholderContent() -> NSAttributedString {
+    let textComponents = Localization.placeholderContent.components(separatedBy: "<star>")
+
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.lineSpacing = Layout.Placeholder.lineSpacing
+    paragraphStyle.alignment   = .center
+
+    var textAttributes = Theme.current.textAttributes(for: .body, color: .text)
+    textAttributes[NSParagraphStyleAttributeName] = paragraphStyle
+
+    // build string
+    let result = NSMutableAttributedString(string: textComponents[0], attributes: textAttributes)
+
+    if textComponents.count > 1 {
+      // https://stackoverflow.com/a/43192486
+      let font      = textAttributes[NSFontAttributeName] as! UIFont
+      let imageSize = abs(font.ascender) + abs(font.descender)
+      let imageY    = font.ascender - imageSize
+
+      let image = StyleKit.drawStarTemplateImage(size: CGSize(width: imageSize, height: imageSize))
+
+      let attachment    = NSTextAttachment()
+      attachment.image  = image
+      attachment.bounds = CGRect(origin: CGPoint(x: 0.0, y: imageY), size: image.size)
+      result.append(NSAttributedString(attachment: attachment))
+
+      // add remaining text
+      result.append(NSAttributedString(string: textComponents[1], attributes: textAttributes))
+    }
+
+    return result
   }
 
 }
