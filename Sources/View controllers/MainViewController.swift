@@ -101,7 +101,10 @@ class MainViewController: UIViewController {
   private func startLocationUpdateTimer() {
     self.stopLocationUpdateTimer()
 
-    guard self.trackedLines.count > 0 else { return }
+    guard self.trackedLines.count > 0 else {
+      self.mapViewController.removeAllAnnotations()
+      return
+    }
 
     let interval = Constants.locationUpdateInterval
     self.trackingTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(trackingTimerFired), userInfo: nil, repeats: true)
