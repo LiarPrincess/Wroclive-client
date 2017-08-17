@@ -10,8 +10,6 @@ fileprivate typealias Constants    = BookmarksViewControllerConstants
 fileprivate typealias Layout       = Constants.Layout
 fileprivate typealias Localization = Constants.Localization
 
-// MARK: - Layout
-
 extension BookmarksViewController {
 
   func initLayout() {

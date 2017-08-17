@@ -7,7 +7,7 @@ import UIKit
 
 fileprivate typealias Localization = LineTypeSelectionControlConstants.Localization
 
-fileprivate struct Indices {
+private struct Indices {
   static let tram = 0
   static let bus  = 1
 }

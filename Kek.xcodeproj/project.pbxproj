@@ -73,6 +73,8 @@
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
+		9055C8E61F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */; };
+		9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */; };
 		90665CBE1F430D7B00D8CFBC /* VehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* VehicleLocation.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907ECF181F3BB41900DB27DB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907ECF171F3BB41900DB27DB /* Info.plist */; };
@@ -188,6 +190,8 @@
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfLine+FilterByType.swift"; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
+		9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewControllerLayout.swift; sourceTree = "<group>"; };
+		9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewControllerConstants.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* VehicleLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
@@ -656,6 +660,8 @@
 			isa = PBXGroup;
 			children = (
 				9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */,
+				9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */,
+				9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -926,6 +932,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9055C8E61F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift in Sources */,
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
 				90ED50F11F3B842C00C782D5 /* LineTypeSelectionControlConstants.swift in Sources */,
@@ -992,6 +999,7 @@
 				9017C3661EE339FD00063377 /* SearchViewControllerLayout.swift in Sources */,
 				9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				907F70A31F141ADB00F43902 /* AlertManager.swift in Sources */,
+				9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */,
 				902743241F313CAB00A3C0E0 /* LineLocationsParser.swift in Sources */,
 				907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */,
 				9021F36E1F116EAB000A6949 /* Managers.swift in Sources */,

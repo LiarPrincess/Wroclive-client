@@ -5,7 +5,7 @@
 
 import Foundation
 
-fileprivate struct PropertyKeys {
+private struct PropertyKeys {
   static let selectedLineType = "selectedLineType"
   static let selectedLines    = "selectedLines"
 }

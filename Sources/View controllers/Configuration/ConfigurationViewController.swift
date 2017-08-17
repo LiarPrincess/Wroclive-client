@@ -8,32 +8,19 @@ import UIKit
 class ConfigurationViewController: UIViewController {
 
   // MARK: - Properties
+  let navigationBar = UINavigationBar()
+
+  let configurationTable = UITableView(frame: .zero, style: .grouped)
+  let colorsCell   = UITableViewCell(style: .value1, reuseIdentifier: nil)
+  let shareCell    = UITableViewCell(style: .value1, reuseIdentifier: nil)
+  let tutorialCell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+  let rateCell     = UITableViewCell(style: .value1, reuseIdentifier: nil)
 
   // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    self.view.tintColor = Theme.current.colorScheme.tint
-    self.view.backgroundColor = UIColor.lightGray
-
-    let navigationBar = UINavigationBar()
-    navigationBar.delegate = self
-
-    // https://stackoverflow.com/a/21548900
-    self.view.addSubview(navigationBar)
-    navigationBar.snp.makeConstraints { make in
-      make.top.equalTo(self.topLayoutGuide.snp.bottom)
-      make.left.right.equalToSuperview()
-    }
-
-    let imageSize = CGSize(width: 22.0, height: 22.0)
-    let closeImage = StyleKit.drawCloseTemplateImage(size: imageSize)
-
-    let navigationItem      = UINavigationItem()
-    let closeNavigationItem = UIBarButtonItem(image: closeImage, style: .plain, target: self, action: #selector(closeButtonPressed))
-    navigationItem.rightBarButtonItem = closeNavigationItem
-    navigationBar.setItems([navigationItem], animated: false)
+    self.initLayout()
   }
 
   @objc func closeButtonPressed() {
@@ -41,8 +28,37 @@ class ConfigurationViewController: UIViewController {
   }
 }
 
+// MARK: - UINavigationBarDelegate
+
 extension ConfigurationViewController: UINavigationBarDelegate {
   func position(for bar: UIBarPositioning) -> UIBarPosition {
     return .topAttached
+  }
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension ConfigurationViewController: UITableViewDelegate, UITableViewDataSource {
+
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    switch section {
+    case 0: return 1
+    case 1: return 3
+    default: fatalError("Unexpected section")
+    }
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    switch (indexPath.section, indexPath.row) {
+    case (0, 0): return self.colorsCell
+    case (1, 0): return self.shareCell
+    case (1, 1): return self.tutorialCell
+    case (1, 2): return self.rateCell
+    default: fatalError("Unknown row")
+    }
   }
 }

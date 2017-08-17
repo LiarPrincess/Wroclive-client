@@ -66,7 +66,7 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
   // MARK: - Methods
 
   private func shouldFinish(gesture: UIPanGestureRecognizer, completion percent: CGFloat) -> Bool {
-    typealias Constants = CardPanelConstants.FinishContitions
+    typealias Constants = CardPanelConstants.FinishConditions
 
     let velocity = gesture.velocity(in: gesture.view).y
     let isUp     = velocity < 0.0
