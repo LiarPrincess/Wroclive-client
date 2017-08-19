@@ -58,7 +58,7 @@ extension ConfigurationViewController: UITableViewDelegate, UITableViewDataSourc
     case (1, 0): return self.shareCell
     case (1, 1): return self.tutorialCell
     case (1, 2): return self.rateCell
-    default: fatalError("Unknown row")
+    default: fatalError("Unexpected row")
     }
   }
 }
