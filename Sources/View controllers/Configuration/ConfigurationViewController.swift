@@ -10,7 +10,12 @@ class ConfigurationViewController: UIViewController {
   // MARK: - Properties
   let navigationBar = UINavigationBar()
 
-  let configurationTable = UITableView(frame: .zero, style: .grouped)
+  let scrollView  = UIScrollView()
+  let contentView = UIView()
+
+  let inAppPurchasePresentation = InAppPurchasePresentationViewController()
+
+  let configurationTable = IntrinsicTableView(frame: .zero, style: .grouped)
   let colorsCell   = UITableViewCell(style: .value1, reuseIdentifier: nil)
   let shareCell    = UITableViewCell(style: .value1, reuseIdentifier: nil)
   let tutorialCell = UITableViewCell(style: .value1, reuseIdentifier: nil)
@@ -33,6 +38,22 @@ class ConfigurationViewController: UIViewController {
 extension ConfigurationViewController: UINavigationBarDelegate {
   func position(for bar: UIBarPositioning) -> UIBarPosition {
     return .topAttached
+  }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension ConfigurationViewController: UIScrollViewDelegate {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let currentScrollPosition = scrollView.contentOffset.y
+
+    let navigationBarHeight = self.navigationBar.frame.maxY
+    let navigationBarHeightInScrollView = -navigationBarHeight
+
+    let isBelowNavigationBar = currentScrollPosition < navigationBarHeightInScrollView
+    if isBelowNavigationBar {
+      scrollView.contentOffset.y = navigationBarHeightInScrollView
+    }
   }
 }
 
