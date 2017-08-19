@@ -7,6 +7,8 @@ import UIKit
 
 // source: http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
 
+private typealias Constants = CardPanelConstants
+
 class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
   // MARK: - Properties
@@ -17,7 +19,7 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
   // MARK: - Init
 
   init(for presentable: CardPanelPresentable, withRelativeHeight relativeHeight: CGFloat) {
-    self.relativeHeight        = relativeHeight
+    self.relativeHeight = relativeHeight
     self.interactiveDismissTransition = CardPanelInteractiveDismissTransition(for: presentable)
     super.init()
   }
@@ -25,11 +27,13 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
   // MARK: - Transition
 
   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    return CardPanelPresentationTransition()
+    let transitionDuration = Double(self.relativeHeight) * Constants.AnimationDuration.present
+    return CardPanelPresentationTransition(transitionDuration)
   }
 
   func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    return CardPanelDismissTransition()
+    let transitionDuration = Double(self.relativeHeight) * Constants.AnimationDuration.dismiss
+    return CardPanelDismissTransition(transitionDuration)
   }
 
   // MARK: - Interactive transition
