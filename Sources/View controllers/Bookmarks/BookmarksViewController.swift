@@ -16,7 +16,7 @@ class BookmarksViewController: UIViewController {
 
   weak var delegate: BookmarksViewControllerDelegate?
 
-  let headerViewBlur = UIBlurEffect(style: Theme.current.colorScheme.blurStyle)
+  let headerViewBlur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
 
   lazy var headerView: UIVisualEffectView = {
     return UIVisualEffectView(effect: self.headerViewBlur)
@@ -81,13 +81,13 @@ class BookmarksViewController: UIViewController {
   }
 
   func setEditButtonEdit() {
-    let textAttributes = Theme.current.textAttributes(for: .body, color: .tint)
+    let textAttributes = Managers.theme.textAttributes(for: .body, color: .tint)
     let title          = NSAttributedString(string: Localization.editEdit, attributes: textAttributes)
     self.editButton.setAttributedTitle(title, for: .normal)
   }
 
   func setEditButtonDone() {
-    let textAttributes = Theme.current.textAttributes(for: .bodyBold, color: .tint)
+    let textAttributes = Managers.theme.textAttributes(for: .bodyBold, color: .tint)
     let title          = NSAttributedString(string: Localization.editDone, attributes: textAttributes)
     self.editButton.setAttributedTitle(title, for: .normal)
   }

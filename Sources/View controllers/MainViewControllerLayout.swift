@@ -43,7 +43,7 @@ extension MainViewController {
     self.configurationButton.target = self
     self.configurationButton.action = #selector(configurationButtonPressed)
 
-    Theme.current.applyToolbarStyle(self.toolbar)
+    Managers.theme.applyToolbarStyle(self.toolbar)
     self.toolbar.setItems(self.layoutToolbarItems(), animated: false)
     self.view.addSubview(self.toolbar)
 

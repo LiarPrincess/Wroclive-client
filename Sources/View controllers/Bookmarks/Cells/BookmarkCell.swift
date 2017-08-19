@@ -39,7 +39,7 @@ class BookmarkCell: UITableViewCell {
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-    self.backgroundColor = Theme.current.colorScheme.background
+    self.backgroundColor = Managers.theme.colorScheme.background
     self.contentView.addSubview(self.bookmarkName)
     self.contentView.addSubview(self.tramLines)
     self.contentView.addSubview(self.busLines)
@@ -128,7 +128,7 @@ class BookmarkCell: UITableViewCell {
   // MARK: - Methods
 
   func setUp(with viewModel: BookmarkCellViewModel) {
-    let nameAttributes = Theme.current.textAttributes(for: .subheadline, alignment: .center)
+    let nameAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
     self.bookmarkName.attributedText = NSAttributedString(string: viewModel.bookmarkName, attributes: nameAttributes)
 
     self.setLineLabel(self.tramLines, text: viewModel.tramLines)
@@ -140,7 +140,7 @@ class BookmarkCell: UITableViewCell {
   }
 
   private func setLineLabel(_ label: UILabel, text: String) {
-    let textAttributes = Theme.current.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.LinesLabel.lineSpacing, color: .tint)
+    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.LinesLabel.lineSpacing, color: .tint)
     label.isHidden       = text.isEmpty
     label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
   }

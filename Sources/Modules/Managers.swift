@@ -9,6 +9,7 @@ struct Managers {
   static var bookmarks: BookmarksManager!
   static var alert:     AlertManager!
   static var network:   NetworkManager!
+  static var theme:     Theme!
 
   private init() {}
 }

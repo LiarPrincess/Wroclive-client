@@ -16,7 +16,7 @@ class SearchViewController: UIViewController {
 
   weak var delegate: SearchViewControllerDelegate?
 
-  let headerViewBlur = UIBlurEffect(style: Theme.current.colorScheme.blurStyle)
+  let headerViewBlur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
 
   lazy var headerView: UIVisualEffectView = {
     return UIVisualEffectView(effect: self.headerViewBlur)

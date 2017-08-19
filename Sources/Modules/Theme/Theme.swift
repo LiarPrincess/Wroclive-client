@@ -7,10 +7,6 @@ import UIKit
 
 class Theme {
 
-  // Mark - Singleton
-
-  static let current = Theme(colorScheme: .light, font: SystemFontProvider())
-
   // Mark - Properties
 
   fileprivate(set) var colorScheme: ColorScheme
@@ -18,7 +14,7 @@ class Theme {
 
   // Mark - Init
 
-  private init(colorScheme: ColorScheme, font: FontProvider) {
+  init(colorScheme: ColorScheme, font: FontProvider) {
     self.colorScheme = colorScheme
     self.font        = font
     self.startObservingContentSizeCategory()
@@ -92,6 +88,10 @@ class Theme {
 
   func applyToolbarStyle(_ toolbar: UIToolbar) {
     toolbar.barStyle = self.colorScheme.barStyle
+  }
+
+  func applyNavigationBarStyle(_ navigationBar: UINavigationBar) {
+    navigationBar.barStyle = self.colorScheme.barStyle
   }
 }
 

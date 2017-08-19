@@ -13,7 +13,7 @@ fileprivate typealias Localization = Constants.Localization
 extension BookmarksViewController {
 
   func initLayout() {
-    Theme.current.applyCardPanelStyle(self.view)
+    Managers.theme.applyCardPanelStyle(self.view)
 
     self.initHeader()
     self.initBookmarksTable()
@@ -23,7 +23,7 @@ extension BookmarksViewController {
   // MARK: - Private
 
   private func initHeader() {
-    Theme.current.applyCardPanelHeaderStyle(self.headerView)
+    Managers.theme.applyCardPanelHeaderStyle(self.headerView)
     self.view.addSubview(self.headerView)
 
     self.headerView.snp.makeConstraints { make in
@@ -31,7 +31,7 @@ extension BookmarksViewController {
     }
 
     self.chevronView.state             = .down
-    self.chevronView.color             = Theme.current.colorScheme.backgroundAccent
+    self.chevronView.color             = Managers.theme.colorScheme.backgroundAccent
     self.chevronView.animationDuration = Constants.Animations.chevronDismissRelativeDuration
     self.view.addSubview(chevronView)
 
@@ -44,7 +44,7 @@ extension BookmarksViewController {
       make.height.equalTo(chevronViewSize.height)
     }
 
-    let titleAttributes           = Theme.current.textAttributes(for: .headline)
+    let titleAttributes           = Managers.theme.textAttributes(for: .headline)
     self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
@@ -70,7 +70,7 @@ extension BookmarksViewController {
   private func initBookmarksTable() {
     self.bookmarksTable.register(BookmarkCell.self)
     self.bookmarksTable.separatorInset  = UIEdgeInsets(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
-    self.bookmarksTable.backgroundColor = Theme.current.colorScheme.background
+    self.bookmarksTable.backgroundColor = Managers.theme.colorScheme.background
     self.bookmarksTable.dataSource      = self.bookmarksTableDataSource
     self.bookmarksTable.delegate        = self
 
@@ -94,7 +94,7 @@ extension BookmarksViewController {
       make.centerY.equalTo(self.view)
     }
 
-    let titleAttributes = Theme.current.textAttributes(for: .subheadline, alignment: .center)
+    let titleAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
     self.placeholderTitle.attributedText = NSAttributedString(string: Localization.placeholderTitle, attributes: titleAttributes)
     self.placeholderTitle.numberOfLines  = 0
     self.placeholderTitle.lineBreakMode  = .byWordWrapping
@@ -117,7 +117,7 @@ extension BookmarksViewController {
 
   private func createPlaceholderContent() -> NSAttributedString {
     let textComponents = Localization.placeholderContent.components(separatedBy: "<star>")
-    let textAttributes = Theme.current.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.Placeholder.lineSpacing)
+    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.Placeholder.lineSpacing)
 
     // build string
     let result = NSMutableAttributedString(string: textComponents[0], attributes: textAttributes)

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let mainViewController = MainViewController()
     window = UIWindow(frame: UIScreen.main.bounds)
-    window!.tintColor          = Theme.current.colorScheme.tint
+    window!.tintColor          = Managers.theme.colorScheme.tint
     window!.rootViewController = mainViewController
     window!.makeKeyAndVisible()
 
@@ -30,5 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Managers.bookmarks = BookmarksManagerImpl()
     Managers.alert     = AlertManagerImpl()
     Managers.network   = NetworkManagerImpl()
+    Managers.theme     = Theme(colorScheme: .light, font: SystemFontProvider())
   }
 }

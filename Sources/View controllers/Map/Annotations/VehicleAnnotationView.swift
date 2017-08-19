@@ -48,7 +48,7 @@ class VehicleAnnotationView: MKAnnotationView {
   }
 
   private func updateImage(for annotation: VehicleAnnotation) {
-    let colorScheme = Theme.current.colorScheme
+    let colorScheme = Managers.theme.colorScheme
     let color       = annotation.line.type == .bus ? colorScheme.bus : colorScheme.tram
 
     let hasColorChanged = self.pinView.tintColor != color
@@ -64,7 +64,7 @@ class VehicleAnnotationView: MKAnnotationView {
   private func updateLabel(for annotation: VehicleAnnotation) {
     let color: Theme.Color = annotation.line.type == .bus ? .bus : .tram
 
-    let textAttributes = Theme.current.textAttributes(for: .body, alignment: .center, color: color)
+    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: color)
     self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name, attributes: textAttributes)
 
     let pinSize    = Layout.pinImageSize

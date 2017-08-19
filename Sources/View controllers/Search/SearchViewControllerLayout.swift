@@ -13,7 +13,7 @@ fileprivate typealias Localization = Constants.Localization
 extension SearchViewController {
 
   func initLayout() {
-    Theme.current.applyCardPanelStyle(self.view)
+    Managers.theme.applyCardPanelStyle(self.view)
 
     self.initHeader()
     self.initLinesSelector()
@@ -23,7 +23,7 @@ extension SearchViewController {
   // MARK: - Private
 
   private func initHeader() {
-    Theme.current.applyCardPanelHeaderStyle(self.headerView)
+    Managers.theme.applyCardPanelHeaderStyle(self.headerView)
     self.view.addSubview(self.headerView)
 
     self.headerView.snp.makeConstraints { make in
@@ -31,7 +31,7 @@ extension SearchViewController {
     }
 
     self.chevronView.state = .down
-    self.chevronView.color = Theme.current.colorScheme.backgroundAccent
+    self.chevronView.color = Managers.theme.colorScheme.backgroundAccent
     self.chevronView.animationDuration = Constants.Animations.chevronDismissRelativeDuration
     self.view.addSubview(chevronView)
 
@@ -44,7 +44,7 @@ extension SearchViewController {
       make.height.equalTo(chevronViewSize.height)
     }
 
-    let titleAttributes = Theme.current.textAttributes(for: .headline)
+    let titleAttributes = Managers.theme.textAttributes(for: .headline)
     self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
@@ -57,7 +57,7 @@ extension SearchViewController {
 
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.bookmarkButtonSize)
 
-    self.bookmarkButton.tintColor = Theme.current.colorScheme.tint
+    self.bookmarkButton.tintColor = Managers.theme.colorScheme.tint
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
     self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
     self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonPressed), for: .touchUpInside)
@@ -68,7 +68,7 @@ extension SearchViewController {
       make.left.equalTo(self.cardTitle.snp.right)
     }
 
-    let searchAttributes = Theme.current.textAttributes(for: .body, color: .tint)
+    let searchAttributes = Managers.theme.textAttributes(for: .body, color: .tint)
     let searchTitle      = NSAttributedString(string: Localization.search, attributes: searchAttributes)
     self.searchButton.setAttributedTitle(searchTitle, for: .normal)
     self.searchButton.contentEdgeInsets = Layout.Header.searchButtonInsets
@@ -121,7 +121,7 @@ extension SearchViewController {
       make.centerX.equalToSuperview()
     }
 
-    let textAttributes = Theme.current.textAttributes(for: .body, alignment: .center)
+    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center)
     self.placeholderLabel.attributedText = NSAttributedString(string: Localization.loading, attributes: textAttributes)
     self.placeholderLabel.numberOfLines  = 0
     self.placeholderLabel.lineBreakMode  = .byWordWrapping
