@@ -44,7 +44,7 @@ extension SearchViewController {
       make.height.equalTo(chevronViewSize.height)
     }
 
-    let titleAttributes = Theme.current.textAttributes(for: .headline, color: .text)
+    let titleAttributes = Theme.current.textAttributes(for: .headline)
     self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
@@ -121,10 +121,9 @@ extension SearchViewController {
       make.centerX.equalToSuperview()
     }
 
-    let textAttributes = Theme.current.textAttributes(for: .body, color: .text)
+    let textAttributes = Theme.current.textAttributes(for: .body, alignment: .center)
     self.placeholderLabel.attributedText = NSAttributedString(string: Localization.loading, attributes: textAttributes)
     self.placeholderLabel.numberOfLines  = 0
-    self.placeholderLabel.textAlignment  = .center
     self.placeholderLabel.lineBreakMode  = .byWordWrapping
     self.placeholderView.addSubview(self.placeholderLabel)
 

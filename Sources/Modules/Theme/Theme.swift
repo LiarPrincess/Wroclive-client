@@ -30,11 +30,16 @@ class Theme {
 
   // MARK: - Text attributes
 
-  func textAttributes(for textStyle: TextStyle, color: Color) -> [String:Any] {
+  func textAttributes(for textStyle: TextStyle,
+                      alignment:     NSTextAlignment = .natural,
+                      lineSpacing:   CGFloat         = 0.0,
+                      color:         Color           = Color.text
+  ) -> [String:Any] {
     return [
       NSFontAttributeName:            self.fontValue(textStyle),
-      NSKernAttributeName:            self.trailingValue(textStyle),
-      NSForegroundColorAttributeName: self.colorValue(color)
+      NSKernAttributeName:            self.trackingValue(textStyle),
+      NSForegroundColorAttributeName: self.colorValue(color),
+      NSParagraphStyleAttributeName:  self.paragraphStyle(alignment, lineSpacing)
     ]
   }
 
@@ -58,12 +63,19 @@ class Theme {
     }
   }
 
-  private func trailingValue(_ textStyle: TextStyle) -> CGFloat {
+  private func trackingValue(_ textStyle: TextStyle) -> CGFloat {
     switch textStyle {
     case .headline:        return self.font.headlineTracking
     case .subheadline:     return self.font.subheadlineTracking
     case .body, .bodyBold: return 0.0
     }
+  }
+
+  private func paragraphStyle(_ alignment: NSTextAlignment, _ lineSpacing: CGFloat) -> NSParagraphStyle {
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.alignment   = alignment
+    paragraphStyle.lineSpacing = lineSpacing
+    return paragraphStyle
   }
 
   // MARK: - View styles

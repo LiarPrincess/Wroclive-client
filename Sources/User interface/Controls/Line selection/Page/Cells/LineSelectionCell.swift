@@ -48,7 +48,7 @@ class LineSelectionCell: UICollectionViewCell {
 
   private func setLineLabel(_ value: String) {
     let color: Theme.Color = self.isSelected ? .background : .text
-    let textAttributes = Theme.current.textAttributes(for: .body, color: color)
+    let textAttributes = Theme.current.textAttributes(for: .body, alignment: .center, color: color)
     self.lineNameLabel.attributedText = NSAttributedString(string: value, attributes: textAttributes)
   }
 }
@@ -63,7 +63,6 @@ extension LineSelectionCell {
     self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
 
     self.lineNameLabel.numberOfLines = 1
-    self.lineNameLabel.textAlignment = .center
     self.lineNameLabel.isUserInteractionEnabled = false
 
     self.contentView.addSubview(self.lineNameLabel)

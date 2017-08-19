@@ -21,7 +21,7 @@ extension ConfigurationViewController {
 
   private func initNavigationBar() {
     self.navigationBar.barStyle            = Theme.current.colorScheme.barStyle
-    self.navigationBar.titleTextAttributes = Theme.current.textAttributes(for: .bodyBold, color: .text)
+    self.navigationBar.titleTextAttributes = Theme.current.textAttributes(for: .bodyBold)
     self.navigationBar.delegate            = self
     self.view.addSubview(self.navigationBar)
 
@@ -59,7 +59,7 @@ extension ConfigurationViewController {
   }
 
   private func initConfigurationTableCells() {
-    let textAttributes = Theme.current.textAttributes(for: .body, color: .text)
+    let textAttributes = Theme.current.textAttributes(for: .body)
 
     self.colorsCell.textLabel?.attributedText = NSAttributedString(string: "Colors", attributes: textAttributes)
     self.colorsCell.accessoryType = .disclosureIndicator
@@ -75,7 +75,7 @@ extension ConfigurationViewController {
   }
 
   private func initConfigurationTableFooter() {
-    let textAttributes = Theme.current.textAttributes(for: .body, color: .text)
+    let textAttributes = Theme.current.textAttributes(for: .body, alignment: .center, lineSpacing: 5.0)
     let text           = NSAttributedString(string: "Data provided by Transport for London\nJump version 1.2 (26) Camden", attributes: textAttributes)
 
     let footerFrame = CGRect(x: 0.0, y: 0.0, width: 1.0, height: self.calculateMinFooterHeight(text))
@@ -84,7 +84,6 @@ extension ConfigurationViewController {
     let footerLabel = UILabel()
     footerLabel.attributedText = text
     footerLabel.numberOfLines  = 0
-    footerLabel.textAlignment  = .center
 
     self.configurationTable.tableFooterView!.addSubview(footerLabel)
     footerLabel.snp.makeConstraints { make in

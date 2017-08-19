@@ -29,7 +29,7 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
   // MARK: - Methods
 
   func setUp(with viewModel: LineSelectionSectionViewModel) {
-    let textAttributes = Theme.current.textAttributes(for: .subheadline, color: .text)
+    let textAttributes = Theme.current.textAttributes(for: .subheadline, alignment: .center)
     self.sectionName.attributedText = NSAttributedString(string: viewModel.sectionName, attributes: textAttributes)
   }
 
@@ -41,7 +41,6 @@ extension LineSelectionSectionHeaderView {
 
   fileprivate func initLayout() {
     self.sectionName.numberOfLines = 0
-    self.sectionName.textAlignment = .center
     self.sectionName.isUserInteractionEnabled = false
 
     self.addSubview(self.sectionName)

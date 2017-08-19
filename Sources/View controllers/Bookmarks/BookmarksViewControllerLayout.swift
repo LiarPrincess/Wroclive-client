@@ -44,7 +44,7 @@ extension BookmarksViewController {
       make.height.equalTo(chevronViewSize.height)
     }
 
-    let titleAttributes           = Theme.current.textAttributes(for: .headline, color: .text)
+    let titleAttributes           = Theme.current.textAttributes(for: .headline)
     self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
@@ -94,10 +94,9 @@ extension BookmarksViewController {
       make.centerY.equalTo(self.view)
     }
 
-    let topTextAttributes = Theme.current.textAttributes(for: .subheadline, color: .text)
-    self.placeholderTitle.attributedText = NSAttributedString(string: Localization.placeholderTitle, attributes: topTextAttributes)
+    let titleAttributes = Theme.current.textAttributes(for: .subheadline, alignment: .center)
+    self.placeholderTitle.attributedText = NSAttributedString(string: Localization.placeholderTitle, attributes: titleAttributes)
     self.placeholderTitle.numberOfLines  = 0
-    self.placeholderTitle.textAlignment  = .center
     self.placeholderTitle.lineBreakMode  = .byWordWrapping
     self.placeholderView.addSubview(self.placeholderTitle)
 
@@ -107,7 +106,6 @@ extension BookmarksViewController {
 
     self.placeholderContent.attributedText = self.createPlaceholderContent()
     self.placeholderContent.numberOfLines  = 0
-    self.placeholderContent.textAlignment  = .center
     self.placeholderContent.lineBreakMode  = .byWordWrapping
     self.placeholderView.addSubview(self.placeholderContent)
 
@@ -119,13 +117,7 @@ extension BookmarksViewController {
 
   private func createPlaceholderContent() -> NSAttributedString {
     let textComponents = Localization.placeholderContent.components(separatedBy: "<star>")
-
-    let paragraphStyle = NSMutableParagraphStyle()
-    paragraphStyle.lineSpacing = Layout.Placeholder.lineSpacing
-    paragraphStyle.alignment   = .center
-
-    var textAttributes = Theme.current.textAttributes(for: .body, color: .text)
-    textAttributes[NSParagraphStyleAttributeName] = paragraphStyle
+    let textAttributes = Theme.current.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.Placeholder.lineSpacing)
 
     // build string
     let result = NSMutableAttributedString(string: textComponents[0], attributes: textAttributes)

@@ -19,21 +19,18 @@ class BookmarkCell: UITableViewCell {
   lazy var bookmarkName: UILabel = {
     let label = UILabel()
     label.numberOfLines = 0
-    label.textAlignment = .center
     return label
   }()
 
   lazy var tramLines: UILabel = {
     let label = UILabel()
     label.numberOfLines = 0
-    label.textAlignment = .center
     return label
   }()
 
   lazy var busLines: UILabel = {
     let label = UILabel()
     label.numberOfLines = 0
-    label.textAlignment = .center
     return label
   }()
 
@@ -131,7 +128,7 @@ class BookmarkCell: UITableViewCell {
   // MARK: - Methods
 
   func setUp(with viewModel: BookmarkCellViewModel) {
-    let nameAttributes = Theme.current.textAttributes(for: .subheadline, color: .text)
+    let nameAttributes = Theme.current.textAttributes(for: .subheadline, alignment: .center)
     self.bookmarkName.attributedText = NSAttributedString(string: viewModel.bookmarkName, attributes: nameAttributes)
 
     self.setLineLabel(self.tramLines, text: viewModel.tramLines)
@@ -143,13 +140,7 @@ class BookmarkCell: UITableViewCell {
   }
 
   private func setLineLabel(_ label: UILabel, text: String) {
-    let paragraphStyle = NSMutableParagraphStyle()
-    paragraphStyle.lineSpacing = Layout.LinesLabel.lineSpacing
-    paragraphStyle.alignment   = .center
-
-    var textAttributes = Theme.current.textAttributes(for: .body, color: .tint)
-    textAttributes[NSParagraphStyleAttributeName] = paragraphStyle
-
+    let textAttributes = Theme.current.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.LinesLabel.lineSpacing, color: .tint)
     label.isHidden       = text.isEmpty
     label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
   }

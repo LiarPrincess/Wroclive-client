@@ -64,9 +64,8 @@ class VehicleAnnotationView: MKAnnotationView {
   private func updateLabel(for annotation: VehicleAnnotation) {
     let color: Theme.Color = annotation.line.type == .bus ? .bus : .tram
 
-    let textAttributes = Theme.current.textAttributes(for: .body, color: color)
+    let textAttributes = Theme.current.textAttributes(for: .body, alignment: .center, color: color)
     self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name, attributes: textAttributes)
-    self.pinLabel.textAlignment  = .center
 
     let pinSize    = Layout.pinImageSize
     let labelSize  = self.pinLabel.intrinsicContentSize
