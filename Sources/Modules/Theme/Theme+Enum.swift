@@ -26,9 +26,4 @@ extension Theme {
     case cardPanel
     case cardPanelHeader
   }
-
-  enum TableSeparatorStyle {
-    case accent
-    case transparent
-  }
 }

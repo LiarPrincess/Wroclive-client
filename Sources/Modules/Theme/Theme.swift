@@ -81,13 +81,6 @@ class Theme {
   func applyToolbarStyle(_ toolbar: UIToolbar) {
     toolbar.barStyle = self.colorScheme.barStyle
   }
-
-  func applyTableViewSeparatorStyle(_ tableView: UITableView, separatorStyle: TableSeparatorStyle) {
-    switch separatorStyle {
-    case .accent:      tableView.separatorColor = self.colorScheme.backgroundAccent
-    case .transparent: tableView.separatorColor = UIColor(white: 0.0, alpha: 0.0)
-    }
-  }
 }
 
 // MARK: - Content size category observer

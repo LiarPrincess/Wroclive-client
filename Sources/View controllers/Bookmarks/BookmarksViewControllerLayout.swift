@@ -73,6 +73,10 @@ extension BookmarksViewController {
     self.bookmarksTable.backgroundColor = Theme.current.colorScheme.background
     self.bookmarksTable.dataSource      = self.bookmarksTableDataSource
     self.bookmarksTable.delegate        = self
+
+    // remove empty cells below (http://swiftandpainless.com/table-view-footer-in-plain-table-view/)
+    self.bookmarksTable.tableFooterView = UIView(frame: .zero)
+
     self.view.insertSubview(self.bookmarksTable, belowSubview: self.headerView)
 
     self.bookmarksTable.snp.makeConstraints { make in
