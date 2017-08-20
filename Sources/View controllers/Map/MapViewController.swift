@@ -37,15 +37,13 @@ class MapViewController: UIViewController {
     self.mapView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
-  }
 
-  override func viewDidAppear(_ animated: Bool) {
     firstly { () -> Promise<Void> in
       Managers.map.requestInUseAuthorization()
       return Promise(value: ())
-    }
-    .then { return Managers.map.getDefaultRegion() }
-    .then { self.mapView.setRegion($0, animated: false) }
+      }
+      .then { return Managers.map.getDefaultRegion() }
+      .then { self.mapView.setRegion($0, animated: false) }
   }
 
   override var bottomLayoutGuide: UILayoutSupport {

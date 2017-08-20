@@ -31,10 +31,19 @@ class Theme {
                       lineSpacing:   CGFloat         = 0.0,
                       color:         Color           = Color.text
   ) -> [String:Any] {
+    let colorValue = self.colorValue(color)
+    return self.textAttributes(for: textStyle, alignment: alignment, lineSpacing: lineSpacing, color: colorValue)
+  }
+
+  func textAttributes(for textStyle: TextStyle,
+                      alignment:     NSTextAlignment = .natural,
+                      lineSpacing:   CGFloat         = 0.0,
+                      color:         UIColor
+    ) -> [String:Any] {
     return [
       NSFontAttributeName:            self.fontValue(textStyle),
       NSKernAttributeName:            self.trackingValue(textStyle),
-      NSForegroundColorAttributeName: self.colorValue(color),
+      NSForegroundColorAttributeName: color,
       NSParagraphStyleAttributeName:  self.paragraphStyle(alignment, lineSpacing)
     ]
   }

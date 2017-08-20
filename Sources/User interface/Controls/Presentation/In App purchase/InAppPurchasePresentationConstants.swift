@@ -8,6 +8,25 @@ import UIKit
 struct InAppPurchasePresentationConstants {
 
   struct Layout {
+    static let leftOffset:  CGFloat = 16.0
+    static let rightOffset: CGFloat = leftOffset
+
+    struct Page {
+      struct Image {
+        static let topOffset: CGFloat = 8.0
+      }
+
+      struct Title {
+        static let topOffset: CGFloat = 8.0
+      }
+
+      struct Caption {
+        static let topOffset:    CGFloat = 5.0
+        static let bottomOffset: CGFloat = 0.0
+        static let lineSpacing:  CGFloat = 2.0
+      }
+    }
+
     struct UpgradeButton {
       static let topOffset:    CGFloat      = 8.0
       static let cornerRadius: CGFloat      = 5.0
@@ -16,8 +35,6 @@ struct InAppPurchasePresentationConstants {
 
     struct RestoreLabel {
       static let topOffset:   CGFloat =  8.0
-      static let leftOffset:  CGFloat = 16.0
-      static let rightOffset: CGFloat = leftOffset
     }
 
     struct PageControl {
@@ -47,13 +64,13 @@ struct InAppPurchasePresentationConstants {
     static let restore = "Previously upgraded? Restore Purchase"
 
     struct BookmarksPage {
-      static let image   = #imageLiteral(resourceName: "Jump")
+      static let image   = #imageLiteral(resourceName: "Image_InApp_Bookmarks")
       static let title   = "Unlimited Bookmarks"
       static let caption = "Save more than 2 bookmarks for immediate bus arrival information"
     }
 
     struct ColorsPage {
-      static let image   = #imageLiteral(resourceName: "Jump")
+      static let image   = #imageLiteral(resourceName: "Image_InApp_Colors")
       static let title   = "Colour pack"
       static let caption = "Brighten up your life and personalise\nJump to your favourite colour"
     }

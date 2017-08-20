@@ -5,6 +5,9 @@
 
 import UIKit
 
+private typealias Constants    = ConfigurationViewControllerConstants
+private typealias Localization = Constants.Localization
+
 class ConfigurationViewController: UIViewController {
 
   // MARK: - Properties
@@ -56,9 +59,46 @@ extension ConfigurationViewController: UIScrollViewDelegate {
   }
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
+// MARK: - UITableViewDelegate
 
-extension ConfigurationViewController: UITableViewDelegate, UITableViewDataSource {
+extension ConfigurationViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    switch (indexPath.section, indexPath.row) {
+    case (0, 0): self.colorsCellPressed()
+    case (1, 0): self.shareCellPressed()
+    case (1, 1): self.tutorialCellPressed()
+    case (1, 2): self.rateCellPressed()
+    default: fatalError("Unexpected row")
+    }
+    tableView.deselectRow(at: indexPath, animated: true)
+  }
+
+  private func colorsCellPressed() {
+    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
+  }
+
+  private func shareCellPressed() {
+    let text    = Localization.Share.Content.text
+    let image   = Localization.Share.Content.image
+    let items   = [text, image] as [Any] // text, image
+
+    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+    activityViewController.excludedActivityTypes = [.assignToContact, .saveToCameraRoll, .addToReadingList, .postToFlickr, .postToVimeo, .openInIBooks, .print]
+    self.present(activityViewController, animated: true, completion: nil)
+  }
+
+  private func tutorialCellPressed() {
+    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
+  }
+
+  private func rateCellPressed() {
+    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
+  }
+}
+
+// MARK: - UITableViewDataSource
+
+extension ConfigurationViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }

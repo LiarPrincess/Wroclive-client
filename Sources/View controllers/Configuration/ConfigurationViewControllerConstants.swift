@@ -29,12 +29,27 @@ struct ConfigurationViewControllerConstants {
 
   struct Localization {
     static let Title = "Settings"
-
-    static let ItemColors   = "Colors"
-    static let ItemShare    = "Tell a friend"
-    static let ItemTutorial = "Tutorial"
-    static let ItemRate     = "Rate"
-
     static let Footer = "Data provided by MPK Wrocław\nKek version 1.0"
+
+    struct Colors {
+      static let title = "Colors"
+    }
+
+    struct Share {
+      static let title = "Share"
+
+      struct Content {
+        static let text  = "Make London’s buses work for you. Check out Jump for iPhone. www.kekapp.pl"
+        static let image = #imageLiteral(resourceName: "Image_Share")
+      }
+    }
+
+    struct Tutorial {
+      static let title = "Tutorial"
+    }
+
+    struct Rate {
+      static let title = "Rate"
+    }
   }
 }

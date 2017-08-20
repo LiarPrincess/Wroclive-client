@@ -13,13 +13,6 @@ private typealias Localization = Constants.Localization
 extension InAppPurchasePresentation {
 
   func initLayout() {
-//    let imageView = UIImageView(image: #imageLiteral(resourceName: "Jump"))
-//    self.view.addSubview(imageView)
-//    imageView.snp.makeConstraints { make in
-//      make.top.equalToSuperview().offset(100.0)
-//      make.left.bottom.right.equalToSuperview()
-//    }
-
     self.initGradient()
     self.initPageViewController()
     self.initPurchaseButton()
@@ -86,8 +79,8 @@ extension InAppPurchasePresentation {
     self.view.addSubview(self.restorePurchaseLabel)
     self.restorePurchaseLabel.snp.makeConstraints { make in
       make.top.equalTo(self.purchaseButton.snp.bottom).offset(Layout.RestoreLabel.topOffset)
-      make.left.equalToSuperview().offset(Layout.RestoreLabel.leftOffset)
-      make.right.equalToSuperview().offset(-Layout.RestoreLabel.rightOffset)
+      make.left.equalToSuperview().offset(Layout.leftOffset)
+      make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
   }
 

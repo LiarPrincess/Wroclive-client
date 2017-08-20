@@ -95,16 +95,16 @@ extension ConfigurationViewController {
   private func initConfigurationTableCells() {
     let textAttributes = Managers.theme.textAttributes(for: .body)
 
-    self.colorsCell.textLabel?.attributedText = NSAttributedString(string: Localization.ItemColors, attributes: textAttributes)
+    self.colorsCell.textLabel?.attributedText = NSAttributedString(string: Localization.Colors.title, attributes: textAttributes)
     self.colorsCell.accessoryType = .disclosureIndicator
 
-    self.shareCell.textLabel?.attributedText = NSAttributedString(string: Localization.ItemShare, attributes: textAttributes)
+    self.shareCell.textLabel?.attributedText = NSAttributedString(string: Localization.Share.title, attributes: textAttributes)
     self.shareCell.accessoryType = .disclosureIndicator
 
-    self.tutorialCell.textLabel?.attributedText = NSAttributedString(string: Localization.ItemTutorial, attributes: textAttributes)
+    self.tutorialCell.textLabel?.attributedText = NSAttributedString(string: Localization.Tutorial.title, attributes: textAttributes)
     self.tutorialCell.accessoryType = .disclosureIndicator
 
-    self.rateCell.textLabel?.attributedText = NSAttributedString(string: Localization.ItemRate, attributes: textAttributes)
+    self.rateCell.textLabel?.attributedText = NSAttributedString(string: Localization.Rate.title, attributes: textAttributes)
     self.rateCell.accessoryType = .disclosureIndicator
   }
 
