@@ -56,14 +56,18 @@ class Theme {
     case .subheadline: return self.font.subheadline
     case .body:        return self.font.body
     case .bodyBold:    return self.font.bodyBold
+    case .caption:     return self.font.caption
     }
   }
 
   private func trackingValue(_ textStyle: TextStyle) -> CGFloat {
     switch textStyle {
-    case .headline:        return self.font.headlineTracking
-    case .subheadline:     return self.font.subheadlineTracking
-    case .body, .bodyBold: return 0.0
+    case .headline:    return self.font.headlineTracking
+    case .subheadline: return self.font.subheadlineTracking
+    case .body,
+         .bodyBold,
+         .caption:
+      return 0.0
     }
   }
 

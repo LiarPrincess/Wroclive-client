@@ -308,7 +308,7 @@ public class StyleKit : NSObject {
     bezierPath.move(to: CGPoint(x: 1.75, y: 1.75))
     bezierPath.addCurve(to: CGPoint(x: 58.25, y: 58.25), controlPoint1: CGPoint(x: 56.61, y: 56.61), controlPoint2: CGPoint(x: 58.25, y: 58.25))
     UIColor.black.setStroke()
-    bezierPath.lineWidth = 5
+    bezierPath.lineWidth = 7
     bezierPath.lineCapStyle = .round
     bezierPath.stroke()
 
@@ -322,7 +322,7 @@ public class StyleKit : NSObject {
     bezier2Path.move(to: CGPoint(x: 0, y: 0))
     bezier2Path.addCurve(to: CGPoint(x: 56.5, y: 56.5), controlPoint1: CGPoint(x: 54.86, y: 54.86), controlPoint2: CGPoint(x: 56.5, y: 56.5))
     UIColor.black.setStroke()
-    bezier2Path.lineWidth = 5
+    bezier2Path.lineWidth = 7
     bezier2Path.lineCapStyle = .round
     bezier2Path.stroke()
 

@@ -20,6 +20,7 @@ extension Theme {
     case subheadline
     case body
     case bodyBold
+    case caption
   }
 
   enum ViewStyle {

@@ -6,14 +6,14 @@
 import UIKit
 
 protocol FontProvider {
-  var headline:         UIFont  { get }
-  var headlineTracking: CGFloat { get }
-
-  var subheadline:         UIFont  { get }
-  var subheadlineTracking: CGFloat { get }
-
+  var headline:    UIFont { get }
+  var subheadline: UIFont { get }
   var body:        UIFont { get }
   var bodyBold:    UIFont { get }
+  var caption:     UIFont { get }
+
+  var headlineTracking:    CGFloat { get }
+  var subheadlineTracking: CGFloat { get }
 
   mutating func recalculateSizes()
 }

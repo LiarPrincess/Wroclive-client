@@ -34,8 +34,8 @@ extension ConfigurationViewController {
     navigationItem.title = Localization.Title
 
     let closeImage = StyleKit.drawCloseTemplateImage(size: Layout.NavigationBar.closeImageSize)
-
     let closeButton = UIBarButtonItem(image: closeImage, style: .plain, target: self, action: #selector(closeButtonPressed))
+
     navigationItem.rightBarButtonItem = closeButton
     self.navigationBar.setItems([navigationItem], animated: false)
   }
@@ -56,6 +56,10 @@ extension ConfigurationViewController {
 
     self.initInAppPurchaseView()
     self.initConfigurationTable()
+
+    let screenHeight = UIScreen.main.bounds.height
+    let topInset     = -1.0 * screenHeight * Layout.Content.scrollHiddenPercent
+    self.scrollView.contentInset = UIEdgeInsets(top: topInset, left: 0.0, bottom: 0.0, right: 0.0)
   }
 
   private func initInAppPurchaseView() {
@@ -66,7 +70,7 @@ extension ConfigurationViewController {
     let screenHeight = UIScreen.main.bounds.height
     self.inAppPurchasePresentation.view.snp.makeConstraints { make in
       make.top.centerX.width.equalToSuperview()
-      make.height.equalTo(screenHeight)
+      make.height.equalTo(screenHeight + 1.0)
     }
 
     self.inAppPurchasePresentation.didMove(toParentViewController: self)
@@ -105,7 +109,7 @@ extension ConfigurationViewController {
   }
 
   private func initConfigurationTableFooter() {
-    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
+    let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
     let text           = NSAttributedString(string: Localization.Footer, attributes: textAttributes)
 
     let footerFrame = CGRect(x: 0.0, y: 0.0, width: 1.0, height: self.calculateMinFooterHeight(text))

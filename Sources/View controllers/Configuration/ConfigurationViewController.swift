@@ -8,12 +8,13 @@ import UIKit
 class ConfigurationViewController: UIViewController {
 
   // MARK: - Properties
+
   let navigationBar = UINavigationBar()
 
   let scrollView  = UIScrollView()
   let contentView = UIView()
 
-  let inAppPurchasePresentation = InAppPurchasePresentationViewController()
+  let inAppPurchasePresentation = InAppPurchasePresentation()
 
   let configurationTable = IntrinsicTableView(frame: .zero, style: .grouped)
   let colorsCell   = UITableViewCell(style: .value1, reuseIdentifier: nil)
@@ -45,14 +46,12 @@ extension ConfigurationViewController: UINavigationBarDelegate {
 
 extension ConfigurationViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    let currentScrollPosition = scrollView.contentOffset.y
+    self.disableTopScrolling(scrollView)
+  }
 
-    let navigationBarHeight = self.navigationBar.frame.maxY
-    let navigationBarHeightInScrollView = -navigationBarHeight
-
-    let isBelowNavigationBar = currentScrollPosition < navigationBarHeightInScrollView
-    if isBelowNavigationBar {
-      scrollView.contentOffset.y = navigationBarHeightInScrollView
+  private func disableTopScrolling(_ scrollView: UIScrollView) {
+    if scrollView.contentOffset.y < 0 {
+      scrollView.contentOffset.y = 0.0
     }
   }
 }
@@ -60,7 +59,6 @@ extension ConfigurationViewController: UIScrollViewDelegate {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension ConfigurationViewController: UITableViewDelegate, UITableViewDataSource {
-
   func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }

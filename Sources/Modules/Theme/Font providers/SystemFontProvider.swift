@@ -10,6 +10,7 @@ struct SystemFontProvider: FontProvider {
   private(set) var subheadline = UIFont()
   private(set) var body        = UIFont()
   private(set) var bodyBold    = UIFont()
+  private(set) var caption     = UIFont()
 
   var headlineTracking:    CGFloat { return 0.50 }
   var subheadlineTracking: CGFloat { return 0.25 }
@@ -26,5 +27,6 @@ struct SystemFontProvider: FontProvider {
     self.subheadline = UIFont.systemFont(ofSize: defaultFontSize +  5.0, weight: UIFontWeightBold)
     self.body        = UIFont.systemFont(ofSize: defaultFontSize,        weight: UIFontWeightRegular)
     self.bodyBold    = UIFont.systemFont(ofSize: defaultFontSize,        weight: UIFontWeightBold)
+    self.caption     = UIFont.systemFont(ofSize: defaultFontSize -  2.0, weight: UIFontWeightRegular)
   }
 }
