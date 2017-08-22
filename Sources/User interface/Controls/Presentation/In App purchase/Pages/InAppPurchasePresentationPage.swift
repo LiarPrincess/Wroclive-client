@@ -25,7 +25,7 @@ class InAppPurchasePresentationPage: UIViewController {
   // MARK: - Init
 
   init(_ image: UIImage, _ title: String, _ caption: String) {
-    self.image    = image
+    self.image       = image
     self.titleText   = title
     self.captionText = caption
     super.init(nibName: nil, bundle: nil)

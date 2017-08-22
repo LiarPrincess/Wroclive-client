@@ -14,7 +14,7 @@ class SearchManagerImpl: SearchManager {
       ?? SearchState(withSelected: .tram, lines: [])
   }()
 
-  private var archive: URL = {
+  private lazy var archive: URL = {
     let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     return documentsDirectory.appendingPathComponent("search")
   }()

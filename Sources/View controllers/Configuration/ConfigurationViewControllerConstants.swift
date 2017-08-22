@@ -20,10 +20,9 @@ struct ConfigurationViewControllerConstants {
     }
 
     struct Footer {
-      static let topInset:    CGFloat =  5.0
-      static let bottomInset: CGFloat = 20.0
-
-      static let lineSpacing: CGFloat = 5.0
+      static let topOffset:    CGFloat =  5.0
+      static let bottomOffset: CGFloat = 20.0
+      static let lineSpacing:  CGFloat =  5.0
     }
   }
 
@@ -31,25 +30,11 @@ struct ConfigurationViewControllerConstants {
     static let Title = "Settings"
     static let Footer = "Data provided by MPK Wrocław\nKek version 1.0"
 
-    struct Colors {
-      static let title = "Colors"
-    }
-
-    struct Share {
-      static let title = "Share"
-
-      struct Content {
-        static let text  = "Make London’s buses work for you. Check out Jump for iPhone. www.kekapp.pl"
-        static let image = #imageLiteral(resourceName: "Image_Share")
-      }
-    }
-
-    struct Tutorial {
-      static let title = "Tutorial"
-    }
-
-    struct Rate {
-      static let title = "Rate"
+    struct Cells {
+      static let colors   = "Colors"
+      static let share    = "Share"
+      static let tutorial = "Tutorial"
+      static let rate     = "Rate"
     }
   }
 }

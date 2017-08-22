@@ -31,7 +31,7 @@ extension InAppPurchasePresentation {
   private func initPageViewController() {
     self.initPages()
 
-    self.pageViewController.delegate = self
+    self.pageViewController.delegate   = self
     self.pageViewController.dataSource = self
     self.pageViewController.setViewControllers([self.pages[0]], direction: .forward, animated: false, completion: nil)
     self.addChildViewController(self.pageViewController)
@@ -49,24 +49,24 @@ extension InAppPurchasePresentation {
     typealias ColorsPage    = Localization.ColorsPage
 
     let bookmarksPage = InAppPurchasePresentationPage(BookmarksPage.image, BookmarksPage.title, BookmarksPage.caption)
-    let comorsPage    = InAppPurchasePresentationPage(ColorsPage.image, ColorsPage.title, ColorsPage.caption)
+    let colorsPage    = InAppPurchasePresentationPage(ColorsPage.image,    ColorsPage.title,    ColorsPage.caption)
 
-    self.pages = [bookmarksPage, comorsPage]
+    self.pages = [bookmarksPage, colorsPage]
   }
 
   private func initPurchaseButton() {
     let attributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: .background)
     let text = NSAttributedString(string: Localization.upgrade, attributes: attributes)
 
-    self.purchaseButton.setAttributedTitle(text, for: .normal)
-    self.purchaseButton.layer.cornerRadius = Layout.UpgradeButton.cornerRadius
-    self.purchaseButton.clipsToBounds      = true
-    self.purchaseButton.backgroundColor    = Colors.UpgradeButton.background
-    self.purchaseButton.contentEdgeInsets  = Layout.UpgradeButton.edgeInsets
-    self.purchaseButton.addTarget(self, action: #selector(purchaseButtonPressed), for: .touchUpInside)
+    self.upgradeButton.setAttributedTitle(text, for: .normal)
+    self.upgradeButton.layer.cornerRadius = Layout.UpgradeButton.cornerRadius
+    self.upgradeButton.clipsToBounds      = true
+    self.upgradeButton.backgroundColor    = Colors.UpgradeButton.background
+    self.upgradeButton.contentEdgeInsets  = Layout.UpgradeButton.edgeInsets
+    self.upgradeButton.addTarget(self, action: #selector(upgradeButtonPressed), for: .touchUpInside)
 
-    self.view.addSubview(self.purchaseButton)
-    self.purchaseButton.snp.makeConstraints { make in
+    self.view.addSubview(self.upgradeButton)
+    self.upgradeButton.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
       make.top.equalTo(self.pageViewController.view.snp.bottom).offset(Layout.UpgradeButton.topOffset)
     }
@@ -78,7 +78,7 @@ extension InAppPurchasePresentation {
 
     self.view.addSubview(self.restorePurchaseLabel)
     self.restorePurchaseLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.purchaseButton.snp.bottom).offset(Layout.RestoreLabel.topOffset)
+      make.top.equalTo(self.upgradeButton.snp.bottom).offset(Layout.RestoreLabel.topOffset)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }

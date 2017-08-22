@@ -78,13 +78,7 @@ extension ConfigurationViewController: UITableViewDelegate {
   }
 
   private func shareCellPressed() {
-    let text    = Localization.Share.Content.text
-    let image   = Localization.Share.Content.image
-    let items   = [text, image] as [Any] // text, image
-
-    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-    activityViewController.excludedActivityTypes = [.assignToContact, .saveToCameraRoll, .addToReadingList, .postToFlickr, .postToVimeo, .openInIBooks, .print]
-    self.present(activityViewController, animated: true, completion: nil)
+    Managers.app.showShareActivity(in: self)
   }
 
   private func tutorialCellPressed() {
@@ -117,7 +111,7 @@ extension ConfigurationViewController: UITableViewDataSource {
     case (1, 0): return self.shareCell
     case (1, 1): return self.tutorialCell
     case (1, 2): return self.rateCell
-    default: fatalError("Unexpected row")
+    default: fatalError("Unexpected (section, row)")
     }
   }
 }

@@ -34,7 +34,7 @@ struct InAppPurchasePresentationConstants {
     }
 
     struct RestoreLabel {
-      static let topOffset:   CGFloat =  8.0
+      static let topOffset: CGFloat =  8.0
     }
 
     struct PageControl {
@@ -75,5 +75,4 @@ struct InAppPurchasePresentationConstants {
       static let caption = "Brighten up your life and personalise\nJump to your favourite colour"
     }
   }
-
 }

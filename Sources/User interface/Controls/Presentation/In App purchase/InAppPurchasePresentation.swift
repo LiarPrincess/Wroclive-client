@@ -13,7 +13,7 @@ class InAppPurchasePresentation: UIViewController {
   let pageControl        = UIPageControl()
   var pages              = [UIViewController]()
 
-  let purchaseButton       = UIButton(type: .roundedRect)
+  let upgradeButton        = UIButton(type: .roundedRect)
   let restorePurchaseLabel = UILabel()
 
   // MARK: - Overriden
@@ -25,7 +25,7 @@ class InAppPurchasePresentation: UIViewController {
 
   // MARK: - Actions
 
-  @objc func purchaseButtonPressed() {
+  @objc func upgradeButtonPressed() {
     Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
   }
 }
@@ -46,8 +46,7 @@ extension InAppPurchasePresentation: UIPageViewControllerDelegate, UIPageViewCon
   }
 
   func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-    if let selectedPage = self.pageViewController.viewControllers?.first,
-       let index = self.pages.index(of: selectedPage) {
+    if let selectedPage = self.pageViewController.viewControllers?.first, let index = self.pages.index(of: selectedPage) {
       self.pageControl.currentPage = index
     }
   }

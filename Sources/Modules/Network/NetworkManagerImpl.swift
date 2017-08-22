@@ -15,9 +15,9 @@ class NetworkManagerImpl: NetworkManager {
 
   // MARK: - Properties
 
-  private let reachability = Alamofire.NetworkReachabilityManager(host: "www.google.com")
+  private lazy var reachability = Alamofire.NetworkReachabilityManager(host: "www.google.com")
 
-  private let session: SessionManager = {
+  private lazy var session: SessionManager = {
     var headers = Alamofire.SessionManager.defaultHTTPHeaders
     headers["User-Agent"] = NetworkManagerImpl.createUserAgentString()
 
@@ -80,20 +80,15 @@ class NetworkManagerImpl: NetworkManager {
   // Example: 'Kek/1.0 (com.kekapp.kek; iPhone iOS 10.3.1)'
   private static func createUserAgentString() -> String {
     let deviceOSVersion: String = {
-      let device = UIDevice.current
-      let model         = device.model         // iPhone, iPod touch
-      let systemName    = device.systemName    // iOS, watchOS, tvOS
-      let systemVersion = device.systemVersion // 1.2
+      let model         = Managers.device.model
+      let systemName    = Managers.device.systemName
+      let systemVersion = Managers.device.systemVersion
       return "\(model) \(systemName) \(systemVersion)"
     }()
 
-    if let info = Bundle.main.infoDictionary {
-      let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
-      let appVersion = info["CFBundleShortVersionString"]     as? String ?? "Unknown"
-      let bundle     = info[kCFBundleIdentifierKey as String] as? String ?? "Unknown"
-      return "\(executable)/\(appVersion) (\(bundle); \(deviceOSVersion))"
-    }
-
-    return deviceOSVersion
+    let executable = Managers.app.name
+    let appVersion = Managers.app.version
+    let bundle     = Managers.app.bundle
+    return "\(executable)/\(appVersion) (\(bundle); \(deviceOSVersion))"
   }
 }

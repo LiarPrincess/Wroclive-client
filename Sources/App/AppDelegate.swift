@@ -28,8 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Managers.map       = MapManagerImpl()
     Managers.search    = SearchManagerImpl()
     Managers.bookmarks = BookmarksManagerImpl()
+
     Managers.alert     = AlertManagerImpl()
     Managers.network   = NetworkManagerImpl()
+
+    Managers.app       = AppManagerImpl()
+    Managers.device    = DeviceManagerImpl()
+
     Managers.theme     = Theme(colorScheme: .light, font: SystemFontProvider())
   }
 }
