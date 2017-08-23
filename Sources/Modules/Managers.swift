@@ -13,6 +13,7 @@ struct Managers {
 
   static var app:       AppManager!
   static var device:    DeviceManager!
+  static var appStore:  AppStoreManager!
 
   static var theme:     Theme!
 

@@ -108,7 +108,11 @@ extension ConfigurationViewController {
 
   private func initConfigurationTableFooter() {
     let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
-    let text           = NSAttributedString(string: Localization.Footer, attributes: textAttributes)
+
+    let appVersion = Managers.app.version
+    let footerText = Localization.Footer.replacingOccurrences(of: "<version>", with: appVersion, options: .caseInsensitive, range: nil)
+
+    let text = NSAttributedString(string: footerText, attributes: textAttributes)
 
     let footerFrame = CGRect(x: 0.0, y: 0.0, width: 1.0, height: self.calculateMinFooterHeight(text))
     self.configurationTable.tableFooterView = UIView(frame: footerFrame)

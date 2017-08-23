@@ -26,7 +26,11 @@ class InAppPurchasePresentation: UIViewController {
   // MARK: - Actions
 
   @objc func upgradeButtonPressed() {
-    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
+    Managers.appStore.buyUpgrade()
+  }
+
+  @objc func restorePurchaseLabelPressed(tapGestureRecognizer: UITapGestureRecognizer) {
+    Managers.appStore.restorePurchase()
   }
 }
 

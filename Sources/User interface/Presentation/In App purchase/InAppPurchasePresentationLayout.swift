@@ -73,8 +73,20 @@ extension InAppPurchasePresentation {
   }
 
   private func initRestorePurchaseLabel() {
-    let attributes = Managers.theme.textAttributes(for: .caption, alignment: .center, color: .backgroundAccent)
-    self.restorePurchaseLabel.attributedText = NSAttributedString(string: Localization.restore, attributes: attributes)
+    let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, color: .backgroundAccent)
+
+    var underlineAttributes = textAttributes
+    underlineAttributes[NSUnderlineStyleAttributeName] = NSUnderlineStyle.styleSingle.rawValue
+
+    let text = NSMutableAttributedString(string: Localization.restoreText, attributes: textAttributes)
+    text.append(NSAttributedString(string: " ", attributes: textAttributes))
+    text.append(NSAttributedString(string: Localization.restoreLink, attributes: underlineAttributes))
+
+    self.restorePurchaseLabel.attributedText = text
+    self.restorePurchaseLabel.isUserInteractionEnabled = true
+
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(restorePurchaseLabelPressed(tapGestureRecognizer:)))
+    restorePurchaseLabel.addGestureRecognizer(tapGesture)
 
     self.view.addSubview(self.restorePurchaseLabel)
     self.restorePurchaseLabel.snp.makeConstraints { make in

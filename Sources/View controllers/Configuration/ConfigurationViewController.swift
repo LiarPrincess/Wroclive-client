@@ -64,29 +64,13 @@ extension ConfigurationViewController: UIScrollViewDelegate {
 extension ConfigurationViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch (indexPath.section, indexPath.row) {
-    case (0, 0): self.colorsCellPressed()
-    case (1, 0): self.shareCellPressed()
-    case (1, 1): self.tutorialCellPressed()
-    case (1, 2): self.rateCellPressed()
+    case (0, 0): break
+    case (1, 0): Managers.app.showShareActivity(in: self)
+    case (1, 1): break
+    case (1, 2): Managers.appStore.showRateControl()
     default: fatalError("Unexpected row")
     }
     tableView.deselectRow(at: indexPath, animated: true)
-  }
-
-  private func colorsCellPressed() {
-    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
-  }
-
-  private func shareCellPressed() {
-    Managers.app.showShareActivity(in: self)
-  }
-
-  private func tutorialCellPressed() {
-    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
-  }
-
-  private func rateCellPressed() {
-    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
   }
 }
 

@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     Managers.app       = AppManagerImpl()
     Managers.device    = DeviceManagerImpl()
+    Managers.appStore  = AppStoreManagerImpl()
 
     Managers.theme     = Theme(colorScheme: .light, font: SystemFontProvider())
   }

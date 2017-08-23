@@ -28,7 +28,7 @@ struct ConfigurationViewControllerConstants {
 
   struct Localization {
     static let Title = "Settings"
-    static let Footer = "Data provided by MPK Wrocław\nKek version 1.0"
+    static let Footer = "Data provided by MPK Wrocław\nKek version <version>"
 
     struct Cells {
       static let colors   = "Colors"

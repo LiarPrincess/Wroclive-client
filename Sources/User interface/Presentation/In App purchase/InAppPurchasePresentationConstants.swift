@@ -61,7 +61,8 @@ struct InAppPurchasePresentationConstants {
 
   struct Localization {
     static let upgrade = "Upgrade $1.99"
-    static let restore = "Previously upgraded? Restore Purchase"
+    static let restoreText = "Previously upgraded?"
+    static let restoreLink = "Restore Purchase"
 
     struct BookmarksPage {
       static let image   = #imageLiteral(resourceName: "Image_InApp_Bookmarks")
