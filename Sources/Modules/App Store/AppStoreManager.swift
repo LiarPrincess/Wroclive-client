@@ -15,5 +15,5 @@ protocol AppStoreManager {
   func restorePurchase()
 
   /// Asks user to rate app
-  func showRateControl()
+  func rateApp()
 }
