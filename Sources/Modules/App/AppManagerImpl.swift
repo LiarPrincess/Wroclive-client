@@ -15,8 +15,9 @@ class AppManagerImpl: AppManager {
   var version: String { return self.bundleInformation(key: "CFBundleShortVersionString")     ?? "1.0" }
   var bundle:  String { return self.bundleInformation(key: kCFBundleIdentifierKey as String) ?? "com.kekapp.kek" }
 
-  var website: String { return "www.kekapp.pl"  }
-  var mail:    String { return "mail@kekapp.pl" }
+  var website:      String { return "www.kekapp.pl"  }
+  var websiteHttps: String { return "https://\(self.website)" }
+  var mail:         String { return "mail@kekapp.pl" }
 
   private func bundleInformation(key: String) -> String? {
     return Bundle.main.infoDictionary?[key] as? String
@@ -27,6 +28,12 @@ class AppManagerImpl: AppManager {
   var hasSeenTutorialPresentation: Bool { // -> user defaults
     get { return true }
     set { }
+  }
+
+  // MARK: - Website
+
+  func openWebsite() {
+    UIApplication.shared.open(URL(string: self.websiteHttps)!)
   }
 
   // MARK: - Share

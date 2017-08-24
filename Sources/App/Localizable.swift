@@ -36,6 +36,7 @@ struct Localizable {
       static var colors:   String { return LocalizedString("Configuration_Cell_Colours") }
       static var share:    String { return LocalizedString("Configuration_Cell_Share") }
       static var tutorial: String { return LocalizedString("Configuration_Cell_Tutorial") }
+      static var contact:  String { return LocalizedString("Configuration_Cell_Contact") }
       static var rate:     String { return LocalizedString("Configuration_Cell_Rate") }
     }
   }

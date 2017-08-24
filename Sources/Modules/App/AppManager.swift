@@ -21,13 +21,21 @@ protocol AppManager {
   /// Website (e.g. www.kekapp.pl)
   var website: String { get }
 
+  /// Full website url (e.g. https://www.kekapp.pl)
+  var websiteHttps: String { get }
+
   /// Mail (e.g. mail@kekapp.pl)
   var mail: String { get }
 
   // MARK: - Tutorial
 
   /// Has the user moved past tutorial?
-  var hasSeenTutorialPresentation: Bool { get set } // -> user defaults
+  var hasSeenTutorialPresentation: Bool { get set }
+
+  // MARK: - Website
+
+  /// Open Kek website in Safari
+  func openWebsite()
 
   // MARK: - Share
 

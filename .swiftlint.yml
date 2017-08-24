@@ -16,7 +16,3 @@ force_cast: warning
 
 included:
   - Sources
-
-excluded:
-  - Sources/App/Assets
-  

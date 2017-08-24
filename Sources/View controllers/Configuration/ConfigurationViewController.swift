@@ -22,6 +22,7 @@ class ConfigurationViewController: UIViewController {
   let colorsCell   = UITableViewCell(style: .value1, reuseIdentifier: nil)
   let shareCell    = UITableViewCell(style: .value1, reuseIdentifier: nil)
   let tutorialCell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+  let contactCell  = UITableViewCell(style: .value1, reuseIdentifier: nil)
   let rateCell     = UITableViewCell(style: .value1, reuseIdentifier: nil)
 
   // MARK: - Overriden
@@ -66,7 +67,8 @@ extension ConfigurationViewController: UITableViewDelegate {
     case (0, 0): break
     case (1, 0): Managers.app.showShareActivity(in: self)
     case (1, 1): break
-    case (1, 2): Managers.appStore.showRateControl()
+    case (1, 2): Managers.app.openWebsite()
+    case (1, 3): break
     default: fatalError("Unexpected row")
     }
     tableView.deselectRow(at: indexPath, animated: true)
@@ -83,7 +85,7 @@ extension ConfigurationViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0: return 1
-    case 1: return 3
+    case 1: return 4
     default: fatalError("Unexpected section")
     }
   }
@@ -93,7 +95,8 @@ extension ConfigurationViewController: UITableViewDataSource {
     case (0, 0): return self.colorsCell
     case (1, 0): return self.shareCell
     case (1, 1): return self.tutorialCell
-    case (1, 2): return self.rateCell
+    case (1, 2): return self.contactCell
+    case (1, 3): return self.rateCell
     default: fatalError("Unexpected (section, row)")
     }
   }

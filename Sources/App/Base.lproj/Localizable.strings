@@ -39,6 +39,7 @@
 "Configuration_Cell_Colours"  = "Colours";
 "Configuration_Cell_Share"    = "Share";
 "Configuration_Cell_Tutorial" = "Tutorial";
+"Configuration_Cell_Contact"  = "Contact";
 "Configuration_Cell_Rate"     = "Rate app";
 
 /* Share */

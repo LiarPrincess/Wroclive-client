@@ -102,6 +102,9 @@ extension ConfigurationViewController {
     self.tutorialCell.textLabel?.attributedText = NSAttributedString(string: Localization.Cells.tutorial, attributes: textAttributes)
     self.tutorialCell.accessoryType = .disclosureIndicator
 
+    self.contactCell.textLabel?.attributedText = NSAttributedString(string: Localization.Cells.contact, attributes: textAttributes)
+    self.contactCell.accessoryType = .disclosureIndicator
+
     self.rateCell.textLabel?.attributedText = NSAttributedString(string: Localization.Cells.rate, attributes: textAttributes)
     self.rateCell.accessoryType = .disclosureIndicator
   }
