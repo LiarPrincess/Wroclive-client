@@ -5,7 +5,7 @@
 
 import UIKit
 
-private typealias Localization = AppManagerImplLocalization
+private typealias Localization = Localizable.App
 
 class AppManagerImpl: AppManager {
 

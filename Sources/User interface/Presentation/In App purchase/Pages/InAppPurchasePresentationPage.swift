@@ -8,7 +8,7 @@ import UIKit
 private typealias Constants    = InAppPurchasePresentationConstants
 private typealias Layout       = Constants.Layout
 private typealias Colors       = Constants.Colors
-private typealias Localization = Constants.Localization
+private typealias Localization = Localizable.Presentation.InAppPurchase
 
 class InAppPurchasePresentationPage: UIViewController {
 

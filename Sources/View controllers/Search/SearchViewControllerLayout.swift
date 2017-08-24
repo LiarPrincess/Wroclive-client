@@ -6,9 +6,9 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Constants    = SearchViewControllerConstants
-fileprivate typealias Layout       = Constants.Layout
-fileprivate typealias Localization = Constants.Localization
+private typealias Constants    = SearchViewControllerConstants
+private typealias Layout       = Constants.Layout
+private typealias Localization = Localizable.Search
 
 extension SearchViewController {
 

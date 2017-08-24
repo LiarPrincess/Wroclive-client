@@ -7,8 +7,8 @@ import UIKit
 import SnapKit
 import PromiseKit
 
-fileprivate typealias Constants = SearchViewControllerConstants
-fileprivate typealias Layout    = Constants.Layout
+private typealias Constants = SearchViewControllerConstants
+private typealias Layout    = Constants.Layout
 
 class SearchViewController: UIViewController {
 

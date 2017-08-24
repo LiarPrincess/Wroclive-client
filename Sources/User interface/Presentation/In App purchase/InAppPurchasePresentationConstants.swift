@@ -58,22 +58,4 @@ struct InAppPurchasePresentationConstants {
       static let locations: [NSNumber] = [0.0, 0.35, 0.9]
     }
   }
-
-  struct Localization {
-    static let upgrade = "Upgrade $1.99"
-    static let restoreText = "Previously upgraded?"
-    static let restoreLink = "Restore Purchase"
-
-    struct BookmarksPage {
-      static let image   = #imageLiteral(resourceName: "Image_InApp_Bookmarks")
-      static let title   = "Unlimited Bookmarks"
-      static let caption = "Save more than 2 bookmarks for immediate bus arrival information"
-    }
-
-    struct ColorsPage {
-      static let image   = #imageLiteral(resourceName: "Image_InApp_Colors")
-      static let title   = "Colour pack"
-      static let caption = "Brighten up your life and personalise\nJump to your favourite colour"
-    }
-  }
 }

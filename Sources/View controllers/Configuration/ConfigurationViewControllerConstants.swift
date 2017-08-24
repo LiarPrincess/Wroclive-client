@@ -25,16 +25,4 @@ struct ConfigurationViewControllerConstants {
       static let lineSpacing:  CGFloat =  5.0
     }
   }
-
-  struct Localization {
-    static let Title = "Settings"
-    static let Footer = "Data provided by MPK Wrocław\nKek version <version>"
-
-    struct Cells {
-      static let colors   = "Colors"
-      static let share    = "Share"
-      static let tutorial = "Tutorial"
-      static let rate     = "Rate"
-    }
-  }
 }

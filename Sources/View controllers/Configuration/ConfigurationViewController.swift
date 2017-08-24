@@ -5,8 +5,7 @@
 
 import UIKit
 
-private typealias Constants    = ConfigurationViewControllerConstants
-private typealias Localization = Constants.Localization
+private typealias Constants = ConfigurationViewControllerConstants
 
 class ConfigurationViewController: UIViewController {
 

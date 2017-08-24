@@ -59,13 +59,4 @@ struct BookmarksViewControllerConstants {
   struct Animations {
     static let chevronDismissRelativeDuration: TimeInterval = 0.05
   }
-
-  struct Localization {
-    static var cardTitle:          String { return NSLocalizedString("Bookmarks_CardTitle",           comment: "") }
-    static var editEdit:           String { return NSLocalizedString("Bookmarks_Edit_Edit",           comment: "") }
-    static var editDone:           String { return NSLocalizedString("Bookmarks_Edit_Done",           comment: "") }
-    static var placeholderTitle:   String { return NSLocalizedString("Bookmarks_Placeholder_Title",   comment: "") }
-    static var placeholderContent: String { return NSLocalizedString("Bookmarks_Placeholder_Content", comment: "") }
-  }
-
 }

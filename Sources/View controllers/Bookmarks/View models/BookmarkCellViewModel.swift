@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-fileprivate typealias Layout = BookmarksViewControllerConstants.Layout.Cell
+private typealias Layout = BookmarksViewControllerConstants.Layout.Cell
 
 struct BookmarkCellViewModel {
   let bookmark:     Bookmark

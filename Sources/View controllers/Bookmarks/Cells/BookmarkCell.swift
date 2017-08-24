@@ -6,7 +6,7 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Layout = BookmarksViewControllerConstants.Layout.Cell
+private typealias Layout = BookmarksViewControllerConstants.Layout.Cell
 
 // https://stackoverflow.com/a/25967370 - preferredMaxLayoutWidth
 // https://stackoverflow.com/a/18746930 - auto layout for UITableView

@@ -8,7 +8,7 @@ import MapKit
 import SnapKit
 import PromiseKit
 
-fileprivate typealias Constants = MapViewControllerConstants
+private typealias Constants = MapViewControllerConstants
 
 class MapViewController: UIViewController {
 

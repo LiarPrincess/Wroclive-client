@@ -7,8 +7,8 @@ import UIKit
 import MapKit
 import Foundation
 
-fileprivate typealias Constants = MapViewControllerConstants
-fileprivate typealias Layout    = MapViewControllerConstants.Layout
+private typealias Constants = MapViewControllerConstants
+private typealias Layout    = MapViewControllerConstants.Layout
 
 class VehicleAnnotationView: MKAnnotationView {
 

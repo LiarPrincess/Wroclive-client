@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-fileprivate typealias Localization = LineSelectionViewControllerConstants.Localization
+private typealias Localization = Localizable.Controls.LineSelection
 
 struct LineSelectionSectionViewModel {
   let sectionName: String

@@ -7,7 +7,7 @@ import UIKit
 import SnapKit
 import MapKit
 
-fileprivate typealias Layout = MainViewControllerConstants.Layout
+private typealias Layout = MainViewControllerConstants.Layout
 
 extension MainViewController {
 

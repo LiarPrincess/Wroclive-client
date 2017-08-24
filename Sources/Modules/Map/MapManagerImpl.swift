@@ -7,7 +7,7 @@ import UIKit
 import MapKit
 import PromiseKit
 
-fileprivate typealias Constants = MapManagerConstants
+private typealias Constants = MapManagerConstants
 
 class MapManagerImpl: MapManager {
 

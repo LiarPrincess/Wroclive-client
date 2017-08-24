@@ -8,7 +8,7 @@ import SnapKit
 
 private typealias Constants    = ConfigurationViewControllerConstants
 private typealias Layout       = Constants.Layout
-private typealias Localization = Constants.Localization
+private typealias Localization = Localizable.Configuration
 
 // navigation bar below status bar: https://stackoverflow.com/a/21548900
 extension ConfigurationViewController {

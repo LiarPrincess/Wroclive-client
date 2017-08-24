@@ -5,8 +5,8 @@
 
 import UIKit
 
-fileprivate typealias Constants = LineSelectionViewControllerConstants
-fileprivate typealias Layout    = Constants.Layout
+private typealias Constants = LineSelectionViewControllerConstants
+private typealias Layout    = Constants.Layout
 
 class LineSelectionPage: UIViewController {
 

@@ -6,9 +6,9 @@
 import UIKit
 import SnapKit
 
-fileprivate typealias Constants    = BookmarksViewControllerConstants
-fileprivate typealias Layout       = Constants.Layout
-fileprivate typealias Localization = Constants.Localization
+private typealias Constants    = BookmarksViewControllerConstants
+private typealias Layout       = Constants.Layout
+private typealias Localization = Localizable.Bookmarks
 
 class BookmarksViewController: UIViewController {
 

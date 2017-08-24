@@ -5,14 +5,14 @@
 
 import UIKit
 
-fileprivate typealias Localization = AlertManagerImplLocalization
-fileprivate typealias LocalizationLocationDenied         = AlertManagerImplLocalization.Location.Denied
-fileprivate typealias LocalizationLocationGloballyDenied = AlertManagerImplLocalization.Location.DeniedGlobally
-fileprivate typealias LocalizationBookmarksNoLines       = AlertManagerImplLocalization.Bookmark.NoLinesSelected
-fileprivate typealias LocalizationBookmarksNameInput     = AlertManagerImplLocalization.Bookmark.NameInput
-fileprivate typealias LocalizationBookmarksInstructions  = AlertManagerImplLocalization.Bookmark.Instructions
-fileprivate typealias LocalizationNetworkNoInternet      = AlertManagerImplLocalization.Network.NoInternet
-fileprivate typealias LocalizationNetworkConnectionError = AlertManagerImplLocalization.Network.ConnectionError
+private typealias Localization = Localizable.Alerts
+private typealias LocalizationLocationDenied         = Localization.Location.Denied
+private typealias LocalizationLocationGloballyDenied = Localization.Location.DeniedGlobally
+private typealias LocalizationBookmarksNoLines       = Localization.Bookmark.NoLinesSelected
+private typealias LocalizationBookmarksNameInput     = Localization.Bookmark.NameInput
+private typealias LocalizationBookmarksInstructions  = Localization.Bookmark.Instructions
+private typealias LocalizationNetworkNoInternet      = Localization.Network.NoInternet
+private typealias LocalizationNetworkConnectionError = Localization.Network.ConnectionError
 
 class AlertManagerImpl: AlertManager {
 
