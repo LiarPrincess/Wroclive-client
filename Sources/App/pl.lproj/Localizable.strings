@@ -32,6 +32,29 @@
 "Search_Search"    = "Szukaj";
 "Search_Loading"   = "Wczytywanie…";
 
+/* Configuration */
+"Configuration_Title"  = "Ustawienia";
+"Configuration_Footer" = "Dane uzyskano dzięki uprzejmości MPK Wrocław\nKek wersja %@";
+
+"Configuration_Cell_Colours"  = "Kolory";
+"Configuration_Cell_Share"    = "Udostępnij";
+"Configuration_Cell_Tutorial" = "Instrukcje";
+"Configuration_Cell_Rate"     = "Oceń aplikację";
+
+/* Share */
+"Configuration_Share_Content" = "Kek - Komunikacja miejska na żywo! %@";
+
+/* Presentations */
+"Presentation_InAppPurchase_Bookmarks_Title"   = "Nielimitowane zakładki";
+"Presentation_InAppPurchase_Bookmarks_Content" = "Zapisz więcej niż 2 zakładki, by szybciej poruszać się po mieście.";
+
+"Presentation_InAppPurchase_Colors_Title"   = "Więcej kolorów";
+"Presentation_InAppPurchase_Colors_Content" = "Dopasuj Keka do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!";
+
+"Presentation_InAppPurchase_Upgrade" = "Kup 4,99 zł";
+"Presentation_InAppPurchase_Restore_Text" = "Już kupione?";
+"Presentation_InAppPurchase_Restore_Link" = "Odtwórz.";
+
 /* Alerts */
 "Alert_Denied_Title"    = "Usługi lokalizacji wyłączone";
 "Alert_Denied_Content"  = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";

@@ -17,7 +17,7 @@ struct InAppPurchasePresentationConstants {
       }
 
       struct Title {
-        static let topOffset: CGFloat = 8.0
+        static let topOffset: CGFloat = 12.0
       }
 
       struct Caption {
@@ -28,18 +28,18 @@ struct InAppPurchasePresentationConstants {
     }
 
     struct UpgradeButton {
-      static let topOffset:    CGFloat      = 8.0
-      static let cornerRadius: CGFloat      = 5.0
+      static let topOffset:    CGFloat      = 10.0
+      static let cornerRadius: CGFloat      =  5.0
       static let edgeInsets:   UIEdgeInsets = UIEdgeInsets(top: 10.0, left: 15.0, bottom: 10.0, right: 15.0)
     }
 
     struct RestoreLabel {
-      static let topOffset: CGFloat =  8.0
+      static let topOffset: CGFloat = 8.0
     }
 
     struct PageControl {
-      static let topOffset:    CGFloat = -8.0
-      static let bottomOffset: CGFloat = -4.0
+      static let topOffset:    CGFloat = -6.0
+      static let bottomOffset: CGFloat = -2.0
     }
   }
 

@@ -52,7 +52,8 @@ class InAppPurchasePresentationPage: UIViewController {
     self.view.addSubview(self.imageView)
     self.imageView.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Page.Image.topOffset)
-      make.centerX.equalToSuperview()
+      make.left.equalToSuperview().offset(Layout.leftOffset)
+      make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
   }
 

@@ -29,14 +29,14 @@ struct Localizable {
   }
 
   struct Configuration {
-    static let Title = "Settings"
-    static let Footer = "Data provided by MPK Wrocław\nKek version <version>" // TODO: format
+    static var Title:  String { return LocalizedString("Configuration_Title") }
+    static var Footer: String { return LocalizedString("Configuration_Footer") }
 
     struct Cells {
-      static let colors   = "Colors"
-      static let share    = "Share"
-      static let tutorial = "Tutorial"
-      static let rate     = "Rate"
+      static var colors:   String { return LocalizedString("Configuration_Cell_Colours") }
+      static var share:    String { return LocalizedString("Configuration_Cell_Share") }
+      static var tutorial: String { return LocalizedString("Configuration_Cell_Tutorial") }
+      static var rate:     String { return LocalizedString("Configuration_Cell_Rate") }
     }
   }
 
@@ -60,20 +60,20 @@ struct Localizable {
 
   struct Presentation {
     struct InAppPurchase {
-      static let upgrade = "Upgrade $1.99"
-      static let restoreText = "Previously upgraded?"
-      static let restoreLink = "Restore Purchase"
+      static var upgrade: String { return LocalizedString("Presentation_InAppPurchase_Upgrade") }
+      static var restoreText: String { return LocalizedString("Presentation_InAppPurchase_Restore_Text") }
+      static var restoreLink: String { return LocalizedString("Presentation_InAppPurchase_Restore_Link") }
 
       struct BookmarksPage {
-        static let image   = #imageLiteral(resourceName: "Image_InApp_Bookmarks")
-        static let title   = "Unlimited Bookmarks"
-        static let caption = "Save more than 2 bookmarks for immediate bus arrival information"
+        static var image   = #imageLiteral(resourceName: "Image_InApp_Bookmarks")
+        static var title:   String { return LocalizedString("Presentation_InAppPurchase_Bookmarks_Title") }
+        static var caption: String { return LocalizedString("Presentation_InAppPurchase_Bookmarks_Content") }
       }
 
       struct ColorsPage {
-        static let image   = #imageLiteral(resourceName: "Image_InApp_Colors")
-        static let title   = "Colour pack"
-        static let caption = "Brighten up your life and personalise\nJump to your favourite colour"
+        static var image   = #imageLiteral(resourceName: "Image_InApp_Colors")
+        static var title:   String { return LocalizedString("Presentation_InAppPurchase_Colors_Title") }
+        static var caption: String { return LocalizedString("Presentation_InAppPurchase_Colors_Content") }
       }
     }
   }
@@ -133,7 +133,7 @@ struct Localizable {
 
   struct App {
     struct Share {
-      static let text:  String  = "Make London’s buses work for you. Check out Kek for iPhone. www.kekapp.pl"
+      static var text:  String { return LocalizedString("Configuration_Share_Content") }
       static let image: UIImage = #imageLiteral(resourceName: "Image_Share")
     }
   }

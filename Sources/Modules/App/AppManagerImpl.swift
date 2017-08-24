@@ -32,7 +32,7 @@ class AppManagerImpl: AppManager {
   // MARK: - Share
 
   func showShareActivity(in viewController: UIViewController) {
-    let text  = Localization.Share.text
+    let text  = String(format: Localization.Share.text, self.website)
     let image = Localization.Share.image
     let items = [text, image] as [Any]
 

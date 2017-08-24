@@ -32,6 +32,29 @@
 "Search_Search"    = "Search";
 "Search_Loading"   = "Loading…";
 
+/* Configuration */
+"Configuration_Title"  = "Settings";
+"Configuration_Footer" = "Data provided by MPK Wrocław\nKek version %@";
+
+"Configuration_Cell_Colours"  = "Colours";
+"Configuration_Cell_Share"    = "Share";
+"Configuration_Cell_Tutorial" = "Tutorial";
+"Configuration_Cell_Rate"     = "Rate app";
+
+/* Share */
+"Configuration_Share_Content" = "Kek - Real time public transport! %@";
+
+/* Presentations */
+"Presentation_InAppPurchase_Bookmarks_Title"   = "Unlimited Bookmarks";
+"Presentation_InAppPurchase_Bookmarks_Content" = "Save more than 2 bookmarks for\nimmediate bus arrival information.";
+
+"Presentation_InAppPurchase_Colors_Title"   = "Color Pack";
+"Presentation_InAppPurchase_Colors_Content" = "Brighten up your life and personalise\nKek to your favourite color.";
+
+"Presentation_InAppPurchase_Upgrade" = "Upgrade 1,09 €";
+"Presentation_InAppPurchase_Restore_Text" = "Previously upgraded?";
+"Presentation_InAppPurchase_Restore_Link" = "Restore Purchase.";
+
 /* Alerts */
 "Alert_Denied_Title"    = "Location Services Off";
 "Alert_Denied_Content"  = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
