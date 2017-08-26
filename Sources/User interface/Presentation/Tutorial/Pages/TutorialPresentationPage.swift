@@ -5,11 +5,11 @@
 
 import UIKit
 
-private typealias Layout       = InAppPurchasePresentationConstants.Layout
+private typealias Layout       = TutorialPresentationConstants.Layout
 private typealias Colors       = PresentationConstants.Colors
-private typealias Localization = Localizable.Presentation.InAppPurchase
+//private typealias Localization = Localizable.Presentation.InAppPurchase
 
-class InAppPurchasePresentationPage: UIViewController {
+class TutorialPresentationPage: UIViewController {
 
   // MARK: - Properties
 
@@ -38,6 +38,7 @@ class InAppPurchasePresentationPage: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.clipsToBounds = true
     self.initImage()
     self.initTitleLabel()
     self.initCaptionLabel()
@@ -50,7 +51,10 @@ class InAppPurchasePresentationPage: UIViewController {
 
     self.view.addSubview(self.imageView)
     self.imageView.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.Page.Image.topOffset)
+      let screenHeight = UIScreen.main.bounds.height
+      let topInset     = -1.0 * screenHeight * Layout.Page.Image.hiddenPercent
+
+      make.top.equalToSuperview().offset(topInset)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
@@ -69,8 +73,7 @@ class InAppPurchasePresentationPage: UIViewController {
   }
 
   private func initCaptionLabel() {
-    let attributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Page.Caption.lineSpacing, color: Colors.textPrimary)
-    self.captionLabel.attributedText = NSAttributedString(string: self.captionText, attributes: attributes)
+    self.captionLabel.attributedText = self.createCaptionLabelText(self.captionText)
     self.captionLabel.numberOfLines = 0
 
     self.view.addSubview(self.captionLabel)
@@ -78,7 +81,18 @@ class InAppPurchasePresentationPage: UIViewController {
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
       make.top.equalTo(titleLabel.snp.bottom).offset(Layout.Page.Caption.topOffset)
-      make.bottom.equalToSuperview().offset(Layout.Page.Caption.bottomOffset)
     }
+  }
+
+  func createCaptionLabelText(_ text: String) -> NSAttributedString {
+    let attributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Page.Caption.lineSpacing, color: Colors.textPrimary)
+    let attributedString = NSAttributedString(string: text, attributes: attributes)
+
+    let font = attributes[NSFontAttributeName] as! UIFont
+    let starReplacement   = TextReplacement("<star>",   StyleKit.createStarTextAttachment(font: font))
+    let searchReplacement = TextReplacement("<search>", StyleKit.createSearchTextAttachment(font: font))
+    let replacements = [starReplacement, searchReplacement]
+
+    return attributedString.withReplacements(replacements)
   }
 }

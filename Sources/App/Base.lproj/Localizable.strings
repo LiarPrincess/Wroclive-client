@@ -54,7 +54,7 @@
 
 "Presentation_InAppPurchase_Upgrade" = "Upgrade 1,09 €";
 "Presentation_InAppPurchase_Restore_Text" = "Previously upgraded?";
-"Presentation_InAppPurchase_Restore_Link" = "Restore Purchase.";
+"Presentation_InAppPurchase_Restore_Link" = "Restore Purchase";
 
 /* Alerts */
 "Alert_Denied_Title"    = "Location Services Off";

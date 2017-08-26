@@ -16,7 +16,7 @@ struct ConfigurationViewControllerConstants {
     }
 
     struct Content {
-      static let scrollHiddenPercent: CGFloat = 0.17
+      static let scrollHiddenPercent: CGFloat = 0.15
     }
 
     struct Footer {

@@ -66,12 +66,17 @@ extension ConfigurationViewController: UITableViewDelegate {
     switch (indexPath.section, indexPath.row) {
     case (0, 0): break
     case (1, 0): Managers.app.showShareActivity(in: self)
-    case (1, 1): break
+    case (1, 1): self.showTutorial()
     case (1, 2): Managers.app.openWebsite()
     case (1, 3): Managers.appStore.rateApp()
     default: fatalError("Unexpected row")
     }
     tableView.deselectRow(at: indexPath, animated: true)
+  }
+
+  private func showTutorial() {
+    let tutorialViewController = TutorialPresentation()
+    self.present(tutorialViewController, animated: true, completion: nil)
   }
 }
 

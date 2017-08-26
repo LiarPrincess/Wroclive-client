@@ -25,11 +25,10 @@ class VehicleLocationEndpoint: Endpoint {
   }
 
   private func encodeLines(_ lines: [Line]) -> [[String:Any]] {
-    return lines.map { line in
-      return ["name": line.name,
-              "type": line.type == .bus ? "bus" : "tram"
-      ]
-    }
+    return lines.map {[
+      "name": $0.name,
+      "type": $0.type == .bus ? "bus" : "tram"
+    ]}
   }
 
   // MARK: - Response

@@ -5,16 +5,13 @@
 
 import UIKit
 
-class InAppPurchasePresentation: UIViewController {
+class TutorialPresentation: UIViewController {
 
   // MARK: - Properties
 
   let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
   let pageControl        = UIPageControl()
   var pages              = [UIViewController]()
-
-  let upgradeButton        = UIButton(type: .roundedRect)
-  let restorePurchaseLabel = UILabel()
 
   // MARK: - Overriden
 
@@ -25,18 +22,14 @@ class InAppPurchasePresentation: UIViewController {
 
   // MARK: - Actions
 
-  @objc func upgradeButtonPressed() {
-    Managers.appStore.buyUpgrade()
-  }
+  @objc func closeButtonPressed() {
 
-  @objc func restorePurchaseLabelPressed(tapGestureRecognizer: UITapGestureRecognizer) {
-    Managers.appStore.restorePurchase()
   }
 }
 
 // MARK: UIPageViewControllerDelegate, UIPageViewControllerDataSource
 
-extension InAppPurchasePresentation: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+extension TutorialPresentation: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
     guard let index = self.pages.index(of: viewController) else { return nil }
     let previousIndex = index - 1

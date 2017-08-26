@@ -123,16 +123,8 @@ extension BookmarksViewController {
     let result = NSMutableAttributedString(string: textComponents[0], attributes: textAttributes)
 
     if textComponents.count > 1 {
-      // https://stackoverflow.com/a/43192486
-      let font      = textAttributes[NSFontAttributeName] as! UIFont
-      let imageSize = abs(font.ascender) + abs(font.descender)
-      let imageY    = font.ascender - imageSize
-
-      let image = StyleKit.drawStarTemplateImage(size: CGSize(width: imageSize, height: imageSize))
-
-      let attachment    = NSTextAttachment()
-      attachment.image  = image
-      attachment.bounds = CGRect(origin: CGPoint(x: 0.0, y: imageY), size: image.size)
+      let font = textAttributes[NSFontAttributeName] as! UIFont
+      let attachment = StyleKit.createStarTextAttachment(font: font)
       result.append(NSAttributedString(attachment: attachment))
 
       // add remaining text

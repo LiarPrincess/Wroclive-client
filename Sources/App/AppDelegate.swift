@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.registerManagers()
 
     let mainViewController = MainViewController()
+//    let mainViewController = TutorialPresentation()
     window = UIWindow(frame: UIScreen.main.bounds)
     window!.tintColor          = Managers.theme.colorScheme.tint
     window!.rootViewController = mainViewController

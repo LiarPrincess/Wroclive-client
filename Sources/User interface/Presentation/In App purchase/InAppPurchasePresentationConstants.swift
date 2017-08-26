@@ -23,7 +23,7 @@ struct InAppPurchasePresentationConstants {
       struct Caption {
         static let topOffset:    CGFloat = 5.0
         static let bottomOffset: CGFloat = 0.0
-        static let lineSpacing:  CGFloat = 2.0
+        static let lineSpacing:  CGFloat = 5.0
       }
     }
 
@@ -40,22 +40,6 @@ struct InAppPurchasePresentationConstants {
     struct PageControl {
       static let topOffset:    CGFloat = -6.0
       static let bottomOffset: CGFloat = -2.0
-    }
-  }
-
-  struct Colors {
-    struct UpgradeButton {
-      static let background = UIColor(red: 0.00, green: 0.59, blue: 0.95, alpha: 1.00)
-    }
-
-    struct Gradient {
-      static let colors: [UIColor] = [
-        UIColor(red: 0.18, green: 0.85, blue: 0.80, alpha: 1.00),
-        UIColor(red: 0.13, green: 0.65, blue: 0.85, alpha: 1.00),
-        UIColor(red: 0.40, green: 0.30, blue: 0.60, alpha: 1.00)
-      ]
-
-      static let locations: [NSNumber] = [0.0, 0.35, 0.9]
     }
   }
 }
