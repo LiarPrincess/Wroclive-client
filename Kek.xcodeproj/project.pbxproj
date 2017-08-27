@@ -741,8 +741,8 @@
 		9096CDBA1F40630500FEF20A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				902330E61EDF37F500FA8F43 /* Assets.xcassets */,
 				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
+				902330E61EDF37F500FA8F43 /* Assets.xcassets */,
 				90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */,
 				90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */,
 			);

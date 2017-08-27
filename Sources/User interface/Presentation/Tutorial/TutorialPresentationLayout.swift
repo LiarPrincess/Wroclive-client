@@ -7,7 +7,7 @@ import UIKit
 
 private typealias Layout       = TutorialPresentationConstants.Layout
 private typealias Colors       = PresentationConstants.Colors
-//private typealias Localization = Localizable.Presentation.InAppPurchase
+private typealias Localization = Localizable.Presentation.Tutorial
 
 extension TutorialPresentation {
 
@@ -49,19 +49,15 @@ extension TutorialPresentation {
   }
 
   private func initPages() {
-    let page0Title   = "Wyszukiwanie pojazdów"
-    let page0Caption = "By wyszukać pojazdy użyj <search>, wybierz linie, a następnie kliknij “Szukaj”."
-    let page0 = TutorialPresentationPage(#imageLiteral(resourceName: "Image_InApp_Colors"), page0Title, page0Caption)
+    typealias Page0 = Localization.Page0
+    typealias Page1 = Localization.Page1
+    typealias Page2 = Localization.Page2
 
-    let page1Title   = "Dodawanie zakładek"
-    let page1Caption = "By dodać zakładkę wybierz linie, kliknij <star> i wprowadź nazwę nowej zakładki."
-    let page1 = TutorialPresentationPage(#imageLiteral(resourceName: "Image_InApp_Colors"), page1Title, page1Caption)
-
-    let page2Title   = "Zakładki"
-    let page2Caption = "Zapisane zakładki są dostępne pod <star>."
-    let page2 = TutorialPresentationPage(#imageLiteral(resourceName: "Image_InApp_Colors"), page2Title, page2Caption)
-
-    self.pages = [page0, page1, page2]
+    self.pages = [
+      TutorialPresentationPage(Page0.image, Page0.title, Page0.caption),
+      TutorialPresentationPage(Page1.image, Page1.title, Page1.caption),
+      TutorialPresentationPage(Page2.image, Page2.title, Page2.caption)
+    ]
   }
 
   private func initPageControl() {

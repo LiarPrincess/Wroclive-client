@@ -45,7 +45,7 @@
 /* Share */
 "Configuration_Share_Content" = "Kek - Komunikacja miejska na żywo! %@";
 
-/* Presentations */
+/* Presentations - In-app purchase */
 "Presentation_InAppPurchase_Bookmarks_Title"   = "Nielimitowane zakładki";
 "Presentation_InAppPurchase_Bookmarks_Content" = "Zapisz więcej niż 2 zakładki, by szybciej poruszać się po mieście.";
 
@@ -55,6 +55,16 @@
 "Presentation_InAppPurchase_Upgrade" = "Kup 4,99 zł";
 "Presentation_InAppPurchase_Restore_Text" = "Już kupione?";
 "Presentation_InAppPurchase_Restore_Link" = "Odtwórz";
+
+/* Presentations - Tutorial */
+"Presentation_Tutorial_Page0_Title"   = "Wyszukiwanie pojazdów";
+"Presentation_Tutorial_Page0_Caption" = "By wyszukać pojazdy użyj <search>, wybierz linie, a następnie kliknij “Szukaj”.";
+
+"Presentation_Tutorial_Page1_Title"   = "Dodawanie zakładek";
+"Presentation_Tutorial_Page1_Caption" = "By dodać zakładkę wybierz linie, kliknij <star> i wprowadź nazwę nowej zakładki.";
+
+"Presentation_Tutorial_Page2_Title"   = "Zakładki";
+"Presentation_Tutorial_Page2_Caption" = "Użyj <star>, by zobaczyć wszystkie zapisane zakładki.";
 
 /* Alerts */
 "Alert_Denied_Title"    = "Usługi lokalizacji wyłączone";
