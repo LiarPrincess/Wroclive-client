@@ -19,23 +19,10 @@ struct TextReplacement {
 extension NSAttributedString {
 
   func withReplacements(_ replacements: [TextReplacement]) -> NSAttributedString {
-    let replacementPositions       = self.findReplacementPositions(replacements)
-    let replacementPositionsSorted = replacementPositions.sorted { $0.position.location < $1.position.location }
-
-    let result = NSMutableAttributedString()
-
-    var previousRangeEnd = 0
-    for (range, replacement) in replacementPositionsSorted {
-      let beforeRange = NSRange(start: previousRangeEnd, finish: range.start)
-      result.append(self.attributedSubstring(from: beforeRange))
-      result.append(replacement.value)
-
-      previousRangeEnd = range.end
+    let result = NSMutableAttributedString(attributedString: self)
+    for (position, replacement) in self.findReplacementPositions(replacements) {
+      result.replaceCharacters(in: position, with: replacement.value)
     }
-
-    let nsString = NSString(string: self.string)
-    let afterRange = NSRange(start: previousRangeEnd, finish: nsString.length)
-    result.append(self.attributedSubstring(from: afterRange))
 
     return result
   }

@@ -7,18 +7,19 @@ import Foundation
 
 extension String {
 
-  func findPosition(of text: String) -> [NSRange] {
-    return self.findPositions(of: [text])
+  func findPosition(of substring: String) -> [NSRange] {
+    return self.findPositions(of: [substring])
   }
 
-  func findPositions(of texts: [String]) -> [NSRange] {
+  func findPositions(of substrings: [String]) -> [NSRange] {
     let nsSelf = NSString(string: self)
 
     // swiftlint:disable force_try
-    let regexExpr = texts.joined(separator: "|")
+    let regexExpr = substrings.joined(separator: "|")
     let regex     = try! NSRegularExpression(pattern: regexExpr, options: [.caseInsensitive])
 
-    let items = regex.matches(in: self, options: [], range: NSRange(location: 0, length: nsSelf.length))
-    return items.map { $0.range }
+    return regex
+      .matches(in: self, options: [], range: NSRange(location: 0, length: nsSelf.length))
+      .map { $0.range }
   }
 }
