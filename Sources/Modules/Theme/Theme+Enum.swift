@@ -23,6 +23,11 @@ extension Theme {
     case caption
   }
 
+  enum FontType {
+    case text
+    case icon
+  }
+
   enum ViewStyle {
     case cardPanel
     case cardPanelHeader

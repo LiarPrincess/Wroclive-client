@@ -5,7 +5,7 @@
 
 import UIKit
 
-protocol FontProvider {
+protocol Font {
   var headline:    UIFont { get }
   var subheadline: UIFont { get }
   var body:        UIFont { get }
@@ -16,4 +16,11 @@ protocol FontProvider {
   var subheadlineTracking: CGFloat { get }
 
   mutating func recalculateSizes()
+}
+
+extension Font {
+  // 17pt for UIContentSizeCategoryLarge
+  var preferredFontSize: CGFloat  {
+    return UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).pointSize
+  }
 }

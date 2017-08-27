@@ -74,7 +74,7 @@ class TutorialPresentationPage: UIViewController {
 
   private func initCaptionLabel() {
     self.captionLabel.attributedText = self.createCaptionLabelText(self.captionText)
-    self.captionLabel.numberOfLines = 0
+    self.captionLabel.numberOfLines  = 0
 
     self.view.addSubview(self.captionLabel)
     self.captionLabel.snp.makeConstraints { make in
@@ -85,14 +85,16 @@ class TutorialPresentationPage: UIViewController {
   }
 
   func createCaptionLabelText(_ text: String) -> NSAttributedString {
-    let attributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Page.Caption.lineSpacing, color: Colors.textPrimary)
-    let attributedString = NSAttributedString(string: text, attributes: attributes)
+    let color       = Colors.textPrimary
+    let lineSpacing = Layout.Page.Caption.lineSpacing
 
-    let font = attributes[NSFontAttributeName] as! UIFont
-    let starReplacement   = TextReplacement("<star>",   StyleKit.createStarTextAttachment(font: font))
-    let searchReplacement = TextReplacement("<search>", StyleKit.createSearchTextAttachment(font: font))
-    let replacements = [starReplacement, searchReplacement]
+    let textAttributes = Managers.theme.textAttributes(for: .caption, fontType: .text, alignment: .center, lineSpacing: lineSpacing, color: color)
+    let iconAttributes = Managers.theme.textAttributes(for: .caption, fontType: .icon, alignment: .center, lineSpacing: lineSpacing, color: color)
 
-    return attributedString.withReplacements(replacements)
+    let starReplacement   = TextReplacement("<star>",   NSAttributedString(string: "\u{f002}", attributes: iconAttributes))
+    let searchReplacement = TextReplacement("<search>", NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
+
+    return NSAttributedString(string: text, attributes: textAttributes)
+      .withReplacements([starReplacement, searchReplacement])
   }
 }

@@ -7,12 +7,12 @@ import UIKit
 import Foundation
 
 struct TextReplacement {
-  let text:        String
-  let attachement: NSTextAttachment
+  let text:  String
+  let value: NSAttributedString
 
-  init(_ text: String, _ replacement: NSTextAttachment) {
-    self.text        = text
-    self.attachement = replacement
+  init(_ text: String, _ value: NSAttributedString) {
+    self.text  = text
+    self.value = value
   }
 }
 
@@ -28,7 +28,7 @@ extension NSAttributedString {
     for (range, replacement) in replacementPositionsSorted {
       let beforeRange = NSRange(start: previousRangeEnd, finish: range.start)
       result.append(self.attributedSubstring(from: beforeRange))
-      result.append(NSAttributedString(attachment: replacement.attachement))
+      result.append(replacement.value)
 
       previousRangeEnd = range.end
     }

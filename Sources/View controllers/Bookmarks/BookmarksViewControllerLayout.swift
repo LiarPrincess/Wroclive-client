@@ -106,7 +106,6 @@ extension BookmarksViewController {
 
     self.placeholderContent.attributedText = self.createPlaceholderContent()
     self.placeholderContent.numberOfLines  = 0
-    self.placeholderContent.lineBreakMode  = .byWordWrapping
     self.placeholderView.addSubview(self.placeholderContent)
 
     self.placeholderContent.snp.makeConstraints { make in
@@ -116,22 +115,13 @@ extension BookmarksViewController {
   }
 
   private func createPlaceholderContent() -> NSAttributedString {
-    let textComponents = Localization.placeholderContent.components(separatedBy: "<star>")
-    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.Placeholder.lineSpacing)
+    let lineSpacing    = Layout.Placeholder.lineSpacing
+    let textAttributes = Managers.theme.textAttributes(for: .body, fontType: .text, alignment: .center, lineSpacing: lineSpacing)
+    let iconAttributes = Managers.theme.textAttributes(for: .body, fontType: .icon, alignment: .center, lineSpacing: lineSpacing)
 
-    // build string
-    let result = NSMutableAttributedString(string: textComponents[0], attributes: textAttributes)
+    let starReplacement = TextReplacement("<star>", NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
 
-    if textComponents.count > 1 {
-      let font = textAttributes[NSFontAttributeName] as! UIFont
-      let attachment = StyleKit.createStarTextAttachment(font: font)
-      result.append(NSAttributedString(attachment: attachment))
-
-      // add remaining text
-      result.append(NSAttributedString(string: textComponents[1], attributes: textAttributes))
-    }
-
-    return result
+    return NSAttributedString(string: Localization.placeholderContent, attributes: textAttributes)
+      .withReplacements([starReplacement])
   }
-
 }

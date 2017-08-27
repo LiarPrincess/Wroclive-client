@@ -47,10 +47,10 @@
 
 /* Presentations */
 "Presentation_InAppPurchase_Bookmarks_Title"   = "Unlimited Bookmarks";
-"Presentation_InAppPurchase_Bookmarks_Content" = "Save more than 2 bookmarks for\nimmediate bus arrival information.";
+"Presentation_InAppPurchase_Bookmarks_Content" = "Save more than 2 bookmarks for immediate bus arrival information.";
 
 "Presentation_InAppPurchase_Colors_Title"   = "Color Pack";
-"Presentation_InAppPurchase_Colors_Content" = "Brighten up your life and personalise\nKek to your favourite color.";
+"Presentation_InAppPurchase_Colors_Content" = "Brighten up your life and personalise Kek to your favourite color.";
 
 "Presentation_InAppPurchase_Upgrade" = "Upgrade 1,09 €";
 "Presentation_InAppPurchase_Restore_Text" = "Previously upgraded?";

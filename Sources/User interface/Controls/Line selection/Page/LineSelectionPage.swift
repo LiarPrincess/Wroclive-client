@@ -128,9 +128,9 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
       return CGSize(width: width, height: Layout.SectionHeader.fallbackHeight)
     }
 
-    let font           = Managers.theme.font.subheadline
     let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-    let textSize       = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+    let textAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
+    let textSize       = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
 
     typealias HeaderLayout = Layout.SectionHeader
     let topInset    = HeaderLayout.topInset

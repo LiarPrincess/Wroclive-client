@@ -9,14 +9,15 @@ class Theme {
 
   // Mark - Properties
 
+  fileprivate(set) var systemFont      = SystemFont()
+  fileprivate(set) var fontAwesomeFont = FontAwesomeFont()
+
   fileprivate(set) var colorScheme: ColorScheme
-  fileprivate(set) var font:        FontProvider
 
   // Mark - Init
 
-  init(colorScheme: ColorScheme, font: FontProvider) {
+  init(colorScheme: ColorScheme) {
     self.colorScheme = colorScheme
-    self.font        = font
     self.startObservingContentSizeCategory()
   }
 
@@ -27,22 +28,22 @@ class Theme {
   // MARK: - Text attributes
 
   func textAttributes(for textStyle: TextStyle,
+                      fontType:      FontType        = .text,
                       alignment:     NSTextAlignment = .natural,
                       lineSpacing:   CGFloat         = 0.0,
-                      color:         Color           = Color.text
-  ) -> [String:Any] {
+                      color:         Color           = Color.text) -> [String:Any] {
     let colorValue = self.colorValue(color)
-    return self.textAttributes(for: textStyle, alignment: alignment, lineSpacing: lineSpacing, color: colorValue)
+    return self.textAttributes(for: textStyle, fontType: fontType, alignment: alignment, lineSpacing: lineSpacing, color: colorValue)
   }
 
   func textAttributes(for textStyle: TextStyle,
+                      fontType:      FontType        = .text,
                       alignment:     NSTextAlignment = .natural,
                       lineSpacing:   CGFloat         = 0.0,
-                      color:         UIColor
-    ) -> [String:Any] {
+                      color:         UIColor) -> [String:Any] {
     return [
-      NSFontAttributeName:            self.fontValue(textStyle),
-      NSKernAttributeName:            self.trackingValue(textStyle),
+      NSFontAttributeName:            self.fontValue(fontType, textStyle),
+      NSKernAttributeName:            self.trackingValue(fontType, textStyle),
       NSForegroundColorAttributeName: color,
       NSParagraphStyleAttributeName:  self.paragraphStyle(alignment, lineSpacing)
     ]
@@ -59,20 +60,26 @@ class Theme {
     }
   }
 
-  private func fontValue(_ textStyle: TextStyle) -> UIFont {
+  private func font(ofType fontType: FontType) -> Font {
+    return fontType == .icon ? self.fontAwesomeFont : self.systemFont
+  }
+
+  private func fontValue(_ fontType: FontType, _ textStyle: TextStyle) -> UIFont {
+    let font = self.font(ofType: fontType)
     switch textStyle {
-    case .headline:    return self.font.headline
-    case .subheadline: return self.font.subheadline
-    case .body:        return self.font.body
-    case .bodyBold:    return self.font.bodyBold
-    case .caption:     return self.font.caption
+    case .headline:    return font.headline
+    case .subheadline: return font.subheadline
+    case .body:        return font.body
+    case .bodyBold:    return font.bodyBold
+    case .caption:     return font.caption
     }
   }
 
-  private func trackingValue(_ textStyle: TextStyle) -> CGFloat {
+  private func trackingValue(_ fontType: FontType, _ textStyle: TextStyle) -> CGFloat {
+    let font = self.font(ofType: fontType)
     switch textStyle {
-    case .headline:    return self.font.headlineTracking
-    case .subheadline: return self.font.subheadlineTracking
+    case .headline:    return font.headlineTracking
+    case .subheadline: return font.subheadlineTracking
     case .body,
          .bodyBold,
          .caption:
@@ -121,6 +128,7 @@ extension Theme {
   }
 
   @objc func contentSizeCategoryDidChange(notification: NSNotification) {
-    self.font.recalculateSizes()
+    self.systemFont.recalculateSizes()
+    self.fontAwesomeFont.recalculateSizes()
   }
 }
