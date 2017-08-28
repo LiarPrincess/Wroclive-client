@@ -13,10 +13,6 @@ class InAppPurchasePresentationPage: UIViewController {
 
   // MARK: - Properties
 
-  private let image:       UIImage
-  private let titleText:   String
-  private let captionText: String
-
   private let imageView    = UIImageView()
   private let titleLabel   = UILabel()
   private let captionLabel = UILabel()
@@ -24,10 +20,18 @@ class InAppPurchasePresentationPage: UIViewController {
   // MARK: - Init
 
   init(_ image: UIImage, _ title: String, _ caption: String) {
-    self.image       = image
-    self.titleText   = title
-    self.captionText = caption
     super.init(nibName: nil, bundle: nil)
+
+    self.imageView.image       = image
+    self.imageView.contentMode = .scaleAspectFit
+
+    let titleAttributes = Managers.theme.textAttributes(for: .bodyBold, alignment: .center, color: Colors.textPrimary)
+    self.titleLabel.attributedText = NSAttributedString(string: title, attributes: titleAttributes)
+    self.titleLabel.numberOfLines  = 0
+
+    let captionAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Page.Caption.lineSpacing, color: Colors.textPrimary)
+    self.captionLabel.attributedText = NSAttributedString(string: caption, attributes: captionAttributes)
+    self.captionLabel.numberOfLines  = 0
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -38,47 +42,28 @@ class InAppPurchasePresentationPage: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.initImage()
-    self.initTitleLabel()
-    self.initCaptionLabel()
-  }
 
-  private func initImage() {
-    self.imageView.image       = self.image
-    self.imageView.contentMode = .scaleAspectFit
     self.imageView.setContentCompressionResistancePriority(100, for: .vertical)
-
     self.view.addSubview(self.imageView)
     self.imageView.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Page.Image.topOffset)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
-  }
-
-  private func initTitleLabel() {
-    let attributes = Managers.theme.textAttributes(for: .bodyBold, alignment: .center, color: Colors.textPrimary)
-    titleLabel.attributedText = NSAttributedString(string: self.titleText, attributes: attributes)
 
     self.view.addSubview(titleLabel)
-    titleLabel.snp.makeConstraints { make in
+    self.titleLabel.snp.makeConstraints { make in
       make.top.equalTo(self.imageView.snp.bottom).offset(Layout.Page.Title.topOffset)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
-  }
-
-  private func initCaptionLabel() {
-    let attributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Page.Caption.lineSpacing, color: Colors.textPrimary)
-    self.captionLabel.attributedText = NSAttributedString(string: self.captionText, attributes: attributes)
-    self.captionLabel.numberOfLines = 0
 
     self.view.addSubview(self.captionLabel)
     self.captionLabel.snp.makeConstraints { make in
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
       make.top.equalTo(titleLabel.snp.bottom).offset(Layout.Page.Caption.topOffset)
-      make.bottom.equalToSuperview().offset(Layout.Page.Caption.bottomOffset)
+      make.bottom.equalToSuperview()
     }
   }
 }

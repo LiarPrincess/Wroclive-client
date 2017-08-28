@@ -4,30 +4,33 @@
 //
 
 import UIKit
+import SnapKit
 
-private typealias Layout       = TutorialPresentationConstants.Layout
-private typealias Colors       = PresentationConstants.Colors
-//private typealias Localization = Localizable.Presentation.InAppPurchase
+private typealias Layout = TutorialPresentationConstants.Layout
+private typealias Colors = PresentationConstants.Colors
 
 class TutorialPresentationPage: UIViewController {
 
   // MARK: - Properties
 
-  private let image:       UIImage
-  private let titleText:   String
-  private let captionText: String
-
-  private let imageView    = UIImageView()
-  private let titleLabel   = UILabel()
-  private let captionLabel = UILabel()
+  private let imageView      = UIImageView()
+  private let labelContainer = UIView()
+  private let titleLabel     = UILabel()
+  private let captionLabel   = UILabel()
 
   // MARK: - Init
 
   init(_ image: UIImage, _ title: String, _ caption: String) {
-    self.image       = image
-    self.titleText   = title
-    self.captionText = caption
     super.init(nibName: nil, bundle: nil)
+
+    self.imageView.image       = image
+    self.imageView.contentMode = .scaleAspectFit
+
+    self.titleLabel.attributedText = self.createAttributedTitle(title)
+    self.titleLabel.numberOfLines  = 0
+
+    self.captionLabel.attributedText = self.createAttributedCaption(caption)
+    self.captionLabel.numberOfLines  = 0
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -39,52 +42,67 @@ class TutorialPresentationPage: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.clipsToBounds = true
-    self.initImage()
-    self.initTitleLabel()
-    self.initCaptionLabel()
-  }
 
-  private func initImage() {
-    self.imageView.image       = self.image
-    self.imageView.contentMode = .scaleAspectFit
-    self.imageView.setContentCompressionResistancePriority(100, for: .vertical)
-
+    self.imageView.setContentCompressionResistancePriority(100.0, for: .vertical)
     self.view.addSubview(self.imageView)
     self.imageView.snp.makeConstraints { make in
-      let screenHeight = UIScreen.main.bounds.height
-      let topInset     = -1.0 * screenHeight * Layout.Page.Image.hiddenPercent
-
-      make.top.equalToSuperview().offset(topInset)
+      make.top.equalToSuperview().offset(Layout.Page.Image.topOffset)
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
-  }
 
-  private func initTitleLabel() {
-    let attributes = Managers.theme.textAttributes(for: .bodyBold, alignment: .center, color: Colors.textPrimary)
-    titleLabel.attributedText = NSAttributedString(string: self.titleText, attributes: attributes)
-
-    self.view.addSubview(titleLabel)
-    titleLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.imageView.snp.bottom).offset(Layout.Page.Title.topOffset)
+    self.view.addSubview(self.labelContainer)
+    self.labelContainer.snp.makeConstraints { make in
+      make.top.equalTo(self.imageView.snp.bottom)
+      make.bottom.equalToSuperview()
       make.left.equalToSuperview().offset(Layout.leftOffset)
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
-  }
 
-  private func initCaptionLabel() {
-    self.captionLabel.attributedText = self.createCaptionLabelText(self.captionText)
-    self.captionLabel.numberOfLines  = 0
+    self.titleLabel.setContentHuggingPriority(1000.0, for: .vertical)
+    self.labelContainer.addSubview(self.titleLabel)
+    self.titleLabel.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(Layout.Page.Title.topOffset)
+      make.left.equalToSuperview()
+      make.right.equalToSuperview()
+    }
 
-    self.view.addSubview(self.captionLabel)
+    self.labelContainer.addSubview(self.captionLabel)
     self.captionLabel.snp.makeConstraints { make in
-      make.left.equalToSuperview().offset(Layout.leftOffset)
-      make.right.equalToSuperview().offset(-Layout.rightOffset)
       make.top.equalTo(titleLabel.snp.bottom).offset(Layout.Page.Caption.topOffset)
+      make.left.equalToSuperview()
+      make.right.equalToSuperview()
     }
   }
 
-  func createCaptionLabelText(_ text: String) -> NSAttributedString {
+  // MARK: - Text height
+
+  func calculateRequiredTextHeight() -> CGFloat {
+    let width = self.view.bounds.width - Layout.leftOffset - Layout.rightOffset
+    let size  = CGSize(width : width, height : CGFloat.greatestFiniteMagnitude)
+
+    let titleSize   = self.titleLabel  .attributedText!.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
+    let captionSize = self.captionLabel.attributedText!.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
+
+    return Layout.Page.Title.topOffset   + titleSize.height
+      + Layout.Page.Caption.topOffset + captionSize.height
+      + 1.0 // because of reasons
+  }
+
+  func guaranteeMinTextHeight(_ height: CGFloat) {
+    self.labelContainer.snp.makeConstraints { make in
+      make.height.equalTo(height)
+    }
+  }
+
+  // MARK: - Attributed texts
+
+  private func createAttributedTitle(_ title: String) -> NSAttributedString {
+    let attributes = Managers.theme.textAttributes(for: .bodyBold, alignment: .center, color: Colors.textPrimary)
+    return NSAttributedString(string: title, attributes: attributes)
+  }
+
+  private func createAttributedCaption(_ caption: String) -> NSAttributedString {
     let color       = Colors.textPrimary
     let lineSpacing = Layout.Page.Caption.lineSpacing
 
@@ -94,7 +112,7 @@ class TutorialPresentationPage: UIViewController {
     let starReplacement   = TextReplacement("<star>",   NSAttributedString(string: "\u{f002}", attributes: iconAttributes))
     let searchReplacement = TextReplacement("<search>", NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
 
-    return NSAttributedString(string: text, attributes: textAttributes)
+    return NSAttributedString(string: caption, attributes: textAttributes)
       .withReplacements([starReplacement, searchReplacement])
   }
 }

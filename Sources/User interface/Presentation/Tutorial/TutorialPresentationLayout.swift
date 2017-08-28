@@ -12,13 +12,6 @@ private typealias Localization = Localizable.Presentation.Tutorial
 extension TutorialPresentation {
 
   func initLayout() {
-//    let imageView = UIImageView(image: #imageLiteral(resourceName: "Test"))
-
-//    self.view.addSubview(imageView)
-//    imageView.snp.makeConstraints { make in
-//      make.edges.equalToSuperview()
-//    }
-
     self.initGradient()
     self.initPageViewController()
     self.initPageControl()
@@ -49,15 +42,23 @@ extension TutorialPresentation {
   }
 
   private func initPages() {
-    typealias Page0 = Localization.Page0
-    typealias Page1 = Localization.Page1
-    typealias Page2 = Localization.Page2
+    let pages: [TutorialPresentationPage] = {
+      typealias Page0 = Localization.Page0
+      typealias Page1 = Localization.Page1
+      typealias Page2 = Localization.Page2
 
-    self.pages = [
-      TutorialPresentationPage(Page0.image, Page0.title, Page0.caption),
-      TutorialPresentationPage(Page1.image, Page1.title, Page1.caption),
-      TutorialPresentationPage(Page2.image, Page2.title, Page2.caption)
-    ]
+      let page0 = TutorialPresentationPage(Page0.image, Page0.title, Page0.caption)
+      let page1 = TutorialPresentationPage(Page1.image, Page1.title, Page1.caption)
+      let page2 = TutorialPresentationPage(Page2.image, Page2.title, Page2.caption)
+      return [page0, page1, page2]
+    }()
+
+    let minTextHeight = pages.map { $0.calculateRequiredTextHeight() }.max() ?? 0.0
+    for page in pages {
+      page.guaranteeMinTextHeight(minTextHeight)
+    }
+
+    self.pages = pages
   }
 
   private func initPageControl() {

@@ -21,9 +21,8 @@ struct InAppPurchasePresentationConstants {
       }
 
       struct Caption {
-        static let topOffset:    CGFloat = 5.0
-        static let bottomOffset: CGFloat = 0.0
-        static let lineSpacing:  CGFloat = 5.0
+        static let topOffset:   CGFloat = 5.0
+        static let lineSpacing: CGFloat = 5.0
       }
     }
 

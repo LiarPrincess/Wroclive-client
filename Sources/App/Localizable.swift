@@ -80,19 +80,19 @@ struct Localizable {
 
     struct Tutorial {
       struct Page0 {
-        static var image = #imageLiteral(resourceName: "Image_InApp_Colors")
+        static var image = #imageLiteral(resourceName: "Image_Tutorial")
         static var title:   String { return LocalizedString("Presentation_Tutorial_Page0_Title") }
         static var caption: String { return LocalizedString("Presentation_Tutorial_Page0_Caption") }
       }
 
       struct Page1 {
-        static var image = #imageLiteral(resourceName: "Image_InApp_Colors")
+        static var image = #imageLiteral(resourceName: "Image_Tutorial")
         static var title:   String { return LocalizedString("Presentation_Tutorial_Page1_Title") }
         static var caption: String { return LocalizedString("Presentation_Tutorial_Page1_Caption") }
       }
 
       struct Page2 {
-        static var image = #imageLiteral(resourceName: "Image_InApp_Colors")
+        static var image = #imageLiteral(resourceName: "Image_Tutorial")
         static var title:   String { return LocalizedString("Presentation_Tutorial_Page2_Title") }
         static var caption: String { return LocalizedString("Presentation_Tutorial_Page2_Caption") }
       }
