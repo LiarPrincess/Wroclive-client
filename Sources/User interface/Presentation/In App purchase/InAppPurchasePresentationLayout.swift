@@ -7,13 +7,14 @@ import UIKit
 import SnapKit
 
 private typealias Layout       = InAppPurchasePresentationConstants.Layout
-private typealias Colors       = PresentationConstants.Colors
+private typealias Colors       = PresentationControllerConstants.Colors
 private typealias Localization = Localizable.Presentation.InAppPurchase
 
 extension InAppPurchasePresentation {
 
   func initLayout() {
     self.initGradient()
+    self.initPages()
     self.initPageViewController()
     self.initPurchaseButton()
     self.initRestorePurchaseLabel()
@@ -28,9 +29,27 @@ extension InAppPurchasePresentation {
     self.view.layer.addSublayer(gradientLayer)
   }
 
-  private func initPageViewController() {
-    self.initPages()
+  private func initPages() {
+    typealias BookmarksPage = Localization.BookmarksPage
+    typealias ColorsPage    = Localization.ColorsPage
 
+    let bookmarksParams = self.createPageParameters(BookmarksPage.image, BookmarksPage.title, BookmarksPage.caption)
+    let colorsParams    = self.createPageParameters(ColorsPage.image,    ColorsPage.title,    ColorsPage.caption)
+
+    self.pages = self.createPages([bookmarksParams, colorsParams])
+  }
+
+  func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParams {
+    typealias PageLayout = Layout.Page
+    return PresentationControllerPageParams(
+      image, title, caption,
+      Layout.leftOffset, Layout.rightOffset,
+      PageLayout.Title.topOffset,
+      PageLayout.Caption.topOffset, PageLayout.Caption.lineSpacing
+    )
+  }
+
+  private func initPageViewController() {
     self.pageViewController.delegate   = self
     self.pageViewController.dataSource = self
     self.pageViewController.setViewControllers([self.pages[0]], direction: .forward, animated: false, completion: nil)
@@ -42,16 +61,6 @@ extension InAppPurchasePresentation {
     }
 
     self.pageViewController.didMove(toParentViewController: self)
-  }
-
-  private func initPages() {
-    typealias BookmarksPage = Localization.BookmarksPage
-    typealias ColorsPage    = Localization.ColorsPage
-
-    let bookmarksPage = InAppPurchasePresentationPage(BookmarksPage.image, BookmarksPage.title, BookmarksPage.caption)
-    let colorsPage    = InAppPurchasePresentationPage(ColorsPage.image,    ColorsPage.title,    ColorsPage.caption)
-
-    self.pages = [bookmarksPage, colorsPage]
   }
 
   private func initPurchaseButton() {

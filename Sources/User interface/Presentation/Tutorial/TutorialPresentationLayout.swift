@@ -7,13 +7,14 @@ import UIKit
 import SnapKit
 
 private typealias Layout       = TutorialPresentationConstants.Layout
-private typealias Colors       = PresentationConstants.Colors
+private typealias Colors       = PresentationControllerConstants.Colors
 private typealias Localization = Localizable.Presentation.Tutorial
 
 extension TutorialPresentation {
 
   func initLayout() {
     self.initGradient()
+    self.initPages()
     self.initPageViewController()
     self.initPageControl()
     self.initBackButton()
@@ -27,9 +28,28 @@ extension TutorialPresentation {
     self.view.layer.addSublayer(gradientLayer)
   }
 
-  private func initPageViewController() {
-    self.initPages()
+  private func initPages() {
+    typealias Page0 = Localization.Page0
+    typealias Page1 = Localization.Page1
+    typealias Page2 = Localization.Page2
 
+    let page0 = self.createPageParameters(Page0.image, Page0.title, Page0.caption)
+    let page1 = self.createPageParameters(Page1.image, Page1.title, Page2.caption)
+    let page2 = self.createPageParameters(Page2.image, Page2.title, Page2.caption)
+    self.pages = self.createPages([page0, page1, page2])
+  }
+
+  func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParams {
+    typealias PageLayout = Layout.Page
+    return PresentationControllerPageParams(
+      image, title, caption,
+      Layout.leftOffset, Layout.rightOffset,
+      PageLayout.Title.topOffset,
+      PageLayout.Caption.topOffset, PageLayout.Caption.lineSpacing
+    )
+  }
+
+  private func initPageViewController() {
     self.pageViewController.delegate   = self
     self.pageViewController.dataSource = self
     self.pageViewController.setViewControllers([self.pages[0]], direction: .forward, animated: false, completion: nil)
@@ -37,30 +57,11 @@ extension TutorialPresentation {
     self.view.addSubview(self.pageViewController.view)
 
     self.pageViewController.view.snp.makeConstraints { make in
-      make.left.top.right.equalToSuperview()
+      make.top.equalToSuperview().offset(Layout.Page.topInset)
+      make.left.right.equalToSuperview()
     }
 
     self.pageViewController.didMove(toParentViewController: self)
-  }
-
-  private func initPages() {
-    let pages: [TutorialPresentationPage] = {
-      typealias Page0 = Localization.Page0
-      typealias Page1 = Localization.Page1
-      typealias Page2 = Localization.Page2
-
-      let page0 = TutorialPresentationPage(Page0.image, Page0.title, Page0.caption)
-      let page1 = TutorialPresentationPage(Page1.image, Page1.title, Page1.caption)
-      let page2 = TutorialPresentationPage(Page2.image, Page2.title, Page2.caption)
-      return [page0, page1, page2]
-    }()
-
-    let minTextHeight = pages.map { $0.calculateRequiredTextHeight() }.max() ?? 0.0
-    for page in pages {
-      page.guaranteeMinTextHeight(minTextHeight)
-    }
-
-    self.pages = pages
   }
 
   private func initPageControl() {

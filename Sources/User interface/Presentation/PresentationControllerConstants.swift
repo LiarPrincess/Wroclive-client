@@ -5,7 +5,7 @@
 
 import UIKit
 
-struct PresentationConstants {
+struct PresentationControllerConstants {
   struct Colors {
     static let textPrimary   = UIColor.white
     static let textSecondary = UIColor(white: 0.8, alpha: 1.0)

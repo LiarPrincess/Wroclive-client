@@ -21,9 +21,7 @@ struct TutorialPresentationConstants {
     }
 
     struct Page {
-      struct Image {
-        static let topOffset: CGFloat = 28.0
-      }
+      static let topInset: CGFloat = 28.0
 
       struct Title {
         static let topOffset: CGFloat = 16.0

@@ -5,7 +5,7 @@
 
 import UIKit
 
-class TutorialPresentation: UIViewController {
+class TutorialPresentation: UIViewController, PresentationController {
 
   // MARK: - Properties
 
@@ -44,15 +44,11 @@ class TutorialPresentation: UIViewController {
 
 extension TutorialPresentation: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    guard let index = self.pages.index(of: viewController) else { return nil }
-    let previousIndex = index - 1
-    return previousIndex >= 0 ? self.pages[previousIndex] : nil
+    return self.viewControllerBefore(viewController)
   }
 
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    guard let index = self.pages.index(of: viewController) else { return nil }
-    let nextIndex = index + 1
-    return nextIndex < self.pages.count ? self.pages[nextIndex] : nil
+    return self.viewControllerAfter(viewController)
   }
 
   func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
