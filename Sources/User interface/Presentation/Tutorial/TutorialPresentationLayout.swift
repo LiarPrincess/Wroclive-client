@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import SnapKit
 
 private typealias Layout       = TutorialPresentationConstants.Layout
 private typealias Colors       = PresentationConstants.Colors
@@ -15,6 +16,7 @@ extension TutorialPresentation {
     self.initGradient()
     self.initPageViewController()
     self.initPageControl()
+    self.initBackButton()
   }
 
   private func initGradient() {
@@ -70,6 +72,23 @@ extension TutorialPresentation {
       make.top.equalTo(self.pageViewController.view.snp.bottom).offset(Layout.PageControl.topOffset)
       make.centerX.equalToSuperview()
       make.bottom.equalToSuperview().offset(-Layout.PageControl.bottomOffset)
+    }
+  }
+
+  private func initBackButton() {
+    typealias ButtonLayout = Layout.BackButton
+
+    let backImage = StyleKit.drawBackTemplateImage(size: ButtonLayout.imageSize)
+
+    let button = UIButton()
+    button.setImage(backImage, for: .normal)
+    button.addTarget(self, action: #selector(TutorialPresentation.closeButtonPressed), for: .touchUpInside)
+    button.contentEdgeInsets = UIEdgeInsets(top: ButtonLayout.topInset, left: ButtonLayout.leftInset, bottom: ButtonLayout.bottomInset, right: ButtonLayout.rightInset)
+
+    self.view.addSubview(button)
+    button.snp.makeConstraints { make in
+      make.top.equalToSuperview()
+      make.left.equalToSuperview()
     }
   }
 }

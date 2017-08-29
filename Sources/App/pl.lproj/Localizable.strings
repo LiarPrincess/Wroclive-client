@@ -64,7 +64,7 @@
 "Presentation_Tutorial_Page1_Caption" = "By dodać zakładkę wybierz linie, kliknij <star> i wprowadź nazwę nowej zakładki.";
 
 "Presentation_Tutorial_Page2_Title"   = "Zakładki";
-"Presentation_Tutorial_Page2_Caption" = "Użyj <star>, by zobaczyć wszystkie zapisane zakładki.";
+"Presentation_Tutorial_Page2_Caption" = "Użyj <star> by zobaczyć wszystkie zapisane zakładki.";
 
 /* Alerts */
 "Alert_Denied_Title"    = "Usługi lokalizacji wyłączone";

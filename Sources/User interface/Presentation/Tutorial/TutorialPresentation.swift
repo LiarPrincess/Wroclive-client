@@ -20,10 +20,23 @@ class TutorialPresentation: UIViewController {
     self.initLayout()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    super.viewWillAppear(animated)
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    super.viewWillDisappear(animated)
+  }
+
   // MARK: - Actions
 
   @objc func closeButtonPressed() {
-
+    if let navigationController = self.navigationController {
+      navigationController.popViewController(animated: true)
+    }
+    else { self.dismiss(animated: true, completion: nil) }
   }
 }
 

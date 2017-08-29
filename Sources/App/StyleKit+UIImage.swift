@@ -37,6 +37,13 @@ extension StyleKit {
     }
   }
 
+  class func drawBackTemplateImage(size: CGSize) -> UIImage {
+    return StyleKit.drawImage(size: size, renderingMode: .alwaysTemplate) {
+      let frame = CGRect(origin: CGPoint(), size: size)
+      StyleKit.drawBack(frame: frame, resizing: resizingBehavior)
+    }
+  }
+
   // MARK: - Private - Drawing
 
   private class var resizingBehavior: ResizingBehavior { return .aspectFit }

@@ -10,7 +10,6 @@ private typealias Constants    = ConfigurationViewControllerConstants
 private typealias Layout       = Constants.Layout
 private typealias Localization = Localizable.Configuration
 
-// navigation bar below status bar: https://stackoverflow.com/a/21548900
 extension ConfigurationViewController {
 
   func initLayout() {
@@ -20,30 +19,22 @@ extension ConfigurationViewController {
   }
 
   private func initNavigationBar() {
-    Managers.theme.applyNavigationBarStyle(self.navigationBar)
-    self.navigationBar.titleTextAttributes = Managers.theme.textAttributes(for: .bodyBold)
-    self.navigationBar.delegate            = self
-    self.view.addSubview(self.navigationBar)
+    self.title = Localization.Title
 
-    self.navigationBar.snp.makeConstraints { make in
-      make.top.equalTo(self.topLayoutGuide.snp.bottom)
-      make.left.right.equalToSuperview()
-    }
+    let navigationBar = self.navigationController!.navigationBar
+    Managers.theme.applyNavigationBarStyle(navigationBar)
+    navigationBar.titleTextAttributes = Managers.theme.textAttributes(for: .bodyBold)
 
-    let closeImage = StyleKit.drawCloseTemplateImage(size: Layout.NavigationBar.closeImageSize)
+    let closeImage  = StyleKit.drawCloseTemplateImage(size: Layout.NavigationBar.closeImageSize)
     let closeButton = UIBarButtonItem(image: closeImage, style: .plain, target: self, action: #selector(closeButtonPressed))
-
-    let navigationItem = UINavigationItem()
-    navigationItem.title              = Localization.Title
-    navigationItem.rightBarButtonItem = closeButton
-    self.navigationBar.setItems([navigationItem], animated: false)
+    self.navigationItem.rightBarButtonItem = closeButton
   }
 
   private func initContentView() {
     self.scrollView.delegate = self
     self.scrollView.showsHorizontalScrollIndicator = false
 
-    self.view.insertSubview(self.scrollView, belowSubview: self.navigationBar)
+    self.view.addSubview(self.scrollView)
     self.scrollView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }

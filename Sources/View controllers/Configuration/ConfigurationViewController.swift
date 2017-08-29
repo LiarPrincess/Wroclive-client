@@ -11,8 +11,6 @@ class ConfigurationViewController: UIViewController {
 
   // MARK: - Properties
 
-  let navigationBar = UINavigationBar()
-
   let scrollView  = UIScrollView()
   let contentView = UIView()
 
@@ -34,14 +32,6 @@ class ConfigurationViewController: UIViewController {
 
   @objc func closeButtonPressed() {
     self.dismiss(animated: true, completion: nil)
-  }
-}
-
-// MARK: - UINavigationBarDelegate
-
-extension ConfigurationViewController: UINavigationBarDelegate {
-  func position(for bar: UIBarPositioning) -> UIBarPosition {
-    return .topAttached
   }
 }
 
@@ -76,7 +66,7 @@ extension ConfigurationViewController: UITableViewDelegate {
 
   private func showTutorial() {
     let tutorialViewController = TutorialPresentation()
-    self.present(tutorialViewController, animated: true, completion: nil)
+    self.navigationController!.pushViewController(tutorialViewController, animated: true)
   }
 }
 

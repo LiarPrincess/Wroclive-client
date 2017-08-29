@@ -322,6 +322,34 @@ public class StyleKit : NSObject {
 
   }
 
+  @objc dynamic public class func drawBack(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
+    //// General Declarations
+    let context = UIGraphicsGetCurrentContext()!
+
+    //// Resize to Target Frame
+    context.saveGState()
+    let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 60, height: 60), target: targetFrame)
+    context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+    context.scaleBy(x: resizedFrame.width / 60, y: resizedFrame.height / 60)
+
+    //// Constants
+    let x = 16.5
+
+    //// Bezier Drawing
+    let bezierPath = UIBezierPath()
+    bezierPath.move(to: CGPoint(x: 60.0 - x, y: 3.0))
+    bezierPath.addLine(to: CGPoint(x: x, y: 30.00))
+    bezierPath.addLine(to: CGPoint(x: 60.0 - x, y: 57.0))
+
+    UIColor.black.setStroke()
+    bezierPath.lineWidth = 7
+    bezierPath.lineCapStyle = .round
+    bezierPath.stroke()
+
+    context.restoreGState()
+    
+  }
+
   @objc(StyleKitResizingBehavior)
   public enum ResizingBehavior: Int {
     case aspectFit /// The content is proportionally resized to fit into the target rectangle.

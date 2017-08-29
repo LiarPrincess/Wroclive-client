@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import SnapKit
 
 private typealias Layout       = InAppPurchasePresentationConstants.Layout
 private typealias Colors       = PresentationConstants.Colors

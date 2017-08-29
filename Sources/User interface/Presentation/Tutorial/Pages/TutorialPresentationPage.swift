@@ -84,7 +84,7 @@ class TutorialPresentationPage: UIViewController {
     let titleSize   = self.titleLabel  .attributedText!.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
     let captionSize = self.captionLabel.attributedText!.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
 
-    return Layout.Page.Title.topOffset   + titleSize.height
+    return Layout.Page.Title.topOffset + titleSize.height
       + Layout.Page.Caption.topOffset + captionSize.height
       + 1.0 // because of reasons
   }
@@ -109,8 +109,8 @@ class TutorialPresentationPage: UIViewController {
     let textAttributes = Managers.theme.textAttributes(for: .caption, fontType: .text, alignment: .center, lineSpacing: lineSpacing, color: color)
     let iconAttributes = Managers.theme.textAttributes(for: .caption, fontType: .icon, alignment: .center, lineSpacing: lineSpacing, color: color)
 
-    let starReplacement   = TextReplacement("<star>",   NSAttributedString(string: "\u{f002}", attributes: iconAttributes))
-    let searchReplacement = TextReplacement("<search>", NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
+    let starReplacement   = TextReplacement("<star>",   NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
+    let searchReplacement = TextReplacement("<search>", NSAttributedString(string: "\u{f002}", attributes: iconAttributes))
 
     return NSAttributedString(string: caption, attributes: textAttributes)
       .withReplacements([starReplacement, searchReplacement])
