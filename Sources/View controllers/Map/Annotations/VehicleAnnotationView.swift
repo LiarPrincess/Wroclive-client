@@ -49,22 +49,21 @@ class VehicleAnnotationView: MKAnnotationView {
 
   private func updateImage(for annotation: VehicleAnnotation) {
     let colorScheme = Managers.theme.colorScheme
-    let color       = annotation.line.type == .bus ? colorScheme.bus : colorScheme.tram
+    let color       = annotation.line.type == .bus ? colorScheme.busColor : colorScheme.tramColor
 
-    let hasColorChanged = self.pinView.tintColor != color
+    let hasColorChanged = self.pinView.tintColor != color.value
     let hasAngleChanged = abs(self.pinView.angle - annotation.angle) > Constants.Pin.minAngleChangeToRedraw
 
     if hasColorChanged || hasAngleChanged {
-      self.pinView.tintColor = color
+      self.pinView.tintColor = color.value
       self.pinView.angle     = annotation.angle
       self.pinView.setNeedsDisplay()
     }
   }
 
   private func updateLabel(for annotation: VehicleAnnotation) {
-    let color: Theme.Color = annotation.line.type == .bus ? .bus : .tram
-
-    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: color)
+    let textColor: TextColor = annotation.line.type == .bus ? .bus : .tram
+    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
     self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name, attributes: textAttributes)
 
     let pinSize    = Layout.pinImageSize

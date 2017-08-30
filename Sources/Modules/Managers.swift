@@ -15,7 +15,7 @@ struct Managers {
   static var device:    DeviceManager!
   static var appStore:  AppStoreManager!
 
-  static var theme:     Theme!
+  static var theme:     ThemeManager!
 
   private init() {}
 }

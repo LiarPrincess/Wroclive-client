@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let mainViewController = MainViewController()
 //    let mainViewController = TutorialPresentation()
     window = UIWindow(frame: UIScreen.main.bounds)
-    window!.tintColor          = Managers.theme.colorScheme.tint
+    window!.tintColor          = Managers.theme.colorScheme.tintColor.value
     window!.rootViewController = mainViewController
     window!.makeKeyAndVisible()
 
@@ -37,6 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Managers.device    = DeviceManagerImpl()
     Managers.appStore  = AppStoreManagerImpl()
 
-    Managers.theme     = Theme(colorScheme: .light)
+    Managers.theme     = ThemeManagerImpl()
   }
 }

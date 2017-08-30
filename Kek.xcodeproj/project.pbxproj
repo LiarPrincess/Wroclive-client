@@ -45,6 +45,8 @@
 		9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3751EE33B8000063377 /* BookmarksDataSource.swift */; };
 		9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */; };
 		9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3B41EE3DEF400063377 /* BookmarkCellViewModel.swift */; };
+		901D46861F57089000A9F6BD /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901D46851F57089000A9F6BD /* ThemeManager.swift */; };
+		901D46881F5730AE00A9F6BD /* ColorValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901D46871F5730AE00A9F6BD /* ColorValues.swift */; };
 		9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3891F12C95D000A6949 /* CGFloat+Rad.swift */; };
 		9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38B1F12C95D000A6949 /* Array+GroupedBy.swift */; };
 		9021F3941F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38C1F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift */; };
@@ -81,6 +83,7 @@
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */; };
+		90489F1E1F56173300C4A6E7 /* ThemeManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90489F1D1F56173300C4A6E7 /* ThemeManagerViewController.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
 		9055C8E61F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */; };
 		9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */; };
@@ -102,9 +105,9 @@
 		908FB1A11F48B3FD00121584 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1A01F48B3FD00121584 /* IntrinsicTableView.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
-		90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* Theme.swift */; };
+		90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */; };
 		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
-		90AF2BE31EE9E4ED006E61D6 /* Theme+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* Theme+Enum.swift */; };
+		90AF2BE31EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
 		90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */; };
 		90D6ACFE1F4DEBE600B36DCB /* InAppPurchasePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF91F4DEBE600B36DCB /* InAppPurchasePresentation.swift */; };
@@ -180,6 +183,8 @@
 		9017C3751EE33B8000063377 /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
 		9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSourceDelegate.swift; sourceTree = "<group>"; };
 		9017C3B41EE3DEF400063377 /* BookmarkCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellViewModel.swift; sourceTree = "<group>"; };
+		901D46851F57089000A9F6BD /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		901D46871F5730AE00A9F6BD /* ColorValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorValues.swift; sourceTree = "<group>"; };
 		9021F3891F12C95D000A6949 /* CGFloat+Rad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Rad.swift"; sourceTree = "<group>"; };
 		9021F38B1F12C95D000A6949 /* Array+GroupedBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+GroupedBy.swift"; sourceTree = "<group>"; };
 		9021F38C1F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfEquatable+ContainsAll.swift"; sourceTree = "<group>"; };
@@ -217,6 +222,7 @@
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfLine+FilterByType.swift"; sourceTree = "<group>"; };
+		90489F1D1F56173300C4A6E7 /* ThemeManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerViewController.swift; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
 		9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewControllerLayout.swift; sourceTree = "<group>"; };
 		9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewControllerConstants.swift; sourceTree = "<group>"; };
@@ -237,9 +243,9 @@
 		908FB1A01F48B3FD00121584 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
-		90AF2BD31EE9DE00006E61D6 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerImpl.swift; sourceTree = "<group>"; };
 		90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
-		90AF2BE21EE9E4ED006E61D6 /* Theme+Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Theme+Enum.swift"; sourceTree = "<group>"; };
+		90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerEnumerations.swift; sourceTree = "<group>"; };
 		90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerImpl.swift; sourceTree = "<group>"; };
@@ -677,6 +683,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		90489F1C1F56168500C4A6E7 /* Theme manager */ = {
+			isa = PBXGroup;
+			children = (
+				90489F1D1F56173300C4A6E7 /* ThemeManagerViewController.swift */,
+			);
+			path = "Theme manager";
+			sourceTree = "<group>";
+		};
 		904A6B111F43181F00EE98FD /* Pin */ = {
 			isa = PBXGroup;
 			children = (
@@ -752,6 +766,7 @@
 		9096CDCB1F40EF0C00FEF20A /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				90489F1C1F56168500C4A6E7 /* Theme manager */,
 				9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */,
 				9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */,
 				9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */,
@@ -764,8 +779,9 @@
 			children = (
 				9056F6521F5229A500F7EF48 /* Font */,
 				90AF2BD51EE9DED4006E61D6 /* Color schemes */,
-				90AF2BD31EE9DE00006E61D6 /* Theme.swift */,
-				90AF2BE21EE9E4ED006E61D6 /* Theme+Enum.swift */,
+				901D46851F57089000A9F6BD /* ThemeManager.swift */,
+				90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */,
+				90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */,
 			);
 			name = Theme;
 			path = Sources/Modules/Theme;
@@ -774,6 +790,7 @@
 		90AF2BD51EE9DED4006E61D6 /* Color schemes */ = {
 			isa = PBXGroup;
 			children = (
+				901D46871F5730AE00A9F6BD /* ColorValues.swift */,
 				90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */,
 			);
 			path = "Color schemes";
@@ -1061,6 +1078,7 @@
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90E3ADE41F4F88E100C3ED24 /* TutorialPresentationLayout.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
+				90489F1E1F56173300C4A6E7 /* ThemeManagerViewController.swift in Sources */,
 				900CAEAE1F482E750044C8A6 /* AvailableLinesEndpoint.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
 				900CAEB61F482E750044C8A6 /* SearchManager.swift in Sources */,
@@ -1074,7 +1092,7 @@
 				900F72F81F55C03F00613A1E /* PresentationControllerPage.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
 				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
-				90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */,
+				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
 				90E3ADE21F4F88BC00C3ED24 /* TutorialPresentation.swift in Sources */,
@@ -1086,12 +1104,13 @@
 				9021F4391F12D698000A6949 /* LineSelectionSectionHeaderView.swift in Sources */,
 				90E8A6C61F4CD43300CE5AE9 /* DeviceManager.swift in Sources */,
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManagerImpl.swift in Sources */,
-				90AF2BE31EE9E4ED006E61D6 /* Theme+Enum.swift in Sources */,
+				90AF2BE31EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift in Sources */,
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
 				90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */,
 				9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */,
 				908FB1A11F48B3FD00121584 /* IntrinsicTableView.swift in Sources */,
 				9021F43B1F12D698000A6949 /* LineSelectionPage.swift in Sources */,
+				901D46861F57089000A9F6BD /* ThemeManager.swift in Sources */,
 				900CAEB01F482E750044C8A6 /* LineLocationsParser.swift in Sources */,
 				900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */,
 				9021F3941F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift in Sources */,
@@ -1112,6 +1131,7 @@
 				90E8A6C11F4CB81400CE5AE9 /* AppManagerImpl.swift in Sources */,
 				903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */,
 				9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */,
+				901D46881F5730AE00A9F6BD /* ColorValues.swift in Sources */,
 				9056F6571F5229A500F7EF48 /* Font.swift in Sources */,
 				9021F43A1F12D698000A6949 /* LineSelectionDataSource.swift in Sources */,
 				90E8A6CB1F4CE24500CE5AE9 /* AppStoreManager.swift in Sources */,

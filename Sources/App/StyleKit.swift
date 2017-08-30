@@ -347,7 +347,7 @@ public class StyleKit : NSObject {
     bezierPath.stroke()
 
     context.restoreGState()
-    
+
   }
 
   @objc(StyleKitResizingBehavior)

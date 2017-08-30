@@ -5,19 +5,11 @@
 
 import UIKit
 
-class Theme {
-
-  // Mark - Properties
-
-  fileprivate(set) var systemFont      = SystemFont()
-  fileprivate(set) var fontAwesomeFont = FontAwesomeFont()
-
-  fileprivate(set) var colorScheme: ColorScheme
+class ThemeManagerImpl: ThemeManager {
 
   // Mark - Init
 
-  init(colorScheme: ColorScheme) {
-    self.colorScheme = colorScheme
+  init() {
     self.startObservingContentSizeCategory()
   }
 
@@ -25,21 +17,36 @@ class Theme {
     self.stopObservingContentSizeCategory()
   }
 
+  // Mark - Color scheme
+
+  fileprivate(set) var colorScheme = ColorScheme(tint: .red, bus: .red, tram: .blue)
+
+  func setColorScheme(tint tintColor: TintColor, bus busColor: VehicleColor, tram tramColor: VehicleColor) {
+    if let appDelegate = UIApplication.shared.delegate, let window = appDelegate.window {
+      window?.tintColor = tintColor.value
+    }
+
+    self.colorScheme = ColorScheme(tint: tintColor, bus: busColor, tram: tramColor)
+  }
+
   // MARK: - Text attributes
 
+  fileprivate(set) var systemFont = SystemFont()
+  fileprivate(set) var iconFont   = FontAwesomeFont()
+
   func textAttributes(for textStyle: TextStyle,
-                      fontType:      FontType        = .text,
-                      alignment:     NSTextAlignment = .natural,
-                      lineSpacing:   CGFloat         = 0.0,
-                      color:         Color           = Color.text) -> [String:Any] {
+                      fontType:      FontType,
+                      alignment:     NSTextAlignment,
+                      lineSpacing:   CGFloat,
+                      color:         TextColor) -> [String:Any] {
     let colorValue = self.colorValue(color)
     return self.textAttributes(for: textStyle, fontType: fontType, alignment: alignment, lineSpacing: lineSpacing, color: colorValue)
   }
 
   func textAttributes(for textStyle: TextStyle,
-                      fontType:      FontType        = .text,
-                      alignment:     NSTextAlignment = .natural,
-                      lineSpacing:   CGFloat         = 0.0,
+                      fontType:      FontType,
+                      alignment:     NSTextAlignment,
+                      lineSpacing:   CGFloat,
                       color:         UIColor) -> [String:Any] {
     return [
       NSFontAttributeName:            self.fontValue(fontType, textStyle),
@@ -49,19 +56,19 @@ class Theme {
     ]
   }
 
-  private func colorValue(_ color: Color) -> UIColor {
+  private func colorValue(_ color: TextColor) -> UIColor {
     switch color {
     case .background:       return self.colorScheme.background
     case .backgroundAccent: return self.colorScheme.backgroundAccent
     case .text:             return self.colorScheme.text
-    case .tint:             return self.colorScheme.tint
-    case .bus:              return self.colorScheme.bus
-    case .tram:             return self.colorScheme.tram
+    case .tint:             return self.colorScheme.tintColor.value
+    case .bus:              return self.colorScheme.busColor.value
+    case .tram:             return self.colorScheme.tramColor.value
     }
   }
 
   private func font(ofType fontType: FontType) -> Font {
-    return fontType == .icon ? self.fontAwesomeFont : self.systemFont
+    return fontType == .icon ? self.iconFont : self.systemFont
   }
 
   private func fontValue(_ fontType: FontType, _ textStyle: TextStyle) -> UIFont {
@@ -94,7 +101,7 @@ class Theme {
     return paragraphStyle
   }
 
-  // MARK: - View styles
+  // MARK: - Card panel
 
   func applyCardPanelStyle(_ view: UIView) {
     view.backgroundColor = self.colorScheme.background
@@ -106,18 +113,20 @@ class Theme {
     view.setContentHuggingPriority(900, for: .vertical)
   }
 
-  func applyToolbarStyle(_ toolbar: UIToolbar) {
-    toolbar.barStyle = self.colorScheme.barStyle
-  }
+  // MARK: - Navigation
 
   func applyNavigationBarStyle(_ navigationBar: UINavigationBar) {
     navigationBar.barStyle = self.colorScheme.barStyle
+  }
+
+  func applyToolbarStyle(_ toolbar: UIToolbar) {
+    toolbar.barStyle = self.colorScheme.barStyle
   }
 }
 
 // MARK: - Content size category observer
 
-extension Theme {
+extension ThemeManagerImpl {
   fileprivate func startObservingContentSizeCategory() {
     let notification = NSNotification.Name.UIContentSizeCategoryDidChange
     NotificationCenter.default.addObserver(self, selector: #selector(contentSizeCategoryDidChange(notification:)), name: notification, object: nil)
@@ -129,6 +138,6 @@ extension Theme {
 
   @objc func contentSizeCategoryDidChange(notification: NSNotification) {
     self.systemFont.recalculateSizes()
-    self.fontAwesomeFont.recalculateSizes()
+    self.iconFont.recalculateSizes()
   }
 }

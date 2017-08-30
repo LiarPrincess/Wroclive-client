@@ -57,7 +57,7 @@ extension SearchViewController {
 
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.bookmarkButtonSize)
 
-    self.bookmarkButton.tintColor = Managers.theme.colorScheme.tint
+    self.bookmarkButton.tintColor = Managers.theme.colorScheme.tintColor.value
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
     self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
     self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonPressed), for: .touchUpInside)

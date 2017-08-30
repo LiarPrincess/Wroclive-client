@@ -54,7 +54,7 @@ extension ConfigurationViewController: UIScrollViewDelegate {
 extension ConfigurationViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch (indexPath.section, indexPath.row) {
-    case (0, 0): break
+    case (0, 0): self.showThemeManager()
     case (1, 0): Managers.app.showShareActivity(in: self)
     case (1, 1): self.showTutorial()
     case (1, 2): Managers.app.openWebsite()
@@ -64,9 +64,44 @@ extension ConfigurationViewController: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
   }
 
+  private func showThemeManager() {
+    let currentColor = Managers.theme.colorScheme.tintColor
+    let nextColor = self.nextColor(after: currentColor)
+
+    Managers.theme.setColorScheme(tint: nextColor, bus: .red, tram: .blue)
+
+//    let viewController = ThemeManagerViewController()
+//    self.navigationController!.pushViewController(viewController, animated: true)
+  }
+
+  private func nextColor(after color: TintColor) -> TintColor {
+    let allColors = self.iterateEnum(TintColor)
+
+    var flag = false
+    for col in allColors {
+      if flag {
+        return col
+      }
+      flag = col == color
+    }
+
+//        let currentColorIndex = tintColors.enumerated().first { $0.element == currentColor }.map { $0.offset }
+    return allColors.next()!
+  }
+
+  private func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
+    var i = 0
+    return AnyIterator {
+      let next = withUnsafeBytes(of: &i) { $0.load(as: T.self) }
+      if next.hashValue != i { return nil }
+      i += 1
+      return next
+    }
+  }
+
   private func showTutorial() {
-    let tutorialViewController = TutorialPresentation()
-    self.navigationController!.pushViewController(tutorialViewController, animated: true)
+    let viewController = TutorialPresentation()
+    self.navigationController!.pushViewController(viewController, animated: true)
   }
 }
 
