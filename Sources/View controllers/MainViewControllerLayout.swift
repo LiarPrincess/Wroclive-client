@@ -39,11 +39,9 @@ extension MainViewController {
     self.bookmarksButton.action = #selector(bookmarksButtonPressed)
 
     self.configurationButton.image  = StyleKit.drawCogwheelTemplateImage(size: Layout.toolbarImageSize)
-    self.configurationButton.style  = .done
     self.configurationButton.target = self
     self.configurationButton.action = #selector(configurationButtonPressed)
 
-    Managers.theme.applyToolbarStyle(self.toolbar)
     self.toolbar.setItems(self.layoutToolbarItems(), animated: false)
     self.view.addSubview(self.toolbar)
 

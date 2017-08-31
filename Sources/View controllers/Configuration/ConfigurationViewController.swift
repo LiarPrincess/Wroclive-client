@@ -75,7 +75,7 @@ extension ConfigurationViewController: UITableViewDelegate {
   }
 
   private func nextColor(after color: TintColor) -> TintColor {
-    let allColors = self.iterateEnum(TintColor)
+    let allColors = [TintColor](self.iterateEnum(TintColor.self))
 
     var flag = false
     for col in allColors {
@@ -85,8 +85,7 @@ extension ConfigurationViewController: UITableViewDelegate {
       flag = col == color
     }
 
-//        let currentColorIndex = tintColors.enumerated().first { $0.element == currentColor }.map { $0.offset }
-    return allColors.next()!
+    return allColors.first!
   }
 
   private func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {

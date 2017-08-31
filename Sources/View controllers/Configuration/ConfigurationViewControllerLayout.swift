@@ -21,10 +21,6 @@ extension ConfigurationViewController {
   private func initNavigationBar() {
     self.title = Localization.Title
 
-    let navigationBar = self.navigationController!.navigationBar
-    Managers.theme.applyNavigationBarStyle(navigationBar)
-    navigationBar.titleTextAttributes = Managers.theme.textAttributes(for: .bodyBold)
-
     let closeImage  = StyleKit.drawCloseTemplateImage(size: Layout.NavigationBar.closeImageSize)
     let closeButton = UIBarButtonItem(image: closeImage, style: .plain, target: self, action: #selector(closeButtonPressed))
     self.navigationItem.rightBarButtonItem = closeButton

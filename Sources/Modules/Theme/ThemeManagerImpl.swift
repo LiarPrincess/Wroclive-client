@@ -4,13 +4,24 @@
 //
 
 import UIKit
+import MapKit
 
+// source: https://medium.com/@abhimuralidharan/maintaining-a-colour-theme-manager-on-ios-swift-178b8a6a92
 class ThemeManagerImpl: ThemeManager {
+
+  // MARK: - Properties
+
+  fileprivate(set) var systemFont = SystemFont()
+  fileprivate(set) var iconFont   = FontAwesomeFont()
+
+  fileprivate(set) var colorScheme: ColorScheme
 
   // Mark - Init
 
   init() {
+    self.colorScheme = ColorSchemeManager.load()
     self.startObservingContentSizeCategory()
+    self.applyColorScheme()
   }
 
   deinit {
@@ -19,20 +30,25 @@ class ThemeManagerImpl: ThemeManager {
 
   // Mark - Color scheme
 
-  fileprivate(set) var colorScheme = ColorScheme(tint: .red, bus: .red, tram: .blue)
-
   func setColorScheme(tint tintColor: TintColor, bus busColor: VehicleColor, tram tramColor: VehicleColor) {
-    if let appDelegate = UIApplication.shared.delegate, let window = appDelegate.window {
-      window?.tintColor = tintColor.value
-    }
-
     self.colorScheme = ColorScheme(tint: tintColor, bus: busColor, tram: tramColor)
+    self.applyColorScheme()
+    ColorSchemeManager.save(self.colorScheme)
+  }
+
+  private func applyColorScheme() {
+    UIWindow.appearance().tintColor = self.colorScheme.tintColor.value
+    UIView.appearance().tintColor   = self.colorScheme.tintColor.value
+
+    // Make user location pin blue
+    MKAnnotationView.appearance().tintColor = UIColor(red: 0.00, green: 0.50, blue: 1.00, alpha: 1.00)
+
+    UINavigationBar.appearance().barStyle            = self.colorScheme.barStyle
+    UINavigationBar.appearance().titleTextAttributes = self.textAttributes(for : .bodyBold)
+    UIToolbar.appearance().barStyle                  = self.colorScheme.barStyle
   }
 
   // MARK: - Text attributes
-
-  fileprivate(set) var systemFont = SystemFont()
-  fileprivate(set) var iconFont   = FontAwesomeFont()
 
   func textAttributes(for textStyle: TextStyle,
                       fontType:      FontType,
@@ -111,16 +127,6 @@ class ThemeManagerImpl: ThemeManager {
   func applyCardPanelHeaderStyle(_ view: UIView) {
     view.addBorder(at: .bottom)
     view.setContentHuggingPriority(900, for: .vertical)
-  }
-
-  // MARK: - Navigation
-
-  func applyNavigationBarStyle(_ navigationBar: UINavigationBar) {
-    navigationBar.barStyle = self.colorScheme.barStyle
-  }
-
-  func applyToolbarStyle(_ toolbar: UIToolbar) {
-    toolbar.barStyle = self.colorScheme.barStyle
   }
 }
 

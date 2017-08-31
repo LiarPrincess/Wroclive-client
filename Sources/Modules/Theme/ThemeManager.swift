@@ -31,11 +31,6 @@ protocol ThemeManager {
 
   func applyCardPanelStyle(_ view: UIView)
   func applyCardPanelHeaderStyle(_ view: UIView)
-
-  // MARK: - Navigation
-
-  func applyNavigationBarStyle(_ navigationBar: UINavigationBar)
-  func applyToolbarStyle(_ toolbar: UIToolbar)
 }
 
 extension ThemeManager {

@@ -13,10 +13,7 @@ class BookmarksManagerImpl: BookmarksManager {
 
   var hasSeenInstruction: Bool {
     get { return UserDefaults.standard.bool(forKey: hasSeenInstructionKey) }
-    set {
-      UserDefaults.standard.set(newValue, forKey: hasSeenInstructionKey)
-      UserDefaults.standard.synchronize()
-    }
+    set { UserDefaults.standard.set(newValue, forKey: hasSeenInstructionKey) }
   }
 
   // MARK: - CRU

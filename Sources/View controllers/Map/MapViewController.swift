@@ -22,7 +22,6 @@ class MapViewController: UIViewController {
     result.showsScale        = Constants.MapView.showsScale
     result.showsTraffic      = Constants.MapView.showsTraffic
     result.showsUserLocation = Constants.MapView.showsUserLocation
-    result.tintColor         = UIColor(red: 0.00, green: 0.53, blue: 0.98, alpha: 1.00)
     return result
   }()
 
@@ -41,9 +40,9 @@ class MapViewController: UIViewController {
     firstly { () -> Promise<Void> in
       Managers.map.requestInUseAuthorization()
       return Promise(value: ())
-      }
-      .then { return Managers.map.getDefaultRegion() }
-      .then { self.mapView.setRegion($0, animated: false) }
+    }
+    .then { return Managers.map.getDefaultRegion() }
+    .then { self.mapView.setRegion($0, animated: false) }
   }
 
   override var bottomLayoutGuide: UILayoutSupport {
