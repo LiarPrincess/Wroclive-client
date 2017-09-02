@@ -14,7 +14,6 @@ extension BookmarksViewController {
 
   func initLayout() {
     Managers.theme.applyCardPanelStyle(self.view)
-
     self.initHeader()
     self.initBookmarksTable()
     self.initBookmarksTablePlaceholder()

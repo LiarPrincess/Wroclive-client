@@ -13,49 +13,73 @@ private typealias Localization = Localizable.Configuration
 extension ConfigurationViewController {
 
   func initLayout() {
-    self.view.backgroundColor = self.configurationTable.backgroundColor ?? Managers.theme.colorScheme.background
-    self.initNavigationBar()
-    self.initContentView()
+    Managers.theme.applyCardPanelStyle(self.view)
+    self.initHeader()
+    self.initScrollView()
   }
 
-  private func initNavigationBar() {
-    self.title = Localization.Title
+  private func initHeader() {
+    Managers.theme.applyCardPanelHeaderStyle(self.headerView)
+    self.view.addSubview(self.headerView)
 
-    let closeImage  = StyleKit.drawCloseTemplateImage(size: Layout.NavigationBar.closeImageSize)
-    let closeButton = UIBarButtonItem(image: closeImage, style: .plain, target: self, action: #selector(closeButtonPressed))
-    self.navigationItem.rightBarButtonItem = closeButton
+    self.headerView.snp.makeConstraints { make in
+      make.left.top.right.equalToSuperview()
+    }
+
+    self.chevronView.state             = .down
+    self.chevronView.color             = Managers.theme.colorScheme.backgroundAccent
+    self.chevronView.animationDuration = Constants.Animations.chevronDismissRelativeDuration
+    self.view.addSubview(chevronView)
+
+    self.chevronView.snp.makeConstraints { make in
+      let chevronViewSize = ChevronView.nominalSize
+
+      make.top.equalToSuperview().offset(Layout.Header.chevronY)
+      make.centerX.equalToSuperview()
+      make.width.equalTo(chevronViewSize.width)
+      make.height.equalTo(chevronViewSize.height)
+    }
+
+    let titleAttributes           = Managers.theme.textAttributes(for: .headline)
+    self.cardTitle.attributedText = NSAttributedString(string: Localization.Title, attributes: titleAttributes)
+    self.cardTitle.numberOfLines  = 0
+    self.cardTitle.lineBreakMode  = .byWordWrapping
+    self.headerView.addSubview(self.cardTitle)
+
+    self.cardTitle.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(Layout.Header.topInset)
+      make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
+      make.left.equalToSuperview().offset(Layout.leftInset)
+      make.right.equalToSuperview().offset(-Layout.rightInset)
+    }
   }
 
-  private func initContentView() {
+  private func initScrollView() {
     self.scrollView.delegate = self
     self.scrollView.showsHorizontalScrollIndicator = false
 
-    self.view.addSubview(self.scrollView)
+    self.view.insertSubview(self.scrollView, belowSubview: self.headerView)
     self.scrollView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
 
-    scrollView.addSubview(contentView)
-    self.contentView.snp.makeConstraints { make in
+    scrollView.addSubview(self.scrollViewContent)
+    self.scrollViewContent.snp.makeConstraints { make in
       make.top.bottom.centerX.width.equalToSuperview()
     }
 
     self.initInAppPurchaseView()
     self.initConfigurationTable()
-
-    let screenHeight = UIScreen.main.bounds.height
-    let topInset     = -1.0 * screenHeight * Layout.Content.scrollHiddenPercent
-    self.scrollView.contentInset = UIEdgeInsets(top: topInset, left: 0.0, bottom: 0.0, right: 0.0)
   }
 
   private func initInAppPurchaseView() {
     self.addChildViewController(self.inAppPurchasePresentation)
-    self.contentView.addSubview(self.inAppPurchasePresentation.view)
+    self.scrollViewContent.addSubview(self.inAppPurchasePresentation.view)
 
-    let screenHeight = UIScreen.main.bounds.height
     self.inAppPurchasePresentation.view.snp.makeConstraints { make in
-      make.top.centerX.width.equalToSuperview()
-      make.height.equalTo(screenHeight + 1.0)
+      make.top.equalToSuperview()
+      make.centerX.width.equalToSuperview()
+      make.height.equalTo(self.viewSize)
     }
 
     self.inAppPurchasePresentation.didMove(toParentViewController: self)
@@ -66,7 +90,7 @@ extension ConfigurationViewController {
     self.configurationTable.separatorInset = .zero
     self.configurationTable.dataSource     = self
     self.configurationTable.delegate       = self
-    self.contentView.addSubview(self.configurationTable)
+    self.scrollViewContent.addSubview(self.configurationTable)
 
     self.configurationTable.snp.makeConstraints { make in
       make.top.equalTo(self.inAppPurchasePresentation.view.snp.bottom)

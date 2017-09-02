@@ -9,6 +9,8 @@ class InAppPurchasePresentation: UIViewController, PresentationController {
 
   // MARK: - Properties
 
+  let gradientLayer = CAGradientLayer()
+
   let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
   let pageControl        = UIPageControl()
   var pages              = [UIViewController]()
@@ -21,6 +23,11 @@ class InAppPurchasePresentation: UIViewController, PresentationController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
+  }
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    self.gradientLayer.frame = self.view.layer.bounds
   }
 
   // MARK: - Actions

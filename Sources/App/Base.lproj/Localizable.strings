@@ -36,7 +36,7 @@
 "Configuration_Title"  = "Settings";
 "Configuration_Footer" = "Data provided by MPK Wrocław\nKek version %@";
 
-"Configuration_Cell_Colours"  = "Colours";
+"Configuration_Cell_Colours"  = "Personalizacja";
 "Configuration_Cell_Share"    = "Share";
 "Configuration_Cell_Tutorial" = "Tutorial";
 "Configuration_Cell_Contact"  = "Contact";
@@ -47,9 +47,9 @@
 
 /* Presentations - In-app purchase */
 "Presentation_InAppPurchase_Bookmarks_Title"   = "Unlimited Bookmarks";
-"Presentation_InAppPurchase_Bookmarks_Content" = "Save more than 2 bookmarks for immediate bus arrival information.";
+"Presentation_InAppPurchase_Bookmarks_Content" = "Save more than 2 bookmarks to travel faster across the city.";
 
-"Presentation_InAppPurchase_Colors_Title"   = "Color Pack";
+"Presentation_InAppPurchase_Colors_Title"   = "Personalization";
 "Presentation_InAppPurchase_Colors_Content" = "Brighten up your life and personalise Kek to your favourite color.";
 
 "Presentation_InAppPurchase_Upgrade" = "Upgrade 1,09 €";

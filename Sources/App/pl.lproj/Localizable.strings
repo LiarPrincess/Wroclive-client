@@ -36,7 +36,7 @@
 "Configuration_Title"  = "Ustawienia";
 "Configuration_Footer" = "Dane uzyskano dzięki uprzejmości MPK Wrocław\nKek wersja %@";
 
-"Configuration_Cell_Colours"  = "Kolory";
+"Configuration_Cell_Colours"  = "Personalizacja";
 "Configuration_Cell_Share"    = "Udostępnij";
 "Configuration_Cell_Tutorial" = "Instrukcje";
 "Configuration_Cell_Contact"  = "Kontakt";

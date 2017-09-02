@@ -83,6 +83,7 @@
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		90336A311F587C3600FAAEFF /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */; };
+		90336A341F58B5E200FAAEFF /* ThemeManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90336A331F58B5E200FAAEFF /* ThemeManagerCell.swift */; };
 		903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */; };
 		90489F1E1F56173300C4A6E7 /* ThemeManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90489F1D1F56173300C4A6E7 /* ThemeManagerViewController.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
@@ -223,6 +224,7 @@
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
+		90336A331F58B5E200FAAEFF /* ThemeManagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerCell.swift; sourceTree = "<group>"; };
 		903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfLine+FilterByType.swift"; sourceTree = "<group>"; };
 		90489F1D1F56173300C4A6E7 /* ThemeManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerViewController.swift; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
@@ -685,9 +687,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		90336A321F58B5CB00FAAEFF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				90336A331F58B5E200FAAEFF /* ThemeManagerCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		90489F1C1F56168500C4A6E7 /* Theme manager */ = {
 			isa = PBXGroup;
 			children = (
+				90336A321F58B5CB00FAAEFF /* Cells */,
 				90489F1D1F56173300C4A6E7 /* ThemeManagerViewController.swift */,
 			);
 			path = "Theme manager";
@@ -1118,6 +1129,7 @@
 				900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */,
 				9021F3941F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift in Sources */,
 				900CAEB11F482E750044C8A6 /* LinesParser.swift in Sources */,
+				90336A341F58B5E200FAAEFF /* ThemeManagerCell.swift in Sources */,
 				9021F4271F12CCB3000A6949 /* LineTypeSelectionControl.swift in Sources */,
 				90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */,
 				900CAEB31F482E750044C8A6 /* NetworkError.swift in Sources */,

@@ -22,8 +22,9 @@ class MainViewController: UIViewController {
   let bookmarksButton     = UIBarButtonItem()
   let configurationButton = UIBarButtonItem()
 
-  var searchTransitionDelegate:    UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
-  var bookmarksTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var searchTransitionDelegate:        UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var bookmarksTransitionDelegate:     UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var configurationTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
   var trackedLines:  [Line] = []
   var trackingTimer: Timer?
@@ -85,9 +86,14 @@ class MainViewController: UIViewController {
   }
 
   @objc func configurationButtonPressed() {
-    let controller = ConfigurationViewController()
-    let navigationController = UINavigationController(rootViewController: controller)
-    self.present(navigationController, animated: true, completion: nil)
+    let relativeHeight  = Constants.CardPanel.configurationRelativeHeight
+    let controller      = ConfigurationViewController()
+
+    self.configurationTransitionDelegate = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
+    controller.modalPresentationStyle    = .custom
+    controller.transitioningDelegate     = self.configurationTransitionDelegate!
+
+    self.present(controller, animated: true, completion: nil)
   }
 
   // MARK: - Private - Tracking

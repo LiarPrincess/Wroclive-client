@@ -22,11 +22,10 @@ extension InAppPurchasePresentation {
   }
 
   private func initGradient() {
-    let gradientLayer = CAGradientLayer()
-    gradientLayer.frame     = self.view.bounds
-    gradientLayer.colors    = Colors.Gradient.colors.map { $0.cgColor }
-    gradientLayer.locations = Colors.Gradient.locations
-    self.view.layer.addSublayer(gradientLayer)
+    self.gradientLayer.frame     = self.view.layer.bounds
+    self.gradientLayer.colors    = Colors.Gradient.colors.map { $0.cgColor }
+    self.gradientLayer.locations = Colors.Gradient.locations
+    self.view.layer.addSublayer(self.gradientLayer)
   }
 
   private func initPages() {

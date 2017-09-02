@@ -5,14 +5,23 @@
 
 import UIKit
 
-private typealias Constants = ConfigurationViewControllerConstants
+private typealias Layout = ConfigurationViewControllerConstants.Layout
 
 class ConfigurationViewController: UIViewController {
 
   // MARK: - Properties
 
-  let scrollView  = UIScrollView()
-  let contentView = UIView()
+  let headerViewBlur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
+
+  lazy var headerView: UIVisualEffectView = {
+    return UIVisualEffectView(effect: self.headerViewBlur)
+  }()
+
+  let chevronView = ChevronView()
+  let cardTitle   = UILabel()
+
+  let scrollView        = UIScrollView()
+  let scrollViewContent = UIView()
 
   let inAppPurchasePresentation = InAppPurchasePresentation()
 
@@ -23,6 +32,11 @@ class ConfigurationViewController: UIViewController {
   let contactCell  = UITableViewCell(style: .value1, reuseIdentifier: nil)
   let rateCell     = UITableViewCell(style: .value1, reuseIdentifier: nil)
 
+  var viewSize: CGFloat {
+    let relativeHeight = MainViewControllerConstants.CardPanel.configurationRelativeHeight
+    return relativeHeight * UIScreen.main.bounds.height
+  }
+
   // MARK: - Overriden
 
   override func viewDidLoad() {
@@ -30,8 +44,55 @@ class ConfigurationViewController: UIViewController {
     self.initLayout()
   }
 
-  @objc func closeButtonPressed() {
-    self.dismiss(animated: true, completion: nil)
+  private var isAppearingForFirstTime = true
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    if self.isAppearingForFirstTime {
+      self.offsetScrolViewToInitialPosition()
+      self.isAppearingForFirstTime = false
+    }
+  }
+
+  // MARK: - Scroll view
+
+  func offsetScrolViewToInitialPosition() {
+    DispatchQueue.main.async { [weak self] in
+      if let strongSelf = self {
+        let offset = strongSelf.viewSize * Layout.Content.initialScrollPercent
+        strongSelf.scrollView.contentOffset = CGPoint(x: 0.0, y: offset)
+      }
+    }
+  }
+
+  func updateScrollViewBackgroundColor() {
+    let gradientColor = PresentationControllerConstants.Colors.Gradient.colors.first
+    let tableColor    = self.configurationTable.backgroundColor
+
+    let scrollPosition  = scrollView.contentOffset.y
+    let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor
+
+    if let backgroundColor = backgroundColor, self.scrollView.backgroundColor != backgroundColor {
+      self.scrollView.backgroundColor = backgroundColor
+    }
+  }
+}
+
+// MARK: - CardPanelPresentable
+
+extension ConfigurationViewController: CardPanelPresentable {
+  var contentView:       UIView { return self.view }
+  var interactionTarget: UIView { return self.headerView }
+
+  func dismissalTransitionWillBegin() {
+    self.chevronView.setState(.flat, animated: true)
+  }
+
+  func dismissalTransitionDidEnd(_ completed: Bool) {
+    if !completed {
+      self.chevronView.setState(.down, animated: true)
+    }
   }
 }
 
@@ -39,19 +100,14 @@ class ConfigurationViewController: UIViewController {
 
 extension ConfigurationViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    self.disableTopScrolling(scrollView)
-  }
-
-  private func disableTopScrolling(_ scrollView: UIScrollView) {
-    if scrollView.contentOffset.y < 0 {
-      scrollView.contentOffset.y = 0.0
-    }
+    self.updateScrollViewBackgroundColor()
   }
 }
 
 // MARK: - UITableViewDelegate
 
 extension ConfigurationViewController: UITableViewDelegate {
+
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch (indexPath.section, indexPath.row) {
     case (0, 0): self.showThemeManager()
@@ -65,48 +121,20 @@ extension ConfigurationViewController: UITableViewDelegate {
   }
 
   private func showThemeManager() {
-    let currentColor = Managers.theme.colorScheme.tintColor
-    let nextColor = self.nextColor(after: currentColor)
-
-    Managers.theme.setColorScheme(tint: nextColor, bus: .red, tram: .blue)
-
-//    let viewController = ThemeManagerViewController()
-//    self.navigationController!.pushViewController(viewController, animated: true)
-  }
-
-  private func nextColor(after color: TintColor) -> TintColor {
-    let allColors = [TintColor](self.iterateEnum(TintColor.self))
-
-    var flag = false
-    for col in allColors {
-      if flag {
-        return col
-      }
-      flag = col == color
-    }
-
-    return allColors.first!
-  }
-
-  private func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
-    var i = 0
-    return AnyIterator {
-      let next = withUnsafeBytes(of: &i) { $0.load(as: T.self) }
-      if next.hashValue != i { return nil }
-      i += 1
-      return next
-    }
+    let viewController = ThemeManagerViewController()
+    self.present(viewController, animated: true, completion: nil)
   }
 
   private func showTutorial() {
     let viewController = TutorialPresentation()
-    self.navigationController!.pushViewController(viewController, animated: true)
+    self.present(viewController, animated: true, completion: nil)
   }
 }
 
 // MARK: - UITableViewDataSource
 
 extension ConfigurationViewController: UITableViewDataSource {
+
   func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }

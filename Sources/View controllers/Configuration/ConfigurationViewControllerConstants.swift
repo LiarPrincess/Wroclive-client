@@ -11,12 +11,15 @@ struct ConfigurationViewControllerConstants {
     static let leftInset:  CGFloat = 16.0
     static let rightInset: CGFloat = leftInset
 
-    struct NavigationBar {
-      static let closeImageSize = CGSize(width: 15.0, height: 15.0)
+    struct Header {
+      static let chevronY:  CGFloat = 8.0
+
+      static let topInset:    CGFloat = 32.0
+      static let bottomInset: CGFloat =  8.0
     }
 
     struct Content {
-      static let scrollHiddenPercent: CGFloat = 0.25
+      static let initialScrollPercent: CGFloat = 0.11
     }
 
     struct Footer {
@@ -24,5 +27,9 @@ struct ConfigurationViewControllerConstants {
       static let bottomOffset: CGFloat = 20.0
       static let lineSpacing:  CGFloat =  5.0
     }
+  }
+
+  struct Animations {
+    static let chevronDismissRelativeDuration: TimeInterval = 0.05
   }
 }
