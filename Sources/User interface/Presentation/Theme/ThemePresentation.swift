@@ -5,7 +5,7 @@
 
 import UIKit
 
-class TutorialPresentation: UIViewController, PresentationController {
+class ThemePresentation: UIViewController, PresentationController {
 
   // MARK: - Properties
 
@@ -13,7 +13,10 @@ class TutorialPresentation: UIViewController, PresentationController {
 
   let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
   let pageControl        = UIPageControl()
-  var pages              = [UIViewController]()
+
+  let page0 = ThemePresentationPage()
+  let page1 = ThemePresentationPage()
+  lazy var pages: [UIViewController] = { return [self.page0, self.page1] }()
 
   // MARK: - Overriden
 
@@ -26,17 +29,11 @@ class TutorialPresentation: UIViewController, PresentationController {
     super.viewDidLayoutSubviews()
     self.gradientLayer.frame = self.view.layer.bounds
   }
-  
-  // MARK: - Actions
-
-  @objc func closeButtonPressed() {
-    self.dismiss(animated: true, completion: nil)
-  }
 }
 
 // MARK: UIPageViewControllerDelegate, UIPageViewControllerDataSource
 
-extension TutorialPresentation: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+extension ThemePresentation: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
     return self.viewControllerBefore(viewController)
   }

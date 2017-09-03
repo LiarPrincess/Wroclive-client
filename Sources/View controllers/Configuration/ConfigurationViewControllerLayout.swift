@@ -56,6 +56,7 @@ extension ConfigurationViewController {
 
   private func initScrollView() {
     self.scrollView.delegate = self
+    self.scrollView.alwaysBounceVertical = true
     self.scrollView.showsHorizontalScrollIndicator = false
 
     self.view.insertSubview(self.scrollView, belowSubview: self.headerView)

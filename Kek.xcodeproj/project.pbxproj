@@ -111,6 +111,12 @@
 		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
 		90AF2BE31EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
+		90D5FC7E1F5C2BCA00FCB332 /* ThemeManagerViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC7D1F5C2BCA00FCB332 /* ThemeManagerViewControllerConstants.swift */; };
+		90D5FC801F5C2C3200FCB332 /* ThemeManagerViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC7F1F5C2C3200FCB332 /* ThemeManagerViewControllerLayout.swift */; };
+		90D5FC831F5C342600FCB332 /* ThemePresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC821F5C342600FCB332 /* ThemePresentationConstants.swift */; };
+		90D5FC851F5C343900FCB332 /* ThemePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC841F5C343900FCB332 /* ThemePresentation.swift */; };
+		90D5FC871F5C344400FCB332 /* ThemePresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC861F5C344400FCB332 /* ThemePresentationLayout.swift */; };
+		90D5FC8A1F5C5A9000FCB332 /* ThemePresentationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC891F5C5A9000FCB332 /* ThemePresentationPage.swift */; };
 		90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */; };
 		90D6ACFE1F4DEBE600B36DCB /* InAppPurchasePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF91F4DEBE600B36DCB /* InAppPurchasePresentation.swift */; };
 		90D6ACFF1F4DEBE600B36DCB /* InAppPurchasePresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACFA1F4DEBE600B36DCB /* InAppPurchasePresentationConstants.swift */; };
@@ -252,6 +258,12 @@
 		90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerEnumerations.swift; sourceTree = "<group>"; };
 		90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		90D5FC7D1F5C2BCA00FCB332 /* ThemeManagerViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerViewControllerConstants.swift; sourceTree = "<group>"; };
+		90D5FC7F1F5C2C3200FCB332 /* ThemeManagerViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerViewControllerLayout.swift; sourceTree = "<group>"; };
+		90D5FC821F5C342600FCB332 /* ThemePresentationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePresentationConstants.swift; sourceTree = "<group>"; };
+		90D5FC841F5C343900FCB332 /* ThemePresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePresentation.swift; sourceTree = "<group>"; };
+		90D5FC861F5C344400FCB332 /* ThemePresentationLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePresentationLayout.swift; sourceTree = "<group>"; };
+		90D5FC891F5C5A9000FCB332 /* ThemePresentationPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePresentationPage.swift; sourceTree = "<group>"; };
 		90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerImpl.swift; sourceTree = "<group>"; };
 		90D6ACF91F4DEBE600B36DCB /* InAppPurchasePresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchasePresentation.swift; sourceTree = "<group>"; };
 		90D6ACFA1F4DEBE600B36DCB /* InAppPurchasePresentationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchasePresentationConstants.swift; sourceTree = "<group>"; };
@@ -700,6 +712,8 @@
 			children = (
 				90336A321F58B5CB00FAAEFF /* Cells */,
 				90489F1D1F56173300C4A6E7 /* ThemeManagerViewController.swift */,
+				90D5FC7F1F5C2C3200FCB332 /* ThemeManagerViewControllerLayout.swift */,
+				90D5FC7D1F5C2BCA00FCB332 /* ThemeManagerViewControllerConstants.swift */,
 			);
 			path = "Theme manager";
 			sourceTree = "<group>";
@@ -768,8 +782,8 @@
 		9096CDBA1F40630500FEF20A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
 				902330E61EDF37F500FA8F43 /* Assets.xcassets */,
+				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
 				90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */,
 				90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */,
 			);
@@ -826,11 +840,31 @@
 			path = Bookmarks;
 			sourceTree = "<group>";
 		};
+		90D5FC811F5C30C600FCB332 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				90D5FC881F5C594400FCB332 /* Page */,
+				90D5FC841F5C343900FCB332 /* ThemePresentation.swift */,
+				90D5FC861F5C344400FCB332 /* ThemePresentationLayout.swift */,
+				90D5FC821F5C342600FCB332 /* ThemePresentationConstants.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		90D5FC881F5C594400FCB332 /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				90D5FC891F5C5A9000FCB332 /* ThemePresentationPage.swift */,
+			);
+			path = Page;
+			sourceTree = "<group>";
+		};
 		90D6ACF71F4DEBE600B36DCB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				90D6ACF81F4DEBE600B36DCB /* In App purchase */,
 				90E3ADE01F4F889F00C3ED24 /* Tutorial */,
+				90D5FC811F5C30C600FCB332 /* Theme */,
 				900F72F31F55BE5100613A1E /* PresentationController.swift */,
 				900F72F71F55C03F00613A1E /* PresentationControllerPage.swift */,
 				90E3ADDC1F4F7D9200C3ED24 /* PresentationControllerConstants.swift */,
@@ -1099,6 +1133,7 @@
 				9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				900CAEAA1F482E750044C8A6 /* BookmarksManagerImpl.swift in Sources */,
+				90D5FC851F5C343900FCB332 /* ThemePresentation.swift in Sources */,
 				9021F4401F12D698000A6949 /* LineSelectionSectionViewModel.swift in Sources */,
 				908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */,
 				900CAEA61F482E750044C8A6 /* AlertManager.swift in Sources */,
@@ -1109,6 +1144,8 @@
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
+				90D5FC7E1F5C2BCA00FCB332 /* ThemeManagerViewControllerConstants.swift in Sources */,
+				90D5FC801F5C2C3200FCB332 /* ThemeManagerViewControllerLayout.swift in Sources */,
 				90E3ADE21F4F88BC00C3ED24 /* TutorialPresentation.swift in Sources */,
 				904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
@@ -1141,6 +1178,7 @@
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
+				90D5FC8A1F5C5A9000FCB332 /* ThemePresentationPage.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				90E8A6C11F4CB81400CE5AE9 /* AppManagerImpl.swift in Sources */,
@@ -1153,6 +1191,7 @@
 				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
 				900CAEAC1F482E750044C8A6 /* MapManagerConstants.swift in Sources */,
+				90D5FC871F5C344400FCB332 /* ThemePresentationLayout.swift in Sources */,
 				9007E35D1F251971006A2F8F /* BookmarksViewControllerDelegate.swift in Sources */,
 				9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */,
 				9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */,
@@ -1177,6 +1216,7 @@
 				90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
+				90D5FC831F5C342600FCB332 /* ThemePresentationConstants.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
