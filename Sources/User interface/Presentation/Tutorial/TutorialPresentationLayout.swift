@@ -34,7 +34,7 @@ extension TutorialPresentation {
     typealias Page2 = Localization.Page2
 
     let page0 = self.createPageParameters(Page0.image, Page0.title, Page0.caption)
-    let page1 = self.createPageParameters(Page1.image, Page1.title, Page2.caption)
+    let page1 = self.createPageParameters(Page1.image, Page1.title, Page1.caption)
     let page2 = self.createPageParameters(Page2.image, Page2.title, Page2.caption)
     self.pages = self.createPages([page0, page1, page2])
   }

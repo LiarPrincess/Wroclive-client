@@ -122,11 +122,13 @@ extension ConfigurationViewController: UITableViewDelegate {
 
   private func showThemeManager() {
     let viewController = ThemeManagerViewController()
+    viewController.modalPresentationStyle = .custom
     self.present(viewController, animated: true, completion: nil)
   }
 
   private func showTutorial() {
     let viewController = TutorialPresentation()
+    viewController.modalPresentationStyle = .custom
     self.present(viewController, animated: true, completion: nil)
   }
 }
