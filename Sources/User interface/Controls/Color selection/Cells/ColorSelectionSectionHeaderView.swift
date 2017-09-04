@@ -6,10 +6,9 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = LineSelectionViewControllerConstants
-private typealias Layout    = Constants.Layout.SectionHeader
+private typealias Layout = ColorSelectionViewControllerConstants.Layout.SectionHeader
 
-class LineSelectionSectionHeaderView: UICollectionReusableView {
+class ColorSelectionSectionHeaderView: UICollectionReusableView {
 
   // MARK: - Properties
 
@@ -31,6 +30,7 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
     self.sectionName.isUserInteractionEnabled = false
 
     self.addSubview(self.sectionName)
+
     self.sectionName.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.topInset)
       make.left.right.equalToSuperview()

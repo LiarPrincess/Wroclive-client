@@ -14,8 +14,12 @@ extension ConfigurationViewController {
 
   func initLayout() {
     Managers.theme.applyCardPanelStyle(self.view)
+    self.view.backgroundColor = Managers.theme.colorScheme.configurationBackground
+
     self.initHeader()
     self.initScrollView()
+    self.initInAppPurchaseView()
+    self.initConfigurationTable()
   }
 
   private func initHeader() {
@@ -68,9 +72,6 @@ extension ConfigurationViewController {
     self.scrollViewContent.snp.makeConstraints { make in
       make.top.bottom.centerX.width.equalToSuperview()
     }
-
-    self.initInAppPurchaseView()
-    self.initConfigurationTable()
   }
 
   private func initInAppPurchaseView() {
@@ -87,12 +88,13 @@ extension ConfigurationViewController {
   }
 
   private func initConfigurationTable() {
+    self.configurationTable.backgroundColor      = Managers.theme.colorScheme.configurationBackground
     self.configurationTable.alwaysBounceVertical = false // disable scrolling
     self.configurationTable.separatorInset = .zero
     self.configurationTable.dataSource     = self
     self.configurationTable.delegate       = self
-    self.scrollViewContent.addSubview(self.configurationTable)
 
+    self.scrollViewContent.addSubview(self.configurationTable)
     self.configurationTable.snp.makeConstraints { make in
       make.top.equalTo(self.inAppPurchasePresentation.view.snp.bottom)
       make.bottom.centerX.width.equalToSuperview()
@@ -105,20 +107,17 @@ extension ConfigurationViewController {
   private func initConfigurationTableCells() {
     let textAttributes = Managers.theme.textAttributes(for: .body)
 
-    self.colorsCell.textLabel?.attributedText = NSAttributedString(string: Localization.Cells.colors, attributes: textAttributes)
-    self.colorsCell.accessoryType = .disclosureIndicator
-
-    self.shareCell.textLabel?.attributedText = NSAttributedString(string: Localization.Cells.share, attributes: textAttributes)
-    self.shareCell.accessoryType = .disclosureIndicator
-
+    self.colorsCell  .textLabel?.attributedText = NSAttributedString(string: Localization.Cells.colors,   attributes: textAttributes)
+    self.shareCell   .textLabel?.attributedText = NSAttributedString(string: Localization.Cells.share,    attributes: textAttributes)
     self.tutorialCell.textLabel?.attributedText = NSAttributedString(string: Localization.Cells.tutorial, attributes: textAttributes)
-    self.tutorialCell.accessoryType = .disclosureIndicator
+    self.contactCell .textLabel?.attributedText = NSAttributedString(string: Localization.Cells.contact,  attributes: textAttributes)
+    self.rateCell    .textLabel?.attributedText = NSAttributedString(string: Localization.Cells.rate,     attributes: textAttributes)
 
-    self.contactCell.textLabel?.attributedText = NSAttributedString(string: Localization.Cells.contact, attributes: textAttributes)
-    self.contactCell.accessoryType = .disclosureIndicator
-
-    self.rateCell.textLabel?.attributedText = NSAttributedString(string: Localization.Cells.rate, attributes: textAttributes)
-    self.rateCell.accessoryType = .disclosureIndicator
+    let cells = [self.colorsCell, self.shareCell, self.tutorialCell, self.contactCell, self.rateCell]
+    for cell in cells {
+      cell.accessoryType   = .disclosureIndicator
+      cell.backgroundColor = Managers.theme.colorScheme.background
+    }
   }
 
   private func initConfigurationTableFooter() {

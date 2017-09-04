@@ -6,9 +6,9 @@
 import UIKit
 import SnapKit
 
-private typealias Layout = LineSelectionViewControllerConstants.Layout.Cell
+private typealias Layout = ColorSelectionViewControllerConstants.Layout.Cell
 
-class LineSelectionCell: UICollectionViewCell {
+class ColorSelectionCell: UICollectionViewCell {
 
   // MARK: - Properties
 
@@ -34,6 +34,7 @@ class LineSelectionCell: UICollectionViewCell {
     self.lineNameLabel.isUserInteractionEnabled = false
 
     self.contentView.addSubview(self.lineNameLabel)
+
     self.lineNameLabel.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }

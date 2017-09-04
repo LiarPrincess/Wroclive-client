@@ -12,7 +12,7 @@ struct TutorialPresentationConstants {
     static let rightOffset: CGFloat = leftOffset
 
     struct BackButton {
-      static let imageSize:  CGSize  = CGSize(width: 20.0, height: 20.0)
+      static let imageSize: CGSize = CGSize(width: 20.0, height: 20.0)
 
       static let leftInset:   CGFloat =  8.0
       static let topInset:    CGFloat = 32.0

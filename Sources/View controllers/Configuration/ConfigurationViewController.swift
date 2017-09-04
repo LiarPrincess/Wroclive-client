@@ -68,7 +68,7 @@ class ConfigurationViewController: UIViewController {
 
   func updateScrollViewBackgroundColor() {
     let gradientColor = PresentationControllerConstants.Colors.Gradient.colors.first
-    let tableColor    = self.configurationTable.backgroundColor
+    let tableColor    = Managers.theme.colorScheme.configurationBackground
 
     let scrollPosition  = scrollView.contentOffset.y
     let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor
@@ -121,7 +121,7 @@ extension ConfigurationViewController: UITableViewDelegate {
   }
 
   private func showThemeManager() {
-    let viewController = ThemeManagerViewController()
+    let viewController = ColorSelectionViewController()
     viewController.modalPresentationStyle = .custom
     self.present(viewController, animated: true, completion: nil)
   }

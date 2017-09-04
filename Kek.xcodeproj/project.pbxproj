@@ -82,10 +82,12 @@
 		902331301EDF37F500FA8F43 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EC1EDF37F500FA8F43 /* LineType.swift */; };
 		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
 		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
+		9032F0711F5DEBE800E1C9BC /* ColorSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F0701F5DEBE800E1C9BC /* ColorSelectionCell.swift */; };
+		9032F0731F5DEBFA00E1C9BC /* ColorSelectionSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F0721F5DEBFA00E1C9BC /* ColorSelectionSectionHeaderView.swift */; };
+		9032F07C1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F07A1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift */; };
+		9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */; };
 		90336A311F587C3600FAAEFF /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */; };
-		90336A341F58B5E200FAAEFF /* ThemeManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90336A331F58B5E200FAAEFF /* ThemeManagerCell.swift */; };
 		903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */; };
-		90489F1E1F56173300C4A6E7 /* ThemeManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90489F1D1F56173300C4A6E7 /* ThemeManagerViewController.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
 		9055C8E61F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */; };
 		9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */; };
@@ -104,15 +106,15 @@
 		908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1981F48B3CA00121584 /* ReusableCell.swift */; };
 		908FB19D1F48B3CA00121584 /* ReusableCellContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1991F48B3CA00121584 /* ReusableCellContainer.swift */; };
 		908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB19A1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift */; };
-		908FB1A11F48B3FD00121584 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1A01F48B3FD00121584 /* IntrinsicTableView.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */; };
 		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
 		90AF2BE31EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
-		90D5FC7E1F5C2BCA00FCB332 /* ThemeManagerViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC7D1F5C2BCA00FCB332 /* ThemeManagerViewControllerConstants.swift */; };
-		90D5FC801F5C2C3200FCB332 /* ThemeManagerViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC7F1F5C2C3200FCB332 /* ThemeManagerViewControllerLayout.swift */; };
+		90C7E2791F5DB8CB008FB7CA /* ColorSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C7E2751F5DB8CB008FB7CA /* ColorSelectionViewController.swift */; };
+		90C7E27A1F5DB8CB008FB7CA /* ColorSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C7E2761F5DB8CB008FB7CA /* ColorSelectionViewControllerConstants.swift */; };
+		90C7E27B1F5DB8CB008FB7CA /* ColorSelectionViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C7E2771F5DB8CB008FB7CA /* ColorSelectionViewControllerLayout.swift */; };
 		90D5FC831F5C342600FCB332 /* ThemePresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC821F5C342600FCB332 /* ThemePresentationConstants.swift */; };
 		90D5FC851F5C343900FCB332 /* ThemePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC841F5C343900FCB332 /* ThemePresentation.swift */; };
 		90D5FC871F5C344400FCB332 /* ThemePresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5FC861F5C344400FCB332 /* ThemePresentationLayout.swift */; };
@@ -229,10 +231,12 @@
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		9032F0701F5DEBE800E1C9BC /* ColorSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionCell.swift; sourceTree = "<group>"; };
+		9032F0721F5DEBFA00E1C9BC /* ColorSelectionSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionHeaderView.swift; sourceTree = "<group>"; };
+		9032F07A1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicCollectionView.swift; sourceTree = "<group>"; };
+		9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
-		90336A331F58B5E200FAAEFF /* ThemeManagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerCell.swift; sourceTree = "<group>"; };
 		903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfLine+FilterByType.swift"; sourceTree = "<group>"; };
-		90489F1D1F56173300C4A6E7 /* ThemeManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerViewController.swift; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
 		9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewControllerLayout.swift; sourceTree = "<group>"; };
 		9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewControllerConstants.swift; sourceTree = "<group>"; };
@@ -250,7 +254,6 @@
 		908FB1981F48B3CA00121584 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		908FB1991F48B3CA00121584 /* ReusableCellContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCellContainer.swift; sourceTree = "<group>"; };
 		908FB19A1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableSuplementaryViewContainer.swift; sourceTree = "<group>"; };
-		908FB1A01F48B3FD00121584 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerImpl.swift; sourceTree = "<group>"; };
@@ -258,8 +261,9 @@
 		90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerEnumerations.swift; sourceTree = "<group>"; };
 		90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
-		90D5FC7D1F5C2BCA00FCB332 /* ThemeManagerViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerViewControllerConstants.swift; sourceTree = "<group>"; };
-		90D5FC7F1F5C2C3200FCB332 /* ThemeManagerViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerViewControllerLayout.swift; sourceTree = "<group>"; };
+		90C7E2751F5DB8CB008FB7CA /* ColorSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionViewController.swift; sourceTree = "<group>"; };
+		90C7E2761F5DB8CB008FB7CA /* ColorSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
+		90C7E2771F5DB8CB008FB7CA /* ColorSelectionViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionViewControllerLayout.swift; sourceTree = "<group>"; };
 		90D5FC821F5C342600FCB332 /* ThemePresentationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePresentationConstants.swift; sourceTree = "<group>"; };
 		90D5FC841F5C343900FCB332 /* ThemePresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePresentation.swift; sourceTree = "<group>"; };
 		90D5FC861F5C344400FCB332 /* ThemePresentationLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePresentationLayout.swift; sourceTree = "<group>"; };
@@ -513,6 +517,7 @@
 				9021F3E01F12C9EF000A6949 /* Chevron */,
 				9021F3E31F12C9EF000A6949 /* Line selection */,
 				9021F4251F12CC89000A6949 /* Line type selection */,
+				90C7E2721F5DB8CB008FB7CA /* Color selection */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -541,7 +546,7 @@
 			children = (
 				908FB1951F48B3CA00121584 /* Layout guide */,
 				908FB1971F48B3CA00121584 /* Reusable cell */,
-				908FB19F1F48B3EB00121584 /* Intrinsic table view */,
+				9032F0791F5DF66B00E1C9BC /* Intrinsic collections */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -699,23 +704,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		90336A321F58B5CB00FAAEFF /* Cells */ = {
+		9032F06F1F5DEBCE00E1C9BC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				90336A331F58B5E200FAAEFF /* ThemeManagerCell.swift */,
+				9032F0701F5DEBE800E1C9BC /* ColorSelectionCell.swift */,
+				9032F0721F5DEBFA00E1C9BC /* ColorSelectionSectionHeaderView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		90489F1C1F56168500C4A6E7 /* Theme manager */ = {
+		9032F0791F5DF66B00E1C9BC /* Intrinsic collections */ = {
 			isa = PBXGroup;
 			children = (
-				90336A321F58B5CB00FAAEFF /* Cells */,
-				90489F1D1F56173300C4A6E7 /* ThemeManagerViewController.swift */,
-				90D5FC7F1F5C2C3200FCB332 /* ThemeManagerViewControllerLayout.swift */,
-				90D5FC7D1F5C2BCA00FCB332 /* ThemeManagerViewControllerConstants.swift */,
+				9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */,
+				9032F07A1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift */,
 			);
-			path = "Theme manager";
+			path = "Intrinsic collections";
 			sourceTree = "<group>";
 		};
 		904A6B111F43181F00EE98FD /* Pin */ = {
@@ -771,14 +775,6 @@
 			path = "Reusable cell";
 			sourceTree = "<group>";
 		};
-		908FB19F1F48B3EB00121584 /* Intrinsic table view */ = {
-			isa = PBXGroup;
-			children = (
-				908FB1A01F48B3FD00121584 /* IntrinsicTableView.swift */,
-			);
-			path = "Intrinsic table view";
-			sourceTree = "<group>";
-		};
 		9096CDBA1F40630500FEF20A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,7 +789,6 @@
 		9096CDCB1F40EF0C00FEF20A /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				90489F1C1F56168500C4A6E7 /* Theme manager */,
 				9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */,
 				9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */,
 				9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */,
@@ -838,6 +833,17 @@
 				90B1DAA01F2BD92500FAE18A /* Bookmark.swift */,
 			);
 			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		90C7E2721F5DB8CB008FB7CA /* Color selection */ = {
+			isa = PBXGroup;
+			children = (
+				9032F06F1F5DEBCE00E1C9BC /* Cells */,
+				90C7E2751F5DB8CB008FB7CA /* ColorSelectionViewController.swift */,
+				90C7E2771F5DB8CB008FB7CA /* ColorSelectionViewControllerLayout.swift */,
+				90C7E2761F5DB8CB008FB7CA /* ColorSelectionViewControllerConstants.swift */,
+			);
+			path = "Color selection";
 			sourceTree = "<group>";
 		};
 		90D5FC811F5C30C600FCB332 /* Theme */ = {
@@ -1120,13 +1126,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9032F0711F5DEBE800E1C9BC /* ColorSelectionCell.swift in Sources */,
 				9055C8E61F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift in Sources */,
 				9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */,
 				900CAEAF1F482E750044C8A6 /* Endpoint.swift in Sources */,
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90E3ADE41F4F88E100C3ED24 /* TutorialPresentationLayout.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
-				90489F1E1F56173300C4A6E7 /* ThemeManagerViewController.swift in Sources */,
 				900CAEAE1F482E750044C8A6 /* AvailableLinesEndpoint.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
 				900CAEB61F482E750044C8A6 /* SearchManager.swift in Sources */,
@@ -1138,18 +1144,20 @@
 				908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */,
 				900CAEA61F482E750044C8A6 /* AlertManager.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
+				9032F0731F5DEBFA00E1C9BC /* ColorSelectionSectionHeaderView.swift in Sources */,
+				9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */,
 				900F72F81F55C03F00613A1E /* PresentationControllerPage.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
 				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
-				90D5FC7E1F5C2BCA00FCB332 /* ThemeManagerViewControllerConstants.swift in Sources */,
-				90D5FC801F5C2C3200FCB332 /* ThemeManagerViewControllerLayout.swift in Sources */,
 				90E3ADE21F4F88BC00C3ED24 /* TutorialPresentation.swift in Sources */,
 				904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
+				90C7E2791F5DB8CB008FB7CA /* ColorSelectionViewController.swift in Sources */,
 				908346F61F5202AE00654FF6 /* String+FindPositions.swift in Sources */,
+				90C7E27B1F5DB8CB008FB7CA /* ColorSelectionViewControllerLayout.swift in Sources */,
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,
 				90D6ACFF1F4DEBE600B36DCB /* InAppPurchasePresentationConstants.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectionSectionHeaderView.swift in Sources */,
@@ -1159,14 +1167,12 @@
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
 				90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */,
 				9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */,
-				908FB1A11F48B3FD00121584 /* IntrinsicTableView.swift in Sources */,
 				9021F43B1F12D698000A6949 /* LineSelectionPage.swift in Sources */,
 				901D46861F57089000A9F6BD /* ThemeManager.swift in Sources */,
 				900CAEB01F482E750044C8A6 /* LineLocationsParser.swift in Sources */,
 				900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */,
 				9021F3941F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift in Sources */,
 				900CAEB11F482E750044C8A6 /* LinesParser.swift in Sources */,
-				90336A341F58B5E200FAAEFF /* ThemeManagerCell.swift in Sources */,
 				9021F4271F12CCB3000A6949 /* LineTypeSelectionControl.swift in Sources */,
 				90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */,
 				900CAEB31F482E750044C8A6 /* NetworkError.swift in Sources */,
@@ -1210,6 +1216,7 @@
 				9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				908FB19D1F48B3CA00121584 /* ReusableCellContainer.swift in Sources */,
 				900CAEAD1F482E750044C8A6 /* MapManagerImpl.swift in Sources */,
+				90C7E27A1F5DB8CB008FB7CA /* ColorSelectionViewControllerConstants.swift in Sources */,
 				9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */,
 				900CAEAB1F482E750044C8A6 /* MapManager.swift in Sources */,
 				907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */,
@@ -1225,6 +1232,7 @@
 				908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				900CAEB21F482E750044C8A6 /* VehicleLocationEndpoint.swift in Sources */,
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
+				9032F07C1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift in Sources */,
 				90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */,
 				90D6AD001F4DEBE600B36DCB /* InAppPurchasePresentationLayout.swift in Sources */,
 				9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */,

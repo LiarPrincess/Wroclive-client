@@ -44,10 +44,9 @@ class LineSelectionPage: UIViewController {
     }
   }
 
-  let collectionViewLayout = UICollectionViewFlowLayout()
-
   lazy var collectionView: UICollectionView = {
-    return UICollectionView(frame: CGRect.zero, collectionViewLayout: self.collectionViewLayout)
+    let layout = UICollectionViewFlowLayout()
+    return UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
   }()
 
   // MARK: Layout

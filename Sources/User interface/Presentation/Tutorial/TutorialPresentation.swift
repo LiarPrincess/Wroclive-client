@@ -26,7 +26,7 @@ class TutorialPresentation: UIViewController, PresentationController {
     super.viewDidLayoutSubviews()
     self.gradientLayer.frame = self.view.layer.bounds
   }
-  
+
   // MARK: - Actions
 
   @objc func closeButtonPressed() {
