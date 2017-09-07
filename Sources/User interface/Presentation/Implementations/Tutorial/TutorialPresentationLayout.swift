@@ -35,12 +35,12 @@ extension TutorialPresentation {
     let page0 = self.createPageParameters(Page0.image, Page0.title, Page0.caption)
     let page1 = self.createPageParameters(Page1.image, Page1.title, Page1.caption)
     let page2 = self.createPageParameters(Page2.image, Page2.title, Page2.caption)
-    self.pages = self.createPages([page0, page1, page2])
+    self.pages = PresentationControllerPageCreator.createPages([page0, page1, page2])
   }
 
-  func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParams {
+  func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParameters {
     typealias PageLayout = Layout.Page
-    return PresentationControllerPageParams(
+    return PresentationControllerPageParameters(
       image, title, caption,
       Layout.leftOffset, Layout.rightOffset,
       PageLayout.Title.topOffset,

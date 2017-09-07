@@ -8,40 +8,11 @@ import SnapKit
 
 private typealias Colors = PresentationControllerConstants.Colors
 
-struct PresentationControllerPageParams {
-  let image:   UIImage
-  let title:   String
-  let caption: String
-
-  let leftOffset:  CGFloat
-  let rightOffset: CGFloat
-
-  let titleTopOffset:     CGFloat
-  let captionTopOffset:   CGFloat
-  let captionLineSpecing: CGFloat
-
-  init(_ image: UIImage, _ title: String, _ caption: String,
-       _ leftOffset: CGFloat, _ rightOffset: CGFloat,
-       _ titleTopOffset: CGFloat,
-       _ captionTopOffset: CGFloat, _ captionLineSpecing: CGFloat) {
-    self.image   = image
-    self.title   = title
-    self.caption = caption
-
-    self.leftOffset  = leftOffset
-    self.rightOffset = rightOffset
-
-    self.titleTopOffset     = titleTopOffset
-    self.captionTopOffset   = captionTopOffset
-    self.captionLineSpecing = captionLineSpecing
-  }
-}
-
 class PresentationControllerPage: UIViewController {
 
   // MARK: - Properties
 
-  private let parameters: PresentationControllerPageParams
+  private let parameters: PresentationControllerPageParameters
 
   private let imageView      = UIImageView()
   private let labelContainer = UIView()
@@ -50,7 +21,7 @@ class PresentationControllerPage: UIViewController {
 
   // MARK: - Init
 
-  init(_ parameters: PresentationControllerPageParams) {
+  init(_ parameters: PresentationControllerPageParameters) {
     self.parameters = parameters
     super.init(nibName: nil, bundle: nil)
 
@@ -108,7 +79,7 @@ class PresentationControllerPage: UIViewController {
 
   // MARK: - Text height
 
-  func calculateRequiredTextHeight() -> CGFloat {
+  func calculateMinTextHeight() -> CGFloat {
     let width = self.view.bounds.width - parameters.leftOffset - parameters.rightOffset
     let size  = CGSize(width : width, height : CGFloat.greatestFiniteMagnitude)
 
@@ -122,7 +93,7 @@ class PresentationControllerPage: UIViewController {
 
   func guaranteeMinTextHeight(_ height: CGFloat) {
     self.labelContainer.snp.makeConstraints { make in
-      make.height.equalTo(height)
+      make.height.greaterThanOrEqualTo(height)
     }
   }
 

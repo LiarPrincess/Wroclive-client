@@ -58,7 +58,7 @@
 
 /* Presentations - Tutorial */
 "Presentation_Tutorial_Page0_Title"   = "Locating vehicles";
-"Presentation_Tutorial_Page0_Caption" = "To locate vehicles use <search>, select lines, and then tap “Search”.";
+"Presentation_Tutorial_Page0_Caption" = "To locate vehicles use <search>, select lines and then tap “Search”.";
 
 "Presentation_Tutorial_Page1_Title"   = "Adding bookmarks";
 "Presentation_Tutorial_Page1_Caption" = "To add bookmark chose lines, tap <star> and enter bookmark name.";

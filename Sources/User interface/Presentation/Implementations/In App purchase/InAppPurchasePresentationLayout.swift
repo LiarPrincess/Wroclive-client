@@ -35,12 +35,12 @@ extension InAppPurchasePresentation {
     let bookmarksParams = self.createPageParameters(BookmarksPage.image, BookmarksPage.title, BookmarksPage.caption)
     let colorsParams    = self.createPageParameters(ColorsPage.image,    ColorsPage.title,    ColorsPage.caption)
 
-    self.pages = self.createPages([bookmarksParams, colorsParams])
+    self.pages = PresentationControllerPageCreator.createPages([bookmarksParams, colorsParams])
   }
 
-  func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParams {
+  func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParameters {
     typealias PageLayout = Layout.Page
-    return PresentationControllerPageParams(
+    return PresentationControllerPageParameters(
       image, title, caption,
       Layout.leftOffset, Layout.rightOffset,
       PageLayout.Title.topOffset,

@@ -26,18 +26,3 @@ extension PresentationController {
     return nextIndex < self.pages.count ? self.pages[nextIndex] : nil
   }
 }
-
-// MARK: - Page creation
-
-extension PresentationController {
-  func createPages(_ parameters: [PresentationControllerPageParams]) -> [PresentationControllerPage] {
-    let pages = parameters.map { PresentationControllerPage($0) }
-
-    let minTextHeight = pages.map { $0.calculateRequiredTextHeight() }.max() ?? 0.0
-    for page in pages {
-      page.guaranteeMinTextHeight(minTextHeight)
-    }
-
-    return pages
-  }
-}
