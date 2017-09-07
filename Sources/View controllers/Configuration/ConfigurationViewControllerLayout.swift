@@ -18,8 +18,6 @@ extension ConfigurationViewController {
 
     self.initHeader()
     self.initScrollView()
-    self.initInAppPurchaseView()
-    self.initConfigurationTable()
   }
 
   private func initHeader() {
@@ -72,9 +70,8 @@ extension ConfigurationViewController {
     self.scrollViewContent.snp.makeConstraints { make in
       make.top.bottom.centerX.width.equalToSuperview()
     }
-  }
 
-  private func initInAppPurchaseView() {
+    // in-app purchase
     self.addChildViewController(self.inAppPurchasePresentation)
     self.scrollViewContent.addSubview(self.inAppPurchasePresentation.view)
 
@@ -85,60 +82,48 @@ extension ConfigurationViewController {
     }
 
     self.inAppPurchasePresentation.didMove(toParentViewController: self)
-  }
 
-  private func initConfigurationTable() {
-    self.configurationTable.backgroundColor      = Managers.theme.colorScheme.configurationBackground
-    self.configurationTable.alwaysBounceVertical = false // disable scrolling
-    self.configurationTable.separatorInset = .zero
-    self.configurationTable.dataSource     = self
-    self.configurationTable.delegate       = self
+    // table view
+    self.tableView.register(UITableViewCell.self)
+    self.tableView.backgroundColor = Managers.theme.colorScheme.configurationBackground
+    self.tableView.separatorInset  = .zero
+    self.tableView.dataSource      = self.tableViewDataSource
+    self.tableView.delegate        = self
 
-    self.scrollViewContent.addSubview(self.configurationTable)
-    self.configurationTable.snp.makeConstraints { make in
+    self.scrollViewContent.addSubview(self.tableView)
+    self.tableView.snp.makeConstraints { make in
       make.top.equalTo(self.inAppPurchasePresentation.view.snp.bottom)
       make.bottom.centerX.width.equalToSuperview()
     }
 
-    self.initConfigurationTableCells()
-    self.initConfigurationTableFooter()
+    self.tableView.tableFooterView = self.createTableFooter()
   }
 
-  private func initConfigurationTableCells() {
-    let textAttributes = Managers.theme.textAttributes(for: .body)
-
-    self.colorsCell  .textLabel?.attributedText = NSAttributedString(string: Localization.Cells.colors,   attributes: textAttributes)
-    self.shareCell   .textLabel?.attributedText = NSAttributedString(string: Localization.Cells.share,    attributes: textAttributes)
-    self.tutorialCell.textLabel?.attributedText = NSAttributedString(string: Localization.Cells.tutorial, attributes: textAttributes)
-    self.contactCell .textLabel?.attributedText = NSAttributedString(string: Localization.Cells.contact,  attributes: textAttributes)
-    self.rateCell    .textLabel?.attributedText = NSAttributedString(string: Localization.Cells.rate,     attributes: textAttributes)
-
-    let cells = [self.colorsCell, self.shareCell, self.tutorialCell, self.contactCell, self.rateCell]
-    for cell in cells {
-      cell.accessoryType   = .disclosureIndicator
-      cell.backgroundColor = Managers.theme.colorScheme.background
-    }
-  }
-
-  private func initConfigurationTableFooter() {
-    let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
-
-    let appVersion = Managers.app.version
-    let footerText = String(format: Localization.Footer, appVersion)
-    let text = NSAttributedString(string: footerText, attributes: textAttributes)
+  private func createTableFooter() -> UIView {
+    let text = self.createTableFooterText()
 
     let footerFrame = CGRect(x: 0.0, y: 0.0, width: 1.0, height: self.calculateMinFooterHeight(text))
-    self.configurationTable.tableFooterView = UIView(frame: footerFrame)
+    let footerView = UIView(frame: footerFrame)
 
     let footerLabel = UILabel()
     footerLabel.attributedText = text
     footerLabel.numberOfLines  = 0
 
-    self.configurationTable.tableFooterView!.addSubview(footerLabel)
+    footerView.addSubview(footerLabel)
     footerLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Footer.topOffset)
       make.left.right.equalToSuperview()
     }
+
+    return footerView
+  }
+
+  private func createTableFooterText() -> NSAttributedString {
+    let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
+
+    let appVersion = Managers.app.version
+    let footerText = String(format: Localization.Footer, appVersion)
+    return NSAttributedString(string: footerText, attributes: textAttributes)
   }
 
   private func calculateMinFooterHeight(_ footerContent: NSAttributedString) -> CGFloat {

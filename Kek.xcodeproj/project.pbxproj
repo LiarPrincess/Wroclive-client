@@ -30,6 +30,11 @@
 		900CAEB81F482E750044C8A6 /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAEA51F482E750044C8A6 /* Managers.swift */; };
 		900F72F41F55BE5100613A1E /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F72F31F55BE5100613A1E /* PresentationController.swift */; };
 		900F72F81F55C03F00613A1E /* PresentationControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F72F71F55C03F00613A1E /* PresentationControllerPage.swift */; };
+		90145E411F61AE720068698D /* ConfigurationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E401F61AE720068698D /* ConfigurationCellViewModel.swift */; };
+		90145E431F61AE8A0068698D /* ConfigurationSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E421F61AE8A0068698D /* ConfigurationSectionViewModel.swift */; };
+		90145E451F61AED10068698D /* ConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E441F61AED10068698D /* ConfigurationCell.swift */; };
+		90145E471F61AEEB0068698D /* ConfigurationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E461F61AEEB0068698D /* ConfigurationSection.swift */; };
+		90145E491F61AF060068698D /* ConfigurationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E481F61AF060068698D /* ConfigurationDataSource.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksViewController.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */; };
 		9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */; };
@@ -183,6 +188,11 @@
 		900CAEA51F482E750044C8A6 /* Managers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
 		900F72F31F55BE5100613A1E /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		900F72F71F55C03F00613A1E /* PresentationControllerPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerPage.swift; sourceTree = "<group>"; };
+		90145E401F61AE720068698D /* ConfigurationCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationCellViewModel.swift; sourceTree = "<group>"; };
+		90145E421F61AE8A0068698D /* ConfigurationSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationSectionViewModel.swift; sourceTree = "<group>"; };
+		90145E441F61AED10068698D /* ConfigurationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationCell.swift; sourceTree = "<group>"; };
+		90145E461F61AEEB0068698D /* ConfigurationSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationSection.swift; sourceTree = "<group>"; };
+		90145E481F61AF060068698D /* ConfigurationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationDataSource.swift; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerConstants.swift; sourceTree = "<group>"; };
 		9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerLayout.swift; sourceTree = "<group>"; };
@@ -392,6 +402,25 @@
 				900CAEA21F482E750044C8A6 /* SearchManagerImpl.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		90145E3E1F61AE4A0068698D /* Data source */ = {
+			isa = PBXGroup;
+			children = (
+				90145E441F61AED10068698D /* ConfigurationCell.swift */,
+				90145E461F61AEEB0068698D /* ConfigurationSection.swift */,
+				90145E481F61AF060068698D /* ConfigurationDataSource.swift */,
+			);
+			path = "Data source";
+			sourceTree = "<group>";
+		};
+		90145E3F1F61AE4A0068698D /* View models */ = {
+			isa = PBXGroup;
+			children = (
+				90145E401F61AE720068698D /* ConfigurationCellViewModel.swift */,
+				90145E421F61AE8A0068698D /* ConfigurationSectionViewModel.swift */,
+			);
+			path = "View models";
 			sourceTree = "<group>";
 		};
 		9017C33D1EE339FD00063377 /* View controllers */ = {
@@ -809,6 +838,8 @@
 		9096CDCB1F40EF0C00FEF20A /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				90145E3F1F61AE4A0068698D /* View models */,
+				90145E3E1F61AE4A0068698D /* Data source */,
 				9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */,
 				9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */,
 				9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */,
@@ -1158,10 +1189,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9032F0711F5DEBE800E1C9BC /* ColorSelectionCell.swift in Sources */,
+				90145E431F61AE8A0068698D /* ConfigurationSectionViewModel.swift in Sources */,
 				9055C8E61F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift in Sources */,
 				9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */,
 				900CAEAF1F482E750044C8A6 /* Endpoint.swift in Sources */,
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
+				90145E451F61AED10068698D /* ConfigurationCell.swift in Sources */,
 				90E3ADE41F4F88E100C3ED24 /* TutorialPresentationLayout.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
 				900CAEAE1F482E750044C8A6 /* AvailableLinesEndpoint.swift in Sources */,
@@ -1182,6 +1215,7 @@
 				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
+				90145E491F61AF060068698D /* ConfigurationDataSource.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
 				90E3ADE21F4F88BC00C3ED24 /* TutorialPresentation.swift in Sources */,
 				904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */,
@@ -1219,6 +1253,7 @@
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
 				90D5FC8A1F5C5A9000FCB332 /* ThemePresentationPage.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
+				90145E411F61AE720068698D /* ConfigurationCellViewModel.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				90E8A6C11F4CB81400CE5AE9 /* AppManagerImpl.swift in Sources */,
 				903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */,
@@ -1265,6 +1300,7 @@
 				90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */,
 				908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				900CAEB21F482E750044C8A6 /* VehicleLocationEndpoint.swift in Sources */,
+				90145E471F61AEEB0068698D /* ConfigurationSection.swift in Sources */,
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
 				9032F07C1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift in Sources */,
 				90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */,

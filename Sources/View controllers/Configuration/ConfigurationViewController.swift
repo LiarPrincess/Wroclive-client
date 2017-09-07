@@ -11,10 +11,9 @@ class ConfigurationViewController: UIViewController {
 
   // MARK: - Properties
 
-  let headerViewBlur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
-
   lazy var headerView: UIVisualEffectView = {
-    return UIVisualEffectView(effect: self.headerViewBlur)
+    let blur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
+    return UIVisualEffectView(effect: blur)
   }()
 
   let chevronView = ChevronView()
@@ -25,12 +24,8 @@ class ConfigurationViewController: UIViewController {
 
   let inAppPurchasePresentation = InAppPurchasePresentation()
 
-  let configurationTable = IntrinsicTableView(frame: .zero, style: .grouped)
-  let colorsCell   = UITableViewCell(style: .value1, reuseIdentifier: nil)
-  let shareCell    = UITableViewCell(style: .value1, reuseIdentifier: nil)
-  let tutorialCell = UITableViewCell(style: .value1, reuseIdentifier: nil)
-  let contactCell  = UITableViewCell(style: .value1, reuseIdentifier: nil)
-  let rateCell     = UITableViewCell(style: .value1, reuseIdentifier: nil)
+  let tableView           = IntrinsicTableView(frame: .zero, style: .grouped)
+  let tableViewDataSource = ConfigurationDataSource()
 
   var viewSize: CGFloat {
     let relativeHeight = MainViewControllerConstants.CardPanel.configurationRelativeHeight
@@ -109,13 +104,13 @@ extension ConfigurationViewController: UIScrollViewDelegate {
 extension ConfigurationViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    switch (indexPath.section, indexPath.row) {
-    case (0, 0): self.showThemeManager()
-    case (1, 0): Managers.app.showShareActivity(in: self)
-    case (1, 1): self.showTutorial()
-    case (1, 2): Managers.app.openWebsite()
-    case (1, 3): Managers.appStore.rateApp()
-    default: fatalError("Unexpected row")
+    let cell = self.tableViewDataSource.cellAt(indexPath)
+    switch cell {
+    case .personalization: self.showThemeManager()
+    case .tutorial:        self.showTutorial()
+    case .contact:         Managers.app.openWebsite()
+    case .share:           Managers.app.showShareActivity(in: self)
+    case .rate:            Managers.appStore.rateApp()
     }
     tableView.deselectRow(at: indexPath, animated: true)
   }
@@ -130,33 +125,5 @@ extension ConfigurationViewController: UITableViewDelegate {
     let viewController = TutorialPresentation()
     viewController.modalPresentationStyle = .custom
     self.present(viewController, animated: true, completion: nil)
-  }
-}
-
-// MARK: - UITableViewDataSource
-
-extension ConfigurationViewController: UITableViewDataSource {
-
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
-  }
-
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    switch section {
-    case 0: return 1
-    case 1: return 4
-    default: fatalError("Unexpected section")
-    }
-  }
-
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    switch (indexPath.section, indexPath.row) {
-    case (0, 0): return self.colorsCell
-    case (1, 0): return self.shareCell
-    case (1, 1): return self.tutorialCell
-    case (1, 2): return self.contactCell
-    case (1, 3): return self.rateCell
-    default: fatalError("Unexpected (section, row)")
-    }
   }
 }
