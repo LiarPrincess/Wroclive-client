@@ -5,6 +5,8 @@
 
 import UIKit
 
+private typealias Layout = ColorSelectionViewControllerConstants.Layout
+
 class ColorSelectionViewController: UIViewController {
 
   // MARK: - Properties
@@ -14,9 +16,11 @@ class ColorSelectionViewController: UIViewController {
 
   let themePresentation = ThemePresentation()
 
+  let colorsCollectionDataSource = ColorSelectionDataSource()
+
   lazy var colorsCollection: IntrinsicCollectionView = {
     let layout = UICollectionViewFlowLayout()
-    return IntrinsicCollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+    return IntrinsicCollectionView(frame: .zero, collectionViewLayout: layout)
   }()
 
   // MARK: - Override
@@ -24,6 +28,31 @@ class ColorSelectionViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
+  }
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    self.recalculateItemSize()
+  }
+
+  fileprivate var itemSize = CGSize()
+
+  private func recalculateItemSize() {
+    //number of cells:   n
+    //number of margins: n-1
+
+    //totalWidth = n * cellWidth + (n-1) * margins
+    //solve for n:         n = (totalWidth + margin) / (cellWidth + margin)
+    //solve for cellWidth: cellWidth = (totalWidth - (n-1) * margin) / n
+
+    let totalWidth   = self.colorsCollection.contentWidth
+    let margin       = Layout.Cell.margin
+    let minCellWidth = Layout.Cell.minSize
+
+    let numSectionsThatFit = floor((totalWidth + margin) / (minCellWidth + margin))
+    let cellWidth          = (totalWidth - (numSectionsThatFit - 1) * margin) / numSectionsThatFit
+
+    self.itemSize = CGSize(width: cellWidth, height: cellWidth)
   }
 
   // MARK: - Actions
@@ -59,39 +88,36 @@ extension ColorSelectionViewController: UICollectionViewDelegateFlowLayout {
 
   // MARK: - Size
 
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
 //    let width = self.colorsCollection.contentWidth
+
+//    guard let sectionName = self.collectionDataSource.sectionName(at: section) else {
+//      return CGSize(width: width, height: Layout.SectionHeader.fallbackHeight)
+//    }
 //
-////    guard let sectionName = self.collectionDataSource.sectionName(at: section) else {
-////      return CGSize(width: width, height: Layout.SectionHeader.fallbackHeight)
-////    }
-////
-////    let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-////    let textAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
-////    let textSize       = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
-////
-////    typealias HeaderLayout = Layout.SectionHeader
-////    let topInset    = HeaderLayout.topInset
-////    let bottomInset = HeaderLayout.bottomInset
-////    return CGSize(width: width, height: topInset + textSize.height + bottomInset)
-//    return CGSize(width: width, height: 40.0)
-//  }
+//    let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+//    let textAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
+//    let textSize       = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
+//
+//    typealias HeaderLayout = Layout.SectionHeader
+//    let topInset    = HeaderLayout.topInset
+//    let bottomInset = HeaderLayout.bottomInset
+//    return CGSize(width: width, height: topInset + textSize.height + bottomInset)
+    return CGSize(width: 100.0, height: 50.0)
+  }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    return self.itemSize
-    return CGSize(width: 42.0, height: 42.0)
+    return CGSize(width: 50.0, height: 50.0) //self.itemSize
   }
 
   // MARK: - Margin
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//    return Layout.Cell.margin
-    return 2.0
+    return Layout.Cell.margin
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//    return Layout.Cell.margin
-    return 2.0
+    return Layout.Cell.margin
   }
 
   // MARK: - Selection
@@ -102,43 +128,5 @@ extension ColorSelectionViewController: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
     return true
-  }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension ColorSelectionViewController: UICollectionViewDataSource {
-
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 1 //self.viewModels.count
-  }
-
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 50 //self.viewModels[section].lines.count
-  }
-
-//  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//    switch kind {
-//    case UICollectionElementKindSectionHeader:
-//      let view      = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectionSectionHeaderView.self, kind: kind, for: indexPath)
-//      let viewModel = self.viewModels[indexPath.section]
-//
-//      view.setUp(with: viewModel)
-//      return view
-//
-//    default:
-//      fatalError("Unexpected element kind")
-//    }
-//  }
-
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//    let cell = collectionView.dequeueReusableCell(ofType: LineSelectionCell.self, forIndexPath: indexPath)
-//    let viewModel = self.viewModels[indexPath.section].lineViewModels[indexPath.row]
-//
-//    cell.setUp(with: viewModel)
-//    return cell
-    let cell = self.colorsCollection.dequeueReusableCell(ofType: UICollectionViewCell.self, forIndexPath: indexPath)
-    cell.backgroundColor = UIColor.red
-    return cell
   }
 }

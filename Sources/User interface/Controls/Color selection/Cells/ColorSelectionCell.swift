@@ -57,13 +57,15 @@ class ColorSelectionCell: UICollectionViewCell {
 
   // MARK: - Methods
 
-  func setUp(with viewModel: LineSelectionCellViewModel) {
-    self.setLineLabel(viewModel.lineName)
+  func setUp<TViewModel: ColorSelectionCellViewModel>(with viewModel: TViewModel) {
+    self.lineNameLabel.text = "A"
+    self.backgroundColor = viewModel.color
+//    self.setLineLabel(viewModel.lineName)
   }
 
   private func setLineLabel(_ value: String) {
-    let textColor: TextColor = self.isSelected ? .background : .text
-    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
-    self.lineNameLabel.attributedText = NSAttributedString(string: value, attributes: textAttributes)
+//    let textColor: TextColor = self.isSelected ? .background : .text
+//    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
+//    self.lineNameLabel.attributedText = NSAttributedString(string: value, attributes: textAttributes)
   }
 }

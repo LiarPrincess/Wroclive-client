@@ -6,7 +6,7 @@
 import UIKit
 
 // https://developer.apple.com/ios/human-interface-guidelines/visual-design/color/
-enum TintColor: String {
+enum TintColor: String, EnumCollection {
   case red
   case blue
   case green
@@ -26,7 +26,7 @@ enum TintColor: String {
   }
 }
 
-enum VehicleColor: String {
+enum VehicleColor: String, EnumCollection {
   case red
   case blue
   case green

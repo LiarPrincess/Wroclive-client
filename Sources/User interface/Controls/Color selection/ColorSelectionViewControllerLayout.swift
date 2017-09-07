@@ -48,14 +48,14 @@ extension ColorSelectionViewController {
   }
 
   func initColorsCollection() {
-    self.colorsCollection.register(UICollectionViewCell.self)
-//    self.colorsCollection.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
+    self.colorsCollection.register(ColorSelectionCell.self)
+    self.colorsCollection.registerSupplementary(ColorSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
     self.colorsCollection.backgroundColor         = Managers.theme.colorScheme.configurationBackground
     self.colorsCollection.allowsSelection         = true
     self.colorsCollection.allowsMultipleSelection = true
     self.colorsCollection.alwaysBounceVertical    = true
 
-    self.colorsCollection.dataSource = self
+    self.colorsCollection.dataSource = self.colorsCollectionDataSource
     self.colorsCollection.delegate   = self
 
     self.scrollViewContent.addSubview(self.colorsCollection)

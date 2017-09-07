@@ -30,7 +30,6 @@ class ColorSelectionSectionHeaderView: UICollectionReusableView {
     self.sectionName.isUserInteractionEnabled = false
 
     self.addSubview(self.sectionName)
-
     self.sectionName.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.topInset)
       make.left.right.equalToSuperview()
@@ -39,8 +38,8 @@ class ColorSelectionSectionHeaderView: UICollectionReusableView {
 
   // MARK: - Methods
 
-  func setUp(with viewModel: LineSelectionSectionViewModel) {
-    let textAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
-    self.sectionName.attributedText = NSAttributedString(string: viewModel.sectionName, attributes: textAttributes)
+  func setUp<TViewModel: ColorSelectionSectionViewModel>(with viewModel: TViewModel) {
+    let textAttributes = Managers.theme.textAttributes(for: .subheadline)
+    self.sectionName.attributedText = NSAttributedString(string: viewModel.name, attributes: textAttributes)
   }
 }
