@@ -52,7 +52,6 @@ public class StyleKit : NSObject {
     glassPath.stroke()
 
     context.restoreGState()
-
   }
 
   @objc dynamic public class func drawStar(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
@@ -84,7 +83,6 @@ public class StyleKit : NSObject {
     shapePath.stroke()
 
     context.restoreGState()
-
   }
 
   @objc dynamic public class func drawCogwheel(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
@@ -244,7 +242,6 @@ public class StyleKit : NSObject {
     innerPath.fill()
 
     context.restoreGState()
-
   }
 
   @objc dynamic public class func drawPin( frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), color: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), resizing: ResizingBehavior = .aspectFit) {
@@ -281,7 +278,6 @@ public class StyleKit : NSObject {
     bezier3Path.stroke()
 
     context.restoreGState()
-
   }
 
   @objc dynamic public class func drawClose(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
@@ -319,7 +315,6 @@ public class StyleKit : NSObject {
     context.restoreGState()
 
     context.restoreGState()
-
   }
 
   @objc dynamic public class func drawBack(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
@@ -347,7 +342,27 @@ public class StyleKit : NSObject {
     bezierPath.stroke()
 
     context.restoreGState()
+  }
 
+  @objc dynamic public class func drawRoundedRectangle(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
+    //// General Declarations
+    let context = UIGraphicsGetCurrentContext()!
+
+    //// Resize to Target Frame
+    context.saveGState()
+    let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 60, height: 60), target: targetFrame)
+    context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+    context.scaleBy(x: resizedFrame.width / 60, y: resizedFrame.height / 60)
+
+    //// Constants
+    let x = 2.5
+    //// Bezier Drawing
+    let rect = CGRect(x: x, y: x, width: 60 - 2 * x, height: 60 - 2 * x)
+    let bezierPath = UIBezierPath(roundedRect: rect, cornerRadius: 5.0)
+
+    bezierPath.fill()
+
+    context.restoreGState()
   }
 
   @objc(StyleKitResizingBehavior)

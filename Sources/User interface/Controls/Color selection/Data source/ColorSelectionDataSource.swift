@@ -9,56 +9,54 @@ class ColorSelectionDataSource: NSObject {
 
   // MARK: - Properties
 
-//  fileprivate lazy var tintSectionViewModel: ColorSelectionSectionViewModel<TintColor> = {
-//    let section = ColorSelectionSection.tint
-//    return ColorSelectionSectionViewModel(withName: section.name, colors: [])
-//  }()
-//
-//  fileprivate lazy var tramSectionViewModel: ColorSelectionSectionViewModel<VehicleColor> = {
-//    let section = ColorSelectionSection.tram
-//    return ColorSelectionSectionViewModel(withName: section.name, colors: [])
-//  }()
-//
-//  fileprivate lazy var busSectionViewModel: ColorSelectionSectionViewModel<VehicleColor> = {
-//    let section = ColorSelectionSection.bus
-//    return ColorSelectionSectionViewModel(withName: section.name, colors: [])
-//  }()
+  fileprivate lazy var sections: [ColorSelectionSection] = {
+    let tintSection = ColorSelectionSection(for: .tint)
+    let tramSection = ColorSelectionSection(for: .tram)
+    let busSection  = ColorSelectionSection(for: .bus)
+    return [tintSection, tramSection, busSection]
+  }()
 
+  // MARK: - Methods
+
+  func sectionAt(_ section: Int) -> ColorSelectionSection {
+    guard section >= 0 && section < self.sections.count else {
+      fatalError("Unexpected section")
+    }
+
+    return self.sections[section]
+  }
+
+  func colorAt(_ indexPath: IndexPath) -> AnyColorSelectionSectionColor {
+    let section = self.sectionAt(indexPath.section)
+    guard indexPath.row >= 0 && indexPath.row < section.colorsCount else {
+      fatalError("Unexpected row")
+    }
+
+    return section.colors[indexPath.row]
+  }
 }
 
-// MARK: - UICollectionViewDataSource
+extension ColorSelectionDataSource: UITableViewDataSource {
 
-extension ColorSelectionDataSource: UICollectionViewDataSource {
-
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return ColorSelectionSection.count
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return self.sections.count
   }
 
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    guard let section = ColorSelectionSection(rawValue: section) else { fatalError("Unexpected Section") }
-    return section.cellViewModels.count
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.sectionAt(section).colorsCount
   }
 
-  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    switch kind {
-    case UICollectionElementKindSectionHeader:
-      guard let viewModel = ColorSelectionSection(rawValue: indexPath.section) else { fatalError("Unexpected Section") }
-
-      let view = collectionView.dequeueReusableSupplementaryView(ofType: ColorSelectionSectionHeaderView.self, kind: kind, for: indexPath)
-      view.setUp(with: viewModel)
-      return view
-
-    default:
-      fatalError("Unexpected element kind")
-    }
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return self.sectionAt(section).name
   }
 
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let section = ColorSelectionSection(rawValue: indexPath.section) else { fatalError("Unexpected Section") }
-    let viewModel = section.cellViewModels[indexPath.row]
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell  = tableView.dequeueReusableCell(ofType: UITableViewCell.self, forIndexPath: indexPath)
+    let color = self.colorAt(indexPath)
 
-    let cell = collectionView.dequeueReusableCell(ofType: ColorSelectionCell.self, forIndexPath: indexPath)
-    cell.setUp(with: viewModel)
+    cell.textLabel?.text      = "Color name"
+    cell.imageView?.tintColor = color.color
+    cell.imageView?.image     = StyleKit.drawRoundedRectangleTemplateImage(size: CGSize(width: 40.0, height: 40.0))
     return cell
   }
 }

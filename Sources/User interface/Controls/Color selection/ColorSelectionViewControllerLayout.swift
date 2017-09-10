@@ -13,8 +13,6 @@ extension ColorSelectionViewController {
   func initLayout() {
     self.view.backgroundColor = Managers.theme.colorScheme.configurationBackground
     self.initScrollView()
-    self.initPresentationView()
-    self.initColorsCollection()
     self.initBackButton()
   }
 
@@ -32,9 +30,8 @@ extension ColorSelectionViewController {
     self.scrollViewContent.snp.makeConstraints { make in
       make.top.bottom.centerX.width.equalToSuperview()
     }
-  }
 
-  private func initPresentationView() {
+    // presentation
     self.addChildViewController(self.themePresentation)
     self.scrollViewContent.addSubview(self.themePresentation.view)
 
@@ -45,21 +42,17 @@ extension ColorSelectionViewController {
     }
 
     self.themePresentation.didMove(toParentViewController: self)
-  }
 
-  func initColorsCollection() {
-    self.colorsCollection.register(ColorSelectionCell.self)
-    self.colorsCollection.registerSupplementary(ColorSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
-    self.colorsCollection.backgroundColor         = Managers.theme.colorScheme.configurationBackground
-    self.colorsCollection.allowsSelection         = true
-    self.colorsCollection.allowsMultipleSelection = true
-    self.colorsCollection.alwaysBounceVertical    = true
+    // table view
+    self.tableView.register(UITableViewCell.self)
+    self.tableView.backgroundColor = Managers.theme.colorScheme.configurationBackground
+    self.tableView.separatorInset  = .zero
+    self.tableView.dataSource      = self.tableViewDataSource
+    self.tableView.delegate        = self
+    self.tableView.tableFooterView = UIView()
 
-    self.colorsCollection.dataSource = self.colorsCollectionDataSource
-    self.colorsCollection.delegate   = self
-
-    self.scrollViewContent.addSubview(self.colorsCollection)
-    self.colorsCollection.snp.makeConstraints { make in
+    self.scrollViewContent.addSubview(self.tableView)
+    self.tableView.snp.makeConstraints { make in
       make.top.equalTo(self.themePresentation.view.snp.bottom)
       make.bottom.centerX.width.equalToSuperview()
     }

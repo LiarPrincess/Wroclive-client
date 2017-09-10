@@ -24,13 +24,13 @@ class IntrinsicTableView: UITableView {
     super.init(frame: frame, style: style)
     self.commonInit()
   }
-  
+
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     self.commonInit()
   }
 
   private func commonInit() {
-    self.alwaysBounceVertical = false // disable scrolling
+    self.isScrollEnabled = false
   }
 }

@@ -96,12 +96,12 @@ class LineSelectionPage: UIViewController {
   fileprivate var itemSize = CGSize()
 
   private func recalculateItemSize() {
-    //number of cells:   n
-    //number of margins: n-1
+    // number of cells:   n
+    // number of margins: n-1
 
-    //totalWidth = n * cellWidth + (n-1) * margins
-    //solve for n:         n = (totalWidth + margin) / (cellWidth + margin)
-    //solve for cellWidth: cellWidth = (totalWidth - (n-1) * margin) / n
+    // totalWidth = n * cellWidth + (n-1) * margins
+    // solve for n:         n = (totalWidth + margin) / (cellWidth + margin)
+    // solve for cellWidth: cellWidth = (totalWidth - (n-1) * margin) / n
 
     let totalWidth   = self.collectionView.contentWidth
     let margin       = Layout.Cell.margin

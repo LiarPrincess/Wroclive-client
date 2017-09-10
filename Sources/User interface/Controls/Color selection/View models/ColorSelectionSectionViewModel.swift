@@ -6,6 +6,11 @@
 import UIKit
 
 protocol ColorSelectionSectionViewModel {
-  var name:           String { get }
-  var cellViewModels: [AnyColorSelectionCellViewModel] { get }
+  var name:        String { get }
+  var colors:      [AnyColorSelectionSectionColor] { get }
+  var colorsCount: Int { get }
+}
+
+extension ColorSelectionSectionViewModel {
+  var colorsCount: Int { return self.colors.count }
 }

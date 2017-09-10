@@ -126,7 +126,7 @@
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90AAA9431F5E0DEB00F4DFC6 /* ColorSelectionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AAA9421F5E0DEB00F4DFC6 /* ColorSelectionSectionViewModel.swift */; };
-		90AAA9451F5E0DFA00F4DFC6 /* ColorSelectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionCellViewModel.swift */; };
+		90AAA9451F5E0DFA00F4DFC6 /* ColorSelectionSectionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionSectionColor.swift */; };
 		90AAA9481F5F3ACA00F4DFC6 /* ColorSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AAA9471F5F3ACA00F4DFC6 /* ColorSelectionDataSource.swift */; };
 		90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */; };
 		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
@@ -286,7 +286,7 @@
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90AAA9421F5E0DEB00F4DFC6 /* ColorSelectionSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionViewModel.swift; sourceTree = "<group>"; };
-		90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionCellViewModel.swift; sourceTree = "<group>"; };
+		90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionSectionColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionColor.swift; sourceTree = "<group>"; };
 		90AAA9471F5F3ACA00F4DFC6 /* ColorSelectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionDataSource.swift; sourceTree = "<group>"; };
 		90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerImpl.swift; sourceTree = "<group>"; };
 		90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
@@ -828,7 +828,7 @@
 		9032F07E1F5DF8DB00E1C9BC /* View models */ = {
 			isa = PBXGroup;
 			children = (
-				90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionCellViewModel.swift */,
+				90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionSectionColor.swift */,
 				90AAA9421F5E0DEB00F4DFC6 /* ColorSelectionSectionViewModel.swift */,
 			);
 			path = "View models";
@@ -1335,7 +1335,7 @@
 				90E3ADDD1F4F7D9200C3ED24 /* PresentationControllerConstants.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
-				90AAA9451F5E0DFA00F4DFC6 /* ColorSelectionCellViewModel.swift in Sources */,
+				90AAA9451F5E0DFA00F4DFC6 /* ColorSelectionSectionColor.swift in Sources */,
 				9021F3981F12C95D000A6949 /* UIView+RoundCorners.swift in Sources */,
 				9021F4381F12D698000A6949 /* LineSelectionCell.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,

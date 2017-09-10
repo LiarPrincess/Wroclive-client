@@ -26,15 +26,13 @@ class ColorSelectionCell: UICollectionViewCell {
   }
 
   private func initLayout() {
-    self.selectedBackgroundView = UIView()
-    self.selectedBackgroundView?.backgroundColor    = Managers.theme.colorScheme.tintColor.value
-    self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
+    self.contentView.clipsToBounds      = true
+    self.contentView.layer.cornerRadius = Layout.cornerRadius
 
     self.lineNameLabel.numberOfLines = 1
     self.lineNameLabel.isUserInteractionEnabled = false
 
     self.contentView.addSubview(self.lineNameLabel)
-
     self.lineNameLabel.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
@@ -45,7 +43,7 @@ class ColorSelectionCell: UICollectionViewCell {
   override var isSelected: Bool {
     didSet {
       if oldValue != self.isSelected { // performance
-        self.updateTextColorForSelectionStatus()
+//        self.updateTextColorForSelectionStatus()
       }
     }
   }
@@ -57,11 +55,11 @@ class ColorSelectionCell: UICollectionViewCell {
 
   // MARK: - Methods
 
-  func setUp<TViewModel: ColorSelectionCellViewModel>(with viewModel: TViewModel) {
-    self.lineNameLabel.text = "A"
-    self.backgroundColor = viewModel.color
-//    self.setLineLabel(viewModel.lineName)
-  }
+//  func setUp<TViewModel: ColorSelectionCellViewModel>(with viewModel: TViewModel) {
+//    self.lineNameLabel.text = "A"
+//    self.contentView.backgroundColor = viewModel.color
+////    self.setLineLabel(viewModel.lineName)
+//  }
 
   private func setLineLabel(_ value: String) {
 //    let textColor: TextColor = self.isSelected ? .background : .text

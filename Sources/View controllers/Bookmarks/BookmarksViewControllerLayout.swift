@@ -68,7 +68,7 @@ extension BookmarksViewController {
 
   private func initBookmarksTable() {
     self.bookmarksTable.register(BookmarkCell.self)
-    self.bookmarksTable.separatorInset  = UIEdgeInsets(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
+    self.bookmarksTable.separatorInset  = UIEdgeInsets(top: 0.0, left: Layout.leftInset, bottom: 0.0, right: Layout.rightInset)
     self.bookmarksTable.backgroundColor = Managers.theme.colorScheme.background
     self.bookmarksTable.dataSource      = self.bookmarksTableDataSource
     self.bookmarksTable.delegate        = self
@@ -77,7 +77,6 @@ extension BookmarksViewController {
     self.bookmarksTable.tableFooterView = UIView(frame: .zero)
 
     self.view.insertSubview(self.bookmarksTable, belowSubview: self.headerView)
-
     self.bookmarksTable.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }

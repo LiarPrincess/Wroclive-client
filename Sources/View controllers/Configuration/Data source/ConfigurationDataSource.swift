@@ -5,16 +5,17 @@
 
 import UIKit
 
-private typealias Cell    = ConfigurationCell
-private typealias Section = ConfigurationSection
-
 class ConfigurationDataSource: NSObject {
 
   // MARK: - Properties
 
-  fileprivate var sections: [Section] = {
-    return [Section(for: .personalization), Section(for: .about)]
+  fileprivate lazy var sections: [ConfigurationSection] = {
+    let personalizationSection = ConfigurationSection(for: .personalization)
+    let aboutSection           = ConfigurationSection(for: .about)
+    return [personalizationSection, aboutSection]
   }()
+
+  // MARK: - Methods
 
   func sectionAt(_ section: Int) -> ConfigurationSection {
     guard section >= 0 && section < self.sections.count else {

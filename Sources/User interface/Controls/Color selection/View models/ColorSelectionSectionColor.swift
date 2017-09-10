@@ -5,24 +5,24 @@
 
 import UIKit
 
-protocol ColorSelectionCellViewModel {
+protocol ColorSelectionSectionColor {
   var color: UIColor { get }
 }
 
-struct AnyColorSelectionCellViewModel: ColorSelectionCellViewModel {
-  private let viewModel: ColorSelectionCellViewModel
+struct AnyColorSelectionSectionColor: ColorSelectionSectionColor {
+  private let viewModel: ColorSelectionSectionColor
 
   var color: UIColor { return self.viewModel.color }
 
-  init(_ viewModel: ColorSelectionCellViewModel) {
+  init(_ viewModel: ColorSelectionSectionColor) {
     self.viewModel = viewModel
   }
 }
 
-extension TintColor: ColorSelectionCellViewModel {
+extension TintColor: ColorSelectionSectionColor {
   var color: UIColor { return self.value }
 }
 
-extension VehicleColor: ColorSelectionCellViewModel {
+extension VehicleColor: ColorSelectionSectionColor {
   var color: UIColor { return self.value }
 }
