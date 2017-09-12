@@ -36,7 +36,7 @@
 "Configuration_Title"  = "Settings";
 "Configuration_Footer" = "Data provided by MPK Wrocław\nKek version %@";
 
-"Configuration_Cell_Colours"  = "Personalizacja";
+"Configuration_Cell_Colours"  = "Personalization";
 "Configuration_Cell_Share"    = "Share";
 "Configuration_Cell_Tutorial" = "Tutorial";
 "Configuration_Cell_Contact"  = "Contact";

@@ -16,7 +16,29 @@ class ColorSelectionDataSource: NSObject {
     return [tintSection, tramSection, busSection]
   }()
 
-  // MARK: - Methods
+  // MARK: - IndexOf(color:)
+
+  func indexOf(tintColor: TintColor) -> IndexPath? {
+    return self.indexOf(cell: tintColor, inSection: .tint)
+  }
+
+  func indexOf(tramColor: VehicleColor) -> IndexPath? {
+    return self.indexOf(cell: tramColor, inSection: .tram)
+  }
+
+  func indexOf(busColor: VehicleColor) -> IndexPath? {
+    return self.indexOf(cell: busColor, inSection: .bus)
+  }
+
+  private func indexOf<TCell: ColorSelectionCellViewModel>(cell: TCell, inSection sectionType: ColorSelectionSectionType) -> IndexPath? {
+    if let section = self.sections.index(where: { $0.type == sectionType }),
+       let row     = self.sections[section].cells.index(where: { $0.color == cell.color }) {
+      return IndexPath(row: row, section: section)
+    }
+    return nil
+  }
+
+  // MARK: - SectionAt, CellAt
 
   func sectionAt(_ section: Int) -> ColorSelectionSection {
     guard section >= 0 && section < self.sections.count else {
@@ -26,13 +48,13 @@ class ColorSelectionDataSource: NSObject {
     return self.sections[section]
   }
 
-  func colorAt(_ indexPath: IndexPath) -> AnyColorSelectionSectionColor {
+  func cellAt(_ indexPath: IndexPath) -> ColorSelectionCellViewModel {
     let section = self.sectionAt(indexPath.section)
-    guard indexPath.row >= 0 && indexPath.row < section.colorsCount else {
+    guard indexPath.row >= 0 && indexPath.row < section.cellsCount else {
       fatalError("Unexpected row")
     }
 
-    return section.colors[indexPath.row]
+    return section.cells[indexPath.row]
   }
 }
 
@@ -43,7 +65,7 @@ extension ColorSelectionDataSource: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.sectionAt(section).colorsCount
+    return self.sectionAt(section).cellsCount
   }
 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -52,11 +74,12 @@ extension ColorSelectionDataSource: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell  = tableView.dequeueReusableCell(ofType: UITableViewCell.self, forIndexPath: indexPath)
-    let color = self.colorAt(indexPath)
+    let viewModel = self.cellAt(indexPath)
 
     cell.textLabel?.text      = "Color name"
-    cell.imageView?.tintColor = color.color
+    cell.imageView?.tintColor = viewModel.color
     cell.imageView?.image     = StyleKit.drawRoundedRectangleTemplateImage(size: CGSize(width: 40.0, height: 40.0))
+    cell.selectionStyle = .none
     return cell
   }
 }

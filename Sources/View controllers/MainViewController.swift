@@ -33,7 +33,8 @@ class MainViewController: UIViewController {
 
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    self.observeAppStateToManageUpdateTimer()
+    self.startObservingColorScheme()
+    self.startObservingAppStateToManageTimer()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -44,12 +45,34 @@ class MainViewController: UIViewController {
     NotificationCenter.default.removeObserver(self)
   }
 
-  private func observeAppStateToManageUpdateTimer() {
+  private func startObservingColorScheme() {
+    let notification = Notification.Name.colorSchemeDidChange
+    NotificationCenter.default.addObserver(self, selector: #selector(colorSchemeDidChanged), name: notification, object: nil)
+  }
+
+  func colorSchemeDidChanged() {
+    let colorScheme = Managers.theme.colorScheme
+    self.view.tintColor               = colorScheme.tintColor.value
+    self.toolbar.tintColor            = colorScheme.tintColor.value
+
+    self.userTrackingButton.tintColor             = colorScheme.tintColor.value
+    self.userTrackingButton.customView?.tintColor = colorScheme.tintColor.value
+  }
+
+  private func startObservingAppStateToManageTimer() {
     let didBecomeActive = NSNotification.Name.UIApplicationDidBecomeActive
     NotificationCenter.default.addObserver(self, selector: #selector(startUpdateTimerWhenApplicationDidBecomeActive),  name: didBecomeActive,  object: nil)
 
     let willResignActive = NSNotification.Name.UIApplicationWillResignActive
     NotificationCenter.default.addObserver(self, selector: #selector(stopUpdateTimerWhenApplicationWillResignActive), name: willResignActive, object: nil)
+  }
+
+  func startUpdateTimerWhenApplicationDidBecomeActive(withNotification notification : NSNotification) {
+    self.startLocationUpdateTimer()
+  }
+
+  func stopUpdateTimerWhenApplicationWillResignActive(withNotification notification : NSNotification) {
+    self.stopLocationUpdateTimer()
   }
 
   // MARK: - Overriden
@@ -148,16 +171,6 @@ class MainViewController: UIViewController {
   private func stopLocationUpdateTimer() {
     self.trackingTimer?.invalidate()
   }
-
-  // MARK: - App state
-
-  func startUpdateTimerWhenApplicationDidBecomeActive(withNotification notification : NSNotification) {
-    self.startLocationUpdateTimer()
-  }
-
-  func stopUpdateTimerWhenApplicationWillResignActive(withNotification notification : NSNotification) {
-    self.stopLocationUpdateTimer()
-  }
 }
 
 // MARK: - SearchViewControllerDelegate
@@ -167,7 +180,6 @@ extension MainViewController: SearchViewControllerDelegate {
   func searchViewController(_ controller: SearchViewController, didSelect lines: [Line]) {
     self.startTracking(lines)
   }
-
 }
 
 // MARK: - BookmarksViewControllerDelegate
@@ -177,5 +189,4 @@ extension MainViewController: BookmarksViewControllerDelegate {
   func bookmarksViewController(_ controller: BookmarksViewController, didSelect bookmark: Bookmark) {
     self.startTracking(bookmark.lines)
   }
-
 }

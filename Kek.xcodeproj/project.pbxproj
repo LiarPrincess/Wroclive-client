@@ -112,6 +112,7 @@
 		9056F6571F5229A500F7EF48 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6541F5229A500F7EF48 /* Font.swift */; };
 		9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
+		906A22B51F67470600F09DF7 /* NSNotification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A22B41F67470600F09DF7 /* NSNotification+Names.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907ECF181F3BB41900DB27DB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907ECF171F3BB41900DB27DB /* Info.plist */; };
 		907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
@@ -126,7 +127,7 @@
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90AAA9431F5E0DEB00F4DFC6 /* ColorSelectionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AAA9421F5E0DEB00F4DFC6 /* ColorSelectionSectionViewModel.swift */; };
-		90AAA9451F5E0DFA00F4DFC6 /* ColorSelectionSectionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionSectionColor.swift */; };
+		90AAA9451F5E0DFA00F4DFC6 /* ColorSelectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionCellViewModel.swift */; };
 		90AAA9481F5F3ACA00F4DFC6 /* ColorSelectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AAA9471F5F3ACA00F4DFC6 /* ColorSelectionDataSource.swift */; };
 		90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */; };
 		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
@@ -273,6 +274,7 @@
 		9056F6541F5229A500F7EF48 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		9056F6551F5229A500F7EF48 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		906A22B41F67470600F09DF7 /* NSNotification+Names.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotification+Names.swift"; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
 		908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRange+StartEnd.swift"; sourceTree = "<group>"; };
@@ -286,7 +288,7 @@
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90AAA9421F5E0DEB00F4DFC6 /* ColorSelectionSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionViewModel.swift; sourceTree = "<group>"; };
-		90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionSectionColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionColor.swift; sourceTree = "<group>"; };
+		90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionCellViewModel.swift; sourceTree = "<group>"; };
 		90AAA9471F5F3ACA00F4DFC6 /* ColorSelectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionDataSource.swift; sourceTree = "<group>"; };
 		90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerImpl.swift; sourceTree = "<group>"; };
 		90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
@@ -828,7 +830,7 @@
 		9032F07E1F5DF8DB00E1C9BC /* View models */ = {
 			isa = PBXGroup;
 			children = (
-				90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionSectionColor.swift */,
+				90AAA9441F5E0DFA00F4DFC6 /* ColorSelectionCellViewModel.swift */,
 				90AAA9421F5E0DEB00F4DFC6 /* ColorSelectionSectionViewModel.swift */,
 			);
 			path = "View models";
@@ -864,6 +866,7 @@
 			isa = PBXGroup;
 			children = (
 				908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */,
+				906A22B41F67470600F09DF7 /* NSNotification+Names.swift */,
 				908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */,
 			);
 			path = Foundation;
@@ -1233,6 +1236,7 @@
 				9032F0731F5DEBFA00E1C9BC /* ColorSelectionSectionHeaderView.swift in Sources */,
 				9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
+				906A22B51F67470600F09DF7 /* NSNotification+Names.swift in Sources */,
 				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
@@ -1335,7 +1339,7 @@
 				90E3ADDD1F4F7D9200C3ED24 /* PresentationControllerConstants.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
-				90AAA9451F5E0DFA00F4DFC6 /* ColorSelectionSectionColor.swift in Sources */,
+				90AAA9451F5E0DFA00F4DFC6 /* ColorSelectionCellViewModel.swift in Sources */,
 				9021F3981F12C95D000A6949 /* UIView+RoundCorners.swift in Sources */,
 				9021F4381F12D698000A6949 /* LineSelectionCell.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,

@@ -12,14 +12,19 @@ enum ColorSelectionSectionType {
 }
 
 struct ColorSelectionSection: ColorSelectionSectionViewModel {
-  let type:   ColorSelectionSectionType
-  let name:   String
-  let colors: [AnyColorSelectionSectionColor]
+
+  // MARK: - Properties
+
+  let type:  ColorSelectionSectionType
+  let name:  String
+  let cells: [AnyColorSelectionCellViewModel]
+
+  // MARK: - Init
 
   init(for type: ColorSelectionSectionType) {
-    self.type   = type
-    self.name   = ColorSelectionSection.createName(for: type)
-    self.colors = ColorSelectionSection.createColors(for: type)
+    self.type  = type
+    self.name  = ColorSelectionSection.createName(for: type)
+    self.cells = ColorSelectionSection.createColors(for: type)
   }
 
   private static func createName(for type: ColorSelectionSectionType) -> String {
@@ -30,14 +35,14 @@ struct ColorSelectionSection: ColorSelectionSectionViewModel {
     }
   }
 
-  private static func createColors(for type: ColorSelectionSectionType) -> [AnyColorSelectionSectionColor] {
-    let tintColors:    [TintColor]    = [.red, .blue, .green, .orange, .pink, .black]
-    let vehicleColors: [VehicleColor] = [.red, .blue, .green, .pink, .black]
-
+  private static func createColors(for type: ColorSelectionSectionType) -> [AnyColorSelectionCellViewModel] {
     switch type {
-    case .tint: return tintColors.map    { AnyColorSelectionSectionColor($0) }
-    case .tram: return vehicleColors.map { AnyColorSelectionSectionColor($0) }
-    case .bus:  return vehicleColors.map { AnyColorSelectionSectionColor($0) }
+    case .tint:
+      let colors: [TintColor] = [.red, .blue, .green, .orange, .pink, .black]
+      return colors.map    { AnyColorSelectionCellViewModel($0) }
+    case .tram, .bus:
+      let colors: [VehicleColor] = [.red, .blue, .green, .pink, .black]
+      return colors.map { AnyColorSelectionCellViewModel($0) }
     }
   }
 }

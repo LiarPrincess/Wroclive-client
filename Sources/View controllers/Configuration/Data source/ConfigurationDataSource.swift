@@ -5,6 +5,7 @@
 
 import UIKit
 
+// Source: https://cocoacasts.com/simplifying-table-views-with-model-view-viewmodel/
 class ConfigurationDataSource: NSObject {
 
   // MARK: - Properties

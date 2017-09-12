@@ -45,6 +45,7 @@ extension ColorSelectionViewController {
 
     // table view
     self.tableView.register(UITableViewCell.self)
+    self.tableView.allowsMultipleSelection = true
     self.tableView.backgroundColor = Managers.theme.colorScheme.configurationBackground
     self.tableView.separatorInset  = .zero
     self.tableView.dataSource      = self.tableViewDataSource
@@ -61,15 +62,14 @@ extension ColorSelectionViewController {
   private func initBackButton() {
     typealias ButtonLayout = Layout.BackButton
 
-    let backImage = StyleKit.drawBackTemplateImage(size: ButtonLayout.imageSize)
+    let image = StyleKit.drawBackTemplateImage(size: ButtonLayout.imageSize)
 
-    let button = UIButton()
-    button.setImage(backImage, for: .normal)
-    button.addTarget(self, action: #selector(ColorSelectionViewController.closeButtonPressed), for: .touchUpInside)
-    button.contentEdgeInsets = UIEdgeInsets(top: ButtonLayout.topInset, left: ButtonLayout.leftInset, bottom: ButtonLayout.bottomInset, right: ButtonLayout.rightInset)
+    self.backButton.setImage(image, for: .normal)
+    self.backButton.addTarget(self, action: #selector(ColorSelectionViewController.closeButtonPressed), for: .touchUpInside)
+    self.backButton.contentEdgeInsets = UIEdgeInsets(top: ButtonLayout.topInset, left: ButtonLayout.leftInset, bottom: ButtonLayout.bottomInset, right: ButtonLayout.rightInset)
 
-    self.view.addSubview(button)
-    button.snp.makeConstraints { make in
+    self.view.addSubview(self.backButton)
+    self.backButton.snp.makeConstraints { make in
       make.top.equalToSuperview()
       make.left.equalToSuperview()
     }

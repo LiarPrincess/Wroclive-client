@@ -11,7 +11,7 @@ protocol EnumCollection: Hashable {
 
 extension EnumCollection {
 
-  static var allCases: AnySequence<Self> {
+  private static var allCases: AnySequence<Self> {
     return AnySequence { () -> AnyIterator<Self> in
       var raw = 0
       return AnyIterator {

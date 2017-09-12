@@ -30,18 +30,20 @@ class ThemeManagerImpl: ThemeManager {
 
   // Mark - Color scheme
 
-  func setColorScheme(tint tintColor: TintColor, bus busColor: VehicleColor, tram tramColor: VehicleColor) {
+  func setColorScheme(tint tintColor: TintColor, tram tramColor: VehicleColor, bus busColor: VehicleColor) {
     self.colorScheme = ColorScheme(tint: tintColor, bus: busColor, tram: tramColor)
     self.applyColorScheme()
     ColorSchemeManager.save(self.colorScheme)
+    NotificationCenter.default.post(name: Notification.Name.colorSchemeDidChange, object: nil)
   }
 
   private func applyColorScheme() {
-    UIWindow.appearance().tintColor = self.colorScheme.tintColor.value
-    UIView.appearance().tintColor   = self.colorScheme.tintColor.value
+    UIApplication.shared.delegate?.window??.tintColor = self.colorScheme.tintColor.value
+    UIWindow.appearance().tintColor                   = self.colorScheme.tintColor.value
+    UIView.appearance().tintColor                     = self.colorScheme.tintColor.value
 
     // Make user location pin blue
-    MKAnnotationView.appearance().tintColor = UIColor(red: 0.00, green: 0.50, blue: 1.00, alpha: 1.00)
+    MKAnnotationView.appearance().tintColor = UIColor(red: 0.0, green: 0.5, blue: 1.0, alpha: 1.0)
 
     UINavigationBar.appearance().barStyle            = self.colorScheme.barStyle
     UINavigationBar.appearance().titleTextAttributes = self.textAttributes(for : .bodyBold)
