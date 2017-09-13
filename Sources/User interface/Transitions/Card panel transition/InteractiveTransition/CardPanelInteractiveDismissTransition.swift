@@ -32,12 +32,10 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
   // MARK: - Gesture recognizers
 
   func handleGesture(gesture: UIPanGestureRecognizer) {
-    guard let presentable = self.presentable else {
-      return
-    }
+    guard let presentable = self.presentable else { return }
 
     let translation = gesture.translation(in: gesture.view)
-    let percent     = translation.y / presentable.contentView.bounds.size.height
+    let percent     = translation.y / presentable.contentView.bounds.height
 
     switch gesture.state {
     case .began:
@@ -75,5 +73,4 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
     if !isUp && velocity >  Constants.minVelocityDown { return true  }
     return percent > Constants.minProgress
   }
-
 }

@@ -7,14 +7,14 @@ import UIKit
 
 class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
-  private let transitionDuration: TimeInterval
+  private let duration: TimeInterval
 
-  init(_ transitionDuration: TimeInterval) {
-    self.transitionDuration = transitionDuration
+  init(_ duration: TimeInterval) {
+    self.duration = duration
   }
 
   func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-    return self.transitionDuration
+    return self.duration
   }
 
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -27,7 +27,7 @@ class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransit
     //animation
     modalViewController.view.frame = offScreenFrame
 
-    let duration = transitionDuration(using: transitionContext)
+    let duration = self.transitionDuration(using: transitionContext)
     UIView.animate(withDuration: duration, delay: 0.0, options: .curveEaseOut, animations: {
       modalViewController.view.frame = onScreenFrame
     }, completion: { _ in

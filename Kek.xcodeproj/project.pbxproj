@@ -128,6 +128,7 @@
 		908346F61F5202AE00654FF6 /* String+FindPositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F51F5202AE00654FF6 /* String+FindPositions.swift */; };
 		908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */; };
 		908346FA1F521E1500654FF6 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 908346F91F521DFF00654FF6 /* FontAwesome.otf */; };
+		908F55091F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908F55081F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift */; };
 		908FB19B1F48B3CA00121584 /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1961F48B3CA00121584 /* LayoutGuide.swift */; };
 		908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1981F48B3CA00121584 /* ReusableCell.swift */; };
 		908FB19D1F48B3CA00121584 /* ReusableCellContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1991F48B3CA00121584 /* ReusableCellContainer.swift */; };
@@ -139,6 +140,10 @@
 		90AF2BE31EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
 		90BB52991F60898C002EF188 /* Enum+AllValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB52981F60898C002EF188 /* Enum+AllValues.swift */; };
+		90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF51F69B62800AF4B84 /* PushConstants.swift */; };
+		90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */; };
+		90BC8B041F69B62800AF4B84 /* PushDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */; };
+		90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */; };
 		90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */; };
 		90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
 		90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */; };
@@ -290,6 +295,7 @@
 		908346F51F5202AE00654FF6 /* String+FindPositions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FindPositions.swift"; sourceTree = "<group>"; };
 		908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
 		908346F91F521DFF00654FF6 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Sources/App/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
+		908F55081F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushInteractiveDismissTransition.swift; sourceTree = "<group>"; };
 		908FB1961F48B3CA00121584 /* LayoutGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutGuide.swift; sourceTree = "<group>"; };
 		908FB1981F48B3CA00121584 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		908FB1991F48B3CA00121584 /* ReusableCellContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCellContainer.swift; sourceTree = "<group>"; };
@@ -302,6 +308,10 @@
 		90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90BB52981F60898C002EF188 /* Enum+AllValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum+AllValues.swift"; sourceTree = "<group>"; };
+		90BC8AF51F69B62800AF4B84 /* PushConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushConstants.swift; sourceTree = "<group>"; };
+		90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTransitionDelegate.swift; sourceTree = "<group>"; };
+		90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushDismissTransition.swift; sourceTree = "<group>"; };
+		90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPresentationTransition.swift; sourceTree = "<group>"; };
 		90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerImpl.swift; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
 		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "Sources/App/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
@@ -386,9 +396,9 @@
 		900CAE961F482E750044C8A6 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				900CAE971F482E750044C8A6 /* AvailableLinesEndpoint.swift */,
-				900CAE981F482E750044C8A6 /* Endpoint.swift */,
 				900CAE991F482E750044C8A6 /* Parsers */,
+				900CAE981F482E750044C8A6 /* Endpoint.swift */,
+				900CAE971F482E750044C8A6 /* AvailableLinesEndpoint.swift */,
 				900CAE9C1F482E750044C8A6 /* VehicleLocationEndpoint.swift */,
 			);
 			path = Endpoints;
@@ -576,11 +586,11 @@
 		9021F38A1F12C95D000A6949 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
+				90BB52981F60898C002EF188 /* Enum+AllValues.swift */,
 				908346F51F5202AE00654FF6 /* String+FindPositions.swift */,
 				9021F38B1F12C95D000A6949 /* Array+GroupedBy.swift */,
 				9021F38C1F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift */,
 				903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */,
-				90BB52981F60898C002EF188 /* Enum+AllValues.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -649,6 +659,7 @@
 		9021F3F81F12C9EF000A6949 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
+				90BC8AF41F69B62800AF4B84 /* Push transition */,
 				9021F3F91F12C9EF000A6949 /* Card panel transition */,
 			);
 			path = Transitions;
@@ -904,6 +915,14 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		908F55071F69CD7E00DB25A8 /* Interactive transition */ = {
+			isa = PBXGroup;
+			children = (
+				908F55081F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift */,
+			);
+			path = "Interactive transition";
+			sourceTree = "<group>";
+		};
 		908FB1951F48B3CA00121584 /* Layout guide */ = {
 			isa = PBXGroup;
 			children = (
@@ -925,8 +944,8 @@
 		9096CDBA1F40630500FEF20A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				902330E61EDF37F500FA8F43 /* Assets.xcassets */,
 				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
+				902330E61EDF37F500FA8F43 /* Assets.xcassets */,
 				90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */,
 				90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */,
 			);
@@ -983,6 +1002,26 @@
 				90B1DAA01F2BD92500FAE18A /* Bookmark.swift */,
 			);
 			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		90BC8AF41F69B62800AF4B84 /* Push transition */ = {
+			isa = PBXGroup;
+			children = (
+				90BC8AFC1F69B62800AF4B84 /* Transition */,
+				908F55071F69CD7E00DB25A8 /* Interactive transition */,
+				90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */,
+				90BC8AF51F69B62800AF4B84 /* PushConstants.swift */,
+			);
+			path = "Push transition";
+			sourceTree = "<group>";
+		};
+		90BC8AFC1F69B62800AF4B84 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */,
+				90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */,
+			);
+			path = Transition;
 			sourceTree = "<group>";
 		};
 		90D6ACF71F4DEBE600B36DCB /* Presentation */ = {
@@ -1225,10 +1264,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				90145E691F61BA630068698D /* PresentationControllerPageParameters.swift in Sources */,
+				90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */,
 				90145E431F61AE8A0068698D /* ConfigurationSectionViewModel.swift in Sources */,
 				9055C8E61F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift in Sources */,
 				9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */,
 				900CAEAF1F482E750044C8A6 /* Endpoint.swift in Sources */,
+				90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */,
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90145E451F61AED10068698D /* ConfigurationCell.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
@@ -1252,6 +1293,7 @@
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
 				9044A5471F69A13D00F26C17 /* ColorSelectionViewController.swift in Sources */,
+				90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */,
 				90145E491F61AF060068698D /* ConfigurationDataSource.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
 				904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */,
@@ -1300,10 +1342,12 @@
 				9044A5451F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift in Sources */,
 				901D46881F5730AE00A9F6BD /* ColorValues.swift in Sources */,
 				9056F6571F5229A500F7EF48 /* Font.swift in Sources */,
+				90BC8B041F69B62800AF4B84 /* PushDismissTransition.swift in Sources */,
 				90145E5F1F61B9E30068698D /* ThemePresentation.swift in Sources */,
 				9021F43A1F12D698000A6949 /* LineSelectionDataSource.swift in Sources */,
 				90E8A6CB1F4CE24500CE5AE9 /* AppStoreManager.swift in Sources */,
 				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
+				908F55091F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift in Sources */,
 				90145E5C1F61B9E30068698D /* InAppPurchasePresentationConstants.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
 				900CAEAC1F482E750044C8A6 /* MapManagerConstants.swift in Sources */,

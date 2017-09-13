@@ -92,7 +92,6 @@ class MainViewController: UIViewController {
     self.searchTransitionDelegate     = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
     controller.modalPresentationStyle = .custom
     controller.transitioningDelegate  = self.searchTransitionDelegate!
-
     self.present(controller, animated: true, completion: nil)
   }
 
@@ -104,7 +103,6 @@ class MainViewController: UIViewController {
     self.bookmarksTransitionDelegate  = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
     controller.modalPresentationStyle = .custom
     controller.transitioningDelegate  = self.bookmarksTransitionDelegate!
-
     self.present(controller, animated: true, completion: nil)
   }
 

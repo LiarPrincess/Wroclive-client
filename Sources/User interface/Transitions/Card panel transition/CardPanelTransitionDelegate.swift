@@ -47,5 +47,4 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
   func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
     return CardPanelPresenter(forPresented: presented, presenting: presenting, relativeHeight: self.relativeHeight)
   }
-
 }

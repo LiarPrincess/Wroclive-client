@@ -32,6 +32,9 @@ class ConfigurationViewController: UIViewController {
     return relativeHeight * UIScreen.main.bounds.height
   }
 
+  var themeTransitionDelegate:    UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var tutorialTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+
   // MARK: - Overriden
 
   override func viewDidLoad() {
@@ -116,14 +119,20 @@ extension ConfigurationViewController: UITableViewDelegate {
   }
 
   private func showThemeManager() {
-    let viewController = ColorSelectionViewController()
-    viewController.modalPresentationStyle = .custom
-    self.present(viewController, animated: true, completion: nil)
+    let controller = ColorSelectionViewController()
+    self.themeTransitionDelegate = PushTransitionDelegate(for: controller)
+
+    controller.modalPresentationStyle = .custom
+    controller.transitioningDelegate  = self.themeTransitionDelegate
+    self.present(controller, animated: true, completion: nil)
   }
 
   private func showTutorial() {
-    let viewController = TutorialPresentation()
-    viewController.modalPresentationStyle = .custom
-    self.present(viewController, animated: true, completion: nil)
+    let controller = TutorialPresentation()
+    self.tutorialTransitionDelegate = PushTransitionDelegate(for: controller)
+
+    controller.modalPresentationStyle = .custom
+    controller.transitioningDelegate  = self.tutorialTransitionDelegate
+    self.present(controller, animated: true, completion: nil)
   }
 }
