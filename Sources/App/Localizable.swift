@@ -162,4 +162,10 @@ struct Localizable {
       static let image: UIImage = #imageLiteral(resourceName: "Image_Share")
     }
   }
+
+  struct Theme {
+    static var tint: String { return LocalizedString("Configuration_Theme_Tint") }
+    static var tram: String { return LocalizedString("Configuration_Theme_Tram") }
+    static var bus:  String { return LocalizedString("Configuration_Theme_Bus") }
+  }
 }

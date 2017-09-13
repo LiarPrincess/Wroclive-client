@@ -5,6 +5,8 @@
 
 import UIKit
 
+private typealias Localization = Localizable.Theme
+
 enum ColorSelectionSectionType {
   case tint
   case tram
@@ -29,9 +31,9 @@ struct ColorSelectionSection: ColorSelectionSectionViewModel {
 
   private static func createName(for type: ColorSelectionSectionType) -> String {
     switch type {
-    case .tint: return "Tint"
-    case .tram: return "Tram"
-    case .bus:  return "Bus"
+    case .tint: return Localization.tint.uppercased()
+    case .tram: return Localization.tram.uppercased()
+    case .bus:  return Localization.bus.uppercased()
     }
   }
 
@@ -39,7 +41,7 @@ struct ColorSelectionSection: ColorSelectionSectionViewModel {
     switch type {
     case .tint:
       let colors: [TintColor] = [.red, .blue, .green, .orange, .pink, .black]
-      return colors.map    { AnyColorSelectionCellViewModel($0) }
+      return colors.map { AnyColorSelectionCellViewModel($0) }
     case .tram, .bus:
       let colors: [VehicleColor] = [.red, .blue, .green, .pink, .black]
       return colors.map { AnyColorSelectionCellViewModel($0) }

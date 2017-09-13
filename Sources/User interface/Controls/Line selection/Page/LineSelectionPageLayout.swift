@@ -25,5 +25,4 @@ extension LineSelectionPage {
       make.edges.equalToSuperview()
     }
   }
-
 }

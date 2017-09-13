@@ -42,8 +42,13 @@
 "Configuration_Cell_Contact"  = "Kontakt";
 "Configuration_Cell_Rate"     = "Oceń aplikację";
 
-/* Share */
+/* Configuration - Share */
 "Configuration_Share_Content" = "Kek - Komunikacja miejska na żywo! %@";
+
+/* Configuration - Share */
+"Configuration_Theme_Tint" = "Intrfejs";
+"Configuration_Theme_Tram" = "Tramwaje";
+"Configuration_Theme_Bus"  = "Autobusy";
 
 /* Presentations - In-app purchase */
 "Presentation_InAppPurchase_Bookmarks_Title"   = "Nielimitowane zakładki";

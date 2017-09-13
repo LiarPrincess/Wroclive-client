@@ -83,7 +83,7 @@ extension TutorialPresentation {
     let button = UIButton()
     button.setImage(backImage, for: .normal)
     button.addTarget(self, action: #selector(TutorialPresentation.closeButtonPressed), for: .touchUpInside)
-    button.contentEdgeInsets = UIEdgeInsets(top: ButtonLayout.topInset, left: ButtonLayout.leftInset, bottom: ButtonLayout.bottomInset, right: ButtonLayout.rightInset)
+    button.contentEdgeInsets = ButtonLayout.insets
 
     self.view.addSubview(button)
     button.snp.makeConstraints { make in

@@ -85,5 +85,4 @@ extension LineSelectionDataSource: UICollectionViewDataSource {
     cell.setUp(with: viewModel)
     return cell
   }
-
 }

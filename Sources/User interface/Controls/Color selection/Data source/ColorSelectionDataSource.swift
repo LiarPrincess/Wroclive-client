@@ -48,7 +48,7 @@ class ColorSelectionDataSource: NSObject {
     return self.sections[section]
   }
 
-  func cellAt(_ indexPath: IndexPath) -> ColorSelectionCellViewModel {
+  func cellAt(_ indexPath: IndexPath) -> AnyColorSelectionCellViewModel {
     let section = self.sectionAt(indexPath.section)
     guard indexPath.row >= 0 && indexPath.row < section.cellsCount else {
       fatalError("Unexpected row")
@@ -58,28 +58,40 @@ class ColorSelectionDataSource: NSObject {
   }
 }
 
-extension ColorSelectionDataSource: UITableViewDataSource {
+// MARK: - UICollectionViewDataSource
 
-  func numberOfSections(in tableView: UITableView) -> Int {
+extension ColorSelectionDataSource: UICollectionViewDataSource {
+
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
     return self.sections.count
   }
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return self.sectionAt(section).cellsCount
   }
 
-  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return self.sectionAt(section).name
+  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    switch kind {
+    case UICollectionElementKindSectionHeader:
+      let view      = collectionView.dequeueReusableSupplementaryView(ofType: ColorSelectionSectionHeaderView.self, kind: kind, for: indexPath)
+      let viewModel = self.sectionAt(indexPath.section)
+
+      view.setUp(with: viewModel)
+      return view
+
+    case UICollectionElementKindSectionFooter:
+      return collectionView.dequeueReusableSupplementaryView(ofType: ColorSelectionSectionFooterView.self, kind: kind, for: indexPath)
+
+    default:
+      fatalError("Unexpected element kind")
+    }
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell  = tableView.dequeueReusableCell(ofType: UITableViewCell.self, forIndexPath: indexPath)
-    let viewModel = self.cellAt(indexPath)
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell      = collectionView.dequeueReusableCell(ofType: ColorSelectionCell.self, forIndexPath: indexPath)
+    let viewModel = self.sectionAt(indexPath.section).cells[indexPath.row]
 
-    cell.textLabel?.text      = "Color name"
-    cell.imageView?.tintColor = viewModel.color
-    cell.imageView?.image     = StyleKit.drawRoundedRectangleTemplateImage(size: CGSize(width: 40.0, height: 40.0))
-    cell.selectionStyle = .none
+    cell.setUp(with: viewModel)
     return cell
   }
 }

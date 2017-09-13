@@ -12,7 +12,7 @@ class ColorSelectionCell: UICollectionViewCell {
 
   // MARK: - Properties
 
-  private let lineNameLabel = UILabel()
+  private let label = UILabel()
 
   // MARK: - Init
 
@@ -26,14 +26,14 @@ class ColorSelectionCell: UICollectionViewCell {
   }
 
   private func initLayout() {
-    self.contentView.clipsToBounds      = true
-    self.contentView.layer.cornerRadius = Layout.cornerRadius
+    self.clipsToBounds      = true
+    self.layer.cornerRadius = Layout.cornerRadius
 
-    self.lineNameLabel.numberOfLines = 1
-    self.lineNameLabel.isUserInteractionEnabled = false
+    self.label.numberOfLines = 1
+    self.label.isUserInteractionEnabled = false
 
-    self.contentView.addSubview(self.lineNameLabel)
-    self.lineNameLabel.snp.makeConstraints { make in
+    self.contentView.addSubview(self.label)
+    self.label.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
   }
@@ -43,27 +43,22 @@ class ColorSelectionCell: UICollectionViewCell {
   override var isSelected: Bool {
     didSet {
       if oldValue != self.isSelected { // performance
-//        self.updateTextColorForSelectionStatus()
+        self.updateSelectionText()
       }
     }
   }
 
-  private func updateTextColorForSelectionStatus() {
-    let text = self.lineNameLabel.attributedText?.string ?? self.lineNameLabel.text ?? ""
-    self.setLineLabel(text)
+  private func updateSelectionText() {
+    if self.isSelected {
+      let textAttributes = Managers.theme.textAttributes(for: .body, fontType: .icon, alignment: .center, color: .background)
+      self.label.attributedText = NSAttributedString(string: "\u{f00c}", attributes: textAttributes)
+    }
+    else { self.label.attributedText = nil }
   }
 
   // MARK: - Methods
 
-//  func setUp<TViewModel: ColorSelectionCellViewModel>(with viewModel: TViewModel) {
-//    self.lineNameLabel.text = "A"
-//    self.contentView.backgroundColor = viewModel.color
-////    self.setLineLabel(viewModel.lineName)
-//  }
-
-  private func setLineLabel(_ value: String) {
-//    let textColor: TextColor = self.isSelected ? .background : .text
-//    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
-//    self.lineNameLabel.attributedText = NSAttributedString(string: value, attributes: textAttributes)
+  func setUp<TViewModel: ColorSelectionCellViewModel>(with viewModel: TViewModel) {
+    self.backgroundColor = viewModel.color
   }
 }

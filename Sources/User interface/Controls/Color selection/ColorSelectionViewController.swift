@@ -14,9 +14,13 @@ class ColorSelectionViewController: UIViewController {
   let scrollView        = UIScrollView()
   let scrollViewContent = UIView()
 
-  let themePresentation   = ThemePresentation()
-  let tableView           = IntrinsicTableView(frame: .zero, style: .grouped)
-  let tableViewDataSource = ColorSelectionDataSource()
+  let themePresentation = ThemePresentation()
+
+  let collectionViewDataSource = ColorSelectionDataSource()
+  let collectionView: UICollectionView = {
+    let layout = UICollectionViewFlowLayout()
+    return IntrinsicCollectionView(frame: .zero, collectionViewLayout: layout)
+  }()
 
   let backButton = UIButton(type: .system)
 
@@ -53,33 +57,53 @@ class ColorSelectionViewController: UIViewController {
     self.initLayout()
   }
 
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    self.selectInitialTableViewRows()
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    self.recalculateItemSize()
   }
 
-  private func selectInitialTableViewRows() {
-    func selectRowAt(_ indexPath: IndexPath) {
-      let animated       = false
-      let scrollPosition = UITableViewScrollPosition.none
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.selectInitialColor()
+  }
 
-      _ = self.tableView.delegate?.tableView?(self.tableView, willSelectRowAt: indexPath)
-      self.tableView.selectRow(at: indexPath, animated: animated, scrollPosition: scrollPosition)
-      self.tableView.delegate?.tableView?(self.tableView, didSelectRowAt: indexPath)
+  fileprivate var itemSize = CGSize()
+
+  private func recalculateItemSize() {
+    // number of cells:   n
+    // number of margins: n-1
+
+    // totalWidth = n * cellWidth + (n-1) * margins
+    // solve for n:         n = (totalWidth + margin) / (cellWidth + margin)
+    // solve for cellWidth: cellWidth = (totalWidth - (n-1) * margin) / n
+
+    let totalWidth   = UIScreen.main.bounds.width - Layout.leftOffset - Layout.rightOffset
+    let margin       = Layout.Cell.margin
+    let minCellWidth = Layout.Cell.minSize
+
+    let numSectionsThatFit = floor((totalWidth + margin) / (minCellWidth + margin))
+    let cellWidth          = (totalWidth - (numSectionsThatFit - 1) * margin) / numSectionsThatFit
+
+    self.itemSize = CGSize(width: cellWidth, height: cellWidth)
+  }
+
+  private func selectInitialColor() {
+    func selectColorAt(_ indexPath: IndexPath) {
+      self.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
 
     let colorScheme = Managers.theme.colorScheme
 
-    if let tintIndex = self.tableViewDataSource.indexOf(tintColor: colorScheme.tintColor) {
-      selectRowAt(tintIndex)
+    if let tintIndex = self.collectionViewDataSource.indexOf(tintColor: colorScheme.tintColor) {
+      selectColorAt(tintIndex)
     }
 
-    if let tramIndex = self.tableViewDataSource.indexOf(tramColor: colorScheme.tramColor) {
-      selectRowAt(tramIndex)
+    if let tramIndex = self.collectionViewDataSource.indexOf(tramColor: colorScheme.tramColor) {
+      selectColorAt(tramIndex)
     }
 
-    if let busIndex  = self.tableViewDataSource.indexOf(busColor: colorScheme.busColor) {
-      selectRowAt(busIndex)
+    if let busIndex  = self.collectionViewDataSource.indexOf(busColor: colorScheme.busColor) {
+      selectColorAt(busIndex)
     }
   }
 
@@ -91,8 +115,8 @@ class ColorSelectionViewController: UIViewController {
 
   // MARK: - Save
 
-  fileprivate func saveSelectedColorScheme() {
-    guard let selectedIndexPaths = tableView.indexPathsForSelectedRows else {
+  fileprivate func saveSelectedColors() {
+    guard let selectedIndexPaths = self.collectionView.indexPathsForSelectedItems else {
       return
     }
 
@@ -101,7 +125,7 @@ class ColorSelectionViewController: UIViewController {
     var busColor:  VehicleColor?
 
     for indexPath in selectedIndexPaths {
-      let section = self.tableViewDataSource.sectionAt(indexPath.section)
+      let section = self.collectionViewDataSource.sectionAt(indexPath.section)
       let cell    = section.cells[indexPath.row]
 
       switch section.type {
@@ -151,54 +175,75 @@ extension ColorSelectionViewController: UIScrollViewDelegate {
   }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - CollectionViewDelegateFlowLayout
 
-extension ColorSelectionViewController: UITableViewDelegate {
+extension ColorSelectionViewController: UICollectionViewDelegateFlowLayout {
 
-  // MARK: Height
+  // MARK: - Size
 
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return UITableViewAutomaticDimension
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    let width = self.collectionView.contentWidth
+
+    let sectionName = self.collectionViewDataSource.sectionAt(section).name
+
+    let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+    let textAttributes = Managers.theme.textAttributes(for: .caption)
+    let textSize       = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
+
+    typealias HeaderLayout = Layout.Section.Header
+    let topInset    = HeaderLayout.topInset
+    let bottomInset = HeaderLayout.bottomInset
+    return CGSize(width: width, height: topInset + textSize.height + bottomInset + 1.0)
   }
 
-  func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-    return 50.0
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    let width  = self.collectionView.contentWidth
+    let height = Layout.Section.Footer.height
+    return CGSize(width: width, height: height)
   }
 
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableViewAutomaticDimension
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return self.itemSize
   }
 
-  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 50.0
+  // MARK: - Margin
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return Layout.Cell.margin
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return Layout.Cell.margin
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: Layout.Section.topInset, left: Layout.leftOffset, bottom: Layout.Section.bottomInset, right: Layout.rightOffset)
   }
 
   // MARK: - Selection
 
-  func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-    self.deselectRows(in: tableView, section: indexPath.section)
-    return indexPath
+  func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    return true
   }
 
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-    self.saveSelectedColorScheme()
+  func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+    return false
   }
 
-  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    tableView.cellForRow(at: indexPath)?.accessoryType = .none
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    self.deselectCells(in: collectionView, section: indexPath.section, except: indexPath.row)
+    self.saveSelectedColors()
   }
 
-  private func deselectRows(in tableView: UITableView, section: Int) {
-    guard let selectedIndexPaths = tableView.indexPathsForSelectedRows else {
+  private func deselectCells(in collectionView: UICollectionView, section: Int, except cell: Int) {
+    guard let selectedIndexPaths = collectionView.indexPathsForSelectedItems else {
       return
     }
 
-    let indexPathsInSection = selectedIndexPaths.filter { $0.section == section }
-    for indexPath in indexPathsInSection {
-      _ = self.tableView.delegate?.tableView?(tableView, willDeselectRowAt: indexPath)
-      tableView.deselectRow(at: indexPath, animated: false)
-      self.tableView.delegate?.tableView?(tableView, didDeselectRowAt: indexPath)
+    for indexPath in selectedIndexPaths {
+      if indexPath.section == section && indexPath.row != cell {
+        collectionView.deselectItem(at: indexPath, animated: false)
+      }
     }
   }
 }

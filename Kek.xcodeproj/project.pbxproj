@@ -113,6 +113,7 @@
 		9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
 		906A22B51F67470600F09DF7 /* NSNotification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A22B41F67470600F09DF7 /* NSNotification+Names.swift */; };
+		906A22B91F68917D00F09DF7 /* ColorSelectionSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A22B81F68917D00F09DF7 /* ColorSelectionSectionFooterView.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907ECF181F3BB41900DB27DB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907ECF171F3BB41900DB27DB /* Info.plist */; };
 		907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
@@ -275,6 +276,7 @@
 		9056F6551F5229A500F7EF48 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		906A22B41F67470600F09DF7 /* NSNotification+Names.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotification+Names.swift"; sourceTree = "<group>"; };
+		906A22B81F68917D00F09DF7 /* ColorSelectionSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionFooterView.swift; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
 		908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRange+StartEnd.swift"; sourceTree = "<group>"; };
@@ -814,6 +816,7 @@
 			children = (
 				9032F0701F5DEBE800E1C9BC /* ColorSelectionCell.swift */,
 				9032F0721F5DEBFA00E1C9BC /* ColorSelectionSectionHeaderView.swift */,
+				906A22B81F68917D00F09DF7 /* ColorSelectionSectionFooterView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1297,6 +1300,7 @@
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
 				900CAEAC1F482E750044C8A6 /* MapManagerConstants.swift in Sources */,
 				90145E601F61B9E30068698D /* ThemePresentationConstants.swift in Sources */,
+				906A22B91F68917D00F09DF7 /* ColorSelectionSectionFooterView.swift in Sources */,
 				9007E35D1F251971006A2F8F /* BookmarksViewControllerDelegate.swift in Sources */,
 				9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */,
 				9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */,

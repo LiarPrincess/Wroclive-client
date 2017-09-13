@@ -134,7 +134,7 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
     typealias HeaderLayout = Layout.SectionHeader
     let topInset    = HeaderLayout.topInset
     let bottomInset = HeaderLayout.bottomInset
-    return CGSize(width: width, height: topInset + textSize.height + bottomInset)
+    return CGSize(width: width, height: textSize.height + topInset + bottomInset + 1.0)
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -160,5 +160,4 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
     return true
   }
-
 }

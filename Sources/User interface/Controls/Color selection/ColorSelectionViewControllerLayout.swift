@@ -43,19 +43,22 @@ extension ColorSelectionViewController {
 
     self.themePresentation.didMove(toParentViewController: self)
 
-    // table view
-    self.tableView.register(UITableViewCell.self)
-    self.tableView.allowsMultipleSelection = true
-    self.tableView.backgroundColor = Managers.theme.colorScheme.configurationBackground
-    self.tableView.separatorInset  = .zero
-    self.tableView.dataSource      = self.tableViewDataSource
-    self.tableView.delegate        = self
-    self.tableView.tableFooterView = UIView()
+    // collection view
+    self.collectionView.register(ColorSelectionCell.self)
+    self.collectionView.registerSupplementary(ColorSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
+    self.collectionView.registerSupplementary(ColorSelectionSectionFooterView.self, ofKind: UICollectionElementKindSectionFooter)
+    self.collectionView.backgroundColor         = Managers.theme.colorScheme.background
+    self.collectionView.allowsSelection         = true
+    self.collectionView.allowsMultipleSelection = true
 
-    self.scrollViewContent.addSubview(self.tableView)
-    self.tableView.snp.makeConstraints { make in
+    self.collectionView.dataSource = self.collectionViewDataSource
+    self.collectionView.delegate   = self
+
+    self.scrollViewContent.addSubview(self.collectionView)
+    self.collectionView.snp.makeConstraints { make in
       make.top.equalTo(self.themePresentation.view.snp.bottom)
-      make.bottom.centerX.width.equalToSuperview()
+      make.centerX.width.equalToSuperview()
+      make.bottom.equalToSuperview().offset(-Layout.bottomOffset)
     }
   }
 
@@ -66,7 +69,7 @@ extension ColorSelectionViewController {
 
     self.backButton.setImage(image, for: .normal)
     self.backButton.addTarget(self, action: #selector(ColorSelectionViewController.closeButtonPressed), for: .touchUpInside)
-    self.backButton.contentEdgeInsets = UIEdgeInsets(top: ButtonLayout.topInset, left: ButtonLayout.leftInset, bottom: ButtonLayout.bottomInset, right: ButtonLayout.rightInset)
+    self.backButton.contentEdgeInsets = ButtonLayout.insets
 
     self.view.addSubview(self.backButton)
     self.backButton.snp.makeConstraints { make in
