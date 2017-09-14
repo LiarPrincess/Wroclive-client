@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.registerManagers()
 
     let mainViewController = MainViewController()
-//    let mainViewController = TutorialPresentation()
     window = UIWindow(frame: UIScreen.main.bounds)
     window!.rootViewController = mainViewController
     window!.makeKeyAndVisible()
@@ -28,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Managers.map       = MapManagerImpl()
     Managers.search    = SearchManagerImpl()
     Managers.bookmarks = BookmarksManagerImpl()
+    Managers.tracking  = TrackingManagerImpl()
 
     Managers.alert     = AlertManagerImpl()
     Managers.network   = NetworkManagerImpl()
@@ -37,5 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Managers.appStore  = AppStoreManagerImpl()
 
     Managers.theme     = ThemeManagerImpl()
+  }
+
+  // MARK: - Activity
+
+  func applicationDidBecomeActive(_ application: UIApplication) {
+    Managers.tracking.resume()
+  }
+
+  func applicationWillResignActive(_ application: UIApplication) {
+    Managers.tracking.pause()
   }
 }

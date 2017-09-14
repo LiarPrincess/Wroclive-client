@@ -5,6 +5,11 @@
 
 import UIKit
 import MapKit
+import Foundation
+
+extension Notification.Name {
+  static let colorSchemeDidChange = Notification.Name("pl.kekapp.kek.colorSchemeChangedNotification")
+}
 
 // source: https://medium.com/@abhimuralidharan/maintaining-a-colour-theme-manager-on-ios-swift-178b8a6a92
 class ThemeManagerImpl: ThemeManager {
@@ -34,7 +39,7 @@ class ThemeManagerImpl: ThemeManager {
     self.colorScheme = ColorScheme(tint: tintColor, bus: busColor, tram: tramColor)
     self.applyColorScheme()
     ColorSchemeManager.save(self.colorScheme)
-    NotificationCenter.default.post(name: Notification.Name.colorSchemeDidChange, object: nil)
+    NotificationCenter.default.post(name: .colorSchemeDidChange, object: nil)
   }
 
   private func applyColorScheme() {

@@ -114,13 +114,15 @@
 		9044A54F1F69A13D00F26C17 /* TutorialPresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A5421F69A13D00F26C17 /* TutorialPresentationConstants.swift */; };
 		9044A5501F69A13D00F26C17 /* TutorialPresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A5431F69A13D00F26C17 /* TutorialPresentationLayout.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
+		90546BEE1F6AF23100E8E75F /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BED1F6AF23100E8E75F /* TrackingManager.swift */; };
+		90546BF01F6AF25800E8E75F /* TrackingManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BEF1F6AF25800E8E75F /* TrackingManagerImpl.swift */; };
+		90546BF21F6AF3BC00E8E75F /* TrackingManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BF11F6AF3BC00E8E75F /* TrackingManagerConstants.swift */; };
 		9055C8E61F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */; };
 		9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */; };
 		9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */; };
 		9056F6571F5229A500F7EF48 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6541F5229A500F7EF48 /* Font.swift */; };
 		9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
-		906A22B51F67470600F09DF7 /* NSNotification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A22B41F67470600F09DF7 /* NSNotification+Names.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907ECF181F3BB41900DB27DB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907ECF171F3BB41900DB27DB /* Info.plist */; };
 		907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
@@ -282,13 +284,15 @@
 		9044A5421F69A13D00F26C17 /* TutorialPresentationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPresentationConstants.swift; sourceTree = "<group>"; };
 		9044A5431F69A13D00F26C17 /* TutorialPresentationLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPresentationLayout.swift; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
+		90546BED1F6AF23100E8E75F /* TrackingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
+		90546BEF1F6AF25800E8E75F /* TrackingManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManagerImpl.swift; sourceTree = "<group>"; };
+		90546BF11F6AF3BC00E8E75F /* TrackingManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManagerConstants.swift; sourceTree = "<group>"; };
 		9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewControllerLayout.swift; sourceTree = "<group>"; };
 		9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewControllerConstants.swift; sourceTree = "<group>"; };
 		9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFont.swift; sourceTree = "<group>"; };
 		9056F6541F5229A500F7EF48 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		9056F6551F5229A500F7EF48 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
-		906A22B41F67470600F09DF7 /* NSNotification+Names.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotification+Names.swift"; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
 		908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRange+StartEnd.swift"; sourceTree = "<group>"; };
@@ -789,6 +793,7 @@
 				900CAE911F482E750044C8A6 /* Map */,
 				900CAEA01F482E750044C8A6 /* Search */,
 				900CAE8E1F482E750044C8A6 /* Bookmarks */,
+				90546BEC1F6AF21B00E8E75F /* Tracking */,
 				900CAE8A1F482E750044C8A6 /* Alerts */,
 				900CAE951F482E750044C8A6 /* Network */,
 				90E8A6C41F4CD42000CE5AE9 /* Device */,
@@ -887,6 +892,16 @@
 			path = Pin;
 			sourceTree = "<group>";
 		};
+		90546BEC1F6AF21B00E8E75F /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				90546BED1F6AF23100E8E75F /* TrackingManager.swift */,
+				90546BEF1F6AF25800E8E75F /* TrackingManagerImpl.swift */,
+				90546BF11F6AF3BC00E8E75F /* TrackingManagerConstants.swift */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
 		9056F6521F5229A500F7EF48 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -909,7 +924,6 @@
 			isa = PBXGroup;
 			children = (
 				908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */,
-				906A22B41F67470600F09DF7 /* NSNotification+Names.swift */,
 				908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */,
 			);
 			path = Foundation;
@@ -1288,7 +1302,6 @@
 				9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */,
 				9044A5441F69A13D00F26C17 /* ColorSelectionCell.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
-				906A22B51F67470600F09DF7 /* NSNotification+Names.swift in Sources */,
 				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
@@ -1298,6 +1311,7 @@
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
 				904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
+				90546BEE1F6AF23100E8E75F /* TrackingManager.swift in Sources */,
 				9044A54F1F69A13D00F26C17 /* TutorialPresentationConstants.swift in Sources */,
 				90145E5D1F61B9E30068698D /* InAppPurchasePresentationLayout.swift in Sources */,
 				908346F61F5202AE00654FF6 /* String+FindPositions.swift in Sources */,
@@ -1337,6 +1351,7 @@
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				90E8A6C11F4CB81400CE5AE9 /* AppManagerImpl.swift in Sources */,
 				903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */,
+				90546BF01F6AF25800E8E75F /* TrackingManagerImpl.swift in Sources */,
 				9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */,
 				9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */,
 				9044A5451F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift in Sources */,
@@ -1404,6 +1419,7 @@
 				900CAEB71F482E750044C8A6 /* SearchManagerImpl.swift in Sources */,
 				9017C3651EE339FD00063377 /* SearchViewControllerConstants.swift in Sources */,
 				90BB52991F60898C002EF188 /* Enum+AllValues.swift in Sources */,
+				90546BF21F6AF3BC00E8E75F /* TrackingManagerConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

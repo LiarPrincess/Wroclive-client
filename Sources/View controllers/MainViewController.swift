@@ -24,15 +24,12 @@ class MainViewController: UIViewController {
 
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
-  var trackedLines:  [Line] = []
-  var trackingTimer: Timer?
-
   // MARK: - Init
 
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     self.startObservingColorScheme()
-    self.startObservingAppStateToManageTimer()
+    self.startObservingTrackingResults()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -41,36 +38,6 @@ class MainViewController: UIViewController {
 
   deinit {
     NotificationCenter.default.removeObserver(self)
-  }
-
-  private func startObservingColorScheme() {
-    let notification = Notification.Name.colorSchemeDidChange
-    NotificationCenter.default.addObserver(self, selector: #selector(colorSchemeDidChanged), name: notification, object: nil)
-  }
-
-  func colorSchemeDidChanged() {
-    let colorScheme = Managers.theme.colorScheme
-    self.view.tintColor               = colorScheme.tintColor.value
-    self.toolbar.tintColor            = colorScheme.tintColor.value
-
-    self.userTrackingButton.tintColor             = colorScheme.tintColor.value
-    self.userTrackingButton.customView?.tintColor = colorScheme.tintColor.value
-  }
-
-  private func startObservingAppStateToManageTimer() {
-    let didBecomeActive = NSNotification.Name.UIApplicationDidBecomeActive
-    NotificationCenter.default.addObserver(self, selector: #selector(startUpdateTimerWhenApplicationDidBecomeActive),  name: didBecomeActive,  object: nil)
-
-    let willResignActive = NSNotification.Name.UIApplicationWillResignActive
-    NotificationCenter.default.addObserver(self, selector: #selector(stopUpdateTimerWhenApplicationWillResignActive), name: willResignActive, object: nil)
-  }
-
-  func startUpdateTimerWhenApplicationDidBecomeActive(withNotification notification : NSNotification) {
-    self.startLocationUpdateTimer()
-  }
-
-  func stopUpdateTimerWhenApplicationWillResignActive(withNotification notification : NSNotification) {
-    self.stopLocationUpdateTimer()
   }
 
   // MARK: - Overriden
@@ -108,74 +75,64 @@ class MainViewController: UIViewController {
     self.present(controller, animated: true, completion: nil)
   }
 
-  // MARK: - Private - Tracking
+  // MARK: - Notifications
 
-  fileprivate func startTracking(_ lines: [Line]) {
-    self.trackedLines = lines
-    self.startLocationUpdateTimer()
+  private func startObservingColorScheme() {
+    let notification = Notification.Name.colorSchemeDidChange
+    NotificationCenter.default.addObserver(self, selector: #selector(colorSchemeDidChanged), name: notification, object: nil)
   }
 
-  // MARK: - Private - Timers
+  func colorSchemeDidChanged() {
+    let colorScheme = Managers.theme.colorScheme
+    self.view.tintColor    = colorScheme.tintColor.value
+    self.toolbar.tintColor = colorScheme.tintColor.value
 
-  private func startLocationUpdateTimer() {
-    self.stopLocationUpdateTimer()
-
-    guard self.trackedLines.count > 0 else {
-      self.mapViewController.removeAllAnnotations()
-      return
-    }
-
-    let interval = Constants.locationUpdateInterval
-    self.trackingTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(trackingTimerFired), userInfo: nil, repeats: true)
-    self.trackingTimer?.tolerance = interval * 0.1
-
-    // manually perform first update
-    self.trackingTimer?.fire()
+    self.userTrackingButton.tintColor             = colorScheme.tintColor.value
+    self.userTrackingButton.customView?.tintColor = colorScheme.tintColor.value
   }
 
-  func trackingTimerFired(timer: Timer) {
-    guard timer.isValid else { return }
+  private func startObservingTrackingResults() {
+    let notification = Notification.Name.trackingManagerDidUpdateLocations
+    NotificationCenter.default.addObserver(self, selector: #selector(trackingManagerDidUpdateLocations), name: notification, object: nil)
+  }
 
-    firstly { return Managers.network.getVehicleLocations(for: self.trackedLines) }
-    .then  { self.mapViewController.updateVehicleLocations($0) }
-    .catch { error in
-      self.stopLocationUpdateTimer()
-
-      let retry = { [weak self] in
-        let delay = Constants.failedRequestDelay
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
-          self?.startLocationUpdateTimer()
-        }
-      }
-
-      switch error {
-      case NetworkError.noInternet:
-        Managers.alert.showNoInternetAlert(in: self, retry: retry)
-      default:
-        Managers.alert.showNetworkingErrorAlert(in: self, retry: retry)
-      }
+  func trackingManagerDidUpdateLocations() {
+    let result = Managers.tracking.result
+    switch result {
+    case .success(let locations): self.mapViewController.updateVehicleLocations(locations)
+    case .error(let error):       self.presentTrackingError(error)
     }
   }
 
-  private func stopLocationUpdateTimer() {
-    self.trackingTimer?.invalidate()
+  private func presentTrackingError(_ error: Error) {
+    Managers.tracking.pause()
+
+    let retry: () -> () = {
+      let delay = Constants.failedLocationRequestDelay
+      DispatchQueue.main.asyncAfter(deadline: .now() + delay) { Managers.tracking.resume() }
+    }
+
+    switch error {
+    case NetworkError.noInternet:
+      Managers.alert.showNoInternetAlert(in: self, retry: retry)
+    default:
+      Managers.alert.showNetworkingErrorAlert(in: self, retry: retry)
+    }
   }
 }
 
 // MARK: - SearchViewControllerDelegate
 
 extension MainViewController: SearchViewControllerDelegate {
-
   func searchViewController(_ controller: SearchViewController, didSelect lines: [Line]) {
-    self.startTracking(lines)
+    Managers.tracking.start(lines)
   }
 }
 
 // MARK: - BookmarksViewControllerDelegate
 
 extension MainViewController: BookmarksViewControllerDelegate {
-
   func bookmarksViewController(_ controller: BookmarksViewController, didSelect bookmark: Bookmark) {
-    self.startTracking(bookmark.lines)
+    Managers.tracking.start(bookmark.lines)
   }
 }

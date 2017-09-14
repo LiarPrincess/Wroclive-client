@@ -37,7 +37,7 @@ class MapViewController: UIViewController {
       make.edges.equalToSuperview()
     }
 
-    firstly { () -> Promise<Void> in
+    _ = firstly { () -> Promise<Void> in
       Managers.map.requestInUseAuthorization()
       return Promise(value: ())
     }
@@ -53,7 +53,7 @@ class MapViewController: UIViewController {
 
   func updateVehicleLocations(_ vehicles: [Vehicle]) {
     // remove excess annotations
-    let annotationsBeforeRemoval = self.getVehicleAnnotations()
+    let annotationsBeforeRemoval = self.filterVehicleAnnotations()
 
     let toRemoveCount = annotationsBeforeRemoval.count - vehicles.count
     if toRemoveCount > 0 {
@@ -62,7 +62,7 @@ class MapViewController: UIViewController {
     }
 
     // update/add annotations
-    let annotations = self.getVehicleAnnotations() // after we removed
+    let annotations = self.filterVehicleAnnotations() // after we removed
 
     var annotationsToAdd = [VehicleAnnotation]()
     for (index, vehicle) in vehicles.enumerated() {
@@ -85,14 +85,8 @@ class MapViewController: UIViewController {
     }
   }
 
-  private func getVehicleAnnotations() -> [VehicleAnnotation] {
+  private func filterVehicleAnnotations() -> [VehicleAnnotation] {
     return self.mapView.annotations.flatMap { return $0 as? VehicleAnnotation }
-  }
-
-  // MARK: - Clear
-
-  func removeAllAnnotations() {
-    self.mapView.removeAnnotations(self.getVehicleAnnotations())
   }
 }
 
