@@ -71,6 +71,8 @@
 "Presentation_Tutorial_Page2_Title"   = "Zakładki";
 "Presentation_Tutorial_Page2_Caption" = "Użyj <star> by zobaczyć wszystkie zapisane zakładki.";
 
+"Presentation_Tutorial_Skip" = "Pomiń";
+
 /* Alerts */
 "Alert_Denied_Title"    = "Usługi lokalizacji wyłączone";
 "Alert_Denied_Content"  = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";

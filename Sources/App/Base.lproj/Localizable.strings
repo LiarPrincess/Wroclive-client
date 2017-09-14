@@ -71,6 +71,8 @@
 "Presentation_Tutorial_Page2_Title"   = "Bookmarks";
 "Presentation_Tutorial_Page2_Caption" = "Use <star> to see all saved bookmarks.";
 
+"Presentation_Tutorial_Skip" = "Skip";
+
 /* Alerts */
 "Alert_Denied_Title"    = "Location Services Off";
 "Alert_Denied_Content"  = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";

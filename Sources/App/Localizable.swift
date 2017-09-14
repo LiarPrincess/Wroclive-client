@@ -79,6 +79,8 @@ struct Localizable {
     }
 
     struct Tutorial {
+      static var skip: String { return LocalizedString("Presentation_Tutorial_Skip") }
+
       struct Page0 {
         static let image = #imageLiteral(resourceName: "Image_Tutorial")
         static var title:   String { return LocalizedString("Presentation_Tutorial_Page0_Title") }

@@ -8,10 +8,10 @@ import UIKit
 struct ThemePresentationConstants {
 
   struct Layout {
-    static let topInset: CGFloat = 28.0
+    static let topInset: CGFloat = 40.0
 
     struct PageControl {
-      static let topOffset:    CGFloat =  8.0
+      static let topOffset:    CGFloat = -2.0
       static let bottomOffset: CGFloat = -2.0
     }
   }

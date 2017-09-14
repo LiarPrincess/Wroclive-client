@@ -15,9 +15,7 @@ extension TutorialPresentation {
   func initLayout() {
     self.initGradient()
     self.initPages()
-    self.initPageViewController()
-    self.initPageControl()
-    self.initBackButton()
+    self.initContent()
   }
 
   private func initGradient() {
@@ -48,7 +46,8 @@ extension TutorialPresentation {
     )
   }
 
-  private func initPageViewController() {
+  private func initContent() {
+    // page view controller
     self.pageViewController.delegate   = self
     self.pageViewController.dataSource = self
     self.pageViewController.setViewControllers([self.pages[0]], direction: .forward, animated: false, completion: nil)
@@ -61,9 +60,8 @@ extension TutorialPresentation {
     }
 
     self.pageViewController.didMove(toParentViewController: self)
-  }
 
-  private func initPageControl() {
+    // page control
     self.pageControl.numberOfPages = self.pages.count
     self.pageControl.currentPage   = 0
 
@@ -72,23 +70,6 @@ extension TutorialPresentation {
       make.top.equalTo(self.pageViewController.view.snp.bottom).offset(Layout.PageControl.topOffset)
       make.centerX.equalToSuperview()
       make.bottom.equalToSuperview().offset(-Layout.PageControl.bottomOffset)
-    }
-  }
-
-  private func initBackButton() {
-    typealias ButtonLayout = Layout.BackButton
-
-    let backImage = StyleKit.drawBackTemplateImage(size: ButtonLayout.imageSize)
-
-    let button = UIButton()
-    button.setImage(backImage, for: .normal)
-    button.addTarget(self, action: #selector(TutorialPresentation.closeButtonPressed), for: .touchUpInside)
-    button.contentEdgeInsets = ButtonLayout.insets
-
-    self.view.addSubview(button)
-    button.snp.makeConstraints { make in
-      make.top.equalToSuperview()
-      make.left.equalToSuperview()
     }
   }
 }
