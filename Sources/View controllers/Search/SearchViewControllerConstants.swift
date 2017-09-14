@@ -6,7 +6,6 @@
 import UIKit
 
 struct SearchViewControllerConstants {
-
   struct Layout {
     static let leftInset:   CGFloat = 16.0
     static let rightInset:  CGFloat = leftInset
@@ -41,7 +40,8 @@ struct SearchViewControllerConstants {
     }
   }
 
-  struct Animations {
+  struct CardPanel {
+    static let relativeHeight: CGFloat = 0.90
     static let chevronDismissRelativeDuration: TimeInterval = 0.05
   }
 

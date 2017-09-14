@@ -5,7 +5,8 @@
 
 import UIKit
 
-private typealias Layout = ConfigurationViewControllerConstants.Layout
+private typealias Constants = ConfigurationViewControllerConstants
+private typealias Layout    = ConfigurationViewControllerConstants.Layout
 
 class ConfigurationViewController: UIViewController {
 
@@ -27,13 +28,11 @@ class ConfigurationViewController: UIViewController {
   let tableView           = IntrinsicTableView(frame: .zero, style: .grouped)
   let tableViewDataSource = ConfigurationDataSource()
 
-  var viewSize: CGFloat {
-    let relativeHeight = MainViewControllerConstants.CardPanel.configurationRelativeHeight
-    return relativeHeight * UIScreen.main.bounds.height
-  }
+  var pushTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
-  var themeTransitionDelegate:    UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
-  var tutorialTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var viewSize: CGFloat {
+    return self.relativeHeight * UIScreen.main.bounds.height
+  }
 
   // MARK: - Overriden
 
@@ -80,8 +79,9 @@ class ConfigurationViewController: UIViewController {
 // MARK: - CardPanelPresentable
 
 extension ConfigurationViewController: CardPanelPresentable {
-  var contentView:       UIView { return self.view }
-  var interactionTarget: UIView { return self.headerView }
+  var relativeHeight:    CGFloat { return Constants.CardPanel.relativeHeight }
+  var contentView:       UIView  { return self.view }
+  var interactionTarget: UIView  { return self.headerView }
 
   func dismissalTransitionWillBegin() {
     self.chevronView.setState(.flat, animated: true)
@@ -120,19 +120,18 @@ extension ConfigurationViewController: UITableViewDelegate {
 
   private func showThemeManager() {
     let controller = ColorSelectionViewController()
-    self.themeTransitionDelegate = PushTransitionDelegate(for: controller)
-
-    controller.modalPresentationStyle = .custom
-    controller.transitioningDelegate  = self.themeTransitionDelegate
-    self.present(controller, animated: true, completion: nil)
+    self.present(controller)
   }
 
   private func showTutorial() {
     let controller = TutorialPresentation()
-    self.tutorialTransitionDelegate = PushTransitionDelegate(for: controller)
+    self.present(controller)
+  }
 
+  private func present(_ controller: UIViewController) {
+    self.pushTransitionDelegate = PushTransitionDelegate(for: controller)
     controller.modalPresentationStyle = .custom
-    controller.transitioningDelegate  = self.tutorialTransitionDelegate
+    controller.transitioningDelegate  = self.pushTransitionDelegate
     self.present(controller, animated: true, completion: nil)
   }
 }

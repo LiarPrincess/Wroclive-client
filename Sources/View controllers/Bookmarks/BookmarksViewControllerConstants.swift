@@ -6,7 +6,6 @@
 import UIKit
 
 struct BookmarksViewControllerConstants {
-
   struct Layout {
     static let leftInset:  CGFloat = 16.0
     static let rightInset: CGFloat = leftInset
@@ -56,7 +55,8 @@ struct BookmarksViewControllerConstants {
     }
   }
 
-  struct Animations {
+  struct CardPanel {
+    static let relativeHeight: CGFloat = 0.75
     static let chevronDismissRelativeDuration: TimeInterval = 0.05
   }
 }

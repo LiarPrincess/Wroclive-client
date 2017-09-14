@@ -125,8 +125,9 @@ class BookmarksViewController: UIViewController {
 // MARK: - CardPanelPresentable
 
 extension BookmarksViewController: CardPanelPresentable {
-  var contentView:       UIView { return self.view }
-  var interactionTarget: UIView { return self.headerView }
+  var relativeHeight:    CGFloat { return Constants.CardPanel.relativeHeight }
+  var contentView:       UIView  { return self.view }
+  var interactionTarget: UIView  { return self.headerView }
 
   func dismissalTransitionWillBegin() {
     self.chevronView.setState(.flat, animated: true)

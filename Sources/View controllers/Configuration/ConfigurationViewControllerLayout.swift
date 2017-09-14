@@ -30,7 +30,7 @@ extension ConfigurationViewController {
 
     self.chevronView.state             = .down
     self.chevronView.color             = Managers.theme.colorScheme.backgroundAccent
-    self.chevronView.animationDuration = Constants.Animations.chevronDismissRelativeDuration
+    self.chevronView.animationDuration = Constants.CardPanel.chevronDismissRelativeDuration
     self.view.addSubview(chevronView)
 
     self.chevronView.snp.makeConstraints { make in

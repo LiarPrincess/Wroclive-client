@@ -18,8 +18,8 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
 
   // MARK: - Init
 
-  init(for presentable: CardPanelPresentable, withRelativeHeight relativeHeight: CGFloat) {
-    self.relativeHeight = relativeHeight
+  init(for presentable: CardPanelPresentable) {
+    self.relativeHeight = presentable.relativeHeight
     self.interactiveDismissTransition = CardPanelInteractiveDismissTransition(for: presentable)
     super.init()
   }

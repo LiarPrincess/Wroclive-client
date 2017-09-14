@@ -6,7 +6,6 @@
 import UIKit
 
 struct ConfigurationViewControllerConstants {
-
   struct Layout {
     static let leftInset:  CGFloat = 16.0
     static let rightInset: CGFloat = leftInset
@@ -29,7 +28,8 @@ struct ConfigurationViewControllerConstants {
     }
   }
 
-  struct Animations {
+  struct CardPanel {
+    static let relativeHeight: CGFloat = 0.96
     static let chevronDismissRelativeDuration: TimeInterval = 0.05
   }
 }

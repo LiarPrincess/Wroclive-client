@@ -7,12 +7,6 @@ import UIKit
 
 struct MainViewControllerConstants {
 
-  struct CardPanel {
-    static let searchRelativeHeight:        CGFloat = 0.90
-    static let bookmarksRelativeHeight:     CGFloat = 0.75
-    static let configurationRelativeHeight: CGFloat = 0.96
-  }
-
   struct Layout {
     static let toolbarImageSize = CGSize(width: 22.0, height: 22.0)
   }

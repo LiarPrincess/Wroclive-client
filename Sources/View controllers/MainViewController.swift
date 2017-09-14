@@ -22,9 +22,7 @@ class MainViewController: UIViewController {
   let bookmarksButton     = UIBarButtonItem()
   let configurationButton = UIBarButtonItem()
 
-  var searchTransitionDelegate:        UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
-  var bookmarksTransitionDelegate:     UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
-  var configurationTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
   var trackedLines:  [Line] = []
   var trackingTimer: Timer?
@@ -85,35 +83,28 @@ class MainViewController: UIViewController {
   // MARK: - Actions
 
   @objc func searchButtonPressed() {
-    let relativeHeight  = Constants.CardPanel.searchRelativeHeight
     let controller      = SearchViewController()
     controller.delegate = self
-
-    self.searchTransitionDelegate     = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
-    controller.modalPresentationStyle = .custom
-    controller.transitioningDelegate  = self.searchTransitionDelegate!
-    self.present(controller, animated: true, completion: nil)
+    self.presentCardPanel(controller)
   }
 
   @objc func bookmarksButtonPressed() {
-    let relativeHeight  = Constants.CardPanel.bookmarksRelativeHeight
     let controller      = BookmarksViewController()
     controller.delegate = self
-
-    self.bookmarksTransitionDelegate  = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
-    controller.modalPresentationStyle = .custom
-    controller.transitioningDelegate  = self.bookmarksTransitionDelegate!
-    self.present(controller, animated: true, completion: nil)
+    self.presentCardPanel(controller)
   }
 
   @objc func configurationButtonPressed() {
-    let relativeHeight  = Constants.CardPanel.configurationRelativeHeight
-    let controller      = ConfigurationViewController()
+    let controller = ConfigurationViewController()
+    self.presentCardPanel(controller)
+  }
 
-    self.configurationTransitionDelegate = CardPanelTransitionDelegate(for: controller, withRelativeHeight: relativeHeight)
-    controller.modalPresentationStyle    = .custom
-    controller.transitioningDelegate     = self.configurationTransitionDelegate!
-
+  private func presentCardPanel<TCardPanel>(_ controller: TCardPanel)
+    where TCardPanel: UIViewController, TCardPanel: CardPanelPresentable
+  {
+    self.cardPanelTransitionDelegate  = CardPanelTransitionDelegate(for: controller)
+    controller.modalPresentationStyle = .custom
+    controller.transitioningDelegate  = self.cardPanelTransitionDelegate!
     self.present(controller, animated: true, completion: nil)
   }
 
