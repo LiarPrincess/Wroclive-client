@@ -14,5 +14,4 @@ extension NSRange {
     assert(finish >= start)
     self.init(location: start, length: finish - start)
   }
-
 }

@@ -11,7 +11,7 @@ class AvailableLinesEndpoint: Endpoint {
 
   // MARK: - Properties
 
-  let url:               URLConvertible    = "http://192.168.1.100:8080/lines"
+  let url:               URLConvertible    = AppInfo.Endpoints.lines
   let method:            HTTPMethod        = .get
   let parameterEncoding: ParameterEncoding = JSONEncoding.default
   let headers:           HTTPHeaders?      = ["Accept": "application/json"]

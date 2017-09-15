@@ -18,26 +18,15 @@ protocol AppManager {
   // App bundle (e.g. pl.kekapp.kek)
   var bundle: String { get }
 
-  /// Website (e.g. www.kekapp.pl)
-  var website: String { get }
-
-  /// Full website url (e.g. https://www.kekapp.pl)
-  var websiteHttps: String { get }
-
-  /// Mail (e.g. mail@kekapp.pl)
-  var mail: String { get }
-
   // MARK: - Tutorial
 
   /// Has the user moved past tutorial?
   var hasSeenTutorialPresentation: Bool { get set }
 
-  // MARK: - Website
+  // MARK: - External
 
   /// Open Kek website in Safari
   func openWebsite()
-
-  // MARK: - Share
 
   /// Present bottom panel to share Kek
   func showShareActivity(in viewController: UIViewController)

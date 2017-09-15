@@ -22,5 +22,4 @@ struct CardPanelConstants {
     static let backgroundColor: UIColor = .black
     static let backgroundAlpha: CGFloat = 0.4
   }
-
 }

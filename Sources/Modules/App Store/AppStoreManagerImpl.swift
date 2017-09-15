@@ -8,8 +8,6 @@ import UIKit
 
 class AppStoreManagerImpl: AppStoreManager {
 
-  var applicationId: String { return "888422857" }
-
   func buyUpgrade() {
     Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
   }
@@ -19,7 +17,7 @@ class AppStoreManagerImpl: AppStoreManager {
   }
 
   func rateApp() {
-    let appStoreUrl = "itms-apps://itunes.apple.com/us/app/id\(self.applicationId)?action=write-review&mt=8"
+    let appStoreUrl = "itms-apps://itunes.apple.com/us/app/id\(AppInfo.appStoreId)?action=write-review&mt=8"
     UIApplication.shared.open(URL(string: appStoreUrl)!)
   }
 }

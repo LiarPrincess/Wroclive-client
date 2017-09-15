@@ -125,6 +125,7 @@
 		9056F6571F5229A500F7EF48 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6541F5229A500F7EF48 /* Font.swift */; };
 		9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
+		9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* AppInfo.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907ECF181F3BB41900DB27DB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907ECF171F3BB41900DB27DB /* Info.plist */; };
 		907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
@@ -297,6 +298,7 @@
 		9056F6541F5229A500F7EF48 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		9056F6551F5229A500F7EF48 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		9079DCD51F6C545600C6ABCD /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
 		908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRange+StartEnd.swift"; sourceTree = "<group>"; };
@@ -774,6 +776,7 @@
 			children = (
 				9096CDBA1F40630500FEF20A /* Assets */,
 				90E77A271F4E3C20006882A4 /* Localizable */,
+				9079DCD51F6C545600C6ABCD /* AppInfo.swift */,
 				902330E51EDF37F500FA8F43 /* AppDelegate.swift */,
 				907ECF171F3BB41900DB27DB /* Info.plist */,
 			);
@@ -972,8 +975,8 @@
 		9096CDBA1F40630500FEF20A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
 				902330E61EDF37F500FA8F43 /* Assets.xcassets */,
+				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
 				90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */,
 				90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */,
 			);
@@ -1410,6 +1413,7 @@
 				90145E611F61B9E30068698D /* ThemePresentationLayout.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
+				9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,

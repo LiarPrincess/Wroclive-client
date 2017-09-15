@@ -11,7 +11,7 @@ class VehicleLocationEndpoint: Endpoint {
 
   // MARK: - Properties
 
-  let url:               URLConvertible    = "http://192.168.1.100:8080/locations"
+  let url:               URLConvertible    = AppInfo.Endpoints.locations
   let method:            HTTPMethod        = .post
   let parameterEncoding: ParameterEncoding = JSONEncoding.default
   let headers:           HTTPHeaders?      = ["Accept": "application/json"]

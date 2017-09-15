@@ -11,13 +11,9 @@ class AppManagerImpl: AppManager {
 
   // MARK: - Info
 
-  var name:    String { return self.bundleInformation(key: kCFBundleExecutableKey as String) ?? "Kek" }
-  var version: String { return self.bundleInformation(key: "CFBundleShortVersionString")     ?? "1.0" }
-  var bundle:  String { return self.bundleInformation(key: kCFBundleIdentifierKey as String) ?? "com.kekapp.kek" }
-
-  var website:      String { return "www.kekapp.pl"  }
-  var websiteHttps: String { return "https://\(self.website)" }
-  var mail:         String { return "mail@kekapp.pl" }
+  var name:    String { return self.bundleInformation(key: kCFBundleExecutableKey as String) ?? "" }
+  var version: String { return self.bundleInformation(key: "CFBundleShortVersionString")     ?? "" }
+  var bundle:  String { return self.bundleInformation(key: kCFBundleIdentifierKey as String) ?? "" }
 
   private func bundleInformation(key: String) -> String? {
     return Bundle.main.infoDictionary?[key] as? String
@@ -26,20 +22,20 @@ class AppManagerImpl: AppManager {
   // MARK: - Tutorial
 
   var hasSeenTutorialPresentation: Bool { // -> user defaults
-    get { return true }
+    get { return false }
     set { }
   }
 
   // MARK: - Website
 
   func openWebsite() {
-    UIApplication.shared.open(URL(string: self.websiteHttps)!)
+    UIApplication.shared.open(URL(string: AppInfo.websiteHttps)!)
   }
 
   // MARK: - Share
 
   func showShareActivity(in viewController: UIViewController) {
-    let text  = String(format: Localization.Share.text, self.website)
+    let text  = String(format: Localization.Share.text, AppInfo.website)
     let image = Localization.Share.image
     let items = [text, image] as [Any]
 

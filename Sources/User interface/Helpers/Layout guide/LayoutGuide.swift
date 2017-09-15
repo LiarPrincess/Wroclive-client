@@ -28,5 +28,4 @@ final class LayoutGuide: NSObject, UILayoutSupport {
   var heightAnchor: NSLayoutDimension {
     return NSLayoutDimension()
   }
-
 }

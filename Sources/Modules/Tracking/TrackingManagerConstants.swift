@@ -6,5 +6,5 @@
 import Foundation
 
 struct TrackingManagerConstants {
-  static let locationUpdateInterval: TimeInterval = 3.0
+  static let locationUpdateInterval = AppInfo.locationUpdateInterval
 }

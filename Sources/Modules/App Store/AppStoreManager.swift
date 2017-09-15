@@ -5,9 +5,6 @@
 
 protocol AppStoreManager {
 
-  /// App Store application id
-  var applicationId: String { get }
-
   /// Start purchase procedure
   func buyUpgrade()
 
