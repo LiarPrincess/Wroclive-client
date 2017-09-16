@@ -16,16 +16,18 @@ class BookmarksManagerImpl: BookmarksManager {
     set { UserDefaults.standard.set(newValue, forKey: hasSeenInstructionKey) }
   }
 
-  // MARK: - CRU
+  // MARK: - Properties
 
   private lazy var bookmarks: [Bookmark] = {
     return NSKeyedUnarchiver.unarchiveObject(withFile: self.archive.path) as? [Bookmark] ?? []
   }()
 
-  private var archive: URL = {
+  private lazy var archive: URL = {
     let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     return documentsDirectory.appendingPathComponent("bookmarks")
   }()
+
+  // MARK: - Methods
 
   @discardableResult
   func addNew(name: String, lines: [Line]) -> Bookmark {

@@ -33,7 +33,7 @@ class VehicleLocationEndpoint: Endpoint {
 
   // MARK: - Response
 
-  func parseResponse(_ json: Any) -> Promise<[Vehicle]> {
+  func decodeResponse(_ json: Any) -> Promise<[Vehicle]> {
     guard let jsonArray = json as? JSONArray else {
       return Promise(error: NetworkError.invalidResponse)
     }

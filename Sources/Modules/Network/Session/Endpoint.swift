@@ -17,7 +17,7 @@ protocol Endpoint {
   func encodeParameters(_ data: RequestData) -> Parameters?
 
   associatedtype ResponseData
-  func parseResponse(_ json: Any) -> Promise<ResponseData>
+  func decodeResponse(_ json: Any) -> Promise<ResponseData>
 }
 
 // MARK: - Default values

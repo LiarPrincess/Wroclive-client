@@ -20,10 +20,10 @@ class ColorSchemeManager {
           let busColor  = VehicleColor(rawValue: busColorValue),
           let tramColor = VehicleColor(rawValue: tramColorValue) else {
 
-      return ColorScheme(tint: .red, bus: .red, tram: .blue)
+      return ColorScheme(tint: .red, tram: .blue, bus: .red)
     }
 
-    return ColorScheme(tint: tintColor, bus: busColor, tram: tramColor)
+    return ColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
   }
 
   static func save(_ colorScheme: ColorScheme) {

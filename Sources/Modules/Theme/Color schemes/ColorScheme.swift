@@ -19,7 +19,7 @@ struct ColorScheme {
   let barStyle  = UIBarStyle.default
   let blurStyle = UIBlurEffectStyle.extraLight
 
-  init(tint tintColor: TintColor, bus busColor: VehicleColor, tram tramColor: VehicleColor) {
+  init(tint tintColor: TintColor, tram tramColor: VehicleColor, bus busColor: VehicleColor) {
     self.tintColor = tintColor
     self.busColor  = busColor
     self.tramColor = tramColor
