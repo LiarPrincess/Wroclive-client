@@ -37,7 +37,8 @@ class MainViewController: UIViewController {
   }
 
   deinit {
-    NotificationCenter.default.removeObserver(self)
+    self.stopObservingColorScheme()
+    self.stopObservingTrackingResults()
   }
 
   // MARK: - Overriden
@@ -78,11 +79,14 @@ class MainViewController: UIViewController {
   // MARK: - Notifications
 
   private func startObservingColorScheme() {
-    let notification = Notification.Name.colorSchemeDidChange
-    NotificationCenter.default.addObserver(self, selector: #selector(colorSchemeDidChanged), name: notification, object: nil)
+    Managers.notification.subscribe(self, to: .colorSchemeDidChange, selector: #selector(colorSchemeDidChange))
   }
 
-  func colorSchemeDidChanged() {
+  private func stopObservingColorScheme() {
+    Managers.notification.unsubscribe(self, from: .colorSchemeDidChange)
+  }
+
+  func colorSchemeDidChange() {
     let colorScheme = Managers.theme.colorScheme
     self.view.tintColor    = colorScheme.tintColor.value
     self.toolbar.tintColor = colorScheme.tintColor.value
@@ -92,11 +96,14 @@ class MainViewController: UIViewController {
   }
 
   private func startObservingTrackingResults() {
-    let notification = Notification.Name.trackingManagerDidUpdateLocations
-    NotificationCenter.default.addObserver(self, selector: #selector(trackingManagerDidUpdateLocations), name: notification, object: nil)
+    Managers.notification.subscribe(self, to: .vehicleLocationsDidUpdate, selector: #selector(vehicleLocationsDidUpdate))
   }
 
-  func trackingManagerDidUpdateLocations() {
+  private func stopObservingTrackingResults() {
+    Managers.notification.unsubscribe(self, from: .vehicleLocationsDidUpdate)
+  }
+
+  func vehicleLocationsDidUpdate() {
     let result = Managers.tracking.result
     switch result {
     case .success(let locations): self.mapViewController.updateVehicleLocations(locations)

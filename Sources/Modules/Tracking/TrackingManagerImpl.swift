@@ -8,27 +8,20 @@ import PromiseKit
 
 private typealias Constants = TrackingManagerConstants
 
-extension Notification.Name {
-  static let trackingManagerDidUpdateLocations = Notification.Name("pl.kekapp.kek.trackingManagerDidUpdateLocations")
-}
-
 class TrackingManagerImpl {
 
-  private(set) var result: TrackingResult = .success(locations: [])
+  private(set) var result: TrackingResult = .success(locations: []) {
+    didSet { Managers.notification.post(.vehicleLocationsDidUpdate) }
+  }
 
   fileprivate var trackedLines: [Line] = []
   private var trackingTimer:    Timer?
-
-  private func notifyDidUpdateLocations() {
-    NotificationCenter.default.post(name: .trackingManagerDidUpdateLocations, object: nil)
-  }
 
   fileprivate func startTimer() {
     self.stopTimer()
 
     guard self.trackedLines.count > 0 else {
       self.result = .success(locations: [])
-      self.notifyDidUpdateLocations()
       return
     }
 
@@ -46,7 +39,6 @@ class TrackingManagerImpl {
     firstly { return Managers.network.getVehicleLocations(for: self.trackedLines) }
     .then  { self.result = .success(locations: $0) }
     .catch { self.result = .error(error: $0) }
-    .always { self.notifyDidUpdateLocations() }
   }
 
   fileprivate func stopTimer() {

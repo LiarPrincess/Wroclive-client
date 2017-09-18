@@ -36,18 +36,7 @@ class ColorSelectionViewController: UIViewController {
   }
 
   deinit {
-    NotificationCenter.default.removeObserver(self)
-  }
-
-  private func startObservingColorScheme() {
-    let notification = Notification.Name.colorSchemeDidChange
-    NotificationCenter.default.addObserver(self, selector: #selector(colorSchemeDidChanged), name: notification, object: nil)
-  }
-
-  func colorSchemeDidChanged() {
-    let colorScheme = Managers.theme.colorScheme
-    self.view.tintColor       = colorScheme.tintColor.value
-    self.backButton.tintColor = colorScheme.tintColor.value
+    self.stopObservingColorScheme()
   }
 
   // MARK: - Override
@@ -152,6 +141,22 @@ class ColorSelectionViewController: UIViewController {
       fatalError("Unexpected color")
     }
     return color
+  }
+
+  // MARK: - Notifications
+
+  private func startObservingColorScheme() {
+    Managers.notification.subscribe(self, to: .colorSchemeDidChange, selector: #selector(colorSchemeDidChange))
+  }
+
+  private func stopObservingColorScheme() {
+    Managers.notification.unsubscribe(self, from: .colorSchemeDidChange)
+  }
+
+  func colorSchemeDidChange() {
+    let colorScheme = Managers.theme.colorScheme
+    self.view.tintColor       = colorScheme.tintColor.value
+    self.backButton.tintColor = colorScheme.tintColor.value
   }
 }
 

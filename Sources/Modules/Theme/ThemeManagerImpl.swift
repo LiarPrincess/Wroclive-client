@@ -7,10 +7,6 @@ import UIKit
 import MapKit
 import Foundation
 
-extension Notification.Name {
-  static let colorSchemeDidChange = Notification.Name("pl.kekapp.kek.colorSchemeChangedNotification")
-}
-
 // source: https://medium.com/@abhimuralidharan/maintaining-a-colour-theme-manager-on-ios-swift-178b8a6a92
 class ThemeManagerImpl: ThemeManager {
 
@@ -39,7 +35,7 @@ class ThemeManagerImpl: ThemeManager {
     self.colorScheme = ColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
     self.applyColorScheme()
     ColorSchemeManager.save(self.colorScheme)
-    NotificationCenter.default.post(name: .colorSchemeDidChange, object: nil)
+    Managers.notification.post(.colorSchemeDidChange)
   }
 
   private func applyColorScheme() {
@@ -135,18 +131,15 @@ class ThemeManagerImpl: ThemeManager {
     view.addBorder(at: .bottom)
     view.setContentHuggingPriority(900, for: .vertical)
   }
-}
 
-// MARK: - Content size category observer
+  // MARK: - Notifications
 
-extension ThemeManagerImpl {
   fileprivate func startObservingContentSizeCategory() {
-    let notification = NSNotification.Name.UIContentSizeCategoryDidChange
-    NotificationCenter.default.addObserver(self, selector: #selector(contentSizeCategoryDidChange(notification:)), name: notification, object: nil)
+    Managers.notification.subscribe(self, to: .contentSizeCategoryDidChange, selector: #selector(contentSizeCategoryDidChange(notification:)))
   }
 
   fileprivate func stopObservingContentSizeCategory() {
-    NotificationCenter.default.removeObserver(self)
+    Managers.notification.unsubscribe(self, from: .contentSizeCategoryDidChange)
   }
 
   @objc func contentSizeCategoryDidChange(notification: NSNotification) {

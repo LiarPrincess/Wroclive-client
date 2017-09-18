@@ -24,19 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func registerManagers() {
-    Managers.map       = MapManagerImpl()
-    Managers.search    = SearchManagerImpl()
-    Managers.bookmarks = BookmarksManagerImpl()
-    Managers.tracking  = TrackingManagerImpl()
+    Managers.map          = MapManagerImpl()
+    Managers.search       = SearchManagerImpl()
+    Managers.bookmarks    = BookmarksManagerImpl()
+    Managers.tracking     = TrackingManagerImpl()
 
-    Managers.alert     = AlertManagerImpl()
-    Managers.network   = NetworkManagerImpl()
+    Managers.alert        = AlertManagerImpl()
+    Managers.network      = NetworkManagerImpl()
 
-    Managers.app       = AppManagerImpl()
-    Managers.device    = DeviceManagerImpl()
-    Managers.appStore  = AppStoreManagerImpl()
+    Managers.app          = AppManagerImpl()
+    Managers.notification = NotificationManagerImpl()
+    Managers.device       = DeviceManagerImpl()
+    Managers.appStore     = AppStoreManagerImpl()
 
-    Managers.theme     = ThemeManagerImpl()
+    Managers.theme        = ThemeManagerImpl()
   }
 
   // MARK: - Activity

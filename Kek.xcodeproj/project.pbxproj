@@ -130,6 +130,10 @@
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907ECF181F3BB41900DB27DB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907ECF171F3BB41900DB27DB /* Info.plist */; };
 		907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
+		908252511F703B4C001C2926 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252501F703B4C001C2926 /* NotificationManager.swift */; };
+		908252531F703BC7001C2926 /* NotificationManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252521F703BC7001C2926 /* NotificationManagerImpl.swift */; };
+		908252571F703F0E001C2926 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252551F703F0E001C2926 /* Notification.swift */; };
+		908252581F703F0E001C2926 /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252561F703F0E001C2926 /* NotificationData.swift */; };
 		908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */; };
 		908346F61F5202AE00654FF6 /* String+FindPositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F51F5202AE00654FF6 /* String+FindPositions.swift */; };
 		908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */; };
@@ -303,6 +307,10 @@
 		9079DCD51F6C545600C6ABCD /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
+		908252501F703B4C001C2926 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		908252521F703BC7001C2926 /* NotificationManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManagerImpl.swift; sourceTree = "<group>"; };
+		908252551F703F0E001C2926 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		908252561F703F0E001C2926 /* NotificationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRange+StartEnd.swift"; sourceTree = "<group>"; };
 		908346F51F5202AE00654FF6 /* String+FindPositions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FindPositions.swift"; sourceTree = "<group>"; };
 		908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
@@ -809,6 +817,7 @@
 				900CAE951F482E750044C8A6 /* Network */,
 				90E8A6C41F4CD42000CE5AE9 /* Device */,
 				90E8A6BD1F4CB04A00CE5AE9 /* App */,
+				9082524A1F703A18001C2926 /* Notifications */,
 				90E8A6C91F4CE23200CE5AE9 /* App Store */,
 				90AF2BD21EE9DDE4006E61D6 /* Theme */,
 				900CAEA51F482E750044C8A6 /* Managers.swift */,
@@ -946,6 +955,25 @@
 				90665CBD1F430D7B00D8CFBC /* Vehicle.swift */,
 			);
 			path = Vehicle;
+			sourceTree = "<group>";
+		};
+		9082524A1F703A18001C2926 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				908252541F703F0E001C2926 /* Values */,
+				908252501F703B4C001C2926 /* NotificationManager.swift */,
+				908252521F703BC7001C2926 /* NotificationManagerImpl.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		908252541F703F0E001C2926 /* Values */ = {
+			isa = PBXGroup;
+			children = (
+				908252551F703F0E001C2926 /* Notification.swift */,
+				908252561F703F0E001C2926 /* NotificationData.swift */,
+			);
+			path = Values;
 			sourceTree = "<group>";
 		};
 		908346F21F51FDE600654FF6 /* Foundation */ = {
@@ -1324,6 +1352,7 @@
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				900CAEAA1F482E750044C8A6 /* BookmarksManagerImpl.swift in Sources */,
 				9021F4401F12D698000A6949 /* LineSelectionSectionViewModel.swift in Sources */,
+				908252531F703BC7001C2926 /* NotificationManagerImpl.swift in Sources */,
 				908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */,
 				90374CCB1F6D3935008D78CE /* SessionManager.swift in Sources */,
 				900CAEA61F482E750044C8A6 /* AlertManager.swift in Sources */,
@@ -1347,6 +1376,7 @@
 				908346F61F5202AE00654FF6 /* String+FindPositions.swift in Sources */,
 				90145E5E1F61B9E30068698D /* ThemePresentationPage.swift in Sources */,
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,
+				908252581F703F0E001C2926 /* NotificationData.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectionSectionHeaderView.swift in Sources */,
 				90E8A6C61F4CD43300CE5AE9 /* DeviceManager.swift in Sources */,
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManagerImpl.swift in Sources */,
@@ -1376,6 +1406,7 @@
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
 				90145E671F61BA4D0068698D /* PresentationControllerPage.swift in Sources */,
+				908252511F703B4C001C2926 /* NotificationManager.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				90145E411F61AE720068698D /* ConfigurationCellViewModel.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
@@ -1419,6 +1450,7 @@
 				900CAEAD1F482E750044C8A6 /* MapManagerImpl.swift in Sources */,
 				9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */,
 				90145E6B1F61BAEE0068698D /* PresentationControllerPageCreator.swift in Sources */,
+				908252571F703F0E001C2926 /* Notification.swift in Sources */,
 				900CAEAB1F482E750044C8A6 /* MapManager.swift in Sources */,
 				907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */,
 				90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */,
