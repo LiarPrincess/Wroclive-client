@@ -9,7 +9,7 @@ class NotificationManagerImpl: NotificationManager {
 
   func post(_ notificationData: NotificationData) {
     let name = notificationData.notification.name
-    NotificationCenter.default.post(Foundation.Notification(name: name))
+    NotificationCenter.default.post(name: name, object: nil)
   }
 
   func subscribe(_ subscriber: Any, to notification: Notification, selector: Selector) {

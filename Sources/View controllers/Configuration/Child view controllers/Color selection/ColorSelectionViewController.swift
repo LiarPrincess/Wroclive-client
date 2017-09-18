@@ -142,17 +142,11 @@ class ColorSelectionViewController: UIViewController {
     }
     return color
   }
+}
 
-  // MARK: - Notifications
+// MARK: - ColorSchemeObserver
 
-  private func startObservingColorScheme() {
-    Managers.notification.subscribe(self, to: .colorSchemeDidChange, selector: #selector(colorSchemeDidChange))
-  }
-
-  private func stopObservingColorScheme() {
-    Managers.notification.unsubscribe(self, from: .colorSchemeDidChange)
-  }
-
+extension ColorSelectionViewController: ColorSchemeObserver {
   func colorSchemeDidChange() {
     let colorScheme = Managers.theme.colorScheme
     self.view.tintColor       = colorScheme.tintColor.value

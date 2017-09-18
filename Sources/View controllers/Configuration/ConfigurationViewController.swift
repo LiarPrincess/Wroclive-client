@@ -34,6 +34,25 @@ class ConfigurationViewController: UIViewController {
     return self.relativeHeight * UIScreen.main.bounds.height
   }
 
+  // MARK: - Init
+
+  convenience init() {
+    self.init(nibName: nil, bundle: nil)
+  }
+
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    self.startObservingColorScheme()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  deinit {
+    self.stopObservingColorScheme()
+  }
+
   // MARK: - Overriden
 
   override func viewDidLoad() {
@@ -91,6 +110,14 @@ extension ConfigurationViewController: CardPanelPresentable {
     if !completed {
       self.chevronView.setState(.down, animated: true)
     }
+  }
+}
+
+// MARK: - ColorSchemeObserver
+
+extension ConfigurationViewController: ColorSchemeObserver {
+  func colorSchemeDidChange() {
+    self.view.tintColor = Managers.theme.colorScheme.tintColor.value
   }
 }
 

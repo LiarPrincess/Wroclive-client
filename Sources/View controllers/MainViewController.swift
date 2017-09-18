@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     self.startObservingColorScheme()
-    self.startObservingTrackingResults()
+    self.startObservingVehicleLocations()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
 
   deinit {
     self.stopObservingColorScheme()
-    self.stopObservingTrackingResults()
+    self.stopObservingVehicleLocations()
   }
 
   // MARK: - Overriden
@@ -75,17 +75,11 @@ class MainViewController: UIViewController {
     controller.transitioningDelegate  = self.cardPanelTransitionDelegate!
     self.present(controller, animated: true, completion: nil)
   }
+}
 
-  // MARK: - Notifications
+// MARK: - ColorSchemeObserver, VehicleLocationObserver
 
-  private func startObservingColorScheme() {
-    Managers.notification.subscribe(self, to: .colorSchemeDidChange, selector: #selector(colorSchemeDidChange))
-  }
-
-  private func stopObservingColorScheme() {
-    Managers.notification.unsubscribe(self, from: .colorSchemeDidChange)
-  }
-
+extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
   func colorSchemeDidChange() {
     let colorScheme = Managers.theme.colorScheme
     self.view.tintColor    = colorScheme.tintColor.value
@@ -93,14 +87,6 @@ class MainViewController: UIViewController {
 
     self.userTrackingButton.tintColor             = colorScheme.tintColor.value
     self.userTrackingButton.customView?.tintColor = colorScheme.tintColor.value
-  }
-
-  private func startObservingTrackingResults() {
-    Managers.notification.subscribe(self, to: .vehicleLocationsDidUpdate, selector: #selector(vehicleLocationsDidUpdate))
-  }
-
-  private func stopObservingTrackingResults() {
-    Managers.notification.unsubscribe(self, from: .vehicleLocationsDidUpdate)
   }
 
   func vehicleLocationsDidUpdate() {
