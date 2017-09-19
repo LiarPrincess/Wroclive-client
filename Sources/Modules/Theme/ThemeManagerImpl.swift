@@ -135,7 +135,7 @@ class ThemeManagerImpl: ThemeManager {
   // MARK: - Notifications
 
   fileprivate func startObservingContentSizeCategory() {
-    Managers.notification.subscribe(self, to: .contentSizeCategoryDidChange, selector: #selector(contentSizeCategoryDidChange(notification:)))
+    Managers.notification.subscribe(self, to: .contentSizeCategoryDidChange, using: #selector(contentSizeCategoryDidChange(notification:)))
   }
 
   fileprivate func stopObservingContentSizeCategory() {

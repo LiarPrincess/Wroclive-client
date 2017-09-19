@@ -5,7 +5,7 @@
 
 import Foundation
 
-@objc protocol ColorSchemeObserver: NSObjectProtocol, NotificationObserver {
+@objc protocol ColorSchemeObserver: NotificationObserver {
   func colorSchemeDidChange()
 }
 

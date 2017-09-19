@@ -5,7 +5,7 @@
 
 import Foundation
 
-@objc protocol VehicleLocationObserver: NSObjectProtocol, NotificationObserver {
+@objc protocol VehicleLocationObserver: NotificationObserver {
   func vehicleLocationsDidUpdate()
 }
 

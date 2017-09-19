@@ -9,7 +9,7 @@ import Foundation
 
 extension NotificationObserver {
   func startObserving(_ notification: Notification, _ selector: Selector) {
-    Managers.notification.subscribe(self, to: notification, selector: selector)
+    Managers.notification.subscribe(self, to: notification, using: selector)
   }
 
   func stopObserving(_ notification: Notification) {
