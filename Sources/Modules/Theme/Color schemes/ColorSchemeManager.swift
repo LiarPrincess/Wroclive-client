@@ -18,10 +18,8 @@ class ColorSchemeManager {
 
           let tintColor = TintColor(rawValue: tintColorValue),
           let busColor  = VehicleColor(rawValue: busColorValue),
-          let tramColor = VehicleColor(rawValue: tramColorValue) else {
-
-      return ColorScheme(tint: .red, tram: .blue, bus: .red)
-    }
+          let tramColor = VehicleColor(rawValue: tramColorValue)
+      else { return ColorScheme.default }
 
     return ColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
   }

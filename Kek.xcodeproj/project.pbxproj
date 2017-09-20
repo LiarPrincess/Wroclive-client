@@ -152,7 +152,6 @@
 		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
 		90AF2BE31EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
-		90BB52991F60898C002EF188 /* Enum+AllValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB52981F60898C002EF188 /* Enum+AllValues.swift */; };
 		90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF51F69B62800AF4B84 /* PushConstants.swift */; };
 		90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */; };
 		90BC8B041F69B62800AF4B84 /* PushDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */; };
@@ -333,7 +332,6 @@
 		90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerEnumerations.swift; sourceTree = "<group>"; };
 		90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
-		90BB52981F60898C002EF188 /* Enum+AllValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum+AllValues.swift"; sourceTree = "<group>"; };
 		90BC8AF51F69B62800AF4B84 /* PushConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushConstants.swift; sourceTree = "<group>"; };
 		90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTransitionDelegate.swift; sourceTree = "<group>"; };
 		90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushDismissTransition.swift; sourceTree = "<group>"; };
@@ -614,7 +612,6 @@
 		9021F38A1F12C95D000A6949 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				90BB52981F60898C002EF188 /* Enum+AllValues.swift */,
 				908346F51F5202AE00654FF6 /* String+FindPositions.swift */,
 				9021F38B1F12C95D000A6949 /* Array+GroupedBy.swift */,
 				9021F38C1F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift */,
@@ -1507,7 +1504,6 @@
 				900CAEB51F482E750044C8A6 /* NetworkManagerImpl.swift in Sources */,
 				900CAEB71F482E750044C8A6 /* SearchManagerImpl.swift in Sources */,
 				9017C3651EE339FD00063377 /* SearchViewControllerConstants.swift in Sources */,
-				90BB52991F60898C002EF188 /* Enum+AllValues.swift in Sources */,
 				90546BF21F6AF3BC00E8E75F /* TrackingManagerConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

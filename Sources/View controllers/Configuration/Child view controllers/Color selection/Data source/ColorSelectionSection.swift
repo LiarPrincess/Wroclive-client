@@ -43,7 +43,7 @@ struct ColorSelectionSection: ColorSelectionSectionViewModel {
       let colors: [TintColor] = [.red, .blue, .green, .orange, .pink, .black]
       return colors.map { AnyColorSelectionCellViewModel($0) }
     case .tram, .bus:
-      let colors: [VehicleColor] = [.red, .blue, .green, .pink, .black]
+      let colors: [VehicleColor] = [.red, .blue, .green, .orange, .pink, .black]
       return colors.map { AnyColorSelectionCellViewModel($0) }
     }
   }

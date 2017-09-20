@@ -10,7 +10,7 @@ struct ColorScheme {
   let backgroundAccent = UIColor(white: 0.8, alpha: 1.0)
   let text             = UIColor.black
 
-  let configurationBackground = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1.0)
+  let configurationBackground = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
 
   let tintColor: TintColor
   let busColor:  VehicleColor
@@ -24,4 +24,6 @@ struct ColorScheme {
     self.busColor  = busColor
     self.tramColor = tramColor
   }
+
+  static var `default`: ColorScheme { return ColorScheme(tint: .red, tram: .blue, bus: .red) }
 }
