@@ -92,10 +92,6 @@
 "Alert_Bookmark_NameInput_Cancel"      = "Cancel";
 "Alert_Bookmark_NameInput_Save"        = "Save";
 
-"Alert_Bookmark_Instructions_Title"   = "Bookmark saved";
-"Alert_Bookmark_Instructions_Content" = "To view saved bookmarks select <star> from map view.";
-"Alert_Bookmark_Instructions_Ok"      = "OK";
-
 "Alert_Network_NoInternet_Title"    = "Unable to retrieve data";
 "Alert_Network_NoInternet_Content"  = "Please check your internet connection.";
 "Alert_Network_NoInternet_TryAgain" = "Try again";

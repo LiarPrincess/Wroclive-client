@@ -97,19 +97,9 @@ class SearchViewController: UIViewController {
       return
     }
 
-    Managers.alert.showBookmarkNameInputAlert(in: self) { [weak self] name in
-      guard let strongSelf = self, let name = name else {
-        return
-      }
-
+    Managers.alert.showBookmarkNameInputAlert(in: self) { name in
+      guard let name = name else { return }
       Managers.bookmarks.addNew(name: name, lines: selectedLines)
-
-      // if its the 1st bookmark then show some instructions
-      let hasSeenInstruction = Managers.bookmarks.hasSeenInstruction
-      if !hasSeenInstruction {
-        Managers.alert.showBookmarkInstructionsAlert(in: strongSelf)
-        Managers.bookmarks.hasSeenInstruction = true
-      }
     }
   }
 

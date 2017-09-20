@@ -7,13 +7,6 @@ import Foundation
 
 protocol BookmarksManager {
 
-  // MARK: - Instructions
-
-  /// Has user seen 'To view bookmarks go to...' message?
-  var hasSeenInstruction: Bool { get set }
-
-  // MARK: - CRU
-
   /// Create new user-defined bookmark
   @discardableResult
   func addNew(name: String, lines: [Line]) -> Bookmark
@@ -23,5 +16,4 @@ protocol BookmarksManager {
 
   /// Updates definitions of all of the provided bookmarks
   func save(_ bookmarks: [Bookmark])
-
 }

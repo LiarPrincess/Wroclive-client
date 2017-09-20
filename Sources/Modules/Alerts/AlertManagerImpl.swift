@@ -10,7 +10,6 @@ private typealias LocalizationLocationDenied         = Localization.Location.Den
 private typealias LocalizationLocationGloballyDenied = Localization.Location.DeniedGlobally
 private typealias LocalizationBookmarksNoLines       = Localization.Bookmark.NoLinesSelected
 private typealias LocalizationBookmarksNameInput     = Localization.Bookmark.NameInput
-private typealias LocalizationBookmarksInstructions  = Localization.Bookmark.Instructions
 private typealias LocalizationNetworkNoInternet      = Localization.Network.NoInternet
 private typealias LocalizationNetworkConnectionError = Localization.Network.ConnectionError
 
@@ -106,20 +105,6 @@ class AlertManagerImpl: AlertManager {
       responder = responder.next
     }
     return responder as? UIAlertController
-  }
-
-  // MARK: - Bookmarks - Instructions
-
-  func showBookmarkInstructionsAlert(in parent: UIViewController) {
-    let title   = LocalizationBookmarksInstructions.title
-    let message = LocalizationBookmarksInstructions.content
-
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-
-    let closeAction = UIAlertAction(title: LocalizationBookmarksInstructions.ok, style: .default, handler: nil)
-    alert.addAction(closeAction)
-
-    parent.present(alert, animated: true, completion: nil)
   }
 
   // MARK: - Network - No internet

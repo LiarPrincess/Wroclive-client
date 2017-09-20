@@ -92,10 +92,6 @@
 "Alert_Bookmark_NameInput_Cancel"      = "Anuluj";
 "Alert_Bookmark_NameInput_Save"        = "Zachowaj";
 
-"Alert_Bookmark_Instructions_Title"   = "Zakładka zapisana!";
-"Alert_Bookmark_Instructions_Content" = "By użyć zakładek naciśnij <star> z widoku mapy.";
-"Alert_Bookmark_Instructions_Ok"      = "OK";
-
 "Alert_Network_NoInternet_Title"    = "Nie można pobrać danych";
 "Alert_Network_NoInternet_Content"  = "Sprawdź swoje połączenie z internetem.";
 "Alert_Network_NoInternet_TryAgain" = "Spróbuj ponownie";

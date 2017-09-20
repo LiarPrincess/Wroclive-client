@@ -7,15 +7,6 @@ import Foundation
 
 class BookmarksManagerImpl: BookmarksManager {
 
-  // MARK: - Instructions
-
-  private let hasSeenInstructionKey = "hasSeenBookmarkInstruction"
-
-  var hasSeenInstruction: Bool {
-    get { return UserDefaults.standard.bool(forKey: hasSeenInstructionKey) }
-    set { UserDefaults.standard.set(newValue, forKey: hasSeenInstructionKey) }
-  }
-
   // MARK: - Properties
 
   private lazy var bookmarks: [Bookmark] = {
@@ -48,5 +39,4 @@ class BookmarksManagerImpl: BookmarksManager {
     self.bookmarks = bookmarks
     NSKeyedArchiver.archiveRootObject(bookmarks, toFile: self.archive.path)
   }
-
 }

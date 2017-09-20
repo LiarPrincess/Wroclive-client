@@ -23,9 +23,6 @@ protocol AlertManager {
   /// Prompt for name input when creating new bookmark
   func showBookmarkNameInputAlert(in parent: UIViewController, completed: @escaping (String?) -> ())
 
-  /// Show instructions how to use bookmarks
-  func showBookmarkInstructionsAlert(in parent: UIViewController)
-
   // MARK: - Network
 
   /// Prompt user to check his/her network settings and try again

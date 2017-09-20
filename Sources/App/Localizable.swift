@@ -135,12 +135,6 @@ struct Localizable {
         static var cancel:      String { return LocalizedString("Alert_Bookmark_NameInput_Cancel") }
         static var save:        String { return LocalizedString("Alert_Bookmark_NameInput_Save") }
       }
-
-      struct Instructions {
-        static var title:   String { return LocalizedString("Alert_Bookmark_Instructions_Title") }
-        static var content: String { return LocalizedString("Alert_Bookmark_Instructions_Content") }
-        static var ok:      String { return LocalizedString("Alert_Bookmark_Instructions_Ok") }
-      }
     }
 
     struct Network {
