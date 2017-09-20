@@ -46,7 +46,7 @@ extension ConfigurationViewController {
     self.cardTitle.attributedText = NSAttributedString(string: Localization.Title, attributes: titleAttributes)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
-    self.headerView.addSubview(self.cardTitle)
+    self.headerView.contentView.addSubview(self.cardTitle)
 
     self.cardTitle.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Header.topInset)

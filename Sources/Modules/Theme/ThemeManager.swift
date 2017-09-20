@@ -30,7 +30,7 @@ protocol ThemeManager {
   // MARK: - Card panel
 
   func applyCardPanelStyle(_ view: UIView)
-  func applyCardPanelHeaderStyle(_ view: UIView)
+  func applyCardPanelHeaderStyle(_ view: UIVisualEffectView)
 }
 
 extension ThemeManager {

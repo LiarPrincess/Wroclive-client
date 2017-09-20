@@ -47,7 +47,7 @@ extension BookmarksViewController {
     self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
-    self.headerView.addSubview(self.cardTitle)
+    self.headerView.contentView.addSubview(self.cardTitle)
 
     self.cardTitle.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Header.topInset)
@@ -58,7 +58,7 @@ extension BookmarksViewController {
     self.setEditButtonEdit()
     self.editButton.contentEdgeInsets = Layout.Header.editButtonInsets
     self.editButton.addTarget(self, action: #selector(editButtonPressed), for: .touchUpInside)
-    self.headerView.addSubview(self.editButton)
+    self.headerView.contentView.addSubview(self.editButton)
 
     self.editButton.snp.makeConstraints { make in
       make.lastBaseline.equalTo(self.cardTitle.snp.lastBaseline)

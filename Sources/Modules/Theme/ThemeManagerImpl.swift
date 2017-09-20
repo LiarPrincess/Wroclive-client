@@ -39,16 +39,19 @@ class ThemeManagerImpl: ThemeManager {
   }
 
   private func applyColorScheme() {
-    UIApplication.shared.delegate?.window??.tintColor = self.colorScheme.tintColor.value
-    UIWindow.appearance().tintColor                   = self.colorScheme.tintColor.value
-    UIView.appearance().tintColor                     = self.colorScheme.tintColor.value
+    let tintColor = self.colorScheme.tintColor.value
+
+    UIApplication.shared.delegate?.window??.tintColor = tintColor
+
+    UIWindow.appearance().tintColor = tintColor
+    UIView.appearance().tintColor   = tintColor
 
     // Make user location pin blue
     MKAnnotationView.appearance().tintColor = UIColor(red: 0.0, green: 0.5, blue: 1.0, alpha: 1.0)
 
-    UINavigationBar.appearance().barStyle            = self.colorScheme.barStyle
+    UIToolbar.appearance().barStyle       = self.colorScheme.barStyle
+    UINavigationBar.appearance().barStyle = self.colorScheme.barStyle
     UINavigationBar.appearance().titleTextAttributes = self.textAttributes(for : .bodyBold)
-    UIToolbar.appearance().barStyle                  = self.colorScheme.barStyle
   }
 
   // MARK: - Text attributes
@@ -127,8 +130,8 @@ class ThemeManagerImpl: ThemeManager {
     view.roundTopCorners(radius: 8.0)
   }
 
-  func applyCardPanelHeaderStyle(_ view: UIView) {
-    view.addBorder(at: .bottom)
+  func applyCardPanelHeaderStyle(_ view: UIVisualEffectView) {
+    view.contentView.addBorder(at: .bottom)
     view.setContentHuggingPriority(900, for: .vertical)
   }
 

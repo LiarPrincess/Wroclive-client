@@ -81,12 +81,21 @@ class MainViewController: UIViewController {
 
 extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
   func colorSchemeDidChange() {
-    let colorScheme = Managers.theme.colorScheme
-    self.view.tintColor    = colorScheme.tintColor.value
-    self.toolbar.tintColor = colorScheme.tintColor.value
+    let tintColor = Managers.theme.colorScheme.tintColor.value
 
-    self.userTrackingButton.tintColor             = colorScheme.tintColor.value
-    self.userTrackingButton.customView?.tintColor = colorScheme.tintColor.value
+    self.view.tintColor    = tintColor
+    self.toolbar.tintColor = tintColor
+
+    // HACK: In iOS 11 UIBarButtonItem are contained in _UIModernBarButton that prevents seting tint color.
+    // Previously: button.customView?.tintColor = color
+    self.forEachRecurrentSubview(of: self.toolbar) { $0.tintColor = tintColor }
+  }
+
+  private func forEachRecurrentSubview(of view: UIView, do block: (UIView) -> ()) {
+    for subview in view.subviews {
+      block(subview)
+      forEachRecurrentSubview(of: subview, do: block)
+    }
   }
 
   func vehicleLocationsDidUpdate() {
