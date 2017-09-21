@@ -38,10 +38,10 @@ class MapViewController: UIViewController {
     }
 
     _ = firstly { () -> Promise<Void> in
-      Managers.map.requestInUseAuthorization()
+      Managers.location.requestInUseAuthorization()
       return Promise(value: ())
     }
-    .then { return Managers.map.getDefaultRegion() }
+    .then { return Managers.location.getDefaultRegion() }
     .then { self.mapView.setRegion($0, animated: false) }
   }
 
@@ -97,7 +97,7 @@ extension MapViewController: MKMapViewDelegate {
   // MARK: - Tracking mode
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-    let authorizationStatus = Managers.map.authorizationStatus
+    let authorizationStatus = Managers.location.authorizationStatus
 
     if authorizationStatus == .denied {
       Managers.alert.showDeniedLocationAuthorizationAlert(in: self)
@@ -131,5 +131,4 @@ extension MapViewController: MKMapViewDelegate {
       return nil
     }
   }
-
 }

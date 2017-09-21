@@ -4,7 +4,7 @@
 //
 
 struct Managers {
-  static var map:          MapManager!
+  static var location:     LocationManager!
   static var search:       SearchManager!
   static var bookmarks:    BookmarksManager!
   static var tracking:     TrackingManager!

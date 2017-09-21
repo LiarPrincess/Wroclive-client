@@ -14,9 +14,9 @@
 		900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8C1F482E750044C8A6 /* AlertManagerImpl.swift */; };
 		900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8F1F482E750044C8A6 /* BookmarksManager.swift */; };
 		900CAEAA1F482E750044C8A6 /* BookmarksManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE901F482E750044C8A6 /* BookmarksManagerImpl.swift */; };
-		900CAEAB1F482E750044C8A6 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE921F482E750044C8A6 /* MapManager.swift */; };
-		900CAEAC1F482E750044C8A6 /* MapManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE931F482E750044C8A6 /* MapManagerConstants.swift */; };
-		900CAEAD1F482E750044C8A6 /* MapManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE941F482E750044C8A6 /* MapManagerImpl.swift */; };
+		900CAEAB1F482E750044C8A6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE921F482E750044C8A6 /* LocationManager.swift */; };
+		900CAEAC1F482E750044C8A6 /* LocationManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE931F482E750044C8A6 /* LocationManagerConstants.swift */; };
+		900CAEAD1F482E750044C8A6 /* LocationManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE941F482E750044C8A6 /* LocationManagerImpl.swift */; };
 		900CAEAE1F482E750044C8A6 /* AvailableLinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE971F482E750044C8A6 /* AvailableLinesEndpoint.swift */; };
 		900CAEB01F482E750044C8A6 /* LineLocationsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE9A1F482E750044C8A6 /* LineLocationsParser.swift */; };
 		900CAEB11F482E750044C8A6 /* LinesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE9B1F482E750044C8A6 /* LinesParser.swift */; };
@@ -134,9 +134,6 @@
 		908252531F703BC7001C2926 /* NotificationManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252521F703BC7001C2926 /* NotificationManagerImpl.swift */; };
 		908252571F703F0E001C2926 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252551F703F0E001C2926 /* Notification.swift */; };
 		908252581F703F0E001C2926 /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252561F703F0E001C2926 /* NotificationData.swift */; };
-		9082525B1F7044C6001C2926 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082525A1F7044C6001C2926 /* NotificationObserver.swift */; };
-		9082525D1F704544001C2926 /* ColorSchemeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082525C1F704544001C2926 /* ColorSchemeObserver.swift */; };
-		9082525F1F7048E0001C2926 /* VehicleLocationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9082525E1F7048E0001C2926 /* VehicleLocationObserver.swift */; };
 		908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */; };
 		908346F61F5202AE00654FF6 /* String+FindPositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F51F5202AE00654FF6 /* String+FindPositions.swift */; };
 		908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */; };
@@ -168,6 +165,9 @@
 		90E8A6CB1F4CE24500CE5AE9 /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6CA1F4CE24500CE5AE9 /* AppStoreManager.swift */; };
 		90ED50FD1F3BADC500C782D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90ED50FF1F3BADC500C782D5 /* Localizable.strings */; };
 		90ED51061F3BAFF800C782D5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90ED51081F3BAFF800C782D5 /* InfoPlist.strings */; };
+		90F0A2D61F732A6A00C641C8 /* ColorSchemeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F0A2D21F73198B00C641C8 /* ColorSchemeObserver.swift */; };
+		90F0A2D71F732A6C00C641C8 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F0A2D31F73198B00C641C8 /* NotificationObserver.swift */; };
+		90F0A2D81F732A6F00C641C8 /* VehicleLocationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F0A2D41F73198B00C641C8 /* VehicleLocationObserver.swift */; };
 		90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */; };
 /* End PBXBuildFile section */
 
@@ -193,9 +193,9 @@
 		900CAE8C1F482E750044C8A6 /* AlertManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManagerImpl.swift; sourceTree = "<group>"; };
 		900CAE8F1F482E750044C8A6 /* BookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		900CAE901F482E750044C8A6 /* BookmarksManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManagerImpl.swift; sourceTree = "<group>"; };
-		900CAE921F482E750044C8A6 /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
-		900CAE931F482E750044C8A6 /* MapManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManagerConstants.swift; sourceTree = "<group>"; };
-		900CAE941F482E750044C8A6 /* MapManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManagerImpl.swift; sourceTree = "<group>"; };
+		900CAE921F482E750044C8A6 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		900CAE931F482E750044C8A6 /* LocationManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerConstants.swift; sourceTree = "<group>"; };
+		900CAE941F482E750044C8A6 /* LocationManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerImpl.swift; sourceTree = "<group>"; };
 		900CAE971F482E750044C8A6 /* AvailableLinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableLinesEndpoint.swift; sourceTree = "<group>"; };
 		900CAE9A1F482E750044C8A6 /* LineLocationsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineLocationsParser.swift; sourceTree = "<group>"; };
 		900CAE9B1F482E750044C8A6 /* LinesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesParser.swift; sourceTree = "<group>"; };
@@ -313,9 +313,6 @@
 		908252521F703BC7001C2926 /* NotificationManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManagerImpl.swift; sourceTree = "<group>"; };
 		908252551F703F0E001C2926 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		908252561F703F0E001C2926 /* NotificationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
-		9082525A1F7044C6001C2926 /* NotificationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
-		9082525C1F704544001C2926 /* ColorSchemeObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeObserver.swift; sourceTree = "<group>"; };
-		9082525E1F7048E0001C2926 /* VehicleLocationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationObserver.swift; sourceTree = "<group>"; };
 		908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRange+StartEnd.swift"; sourceTree = "<group>"; };
 		908346F51F5202AE00654FF6 /* String+FindPositions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FindPositions.swift"; sourceTree = "<group>"; };
 		908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
@@ -350,6 +347,9 @@
 		90ED51031F3BAE6800C782D5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		90ED51071F3BAFF800C782D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		90ED51091F3BAFF900C782D5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		90F0A2D21F73198B00C641C8 /* ColorSchemeObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeObserver.swift; sourceTree = "<group>"; };
+		90F0A2D31F73198B00C641C8 /* NotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
+		90F0A2D41F73198B00C641C8 /* VehicleLocationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocationObserver.swift; sourceTree = "<group>"; };
 		90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
 		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -396,14 +396,14 @@
 			path = Bookmarks;
 			sourceTree = "<group>";
 		};
-		900CAE911F482E750044C8A6 /* Map */ = {
+		900CAE911F482E750044C8A6 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				900CAE921F482E750044C8A6 /* MapManager.swift */,
-				900CAE941F482E750044C8A6 /* MapManagerImpl.swift */,
-				900CAE931F482E750044C8A6 /* MapManagerConstants.swift */,
+				900CAE921F482E750044C8A6 /* LocationManager.swift */,
+				900CAE941F482E750044C8A6 /* LocationManagerImpl.swift */,
+				900CAE931F482E750044C8A6 /* LocationManagerConstants.swift */,
 			);
-			path = Map;
+			path = Location;
 			sourceTree = "<group>";
 		};
 		900CAE951F482E750044C8A6 /* Network */ = {
@@ -812,7 +812,7 @@
 		902330ED1EDF37F500FA8F43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				900CAE911F482E750044C8A6 /* Map */,
+				900CAE911F482E750044C8A6 /* Location */,
 				900CAEA01F482E750044C8A6 /* Search */,
 				900CAE8E1F482E750044C8A6 /* Bookmarks */,
 				90546BEC1F6AF21B00E8E75F /* Tracking */,
@@ -964,7 +964,7 @@
 			isa = PBXGroup;
 			children = (
 				908252541F703F0E001C2926 /* Values */,
-				908252591F7044B6001C2926 /* Protocols */,
+				90F0A2D11F73198B00C641C8 /* Observers */,
 				908252501F703B4C001C2926 /* NotificationManager.swift */,
 				908252521F703BC7001C2926 /* NotificationManagerImpl.swift */,
 			);
@@ -978,16 +978,6 @@
 				908252561F703F0E001C2926 /* NotificationData.swift */,
 			);
 			path = Values;
-			sourceTree = "<group>";
-		};
-		908252591F7044B6001C2926 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				9082525A1F7044C6001C2926 /* NotificationObserver.swift */,
-				9082525C1F704544001C2926 /* ColorSchemeObserver.swift */,
-				9082525E1F7048E0001C2926 /* VehicleLocationObserver.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		908346F21F51FDE600654FF6 /* Foundation */ = {
@@ -1154,6 +1144,16 @@
 				90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */,
 			);
 			path = "App Store";
+			sourceTree = "<group>";
+		};
+		90F0A2D11F73198B00C641C8 /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				90F0A2D31F73198B00C641C8 /* NotificationObserver.swift */,
+				90F0A2D21F73198B00C641C8 /* ColorSchemeObserver.swift */,
+				90F0A2D41F73198B00C641C8 /* VehicleLocationObserver.swift */,
+			);
+			path = Observers;
 			sourceTree = "<group>";
 		};
 		90FAF06F1F35D8C20040E0AE /* Annotations */ = {
@@ -1361,7 +1361,6 @@
 				90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */,
 				90374CCD1F6D3BF8008D78CE /* Endpoint.swift in Sources */,
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
-				9082525F1F7048E0001C2926 /* VehicleLocationObserver.swift in Sources */,
 				90145E451F61AED10068698D /* ConfigurationCell.swift in Sources */,
 				90546BFE1F6B169100E8E75F /* TutorialViewController.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
@@ -1408,7 +1407,6 @@
 				9021F43B1F12D698000A6949 /* LineSelectionPage.swift in Sources */,
 				901D46861F57089000A9F6BD /* ThemeManager.swift in Sources */,
 				90546BF81F6B15A000E8E75F /* TutorialPresentationConstants.swift in Sources */,
-				9082525D1F704544001C2926 /* ColorSchemeObserver.swift in Sources */,
 				900CAEB01F482E750044C8A6 /* LineLocationsParser.swift in Sources */,
 				900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */,
 				9044A54C1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift in Sources */,
@@ -1429,6 +1427,7 @@
 				90145E671F61BA4D0068698D /* PresentationControllerPage.swift in Sources */,
 				908252511F703B4C001C2926 /* NotificationManager.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
+				90F0A2D81F732A6F00C641C8 /* VehicleLocationObserver.swift in Sources */,
 				90145E411F61AE720068698D /* ConfigurationCellViewModel.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				90E8A6C11F4CB81400CE5AE9 /* AppManagerImpl.swift in Sources */,
@@ -1447,12 +1446,13 @@
 				908F55091F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift in Sources */,
 				90145E5C1F61B9E30068698D /* InAppPurchasePresentationConstants.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
-				900CAEAC1F482E750044C8A6 /* MapManagerConstants.swift in Sources */,
+				900CAEAC1F482E750044C8A6 /* LocationManagerConstants.swift in Sources */,
 				90145E601F61B9E30068698D /* ThemePresentationConstants.swift in Sources */,
 				9007E35D1F251971006A2F8F /* BookmarksViewControllerDelegate.swift in Sources */,
 				9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */,
 				9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */,
 				908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */,
+				90F0A2D61F732A6A00C641C8 /* ColorSchemeObserver.swift in Sources */,
 				9021F4161F12C9EF000A6949 /* CardPanelConstants.swift in Sources */,
 				9021F4431F12D6C5000A6949 /* LineSelectionViewController.swift in Sources */,
 				9007E35B1F251753006A2F8F /* SearchViewControllerDelegate.swift in Sources */,
@@ -1468,17 +1468,17 @@
 				9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				9044A5461F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift in Sources */,
 				908FB19D1F48B3CA00121584 /* ReusableCellContainer.swift in Sources */,
-				900CAEAD1F482E750044C8A6 /* MapManagerImpl.swift in Sources */,
+				900CAEAD1F482E750044C8A6 /* LocationManagerImpl.swift in Sources */,
 				9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */,
 				90145E6B1F61BAEE0068698D /* PresentationControllerPageCreator.swift in Sources */,
 				908252571F703F0E001C2926 /* Notification.swift in Sources */,
-				900CAEAB1F482E750044C8A6 /* MapManager.swift in Sources */,
+				900CAEAB1F482E750044C8A6 /* LocationManager.swift in Sources */,
 				907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */,
 				90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */,
 				90145E611F61B9E30068698D /* ThemePresentationLayout.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
+				90F0A2D71F732A6C00C641C8 /* NotificationObserver.swift in Sources */,
 				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
-				9082525B1F7044C6001C2926 /* NotificationObserver.swift in Sources */,
 				9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,

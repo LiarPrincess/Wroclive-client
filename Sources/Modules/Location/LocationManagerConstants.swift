@@ -5,7 +5,7 @@
 
 import MapKit
 
-struct MapManagerConstants {
+struct LocationManagerConstants {
 
   struct Tracking {
     static let distanceFilter: CLLocationDistance = 5.0

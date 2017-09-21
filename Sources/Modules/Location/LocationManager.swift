@@ -7,7 +7,7 @@ import UIKit
 import MapKit
 import PromiseKit
 
-protocol MapManager {
+protocol LocationManager {
 
   /// Returns either: user location or city center
   func getDefaultRegion() -> Promise<MKCoordinateRegion>

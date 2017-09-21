@@ -7,9 +7,9 @@ import UIKit
 import MapKit
 import PromiseKit
 
-private typealias Constants = MapManagerConstants
+private typealias Constants = LocationManagerConstants
 
-class MapManagerImpl: MapManager {
+class LocationManagerImpl: LocationManager {
 
   // MARK: - Properties
 
@@ -38,5 +38,4 @@ class MapManagerImpl: MapManager {
   func requestInUseAuthorization() {
     self.locationManager.requestWhenInUseAuthorization()
   }
-
 }

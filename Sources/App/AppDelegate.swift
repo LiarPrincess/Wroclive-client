@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func registerManagers() {
-    Managers.map          = MapManagerImpl()
+    Managers.location     = LocationManagerImpl()
     Managers.search       = SearchManagerImpl()
     Managers.bookmarks    = BookmarksManagerImpl()
     Managers.tracking     = TrackingManagerImpl()
