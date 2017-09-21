@@ -26,6 +26,10 @@ class MainViewController: UIViewController {
 
   // MARK: - Init
 
+  convenience init() {
+    self.init(nibName: nil, bundle: nil)
+  }
+
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     self.startObservingColorScheme()

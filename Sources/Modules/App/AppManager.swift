@@ -7,6 +7,11 @@ import UIKit
 
 protocol AppManager {
 
+  // MARK: - Tutorial
+
+  /// Has the user moved past tutorial?
+  var hasSeenTutorial: Bool { get set }
+
   // MARK: - Info
 
   /// App name (e.g. Kek)
@@ -17,11 +22,6 @@ protocol AppManager {
 
   // App bundle (e.g. pl.kekapp.kek)
   var bundle: String { get }
-
-  // MARK: - Tutorial
-
-  /// Has the user moved past tutorial?
-  var hasSeenTutorialPresentation: Bool { get set }
 
   // MARK: - External
 

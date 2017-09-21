@@ -9,6 +9,15 @@ private typealias Localization = Localizable.App
 
 class AppManagerImpl: AppManager {
 
+  // MARK: - Tutorial
+
+  private let hasSeenTutorialKey = "hasSeenTutorial"
+
+  var hasSeenTutorial: Bool {
+    get { return UserDefaults.standard.bool(forKey: hasSeenTutorialKey) }
+    set { UserDefaults.standard.set(newValue, forKey: hasSeenTutorialKey) }
+  }
+
   // MARK: - Info
 
   var name:    String { return self.bundleInformation(key: kCFBundleExecutableKey as String) ?? "" }
@@ -17,13 +26,6 @@ class AppManagerImpl: AppManager {
 
   private func bundleInformation(key: String) -> String? {
     return Bundle.main.infoDictionary?[key] as? String
-  }
-
-  // MARK: - Tutorial
-
-  var hasSeenTutorialPresentation: Bool { // -> user defaults
-    get { return false }
-    set { }
   }
 
   // MARK: - Website

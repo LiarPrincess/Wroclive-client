@@ -151,7 +151,7 @@ extension ConfigurationViewController: UITableViewDelegate {
   }
 
   private func showTutorial() {
-    let controller = TutorialViewController(closeMode: .back)
+    let controller = TutorialViewController(mode: .default)
     self.present(controller)
   }
 

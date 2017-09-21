@@ -9,25 +9,25 @@ import SnapKit
 private typealias Layout       = TutorialViewControllerConstants.Layout
 private typealias Localization = Localizable.Presentation.Tutorial
 
-enum TutorialViewControllerCloseMode {
-  case back
-  case skip
+enum TutorialViewControllerMode {
+  case firstUse
+  case `default`
 }
 
 class TutorialViewController: UIViewController {
 
   // MARK: - Properties
 
-  let closeMode: TutorialViewControllerCloseMode
+  let mode: TutorialViewControllerMode
 
   let presentation = TutorialPresentation()
-  let backButton   = UIButton(type: .system)
-  let skipButton   = UIButton(type: .system)
+  let closeButton  = UIButton(type: .system)
+  let closeFirstUseButton = UIButton(type: .system)
 
   // MARK: - Init
 
-  init(closeMode: TutorialViewControllerCloseMode) {
-    self.closeMode = closeMode
+  init(mode: TutorialViewControllerMode) {
+    self.mode = mode
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -49,9 +49,9 @@ class TutorialViewController: UIViewController {
 
     self.presentation.didMove(toParentViewController: self)
 
-    switch self.closeMode {
-    case .back: self.initBackButton()
-    case .skip: self.initSkipButton()
+    switch self.mode {
+    case .default:   self.initBackButton()
+    case .firstUse: self.initSkipButton()
     }
   }
 
@@ -60,12 +60,12 @@ class TutorialViewController: UIViewController {
   private func initBackButton() {
     let image = StyleKit.drawBackTemplateImage(size: Layout.BackButton.imageSize)
 
-    self.backButton.setImage(image, for: .normal)
-    self.backButton.addTarget(self, action: #selector(TutorialViewController.closeButtonPressed), for: .touchUpInside)
-    self.backButton.contentEdgeInsets = Layout.BackButton.insets
+    self.closeButton.setImage(image, for: .normal)
+    self.closeButton.addTarget(self, action: #selector(TutorialViewController.closeButtonPressed), for: .touchUpInside)
+    self.closeButton.contentEdgeInsets = Layout.BackButton.insets
 
-    self.view.addSubview(self.backButton)
-    self.backButton.snp.makeConstraints { make in
+    self.view.addSubview(self.closeButton)
+    self.closeButton.snp.makeConstraints { make in
       make.top.equalToSuperview()
       make.left.equalToSuperview()
     }
@@ -75,12 +75,12 @@ class TutorialViewController: UIViewController {
     let titleAttributes = Managers.theme.textAttributes(for: .body, alignment: .left, color: .tint)
     let title = NSAttributedString(string: Localization.skip, attributes: titleAttributes)
 
-    self.skipButton.setAttributedTitle(title, for: .normal)
-    self.skipButton.addTarget(self, action: #selector(TutorialViewController.closeButtonPressed), for: .touchUpInside)
-    self.skipButton.contentEdgeInsets = Layout.SkipButton.insets
+    self.closeFirstUseButton.setAttributedTitle(title, for: .normal)
+    self.closeFirstUseButton.addTarget(self, action: #selector(TutorialViewController.closeButtonPressed), for: .touchUpInside)
+    self.closeFirstUseButton.contentEdgeInsets = Layout.SkipButton.insets
 
-    self.view.addSubview(self.skipButton)
-    self.skipButton.snp.makeConstraints { make in
+    self.view.addSubview(self.closeFirstUseButton)
+    self.closeFirstUseButton.snp.makeConstraints { make in
       make.top.equalToSuperview()
       make.right.equalToSuperview()
     }
@@ -89,6 +89,15 @@ class TutorialViewController: UIViewController {
   // MARK: - Actions
 
   @objc func closeButtonPressed() {
-    self.dismiss(animated: true, completion: nil)
+    if self.mode == .firstUse {
+      Managers.app.hasSeenTutorial = true
+
+      let controller = MainViewController()
+      controller.modalTransitionStyle = .flipHorizontal
+      self.present(controller, animated: true, completion: nil)
+    }
+    else {
+      self.dismiss(animated: true, completion: nil)
+    }
   }
 }
