@@ -82,6 +82,11 @@
 "Alert_GloballyDenied_Content" = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
 "Alert_GloballyDenied_Ok"      = "OK";
 
+"Alert_InvalidCity_Title"   = "Adventure time!";
+"Alert_InvalidCity_Message" = "Kek works best in Wrocław.\nWould you like to visit?";
+"Alert_InvalidCity_No"      = "No";
+"Alert_InvalidCity_Yes"     = "Yes";
+
 "Alert_Bookmark_NoLinesSelected_Title"   = "No lines selected";
 "Alert_Bookmark_NoLinesSelected_Content" = "Please select some lines before trying to create bookmark.";
 "Alert_Bookmark_NoLinesSelected_Ok"      = "OK";

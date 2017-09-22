@@ -6,31 +6,32 @@
 import UIKit
 
 private typealias Localization = Localizable.Alerts
-private typealias LocalizationLocationDenied         = Localization.Location.Denied
-private typealias LocalizationLocationGloballyDenied = Localization.Location.DeniedGlobally
-private typealias LocalizationBookmarksNoLines       = Localization.Bookmark.NoLinesSelected
-private typealias LocalizationBookmarksNameInput     = Localization.Bookmark.NameInput
-private typealias LocalizationNetworkNoInternet      = Localization.Network.NoInternet
-private typealias LocalizationNetworkConnectionError = Localization.Network.ConnectionError
+private typealias LocationDenied         = Localization.Location.Denied
+private typealias LocationGloballyDenied = Localization.Location.DeniedGlobally
+private typealias LocationInvalidCity    = Localization.Location.InvalidCity
+private typealias BookmarksNoLines       = Localization.Bookmark.NoLinesSelected
+private typealias BookmarksNameInput     = Localization.Bookmark.NameInput
+private typealias NetworkNoInternet      = Localization.Network.NoInternet
+private typealias NetworkConnectionError = Localization.Network.ConnectionError
 
 class AlertManagerImpl: AlertManager {
 
   // MARK: - Map - Denied
 
   func showDeniedLocationAuthorizationAlert(in parent: UIViewController) {
-    let title   = LocalizationLocationDenied.title
-    let message = LocalizationLocationDenied.content
+    let title   = LocationDenied.title
+    let message = LocationDenied.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-    let settingsAction = UIAlertAction(title: LocalizationLocationDenied.settings, style: .default) { _ in
+    let settingsAction = UIAlertAction(title: LocationDenied.settings, style: .default) { _ in
       if let url = URL(string: UIApplicationOpenSettingsURLString) {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
       }
     }
     alert.addAction(settingsAction)
 
-    let okAction = UIAlertAction(title: LocalizationLocationDenied.ok, style: .default, handler: nil)
+    let okAction = UIAlertAction(title: LocationDenied.ok, style: .default, handler: nil)
     alert.addAction(okAction)
 
     parent.present(alert, animated: true, completion: nil)
@@ -39,13 +40,30 @@ class AlertManagerImpl: AlertManager {
   // MARK: - Map - Globally denied
 
   func showGloballyDeniedLocationAuthorizationAlert(in parent: UIViewController) {
-    let title   = LocalizationLocationGloballyDenied.title
-    let message = LocalizationLocationGloballyDenied.content
+    let title   = LocationGloballyDenied.title
+    let message = LocationGloballyDenied.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-    let okAction = UIAlertAction(title: LocalizationLocationGloballyDenied.ok, style: .default, handler: nil)
+    let okAction = UIAlertAction(title: LocationGloballyDenied.ok, style: .default, handler: nil)
     alert.addAction(okAction)
+
+    parent.present(alert, animated: true, completion: nil)
+  }
+
+  // MARK: - Map - Invalid city
+
+  func showInvalidCityAlert(in parent: UIViewController, completed: @escaping (InvalidCityOptions) -> ()) {
+    let title   = LocationInvalidCity.title
+    let message = LocationInvalidCity.content
+
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+    let noAction = UIAlertAction(title: LocationInvalidCity.no, style: .cancel) { _ in completed(.ignore) }
+    alert.addAction(noAction)
+
+    let yesAction = UIAlertAction(title: LocationInvalidCity.yes, style: .default) { _ in completed(.showDefault) }
+    alert.addAction(yesAction)
 
     parent.present(alert, animated: true, completion: nil)
   }
@@ -53,12 +71,12 @@ class AlertManagerImpl: AlertManager {
   // MARK: - Bookmarks - No lines selected
 
   func showBookmarkNoLinesSelectedAlert(in parent: UIViewController) {
-    let title   = LocalizationBookmarksNoLines.title
-    let message = LocalizationBookmarksNoLines.content
+    let title   = BookmarksNoLines.title
+    let message = BookmarksNoLines.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-    let okAction = UIAlertAction(title: LocalizationBookmarksNoLines.ok, style: .default, handler: nil)
+    let okAction = UIAlertAction(title: BookmarksNoLines.ok, style: .default, handler: nil)
     alert.addAction(okAction)
 
     parent.present(alert, animated: true, completion: nil)
@@ -67,22 +85,22 @@ class AlertManagerImpl: AlertManager {
   // MARK: - Bookmarks - Name input
 
   func showBookmarkNameInputAlert(in parent: UIViewController, completed: @escaping (String?) -> ()) {
-    let title   = LocalizationBookmarksNameInput.title
-    let message = LocalizationBookmarksNameInput.content
+    let title   = BookmarksNameInput.title
+    let message = BookmarksNameInput.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-    let cancelAction = UIAlertAction(title: LocalizationBookmarksNameInput.cancel, style: .cancel) { _ in completed(nil) }
+    let cancelAction = UIAlertAction(title: BookmarksNameInput.cancel, style: .cancel) { _ in completed(nil) }
     alert.addAction(cancelAction)
 
-    let confirmAction = UIAlertAction(title: LocalizationBookmarksNameInput.save, style: .default) { [weak alert] _ in
+    let confirmAction = UIAlertAction(title: BookmarksNameInput.save, style: .default) { [weak alert] _ in
       completed(alert?.textFields?.first?.text)
     }
     confirmAction.isEnabled = false
     alert.addAction(confirmAction)
 
     alert.addTextField { textField in
-      textField.placeholder            = LocalizationBookmarksNameInput.placeholder
+      textField.placeholder            = BookmarksNameInput.placeholder
       textField.autocapitalizationType = .sentences
       textField.addTarget(AlertManagerImpl.self, action: #selector(AlertManagerImpl.enableConfirmIfTextNotEmpty(_:)), for: .editingChanged)
     }
@@ -110,12 +128,12 @@ class AlertManagerImpl: AlertManager {
   // MARK: - Network - No internet
 
   func showNoInternetAlert(in parent: UIViewController, retry: @escaping () -> ()) {
-    let title   = LocalizationNetworkNoInternet.title
-    let message = LocalizationNetworkNoInternet.content
+    let title   = NetworkNoInternet.title
+    let message = NetworkNoInternet.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-    let againAction = UIAlertAction(title: LocalizationNetworkNoInternet.tryAgain, style: .cancel)  { _ in retry() }
+    let againAction = UIAlertAction(title: NetworkNoInternet.tryAgain, style: .cancel)  { _ in retry() }
     alert.addAction(againAction)
 
     parent.present(alert, animated: true, completion: nil)
@@ -124,12 +142,12 @@ class AlertManagerImpl: AlertManager {
   // MARK: - Network - Networking
 
   func showNetworkingErrorAlert(in parent: UIViewController, retry: @escaping () -> ()) {
-    let title   = LocalizationNetworkConnectionError.title
-    let message = LocalizationNetworkConnectionError.content
+    let title   = NetworkConnectionError.title
+    let message = NetworkConnectionError.content
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-    let againAction = UIAlertAction(title: LocalizationNetworkConnectionError.tryAgain, style: .cancel) { _ in retry() }
+    let againAction = UIAlertAction(title: NetworkConnectionError.tryAgain, style: .cancel) { _ in retry() }
     alert.addAction(againAction)
 
     parent.present(alert, animated: true, completion: nil)

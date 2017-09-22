@@ -119,6 +119,13 @@ struct Localizable {
         static var content: String { return LocalizedString("Alert_GloballyDenied_Content") }
         static var ok:      String { return LocalizedString("Alert_GloballyDenied_Ok") }
       }
+
+      struct InvalidCity {
+        static var title:   String { return LocalizedString("Alert_InvalidCity_Title") }
+        static var content: String { return LocalizedString("Alert_InvalidCity_Message") }
+        static var no:      String { return LocalizedString("Alert_InvalidCity_No") }
+        static var yes:     String { return LocalizedString("Alert_InvalidCity_Yes") }
+      }
     }
 
     struct Bookmark {

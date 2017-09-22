@@ -5,29 +5,37 @@
 
 import UIKit
 
+enum InvalidCityOptions {
+  case showDefault
+  case ignore
+}
+
 protocol AlertManager {
 
   // MARK: - Map
 
-  /// Prompt for authorization change in settings
+  /// Prompt: authorization change in settings
   func showDeniedLocationAuthorizationAlert(in parent: UIViewController)
 
-  /// Prompt that it is not possible to show user location
+  /// Notify: it is not possible to show user location
   func showGloballyDeniedLocationAuthorizationAlert(in parent: UIViewController)
+
+  // Notify: current location is far default city
+  func showInvalidCityAlert(in parent: UIViewController, completed: @escaping (InvalidCityOptions) -> ())
 
   // MARK: - Add bookmark
 
-  /// Shows alert notifying that bookmark cannot be created as no line was selected
+  /// Notify: bookmark cannot be created as no line was selected
   func showBookmarkNoLinesSelectedAlert(in parent: UIViewController)
 
-  /// Prompt for name input when creating new bookmark
+  /// Prompt: bookmark name
   func showBookmarkNameInputAlert(in parent: UIViewController, completed: @escaping (String?) -> ())
 
   // MARK: - Network
 
-  /// Prompt user to check his/her network settings and try again
+  /// Prompt: check network settings. try again
   func showNoInternetAlert(in parent: UIViewController, retry: @escaping () -> ())
 
-  /// Show connection error alert and prompt to try again
+  /// Notify: connection error alert. try again
   func showNetworkingErrorAlert(in parent: UIViewController, retry: @escaping () -> ())
 }

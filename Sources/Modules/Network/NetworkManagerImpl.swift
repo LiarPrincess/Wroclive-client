@@ -47,7 +47,8 @@ class NetworkManagerImpl: NetworkManager {
 
   private func recover<T>(_ error: Error) -> Promise<T> {
     switch error {
-    case NetworkError.invalidResponse: return Promise(error: error)
+    case NetworkError.invalidResponse:
+      return Promise(error: error)
     default:
       let isReachable = self.reachability?.isReachable ?? true
       if !isReachable {

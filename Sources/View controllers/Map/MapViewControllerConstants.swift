@@ -8,20 +8,16 @@ import MapKit
 
 struct MapViewControllerConstants {
 
-  struct MapView {
-    static let mapType           = MKMapType.standard
-    static let showsBuildings    = true
-    static let showsCompass      = true
-    static let showsScale        = false
-    static let showsTraffic      = false
-    static let showsUserLocation = true
-  }
-
-  struct Layout {
-    static let pinImageSize = CGSize(width: 28.0, height: 28.0)
-  }
-
   struct Pin {
+    static let imageSize:              CGSize  = CGSize(width: 28.0, height: 28.0)
     static let minAngleChangeToRedraw: CGFloat = 3.0
+  }
+
+  struct Defaults {
+    static let cityCenter = CLLocationCoordinate2D(latitude: 51.109524, longitude: 17.032564)
+    static let cityRadius = CLLocationDistance(25.0 * 1000.0) // m
+    static let regionSize = CLLocationDistance( 2.5 * 1000.0) // m
+
+    static let minDegChangeToUpdate: CLLocationDegrees = 0.01
   }
 }

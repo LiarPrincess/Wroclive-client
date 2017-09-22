@@ -15,7 +15,6 @@
 		900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8F1F482E750044C8A6 /* BookmarksManager.swift */; };
 		900CAEAA1F482E750044C8A6 /* BookmarksManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE901F482E750044C8A6 /* BookmarksManagerImpl.swift */; };
 		900CAEAB1F482E750044C8A6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE921F482E750044C8A6 /* LocationManager.swift */; };
-		900CAEAC1F482E750044C8A6 /* LocationManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE931F482E750044C8A6 /* LocationManagerConstants.swift */; };
 		900CAEAD1F482E750044C8A6 /* LocationManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE941F482E750044C8A6 /* LocationManagerImpl.swift */; };
 		900CAEAE1F482E750044C8A6 /* AvailableLinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE971F482E750044C8A6 /* AvailableLinesEndpoint.swift */; };
 		900CAEB01F482E750044C8A6 /* LineLocationsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE9A1F482E750044C8A6 /* LineLocationsParser.swift */; };
@@ -129,6 +128,9 @@
 		9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* AppInfo.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907ECF181F3BB41900DB27DB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907ECF171F3BB41900DB27DB /* Info.plist */; };
+		907F267C1F74517B000C272B /* LocationAuthorizationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F267B1F74517B000C272B /* LocationAuthorizationObserver.swift */; };
+		907F267E1F74585C000C272B /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F267D1F74585C000C272B /* LocationError.swift */; };
+		907F26811F7460E4000C272B /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F26801F7460E4000C272B /* CLLocation.swift */; };
 		907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
 		908252511F703B4C001C2926 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252501F703B4C001C2926 /* NotificationManager.swift */; };
 		908252531F703BC7001C2926 /* NotificationManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252521F703BC7001C2926 /* NotificationManagerImpl.swift */; };
@@ -194,7 +196,6 @@
 		900CAE8F1F482E750044C8A6 /* BookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		900CAE901F482E750044C8A6 /* BookmarksManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManagerImpl.swift; sourceTree = "<group>"; };
 		900CAE921F482E750044C8A6 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		900CAE931F482E750044C8A6 /* LocationManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerConstants.swift; sourceTree = "<group>"; };
 		900CAE941F482E750044C8A6 /* LocationManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerImpl.swift; sourceTree = "<group>"; };
 		900CAE971F482E750044C8A6 /* AvailableLinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableLinesEndpoint.swift; sourceTree = "<group>"; };
 		900CAE9A1F482E750044C8A6 /* LineLocationsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineLocationsParser.swift; sourceTree = "<group>"; };
@@ -308,6 +309,9 @@
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		9079DCD51F6C545600C6ABCD /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		907F267B1F74517B000C272B /* LocationAuthorizationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuthorizationObserver.swift; sourceTree = "<group>"; };
+		907F267D1F74585C000C272B /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
+		907F26801F7460E4000C272B /* CLLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocation.swift; sourceTree = "<group>"; };
 		907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectionViewControllerConstants.swift; sourceTree = "<group>"; };
 		908252501F703B4C001C2926 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		908252521F703BC7001C2926 /* NotificationManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManagerImpl.swift; sourceTree = "<group>"; };
@@ -401,7 +405,7 @@
 			children = (
 				900CAE921F482E750044C8A6 /* LocationManager.swift */,
 				900CAE941F482E750044C8A6 /* LocationManagerImpl.swift */,
-				900CAE931F482E750044C8A6 /* LocationManagerConstants.swift */,
+				907F267D1F74585C000C272B /* LocationError.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -411,9 +415,9 @@
 			children = (
 				90374CC91F6D3921008D78CE /* Session */,
 				900CAE961F482E750044C8A6 /* Endpoints */,
-				900CAE9D1F482E750044C8A6 /* NetworkError.swift */,
 				900CAE9E1F482E750044C8A6 /* NetworkManager.swift */,
 				900CAE9F1F482E750044C8A6 /* NetworkManagerImpl.swift */,
+				900CAE9D1F482E750044C8A6 /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -596,6 +600,7 @@
 				9021F38A1F12C95D000A6949 /* Swift */,
 				908346F21F51FDE600654FF6 /* Foundation */,
 				9021F38D1F12C95D000A6949 /* UIKit */,
+				907F267F1F7460D0000C272B /* MapKit */,
 				9021F3881F12C95D000A6949 /* CoreGraphics */,
 			);
 			path = Extensions;
@@ -960,6 +965,14 @@
 			path = Vehicle;
 			sourceTree = "<group>";
 		};
+		907F267F1F7460D0000C272B /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				907F26801F7460E4000C272B /* CLLocation.swift */,
+			);
+			path = MapKit;
+			sourceTree = "<group>";
+		};
 		9082524A1F703A18001C2926 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1152,6 +1165,7 @@
 				90F0A2D31F73198B00C641C8 /* NotificationObserver.swift */,
 				90F0A2D21F73198B00C641C8 /* ColorSchemeObserver.swift */,
 				90F0A2D41F73198B00C641C8 /* VehicleLocationObserver.swift */,
+				907F267B1F74517B000C272B /* LocationAuthorizationObserver.swift */,
 			);
 			path = Observers;
 			sourceTree = "<group>";
@@ -1372,6 +1386,7 @@
 				900CAEAA1F482E750044C8A6 /* BookmarksManagerImpl.swift in Sources */,
 				9021F4401F12D698000A6949 /* LineSelectionSectionViewModel.swift in Sources */,
 				908252531F703BC7001C2926 /* NotificationManagerImpl.swift in Sources */,
+				907F26811F7460E4000C272B /* CLLocation.swift in Sources */,
 				908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */,
 				90374CCB1F6D3935008D78CE /* SessionManager.swift in Sources */,
 				900CAEA61F482E750044C8A6 /* AlertManager.swift in Sources */,
@@ -1387,6 +1402,7 @@
 				9044A5471F69A13D00F26C17 /* ColorSelectionViewController.swift in Sources */,
 				90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */,
 				90145E491F61AF060068698D /* ConfigurationDataSource.swift in Sources */,
+				907F267E1F74585C000C272B /* LocationError.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchViewController.swift in Sources */,
 				904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
@@ -1404,6 +1420,7 @@
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
 				90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */,
 				9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */,
+				907F267C1F74517B000C272B /* LocationAuthorizationObserver.swift in Sources */,
 				9021F43B1F12D698000A6949 /* LineSelectionPage.swift in Sources */,
 				901D46861F57089000A9F6BD /* ThemeManager.swift in Sources */,
 				90546BF81F6B15A000E8E75F /* TutorialPresentationConstants.swift in Sources */,
@@ -1446,7 +1463,6 @@
 				908F55091F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift in Sources */,
 				90145E5C1F61B9E30068698D /* InAppPurchasePresentationConstants.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
-				900CAEAC1F482E750044C8A6 /* LocationManagerConstants.swift in Sources */,
 				90145E601F61B9E30068698D /* ThemePresentationConstants.swift in Sources */,
 				9007E35D1F251971006A2F8F /* BookmarksViewControllerDelegate.swift in Sources */,
 				9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */,

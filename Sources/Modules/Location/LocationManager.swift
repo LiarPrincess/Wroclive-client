@@ -9,12 +9,12 @@ import PromiseKit
 
 protocol LocationManager {
 
-  /// Returns either: user location or city center
-  func getDefaultRegion() -> Promise<MKCoordinateRegion>
+  /// Returns user location
+  func getUserLocation() -> Promise<CLLocationCoordinate2D>
 
   /// Current authorization status
-  var authorizationStatus: CLAuthorizationStatus { get }
+  var authorization: CLAuthorizationStatus { get }
 
   /// Request authorization
-  func requestInUseAuthorization()
+  func requestAuthorization()
 }

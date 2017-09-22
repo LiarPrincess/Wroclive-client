@@ -82,6 +82,11 @@
 "Alert_GloballyDenied_Content" = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
 "Alert_GloballyDenied_Ok"      = "OK";
 
+"Alert_InvalidCity_Title"   = "Pora na przygodę!";
+"Alert_InvalidCity_Message" = "Kek działa najlepiej we Wrocławiu.\nPokazać?";
+"Alert_InvalidCity_No"      = "Nie";
+"Alert_InvalidCity_Yes"     = "Tak";
+
 "Alert_Bookmark_NoLinesSelected_Title"   = "Nie wybrano żadnych linii";
 "Alert_Bookmark_NoLinesSelected_Content" = "Zanim dodasz zakładkę musisz zaznaczyc przynajmniej 1 linię.";
 "Alert_Bookmark_NoLinesSelected_Ok"      = "OK";

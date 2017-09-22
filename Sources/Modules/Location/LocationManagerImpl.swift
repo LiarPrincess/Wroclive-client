@@ -7,35 +7,43 @@ import UIKit
 import MapKit
 import PromiseKit
 
-private typealias Constants = LocationManagerConstants
-
-class LocationManagerImpl: LocationManager {
+class LocationManagerImpl: NSObject, LocationManager {
 
   // MARK: - Properties
 
   private lazy var locationManager: CLLocationManager = {
-    let locationManager = CLLocationManager()
-    locationManager.distanceFilter  = Constants.Tracking.distanceFilter
-    locationManager.desiredAccuracy = Constants.Tracking.accuracy
-    locationManager.pausesLocationUpdatesAutomatically = true
-    return locationManager
+    let manager             = CLLocationManager()
+    manager.delegate        = self
+    manager.distanceFilter  = 5.0
+    manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+    manager.pausesLocationUpdatesAutomatically = true
+    return manager
   }()
 
   // MARK: - LocationManager
 
-  func getDefaultRegion() -> Promise<MKCoordinateRegion> {
-    return Promise { fulfill, _ in
-      let center = self.locationManager.location?.coordinate ?? Constants.Default.location
-      let size   = Constants.Default.regionSize
-      fulfill(MKCoordinateRegionMakeWithDistance(center, size, size))
+  func getUserLocation() -> Promise<CLLocationCoordinate2D> {
+    return Promise { fulfill, reject in
+      if let location = self.locationManager.location?.coordinate {
+        fulfill(location)
+      }
+      else { reject(LocationError.unableToObtainUserLocation) }
     }
   }
 
-  var authorizationStatus: CLAuthorizationStatus {
+  var authorization: CLAuthorizationStatus {
     return CLLocationManager.authorizationStatus()
   }
 
-  func requestInUseAuthorization() {
+  func requestAuthorization() {
     self.locationManager.requestWhenInUseAuthorization()
+  }
+}
+
+// MARK: - CLLocationManagerDelegate
+
+extension LocationManagerImpl: CLLocationManagerDelegate {
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    Managers.notification.post(.locationAuthorizationDidChange)
   }
 }

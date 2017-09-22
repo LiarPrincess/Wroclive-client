@@ -11,7 +11,7 @@ struct BookmarksViewControllerConstants {
     static let rightInset: CGFloat = leftInset
 
     struct Header {
-      static let chevronY:  CGFloat =  8.0
+      static let chevronY: CGFloat =  8.0
 
       static let topInset:    CGFloat = 32.0
       static let bottomInset: CGFloat =  8.0

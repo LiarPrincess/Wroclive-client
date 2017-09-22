@@ -7,8 +7,7 @@ import UIKit
 import MapKit
 import Foundation
 
-private typealias Constants = MapViewControllerConstants
-private typealias Layout    = MapViewControllerConstants.Layout
+private typealias Constants = MapViewControllerConstants.Pin
 
 class VehicleAnnotationView: MKAnnotationView {
 
@@ -19,7 +18,7 @@ class VehicleAnnotationView: MKAnnotationView {
 
   init(_ vehicleAnnotation: VehicleAnnotation, reuseIdentifier: String?) {
     super.init(annotation: vehicleAnnotation, reuseIdentifier: reuseIdentifier)
-    self.frame          = CGRect(origin: .zero, size: Layout.pinImageSize)
+    self.frame          = CGRect(origin: .zero, size: Constants.imageSize)
     self.isDraggable    = false
     self.canShowCallout = false
 
@@ -52,7 +51,7 @@ class VehicleAnnotationView: MKAnnotationView {
     let color       = annotation.line.type == .bus ? colorScheme.busColor : colorScheme.tramColor
 
     let hasColorChanged = self.pinView.tintColor != color.value
-    let hasAngleChanged = abs(self.pinView.angle - annotation.angle) > Constants.Pin.minAngleChangeToRedraw
+    let hasAngleChanged = abs(self.pinView.angle - annotation.angle) > Constants.minAngleChangeToRedraw
 
     if hasColorChanged || hasAngleChanged {
       self.pinView.tintColor = color.value
@@ -66,10 +65,9 @@ class VehicleAnnotationView: MKAnnotationView {
     let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
     self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name, attributes: textAttributes)
 
-    let pinSize    = Layout.pinImageSize
+    let imageSize  = Constants.imageSize
     let labelSize  = self.pinLabel.intrinsicContentSize
-    let labelOrgin = CGPoint(x: (pinSize.width - labelSize.width) / 2.0, y: pinSize.height)
+    let labelOrgin = CGPoint(x: (imageSize.width - labelSize.width) / 2.0, y: imageSize.height)
     self.pinLabel.frame = CGRect(origin: labelOrgin, size: labelSize)
   }
-
 }

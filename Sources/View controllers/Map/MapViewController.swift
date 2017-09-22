@@ -14,42 +14,114 @@ class MapViewController: UIViewController {
 
   // MARK: - Properties
 
-  var mapView: MKMapView = {
-    let result = MKMapView()
-    result.mapType           = Constants.MapView.mapType
-    result.showsBuildings    = Constants.MapView.showsBuildings
-    result.showsCompass      = Constants.MapView.showsCompass
-    result.showsScale        = Constants.MapView.showsScale
-    result.showsTraffic      = Constants.MapView.showsTraffic
-    result.showsUserLocation = Constants.MapView.showsUserLocation
-    return result
-  }()
+  let mapView = MKMapView()
+
+  // MARK: - Init
+
+  convenience init() {
+    self.init(nibName: nil, bundle: nil)
+  }
+
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nil, bundle: nil)
+    self.startObservingLocationAuthorization()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  deinit {
+    self.stopObservingLocationAuthorization()
+  }
 
   // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.mapView.delegate = self
-    self.view.addSubview(self.mapView)
+    self.mapView.mapType           = .standard
+    self.mapView.showsScale        = false
+    self.mapView.showsTraffic      = false
+    self.mapView.showsBuildings    = true
+    self.mapView.showsCompass      = true
+    self.mapView.showsUserLocation = true
+    self.mapView.delegate          = self
 
+    self.centerDefaultRegion(animated: false)
+
+    self.view.addSubview(self.mapView)
     self.mapView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
+  }
 
-    _ = firstly { () -> Promise<Void> in
-      Managers.location.requestInUseAuthorization()
-      return Promise(value: ())
-    }
-    .then { return Managers.location.getDefaultRegion() }
-    .then { self.mapView.setRegion($0, animated: false) }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.centerMap()
   }
 
   override var bottomLayoutGuide: UILayoutSupport {
     return LayoutGuide(length: 44.0)
   }
 
-  // MARK: - Vehicle locations
+  fileprivate func centerMap() {
+    let authorization = Managers.location.authorization
+    switch authorization {
+    case .denied, .restricted:
+      self.centerDefaultRegion(animated: true)
+    case .authorizedAlways, .authorizedWhenInUse:
+      self.centerUserLocation(animated: true)
+    case .notDetermined:
+      Managers.location.requestAuthorization()
+    }
+  }
+
+  private func centerDefaultRegion(animated: Bool) {
+    typealias Defaults = Constants.Defaults
+
+    let newCenter = Defaults.cityCenter
+    let oldCenter = self.mapView.region.center
+
+    let minDegChangeToUpdate = Constants.Defaults.minDegChangeToUpdate
+    let hasLatitudeChanged  = abs(newCenter.latitude - oldCenter.latitude) > minDegChangeToUpdate
+    let hasLongitudeChanged = abs(newCenter.longitude - oldCenter.longitude) > minDegChangeToUpdate
+
+    if hasLatitudeChanged || hasLongitudeChanged {
+      let newRegion = MKCoordinateRegionMakeWithDistance(newCenter, Defaults.regionSize, Defaults.regionSize)
+      self.mapView.setRegion(newRegion, animated: animated)
+    }
+  }
+
+  private func centerUserLocation(animated: Bool) {
+    _ = Managers.location.getUserLocation()
+    .then { userLocation -> () in
+      self.mapView.setCenter(userLocation, animated: true)
+
+      if !self.isInsideDefaultCity(userLocation) {
+        Managers.alert.showInvalidCityAlert(in: self) { result in
+          if result == .showDefault {
+            self.centerDefaultRegion(animated: true)
+          }
+        }
+      }
+      return ()
+    }
+    .catch { _ in self.centerDefaultRegion(animated: true) }
+  }
+
+  fileprivate func isInsideDefaultCity(_ coordinate: CLLocationCoordinate2D) -> Bool {
+    let cityCenter = CLLocation(coordinate: Constants.Defaults.cityCenter)
+    let location   = CLLocation(coordinate: coordinate)
+
+    let distance = cityCenter.distance(from: location)
+    return distance < Constants.Defaults.cityRadius
+  }
+}
+
+// MARK: - Vehicle locations
+
+extension MapViewController {
 
   func updateVehicleLocations(_ vehicles: [Vehicle]) {
     // remove excess annotations
@@ -90,6 +162,14 @@ class MapViewController: UIViewController {
   }
 }
 
+// MARK: - LocationAuthorizationObserver
+
+extension MapViewController: LocationAuthorizationObserver {
+  func locationAuthorizationDidChange() {
+    self.centerMap()
+  }
+}
+
 // MARK: - MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
@@ -97,14 +177,12 @@ extension MapViewController: MKMapViewDelegate {
   // MARK: - Tracking mode
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-    let authorizationStatus = Managers.location.authorizationStatus
-
-    if authorizationStatus == .denied {
-      Managers.alert.showDeniedLocationAuthorizationAlert(in: self)
-    }
-
-    if authorizationStatus == .restricted {
-      Managers.alert.showGloballyDeniedLocationAuthorizationAlert(in: self)
+    let authorization = Managers.location.authorization
+    switch authorization {
+    case .denied:        Managers.alert.showDeniedLocationAuthorizationAlert(in: self)
+    case .restricted:    Managers.alert.showGloballyDeniedLocationAuthorizationAlert(in: self)
+    case .notDetermined: Managers.location.requestAuthorization()
+    default: break
     }
   }
 
