@@ -13,8 +13,6 @@ struct SearchViewControllerConstants {
     static let bottomInset: CGFloat = 24.0
 
     struct Header {
-      static let chevronY: CGFloat = 8.0
-
       // topInset
       // [card title]
       // vertical spacing
@@ -42,10 +40,5 @@ struct SearchViewControllerConstants {
 
   struct CardPanel {
     static let relativeHeight: CGFloat = 0.90
-    static let chevronDismissRelativeDuration: TimeInterval = 0.05
-  }
-
-  struct Network {
-    static let failedRequestDelay: TimeInterval = 3.0
   }
 }

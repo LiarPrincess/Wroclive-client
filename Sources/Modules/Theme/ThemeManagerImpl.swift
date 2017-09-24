@@ -123,18 +123,6 @@ class ThemeManagerImpl: ThemeManager {
     return paragraphStyle
   }
 
-  // MARK: - Card panel
-
-  func applyCardPanelStyle(_ view: UIView) {
-    view.backgroundColor = self.colorScheme.background
-    view.roundTopCorners(radius: 8.0)
-  }
-
-  func applyCardPanelHeaderStyle(_ view: UIVisualEffectView) {
-    view.contentView.addBorder(at: .bottom)
-    view.setContentHuggingPriority(900, for: .vertical)
-  }
-
   // MARK: - Notifications
 
   fileprivate func startObservingContentSizeCategory() {

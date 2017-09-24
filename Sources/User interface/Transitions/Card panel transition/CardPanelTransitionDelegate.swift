@@ -6,6 +6,7 @@
 import UIKit
 
 // source: http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
+//         https://github.com/HarshilShah/DeckTransition
 
 private typealias Constants = CardPanelConstants
 
@@ -13,13 +14,13 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
 
   // MARK: - Properties
 
-  private let relativeHeight:               CGFloat
+  private weak var presentable: CardPanelPresentable?
   private let interactiveDismissTransition: CardPanelInteractiveDismissTransition
 
   // MARK: - Init
 
   init(for presentable: CardPanelPresentable) {
-    self.relativeHeight = presentable.relativeHeight
+    self.presentable = presentable
     self.interactiveDismissTransition = CardPanelInteractiveDismissTransition(for: presentable)
     super.init()
   }
@@ -27,12 +28,12 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
   // MARK: - Transition
 
   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    let transitionDuration = Double(self.relativeHeight) * Constants.AnimationDuration.present
+    let transitionDuration = self.presentable?.presentationTransitionDuration ?? Constants.AnimationDuration.present
     return CardPanelPresentationTransition(transitionDuration)
   }
 
   func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    let transitionDuration = Double(self.relativeHeight) * Constants.AnimationDuration.dismiss
+    let transitionDuration = self.presentable?.dismissTransitionDuration ?? Constants.AnimationDuration.dismiss
     return CardPanelDismissTransition(transitionDuration)
   }
 
@@ -45,6 +46,6 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
   // MARK: - Presentation
 
   func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-    return CardPanelPresenter(forPresented: presented, presenting: presenting, relativeHeight: self.relativeHeight)
+    return CardPanelPresenter(forPresented: presented, presenting: presenting, as: self.presentable)
   }
 }

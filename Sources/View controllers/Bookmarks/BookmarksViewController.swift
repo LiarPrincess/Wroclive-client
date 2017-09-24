@@ -22,7 +22,6 @@ class BookmarksViewController: UIViewController {
     return UIVisualEffectView(effect: self.headerViewBlur)
   }()
 
-  let chevronView = ChevronView()
   let cardTitle   = UILabel()
   let editButton  = UIButton()
 
@@ -119,26 +118,13 @@ class BookmarksViewController: UIViewController {
     self.editButton.isHidden      = isPlaceholderVisible
     self.placeholderView.isHidden = !isPlaceholderVisible
   }
-
 }
 
 // MARK: - CardPanelPresentable
 
 extension BookmarksViewController: CardPanelPresentable {
-  var relativeHeight:    CGFloat { return Constants.CardPanel.relativeHeight }
-  var contentView:       UIView  { return self.view }
-  var interactionTarget: UIView  { return self.headerView }
-
-  func dismissalTransitionWillBegin() {
-    self.chevronView.setState(.flat, animated: true)
-  }
-
-  func dismissalTransitionDidEnd(_ completed: Bool) {
-    if !completed {
-      self.chevronView.setState(.down, animated: true)
-    }
-  }
-
+  var header: UIView  { return self.headerView.contentView }
+  var height: CGFloat { return Constants.CardPanel.relativeHeight * screenHeight }
 }
 
 // MARK: - UITableViewDelegate
@@ -162,7 +148,6 @@ extension BookmarksViewController: UITableViewDelegate {
       self.selectBookmark(bookmark)
     }
   }
-
 }
 
 // MARK: - BookmarksDataSourceDelegate
@@ -182,5 +167,4 @@ extension BookmarksViewController: BookmarksDataSourceDelegate {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
     Managers.bookmarks.save(bookmarks)
   }
-
 }

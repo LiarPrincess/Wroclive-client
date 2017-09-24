@@ -17,8 +17,7 @@ class ConfigurationViewController: UIViewController {
     return UIVisualEffectView(effect: blur)
   }()
 
-  let chevronView = ChevronView()
-  let cardTitle   = UILabel()
+  let cardTitle = UILabel()
 
   let scrollView        = UIScrollView()
   let scrollViewContent = UIView()
@@ -29,10 +28,6 @@ class ConfigurationViewController: UIViewController {
   let tableViewDataSource = ConfigurationDataSource()
 
   var pushTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
-
-  var viewSize: CGFloat {
-    return self.relativeHeight * UIScreen.main.bounds.height
-  }
 
   // MARK: - Init
 
@@ -76,7 +71,7 @@ class ConfigurationViewController: UIViewController {
   func offsetScrolViewToInitialPosition() {
     DispatchQueue.main.async { [weak self] in
       if let strongSelf = self {
-        let offset = strongSelf.viewSize * Layout.Content.initialScrollPercent
+        let offset = strongSelf.height * Layout.Content.initialScrollPercent
         strongSelf.scrollView.contentOffset = CGPoint(x: 0.0, y: offset)
       }
     }
@@ -98,19 +93,8 @@ class ConfigurationViewController: UIViewController {
 // MARK: - CardPanelPresentable
 
 extension ConfigurationViewController: CardPanelPresentable {
-  var relativeHeight:    CGFloat { return Constants.CardPanel.relativeHeight }
-  var contentView:       UIView  { return self.view }
-  var interactionTarget: UIView  { return self.headerView }
-
-  func dismissalTransitionWillBegin() {
-    self.chevronView.setState(.flat, animated: true)
-  }
-
-  func dismissalTransitionDidEnd(_ completed: Bool) {
-    if !completed {
-      self.chevronView.setState(.down, animated: true)
-    }
-  }
+  var header: UIView  { return self.headerView.contentView }
+  var height: CGFloat { return Constants.CardPanel.relativeHeight * screenHeight}
 }
 
 // MARK: - ColorSchemeObserver

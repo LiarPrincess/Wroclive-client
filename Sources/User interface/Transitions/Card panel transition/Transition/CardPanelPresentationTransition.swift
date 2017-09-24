@@ -18,21 +18,25 @@ class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransit
   }
 
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-    let modalViewController = transitionContext.viewController(forKey: .to)!
+    guard let presentedViewController  = transitionContext.viewController(forKey: .to)
+      else { return }
 
-    let onScreenFrame  = transitionContext.finalFrame(for: modalViewController)
+    let containerView = transitionContext.containerView
+    containerView.addSubview(presentedViewController.view)
+
+    let onScreenFrame  = transitionContext.finalFrame(for: presentedViewController)
     var offScreenFrame = onScreenFrame
     offScreenFrame.origin.y = transitionContext.containerView.bounds.height
 
-    //animation
-    modalViewController.view.frame = offScreenFrame
+    // animation
+
+    presentedViewController.view.frame = offScreenFrame
 
     let duration = self.transitionDuration(using: transitionContext)
     UIView.animate(withDuration: duration, delay: 0.0, options: .curveEaseOut, animations: {
-      modalViewController.view.frame = onScreenFrame
+      presentedViewController.view.frame = onScreenFrame
     }, completion: { _ in
       transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
     })
   }
-
 }

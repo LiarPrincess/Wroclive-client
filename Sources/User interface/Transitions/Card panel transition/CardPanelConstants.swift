@@ -8,8 +8,8 @@ import UIKit
 struct CardPanelConstants {
 
   struct AnimationDuration {
-    static let present: TimeInterval = 0.30
-    static let dismiss: TimeInterval = 0.30
+    static let present: TimeInterval = 0.3
+    static let dismiss: TimeInterval = 0.3
   }
 
   struct FinishConditions {

@@ -18,22 +18,24 @@ class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitionin
   }
 
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-    let modalViewController = transitionContext.viewController(forKey: .from)!
+    guard let presentedViewController = transitionContext.viewController(forKey: .from)
+      else { return }
 
-    let onScreenFrame  = transitionContext.initialFrame(for: modalViewController)
+    let containerView = transitionContext.containerView
+
+    let onScreenFrame  = transitionContext.initialFrame(for: presentedViewController)
     var offScreenFrame = onScreenFrame
-    offScreenFrame.origin.y = transitionContext.containerView.bounds.height
+    offScreenFrame.origin.y = containerView.bounds.height
 
-    //animation
+    // animation
+
     let duration = self.transitionDuration(using: transitionContext)
     let options: UIViewAnimationOptions = transitionContext.isInteractive ? .curveLinear : .curveEaseOut
 
     UIView.animate(withDuration: duration, delay: 0.0, options: options, animations: {
-      modalViewController.view.frame = offScreenFrame
+      presentedViewController.view.frame = offScreenFrame
     }, completion: { _ in
-      modalViewController.view.frame = onScreenFrame
       transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
     })
   }
-
 }

@@ -9,11 +9,11 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
 
   // MARK: - Properties
 
+  /// are we responsible for dismissal? or is it non-interactive?
   var hasStarted = false
 
   private weak var presentable: CardPanelPresentable?
 
-  // >= 1.0 will break animation! (reasons unknown)
   override var completionSpeed: CGFloat {
     get { return 0.8 }
     set { }
@@ -25,17 +25,18 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
     self.presentable = presentable
     super.init()
 
-    let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
-    self.presentable?.interactionTarget.addGestureRecognizer(gestureRecognizer)
+    let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan))
+    self.presentable?.header.addGestureRecognizer(gestureRecognizer)
   }
 
   // MARK: - Gesture recognizers
 
-  func handleGesture(gesture: UIPanGestureRecognizer) {
+  func handlePan(_ gesture: UIPanGestureRecognizer) {
     guard let presentable = self.presentable else { return }
 
-    let translation = gesture.translation(in: gesture.view)
-    let percent     = translation.y / presentable.contentView.bounds.height
+    let mainView    = UIApplication.shared.keyWindow!.rootViewController!.view
+    let translation = gesture.translation(in: mainView)
+    let percent     = self.clamp(translation.y / presentable.height, min: 0.0, max: 1.0)
 
     switch gesture.state {
     case .began:
@@ -61,16 +62,20 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
     }
   }
 
+  private func clamp(_ value: CGFloat, min: CGFloat, max: CGFloat) -> CGFloat {
+    return Swift.min(Swift.max(value, min), max)
+  }
+
   // MARK: - Methods
 
   private func shouldFinish(gesture: UIPanGestureRecognizer, completion percent: CGFloat) -> Bool {
-    typealias Constants = CardPanelConstants.FinishConditions
+    typealias Conditions = CardPanelConstants.FinishConditions
 
     let velocity = gesture.velocity(in: gesture.view).y
     let isUp     = velocity < 0.0
 
-    if  isUp && velocity < -Constants.minVelocityUp   { return false }
-    if !isUp && velocity >  Constants.minVelocityDown { return true  }
-    return percent > Constants.minProgress
+    if  isUp && velocity < -Conditions.minVelocityUp   { return false }
+    if !isUp && velocity >  Conditions.minVelocityDown { return true  }
+    return percent > Conditions.minProgress
   }
 }

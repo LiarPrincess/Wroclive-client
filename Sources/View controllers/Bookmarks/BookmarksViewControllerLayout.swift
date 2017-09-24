@@ -13,7 +13,7 @@ private typealias Localization = Localizable.Bookmarks
 extension BookmarksViewController {
 
   func initLayout() {
-    Managers.theme.applyCardPanelStyle(self.view)
+    self.view.backgroundColor = Managers.theme.colorScheme.background
     self.initHeader()
     self.initBookmarksTable()
     self.initBookmarksTablePlaceholder()
@@ -22,25 +22,12 @@ extension BookmarksViewController {
   // MARK: - Private
 
   private func initHeader() {
-    Managers.theme.applyCardPanelHeaderStyle(self.headerView)
+    self.headerView.contentView.addBorder(at: .bottom)
+    self.headerView.setContentHuggingPriority(900, for: .vertical)
     self.view.addSubview(self.headerView)
 
     self.headerView.snp.makeConstraints { make in
       make.left.top.right.equalToSuperview()
-    }
-
-    self.chevronView.state             = .down
-    self.chevronView.color             = Managers.theme.colorScheme.backgroundAccent
-    self.chevronView.animationDuration = Constants.CardPanel.chevronDismissRelativeDuration
-    self.view.addSubview(chevronView)
-
-    self.chevronView.snp.makeConstraints { make in
-      let chevronViewSize = ChevronView.nominalSize
-
-      make.top.equalToSuperview().offset(Layout.Header.chevronY)
-      make.centerX.equalToSuperview()
-      make.width.equalTo(chevronViewSize.width)
-      make.height.equalTo(chevronViewSize.height)
     }
 
     let titleAttributes           = Managers.theme.textAttributes(for: .headline)

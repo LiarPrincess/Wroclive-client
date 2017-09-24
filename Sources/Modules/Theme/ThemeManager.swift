@@ -26,11 +26,6 @@ protocol ThemeManager {
                       alignment:     NSTextAlignment,
                       lineSpacing:   CGFloat,
                       color:         UIColor) -> [String:Any]
-
-  // MARK: - Card panel
-
-  func applyCardPanelStyle(_ view: UIView)
-  func applyCardPanelHeaderStyle(_ view: UIVisualEffectView)
 }
 
 extension ThemeManager {

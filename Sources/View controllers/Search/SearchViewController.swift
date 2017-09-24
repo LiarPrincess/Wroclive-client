@@ -22,7 +22,6 @@ class SearchViewController: UIViewController {
     return UIVisualEffectView(effect: self.headerViewBlur)
   }()
 
-  let chevronView    = ChevronView()
   let cardTitle      = UILabel()
   let bookmarkButton = UIButton()
   let searchButton   = UIButton()
@@ -137,7 +136,7 @@ class SearchViewController: UIViewController {
       guard let strongSelf = self else { return }
 
       let retry = { [weak self] in
-        let delay = Constants.Network.failedRequestDelay
+        let delay = AppInfo.failedLinesRequestDelay
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
           self?.refreshAvailableLines(selectedLines)
         }
@@ -187,19 +186,8 @@ class SearchViewController: UIViewController {
 // MARK: - CardPanelPresentable
 
 extension SearchViewController : CardPanelPresentable {
-  var relativeHeight:    CGFloat { return Constants.CardPanel.relativeHeight }
-  var contentView:       UIView  { return self.view }
-  var interactionTarget: UIView  { return self.headerView }
-
-  func dismissalTransitionWillBegin() {
-    self.chevronView.setState(.flat, animated: true)
-  }
-
-  func dismissalTransitionDidEnd(_ completed: Bool) {
-    if !completed {
-      self.chevronView.setState(.down, animated: true)
-    }
-  }
+  var header: UIView  { return self.headerView.contentView }
+  var height: CGFloat { return Constants.CardPanel.relativeHeight * screenHeight}
 }
 
 // MARK: - LineTypeSelectionControlDelegate

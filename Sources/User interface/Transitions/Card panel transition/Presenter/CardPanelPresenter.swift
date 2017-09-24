@@ -9,13 +9,15 @@ class CardPanelPresenter : UIPresentationController {
 
   // MARK: - Properties
 
-  private var dimmingView:    UIView?
-  private var relativeHeight: CGFloat
+  private var chevronView: ChevronView?
+  private var dimmingView: UIView?
+
+  private weak var presentable: CardPanelPresentable?
 
   // MARK: - Init
 
-  init(forPresented presented: UIViewController, presenting: UIViewController?, relativeHeight: CGFloat) {
-    self.relativeHeight = relativeHeight
+  init(forPresented presented: UIViewController, presenting: UIViewController?, as presentable: CardPanelPresentable?) {
+    self.presentable = presentable
     super.init(presentedViewController: presented, presenting: presenting)
   }
 
@@ -23,19 +25,26 @@ class CardPanelPresenter : UIPresentationController {
 
   override var frameOfPresentedViewInContainerView: CGRect {
     guard let containerView = self.containerView else {
-      return super.frameOfPresentedViewInContainerView
+      return .zero
     }
 
-    let viewHeight    = containerView.bounds.height * relativeHeight
-    let viewTopOffset = containerView.bounds.height - viewHeight
-    return CGRect(x: 0.0, y: viewTopOffset, width: containerView.bounds.width, height: viewHeight)
+    let viewHeight = self.presentable?.height ?? UIScreen.main.bounds.height
+    let topOffset  = containerView.bounds.height - viewHeight
+    return CGRect(x: 0.0, y: topOffset, width: containerView.bounds.width, height: viewHeight)
   }
 
   // MARK: - Presentation
 
   override func presentationTransitionWillBegin() {
-    guard let containerView = self.containerView, let coordinator = presentingViewController.transitionCoordinator else {
-      return
+    guard let containerView = self.containerView,
+          let coordinator   = self.presentingViewController.transitionCoordinator
+      else { return }
+
+    self.presentedViewController.view.roundTopCorners(radius: 8.0)
+
+    let shouldShowChevronView = self.presentable?.shouldShowChevronView ?? true
+    if shouldShowChevronView {
+      self.addChevronView()
     }
 
     self.dimmingView = UIView(frame: CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height))
@@ -43,38 +52,46 @@ class CardPanelPresenter : UIPresentationController {
     self.dimmingView!.alpha = 0
 
     containerView.addSubview(self.dimmingView!)
-    containerView.addSubview(self.presentedViewController.view)
 
     coordinator.animate(alongsideTransition: { [weak self] _ in
       self?.dimmingView!.alpha = CardPanelConstants.Presenter.backgroundAlpha
     }, completion: nil)
   }
 
-  // MARK: - Dismiss
+  private func addChevronView() {
+    guard let presentable = self.presentable else { return }
+
+    self.chevronView = ChevronView()
+    self.chevronView!.state = .down
+    self.chevronView!.color = Managers.theme.colorScheme.backgroundAccent
+
+    presentable.header.addSubview(self.chevronView!)
+    self.chevronView!.snp.makeConstraints { make in
+      let chevronViewSize = ChevronView.nominalSize
+
+      make.top.equalToSuperview().offset(8.0)
+      make.centerX.equalToSuperview()
+      make.width.equalTo(chevronViewSize.width)
+      make.height.equalTo(chevronViewSize.height)
+    }
+  }
+
+  // MARK: - Dismissal
 
   override func dismissalTransitionWillBegin() {
     guard let coordinator = presentingViewController.transitionCoordinator else {
       return
     }
 
-    if let presentable = self.presentedViewController as? CardPanelPresentable {
-      presentable.dismissalTransitionWillBegin()
-    }
-
     coordinator.animate(alongsideTransition: { [weak self] _ in
-      self?.dimmingView!.alpha = 0
+      self?.dimmingView?.alpha = 0
     }, completion: nil)
   }
 
   override func dismissalTransitionDidEnd(_ completed: Bool) {
-    if let presentable = self.presentedViewController as? CardPanelPresentable {
-      presentable.dismissalTransitionDidEnd(completed)
-    }
-
     if completed {
       self.dimmingView?.removeFromSuperview()
       self.dimmingView = nil
     }
   }
-
 }
