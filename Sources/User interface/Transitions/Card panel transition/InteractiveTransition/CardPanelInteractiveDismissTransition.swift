@@ -62,11 +62,11 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
     }
   }
 
+  // MARK: - Private - Methods
+
   private func clamp(_ value: CGFloat, min: CGFloat, max: CGFloat) -> CGFloat {
     return Swift.min(Swift.max(value, min), max)
   }
-
-  // MARK: - Methods
 
   private func shouldFinish(gesture: UIPanGestureRecognizer, completion percent: CGFloat) -> Bool {
     typealias Conditions = CardPanelConstants.FinishConditions

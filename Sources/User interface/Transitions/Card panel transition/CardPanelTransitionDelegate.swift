@@ -28,13 +28,13 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
   // MARK: - Transition
 
   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    let transitionDuration = self.presentable?.presentationTransitionDuration ?? Constants.AnimationDuration.present
-    return CardPanelPresentationTransition(transitionDuration)
+    let duration = self.presentable?.presentationTransitionDuration ?? Constants.AnimationDuration.present
+    return CardPanelPresentationTransition(duration)
   }
 
   func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    let transitionDuration = self.presentable?.dismissTransitionDuration ?? Constants.AnimationDuration.dismiss
-    return CardPanelDismissTransition(transitionDuration)
+    let duration = self.presentable?.dismissTransitionDuration ?? Constants.AnimationDuration.dismiss
+    return CardPanelDismissTransition(duration)
   }
 
   // MARK: - Interactive transition

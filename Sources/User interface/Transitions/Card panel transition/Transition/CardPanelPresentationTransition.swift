@@ -18,7 +18,7 @@ class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransit
   }
 
   func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-    guard let presentedViewController  = transitionContext.viewController(forKey: .to)
+    guard let presentedViewController = transitionContext.viewController(forKey: .to)
       else { return }
 
     let containerView = transitionContext.containerView

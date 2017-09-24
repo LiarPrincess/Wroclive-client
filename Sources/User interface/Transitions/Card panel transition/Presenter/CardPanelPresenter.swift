@@ -41,11 +41,7 @@ class CardPanelPresenter : UIPresentationController {
       else { return }
 
     self.presentedViewController.view.roundTopCorners(radius: 8.0)
-
-    let shouldShowChevronView = self.presentable?.shouldShowChevronView ?? true
-    if shouldShowChevronView {
-      self.addChevronView()
-    }
+    self.addChevronView()
 
     self.dimmingView = UIView(frame: CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height))
     self.dimmingView!.backgroundColor = CardPanelConstants.Presenter.backgroundColor
@@ -59,11 +55,14 @@ class CardPanelPresenter : UIPresentationController {
   }
 
   private func addChevronView() {
-    guard let presentable = self.presentable else { return }
+    guard let presentable = self.presentable,
+              presentable.shouldShowChevronView
+      else { return }
 
     self.chevronView = ChevronView()
     self.chevronView!.state = .down
     self.chevronView!.color = Managers.theme.colorScheme.backgroundAccent
+    self.chevronView!.animationDuration = 0.2
 
     presentable.header.addSubview(self.chevronView!)
     self.chevronView!.snp.makeConstraints { make in
@@ -79,9 +78,10 @@ class CardPanelPresenter : UIPresentationController {
   // MARK: - Dismissal
 
   override func dismissalTransitionWillBegin() {
-    guard let coordinator = presentingViewController.transitionCoordinator else {
-      return
-    }
+    guard let coordinator = presentingViewController.transitionCoordinator
+      else { return }
+
+    self.chevronView?.setState(.flat, animated: true)
 
     coordinator.animate(alongsideTransition: { [weak self] _ in
       self?.dimmingView?.alpha = 0
@@ -89,9 +89,13 @@ class CardPanelPresenter : UIPresentationController {
   }
 
   override func dismissalTransitionDidEnd(_ completed: Bool) {
+    self.chevronView?.setState(.down, animated: true)
+
     if completed {
       self.dimmingView?.removeFromSuperview()
       self.dimmingView = nil
+      self.chevronView?.removeFromSuperview()
+      self.chevronView = nil
     }
   }
 }
