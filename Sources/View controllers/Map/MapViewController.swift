@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
 
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nil, bundle: nil)
+    self.insetViewToShowMapLegalInfo()
     self.startObservingLocationAuthorization()
   }
 
@@ -61,9 +62,22 @@ class MapViewController: UIViewController {
     self.centerMap()
   }
 
+  // MARK: - Map legal info
+
+  // iOS 10
   override var bottomLayoutGuide: UILayoutSupport {
     return LayoutGuide(length: 44.0)
   }
+
+  // iOS 11
+  private func insetViewToShowMapLegalInfo() {
+    if #available(iOS 11, *) {
+      let insets = self.additionalSafeAreaInsets
+      self.additionalSafeAreaInsets.bottom = max(insets.bottom, self.bottomLayoutGuide.length)
+    }
+  }
+
+  // MARK: - Map management
 
   fileprivate func centerMap() {
     let authorization = Managers.location.authorization

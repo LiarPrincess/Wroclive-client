@@ -7,6 +7,7 @@ import UIKit
 
 // source: http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
 //         https://github.com/HarshilShah/DeckTransition
+//         https://stackoverflow.com/a/36775217
 
 private typealias Constants = CardPanelConstants
 

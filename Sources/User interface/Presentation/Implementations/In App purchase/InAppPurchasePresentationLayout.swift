@@ -91,6 +91,7 @@ extension InAppPurchasePresentation {
     text.append(NSAttributedString(string: Localization.restoreLink, attributes: underlineAttributes))
     text.append(NSAttributedString(string: ".", attributes: textAttributes))
 
+    self.restorePurchaseLabel.numberOfLines  = 0
     self.restorePurchaseLabel.attributedText = text
     self.restorePurchaseLabel.isUserInteractionEnabled = true
 
