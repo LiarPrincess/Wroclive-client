@@ -43,7 +43,7 @@ class CardPanelPresenter : UIPresentationController {
     self.presentedViewController.view.roundTopCorners(radius: 8.0)
     self.addChevronView()
 
-    self.dimmingView = UIView(frame: CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height))
+    self.dimmingView = UIView(frame: containerView.frame)
     self.dimmingView!.backgroundColor = CardPanelConstants.Presenter.backgroundColor
     self.dimmingView!.alpha = 0
 
@@ -62,7 +62,7 @@ class CardPanelPresenter : UIPresentationController {
     self.chevronView = ChevronView()
     self.chevronView!.state = .down
     self.chevronView!.color = Managers.theme.colorScheme.backgroundAccent
-    self.chevronView!.animationDuration = 0.2
+    self.chevronView!.animationDuration = 0.1
 
     presentable.header.addSubview(self.chevronView!)
     self.chevronView!.snp.makeConstraints { make in
@@ -81,7 +81,7 @@ class CardPanelPresenter : UIPresentationController {
     guard let coordinator = presentingViewController.transitionCoordinator
       else { return }
 
-    self.chevronView?.setState(.flat, animated: true)
+    self.chevronView?.setState(.flat, animated: false)
 
     coordinator.animate(alongsideTransition: { [weak self] _ in
       self?.dimmingView?.alpha = 0
