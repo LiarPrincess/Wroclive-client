@@ -25,6 +25,7 @@ class MapViewController: UIViewController {
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nil, bundle: nil)
     self.insetViewToShowMapLegalInfo()
+    self.startObservingApplicationActivity()
     self.startObservingLocationAuthorization()
   }
 
@@ -33,6 +34,7 @@ class MapViewController: UIViewController {
   }
 
   deinit {
+    self.stopObservingApplicationActivity()
     self.stopObservingLocationAuthorization()
   }
 
@@ -59,7 +61,7 @@ class MapViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    self.centerMap()
+    self.centerUserLocationIfAuthorized(animated: true)
   }
 
   // MARK: - Map legal info
@@ -79,19 +81,7 @@ class MapViewController: UIViewController {
 
   // MARK: - Map management
 
-  fileprivate func centerMap() {
-    let authorization = Managers.location.authorization
-    switch authorization {
-    case .denied, .restricted:
-      self.centerDefaultRegion(animated: true)
-    case .authorizedAlways, .authorizedWhenInUse:
-      self.centerUserLocation(animated: true)
-    case .notDetermined:
-      Managers.location.requestAuthorization()
-    }
-  }
-
-  private func centerDefaultRegion(animated: Bool) {
+  fileprivate func centerDefaultRegion(animated: Bool) {
     typealias Defaults = Constants.Defaults
 
     let newCenter = Defaults.cityCenter
@@ -101,13 +91,19 @@ class MapViewController: UIViewController {
     let hasLatitudeChanged  = abs(newCenter.latitude - oldCenter.latitude) > minDegChangeToUpdate
     let hasLongitudeChanged = abs(newCenter.longitude - oldCenter.longitude) > minDegChangeToUpdate
 
+    // Prevent min flicker when we set the same center 2nd time
     if hasLatitudeChanged || hasLongitudeChanged {
       let newRegion = MKCoordinateRegionMakeWithDistance(newCenter, Defaults.regionSize, Defaults.regionSize)
       self.mapView.setRegion(newRegion, animated: animated)
     }
   }
 
-  private func centerUserLocation(animated: Bool) {
+  fileprivate func centerUserLocationIfAuthorized(animated: Bool) {
+    let authorization = Managers.location.authorization
+
+    guard authorization == .authorizedAlways || authorization == .authorizedWhenInUse
+      else { return }
+
     _ = Managers.location.getUserLocation()
     .then { userLocation -> () in
       self.mapView.setCenter(userLocation, animated: true)
@@ -121,7 +117,8 @@ class MapViewController: UIViewController {
       }
       return ()
     }
-    .catch { _ in self.centerDefaultRegion(animated: true) }
+    // no need for .catch, if we don't have access then leave as it is
+    // .catch { _ in self.centerDefaultRegion(animated: true) }
   }
 
   fileprivate func isInsideDefaultCity(_ coordinate: CLLocationCoordinate2D) -> Bool {
@@ -180,8 +177,18 @@ extension MapViewController {
 
 extension MapViewController: LocationAuthorizationObserver {
   func locationAuthorizationDidChange() {
-    self.centerMap()
+    self.centerUserLocationIfAuthorized(animated: true)
   }
+}
+
+// MARK: - ApplicationActivityObserver
+
+extension MapViewController: ApplicationActivityObserver {
+  func applicationDidBecomeActive() {
+    self.centerUserLocationIfAuthorized(animated: true)
+  }
+
+  func applicationWillResignActive() { }
 }
 
 // MARK: - MKMapViewDelegate

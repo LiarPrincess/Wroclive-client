@@ -10,6 +10,8 @@ enum Notification {
   case vehicleLocationsDidUpdate
   case locationAuthorizationDidChange
   case contentSizeCategoryDidChange
+  case applicationDidBecomeActive
+  case applicationWillResignActive
 
   var name: Foundation.Notification.Name {
     switch self {
@@ -17,6 +19,8 @@ enum Notification {
     case .vehicleLocationsDidUpdate:      return Notification.name("pl.kekapp.vehicleLocationsDidUpdate")
     case .locationAuthorizationDidChange: return Notification.name("pl.kekapp.locationAuthorizationDidChange")
     case .contentSizeCategoryDidChange:   return Foundation.Notification.Name.UIContentSizeCategoryDidChange
+    case .applicationDidBecomeActive:     return Foundation.Notification.Name.UIApplicationDidBecomeActive
+    case .applicationWillResignActive:    return Foundation.Notification.Name.UIApplicationWillResignActive
     }
   }
 
