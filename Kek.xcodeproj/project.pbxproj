@@ -154,6 +154,9 @@
 		90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */; };
 		90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */; };
 		90AF2BE31EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */; };
+		90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFEE591F8426AC009716B6 /* Coordinator.swift */; };
+		90AFEE5C1F842753009716B6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFEE5B1F842753009716B6 /* AppCoordinator.swift */; };
+		90AFEE5E1F842815009716B6 /* MainViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFEE5D1F842815009716B6 /* MainViewControllerDelegate.swift */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
 		90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF51F69B62800AF4B84 /* PushConstants.swift */; };
 		90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */; };
@@ -340,6 +343,9 @@
 		90AF2BD71EE9DEE1006E61D6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerEnumerations.swift; sourceTree = "<group>"; };
 		90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wroclaw.gpx; sourceTree = "<group>"; };
+		90AFEE591F8426AC009716B6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		90AFEE5B1F842753009716B6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		90AFEE5D1F842815009716B6 /* MainViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerDelegate.swift; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90BC8AF51F69B62800AF4B84 /* PushConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushConstants.swift; sourceTree = "<group>"; };
 		90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTransitionDelegate.swift; sourceTree = "<group>"; };
@@ -962,11 +968,21 @@
 		9061355A1F84246A006634C7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				90AFEE5D1F842815009716B6 /* MainViewControllerDelegate.swift */,
 				9017C3511EE339FD00063377 /* MainViewController.swift */,
 				9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */,
 				9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		9061355D1F842633006634C7 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				90AFEE591F8426AC009716B6 /* Coordinator.swift */,
+				90AFEE5B1F842753009716B6 /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		90665CBC1F430D7B00D8CFBC /* Vehicle */ = {
@@ -1227,6 +1243,7 @@
 				902330ED1EDF37F500FA8F43 /* Modules */,
 				9021F3871F12C95D000A6949 /* Extensions */,
 				9021F3DB1F12C9EF000A6949 /* User interface */,
+				9061355D1F842633006634C7 /* Coordinators */,
 				9017C33D1EE339FD00063377 /* View controllers */,
 			);
 			path = Sources;
@@ -1408,6 +1425,7 @@
 				9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */,
 				9044A5441F69A13D00F26C17 /* ColorSelectionCell.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
+				90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */,
 				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				90546BF91F6B15A000E8E75F /* TutorialPresentationLayout.swift in Sources */,
@@ -1430,6 +1448,7 @@
 				90E8A6C61F4CD43300CE5AE9 /* DeviceManager.swift in Sources */,
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManagerImpl.swift in Sources */,
 				90AF2BE31EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift in Sources */,
+				90AFEE5C1F842753009716B6 /* AppCoordinator.swift in Sources */,
 				9044A5481F69A13D00F26C17 /* ColorSelectionViewControllerConstants.swift in Sources */,
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
 				90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */,
@@ -1507,6 +1526,7 @@
 				900CAEAB1F482E750044C8A6 /* LocationManager.swift in Sources */,
 				907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */,
 				90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */,
+				90AFEE5E1F842815009716B6 /* MainViewControllerDelegate.swift in Sources */,
 				90145E611F61B9E30068698D /* ThemePresentationLayout.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				90F0A2D71F732A6C00C641C8 /* NotificationObserver.swift in Sources */,

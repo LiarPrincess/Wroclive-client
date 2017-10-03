@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
 
   // MARK: - Properties
 
+  weak var delegate: MainViewControllerDelegate?
+
   let mapViewController = MapViewController()
 
   let toolbar = UIToolbar()
@@ -22,16 +24,15 @@ class MainViewController: UIViewController {
   let bookmarksButton     = UIBarButtonItem()
   let configurationButton = UIBarButtonItem()
 
-  var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
-
   // MARK: - Init
 
-  convenience init() {
-    self.init(nibName: nil, bundle: nil)
+  convenience init(delegate: MainViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, delegate: delegate)
   }
 
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: MainViewControllerDelegate? = nil) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    self.delegate = delegate
     self.startObservingColorScheme()
     self.startObservingVehicleLocations()
   }
@@ -54,40 +55,21 @@ class MainViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-
-    let hasSeenTutorial = Managers.app.hasSeenTutorial
-    if !hasSeenTutorial {
-      let tutorial = TutorialViewController(mode: .firstUse, delegate: self)
-      self.present(tutorial, animated: true, completion: nil)
-    }
+    self.delegate?.mainViewControllerDidAppear(self)
   }
 
   // MARK: - Actions
 
   @objc func searchButtonPressed() {
-    let controller      = SearchViewController()
-    controller.delegate = self
-    self.presentCardPanel(controller)
+    self.delegate?.mainViewControllerDidTapSearchButton(self)
   }
 
   @objc func bookmarksButtonPressed() {
-    let controller      = BookmarksViewController()
-    controller.delegate = self
-    self.presentCardPanel(controller)
+    self.delegate?.mainViewControllerDidTapTapBookmarksButton(self)
   }
 
   @objc func configurationButtonPressed() {
-    let controller = ConfigurationViewController()
-    self.presentCardPanel(controller)
-  }
-
-  private func presentCardPanel<TCardPanel>(_ controller: TCardPanel)
-    where TCardPanel: UIViewController, TCardPanel: CardPanelPresentable
-  {
-    self.cardPanelTransitionDelegate  = CardPanelTransitionDelegate(for: controller)
-    controller.modalPresentationStyle = .custom
-    controller.transitioningDelegate  = self.cardPanelTransitionDelegate!
-    self.present(controller, animated: true, completion: nil)
+    self.delegate?.mainViewControllerDidTapConfigurationButton(self)
   }
 }
 
@@ -150,12 +132,5 @@ extension MainViewController: SearchViewControllerDelegate {
 extension MainViewController: BookmarksViewControllerDelegate {
   func bookmarksViewController(_ controller: BookmarksViewController, didSelect bookmark: Bookmark) {
     Managers.tracking.start(bookmark.lines)
-  }
-}
-
-extension MainViewController: TutorialViewControllerDelegate {
-  func tutorialViewControllerWillClose(_ viewController: TutorialViewController) {
-    Managers.app.hasSeenTutorial = true
-    Managers.location.requestAuthorization()
   }
 }
