@@ -9,11 +9,6 @@ import SnapKit
 private typealias Layout       = TutorialViewControllerConstants.Layout
 private typealias Localization = Localizable.Presentation.Tutorial
 
-enum TutorialViewControllerMode {
-  case firstUse
-  case `default`
-}
-
 class TutorialViewController: UIViewController {
 
   // MARK: - Properties

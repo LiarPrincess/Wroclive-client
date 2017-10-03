@@ -127,6 +127,7 @@
 		9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */; };
 		9056F6571F5229A500F7EF48 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6541F5229A500F7EF48 /* Font.swift */; };
 		9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
+		9061355C1F8424F5006634C7 /* TutorialViewControllerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
 		9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* AppInfo.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -312,6 +313,7 @@
 		9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFont.swift; sourceTree = "<group>"; };
 		9056F6541F5229A500F7EF48 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		9056F6551F5229A500F7EF48 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
+		9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerMode.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		9079DCD51F6C545600C6ABCD /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -531,10 +533,9 @@
 				9017C3541EE339FD00063377 /* Map */,
 				9017C3441EE339FD00063377 /* Search */,
 				9017C33E1EE339FD00063377 /* Bookmarks */,
+				9044A5311F69A13D00F26C17 /* Color selection */,
 				9096CDCB1F40EF0C00FEF20A /* Configuration */,
-				9017C3511EE339FD00063377 /* MainViewController.swift */,
-				9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */,
-				9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */,
+				9061355A1F84246A006634C7 /* Main */,
 				903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */,
 			);
 			path = "View controllers";
@@ -868,14 +869,6 @@
 			path = Session;
 			sourceTree = "<group>";
 		};
-		9044A5301F69A13D00F26C17 /* Child view controllers */ = {
-			isa = PBXGroup;
-			children = (
-				9044A5311F69A13D00F26C17 /* Color selection */,
-			);
-			path = "Child view controllers";
-			sourceTree = "<group>";
-		};
 		9044A5311F69A13D00F26C17 /* Color selection */ = {
 			isa = PBXGroup;
 			children = (
@@ -948,6 +941,7 @@
 		90546BFA1F6B169100E8E75F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */,
 				90546BFB1F6B169100E8E75F /* TutorialViewController.swift */,
 				90357ADA1F841C24008E50E9 /* TutorialViewControllerDelegate.swift */,
 				90546BFC1F6B169100E8E75F /* TutorialViewControllerConstants.swift */,
@@ -963,6 +957,16 @@
 				9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		9061355A1F84246A006634C7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9017C3511EE339FD00063377 /* MainViewController.swift */,
+				9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */,
+				9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		90665CBC1F430D7B00D8CFBC /* Vehicle */ = {
@@ -1050,7 +1054,6 @@
 		9096CDCB1F40EF0C00FEF20A /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				9044A5301F69A13D00F26C17 /* Child view controllers */,
 				90145E3F1F61AE4A0068698D /* View models */,
 				90145E3E1F61AE4A0068698D /* Data source */,
 				9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */,
@@ -1448,6 +1451,7 @@
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
 				90E8A6BF1F4CB08400CE5AE9 /* AppManager.swift in Sources */,
 				90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */,
+				9061355C1F8424F5006634C7 /* TutorialViewControllerMode.swift in Sources */,
 				9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */,
 				908FB19B1F48B3CA00121584 /* LayoutGuide.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
