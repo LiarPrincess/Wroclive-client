@@ -98,6 +98,7 @@
 		9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */; };
 		90336A311F587C3600FAAEFF /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */; };
 		90357AD91F840F52008E50E9 /* ApplicationActivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90357AD81F840F52008E50E9 /* ApplicationActivityObserver.swift */; };
+		90357ADB1F841C24008E50E9 /* TutorialViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90357ADA1F841C24008E50E9 /* TutorialViewControllerDelegate.swift */; };
 		90374CCB1F6D3935008D78CE /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374CCA1F6D3935008D78CE /* SessionManager.swift */; };
 		90374CCD1F6D3BF8008D78CE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374CCC1F6D3BF8008D78CE /* Endpoint.swift */; };
 		903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */; };
@@ -282,6 +283,7 @@
 		9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
 		90357AD81F840F52008E50E9 /* ApplicationActivityObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationActivityObserver.swift; sourceTree = "<group>"; };
+		90357ADA1F841C24008E50E9 /* TutorialViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerDelegate.swift; sourceTree = "<group>"; };
 		90374CCA1F6D3935008D78CE /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		90374CCC1F6D3BF8008D78CE /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfLine+FilterByType.swift"; sourceTree = "<group>"; };
@@ -947,6 +949,7 @@
 			isa = PBXGroup;
 			children = (
 				90546BFB1F6B169100E8E75F /* TutorialViewController.swift */,
+				90357ADA1F841C24008E50E9 /* TutorialViewControllerDelegate.swift */,
 				90546BFC1F6B169100E8E75F /* TutorialViewControllerConstants.swift */,
 			);
 			path = Tutorial;
@@ -1415,6 +1418,7 @@
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
 				90546BEE1F6AF23100E8E75F /* TrackingManager.swift in Sources */,
 				90145E5D1F61B9E30068698D /* InAppPurchasePresentationLayout.swift in Sources */,
+				90357ADB1F841C24008E50E9 /* TutorialViewControllerDelegate.swift in Sources */,
 				908346F61F5202AE00654FF6 /* String+FindPositions.swift in Sources */,
 				90145E5E1F61B9E30068698D /* ThemePresentationPage.swift in Sources */,
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,

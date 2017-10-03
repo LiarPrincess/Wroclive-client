@@ -18,6 +18,8 @@ class TutorialViewController: UIViewController {
 
   // MARK: - Properties
 
+  weak var delegate: TutorialViewControllerDelegate?
+
   let mode: TutorialViewControllerMode
 
   let presentation = TutorialPresentation()
@@ -26,8 +28,9 @@ class TutorialViewController: UIViewController {
 
   // MARK: - Init
 
-  init(mode: TutorialViewControllerMode) {
-    self.mode = mode
+  init(mode: TutorialViewControllerMode, delegate: TutorialViewControllerDelegate? = nil) {
+    self.mode     = mode
+    self.delegate = delegate
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -89,15 +92,7 @@ class TutorialViewController: UIViewController {
   // MARK: - Actions
 
   @objc func closeButtonPressed() {
-    if self.mode == .firstUse {
-      Managers.app.hasSeenTutorial = true
-
-      let controller = MainViewController()
-      controller.modalTransitionStyle = .flipHorizontal
-      self.present(controller, animated: true, completion: nil)
-    }
-    else {
-      self.dismiss(animated: true, completion: nil)
-    }
+    self.delegate?.tutorialViewControllerWillClose(self)
+    self.dismiss(animated: true, completion: nil)
   }
 }

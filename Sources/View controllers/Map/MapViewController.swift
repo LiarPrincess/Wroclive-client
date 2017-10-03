@@ -107,26 +107,25 @@ class MapViewController: UIViewController {
     _ = Managers.location.getUserLocation()
     .then { userLocation -> () in
       self.mapView.setCenter(userLocation, animated: true)
-
-      if !self.isInsideDefaultCity(userLocation) {
-        Managers.alert.showInvalidCityAlert(in: self) { result in
-          if result == .showDefault {
-            self.centerDefaultRegion(animated: true)
-          }
-        }
-      }
+      self.alertWhenFarFromDefaultCity(userLocation: userLocation)
       return ()
     }
     // no need for .catch, if we don't have access then leave as it is
     // .catch { _ in self.centerDefaultRegion(animated: true) }
   }
 
-  fileprivate func isInsideDefaultCity(_ coordinate: CLLocationCoordinate2D) -> Bool {
+  fileprivate func alertWhenFarFromDefaultCity(userLocation: CLLocationCoordinate2D) {
     let cityCenter = CLLocation(coordinate: Constants.Defaults.cityCenter)
-    let location   = CLLocation(coordinate: coordinate)
+    let distance   = cityCenter.distance(from: CLLocation(coordinate: userLocation))
 
-    let distance = cityCenter.distance(from: location)
-    return distance < Constants.Defaults.cityRadius
+    guard distance > Constants.Defaults.cityRadius
+      else { return }
+
+    Managers.alert.showInvalidCityAlert(in: self) { [weak self] result in
+      if result == .showDefault {
+        self?.centerDefaultRegion(animated: true)
+      }
+    }
   }
 }
 

@@ -52,6 +52,16 @@ class MainViewController: UIViewController {
     self.initLayout()
   }
 
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    let hasSeenTutorial = Managers.app.hasSeenTutorial
+    if !hasSeenTutorial {
+      let tutorial = TutorialViewController(mode: .firstUse, delegate: self)
+      self.present(tutorial, animated: true, completion: nil)
+    }
+  }
+
   // MARK: - Actions
 
   @objc func searchButtonPressed() {
@@ -140,5 +150,12 @@ extension MainViewController: SearchViewControllerDelegate {
 extension MainViewController: BookmarksViewControllerDelegate {
   func bookmarksViewController(_ controller: BookmarksViewController, didSelect bookmark: Bookmark) {
     Managers.tracking.start(bookmark.lines)
+  }
+}
+
+extension MainViewController: TutorialViewControllerDelegate {
+  func tutorialViewControllerWillClose(_ viewController: TutorialViewController) {
+    Managers.app.hasSeenTutorial = true
+    Managers.location.requestAuthorization()
   }
 }
