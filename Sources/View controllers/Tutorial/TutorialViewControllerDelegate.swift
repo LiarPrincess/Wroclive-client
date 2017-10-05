@@ -4,5 +4,5 @@
 //
 
 protocol TutorialViewControllerDelegate: class {
-  func tutorialViewControllerWillClose(_ viewController: TutorialViewController)
+  func tutorialViewControllerDidTapCloseButton(_ viewController: TutorialViewController)
 }

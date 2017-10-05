@@ -23,12 +23,14 @@ class AppCoordinator: Coordinator {
 }
 
 extension AppCoordinator: MainViewControllerDelegate {
+
   func mainViewControllerDidAppear(_ viewController: MainViewController) {
     let hasSeenTutorial = Managers.app.hasSeenTutorial
-    if !hasSeenTutorial {
-      let tutorial = TutorialViewController(mode: .firstUse, delegate: self)
-      viewController.present(tutorial, animated: true, completion: nil)
-    }
+    guard !hasSeenTutorial else { return }
+
+    let coordinator = FirstUseTutorialCoordinator(parent: viewController, delegate: self)
+    coordinator.start()
+    self.addChildCoordinator(coordinator)
   }
 
   func mainViewControllerDidTapSearchButton(_ viewController: MainViewController) {
@@ -51,18 +53,18 @@ extension AppCoordinator: MainViewControllerDelegate {
   private func presentCardPanel<TCardPanel>(_ cardPanel: TCardPanel, in viewController: UIViewController)
     where TCardPanel: UIViewController, TCardPanel: CardPanelPresentable
   {
-    self.cardPanelTransitionDelegate  = CardPanelTransitionDelegate(for: cardPanel)
+    self.cardPanelTransitionDelegate = CardPanelTransitionDelegate(for: cardPanel)
     cardPanel.modalPresentationStyle = .custom
     cardPanel.transitioningDelegate  = self.cardPanelTransitionDelegate!
     viewController.present(cardPanel, animated: true, completion: nil)
   }
 }
 
-// MARK: - TutorialViewControllerDelegate
-
-extension AppCoordinator: TutorialViewControllerDelegate {
-  func tutorialViewControllerWillClose(_ viewController: TutorialViewController) {
+extension AppCoordinator: FirstUseTutorialCoordinatorDelegate {
+  func firstUseTutorialCoordinatorDidClose(_ coordinator: FirstUseTutorialCoordinator) {
     Managers.app.hasSeenTutorial = true
     Managers.location.requestAuthorization()
+    self.removeChildCoordinator(coordinator)
+    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
   }
 }

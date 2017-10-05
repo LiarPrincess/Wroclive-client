@@ -53,7 +53,7 @@ class TutorialViewController: UIViewController {
     }
   }
 
-  // MARK: - Back button
+  // MARK: - Buttons
 
   private func initBackButton() {
     let image = StyleKit.drawBackTemplateImage(size: Layout.BackButton.imageSize)
@@ -87,7 +87,6 @@ class TutorialViewController: UIViewController {
   // MARK: - Actions
 
   @objc func closeButtonPressed() {
-    self.delegate?.tutorialViewControllerWillClose(self)
-    self.dismiss(animated: true, completion: nil)
+    self.delegate?.tutorialViewControllerDidTapCloseButton(self)
   }
 }

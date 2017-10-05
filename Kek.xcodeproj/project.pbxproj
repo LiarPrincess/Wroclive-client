@@ -157,6 +157,7 @@
 		90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFEE591F8426AC009716B6 /* Coordinator.swift */; };
 		90AFEE5C1F842753009716B6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFEE5B1F842753009716B6 /* AppCoordinator.swift */; };
 		90AFEE5E1F842815009716B6 /* MainViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFEE5D1F842815009716B6 /* MainViewControllerDelegate.swift */; };
+		90AFEE611F842DEB009716B6 /* FirstUseTutorialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFEE601F842DEB009716B6 /* FirstUseTutorialCoordinator.swift */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
 		90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF51F69B62800AF4B84 /* PushConstants.swift */; };
 		90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */; };
@@ -346,6 +347,7 @@
 		90AFEE591F8426AC009716B6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		90AFEE5B1F842753009716B6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		90AFEE5D1F842815009716B6 /* MainViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerDelegate.swift; sourceTree = "<group>"; };
+		90AFEE601F842DEB009716B6 /* FirstUseTutorialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstUseTutorialCoordinator.swift; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90BC8AF51F69B62800AF4B84 /* PushConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushConstants.swift; sourceTree = "<group>"; };
 		90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTransitionDelegate.swift; sourceTree = "<group>"; };
@@ -947,9 +949,9 @@
 		90546BFA1F6B169100E8E75F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				90357ADA1F841C24008E50E9 /* TutorialViewControllerDelegate.swift */,
 				9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */,
 				90546BFB1F6B169100E8E75F /* TutorialViewController.swift */,
-				90357ADA1F841C24008E50E9 /* TutorialViewControllerDelegate.swift */,
 				90546BFC1F6B169100E8E75F /* TutorialViewControllerConstants.swift */,
 			);
 			path = Tutorial;
@@ -979,7 +981,8 @@
 		9061355D1F842633006634C7 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				90AFEE591F8426AC009716B6 /* Coordinator.swift */,
+				90AFEE621F8434BB009716B6 /* Framework */,
+				90AFEE5F1F842DC3009716B6 /* Tutorial */,
 				90AFEE5B1F842753009716B6 /* AppCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -1108,6 +1111,22 @@
 				90AF8C781EF2D3FE000763B7 /* Wroclaw.gpx */,
 			);
 			path = Locations;
+			sourceTree = "<group>";
+		};
+		90AFEE5F1F842DC3009716B6 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				90AFEE601F842DEB009716B6 /* FirstUseTutorialCoordinator.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		90AFEE621F8434BB009716B6 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				90AFEE591F8426AC009716B6 /* Coordinator.swift */,
+			);
+			path = Framework;
 			sourceTree = "<group>";
 		};
 		90B1DA9F1F2BD91700FAE18A /* Bookmarks */ = {
@@ -1503,6 +1522,7 @@
 				9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */,
 				9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */,
 				908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */,
+				90AFEE611F842DEB009716B6 /* FirstUseTutorialCoordinator.swift in Sources */,
 				90F0A2D61F732A6A00C641C8 /* ColorSchemeObserver.swift in Sources */,
 				9021F4161F12C9EF000A6949 /* CardPanelConstants.swift in Sources */,
 				9021F4431F12D6C5000A6949 /* LineSelectionViewController.swift in Sources */,
