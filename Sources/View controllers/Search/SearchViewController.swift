@@ -11,7 +11,8 @@ private typealias Constants = SearchViewControllerConstants
 private typealias Layout    = Constants.Layout
 
 protocol SearchViewControllerDelegate: class {
-  func searchViewController(_ controller: SearchViewController, didSelect lines: [Line])
+  func searchViewController(_ viewController: SearchViewController, didSelect lines: [Line])
+  func searchViewControllerDidClose(_ viewController: SearchViewController)
 }
 
 class SearchViewController: UIViewController {
@@ -95,6 +96,7 @@ class SearchViewController: UIViewController {
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     self.saveState()
+    self.delegate?.searchViewControllerDidClose(self)
   }
 
   // MARK: - Actions
@@ -114,12 +116,10 @@ class SearchViewController: UIViewController {
   }
 
   @objc func searchButtonPressed() {
-    if self.mode == .selectingLines {
-      let selectedLines = self.linesSelector.selectedLines
-      self.delegate?.searchViewController(self, didSelect: selectedLines)
-    }
+    guard self.mode == .selectingLines else { return }
 
-    self.dismiss(animated: true, completion: nil)
+    let lines = self.linesSelector.selectedLines
+    self.delegate?.searchViewController(self, didSelect: lines)
   }
 
   // MARK: - Private - State

@@ -11,7 +11,7 @@ private typealias Layout    = ConfigurationViewControllerConstants.Layout
 protocol ConfigurationViewControllerDelegate: class {
   func configurationViewControllerDidClose(_ viewController: ConfigurationViewController)
 
-  func configurationViewControllerDidTapThemeButton(_ viewController: ConfigurationViewController)
+  func configurationViewControllerDidTapColorSelectionButton(_ viewController: ConfigurationViewController)
   func configurationViewControllerDidTapTutorialButton(_ viewController: ConfigurationViewController)
 }
 
@@ -133,7 +133,7 @@ extension ConfigurationViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let cell = self.tableViewDataSource.cellAt(indexPath)
     switch cell {
-    case .personalization: self.delegate?.configurationViewControllerDidTapThemeButton(self)
+    case .personalization: self.delegate?.configurationViewControllerDidTapColorSelectionButton(self)
     case .tutorial:        self.delegate?.configurationViewControllerDidTapTutorialButton(self)
     case .contact:         Managers.app.openWebsite()
     case .share:           Managers.app.showShareActivity(in: self)

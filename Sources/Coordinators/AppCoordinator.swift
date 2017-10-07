@@ -23,9 +23,9 @@ class AppCoordinator: CardPanelCoordinator {
 }
 
 extension AppCoordinator: MainViewControllerDelegate,
-                          TutorialViewControllerDelegate,
-                          SearchViewControllerDelegate,
-                          BookmarksViewControllerDelegate,
+                          TutorialCoordinatorDelegate,
+                          SearchCoordinatorDelegate,
+                          BookmarksCoordinatorDelegate,
                           ConfigurationCoordinatorDelegate
 {
 
@@ -35,36 +35,42 @@ extension AppCoordinator: MainViewControllerDelegate,
     let hasSeenTutorial = Managers.app.hasSeenTutorial
     guard !hasSeenTutorial else { return }
 
-    let controller = TutorialViewController(mode: .firstUse, delegate: self)
-    viewController.present(controller, animated: true, completion: nil)
+    let coordinator = TutorialCoordinator(parent: viewController, mode: .firstUse, delegate: self)
+    self.childCoordinators.append(coordinator)
+    coordinator.start()
   }
 
-  func tutorialViewControllerDidTapCloseButton(_ viewController: TutorialViewController) {
-    viewController.dismiss(animated: true, completion: nil)
-    Managers.app.hasSeenTutorial = true
-    Managers.location.requestAuthorization()
+  func tutorialCoordinatorDidClose(_ coordinator: TutorialCoordinator) {
+    self.removeChildCoordinator(coordinator)
+
+    if coordinator.mode == .firstUse {
+      Managers.app.hasSeenTutorial = true
+      Managers.location.requestAuthorization()
+    }
   }
 
   // MARK: - Search
 
   func mainViewControllerDidTapSearchButton(_ viewController: MainViewController) {
-    let panel = SearchViewController(delegate: self)
-    self.presentCardPanel(panel, in: viewController)
+    let coordinator = SearchCoordinator(parent: viewController, delegate: self)
+    self.childCoordinators.append(coordinator)
+    coordinator.start()
   }
 
-  func searchViewController(_ controller: SearchViewController, didSelect lines: [Line]) {
-    Managers.tracking.start(lines)
+  func coordinatorDidClose(_ coordinator: SearchCoordinator) {
+    self.removeChildCoordinator(coordinator)
   }
 
   // MARK: - Bookmarks
 
   func mainViewControllerDidTapBookmarksButton(_ viewController: MainViewController) {
-    let panel = BookmarksViewController(delegate: self)
-    self.presentCardPanel(panel, in: viewController)
+    let coordinator = BookmarksCoordinator(parent: viewController, delegate: self)
+    self.childCoordinators.append(coordinator)
+    coordinator.start()
   }
 
-  func bookmarksViewController(_ controller: BookmarksViewController, didSelect bookmark: Bookmark) {
-    Managers.tracking.start(bookmark.lines)
+  func coordinatorDidClose(_ coordinator: BookmarksCoordinator) {
+    self.removeChildCoordinator(coordinator)
   }
 
   // MARK: - Configuration

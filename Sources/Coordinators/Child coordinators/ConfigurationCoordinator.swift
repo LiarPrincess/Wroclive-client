@@ -9,11 +9,10 @@ protocol ConfigurationCoordinatorDelegate: class {
   func coordinatorDidClose(_ coordinator: ConfigurationCoordinator)
 }
 
-class ConfigurationCoordinator: CardPanelCoordinator, PushCoordinator {
+class ConfigurationCoordinator: CardPanelCoordinator {
   var childCoordinators: [Coordinator] = []
 
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
-  var pushTransitionDelegate:      UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
   weak var parent:   UIViewController?
   weak var delegate: ConfigurationCoordinatorDelegate?
@@ -32,7 +31,8 @@ class ConfigurationCoordinator: CardPanelCoordinator, PushCoordinator {
 }
 
 extension ConfigurationCoordinator: ConfigurationViewControllerDelegate,
-                                    TutorialViewControllerDelegate
+                                    ColorSelectionCoordinatorDelegate,
+                                    TutorialCoordinatorDelegate
 {
 
   // MARK: - Close
@@ -41,21 +41,27 @@ extension ConfigurationCoordinator: ConfigurationViewControllerDelegate,
     self.delegate?.coordinatorDidClose(self)
   }
 
-  // MARK: - Theme
+  // MARK: - Color selection
 
-  func configurationViewControllerDidTapThemeButton(_ viewController: ConfigurationViewController) {
-    let child = ColorSelectionViewController()
-    self.presentPush(child, in: viewController)
+  func configurationViewControllerDidTapColorSelectionButton(_ viewController: ConfigurationViewController) {
+    let coordinator = ColorSelectionCoordinator(parent: viewController, delegate: self)
+    self.childCoordinators.append(coordinator)
+    coordinator.start()
+  }
+
+  func coordinatorDidClose(_ coordinator: ColorSelectionCoordinator) {
+    self.removeChildCoordinator(coordinator)
   }
 
   // MARK: - Tutorial
 
   func configurationViewControllerDidTapTutorialButton(_ viewController: ConfigurationViewController) {
-    let child = TutorialViewController(mode: .default, delegate: self)
-    self.presentPush(child, in: viewController)
+    let coordinator = TutorialCoordinator(parent: viewController, mode: .default, delegate: self)
+    self.childCoordinators.append(coordinator)
+    coordinator.start()
   }
 
-  func tutorialViewControllerDidTapCloseButton(_ viewController: TutorialViewController) {
-    viewController.dismiss(animated: true, completion: nil)
+  func tutorialCoordinatorDidClose(_ coordinator: TutorialCoordinator) {
+    self.removeChildCoordinator(coordinator)
   }
 }

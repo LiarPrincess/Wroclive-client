@@ -7,9 +7,16 @@ import UIKit
 
 private typealias Layout = ColorSelectionViewControllerConstants.Layout
 
+protocol ColorSelectionViewControllerDelegate: class {
+  func colorSelectionViewControllerDidClose(_ viewController: ColorSelectionViewController)
+  func colorSelectionViewControllerDidTapCloseButton(_ viewController: ColorSelectionViewController)
+}
+
 class ColorSelectionViewController: UIViewController {
 
   // MARK: - Properties
+
+  weak var delegate: ColorSelectionViewControllerDelegate?
 
   let scrollView        = UIScrollView()
   let scrollViewContent = UIView()
@@ -26,8 +33,13 @@ class ColorSelectionViewController: UIViewController {
 
   // MARK: - Init
 
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+  convenience init(delegate: ColorSelectionViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, delegate: delegate)
+  }
+
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: ColorSelectionViewControllerDelegate? = nil) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    self.delegate = delegate
     self.startObservingColorScheme()
   }
 
@@ -54,6 +66,11 @@ class ColorSelectionViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.selectInitialColor()
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    self.delegate?.colorSelectionViewControllerDidClose(self)
   }
 
   fileprivate var itemSize = CGSize()
@@ -99,7 +116,7 @@ class ColorSelectionViewController: UIViewController {
   // MARK: - Actions
 
   @objc func closeButtonPressed() {
-    self.dismiss(animated: true, completion: nil)
+    self.delegate?.colorSelectionViewControllerDidTapCloseButton(self)
   }
 
   // MARK: - Save

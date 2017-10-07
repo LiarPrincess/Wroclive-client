@@ -11,7 +11,8 @@ private typealias Layout       = Constants.Layout
 private typealias Localization = Localizable.Bookmarks
 
 protocol BookmarksViewControllerDelegate: class {
-  func bookmarksViewController(_ controller: BookmarksViewController, didSelect bookmark: Bookmark)
+  func bookmarksViewController(_ viewController: BookmarksViewController, didSelect bookmark: Bookmark)
+  func bookmarksViewControllerDidClose(_ viewController: BookmarksViewController)
 }
 
 class BookmarksViewController: UIViewController {
@@ -78,6 +79,11 @@ class BookmarksViewController: UIViewController {
     }
   }
 
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    self.delegate?.bookmarksViewControllerDidClose(self)
+  }
+
   // MARK: - Editing
 
   override func setEditing(_ editing: Bool, animated: Bool) {
@@ -119,7 +125,6 @@ class BookmarksViewController: UIViewController {
 
   fileprivate func selectBookmark(_ bookmark: Bookmark) {
     self.delegate?.bookmarksViewController(self, didSelect: bookmark)
-    self.dismiss(animated: true, completion: nil)
   }
 
   // MARK: - Private - Placeholder
