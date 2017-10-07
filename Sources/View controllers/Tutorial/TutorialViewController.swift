@@ -9,6 +9,10 @@ import SnapKit
 private typealias Layout       = TutorialViewControllerConstants.Layout
 private typealias Localization = Localizable.Presentation.Tutorial
 
+protocol TutorialViewControllerDelegate: class {
+  func tutorialViewControllerDidTapCloseButton(_ viewController: TutorialViewController)
+}
+
 class TutorialViewController: UIViewController {
 
   // MARK: - Properties

@@ -10,6 +10,14 @@ import PromiseKit
 
 private typealias Constants = MainViewControllerConstants
 
+protocol MainViewControllerDelegate: class {
+  func mainViewControllerDidAppear(_ viewController: MainViewController)
+
+  func mainViewControllerDidTapSearchButton(_ viewController: MainViewController)
+  func mainViewControllerDidTapBookmarksButton(_ viewController: MainViewController)
+  func mainViewControllerDidTapConfigurationButton(_ viewController: MainViewController)
+}
+
 class MainViewController: UIViewController {
 
   // MARK: - Properties
@@ -65,7 +73,7 @@ class MainViewController: UIViewController {
   }
 
   @objc func bookmarksButtonPressed() {
-    self.delegate?.mainViewControllerDidTapTapBookmarksButton(self)
+    self.delegate?.mainViewControllerDidTapBookmarksButton(self)
   }
 
   @objc func configurationButtonPressed() {
@@ -116,21 +124,5 @@ extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
     default:
       Managers.alert.showNetworkingErrorAlert(in: self, retry: retry)
     }
-  }
-}
-
-// MARK: - SearchViewControllerDelegate
-
-extension MainViewController: SearchViewControllerDelegate {
-  func searchViewController(_ controller: SearchViewController, didSelect lines: [Line]) {
-    Managers.tracking.start(lines)
-  }
-}
-
-// MARK: - BookmarksViewControllerDelegate
-
-extension MainViewController: BookmarksViewControllerDelegate {
-  func bookmarksViewController(_ controller: BookmarksViewController, didSelect bookmark: Bookmark) {
-    Managers.tracking.start(bookmark.lines)
   }
 }

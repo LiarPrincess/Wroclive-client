@@ -10,6 +10,10 @@ private typealias Constants    = BookmarksViewControllerConstants
 private typealias Layout       = Constants.Layout
 private typealias Localization = Localizable.Bookmarks
 
+protocol BookmarksViewControllerDelegate: class {
+  func bookmarksViewController(_ controller: BookmarksViewController, didSelect bookmark: Bookmark)
+}
+
 class BookmarksViewController: UIViewController {
 
   // MARK: - Properties
@@ -31,6 +35,13 @@ class BookmarksViewController: UIViewController {
   let placeholderView    = UIView()
   let placeholderTitle   = UILabel()
   let placeholderContent = UILabel()
+
+  // MARK: - Init
+
+  convenience init(delegate: BookmarksViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil)
+    self.delegate = delegate
+  }
 
   // MARK: - Overriden
 
@@ -66,6 +77,8 @@ class BookmarksViewController: UIViewController {
       self.bookmarksTable.setContentOffset(newOffset, animated: false)
     }
   }
+
+  // MARK: - Editing
 
   override func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)

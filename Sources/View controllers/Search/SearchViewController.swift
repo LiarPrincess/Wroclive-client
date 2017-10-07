@@ -10,6 +10,10 @@ import PromiseKit
 private typealias Constants = SearchViewControllerConstants
 private typealias Layout    = Constants.Layout
 
+protocol SearchViewControllerDelegate: class {
+  func searchViewController(_ controller: SearchViewController, didSelect lines: [Line])
+}
+
 class SearchViewController: UIViewController {
 
   // MARK: - Properties
@@ -51,6 +55,13 @@ class SearchViewController: UIViewController {
         self.linesSelector.view.isHidden = false
       }
     }
+  }
+
+  // MARK: - Init
+
+  convenience init(delegate: SearchViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil)
+    self.delegate = delegate
   }
 
   // MARK: - Overriden

@@ -5,12 +5,12 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator {
+class AppCoordinator: CardPanelCoordinator {
 
   var window: UIWindow
   var childCoordinators: [Coordinator] = []
 
-  fileprivate var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
   init(window: UIWindow) {
     self.window = window
@@ -22,49 +22,60 @@ class AppCoordinator: Coordinator {
   }
 }
 
-extension AppCoordinator: MainViewControllerDelegate {
+extension AppCoordinator: MainViewControllerDelegate,
+                          TutorialViewControllerDelegate,
+                          SearchViewControllerDelegate,
+                          BookmarksViewControllerDelegate,
+                          ConfigurationCoordinatorDelegate
+{
+
+  // MARK: - Tutorial
 
   func mainViewControllerDidAppear(_ viewController: MainViewController) {
     let hasSeenTutorial = Managers.app.hasSeenTutorial
     guard !hasSeenTutorial else { return }
 
-    let coordinator = FirstUseTutorialCoordinator(parent: viewController, delegate: self)
-    coordinator.start()
-    self.addChildCoordinator(coordinator)
+    let controller = TutorialViewController(mode: .firstUse, delegate: self)
+    viewController.present(controller, animated: true, completion: nil)
   }
 
-  func mainViewControllerDidTapSearchButton(_ viewController: MainViewController) {
-    let panel = SearchViewController()
-    panel.delegate = viewController
-    self.presentCardPanel(panel, in: viewController)
-  }
-
-  func mainViewControllerDidTapTapBookmarksButton(_ viewController: MainViewController) {
-    let panel = BookmarksViewController()
-    panel.delegate = viewController
-    self.presentCardPanel(panel, in: viewController)
-  }
-
-  func mainViewControllerDidTapConfigurationButton(_ viewController: MainViewController) {
-    let controller = ConfigurationViewController()
-    self.presentCardPanel(controller, in: viewController)
-  }
-
-  private func presentCardPanel<TCardPanel>(_ cardPanel: TCardPanel, in viewController: UIViewController)
-    where TCardPanel: UIViewController, TCardPanel: CardPanelPresentable
-  {
-    self.cardPanelTransitionDelegate = CardPanelTransitionDelegate(for: cardPanel)
-    cardPanel.modalPresentationStyle = .custom
-    cardPanel.transitioningDelegate  = self.cardPanelTransitionDelegate!
-    viewController.present(cardPanel, animated: true, completion: nil)
-  }
-}
-
-extension AppCoordinator: FirstUseTutorialCoordinatorDelegate {
-  func firstUseTutorialCoordinatorDidClose(_ coordinator: FirstUseTutorialCoordinator) {
+  func tutorialViewControllerDidTapCloseButton(_ viewController: TutorialViewController) {
+    viewController.dismiss(animated: true, completion: nil)
     Managers.app.hasSeenTutorial = true
     Managers.location.requestAuthorization()
+  }
+
+  // MARK: - Search
+
+  func mainViewControllerDidTapSearchButton(_ viewController: MainViewController) {
+    let panel = SearchViewController(delegate: self)
+    self.presentCardPanel(panel, in: viewController)
+  }
+
+  func searchViewController(_ controller: SearchViewController, didSelect lines: [Line]) {
+    Managers.tracking.start(lines)
+  }
+
+  // MARK: - Bookmarks
+
+  func mainViewControllerDidTapBookmarksButton(_ viewController: MainViewController) {
+    let panel = BookmarksViewController(delegate: self)
+    self.presentCardPanel(panel, in: viewController)
+  }
+
+  func bookmarksViewController(_ controller: BookmarksViewController, didSelect bookmark: Bookmark) {
+    Managers.tracking.start(bookmark.lines)
+  }
+
+  // MARK: - Configuration
+
+  func mainViewControllerDidTapConfigurationButton(_ viewController: MainViewController) {
+    let coordinator = ConfigurationCoordinator(parent: viewController, delegate: self)
+    self.childCoordinators.append(coordinator)
+    coordinator.start()
+  }
+
+  func coordinatorDidClose(_ coordinator: ConfigurationCoordinator) {
     self.removeChildCoordinator(coordinator)
-    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
   }
 }

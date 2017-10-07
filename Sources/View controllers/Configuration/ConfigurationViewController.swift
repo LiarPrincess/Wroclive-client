@@ -8,9 +8,18 @@ import UIKit
 private typealias Constants = ConfigurationViewControllerConstants
 private typealias Layout    = ConfigurationViewControllerConstants.Layout
 
+protocol ConfigurationViewControllerDelegate: class {
+  func configurationViewControllerDidClose(_ viewController: ConfigurationViewController)
+
+  func configurationViewControllerDidTapThemeButton(_ viewController: ConfigurationViewController)
+  func configurationViewControllerDidTapTutorialButton(_ viewController: ConfigurationViewController)
+}
+
 class ConfigurationViewController: UIViewController {
 
   // MARK: - Properties
+
+  weak var delegate: ConfigurationViewControllerDelegate?
 
   lazy var headerView: UIVisualEffectView = {
     let blur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
@@ -27,16 +36,15 @@ class ConfigurationViewController: UIViewController {
   let tableView           = IntrinsicTableView(frame: .zero, style: .grouped)
   let tableViewDataSource = ConfigurationDataSource()
 
-  var pushTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
-
   // MARK: - Init
 
-  convenience init() {
-    self.init(nibName: nil, bundle: nil)
+  convenience init(delegate: ConfigurationViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, delegate: delegate)
   }
 
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: ConfigurationViewControllerDelegate? = nil) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    self.delegate = delegate
     self.startObservingColorScheme()
   }
 
@@ -64,6 +72,11 @@ class ConfigurationViewController: UIViewController {
       self.offsetScrolViewToInitialPosition()
       self.isAppearingForFirstTime = false
     }
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    self.delegate?.configurationViewControllerDidClose(self)
   }
 
   // MARK: - Scroll view
@@ -109,6 +122,7 @@ extension ConfigurationViewController: ColorSchemeObserver {
 
 extension ConfigurationViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    guard scrollView == self.scrollView else { return }
     self.updateScrollViewBackgroundColor()
   }
 }
@@ -116,33 +130,15 @@ extension ConfigurationViewController: UIScrollViewDelegate {
 // MARK: - UITableViewDelegate
 
 extension ConfigurationViewController: UITableViewDelegate {
-
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let cell = self.tableViewDataSource.cellAt(indexPath)
     switch cell {
-    case .personalization: self.showThemeManager()
-    case .tutorial:        self.showTutorial()
+    case .personalization: self.delegate?.configurationViewControllerDidTapThemeButton(self)
+    case .tutorial:        self.delegate?.configurationViewControllerDidTapTutorialButton(self)
     case .contact:         Managers.app.openWebsite()
     case .share:           Managers.app.showShareActivity(in: self)
     case .rate:            Managers.appStore.rateApp()
     }
     tableView.deselectRow(at: indexPath, animated: true)
-  }
-
-  private func showThemeManager() {
-    let controller = ColorSelectionViewController()
-    self.present(controller)
-  }
-
-  private func showTutorial() {
-    let controller = TutorialViewController(mode: .default)
-    self.present(controller)
-  }
-
-  private func present(_ controller: UIViewController) {
-    self.pushTransitionDelegate = PushTransitionDelegate(for: controller)
-    controller.modalPresentationStyle = .custom
-    controller.transitioningDelegate  = self.pushTransitionDelegate
-    self.present(controller, animated: true, completion: nil)
   }
 }
