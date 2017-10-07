@@ -100,6 +100,8 @@
 		90374CCD1F6D3BF8008D78CE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374CCC1F6D3BF8008D78CE /* Endpoint.swift */; };
 		903920351F1AB70E00250162 /* ArrayOfLine+FilterByType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */; };
 		903BC5261F88DF0E0098469F /* ColorSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903BC5251F88DF0E0098469F /* ColorSelectionCoordinator.swift */; };
+		903BC5281F88EB270098469F /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903BC5271F88EB270098469F /* DependencyManager.swift */; };
+		903BC52A1F88ED940098469F /* DependencyManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903BC5291F88ED940098469F /* DependencyManagerImpl.swift */; };
 		903F6F961F7D822B00FCC56B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */; };
 		9044A5441F69A13D00F26C17 /* ColorSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A5331F69A13D00F26C17 /* ColorSelectionCell.swift */; };
 		9044A5451F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A5341F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift */; };
@@ -292,6 +294,8 @@
 		90374CCC1F6D3BF8008D78CE /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		903920341F1AB70E00250162 /* ArrayOfLine+FilterByType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfLine+FilterByType.swift"; sourceTree = "<group>"; };
 		903BC5251F88DF0E0098469F /* ColorSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionCoordinator.swift; sourceTree = "<group>"; };
+		903BC5271F88EB270098469F /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
+		903BC5291F88ED940098469F /* DependencyManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManagerImpl.swift; sourceTree = "<group>"; };
 		903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9044A5331F69A13D00F26C17 /* ColorSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionCell.swift; sourceTree = "<group>"; };
 		9044A5341F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionFooterView.swift; sourceTree = "<group>"; };
@@ -847,6 +851,8 @@
 				90E8A6C91F4CE23200CE5AE9 /* App Store */,
 				90AF2BD21EE9DDE4006E61D6 /* Theme */,
 				900CAEA51F482E750044C8A6 /* Managers.swift */,
+				903BC5271F88EB270098469F /* DependencyManager.swift */,
+				903BC5291F88ED940098469F /* DependencyManagerImpl.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1469,6 +1475,7 @@
 				90546BEE1F6AF23100E8E75F /* TrackingManager.swift in Sources */,
 				90145E5D1F61B9E30068698D /* InAppPurchasePresentationLayout.swift in Sources */,
 				908346F61F5202AE00654FF6 /* String+FindPositions.swift in Sources */,
+				903BC52A1F88ED940098469F /* DependencyManagerImpl.swift in Sources */,
 				90145E5E1F61B9E30068698D /* ThemePresentationPage.swift in Sources */,
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,
 				908252581F703F0E001C2926 /* NotificationData.swift in Sources */,
@@ -1563,6 +1570,7 @@
 				9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
+				903BC5281F88EB270098469F /* DependencyManager.swift in Sources */,
 				9021F43F1F12D698000A6949 /* LineSelectionCellViewModel.swift in Sources */,
 				90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */,
 				908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */,

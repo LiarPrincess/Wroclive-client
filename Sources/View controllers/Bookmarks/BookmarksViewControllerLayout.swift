@@ -13,7 +13,7 @@ private typealias Localization = Localizable.Bookmarks
 extension BookmarksViewController {
 
   func initLayout() {
-    self.view.backgroundColor = Managers.theme.colorScheme.background
+    self.view.backgroundColor = self.managers.theme.colorScheme.background
     self.initHeader()
     self.initBookmarksTable()
     self.initBookmarksTablePlaceholder()
@@ -30,7 +30,7 @@ extension BookmarksViewController {
       make.left.top.right.equalToSuperview()
     }
 
-    let titleAttributes           = Managers.theme.textAttributes(for: .headline)
+    let titleAttributes           = self.managers.theme.textAttributes(for: .headline)
     self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
@@ -56,7 +56,7 @@ extension BookmarksViewController {
   private func initBookmarksTable() {
     self.bookmarksTable.register(BookmarkCell.self)
     self.bookmarksTable.separatorInset  = UIEdgeInsets(top: 0.0, left: Layout.leftInset, bottom: 0.0, right: Layout.rightInset)
-    self.bookmarksTable.backgroundColor = Managers.theme.colorScheme.background
+    self.bookmarksTable.backgroundColor = self.managers.theme.colorScheme.background
     self.bookmarksTable.dataSource      = self.bookmarksTableDataSource
     self.bookmarksTable.delegate        = self
 
@@ -79,7 +79,7 @@ extension BookmarksViewController {
       make.centerY.equalTo(self.view)
     }
 
-    let titleAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
+    let titleAttributes = self.managers.theme.textAttributes(for: .subheadline, alignment: .center)
     self.placeholderTitle.attributedText = NSAttributedString(string: Localization.placeholderTitle, attributes: titleAttributes)
     self.placeholderTitle.numberOfLines  = 0
     self.placeholderTitle.lineBreakMode  = .byWordWrapping
@@ -101,8 +101,8 @@ extension BookmarksViewController {
 
   private func createPlaceholderContent() -> NSAttributedString {
     let lineSpacing    = Layout.Placeholder.lineSpacing
-    let textAttributes = Managers.theme.textAttributes(for: .body, fontType: .text, alignment: .center, lineSpacing: lineSpacing)
-    let iconAttributes = Managers.theme.textAttributes(for: .body, fontType: .icon, alignment: .center, lineSpacing: lineSpacing)
+    let textAttributes = self.managers.theme.textAttributes(for: .body, fontType: .text, alignment: .center, lineSpacing: lineSpacing)
+    let iconAttributes = self.managers.theme.textAttributes(for: .body, fontType: .icon, alignment: .center, lineSpacing: lineSpacing)
 
     let starReplacement = TextReplacement("<star>", NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
 

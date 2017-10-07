@@ -7,13 +7,16 @@ import UIKit
 
 class AppCoordinator: CardPanelCoordinator {
 
-  var window: UIWindow
+  let window:   UIWindow
+  let managers: DependencyManager
+
   var childCoordinators: [Coordinator] = []
 
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
-  init(window: UIWindow) {
-    self.window = window
+  init(window: UIWindow, managers: DependencyManager) {
+    self.window   = window
+    self.managers = managers
   }
 
   func start() {
@@ -52,7 +55,7 @@ extension AppCoordinator: MainViewControllerDelegate,
   // MARK: - Search
 
   func mainViewControllerDidTapSearchButton(_ viewController: MainViewController) {
-    let coordinator = SearchCoordinator(parent: viewController, delegate: self)
+    let coordinator = SearchCoordinator(parent: viewController, managers: self.managers, delegate: self)
     self.childCoordinators.append(coordinator)
     coordinator.start()
   }
@@ -64,7 +67,7 @@ extension AppCoordinator: MainViewControllerDelegate,
   // MARK: - Bookmarks
 
   func mainViewControllerDidTapBookmarksButton(_ viewController: MainViewController) {
-    let coordinator = BookmarksCoordinator(parent: viewController, delegate: self)
+    let coordinator = BookmarksCoordinator(parent: viewController, managers: self.managers, delegate: self)
     self.childCoordinators.append(coordinator)
     coordinator.start()
   }

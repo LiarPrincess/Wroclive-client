@@ -10,22 +10,24 @@ protocol BookmarksCoordinatorDelegate: class {
 }
 
 class BookmarksCoordinator: CardPanelCoordinator {
-  var childCoordinators: [Coordinator] = []
+  let managers:          DependencyManager
 
+  var childCoordinators: [Coordinator] = []
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
   weak var parent:   UIViewController?
   weak var delegate: BookmarksCoordinatorDelegate?
 
-  init(parent: UIViewController, delegate: BookmarksCoordinatorDelegate) {
+  init(parent: UIViewController, managers: DependencyManager, delegate: BookmarksCoordinatorDelegate) {
     self.parent   = parent
+    self.managers = managers
     self.delegate = delegate
   }
 
   func start() {
     guard let parent = self.parent else { return }
 
-    let panel = BookmarksViewController(delegate: self)
+    let panel = BookmarksViewController(managers: self.managers, delegate: self)
     self.presentCardPanel(panel, in: parent)
   }
 }

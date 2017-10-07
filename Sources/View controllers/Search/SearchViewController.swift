@@ -10,6 +10,8 @@ import PromiseKit
 private typealias Constants = SearchViewControllerConstants
 private typealias Layout    = Constants.Layout
 
+typealias SearchViewControllerDependencies = HasBookmarksManager & HasThemeManager
+
 protocol SearchViewControllerDelegate: class {
   func searchViewController(_ viewController: SearchViewController, didSelect lines: [Line])
   func searchViewControllerDidClose(_ viewController: SearchViewController)
@@ -19,6 +21,7 @@ class SearchViewController: UIViewController {
 
   // MARK: - Properties
 
+  let managers:      SearchViewControllerDependencies
   weak var delegate: SearchViewControllerDelegate?
 
   let headerViewBlur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
@@ -60,9 +63,18 @@ class SearchViewController: UIViewController {
 
   // MARK: - Init
 
-  convenience init(delegate: SearchViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil)
+  convenience init(managers: SearchViewControllerDependencies, delegate: SearchViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, managers: managers, delegate: delegate)
+  }
+
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: BookmarksViewControllerDependencies, delegate: SearchViewControllerDelegate? = nil) {
+    self.managers = managers
     self.delegate = delegate
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - Overriden
@@ -111,7 +123,7 @@ class SearchViewController: UIViewController {
 
     Managers.alert.showBookmarkNameInputAlert(in: self) { name in
       guard let name = name else { return }
-      Managers.bookmarks.addNew(name: name, lines: selectedLines)
+      self.managers.bookmarks.addNew(name: name, lines: selectedLines)
     }
   }
 

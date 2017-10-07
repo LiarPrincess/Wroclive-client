@@ -10,6 +10,8 @@ private typealias Constants    = BookmarksViewControllerConstants
 private typealias Layout       = Constants.Layout
 private typealias Localization = Localizable.Bookmarks
 
+typealias BookmarksViewControllerDependencies = HasBookmarksManager & HasThemeManager
+
 protocol BookmarksViewControllerDelegate: class {
   func bookmarksViewController(_ viewController: BookmarksViewController, didSelect bookmark: Bookmark)
   func bookmarksViewControllerDidClose(_ viewController: BookmarksViewController)
@@ -19,12 +21,12 @@ class BookmarksViewController: UIViewController {
 
   // MARK: - Properties
 
+  let managers:      BookmarksViewControllerDependencies
   weak var delegate: BookmarksViewControllerDelegate?
 
-  let headerViewBlur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
-
   lazy var headerView: UIVisualEffectView = {
-    return UIVisualEffectView(effect: self.headerViewBlur)
+    let headerViewBlur = UIBlurEffect(style: self.managers.theme.colorScheme.blurStyle)
+    return UIVisualEffectView(effect: headerViewBlur)
   }()
 
   let cardTitle   = UILabel()
@@ -39,9 +41,18 @@ class BookmarksViewController: UIViewController {
 
   // MARK: - Init
 
-  convenience init(delegate: BookmarksViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil)
+  convenience init(managers: BookmarksViewControllerDependencies, delegate: BookmarksViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, managers: managers, delegate: delegate)
+  }
+
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: BookmarksViewControllerDependencies, delegate: BookmarksViewControllerDelegate? = nil) {
+    self.managers = managers
     self.delegate = delegate
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - Overriden
@@ -54,7 +65,7 @@ class BookmarksViewController: UIViewController {
   }
 
   private func initDataSource() {
-    let bookmarks = Managers.bookmarks.getAll()
+    let bookmarks = self.managers.bookmarks.getAll()
     self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
   }
 
@@ -99,13 +110,13 @@ class BookmarksViewController: UIViewController {
   }
 
   func setEditButtonEdit() {
-    let textAttributes = Managers.theme.textAttributes(for: .body, color: .tint)
+    let textAttributes = self.managers.theme.textAttributes(for: .body, color: .tint)
     let title          = NSAttributedString(string: Localization.editEdit, attributes: textAttributes)
     self.editButton.setAttributedTitle(title, for: .normal)
   }
 
   func setEditButtonDone() {
-    let textAttributes = Managers.theme.textAttributes(for: .bodyBold, color: .tint)
+    let textAttributes = self.managers.theme.textAttributes(for: .bodyBold, color: .tint)
     let title          = NSAttributedString(string: Localization.editDone, attributes: textAttributes)
     self.editButton.setAttributedTitle(title, for: .normal)
   }
@@ -183,6 +194,6 @@ extension BookmarksViewController: BookmarksDataSourceDelegate {
 
   private func saveBookmarks() {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
-    Managers.bookmarks.save(bookmarks)
+    self.managers.bookmarks.save(bookmarks)
   }
 }

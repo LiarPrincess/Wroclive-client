@@ -15,9 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     self.registerManagers()
+    let managers = DependencyManagerImpl()
 
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    self.appCoordinator = AppCoordinator(window: self.window!)
+    self.appCoordinator = AppCoordinator(window: self.window!, managers: managers)
     self.appCoordinator.start()
 
     return true
@@ -26,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   private func registerManagers() {
     Managers.location     = LocationManagerImpl()
     Managers.search       = SearchManagerImpl()
-    Managers.bookmarks    = BookmarksManagerImpl()
+//    Managers.bookmarks    = BookmarksManagerImpl()
     Managers.tracking     = TrackingManagerImpl()
 
     Managers.alert        = AlertManagerImpl()
