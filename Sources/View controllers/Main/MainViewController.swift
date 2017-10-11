@@ -20,11 +20,16 @@ protocol MainViewControllerDelegate: class {
 
 class MainViewController: UIViewController {
 
+  typealias Dependencies = HasLocationManager & HasTrackingManager & HasAlertManager & HasNotificationManager
+
   // MARK: - Properties
 
+  let managers:      Dependencies
   weak var delegate: MainViewControllerDelegate?
 
-  let mapViewController = MapViewController()
+  lazy var mapViewController: MapViewController = {
+    return MapViewController(managers: self.managers)
+  }()
 
   let toolbar = UIToolbar()
   let userTrackingButton  = MKUserTrackingBarButtonItem()
@@ -34,11 +39,12 @@ class MainViewController: UIViewController {
 
   // MARK: - Init
 
-  convenience init(delegate: MainViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil, delegate: delegate)
+  convenience init(managers: Dependencies, delegate: MainViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, managers: managers, delegate: delegate)
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: MainViewControllerDelegate? = nil) {
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies, delegate: MainViewControllerDelegate? = nil) {
+    self.managers = managers
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     self.delegate = delegate
     self.startObservingColorScheme()
@@ -83,7 +89,10 @@ class MainViewController: UIViewController {
 
 // MARK: - ColorSchemeObserver, VehicleLocationObserver
 
-extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
+extension MainViewController: ColorSchemeObserver, VehicleLocationObserver, HasNotificationManager {
+
+  var notification: NotificationManager { return self.managers.notification }
+
   func colorSchemeDidChange() {
     let tintColor = Managers.theme.colorScheme.tintColor.value
 
@@ -103,7 +112,7 @@ extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
   }
 
   func vehicleLocationsDidUpdate() {
-    let result = Managers.tracking.result
+    let result = self.managers.tracking.result
     switch result {
     case .success(let locations): self.mapViewController.updateVehicleLocations(locations)
     case .error(let error):       self.presentTrackingError(error)
@@ -111,18 +120,18 @@ extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
   }
 
   private func presentTrackingError(_ error: Error) {
-    Managers.tracking.pause()
+    self.managers.tracking.pause()
 
     let retry: () -> () = {
       let delay = Constants.failedLocationRequestDelay
-      DispatchQueue.main.asyncAfter(deadline: .now() + delay) { Managers.tracking.resume() }
+      DispatchQueue.main.asyncAfter(deadline: .now() + delay) { self.managers.tracking.resume() }
     }
 
     switch error {
     case NetworkError.noInternet:
-      Managers.alert.showNoInternetAlert(in: self, retry: retry)
+      self.managers.alert.showNoInternetAlert(in: self, retry: retry)
     default:
-      Managers.alert.showNetworkingErrorAlert(in: self, retry: retry)
+      self.managers.alert.showNetworkingErrorAlert(in: self, retry: retry)
     }
   }
 }

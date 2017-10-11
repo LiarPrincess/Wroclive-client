@@ -7,12 +7,12 @@ import Foundation
 
 @objc protocol NotificationObserver { }
 
-extension NotificationObserver {
+extension NotificationObserver where Self: HasNotificationManager {
   func startObserving(_ notification: Notification, _ selector: Selector) {
-    Managers.notification.subscribe(self, to: notification, using: selector)
+    self.notification.subscribe(self, to: notification, using: selector)
   }
 
   func stopObserving(_ notification: Notification) {
-    Managers.notification.unsubscribe(self, from: notification)
+    self.notification.unsubscribe(self, from: notification)
   }
 }

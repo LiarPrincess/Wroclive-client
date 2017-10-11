@@ -18,6 +18,10 @@ class AppManagerImpl: AppManager {
     set { UserDefaults.standard.set(newValue, forKey: hasSeenTutorialKey) }
   }
 
+  func markTutorialAsSeen() {
+    self.hasSeenTutorial = true
+  }
+
   // MARK: - Info
 
   var name:    String { return self.bundleInformation(key: kCFBundleExecutableKey as String) ?? "" }

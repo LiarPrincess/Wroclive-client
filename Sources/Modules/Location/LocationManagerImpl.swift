@@ -11,6 +11,8 @@ class LocationManagerImpl: NSObject, LocationManager {
 
   // MARK: - Properties
 
+  let notificationManager: NotificationManager
+
   private lazy var locationManager: CLLocationManager = {
     let manager             = CLLocationManager()
     manager.delegate        = self
@@ -19,6 +21,13 @@ class LocationManagerImpl: NSObject, LocationManager {
     manager.pausesLocationUpdatesAutomatically = true
     return manager
   }()
+
+  // MARK: - Init
+
+ init(notificationManager: NotificationManager) {
+    self.notificationManager = notificationManager
+    super.init()
+  }
 
   // MARK: - LocationManager
 
@@ -44,6 +53,6 @@ class LocationManagerImpl: NSObject, LocationManager {
 
 extension LocationManagerImpl: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    Managers.notification.post(.locationAuthorizationDidChange)
+    self.notificationManager.post(.locationAuthorizationDidChange)
   }
 }

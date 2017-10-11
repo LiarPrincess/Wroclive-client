@@ -15,12 +15,17 @@ class NetworkManagerImpl: NetworkManager {
 
   // MARK: - Properties
 
-  private lazy var session      = SessionManager()
+  let appManager:    AppManager
+  let deviceManager: DeviceManager
+
+  private lazy var session      = SessionManager(appManager: self.appManager, deviceManager: self.deviceManager)
   private lazy var reachability = Alamofire.NetworkReachabilityManager(host: "www.google.com")
 
   // MARK: - Init
 
-  init() {
+  init(appManager: AppManager, deviceManager: DeviceManager) {
+    self.appManager    = appManager
+    self.deviceManager = deviceManager
     NetworkActivityIndicatorManager.shared.isEnabled = true
     self.reachability?.startListening()
   }

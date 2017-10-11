@@ -10,8 +10,16 @@ private typealias Constants = TrackingManagerConstants
 
 class TrackingManagerImpl {
 
+  let networkManager      : NetworkManager
+  let notificationManager : NotificationManager
+
+  init(networkManager: NetworkManager, notificationManager: NotificationManager) {
+    self.networkManager      = networkManager
+    self.notificationManager = notificationManager
+  }
+
   private(set) var result: TrackingResult = .success(locations: []) {
-    didSet { Managers.notification.post(.vehicleLocationsDidUpdate) }
+    didSet { self.notificationManager.post(.vehicleLocationsDidUpdate) }
   }
 
   fileprivate var trackedLines: [Line] = []
@@ -36,7 +44,7 @@ class TrackingManagerImpl {
   @objc func timerFired(timer: Timer) {
     guard timer.isValid else { return }
 
-    firstly { return Managers.network.getVehicleLocations(for: self.trackedLines) }
+    firstly { return self.networkManager.getVehicleLocations(for: self.trackedLines) }
     .then  { self.result = .success(locations: $0) }
     .catch { self.result = .error(error: $0) }
   }

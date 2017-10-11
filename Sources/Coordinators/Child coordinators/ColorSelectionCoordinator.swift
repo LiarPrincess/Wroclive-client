@@ -10,6 +10,8 @@ protocol ColorSelectionCoordinatorDelegate: class {
 }
 
 class ColorSelectionCoordinator: PushCoordinator {
+  let managers: DependencyManager
+
   var childCoordinators: [Coordinator] = []
 
   var pushTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
@@ -17,15 +19,16 @@ class ColorSelectionCoordinator: PushCoordinator {
   weak var parent:   UIViewController?
   weak var delegate: ColorSelectionCoordinatorDelegate?
 
-  init(parent: UIViewController, delegate: ColorSelectionCoordinatorDelegate) {
+  init(parent: UIViewController, managers: DependencyManager, delegate: ColorSelectionCoordinatorDelegate) {
     self.parent   = parent
+    self.managers = managers
     self.delegate = delegate
   }
 
   func start() {
     guard let parent = self.parent else { return }
 
-    let child = ColorSelectionViewController(delegate: self)
+    let child = ColorSelectionViewController(managers: managers, delegate: self)
     self.presentPush(child, in: parent)
   }
 }

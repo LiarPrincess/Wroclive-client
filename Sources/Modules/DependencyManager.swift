@@ -27,4 +27,4 @@ protocol DependencyManager:
   HasDeviceManager,
   HasAppStoreManager,
   HasThemeManager
-{}
+{ }

@@ -15,8 +15,11 @@ protocol TutorialViewControllerDelegate: class {
 
 class TutorialViewController: UIViewController {
 
+  typealias Dependencies = HasThemeManager
+
   // MARK: - Properties
 
+  let managers:      Dependencies
   weak var delegate: TutorialViewControllerDelegate?
 
   let mode: TutorialViewControllerMode
@@ -27,8 +30,9 @@ class TutorialViewController: UIViewController {
 
   // MARK: - Init
 
-  init(mode: TutorialViewControllerMode, delegate: TutorialViewControllerDelegate? = nil) {
+  init(mode: TutorialViewControllerMode, managers: Dependencies, delegate: TutorialViewControllerDelegate? = nil) {
     self.mode     = mode
+    self.managers = managers
     self.delegate = delegate
     super.init(nibName: nil, bundle: nil)
   }

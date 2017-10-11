@@ -14,8 +14,11 @@ protocol ColorSelectionViewControllerDelegate: class {
 
 class ColorSelectionViewController: UIViewController {
 
+  typealias Dependencies = HasThemeManager & HasNotificationManager
+
   // MARK: - Properties
 
+  let managers:      Dependencies
   weak var delegate: ColorSelectionViewControllerDelegate?
 
   let scrollView        = UIScrollView()
@@ -33,11 +36,12 @@ class ColorSelectionViewController: UIViewController {
 
   // MARK: - Init
 
-  convenience init(delegate: ColorSelectionViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil, delegate: delegate)
+  convenience init(managers: Dependencies, delegate: ColorSelectionViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, managers: managers, delegate: delegate)
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: ColorSelectionViewControllerDelegate? = nil) {
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies, delegate: ColorSelectionViewControllerDelegate? = nil) {
+    self.managers = managers
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     self.delegate = delegate
     self.startObservingColorScheme()
@@ -98,7 +102,7 @@ class ColorSelectionViewController: UIViewController {
       self.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
 
-    let colorScheme = Managers.theme.colorScheme
+    let colorScheme = self.managers.theme.colorScheme
 
     if let tintIndex = self.collectionViewDataSource.indexOf(tintColor: colorScheme.tintColor) {
       selectColorAt(tintIndex)
@@ -142,7 +146,7 @@ class ColorSelectionViewController: UIViewController {
     }
 
     if let tintColor = tintColor, let tramColor = tramColor, let busColor = busColor {
-      Managers.theme.setColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
+      self.managers.theme.setColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
     }
   }
 
@@ -163,9 +167,12 @@ class ColorSelectionViewController: UIViewController {
 
 // MARK: - ColorSchemeObserver
 
-extension ColorSelectionViewController: ColorSchemeObserver {
+extension ColorSelectionViewController: ColorSchemeObserver, HasNotificationManager {
+
+  var notification: NotificationManager { return self.managers.notification }
+
   func colorSchemeDidChange() {
-    let colorScheme = Managers.theme.colorScheme
+    let colorScheme = self.managers.theme.colorScheme
     self.view.tintColor       = colorScheme.tintColor.value
     self.backButton.tintColor = colorScheme.tintColor.value
   }
@@ -180,7 +187,7 @@ extension ColorSelectionViewController: UIScrollViewDelegate {
 
   private func updateScrollViewBackgroundColor() {
     let gradientColor = PresentationControllerConstants.Colors.Gradient.colors.first
-    let tableColor    = Managers.theme.colorScheme.configurationBackground
+    let tableColor    = self.managers.theme.colorScheme.configurationBackground
 
     let scrollPosition  = scrollView.contentOffset.y
     let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor
@@ -203,7 +210,7 @@ extension ColorSelectionViewController: UICollectionViewDelegateFlowLayout {
     let sectionName = self.collectionViewDataSource.sectionAt(section).name
 
     let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-    let textAttributes = Managers.theme.textAttributes(for: .caption)
+    let textAttributes = self.managers.theme.textAttributes(for: .caption)
     let textSize       = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
 
     typealias HeaderLayout = Layout.Section.Header

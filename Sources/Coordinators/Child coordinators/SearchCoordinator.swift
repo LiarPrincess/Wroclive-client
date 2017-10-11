@@ -10,7 +10,7 @@ protocol SearchCoordinatorDelegate: class {
 }
 
 class SearchCoordinator: CardPanelCoordinator {
-  let managers:          DependencyManager
+  let managers: DependencyManager
 
   var childCoordinators: [Coordinator] = []
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
@@ -35,7 +35,7 @@ class SearchCoordinator: CardPanelCoordinator {
 extension SearchCoordinator: SearchViewControllerDelegate {
 
   func searchViewController(_ viewController: SearchViewController, didSelect lines: [Line]) {
-    Managers.tracking.start(lines)
+    self.managers.tracking.start(lines)
     viewController.dismiss(animated: true, completion: nil)
   }
 

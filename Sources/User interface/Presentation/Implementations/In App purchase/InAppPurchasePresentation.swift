@@ -7,7 +7,11 @@ import UIKit
 
 class InAppPurchasePresentation: UIViewController, PresentationController {
 
+  typealias Dependencies = HasAppStoreManager
+
   // MARK: - Properties
+
+  let managers: Dependencies
 
   let gradientLayer = CAGradientLayer()
 
@@ -17,6 +21,21 @@ class InAppPurchasePresentation: UIViewController, PresentationController {
 
   let upgradeButton        = UIButton(type: .roundedRect)
   let restorePurchaseLabel = UILabel()
+
+  // MARK: - Init
+
+  convenience init(managers: Dependencies) {
+    self.init(nibName: nil, bundle: nil, managers: managers)
+  }
+
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies) {
+    self.managers = managers
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: - Overriden
 
@@ -33,11 +52,11 @@ class InAppPurchasePresentation: UIViewController, PresentationController {
   // MARK: - Actions
 
   @objc func upgradeButtonPressed() {
-    Managers.appStore.buyUpgrade()
+    self.managers.appstore.buyUpgrade()
   }
 
   @objc func restorePurchaseLabelPressed(tapGestureRecognizer: UITapGestureRecognizer) {
-    Managers.appStore.restorePurchase()
+    self.managers.appstore.restorePurchase()
   }
 }
 

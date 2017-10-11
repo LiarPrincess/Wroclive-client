@@ -11,7 +11,8 @@ protocol TutorialCoordinatorDelegate: class {
 
 class TutorialCoordinator: PushCoordinator {
 
-  let mode: TutorialViewControllerMode
+  let mode:     TutorialViewControllerMode
+  let managers: DependencyManager
 
   var childCoordinators: [Coordinator] = []
 
@@ -20,16 +21,17 @@ class TutorialCoordinator: PushCoordinator {
   weak var parent:   UIViewController?
   weak var delegate: TutorialCoordinatorDelegate?
 
-  init(parent: UIViewController, mode: TutorialViewControllerMode, delegate: TutorialCoordinatorDelegate) {
+  init(parent: UIViewController, mode: TutorialViewControllerMode, managers: DependencyManager, delegate: TutorialCoordinatorDelegate) {
     self.mode     = mode
     self.parent   = parent
+    self.managers = managers
     self.delegate = delegate
   }
 
   func start() {
     guard let parent = self.parent else { return }
 
-    let controller = TutorialViewController(mode: self.mode, delegate: self)
+    let controller = TutorialViewController(mode: self.mode, managers: managers, delegate: self)
 
     switch self.mode {
     case .firstUse: parent.present(controller, animated: true, completion: nil)

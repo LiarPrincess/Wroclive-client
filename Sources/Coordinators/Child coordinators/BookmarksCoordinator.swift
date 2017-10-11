@@ -10,7 +10,7 @@ protocol BookmarksCoordinatorDelegate: class {
 }
 
 class BookmarksCoordinator: CardPanelCoordinator {
-  let managers:          DependencyManager
+  let managers: DependencyManager
 
   var childCoordinators: [Coordinator] = []
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
@@ -35,7 +35,7 @@ class BookmarksCoordinator: CardPanelCoordinator {
 extension BookmarksCoordinator: BookmarksViewControllerDelegate {
 
   func bookmarksViewController(_ viewController: BookmarksViewController, didSelect bookmark: Bookmark) {
-    Managers.tracking.start(bookmark.lines)
+    self.managers.tracking.start(bookmark.lines)
     viewController.dismiss(animated: true, completion: nil)
   }
 

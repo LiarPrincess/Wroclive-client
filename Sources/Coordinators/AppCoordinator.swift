@@ -20,7 +20,7 @@ class AppCoordinator: CardPanelCoordinator {
   }
 
   func start() {
-    self.window.rootViewController = MainViewController(delegate: self)
+    self.window.rootViewController = MainViewController(managers: self.managers, delegate: self)
     self.window.makeKeyAndVisible()
   }
 }
@@ -35,10 +35,10 @@ extension AppCoordinator: MainViewControllerDelegate,
   // MARK: - Tutorial
 
   func mainViewControllerDidAppear(_ viewController: MainViewController) {
-    let hasSeenTutorial = Managers.app.hasSeenTutorial
+    let hasSeenTutorial = self.managers.app.hasSeenTutorial
     guard !hasSeenTutorial else { return }
 
-    let coordinator = TutorialCoordinator(parent: viewController, mode: .firstUse, delegate: self)
+    let coordinator = TutorialCoordinator(parent: viewController, mode: .firstUse, managers: self.managers, delegate: self)
     self.childCoordinators.append(coordinator)
     coordinator.start()
   }
@@ -47,8 +47,8 @@ extension AppCoordinator: MainViewControllerDelegate,
     self.removeChildCoordinator(coordinator)
 
     if coordinator.mode == .firstUse {
-      Managers.app.hasSeenTutorial = true
-      Managers.location.requestAuthorization()
+      self.managers.app.markTutorialAsSeen()
+      self.managers.location.requestAuthorization()
     }
   }
 
@@ -79,7 +79,7 @@ extension AppCoordinator: MainViewControllerDelegate,
   // MARK: - Configuration
 
   func mainViewControllerDidTapConfigurationButton(_ viewController: MainViewController) {
-    let coordinator = ConfigurationCoordinator(parent: viewController, delegate: self)
+    let coordinator = ConfigurationCoordinator(parent: viewController, managers: self.managers, delegate: self)
     self.childCoordinators.append(coordinator)
     coordinator.start()
   }

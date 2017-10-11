@@ -10,8 +10,6 @@ private typealias Constants    = BookmarksViewControllerConstants
 private typealias Layout       = Constants.Layout
 private typealias Localization = Localizable.Bookmarks
 
-typealias BookmarksViewControllerDependencies = HasBookmarksManager & HasThemeManager
-
 protocol BookmarksViewControllerDelegate: class {
   func bookmarksViewController(_ viewController: BookmarksViewController, didSelect bookmark: Bookmark)
   func bookmarksViewControllerDidClose(_ viewController: BookmarksViewController)
@@ -19,9 +17,11 @@ protocol BookmarksViewControllerDelegate: class {
 
 class BookmarksViewController: UIViewController {
 
+  typealias Dependencies = HasBookmarksManager & HasThemeManager
+
   // MARK: - Properties
 
-  let managers:      BookmarksViewControllerDependencies
+  let managers:      Dependencies
   weak var delegate: BookmarksViewControllerDelegate?
 
   lazy var headerView: UIVisualEffectView = {
@@ -41,11 +41,11 @@ class BookmarksViewController: UIViewController {
 
   // MARK: - Init
 
-  convenience init(managers: BookmarksViewControllerDependencies, delegate: BookmarksViewControllerDelegate? = nil) {
+  convenience init(managers: Dependencies, delegate: BookmarksViewControllerDelegate? = nil) {
     self.init(nibName: nil, bundle: nil, managers: managers, delegate: delegate)
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: BookmarksViewControllerDependencies, delegate: BookmarksViewControllerDelegate? = nil) {
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies, delegate: BookmarksViewControllerDelegate? = nil) {
     self.managers = managers
     self.delegate = delegate
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

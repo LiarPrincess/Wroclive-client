@@ -17,12 +17,15 @@ protocol ConfigurationViewControllerDelegate: class {
 
 class ConfigurationViewController: UIViewController {
 
+  typealias Dependencies = HasAppManager & HasAppStoreManager & HasThemeManager & HasNotificationManager
+
   // MARK: - Properties
 
+  let managers:      Dependencies
   weak var delegate: ConfigurationViewControllerDelegate?
 
   lazy var headerView: UIVisualEffectView = {
-    let blur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
+    let blur = UIBlurEffect(style: self.managers.theme.colorScheme.blurStyle)
     return UIVisualEffectView(effect: blur)
   }()
 
@@ -31,18 +34,21 @@ class ConfigurationViewController: UIViewController {
   let scrollView        = UIScrollView()
   let scrollViewContent = UIView()
 
-  let inAppPurchasePresentation = InAppPurchasePresentation()
+  lazy var inAppPurchasePresentation = {
+    return InAppPurchasePresentation(managers: self.managers)
+  }()
 
   let tableView           = IntrinsicTableView(frame: .zero, style: .grouped)
   let tableViewDataSource = ConfigurationDataSource()
 
   // MARK: - Init
 
-  convenience init(delegate: ConfigurationViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil, delegate: delegate)
+  convenience init(managers: Dependencies, delegate: ConfigurationViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, managers: managers, delegate: delegate)
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: ConfigurationViewControllerDelegate? = nil) {
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies, delegate: ConfigurationViewControllerDelegate? = nil) {
+    self.managers = managers
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     self.delegate = delegate
     self.startObservingColorScheme()
@@ -92,7 +98,7 @@ class ConfigurationViewController: UIViewController {
 
   func updateScrollViewBackgroundColor() {
     let gradientColor = PresentationControllerConstants.Colors.Gradient.colors.first
-    let tableColor    = Managers.theme.colorScheme.configurationBackground
+    let tableColor    = self.managers.theme.colorScheme.configurationBackground
 
     let scrollPosition  = scrollView.contentOffset.y
     let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor
@@ -112,9 +118,12 @@ extension ConfigurationViewController: CardPanelPresentable {
 
 // MARK: - ColorSchemeObserver
 
-extension ConfigurationViewController: ColorSchemeObserver {
+extension ConfigurationViewController: ColorSchemeObserver, HasNotificationManager {
+
+  var notification: NotificationManager { return self.managers.notification }
+
   func colorSchemeDidChange() {
-    self.view.tintColor = Managers.theme.colorScheme.tintColor.value
+    self.view.tintColor = self.managers.theme.colorScheme.tintColor.value
   }
 }
 
@@ -135,9 +144,9 @@ extension ConfigurationViewController: UITableViewDelegate {
     switch cell {
     case .personalization: self.delegate?.configurationViewControllerDidTapColorSelectionButton(self)
     case .tutorial:        self.delegate?.configurationViewControllerDidTapTutorialButton(self)
-    case .contact:         Managers.app.openWebsite()
-    case .share:           Managers.app.showShareActivity(in: self)
-    case .rate:            Managers.appStore.rateApp()
+    case .contact:         self.managers.app.openWebsite()
+    case .share:           self.managers.app.showShareActivity(in: self)
+    case .rate:            self.managers.appstore.rateApp()
     }
     tableView.deselectRow(at: indexPath, animated: true)
   }

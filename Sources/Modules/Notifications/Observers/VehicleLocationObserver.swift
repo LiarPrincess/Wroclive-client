@@ -5,7 +5,7 @@
 
 import Foundation
 
-@objc protocol VehicleLocationObserver: NotificationObserver {
+@objc protocol VehicleLocationObserver { //}: NotificationObserver {
   func vehicleLocationsDidUpdate()
 }
 
@@ -13,10 +13,10 @@ extension VehicleLocationObserver {
   private var notification: Notification { return .vehicleLocationsDidUpdate }
 
   func startObservingVehicleLocations() {
-    self.startObserving(notification, #selector(vehicleLocationsDidUpdate))
+//    self.startObserving(notification, #selector(vehicleLocationsDidUpdate))
   }
 
   func stopObservingVehicleLocations() {
-    self.stopObserving(notification)
+//    self.stopObserving(notification)
   }
 }

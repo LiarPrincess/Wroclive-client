@@ -12,6 +12,8 @@ class ThemeManagerImpl: ThemeManager {
 
   // MARK: - Properties
 
+  let notificationManager: NotificationManager
+
   fileprivate(set) var systemFont = SystemFont()
   fileprivate(set) var iconFont   = FontAwesomeFont()
 
@@ -19,8 +21,10 @@ class ThemeManagerImpl: ThemeManager {
 
   // Mark - Init
 
-  init() {
-    self.colorScheme = ColorSchemeManager.load()
+  init(notificationManager: NotificationManager) {
+    self.notificationManager = notificationManager
+    self.colorScheme         = ColorSchemeManager.load()
+
     self.startObservingContentSizeCategory()
     self.applyColorScheme()
   }
@@ -35,7 +39,7 @@ class ThemeManagerImpl: ThemeManager {
     self.colorScheme = ColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
     self.applyColorScheme()
     ColorSchemeManager.save(self.colorScheme)
-    Managers.notification.post(.colorSchemeDidChange)
+    self.notificationManager.post(.colorSchemeDidChange)
   }
 
   private func applyColorScheme() {
@@ -126,11 +130,11 @@ class ThemeManagerImpl: ThemeManager {
   // MARK: - Notifications
 
   fileprivate func startObservingContentSizeCategory() {
-    Managers.notification.subscribe(self, to: .contentSizeCategoryDidChange, using: #selector(contentSizeCategoryDidChange(notification:)))
+    self.notificationManager.subscribe(self, to: .contentSizeCategoryDidChange, using: #selector(contentSizeCategoryDidChange(notification:)))
   }
 
   fileprivate func stopObservingContentSizeCategory() {
-    Managers.notification.unsubscribe(self, from: .contentSizeCategoryDidChange)
+    self.notificationManager.unsubscribe(self, from: .contentSizeCategoryDidChange)
   }
 
   @objc func contentSizeCategoryDidChange(notification: NSNotification) {

@@ -12,17 +12,21 @@ private typealias Constants = MapViewControllerConstants
 
 class MapViewController: UIViewController {
 
+  typealias Dependencies = HasLocationManager & HasAlertManager
+
   // MARK: - Properties
 
+  let managers: Dependencies
   let mapView = MKMapView()
 
   // MARK: - Init
 
-  convenience init() {
-    self.init(nibName: nil, bundle: nil)
+  convenience init(managers: Dependencies) {
+    self.init(nibName: nil, bundle: nil, managers: managers)
   }
 
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies) {
+    self.managers = managers
     super.init(nibName: nil, bundle: nil)
     self.insetViewToShowMapLegalInfo()
     self.startObservingApplicationActivity()
@@ -99,12 +103,12 @@ class MapViewController: UIViewController {
   }
 
   fileprivate func centerUserLocationIfAuthorized(animated: Bool) {
-    let authorization = Managers.location.authorization
+    let authorization = self.managers.location.authorization
 
     guard authorization == .authorizedAlways || authorization == .authorizedWhenInUse
       else { return }
 
-    _ = Managers.location.getUserLocation()
+    _ = self.managers.location.getUserLocation()
     .then { userLocation -> () in
       self.mapView.setCenter(userLocation, animated: true)
       self.alertWhenFarFromDefaultCity(userLocation: userLocation)
@@ -121,7 +125,7 @@ class MapViewController: UIViewController {
     guard distance > Constants.Defaults.cityRadius
       else { return }
 
-    Managers.alert.showInvalidCityAlert(in: self) { [weak self] result in
+    self.managers.alert.showInvalidCityAlert(in: self) { [weak self] result in
       if result == .showDefault {
         self?.centerDefaultRegion(animated: true)
       }
@@ -197,11 +201,11 @@ extension MapViewController: MKMapViewDelegate {
   // MARK: - Tracking mode
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-    let authorization = Managers.location.authorization
+    let authorization = self.managers.location.authorization
     switch authorization {
-    case .denied:        Managers.alert.showDeniedLocationAuthorizationAlert(in: self)
-    case .restricted:    Managers.alert.showGloballyDeniedLocationAuthorizationAlert(in: self)
-    case .notDetermined: Managers.location.requestAuthorization()
+    case .denied:        self.managers.alert.showDeniedLocationAuthorizationAlert(in: self)
+    case .restricted:    self.managers.alert.showGloballyDeniedLocationAuthorizationAlert(in: self)
+    case .notDetermined: self.managers.location.requestAuthorization()
     default: break
     }
   }
