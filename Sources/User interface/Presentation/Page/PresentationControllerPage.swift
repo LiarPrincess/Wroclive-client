@@ -14,7 +14,7 @@ class PresentationControllerPage: UIViewController {
 
   private let parameters: PresentationControllerPageParameters
 
-  private let imageView      = UIImageView()
+  private let imageView      = DeviceImageView()
   private let labelContainer = UIView()
   private let titleLabel     = UILabel()
   private let captionLabel   = UILabel()
@@ -24,9 +24,6 @@ class PresentationControllerPage: UIViewController {
   init(_ parameters: PresentationControllerPageParameters) {
     self.parameters = parameters
     super.init(nibName: nil, bundle: nil)
-
-    self.imageView.image       = parameters.image
-    self.imageView.contentMode = .scaleAspectFit
 
     self.titleLabel.attributedText = self.createAttributedTitle(parameters.title)
     self.titleLabel.numberOfLines  = 0
@@ -86,14 +83,14 @@ class PresentationControllerPage: UIViewController {
     let titleSize   = self.titleLabel  .attributedText!.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
     let captionSize = self.captionLabel.attributedText!.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
 
-    return parameters.titleTopOffset + titleSize.height
-      + parameters.captionTopOffset + captionSize.height
-      + 1.0 // because of reasons
+    return parameters.titleTopOffset   + titleSize.height
+         + parameters.captionTopOffset + captionSize.height
+         + 1.0 // because of reasons
   }
 
   func guaranteeMinTextHeight(_ height: CGFloat) {
     self.labelContainer.snp.makeConstraints { make in
-      make.height.greaterThanOrEqualTo(height)
+      make.height.equalTo(height)
     }
   }
 

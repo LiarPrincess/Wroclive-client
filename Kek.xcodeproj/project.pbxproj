@@ -153,6 +153,7 @@
 		908FB19D1F48B3CA00121584 /* ReusableCellContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1991F48B3CA00121584 /* ReusableCellContainer.swift */; };
 		908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB19A1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
+		909D5B151F8FD4AF008DAF9D /* DeviceImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90ACDC431F88518D005A4B79 /* BookmarksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACDC421F88518D005A4B79 /* BookmarksCoordinator.swift */; };
 		90ACDC461F88B69A005A4B79 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACDC451F88B69A005A4B79 /* SearchCoordinator.swift */; };
@@ -346,6 +347,7 @@
 		908FB1991F48B3CA00121584 /* ReusableCellContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCellContainer.swift; sourceTree = "<group>"; };
 		908FB19A1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableSuplementaryViewContainer.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceImageView.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90ACDC421F88518D005A4B79 /* BookmarksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCoordinator.swift; sourceTree = "<group>"; };
 		90ACDC451F88B69A005A4B79 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 		9021F3DF1F12C9EF000A6949 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				909D5B131F8FD48C008DAF9D /* Device image view */,
 				9021F3E01F12C9EF000A6949 /* Chevron */,
 				9021F3E31F12C9EF000A6949 /* Line selection */,
 				9021F4251F12CC89000A6949 /* Line type selection */,
@@ -1088,6 +1091,14 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		909D5B131F8FD48C008DAF9D /* Device image view */ = {
+			isa = PBXGroup;
+			children = (
+				909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */,
+			);
+			path = "Device image view";
+			sourceTree = "<group>";
+		};
 		90ACDC441F8851D8005A4B79 /* Child coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -1273,8 +1284,8 @@
 				902330E81EDF37F500FA8F43 /* Models */,
 				902330ED1EDF37F500FA8F43 /* Modules */,
 				9021F3871F12C95D000A6949 /* Extensions */,
-				9021F3DB1F12C9EF000A6949 /* User interface */,
 				9061355D1F842633006634C7 /* Coordinators */,
+				9021F3DB1F12C9EF000A6949 /* User interface */,
 				9017C33D1EE339FD00063377 /* View controllers */,
 			);
 			path = Sources;
@@ -1507,6 +1518,7 @@
 				90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */,
 				90ACDC481F88B93B005A4B79 /* TutorialCoordinator.swift in Sources */,
 				9061355C1F8424F5006634C7 /* TutorialViewControllerMode.swift in Sources */,
+				909D5B151F8FD4AF008DAF9D /* DeviceImageView.swift in Sources */,
 				9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */,
 				908FB19B1F48B3CA00121584 /* LayoutGuide.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
