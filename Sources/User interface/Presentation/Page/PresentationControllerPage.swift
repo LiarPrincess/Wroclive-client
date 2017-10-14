@@ -14,7 +14,8 @@ class PresentationControllerPage: UIViewController {
 
   private let parameters: PresentationControllerPageParameters
 
-  private let imageView      = DeviceImageView()
+  private var contentView: UIView { return self.parameters.view }
+
   private let labelContainer = UIView()
   private let titleLabel     = UILabel()
   private let captionLabel   = UILabel()
@@ -42,9 +43,9 @@ class PresentationControllerPage: UIViewController {
     super.viewDidLoad()
     self.view.clipsToBounds = true
 
-    self.imageView.setContentCompressionResistancePriority(100.0, for: .vertical)
-    self.view.addSubview(self.imageView)
-    self.imageView.snp.makeConstraints { make in
+    self.contentView.setContentCompressionResistancePriority(100.0, for: .vertical)
+    self.view.addSubview(self.contentView)
+    self.contentView.snp.makeConstraints { make in
       make.top.equalToSuperview()
       make.left.equalToSuperview().offset(parameters.leftOffset)
       make.right.equalToSuperview().offset(-parameters.rightOffset)
@@ -52,7 +53,7 @@ class PresentationControllerPage: UIViewController {
 
     self.view.addSubview(self.labelContainer)
     self.labelContainer.snp.makeConstraints { make in
-      make.top.equalTo(self.imageView.snp.bottom)
+      make.top.equalTo(self.contentView.snp.bottom)
       make.bottom.equalToSuperview()
       make.left.equalToSuperview().offset(parameters.leftOffset)
       make.right.equalToSuperview().offset(-parameters.rightOffset)
@@ -104,8 +105,9 @@ class PresentationControllerPage: UIViewController {
   private func createAttributedCaption(_ caption: String) -> NSAttributedString {
     let color = Colors.textPrimary
 
-    let textAttributes = Managers.theme.textAttributes(for: .caption, fontType: .text, alignment: .center, lineSpacing: parameters.captionLineSpecing, color: color)
-    let iconAttributes = Managers.theme.textAttributes(for: .caption, fontType: .icon, alignment: .center, lineSpacing: parameters.captionLineSpecing, color: color)
+    let lineSpacing = self.parameters.captionLineSpacing
+    let textAttributes = Managers.theme.textAttributes(for: .caption, fontType: .text, alignment: .center, lineSpacing: lineSpacing, color: color)
+    let iconAttributes = Managers.theme.textAttributes(for: .caption, fontType: .icon, alignment: .center, lineSpacing: lineSpacing, color: color)
 
     let starReplacement   = TextReplacement("<star>",   NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
     let searchReplacement = TextReplacement("<search>", NSAttributedString(string: "\u{f002}", attributes: iconAttributes))

@@ -30,10 +30,13 @@ class DeviceImageView: UIView {
       make.edges.equalToSuperview()
     }
 
+    self.contentView.layer.borderColor = Managers.theme.colorScheme.backgroundAccent.cgColor
+    self.contentView.layer.borderWidth = 1.0 / UIScreen.main.scale
+
     self.deviceBorder.addSubview(self.contentView)
     self.contentView.snp.makeConstraints { make in
       make.center.equalToSuperview()
-      make.height.equalToSuperview().multipliedBy(0.735)
+      make.height.equalToSuperview().multipliedBy(0.73)
       make.width.equalTo(self.snp.height).multipliedBy(0.42)
     }
   }

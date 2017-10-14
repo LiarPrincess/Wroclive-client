@@ -38,11 +38,15 @@ extension TutorialPresentation {
 
   func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParameters {
     typealias PageLayout = Layout.Page
+    let view = UIView()
+    view.backgroundColor = UIColor.red
+    view.alpha = 0.5
+
     return PresentationControllerPageParameters(
-      image, title, caption,
-      Layout.leftOffset, Layout.rightOffset,
-      PageLayout.Title.topOffset,
-      PageLayout.Caption.topOffset, PageLayout.Caption.lineSpacing
+      view:    view,
+      title:   title,   titleTopOffset:   PageLayout.Title.topOffset,
+      caption: caption, captionTopOffset: PageLayout.Caption.topOffset,
+      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset
     )
   }
 

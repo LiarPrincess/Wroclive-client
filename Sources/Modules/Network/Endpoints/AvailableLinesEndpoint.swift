@@ -31,8 +31,8 @@ class AvailableLinesEndpoint: Endpoint {
 
     return Promise { fulfill, reject in
       do {
-        let locations = try jsonArray.map { return try LinesParser.parse($0) }
-        fulfill(locations)
+        let lines = try jsonArray.map { return try LinesParser.parse($0) }
+        fulfill(lines)
       } catch let error {
         reject(error)
       }

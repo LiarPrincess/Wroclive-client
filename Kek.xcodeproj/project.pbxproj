@@ -168,6 +168,7 @@
 		90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */; };
 		90BC8B041F69B62800AF4B84 /* PushDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */; };
 		90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */; };
+		90C8A8971F913DEA00072D83 /* ScreenshotMockups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C8A8961F913DEA00072D83 /* ScreenshotMockups.swift */; };
 		90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */; };
 		90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
 		90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */; };
@@ -363,6 +364,7 @@
 		90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTransitionDelegate.swift; sourceTree = "<group>"; };
 		90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushDismissTransition.swift; sourceTree = "<group>"; };
 		90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPresentationTransition.swift; sourceTree = "<group>"; };
+		90C8A8961F913DEA00072D83 /* ScreenshotMockups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotMockups.swift; sourceTree = "<group>"; };
 		90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerImpl.swift; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
 		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "Sources/App/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
@@ -856,6 +858,7 @@
 				900CAEA51F482E750044C8A6 /* Managers.swift */,
 				903BC5271F88EB270098469F /* DependencyManager.swift */,
 				903BC5291F88ED940098469F /* DependencyManagerImpl.swift */,
+				90C8A8961F913DEA00072D83 /* ScreenshotMockups.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1576,6 +1579,7 @@
 				90145E611F61B9E30068698D /* ThemePresentationLayout.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				907246051F883E140069B940 /* ConfigurationCoordinator.swift in Sources */,
+				90C8A8971F913DEA00072D83 /* ScreenshotMockups.swift in Sources */,
 				90F0A2D71F732A6C00C641C8 /* NotificationObserver.swift in Sources */,
 				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
 				9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */,

@@ -72,7 +72,7 @@ struct Localizable {
       }
 
       struct ColorsPage {
-        static let image = #imageLiteral(resourceName: "Image_InApp_Colors")
+        static let image = #imageLiteral(resourceName: "Image_Share")
         static var title:   String { return LocalizedString("Presentation_InAppPurchase_Colors_Title") }
         static var caption: String { return LocalizedString("Presentation_InAppPurchase_Colors_Content") }
       }
@@ -82,26 +82,26 @@ struct Localizable {
       static var skip: String { return LocalizedString("Presentation_Tutorial_Skip") }
 
       struct Page0 {
-        static let image = #imageLiteral(resourceName: "Image_Tutorial")
+        static let image = #imageLiteral(resourceName: "Image_Share")
         static var title:   String { return LocalizedString("Presentation_Tutorial_Page0_Title") }
         static var caption: String { return LocalizedString("Presentation_Tutorial_Page0_Caption") }
       }
 
       struct Page1 {
-        static let image = #imageLiteral(resourceName: "Image_Tutorial")
+        static let image = #imageLiteral(resourceName: "Image_Share")
         static var title:   String { return LocalizedString("Presentation_Tutorial_Page1_Title") }
         static var caption: String { return LocalizedString("Presentation_Tutorial_Page1_Caption") }
       }
 
       struct Page2 {
-        static let image = #imageLiteral(resourceName: "Image_Tutorial")
+        static let image = #imageLiteral(resourceName: "Image_Share")
         static var title:   String { return LocalizedString("Presentation_Tutorial_Page2_Title") }
         static var caption: String { return LocalizedString("Presentation_Tutorial_Page2_Caption") }
       }
     }
 
     struct Theme {
-      static let image = #imageLiteral(resourceName: "Image_Theme")
+      static let image = #imageLiteral(resourceName: "Image_Share")
     }
   }
 
