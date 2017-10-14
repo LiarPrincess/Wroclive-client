@@ -12,7 +12,7 @@ private typealias Constants = MapViewControllerConstants
 
 class MapViewController: UIViewController {
 
-  typealias Dependencies = HasLocationManager & HasAlertManager
+  typealias Dependencies = HasLocationManager & HasAlertManager & HasNotificationManager
 
   // MARK: - Properties
 
@@ -176,17 +176,19 @@ extension MapViewController {
   }
 }
 
-// MARK: - LocationAuthorizationObserver
+// MARK: - Notifications
 
-extension MapViewController: LocationAuthorizationObserver {
+extension MapViewController: HasNotificationManager,
+                             LocationAuthorizationObserver,
+                             ApplicationActivityObserver
+{
+
+  var notification: NotificationManager { return self.managers.notification }
+
   func locationAuthorizationDidChange() {
     self.centerUserLocationIfAuthorized(animated: true)
   }
-}
 
-// MARK: - ApplicationActivityObserver
-
-extension MapViewController: ApplicationActivityObserver {
   func applicationDidBecomeActive() {
     self.centerUserLocationIfAuthorized(animated: true)
   }

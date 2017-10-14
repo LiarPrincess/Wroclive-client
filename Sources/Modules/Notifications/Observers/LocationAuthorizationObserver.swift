@@ -5,18 +5,18 @@
 
 import Foundation
 
-@objc protocol LocationAuthorizationObserver { //}: NotificationObserver {
+@objc protocol LocationAuthorizationObserver: NotificationObserver {
   func locationAuthorizationDidChange()
 }
 
-extension LocationAuthorizationObserver {
+extension LocationAuthorizationObserver where Self: HasNotificationManager {
   private var notification: Notification { return .locationAuthorizationDidChange }
 
   func startObservingLocationAuthorization() {
-//    self.startObserving(notification, #selector(locationAuthorizationDidChange))
+    self.startObserving(notification, #selector(locationAuthorizationDidChange))
   }
 
   func stopObservingLocationAuthorization() {
-//    self.stopObserving(notification)
+    self.stopObserving(notification)
   }
 }

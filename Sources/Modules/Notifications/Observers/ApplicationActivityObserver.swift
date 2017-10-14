@@ -5,20 +5,20 @@
 
 import Foundation
 
-@objc protocol ApplicationActivityObserver { //}: NotificationObserver {
+@objc protocol ApplicationActivityObserver: NotificationObserver {
   func applicationDidBecomeActive()
   func applicationWillResignActive()
 }
 
-extension ApplicationActivityObserver {
+extension ApplicationActivityObserver where Self: HasNotificationManager {
 
   func startObservingApplicationActivity() {
-//    self.startObserving(.applicationDidBecomeActive, #selector(applicationDidBecomeActive))
-//    self.startObserving(.applicationWillResignActive, #selector(applicationWillResignActive))
+    self.startObserving(.applicationDidBecomeActive, #selector(applicationDidBecomeActive))
+    self.startObserving(.applicationWillResignActive, #selector(applicationWillResignActive))
   }
 
   func stopObservingApplicationActivity() {
-//    self.stopObserving(.applicationDidBecomeActive)
-//    self.stopObserving(.applicationWillResignActive)
+    self.stopObserving(.applicationDidBecomeActive)
+    self.stopObserving(.applicationWillResignActive)
   }
 }
