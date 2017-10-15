@@ -10,13 +10,17 @@ import PromiseKit
 
 private typealias Constants = MapViewControllerConstants
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, HasLocationManager, HasAlertManager, HasNotificationManager {
 
   typealias Dependencies = HasLocationManager & HasAlertManager & HasNotificationManager
 
   // MARK: - Properties
 
   let managers: Dependencies
+  var location:     LocationManager     { return self.managers.location }
+  var alert:        AlertManager        { return self.managers.alert }
+  var notification: NotificationManager { return self.managers.notification }
+
   let mapView = MKMapView()
 
   // MARK: - Init
@@ -103,12 +107,12 @@ class MapViewController: UIViewController {
   }
 
   fileprivate func centerUserLocationIfAuthorized(animated: Bool) {
-    let authorization = self.managers.location.authorization
+    let authorization = self.location.authorization
 
     guard authorization == .authorizedAlways || authorization == .authorizedWhenInUse
       else { return }
 
-    _ = self.managers.location.getUserLocation()
+    _ = self.location.getCurrent()
     .then { userLocation -> () in
       self.mapView.setCenter(userLocation, animated: true)
       self.alertWhenFarFromDefaultCity(userLocation: userLocation)
@@ -125,7 +129,7 @@ class MapViewController: UIViewController {
     guard distance > Constants.Defaults.cityRadius
       else { return }
 
-    self.managers.alert.showInvalidCityAlert(in: self) { [weak self] result in
+    self.alert.showInvalidCityAlert(in: self) { [weak self] result in
       if result == .showDefault {
         self?.centerDefaultRegion(animated: true)
       }
@@ -178,12 +182,7 @@ extension MapViewController {
 
 // MARK: - Notifications
 
-extension MapViewController: HasNotificationManager,
-                             LocationAuthorizationObserver,
-                             ApplicationActivityObserver
-{
-
-  var notification: NotificationManager { return self.managers.notification }
+extension MapViewController: LocationAuthorizationObserver, ApplicationActivityObserver {
 
   func locationAuthorizationDidChange() {
     self.centerUserLocationIfAuthorized(animated: true)
@@ -203,11 +202,11 @@ extension MapViewController: MKMapViewDelegate {
   // MARK: - Tracking mode
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-    let authorization = self.managers.location.authorization
+    let authorization = self.location.authorization
     switch authorization {
-    case .denied:        self.managers.alert.showDeniedLocationAuthorizationAlert(in: self)
-    case .restricted:    self.managers.alert.showGloballyDeniedLocationAuthorizationAlert(in: self)
-    case .notDetermined: self.managers.location.requestAuthorization()
+    case .denied:        self.alert.showDeniedLocationAuthorizationAlert(in: self)
+    case .restricted:    self.alert.showGloballyDeniedLocationAuthorizationAlert(in: self)
+    case .notDetermined: self.location.requestAuthorization()
     default: break
     }
   }

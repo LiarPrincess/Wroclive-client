@@ -7,11 +7,11 @@ import UIKit
 import MapKit
 import PromiseKit
 
-class LocationManagerImpl: NSObject, LocationManager {
+class LocationManagerImpl: NSObject, LocationManager, HasNotificationManager {
 
   // MARK: - Properties
 
-  let notificationManager: NotificationManager
+  let notification: NotificationManager
 
   private lazy var locationManager: CLLocationManager = {
     let manager             = CLLocationManager()
@@ -24,14 +24,14 @@ class LocationManagerImpl: NSObject, LocationManager {
 
   // MARK: - Init
 
- init(notificationManager: NotificationManager) {
-    self.notificationManager = notificationManager
+ init(notification: NotificationManager) {
+    self.notification = notification
     super.init()
   }
 
   // MARK: - LocationManager
 
-  func getUserLocation() -> Promise<CLLocationCoordinate2D> {
+  func getCurrent() -> Promise<CLLocationCoordinate2D> {
     return Promise { fulfill, reject in
       if let location = self.locationManager.location?.coordinate {
         fulfill(location)
@@ -53,6 +53,6 @@ class LocationManagerImpl: NSObject, LocationManager {
 
 extension LocationManagerImpl: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    self.notificationManager.post(.locationAuthorizationDidChange)
+    self.notification.post(.locationAuthorizationDidChange)
   }
 }

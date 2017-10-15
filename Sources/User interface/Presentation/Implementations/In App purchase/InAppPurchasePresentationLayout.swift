@@ -23,7 +23,7 @@ extension InAppPurchasePresentation {
   private func initGradientSublayer() {
     self.gradientLayer.frame     = self.view.layer.bounds
     self.gradientLayer.colors    = self.theme.colorScheme.presentation.gradient.map { $0.cgColor }
-    self.gradientLayer.locations = self.theme.colorScheme.presentation.gradientLocations
+    self.gradientLayer.locations = self.theme.colorScheme.presentation.gradientLocations.map { NSNumber(value: $0) }
     self.view.layer.addSublayer(self.gradientLayer)
   }
 

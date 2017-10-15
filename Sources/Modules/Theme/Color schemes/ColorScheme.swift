@@ -17,7 +17,7 @@ struct PresentationColorScheme {
     UIColor(red: 0.40, green: 0.30, blue: 0.60, alpha: 1.00)
   ]
 
-  let gradientLocations: [NSNumber] = [0.0, 0.35, 0.9]
+  let gradientLocations: [Float] = [0.0, 0.35, 0.9]
 }
 
 struct ColorScheme {

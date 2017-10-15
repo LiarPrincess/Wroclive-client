@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   private func registerManagers() {
     let notification = NotificationManagerImpl()
-    Managers.theme = ThemeManagerImpl(notificationManager: notification)
+    Managers.theme = ThemeManagerImpl(notification: notification)
   }
 
   // MARK: - Activity

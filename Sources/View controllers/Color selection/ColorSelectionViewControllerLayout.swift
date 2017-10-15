@@ -45,8 +45,8 @@ extension ColorSelectionViewController {
 
     // collection view
     self.collectionView.register(ColorSelectionCell.self)
-    self.collectionView.registerSupplementary(ColorSelectionSectionHeaderView.self, ofKind: UICollectionElementKindSectionHeader)
-    self.collectionView.registerSupplementary(ColorSelectionSectionFooterView.self, ofKind: UICollectionElementKindSectionFooter)
+    self.collectionView.registerSupplementary(ColorSelectionSectionHeaderView.self, ofKind: .header)
+    self.collectionView.registerSupplementary(ColorSelectionSectionFooterView.self, ofKind: .footer)
     self.collectionView.backgroundColor         = self.managers.theme.colorScheme.background
     self.collectionView.allowsSelection         = true
     self.collectionView.allowsMultipleSelection = true

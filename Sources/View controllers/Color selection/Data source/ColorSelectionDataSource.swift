@@ -73,14 +73,14 @@ extension ColorSelectionDataSource: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     switch kind {
     case UICollectionElementKindSectionHeader:
-      let view      = collectionView.dequeueReusableSupplementaryView(ofType: ColorSelectionSectionHeaderView.self, kind: kind, for: indexPath)
+      let view      = collectionView.dequeueReusableSupplementaryView(ofType: ColorSelectionSectionHeaderView.self, kind: .header, for: indexPath)
       let viewModel = self.sectionAt(indexPath.section)
 
       view.setUp(with: viewModel)
       return view
 
     case UICollectionElementKindSectionFooter:
-      return collectionView.dequeueReusableSupplementaryView(ofType: ColorSelectionSectionFooterView.self, kind: kind, for: indexPath)
+      return collectionView.dequeueReusableSupplementaryView(ofType: ColorSelectionSectionFooterView.self, kind: .footer, for: indexPath)
 
     default:
       fatalError("Unexpected element kind")

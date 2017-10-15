@@ -10,7 +10,7 @@ import PromiseKit
 protocol LocationManager {
 
   /// Returns user location
-  func getUserLocation() -> Promise<CLLocationCoordinate2D>
+  func getCurrent() -> Promise<CLLocationCoordinate2D>
 
   /// Current authorization status
   var authorization: CLAuthorizationStatus { get }

@@ -88,5 +88,4 @@ extension BookmarksDataSource: UITableViewDataSource {
       self.delegateDidDelete(bookmark: bookmark)
     }
   }
-
 }

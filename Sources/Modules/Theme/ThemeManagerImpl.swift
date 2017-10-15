@@ -21,8 +21,8 @@ class ThemeManagerImpl: ThemeManager, HasNotificationManager {
 
   // Mark - Init
 
-  init(notificationManager: NotificationManager) {
-    self.notification = notificationManager
+  init(notification: NotificationManager) {
+    self.notification = notification
     self.colorScheme  = ColorSchemeManager.load()
 
     self.startObservingContentSizeCategory()

@@ -27,12 +27,14 @@ extension ThemeManager {
                       alignment:     NSTextAlignment = .natural,
                       lineSpacing:   CGFloat         = 0.0,
                       color:         TextColor       = TextColor.text) -> [String:Any] {
-    return [
+    let result: [String:Any] = [
       NSFontAttributeName:            self.fontValue(fontType, textStyle),
       NSKernAttributeName:            self.trackingValue(fontType, textStyle),
       NSForegroundColorAttributeName: self.colorValue(color),
       NSParagraphStyleAttributeName:  self.paragraphStyle(alignment, lineSpacing)
     ]
+
+    return result
   }
 
   private func colorValue(_ color: TextColor) -> UIColor {
