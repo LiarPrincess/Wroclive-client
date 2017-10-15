@@ -12,7 +12,7 @@ class InAppPurchasePresentation: UIViewController, PresentationController, HasTh
   // MARK: - Properties
 
   let managers: Dependencies
-  var appstore: AppStoreManager { return self.managers.appstore }
+  var appStore: AppStoreManager { return self.managers.appStore }
   var theme:    ThemeManager    { return self.managers.theme }
 
   let gradientLayer = CAGradientLayer()
@@ -54,11 +54,11 @@ class InAppPurchasePresentation: UIViewController, PresentationController, HasTh
   // MARK: - Actions
 
   @objc func upgradeButtonPressed() {
-    self.appstore.buyUpgrade()
+    self.appStore.buyUpgrade()
   }
 
   @objc func restorePurchaseLabelPressed(tapGestureRecognizer: UITapGestureRecognizer) {
-    self.appstore.restorePurchase()
+    self.appStore.restorePurchase()
   }
 }
 

@@ -3,30 +3,36 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-protocol HasLocationManager     { var location:     LocationManager     { get } }
 protocol HasSearchManager       { var search:       SearchManager       { get } }
 protocol HasBookmarksManager    { var bookmarks:    BookmarksManager    { get } }
+protocol HasLocationManager     { var location:     LocationManager     { get } }
 protocol HasTrackingManager     { var tracking:     TrackingManager     { get } }
+
 protocol HasTutorialManager     { var tutorial:     TutorialManager     { get } }
 protocol HasAlertManager        { var alert:        AlertManager        { get } }
-protocol HasNetworkManager      { var network:      NetworkManager      { get } }
-protocol HasAppManager          { var app:          AppManager          { get } }
 protocol HasNotificationManager { var notification: NotificationManager { get } }
+protocol HasNetworkManager      { var network:      NetworkManager      { get } }
+
+protocol HasAppManager          { var app:          AppManager          { get } }
+protocol HasAppStoreManager     { var appStore:     AppStoreManager     { get } }
 protocol HasDeviceManager       { var device:       DeviceManager       { get } }
-protocol HasAppStoreManager     { var appstore:     AppStoreManager     { get } }
+
 protocol HasThemeManager        { var theme:        ThemeManager        { get } }
 
 protocol DependencyManager:
-  HasLocationManager,
   HasSearchManager,
   HasBookmarksManager,
+  HasLocationManager,
   HasTrackingManager,
+
   HasTutorialManager,
   HasAlertManager,
-  HasNetworkManager,
-  HasAppManager,
   HasNotificationManager,
-  HasDeviceManager,
+  HasNetworkManager,
+
+  HasAppManager,
   HasAppStoreManager,
+  HasDeviceManager,
+
   HasThemeManager
 { }
