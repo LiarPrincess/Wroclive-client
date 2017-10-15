@@ -15,17 +15,19 @@ protocol ConfigurationViewControllerDelegate: class {
   func configurationViewControllerDidTapTutorialButton(_ viewController: ConfigurationViewController)
 }
 
-class ConfigurationViewController: UIViewController {
+class ConfigurationViewController: UIViewController, HasThemeManager {
 
   typealias Dependencies = HasAppManager & HasAppStoreManager & HasThemeManager & HasNotificationManager
 
   // MARK: - Properties
 
-  let managers:      Dependencies
+  let managers: Dependencies
+  var theme: ThemeManager { return self.managers.theme }
+
   weak var delegate: ConfigurationViewControllerDelegate?
 
   lazy var headerView: UIVisualEffectView = {
-    let blur = UIBlurEffect(style: self.managers.theme.colorScheme.blurStyle)
+    let blur = UIBlurEffect(style: self.theme.colorScheme.blurStyle)
     return UIVisualEffectView(effect: blur)
   }()
 
@@ -97,8 +99,8 @@ class ConfigurationViewController: UIViewController {
   }
 
   func updateScrollViewBackgroundColor() {
-    let gradientColor = PresentationControllerConstants.Colors.Gradient.colors.first
-    let tableColor    = self.managers.theme.colorScheme.configurationBackground
+    let gradientColor = self.theme.colorScheme.presentation.gradient.first
+    let tableColor    = self.theme.colorScheme.configurationBackground
 
     let scrollPosition  = scrollView.contentOffset.y
     let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor
@@ -123,7 +125,7 @@ extension ConfigurationViewController: ColorSchemeObserver, HasNotificationManag
   var notification: NotificationManager { return self.managers.notification }
 
   func colorSchemeDidChange() {
-    self.view.tintColor = self.managers.theme.colorScheme.tintColor.value
+    self.view.tintColor = self.theme.colorScheme.tintColor.value
   }
 }
 

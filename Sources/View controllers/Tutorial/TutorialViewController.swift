@@ -24,7 +24,7 @@ class TutorialViewController: UIViewController {
 
   let mode: TutorialViewControllerMode
 
-  let presentation = TutorialPresentation()
+  lazy var presentation = TutorialPresentation(managers: self.managers)
   let closeButton  = UIButton(type: .system)
   let closeFirstUseButton = UIButton(type: .system)
 

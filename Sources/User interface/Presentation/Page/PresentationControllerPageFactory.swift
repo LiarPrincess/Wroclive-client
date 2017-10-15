@@ -5,8 +5,8 @@
 
 import UIKit
 
-class PresentationControllerPageCreator {
-  static func createPages(_ parameters: [PresentationControllerPageParameters]) -> [PresentationControllerPage] {
+class PresentationControllerPageFactory {
+  static func create(_ parameters: [PresentationControllerPageParameters]) -> [PresentationControllerPage] {
     let pages = parameters.map { PresentationControllerPage($0) }
 
     let minTextHeight = pages.map { $0.calculateMinTextHeight() }.max() ?? 0.0

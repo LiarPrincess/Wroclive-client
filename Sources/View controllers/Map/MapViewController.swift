@@ -114,8 +114,8 @@ class MapViewController: UIViewController {
       self.alertWhenFarFromDefaultCity(userLocation: userLocation)
       return ()
     }
-    // no need for .catch, if we don't have access then leave as it is
-    // .catch { _ in self.centerDefaultRegion(animated: true) }
+    // if we don't have access then leave as it is
+     .catch { _ in () }
   }
 
   fileprivate func alertWhenFarFromDefaultCity(userLocation: CLLocationCoordinate2D) {

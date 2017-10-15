@@ -7,21 +7,20 @@ import UIKit
 import SnapKit
 
 private typealias Layout       = ThemePresentationConstants.Layout
-private typealias Colors       = PresentationControllerConstants.Colors
 private typealias Localization = Localizable.Presentation.Theme
 
 extension ThemePresentation {
 
   func initLayout() {
-    self.initGradient()
+    self.initGradientSublayer()
     self.initPageViewController()
     self.initPageControl()
   }
 
-  private func initGradient() {
+  private func initGradientSublayer() {
     self.gradientLayer.frame     = self.view.layer.bounds
-    self.gradientLayer.colors    = Colors.Gradient.colors.map { $0.cgColor }
-    self.gradientLayer.locations = Colors.Gradient.locations
+    self.gradientLayer.colors    = self.theme.colorScheme.presentation.gradient.map { $0.cgColor }
+    self.gradientLayer.locations = self.theme.colorScheme.presentation.gradientLocations
     self.view.layer.addSublayer(self.gradientLayer)
   }
 

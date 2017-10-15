@@ -7,21 +7,20 @@ import UIKit
 import SnapKit
 
 private typealias Layout       = TutorialPresentationConstants.Layout
-private typealias Colors       = PresentationControllerConstants.Colors
 private typealias Localization = Localizable.Presentation.Tutorial
 
 extension TutorialPresentation {
 
   func initLayout() {
-    self.initGradient()
+    self.initGradientSublayer()
     self.initPages()
     self.initContent()
   }
 
-  private func initGradient() {
+  private func initGradientSublayer() {
     self.gradientLayer.frame     = self.view.layer.bounds
-    self.gradientLayer.colors    = Colors.Gradient.colors.map { $0.cgColor }
-    self.gradientLayer.locations = Colors.Gradient.locations
+    self.gradientLayer.colors    = self.theme.colorScheme.presentation.gradient.map { $0.cgColor }
+    self.gradientLayer.locations = self.theme.colorScheme.presentation.gradientLocations
     self.view.layer.addSublayer(self.gradientLayer)
   }
 
@@ -33,7 +32,7 @@ extension TutorialPresentation {
     let page0 = self.createPageParameters(Page0.image, Page0.title, Page0.caption)
     let page1 = self.createPageParameters(Page1.image, Page1.title, Page1.caption)
     let page2 = self.createPageParameters(Page2.image, Page2.title, Page2.caption)
-    self.pages = PresentationControllerPageCreator.createPages([page0, page1, page2])
+    self.pages = PresentationControllerPageFactory.create([page0, page1, page2])
   }
 
   func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParameters {
@@ -46,7 +45,8 @@ extension TutorialPresentation {
       view:    view,
       title:   title,   titleTopOffset:   PageLayout.Title.topOffset,
       caption: caption, captionTopOffset: PageLayout.Caption.topOffset,
-      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset
+      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset,
+      theme: self.theme
     )
   }
 

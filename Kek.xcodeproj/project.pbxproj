@@ -39,7 +39,7 @@
 		90145E611F61B9E30068698D /* ThemePresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E551F61B9E30068698D /* ThemePresentationLayout.swift */; };
 		90145E671F61BA4D0068698D /* PresentationControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E661F61BA4D0068698D /* PresentationControllerPage.swift */; };
 		90145E691F61BA630068698D /* PresentationControllerPageParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E681F61BA630068698D /* PresentationControllerPageParameters.swift */; };
-		90145E6B1F61BAEE0068698D /* PresentationControllerPageCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E6A1F61BAEE0068698D /* PresentationControllerPageCreator.swift */; };
+		90145E6B1F61BAEE0068698D /* PresentationControllerPageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E6A1F61BAEE0068698D /* PresentationControllerPageFactory.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksViewController.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */; };
 		9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */; };
@@ -127,6 +127,7 @@
 		9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */; };
 		9056F6571F5229A500F7EF48 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6541F5229A500F7EF48 /* Font.swift */; };
 		9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
+		905EEBB71F93E3B9007B68D9 /* ContentSizeCategoryObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905EEBB61F93E3B9007B68D9 /* ContentSizeCategoryObserver.swift */; };
 		9061355C1F8424F5006634C7 /* TutorialViewControllerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
 		907246051F883E140069B940 /* ConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246041F883E140069B940 /* ConfigurationCoordinator.swift */; };
@@ -172,7 +173,6 @@
 		90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */; };
 		90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
 		90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */; };
-		90E3ADDD1F4F7D9200C3ED24 /* PresentationControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADDC1F4F7D9200C3ED24 /* PresentationControllerConstants.swift */; };
 		90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E77A1F1F4E21D5006882A4 /* Localizable.swift */; };
 		90E8A6BF1F4CB08400CE5AE9 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6BE1F4CB08400CE5AE9 /* AppManager.swift */; };
 		90E8A6C11F4CB81400CE5AE9 /* AppManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6C01F4CB81400CE5AE9 /* AppManagerImpl.swift */; };
@@ -234,7 +234,7 @@
 		90145E551F61B9E30068698D /* ThemePresentationLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemePresentationLayout.swift; sourceTree = "<group>"; };
 		90145E661F61BA4D0068698D /* PresentationControllerPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerPage.swift; sourceTree = "<group>"; };
 		90145E681F61BA630068698D /* PresentationControllerPageParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerPageParameters.swift; sourceTree = "<group>"; };
-		90145E6A1F61BAEE0068698D /* PresentationControllerPageCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerPageCreator.swift; sourceTree = "<group>"; };
+		90145E6A1F61BAEE0068698D /* PresentationControllerPageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerPageFactory.swift; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerConstants.swift; sourceTree = "<group>"; };
 		9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerLayout.swift; sourceTree = "<group>"; };
@@ -323,6 +323,7 @@
 		9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFont.swift; sourceTree = "<group>"; };
 		9056F6541F5229A500F7EF48 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		9056F6551F5229A500F7EF48 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
+		905EEBB61F93E3B9007B68D9 /* ContentSizeCategoryObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizeCategoryObserver.swift; sourceTree = "<group>"; };
 		9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerMode.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		907246041F883E140069B940 /* ConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCoordinator.swift; sourceTree = "<group>"; };
@@ -368,7 +369,6 @@
 		90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerImpl.swift; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
 		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "Sources/App/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
-		90E3ADDC1F4F7D9200C3ED24 /* PresentationControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerConstants.swift; sourceTree = "<group>"; };
 		90E77A1F1F4E21D5006882A4 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		90E8A6BE1F4CB08400CE5AE9 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		90E8A6C01F4CB81400CE5AE9 /* AppManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManagerImpl.swift; sourceTree = "<group>"; };
@@ -541,7 +541,7 @@
 			children = (
 				90145E661F61BA4D0068698D /* PresentationControllerPage.swift */,
 				90145E681F61BA630068698D /* PresentationControllerPageParameters.swift */,
-				90145E6A1F61BAEE0068698D /* PresentationControllerPageCreator.swift */,
+				90145E6A1F61BAEE0068698D /* PresentationControllerPageFactory.swift */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -1189,7 +1189,6 @@
 				90145E4A1F61B9E30068698D /* Implementations */,
 				90145E651F61BA3C0068698D /* Page */,
 				900F72F31F55BE5100613A1E /* PresentationController.swift */,
-				90E3ADDC1F4F7D9200C3ED24 /* PresentationControllerConstants.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1236,6 +1235,7 @@
 			children = (
 				90F0A2D31F73198B00C641C8 /* NotificationObserver.swift */,
 				90F0A2D21F73198B00C641C8 /* ColorSchemeObserver.swift */,
+				905EEBB61F93E3B9007B68D9 /* ContentSizeCategoryObserver.swift */,
 				90F0A2D41F73198B00C641C8 /* VehicleLocationObserver.swift */,
 				907F267B1F74517B000C272B /* LocationAuthorizationObserver.swift */,
 				90357AD81F840F52008E50E9 /* ApplicationActivityObserver.swift */,
@@ -1515,6 +1515,7 @@
 				900CAEB11F482E750044C8A6 /* LinesParser.swift in Sources */,
 				9021F4271F12CCB3000A6949 /* LineTypeSelectionControl.swift in Sources */,
 				90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */,
+				905EEBB71F93E3B9007B68D9 /* ContentSizeCategoryObserver.swift in Sources */,
 				900CAEB31F482E750044C8A6 /* NetworkError.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
 				90E8A6BF1F4CB08400CE5AE9 /* AppManager.swift in Sources */,
@@ -1571,7 +1572,7 @@
 				908FB19D1F48B3CA00121584 /* ReusableCellContainer.swift in Sources */,
 				900CAEAD1F482E750044C8A6 /* LocationManagerImpl.swift in Sources */,
 				9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */,
-				90145E6B1F61BAEE0068698D /* PresentationControllerPageCreator.swift in Sources */,
+				90145E6B1F61BAEE0068698D /* PresentationControllerPageFactory.swift in Sources */,
 				908252571F703F0E001C2926 /* Notification.swift in Sources */,
 				900CAEAB1F482E750044C8A6 /* LocationManager.swift in Sources */,
 				907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */,
@@ -1598,7 +1599,6 @@
 				9044A5491F69A13D00F26C17 /* ColorSelectionViewControllerLayout.swift in Sources */,
 				90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */,
 				9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */,
-				90E3ADDD1F4F7D9200C3ED24 /* PresentationControllerConstants.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
 				9021F3981F12C95D000A6949 /* UIView+RoundCorners.swift in Sources */,

@@ -5,13 +5,15 @@
 
 import UIKit
 
-class InAppPurchasePresentation: UIViewController, PresentationController {
+class InAppPurchasePresentation: UIViewController, PresentationController, HasThemeManager, HasAppStoreManager {
 
-  typealias Dependencies = HasAppStoreManager
+  typealias Dependencies = HasThemeManager & HasAppStoreManager
 
   // MARK: - Properties
 
   let managers: Dependencies
+  var appstore: AppStoreManager { return self.managers.appstore }
+  var theme:    ThemeManager    { return self.managers.theme }
 
   let gradientLayer = CAGradientLayer()
 
@@ -52,11 +54,11 @@ class InAppPurchasePresentation: UIViewController, PresentationController {
   // MARK: - Actions
 
   @objc func upgradeButtonPressed() {
-    self.managers.appstore.buyUpgrade()
+    self.appstore.buyUpgrade()
   }
 
   @objc func restorePurchaseLabelPressed(tapGestureRecognizer: UITapGestureRecognizer) {
-    self.managers.appstore.restorePurchase()
+    self.appstore.restorePurchase()
   }
 }
 

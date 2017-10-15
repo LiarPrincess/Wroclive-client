@@ -6,15 +6,14 @@
 import UIKit
 import SnapKit
 
-private typealias Colors = PresentationControllerConstants.Colors
-
 class PresentationControllerPage: UIViewController {
 
   // MARK: - Properties
 
   private let parameters: PresentationControllerPageParameters
 
-  private var contentView: UIView { return self.parameters.view }
+  private var theme:       ThemeManager { return self.parameters.theme }
+  private var contentView: UIView       { return self.parameters.view }
 
   private let labelContainer = UIView()
   private let titleLabel     = UILabel()
@@ -98,16 +97,17 @@ class PresentationControllerPage: UIViewController {
   // MARK: - Attributed texts
 
   private func createAttributedTitle(_ title: String) -> NSAttributedString {
-    let attributes = Managers.theme.textAttributes(for: .bodyBold, alignment: .center, color: Colors.textPrimary)
+    let attributes = self.theme.textAttributes(for: .bodyBold, alignment: .center, color: .presentationPrimary)
     return NSAttributedString(string: title, attributes: attributes)
   }
 
   private func createAttributedCaption(_ caption: String) -> NSAttributedString {
-    let color = Colors.textPrimary
-
+    let alignment   = NSTextAlignment.center
+    let color       = TextColor.presentationSecondary
     let lineSpacing = self.parameters.captionLineSpacing
-    let textAttributes = Managers.theme.textAttributes(for: .caption, fontType: .text, alignment: .center, lineSpacing: lineSpacing, color: color)
-    let iconAttributes = Managers.theme.textAttributes(for: .caption, fontType: .icon, alignment: .center, lineSpacing: lineSpacing, color: color)
+
+    let textAttributes = self.theme.textAttributes(for: .caption, fontType: .text, alignment: alignment, lineSpacing: lineSpacing, color: color)
+    let iconAttributes = self.theme.textAttributes(for: .caption, fontType: .icon, alignment: alignment, lineSpacing: lineSpacing, color: color)
 
     let starReplacement   = TextReplacement("<star>",   NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
     let searchReplacement = TextReplacement("<search>", NSAttributedString(string: "\u{f002}", attributes: iconAttributes))

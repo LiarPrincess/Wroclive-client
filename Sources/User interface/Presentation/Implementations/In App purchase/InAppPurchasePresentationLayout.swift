@@ -7,13 +7,12 @@ import UIKit
 import SnapKit
 
 private typealias Layout       = InAppPurchasePresentationConstants.Layout
-private typealias Colors       = PresentationControllerConstants.Colors
 private typealias Localization = Localizable.Presentation.InAppPurchase
 
 extension InAppPurchasePresentation {
 
   func initLayout() {
-    self.initGradient()
+    self.initGradientSublayer()
     self.initPages()
     self.initPageViewController()
     self.initPurchaseButton()
@@ -21,10 +20,10 @@ extension InAppPurchasePresentation {
     self.initPageControl()
   }
 
-  private func initGradient() {
+  private func initGradientSublayer() {
     self.gradientLayer.frame     = self.view.layer.bounds
-    self.gradientLayer.colors    = Colors.Gradient.colors.map { $0.cgColor }
-    self.gradientLayer.locations = Colors.Gradient.locations
+    self.gradientLayer.colors    = self.theme.colorScheme.presentation.gradient.map { $0.cgColor }
+    self.gradientLayer.locations = self.theme.colorScheme.presentation.gradientLocations
     self.view.layer.addSublayer(self.gradientLayer)
   }
 
@@ -35,7 +34,7 @@ extension InAppPurchasePresentation {
     let bookmarksParams = self.createPageParameters(BookmarksPage.image, BookmarksPage.title, BookmarksPage.caption)
     let colorsParams    = self.createPageParameters(ColorsPage.image,    ColorsPage.title,    ColorsPage.caption)
 
-    self.pages = PresentationControllerPageCreator.createPages([bookmarksParams, colorsParams])
+    self.pages = PresentationControllerPageFactory.create([bookmarksParams, colorsParams])
   }
 
   func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParameters {
@@ -55,7 +54,8 @@ extension InAppPurchasePresentation {
       view:    deviceView,
       title:   title,   titleTopOffset:   PageLayout.Title.topOffset,
       caption: caption, captionTopOffset: PageLayout.Caption.topOffset,
-      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset
+      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset,
+      theme:      self.theme
     )
   }
 
@@ -74,13 +74,13 @@ extension InAppPurchasePresentation {
   }
 
   private func initPurchaseButton() {
-    let attributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: Colors.textPrimary)
+    let attributes = self.theme.textAttributes(for: .body, alignment: .center, color: .presentationPrimary)
     let text = NSAttributedString(string: Localization.upgrade, attributes: attributes)
 
     self.upgradeButton.setAttributedTitle(text, for: .normal)
     self.upgradeButton.layer.cornerRadius = Layout.UpgradeButton.cornerRadius
     self.upgradeButton.clipsToBounds      = true
-    self.upgradeButton.backgroundColor    = Colors.buttonBackground
+    self.upgradeButton.backgroundColor    = self.theme.colorScheme.presentation.button
     self.upgradeButton.contentEdgeInsets  = Layout.UpgradeButton.edgeInsets
     self.upgradeButton.addTarget(self, action: #selector(upgradeButtonPressed), for: .touchUpInside)
 
@@ -92,7 +92,7 @@ extension InAppPurchasePresentation {
   }
 
   private func initRestorePurchaseLabel() {
-    let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, color: Colors.textSecondary)
+    let textAttributes = self.theme.textAttributes(for: .caption, alignment: .center, color: .presentationSecondary)
 
     var underlineAttributes = textAttributes
     underlineAttributes[NSUnderlineStyleAttributeName] = NSUnderlineStyle.styleSingle.rawValue

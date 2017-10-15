@@ -5,7 +5,7 @@
 
 import UIKit
 
-struct PresentationControllerPageParameters {
+struct PresentationControllerPageParameters: HasThemeManager {
   let view:    UIView
   let title:   String
   let caption: String
@@ -18,10 +18,13 @@ struct PresentationControllerPageParameters {
 
   let captionLineSpacing: CGFloat = 5.0
 
+  let theme: ThemeManager
+
   init(view:       UIView,
        title:      String,  titleTopOffset:   CGFloat,
        caption:    String,  captionTopOffset: CGFloat,
-       leftOffset: CGFloat, rightOffset:      CGFloat) {
+       leftOffset: CGFloat, rightOffset:      CGFloat,
+       theme:      ThemeManager) {
     self.view    = view
     self.title   = title
     self.caption = caption
@@ -31,5 +34,7 @@ struct PresentationControllerPageParameters {
 
     self.titleTopOffset   = titleTopOffset
     self.captionTopOffset = captionTopOffset
+
+    self.theme = theme
   }
 }
