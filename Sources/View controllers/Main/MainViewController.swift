@@ -20,7 +20,11 @@ protocol MainViewControllerDelegate: class {
 
 class MainViewController: UIViewController {
 
-  typealias Dependencies = HasLocationManager & HasTrackingManager & HasAlertManager & HasNotificationManager
+  typealias Dependencies = HasThemeManager
+                         & HasLocationManager
+                         & HasTrackingManager
+                         & HasAlertManager
+                         & HasNotificationManager
 
   // MARK: - Properties
 
@@ -94,7 +98,7 @@ extension MainViewController: ColorSchemeObserver, VehicleLocationObserver, HasN
   var notification: NotificationManager { return self.managers.notification }
 
   func colorSchemeDidChange() {
-    let tintColor = Managers.theme.colorScheme.tintColor.value
+    let tintColor = self.managers.theme.colorScheme.tintColor.value
 
     self.view.tintColor    = tintColor
     self.toolbar.tintColor = tintColor

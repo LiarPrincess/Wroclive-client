@@ -144,5 +144,4 @@ class BookmarkCell: UITableViewCell {
     label.isHidden       = text.isEmpty
     label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
   }
-
 }
