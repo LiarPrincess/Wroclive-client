@@ -7,14 +7,6 @@ import UIKit
 
 protocol AppManager {
 
-  // MARK: - Tutorial
-
-  /// Has the user moved past tutorial?
-  var hasSeenTutorial: Bool { get }
-
-  /// Setter for 'hasSeenTutorial' to avoid mutable property
-  func markTutorialAsSeen()
-
   // MARK: - Info
 
   /// App name (e.g. Kek)

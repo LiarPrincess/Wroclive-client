@@ -171,6 +171,8 @@
 		90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */; };
 		90C8A8971F913DEA00072D83 /* ScreenshotMockups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C8A8961F913DEA00072D83 /* ScreenshotMockups.swift */; };
 		90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */; };
+		90DED6CE1F93F4B600FF1540 /* TutorialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */; };
+		90DED6D01F93F4E800FF1540 /* TutorialManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DED6CF1F93F4E800FF1540 /* TutorialManagerImpl.swift */; };
 		90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
 		90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */; };
 		90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E77A1F1F4E21D5006882A4 /* Localizable.swift */; };
@@ -367,6 +369,8 @@
 		90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPresentationTransition.swift; sourceTree = "<group>"; };
 		90C8A8961F913DEA00072D83 /* ScreenshotMockups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotMockups.swift; sourceTree = "<group>"; };
 		90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerImpl.swift; sourceTree = "<group>"; };
+		90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManager.swift; sourceTree = "<group>"; };
+		90DED6CF1F93F4E800FF1540 /* TutorialManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManagerImpl.swift; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
 		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "Sources/App/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
 		90E77A1F1F4E21D5006882A4 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
@@ -848,6 +852,7 @@
 				900CAEA01F482E750044C8A6 /* Search */,
 				900CAE8E1F482E750044C8A6 /* Bookmarks */,
 				90546BEC1F6AF21B00E8E75F /* Tracking */,
+				90DED6CC1F93F4A000FF1540 /* Tutorial */,
 				900CAE8A1F482E750044C8A6 /* Alerts */,
 				900CAE951F482E750044C8A6 /* Network */,
 				90E8A6C41F4CD42000CE5AE9 /* Device */,
@@ -1191,6 +1196,15 @@
 				900F72F31F55BE5100613A1E /* PresentationController.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		90DED6CC1F93F4A000FF1540 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */,
+				90DED6CF1F93F4E800FF1540 /* TutorialManagerImpl.swift */,
+			);
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		90E77A271F4E3C20006882A4 /* Localizable */ = {
@@ -1565,6 +1579,7 @@
 				9021F41C1F12C9EF000A6949 /* CardPanelPresentationTransition.swift in Sources */,
 				90336A311F587C3600FAAEFF /* ColorSchemeManager.swift in Sources */,
 				9021F4071F12C9EF000A6949 /* ChevronViewState.swift in Sources */,
+				90DED6CE1F93F4B600FF1540 /* TutorialManager.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchViewControllerLayout.swift in Sources */,
 				900CAEB81F482E750044C8A6 /* Managers.swift in Sources */,
 				9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */,
@@ -1591,6 +1606,7 @@
 				9021F43F1F12D698000A6949 /* LineSelectionCellViewModel.swift in Sources */,
 				90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */,
 				908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */,
+				90DED6D01F93F4E800FF1540 /* TutorialManagerImpl.swift in Sources */,
 				9044A54B1F69A13D00F26C17 /* ColorSelectionSection.swift in Sources */,
 				900CAEB21F482E750044C8A6 /* VehicleLocationEndpoint.swift in Sources */,
 				90145E471F61AEEB0068698D /* ConfigurationSection.swift in Sources */,

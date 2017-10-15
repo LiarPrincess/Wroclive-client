@@ -7,6 +7,7 @@ protocol HasLocationManager     { var location:     LocationManager     { get } 
 protocol HasSearchManager       { var search:       SearchManager       { get } }
 protocol HasBookmarksManager    { var bookmarks:    BookmarksManager    { get } }
 protocol HasTrackingManager     { var tracking:     TrackingManager     { get } }
+protocol HasTutorialManager     { var tutorial:     TutorialManager     { get } }
 protocol HasAlertManager        { var alert:        AlertManager        { get } }
 protocol HasNetworkManager      { var network:      NetworkManager      { get } }
 protocol HasAppManager          { var app:          AppManager          { get } }
@@ -20,6 +21,7 @@ protocol DependencyManager:
   HasSearchManager,
   HasBookmarksManager,
   HasTrackingManager,
+  HasTutorialManager,
   HasAlertManager,
   HasNetworkManager,
   HasAppManager,

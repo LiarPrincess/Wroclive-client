@@ -5,10 +5,12 @@
 
 import UIKit
 
-class AppCoordinator: CardPanelCoordinator {
+class AppCoordinator: CardPanelCoordinator, HasTutorialManager {
 
   let window:   UIWindow
+
   let managers: DependencyManager
+  var tutorial: TutorialManager { return self.managers.tutorial }
 
   var childCoordinators: [Coordinator] = []
 
@@ -35,8 +37,7 @@ extension AppCoordinator: MainViewControllerDelegate,
   // MARK: - Tutorial
 
   func mainViewControllerDidAppear(_ viewController: MainViewController) {
-    let hasSeenTutorial = self.managers.app.hasSeenTutorial
-    guard !hasSeenTutorial else { return }
+    guard !self.tutorial.hasCompleted else { return }
 
     let coordinator = TutorialCoordinator(parent: viewController, mode: .firstUse, managers: self.managers, delegate: self)
     self.childCoordinators.append(coordinator)
@@ -47,7 +48,7 @@ extension AppCoordinator: MainViewControllerDelegate,
     self.removeChildCoordinator(coordinator)
 
     if coordinator.mode == .firstUse {
-      self.managers.app.markTutorialAsSeen()
+      self.tutorial.markAsCompleted()
       self.managers.location.requestAuthorization()
     }
   }

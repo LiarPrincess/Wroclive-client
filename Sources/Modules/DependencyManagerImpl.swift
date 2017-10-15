@@ -8,6 +8,7 @@ class DependencyManagerImpl: DependencyManager {
   let search:       SearchManager       = SearchManagerImpl()
   let bookmarks:    BookmarksManager    = BookmarksManagerImpl()
   let alert:        AlertManager        = AlertManagerImpl()
+  let tutorial:     TutorialManager     = TutorialManagerImpl()
 
   let app:          AppManager          = AppManagerImpl()
   let notification: NotificationManager = NotificationManagerImpl()
