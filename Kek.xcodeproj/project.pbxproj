@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		154034383A94518E3E5D9AD4 /* Pods_Kek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */; };
 		900CAEA61F482E750044C8A6 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8B1F482E750044C8A6 /* AlertManager.swift */; };
 		900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8C1F482E750044C8A6 /* AlertManagerImpl.swift */; };
 		900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8F1F482E750044C8A6 /* BookmarksManager.swift */; };
@@ -90,8 +89,6 @@
 		9023312E1EDF37F500FA8F43 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EA1EDF37F500FA8F43 /* Line.swift */; };
 		9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EB1EDF37F500FA8F43 /* LineSubtype.swift */; };
 		902331301EDF37F500FA8F43 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EC1EDF37F500FA8F43 /* LineType.swift */; };
-		902813001E59DE4800F26027 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902812FF1E59DE4800F26027 /* UIKit.framework */; };
-		902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902813011E59DE4E00F26027 /* MapKit.framework */; };
 		9032F07C1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F07A1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift */; };
 		9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */; };
 		90336A311F587C3600FAAEFF /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */; };
@@ -127,6 +124,9 @@
 		9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */; };
 		9056F6571F5229A500F7EF48 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6541F5229A500F7EF48 /* Font.swift */; };
 		9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
+		905A3B701F9533AD003D668F /* Pods_Kek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B711F9533AD003D668F /* Pods_Kek.framework */; };
+		905A3B721F9533BE003D668F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6A1F9532F0003D668F /* UIKit.framework */; };
+		905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6E1F953301003D668F /* MapKit.framework */; };
 		905EEBB71F93E3B9007B68D9 /* ContentSizeCategoryObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905EEBB61F93E3B9007B68D9 /* ContentSizeCategoryObserver.swift */; };
 		9061355C1F8424F5006634C7 /* TutorialViewControllerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
@@ -325,6 +325,10 @@
 		9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFont.swift; sourceTree = "<group>"; };
 		9056F6541F5229A500F7EF48 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		9056F6551F5229A500F7EF48 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
+		905A3B6A1F9532F0003D668F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		905A3B6D1F9532F9003D668F /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		905A3B6E1F953301003D668F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		905A3B711F9533AD003D668F /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		905EEBB61F93E3B9007B68D9 /* ContentSizeCategoryObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizeCategoryObserver.swift; sourceTree = "<group>"; };
 		9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerMode.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
@@ -396,9 +400,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				902813021E59DE4E00F26027 /* MapKit.framework in Frameworks */,
-				902813001E59DE4800F26027 /* UIKit.framework in Frameworks */,
-				154034383A94518E3E5D9AD4 /* Pods_Kek.framework in Frameworks */,
+				905A3B721F9533BE003D668F /* UIKit.framework in Frameworks */,
+				905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */,
+				905A3B701F9533AD003D668F /* Pods_Kek.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,6 +875,10 @@
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				905A3B711F9533AD003D668F /* Pods_Kek.framework */,
+				905A3B6E1F953301003D668F /* MapKit.framework */,
+				905A3B6D1F9532F9003D668F /* Pods_Kek.framework */,
+				905A3B6A1F9532F0003D668F /* UIKit.framework */,
 				902813011E59DE4E00F26027 /* MapKit.framework */,
 				902812FF1E59DE4800F26027 /* UIKit.framework */,
 				D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */,
@@ -1455,11 +1463,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				907246071F88403A0069B940 /* CardPanelCoordinator.swift in Sources */,
-				90145E691F61BA630068698D /* PresentationControllerPageParameters.swift in Sources */,
-				90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */,
-				90145E431F61AE8A0068698D /* ConfigurationSectionViewModel.swift in Sources */,
-				90ACDC461F88B69A005A4B79 /* SearchCoordinator.swift in Sources */,
 				9055C8E61F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift in Sources */,
 				9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */,
 				90546BF71F6B15A000E8E75F /* TutorialPresentation.swift in Sources */,
@@ -1472,10 +1475,15 @@
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
 				900CAEAE1F482E750044C8A6 /* AvailableLinesEndpoint.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
+				90145E431F61AE8A0068698D /* ConfigurationSectionViewModel.swift in Sources */,
 				900CAEB61F482E750044C8A6 /* SearchManager.swift in Sources */,
 				9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */,
+				907246071F88403A0069B940 /* CardPanelCoordinator.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
+				90145E691F61BA630068698D /* PresentationControllerPageParameters.swift in Sources */,
+				90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */,
 				900CAEAA1F482E750044C8A6 /* BookmarksManagerImpl.swift in Sources */,
+				90ACDC461F88B69A005A4B79 /* SearchCoordinator.swift in Sources */,
 				9021F4401F12D698000A6949 /* LineSelectionSectionViewModel.swift in Sources */,
 				908252531F703BC7001C2926 /* NotificationManagerImpl.swift in Sources */,
 				903BC5261F88DF0E0098469F /* ColorSelectionCoordinator.swift in Sources */,
@@ -1794,8 +1802,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1833,8 +1841,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
