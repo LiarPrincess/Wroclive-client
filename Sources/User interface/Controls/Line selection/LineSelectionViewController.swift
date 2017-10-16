@@ -7,7 +7,12 @@ import UIKit
 
 class LineSelectionViewController: UIPageViewController {
 
+  typealias Dependencies = HasThemeManager
+
   // MARK: - Properties
+
+  let managers: Dependencies
+  var theme:    ThemeManager { return self.managers.theme }
 
   var currentPage: LineType {
     get {
@@ -59,9 +64,10 @@ class LineSelectionViewController: UIPageViewController {
 
   // MARK: - Init
 
-  init(withLines lines: [Line]) {
-    self.tramPage = LineSelectionPage(withLines: lines.filter(.tram))
-    self.busPage  = LineSelectionPage(withLines: lines.filter(.bus ))
+  init(withLines lines: [Line], managers: Dependencies) {
+    self.managers = managers
+    self.tramPage = LineSelectionPage(withLines: lines.filter(.tram), managers: self.managers)
+    self.busPage  = LineSelectionPage(withLines: lines.filter(.bus ), managers: self.managers)
 
     super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 

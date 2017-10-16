@@ -12,14 +12,18 @@ struct LineSelectionSectionViewModel {
   let lines:          [Line]
   let lineViewModels: [LineSelectionCellViewModel]
 
-  init(for subtype: LineSubtype, lines: [Line]) {
+  let theme: ThemeManager
+
+  init(for subtype: LineSubtype, lines: [Line], theme: ThemeManager) {
+    self.theme = theme
+
     self.subtype     = subtype
     self.sectionName = LineSelectionSectionViewModel.createSectionName(subtype: subtype)
 
     let sortedLines = lines.sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
 
     self.lines          = sortedLines
-    self.lineViewModels = sortedLines.map { LineSelectionCellViewModel(from: $0) }
+    self.lineViewModels = sortedLines.map { LineSelectionCellViewModel(from: $0, theme: theme) }
   }
 
   static func createSectionName(subtype: LineSubtype) -> String {

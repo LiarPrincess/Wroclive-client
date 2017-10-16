@@ -38,8 +38,8 @@ class SearchViewController: UIViewController {
   let bookmarkButton = UIButton()
   let searchButton   = UIButton()
 
-  let lineTypeSelector = LineTypeSelectionControl()
-  let linesSelector    = LineSelectionViewController(withLines: [])
+  lazy var lineTypeSelector = LineTypeSelectionControl(managers: self.managers)
+  lazy var linesSelector    = LineSelectionViewController(withLines: [], managers: self.managers)
 
   let placeholderView    = UIView()
   let placeholderLabel   = UILabel()

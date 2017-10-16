@@ -66,7 +66,7 @@ class BookmarksViewController: UIViewController {
 
   private func initDataSource() {
     let bookmarks = self.managers.bookmarks.getAll()
-    self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
+    self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, managers: self.managers, delegate: self)
   }
 
   override func viewDidLayoutSubviews() {

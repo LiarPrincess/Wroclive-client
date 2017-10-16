@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import Foundation
 
 struct PresentationControllerPageParameters: HasThemeManager {
   let view:    UIView

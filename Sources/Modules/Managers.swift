@@ -5,5 +5,4 @@
 
 struct Managers {
   static var theme: ThemeManager!
-  private init() {}
 }

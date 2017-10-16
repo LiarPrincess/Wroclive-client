@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import Foundation
 
 protocol ConfigurationSectionViewModel {
   associatedtype CellViewModel: ConfigurationCellViewModel

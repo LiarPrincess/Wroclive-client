@@ -11,7 +11,7 @@ extension LineSelectionPage {
   func initLayout() {
     self.collectionView.register(LineSelectionCell.self)
     self.collectionView.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: .header)
-    self.collectionView.backgroundColor         = Managers.theme.colorScheme.background
+    self.collectionView.backgroundColor         = self.theme.colorScheme.background
     self.collectionView.allowsSelection         = true
     self.collectionView.allowsMultipleSelection = true
     self.collectionView.alwaysBounceVertical    = true

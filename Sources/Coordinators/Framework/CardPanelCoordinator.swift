@@ -4,15 +4,14 @@
 //
 
 import UIKit
+import Foundation
 
 protocol CardPanelCoordinator: Coordinator {
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? { get set }
 }
 
 extension CardPanelCoordinator {
-  func presentCardPanel<TCardPanel>(_ cardPanel: TCardPanel, in viewController: UIViewController)
-    where TCardPanel: UIViewController, TCardPanel: CardPanelPresentable
-  {
+  func presentCardPanel<TCardPanel: UIViewController & CardPanelPresentable>(_ cardPanel: TCardPanel, in viewController: UIViewController) {
     self.cardPanelTransitionDelegate = CardPanelTransitionDelegate(for: cardPanel)
     cardPanel.modalPresentationStyle = .custom
     cardPanel.transitioningDelegate  = self.cardPanelTransitionDelegate!

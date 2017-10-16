@@ -7,7 +7,11 @@ import UIKit
 
 class BookmarksDataSource: NSObject {
 
+  typealias Dependencies = HasThemeManager
+
   // MARK: - Properties
+
+  let managers: Dependencies
 
   fileprivate(set) var bookmarks: [Bookmark]
 
@@ -15,8 +19,9 @@ class BookmarksDataSource: NSObject {
 
   // MARK: - Init
 
-  init(with bookmarks: [Bookmark], delegate: BookmarksDataSourceDelegate? = nil) {
+  init(with bookmarks: [Bookmark], managers: Dependencies, delegate: BookmarksDataSourceDelegate? = nil) {
     self.bookmarks = bookmarks
+    self.managers  = managers
     self.delegate  = delegate
   }
 
@@ -57,7 +62,7 @@ extension BookmarksDataSource: UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(ofType: BookmarkCell.self, forIndexPath: indexPath)
 
     let bookmark  = self.bookmarks[indexPath.row]
-    let viewModel = BookmarkCellViewModel(from: bookmark)
+    let viewModel = BookmarkCellViewModel(for: bookmark, theme: self.managers.theme)
 
     cell.setUp(with: viewModel)
     return cell

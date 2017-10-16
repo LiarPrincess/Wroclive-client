@@ -12,9 +12,14 @@ private struct Indices {
   static let bus  = 1
 }
 
-class LineTypeSelectionControl: UISegmentedControl {
+class LineTypeSelectionControl: UISegmentedControl, HasThemeManager {
+
+  typealias Dependencies = HasThemeManager
 
   // MARK: - Properties
+
+  let managers: Dependencies
+  var theme:    ThemeManager { return self.managers.theme }
 
   weak var delegate: LineTypeSelectionControlDelegate?
 
@@ -35,14 +40,11 @@ class LineTypeSelectionControl: UISegmentedControl {
 
   // MARK: - Init
 
-  init() {
-    super.init(items: nil) // will call init(frame:)
-  }
+  init(managers: Dependencies) {
+    self.managers = managers
+    super.init(frame: .zero)
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-
-    let textAttributes = Managers.theme.textAttributes(for: .body, color: .tint)
+    let textAttributes = self.theme.textAttributes(for: .body, color: .tint)
     self.setTitleTextAttributes(textAttributes, for: .normal)
 
     self.insertSegment(withTitle: Localization.tram, at: Indices.tram, animated: false)
@@ -66,5 +68,4 @@ class LineTypeSelectionControl: UISegmentedControl {
   private func delegateDidSelect() {
     self.delegate?.lineTypeSelectionControl(self, didSelect: self.value)
   }
-
 }

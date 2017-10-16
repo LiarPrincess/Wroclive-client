@@ -8,13 +8,18 @@ import UIKit
 private typealias Constants = LineSelectionViewControllerConstants
 private typealias Layout    = Constants.Layout
 
-class LineSelectionPage: UIViewController {
+class LineSelectionPage: UIViewController, HasThemeManager {
+
+  typealias Dependencies = HasThemeManager
 
   // MARK: - Properties
 
+  let managers: Dependencies
+  var theme:    ThemeManager { return self.managers.theme }
+
   var lines: [Line] {
     get { return self.collectionDataSource.lines }
-    set { self.collectionDataSource = LineSelectionDataSource(with: newValue) }
+    set { self.collectionDataSource = LineSelectionDataSource(with: newValue, managers: self.managers) }
   }
 
   var selectedLines: [Line] {
@@ -72,8 +77,9 @@ class LineSelectionPage: UIViewController {
 
   // MARK: - Init
 
-  init(withLines lines: [Line]) {
-    self.collectionDataSource = LineSelectionDataSource(with: lines)
+  init(withLines lines: [Line], managers: Dependencies) {
+    self.managers             = managers
+    self.collectionDataSource = LineSelectionDataSource(with: lines, managers: managers)
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -128,7 +134,7 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
     }
 
     let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-    let textAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
+    let textAttributes = self.theme.textAttributes(for: .subheadline, alignment: .center)
     let textSize       = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
 
     typealias HeaderLayout = Layout.SectionHeader
