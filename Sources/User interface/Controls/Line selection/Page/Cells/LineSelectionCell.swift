@@ -13,7 +13,6 @@ class LineSelectionCell: UICollectionViewCell {
   // MARK: - Properties
 
   private let lineNameLabel = UILabel()
-  private var theme: ThemeManager? = nil
 
   // MARK: - Init
 
@@ -28,6 +27,7 @@ class LineSelectionCell: UICollectionViewCell {
 
   private func initLayout() {
     self.selectedBackgroundView = UIView()
+    self.selectedBackgroundView?.backgroundColor    = Managers.theme.colorScheme.tintColor.value
     self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
 
     self.lineNameLabel.numberOfLines = 1
@@ -40,6 +40,11 @@ class LineSelectionCell: UICollectionViewCell {
   }
 
   // MARK: - Overriden
+
+  override var alpha: CGFloat {
+    get { return 1.0 }
+    set { }
+  }
 
   override var isSelected: Bool {
     didSet {
@@ -57,16 +62,12 @@ class LineSelectionCell: UICollectionViewCell {
   // MARK: - Methods
 
   func setUp(with viewModel: LineSelectionCellViewModel) {
-    self.theme = viewModel.theme
-    self.selectedBackgroundView?.backgroundColor = viewModel.theme.colorScheme.tintColor.value
     self.setLineLabel(viewModel.lineName)
   }
 
   private func setLineLabel(_ value: String) {
-    guard let theme = self.theme else { return }
-
     let textColor: TextColor = self.isSelected ? .background : .text
-    let textAttributes = theme.textAttributes(for: .body, alignment: .center, color: textColor)
+    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
     self.lineNameLabel.attributedText = NSAttributedString(string: value, attributes: textAttributes)
   }
 }

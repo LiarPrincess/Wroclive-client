@@ -7,10 +7,12 @@ import UIKit
 
 protocol ThemeManager {
 
-  // MARK: - Font
+  // MARK: - Fonts
 
   var textFont: Font { get }
   var iconFont: Font { get }
+
+  func recalculateFontSizes()
 
   // MARK: - Color scheme
 

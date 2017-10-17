@@ -22,8 +22,8 @@ extension InAppPurchasePresentation {
 
   private func initGradientSublayer() {
     self.gradientLayer.frame     = self.view.layer.bounds
-    self.gradientLayer.colors    = self.theme.colorScheme.presentation.gradient.map { $0.cgColor }
-    self.gradientLayer.locations = self.theme.colorScheme.presentation.gradientLocations.map { NSNumber(value: $0) }
+    self.gradientLayer.colors    = Managers.theme.colorScheme.presentation.gradient.map { $0.cgColor }
+    self.gradientLayer.locations = Managers.theme.colorScheme.presentation.gradientLocations.map { NSNumber(value: $0) }
     self.view.layer.addSublayer(self.gradientLayer)
   }
 
@@ -54,8 +54,7 @@ extension InAppPurchasePresentation {
       view:    deviceView,
       title:   title,   titleTopOffset:   PageLayout.Title.topOffset,
       caption: caption, captionTopOffset: PageLayout.Caption.topOffset,
-      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset,
-      theme:      self.theme
+      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset
     )
   }
 
@@ -74,13 +73,13 @@ extension InAppPurchasePresentation {
   }
 
   private func initPurchaseButton() {
-    let attributes = self.theme.textAttributes(for: .body, alignment: .center, color: .presentationPrimary)
+    let attributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: .presentationPrimary)
     let text = NSAttributedString(string: Localization.upgrade, attributes: attributes)
 
     self.upgradeButton.setAttributedTitle(text, for: .normal)
     self.upgradeButton.layer.cornerRadius = Layout.UpgradeButton.cornerRadius
     self.upgradeButton.clipsToBounds      = true
-    self.upgradeButton.backgroundColor    = self.theme.colorScheme.presentation.button
+    self.upgradeButton.backgroundColor    = Managers.theme.colorScheme.presentation.button
     self.upgradeButton.contentEdgeInsets  = Layout.UpgradeButton.edgeInsets
     self.upgradeButton.addTarget(self, action: #selector(upgradeButtonPressed), for: .touchUpInside)
 
@@ -92,7 +91,7 @@ extension InAppPurchasePresentation {
   }
 
   private func initRestorePurchaseLabel() {
-    let textAttributes = self.theme.textAttributes(for: .caption, alignment: .center, color: .presentationSecondary)
+    let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, color: .presentationSecondary)
 
     var underlineAttributes = textAttributes
     underlineAttributes[NSUnderlineStyleAttributeName] = NSUnderlineStyle.styleSingle.rawValue

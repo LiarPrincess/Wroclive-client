@@ -8,18 +8,10 @@ import PromiseKit
 
 private typealias Constants = TrackingManagerConstants
 
-class TrackingManagerImpl: HasNetworkManager, HasNotificationManager {
-
-  let network      : NetworkManager
-  let notification : NotificationManager
-
-  init(network: NetworkManager, notification: NotificationManager) {
-    self.network      = network
-    self.notification = notification
-  }
+class TrackingManagerImpl {
 
   private(set) var result: TrackingResult = .success(locations: []) {
-    didSet { self.notification.post(.vehicleLocationsDidUpdate) }
+    didSet { Managers.notification.post(.vehicleLocationsDidUpdate) }
   }
 
   fileprivate var trackedLines: [Line] = []
@@ -35,16 +27,16 @@ class TrackingManagerImpl: HasNetworkManager, HasNotificationManager {
 
     let interval = Constants.locationUpdateInterval
     self.trackingTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
-    self.trackingTimer!.tolerance = interval * 0.1
+    self.trackingTimer?.tolerance = interval * 0.1
 
     // manually perform first tick
-    self.trackingTimer!.fire()
+    self.trackingTimer?.fire()
   }
 
   @objc func timerFired(timer: Timer) {
     guard timer.isValid else { return }
 
-    firstly { return self.network.getVehicleLocations(for: self.trackedLines) }
+    firstly { return Managers.network.getVehicleLocations(for: self.trackedLines) }
     .then  { self.result = .success(locations: $0) }
     .catch { self.result = .error(error: $0) }
   }

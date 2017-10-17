@@ -10,27 +10,19 @@ import PromiseKit
 
 private typealias Constants = MapViewControllerConstants
 
-class MapViewController: UIViewController, HasLocationManager, HasAlertManager, HasNotificationManager {
-
-  typealias Dependencies = HasLocationManager & HasAlertManager & HasNotificationManager
+class MapViewController: UIViewController {
 
   // MARK: - Properties
-
-  let managers: Dependencies
-  var location:     LocationManager     { return self.managers.location }
-  var alert:        AlertManager        { return self.managers.alert }
-  var notification: NotificationManager { return self.managers.notification }
 
   let mapView = MKMapView()
 
   // MARK: - Init
 
-  convenience init(managers: Dependencies) {
-    self.init(nibName: nil, bundle: nil, managers: managers)
+  convenience init() {
+    self.init(nibName: nil, bundle: nil)
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies) {
-    self.managers = managers
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nil, bundle: nil)
     self.insetViewToShowMapLegalInfo()
     self.startObservingApplicationActivity()
@@ -107,12 +99,12 @@ class MapViewController: UIViewController, HasLocationManager, HasAlertManager, 
   }
 
   fileprivate func centerUserLocationIfAuthorized(animated: Bool) {
-    let authorization = self.location.authorization
+    let authorization = Managers.location.authorization
 
     guard authorization == .authorizedAlways || authorization == .authorizedWhenInUse
       else { return }
 
-    _ = self.location.getCurrent()
+    _ = Managers.location.getCurrent()
     .then { userLocation -> () in
       self.mapView.setCenter(userLocation, animated: true)
       self.alertWhenFarFromDefaultCity(userLocation: userLocation)
@@ -129,7 +121,7 @@ class MapViewController: UIViewController, HasLocationManager, HasAlertManager, 
     guard distance > Constants.Defaults.cityRadius
       else { return }
 
-    self.alert.showInvalidCityAlert(in: self) { [weak self] result in
+    Managers.alert.showInvalidCityAlert(in: self) { [weak self] result in
       if result == .showDefault {
         self?.centerDefaultRegion(animated: true)
       }
@@ -202,11 +194,11 @@ extension MapViewController: MKMapViewDelegate {
   // MARK: - Tracking mode
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-    let authorization = self.location.authorization
+    let authorization = Managers.location.authorization
     switch authorization {
-    case .denied:        self.alert.showDeniedLocationAuthorizationAlert(in: self)
-    case .restricted:    self.alert.showGloballyDeniedLocationAuthorizationAlert(in: self)
-    case .notDetermined: self.location.requestAuthorization()
+    case .denied:        Managers.alert.showDeniedLocationAuthorizationAlert(in: self)
+    case .restricted:    Managers.alert.showGloballyDeniedLocationAuthorizationAlert(in: self)
+    case .notDetermined: Managers.location.requestAuthorization()
     default: break
     }
   }

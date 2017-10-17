@@ -9,7 +9,7 @@ import Foundation
   func locationAuthorizationDidChange()
 }
 
-extension LocationAuthorizationObserver where Self: HasNotificationManager {
+extension LocationAuthorizationObserver {
   private var notification: Notification { return .locationAuthorizationDidChange }
 
   func startObservingLocationAuthorization() {

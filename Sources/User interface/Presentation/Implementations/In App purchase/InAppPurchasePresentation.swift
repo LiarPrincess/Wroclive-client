@@ -5,15 +5,9 @@
 
 import UIKit
 
-class InAppPurchasePresentation: UIViewController, PresentationController, HasThemeManager, HasAppStoreManager {
-
-  typealias Dependencies = HasThemeManager & HasAppStoreManager
+class InAppPurchasePresentation: UIViewController, PresentationController {
 
   // MARK: - Properties
-
-  let managers: Dependencies
-  var appStore: AppStoreManager { return self.managers.appStore }
-  var theme:    ThemeManager    { return self.managers.theme }
 
   let gradientLayer = CAGradientLayer()
 
@@ -23,21 +17,6 @@ class InAppPurchasePresentation: UIViewController, PresentationController, HasTh
 
   let upgradeButton        = UIButton(type: .roundedRect)
   let restorePurchaseLabel = UILabel()
-
-  // MARK: - Init
-
-  convenience init(managers: Dependencies) {
-    self.init(nibName: nil, bundle: nil, managers: managers)
-  }
-
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies) {
-    self.managers = managers
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
 
   // MARK: - Overriden
 
@@ -54,11 +33,11 @@ class InAppPurchasePresentation: UIViewController, PresentationController, HasTh
   // MARK: - Actions
 
   @objc func upgradeButtonPressed() {
-    self.appStore.buyUpgrade()
+    Managers.appStore.buyUpgrade()
   }
 
   @objc func restorePurchaseLabelPressed(tapGestureRecognizer: UITapGestureRecognizer) {
-    self.appStore.restorePurchase()
+    Managers.appStore.restorePurchase()
   }
 }
 

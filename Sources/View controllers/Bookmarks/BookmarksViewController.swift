@@ -17,15 +17,12 @@ protocol BookmarksViewControllerDelegate: class {
 
 class BookmarksViewController: UIViewController {
 
-  typealias Dependencies = HasBookmarksManager & HasThemeManager
-
   // MARK: - Properties
 
-  let managers:      Dependencies
   weak var delegate: BookmarksViewControllerDelegate?
 
   lazy var headerView: UIVisualEffectView = {
-    let headerViewBlur = UIBlurEffect(style: self.managers.theme.colorScheme.blurStyle)
+    let headerViewBlur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
     return UIVisualEffectView(effect: headerViewBlur)
   }()
 
@@ -41,12 +38,11 @@ class BookmarksViewController: UIViewController {
 
   // MARK: - Init
 
-  convenience init(managers: Dependencies, delegate: BookmarksViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil, managers: managers, delegate: delegate)
+  convenience init(delegate: BookmarksViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, delegate: delegate)
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies, delegate: BookmarksViewControllerDelegate? = nil) {
-    self.managers = managers
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: BookmarksViewControllerDelegate? = nil) {
     self.delegate = delegate
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
   }
@@ -65,8 +61,8 @@ class BookmarksViewController: UIViewController {
   }
 
   private func initDataSource() {
-    let bookmarks = self.managers.bookmarks.getAll()
-    self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, managers: self.managers, delegate: self)
+    let bookmarks = Managers.bookmarks.getAll()
+    self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
   }
 
   override func viewDidLayoutSubviews() {
@@ -110,13 +106,13 @@ class BookmarksViewController: UIViewController {
   }
 
   func setEditButtonEdit() {
-    let textAttributes = self.managers.theme.textAttributes(for: .body, color: .tint)
+    let textAttributes = Managers.theme.textAttributes(for: .body, color: .tint)
     let title          = NSAttributedString(string: Localization.editEdit, attributes: textAttributes)
     self.editButton.setAttributedTitle(title, for: .normal)
   }
 
   func setEditButtonDone() {
-    let textAttributes = self.managers.theme.textAttributes(for: .bodyBold, color: .tint)
+    let textAttributes = Managers.theme.textAttributes(for: .bodyBold, color: .tint)
     let title          = NSAttributedString(string: Localization.editDone, attributes: textAttributes)
     self.editButton.setAttributedTitle(title, for: .normal)
   }
@@ -194,6 +190,6 @@ extension BookmarksViewController: BookmarksDataSourceDelegate {
 
   private func saveBookmarks() {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
-    self.managers.bookmarks.save(bookmarks)
+    Managers.bookmarks.save(bookmarks)
   }
 }

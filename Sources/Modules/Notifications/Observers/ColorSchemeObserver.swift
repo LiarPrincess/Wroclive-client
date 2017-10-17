@@ -9,7 +9,7 @@ import Foundation
   func colorSchemeDidChange()
 }
 
-extension ColorSchemeObserver where Self: HasNotificationManager {
+extension ColorSchemeObserver {
   private var notification: Notification { return .colorSchemeDidChange }
 
   func startObservingColorScheme() {

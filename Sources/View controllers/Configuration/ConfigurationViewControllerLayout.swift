@@ -13,7 +13,7 @@ private typealias Localization = Localizable.Configuration
 extension ConfigurationViewController {
 
   func initLayout() {
-    self.view.backgroundColor = self.theme.colorScheme.background
+    self.view.backgroundColor = Managers.theme.colorScheme.background
     self.initHeader()
     self.initScrollView()
   }
@@ -27,7 +27,7 @@ extension ConfigurationViewController {
       make.left.top.right.equalToSuperview()
     }
 
-    let titleAttributes           = self.theme.textAttributes(for: .headline)
+    let titleAttributes           = Managers.theme.textAttributes(for: .headline)
     self.cardTitle.attributedText = NSAttributedString(string: Localization.Title, attributes: titleAttributes)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
@@ -70,7 +70,7 @@ extension ConfigurationViewController {
 
     // table view
     self.tableView.register(UITableViewCell.self)
-    self.tableView.backgroundColor = self.theme.colorScheme.configurationBackground
+    self.tableView.backgroundColor = Managers.theme.colorScheme.configurationBackground
     self.tableView.separatorInset  = .zero
     self.tableView.dataSource      = self.tableViewDataSource
     self.tableView.delegate        = self
@@ -104,9 +104,9 @@ extension ConfigurationViewController {
   }
 
   private func createTableFooterText() -> NSAttributedString {
-    let textAttributes = self.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
+    let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
 
-    let appVersion = self.managers.app.version
+    let appVersion = Managers.app.version
     let footerText = String(format: Localization.Footer, appVersion)
     return NSAttributedString(string: footerText, attributes: textAttributes)
   }

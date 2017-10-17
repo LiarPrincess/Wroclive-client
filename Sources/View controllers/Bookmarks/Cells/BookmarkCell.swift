@@ -25,6 +25,8 @@ class BookmarkCell: UITableViewCell {
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+    self.backgroundColor = Managers.theme.colorScheme.background
+
     self.bookmarkName.numberOfLines = 0
     self.tramLines.numberOfLines    = 0
     self.busLines.numberOfLines     = 0
@@ -113,21 +115,19 @@ class BookmarkCell: UITableViewCell {
   // MARK: - Methods
 
   func setUp(with viewModel: BookmarkCellViewModel) {
-    self.backgroundColor = viewModel.theme.colorScheme.background
-
-    let nameAttributes = viewModel.theme.textAttributes(for: .subheadline, alignment: .center)
+    let nameAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
     self.bookmarkName.attributedText = NSAttributedString(string: viewModel.bookmarkName, attributes: nameAttributes)
 
-    self.setLineLabel(self.tramLines, text: viewModel.tramLines, theme: viewModel.theme)
-    self.setLineLabel(self.busLines,  text: viewModel.busLines,  theme: viewModel.theme)
+    self.setLineLabel(self.tramLines, text: viewModel.tramLines)
+    self.setLineLabel(self.busLines,  text: viewModel.busLines)
 
     // update constraints, so that the layout will not break when we hide label
     self.setNeedsUpdateConstraints()
     self.setNeedsLayout()
   }
 
-  private func setLineLabel(_ label: UILabel, text: String, theme: ThemeManager) {
-    let textAttributes   = theme.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.LinesLabel.lineSpacing, color: .tint)
+  private func setLineLabel(_ label: UILabel, text: String) {
+    let textAttributes   = Managers.theme.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.LinesLabel.lineSpacing, color: .tint)
     label.isHidden       = text.isEmpty
     label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
   }

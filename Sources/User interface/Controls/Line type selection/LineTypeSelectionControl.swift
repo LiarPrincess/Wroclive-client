@@ -12,14 +12,9 @@ private struct Indices {
   static let bus  = 1
 }
 
-class LineTypeSelectionControl: UISegmentedControl, HasThemeManager {
-
-  typealias Dependencies = HasThemeManager
+class LineTypeSelectionControl: UISegmentedControl {
 
   // MARK: - Properties
-
-  let managers: Dependencies
-  var theme:    ThemeManager { return self.managers.theme }
 
   weak var delegate: LineTypeSelectionControlDelegate?
 
@@ -40,11 +35,10 @@ class LineTypeSelectionControl: UISegmentedControl, HasThemeManager {
 
   // MARK: - Init
 
-  init(managers: Dependencies) {
-    self.managers = managers
+  init() {
     super.init(frame: .zero)
 
-    let textAttributes = self.theme.textAttributes(for: .body, color: .tint)
+    let textAttributes = Managers.theme.textAttributes(for: .body, color: .tint)
     self.setTitleTextAttributes(textAttributes, for: .normal)
 
     self.insertSegment(withTitle: Localization.tram, at: Indices.tram, animated: false)

@@ -5,35 +5,15 @@
 
 import UIKit
 
-class TutorialPresentation: UIViewController, PresentationController, HasThemeManager {
-
-  typealias Dependencies = HasThemeManager
+class TutorialPresentation: UIViewController, PresentationController {
 
   // MARK: - Properties
-
-  let managers: Dependencies
-  var theme:    ThemeManager    { return self.managers.theme }
 
   let gradientLayer = CAGradientLayer()
 
   let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
   let pageControl        = UIPageControl()
   var pages              = [UIViewController]()
-
-  // MARK: - Init
-
-  convenience init(managers: Dependencies) {
-    self.init(nibName: nil, bundle: nil, managers: managers)
-  }
-
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies) {
-    self.managers = managers
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
 
   // MARK: - Overriden
 

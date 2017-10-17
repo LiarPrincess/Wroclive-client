@@ -121,5 +121,4 @@ class ChevronView : UIView {
       UIView.performWithoutAnimation(rotateViews)
     }
   }
-
 }

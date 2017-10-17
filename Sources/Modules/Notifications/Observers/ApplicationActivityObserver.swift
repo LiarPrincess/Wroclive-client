@@ -10,7 +10,7 @@ import Foundation
   func applicationWillResignActive()
 }
 
-extension ApplicationActivityObserver where Self: HasNotificationManager {
+extension ApplicationActivityObserver {
 
   func startObservingApplicationActivity() {
     self.startObserving(.applicationDidBecomeActive, #selector(applicationDidBecomeActive))

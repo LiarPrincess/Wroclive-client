@@ -5,24 +5,19 @@
 
 import UIKit
 
-class AppCoordinator: CardPanelCoordinator, HasTutorialManager {
+class AppCoordinator: CardPanelCoordinator {
 
-  let window:   UIWindow
+  let window: UIWindow
 
-  let managers: DependencyManager
-  var tutorial: TutorialManager { return self.managers.tutorial }
-
-  var childCoordinators: [Coordinator] = []
-
+  var childCoordinators:           [Coordinator] = []
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
-  init(window: UIWindow, managers: DependencyManager) {
-    self.window   = window
-    self.managers = managers
+  init(window: UIWindow) {
+    self.window = window
   }
 
   func start() {
-    self.window.rootViewController = MainViewController(managers: self.managers, delegate: self)
+    self.window.rootViewController = MainViewController(delegate: self)
     self.window.makeKeyAndVisible()
   }
 }
@@ -31,15 +26,14 @@ extension AppCoordinator: MainViewControllerDelegate,
                           TutorialCoordinatorDelegate,
                           SearchCoordinatorDelegate,
                           BookmarksCoordinatorDelegate,
-                          ConfigurationCoordinatorDelegate
-{
+                          ConfigurationCoordinatorDelegate {
 
   // MARK: - Tutorial
 
   func mainViewControllerDidAppear(_ viewController: MainViewController) {
-    guard !self.tutorial.hasCompleted else { return }
+    guard !Managers.tutorial.hasCompleted else { return }
 
-    let coordinator = TutorialCoordinator(parent: viewController, mode: .firstUse, managers: self.managers, delegate: self)
+    let coordinator = TutorialCoordinator(parent: viewController, mode: .firstUse, delegate: self)
     self.childCoordinators.append(coordinator)
     coordinator.start()
   }
@@ -48,15 +42,15 @@ extension AppCoordinator: MainViewControllerDelegate,
     self.removeChildCoordinator(coordinator)
 
     if coordinator.mode == .firstUse {
-      self.tutorial.markAsCompleted()
-      self.managers.location.requestAuthorization()
+      Managers.tutorial.markAsCompleted()
+      Managers.location.requestAuthorization()
     }
   }
 
   // MARK: - Search
 
   func mainViewControllerDidTapSearchButton(_ viewController: MainViewController) {
-    let coordinator = SearchCoordinator(parent: viewController, managers: self.managers, delegate: self)
+    let coordinator = SearchCoordinator(parent: viewController, delegate: self)
     self.childCoordinators.append(coordinator)
     coordinator.start()
   }
@@ -68,7 +62,7 @@ extension AppCoordinator: MainViewControllerDelegate,
   // MARK: - Bookmarks
 
   func mainViewControllerDidTapBookmarksButton(_ viewController: MainViewController) {
-    let coordinator = BookmarksCoordinator(parent: viewController, managers: self.managers, delegate: self)
+    let coordinator = BookmarksCoordinator(parent: viewController, delegate: self)
     self.childCoordinators.append(coordinator)
     coordinator.start()
   }
@@ -80,7 +74,7 @@ extension AppCoordinator: MainViewControllerDelegate,
   // MARK: - Configuration
 
   func mainViewControllerDidTapConfigurationButton(_ viewController: MainViewController) {
-    let coordinator = ConfigurationCoordinator(parent: viewController, managers: self.managers, delegate: self)
+    let coordinator = ConfigurationCoordinator(parent: viewController, delegate: self)
     self.childCoordinators.append(coordinator)
     coordinator.start()
   }

@@ -11,21 +11,16 @@ import PromiseKit
 typealias JSONDictionary =  [String : AnyObject]
 typealias JSONArray      = [[String : AnyObject]]
 
-class NetworkManagerImpl: NetworkManager, HasAppManager, HasDeviceManager {
+class NetworkManagerImpl: NetworkManager {
 
   // MARK: - Properties
 
-  let app:    AppManager
-  let device: DeviceManager
-
-  private lazy var session      = SessionManager(appManager: self.app, deviceManager: self.device)
+  private lazy var session      = SessionManager()
   private lazy var reachability = Alamofire.NetworkReachabilityManager(host: "www.google.com")
 
   // MARK: - Init
 
-  init(app: AppManager, device: DeviceManager) {
-    self.app    = app
-    self.device = device
+  init() {
     NetworkActivityIndicatorManager.shared.isEnabled = true
     self.reachability?.startListening()
   }

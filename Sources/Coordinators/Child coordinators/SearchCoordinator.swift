@@ -10,7 +10,6 @@ protocol SearchCoordinatorDelegate: class {
 }
 
 class SearchCoordinator: CardPanelCoordinator {
-  let managers: DependencyManager
 
   var childCoordinators: [Coordinator] = []
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
@@ -18,16 +17,15 @@ class SearchCoordinator: CardPanelCoordinator {
   weak var parent:   UIViewController?
   weak var delegate: SearchCoordinatorDelegate?
 
-  init(parent: UIViewController, managers: DependencyManager, delegate: SearchCoordinatorDelegate) {
+  init(parent: UIViewController, delegate: SearchCoordinatorDelegate) {
     self.parent   = parent
-    self.managers = managers
     self.delegate = delegate
   }
 
   func start() {
     guard let parent = self.parent else { return }
 
-    let panel = SearchViewController(managers: self.managers, delegate: self)
+    let panel = SearchViewController(delegate: self)
     self.presentCardPanel(panel, in: parent)
   }
 }
@@ -35,7 +33,7 @@ class SearchCoordinator: CardPanelCoordinator {
 extension SearchCoordinator: SearchViewControllerDelegate {
 
   func searchViewController(_ viewController: SearchViewController, didSelect lines: [Line]) {
-    self.managers.tracking.start(lines)
+    Managers.tracking.start(lines)
     viewController.dismiss(animated: true, completion: nil)
   }
 

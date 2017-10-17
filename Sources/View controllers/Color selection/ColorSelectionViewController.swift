@@ -12,21 +12,16 @@ protocol ColorSelectionViewControllerDelegate: class {
   func colorSelectionViewControllerDidTapCloseButton(_ viewController: ColorSelectionViewController)
 }
 
-class ColorSelectionViewController: UIViewController, HasThemeManager {
-
-  typealias Dependencies = HasThemeManager & HasNotificationManager
+class ColorSelectionViewController: UIViewController {
 
   // MARK: - Properties
-
-  let managers: Dependencies
-  var theme: ThemeManager { return self.managers.theme }
 
   weak var delegate: ColorSelectionViewControllerDelegate?
 
   let scrollView        = UIScrollView()
   let scrollViewContent = UIView()
 
-  lazy var themePresentation = ThemePresentation(managers: self.managers)
+  lazy var themePresentation = ThemePresentation()
 
   let collectionViewDataSource = ColorSelectionDataSource()
   let collectionView: UICollectionView = {
@@ -38,12 +33,11 @@ class ColorSelectionViewController: UIViewController, HasThemeManager {
 
   // MARK: - Init
 
-  convenience init(managers: Dependencies, delegate: ColorSelectionViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil, managers: managers, delegate: delegate)
+  convenience init(delegate: ColorSelectionViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, delegate: delegate)
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies, delegate: ColorSelectionViewControllerDelegate? = nil) {
-    self.managers = managers
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: ColorSelectionViewControllerDelegate? = nil) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     self.delegate = delegate
     self.startObservingColorScheme()
@@ -104,7 +98,7 @@ class ColorSelectionViewController: UIViewController, HasThemeManager {
       self.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
 
-    let colorScheme = self.theme.colorScheme
+    let colorScheme = Managers.theme.colorScheme
 
     if let tintIndex = self.collectionViewDataSource.indexOf(tintColor: colorScheme.tintColor) {
       selectColorAt(tintIndex)
@@ -148,7 +142,7 @@ class ColorSelectionViewController: UIViewController, HasThemeManager {
     }
 
     if let tintColor = tintColor, let tramColor = tramColor, let busColor = busColor {
-      self.theme.setColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
+      Managers.theme.setColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
     }
   }
 
@@ -169,12 +163,10 @@ class ColorSelectionViewController: UIViewController, HasThemeManager {
 
 // MARK: - ColorSchemeObserver
 
-extension ColorSelectionViewController: ColorSchemeObserver, HasNotificationManager {
-
-  var notification: NotificationManager { return self.managers.notification }
+extension ColorSelectionViewController: ColorSchemeObserver {
 
   func colorSchemeDidChange() {
-    let colorScheme = self.theme.colorScheme
+    let colorScheme = Managers.theme.colorScheme
     self.view.tintColor       = colorScheme.tintColor.value
     self.backButton.tintColor = colorScheme.tintColor.value
   }
@@ -188,8 +180,8 @@ extension ColorSelectionViewController: UIScrollViewDelegate {
   }
 
   private func updateScrollViewBackgroundColor() {
-    let gradientColor = self.theme.colorScheme.presentation.gradient.first
-    let tableColor    = self.theme.colorScheme.configurationBackground
+    let gradientColor = Managers.theme.colorScheme.presentation.gradient.first
+    let tableColor    = Managers.theme.colorScheme.configurationBackground
 
     let scrollPosition  = scrollView.contentOffset.y
     let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor
@@ -212,7 +204,7 @@ extension ColorSelectionViewController: UICollectionViewDelegateFlowLayout {
     let sectionName = self.collectionViewDataSource.sectionAt(section).name
 
     let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-    let textAttributes = self.theme.textAttributes(for: .caption)
+    let textAttributes = Managers.theme.textAttributes(for: .caption)
     let textSize       = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
 
     typealias HeaderLayout = Layout.Section.Header

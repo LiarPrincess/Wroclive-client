@@ -6,16 +6,13 @@
 private typealias Layout = BookmarksViewControllerConstants.Layout.Cell
 
 struct BookmarkCellViewModel {
-  let theme: ThemeManager
-
   let bookmark:     Bookmark
   var bookmarkName: String { return self.bookmark.name }
 
   let tramLines: String
   let busLines:  String
 
-  init(for bookmark: Bookmark, theme: ThemeManager) {
-    self.theme     = theme
+  init(for bookmark: Bookmark) {
     self.bookmark  = bookmark
     self.tramLines = BookmarkCellViewModel.concatNames(bookmark.lines.filter(.tram))
     self.busLines  = BookmarkCellViewModel.concatNames(bookmark.lines.filter(.bus ))

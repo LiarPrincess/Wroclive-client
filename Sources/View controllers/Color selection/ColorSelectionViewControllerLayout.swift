@@ -11,7 +11,7 @@ private typealias Layout = ColorSelectionViewControllerConstants.Layout
 extension ColorSelectionViewController {
 
   func initLayout() {
-    self.view.backgroundColor = self.managers.theme.colorScheme.configurationBackground
+    self.view.backgroundColor = Managers.theme.colorScheme.configurationBackground
     self.initScrollView()
     self.initBackButton()
   }
@@ -47,7 +47,7 @@ extension ColorSelectionViewController {
     self.collectionView.register(ColorSelectionCell.self)
     self.collectionView.registerSupplementary(ColorSelectionSectionHeaderView.self, ofKind: .header)
     self.collectionView.registerSupplementary(ColorSelectionSectionFooterView.self, ofKind: .footer)
-    self.collectionView.backgroundColor         = self.managers.theme.colorScheme.background
+    self.collectionView.backgroundColor         = Managers.theme.colorScheme.background
     self.collectionView.allowsSelection         = true
     self.collectionView.allowsMultipleSelection = true
 

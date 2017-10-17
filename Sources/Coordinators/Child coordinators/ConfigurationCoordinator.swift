@@ -10,7 +10,6 @@ protocol ConfigurationCoordinatorDelegate: class {
 }
 
 class ConfigurationCoordinator: CardPanelCoordinator {
-  let managers: DependencyManager
 
   var childCoordinators: [Coordinator] = []
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
@@ -18,24 +17,22 @@ class ConfigurationCoordinator: CardPanelCoordinator {
   weak var parent:   UIViewController?
   weak var delegate: ConfigurationCoordinatorDelegate?
 
-  init(parent: UIViewController, managers: DependencyManager, delegate: ConfigurationCoordinatorDelegate) {
+  init(parent: UIViewController, delegate: ConfigurationCoordinatorDelegate) {
     self.parent   = parent
-    self.managers = managers
     self.delegate = delegate
   }
 
   func start() {
     guard let parent = self.parent else { return }
 
-    let controller = ConfigurationViewController(managers: self.managers, delegate: self)
+    let controller = ConfigurationViewController(delegate: self)
     self.presentCardPanel(controller, in: parent)
   }
 }
 
 extension ConfigurationCoordinator: ConfigurationViewControllerDelegate,
                                     ColorSelectionCoordinatorDelegate,
-                                    TutorialCoordinatorDelegate
-{
+                                    TutorialCoordinatorDelegate {
 
   // MARK: - Close
 
@@ -46,7 +43,7 @@ extension ConfigurationCoordinator: ConfigurationViewControllerDelegate,
   // MARK: - Color selection
 
   func configurationViewControllerDidTapColorSelectionButton(_ viewController: ConfigurationViewController) {
-    let coordinator = ColorSelectionCoordinator(parent: viewController, managers: managers, delegate: self)
+    let coordinator = ColorSelectionCoordinator(parent: viewController, delegate: self)
     self.childCoordinators.append(coordinator)
     coordinator.start()
   }
@@ -58,7 +55,7 @@ extension ConfigurationCoordinator: ConfigurationViewControllerDelegate,
   // MARK: - Tutorial
 
   func configurationViewControllerDidTapTutorialButton(_ viewController: ConfigurationViewController) {
-    let coordinator = TutorialCoordinator(parent: viewController, mode: .default, managers: managers, delegate: self)
+    let coordinator = TutorialCoordinator(parent: viewController, mode: .default, delegate: self)
     self.childCoordinators.append(coordinator)
     coordinator.start()
   }

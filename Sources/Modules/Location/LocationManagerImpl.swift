@@ -7,11 +7,9 @@ import UIKit
 import MapKit
 import PromiseKit
 
-class LocationManagerImpl: NSObject, LocationManager, HasNotificationManager {
+class LocationManagerImpl: NSObject, LocationManager {
 
   // MARK: - Properties
-
-  let notification: NotificationManager
 
   private lazy var locationManager: CLLocationManager = {
     let manager             = CLLocationManager()
@@ -21,13 +19,6 @@ class LocationManagerImpl: NSObject, LocationManager, HasNotificationManager {
     manager.pausesLocationUpdatesAutomatically = true
     return manager
   }()
-
-  // MARK: - Init
-
- init(notification: NotificationManager) {
-    self.notification = notification
-    super.init()
-  }
 
   // MARK: - LocationManager
 
@@ -53,6 +44,6 @@ class LocationManagerImpl: NSObject, LocationManager, HasNotificationManager {
 
 extension LocationManagerImpl: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    self.notification.post(.locationAuthorizationDidChange)
+    Managers.notification.post(.locationAuthorizationDidChange)
   }
 }

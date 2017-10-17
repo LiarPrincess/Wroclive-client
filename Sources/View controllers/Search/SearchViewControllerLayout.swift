@@ -13,7 +13,7 @@ private typealias Localization = Localizable.Search
 extension SearchViewController {
 
   func initLayout() {
-    self.view.backgroundColor = self.managers.theme.colorScheme.background
+    self.view.backgroundColor = Managers.theme.colorScheme.background
     self.initHeader()
     self.initLinesSelector()
     self.initLinesSelectorPlaceholder()
@@ -30,7 +30,7 @@ extension SearchViewController {
       make.left.top.right.equalToSuperview()
     }
 
-    let titleAttributes = self.managers.theme.textAttributes(for: .headline)
+    let titleAttributes = Managers.theme.textAttributes(for: .headline)
     self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
@@ -43,7 +43,7 @@ extension SearchViewController {
 
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.bookmarkButtonSize)
 
-    self.bookmarkButton.tintColor = self.managers.theme.colorScheme.tintColor.value
+    self.bookmarkButton.tintColor = Managers.theme.colorScheme.tintColor.value
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
     self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
     self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonPressed), for: .touchUpInside)
@@ -54,7 +54,7 @@ extension SearchViewController {
       make.left.equalTo(self.cardTitle.snp.right)
     }
 
-    let searchAttributes = self.managers.theme.textAttributes(for: .body, color: .tint)
+    let searchAttributes = Managers.theme.textAttributes(for: .body, color: .tint)
     let searchTitle      = NSAttributedString(string: Localization.search, attributes: searchAttributes)
     self.searchButton.setAttributedTitle(searchTitle, for: .normal)
     self.searchButton.contentEdgeInsets = Layout.Header.searchButtonInsets
@@ -107,7 +107,7 @@ extension SearchViewController {
       make.centerX.equalToSuperview()
     }
 
-    let textAttributes = self.managers.theme.textAttributes(for: .body, alignment: .center)
+    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center)
     self.placeholderLabel.attributedText = NSAttributedString(string: Localization.loading, attributes: textAttributes)
     self.placeholderLabel.numberOfLines  = 0
     self.placeholderLabel.lineBreakMode  = .byWordWrapping

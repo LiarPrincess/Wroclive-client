@@ -10,7 +10,6 @@ protocol BookmarksCoordinatorDelegate: class {
 }
 
 class BookmarksCoordinator: CardPanelCoordinator {
-  let managers: DependencyManager
 
   var childCoordinators: [Coordinator] = []
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
@@ -18,16 +17,15 @@ class BookmarksCoordinator: CardPanelCoordinator {
   weak var parent:   UIViewController?
   weak var delegate: BookmarksCoordinatorDelegate?
 
-  init(parent: UIViewController, managers: DependencyManager, delegate: BookmarksCoordinatorDelegate) {
+  init(parent: UIViewController, delegate: BookmarksCoordinatorDelegate) {
     self.parent   = parent
-    self.managers = managers
     self.delegate = delegate
   }
 
   func start() {
     guard let parent = self.parent else { return }
 
-    let panel = BookmarksViewController(managers: self.managers, delegate: self)
+    let panel = BookmarksViewController(delegate: self)
     self.presentCardPanel(panel, in: parent)
   }
 }
@@ -35,7 +33,7 @@ class BookmarksCoordinator: CardPanelCoordinator {
 extension BookmarksCoordinator: BookmarksViewControllerDelegate {
 
   func bookmarksViewController(_ viewController: BookmarksViewController, didSelect bookmark: Bookmark) {
-    self.managers.tracking.start(bookmark.lines)
+    Managers.tracking.start(bookmark.lines)
     viewController.dismiss(animated: true, completion: nil)
   }
 

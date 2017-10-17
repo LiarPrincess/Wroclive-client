@@ -7,8 +7,6 @@ import UIKit
 
 class LineSelectionDataSource: NSObject {
 
-  typealias Dependencies = HasThemeManager
-
   // MARK: - Properties
 
   var lines: [Line] { return self.viewModels.flatMap { $0.lines } }
@@ -17,8 +15,8 @@ class LineSelectionDataSource: NSObject {
 
   // MARK: - Init
 
-  init(with lines: [Line], managers: Dependencies) {
-    self.viewModels = LineSelectionSectionViewModelFactory.convert(lines, theme: managers.theme)
+  init(with lines: [Line]) {
+    self.viewModels = LineSelectionSectionViewModelFactory.convert(lines)
   }
 
   // MARK: - Methods

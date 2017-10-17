@@ -9,7 +9,7 @@ import Foundation
   func vehicleLocationsDidUpdate()
 }
 
-extension VehicleLocationObserver where Self: HasNotificationManager {
+extension VehicleLocationObserver {
   private var notification: Notification { return .vehicleLocationsDidUpdate }
 
   func startObservingVehicleLocations() {

@@ -19,6 +19,7 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
+    self.backgroundColor = Managers.theme.colorScheme.background
     self.initLayout()
   }
 
@@ -35,6 +36,13 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
       make.top.equalToSuperview().offset(Layout.topInset)
       make.left.right.equalToSuperview()
     }
+  }
+
+  // MARK: - Overriden
+
+  override var alpha: CGFloat {
+    get { return 1.0 }
+    set { }
   }
 
   // MARK: - Methods

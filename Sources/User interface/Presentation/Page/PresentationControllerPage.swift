@@ -12,8 +12,7 @@ class PresentationControllerPage: UIViewController {
 
   private let parameters: PresentationControllerPageParameters
 
-  private var theme:       ThemeManager { return self.parameters.theme }
-  private var contentView: UIView       { return self.parameters.view }
+  private var contentView: UIView { return self.parameters.view }
 
   private let labelContainer = UIView()
   private let titleLabel     = UILabel()
@@ -97,7 +96,7 @@ class PresentationControllerPage: UIViewController {
   // MARK: - Attributed texts
 
   private func createAttributedTitle(_ title: String) -> NSAttributedString {
-    let attributes = self.theme.textAttributes(for: .bodyBold, alignment: .center, color: .presentationPrimary)
+    let attributes = Managers.theme.textAttributes(for: .bodyBold, alignment: .center, color: .presentationPrimary)
     return NSAttributedString(string: title, attributes: attributes)
   }
 
@@ -106,8 +105,8 @@ class PresentationControllerPage: UIViewController {
     let color       = TextColor.presentationSecondary
     let lineSpacing = self.parameters.captionLineSpacing
 
-    let textAttributes = self.theme.textAttributes(for: .caption, fontType: .text, alignment: alignment, lineSpacing: lineSpacing, color: color)
-    let iconAttributes = self.theme.textAttributes(for: .caption, fontType: .icon, alignment: alignment, lineSpacing: lineSpacing, color: color)
+    let textAttributes = Managers.theme.textAttributes(for: .caption, fontType: .text, alignment: alignment, lineSpacing: lineSpacing, color: color)
+    let iconAttributes = Managers.theme.textAttributes(for: .caption, fontType: .icon, alignment: alignment, lineSpacing: lineSpacing, color: color)
 
     let starReplacement   = TextReplacement("<star>",   NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
     let searchReplacement = TextReplacement("<search>", NSAttributedString(string: "\u{f002}", attributes: iconAttributes))

@@ -11,32 +11,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   var appCoordinator: AppCoordinator!
 
-  let managers = DependencyManagerImpl()
-
   // MARK: - Launch
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    self.registerManagers()
-
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    self.appCoordinator = AppCoordinator(window: self.window!, managers: self.managers)
+    self.appCoordinator = AppCoordinator(window: self.window!)
     self.appCoordinator.start()
 
     return true
   }
 
-  private func registerManagers() {
-    let notification = NotificationManagerImpl()
-    Managers.theme = ThemeManagerImpl(notification: notification)
-  }
-
   // MARK: - Activity
 
   func applicationDidBecomeActive(_ application: UIApplication) {
-    self.managers.tracking.resume()
+    Managers.theme.recalculateFontSizes()
+    Managers.tracking.resume()
   }
 
   func applicationWillResignActive(_ application: UIApplication) {
-    self.managers.tracking.pause()
+    Managers.tracking.pause()
   }
 }

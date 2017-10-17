@@ -7,10 +7,7 @@ struct LineSelectionCellViewModel {
   let line:     Line
   var lineName: String { return self.line.name.uppercased() }
 
-  let theme: ThemeManager
-
-  init(from line: Line, theme: ThemeManager) {
+  init(from line: Line) {
     self.line  = line
-    self.theme = theme
   }
 }

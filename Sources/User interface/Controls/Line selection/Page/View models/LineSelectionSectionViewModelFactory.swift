@@ -5,16 +5,16 @@
 
 struct LineSelectionSectionViewModelFactory {
 
-  static func convert(_ lines: [Line], theme: ThemeManager) -> [LineSelectionSectionViewModel] {
-    let viewModels = convertToViewModels(lines: lines, theme: theme)
+  static func convert(_ lines: [Line]) -> [LineSelectionSectionViewModel] {
+    let viewModels = convertToViewModels(lines: lines)
     return sortViewModels(viewModels)
   }
 
   // MARK: - Convert
 
-  private static func convertToViewModels(lines: [Line], theme: ThemeManager) -> [LineSelectionSectionViewModel] {
+  private static func convertToViewModels(lines: [Line]) -> [LineSelectionSectionViewModel] {
     let linesBySubtype = lines.groupedBy { $0.subtype }
-    return linesBySubtype.map { LineSelectionSectionViewModel(for: $0, lines: $1, theme: theme) }
+    return linesBySubtype.map { LineSelectionSectionViewModel(for: $0, lines: $1) }
   }
 
   // MARK: - Sort

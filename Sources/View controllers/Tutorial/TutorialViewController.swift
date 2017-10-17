@@ -13,28 +13,22 @@ protocol TutorialViewControllerDelegate: class {
   func tutorialViewControllerDidTapCloseButton(_ viewController: TutorialViewController)
 }
 
-class TutorialViewController: UIViewController, HasThemeManager {
-
-  typealias Dependencies = HasThemeManager
+class TutorialViewController: UIViewController {
 
   // MARK: - Properties
-
-  let managers: Dependencies
-  var theme: ThemeManager { return self.managers.theme }
 
   weak var delegate: TutorialViewControllerDelegate?
 
   let mode: TutorialViewControllerMode
 
-  lazy var presentation = TutorialPresentation(managers: self.managers)
+  lazy var presentation = TutorialPresentation()
   let closeButton  = UIButton(type: .system)
   let closeFirstUseButton = UIButton(type: .system)
 
   // MARK: - Init
 
-  init(mode: TutorialViewControllerMode, managers: Dependencies, delegate: TutorialViewControllerDelegate? = nil) {
+  init(mode: TutorialViewControllerMode, delegate: TutorialViewControllerDelegate? = nil) {
     self.mode     = mode
-    self.managers = managers
     self.delegate = delegate
     super.init(nibName: nil, bundle: nil)
   }
@@ -80,7 +74,7 @@ class TutorialViewController: UIViewController, HasThemeManager {
   }
 
   private func initSkipButton() {
-    let titleAttributes = self.theme.textAttributes(for: .body, alignment: .left, color: .tint)
+    let titleAttributes = Managers.theme.textAttributes(for: .body, alignment: .left, color: .tint)
     let title = NSAttributedString(string: Localization.skip, attributes: titleAttributes)
 
     self.closeFirstUseButton.setAttributedTitle(title, for: .normal)

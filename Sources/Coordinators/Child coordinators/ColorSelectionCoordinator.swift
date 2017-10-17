@@ -10,7 +10,6 @@ protocol ColorSelectionCoordinatorDelegate: class {
 }
 
 class ColorSelectionCoordinator: PushCoordinator {
-  let managers: DependencyManager
 
   var childCoordinators: [Coordinator] = []
 
@@ -19,16 +18,15 @@ class ColorSelectionCoordinator: PushCoordinator {
   weak var parent:   UIViewController?
   weak var delegate: ColorSelectionCoordinatorDelegate?
 
-  init(parent: UIViewController, managers: DependencyManager, delegate: ColorSelectionCoordinatorDelegate) {
+  init(parent: UIViewController, delegate: ColorSelectionCoordinatorDelegate) {
     self.parent   = parent
-    self.managers = managers
     self.delegate = delegate
   }
 
   func start() {
     guard let parent = self.parent else { return }
 
-    let child = ColorSelectionViewController(managers: managers, delegate: self)
+    let child = ColorSelectionViewController(delegate: self)
     self.presentPush(child, in: parent)
   }
 }

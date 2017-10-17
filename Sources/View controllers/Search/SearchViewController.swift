@@ -17,20 +17,12 @@ protocol SearchViewControllerDelegate: class {
 
 class SearchViewController: UIViewController {
 
-  typealias Dependencies =
-    HasSearchManager &
-    HasBookmarksManager &
-    HasNetworkManager &
-    HasAlertManager &
-    HasThemeManager
-
   // MARK: - Properties
 
-  let managers:      Dependencies
   weak var delegate: SearchViewControllerDelegate?
 
   lazy var headerView: UIVisualEffectView = {
-    let headerViewBlur = UIBlurEffect(style: self.managers.theme.colorScheme.blurStyle)
+    let headerViewBlur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
     return UIVisualEffectView(effect: headerViewBlur)
   }()
 
@@ -38,8 +30,8 @@ class SearchViewController: UIViewController {
   let bookmarkButton = UIButton()
   let searchButton   = UIButton()
 
-  lazy var lineTypeSelector = LineTypeSelectionControl(managers: self.managers)
-  lazy var linesSelector    = LineSelectionViewController(withLines: [], managers: self.managers)
+  lazy var lineTypeSelector = LineTypeSelectionControl()
+  lazy var linesSelector    = LineSelectionViewController(withLines: [])
 
   let placeholderView    = UIView()
   let placeholderLabel   = UILabel()
@@ -67,12 +59,11 @@ class SearchViewController: UIViewController {
 
   // MARK: - Init
 
-  convenience init(managers: Dependencies, delegate: SearchViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil, managers: managers, delegate: delegate)
+  convenience init(delegate: SearchViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, delegate: delegate)
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies, delegate: SearchViewControllerDelegate? = nil) {
-    self.managers = managers
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: SearchViewControllerDelegate? = nil) {
     self.delegate = delegate
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
   }
@@ -121,13 +112,13 @@ class SearchViewController: UIViewController {
     let selectedLines = self.linesSelector.selectedLines
 
     guard selectedLines.count > 0 else {
-      self.managers.alert.showBookmarkNoLinesSelectedAlert(in: self)
+      Managers.alert.showBookmarkNoLinesSelectedAlert(in: self)
       return
     }
 
-    self.managers.alert.showBookmarkNameInputAlert(in: self) { name in
+    Managers.alert.showBookmarkNameInputAlert(in: self) { name in
       guard let name = name else { return }
-      self.managers.bookmarks.addNew(name: name, lines: selectedLines)
+      Managers.bookmarks.addNew(name: name, lines: selectedLines)
     }
   }
 
@@ -141,7 +132,7 @@ class SearchViewController: UIViewController {
   // MARK: - Private - State
 
   private func loadSavedState() {
-    let state = self.managers.search.getSavedState()
+    let state = Managers.search.getSavedState()
     self.lineTypeSelector.value = state.selectedLineType
     self.refreshAvailableLines(state.selectedLines)
   }
@@ -149,7 +140,7 @@ class SearchViewController: UIViewController {
   private func refreshAvailableLines(_ selectedLines: [Line]) {
     self.mode = .loadingData
 
-    firstly { return self.managers.network.getAvailableLines() }
+    firstly { return Managers.network.getAvailableLines() }
     .then { [weak self] lines -> () in
       guard let strongSelf = self else { return }
 
@@ -171,9 +162,9 @@ class SearchViewController: UIViewController {
 
       switch error {
       case NetworkError.noInternet:
-        strongSelf.managers.alert.showNoInternetAlert(in: strongSelf, retry: retry)
+        Managers.alert.showNoInternetAlert(in: strongSelf, retry: retry)
       default:
-        strongSelf.managers.alert.showNetworkingErrorAlert(in: strongSelf, retry: retry)
+        Managers.alert.showNetworkingErrorAlert(in: strongSelf, retry: retry)
       }
     }
   }
@@ -186,7 +177,7 @@ class SearchViewController: UIViewController {
     let lines    = self.linesSelector.selectedLines
 
     let state = SearchState(withSelected: lineType, lines: lines)
-    self.managers.search.saveState(state)
+    Managers.search.saveState(state)
   }
 
   // MARK: - Private - Update methods

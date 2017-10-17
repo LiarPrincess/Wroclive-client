@@ -15,19 +15,14 @@ protocol ConfigurationViewControllerDelegate: class {
   func configurationViewControllerDidTapTutorialButton(_ viewController: ConfigurationViewController)
 }
 
-class ConfigurationViewController: UIViewController, HasThemeManager {
-
-  typealias Dependencies = HasAppManager & HasAppStoreManager & HasThemeManager & HasNotificationManager
+class ConfigurationViewController: UIViewController {
 
   // MARK: - Properties
-
-  let managers: Dependencies
-  var theme: ThemeManager { return self.managers.theme }
 
   weak var delegate: ConfigurationViewControllerDelegate?
 
   lazy var headerView: UIVisualEffectView = {
-    let blur = UIBlurEffect(style: self.theme.colorScheme.blurStyle)
+    let blur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
     return UIVisualEffectView(effect: blur)
   }()
 
@@ -36,21 +31,18 @@ class ConfigurationViewController: UIViewController, HasThemeManager {
   let scrollView        = UIScrollView()
   let scrollViewContent = UIView()
 
-  lazy var inAppPurchasePresentation = {
-    return InAppPurchasePresentation(managers: self.managers)
-  }()
+  lazy var inAppPurchasePresentation = InAppPurchasePresentation()
 
   let tableView           = IntrinsicTableView(frame: .zero, style: .grouped)
   let tableViewDataSource = ConfigurationDataSource()
 
   // MARK: - Init
 
-  convenience init(managers: Dependencies, delegate: ConfigurationViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil, managers: managers, delegate: delegate)
+  convenience init(delegate: ConfigurationViewControllerDelegate? = nil) {
+    self.init(nibName: nil, bundle: nil, delegate: delegate)
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies, delegate: ConfigurationViewControllerDelegate? = nil) {
-    self.managers = managers
+  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: ConfigurationViewControllerDelegate? = nil) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     self.delegate = delegate
     self.startObservingColorScheme()
@@ -99,8 +91,8 @@ class ConfigurationViewController: UIViewController, HasThemeManager {
   }
 
   func updateScrollViewBackgroundColor() {
-    let gradientColor = self.theme.colorScheme.presentation.gradient.first
-    let tableColor    = self.theme.colorScheme.configurationBackground
+    let gradientColor = Managers.theme.colorScheme.presentation.gradient.first
+    let tableColor    = Managers.theme.colorScheme.configurationBackground
 
     let scrollPosition  = scrollView.contentOffset.y
     let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor
@@ -120,12 +112,10 @@ extension ConfigurationViewController: CardPanelPresentable {
 
 // MARK: - ColorSchemeObserver
 
-extension ConfigurationViewController: ColorSchemeObserver, HasNotificationManager {
-
-  var notification: NotificationManager { return self.managers.notification }
+extension ConfigurationViewController: ColorSchemeObserver {
 
   func colorSchemeDidChange() {
-    self.view.tintColor = self.theme.colorScheme.tintColor.value
+    self.view.tintColor = Managers.theme.colorScheme.tintColor.value
   }
 }
 
@@ -146,9 +136,9 @@ extension ConfigurationViewController: UITableViewDelegate {
     switch cell {
     case .personalization: self.delegate?.configurationViewControllerDidTapColorSelectionButton(self)
     case .tutorial:        self.delegate?.configurationViewControllerDidTapTutorialButton(self)
-    case .contact:         self.managers.app.openWebsite()
-    case .share:           self.managers.app.showShareActivity(in: self)
-    case .rate:            self.managers.appStore.rateApp()
+    case .contact:         Managers.app.openWebsite()
+    case .share:           Managers.app.showShareActivity(in: self)
+    case .rate:            Managers.appStore.rateApp()
     }
     tableView.deselectRow(at: indexPath, animated: true)
   }

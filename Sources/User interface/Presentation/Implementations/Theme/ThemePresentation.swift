@@ -5,14 +5,9 @@
 
 import UIKit
 
-class ThemePresentation: UIViewController, PresentationController, HasThemeManager {
-
-  typealias Dependencies = HasThemeManager
+class ThemePresentation: UIViewController, PresentationController {
 
   // MARK: - Properties
-
-  let managers: Dependencies
-  var theme:    ThemeManager    { return self.managers.theme }
 
   let gradientLayer = CAGradientLayer()
 
@@ -22,21 +17,6 @@ class ThemePresentation: UIViewController, PresentationController, HasThemeManag
   let page0 = ThemePresentationPage()
   let page1 = ThemePresentationPage()
   lazy var pages: [UIViewController] = { return [self.page0, self.page1] }()
-
-  // MARK: - Init
-
-  convenience init(managers: Dependencies) {
-    self.init(nibName: nil, bundle: nil, managers: managers)
-  }
-
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, managers: Dependencies) {
-    self.managers = managers
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
 
   // MARK: - Overriden
 

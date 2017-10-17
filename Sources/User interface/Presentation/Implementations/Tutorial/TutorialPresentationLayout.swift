@@ -19,8 +19,8 @@ extension TutorialPresentation {
 
   private func initGradientSublayer() {
     self.gradientLayer.frame     = self.view.layer.bounds
-    self.gradientLayer.colors    = self.theme.colorScheme.presentation.gradient.map { $0.cgColor }
-    self.gradientLayer.locations = self.theme.colorScheme.presentation.gradientLocations.map { NSNumber(value: $0) }
+    self.gradientLayer.colors    = Managers.theme.colorScheme.presentation.gradient.map { $0.cgColor }
+    self.gradientLayer.locations = Managers.theme.colorScheme.presentation.gradientLocations.map { NSNumber(value: $0) }
     self.view.layer.addSublayer(self.gradientLayer)
   }
 
@@ -45,8 +45,7 @@ extension TutorialPresentation {
       view:    view,
       title:   title,   titleTopOffset:   PageLayout.Title.topOffset,
       caption: caption, captionTopOffset: PageLayout.Caption.topOffset,
-      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset,
-      theme: self.theme
+      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset
     )
   }
 
