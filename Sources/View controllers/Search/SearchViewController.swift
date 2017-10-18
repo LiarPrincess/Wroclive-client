@@ -140,7 +140,7 @@ class SearchViewController: UIViewController {
   private func refreshAvailableLines(_ selectedLines: [Line]) {
     self.mode = .loadingData
 
-    firstly { return Managers.network.getAvailableLines() }
+    firstly { return Managers.api.getAvailableLines() }
     .then { [weak self] lines -> () in
       guard let strongSelf = self else { return }
 

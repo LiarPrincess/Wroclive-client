@@ -22,8 +22,6 @@ class AppEnvironment {
   static var alert:        AlertManager        { return current.alert        }
   static var theme:        ThemeManager        { return current.theme        }
 
-  static var network: NetworkManager { return api }
-
   // MARK: Stack
 
   private static var stack:   [Environment] = [Environment()]

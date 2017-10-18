@@ -36,7 +36,7 @@ class TrackingManagerImpl {
   @objc func timerFired(timer: Timer) {
     guard timer.isValid else { return }
 
-    firstly { return Managers.network.getVehicleLocations(for: self.trackedLines) }
+    firstly { return Managers.api.getVehicleLocations(for: self.trackedLines) }
     .then  { self.result = .success(locations: $0) }
     .catch { self.result = .error(error: $0) }
   }

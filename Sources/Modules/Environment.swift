@@ -3,9 +3,6 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-typealias ApiManager     = NetworkManager
-typealias ApiManagerImpl = NetworkManagerImpl
-
 class Environment {
 
   // device

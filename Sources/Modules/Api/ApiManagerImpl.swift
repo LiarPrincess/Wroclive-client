@@ -11,7 +11,7 @@ import PromiseKit
 typealias JSONDictionary =  [String : AnyObject]
 typealias JSONArray      = [[String : AnyObject]]
 
-class NetworkManagerImpl: NetworkManager {
+class ApiManagerImpl: ApiManager {
 
   // MARK: - Properties
 
