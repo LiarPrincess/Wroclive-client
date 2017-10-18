@@ -7,6 +7,7 @@ class Environment {
 
   // device
   let app:          AppManager
+  let bundle:       BundleManager
   let device:       DeviceManager
   let appStore:     AppStoreManager
   let notification: NotificationManager
@@ -27,6 +28,7 @@ class Environment {
 
   init(
     app:          AppManager          = AppManagerImpl(),
+    bundle:       BundleManager       = BundleManagerImpl(),
     device:       DeviceManager       = DeviceManagerImpl(),
     appStore:     AppStoreManager     = AppStoreManagerImpl(),
     notification: NotificationManager = NotificationManagerImpl(),
@@ -40,6 +42,7 @@ class Environment {
     tutorial:     TutorialManager     = TutorialManagerImpl()) {
 
     self.app           = app
+    self.bundle        = bundle
     self.device        = device
     self.appStore      = appStore
     self.api           = api

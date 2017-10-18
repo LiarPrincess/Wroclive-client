@@ -106,7 +106,7 @@ extension ConfigurationViewController {
   private func createTableFooterText() -> NSAttributedString {
     let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
 
-    let appVersion = Managers.app.version
+    let appVersion = Managers.bundle.version
     let footerText = String(format: Localization.Footer, appVersion)
     return NSAttributedString(string: footerText, attributes: textAttributes)
   }

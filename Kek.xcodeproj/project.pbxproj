@@ -164,6 +164,8 @@
 		90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFEE591F8426AC009716B6 /* Coordinator.swift */; };
 		90AFEE5C1F842753009716B6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AFEE5B1F842753009716B6 /* AppCoordinator.swift */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
+		90B4124B1F97E3E9008F05E9 /* BundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B4124A1F97E3E9008F05E9 /* BundleManager.swift */; };
+		90B4124D1F97E40C008F05E9 /* BundleManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B4124C1F97E40C008F05E9 /* BundleManagerImpl.swift */; };
 		90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF51F69B62800AF4B84 /* PushConstants.swift */; };
 		90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */; };
 		90BC8B041F69B62800AF4B84 /* PushDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */; };
@@ -365,6 +367,8 @@
 		90AFEE591F8426AC009716B6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		90AFEE5B1F842753009716B6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		90B4124A1F97E3E9008F05E9 /* BundleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
+		90B4124C1F97E40C008F05E9 /* BundleManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleManagerImpl.swift; sourceTree = "<group>"; };
 		90BC8AF51F69B62800AF4B84 /* PushConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushConstants.swift; sourceTree = "<group>"; };
 		90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTransitionDelegate.swift; sourceTree = "<group>"; };
 		90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushDismissTransition.swift; sourceTree = "<group>"; };
@@ -824,7 +828,7 @@
 		902330E41EDF37F500FA8F43 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				9096CDBA1F40630500FEF20A /* Assets */,
+				90B412481F97D4F1008F05E9 /* Assets */,
 				90E77A271F4E3C20006882A4 /* Localizable */,
 				9079DCD51F6C545600C6ABCD /* AppInfo.swift */,
 				902330E51EDF37F500FA8F43 /* AppDelegate.swift */,
@@ -1073,17 +1077,6 @@
 			path = "Reusable cell";
 			sourceTree = "<group>";
 		};
-		9096CDBA1F40630500FEF20A /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				902330E61EDF37F500FA8F43 /* Assets.xcassets */,
-				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
-				90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */,
-				90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
 		9096CDCB1F40EF0C00FEF20A /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -1166,6 +1159,26 @@
 			path = Bookmarks;
 			sourceTree = "<group>";
 		};
+		90B412481F97D4F1008F05E9 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				902330E61EDF37F500FA8F43 /* Assets.xcassets */,
+				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
+				90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */,
+				90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		90B412491F97E3D9008F05E9 /* Bundle */ = {
+			isa = PBXGroup;
+			children = (
+				90B4124A1F97E3E9008F05E9 /* BundleManager.swift */,
+				90B4124C1F97E40C008F05E9 /* BundleManagerImpl.swift */,
+			);
+			path = Bundle;
+			sourceTree = "<group>";
+		};
 		90BC8AF41F69B62800AF4B84 /* Push transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -1246,6 +1259,7 @@
 			isa = PBXGroup;
 			children = (
 				90E8A6BD1F4CB04A00CE5AE9 /* App */,
+				90B412491F97E3D9008F05E9 /* Bundle */,
 				90E8A6C41F4CD42000CE5AE9 /* Device */,
 				9082524A1F703A18001C2926 /* Notifications */,
 				90E8A6C91F4CE23200CE5AE9 /* App Store */,
@@ -1599,6 +1613,7 @@
 				9021F41C1F12C9EF000A6949 /* CardPanelPresentationTransition.swift in Sources */,
 				90336A311F587C3600FAAEFF /* ColorSchemeManager.swift in Sources */,
 				9021F4071F12C9EF000A6949 /* ChevronViewState.swift in Sources */,
+				90B4124B1F97E3E9008F05E9 /* BundleManager.swift in Sources */,
 				90DED6CE1F93F4B600FF1540 /* TutorialManager.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchViewControllerLayout.swift in Sources */,
 				9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */,
@@ -1622,6 +1637,7 @@
 				9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
+				90B4124D1F97E40C008F05E9 /* BundleManagerImpl.swift in Sources */,
 				9024C6111F9667E600025503 /* Environment.swift in Sources */,
 				9021F43F1F12D698000A6949 /* LineSelectionCellViewModel.swift in Sources */,
 				90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */,

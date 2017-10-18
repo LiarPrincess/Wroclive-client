@@ -10,6 +10,7 @@ class AppEnvironment {
   // MARK: Managers
 
   static var app:          AppManager          { return current.app          }
+  static var bundle:       BundleManager       { return current.bundle       }
   static var device:       DeviceManager       { return current.device       }
   static var appStore:     AppStoreManager     { return current.appStore     }
   static var notification: NotificationManager { return current.notification }
@@ -29,6 +30,7 @@ class AppEnvironment {
 
   static func push(
     app:          AppManager          = app,
+    bundle:       BundleManager       = bundle,
     device:       DeviceManager       = device,
     appStore:     AppStoreManager     = appStore,
     api:          ApiManager          = api,
@@ -43,6 +45,7 @@ class AppEnvironment {
 
     push(Environment(
       app:          app,
+      bundle:       bundle,
       device:       device,
       appStore:     appStore,
       notification: notification,
