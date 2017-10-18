@@ -50,6 +50,6 @@ class Line: NSObject, NSCoding {
     guard let other = object as? Line else { return false }
     return self.name   == other.name
         && self.type   == other.type
-       && self.subtype == other.subtype
+        && self.subtype == other.subtype
   }
 }

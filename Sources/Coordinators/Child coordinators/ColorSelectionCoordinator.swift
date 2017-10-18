@@ -12,7 +12,6 @@ protocol ColorSelectionCoordinatorDelegate: class {
 class ColorSelectionCoordinator: PushCoordinator {
 
   var childCoordinators: [Coordinator] = []
-
   var pushTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
   weak var parent:   UIViewController?
@@ -35,11 +34,11 @@ extension ColorSelectionCoordinator: ColorSelectionViewControllerDelegate {
 
   // MARK: - Close
 
-  func colorSelectionViewControllerDidClose(_ viewController: ColorSelectionViewController) {
-    self.delegate?.coordinatorDidClose(self)
-  }
-
   func colorSelectionViewControllerDidTapCloseButton(_ viewController: ColorSelectionViewController) {
     viewController.dismiss(animated: true, completion: nil)
+  }
+
+  func colorSelectionViewControllerDidClose(_ viewController: ColorSelectionViewController) {
+    self.delegate?.coordinatorDidClose(self)
   }
 }

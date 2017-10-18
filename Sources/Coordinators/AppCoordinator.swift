@@ -5,12 +5,10 @@
 
 import UIKit
 
-class AppCoordinator: CardPanelCoordinator {
+class AppCoordinator: Coordinator {
 
   let window: UIWindow
-
-  var childCoordinators:           [Coordinator] = []
-  var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var childCoordinators: [Coordinator] = []
 
   init(window: UIWindow) {
     self.window = window

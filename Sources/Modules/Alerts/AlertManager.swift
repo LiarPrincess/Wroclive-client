@@ -10,6 +10,8 @@ enum InvalidCityOptions {
   case ignore
 }
 
+// Notify - show information
+// Prompt - requires user action
 protocol AlertManager {
 
   // MARK: - Map
@@ -20,7 +22,7 @@ protocol AlertManager {
   /// Notify: it is not possible to show user location
   func showGloballyDeniedLocationAuthorizationAlert(in parent: UIViewController)
 
-  // Notify: current location is far default city
+  // Notify: current location is far from default city
   func showInvalidCityAlert(in parent: UIViewController, completed: @escaping (InvalidCityOptions) -> ())
 
   // MARK: - Add bookmark
@@ -36,6 +38,6 @@ protocol AlertManager {
   /// Prompt: check network settings. try again
   func showNoInternetAlert(in parent: UIViewController, retry: @escaping () -> ())
 
-  /// Notify: connection error alert. try again
+  /// Prompt: connection error alert. try again
   func showNetworkingErrorAlert(in parent: UIViewController, retry: @escaping () -> ())
 }
