@@ -32,7 +32,7 @@ class TutorialCoordinator: PushCoordinator {
 
     switch self.mode {
     case .firstUse: parent.present(controller, animated: true, completion: nil)
-    case .default:  self.presentPush(controller, in: parent)
+    case .default:  self.presentPush(controller, in: parent, animated: true)
     }
   }
 }

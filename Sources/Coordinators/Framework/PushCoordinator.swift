@@ -10,10 +10,10 @@ protocol PushCoordinator: Coordinator {
 }
 
 extension PushCoordinator {
-  func presentPush(_ controller: UIViewController, in parent: UIViewController) {
+  func presentPush(_ controller: UIViewController, in parent: UIViewController, animated: Bool) {
     self.pushTransitionDelegate = PushTransitionDelegate(for: controller)
     controller.modalPresentationStyle = .custom
     controller.transitioningDelegate  = self.pushTransitionDelegate
-    parent.present(controller, animated: true, completion: nil)
+    parent.present(controller, animated: animated, completion: nil)
   }
 }

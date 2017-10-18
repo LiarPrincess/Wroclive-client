@@ -11,10 +11,11 @@ protocol CardPanelCoordinator: Coordinator {
 }
 
 extension CardPanelCoordinator {
-  func presentCardPanel<TCardPanel: UIViewController & CardPanelPresentable>(_ cardPanel: TCardPanel, in viewController: UIViewController) {
+  func presentCardPanel<TCardPanel: UIViewController & CardPanelPresentable>
+      (_ cardPanel: TCardPanel, in viewController: UIViewController, animated: Bool) {
     self.cardPanelTransitionDelegate = CardPanelTransitionDelegate(for: cardPanel)
     cardPanel.modalPresentationStyle = .custom
     cardPanel.transitioningDelegate  = self.cardPanelTransitionDelegate!
-    viewController.present(cardPanel, animated: true, completion: nil)
+    viewController.present(cardPanel, animated: animated, completion: nil)
   }
 }

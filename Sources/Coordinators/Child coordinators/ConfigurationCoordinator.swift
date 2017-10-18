@@ -26,7 +26,7 @@ class ConfigurationCoordinator: CardPanelCoordinator {
     guard let parent = self.parent else { return }
 
     let panel = ConfigurationViewController(delegate: self)
-    self.presentCardPanel(panel, in: parent)
+    self.presentCardPanel(panel, in: parent, animated: true)
   }
 }
 

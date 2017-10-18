@@ -26,7 +26,7 @@ class SearchCoordinator: CardPanelCoordinator {
     guard let parent = self.parent else { return }
 
     let panel = SearchViewController(delegate: self)
-    self.presentCardPanel(panel, in: parent)
+    self.presentCardPanel(panel, in: parent, animated: true)
   }
 }
 

@@ -26,7 +26,7 @@ class ColorSelectionCoordinator: PushCoordinator {
     guard let parent = self.parent else { return }
 
     let child = ColorSelectionViewController(delegate: self)
-    self.presentPush(child, in: parent)
+    self.presentPush(child, in: parent, animated: true)
   }
 }
 

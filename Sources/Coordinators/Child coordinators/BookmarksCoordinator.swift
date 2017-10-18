@@ -26,7 +26,7 @@ class BookmarksCoordinator: CardPanelCoordinator {
     guard let parent = self.parent else { return }
 
     let panel = BookmarksViewController(delegate: self)
-    self.presentCardPanel(panel, in: parent)
+    self.presentCardPanel(panel, in: parent, animated: true)
   }
 }
 
