@@ -52,7 +52,7 @@ extension ConfigurationDataSource: UITableViewDataSource {
     let cellViewModel = self.cellAt(indexPath)
 
     cell.textLabel?.attributedText = NSAttributedString(string: cellViewModel.text, attributes: textAttributes)
-    cell.backgroundColor = Managers.theme.colorScheme.background
+    cell.backgroundColor = Managers.theme.colors.background
     cell.accessoryType = cellViewModel.accessoryType
 //    cell.isEnabled     = cellViewModel.isEnabled
     return cell

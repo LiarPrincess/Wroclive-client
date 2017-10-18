@@ -19,7 +19,7 @@ class ColorSelectionSectionHeaderView: UICollectionReusableView {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    self.backgroundColor = Managers.theme.colorScheme.configurationBackground
+    self.backgroundColor = Managers.theme.colors.configurationBackground
     self.addBorder(at: .bottom)
 
     self.sectionName.numberOfLines = 0

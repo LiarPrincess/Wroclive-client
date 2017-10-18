@@ -13,7 +13,7 @@ private typealias Localization = Localizable.Search
 extension SearchViewController {
 
   func initLayout() {
-    self.view.backgroundColor = Managers.theme.colorScheme.background
+    self.view.backgroundColor = Managers.theme.colors.background
     self.initHeader()
     self.initLinesSelector()
     self.initLinesSelectorPlaceholder()
@@ -43,7 +43,7 @@ extension SearchViewController {
 
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.bookmarkButtonSize)
 
-    self.bookmarkButton.tintColor = Managers.theme.colorScheme.tintColor.value
+    self.bookmarkButton.tintColor = Managers.theme.colors.tintColor.value
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
     self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
     self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonPressed), for: .touchUpInside)

@@ -13,7 +13,7 @@ private typealias Localization = Localizable.Bookmarks
 extension BookmarksViewController {
 
   func initLayout() {
-    self.view.backgroundColor = Managers.theme.colorScheme.background
+    self.view.backgroundColor = Managers.theme.colors.background
     self.initHeader()
     self.initBookmarksTable()
     self.initBookmarksTablePlaceholder()
@@ -56,7 +56,7 @@ extension BookmarksViewController {
   private func initBookmarksTable() {
     self.bookmarksTable.register(BookmarkCell.self)
     self.bookmarksTable.separatorInset  = UIEdgeInsets(top: 0.0, left: Layout.leftInset, bottom: 0.0, right: Layout.rightInset)
-    self.bookmarksTable.backgroundColor = Managers.theme.colorScheme.background
+    self.bookmarksTable.backgroundColor = Managers.theme.colors.background
     self.bookmarksTable.dataSource      = self.bookmarksTableDataSource
     self.bookmarksTable.delegate        = self
 

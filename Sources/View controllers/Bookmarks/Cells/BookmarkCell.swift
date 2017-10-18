@@ -25,7 +25,7 @@ class BookmarkCell: UITableViewCell {
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-    self.backgroundColor = Managers.theme.colorScheme.background
+    self.backgroundColor = Managers.theme.colors.background
 
     self.bookmarkName.numberOfLines = 0
     self.tramLines.numberOfLines    = 0

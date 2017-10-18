@@ -47,7 +47,7 @@ class VehicleAnnotationView: MKAnnotationView {
   }
 
   private func updateImage(for annotation: VehicleAnnotation) {
-    let colorScheme = Managers.theme.colorScheme
+    let colorScheme = Managers.theme.colors
     let color       = annotation.line.type == .bus ? colorScheme.busColor : colorScheme.tramColor
 
     let hasColorChanged = self.pinView.tintColor != color.value

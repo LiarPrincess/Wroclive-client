@@ -19,8 +19,8 @@ extension ThemePresentation {
 
   private func initGradientSublayer() {
     self.gradientLayer.frame     = self.view.layer.bounds
-    self.gradientLayer.colors    = Managers.theme.colorScheme.presentation.gradient.map { $0.cgColor }
-    self.gradientLayer.locations = Managers.theme.colorScheme.presentation.gradientLocations.map { NSNumber(value: $0) }
+    self.gradientLayer.colors    = Managers.theme.colors.presentation.gradient.map { $0.cgColor }
+    self.gradientLayer.locations = Managers.theme.colors.presentation.gradientLocations.map { NSNumber(value: $0) }
     self.view.layer.addSublayer(self.gradientLayer)
   }
 

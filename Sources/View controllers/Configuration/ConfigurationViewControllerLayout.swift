@@ -13,7 +13,7 @@ private typealias Localization = Localizable.Configuration
 extension ConfigurationViewController {
 
   func initLayout() {
-    self.view.backgroundColor = Managers.theme.colorScheme.background
+    self.view.backgroundColor = Managers.theme.colors.background
     self.initHeader()
     self.initScrollView()
   }
@@ -70,7 +70,7 @@ extension ConfigurationViewController {
 
     // table view
     self.tableView.register(UITableViewCell.self)
-    self.tableView.backgroundColor = Managers.theme.colorScheme.configurationBackground
+    self.tableView.backgroundColor = Managers.theme.colors.configurationBackground
     self.tableView.separatorInset  = .zero
     self.tableView.dataSource      = self.tableViewDataSource
     self.tableView.delegate        = self

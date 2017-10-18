@@ -12,9 +12,9 @@ class ThemeManagerImpl: ThemeManager {
 
   // MARK: - Properties
 
-  lazy fileprivate(set) var textFont:    Font        = SystemFont()
-  lazy fileprivate(set) var iconFont:    Font        = FontAwesomeFont()
-  lazy fileprivate(set) var colorScheme: ColorScheme = ColorSchemeManager.load()
+  lazy fileprivate(set) var textFont: Font        = SystemFont()
+  lazy fileprivate(set) var iconFont: Font        = FontAwesomeFont()
+  lazy fileprivate(set) var colors:   ColorScheme = ColorSchemeManager.load()
 
   // Mark - Init
 
@@ -32,14 +32,14 @@ class ThemeManagerImpl: ThemeManager {
   // Mark - Color scheme
 
   func setColorScheme(tint tintColor: TintColor, tram tramColor: VehicleColor, bus busColor: VehicleColor) {
-    self.colorScheme = ColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
+    self.colors = ColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
     self.applyColorScheme()
-    ColorSchemeManager.save(self.colorScheme)
+    ColorSchemeManager.save(self.colors)
     Managers.notification.post(.colorSchemeDidChange)
   }
 
   private func applyColorScheme() {
-    let tintColor = self.colorScheme.tintColor.value
+    let tintColor = self.colors.tintColor.value
 
     UIApplication.shared.delegate?.window??.tintColor = tintColor
 
@@ -49,8 +49,8 @@ class ThemeManagerImpl: ThemeManager {
     // Make user location pin blue
     MKAnnotationView.appearance().tintColor = UIColor(red: 0.0, green: 0.5, blue: 1.0, alpha: 1.0)
 
-    UIToolbar.appearance().barStyle       = self.colorScheme.barStyle
-    UINavigationBar.appearance().barStyle = self.colorScheme.barStyle
+    UIToolbar.appearance().barStyle       = self.colors.barStyle
+    UINavigationBar.appearance().barStyle = self.colors.barStyle
     UINavigationBar.appearance().titleTextAttributes = self.textAttributes(for : .bodyBold)
   }
 }

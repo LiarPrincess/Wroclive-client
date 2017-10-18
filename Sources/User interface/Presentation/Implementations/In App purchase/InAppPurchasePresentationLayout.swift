@@ -22,8 +22,8 @@ extension InAppPurchasePresentation {
 
   private func initGradientSublayer() {
     self.gradientLayer.frame     = self.view.layer.bounds
-    self.gradientLayer.colors    = Managers.theme.colorScheme.presentation.gradient.map { $0.cgColor }
-    self.gradientLayer.locations = Managers.theme.colorScheme.presentation.gradientLocations.map { NSNumber(value: $0) }
+    self.gradientLayer.colors    = Managers.theme.colors.presentation.gradient.map { $0.cgColor }
+    self.gradientLayer.locations = Managers.theme.colors.presentation.gradientLocations.map { NSNumber(value: $0) }
     self.view.layer.addSublayer(self.gradientLayer)
   }
 
@@ -79,7 +79,7 @@ extension InAppPurchasePresentation {
     self.upgradeButton.setAttributedTitle(text, for: .normal)
     self.upgradeButton.layer.cornerRadius = Layout.UpgradeButton.cornerRadius
     self.upgradeButton.clipsToBounds      = true
-    self.upgradeButton.backgroundColor    = Managers.theme.colorScheme.presentation.button
+    self.upgradeButton.backgroundColor    = Managers.theme.colors.presentation.button
     self.upgradeButton.contentEdgeInsets  = Layout.UpgradeButton.edgeInsets
     self.upgradeButton.addTarget(self, action: #selector(upgradeButtonPressed), for: .touchUpInside)
 

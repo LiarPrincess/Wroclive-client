@@ -16,7 +16,7 @@ protocol ThemeManager {
 
   // MARK: - Color scheme
 
-  var colorScheme: ColorScheme { get }
+  var colors: ColorScheme { get }
   func setColorScheme(tint tintColor: TintColor, tram tramColor: VehicleColor, bus busColor: VehicleColor)
 }
 
@@ -41,14 +41,14 @@ extension ThemeManager {
 
   private func colorValue(_ color: TextColor) -> UIColor {
     switch color {
-    case .background:            return self.colorScheme.background
-    case .backgroundAccent:      return self.colorScheme.backgroundAccent
-    case .text:                  return self.colorScheme.text
-    case .tint:                  return self.colorScheme.tintColor.value
-    case .bus:                   return self.colorScheme.busColor.value
-    case .tram:                  return self.colorScheme.tramColor.value
-    case .presentationPrimary:   return self.colorScheme.presentation.textPrimary
-    case .presentationSecondary: return self.colorScheme.presentation.textSecondary
+    case .background:            return self.colors.background
+    case .backgroundAccent:      return self.colors.backgroundAccent
+    case .text:                  return self.colors.text
+    case .tint:                  return self.colors.tintColor.value
+    case .bus:                   return self.colors.busColor.value
+    case .tram:                  return self.colors.tramColor.value
+    case .presentationPrimary:   return self.colors.presentation.textPrimary
+    case .presentationSecondary: return self.colors.presentation.textSecondary
     }
   }
 

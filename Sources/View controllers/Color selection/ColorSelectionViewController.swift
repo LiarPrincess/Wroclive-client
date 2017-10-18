@@ -98,7 +98,7 @@ class ColorSelectionViewController: UIViewController {
       self.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
     }
 
-    let colorScheme = Managers.theme.colorScheme
+    let colorScheme = Managers.theme.colors
 
     if let tintIndex = self.collectionViewDataSource.indexOf(tintColor: colorScheme.tintColor) {
       selectColorAt(tintIndex)
@@ -166,7 +166,7 @@ class ColorSelectionViewController: UIViewController {
 extension ColorSelectionViewController: ColorSchemeObserver {
 
   func colorSchemeDidChange() {
-    let colorScheme = Managers.theme.colorScheme
+    let colorScheme = Managers.theme.colors
     self.view.tintColor       = colorScheme.tintColor.value
     self.backButton.tintColor = colorScheme.tintColor.value
   }
@@ -180,8 +180,8 @@ extension ColorSelectionViewController: UIScrollViewDelegate {
   }
 
   private func updateScrollViewBackgroundColor() {
-    let gradientColor = Managers.theme.colorScheme.presentation.gradient.first
-    let tableColor    = Managers.theme.colorScheme.configurationBackground
+    let gradientColor = Managers.theme.colors.presentation.gradient.first
+    let tableColor    = Managers.theme.colors.configurationBackground
 
     let scrollPosition  = scrollView.contentOffset.y
     let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor

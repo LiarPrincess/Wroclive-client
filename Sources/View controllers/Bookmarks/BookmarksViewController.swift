@@ -22,7 +22,7 @@ class BookmarksViewController: UIViewController {
   weak var delegate: BookmarksViewControllerDelegate?
 
   lazy var headerView: UIVisualEffectView = {
-    let headerViewBlur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
+    let headerViewBlur = UIBlurEffect(style: Managers.theme.colors.blurStyle)
     return UIVisualEffectView(effect: headerViewBlur)
   }()
 

@@ -22,7 +22,7 @@ class ConfigurationViewController: UIViewController {
   weak var delegate: ConfigurationViewControllerDelegate?
 
   lazy var headerView: UIVisualEffectView = {
-    let blur = UIBlurEffect(style: Managers.theme.colorScheme.blurStyle)
+    let blur = UIBlurEffect(style: Managers.theme.colors.blurStyle)
     return UIVisualEffectView(effect: blur)
   }()
 
@@ -91,8 +91,8 @@ class ConfigurationViewController: UIViewController {
   }
 
   func updateScrollViewBackgroundColor() {
-    let gradientColor = Managers.theme.colorScheme.presentation.gradient.first
-    let tableColor    = Managers.theme.colorScheme.configurationBackground
+    let gradientColor = Managers.theme.colors.presentation.gradient.first
+    let tableColor    = Managers.theme.colors.configurationBackground
 
     let scrollPosition  = scrollView.contentOffset.y
     let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor
@@ -115,7 +115,7 @@ extension ConfigurationViewController: CardPanelPresentable {
 extension ConfigurationViewController: ColorSchemeObserver {
 
   func colorSchemeDidChange() {
-    self.view.tintColor = Managers.theme.colorScheme.tintColor.value
+    self.view.tintColor = Managers.theme.colors.tintColor.value
   }
 }
 

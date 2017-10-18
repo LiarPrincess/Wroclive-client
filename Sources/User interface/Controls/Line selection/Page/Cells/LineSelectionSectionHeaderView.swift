@@ -19,7 +19,7 @@ class LineSelectionSectionHeaderView: UICollectionReusableView {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    self.backgroundColor = Managers.theme.colorScheme.background
+    self.backgroundColor = Managers.theme.colors.background
     self.initLayout()
   }
 
