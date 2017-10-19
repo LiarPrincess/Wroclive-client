@@ -9,24 +9,20 @@ class SearchManagerImpl: SearchManager {
 
   // MARK: - Properties
 
-  private lazy var state: SearchState = {
-    return NSKeyedUnarchiver.unarchiveObject(withFile: self.archive.path) as? SearchState
-      ?? SearchState(withSelected: .tram, lines: [])
-  }()
+  private let filename = "searchState"
 
-  private lazy var archive: URL = {
-    let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    return documentsDirectory.appendingPathComponent("search")
+  private lazy var state: SearchState = {
+    let fileContent = Managers.fileSystem.read(from: .documents, filename: self.filename)
+    return fileContent as? SearchState ?? SearchState(withSelected: .tram, lines: [])
   }()
 
   // MARK: - StorageManagerProtocol
 
   func saveState(_ state: SearchState) {
-    if state != self.state {
-      NSKeyedArchiver.archiveRootObject(state, toFile: self.archive.path)
-    }
+    guard state != self.state else { return }
 
     self.state = state
+    Managers.fileSystem.write(self.state, to: .documents, filename: self.filename)
   }
 
   func getSavedState() -> SearchState {

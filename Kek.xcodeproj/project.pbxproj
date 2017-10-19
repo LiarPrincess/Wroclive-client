@@ -111,6 +111,8 @@
 		9044A54C1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A53D1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift */; };
 		9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
+		90545E181F98164900BDDBC0 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90545E171F98164900BDDBC0 /* FileSystemManager.swift */; };
+		90545E1A1F98165B00BDDBC0 /* FileSystemManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90545E191F98165B00BDDBC0 /* FileSystemManagerImpl.swift */; };
 		90546BEE1F6AF23100E8E75F /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BED1F6AF23100E8E75F /* TrackingManager.swift */; };
 		90546BF01F6AF25800E8E75F /* TrackingManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BEF1F6AF25800E8E75F /* TrackingManagerImpl.swift */; };
 		90546BF21F6AF3BC00E8E75F /* TrackingManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BF11F6AF3BC00E8E75F /* TrackingManagerConstants.swift */; };
@@ -124,7 +126,6 @@
 		9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */; };
 		9056F6571F5229A500F7EF48 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6541F5229A500F7EF48 /* Font.swift */; };
 		9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
-		905A3B701F9533AD003D668F /* Pods_Kek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B711F9533AD003D668F /* Pods_Kek.framework */; };
 		905A3B721F9533BE003D668F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6A1F9532F0003D668F /* UIKit.framework */; };
 		905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6E1F953301003D668F /* MapKit.framework */; };
 		9061355C1F8424F5006634C7 /* TutorialViewControllerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */; };
@@ -166,11 +167,13 @@
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
 		90B4124B1F97E3E9008F05E9 /* BundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B4124A1F97E3E9008F05E9 /* BundleManager.swift */; };
 		90B4124D1F97E40C008F05E9 /* BundleManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B4124C1F97E40C008F05E9 /* BundleManagerImpl.swift */; };
+		90B412501F97E72E008F05E9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B4124F1F97E72E008F05E9 /* UserDefaultsManager.swift */; };
 		90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF51F69B62800AF4B84 /* PushConstants.swift */; };
 		90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */; };
 		90BC8B041F69B62800AF4B84 /* PushDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */; };
 		90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */; };
 		90C8A8971F913DEA00072D83 /* ScreenshotMockups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C8A8961F913DEA00072D83 /* ScreenshotMockups.swift */; };
+		90CC69D81F99197400800B10 /* Pods_Kek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CC69D91F99197400800B10 /* Pods_Kek.framework */; };
 		90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */; };
 		90DED6CE1F93F4B600FF1540 /* TutorialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */; };
 		90DED6D01F93F4E800FF1540 /* TutorialManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DED6CF1F93F4E800FF1540 /* TutorialManagerImpl.swift */; };
@@ -291,8 +294,6 @@
 		9024C6101F9667E600025503 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9024C6121F96699500025503 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Kek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kek.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		902812FF1E59DE4800F26027 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		902813011E59DE4E00F26027 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		9032F07A1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicCollectionView.swift; sourceTree = "<group>"; };
 		9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
@@ -313,6 +314,8 @@
 		9044A53D1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionCellViewModel.swift; sourceTree = "<group>"; };
 		9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionViewModel.swift; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
+		90545E171F98164900BDDBC0 /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
+		90545E191F98165B00BDDBC0 /* FileSystemManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManagerImpl.swift; sourceTree = "<group>"; };
 		90546BED1F6AF23100E8E75F /* TrackingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
 		90546BEF1F6AF25800E8E75F /* TrackingManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManagerImpl.swift; sourceTree = "<group>"; };
 		90546BF11F6AF3BC00E8E75F /* TrackingManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManagerConstants.swift; sourceTree = "<group>"; };
@@ -327,9 +330,7 @@
 		9056F6541F5229A500F7EF48 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		9056F6551F5229A500F7EF48 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
 		905A3B6A1F9532F0003D668F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		905A3B6D1F9532F9003D668F /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		905A3B6E1F953301003D668F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
-		905A3B711F9533AD003D668F /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerMode.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		907246041F883E140069B940 /* ConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCoordinator.swift; sourceTree = "<group>"; };
@@ -369,11 +370,13 @@
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90B4124A1F97E3E9008F05E9 /* BundleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
 		90B4124C1F97E40C008F05E9 /* BundleManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleManagerImpl.swift; sourceTree = "<group>"; };
+		90B4124F1F97E72E008F05E9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		90BC8AF51F69B62800AF4B84 /* PushConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushConstants.swift; sourceTree = "<group>"; };
 		90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTransitionDelegate.swift; sourceTree = "<group>"; };
 		90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushDismissTransition.swift; sourceTree = "<group>"; };
 		90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPresentationTransition.swift; sourceTree = "<group>"; };
 		90C8A8961F913DEA00072D83 /* ScreenshotMockups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotMockups.swift; sourceTree = "<group>"; };
+		90CC69D91F99197400800B10 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerImpl.swift; sourceTree = "<group>"; };
 		90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManager.swift; sourceTree = "<group>"; };
 		90DED6CF1F93F4E800FF1540 /* TutorialManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManagerImpl.swift; sourceTree = "<group>"; };
@@ -394,7 +397,6 @@
 		90F0A2D41F73198B00C641C8 /* VehicleLocationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocationObserver.swift; sourceTree = "<group>"; };
 		90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
 		A62147213F916D53F89DEC6F /* Pods-Kek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kek.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kek/Pods-Kek.release.xcconfig"; sourceTree = "<group>"; };
-		D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,9 +404,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90CC69D81F99197400800B10 /* Pods_Kek.framework in Frameworks */,
 				905A3B721F9533BE003D668F /* UIKit.framework in Frameworks */,
 				905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */,
-				905A3B701F9533AD003D668F /* Pods_Kek.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,13 +869,9 @@
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				905A3B711F9533AD003D668F /* Pods_Kek.framework */,
-				905A3B6E1F953301003D668F /* MapKit.framework */,
-				905A3B6D1F9532F9003D668F /* Pods_Kek.framework */,
 				905A3B6A1F9532F0003D668F /* UIKit.framework */,
-				902813011E59DE4E00F26027 /* MapKit.framework */,
-				902812FF1E59DE4800F26027 /* UIKit.framework */,
-				D75C53DDEEA8E94DBF8AF045 /* Pods_Kek.framework */,
+				905A3B6E1F953301003D668F /* MapKit.framework */,
+				90CC69D91F99197400800B10 /* Pods_Kek.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -944,6 +942,15 @@
 				904A6B121F43183E00EE98FD /* VehiclePinView.swift */,
 			);
 			path = Pin;
+			sourceTree = "<group>";
+		};
+		90545E161F98163000BDDBC0 /* File system */ = {
+			isa = PBXGroup;
+			children = (
+				90545E171F98164900BDDBC0 /* FileSystemManager.swift */,
+				90545E191F98165B00BDDBC0 /* FileSystemManagerImpl.swift */,
+			);
+			path = "File system";
 			sourceTree = "<group>";
 		};
 		90546BEC1F6AF21B00E8E75F /* Tracking */ = {
@@ -1179,6 +1186,14 @@
 			path = Bundle;
 			sourceTree = "<group>";
 		};
+		90B4124E1F97E70C008F05E9 /* User defaults */ = {
+			isa = PBXGroup;
+			children = (
+				90B4124F1F97E72E008F05E9 /* UserDefaultsManager.swift */,
+			);
+			path = "User defaults";
+			sourceTree = "<group>";
+		};
 		90BC8AF41F69B62800AF4B84 /* Push transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -1263,6 +1278,8 @@
 				90E8A6C41F4CD42000CE5AE9 /* Device */,
 				9082524A1F703A18001C2926 /* Notifications */,
 				90E8A6C91F4CE23200CE5AE9 /* App Store */,
+				90B4124E1F97E70C008F05E9 /* User defaults */,
+				90545E161F98163000BDDBC0 /* File system */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1566,6 +1583,7 @@
 				90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */,
 				900CAEB31F482E750044C8A6 /* NetworkError.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
+				90545E181F98164900BDDBC0 /* FileSystemManager.swift in Sources */,
 				90E8A6BF1F4CB08400CE5AE9 /* AppManager.swift in Sources */,
 				90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */,
 				90ACDC481F88B93B005A4B79 /* TutorialCoordinator.swift in Sources */,
@@ -1605,6 +1623,7 @@
 				908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */,
 				90F0A2D61F732A6A00C641C8 /* ColorSchemeObserver.swift in Sources */,
 				9021F4161F12C9EF000A6949 /* CardPanelConstants.swift in Sources */,
+				90545E1A1F98165B00BDDBC0 /* FileSystemManagerImpl.swift in Sources */,
 				9021F4431F12D6C5000A6949 /* LineSelectionViewController.swift in Sources */,
 				90546BFF1F6B169100E8E75F /* TutorialViewControllerConstants.swift in Sources */,
 				900F72F41F55BE5100613A1E /* PresentationController.swift in Sources */,
@@ -1644,6 +1663,7 @@
 				908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				90DED6D01F93F4E800FF1540 /* TutorialManagerImpl.swift in Sources */,
 				9044A54B1F69A13D00F26C17 /* ColorSelectionSection.swift in Sources */,
+				90B412501F97E72E008F05E9 /* UserDefaultsManager.swift in Sources */,
 				900CAEB21F482E750044C8A6 /* VehicleLocationEndpoint.swift in Sources */,
 				90145E471F61AEEB0068698D /* ConfigurationSection.swift in Sources */,
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,

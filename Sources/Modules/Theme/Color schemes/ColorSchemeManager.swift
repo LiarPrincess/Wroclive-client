@@ -12,9 +12,9 @@ class ColorSchemeManager {
   private static let tramColorKey = "Theme_tramColor"
 
   static func load() -> ColorScheme {
-    guard let tintColorValue = UserDefaults.standard.string(forKey: tintColorKey),
-          let busColorValue  = UserDefaults.standard.string(forKey: busColorKey),
-          let tramColorValue = UserDefaults.standard.string(forKey: tramColorKey),
+    guard let tintColorValue = Managers.userDefaults.string(forKey: tintColorKey),
+          let busColorValue  = Managers.userDefaults.string(forKey: busColorKey),
+          let tramColorValue = Managers.userDefaults.string(forKey: tramColorKey),
 
           let tintColor = TintColor(rawValue: tintColorValue),
           let busColor  = VehicleColor(rawValue: busColorValue),
@@ -25,8 +25,8 @@ class ColorSchemeManager {
   }
 
   static func save(_ colorScheme: ColorScheme) {
-    UserDefaults.standard.setValue(colorScheme.tintColor.rawValue, forKey: tintColorKey)
-    UserDefaults.standard.setValue(colorScheme.busColor.rawValue,  forKey: busColorKey)
-    UserDefaults.standard.setValue(colorScheme.tramColor.rawValue, forKey: tramColorKey)
+    Managers.userDefaults.set(colorScheme.tintColor.rawValue, forKey: tintColorKey)
+    Managers.userDefaults.set(colorScheme.busColor.rawValue,  forKey: busColorKey)
+    Managers.userDefaults.set(colorScheme.tramColor.rawValue, forKey: tramColorKey)
   }
 }

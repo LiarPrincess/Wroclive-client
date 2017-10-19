@@ -9,9 +9,9 @@ class TutorialManagerImpl: TutorialManager {
 
   private let defaultsKey = "hasCompletedTutorial"
 
-  var hasCompleted: Bool { return UserDefaults.standard.bool(forKey: defaultsKey) }
+  var hasCompleted: Bool { return Managers.userDefaults.bool(forKey: defaultsKey) }
 
   func markAsCompleted() {
-    UserDefaults.standard.set(true, forKey: defaultsKey)
+    Managers.userDefaults.set(true, forKey: defaultsKey)
   }
 }

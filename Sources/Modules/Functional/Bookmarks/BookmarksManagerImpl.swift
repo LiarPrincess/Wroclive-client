@@ -9,13 +9,11 @@ class BookmarksManagerImpl: BookmarksManager {
 
   // MARK: - Properties
 
-  private lazy var bookmarks: [Bookmark] = {
-    return NSKeyedUnarchiver.unarchiveObject(withFile: self.archive.path) as? [Bookmark] ?? []
-  }()
+  private let filename = "bookmarks"
 
-  private lazy var archive: URL = {
-    let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    return documentsDirectory.appendingPathComponent("bookmarks")
+  private lazy var bookmarks: [Bookmark] = {
+    let fileContent = Managers.fileSystem.read(from: .documents, filename: self.filename)
+    return fileContent as? [Bookmark] ?? []
   }()
 
   // MARK: - Methods
@@ -37,6 +35,6 @@ class BookmarksManagerImpl: BookmarksManager {
 
   func save(_ bookmarks: [Bookmark]) {
     self.bookmarks = bookmarks
-    NSKeyedArchiver.archiveRootObject(bookmarks, toFile: self.archive.path)
+    Managers.fileSystem.write(bookmarks, to: .documents, filename: self.filename)
   }
 }
