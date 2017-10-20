@@ -33,7 +33,7 @@ class AppEnvironment {
   private static var stack: [Environment] = []
 
   private static var current: Environment {
-    assert(stack.count > 0, "Attempting to use empty environment stack.")
+    assert(stack.count > 0, "Attempting to use empty environment stack. Are you trying to side effect inside init?")
     return stack.last!
   }
 
@@ -54,7 +54,7 @@ class AppEnvironment {
     alert:        AlertManager        = alert,
     theme:        ThemeManager        = theme) {
 
-    push(EnvironmentImpl(
+    push(Environment(
       app:          app,
       bundle:       bundle,
       device:       device,

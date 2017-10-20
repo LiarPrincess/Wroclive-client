@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Launch
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    AppEnvironment.push(DefaultEnvironment())
+    AppEnvironment.push(Environment())
+    Managers.theme.applyColorScheme()
 
     self.appCoordinator = AppCoordinator(window: self.window!)
     self.appCoordinator.start()

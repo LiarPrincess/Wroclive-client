@@ -131,6 +131,7 @@
 		905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6E1F953301003D668F /* MapKit.framework */; };
 		9061355C1F8424F5006634C7 /* TutorialViewControllerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
+		9070E94D1F9A7CBB0076A8F6 /* ThemeManager+ApplyColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9070E94C1F9A7CBB0076A8F6 /* ThemeManager+ApplyColorScheme.swift */; };
 		907246051F883E140069B940 /* ConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246041F883E140069B940 /* ConfigurationCoordinator.swift */; };
 		907246071F88403A0069B940 /* CardPanelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246061F88403A0069B940 /* CardPanelCoordinator.swift */; };
 		907246091F8846690069B940 /* PushCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246081F8846690069B940 /* PushCoordinator.swift */; };
@@ -335,6 +336,7 @@
 		905A3B6E1F953301003D668F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		9061355B1F8424F5006634C7 /* TutorialViewControllerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerMode.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		9070E94C1F9A7CBB0076A8F6 /* ThemeManager+ApplyColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeManager+ApplyColorScheme.swift"; sourceTree = "<group>"; };
 		907246041F883E140069B940 /* ConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCoordinator.swift; sourceTree = "<group>"; };
 		907246061F88403A0069B940 /* CardPanelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPanelCoordinator.swift; sourceTree = "<group>"; };
 		907246081F8846690069B940 /* PushCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCoordinator.swift; sourceTree = "<group>"; };
@@ -1125,6 +1127,7 @@
 				90AF2BD51EE9DED4006E61D6 /* Color schemes */,
 				901D46851F57089000A9F6BD /* ThemeManager.swift */,
 				90167FCA1F97BF5A0049E9DE /* ThemeManager+TextAttributes.swift */,
+				9070E94C1F9A7CBB0076A8F6 /* ThemeManager+ApplyColorScheme.swift */,
 				90AF2BD31EE9DE00006E61D6 /* ThemeManagerImpl.swift */,
 				90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */,
 			);
@@ -1599,6 +1602,7 @@
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
 				90145E671F61BA4D0068698D /* PresentationControllerPage.swift in Sources */,
+				9070E94D1F9A7CBB0076A8F6 /* ThemeManager+ApplyColorScheme.swift in Sources */,
 				908252511F703B4C001C2926 /* NotificationManager.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				90F0A2D81F732A6F00C641C8 /* VehicleLocationObserver.swift in Sources */,
