@@ -68,16 +68,7 @@ class ChevronView : UIView {
   override func layoutSubviews() {
     super.layoutSubviews()
 
-    let centerX = self.bounds.width / 2.0
-    let originY = (self.bounds.height - self.width) / 2.0
-
-    var leftFrame  = CGRect(x: 0.0, y: originY, width: centerX, height: self.width)
-    var rightFrame = leftFrame.offsetBy(dx: centerX, dy: 0.0)
-
-    // move views closer together to compensate for rotations
-    let dx = leftFrame.size.width * (1 - cos(self.angle.rad)) / 2.0
-    leftFrame  =  leftFrame.offsetBy(dx:  self.width / 2.0 + dx - 1.0, dy: 0.0)
-    rightFrame = rightFrame.offsetBy(dx: -self.width / 2.0 - dx + 1.0, dy: 0.0)
+    let (leftFrame, rightFrame) = self.calculateFrames()
 
     self.leftView.bounds  = leftFrame
     self.rightView.bounds = rightFrame
@@ -91,6 +82,24 @@ class ChevronView : UIView {
     if self._state != .flat {
       self.updateTransformations(animated: false)
     }
+  }
+
+  // @compile-profiled
+  private func calculateFrames() -> (left: CGRect, right: CGRect) {
+    let centerX = self.bounds.width / 2.0
+    let originY = (self.bounds.height - self.width) / 2.0
+
+    let templateFrame = CGRect(x: 0.0, y: originY, width: centerX, height: self.width)
+
+    // move frames closer together to compensate for rotations
+    let dx: CGFloat = centerX * (1.0 - cos(self.angle.rad)) / 2.0
+
+    let leftOffset:  CGFloat = self.width / 2.0 + dx - 1.0
+    let rightOffset: CGFloat = centerX - leftOffset
+
+    let leftFrame  = templateFrame.offsetBy(dx:  leftOffset, dy: 0.0)
+    let rightFrame = templateFrame.offsetBy(dx: rightOffset, dy: 0.0)
+    return (leftFrame, rightFrame)
   }
 
   // MARK: - Methods

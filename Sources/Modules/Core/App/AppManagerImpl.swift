@@ -10,7 +10,8 @@ private typealias Localization = Localizable.App
 class AppManagerImpl: AppManager {
 
   func openWebsite() {
-    UIApplication.shared.open(URL(string: AppInfo.websiteHttps)!)
+    let url = URL(string: AppInfo.websiteHttps)!
+    UIApplication.shared.open(url)
   }
 
   func showShareActivity(in viewController: UIViewController) {

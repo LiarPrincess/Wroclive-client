@@ -169,9 +169,8 @@ extension BookmarksViewController: UITableViewDelegate {
   // MARK: - Selection
 
   public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let bookmark = self.bookmarksTableDataSource.bookmark(at: indexPath) {
-      self.selectBookmark(bookmark)
-    }
+    let bookmark = self.bookmarksTableDataSource.bookmarkAt(indexPath.row)
+    self.selectBookmark(bookmark)
   }
 }
 

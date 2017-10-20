@@ -20,8 +20,8 @@ struct BookmarkCellViewModel {
 
   private static func concatNames(_ lines: [Line]) -> String {
     return lines
-      .map    { $0.name }
-      .sorted { $0.localizedStandardCompare($1) == .orderedAscending }
+      .sortedByName()
+      .map { (line: Line) in line.name }
       .joined(separator: Layout.LinesLabel.horizontalSpacing)
   }
 }

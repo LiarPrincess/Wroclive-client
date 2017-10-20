@@ -41,12 +41,10 @@ class SessionManager: Alamofire.SessionManager {
   // User-Agent Header; see https://tools.ietf.org/html/rfc7231#section-5.5.3
   // Example: 'Kek/1.0 (com.kekapp.kek; iPhone iOS 10.3.1)'
   private static var userAgentString: String {
-    let deviceOSVersion: String = {
-      let model         = Managers.device.model
-      let systemName    = Managers.device.systemName
-      let systemVersion = Managers.device.systemVersion
-      return "\(model) \(systemName) \(systemVersion)"
-    }()
+    let model         = Managers.device.model
+    let systemName    = Managers.device.systemName
+    let systemVersion = Managers.device.systemVersion
+    let deviceOSVersion = "\(model) \(systemName) \(systemVersion)"
 
     let executable = Managers.bundle.name
     let appVersion = Managers.bundle.version

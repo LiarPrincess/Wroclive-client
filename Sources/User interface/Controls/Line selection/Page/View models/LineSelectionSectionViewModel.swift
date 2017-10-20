@@ -16,13 +16,12 @@ struct LineSelectionSectionViewModel {
     self.subtype     = subtype
     self.sectionName = LineSelectionSectionViewModel.createSectionName(subtype: subtype)
 
-    let sortedLines = lines.sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
-
+    let sortedLines     = lines.sortedByName()
     self.lines          = sortedLines
     self.lineViewModels = sortedLines.map { LineSelectionCellViewModel(from: $0) }
   }
 
-  static func createSectionName(subtype: LineSubtype) -> String {
+  private static func createSectionName(subtype: LineSubtype) -> String {
     switch subtype {
     case .regular:   return Localization.regular
     case .express:   return Localization.express

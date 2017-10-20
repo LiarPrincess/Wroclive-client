@@ -22,13 +22,13 @@ class BookmarksDataSource: NSObject {
 
   // MARK: - Methods
 
-  func bookmark(at indexPath: IndexPath) -> Bookmark? {
-    let inRange = indexPath.row >= 0 && indexPath.row < self.bookmarks.count
-    guard inRange else {
-      return nil
+  // @compile-profiled
+  func bookmarkAt(_ row: Int) -> Bookmark {
+    guard row >= 0 && row < self.bookmarks.count else {
+      fatalError("Unexpected row")
     }
 
-    return self.bookmarks[indexPath.row]
+    return self.bookmarks[row]
   }
 
   // MARK: - Delegate methods
@@ -40,7 +40,6 @@ class BookmarksDataSource: NSObject {
   fileprivate func delegateDidReorderBookmarks() {
     delegate?.didReorderBookmarks(self)
   }
-
 }
 
 // MARK: - UITableViewDataSource
