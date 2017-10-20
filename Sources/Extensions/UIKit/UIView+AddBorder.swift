@@ -19,7 +19,7 @@ extension UIView {
 
     view.snp.makeConstraints { make in
       make.left.right.equalToSuperview()
-      make.height.equalTo(CGFloat(1) / UIScreen.main.scale)
+      make.height.equalTo(CGFloat(1.0) / Managers.device.screenScale)
 
       switch borderEdge {
       case .top:

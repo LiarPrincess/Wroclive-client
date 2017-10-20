@@ -28,7 +28,7 @@ class CardPanelPresenter : UIPresentationController {
       return .zero
     }
 
-    let viewHeight = self.presentable?.height ?? UIScreen.main.bounds.height
+    let viewHeight = self.presentable?.height ?? containerView.bounds.height
     let topOffset  = containerView.bounds.height - viewHeight
     return CGRect(x: 0.0, y: topOffset, width: containerView.bounds.width, height: viewHeight)
   }

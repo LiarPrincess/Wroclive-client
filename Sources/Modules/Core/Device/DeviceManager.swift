@@ -3,7 +3,11 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
+import UIKit
+
 protocol DeviceManager {
+
+  // MARK: - Device
 
   /// iPhone, iPod touch
   var model: String { get }
@@ -13,4 +17,15 @@ protocol DeviceManager {
 
   /// 10.2
   var systemVersion: String { get }
+
+  // MARK: - Screen
+
+  /// Point to pixel ratio
+  var screenScale:  CGFloat { get }
+
+  /// Screen resolution
+  var screenBounds: CGRect  { get }
+
+  // 17pt for UIContentSizeCategoryLarge
+  var preferredFontSize: CGFloat { get }
 }

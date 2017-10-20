@@ -20,7 +20,7 @@ protocol CardPanelPresentable: class {
 }
 
 extension CardPanelPresentable {
-  var screenHeight: CGFloat { return UIScreen.main.bounds.height }
+  var screenHeight: CGFloat { return Managers.device.screenBounds.height }
 
   var shouldShowChevronView: Bool { return true }
 

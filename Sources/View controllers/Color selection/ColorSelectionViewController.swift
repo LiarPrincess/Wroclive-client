@@ -83,7 +83,7 @@ class ColorSelectionViewController: UIViewController {
     // solve for n:         n = (totalWidth + margin) / (cellWidth + margin)
     // solve for cellWidth: cellWidth = (totalWidth - (n-1) * margin) / n
 
-    let totalWidth   = UIScreen.main.bounds.width - Layout.leftOffset - Layout.rightOffset
+    let totalWidth   = self.view.bounds.width - Layout.leftOffset - Layout.rightOffset
     let margin       = Layout.Cell.margin
     let minCellWidth = Layout.Cell.minSize
 

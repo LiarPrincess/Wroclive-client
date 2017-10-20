@@ -38,7 +38,7 @@ extension ColorSelectionViewController {
     self.themePresentation.view.snp.makeConstraints { make in
       make.top.equalToSuperview()
       make.centerX.width.equalToSuperview()
-      make.height.equalTo(UIScreen.main.bounds.height * Layout.Presentation.relativeHeight)
+      make.height.equalTo(Managers.device.screenBounds.height * Layout.Presentation.relativeHeight)
     }
 
     self.themePresentation.didMove(toParentViewController: self)

@@ -20,7 +20,7 @@ struct SystemFont: Font {
   }
 
   mutating func recalculateSizes() {
-    let preferredFontSize = self.preferredFontSize
+    let preferredFontSize = Managers.device.preferredFontSize
 
     self.headline    = UIFont.systemFont(ofSize: preferredFontSize + 17.0, weight: UIFontWeightBold)
     self.subheadline = UIFont.systemFont(ofSize: preferredFontSize +  5.0, weight: UIFontWeightBold)

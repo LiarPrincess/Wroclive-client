@@ -31,7 +31,7 @@ class DeviceImageView: UIView {
     }
 
     self.contentView.layer.borderColor = Managers.theme.colors.backgroundAccent.cgColor
-    self.contentView.layer.borderWidth = 1.0 / UIScreen.main.scale
+    self.contentView.layer.borderWidth = 1.0 / Managers.device.screenScale
 
     self.deviceBorder.addSubview(self.contentView)
     self.contentView.snp.makeConstraints { make in

@@ -21,7 +21,7 @@ struct FontAwesomeFont: Font {
 
   mutating func recalculateSizes() {
     let name              = "FontAwesome"
-    let preferredFontSize = self.preferredFontSize
+    let preferredFontSize = Managers.device.preferredFontSize
     let fontDescriptor    = UIFontDescriptor(name: name, size: preferredFontSize)
 
     self.headline    = UIFont(descriptor: fontDescriptor, size: preferredFontSize + 18.0)

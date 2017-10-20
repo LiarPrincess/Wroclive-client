@@ -112,7 +112,7 @@ extension ConfigurationViewController {
   }
 
   private func calculateMinFooterHeight(_ footerContent: NSAttributedString) -> CGFloat {
-    let textRect = CGSize(width: UIScreen.main.bounds.width, height: CGFloat.infinity)
+    let textRect = CGSize(width: Managers.device.screenBounds.width, height: CGFloat.infinity)
     let textSize = footerContent.boundingRect(with: textRect, options: .usesLineFragmentOrigin, context: nil)
     return textSize.height + Layout.Footer.topOffset + Layout.Footer.bottomOffset
   }
