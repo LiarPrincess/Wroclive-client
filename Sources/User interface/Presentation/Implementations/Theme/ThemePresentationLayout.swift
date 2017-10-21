@@ -7,7 +7,6 @@ import UIKit
 import SnapKit
 
 private typealias Layout       = ThemePresentationConstants.Layout
-private typealias Localization = Localizable.Presentation.Theme
 
 extension ThemePresentation {
 

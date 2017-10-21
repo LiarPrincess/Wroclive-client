@@ -5,8 +5,6 @@
 
 import UIKit
 
-private typealias Localization = Localizable.App
-
 class AppManagerImpl: AppManager {
 
   func openWebsite() {
@@ -15,8 +13,8 @@ class AppManagerImpl: AppManager {
   }
 
   func showShareActivity(in viewController: UIViewController) {
-    let text  = String(format: Localization.Share.text, AppInfo.website)
-    let image = Localization.Share.image
+    let text  = String(format: Localizable.Share.text, AppInfo.website)
+    let image = Images.share
     let items = [text, image] as [Any]
 
     let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)

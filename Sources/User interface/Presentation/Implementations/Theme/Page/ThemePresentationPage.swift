@@ -16,7 +16,7 @@ class ThemePresentationPage: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.imageView.image       = #imageLiteral(resourceName: "Image_Share")
+    self.imageView.image       = Images.Theme.image
     self.imageView.contentMode = .scaleAspectFit
 
     self.view.addSubview(self.imageView)

@@ -22,7 +22,7 @@ class DeviceImageView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    self.deviceBorder.image       = #imageLiteral(resourceName: "Image_DeviceBorder")
+    self.deviceBorder.image       = Images.deviceBorder
     self.deviceBorder.contentMode = .scaleAspectFit
 
     self.addSubview(self.deviceBorder)

@@ -112,6 +112,8 @@
 		9044A54B1F69A13D00F26C17 /* ColorSelectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A53B1F69A13D00F26C17 /* ColorSelectionSection.swift */; };
 		9044A54C1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A53D1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift */; };
 		9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */; };
+		9045C2E31F9BDB3F002F35C3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2E21F9BDB3F002F35C3 /* Assets.swift */; };
+		9045C2E41F9BDDD7002F35C3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2E21F9BDB3F002F35C3 /* Assets.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
 		90545E181F98164900BDDBC0 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90545E171F98164900BDDBC0 /* FileSystemManager.swift */; };
 		90545E1A1F98165B00BDDBC0 /* FileSystemManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90545E191F98165B00BDDBC0 /* FileSystemManagerImpl.swift */; };
@@ -513,6 +515,7 @@
 		9044A53B1F69A13D00F26C17 /* ColorSelectionSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSection.swift; sourceTree = "<group>"; };
 		9044A53D1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionCellViewModel.swift; sourceTree = "<group>"; };
 		9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionViewModel.swift; sourceTree = "<group>"; };
+		9045C2E21F9BDB3F002F35C3 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
 		90545E171F98164900BDDBC0 /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 		90545E191F98165B00BDDBC0 /* FileSystemManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManagerImpl.swift; sourceTree = "<group>"; };
@@ -1382,9 +1385,10 @@
 			isa = PBXGroup;
 			children = (
 				902330E61EDF37F500FA8F43 /* Assets.xcassets */,
-				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
+				9045C2E21F9BDB3F002F35C3 /* Assets.swift */,
 				90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */,
 				90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */,
+				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -1998,6 +2002,7 @@
 				908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				90DED6D01F93F4E800FF1540 /* TutorialManagerImpl.swift in Sources */,
 				9044A54B1F69A13D00F26C17 /* ColorSelectionSection.swift in Sources */,
+				9045C2E31F9BDB3F002F35C3 /* Assets.swift in Sources */,
 				90B412501F97E72E008F05E9 /* UserDefaultsManager.swift in Sources */,
 				900CAEB21F482E750044C8A6 /* VehicleLocationEndpoint.swift in Sources */,
 				90145E471F61AEEB0068698D /* ConfigurationSection.swift in Sources */,
@@ -2158,6 +2163,7 @@
 				90F45B6F1F9BB1B6006E965A /* CardPanelPresentationTransition.swift in Sources */,
 				90F45B701F9BB1B6006E965A /* CardPanelDismissTransition.swift in Sources */,
 				90F45B711F9BB1B6006E965A /* CardPanelInteractiveDismissTransition.swift in Sources */,
+				9045C2E41F9BDDD7002F35C3 /* Assets.swift in Sources */,
 				90F45B721F9BB1B6006E965A /* CardPanelTransitionDelegate.swift in Sources */,
 				90F45B731F9BB1B6006E965A /* CardPanelPresentable.swift in Sources */,
 				90F45B741F9BB1B6006E965A /* CardPanelConstants.swift in Sources */,

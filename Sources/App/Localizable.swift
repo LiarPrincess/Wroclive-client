@@ -69,13 +69,11 @@ struct Localizable {
       static var restoreLink: String { return localizedString("Presentation_InAppPurchase_Restore_Link") }
 
       struct BookmarksPage {
-        static let image = #imageLiteral(resourceName: "Image_InApp_Bookmarks")
         static var title:   String { return localizedString("Presentation_InAppPurchase_Bookmarks_Title") }
         static var caption: String { return localizedString("Presentation_InAppPurchase_Bookmarks_Content") }
       }
 
       struct ColorsPage {
-        static let image = #imageLiteral(resourceName: "Image_Share")
         static var title:   String { return localizedString("Presentation_InAppPurchase_Colors_Title") }
         static var caption: String { return localizedString("Presentation_InAppPurchase_Colors_Content") }
       }
@@ -85,26 +83,19 @@ struct Localizable {
       static var skip: String { return localizedString("Presentation_Tutorial_Skip") }
 
       struct Page0 {
-        static let image = #imageLiteral(resourceName: "Image_Share")
         static var title:   String { return localizedString("Presentation_Tutorial_Page0_Title") }
         static var caption: String { return localizedString("Presentation_Tutorial_Page0_Caption") }
       }
 
       struct Page1 {
-        static let image = #imageLiteral(resourceName: "Image_Share")
         static var title:   String { return localizedString("Presentation_Tutorial_Page1_Title") }
         static var caption: String { return localizedString("Presentation_Tutorial_Page1_Caption") }
       }
 
       struct Page2 {
-        static let image = #imageLiteral(resourceName: "Image_Share")
         static var title:   String { return localizedString("Presentation_Tutorial_Page2_Title") }
         static var caption: String { return localizedString("Presentation_Tutorial_Page2_Caption") }
       }
-    }
-
-    struct Theme {
-      static let image = #imageLiteral(resourceName: "Image_Share")
     }
   }
 
@@ -162,11 +153,8 @@ struct Localizable {
     }
   }
 
-  struct App {
-    struct Share {
-      static var text:  String { return localizedString("Configuration_Share_Content") }
-      static let image: UIImage = #imageLiteral(resourceName: "Image_Share")
-    }
+  struct Share {
+    static var text: String { return localizedString("Configuration_Share_Content") }
   }
 
   struct Theme {

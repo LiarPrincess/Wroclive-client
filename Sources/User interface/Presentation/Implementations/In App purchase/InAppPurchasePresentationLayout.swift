@@ -31,8 +31,8 @@ extension InAppPurchasePresentation {
     typealias BookmarksPage = Localization.BookmarksPage
     typealias ColorsPage    = Localization.ColorsPage
 
-    let bookmarksParams = self.createPageParameters(BookmarksPage.image, BookmarksPage.title, BookmarksPage.caption)
-    let colorsParams    = self.createPageParameters(ColorsPage.image,    ColorsPage.title,    ColorsPage.caption)
+    let bookmarksParams = self.createPageParameters(Images.InAppPurchase.bookmarks, BookmarksPage.title, BookmarksPage.caption)
+    let colorsParams    = self.createPageParameters(Images.InAppPurchase.colors,    ColorsPage.title,    ColorsPage.caption)
 
     self.pages = PresentationControllerPageFactory.create([bookmarksParams, colorsParams])
   }

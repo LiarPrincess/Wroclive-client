@@ -29,9 +29,9 @@ extension TutorialPresentation {
     typealias Page1 = Localization.Page1
     typealias Page2 = Localization.Page2
 
-    let page0 = self.createPageParameters(Page0.image, Page0.title, Page0.caption)
-    let page1 = self.createPageParameters(Page1.image, Page1.title, Page1.caption)
-    let page2 = self.createPageParameters(Page2.image, Page2.title, Page2.caption)
+    let page0 = self.createPageParameters(Images.Tutorial.page0, Page0.title, Page0.caption)
+    let page1 = self.createPageParameters(Images.Tutorial.page1, Page1.title, Page1.caption)
+    let page2 = self.createPageParameters(Images.Tutorial.page2, Page2.title, Page2.caption)
     self.pages = PresentationControllerPageFactory.create([page0, page1, page2])
   }
 
