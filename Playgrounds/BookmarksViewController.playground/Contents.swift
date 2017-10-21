@@ -2,21 +2,17 @@
   
 import UIKit
 import PlaygroundSupport
-import Radar_Framework
+@testable import Radar_Framework
 
-class MyViewController : UIViewController {
-  override func loadView() {
-    let view = UIView()
-    view.backgroundColor = .white
+// Mockups
+let bookmarksManager = BookmarksManagerMockup.filled
 
-    let label = UILabel()
-    label.frame = CGRect(x: 150, y: 200, width: 200, height: 20)
-    label.text = "Hello World!"
-    label.textColor = .black
+// Environment
+let environment = Environment(bookmarks: bookmarksManager)
+AppEnvironment.push(environment)
 
-    view.addSubview(label)
-    self.view = view
-  }
-}
-// Present the view controller in the Live View window
-PlaygroundPage.current.liveView = MyViewController()
+Managers.theme.applyColorScheme()
+
+// Live
+let viewController = BookmarksViewController(delegate: nil)
+PlaygroundPage.current.liveView = viewController

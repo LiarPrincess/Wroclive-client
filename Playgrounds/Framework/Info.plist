@@ -20,5 +20,9 @@
 	<string>1</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome.otf</string>
+	</array>
 </dict>
 </plist>
