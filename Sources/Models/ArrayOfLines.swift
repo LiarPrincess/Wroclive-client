@@ -11,7 +11,7 @@ extension Array where Element == Line {
   // @compile-profiled
   func sortedByName() -> [Line] {
     return self.sorted { (lhs: Line, rhs: Line) in
-      lhs.name.localizedCaseInsensitiveCompare(rhs.name) == .orderedAscending
+      lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
     }
   }
 }
