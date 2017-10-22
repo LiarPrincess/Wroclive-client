@@ -32,16 +32,16 @@ extension ColorSelectionViewController {
     }
 
     // presentation
-    self.addChildViewController(self.themePresentation)
-    self.scrollViewContent.addSubview(self.themePresentation.view)
+    self.addChildViewController(self.presentation)
+    self.scrollViewContent.addSubview(self.presentation.view)
 
-    self.themePresentation.view.snp.makeConstraints { make in
+    self.presentation.view.snp.makeConstraints { make in
       make.top.equalToSuperview()
       make.centerX.width.equalToSuperview()
       make.height.equalTo(Managers.device.screenBounds.height * Layout.Presentation.relativeHeight)
     }
 
-    self.themePresentation.didMove(toParentViewController: self)
+    self.presentation.didMove(toParentViewController: self)
 
     // collection view
     self.collectionView.register(ColorSelectionCell.self)
@@ -56,7 +56,7 @@ extension ColorSelectionViewController {
 
     self.scrollViewContent.addSubview(self.collectionView)
     self.collectionView.snp.makeConstraints { make in
-      make.top.equalTo(self.themePresentation.view.snp.bottom)
+      make.top.equalTo(self.presentation.view.snp.bottom)
       make.centerX.width.equalToSuperview()
       make.bottom.equalToSuperview().offset(-Layout.bottomOffset)
     }

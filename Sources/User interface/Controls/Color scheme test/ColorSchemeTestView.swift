@@ -68,7 +68,9 @@ class ColorSchemeTestView: UIView {
     }
   }
 
-  private func setCurrentColorScheme() {
+  // MARK: - Set colors
+
+  func setCurrentColorScheme() {
     let colorScheme = Managers.theme.colors
     let tintColor   = colorScheme.tintColor
     let tramColor   = colorScheme.tramColor
@@ -76,12 +78,14 @@ class ColorSchemeTestView: UIView {
     self.setColors(tintColor: tintColor, tramColor: tramColor, busColor: busColor)
   }
 
-  // MARK: - Set colors
-
   func setColors(tintColor: TintColor, tramColor: VehicleColor, busColor: VehicleColor) {
     self.toolbarImageView.image = self.toolbarImage(for: tintColor)
+
     self.tramPin.tintColor = tramColor.value
-    self.busPin.tintColor  = busColor.value
+    self.tramPin.setNeedsDisplay()
+
+    self.busPin.tintColor = busColor.value
+    self.busPin.setNeedsDisplay()
   }
 
   private func toolbarImage(for tintColor: TintColor) -> UIImage {

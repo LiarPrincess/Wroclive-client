@@ -21,7 +21,7 @@ class ColorSelectionViewController: UIViewController {
   let scrollView        = UIScrollView()
   let scrollViewContent = UIView()
 
-  lazy var themePresentation = ThemePresentation()
+  let presentation = ColorSelectionPresentation()
 
   let collectionViewDataSource = ColorSelectionDataSource()
   let collectionView: UICollectionView = {
