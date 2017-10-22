@@ -31,9 +31,6 @@
 		90145E491F61AF060068698D /* ConfigurationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E481F61AF060068698D /* ConfigurationDataSource.swift */; };
 		90145E5B1F61B9E30068698D /* InAppPurchasePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E4C1F61B9E30068698D /* InAppPurchasePresentation.swift */; };
 		90145E5D1F61B9E30068698D /* InAppPurchasePresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E4E1F61B9E30068698D /* InAppPurchasePresentationLayout.swift */; };
-		90145E671F61BA4D0068698D /* PresentationControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E661F61BA4D0068698D /* PresentationControllerPage.swift */; };
-		90145E691F61BA630068698D /* PresentationControllerPageParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E681F61BA630068698D /* PresentationControllerPageParameters.swift */; };
-		90145E6B1F61BAEE0068698D /* PresentationControllerPageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E6A1F61BAEE0068698D /* PresentationControllerPageFactory.swift */; };
 		90167FCB1F97BF5A0049E9DE /* ThemeManager+TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90167FCA1F97BF5A0049E9DE /* ThemeManager+TextAttributes.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksViewController.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */; };
@@ -313,9 +310,6 @@
 		90F45B5E1F9BB1B6006E965A /* TutorialPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BF41F6B15A000E8E75F /* TutorialPresentation.swift */; };
 		90F45B5F1F9BB1B6006E965A /* TutorialPresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BF61F6B15A000E8E75F /* TutorialPresentationLayout.swift */; };
 		90F45B601F9BB1B6006E965A /* TutorialPresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BF51F6B15A000E8E75F /* TutorialPresentationConstants.swift */; };
-		90F45B651F9BB1B6006E965A /* PresentationControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E661F61BA4D0068698D /* PresentationControllerPage.swift */; };
-		90F45B661F9BB1B6006E965A /* PresentationControllerPageParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E681F61BA630068698D /* PresentationControllerPageParameters.swift */; };
-		90F45B671F9BB1B6006E965A /* PresentationControllerPageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E6A1F61BAEE0068698D /* PresentationControllerPageFactory.swift */; };
 		90F45B681F9BB1B6006E965A /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900F72F31F55BE5100613A1E /* PresentationController.swift */; };
 		90F45B691F9BB1B6006E965A /* PushPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */; };
 		90F45B6A1F9BB1B6006E965A /* PushDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */; };
@@ -433,9 +427,6 @@
 		90145E481F61AF060068698D /* ConfigurationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationDataSource.swift; sourceTree = "<group>"; };
 		90145E4C1F61B9E30068698D /* InAppPurchasePresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchasePresentation.swift; sourceTree = "<group>"; };
 		90145E4E1F61B9E30068698D /* InAppPurchasePresentationLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchasePresentationLayout.swift; sourceTree = "<group>"; };
-		90145E661F61BA4D0068698D /* PresentationControllerPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerPage.swift; sourceTree = "<group>"; };
-		90145E681F61BA630068698D /* PresentationControllerPageParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerPageParameters.swift; sourceTree = "<group>"; };
-		90145E6A1F61BAEE0068698D /* PresentationControllerPageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerPageFactory.swift; sourceTree = "<group>"; };
 		90167FCA1F97BF5A0049E9DE /* ThemeManager+TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeManager+TextAttributes.swift"; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerConstants.swift; sourceTree = "<group>"; };
@@ -735,24 +726,6 @@
 			path = "View models";
 			sourceTree = "<group>";
 		};
-		90145E4A1F61B9E30068698D /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				90546BF31F6B15A000E8E75F /* Tutorial */,
-			);
-			path = Implementations;
-			sourceTree = "<group>";
-		};
-		90145E651F61BA3C0068698D /* Page */ = {
-			isa = PBXGroup;
-			children = (
-				90145E661F61BA4D0068698D /* PresentationControllerPage.swift */,
-				90145E681F61BA630068698D /* PresentationControllerPageParameters.swift */,
-				90145E6A1F61BAEE0068698D /* PresentationControllerPageFactory.swift */,
-			);
-			path = Page;
-			sourceTree = "<group>";
-		};
 		9017C33D1EE339FD00063377 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,7 +846,7 @@
 			children = (
 				9021F3F11F12C9EF000A6949 /* Helpers */,
 				9021F3DF1F12C9EF000A6949 /* Controls */,
-				90D6ACF71F4DEBE600B36DCB /* Presentation */,
+				90D6ACF71F4DEBE600B36DCB /* Presentations */,
 				9021F3F81F12C9EF000A6949 /* Transitions */,
 			);
 			path = "User interface";
@@ -917,6 +890,7 @@
 				908FB1951F48B3CA00121584 /* Layout guide */,
 				908FB1971F48B3CA00121584 /* Reusable cell */,
 				9032F0791F5DF66B00E1C9BC /* Intrinsic collections */,
+				90B967611F9D304600E9BC75 /* Page view controller container */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1192,13 +1166,6 @@
 			path = Tracking;
 			sourceTree = "<group>";
 		};
-		90546BF31F6B15A000E8E75F /* Tutorial */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tutorial;
-			sourceTree = "<group>";
-		};
 		90546BFA1F6B169100E8E75F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
@@ -1445,6 +1412,14 @@
 			path = "User defaults";
 			sourceTree = "<group>";
 		};
+		90B967611F9D304600E9BC75 /* Page view controller container */ = {
+			isa = PBXGroup;
+			children = (
+				900F72F31F55BE5100613A1E /* PresentationController.swift */,
+			);
+			path = "Page view controller container";
+			sourceTree = "<group>";
+		};
 		90BC8AF41F69B62800AF4B84 /* Push transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -1465,17 +1440,14 @@
 			path = Transition;
 			sourceTree = "<group>";
 		};
-		90D6ACF71F4DEBE600B36DCB /* Presentation */ = {
+		90D6ACF71F4DEBE600B36DCB /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
 				909EFD131F9D154B00C487AD /* Color selection */,
 				909EFD181F9D1D7400C487AD /* In app purchase */,
 				9034E0A31F9D2A6200864132 /* Tutorial */,
-				90145E4A1F61B9E30068698D /* Implementations */,
-				90145E651F61BA3C0068698D /* Page */,
-				900F72F31F55BE5100613A1E /* PresentationController.swift */,
 			);
-			path = Presentation;
+			path = Presentations;
 			sourceTree = "<group>";
 		};
 		90DED6CC1F93F4A000FF1540 /* Tutorial */ = {
@@ -1902,7 +1874,6 @@
 				9034E0AC1F9D2C4700864132 /* TutorialPresentationPage2.swift in Sources */,
 				907246071F88403A0069B940 /* CardPanelCoordinator.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
-				90145E691F61BA630068698D /* PresentationControllerPageParameters.swift in Sources */,
 				90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */,
 				900CAEAA1F482E750044C8A6 /* BookmarksManagerImpl.swift in Sources */,
 				90ACDC461F88B69A005A4B79 /* SearchCoordinator.swift in Sources */,
@@ -1976,7 +1947,6 @@
 				9034E0A21F9D26C500864132 /* InAppPurchaseColorsPage.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
-				90145E671F61BA4D0068698D /* PresentationControllerPage.swift in Sources */,
 				9070E94D1F9A7CBB0076A8F6 /* ThemeManager+ApplyColorScheme.swift in Sources */,
 				903294FB1F9D0B67006A6D05 /* ColorSchemeTestView.swift in Sources */,
 				908252511F703B4C001C2926 /* NotificationManager.swift in Sources */,
@@ -2025,7 +1995,6 @@
 				908FB19D1F48B3CA00121584 /* ReusableCellContainer.swift in Sources */,
 				900CAEAD1F482E750044C8A6 /* LocationManagerImpl.swift in Sources */,
 				9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */,
-				90145E6B1F61BAEE0068698D /* PresentationControllerPageFactory.swift in Sources */,
 				908252571F703F0E001C2926 /* Notification.swift in Sources */,
 				900CAEAB1F482E750044C8A6 /* LocationManager.swift in Sources */,
 				907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */,
@@ -2188,9 +2157,6 @@
 				90F45B5E1F9BB1B6006E965A /* TutorialPresentation.swift in Sources */,
 				90F45B5F1F9BB1B6006E965A /* TutorialPresentationLayout.swift in Sources */,
 				90F45B601F9BB1B6006E965A /* TutorialPresentationConstants.swift in Sources */,
-				90F45B651F9BB1B6006E965A /* PresentationControllerPage.swift in Sources */,
-				90F45B661F9BB1B6006E965A /* PresentationControllerPageParameters.swift in Sources */,
-				90F45B671F9BB1B6006E965A /* PresentationControllerPageFactory.swift in Sources */,
 				90F45B681F9BB1B6006E965A /* PresentationController.swift in Sources */,
 				90F45B691F9BB1B6006E965A /* PushPresentationTransition.swift in Sources */,
 				90F45B6A1F9BB1B6006E965A /* PushDismissTransition.swift in Sources */,

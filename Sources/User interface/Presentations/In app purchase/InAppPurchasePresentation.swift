@@ -5,7 +5,7 @@
 
 import UIKit
 
-class InAppPurchasePresentation: UIViewController, PresentationController {
+class InAppPurchasePresentation: UIViewController, PageViewControllerContainer {
 
   // MARK: - Properties
 

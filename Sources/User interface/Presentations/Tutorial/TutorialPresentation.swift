@@ -5,7 +5,7 @@
 
 import UIKit
 
-class TutorialPresentation: UIViewController, PresentationController {
+class TutorialPresentation: UIViewController, PageViewControllerContainer {
 
   // MARK: - Properties
 

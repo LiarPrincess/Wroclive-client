@@ -5,7 +5,7 @@
 
 import UIKit
 
-protocol PresentationController {
+protocol PageViewControllerContainer {
   var pageViewController: UIPageViewController { get }
   var pageControl:        UIPageControl        { get }
   var pages:              [UIViewController]   { get }
@@ -13,7 +13,7 @@ protocol PresentationController {
 
 // MARK: UIPageViewControllerDelegate, UIPageViewControllerDataSource
 
-extension PresentationController {
+extension PageViewControllerContainer {
   func viewControllerBefore(_ viewController: UIViewController) -> UIViewController? {
     guard let index = self.pages.index(of: viewController) else { return nil }
     let previousIndex = index - 1
