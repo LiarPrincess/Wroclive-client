@@ -93,6 +93,10 @@
 		9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */; };
 		90336A311F587C3600FAAEFF /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */; };
 		9034E0A21F9D26C500864132 /* InAppPurchaseColorsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0A11F9D26C500864132 /* InAppPurchaseColorsPage.swift */; };
+		9034E0A61F9D2A8700864132 /* TutorialPresentationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0A51F9D2A8700864132 /* TutorialPresentationPage.swift */; };
+		9034E0A81F9D2BC900864132 /* TutorialPresentationPage0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0A71F9D2BC900864132 /* TutorialPresentationPage0.swift */; };
+		9034E0AA1F9D2C2700864132 /* TutorialPresentationPage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0A91F9D2C2700864132 /* TutorialPresentationPage1.swift */; };
+		9034E0AC1F9D2C4700864132 /* TutorialPresentationPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0AB1F9D2C4700864132 /* TutorialPresentationPage2.swift */; };
 		90357AD91F840F52008E50E9 /* ApplicationActivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90357AD81F840F52008E50E9 /* ApplicationActivityObserver.swift */; };
 		90374CCB1F6D3935008D78CE /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374CCA1F6D3935008D78CE /* SessionManager.swift */; };
 		90374CCD1F6D3BF8008D78CE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374CCC1F6D3BF8008D78CE /* Endpoint.swift */; };
@@ -492,6 +496,10 @@
 		9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
 		9034E0A11F9D26C500864132 /* InAppPurchaseColorsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseColorsPage.swift; sourceTree = "<group>"; };
+		9034E0A51F9D2A8700864132 /* TutorialPresentationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPresentationPage.swift; sourceTree = "<group>"; };
+		9034E0A71F9D2BC900864132 /* TutorialPresentationPage0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPresentationPage0.swift; sourceTree = "<group>"; };
+		9034E0A91F9D2C2700864132 /* TutorialPresentationPage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPresentationPage1.swift; sourceTree = "<group>"; };
+		9034E0AB1F9D2C4700864132 /* TutorialPresentationPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPresentationPage2.swift; sourceTree = "<group>"; };
 		90357AD81F840F52008E50E9 /* ApplicationActivityObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationActivityObserver.swift; sourceTree = "<group>"; };
 		90374CCA1F6D3935008D78CE /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		90374CCC1F6D3BF8008D78CE /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -1092,6 +1100,28 @@
 			path = "Intrinsic collections";
 			sourceTree = "<group>";
 		};
+		9034E0A31F9D2A6200864132 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				9034E0A41F9D2A7400864132 /* Pages */,
+				90546BF41F6B15A000E8E75F /* TutorialPresentation.swift */,
+				90546BF61F6B15A000E8E75F /* TutorialPresentationLayout.swift */,
+				90546BF51F6B15A000E8E75F /* TutorialPresentationConstants.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		9034E0A41F9D2A7400864132 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				9034E0A51F9D2A8700864132 /* TutorialPresentationPage.swift */,
+				9034E0A71F9D2BC900864132 /* TutorialPresentationPage0.swift */,
+				9034E0A91F9D2C2700864132 /* TutorialPresentationPage1.swift */,
+				9034E0AB1F9D2C4700864132 /* TutorialPresentationPage2.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 		90374CC91F6D3921008D78CE /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1165,9 +1195,6 @@
 		90546BF31F6B15A000E8E75F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				90546BF41F6B15A000E8E75F /* TutorialPresentation.swift */,
-				90546BF61F6B15A000E8E75F /* TutorialPresentationLayout.swift */,
-				90546BF51F6B15A000E8E75F /* TutorialPresentationConstants.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -1443,6 +1470,7 @@
 			children = (
 				909EFD131F9D154B00C487AD /* Color selection */,
 				909EFD181F9D1D7400C487AD /* In app purchase */,
+				9034E0A31F9D2A6200864132 /* Tutorial */,
 				90145E4A1F61B9E30068698D /* Implementations */,
 				90145E651F61BA3C0068698D /* Page */,
 				900F72F31F55BE5100613A1E /* PresentationController.swift */,
@@ -1871,6 +1899,7 @@
 				900CAEB61F482E750044C8A6 /* SearchManager.swift in Sources */,
 				9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */,
 				901C71871F9A5DFA00697EEC /* ArrayOfBookmarks.swift in Sources */,
+				9034E0AC1F9D2C4700864132 /* TutorialPresentationPage2.swift in Sources */,
 				907246071F88403A0069B940 /* CardPanelCoordinator.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				90145E691F61BA630068698D /* PresentationControllerPageParameters.swift in Sources */,
@@ -1909,6 +1938,7 @@
 				908346F61F5202AE00654FF6 /* String+FindPositions.swift in Sources */,
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,
 				908252581F703F0E001C2926 /* NotificationData.swift in Sources */,
+				9034E0A81F9D2BC900864132 /* TutorialPresentationPage0.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectionSectionHeaderView.swift in Sources */,
 				90E8A6C61F4CD43300CE5AE9 /* DeviceManager.swift in Sources */,
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManagerImpl.swift in Sources */,
@@ -1962,6 +1992,7 @@
 				909EFD1B1F9D1D8F00C487AD /* InAppPurchasePresentationPage.swift in Sources */,
 				909EFD171F9D175100C487AD /* ColorSelectionPresentationConstants.swift in Sources */,
 				9044A5451F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift in Sources */,
+				9034E0A61F9D2A8700864132 /* TutorialPresentationPage.swift in Sources */,
 				901D46881F5730AE00A9F6BD /* ColorValues.swift in Sources */,
 				9056F6571F5229A500F7EF48 /* Font.swift in Sources */,
 				90BC8B041F69B62800AF4B84 /* PushDismissTransition.swift in Sources */,
@@ -1969,6 +2000,7 @@
 				90E8A6CB1F4CE24500CE5AE9 /* AppStoreManager.swift in Sources */,
 				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
 				907246091F8846690069B940 /* PushCoordinator.swift in Sources */,
+				9034E0AA1F9D2C2700864132 /* TutorialPresentationPage1.swift in Sources */,
 				908F55091F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
 				9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */,

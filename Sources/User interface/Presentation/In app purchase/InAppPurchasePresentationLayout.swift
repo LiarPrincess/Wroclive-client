@@ -31,14 +31,16 @@ extension InAppPurchasePresentation {
     let bookmarksPage = InAppPurchaseBookmarkPage()
     let colorsPage    = InAppPurchaseColorsPage()
 
-    let bookmarksMinTextHeight = bookmarksPage.calculateMinTextHeight()
-    let colorsMinTextHeight    = colorsPage.calculateMinTextHeight()
-    let minTextHeight = min(bookmarksMinTextHeight, colorsMinTextHeight)
+    let pages: [InAppPurchasePresentationPage] = [bookmarksPage, colorsPage]
+    self.guaranteeMinTextHeight(pages)
+    self.pages = pages
+  }
 
-    bookmarksPage.guaranteeMinTextHeight(minTextHeight)
-    colorsPage.guaranteeMinTextHeight(minTextHeight)
-
-    self.pages = [bookmarksPage, colorsPage]
+  private func guaranteeMinTextHeight(_ pages: [InAppPurchasePresentationPage]) {
+    let minTextHeight = pages.map { $0.calculateMinTextHeight() }.max() ?? 0.0
+    for page in pages {
+      page.guaranteeMinTextHeight(minTextHeight)
+    }
   }
 
   private func initPageViewController() {

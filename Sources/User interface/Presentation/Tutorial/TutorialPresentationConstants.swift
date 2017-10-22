@@ -12,6 +12,9 @@ struct TutorialPresentationConstants {
     static let rightOffset: CGFloat = leftOffset
 
     struct Page {
+      static let leftOffset:  CGFloat = Layout.leftOffset
+      static let rightOffset: CGFloat = Layout.rightOffset
+
       static let topInset: CGFloat = 54.0
 
       struct Title {

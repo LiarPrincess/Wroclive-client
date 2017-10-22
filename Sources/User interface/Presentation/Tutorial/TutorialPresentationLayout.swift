@@ -25,28 +25,20 @@ extension TutorialPresentation {
   }
 
   private func initPages() {
-    typealias Page0 = Localization.Page0
-    typealias Page1 = Localization.Page1
-    typealias Page2 = Localization.Page2
+    let page0 = TutorialPresentationPage0()
+    let page1 = TutorialPresentationPage1()
+    let page2 = TutorialPresentationPage2()
 
-    let page0 = self.createPageParameters(Images.Tutorial.page0, Page0.title, Page0.caption)
-    let page1 = self.createPageParameters(Images.Tutorial.page1, Page1.title, Page1.caption)
-    let page2 = self.createPageParameters(Images.Tutorial.page2, Page2.title, Page2.caption)
-    self.pages = PresentationControllerPageFactory.create([page0, page1, page2])
+    let pages: [TutorialPresentationPage] = [page0, page1, page2]
+    self.guaranteeMinTextHeight(pages)
+    self.pages = pages
   }
 
-  func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParameters {
-    typealias PageLayout = Layout.Page
-    let view = UIView()
-    view.backgroundColor = UIColor.red
-    view.alpha = 0.5
-
-    return PresentationControllerPageParameters(
-      view:    view,
-      title:   title,   titleTopOffset:   PageLayout.Title.topOffset,
-      caption: caption, captionTopOffset: PageLayout.Caption.topOffset,
-      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset
-    )
+  private func guaranteeMinTextHeight(_ pages: [TutorialPresentationPage]) {
+    let minTextHeight = pages.map { $0.calculateMinTextHeight() }.max() ?? 0.0
+    for page in pages {
+      page.guaranteeMinTextHeight(minTextHeight)
+    }
   }
 
   private func initContent() {
