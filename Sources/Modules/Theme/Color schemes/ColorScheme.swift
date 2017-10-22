@@ -7,7 +7,7 @@ import UIKit
 
 struct PresentationColorScheme {
   let textPrimary   = UIColor.white
-  let textSecondary = UIColor(white: 0.8, alpha: 1.0)
+  let textSecondary = UIColor(white: 0.9, alpha: 1.0)
 
   let button = UIColor(red: 0.00, green: 0.59, blue: 0.95, alpha: 1.00)
 

@@ -10,16 +10,17 @@ class DeviceImageView: UIView {
 
   // MARK: - Properties
 
-  private let deviceBorder  = UIImageView()
-  let contentView           = UIView()
+  private let deviceBorder = UIImageView()
+  private let contentView: UIView
 
   // MARK: - Init
 
-  convenience init() {
-    self.init(frame: .zero)
+  convenience init(content contentView: UIView) {
+    self.init(frame: .zero, content: contentView)
   }
 
-  override init(frame: CGRect) {
+  init(frame: CGRect, content contentView: UIView) {
+    self.contentView = contentView
     super.init(frame: frame)
 
     self.deviceBorder.image       = Images.deviceBorder

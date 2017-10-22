@@ -93,6 +93,7 @@
 		902331301EDF37F500FA8F43 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EC1EDF37F500FA8F43 /* LineType.swift */; };
 		9024C6111F9667E600025503 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024C6101F9667E600025503 /* Environment.swift */; };
 		9024C6131F96699500025503 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024C6121F96699500025503 /* AppEnvironment.swift */; };
+		903294FB1F9D0B67006A6D05 /* ColorSchemeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903294FA1F9D0B67006A6D05 /* ColorSchemeTestView.swift */; };
 		9032F07C1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F07A1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift */; };
 		9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */; };
 		90336A311F587C3600FAAEFF /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */; };
@@ -114,6 +115,7 @@
 		9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */; };
 		9045C2E31F9BDB3F002F35C3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2E21F9BDB3F002F35C3 /* Assets.swift */; };
 		9045C2E41F9BDDD7002F35C3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2E21F9BDB3F002F35C3 /* Assets.swift */; };
+		9045C2E51F9BE508002F35C3 /* BookmarksManagerMockup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C8A8961F913DEA00072D83 /* BookmarksManagerMockup.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
 		90545E181F98164900BDDBC0 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90545E171F98164900BDDBC0 /* FileSystemManager.swift */; };
 		90545E1A1F98165B00BDDBC0 /* FileSystemManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90545E191F98165B00BDDBC0 /* FileSystemManagerImpl.swift */; };
@@ -160,6 +162,7 @@
 		908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB19A1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		909D5B151F8FD4AF008DAF9D /* DeviceImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */; };
+		909EFD121F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD111F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90ACDC431F88518D005A4B79 /* BookmarksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACDC421F88518D005A4B79 /* BookmarksCoordinator.swift */; };
 		90ACDC461F88B69A005A4B79 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACDC451F88B69A005A4B79 /* SearchCoordinator.swift */; };
@@ -406,7 +409,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1C9F2D8291936AE78C0AD0D2 /* Pods_Radar_Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radar_Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47725C19B9138DAAD88A61DF /* Pods-Radar-Framework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar-Framework.release.xcconfig"; path = "Pods/Target Support Files/Pods-Radar-Framework/Pods-Radar-Framework.release.xcconfig"; sourceTree = "<group>"; };
 		85004F059265DC160C5FA14F /* Pods-Radar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Radar/Pods-Radar.debug.xcconfig"; sourceTree = "<group>"; };
 		8A6E550A6D9C248D8C76DC42 /* Pods-Radar-Framework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar-Framework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Radar-Framework/Pods-Radar-Framework.debug.xcconfig"; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 		9024C6101F9667E600025503 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9024C6121F96699500025503 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		903294FA1F9D0B67006A6D05 /* ColorSchemeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeTestView.swift; sourceTree = "<group>"; };
 		9032F07A1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicCollectionView.swift; sourceTree = "<group>"; };
 		9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
@@ -561,6 +564,7 @@
 		908FB19A1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableSuplementaryViewContainer.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceImageView.swift; sourceTree = "<group>"; };
+		909EFD111F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeTestViewConstants.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90ACDC421F88518D005A4B79 /* BookmarksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCoordinator.swift; sourceTree = "<group>"; };
 		90ACDC451F88B69A005A4B79 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
@@ -600,7 +604,7 @@
 		90F45AE91F9BB19E006E965A /* Radar_Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Radar_Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F45AEB1F9BB19E006E965A /* Radar-Framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Radar-Framework.h"; sourceTree = "<group>"; };
 		90F45AEC1F9BB19E006E965A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		90F45BBB1F9BBCBE006E965A /* BookmarksViewController.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BookmarksViewController.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		90F45BBB1F9BBCBE006E965A /* Playgrounds.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playgrounds.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		90F45BC01F9BC40F006E965A /* Pods_Radar_Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Radar_Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
 		AA8885078077A6F4C3E997EB /* Pods_Radar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -906,8 +910,10 @@
 		9021F3DF1F12C9EF000A6949 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				909D5B131F8FD48C008DAF9D /* Device image view */,
 				9021F3E01F12C9EF000A6949 /* Chevron */,
+				903294F81F9CCF49006A6D05 /* Vehicle pin */,
+				909D5B131F8FD48C008DAF9D /* Device image view */,
+				903294F91F9D0B47006A6D05 /* Color scheme test */,
 				9021F3E31F12C9EF000A6949 /* Line selection */,
 				9021F4251F12CC89000A6949 /* Line type selection */,
 			);
@@ -1088,13 +1094,29 @@
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				90F45BC01F9BC40F006E965A /* Pods_Radar_Framework.framework */,
 				905A3B6A1F9532F0003D668F /* UIKit.framework */,
 				905A3B6E1F953301003D668F /* MapKit.framework */,
 				AA8885078077A6F4C3E997EB /* Pods_Radar.framework */,
-				1C9F2D8291936AE78C0AD0D2 /* Pods_Radar_Framework.framework */,
+				90F45BC01F9BC40F006E965A /* Pods_Radar_Framework.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		903294F81F9CCF49006A6D05 /* Vehicle pin */ = {
+			isa = PBXGroup;
+			children = (
+				904A6B121F43183E00EE98FD /* VehiclePinView.swift */,
+			);
+			path = "Vehicle pin";
+			sourceTree = "<group>";
+		};
+		903294F91F9D0B47006A6D05 /* Color scheme test */ = {
+			isa = PBXGroup;
+			children = (
+				903294FA1F9D0B67006A6D05 /* ColorSchemeTestView.swift */,
+				909EFD111F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift */,
+			);
+			path = "Color scheme test";
 			sourceTree = "<group>";
 		};
 		9032F0791F5DF66B00E1C9BC /* Intrinsic collections */ = {
@@ -1155,14 +1177,6 @@
 				9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */,
 			);
 			path = "View models";
-			sourceTree = "<group>";
-		};
-		904A6B111F43181F00EE98FD /* Pin */ = {
-			isa = PBXGroup;
-			children = (
-				904A6B121F43183E00EE98FD /* VehiclePinView.swift */,
-			);
-			path = Pin;
 			sourceTree = "<group>";
 		};
 		90545E161F98163000BDDBC0 /* File system */ = {
@@ -1538,7 +1552,7 @@
 			children = (
 				90F45BBC1F9BBDA2006E965A /* Framework */,
 				90EA53171F9BCD1D0079C263 /* Mocks */,
-				90F45BBB1F9BBCBE006E965A /* BookmarksViewController.playground */,
+				90F45BBB1F9BBCBE006E965A /* Playgrounds.playground */,
 			);
 			path = Playgrounds;
 			sourceTree = "<group>";
@@ -1555,7 +1569,6 @@
 		90FAF06F1F35D8C20040E0AE /* Annotations */ = {
 			isa = PBXGroup;
 			children = (
-				904A6B111F43181F00EE98FD /* Pin */,
 				90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */,
 				90A913771F376E390095B873 /* VehicleAnnotationView.swift */,
 			);
@@ -1850,6 +1863,7 @@
 				90546BF71F6B15A000E8E75F /* TutorialPresentation.swift in Sources */,
 				90ACDC431F88518D005A4B79 /* BookmarksCoordinator.swift in Sources */,
 				90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */,
+				9045C2E51F9BE508002F35C3 /* BookmarksManagerMockup.swift in Sources */,
 				90374CCD1F6D3BF8008D78CE /* Endpoint.swift in Sources */,
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90145E451F61AED10068698D /* ConfigurationCell.swift in Sources */,
@@ -1935,6 +1949,7 @@
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
 				90145E671F61BA4D0068698D /* PresentationControllerPage.swift in Sources */,
 				9070E94D1F9A7CBB0076A8F6 /* ThemeManager+ApplyColorScheme.swift in Sources */,
+				903294FB1F9D0B67006A6D05 /* ColorSchemeTestView.swift in Sources */,
 				908252511F703B4C001C2926 /* NotificationManager.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				90F0A2D81F732A6F00C641C8 /* VehicleLocationObserver.swift in Sources */,
@@ -2002,6 +2017,7 @@
 				908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				90DED6D01F93F4E800FF1540 /* TutorialManagerImpl.swift in Sources */,
 				9044A54B1F69A13D00F26C17 /* ColorSelectionSection.swift in Sources */,
+				909EFD121F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift in Sources */,
 				9045C2E31F9BDB3F002F35C3 /* Assets.swift in Sources */,
 				90B412501F97E72E008F05E9 /* UserDefaultsManager.swift in Sources */,
 				900CAEB21F482E750044C8A6 /* VehicleLocationEndpoint.swift in Sources */,

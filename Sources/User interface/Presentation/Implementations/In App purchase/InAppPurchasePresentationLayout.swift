@@ -28,28 +28,32 @@ extension InAppPurchasePresentation {
   }
 
   private func initPages() {
-    typealias BookmarksPage = Localization.BookmarksPage
-    typealias ColorsPage    = Localization.ColorsPage
-
-    let bookmarksParams = self.createPageParameters(Images.InAppPurchase.bookmarks, BookmarksPage.title, BookmarksPage.caption)
-    let colorsParams    = self.createPageParameters(Images.InAppPurchase.colors,    ColorsPage.title,    ColorsPage.caption)
-
-    self.pages = PresentationControllerPageFactory.create([bookmarksParams, colorsParams])
+    let bookmarksParams = self.createBookmarksPageParameters()
+    let themeParams     = self.createThemePageParameters()
+    self.pages = PresentationControllerPageFactory.create([bookmarksParams, themeParams])
   }
 
-  func createPageParameters(_ image: UIImage, _ title: String, _ caption: String) -> PresentationControllerPageParameters {
-    typealias PageLayout = Layout.Page
-    let deviceView = DeviceImageView()
+  private func createBookmarksPageParameters() -> PresentationControllerPageParameters {
+    typealias Loc = Localization.BookmarksPage
 
     let deviceViewContent = UIImageView()
-    deviceViewContent.image       = image
+    deviceViewContent.image       = Images.InAppPurchase.bookmarks
     deviceViewContent.contentMode = .scaleToFill
 
-    deviceView.contentView.addSubview(deviceViewContent)
-    deviceViewContent.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
+    return self.createPageParameters(deviceViewContent, Loc.title, Loc.caption)
+  }
 
+  private func createThemePageParameters() -> PresentationControllerPageParameters {
+    typealias Loc = Localization.ColorsPage
+
+    let deviceViewContent = ColorSchemeTestView()
+    return self.createPageParameters(deviceViewContent, Loc.title, Loc.caption)
+  }
+
+  private func createPageParameters(_ deviceViewContent: UIView, _ title: String, _ caption: String) -> PresentationControllerPageParameters {
+    typealias PageLayout = Layout.Page
+
+    let deviceView = DeviceImageView(content: deviceViewContent)
     return PresentationControllerPageParameters(
       view:    deviceView,
       title:   title,   titleTopOffset:   PageLayout.Title.topOffset,
