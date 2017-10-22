@@ -40,4 +40,8 @@ struct InAppPurchasePresentationConstants {
       static let bottomOffset: CGFloat = -2.0
     }
   }
+
+  struct Timer {
+    static let colorsChangeInterval: TimeInterval = 2.0
+  }
 }

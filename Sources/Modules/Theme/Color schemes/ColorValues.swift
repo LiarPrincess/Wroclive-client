@@ -24,6 +24,10 @@ enum TintColor: String {
     case .black:  return UIColor(white: 0.0, alpha: 1.0)
     }
   }
+
+  static var allValues: [TintColor] {
+    return [.red, .blue, .green, .orange, .pink, .black]
+  }
 }
 
 enum VehicleColor: String {
@@ -43,5 +47,9 @@ enum VehicleColor: String {
     case .pink:   return UIColor(hue: 0.95, saturation: 0.74, brightness: 1.00, alpha: 1.0)
     case .black:  return UIColor(white: 0.0, alpha: 1.0)
     }
+  }
+
+  static var allValues: [VehicleColor] {
+    return [.red, .blue, .green, .orange, .pink, .black]
   }
 }
