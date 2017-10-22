@@ -30,7 +30,6 @@
 		90145E471F61AEEB0068698D /* ConfigurationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E461F61AEEB0068698D /* ConfigurationSection.swift */; };
 		90145E491F61AF060068698D /* ConfigurationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E481F61AF060068698D /* ConfigurationDataSource.swift */; };
 		90145E5B1F61B9E30068698D /* InAppPurchasePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E4C1F61B9E30068698D /* InAppPurchasePresentation.swift */; };
-		90145E5C1F61B9E30068698D /* InAppPurchasePresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E4D1F61B9E30068698D /* InAppPurchasePresentationConstants.swift */; };
 		90145E5D1F61B9E30068698D /* InAppPurchasePresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E4E1F61B9E30068698D /* InAppPurchasePresentationLayout.swift */; };
 		90145E671F61BA4D0068698D /* PresentationControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E661F61BA4D0068698D /* PresentationControllerPage.swift */; };
 		90145E691F61BA630068698D /* PresentationControllerPageParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E681F61BA630068698D /* PresentationControllerPageParameters.swift */; };
@@ -93,6 +92,7 @@
 		9032F07C1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F07A1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift */; };
 		9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */; };
 		90336A311F587C3600FAAEFF /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */; };
+		9034E0A21F9D26C500864132 /* InAppPurchaseColorsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0A11F9D26C500864132 /* InAppPurchaseColorsPage.swift */; };
 		90357AD91F840F52008E50E9 /* ApplicationActivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90357AD81F840F52008E50E9 /* ApplicationActivityObserver.swift */; };
 		90374CCB1F6D3935008D78CE /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374CCA1F6D3935008D78CE /* SessionManager.swift */; };
 		90374CCD1F6D3BF8008D78CE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374CCC1F6D3BF8008D78CE /* Endpoint.swift */; };
@@ -161,6 +161,9 @@
 		909EFD121F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD111F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift */; };
 		909EFD151F9D156000C487AD /* ColorSelectionPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD141F9D156000C487AD /* ColorSelectionPresentation.swift */; };
 		909EFD171F9D175100C487AD /* ColorSelectionPresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD161F9D175100C487AD /* ColorSelectionPresentationConstants.swift */; };
+		909EFD1B1F9D1D8F00C487AD /* InAppPurchasePresentationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD1A1F9D1D8F00C487AD /* InAppPurchasePresentationPage.swift */; };
+		909EFD1D1F9D1DEB00C487AD /* InAppPurchasePresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD1C1F9D1DEB00C487AD /* InAppPurchasePresentationConstants.swift */; };
+		909EFD1F1F9D1F4500C487AD /* InAppPurchaseBookmarkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD1E1F9D1F4500C487AD /* InAppPurchaseBookmarkPage.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90ACDC431F88518D005A4B79 /* BookmarksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACDC421F88518D005A4B79 /* BookmarksCoordinator.swift */; };
 		90ACDC461F88B69A005A4B79 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACDC451F88B69A005A4B79 /* SearchCoordinator.swift */; };
@@ -303,9 +306,6 @@
 		90F45B581F9BB1B6006E965A /* LineSelectionViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */; };
 		90F45B591F9BB1B6006E965A /* LineTypeSelectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4261F12CCB3000A6949 /* LineTypeSelectionControl.swift */; };
 		90F45B5A1F9BB1B6006E965A /* LineTypeSelectionControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4281F12CCC5000A6949 /* LineTypeSelectionControlDelegate.swift */; };
-		90F45B5B1F9BB1B6006E965A /* InAppPurchasePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E4C1F61B9E30068698D /* InAppPurchasePresentation.swift */; };
-		90F45B5C1F9BB1B6006E965A /* InAppPurchasePresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E4E1F61B9E30068698D /* InAppPurchasePresentationLayout.swift */; };
-		90F45B5D1F9BB1B6006E965A /* InAppPurchasePresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E4D1F61B9E30068698D /* InAppPurchasePresentationConstants.swift */; };
 		90F45B5E1F9BB1B6006E965A /* TutorialPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BF41F6B15A000E8E75F /* TutorialPresentation.swift */; };
 		90F45B5F1F9BB1B6006E965A /* TutorialPresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BF61F6B15A000E8E75F /* TutorialPresentationLayout.swift */; };
 		90F45B601F9BB1B6006E965A /* TutorialPresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BF51F6B15A000E8E75F /* TutorialPresentationConstants.swift */; };
@@ -428,7 +428,6 @@
 		90145E461F61AEEB0068698D /* ConfigurationSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationSection.swift; sourceTree = "<group>"; };
 		90145E481F61AF060068698D /* ConfigurationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationDataSource.swift; sourceTree = "<group>"; };
 		90145E4C1F61B9E30068698D /* InAppPurchasePresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchasePresentation.swift; sourceTree = "<group>"; };
-		90145E4D1F61B9E30068698D /* InAppPurchasePresentationConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchasePresentationConstants.swift; sourceTree = "<group>"; };
 		90145E4E1F61B9E30068698D /* InAppPurchasePresentationLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchasePresentationLayout.swift; sourceTree = "<group>"; };
 		90145E661F61BA4D0068698D /* PresentationControllerPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerPage.swift; sourceTree = "<group>"; };
 		90145E681F61BA630068698D /* PresentationControllerPageParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationControllerPageParameters.swift; sourceTree = "<group>"; };
@@ -492,6 +491,7 @@
 		9032F07A1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicCollectionView.swift; sourceTree = "<group>"; };
 		9032F07B1F5DF66B00E1C9BC /* IntrinsicTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		90336A301F587C3600FAAEFF /* ColorSchemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
+		9034E0A11F9D26C500864132 /* InAppPurchaseColorsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseColorsPage.swift; sourceTree = "<group>"; };
 		90357AD81F840F52008E50E9 /* ApplicationActivityObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationActivityObserver.swift; sourceTree = "<group>"; };
 		90374CCA1F6D3935008D78CE /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		90374CCC1F6D3BF8008D78CE /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -557,6 +557,9 @@
 		909EFD111F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeTestViewConstants.swift; sourceTree = "<group>"; };
 		909EFD141F9D156000C487AD /* ColorSelectionPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionPresentation.swift; sourceTree = "<group>"; };
 		909EFD161F9D175100C487AD /* ColorSelectionPresentationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionPresentationConstants.swift; sourceTree = "<group>"; };
+		909EFD1A1F9D1D8F00C487AD /* InAppPurchasePresentationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchasePresentationPage.swift; sourceTree = "<group>"; };
+		909EFD1C1F9D1DEB00C487AD /* InAppPurchasePresentationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchasePresentationConstants.swift; sourceTree = "<group>"; };
+		909EFD1E1F9D1F4500C487AD /* InAppPurchaseBookmarkPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseBookmarkPage.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90ACDC421F88518D005A4B79 /* BookmarksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCoordinator.swift; sourceTree = "<group>"; };
 		90ACDC451F88B69A005A4B79 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
@@ -727,20 +730,9 @@
 		90145E4A1F61B9E30068698D /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				90145E4B1F61B9E30068698D /* In App purchase */,
 				90546BF31F6B15A000E8E75F /* Tutorial */,
 			);
 			path = Implementations;
-			sourceTree = "<group>";
-		};
-		90145E4B1F61B9E30068698D /* In App purchase */ = {
-			isa = PBXGroup;
-			children = (
-				90145E4C1F61B9E30068698D /* InAppPurchasePresentation.swift */,
-				90145E4E1F61B9E30068698D /* InAppPurchasePresentationLayout.swift */,
-				90145E4D1F61B9E30068698D /* InAppPurchasePresentationConstants.swift */,
-			);
-			path = "In App purchase";
 			sourceTree = "<group>";
 		};
 		90145E651F61BA3C0068698D /* Page */ = {
@@ -1320,6 +1312,27 @@
 			path = "Color selection";
 			sourceTree = "<group>";
 		};
+		909EFD181F9D1D7400C487AD /* In app purchase */ = {
+			isa = PBXGroup;
+			children = (
+				909EFD191F9D1D7B00C487AD /* Pages */,
+				90145E4C1F61B9E30068698D /* InAppPurchasePresentation.swift */,
+				90145E4E1F61B9E30068698D /* InAppPurchasePresentationLayout.swift */,
+				909EFD1C1F9D1DEB00C487AD /* InAppPurchasePresentationConstants.swift */,
+			);
+			path = "In app purchase";
+			sourceTree = "<group>";
+		};
+		909EFD191F9D1D7B00C487AD /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				909EFD1A1F9D1D8F00C487AD /* InAppPurchasePresentationPage.swift */,
+				909EFD1E1F9D1F4500C487AD /* InAppPurchaseBookmarkPage.swift */,
+				9034E0A11F9D26C500864132 /* InAppPurchaseColorsPage.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
 		90ACDC441F8851D8005A4B79 /* Child coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -1429,6 +1442,7 @@
 			isa = PBXGroup;
 			children = (
 				909EFD131F9D154B00C487AD /* Color selection */,
+				909EFD181F9D1D7400C487AD /* In app purchase */,
 				90145E4A1F61B9E30068698D /* Implementations */,
 				90145E651F61BA3C0068698D /* Page */,
 				900F72F31F55BE5100613A1E /* PresentationController.swift */,
@@ -1880,6 +1894,7 @@
 				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				90546BF91F6B15A000E8E75F /* TutorialPresentationLayout.swift in Sources */,
+				909EFD1F1F9D1F4500C487AD /* InAppPurchaseBookmarkPage.swift in Sources */,
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
 				9044A5471F69A13D00F26C17 /* ColorSelectionViewController.swift in Sources */,
 				90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */,
@@ -1909,6 +1924,7 @@
 				90546BF81F6B15A000E8E75F /* TutorialPresentationConstants.swift in Sources */,
 				900CAEB01F482E750044C8A6 /* LineLocationsParser.swift in Sources */,
 				900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */,
+				909EFD1D1F9D1DEB00C487AD /* InAppPurchasePresentationConstants.swift in Sources */,
 				9044A54C1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift in Sources */,
 				9044A54A1F69A13D00F26C17 /* ColorSelectionDataSource.swift in Sources */,
 				9021F3941F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift in Sources */,
@@ -1927,6 +1943,7 @@
 				9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */,
 				908FB19B1F48B3CA00121584 /* LayoutGuide.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
+				9034E0A21F9D26C500864132 /* InAppPurchaseColorsPage.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				9021F4411F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift in Sources */,
 				90145E671F61BA4D0068698D /* PresentationControllerPage.swift in Sources */,
@@ -1942,6 +1959,7 @@
 				90546BF01F6AF25800E8E75F /* TrackingManagerImpl.swift in Sources */,
 				9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */,
 				9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */,
+				909EFD1B1F9D1D8F00C487AD /* InAppPurchasePresentationPage.swift in Sources */,
 				909EFD171F9D175100C487AD /* ColorSelectionPresentationConstants.swift in Sources */,
 				9044A5451F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift in Sources */,
 				901D46881F5730AE00A9F6BD /* ColorValues.swift in Sources */,
@@ -1952,7 +1970,6 @@
 				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
 				907246091F8846690069B940 /* PushCoordinator.swift in Sources */,
 				908F55091F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift in Sources */,
-				90145E5C1F61B9E30068698D /* InAppPurchasePresentationConstants.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
 				9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */,
 				9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */,
@@ -2136,9 +2153,6 @@
 				90F45B581F9BB1B6006E965A /* LineSelectionViewControllerConstants.swift in Sources */,
 				90F45B591F9BB1B6006E965A /* LineTypeSelectionControl.swift in Sources */,
 				90F45B5A1F9BB1B6006E965A /* LineTypeSelectionControlDelegate.swift in Sources */,
-				90F45B5B1F9BB1B6006E965A /* InAppPurchasePresentation.swift in Sources */,
-				90F45B5C1F9BB1B6006E965A /* InAppPurchasePresentationLayout.swift in Sources */,
-				90F45B5D1F9BB1B6006E965A /* InAppPurchasePresentationConstants.swift in Sources */,
 				90F45B5E1F9BB1B6006E965A /* TutorialPresentation.swift in Sources */,
 				90F45B5F1F9BB1B6006E965A /* TutorialPresentationLayout.swift in Sources */,
 				90F45B601F9BB1B6006E965A /* TutorialPresentationConstants.swift in Sources */,

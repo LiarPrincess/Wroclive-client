@@ -12,6 +12,9 @@ struct InAppPurchasePresentationConstants {
     static let rightOffset: CGFloat = leftOffset
 
     struct Page {
+      static let leftOffset:  CGFloat = Layout.leftOffset
+      static let rightOffset: CGFloat = Layout.rightOffset
+
       struct Title {
         static let topOffset: CGFloat = 12.0
       }

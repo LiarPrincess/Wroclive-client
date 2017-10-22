@@ -28,38 +28,17 @@ extension InAppPurchasePresentation {
   }
 
   private func initPages() {
-    let bookmarksParams = self.createBookmarksPageParameters()
-    let themeParams     = self.createThemePageParameters()
-    self.pages = PresentationControllerPageFactory.create([bookmarksParams, themeParams])
-  }
+    let bookmarksPage = InAppPurchaseBookmarkPage()
+    let colorsPage    = InAppPurchaseColorsPage()
 
-  private func createBookmarksPageParameters() -> PresentationControllerPageParameters {
-    typealias Loc = Localization.BookmarksPage
+    let bookmarksMinTextHeight = bookmarksPage.calculateMinTextHeight()
+    let colorsMinTextHeight    = colorsPage.calculateMinTextHeight()
+    let minTextHeight = min(bookmarksMinTextHeight, colorsMinTextHeight)
 
-    let deviceViewContent = UIImageView()
-    deviceViewContent.image       = Images.InAppPurchase.bookmarks
-    deviceViewContent.contentMode = .scaleToFill
+    bookmarksPage.guaranteeMinTextHeight(minTextHeight)
+    colorsPage.guaranteeMinTextHeight(minTextHeight)
 
-    return self.createPageParameters(deviceViewContent, Loc.title, Loc.caption)
-  }
-
-  private func createThemePageParameters() -> PresentationControllerPageParameters {
-    typealias Loc = Localization.ColorsPage
-
-    let deviceViewContent = ColorSchemeTestView()
-    return self.createPageParameters(deviceViewContent, Loc.title, Loc.caption)
-  }
-
-  private func createPageParameters(_ deviceViewContent: UIView, _ title: String, _ caption: String) -> PresentationControllerPageParameters {
-    typealias PageLayout = Layout.Page
-
-    let deviceView = DeviceImageView(content: deviceViewContent)
-    return PresentationControllerPageParameters(
-      view:    deviceView,
-      title:   title,   titleTopOffset:   PageLayout.Title.topOffset,
-      caption: caption, captionTopOffset: PageLayout.Caption.topOffset,
-      leftOffset: Layout.leftOffset, rightOffset: Layout.rightOffset
-    )
+    self.pages = [bookmarksPage, colorsPage]
   }
 
   private func initPageViewController() {

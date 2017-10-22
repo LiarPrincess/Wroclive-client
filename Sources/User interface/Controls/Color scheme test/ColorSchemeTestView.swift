@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import SnapKit
 
 private typealias Constants = ColorSchemeTestViewConstants
 
