@@ -19,6 +19,8 @@ struct Assets {
 
   struct InAppPurchase {
     static var bookmarks: UIImage { return imageNamed("Image_InApp_Bookmarks")}
+    static var trams:     UIImage { return imageNamed("Image_InApp_Colors_Trams")}
+    static var busses:    UIImage { return imageNamed("Image_InApp_Colors_Busses")}
   }
 
   struct Theme {

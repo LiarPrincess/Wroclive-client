@@ -126,6 +126,21 @@
 		90546BFF1F6B169100E8E75F /* TutorialViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BFC1F6B169100E8E75F /* TutorialViewControllerConstants.swift */; };
 		9055C8E61F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E51F462F2F00D1EBDA /* ConfigurationViewControllerLayout.swift */; };
 		9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E71F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift */; };
+		905650CA1F9E61880071E028 /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6FF371F9D352E00F6CC12 /* Array+Random.swift */; };
+		905650CB1F9E61880071E028 /* ColorSchemeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903294FA1F9D0B67006A6D05 /* ColorSchemeTestView.swift */; };
+		905650CC1F9E61880071E028 /* ColorSchemeTestViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD111F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift */; };
+		905650CD1F9E61880071E028 /* ColorSelectionPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD141F9D156000C487AD /* ColorSelectionPresentation.swift */; };
+		905650CE1F9E61880071E028 /* ColorSelectionPresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD161F9D175100C487AD /* ColorSelectionPresentationConstants.swift */; };
+		905650CF1F9E61880071E028 /* InAppPurchasePresentationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD1A1F9D1D8F00C487AD /* InAppPurchasePresentationPage.swift */; };
+		905650D01F9E61880071E028 /* InAppPurchaseBookmarkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD1E1F9D1F4500C487AD /* InAppPurchaseBookmarkPage.swift */; };
+		905650D11F9E61880071E028 /* InAppPurchaseColorsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0A11F9D26C500864132 /* InAppPurchaseColorsPage.swift */; };
+		905650D21F9E61880071E028 /* InAppPurchasePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E4C1F61B9E30068698D /* InAppPurchasePresentation.swift */; };
+		905650D31F9E61880071E028 /* InAppPurchasePresentationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E4E1F61B9E30068698D /* InAppPurchasePresentationLayout.swift */; };
+		905650D41F9E61880071E028 /* InAppPurchasePresentationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD1C1F9D1DEB00C487AD /* InAppPurchasePresentationConstants.swift */; };
+		905650D51F9E61880071E028 /* TutorialPresentationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0A51F9D2A8700864132 /* TutorialPresentationPage.swift */; };
+		905650D61F9E61880071E028 /* TutorialPresentationPage0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0A71F9D2BC900864132 /* TutorialPresentationPage0.swift */; };
+		905650D71F9E61880071E028 /* TutorialPresentationPage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0A91F9D2C2700864132 /* TutorialPresentationPage1.swift */; };
+		905650D81F9E61880071E028 /* TutorialPresentationPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034E0AB1F9D2C4700864132 /* TutorialPresentationPage2.swift */; };
 		9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */; };
 		9056F6571F5229A500F7EF48 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6541F5229A500F7EF48 /* Font.swift */; };
 		9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
@@ -2046,6 +2061,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				905650CA1F9E61880071E028 /* Array+Random.swift in Sources */,
+				905650CB1F9E61880071E028 /* ColorSchemeTestView.swift in Sources */,
+				905650CC1F9E61880071E028 /* ColorSchemeTestViewConstants.swift in Sources */,
+				905650CD1F9E61880071E028 /* ColorSelectionPresentation.swift in Sources */,
+				905650CE1F9E61880071E028 /* ColorSelectionPresentationConstants.swift in Sources */,
+				905650CF1F9E61880071E028 /* InAppPurchasePresentationPage.swift in Sources */,
+				905650D01F9E61880071E028 /* InAppPurchaseBookmarkPage.swift in Sources */,
+				905650D11F9E61880071E028 /* InAppPurchaseColorsPage.swift in Sources */,
+				905650D21F9E61880071E028 /* InAppPurchasePresentation.swift in Sources */,
+				905650D31F9E61880071E028 /* InAppPurchasePresentationLayout.swift in Sources */,
+				905650D41F9E61880071E028 /* InAppPurchasePresentationConstants.swift in Sources */,
+				905650D51F9E61880071E028 /* TutorialPresentationPage.swift in Sources */,
+				905650D61F9E61880071E028 /* TutorialPresentationPage0.swift in Sources */,
+				905650D71F9E61880071E028 /* TutorialPresentationPage1.swift in Sources */,
+				905650D81F9E61880071E028 /* TutorialPresentationPage2.swift in Sources */,
 				90F45BAE1F9BB43A006E965A /* StyleKit.swift in Sources */,
 				90F45B9D1F9BB1CA006E965A /* Assets.xcassets in Sources */,
 				90F45BA01F9BB1CA006E965A /* StyleKit+UIImage.swift in Sources */,

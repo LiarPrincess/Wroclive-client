@@ -5,14 +5,14 @@
 
 import UIKit
 
-private typealias Constants = InAppPurchasePresentationConstants
+private typealias Constants    = InAppPurchasePresentationConstants
 private typealias Localization = Localizable.Presentation.InAppPurchase.ColorsPage
 
 class InAppPurchaseColorsPage: InAppPurchasePresentationPage {
 
   // MARK: - Properties
 
-  private var timer:    Timer?
+  private var timer: Timer?
   private let content = ColorSchemeTestView()
 
   // MARK: - Init

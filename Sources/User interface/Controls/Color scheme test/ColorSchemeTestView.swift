@@ -13,8 +13,8 @@ class ColorSchemeTestView: UIView {
   // MARK: - Properties
 
   private let backgroundImageView = UIImageView()
-  private let tramPin              = VehiclePinView()
-  private let busPin           = VehiclePinView()
+  private let tramLayer           = UIImageView()
+  private let busLayer            = UIImageView()
   private let toolbarImageView    = UIImageView()
 
   // MARK: - Init
@@ -30,30 +30,28 @@ class ColorSchemeTestView: UIView {
   }
 
   private func initLayout() {
-    backgroundImageView.image       = Images.mapBackground
-    backgroundImageView.contentMode = .scaleToFill
+    self.backgroundImageView.image       = Images.mapBackground
+    self.backgroundImageView.contentMode = .scaleToFill
 
     self.addSubview(self.backgroundImageView)
     self.backgroundImageView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
 
-    self.tramPin.angle = Constants.TramPin.angle
+    self.tramLayer.image = Images.InAppPurchase.trams.withRenderingMode(.alwaysTemplate)
+    self.tramLayer.contentMode = .scaleToFill
 
-    self.addSubview(self.tramPin)
-    self.tramPin.snp.makeConstraints { make in
-      make.width.height.equalTo(Constants.Layout.pinSize)
-      make.centerX.equalToSuperview()
-      make.centerY.equalToSuperview().offset(Constants.TramPin.centerYOffset)
+    self.addSubview(self.tramLayer)
+    self.tramLayer.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
     }
 
-    self.busPin.angle = Constants.BusPin.angle
+    self.busLayer.image = Images.InAppPurchase.busses.withRenderingMode(.alwaysTemplate)
+    self.busLayer.contentMode = .scaleToFill
 
-    self.addSubview(self.busPin)
-    busPin.snp.makeConstraints { make in
-      make.width.height.equalTo(Constants.Layout.pinSize)
-      make.centerX.equalToSuperview()
-      make.centerY.equalToSuperview().offset(Constants.BusPin.centerYOffset)
+    self.addSubview(self.busLayer)
+    self.busLayer.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
     }
 
     let toolbarImage = Images.Toolbars.red
@@ -80,13 +78,9 @@ class ColorSchemeTestView: UIView {
   }
 
   func setColors(tintColor: TintColor, tramColor: VehicleColor, busColor: VehicleColor) {
+    self.tramLayer.tintColor = tramColor.value
+    self.busLayer.tintColor  = busColor.value
     self.toolbarImageView.image = self.toolbarImage(for: tintColor)
-
-    self.tramPin.tintColor = tramColor.value
-    self.tramPin.setNeedsDisplay()
-
-    self.busPin.tintColor = busColor.value
-    self.busPin.setNeedsDisplay()
   }
 
   private func toolbarImage(for tintColor: TintColor) -> UIImage {
