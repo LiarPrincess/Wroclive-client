@@ -6,6 +6,6 @@
 import UIKit
 
 struct ColorSelectionPresentationConstants {
-  static let topOffset:    CGFloat = 30.0
+  static let topOffset:    CGFloat = 36.0
   static let bottomOffset: CGFloat = 16.0
 }

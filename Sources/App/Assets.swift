@@ -19,21 +19,13 @@ struct Assets {
 
   struct InAppPurchase {
     static var bookmarks: UIImage { return imageNamed("Image_InApp_Bookmarks")}
-    static var trams:     UIImage { return imageNamed("Image_InApp_Colors_Trams")}
-    static var busses:    UIImage { return imageNamed("Image_InApp_Colors_Busses")}
   }
 
-  struct Theme {
-    static var image: UIImage { return imageNamed("Image_Map_Background") }
-  }
-
-  struct Toolbars {
-    static var red:    UIImage { return imageNamed("Image_01_Toolbar_Red"   )}
-    static var blue:   UIImage { return imageNamed("Image_02_Toolbar_Blue"  )}
-    static var green:  UIImage { return imageNamed("Image_03_Toolbar_Green" )}
-    static var orange: UIImage { return imageNamed("Image_04_Toolbar_Orange")}
-    static var pink:   UIImage { return imageNamed("Image_05_Toolbar_Pink"  )}
-    static var black:  UIImage { return imageNamed("Image_06_Toolbar_Black" )}
+  struct Colors {
+    static var background: UIImage { return imageNamed("Image_Colors_Background")}
+    static var trams:      UIImage { return imageNamed("Image_Colors_Trams")}
+    static var busses:     UIImage { return imageNamed("Image_Colors_Busses")}
+    static var toolbar:    UIImage { return imageNamed("Image_Colors_Toolbar")}
   }
 
   struct Tutorial {
@@ -42,7 +34,6 @@ struct Assets {
     static var page2: UIImage { return imageNamed("Image_Map_Background") }
   }
 
-  static var deviceBorder:  UIImage { return imageNamed("Image_DeviceBorder") }
-  static var mapBackground: UIImage { return imageNamed("Image_Map_Background") }
-  static var share:         UIImage { return imageNamed("Image_Share") }
+  static var deviceBorder: UIImage { return imageNamed("Image_DeviceBorder") }
+  static var share:        UIImage { return imageNamed("Image_Share") }
 }
