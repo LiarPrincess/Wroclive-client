@@ -25,8 +25,8 @@ class ColorSchemeManager {
   }
 
   static func save(_ colorScheme: ColorScheme) {
-    Managers.userDefaults.set(colorScheme.tintColor.rawValue, forKey: tintColorKey)
-    Managers.userDefaults.set(colorScheme.busColor.rawValue,  forKey: busColorKey)
-    Managers.userDefaults.set(colorScheme.tramColor.rawValue, forKey: tramColorKey)
+    Managers.userDefaults.set(colorScheme.tint.rawValue, forKey: tintColorKey)
+    Managers.userDefaults.set(colorScheme.bus.rawValue,  forKey: busColorKey)
+    Managers.userDefaults.set(colorScheme.tram.rawValue, forKey: tramColorKey)
   }
 }

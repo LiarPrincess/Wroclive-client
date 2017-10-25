@@ -71,9 +71,9 @@ class ColorSchemeTestView: UIView {
 
   func setCurrentColorScheme() {
     let colorScheme = Managers.theme.colors
-    let tintColor   = colorScheme.tintColor
-    let tramColor   = colorScheme.tramColor
-    let busColor    = colorScheme.busColor
+    let tintColor   = colorScheme.tint
+    let tramColor   = colorScheme.tram
+    let busColor    = colorScheme.bus
     self.setColors(tintColor: tintColor, tramColor: tramColor, busColor: busColor)
   }
 

@@ -24,8 +24,8 @@ class ThemeManagerImpl: ThemeManager {
 
   // Mark - Color scheme
 
-  func setColorScheme(tint tintColor: TintColor, tram tramColor: VehicleColor, bus busColor: VehicleColor) {
-    self.colors = ColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
+  func setColorScheme(tint: TintColor, tram: VehicleColor, bus: VehicleColor) {
+    self.colors = ColorScheme(tint: tint, tram: tram, bus: bus)
     self.applyColorScheme()
     ColorSchemeManager.save(self.colors)
     Managers.notification.post(.colorSchemeDidChange)

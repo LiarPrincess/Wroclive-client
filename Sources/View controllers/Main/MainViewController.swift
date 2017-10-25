@@ -86,7 +86,7 @@ class MainViewController: UIViewController {
 extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
 
   func colorSchemeDidChange() {
-    let tintColor = Managers.theme.colors.tintColor.value
+    let tintColor = Managers.theme.colors.tint.value
 
     self.view.tintColor    = tintColor
     self.toolbar.tintColor = tintColor

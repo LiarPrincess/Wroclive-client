@@ -47,9 +47,7 @@ class VehicleAnnotationView: MKAnnotationView {
   }
 
   private func updateImage(for annotation: VehicleAnnotation) {
-    let colorScheme = Managers.theme.colors
-    let color       = annotation.line.type == .bus ? colorScheme.busColor : colorScheme.tramColor
-
+    let color = self.imageColor(for: annotation)
     let hasColorChanged = self.pinView.tintColor != color.value
     let hasAngleChanged = abs(self.pinView.angle - annotation.angle) > Constants.minAngleChangeToRedraw
 
@@ -60,8 +58,15 @@ class VehicleAnnotationView: MKAnnotationView {
     }
   }
 
+  private func imageColor(for annotation: VehicleAnnotation) -> VehicleColor {
+    switch annotation.line.type {
+    case .tram: return Managers.theme.colors.tram
+    case .bus:  return Managers.theme.colors.bus
+    }
+  }
+
   private func updateLabel(for annotation: VehicleAnnotation) {
-    let textColor: TextColor = annotation.line.type == .bus ? .bus : .tram
+    let textColor = self.textColor(for: annotation)
     let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
     self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name, attributes: textAttributes)
 
@@ -69,5 +74,12 @@ class VehicleAnnotationView: MKAnnotationView {
     let labelSize  = self.pinLabel.intrinsicContentSize
     let labelOrgin = CGPoint(x: (imageSize.width - labelSize.width) / 2.0, y: imageSize.height)
     self.pinLabel.frame = CGRect(origin: labelOrgin, size: labelSize)
+  }
+
+  private func textColor(for annotation: VehicleAnnotation) -> TextColor {
+    switch annotation.line.type {
+    case .tram: return .tram
+    case .bus:  return .bus
+    }
   }
 }

@@ -115,7 +115,7 @@ extension ConfigurationViewController: CardPanelPresentable {
 extension ConfigurationViewController: ColorSchemeObserver {
 
   func colorSchemeDidChange() {
-    self.view.tintColor = Managers.theme.colors.tintColor.value
+    self.view.tintColor = Managers.theme.colors.tint.value
   }
 }
 

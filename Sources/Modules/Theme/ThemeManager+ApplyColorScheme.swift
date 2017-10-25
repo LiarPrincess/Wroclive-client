@@ -9,7 +9,7 @@ import Foundation
 
 extension ThemeManager {
   func applyColorScheme() {
-    let tintColor = self.colors.tintColor.value
+    let tintColor = self.colors.tint.value
 
     UIApplication.shared.delegate?.window??.tintColor = tintColor
 

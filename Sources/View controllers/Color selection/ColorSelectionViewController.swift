@@ -100,15 +100,15 @@ class ColorSelectionViewController: UIViewController {
 
     let colorScheme = Managers.theme.colors
 
-    if let tintIndex = self.collectionViewDataSource.indexOf(tintColor: colorScheme.tintColor) {
+    if let tintIndex = self.collectionViewDataSource.indexOf(tintColor: colorScheme.tint) {
       selectColorAt(tintIndex)
     }
 
-    if let tramIndex = self.collectionViewDataSource.indexOf(tramColor: colorScheme.tramColor) {
+    if let tramIndex = self.collectionViewDataSource.indexOf(tramColor: colorScheme.tram) {
       selectColorAt(tramIndex)
     }
 
-    if let busIndex  = self.collectionViewDataSource.indexOf(busColor: colorScheme.busColor) {
+    if let busIndex  = self.collectionViewDataSource.indexOf(busColor: colorScheme.bus) {
       selectColorAt(busIndex)
     }
   }
@@ -167,8 +167,8 @@ extension ColorSelectionViewController: ColorSchemeObserver {
 
   func colorSchemeDidChange() {
     let colorScheme = Managers.theme.colors
-    self.view.tintColor       = colorScheme.tintColor.value
-    self.backButton.tintColor = colorScheme.tintColor.value
+    self.view.tintColor       = colorScheme.tint.value
+    self.backButton.tintColor = colorScheme.tint.value
   }
 }
 

@@ -17,5 +17,5 @@ protocol ThemeManager {
   var colors: ColorScheme { get }
 
   func applyColorScheme()
-  func setColorScheme(tint tintColor: TintColor, tram tramColor: VehicleColor, bus busColor: VehicleColor)
+  func setColorScheme(tint: TintColor, tram: VehicleColor, bus: VehicleColor)
 }

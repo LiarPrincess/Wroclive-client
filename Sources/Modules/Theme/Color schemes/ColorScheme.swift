@@ -32,9 +32,9 @@ struct ColorScheme {
 
   // MARK: - Configurable
 
-  let tintColor: TintColor
-  let busColor:  VehicleColor
-  let tramColor: VehicleColor
+  let tint: TintColor
+  let bus:  VehicleColor
+  let tram: VehicleColor
 
   // MARK: - Presentation
 
@@ -47,10 +47,10 @@ struct ColorScheme {
 
   // MARK: - Init
 
-  init(tint tintColor: TintColor, tram tramColor: VehicleColor, bus busColor: VehicleColor) {
-    self.tintColor = tintColor
-    self.busColor  = busColor
-    self.tramColor = tramColor
+  init(tint: TintColor, tram: VehicleColor, bus: VehicleColor) {
+    self.tint = tint
+    self.bus  = bus
+    self.tram = tram
   }
 
   static var `default`: ColorScheme { return ColorScheme(tint: .red, tram: .blue, bus: .red) }

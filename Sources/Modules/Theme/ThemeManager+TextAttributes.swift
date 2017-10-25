@@ -27,9 +27,9 @@ extension ThemeManager {
     case .background:            return self.colors.background
     case .backgroundAccent:      return self.colors.backgroundAccent
     case .text:                  return self.colors.text
-    case .tint:                  return self.colors.tintColor.value
-    case .bus:                   return self.colors.busColor.value
-    case .tram:                  return self.colors.tramColor.value
+    case .tint:                  return self.colors.tint.value
+    case .bus:                   return self.colors.bus.value
+    case .tram:                  return self.colors.tram.value
     case .presentationPrimary:   return self.colors.presentation.textPrimary
     case .presentationSecondary: return self.colors.presentation.textSecondary
     }
