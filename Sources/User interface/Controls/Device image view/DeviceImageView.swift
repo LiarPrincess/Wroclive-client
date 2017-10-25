@@ -23,7 +23,7 @@ class DeviceImageView: UIView {
     self.contentView = contentView
     super.init(frame: frame)
 
-    self.deviceBorder.image       = Images.deviceBorder
+    self.deviceBorder.image       = Images.Device.border
     self.deviceBorder.contentMode = .scaleAspectFit
 
     self.addSubview(self.deviceBorder)

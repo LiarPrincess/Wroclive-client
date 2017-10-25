@@ -34,6 +34,9 @@ struct Assets {
     static var page2: UIImage { return imageNamed("Image_Map_Background") }
   }
 
-  static var deviceBorder: UIImage { return imageNamed("Image_DeviceBorder") }
-  static var share:        UIImage { return imageNamed("Image_Share") }
+  struct Device {
+    static var border: UIImage { return imageNamed("Image_Device_Border") }
+  }
+
+  static var share: UIImage { return imageNamed("Image_Share") }
 }
