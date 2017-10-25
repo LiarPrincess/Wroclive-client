@@ -244,7 +244,7 @@ public class StyleKit : NSObject {
     context.restoreGState()
   }
 
-  @objc dynamic public class func drawPin( frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), color: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), resizing: ResizingBehavior = .aspectFit) {
+  @objc dynamic public class func drawPin(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), color: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 
@@ -255,27 +255,65 @@ public class StyleKit : NSObject {
     context.scaleBy(x: resizedFrame.width / 60, y: resizedFrame.height / 60)
 
     //// Color Declarations
-    let arrow = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+    let arrowColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
 
     //// Oval Drawing
     let ovalPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))
     color.setFill()
     ovalPath.fill()
 
-    //// Bezier 3 Drawing
-    let bezier3Path = UIBezierPath()
-    bezier3Path.move(to: CGPoint(x: 20, y: 42))
-    bezier3Path.addLine(to: CGPoint(x: 30, y: 14))
-    bezier3Path.addLine(to: CGPoint(x: 40, y: 42))
-    bezier3Path.addLine(to: CGPoint(x: 30, y: 38))
-    bezier3Path.addLine(to: CGPoint(x: 20, y: 42))
-    bezier3Path.close()
-    arrow.setFill()
-    bezier3Path.fill()
-    arrow.setStroke()
-    bezier3Path.lineWidth = 2
-    bezier3Path.lineJoinStyle = .round
-    bezier3Path.stroke()
+    //// Arrow Drawing
+    let arrowPath = UIBezierPath()
+    arrowPath.move(to: CGPoint(x: 20, y: 42))
+    arrowPath.addLine(to: CGPoint(x: 30, y: 14))
+    arrowPath.addLine(to: CGPoint(x: 40, y: 42))
+    arrowPath.addLine(to: CGPoint(x: 30, y: 38))
+    arrowPath.addLine(to: CGPoint(x: 20, y: 42))
+    arrowPath.close()
+    arrowColor.setFill()
+    arrowPath.fill()
+    arrowColor.setStroke()
+    arrowPath.lineWidth = 2
+    arrowPath.lineJoinStyle = .round
+    arrowPath.stroke()
+
+    context.restoreGState()
+  }
+
+  @objc dynamic public class func drawPinNoArrow(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), color: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), resizing: ResizingBehavior = .aspectFit) {
+    //// General Declarations
+    let context = UIGraphicsGetCurrentContext()!
+
+    //// Resize to Target Frame
+    context.saveGState()
+    let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 60, height: 60), target: targetFrame)
+    context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+    context.scaleBy(x: resizedFrame.width / 60, y: resizedFrame.height / 60)
+
+    //// Color Declarations
+    let arrowColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+
+    //// Oval Drawing
+    let ovalPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))
+    color.setFill()
+    ovalPath.fill()
+
+    context.setBlendMode(.clear)
+
+    //// Arrow Drawing
+    let arrowPath = UIBezierPath()
+    arrowPath.move(to: CGPoint(x: 20, y: 42))
+    arrowPath.addLine(to: CGPoint(x: 30, y: 14))
+    arrowPath.addLine(to: CGPoint(x: 40, y: 42))
+    arrowPath.addLine(to: CGPoint(x: 30, y: 38))
+    arrowPath.addLine(to: CGPoint(x: 20, y: 42))
+    arrowPath.close()
+    arrowColor.setFill()
+    arrowPath.fill()
+    arrowColor.setStroke()
+    arrowPath.lineWidth = 2
+    arrowPath.lineJoinStyle = .round
+    arrowPath.stroke()
 
     context.restoreGState()
   }
