@@ -9,12 +9,12 @@ class BookmarksManagerImpl: BookmarksManager {
 
   // MARK: - Properties
 
-  private lazy var bookmarks: [Bookmark] = {
+  private var bookmarks: [Bookmark] {
     let fileContent = Managers.documents.read(.bookmarks)
     return fileContent as? [Bookmark] ?? []
-  }()
+  }
 
-  // MARK: - Methods
+  // MARK: - BookmarksManager
 
   @discardableResult
   func addNew(name: String, lines: [Line]) -> Bookmark {
@@ -32,7 +32,6 @@ class BookmarksManagerImpl: BookmarksManager {
   }
 
   func save(_ bookmarks: [Bookmark]) {
-    self.bookmarks = bookmarks
-    Managers.documents.write(self.bookmarks, as: .bookmarks)
+    Managers.documents.write(bookmarks, as: .bookmarks)
   }
 }

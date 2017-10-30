@@ -15,7 +15,7 @@ class Environment {
   var notification: NotificationManager
   var userDefaults: UserDefaultsManager
   var documents:    DocumentsManager
-  
+
   // api
   var api: ApiManager
 
@@ -37,7 +37,7 @@ class Environment {
     appStore:     AppStoreManager     = AppStoreManagerImpl(),
     notification: NotificationManager = NotificationManagerImpl(),
     userDefaults: UserDefaultsManager = UserDefaults.standard,
-    documents:    DocumentsManager    = DocumentsManagerImpl(),
+    documents:    DocumentsManager    = CachedDocumentsManagerImpl(),
     api:          ApiManager          = ApiManagerImpl(),
     search:       SearchManager       = SearchManagerImpl(),
     bookmarks:    BookmarksManager    = BookmarksManagerImpl(),

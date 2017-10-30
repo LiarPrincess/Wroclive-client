@@ -115,7 +115,7 @@
 		9045C2E51F9BE508002F35C3 /* BookmarksManagerMockup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C8A8961F913DEA00072D83 /* BookmarksManagerMockup.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
 		90541FCF1FA79E6C0055350E /* DocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FCE1FA79E6C0055350E /* DocumentsManager.swift */; };
-		90541FD11FA79F760055350E /* DocumentManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FD01FA79F760055350E /* DocumentManagerImpl.swift */; };
+		90541FD11FA79F760055350E /* DocumentsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FD01FA79F760055350E /* DocumentsManagerImpl.swift */; };
 		90546BEE1F6AF23100E8E75F /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BED1F6AF23100E8E75F /* TrackingManager.swift */; };
 		90546BF01F6AF25800E8E75F /* TrackingManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BEF1F6AF25800E8E75F /* TrackingManagerImpl.swift */; };
 		90546BF21F6AF3BC00E8E75F /* TrackingManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BF11F6AF3BC00E8E75F /* TrackingManagerConstants.swift */; };
@@ -152,6 +152,7 @@
 		907246051F883E140069B940 /* ConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246041F883E140069B940 /* ConfigurationCoordinator.swift */; };
 		907246071F88403A0069B940 /* CardPanelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246061F88403A0069B940 /* CardPanelCoordinator.swift */; };
 		907246091F8846690069B940 /* PushCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246081F8846690069B940 /* PushCoordinator.swift */; };
+		9073F9981FA7A80400924584 /* CachedDocumentsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073F9971FA7A80400924584 /* CachedDocumentsManagerImpl.swift */; };
 		9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* AppInfo.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907ECF181F3BB41900DB27DB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907ECF171F3BB41900DB27DB /* Info.plist */; };
@@ -524,7 +525,7 @@
 		9045C2E21F9BDB3F002F35C3 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
 		90541FCE1FA79E6C0055350E /* DocumentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsManager.swift; sourceTree = "<group>"; };
-		90541FD01FA79F760055350E /* DocumentManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentManagerImpl.swift; sourceTree = "<group>"; };
+		90541FD01FA79F760055350E /* DocumentsManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsManagerImpl.swift; sourceTree = "<group>"; };
 		90546BED1F6AF23100E8E75F /* TrackingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
 		90546BEF1F6AF25800E8E75F /* TrackingManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManagerImpl.swift; sourceTree = "<group>"; };
 		90546BF11F6AF3BC00E8E75F /* TrackingManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManagerConstants.swift; sourceTree = "<group>"; };
@@ -546,6 +547,7 @@
 		907246041F883E140069B940 /* ConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCoordinator.swift; sourceTree = "<group>"; };
 		907246061F88403A0069B940 /* CardPanelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPanelCoordinator.swift; sourceTree = "<group>"; };
 		907246081F8846690069B940 /* PushCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCoordinator.swift; sourceTree = "<group>"; };
+		9073F9971FA7A80400924584 /* CachedDocumentsManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedDocumentsManagerImpl.swift; sourceTree = "<group>"; };
 		9079DCD51F6C545600C6ABCD /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907F267B1F74517B000C272B /* LocationAuthorizationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuthorizationObserver.swift; sourceTree = "<group>"; };
@@ -1167,7 +1169,8 @@
 			isa = PBXGroup;
 			children = (
 				90541FCE1FA79E6C0055350E /* DocumentsManager.swift */,
-				90541FD01FA79F760055350E /* DocumentManagerImpl.swift */,
+				90541FD01FA79F760055350E /* DocumentsManagerImpl.swift */,
+				9073F9971FA7A80400924584 /* CachedDocumentsManagerImpl.swift */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
@@ -1910,7 +1913,7 @@
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
 				90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */,
 				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
-				90541FD11FA79F760055350E /* DocumentManagerImpl.swift in Sources */,
+				90541FD11FA79F760055350E /* DocumentsManagerImpl.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				90546BF91F6B15A000E8E75F /* TutorialPresentationLayout.swift in Sources */,
 				909EFD1F1F9D1F4500C487AD /* InAppPurchaseBookmarkPage.swift in Sources */,
@@ -2046,6 +2049,7 @@
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
 				9021F3981F12C95D000A6949 /* UIView+RoundCorners.swift in Sources */,
 				9021F4381F12D698000A6949 /* LineSelectionCell.swift in Sources */,
+				9073F9981FA7A80400924584 /* CachedDocumentsManagerImpl.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,
 				900CAEB41F482E750044C8A6 /* ApiManager.swift in Sources */,
 				900CAEB51F482E750044C8A6 /* ApiManagerImpl.swift in Sources */,
