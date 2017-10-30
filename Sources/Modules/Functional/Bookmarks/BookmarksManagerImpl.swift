@@ -9,10 +9,8 @@ class BookmarksManagerImpl: BookmarksManager {
 
   // MARK: - Properties
 
-  private let filename = "bookmarks"
-
   private lazy var bookmarks: [Bookmark] = {
-    let fileContent = Managers.fileSystem.read(from: .documents, filename: self.filename)
+    let fileContent = Managers.documents.read(.bookmarks)
     return fileContent as? [Bookmark] ?? []
   }()
 
@@ -35,6 +33,6 @@ class BookmarksManagerImpl: BookmarksManager {
 
   func save(_ bookmarks: [Bookmark]) {
     self.bookmarks = bookmarks
-    Managers.fileSystem.write(bookmarks, to: .documents, filename: self.filename)
+    Managers.documents.write(self.bookmarks, as: .bookmarks)
   }
 }

@@ -9,10 +9,8 @@ class SearchManagerImpl: SearchManager {
 
   // MARK: - Properties
 
-  private let filename = "searchState"
-
   private lazy var state: SearchState = {
-    let fileContent = Managers.fileSystem.read(from: .documents, filename: self.filename)
+    let fileContent = Managers.documents.read(.searchState)
     return fileContent as? SearchState ?? SearchState(withSelected: .tram, lines: [])
   }()
 
@@ -22,7 +20,7 @@ class SearchManagerImpl: SearchManager {
     guard state != self.state else { return }
 
     self.state = state
-    Managers.fileSystem.write(self.state, to: .documents, filename: self.filename)
+    Managers.documents.write(self.state, as: .searchState)
   }
 
   func getSavedState() -> SearchState {

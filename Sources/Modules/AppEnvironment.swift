@@ -15,7 +15,7 @@ class AppEnvironment {
   static var appStore:     AppStoreManager     { return current.appStore     }
   static var notification: NotificationManager { return current.notification }
   static var userDefaults: UserDefaultsManager { return current.userDefaults }
-  static var fileSystem:   FileSystemManager   { return current.fileSystem   }
+  static var documents:    DocumentsManager    { return current.documents    }
 
   static var api:          ApiManager          { return current.api          }
 
@@ -44,7 +44,7 @@ class AppEnvironment {
     appStore:     AppStoreManager     = appStore,
     notification: NotificationManager = notification,
     userDefaults: UserDefaultsManager = userDefaults,
-    fileSystem:   FileSystemManager   = fileSystem,
+    documents:    DocumentsManager    = documents,
     api:          ApiManager          = api,
     search:       SearchManager       = search,
     bookmarks:    BookmarksManager    = bookmarks,
@@ -61,7 +61,7 @@ class AppEnvironment {
       appStore:     appStore,
       notification: notification,
       userDefaults: userDefaults,
-      fileSystem:   fileSystem,
+      documents:    documents,
       api:          api,
       search:       search,
       bookmarks:    bookmarks,

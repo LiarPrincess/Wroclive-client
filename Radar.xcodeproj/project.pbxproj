@@ -114,8 +114,8 @@
 		9045C2E41F9BDDD7002F35C3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2E21F9BDB3F002F35C3 /* Assets.swift */; };
 		9045C2E51F9BE508002F35C3 /* BookmarksManagerMockup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C8A8961F913DEA00072D83 /* BookmarksManagerMockup.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
-		90545E181F98164900BDDBC0 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90545E171F98164900BDDBC0 /* FileSystemManager.swift */; };
-		90545E1A1F98165B00BDDBC0 /* FileSystemManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90545E191F98165B00BDDBC0 /* FileSystemManagerImpl.swift */; };
+		90541FCF1FA79E6C0055350E /* DocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FCE1FA79E6C0055350E /* DocumentsManager.swift */; };
+		90541FD11FA79F760055350E /* DocumentManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FD01FA79F760055350E /* DocumentManagerImpl.swift */; };
 		90546BEE1F6AF23100E8E75F /* TrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BED1F6AF23100E8E75F /* TrackingManager.swift */; };
 		90546BF01F6AF25800E8E75F /* TrackingManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BEF1F6AF25800E8E75F /* TrackingManagerImpl.swift */; };
 		90546BF21F6AF3BC00E8E75F /* TrackingManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BF11F6AF3BC00E8E75F /* TrackingManagerConstants.swift */; };
@@ -243,8 +243,6 @@
 		90F45B081F9BB1B6006E965A /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6CA1F4CE24500CE5AE9 /* AppStoreManager.swift */; };
 		90F45B091F9BB1B6006E965A /* AppStoreManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */; };
 		90F45B0A1F9BB1B6006E965A /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B4124F1F97E72E008F05E9 /* UserDefaultsManager.swift */; };
-		90F45B0B1F9BB1B6006E965A /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90545E171F98164900BDDBC0 /* FileSystemManager.swift */; };
-		90F45B0C1F9BB1B6006E965A /* FileSystemManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90545E191F98165B00BDDBC0 /* FileSystemManagerImpl.swift */; };
 		90F45B0D1F9BB1B6006E965A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374CCC1F6D3BF8008D78CE /* Endpoint.swift */; };
 		90F45B0E1F9BB1B6006E965A /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374CCA1F6D3935008D78CE /* SessionManager.swift */; };
 		90F45B0F1F9BB1B6006E965A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE9D1F482E750044C8A6 /* NetworkError.swift */; };
@@ -525,8 +523,8 @@
 		9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionViewModel.swift; sourceTree = "<group>"; };
 		9045C2E21F9BDB3F002F35C3 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
-		90545E171F98164900BDDBC0 /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
-		90545E191F98165B00BDDBC0 /* FileSystemManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManagerImpl.swift; sourceTree = "<group>"; };
+		90541FCE1FA79E6C0055350E /* DocumentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsManager.swift; sourceTree = "<group>"; };
+		90541FD01FA79F760055350E /* DocumentManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentManagerImpl.swift; sourceTree = "<group>"; };
 		90546BED1F6AF23100E8E75F /* TrackingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManager.swift; sourceTree = "<group>"; };
 		90546BEF1F6AF25800E8E75F /* TrackingManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManagerImpl.swift; sourceTree = "<group>"; };
 		90546BF11F6AF3BC00E8E75F /* TrackingManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManagerConstants.swift; sourceTree = "<group>"; };
@@ -1165,13 +1163,13 @@
 			path = "View models";
 			sourceTree = "<group>";
 		};
-		90545E161F98163000BDDBC0 /* File system */ = {
+		90541FCD1FA79E530055350E /* Documents */ = {
 			isa = PBXGroup;
 			children = (
-				90545E171F98164900BDDBC0 /* FileSystemManager.swift */,
-				90545E191F98165B00BDDBC0 /* FileSystemManagerImpl.swift */,
+				90541FCE1FA79E6C0055350E /* DocumentsManager.swift */,
+				90541FD01FA79F760055350E /* DocumentManagerImpl.swift */,
 			);
-			path = "File system";
+			path = Documents;
 			sourceTree = "<group>";
 		};
 		90546BEC1F6AF21B00E8E75F /* Tracking */ = {
@@ -1531,7 +1529,7 @@
 				9082524A1F703A18001C2926 /* Notifications */,
 				90E8A6C91F4CE23200CE5AE9 /* App Store */,
 				90B4124E1F97E70C008F05E9 /* User defaults */,
-				90545E161F98163000BDDBC0 /* File system */,
+				90541FCD1FA79E530055350E /* Documents */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1906,11 +1904,13 @@
 				900CAEA61F482E750044C8A6 /* AlertManager.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
 				90145E5B1F61B9E30068698D /* InAppPurchasePresentation.swift in Sources */,
+				90541FCF1FA79E6C0055350E /* DocumentsManager.swift in Sources */,
 				9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */,
 				9044A5441F69A13D00F26C17 /* ColorSelectionCell.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
 				90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */,
 				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
+				90541FD11FA79F760055350E /* DocumentManagerImpl.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				90546BF91F6B15A000E8E75F /* TutorialPresentationLayout.swift in Sources */,
 				909EFD1F1F9D1F4500C487AD /* InAppPurchaseBookmarkPage.swift in Sources */,
@@ -1954,7 +1954,6 @@
 				90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */,
 				900CAEB31F482E750044C8A6 /* NetworkError.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
-				90545E181F98164900BDDBC0 /* FileSystemManager.swift in Sources */,
 				90E8A6BF1F4CB08400CE5AE9 /* AppManager.swift in Sources */,
 				90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */,
 				90ACDC481F88B93B005A4B79 /* TutorialCoordinator.swift in Sources */,
@@ -1997,7 +1996,6 @@
 				908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */,
 				90F0A2D61F732A6A00C641C8 /* ColorSchemeObserver.swift in Sources */,
 				9021F4161F12C9EF000A6949 /* CardPanelConstants.swift in Sources */,
-				90545E1A1F98165B00BDDBC0 /* FileSystemManagerImpl.swift in Sources */,
 				9021F4431F12D6C5000A6949 /* LineSelectionViewController.swift in Sources */,
 				90546BFF1F6B169100E8E75F /* TutorialViewControllerConstants.swift in Sources */,
 				900F72F41F55BE5100613A1E /* PresentationController.swift in Sources */,
@@ -2108,8 +2106,6 @@
 				90F45B081F9BB1B6006E965A /* AppStoreManager.swift in Sources */,
 				90F45B091F9BB1B6006E965A /* AppStoreManagerImpl.swift in Sources */,
 				90F45B0A1F9BB1B6006E965A /* UserDefaultsManager.swift in Sources */,
-				90F45B0B1F9BB1B6006E965A /* FileSystemManager.swift in Sources */,
-				90F45B0C1F9BB1B6006E965A /* FileSystemManagerImpl.swift in Sources */,
 				90F45B0D1F9BB1B6006E965A /* Endpoint.swift in Sources */,
 				90F45B0E1F9BB1B6006E965A /* SessionManager.swift in Sources */,
 				90F45B0F1F9BB1B6006E965A /* NetworkError.swift in Sources */,
