@@ -13,6 +13,7 @@ protocol ConfigurationViewControllerDelegate: class {
 
   func configurationViewControllerDidTapColorSelectionButton(_ viewController: ConfigurationViewController)
   func configurationViewControllerDidTapTutorialButton(_ viewController: ConfigurationViewController)
+  func configurationViewControllerDidTapShareButton(_ viewController: ConfigurationViewController)
 }
 
 class ConfigurationViewController: UIViewController {
@@ -137,7 +138,7 @@ extension ConfigurationViewController: UITableViewDelegate {
     case .personalization: self.delegate?.configurationViewControllerDidTapColorSelectionButton(self)
     case .tutorial:        self.delegate?.configurationViewControllerDidTapTutorialButton(self)
     case .contact:         Managers.app.openWebsite()
-    case .share:           Managers.app.showShareActivity(in: self)
+    case .share:           self.delegate?.configurationViewControllerDidTapShareButton(self)
     case .rate:            Managers.appStore.rateApp()
     }
     tableView.deselectRow(at: indexPath, animated: true)

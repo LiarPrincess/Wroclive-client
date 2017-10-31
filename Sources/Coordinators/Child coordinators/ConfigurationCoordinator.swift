@@ -63,4 +63,15 @@ extension ConfigurationCoordinator: ConfigurationViewControllerDelegate,
   func tutorialCoordinatorDidClose(_ coordinator: TutorialCoordinator) {
     self.removeChildCoordinator(coordinator)
   }
+
+  // MARK: Share
+
+  func configurationViewControllerDidTapShareButton(_ viewController: ConfigurationViewController) {
+    // Retain parent for a moment (intended)
+    guard let parent = self.parent else { return }
+
+    viewController.dismiss(animated: true) {
+      Managers.app.showShareActivity(in: parent)
+    }
+  }
 }
