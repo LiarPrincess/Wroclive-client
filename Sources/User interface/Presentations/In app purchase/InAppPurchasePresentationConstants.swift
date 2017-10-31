@@ -8,7 +8,7 @@ import UIKit
 struct InAppPurchasePresentationConstants {
 
   struct Layout {
-    static let leftOffset:  CGFloat = 24.0
+    static let leftOffset:  CGFloat = 20.0
     static let rightOffset: CGFloat = leftOffset
 
     struct Page {
