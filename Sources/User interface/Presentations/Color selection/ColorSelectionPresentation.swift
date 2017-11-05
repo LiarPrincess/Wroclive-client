@@ -67,6 +67,6 @@ class ColorSelectionPresentation: UIViewController, ColorSchemeObserver {
   // MARK: - ColorSchemeObserver
 
   func colorSchemeDidChange() {
-    self.colorSchemeTestView.setCurrentColorScheme()
+    self.colorSchemeTestView.setColorsFromCurrentColorScheme()
   }
 }

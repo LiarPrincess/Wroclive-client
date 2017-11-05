@@ -8,6 +8,12 @@ import UIKit
 private typealias Constants    = InAppPurchasePresentationConstants
 private typealias Localization = Localizable.Presentation.InAppPurchase.ColorsPage
 
+private struct ColorSchemePreset {
+  let tint: TintColor
+  let tram: VehicleColor
+  let bus:  VehicleColor
+}
+
 class InAppPurchaseColorsPage: InAppPurchasePresentationPage {
 
   // MARK: - Properties
@@ -15,11 +21,20 @@ class InAppPurchaseColorsPage: InAppPurchasePresentationPage {
   private var timer: Timer?
   private let content = ColorSchemeTestView()
 
+  private var currentPresetIndex = 0
+
+  private let presets: [ColorSchemePreset] = {
+    let p0 = ColorSchemePreset(tint: .pink,  tram: .green,  bus: .pink)
+    let p1 = ColorSchemePreset(tint: .blue,  tram: .orange, bus: .blue)
+    let p2 = ColorSchemePreset(tint: .black, tram: .black,  bus: .red)
+    return [p0, p1, p2]
+  }()
+
   // MARK: - Init
 
   init() {
     super.init(content: content, title: Localization.title, caption: Localization.caption)
-    self.showRandomColors()
+    self.showCurrentPreset()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -38,6 +53,18 @@ class InAppPurchaseColorsPage: InAppPurchasePresentationPage {
     self.stopTimer()
   }
 
+  // MARK: - Presets
+
+  private func showCurrentPreset() {
+    let preset = self.presets[self.currentPresetIndex]
+    self.content.setColors(tint: preset.tint, tram: preset.tram, bus: preset.bus)
+  }
+
+  private func showNextPreset() {
+    self.currentPresetIndex = (self.currentPresetIndex + 1) % self.presets.count
+    self.showCurrentPreset()
+  }
+
   // MARK: - Timer
 
   private func startTimer() {
@@ -49,19 +76,10 @@ class InAppPurchaseColorsPage: InAppPurchasePresentationPage {
   }
 
   @objc func timerFired(timer: Timer) {
-    self.showRandomColors()
+    self.showNextPreset()
   }
 
   private func stopTimer() {
     self.timer?.invalidate()
-  }
-
-  // MARK: - Random scheme
-
-  private func showRandomColors() {
-    let tintColor = TintColor.allValues.random()
-    let tramColor = VehicleColor.allValues.random()
-    let busColor  = VehicleColor.allValues.random()
-    self.content.setColors(tintColor: tintColor, tramColor: tramColor, busColor: busColor)
   }
 }

@@ -22,7 +22,7 @@ class ColorSchemeTestView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
-    self.setCurrentColorScheme()
+    self.setColorsFromCurrentColorScheme()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -69,17 +69,17 @@ class ColorSchemeTestView: UIView {
 
   // MARK: - Set colors
 
-  func setCurrentColorScheme() {
+  func setColorsFromCurrentColorScheme() {
     let colorScheme = Managers.theme.colors
     let tintColor   = colorScheme.tint
     let tramColor   = colorScheme.tram
     let busColor    = colorScheme.bus
-    self.setColors(tintColor: tintColor, tramColor: tramColor, busColor: busColor)
+    self.setColors(tint: tintColor, tram: tramColor, bus: busColor)
   }
 
-  func setColors(tintColor: TintColor, tramColor: VehicleColor, busColor: VehicleColor) {
-    self.tramLayer.tintColor = tramColor.value
-    self.busLayer.tintColor  = busColor.value
-    self.toolbarLayer.tintColor = tintColor.value
+  func setColors(tint: TintColor, tram: VehicleColor, bus: VehicleColor) {
+    self.tramLayer.tintColor = tram.value
+    self.busLayer.tintColor  = bus.value
+    self.toolbarLayer.tintColor = tint.value
   }
 }

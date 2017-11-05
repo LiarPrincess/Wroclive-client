@@ -42,6 +42,6 @@ struct InAppPurchasePresentationConstants {
   }
 
   struct Timer {
-    static let colorsChangeInterval: TimeInterval = 2.0
+    static let colorsChangeInterval: TimeInterval = 1.5
   }
 }
