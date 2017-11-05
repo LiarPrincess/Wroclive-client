@@ -3,6 +3,7 @@
     <pages>
         <page name='BookmarksViewController'/>
         <page name='ConfigurationViewController'/>
+        <page name='SearchViewController'/>
         <page name='ImageRenderer'/>
     </pages>
 </playground>

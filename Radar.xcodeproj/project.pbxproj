@@ -100,6 +100,13 @@
 		903920351F1AB70E00250162 /* ArrayOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLines.swift */; };
 		903BC5261F88DF0E0098469F /* ColorSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903BC5251F88DF0E0098469F /* ColorSelectionCoordinator.swift */; };
 		903F6F961F7D822B00FCC56B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */; };
+		903F7AC41FAF99CB00C872A9 /* DocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FCE1FA79E6C0055350E /* DocumentsManager.swift */; };
+		903F7AC51FAF99CB00C872A9 /* DocumentsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FD01FA79F760055350E /* DocumentsManagerImpl.swift */; };
+		903F7AC61FAF99CB00C872A9 /* CachedDocumentsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073F9971FA7A80400924584 /* CachedDocumentsManagerImpl.swift */; };
+		903F7AC71FAF99CB00C872A9 /* MapViewController+MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */; };
+		903F7AC81FAF99CB00C872A9 /* MapViewController+UpdateVehicleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */; };
+		903F7ACB1FAF9A5600C872A9 /* SearchManagerMockup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F7AC91FAF9A5600C872A9 /* SearchManagerMockup.swift */; };
+		903F7ACF1FAF9DD100C872A9 /* ApiManagerMockup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903F7ACE1FAF9DD100C872A9 /* ApiManagerMockup.swift */; };
 		9044A5441F69A13D00F26C17 /* ColorSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A5331F69A13D00F26C17 /* ColorSelectionCell.swift */; };
 		9044A5451F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A5341F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift */; };
 		9044A5461F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A5351F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift */; };
@@ -514,6 +521,8 @@
 		903920341F1AB70E00250162 /* ArrayOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayOfLines.swift; sourceTree = "<group>"; };
 		903BC5251F88DF0E0098469F /* ColorSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionCoordinator.swift; sourceTree = "<group>"; };
 		903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		903F7AC91FAF9A5600C872A9 /* SearchManagerMockup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManagerMockup.swift; sourceTree = "<group>"; };
+		903F7ACE1FAF9DD100C872A9 /* ApiManagerMockup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerMockup.swift; sourceTree = "<group>"; };
 		9044A5331F69A13D00F26C17 /* ColorSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionCell.swift; sourceTree = "<group>"; };
 		9044A5341F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionFooterView.swift; sourceTree = "<group>"; };
 		9044A5351F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -1130,6 +1139,23 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		903F7ACC1FAF9D4D00C872A9 /* Functional */ = {
+			isa = PBXGroup;
+			children = (
+				903F7AC91FAF9A5600C872A9 /* SearchManagerMockup.swift */,
+				90C8A8961F913DEA00072D83 /* BookmarksManagerMockup.swift */,
+			);
+			path = Functional;
+			sourceTree = "<group>";
+		};
+		903F7ACD1FAF9D5B00C872A9 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				903F7ACE1FAF9DD100C872A9 /* ApiManagerMockup.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
 		9044A5311F69A13D00F26C17 /* Color selection */ = {
 			isa = PBXGroup;
 			children = (
@@ -1524,7 +1550,8 @@
 		90EA53171F9BCD1D0079C263 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				90C8A8961F913DEA00072D83 /* BookmarksManagerMockup.swift */,
+				903F7ACD1FAF9D5B00C872A9 /* Api */,
+				903F7ACC1FAF9D4D00C872A9 /* Functional */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -2071,6 +2098,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				903F7AC41FAF99CB00C872A9 /* DocumentsManager.swift in Sources */,
+				903F7AC51FAF99CB00C872A9 /* DocumentsManagerImpl.swift in Sources */,
+				903F7AC61FAF99CB00C872A9 /* CachedDocumentsManagerImpl.swift in Sources */,
+				903F7AC71FAF99CB00C872A9 /* MapViewController+MapCenter.swift in Sources */,
+				903F7AC81FAF99CB00C872A9 /* MapViewController+UpdateVehicleLocations.swift in Sources */,
 				905650CA1F9E61880071E028 /* Array+Random.swift in Sources */,
 				905650CB1F9E61880071E028 /* ColorSchemeTestView.swift in Sources */,
 				905650CC1F9E61880071E028 /* ColorSchemeTestViewConstants.swift in Sources */,
@@ -2111,6 +2143,7 @@
 				90F45B011F9BB1B6006E965A /* NotificationObserver.swift in Sources */,
 				90F45B021F9BB1B6006E965A /* ColorSchemeObserver.swift in Sources */,
 				90F45B031F9BB1B6006E965A /* VehicleLocationObserver.swift in Sources */,
+				903F7ACB1FAF9A5600C872A9 /* SearchManagerMockup.swift in Sources */,
 				90F45B041F9BB1B6006E965A /* LocationAuthorizationObserver.swift in Sources */,
 				90F45B051F9BB1B6006E965A /* ApplicationActivityObserver.swift in Sources */,
 				90F45B061F9BB1B6006E965A /* NotificationManager.swift in Sources */,
@@ -2134,6 +2167,7 @@
 				90F45B1A1F9BB1B6006E965A /* LocationManager.swift in Sources */,
 				90F45B1B1F9BB1B6006E965A /* LocationManagerImpl.swift in Sources */,
 				90F45B1C1F9BB1B6006E965A /* LocationError.swift in Sources */,
+				903F7ACF1FAF9DD100C872A9 /* ApiManagerMockup.swift in Sources */,
 				90F45B1D1F9BB1B6006E965A /* TutorialManager.swift in Sources */,
 				90F45B1E1F9BB1B6006E965A /* TutorialManagerImpl.swift in Sources */,
 				90F45B1F1F9BB1B6006E965A /* TrackingManager.swift in Sources */,

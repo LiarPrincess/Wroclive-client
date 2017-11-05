@@ -24,7 +24,7 @@ class BookmarksManagerMockup: BookmarksManager {
   }
 
   func save(_ bookmarks: [Bookmark]) {
-    Swift.print("\(URL(fileURLWithPath: #file).lastPathComponent) \(#function) \(#line): \(0)")
+    self.bookmarks = bookmarks
   }
 }
 
