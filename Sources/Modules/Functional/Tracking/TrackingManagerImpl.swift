@@ -43,6 +43,7 @@ class TrackingManagerImpl {
 
   fileprivate func stopTimer() {
     self.trackingTimer?.invalidate()
+    self.trackingTimer = nil
   }
 }
 

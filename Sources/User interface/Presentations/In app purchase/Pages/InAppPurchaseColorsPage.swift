@@ -81,5 +81,6 @@ class InAppPurchaseColorsPage: InAppPurchasePresentationPage {
 
   private func stopTimer() {
     self.timer?.invalidate()
+    self.timer = nil
   }
 }
