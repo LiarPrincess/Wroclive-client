@@ -4,6 +4,7 @@ disabled_rules:
   - colon              # align properties
   - comma              # align func params
   - nesting            # nested constants
+  - identifier_name    # id
 
   - line_length        # nope
 

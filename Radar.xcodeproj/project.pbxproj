@@ -200,6 +200,8 @@
 		90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */; };
 		90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */; };
 		90D6FF381F9D352E00F6CC12 /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6FF371F9D352E00F6CC12 /* Array+Random.swift */; };
+		90DBA3DA1FAE355300C4685A /* MapViewController+MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */; };
+		90DBA3DC1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */; };
 		90DED6CE1F93F4B600FF1540 /* TutorialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */; };
 		90DED6D01F93F4E800FF1540 /* TutorialManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DED6CF1F93F4E800FF1540 /* TutorialManagerImpl.swift */; };
 		90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
@@ -595,6 +597,8 @@
 		90C8A8961F913DEA00072D83 /* BookmarksManagerMockup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManagerMockup.swift; sourceTree = "<group>"; };
 		90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerImpl.swift; sourceTree = "<group>"; };
 		90D6FF371F9D352E00F6CC12 /* Array+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Random.swift"; sourceTree = "<group>"; };
+		90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapCenter.swift"; sourceTree = "<group>"; };
+		90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+UpdateVehicleLocations.swift"; sourceTree = "<group>"; };
 		90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManager.swift; sourceTree = "<group>"; };
 		90DED6CF1F93F4E800FF1540 /* TutorialManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManagerImpl.swift; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
@@ -786,6 +790,8 @@
 			children = (
 				90FAF06F1F35D8C20040E0AE /* Annotations */,
 				9017C3551EE339FD00063377 /* MapViewController.swift */,
+				90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */,
+				90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */,
 				9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */,
 			);
 			path = Map;
@@ -1882,6 +1888,7 @@
 				90374CCD1F6D3BF8008D78CE /* Endpoint.swift in Sources */,
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90145E451F61AED10068698D /* ConfigurationCell.swift in Sources */,
+				90DBA3DA1FAE355300C4685A /* MapViewController+MapCenter.swift in Sources */,
 				90546BFE1F6B169100E8E75F /* TutorialViewController.swift in Sources */,
 				90D6FF381F9D352E00F6CC12 /* Array+Random.swift in Sources */,
 				90AF2BD81EE9DEE1006E61D6 /* ColorScheme.swift in Sources */,
@@ -2013,6 +2020,7 @@
 				9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				9044A5461F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift in Sources */,
 				908FB19D1F48B3CA00121584 /* ReusableCellContainer.swift in Sources */,
+				90DBA3DC1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift in Sources */,
 				900CAEAD1F482E750044C8A6 /* LocationManagerImpl.swift in Sources */,
 				9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */,
 				908252571F703F0E001C2926 /* Notification.swift in Sources */,

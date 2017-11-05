@@ -6,8 +6,6 @@
 import UIKit
 import Foundation
 
-// swiftlint:disable identifier_name
-
 private class BundleHook {}
 
 private func localizedString(_ key: String) -> String {

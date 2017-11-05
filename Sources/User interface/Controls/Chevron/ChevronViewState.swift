@@ -4,7 +4,7 @@
 //
 
 enum ChevronViewState: Int {
-  case up   =  1 // swiftlint:disable:this identifier_name
+  case up   =  1
   case flat =  0
   case down = -1
 }

@@ -19,13 +19,12 @@ class LineLocationsParser {
   }
 
   private static func parseVehicleLocation(_ line: Line, json: JSONDictionary) throws -> Vehicle {
-    guard let vehicleId = json["vehicleId"] as? String,
-          let latitude  = json["lat"]       as? Double,
-          let longitude = json["lng"]       as? Double,
-          let angle     = json["angle"]     as? Double
+    guard let id        = json["id"]    as? String,
+          let latitude  = json["lat"]   as? Double,
+          let longitude = json["lng"]   as? Double,
+          let angle     = json["angle"] as? Double
       else { throw NetworkError.invalidResponse }
 
-    return Vehicle(vehicleId: vehicleId, line: line, latitude: latitude, longitude: longitude, angle: angle)
+    return Vehicle(id: id, line: line, latitude: latitude, longitude: longitude, angle: angle)
   }
-
 }

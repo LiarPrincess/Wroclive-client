@@ -9,8 +9,8 @@ class Vehicle: NSObject {
 
   // MARK: - Properties
 
-  let vehicleId: String
-  let line:      Line
+  let id:   String
+  let line: Line
 
   let latitude:  Double
   let longitude: Double
@@ -18,8 +18,8 @@ class Vehicle: NSObject {
 
   // MARK: - Init
 
-  init(vehicleId: String, line: Line, latitude: Double, longitude: Double, angle: Double) {
-    self.vehicleId = vehicleId
+  init(id: String, line: Line, latitude: Double, longitude: Double, angle: Double) {
+    self.id        = id
     self.line      = line
     self.latitude  = latitude
     self.longitude = longitude

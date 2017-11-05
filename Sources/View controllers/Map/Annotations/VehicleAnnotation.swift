@@ -10,16 +10,15 @@ class VehicleAnnotation: NSObject, MKAnnotation {
 
   // MARK: - Properties
 
-  private(set) var vehicleId: String
-  private(set) var line:      Line
-  private(set) var angle:     CGFloat
-
+  dynamic var vehicleId:  String
+  dynamic var line:       Line
+  dynamic var angle:      CGFloat
   dynamic var coordinate: CLLocationCoordinate2D
 
   // MARK: - Init
 
   init(from vehicle: Vehicle) {
-    self.vehicleId  = vehicle.vehicleId
+    self.vehicleId  = vehicle.id
     self.line       = vehicle.line
     self.coordinate = CLLocationCoordinate2D(latitude: vehicle.latitude, longitude: vehicle.longitude)
     self.angle      = CGFloat(vehicle.angle)
@@ -28,7 +27,7 @@ class VehicleAnnotation: NSObject, MKAnnotation {
   // MARK: - Update
 
   func fillFrom(_ vehicle: Vehicle) {
-    self.vehicleId  = vehicle.vehicleId
+    self.vehicleId  = vehicle.id
     self.line       = vehicle.line
     self.coordinate = CLLocationCoordinate2D(latitude: vehicle.latitude, longitude: vehicle.longitude)
     self.angle      = CGFloat(vehicle.angle)

@@ -40,5 +40,4 @@ class LinesParser {
     default:          return nil
     }
   }
-
 }

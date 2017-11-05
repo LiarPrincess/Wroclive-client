@@ -25,7 +25,9 @@ class VehicleAnnotationView: MKAnnotationView {
     self.pinView.frame = self.frame
     self.addSubview(self.pinView)
     self.addSubview(self.pinLabel)
-    self.redraw()
+
+    self.updateImage()
+    self.updateLabel()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -36,17 +38,15 @@ class VehicleAnnotationView: MKAnnotationView {
 
   func setVehicleAnnotation(_ annotation: VehicleAnnotation) {
     self.annotation = annotation
-    self.redraw()
+    self.updateImage()
+    self.updateLabel()
   }
 
-  func redraw() {
-    if let annotation = self.annotation as? VehicleAnnotation {
-      self.updateImage(for: annotation)
-      self.updateLabel(for: annotation)
-    }
-  }
+  // MARK: Update image
 
-  private func updateImage(for annotation: VehicleAnnotation) {
+  func updateImage() {
+    guard let annotation = self.annotation as? VehicleAnnotation else { return }
+
     let color = self.imageColor(for: annotation)
     let hasColorChanged = self.pinView.tintColor != color.value
     let hasAngleChanged = abs(self.pinView.angle - annotation.angle) > Constants.minAngleChangeToRedraw
@@ -65,7 +65,11 @@ class VehicleAnnotationView: MKAnnotationView {
     }
   }
 
-  private func updateLabel(for annotation: VehicleAnnotation) {
+  // MARK: Update label
+
+  func updateLabel() {
+    guard let annotation = self.annotation as? VehicleAnnotation else { return }
+
     let textColor = self.textColor(for: annotation)
     let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
     self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name, attributes: textAttributes)
