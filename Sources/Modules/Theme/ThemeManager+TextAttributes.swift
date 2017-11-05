@@ -25,7 +25,8 @@ extension ThemeManager {
   private func colorValue(_ color: TextColor) -> UIColor {
     switch color {
     case .background:            return self.colors.background
-    case .backgroundAccent:      return self.colors.backgroundAccent
+    case .accentLight:           return self.colors.accentLight
+    case .accentDark:            return self.colors.accentDark
     case .text:                  return self.colors.text
     case .tint:                  return self.colors.tint.value
     case .bus:                   return self.colors.bus.value

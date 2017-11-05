@@ -7,7 +7,8 @@ import UIKit
 
 enum TextColor {
   case background
-  case backgroundAccent
+  case accentLight
+  case accentDark
   case text
   case tint
   case bus

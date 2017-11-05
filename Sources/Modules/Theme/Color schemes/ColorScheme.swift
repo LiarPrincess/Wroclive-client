@@ -22,25 +22,18 @@ struct PresentationColorScheme {
 
 struct ColorScheme {
 
-  // MARK: - Main
-
-  let background       = UIColor.white
-  let backgroundAccent = UIColor(white: 0.8, alpha: 1.0)
-  let text             = UIColor.black
-
-  let configurationBackground = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
-
-  // MARK: - Configurable
-
   let tint: TintColor
   let bus:  VehicleColor
   let tram: VehicleColor
 
-  // MARK: - Presentation
+  let background  = UIColor.white
+  let accentLight = UIColor(white: 0.8, alpha: 1.0)
+  let accentDark  = UIColor(white: 0.3, alpha: 1.0)
+  let text        = UIColor.black
+
+  let configurationBackground = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1.0)
 
   let presentation = PresentationColorScheme()
-
-  // MARK: - Transculancy
 
   let barStyle  = UIBarStyle.default
   let blurStyle = UIBlurEffectStyle.extraLight
@@ -53,5 +46,7 @@ struct ColorScheme {
     self.tram = tram
   }
 
-  static var `default`: ColorScheme { return ColorScheme(tint: .red, tram: .blue, bus: .red) }
+  static var `default`: ColorScheme {
+    return ColorScheme(tint: .red, tram: .blue, bus: .red)
+  }
 }

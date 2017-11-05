@@ -61,7 +61,7 @@ class CardPanelPresenter : UIPresentationController {
 
     self.chevronView = ChevronView()
     self.chevronView!.state = .down
-    self.chevronView!.color = Managers.theme.colors.backgroundAccent
+    self.chevronView!.color = Managers.theme.colors.accentLight
     self.chevronView!.animationDuration = 0.1
 
     presentable.header.addSubview(self.chevronView!)

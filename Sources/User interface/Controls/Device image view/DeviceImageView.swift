@@ -31,7 +31,7 @@ class DeviceImageView: UIView {
       make.edges.equalToSuperview()
     }
 
-    self.contentView.layer.borderColor = Managers.theme.colors.backgroundAccent.cgColor
+    self.contentView.layer.borderColor = Managers.theme.colors.accentLight.cgColor
     self.contentView.layer.borderWidth = 1.0 / Managers.device.screenScale
 
     self.deviceBorder.addSubview(self.contentView)

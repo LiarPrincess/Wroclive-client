@@ -23,6 +23,13 @@ extension StyleKit {
     }
   }
 
+  static func drawStarFilledTemplateImage(size: CGSize) -> UIImage {
+    return StyleKit.drawImage(size: size, renderingMode: .alwaysTemplate) {
+      let frame = CGRect(origin: CGPoint(), size: size)
+      StyleKit.drawStarFilled(frame: frame, resizing: resizingBehavior)
+    }
+  }
+
   static func drawCogwheelTemplateImage(size: CGSize) -> UIImage {
     return StyleKit.drawImage(size: size, renderingMode: .alwaysTemplate) {
       let frame = CGRect(origin: CGPoint(), size: size)

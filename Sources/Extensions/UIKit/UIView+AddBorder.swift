@@ -14,7 +14,7 @@ enum BorderEdge {
 extension UIView {
   func addBorder(at borderEdge: BorderEdge) {
     let view = UIView()
-    view.backgroundColor = Managers.theme.colors.backgroundAccent
+    view.backgroundColor = Managers.theme.colors.accentLight
     self.addSubview(view)
 
     view.snp.makeConstraints { make in
