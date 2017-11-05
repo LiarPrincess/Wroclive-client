@@ -25,6 +25,7 @@ class MapViewController: UIViewController {
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nil, bundle: nil)
     self.insetViewToShowMapLegalInfo()
+    self.startObservingColorScheme()
     self.startObservingApplicationActivity()
     self.startObservingLocationAuthorization()
   }
@@ -34,6 +35,7 @@ class MapViewController: UIViewController {
   }
 
   deinit {
+    self.stopObservingColorScheme()
     self.stopObservingApplicationActivity()
     self.stopObservingLocationAuthorization()
   }
@@ -78,11 +80,26 @@ class MapViewController: UIViewController {
       self.additionalSafeAreaInsets.bottom = max(insets.bottom, self.bottomLayoutGuide.length)
     }
   }
+
+  // MARK: Annotations
+
+  func getVehicleAnnotations() -> [VehicleAnnotation] {
+    return self.mapView.annotations.flatMap { return $0 as? VehicleAnnotation }
+  }
 }
 
 // MARK: - Notifications
 
-extension MapViewController: LocationAuthorizationObserver, ApplicationActivityObserver {
+extension MapViewController: ColorSchemeObserver, LocationAuthorizationObserver, ApplicationActivityObserver {
+
+  func colorSchemeDidChange() {
+    for annotation in self.getVehicleAnnotations() {
+      if let annotationView = self.mapView.view(for: annotation) as? VehicleAnnotationView {
+        annotationView.updateImage()
+        annotationView.updateLabel()
+      }
+    }
+  }
 
   func locationAuthorizationDidChange() {
     self.centerUserLocationIfAuthorized(animated: true)

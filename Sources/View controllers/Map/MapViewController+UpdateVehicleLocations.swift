@@ -89,10 +89,6 @@ extension MapViewController {
     return result
   }
 
-  private func getVehicleAnnotations() -> [VehicleAnnotation] {
-    return self.mapView.annotations.flatMap { return $0 as? VehicleAnnotation }
-  }
-
   private func groupByVehicleId(_ annotations: [VehicleAnnotation]) -> [String:VehicleAnnotation] {
     var result = [String:VehicleAnnotation]()
     for annotation in annotations {
