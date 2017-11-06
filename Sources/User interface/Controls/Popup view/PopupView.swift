@@ -14,10 +14,10 @@ class PopupView: UIVisualEffectView {
 
   // MARK: Init
 
-  init() {
+  init(image: UIImage, title: String, caption: String) {
     let effect = UIBlurEffect(style: Managers.theme.colors.blurStyle)
     super.init(effect: effect)
-    self.initLayout()
+    self.initLayout(image: image, title: title, caption: caption)
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -26,12 +26,11 @@ class PopupView: UIVisualEffectView {
 
   // MARK: Layout
 
-  private func initLayout() {
+  private func initLayout(image: UIImage, title: String, caption: String) {
     self.isUserInteractionEnabled = false
-    self.layer.cornerRadius = Layout.cornerRadius
-    self.clipsToBounds      = true
+    self.layer.cornerRadius       = Layout.cornerRadius
+    self.clipsToBounds            = true
 
-    let image     = StyleKit.drawStarFilledTemplateImage(size: Layout.Image.size)
     let imageView = UIImageView(image: image)
     imageView.tintColor = Managers.theme.colors.accentDark
 
@@ -45,7 +44,7 @@ class PopupView: UIVisualEffectView {
 
     let titleLabel = UILabel()
     titleLabel.numberOfLines  = 0
-    titleLabel.attributedText = self.createAttributedTitle("Bookmark")
+    titleLabel.attributedText = self.createAttributedTitle(title)
 
     self.contentView.addSubview(titleLabel)
     titleLabel.snp.makeConstraints { make in
@@ -57,7 +56,7 @@ class PopupView: UIVisualEffectView {
 
     let captionLabel = UILabel()
     captionLabel.numberOfLines  = 0
-    captionLabel.attributedText = self.createAttributedCaption("Use <star> to see all saved bookmarks.")
+    captionLabel.attributedText = self.createAttributedCaption(caption)
 
     self.contentView.addSubview(captionLabel)
     captionLabel.snp.makeConstraints { make in

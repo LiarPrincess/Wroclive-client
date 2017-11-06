@@ -41,4 +41,10 @@ struct SearchViewControllerConstants {
   struct CardPanel {
     static let relativeHeight: CGFloat = 0.90
   }
+
+  struct BookmarksPopup {
+    static let delay:     TimeInterval = 0.1
+    static let duration:  TimeInterval = 1.4
+    static let imageSize: CGSize       = CGSize(width: 64.0, height: 64.0)
+  }
 }
