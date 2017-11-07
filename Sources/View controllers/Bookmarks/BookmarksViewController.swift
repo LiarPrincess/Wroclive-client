@@ -107,13 +107,13 @@ class BookmarksViewController: UIViewController {
 
   func setEditButtonEdit() {
     let textAttributes = Managers.theme.textAttributes(for: .body, color: .tint)
-    let title          = NSAttributedString(string: Localization.editEdit, attributes: textAttributes)
+    let title          = NSAttributedString(string: Localization.Edit.edit, attributes: textAttributes)
     self.editButton.setAttributedTitle(title, for: .normal)
   }
 
   func setEditButtonDone() {
     let textAttributes = Managers.theme.textAttributes(for: .bodyBold, color: .tint)
-    let title          = NSAttributedString(string: Localization.editDone, attributes: textAttributes)
+    let title          = NSAttributedString(string: Localization.Edit.done, attributes: textAttributes)
     self.editButton.setAttributedTitle(title, for: .normal)
   }
 

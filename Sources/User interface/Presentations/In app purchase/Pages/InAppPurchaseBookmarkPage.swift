@@ -5,7 +5,7 @@
 
 import UIKit
 
-private typealias Localization = Localizable.Presentation.InAppPurchase.BookmarksPage
+private typealias Localization = Localizable.Presentation.InAppPurchase.Bookmarks
 
 class InAppPurchaseBookmarkPage: InAppPurchasePresentationPage {
 

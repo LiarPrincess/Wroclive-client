@@ -5,102 +5,85 @@
  
  */
 
-/* Line type selection */
-"LineTypeSelection_Tram" = "Tramwaje";
-"LineTypeSelection_Bus"  = "Autobusy";
-
-/* Line selection */
-"LineSelection_SectionName_Regular"   = "Normalne";
-"LineSelection_SectionName_Express"   = "Pośpieszne";
-"LineSelection_SectionName_PeakHour"  = "Szczytowe";
-"LineSelection_SectionName_Suburban"  = "Podmiejskie";
-"LineSelection_SectionName_Zone"      = "Strefowe";
-"LineSelection_SectionName_Limited"   = "Zastępsze";
-"LineSelection_SectionName_Temporary" = "Tymczasowe";
-"LineSelection_SectionName_Night"     = "Nocne";
-
-/* Bookmarks */
-"Bookmarks_CardTitle" = "Zakładki";
-"Bookmarks_Edit_Edit" = "Edycja";
-"Bookmarks_Edit_Done" = "Gotowe";
-"Bookmarks_Placeholder_Title"   = "Brak zakładek";
-"Bookmarks_Placeholder_Content" = "By dodać zakładkę użyj <star> podczas wyboru linii.";
-
-/* Search */
-"Search_CardTitle" = "Linie";
-"Search_Search"    = "Szukaj";
-"Search_Loading"   = "Wczytywanie…";
-
-/* Configuration */
-"Configuration_Title"  = "Ustawienia";
-"Configuration_Footer" = "Dane uzyskano dzięki uprzejmości MPK Wrocław\nKek wersja %@";
-
-"Configuration_Cell_Colours"  = "Personalizacja";
-"Configuration_Cell_Share"    = "Udostępnij";
-"Configuration_Cell_Tutorial" = "Instrukcje";
-"Configuration_Cell_Contact"  = "Kontakt";
-"Configuration_Cell_Rate"     = "Oceń aplikację";
-
-/* Configuration - Share */
-"Configuration_Share_Content" = "Kek - Komunikacja miejska na żywo! %@";
-
-/* Configuration - Share */
-"Configuration_Theme_Tint" = "Intrfejs";
-"Configuration_Theme_Tram" = "Tramwaje";
-"Configuration_Theme_Bus"  = "Autobusy";
-
-/* Presentations - In-app purchase */
-"Presentation_InAppPurchase_Bookmarks_Title"   = "Nielimitowane zakładki";
-"Presentation_InAppPurchase_Bookmarks_Content" = "Zapisz więcej niż 2 zakładki, by szybciej poruszać się po mieście.";
-
-"Presentation_InAppPurchase_Colors_Title"   = "Personalizacja";
-"Presentation_InAppPurchase_Colors_Content" = "Dopasuj Keka do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!";
-
-"Presentation_InAppPurchase_Upgrade" = "Kup 4,99 zł";
-"Presentation_InAppPurchase_Restore_Text" = "Już kupione?";
-"Presentation_InAppPurchase_Restore_Link" = "Odtwórz";
-
-/* Presentations - Tutorial */
-"Presentation_Tutorial_Page0_Title"   = "Wyszukiwanie pojazdów";
-"Presentation_Tutorial_Page0_Caption" = "By wyszukać pojazdy użyj <search>, wybierz linie, a następnie kliknij “Szukaj”.";
-
-"Presentation_Tutorial_Page1_Title"   = "Dodawanie zakładek";
-"Presentation_Tutorial_Page1_Caption" = "By dodać zakładkę wybierz linie, kliknij <star> i wprowadź nazwę nowej zakładki.";
-
-"Presentation_Tutorial_Page2_Title"   = "Zakładki";
-"Presentation_Tutorial_Page2_Caption" = "Użyj <star> by zobaczyć wszystkie zapisane zakładki.";
-
-"Presentation_Tutorial_Skip" = "Pomiń";
-
-/* Alerts */
-"Alert_Denied_Title"    = "Usługi lokalizacji wyłączone";
-"Alert_Denied_Content"  = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
-"Alert_Denied_Settings" = "Ustawienia";
-"Alert_Denied_Ok"       = "OK";
-
-"Alert_GloballyDenied_Title"   = "Usługi lokalizacji wyłączone";
-"Alert_GloballyDenied_Content" = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
-"Alert_GloballyDenied_Ok"      = "OK";
-
-"Alert_InvalidCity_Title"   = "Pora na przygodę!";
-"Alert_InvalidCity_Message" = "Kek działa najlepiej we Wrocławiu.\nPokazać?";
-"Alert_InvalidCity_No"      = "Nie";
-"Alert_InvalidCity_Yes"     = "Tak";
-
-"Alert_Bookmark_NoLinesSelected_Title"   = "Nie wybrano żadnych linii";
-"Alert_Bookmark_NoLinesSelected_Content" = "Zanim dodasz zakładkę musisz zaznaczyc przynajmniej 1 linię.";
-"Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
-
-"Alert_Bookmark_NameInput_Title"       = "Nowa zakładka";
+"Alert_Bookmark_NameInput_Cancel"      = "Anuluj";
 "Alert_Bookmark_NameInput_Content"     = "Wprowadź nazwę nowej zakładki.";
 "Alert_Bookmark_NameInput_Placeholder" = "Nazwa";
-"Alert_Bookmark_NameInput_Cancel"      = "Anuluj";
 "Alert_Bookmark_NameInput_Save"        = "Zachowaj";
+"Alert_Bookmark_NameInput_Title"       = "Nowa zakładka";
 
-"Alert_Network_NoInternet_Title"    = "Nie można pobrać danych";
+"Alert_Bookmark_NoLinesSelected_Content" = "Zanim dodasz zakładkę musisz zaznaczyc przynajmniej 1 linię.";
+"Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
+"Alert_Bookmark_NoLinesSelected_Title"   = "Nie wybrano żadnych linii";
+
+"Alert_Location_Denied_Content"  = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
+"Alert_Location_Denied_Ok"       = "OK";
+"Alert_Location_Denied_Settings" = "Ustawienia";
+"Alert_Location_Denied_Title"    = "Usługi lokalizacji wyłączone";
+
+"Alert_Location_GloballyDenied_Content" = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
+"Alert_Location_GloballyDenied_Ok"      = "OK";
+"Alert_Location_GloballyDenied_Title"   = "Usługi lokalizacji wyłączone";
+
+"Alert_InvalidCity_Message" = "Kek działa najlepiej we Wrocławiu.\nPokazać?";
+"Alert_InvalidCity_No"      = "Nie";
+"Alert_InvalidCity_Title"   = "Pora na przygodę!";
+"Alert_InvalidCity_Yes"     = "Tak";
+
+"Alert_Network_ConnectionError_Content"  = "Błąd połączenia z serwerem.";
+"Alert_Network_ConnectionError_Title"    = "Nie można pobrać danych";
+"Alert_Network_ConnectionError_TryAgain" = "Spróbuj ponownie";
+
 "Alert_Network_NoInternet_Content"  = "Sprawdź swoje połączenie z internetem.";
+"Alert_Network_NoInternet_Title"    = "Nie można pobrać danych";
 "Alert_Network_NoInternet_TryAgain" = "Spróbuj ponownie";
 
-"Alert_Network_ConnectionError_Title"    = "Nie można pobrać danych";
-"Alert_Network_ConnectionError_Content"  = "Błąd połączenia z serwerem.";
-"Alert_Network_ConnectionError_TryAgain" = "Spróbuj ponownie";
+"Bookmarks_CardTitle"           = "Zakładki";
+"Bookmarks_Edit_Done"           = "Gotowe";
+"Bookmarks_Edit_Edit"           = "Edycja";
+"Bookmarks_Placeholder_Content" = "By dodać zakładkę użyj <star> podczas wyboru linii.";
+"Bookmarks_Placeholder_Title"   = "Brak zakładek";
+
+"Configuration_Cell_Colors"   = "Personalizacja";
+"Configuration_Cell_Contact"  = "Kontakt";
+"Configuration_Cell_Rate"     = "Oceń aplikację";
+"Configuration_Cell_Share"    = "Udostępnij";
+"Configuration_Cell_Tutorial" = "Instrukcje";
+
+"Configuration_Footer"        = "Dane uzyskano dzięki uprzejmości MPK Wrocław\nKek wersja %@";
+"Configuration_Share_Content" = "Kek - Komunikacja miejska na żywo! %@";
+"Configuration_Theme_Bus"     = "Autobusy";
+"Configuration_Theme_Tint"    = "Intrfejs";
+"Configuration_Theme_Tram"    = "Tramwaje";
+"Configuration_Title"         = "Ustawienia";
+
+"LineSelection_SectionName_Express"   = "Pośpieszne";
+"LineSelection_SectionName_Limited"   = "Zastępsze";
+"LineSelection_SectionName_Night"     = "Nocne";
+"LineSelection_SectionName_PeakHour"  = "Szczytowe";
+"LineSelection_SectionName_Regular"   = "Normalne";
+"LineSelection_SectionName_Suburban"  = "Podmiejskie";
+"LineSelection_SectionName_Temporary" = "Tymczasowe";
+"LineSelection_SectionName_Zone"      = "Strefowe";
+
+"LineTypeSelection_Bus"  = "Autobusy";
+"LineTypeSelection_Tram" = "Tramwaje";
+
+"Presentation_InAppPurchase_Bookmarks_Caption" = "Zapisz więcej niż 2 zakładki, by szybciej poruszać się po mieście.";
+"Presentation_InAppPurchase_Bookmarks_Title"   = "Nielimitowane zakładki";
+"Presentation_InAppPurchase_Colors_Caption"    = "Dopasuj Keka do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!";
+"Presentation_InAppPurchase_Colors_Title"      = "Personalizacja";
+"Presentation_InAppPurchase_Restore_Link"      = "Odtwórz";
+"Presentation_InAppPurchase_Restore_Text"      = "Już kupione?";
+"Presentation_InAppPurchase_Upgrade"           = "Kup 4,99 zł";
+
+"Presentation_Tutorial_Page0_Caption" = "By wyszukać pojazdy użyj <search>, wybierz linie, a następnie kliknij “Szukaj”.";
+"Presentation_Tutorial_Page0_Title"   = "Wyszukiwanie pojazdów";
+"Presentation_Tutorial_Page1_Caption" = "By dodać zakładkę wybierz linie, kliknij <star> i wprowadź nazwę nowej zakładki.";
+"Presentation_Tutorial_Page1_Title"   = "Dodawanie zakładek";
+"Presentation_Tutorial_Page2_Caption" = "Użyj <star> by zobaczyć wszystkie zapisane zakładki.";
+"Presentation_Tutorial_Page2_Title"   = "Zakładki";
+"Presentation_Tutorial_Skip"          = "Pomiń";
+
+"Search_CardTitle" = "Linie";
+"Search_Loading"   = "Wczytywanie…";
+"Search_Search"    = "Szukaj";

@@ -28,7 +28,7 @@ extension ConfigurationViewController {
     }
 
     let titleAttributes           = Managers.theme.textAttributes(for: .headline)
-    self.cardTitle.attributedText = NSAttributedString(string: Localization.Title, attributes: titleAttributes)
+    self.cardTitle.attributedText = NSAttributedString(string: Localization.title, attributes: titleAttributes)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
 
@@ -107,7 +107,7 @@ extension ConfigurationViewController {
     let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
 
     let appVersion = Managers.bundle.version
-    let footerText = String(format: Localization.Footer, appVersion)
+    let footerText = String(format: Localization.footer, appVersion)
     return NSAttributedString(string: footerText, attributes: textAttributes)
   }
 

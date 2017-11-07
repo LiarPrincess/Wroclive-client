@@ -5,102 +5,85 @@
 
  */
 
-/* Line type selection */
-"LineTypeSelection_Tram" = "Trams";
-"LineTypeSelection_Bus"  = "Buses";
-
-/* Line selection */
-"LineSelection_SectionName_Regular"   = "Regular";
-"LineSelection_SectionName_Express"   = "Express";
-"LineSelection_SectionName_PeakHour"  = "Peak-hour";
-"LineSelection_SectionName_Suburban"  = "Suburban";
-"LineSelection_SectionName_Zone"      = "Zone";
-"LineSelection_SectionName_Limited"   = "Limited";
-"LineSelection_SectionName_Temporary" = "Temporary";
-"LineSelection_SectionName_Night"     = "Night";
-
-/* Bookmarks */
-"Bookmarks_CardTitle" = "Bookmarks";
-"Bookmarks_Edit_Edit" = "Edit";
-"Bookmarks_Edit_Done" = "Done";
-"Bookmarks_Placeholder_Title"   = "You have not saved any bookmarks";
-"Bookmarks_Placeholder_Content" = "To add bookmark press <star> when selecting lines.";
-
-/* Search */
-"Search_CardTitle" = "Lines";
-"Search_Search"    = "Search";
-"Search_Loading"   = "Loading…";
-
-/* Configuration */
-"Configuration_Title"  = "Settings";
-"Configuration_Footer" = "Data provided by MPK Wrocław\nKek version %@";
-
-"Configuration_Cell_Colours"  = "Personalization";
-"Configuration_Cell_Share"    = "Share";
-"Configuration_Cell_Tutorial" = "Tutorial";
-"Configuration_Cell_Contact"  = "Contact";
-"Configuration_Cell_Rate"     = "Rate app";
-
-/* Configuration - Share */
-"Configuration_Share_Content" = "Kek - Real time public transport! %@";
-
-/* Configuration - Share */
-"Configuration_Theme_Tint" = "Interface";
-"Configuration_Theme_Tram" = "Tram";
-"Configuration_Theme_Bus"  = "Bus";
-
-/* Presentations - In-app purchase */
-"Presentation_InAppPurchase_Bookmarks_Title"   = "Unlimited Bookmarks";
-"Presentation_InAppPurchase_Bookmarks_Content" = "Save more than 2 bookmarks to travel faster across the city.";
-
-"Presentation_InAppPurchase_Colors_Title"   = "Personalization";
-"Presentation_InAppPurchase_Colors_Content" = "Brighten up your life and personalise Kek to your favourite color.";
-
-"Presentation_InAppPurchase_Upgrade" = "Upgrade 1,09 €";
-"Presentation_InAppPurchase_Restore_Text" = "Previously upgraded?";
-"Presentation_InAppPurchase_Restore_Link" = "Restore Purchase";
-
-/* Presentations - Tutorial */
-"Presentation_Tutorial_Page0_Title"   = "Locating vehicles";
-"Presentation_Tutorial_Page0_Caption" = "To locate vehicles use <search>, select lines and then tap “Search”.";
-
-"Presentation_Tutorial_Page1_Title"   = "Adding bookmarks";
-"Presentation_Tutorial_Page1_Caption" = "To add bookmark chose lines, tap <star> and enter bookmark name.";
-
-"Presentation_Tutorial_Page2_Title"   = "Bookmarks";
-"Presentation_Tutorial_Page2_Caption" = "Use <star> to see all saved bookmarks.";
-
-"Presentation_Tutorial_Skip" = "Skip";
-
-/* Alerts */
-"Alert_Denied_Title"    = "Location Services Off";
-"Alert_Denied_Content"  = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
-"Alert_Denied_Settings" = "Settings";
-"Alert_Denied_Ok"       = "OK";
-
-"Alert_GloballyDenied_Title"   = "Location Services Off";
-"Alert_GloballyDenied_Content" = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
-"Alert_GloballyDenied_Ok"      = "OK";
-
-"Alert_InvalidCity_Title"   = "Adventure time!";
-"Alert_InvalidCity_Message" = "Kek works best in Wrocław.\nWould you like to visit?";
-"Alert_InvalidCity_No"      = "No";
-"Alert_InvalidCity_Yes"     = "Yes";
-
-"Alert_Bookmark_NoLinesSelected_Title"   = "No lines selected";
-"Alert_Bookmark_NoLinesSelected_Content" = "Please select some lines before trying to create bookmark.";
-"Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
-
-"Alert_Bookmark_NameInput_Title"       = "New bookmark";
+"Alert_Bookmark_NameInput_Cancel"      = "Cancel";
 "Alert_Bookmark_NameInput_Content"     = "Enter name for this bookmark.";
 "Alert_Bookmark_NameInput_Placeholder" = "Name";
-"Alert_Bookmark_NameInput_Cancel"      = "Cancel";
 "Alert_Bookmark_NameInput_Save"        = "Save";
+"Alert_Bookmark_NameInput_Title"       = "New bookmark";
 
-"Alert_Network_NoInternet_Title"    = "Unable to retrieve data";
+"Alert_Bookmark_NoLinesSelected_Content" = "Please select some lines before trying to create bookmark.";
+"Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
+"Alert_Bookmark_NoLinesSelected_Title"   = "No lines selected";
+
+"Alert_Location_Denied_Content"  = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
+"Alert_Location_Denied_Ok"       = "OK";
+"Alert_Location_Denied_Settings" = "Settings";
+"Alert_Location_Denied_Title"    = "Location Services Off";
+
+"Alert_Location_GloballyDenied_Content" = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
+"Alert_Location_GloballyDenied_Ok"      = "OK";
+"Alert_Location_GloballyDenied_Title"   = "Location Services Off";
+
+"Alert_InvalidCity_Message" = "Kek works best in Wrocław.\nWould you like to visit?";
+"Alert_InvalidCity_No"      = "No";
+"Alert_InvalidCity_Title"   = "Adventure time!";
+"Alert_InvalidCity_Yes"     = "Yes";
+
+"Alert_Network_ConnectionError_Content"  = "Could not connect to server.";
+"Alert_Network_ConnectionError_Title"    = "Unable to retrieve data";
+"Alert_Network_ConnectionError_TryAgain" = "Try again";
+
 "Alert_Network_NoInternet_Content"  = "Please check your internet connection.";
+"Alert_Network_NoInternet_Title"    = "Unable to retrieve data";
 "Alert_Network_NoInternet_TryAgain" = "Try again";
 
-"Alert_Network_ConnectionError_Title"    = "Unable to retrieve data";
-"Alert_Network_ConnectionError_Content"  = "Could not connect to server.";
-"Alert_Network_ConnectionError_TryAgain" = "Try again";
+"Bookmarks_CardTitle"           = "Bookmarks";
+"Bookmarks_Edit_Done"           = "Done";
+"Bookmarks_Edit_Edit"           = "Edit";
+"Bookmarks_Placeholder_Content" = "To add bookmark press <star> when selecting lines.";
+"Bookmarks_Placeholder_Title"   = "You have not saved any bookmarks";
+
+"Configuration_Cell_Colors"   = "Personalization";
+"Configuration_Cell_Contact"  = "Contact";
+"Configuration_Cell_Rate"     = "Rate app";
+"Configuration_Cell_Share"    = "Share";
+"Configuration_Cell_Tutorial" = "Tutorial";
+
+"Configuration_Footer"        = "Data provided by MPK Wrocław\nKek version %@";
+"Configuration_Share_Content" = "Kek - Real time public transport! %@";
+"Configuration_Theme_Bus"     = "Bus";
+"Configuration_Theme_Tint"    = "Interface";
+"Configuration_Theme_Tram"    = "Tram";
+"Configuration_Title"         = "Settings";
+
+"LineSelection_SectionName_Express"   = "Express";
+"LineSelection_SectionName_Limited"   = "Limited";
+"LineSelection_SectionName_Night"     = "Night";
+"LineSelection_SectionName_PeakHour"  = "Peak-hour";
+"LineSelection_SectionName_Regular"   = "Regular";
+"LineSelection_SectionName_Suburban"  = "Suburban";
+"LineSelection_SectionName_Temporary" = "Temporary";
+"LineSelection_SectionName_Zone"      = "Zone";
+
+"LineTypeSelection_Bus"  = "Buses";
+"LineTypeSelection_Tram" = "Trams";
+
+"Presentation_InAppPurchase_Bookmarks_Caption" = "Save more than 2 bookmarks to travel faster across the city.";
+"Presentation_InAppPurchase_Bookmarks_Title"   = "Unlimited Bookmarks";
+"Presentation_InAppPurchase_Colors_Caption"    = "Brighten up your life and personalise Kek to your favourite color.";
+"Presentation_InAppPurchase_Colors_Title"      = "Personalization";
+"Presentation_InAppPurchase_Restore_Link"      = "Restore Purchase";
+"Presentation_InAppPurchase_Restore_Text"      = "Previously upgraded?";
+"Presentation_InAppPurchase_Upgrade"           = "Upgrade 1,09 €";
+
+"Presentation_Tutorial_Page0_Caption" = "To locate vehicles use <search>, select lines and then tap “Search”.";
+"Presentation_Tutorial_Page0_Title"   = "Locating vehicles";
+"Presentation_Tutorial_Page1_Caption" = "To add bookmark chose lines, tap <star> and enter bookmark name.";
+"Presentation_Tutorial_Page1_Title"   = "Adding bookmarks";
+"Presentation_Tutorial_Page2_Caption" = "Use <star> to see all saved bookmarks.";
+"Presentation_Tutorial_Page2_Title"   = "Bookmarks";
+"Presentation_Tutorial_Skip"          = "Skip";
+
+"Search_CardTitle" = "Lines";
+"Search_Loading"   = "Loading…";
+"Search_Search"    = "Search";

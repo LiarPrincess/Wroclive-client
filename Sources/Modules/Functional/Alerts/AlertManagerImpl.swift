@@ -5,10 +5,10 @@
 
 import UIKit
 
-private typealias Localization = Localizable.Alerts
+private typealias Localization = Localizable.Alert
 private typealias LocationDenied         = Localization.Location.Denied
-private typealias LocationGloballyDenied = Localization.Location.DeniedGlobally
-private typealias LocationInvalidCity    = Localization.Location.InvalidCity
+private typealias LocationGloballyDenied = Localization.Location.GloballyDenied
+private typealias LocationInvalidCity    = Localization.InvalidCity
 private typealias BookmarksNoLines       = Localization.Bookmark.NoLinesSelected
 private typealias BookmarksNameInput     = Localization.Bookmark.NameInput
 private typealias NetworkNoInternet      = Localization.Network.NoInternet
@@ -55,7 +55,7 @@ class AlertManagerImpl: AlertManager {
 
   func showInvalidCityAlert(in parent: UIViewController, completed: @escaping (InvalidCityOptions) -> ()) {
     let title   = LocationInvalidCity.title
-    let message = LocationInvalidCity.content
+    let message = LocationInvalidCity.message
 
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 

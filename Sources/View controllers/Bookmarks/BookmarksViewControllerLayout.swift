@@ -80,7 +80,7 @@ extension BookmarksViewController {
     }
 
     let titleAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
-    self.placeholderTitle.attributedText = NSAttributedString(string: Localization.placeholderTitle, attributes: titleAttributes)
+    self.placeholderTitle.attributedText = NSAttributedString(string: Localization.Placeholder.title, attributes: titleAttributes)
     self.placeholderTitle.numberOfLines  = 0
     self.placeholderTitle.lineBreakMode  = .byWordWrapping
     self.placeholderView.addSubview(self.placeholderTitle)
@@ -106,7 +106,7 @@ extension BookmarksViewController {
 
     let starReplacement = TextReplacement("<star>", NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
 
-    return NSAttributedString(string: Localization.placeholderContent, attributes: textAttributes)
+    return NSAttributedString(string: Localization.Placeholder.content, attributes: textAttributes)
       .withReplacements([starReplacement])
   }
 }

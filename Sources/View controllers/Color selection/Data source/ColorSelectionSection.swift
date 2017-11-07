@@ -5,7 +5,7 @@
 
 import UIKit
 
-private typealias Localization = Localizable.Theme
+private typealias Localization = Localizable.Configuration.Theme
 
 enum ColorSelectionSectionType {
   case tint

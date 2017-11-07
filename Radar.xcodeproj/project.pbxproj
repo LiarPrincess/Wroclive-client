@@ -402,6 +402,8 @@
 		90F45BAE1F9BB43A006E965A /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
 		90F45BBF1F9BC40F006E965A /* Pods_Radar_Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F45BC01F9BC40F006E965A /* Pods_Radar_Framework.framework */; };
 		90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */; };
+		90FBE35A1FB23AC7002AFF7A /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FBE3591FB23AC7002AFF7A /* LocalizedString.swift */; };
+		90FBE35B1FB23AC7002AFF7A /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FBE3591FB23AC7002AFF7A /* LocalizedString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -637,6 +639,7 @@
 		90F45BBB1F9BBCBE006E965A /* Playgrounds.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playgrounds.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		90F45BC01F9BC40F006E965A /* Pods_Radar_Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Radar_Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
+		90FBE3591FB23AC7002AFF7A /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		AA8885078077A6F4C3E997EB /* Pods_Radar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC003998A202FA8FE3073506 /* Pods-Radar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Radar/Pods-Radar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1532,6 +1535,7 @@
 				90ED51081F3BAFF800C782D5 /* InfoPlist.strings */,
 				90ED50FF1F3BADC500C782D5 /* Localizable.strings */,
 				90E77A1F1F4E21D5006882A4 /* Localizable.swift */,
+				90FBE3591FB23AC7002AFF7A /* LocalizedString.swift */,
 			);
 			name = Localizable;
 			sourceTree = "<group>";
@@ -1951,6 +1955,7 @@
 				908252531F703BC7001C2926 /* NotificationManagerImpl.swift in Sources */,
 				901A3F6B1FAFAFF900383B02 /* PopupView.swift in Sources */,
 				909EFD151F9D156000C487AD /* ColorSelectionPresentation.swift in Sources */,
+				90FBE35A1FB23AC7002AFF7A /* LocalizedString.swift in Sources */,
 				903BC5261F88DF0E0098469F /* ColorSelectionCoordinator.swift in Sources */,
 				907F26811F7460E4000C272B /* CLLocation.swift in Sources */,
 				908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */,
@@ -2250,6 +2255,7 @@
 				90F45B581F9BB1B6006E965A /* LineSelectionViewControllerConstants.swift in Sources */,
 				90F45B591F9BB1B6006E965A /* LineTypeSelectionControl.swift in Sources */,
 				90F45B5A1F9BB1B6006E965A /* LineTypeSelectionControlDelegate.swift in Sources */,
+				90FBE35B1FB23AC7002AFF7A /* LocalizedString.swift in Sources */,
 				90F45B5E1F9BB1B6006E965A /* TutorialPresentation.swift in Sources */,
 				90F45B5F1F9BB1B6006E965A /* TutorialPresentationLayout.swift in Sources */,
 				90F45B601F9BB1B6006E965A /* TutorialPresentationConstants.swift in Sources */,

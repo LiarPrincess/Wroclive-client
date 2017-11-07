@@ -5,7 +5,7 @@
 
 import UIKit
 
-private typealias Localization = Localizable.Configuration.Cells
+private typealias Localization = Localizable.Configuration.Cell
 
 enum ConfigurationCell: ConfigurationCellViewModel {
   case personalization

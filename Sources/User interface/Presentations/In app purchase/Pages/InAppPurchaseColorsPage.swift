@@ -6,7 +6,7 @@
 import UIKit
 
 private typealias Constants    = InAppPurchasePresentationConstants
-private typealias Localization = Localizable.Presentation.InAppPurchase.ColorsPage
+private typealias Localization = Localizable.Presentation.InAppPurchase.Colors
 
 private struct ColorSchemePreset {
   let tint: TintColor

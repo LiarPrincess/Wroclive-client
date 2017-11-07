@@ -81,9 +81,9 @@ extension InAppPurchasePresentation {
     var underlineAttributes = textAttributes
     underlineAttributes[NSUnderlineStyleAttributeName] = NSUnderlineStyle.styleSingle.rawValue
 
-    let text = NSMutableAttributedString(string: Localization.restoreText, attributes: textAttributes)
+    let text = NSMutableAttributedString(string: Localization.Restore.text, attributes: textAttributes)
     text.append(NSAttributedString(string: " ", attributes: textAttributes))
-    text.append(NSAttributedString(string: Localization.restoreLink, attributes: underlineAttributes))
+    text.append(NSAttributedString(string: Localization.Restore.link, attributes: underlineAttributes))
     text.append(NSAttributedString(string: ".", attributes: textAttributes))
 
     self.restorePurchaseLabel.numberOfLines  = 0
