@@ -13,7 +13,7 @@ class AppManagerImpl: AppManager {
   }
 
   func showShareActivity(in viewController: UIViewController) {
-    let text  = String(format: Localizable.Configuration.Share.content, AppInfo.website)
+    let text  = String(format: Localizable.Share.message, AppInfo.website)
     let image = Images.share
     let items = [text, image] as [Any]
 

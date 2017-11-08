@@ -2,7 +2,7 @@
 
  Created by Michal Matuszczyk
  Copyright © 2017 Michal Matuszczyk. All rights reserved.
- 
+
  */
 
 "Alert_Bookmark_NameInput_Cancel"      = "Anuluj";
@@ -11,7 +11,7 @@
 "Alert_Bookmark_NameInput_Save"        = "Zachowaj";
 "Alert_Bookmark_NameInput_Title"       = "Nowa zakładka";
 
-"Alert_Bookmark_NoLinesSelected_Content" = "Zanim dodasz zakładkę musisz zaznaczyc przynajmniej 1 linię.";
+"Alert_Bookmark_NoLinesSelected_Content" = "Zanim dodasz zakładkę musisz zaznaczyć przynajmniej 1 linię.";
 "Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
 "Alert_Bookmark_NoLinesSelected_Title"   = "Nie wybrano żadnych linii";
 
@@ -24,7 +24,7 @@
 "Alert_Location_GloballyDenied_Ok"      = "OK";
 "Alert_Location_GloballyDenied_Title"   = "Usługi lokalizacji wyłączone";
 
-"Alert_InvalidCity_Message" = "Kek działa najlepiej we Wrocławiu.\nPokazać?";
+"Alert_InvalidCity_Message" = "Radar działa najlepiej we Wrocławiu.\nPokazać?";
 "Alert_InvalidCity_No"      = "Nie";
 "Alert_InvalidCity_Title"   = "Pora na przygodę!";
 "Alert_InvalidCity_Yes"     = "Tak";
@@ -49,15 +49,14 @@
 "Configuration_Cell_Share"    = "Udostępnij";
 "Configuration_Cell_Tutorial" = "Instrukcje";
 
-"Configuration_Footer"        = "Dane uzyskano dzięki uprzejmości MPK Wrocław\nKek wersja %@";
-"Configuration_Share_Content" = "Kek - Komunikacja miejska na żywo! %@";
+"Configuration_Footer"        = "Dane uzyskano dzięki uprzejmości MPK Wrocław";
 "Configuration_Theme_Bus"     = "Autobusy";
-"Configuration_Theme_Tint"    = "Intrfejs";
+"Configuration_Theme_Tint"    = "Interfejs";
 "Configuration_Theme_Tram"    = "Tramwaje";
 "Configuration_Title"         = "Ustawienia";
 
 "LineSelection_SectionName_Express"   = "Pośpieszne";
-"LineSelection_SectionName_Limited"   = "Zastępsze";
+"LineSelection_SectionName_Limited"   = "Zastępcze";
 "LineSelection_SectionName_Night"     = "Nocne";
 "LineSelection_SectionName_PeakHour"  = "Szczytowe";
 "LineSelection_SectionName_Regular"   = "Normalne";
@@ -70,7 +69,7 @@
 
 "Presentation_InAppPurchase_Bookmarks_Caption" = "Zapisz więcej niż 2 zakładki, by szybciej poruszać się po mieście.";
 "Presentation_InAppPurchase_Bookmarks_Title"   = "Nielimitowane zakładki";
-"Presentation_InAppPurchase_Colors_Caption"    = "Dopasuj Keka do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!";
+"Presentation_InAppPurchase_Colors_Caption"    = "Dopasuj Radar do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!";
 "Presentation_InAppPurchase_Colors_Title"      = "Personalizacja";
 "Presentation_InAppPurchase_Restore_Link"      = "Odtwórz";
 "Presentation_InAppPurchase_Restore_Text"      = "Już kupione?";
@@ -84,6 +83,10 @@
 "Presentation_Tutorial_Page2_Title"   = "Zakładki";
 "Presentation_Tutorial_Skip"          = "Pomiń";
 
-"Search_CardTitle" = "Linie";
-"Search_Loading"   = "Wczytywanie…";
-"Search_Search"    = "Szukaj";
+"Search_CardTitle"             = "Linie";
+"Search_Loading"               = "Wczytywanie…";
+"Search_Search"                = "Szukaj";
+"Search_BookmarkAdded_Title"   = "Zakładka dodana!";
+"Search_BookmarkAdded_Caption" = "Użyj <star> z poziomu mapy, by zobaczyć wszystkie zapisane zakładki.";
+
+"Share_Message" = "Bus radar - Komunikacja miejska na żywo! %@";

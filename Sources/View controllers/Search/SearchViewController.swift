@@ -7,9 +7,9 @@ import UIKit
 import SnapKit
 import PromiseKit
 
-private typealias Constants = SearchViewControllerConstants
-private typealias Layout    = Constants.Layout
-private typealias PopupLocalization = Localizable.Presentation.Tutorial.Page2
+private typealias Constants    = SearchViewControllerConstants
+private typealias Layout       = Constants.Layout
+private typealias Localization = Localizable.Search
 
 protocol SearchViewControllerDelegate: class {
   func searchViewController(_ viewController: SearchViewController, didSelect lines: [Line])
@@ -126,8 +126,8 @@ class SearchViewController: UIViewController {
 
   private func showBookmarkCreatedPopup() {
     let image   = StyleKit.drawStarFilledTemplateImage(size: Constants.BookmarksPopup.imageSize)
-    let title   = PopupLocalization.title
-    let caption = PopupLocalization.caption
+    let title   = Localization.BookmarkAdded.title
+    let caption = Localization.BookmarkAdded.caption
 
     let popup = PopupView(image: image, title: title, caption: caption)
 

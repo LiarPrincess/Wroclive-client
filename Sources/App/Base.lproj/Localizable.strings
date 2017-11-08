@@ -24,7 +24,7 @@
 "Alert_Location_GloballyDenied_Ok"      = "OK";
 "Alert_Location_GloballyDenied_Title"   = "Location Services Off";
 
-"Alert_InvalidCity_Message" = "Kek works best in Wrocław.\nWould you like to visit?";
+"Alert_InvalidCity_Message" = "Radar works best in Wrocław.\nWould you like to visit?";
 "Alert_InvalidCity_No"      = "No";
 "Alert_InvalidCity_Title"   = "Adventure time!";
 "Alert_InvalidCity_Yes"     = "Yes";
@@ -49,8 +49,7 @@
 "Configuration_Cell_Share"    = "Share";
 "Configuration_Cell_Tutorial" = "Tutorial";
 
-"Configuration_Footer"        = "Data provided by MPK Wrocław\nKek version %@";
-"Configuration_Share_Content" = "Kek - Real time public transport! %@";
+"Configuration_Footer"        = "Data provided by MPK Wrocław";
 "Configuration_Theme_Bus"     = "Bus";
 "Configuration_Theme_Tint"    = "Interface";
 "Configuration_Theme_Tram"    = "Tram";
@@ -70,7 +69,7 @@
 
 "Presentation_InAppPurchase_Bookmarks_Caption" = "Save more than 2 bookmarks to travel faster across the city.";
 "Presentation_InAppPurchase_Bookmarks_Title"   = "Unlimited Bookmarks";
-"Presentation_InAppPurchase_Colors_Caption"    = "Brighten up your life and personalise Kek to your favourite color.";
+"Presentation_InAppPurchase_Colors_Caption"    = "Brighten up your life and personalize Radar to your favorite color.";
 "Presentation_InAppPurchase_Colors_Title"      = "Personalization";
 "Presentation_InAppPurchase_Restore_Link"      = "Restore Purchase";
 "Presentation_InAppPurchase_Restore_Text"      = "Previously upgraded?";
@@ -84,6 +83,10 @@
 "Presentation_Tutorial_Page2_Title"   = "Bookmarks";
 "Presentation_Tutorial_Skip"          = "Skip";
 
-"Search_CardTitle" = "Lines";
-"Search_Loading"   = "Loading…";
-"Search_Search"    = "Search";
+"Search_CardTitle"             = "Lines";
+"Search_Loading"               = "Loading…";
+"Search_Search"                = "Search";
+"Search_BookmarkAdded_Title"   = "Bookmark added!";
+"Search_BookmarkAdded_Caption" = "Use <star> from map view to see all saved bookmarks.";
+
+"Share_Message" = "Bus radar - Real time public transport! %@";

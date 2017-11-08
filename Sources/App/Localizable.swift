@@ -51,7 +51,7 @@ public struct Localizable {
 
         /// Please select some lines before trying to create bookmark.
         /// - **en**: Please select some lines before trying to create bookmark.
-        /// - **pl**: Zanim dodasz zakładkę musisz zaznaczyc przynajmniej 1 linię.
+        /// - **pl**: Zanim dodasz zakładkę musisz zaznaczyć przynajmniej 1 linię.
         static var content: String { return localizedString("Alert_Bookmark_NoLinesSelected_Content") }
 
         /// OK
@@ -68,9 +68,9 @@ public struct Localizable {
 
     struct InvalidCity {
 
-      /// Kek works best in Wrocław.\nWould you like to visit?
-      /// - **en**: Kek works best in Wrocław.\nWould you like to visit?
-      /// - **pl**: Kek działa najlepiej we Wrocławiu.\nPokazać?
+      /// Radar works best in Wrocław.\nWould you like to visit?
+      /// - **en**: Radar works best in Wrocław.\nWould you like to visit?
+      /// - **pl**: Radar działa najlepiej we Wrocławiu.\nPokazać?
       static var message: String { return localizedString("Alert_InvalidCity_Message") }
 
       /// No
@@ -237,14 +237,6 @@ public struct Localizable {
       static var tutorial: String { return localizedString("Configuration_Cell_Tutorial") }
     }
 
-    struct Share {
-
-      /// Kek - Real time public transport! %@
-      /// - **en**: Kek - Real time public transport! %@
-      /// - **pl**: Kek - Komunikacja miejska na żywo! %@
-      static var content: String { return localizedString("Configuration_Share_Content") }
-    }
-
     struct Theme {
 
       /// Bus
@@ -254,7 +246,7 @@ public struct Localizable {
 
       /// Interface
       /// - **en**: Interface
-      /// - **pl**: Intrfejs
+      /// - **pl**: Interfejs
       static var tint: String { return localizedString("Configuration_Theme_Tint") }
 
       /// Tram
@@ -263,9 +255,9 @@ public struct Localizable {
       static var tram: String { return localizedString("Configuration_Theme_Tram") }
     }
 
-    /// Data provided by MPK Wrocław\nKek version %@
-    /// - **en**: Data provided by MPK Wrocław\nKek version %@
-    /// - **pl**: Dane uzyskano dzięki uprzejmości MPK Wrocław\nKek wersja %@
+    /// Data provided by MPK Wrocław
+    /// - **en**: Data provided by MPK Wrocław
+    /// - **pl**: Dane uzyskano dzięki uprzejmości MPK Wrocław
     static var footer: String { return localizedString("Configuration_Footer") }
 
     /// Settings
@@ -285,7 +277,7 @@ public struct Localizable {
 
       /// Limited
       /// - **en**: Limited
-      /// - **pl**: Zastępsze
+      /// - **pl**: Zastępcze
       static var limited: String { return localizedString("LineSelection_SectionName_Limited") }
 
       /// Night
@@ -352,9 +344,9 @@ public struct Localizable {
 
       struct Colors {
 
-        /// Brighten up your life and personalise Kek to your favourite color.
-        /// - **en**: Brighten up your life and personalise Kek to your favourite color.
-        /// - **pl**: Dopasuj Keka do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!
+        /// Brighten up your life and personalize Radar to your favorite color.
+        /// - **en**: Brighten up your life and personalize Radar to your favorite color.
+        /// - **pl**: Dopasuj Radar do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!
         static var caption: String { return localizedString("Presentation_InAppPurchase_Colors_Caption") }
 
         /// Personalization
@@ -432,6 +424,19 @@ public struct Localizable {
 
   struct Search {
 
+    struct BookmarkAdded {
+
+      /// Use <star> from map view to see all saved bookmarks.
+      /// - **en**: Use <star> from map view to see all saved bookmarks.
+      /// - **pl**: Użyj <star> z poziomu mapy, by zobaczyć wszystkie zapisane zakładki.
+      static var caption: String { return localizedString("Search_BookmarkAdded_Caption") }
+
+      /// Bookmark added!
+      /// - **en**: Bookmark added!
+      /// - **pl**: Zakładka dodana!
+      static var title: String { return localizedString("Search_BookmarkAdded_Title") }
+    }
+
     /// Lines
     /// - **en**: Lines
     /// - **pl**: Linie
@@ -446,5 +451,13 @@ public struct Localizable {
     /// - **en**: Search
     /// - **pl**: Szukaj
     static var search: String { return localizedString("Search_Search") }
+  }
+
+  struct Share {
+
+    /// Bus radar - Real time public transport! %@
+    /// - **en**: Bus radar - Real time public transport! %@
+    /// - **pl**: Bus radar - Komunikacja miejska na żywo! %@
+    static var message: String { return localizedString("Share_Message") }
   }
 }

@@ -105,10 +105,7 @@ extension ConfigurationViewController {
 
   private func createTableFooterText() -> NSAttributedString {
     let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
-
-    let appVersion = Managers.bundle.version
-    let footerText = String(format: Localization.footer, appVersion)
-    return NSAttributedString(string: footerText, attributes: textAttributes)
+    return NSAttributedString(string: Localization.footer, attributes: textAttributes)
   }
 
   private func calculateMinFooterHeight(_ footerContent: NSAttributedString) -> CGFloat {
