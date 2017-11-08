@@ -7,9 +7,9 @@ import UIKit
 
 protocol AppManager {
 
-  /// Open Kek website in Safari
+  /// Open app website in Safari
   func openWebsite()
 
-  /// Present bottom panel to share Kek
+  /// Present bottom panel to share app
   func showShareActivity(in viewController: UIViewController)
 }

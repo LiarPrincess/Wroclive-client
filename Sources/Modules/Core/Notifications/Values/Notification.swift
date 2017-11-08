@@ -15,9 +15,9 @@ enum Notification {
 
   var name: Foundation.Notification.Name {
     switch self {
-    case .colorSchemeDidChange:           return Notification.name("pl.kekapp.colorSchemeDidChange")
-    case .vehicleLocationsDidUpdate:      return Notification.name("pl.kekapp.vehicleLocationsDidUpdate")
-    case .locationAuthorizationDidChange: return Notification.name("pl.kekapp.locationAuthorizationDidChange")
+    case .colorSchemeDidChange:           return Notification.name("pl.nopoint.radar.colorSchemeDidChange")
+    case .vehicleLocationsDidUpdate:      return Notification.name("pl.nopoint.radar.vehicleLocationsDidUpdate")
+    case .locationAuthorizationDidChange: return Notification.name("pl.nopoint.radar.locationAuthorizationDidChange")
     case .contentSizeCategoryDidChange:   return Foundation.Notification.Name.UIContentSizeCategoryDidChange
     case .applicationDidBecomeActive:     return Foundation.Notification.Name.UIApplicationDidBecomeActive
     case .applicationWillResignActive:    return Foundation.Notification.Name.UIApplicationWillResignActive

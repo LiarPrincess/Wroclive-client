@@ -9,7 +9,7 @@ struct AppInfo {
 
   static let appStoreId = "888422857"
 
-  static let website      = "www.kekapp.pl"
+  static let website      = "www.nopoint.pl"
   static let websiteHttps = "https://\(website)"
 
   #if DEBUG

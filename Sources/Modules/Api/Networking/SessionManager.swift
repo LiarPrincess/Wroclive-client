@@ -39,7 +39,7 @@ class SessionManager: Alamofire.SessionManager {
   // MARK: - Private - User agent
 
   // User-Agent Header; see https://tools.ietf.org/html/rfc7231#section-5.5.3
-  // Example: 'Kek/1.0 (com.kekapp.kek; iPhone iOS 10.3.1)'
+  // Example: 'Radar/1.0 (pl.nopoint.radar; iPhone iOS 10.3.1)'
   private static var userAgentString: String {
     let model         = Managers.device.model
     let systemName    = Managers.device.systemName
