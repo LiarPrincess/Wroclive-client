@@ -13,9 +13,8 @@ class AppManagerImpl: AppManager {
   }
 
   func showShareActivity(in viewController: UIViewController) {
-    let text  = String(format: Localizable.Share.message, AppInfo.website)
-    let image = Images.share
-    let items = [text, image] as [Any]
+    let text  = String(format: Localizable.Share.message, AppInfo.AppStore.shareUrl)
+    let items = [text] as [Any]
 
     let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
     activityViewController.excludedActivityTypes = [.assignToContact, .saveToCameraRoll, .addToReadingList, .postToFlickr, .postToVimeo, .openInIBooks, .print]

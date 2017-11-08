@@ -7,10 +7,15 @@ import Foundation
 
 struct AppInfo {
 
-  static let appStoreId = "888422857"
-
   static let website      = "www.nopoint.pl"
   static let websiteHttps = "https://\(website)"
+
+  struct AppStore {
+    private static let appId = "888422857"
+
+    static let writeReviewUrl  = "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8"
+    static let shareUrl        = "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8"
+  }
 
   #if DEBUG
   struct Endpoints {

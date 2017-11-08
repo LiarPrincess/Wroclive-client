@@ -17,7 +17,6 @@ class AppStoreManagerImpl: AppStoreManager {
   }
 
   func rateApp() {
-    let appStoreUrl = "itms-apps://itunes.apple.com/us/app/id\(AppInfo.appStoreId)?action=write-review&mt=8"
-    UIApplication.shared.open(URL(string: appStoreUrl)!)
+    UIApplication.shared.open(URL(string: AppInfo.AppStore.writeReviewUrl)!)
   }
 }
