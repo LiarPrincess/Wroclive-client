@@ -1,11 +1,11 @@
 //: A UIKit based Playground for presenting user interface
-  
+
 import UIKit
 import PlaygroundSupport
 @testable import Radar_Framework
 
 // Mockups
-let bookmarksManager = BookmarksManagerMockup.filled
+let bookmarksManager = BookmarksManagerScreenshot()
 
 // Environment
 let environment = Environment(bookmarks: bookmarksManager)

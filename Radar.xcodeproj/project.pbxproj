@@ -123,7 +123,6 @@
 		9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */; };
 		9045C2E31F9BDB3F002F35C3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2E21F9BDB3F002F35C3 /* Assets.swift */; };
 		9045C2E41F9BDDD7002F35C3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2E21F9BDB3F002F35C3 /* Assets.swift */; };
-		9045C2E51F9BE508002F35C3 /* BookmarksManagerMockup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C8A8961F913DEA00072D83 /* BookmarksManagerMockup.swift */; };
 		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
 		90541FCF1FA79E6C0055350E /* DocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FCE1FA79E6C0055350E /* DocumentsManager.swift */; };
 		90541FD11FA79F760055350E /* DocumentsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FD01FA79F760055350E /* DocumentsManagerImpl.swift */; };
@@ -211,6 +210,9 @@
 		90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */; };
 		90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */; };
 		90D6FF381F9D352E00F6CC12 /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6FF371F9D352E00F6CC12 /* Array+Random.swift */; };
+		90D8E41C1FB4D16200006140 /* BookmarksManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E41B1FB4D16200006140 /* BookmarksManagerAssert.swift */; };
+		90D8E41E1FB4D29D00006140 /* AssertNotCalled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */; };
+		90D8E4211FB4D75900006140 /* Environment+Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E4201FB4D75900006140 /* Environment+Assert.swift */; };
 		90DBA3DA1FAE355300C4685A /* MapViewController+MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */; };
 		90DBA3DC1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */; };
 		90DED6CE1F93F4B600FF1540 /* TutorialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */; };
@@ -293,7 +295,7 @@
 		90F45B2E1F9BB1B6006E965A /* ThemeManagerEnumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BE21EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift */; };
 		90F45B2F1F9BB1B6006E965A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024C6101F9667E600025503 /* Environment.swift */; };
 		90F45B301F9BB1B6006E965A /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024C6121F96699500025503 /* AppEnvironment.swift */; };
-		90F45B311F9BB1B6006E965A /* BookmarksManagerMockup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C8A8961F913DEA00072D83 /* BookmarksManagerMockup.swift */; };
+		90F45B311F9BB1B6006E965A /* BookmarksManagerScreenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C8A8961F913DEA00072D83 /* BookmarksManagerScreenshot.swift */; };
 		90F45B321F9BB1B6006E965A /* String+FindPositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F51F5202AE00654FF6 /* String+FindPositions.swift */; };
 		90F45B331F9BB1B6006E965A /* Array+GroupedBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38B1F12C95D000A6949 /* Array+GroupedBy.swift */; };
 		90F45B341F9BB1B6006E965A /* ArrayOfEquatable+ContainsAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38C1F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift */; };
@@ -611,9 +613,12 @@
 		90BC8AF71F69B62800AF4B84 /* PushTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTransitionDelegate.swift; sourceTree = "<group>"; };
 		90BC8AFD1F69B62800AF4B84 /* PushDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushDismissTransition.swift; sourceTree = "<group>"; };
 		90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPresentationTransition.swift; sourceTree = "<group>"; };
-		90C8A8961F913DEA00072D83 /* BookmarksManagerMockup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManagerMockup.swift; sourceTree = "<group>"; };
+		90C8A8961F913DEA00072D83 /* BookmarksManagerScreenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManagerScreenshot.swift; sourceTree = "<group>"; };
 		90D6ACF51F4DEB6300B36DCB /* AppStoreManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoreManagerImpl.swift; sourceTree = "<group>"; };
 		90D6FF371F9D352E00F6CC12 /* Array+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Random.swift"; sourceTree = "<group>"; };
+		90D8E41B1FB4D16200006140 /* BookmarksManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManagerAssert.swift; sourceTree = "<group>"; };
+		90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertNotCalled.swift; sourceTree = "<group>"; };
+		90D8E4201FB4D75900006140 /* Environment+Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Assert.swift"; sourceTree = "<group>"; };
 		90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapCenter.swift"; sourceTree = "<group>"; };
 		90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+UpdateVehicleLocations.swift"; sourceTree = "<group>"; };
 		90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManager.swift; sourceTree = "<group>"; };
@@ -1158,23 +1163,6 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		903F7ACC1FAF9D4D00C872A9 /* Functional */ = {
-			isa = PBXGroup;
-			children = (
-				903F7AC91FAF9A5600C872A9 /* SearchManagerMockup.swift */,
-				90C8A8961F913DEA00072D83 /* BookmarksManagerMockup.swift */,
-			);
-			path = Functional;
-			sourceTree = "<group>";
-		};
-		903F7ACD1FAF9D5B00C872A9 /* Api */ = {
-			isa = PBXGroup;
-			children = (
-				903F7ACE1FAF9DD100C872A9 /* ApiManagerMockup.swift */,
-			);
-			path = Api;
-			sourceTree = "<group>";
-		};
 		9044A5311F69A13D00F26C17 /* Color selection */ = {
 			isa = PBXGroup;
 			children = (
@@ -1520,6 +1508,43 @@
 			path = Presentations;
 			sourceTree = "<group>";
 		};
+		90D8E4151FB4CD4C00006140 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				90D8E41A1FB4D12700006140 /* Assert */,
+				90D8E4161FB4CD5D00006140 /* Screenshots */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		90D8E4161FB4CD5D00006140 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				90C8A8961F913DEA00072D83 /* BookmarksManagerScreenshot.swift */,
+				903F7ACE1FAF9DD100C872A9 /* ApiManagerMockup.swift */,
+				903F7AC91FAF9A5600C872A9 /* SearchManagerMockup.swift */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
+		90D8E41A1FB4D12700006140 /* Assert */ = {
+			isa = PBXGroup;
+			children = (
+				90D8E41F1FB4D74100006140 /* Modules */,
+				90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */,
+				90D8E4201FB4D75900006140 /* Environment+Assert.swift */,
+			);
+			path = Assert;
+			sourceTree = "<group>";
+		};
+		90D8E41F1FB4D74100006140 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				90D8E41B1FB4D16200006140 /* BookmarksManagerAssert.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		90DED6CC1F93F4A000FF1540 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
@@ -1567,15 +1592,6 @@
 			path = "App Store";
 			sourceTree = "<group>";
 		};
-		90EA53171F9BCD1D0079C263 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				903F7ACD1FAF9D5B00C872A9 /* Api */,
-				903F7ACC1FAF9D4D00C872A9 /* Functional */,
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
 		90EBB4391F97C7CD00291B1E /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -1619,7 +1635,6 @@
 			isa = PBXGroup;
 			children = (
 				90F45BBC1F9BBDA2006E965A /* Framework */,
-				90EA53171F9BCD1D0079C263 /* Mocks */,
 				90F45BBB1F9BBCBE006E965A /* Playgrounds.playground */,
 			);
 			path = Playgrounds;
@@ -1646,6 +1661,7 @@
 		OBJ_41 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				90D8E4151FB4CD4C00006140 /* Mocks */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1663,8 +1679,8 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_7 /* Sources */,
-				90F45BBA1F9BBCBE006E965A /* Playgrounds */,
 				OBJ_41 /* Tests */,
+				90F45BBA1F9BBCBE006E965A /* Playgrounds */,
 				4A3B2CBD6F0B3CF6ADE0EBAE /* Pods */,
 				902812FE1E59DE4800F26027 /* Frameworks */,
 				OBJ_42 /* Products */,
@@ -1931,7 +1947,6 @@
 				90546BF71F6B15A000E8E75F /* TutorialPresentation.swift in Sources */,
 				90ACDC431F88518D005A4B79 /* BookmarksCoordinator.swift in Sources */,
 				90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */,
-				9045C2E51F9BE508002F35C3 /* BookmarksManagerMockup.swift in Sources */,
 				90374CCD1F6D3BF8008D78CE /* Endpoint.swift in Sources */,
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90145E451F61AED10068698D /* ConfigurationCell.swift in Sources */,
@@ -2131,6 +2146,7 @@
 				905650CC1F9E61880071E028 /* ColorSchemeTestViewConstants.swift in Sources */,
 				905650CD1F9E61880071E028 /* ColorSelectionPresentation.swift in Sources */,
 				905650CE1F9E61880071E028 /* ColorSelectionPresentationConstants.swift in Sources */,
+				90D8E41E1FB4D29D00006140 /* AssertNotCalled.swift in Sources */,
 				905650CF1F9E61880071E028 /* InAppPurchasePresentationPage.swift in Sources */,
 				905650D01F9E61880071E028 /* InAppPurchaseBookmarkPage.swift in Sources */,
 				905650D11F9E61880071E028 /* InAppPurchaseColorsPage.swift in Sources */,
@@ -2158,6 +2174,7 @@
 				90F45AF91F9BB1B6006E965A /* AppManager.swift in Sources */,
 				90F45AFA1F9BB1B6006E965A /* AppManagerImpl.swift in Sources */,
 				90F45AFB1F9BB1B6006E965A /* BundleManager.swift in Sources */,
+				90D8E41C1FB4D16200006140 /* BookmarksManagerAssert.swift in Sources */,
 				90F45AFC1F9BB1B6006E965A /* BundleManagerImpl.swift in Sources */,
 				90F45AFD1F9BB1B6006E965A /* DeviceManager.swift in Sources */,
 				90F45AFE1F9BB1B6006E965A /* DeviceManagerImpl.swift in Sources */,
@@ -2212,7 +2229,7 @@
 				90F45B2E1F9BB1B6006E965A /* ThemeManagerEnumerations.swift in Sources */,
 				90F45B2F1F9BB1B6006E965A /* Environment.swift in Sources */,
 				90F45B301F9BB1B6006E965A /* AppEnvironment.swift in Sources */,
-				90F45B311F9BB1B6006E965A /* BookmarksManagerMockup.swift in Sources */,
+				90F45B311F9BB1B6006E965A /* BookmarksManagerScreenshot.swift in Sources */,
 				90F45B321F9BB1B6006E965A /* String+FindPositions.swift in Sources */,
 				90F45B331F9BB1B6006E965A /* Array+GroupedBy.swift in Sources */,
 				90F45B341F9BB1B6006E965A /* ArrayOfEquatable+ContainsAll.swift in Sources */,
@@ -2252,6 +2269,7 @@
 				90F45B551F9BB1B6006E965A /* LineSelectionPage.swift in Sources */,
 				90F45B561F9BB1B6006E965A /* LineSelectionPageLayout.swift in Sources */,
 				90F45B571F9BB1B6006E965A /* LineSelectionViewController.swift in Sources */,
+				90D8E4211FB4D75900006140 /* Environment+Assert.swift in Sources */,
 				90F45B581F9BB1B6006E965A /* LineSelectionViewControllerConstants.swift in Sources */,
 				90F45B591F9BB1B6006E965A /* LineTypeSelectionControl.swift in Sources */,
 				90F45B5A1F9BB1B6006E965A /* LineTypeSelectionControlDelegate.swift in Sources */,

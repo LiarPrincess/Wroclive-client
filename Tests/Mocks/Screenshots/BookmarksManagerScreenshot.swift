@@ -5,33 +5,13 @@
 
 import UIKit
 
-class BookmarksManagerMockup: BookmarksManager {
+class BookmarksManagerScreenshot: BookmarksManagerAssert {
 
-  private var bookmarks: [Bookmark]
-
-  fileprivate init(with bookmarks: [Bookmark]) {
-    self.bookmarks = bookmarks
-  }
-
-  func addNew(name: String, lines: [Line]) -> Bookmark {
-    let newBookmark = Bookmark(name: name, lines: lines)
-    self.bookmarks.append(newBookmark)
-    return newBookmark
-  }
-
-  func getAll() -> [Bookmark] {
+  override func getAll() -> [Bookmark] {
     return self.bookmarks
   }
 
-  func save(_ bookmarks: [Bookmark]) {
-    self.bookmarks = bookmarks
-  }
-}
-
-extension BookmarksManagerMockup {
-  static var empty: BookmarksManager { return BookmarksManagerMockup(with: []) }
-
-  static var filled: BookmarksManager {
+  lazy var bookmarks: [Bookmark] = {
     let tram1 = Line(name: "1", type: .tram, subtype: .regular)
     let tram3 = Line(name: "3", type: .tram, subtype: .regular)
     let tram4 = Line(name: "4", type: .tram, subtype: .regular)
@@ -75,7 +55,6 @@ extension BookmarksManagerMockup {
     let city       = Bookmark(name: "Miasto", lines: cityLines)
     let night      = Bookmark(name: "Nocne", lines: nightLines)
 
-    let bookmarks: [Bookmark] = [university, work, city, night]
-    return BookmarksManagerMockup(with: bookmarks)
-  }
+    return [university, work, city, night]
+  }()
 }
