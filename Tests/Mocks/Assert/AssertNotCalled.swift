@@ -4,5 +4,5 @@
 //
 
 func assertNotCalled() -> Never {
-  fatalError("This function should not be called!")
+  assert(false, "This function should not be called!")
 }
