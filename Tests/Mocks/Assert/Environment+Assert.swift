@@ -7,20 +7,20 @@ extension Environment {
 
   static var assert: Environment {
     return Environment(
-//      app:          app,
-//      bundle:       bundle,
-//      device:       device,
-//      appStore:     appStore,
-//      notification: notification,
-//      userDefaults: userDefaults,
-//      documents:    documents,
-//      api:          api,
-//      search:       search,
-      bookmarks:    BookmarksManagerAssert())
-//      location:     location,
-//      tracking:     tracking,
-//      tutorial:     tutorial,
-//      alert:        alert,
-//      theme:        theme)
+      app:          AppManagerAssert(),
+      bundle:       BundleManagerAssert(),
+      device:       DeviceManagerAssert(),
+      appStore:     AppStoreManagerAssert(),
+      notification: NotificationManagerAssert(),
+      userDefaults: UserDefaultsManagerAssert(),
+      documents:    DocumentsManagerAssert(),
+      api:          ApiManagerAssert(),
+      search:       SearchManagerAssert(),
+      bookmarks:    BookmarksManagerAssert(),
+      location:     LocationManagerAssert(),
+      tracking:     TrackingManagerAssert(),
+      tutorial:     TutorialManagerAssert(),
+      alert:        AlertManagerAssert(),
+      theme:        ThemeManagerAssert())
   }
 }

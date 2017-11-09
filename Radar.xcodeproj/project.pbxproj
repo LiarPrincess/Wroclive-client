@@ -213,6 +213,20 @@
 		90D8E41C1FB4D16200006140 /* BookmarksManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E41B1FB4D16200006140 /* BookmarksManagerAssert.swift */; };
 		90D8E41E1FB4D29D00006140 /* AssertNotCalled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */; };
 		90D8E4211FB4D75900006140 /* Environment+Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E4201FB4D75900006140 /* Environment+Assert.swift */; };
+		90D8E4231FB4DAD000006140 /* AppManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E4221FB4DAD000006140 /* AppManagerAssert.swift */; };
+		90D8E42B1FB4DB9A00006140 /* BundleManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E42A1FB4DB9A00006140 /* BundleManagerAssert.swift */; };
+		90D8E42D1FB4DBC800006140 /* DeviceManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E42C1FB4DBC800006140 /* DeviceManagerAssert.swift */; };
+		90D8E42F1FB4DC1000006140 /* NotificationManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E42E1FB4DC1000006140 /* NotificationManagerAssert.swift */; };
+		90D8E4311FB4DC4700006140 /* AppStoreManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E4301FB4DC4700006140 /* AppStoreManagerAssert.swift */; };
+		90D8E4331FB4DDE600006140 /* UserDefaultsManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E4321FB4DDE600006140 /* UserDefaultsManagerAssert.swift */; };
+		90D8E4351FB4DE2C00006140 /* DocumentsManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E4341FB4DE2C00006140 /* DocumentsManagerAssert.swift */; };
+		90D8E4371FB4DE9C00006140 /* ApiManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E4361FB4DE9C00006140 /* ApiManagerAssert.swift */; };
+		90D95A1B1FB4E156000A1A8C /* SearchManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A1A1FB4E156000A1A8C /* SearchManagerAssert.swift */; };
+		90D95A1D1FB4E216000A1A8C /* LocationManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A1C1FB4E216000A1A8C /* LocationManagerAssert.swift */; };
+		90D95A1F1FB4E231000A1A8C /* TutorialManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A1E1FB4E231000A1A8C /* TutorialManagerAssert.swift */; };
+		90D95A211FB4E245000A1A8C /* TrackingManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A201FB4E245000A1A8C /* TrackingManagerAssert.swift */; };
+		90D95A231FB4E259000A1A8C /* AlertManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A221FB4E259000A1A8C /* AlertManagerAssert.swift */; };
+		90D95A251FB4E26B000A1A8C /* ThemeManagerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A241FB4E26B000A1A8C /* ThemeManagerAssert.swift */; };
 		90DBA3DA1FAE355300C4685A /* MapViewController+MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */; };
 		90DBA3DC1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */; };
 		90DED6CE1F93F4B600FF1540 /* TutorialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */; };
@@ -619,6 +633,20 @@
 		90D8E41B1FB4D16200006140 /* BookmarksManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManagerAssert.swift; sourceTree = "<group>"; };
 		90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertNotCalled.swift; sourceTree = "<group>"; };
 		90D8E4201FB4D75900006140 /* Environment+Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Assert.swift"; sourceTree = "<group>"; };
+		90D8E4221FB4DAD000006140 /* AppManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManagerAssert.swift; sourceTree = "<group>"; };
+		90D8E42A1FB4DB9A00006140 /* BundleManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleManagerAssert.swift; sourceTree = "<group>"; };
+		90D8E42C1FB4DBC800006140 /* DeviceManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManagerAssert.swift; sourceTree = "<group>"; };
+		90D8E42E1FB4DC1000006140 /* NotificationManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerAssert.swift; sourceTree = "<group>"; };
+		90D8E4301FB4DC4700006140 /* AppStoreManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManagerAssert.swift; sourceTree = "<group>"; };
+		90D8E4321FB4DDE600006140 /* UserDefaultsManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerAssert.swift; sourceTree = "<group>"; };
+		90D8E4341FB4DE2C00006140 /* DocumentsManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsManagerAssert.swift; sourceTree = "<group>"; };
+		90D8E4361FB4DE9C00006140 /* ApiManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerAssert.swift; sourceTree = "<group>"; };
+		90D95A1A1FB4E156000A1A8C /* SearchManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManagerAssert.swift; sourceTree = "<group>"; };
+		90D95A1C1FB4E216000A1A8C /* LocationManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerAssert.swift; sourceTree = "<group>"; };
+		90D95A1E1FB4E231000A1A8C /* TutorialManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManagerAssert.swift; sourceTree = "<group>"; };
+		90D95A201FB4E245000A1A8C /* TrackingManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManagerAssert.swift; sourceTree = "<group>"; };
+		90D95A221FB4E259000A1A8C /* AlertManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManagerAssert.swift; sourceTree = "<group>"; };
+		90D95A241FB4E26B000A1A8C /* ThemeManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManagerAssert.swift; sourceTree = "<group>"; };
 		90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapCenter.swift"; sourceTree = "<group>"; };
 		90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+UpdateVehicleLocations.swift"; sourceTree = "<group>"; };
 		90DED6CD1F93F4B600FF1540 /* TutorialManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManager.swift; sourceTree = "<group>"; };
@@ -1530,19 +1558,57 @@
 		90D8E41A1FB4D12700006140 /* Assert */ = {
 			isa = PBXGroup;
 			children = (
-				90D8E41F1FB4D74100006140 /* Modules */,
+				90D8E4251FB4DB1900006140 /* Core */,
+				90D8E41F1FB4D74100006140 /* Api */,
+				90D8E4271FB4DB2D00006140 /* Functional */,
+				90D8E4281FB4DB3700006140 /* Theme */,
 				90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */,
 				90D8E4201FB4D75900006140 /* Environment+Assert.swift */,
 			);
 			path = Assert;
 			sourceTree = "<group>";
 		};
-		90D8E41F1FB4D74100006140 /* Modules */ = {
+		90D8E41F1FB4D74100006140 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				90D8E41B1FB4D16200006140 /* BookmarksManagerAssert.swift */,
+				90D8E4361FB4DE9C00006140 /* ApiManagerAssert.swift */,
 			);
-			path = Modules;
+			path = Api;
+			sourceTree = "<group>";
+		};
+		90D8E4251FB4DB1900006140 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				90D8E4221FB4DAD000006140 /* AppManagerAssert.swift */,
+				90D8E42A1FB4DB9A00006140 /* BundleManagerAssert.swift */,
+				90D8E42C1FB4DBC800006140 /* DeviceManagerAssert.swift */,
+				90D8E42E1FB4DC1000006140 /* NotificationManagerAssert.swift */,
+				90D8E4301FB4DC4700006140 /* AppStoreManagerAssert.swift */,
+				90D8E4321FB4DDE600006140 /* UserDefaultsManagerAssert.swift */,
+				90D8E4341FB4DE2C00006140 /* DocumentsManagerAssert.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		90D8E4271FB4DB2D00006140 /* Functional */ = {
+			isa = PBXGroup;
+			children = (
+				90D95A1A1FB4E156000A1A8C /* SearchManagerAssert.swift */,
+				90D8E41B1FB4D16200006140 /* BookmarksManagerAssert.swift */,
+				90D95A1C1FB4E216000A1A8C /* LocationManagerAssert.swift */,
+				90D95A1E1FB4E231000A1A8C /* TutorialManagerAssert.swift */,
+				90D95A201FB4E245000A1A8C /* TrackingManagerAssert.swift */,
+				90D95A221FB4E259000A1A8C /* AlertManagerAssert.swift */,
+			);
+			path = Functional;
+			sourceTree = "<group>";
+		};
+		90D8E4281FB4DB3700006140 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				90D95A241FB4E26B000A1A8C /* ThemeManagerAssert.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		90DED6CC1F93F4A000FF1540 /* Tutorial */ = {
@@ -2136,6 +2202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90D8E4371FB4DE9C00006140 /* ApiManagerAssert.swift in Sources */,
 				903F7AC41FAF99CB00C872A9 /* DocumentsManager.swift in Sources */,
 				903F7AC51FAF99CB00C872A9 /* DocumentsManagerImpl.swift in Sources */,
 				903F7AC61FAF99CB00C872A9 /* CachedDocumentsManagerImpl.swift in Sources */,
@@ -2156,10 +2223,12 @@
 				905650D51F9E61880071E028 /* TutorialPresentationPage.swift in Sources */,
 				905650D61F9E61880071E028 /* TutorialPresentationPage0.swift in Sources */,
 				905650D71F9E61880071E028 /* TutorialPresentationPage1.swift in Sources */,
+				90D8E42F1FB4DC1000006140 /* NotificationManagerAssert.swift in Sources */,
 				905650D81F9E61880071E028 /* TutorialPresentationPage2.swift in Sources */,
 				90F45BAE1F9BB43A006E965A /* StyleKit.swift in Sources */,
 				90F45B9D1F9BB1CA006E965A /* Assets.xcassets in Sources */,
 				90F45BA01F9BB1CA006E965A /* StyleKit+UIImage.swift in Sources */,
+				90D8E42D1FB4DBC800006140 /* DeviceManagerAssert.swift in Sources */,
 				90F45BA11F9BB1CA006E965A /* Localizable.swift in Sources */,
 				90F45BA21F9BB1CA006E965A /* AppInfo.swift in Sources */,
 				90F45BA31F9BB1CA006E965A /* AppDelegate.swift in Sources */,
@@ -2192,8 +2261,11 @@
 				90F45B091F9BB1B6006E965A /* AppStoreManagerImpl.swift in Sources */,
 				90F45B0A1F9BB1B6006E965A /* UserDefaultsManager.swift in Sources */,
 				90F45B0D1F9BB1B6006E965A /* Endpoint.swift in Sources */,
+				90D95A231FB4E259000A1A8C /* AlertManagerAssert.swift in Sources */,
 				90F45B0E1F9BB1B6006E965A /* SessionManager.swift in Sources */,
+				90D8E4231FB4DAD000006140 /* AppManagerAssert.swift in Sources */,
 				90F45B0F1F9BB1B6006E965A /* NetworkError.swift in Sources */,
+				90D95A1D1FB4E216000A1A8C /* LocationManagerAssert.swift in Sources */,
 				90F45B101F9BB1B6006E965A /* LineLocationsParser.swift in Sources */,
 				90F45B111F9BB1B6006E965A /* LinesParser.swift in Sources */,
 				90F45B121F9BB1B6006E965A /* AvailableLinesEndpoint.swift in Sources */,
@@ -2247,6 +2319,7 @@
 				90F45B401F9BB1B6006E965A /* TutorialCoordinator.swift in Sources */,
 				90F45B411F9BB1B6006E965A /* SearchCoordinator.swift in Sources */,
 				90F45B421F9BB1B6006E965A /* BookmarksCoordinator.swift in Sources */,
+				90D8E4311FB4DC4700006140 /* AppStoreManagerAssert.swift in Sources */,
 				901A3F6F1FAFB6A300383B02 /* PopupViewConstants.swift in Sources */,
 				90F45B431F9BB1B6006E965A /* ConfigurationCoordinator.swift in Sources */,
 				90F45B441F9BB1B6006E965A /* ColorSelectionCoordinator.swift in Sources */,
@@ -2261,6 +2334,7 @@
 				90F45B4D1F9BB1B6006E965A /* ChevronViewState.swift in Sources */,
 				90F45B4E1F9BB1B6006E965A /* ChevronView.swift in Sources */,
 				90F45B4F1F9BB1B6006E965A /* LineSelectionCell.swift in Sources */,
+				90D95A1F1FB4E231000A1A8C /* TutorialManagerAssert.swift in Sources */,
 				90F45B501F9BB1B6006E965A /* LineSelectionSectionHeaderView.swift in Sources */,
 				90F45B511F9BB1B6006E965A /* LineSelectionCellViewModel.swift in Sources */,
 				90F45B521F9BB1B6006E965A /* LineSelectionSectionViewModel.swift in Sources */,
@@ -2289,8 +2363,10 @@
 				90F45B711F9BB1B6006E965A /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				9045C2E41F9BDDD7002F35C3 /* Assets.swift in Sources */,
 				90F45B721F9BB1B6006E965A /* CardPanelTransitionDelegate.swift in Sources */,
+				90D95A251FB4E26B000A1A8C /* ThemeManagerAssert.swift in Sources */,
 				90F45B731F9BB1B6006E965A /* CardPanelPresentable.swift in Sources */,
 				90F45B741F9BB1B6006E965A /* CardPanelConstants.swift in Sources */,
+				90D95A1B1FB4E156000A1A8C /* SearchManagerAssert.swift in Sources */,
 				90F45B751F9BB1B6006E965A /* TutorialViewControllerMode.swift in Sources */,
 				90F45B761F9BB1B6006E965A /* TutorialViewController.swift in Sources */,
 				90F45B771F9BB1B6006E965A /* TutorialViewControllerConstants.swift in Sources */,
@@ -2300,6 +2376,7 @@
 				90F45B7B1F9BB1B6006E965A /* MapViewController.swift in Sources */,
 				90F45B7C1F9BB1B6006E965A /* MapViewControllerConstants.swift in Sources */,
 				90F45B7D1F9BB1B6006E965A /* SearchViewController.swift in Sources */,
+				90D95A211FB4E245000A1A8C /* TrackingManagerAssert.swift in Sources */,
 				90F45B7E1F9BB1B6006E965A /* SearchViewControllerLayout.swift in Sources */,
 				90F45B7F1F9BB1B6006E965A /* SearchViewControllerConstants.swift in Sources */,
 				90F45B801F9BB1B6006E965A /* BookmarkCell.swift in Sources */,
@@ -2314,6 +2391,7 @@
 				90F45B891F9BB1B6006E965A /* ColorSelectionSectionFooterView.swift in Sources */,
 				90F45B8A1F9BB1B6006E965A /* ColorSelectionCellViewModel.swift in Sources */,
 				90F45B8B1F9BB1B6006E965A /* ColorSelectionSectionViewModel.swift in Sources */,
+				90D8E42B1FB4DB9A00006140 /* BundleManagerAssert.swift in Sources */,
 				90F45B8C1F9BB1B6006E965A /* ColorSelectionSection.swift in Sources */,
 				90F45B8D1F9BB1B6006E965A /* ColorSelectionDataSource.swift in Sources */,
 				90F45B8E1F9BB1B6006E965A /* ColorSelectionViewController.swift in Sources */,
@@ -2325,10 +2403,12 @@
 				90F45B941F9BB1B6006E965A /* ConfigurationSection.swift in Sources */,
 				90F45B951F9BB1B6006E965A /* ConfigurationDataSource.swift in Sources */,
 				90F45B961F9BB1B6006E965A /* ConfigurationViewController.swift in Sources */,
+				90D8E4351FB4DE2C00006140 /* DocumentsManagerAssert.swift in Sources */,
 				90F45B971F9BB1B6006E965A /* ConfigurationViewControllerLayout.swift in Sources */,
 				90F45B981F9BB1B6006E965A /* ConfigurationViewControllerConstants.swift in Sources */,
 				90F45B991F9BB1B6006E965A /* MainViewController.swift in Sources */,
 				90F45B9A1F9BB1B6006E965A /* MainViewControllerLayout.swift in Sources */,
+				90D8E4331FB4DDE600006140 /* UserDefaultsManagerAssert.swift in Sources */,
 				90F45B9B1F9BB1B6006E965A /* MainViewControllerConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

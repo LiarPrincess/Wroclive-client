@@ -8,7 +8,7 @@ import PromiseKit
 
 private typealias Constants = TrackingManagerConstants
 
-class TrackingManagerImpl {
+class TrackingManagerImpl: TrackingManager {
 
   private(set) var result: TrackingResult = .success(locations: []) {
     didSet { Managers.notification.post(.vehicleLocationsDidUpdate) }
@@ -47,7 +47,7 @@ class TrackingManagerImpl {
   }
 }
 
-extension TrackingManagerImpl: TrackingManager {
+extension TrackingManagerImpl {
   func start(_ lines: [Line]) {
     self.trackedLines = lines
     self.startTimer()
