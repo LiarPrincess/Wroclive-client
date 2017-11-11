@@ -11,9 +11,9 @@ class ThemeManagerImpl: ThemeManager {
 
   // MARK: - Properties
 
-  lazy fileprivate(set) var textFont: Font        = SystemFont()
-  lazy fileprivate(set) var iconFont: Font        = FontAwesomeFont()
-  lazy fileprivate(set) var colors:   ColorScheme = ColorSchemeManager.load()
+  fileprivate(set) lazy var textFont: Font        = SystemFont()
+  fileprivate(set) lazy var iconFont: Font        = FontAwesomeFont()
+  fileprivate(set) lazy var colors:   ColorScheme = ColorSchemeManager.load()
 
   // MARK: - Fonts
 

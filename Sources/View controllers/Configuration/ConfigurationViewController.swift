@@ -64,14 +64,15 @@ class ConfigurationViewController: UIViewController {
     self.initLayout()
   }
 
-  private var isAppearingForFirstTime = true
+  private var isFirstTimeLayout = true
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
 
-    if self.isAppearingForFirstTime {
-      self.offsetScrolViewToInitialPosition()
-      self.isAppearingForFirstTime = false
+    if self.isFirstTimeLayout {
+      self.insetScrolViewVerticalIndicatorBelowHeaderView()
+      self.offsetScrolViewToInitialPosition() // can also be in viewWillAppear
+      self.isFirstTimeLayout = false
     }
   }
 
@@ -82,7 +83,18 @@ class ConfigurationViewController: UIViewController {
 
   // MARK: - Scroll view
 
-  func offsetScrolViewToInitialPosition() {
+  private func insetScrolViewVerticalIndicatorBelowHeaderView() {
+    let headerHeight  = self.headerView.bounds.height
+    let currentInsets = self.scrollView.scrollIndicatorInsets
+
+    if currentInsets.top < headerHeight {
+      var insets = currentInsets
+      insets.top = headerHeight
+      self.scrollView.scrollIndicatorInsets = insets
+    }
+  }
+
+  private func offsetScrolViewToInitialPosition() {
     DispatchQueue.main.async { [weak self] in
       if let strongSelf = self {
         let offset = strongSelf.height * Layout.Content.initialScrollPercent
@@ -91,7 +103,7 @@ class ConfigurationViewController: UIViewController {
     }
   }
 
-  func updateScrollViewBackgroundColor() {
+  fileprivate func updateScrollViewBackgroundColor() {
     let gradientColor = Managers.theme.colors.presentation.gradient.first
     let tableColor    = Managers.theme.colors.configurationBackground
 
