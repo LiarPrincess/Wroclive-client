@@ -5,22 +5,27 @@
 
 import UIKit
 
-class CachedDocumentsManagerImpl: DocumentsManagerImpl {
+class CachedDocumentsManagerImpl: DocumentsManager {
 
-  private var cache: [Document: Any] = [:]
+  private let innerManager: DocumentsManager
+  private var cache:        [Document: Any]  = [:]
 
-  override func write(_ value: Any, as document: Document) {
-    self.cache[document] = value
-    return super.write(value, as: document)
+  init(_ documentManager: DocumentsManager) {
+    self.innerManager = documentManager
   }
 
-  override func read(_ document: Document) -> Any? {
+  func read(_ document: Document) -> Any? {
     if let cachedValue = self.cache[document] {
       return cachedValue
     }
 
-    let value = super.read(document)
+    let value = self.innerManager.read(document)
     self.cache[document] = value
     return value
+  }
+
+  func write(_ value: Any, as document: Document) {
+    self.cache[document] = value
+    self.innerManager.write(value, as: document)
   }
 }
