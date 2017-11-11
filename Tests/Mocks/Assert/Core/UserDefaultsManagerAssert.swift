@@ -7,19 +7,19 @@ import UIKit
 
 class UserDefaultsManagerAssert: UserDefaultsManager {
 
-  func set(_ value: Bool,   forKey defaultName: String) {
+  func getBool(_ key: UserDefaultsBoolKey) -> Bool {
     assertNotCalled()
   }
 
-  func set(_ value: String, forKey defaultName: String) {
+  func getString(_ key: UserDefaultsStringKey) -> String? {
     assertNotCalled()
   }
 
-  func bool(forKey defaultName: String) -> Bool {
+  func setBool(_ key: UserDefaultsBoolKey, to value: Bool) {
     assertNotCalled()
   }
 
-  func string(forKey defaultName: String) -> String? {
+  func setString(_ key: UserDefaultsStringKey, to value: String) {
     assertNotCalled()
   }
 }
