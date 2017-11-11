@@ -36,7 +36,7 @@ class Environment {
     device:       DeviceManager       = DeviceManagerImpl(),
     appStore:     AppStoreManager     = AppStoreManagerImpl(),
     notification: NotificationManager = NotificationManagerImpl(),
-    userDefaults: UserDefaultsManager = UserDefaults.standard,
+    userDefaults: UserDefaultsManager = UserDefaultsManagerImpl(),
     documents:    DocumentsManager    = CachedDocumentsManagerImpl(DocumentsManagerImpl()),
     api:          ApiManager          = ApiManagerImpl(),
     search:       SearchManager       = SearchManagerImpl(),

@@ -8,7 +8,7 @@ import Quick
 import Nimble
 @testable import Radar
 
-class Radar_Tests: XCTestCase {
+class RadarTests: XCTestCase {
 
   // MARK: Init/Deinit
 

@@ -5,16 +5,21 @@
 
 import UIKit
 
-protocol UserDefaultsManager {
-  func set(_ value: Bool,   forKey defaultName: String)
-  func set(_ value: String, forKey defaultName: String)
-
-  func bool  (forKey defaultName: String) -> Bool
-  func string(forKey defaultName: String) -> String?
+enum UserDefaultsBoolKey {
+  case hasCompletedTutorial
 }
 
-extension UserDefaults: UserDefaultsManager {
-  func set(_ value: String, forKey defaultName: String) {
-    self.setValue(value, forKey: defaultName)
-  }
+enum UserDefaultsStringKey {
+  case preferredTintColor
+  case preferredTramColor
+  case preferredBusColor
+}
+
+protocol UserDefaultsManager {
+
+  func getBool  (_ key: UserDefaultsBoolKey)   -> Bool
+  func getString(_ key: UserDefaultsStringKey) -> String?
+
+  func setBool  (_ key: UserDefaultsBoolKey,   to value: Bool)
+  func setString(_ key: UserDefaultsStringKey, to value: String)
 }

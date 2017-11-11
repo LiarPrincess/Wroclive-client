@@ -7,11 +7,11 @@ import UIKit
 
 class TutorialManagerImpl: TutorialManager {
 
-  private let defaultsKey = "hasCompletedTutorial"
-
-  var hasCompleted: Bool { return Managers.userDefaults.bool(forKey: defaultsKey) }
+  var hasCompleted: Bool {
+    return Managers.userDefaults.getBool(.hasCompletedTutorial)
+  }
 
   func markAsCompleted() {
-    Managers.userDefaults.set(true, forKey: defaultsKey)
+    Managers.userDefaults.setBool(.hasCompletedTutorial, to: true)
   }
 }

@@ -1,8 +1,10 @@
 # https://github.com/realm/SwiftLint
 
 disabled_rules:
-  - colon              # align properties
-  - comma              # align func params
+  - colon                   # align properties
+  - comma                   # align func params
+  - return_arrow_whitespace # align return type
+
   - nesting            # nested constants
   - identifier_name    # id
 
@@ -11,9 +13,10 @@ disabled_rules:
   - opening_brace      # if true { ... }
   - statement_position # else    { ... }
   
-  - void_return        # () not Void
+  - void_return        # prefer () to Void
 
 force_cast: warning
 
 included:
   - Sources
+  - Tests

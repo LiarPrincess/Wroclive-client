@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C153FE40E0145CF31BB964A /* Pods_App_Radar_Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12B269CCBFB520DE1059C1A8 /* Pods_App_Radar_Framework.framework */; };
 		3B422178C97855B2765F0C63 /* Pods_Radar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8885078077A6F4C3E997EB /* Pods_Radar.framework */; };
-		9009BD4A1FB63CA1009FB075 /* Radar_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A2C1FB4E8DA000A1A8C /* Radar_Tests.swift */; };
+		9009BD4A1FB63CA1009FB075 /* RadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A2C1FB4E8DA000A1A8C /* RadarTests.swift */; };
 		900CAEA61F482E750044C8A6 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8B1F482E750044C8A6 /* AlertManager.swift */; };
 		900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8C1F482E750044C8A6 /* AlertManagerImpl.swift */; };
 		900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8F1F482E750044C8A6 /* BookmarksManager.swift */; };
@@ -185,6 +185,7 @@
 		908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1981F48B3CA00121584 /* ReusableCell.swift */; };
 		908FB19D1F48B3CA00121584 /* ReusableCellContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1991F48B3CA00121584 /* ReusableCellContainer.swift */; };
 		908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB19A1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift */; };
+		90940D8A1FB721F400F3A316 /* UserDefaultsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90940D891FB721F400F3A316 /* UserDefaultsManagerImpl.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		909D5B151F8FD4AF008DAF9D /* DeviceImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */; };
 		909EFD121F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EFD111F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift */; };
@@ -634,6 +635,7 @@
 		908FB1981F48B3CA00121584 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		908FB1991F48B3CA00121584 /* ReusableCellContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCellContainer.swift; sourceTree = "<group>"; };
 		908FB19A1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableSuplementaryViewContainer.swift; sourceTree = "<group>"; };
+		90940D891FB721F400F3A316 /* UserDefaultsManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerImpl.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceImageView.swift; sourceTree = "<group>"; };
 		909EFD111F9D0FA900C487AD /* ColorSchemeTestViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeTestViewConstants.swift; sourceTree = "<group>"; };
@@ -680,7 +682,7 @@
 		90D95A201FB4E245000A1A8C /* TrackingManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManagerAssert.swift; sourceTree = "<group>"; };
 		90D95A221FB4E259000A1A8C /* AlertManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManagerAssert.swift; sourceTree = "<group>"; };
 		90D95A241FB4E26B000A1A8C /* ThemeManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManagerAssert.swift; sourceTree = "<group>"; };
-		90D95A2C1FB4E8DA000A1A8C /* Radar_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radar_Tests.swift; sourceTree = "<group>"; };
+		90D95A2C1FB4E8DA000A1A8C /* RadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarTests.swift; sourceTree = "<group>"; };
 		90D95A3B1FB4E8F0000A1A8C /* ScreenshotCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotCreator.swift; sourceTree = "<group>"; };
 		90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapCenter.swift"; sourceTree = "<group>"; };
 		90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+UpdateVehicleLocations.swift"; sourceTree = "<group>"; };
@@ -1570,6 +1572,7 @@
 			isa = PBXGroup;
 			children = (
 				90B4124F1F97E72E008F05E9 /* UserDefaultsManager.swift */,
+				90940D891FB721F400F3A316 /* UserDefaultsManagerImpl.swift */,
 			);
 			path = "User defaults";
 			sourceTree = "<group>";
@@ -1698,7 +1701,7 @@
 		90D95A481FB4E9F5000A1A8C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				90D95A2C1FB4E8DA000A1A8C /* Radar_Tests.swift */,
+				90D95A2C1FB4E8DA000A1A8C /* RadarTests.swift */,
 				9009BD441FB63C7B009FB075 /* Info.plist */,
 			);
 			path = Tests;
@@ -2295,7 +2298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9009BD4A1FB63CA1009FB075 /* Radar_Tests.swift in Sources */,
+				9009BD4A1FB63CA1009FB075 /* RadarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2455,6 +2458,7 @@
 				90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				907246051F883E140069B940 /* ConfigurationCoordinator.swift in Sources */,
+				90940D8A1FB721F400F3A316 /* UserDefaultsManagerImpl.swift in Sources */,
 				90F0A2D71F732A6C00C641C8 /* NotificationObserver.swift in Sources */,
 				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
 				9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */,
