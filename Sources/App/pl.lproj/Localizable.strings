@@ -87,6 +87,6 @@
 "Search_Loading"               = "Wczytywanie…";
 "Search_Search"                = "Szukaj";
 "Search_BookmarkAdded_Title"   = "Zakładka dodana!";
-"Search_BookmarkAdded_Caption" = "Użyj <star> z poziomu mapy, by zobaczyć wszystkie zapisane zakładki.";
+"Search_BookmarkAdded_Caption" = "Użyj <star>, by zobaczyć wszystkie zapisane zakładki.";
 
 "Share_Message" = "Bus radar - Komunikacja miejska na żywo! %@";

@@ -428,7 +428,7 @@ public struct Localizable {
 
       /// Use <star> from map view to see all saved bookmarks.
       /// - **en**: Use <star> from map view to see all saved bookmarks.
-      /// - **pl**: Użyj <star> z poziomu mapy, by zobaczyć wszystkie zapisane zakładki.
+      /// - **pl**: Użyj <star>, by zobaczyć wszystkie zapisane zakładki.
       static var caption: String { return localizedString("Search_BookmarkAdded_Caption") }
 
       /// Bookmark added!
