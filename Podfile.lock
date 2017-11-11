@@ -18,6 +18,7 @@ PODS:
   - PromiseKit/UIKit (4.5.0):
     - PromiseKit/CorePromise
   - Quick (1.2.0)
+  - SimulatorStatusMagic (2.0)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - PromiseKit (~> 4.0)
   - PromiseKit/Alamofire (~> 4.0)
   - Quick (~> 1.2.0)
+  - SimulatorStatusMagic (~> 2.0)
   - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
@@ -35,8 +37,9 @@ SPEC CHECKSUMS:
   Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
   PromiseKit: 9c1d9f6d7b65e3951a90bea7f407c56972be5d8e
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  SimulatorStatusMagic: c8e958d70e0e0cd2d7cf33bb95014a222ddecf0a
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 4a30cb807b681a49a07c559f07f5f1daa05abc1e
+PODFILE CHECKSUM: 46e5cebdf469b773f0df17c8e75ac301fd15bc99
 
 COCOAPODS: 1.3.1

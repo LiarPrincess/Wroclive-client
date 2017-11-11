@@ -15,6 +15,7 @@ class ScreenshotCreator: XCTestCase {
     super.setUp()
 
     self.app = XCUIApplication()
+    app.launchEnvironment = ["Screenshots": "true"]
     setupSnapshot(app)
     self.app.launch()
   }

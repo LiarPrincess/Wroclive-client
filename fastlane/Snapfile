@@ -17,7 +17,7 @@ stop_after_first_error true
 # output_simulator_logs true
 # namespace_log_files true
 
-# just so we have configured symulator
+# SimulatorStatusMagic is only for debug
 configuration "Debug"
 
 workspace "./Radar.xcworkspace"

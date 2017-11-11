@@ -8,6 +8,9 @@ target 'Radar' do
   pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
   pod 'PromiseKit',                        '~> 4.0'
   pod 'PromiseKit/Alamofire',              '~> 4.0'
+
+  # debug only
+  pod 'SimulatorStatusMagic',              '~> 2.0', :configurations => ['Debug']
 end
 
 target 'Radar-Tests' do

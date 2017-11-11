@@ -4,8 +4,22 @@
 //
 
 import UIKit
+#if DEBUG
+  import SimulatorStatusMagic
+#endif
 
 class AppManagerImpl: AppManager {
+
+  func enableStatusBarOverrides() {
+    #if DEBUG
+      if ProcessInfo.processInfo.environment["Screenshots"] != nil {
+        SDStatusBarManager.sharedInstance().enableOverrides()
+      }
+      else {
+        SDStatusBarManager.sharedInstance().disableOverrides()
+      }
+    #endif
+  }
 
   func openWebsite() {
     let url = URL(string: AppInfo.websiteHttps)!
