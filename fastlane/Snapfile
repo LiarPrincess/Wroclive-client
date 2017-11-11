@@ -1,0 +1,24 @@
+# Uncomment the lines below you want to change by removing the # in the beginning
+
+devices([
+  "iPhone 5s"
+])
+
+languages([
+  "en-US",
+  "pl-PL"
+])
+
+clear_previous_screenshots true
+localize_simulator true
+skip_open_summary true
+
+stop_after_first_error true
+# output_simulator_logs true
+# namespace_log_files true
+
+# just so we have configured symulator
+configuration "Debug"
+
+workspace "./Radar.xcworkspace"
+scheme "Radar-Screenshots"

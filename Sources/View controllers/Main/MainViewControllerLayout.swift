@@ -28,19 +28,24 @@ extension MainViewController {
   }
 
   private func initToolbarView() {
+    self.toolbar.accessibilityIdentifier = "MainViewController.toolbar"
+
     self.userTrackingButton.mapView = self.mapViewController.mapView
 
     self.searchButton.image  = StyleKit.drawSearchTemplateImage(size: Layout.toolbarImageSize)
     self.searchButton.target = self
     self.searchButton.action = #selector(searchButtonPressed)
+    self.searchButton.accessibilityIdentifier = "MainViewController.search"
 
     self.bookmarksButton.image  = StyleKit.drawStarTemplateImage(size: Layout.toolbarImageSize)
     self.bookmarksButton.target = self
     self.bookmarksButton.action = #selector(bookmarksButtonPressed)
+    self.bookmarksButton.accessibilityIdentifier = "MainViewController.bookmarks"
 
     self.configurationButton.image  = StyleKit.drawCogwheelTemplateImage(size: Layout.toolbarImageSize)
     self.configurationButton.target = self
     self.configurationButton.action = #selector(configurationButtonPressed)
+    self.configurationButton.accessibilityIdentifier = "MainViewController.configuration"
 
     self.toolbar.setItems(self.layoutToolbarItems(), animated: false)
     self.view.addSubview(self.toolbar)

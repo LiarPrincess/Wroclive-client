@@ -33,7 +33,7 @@ class AppEnvironment {
   private static var stack: [Environment] = []
 
   private static var current: Environment {
-    assert(stack.count > 0, "Attempting to use empty environment stack. Are you trying to side effect inside init?")
+    precondition(stack.count > 0, "Attempting to use empty environment stack.")
     return stack.last!
   }
 
@@ -77,7 +77,7 @@ class AppEnvironment {
   }
 
   static func pop() {
-    assert(stack.count > 0, "Attempting to illegaly clear environment stack.")
+    precondition(stack.count > 0, "Attempting to illegaly clear environment stack.")
     _ = stack.popLast()
   }
 }

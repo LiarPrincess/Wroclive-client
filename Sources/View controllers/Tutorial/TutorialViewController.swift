@@ -65,6 +65,7 @@ class TutorialViewController: UIViewController {
     self.closeButton.setImage(image, for: .normal)
     self.closeButton.addTarget(self, action: #selector(TutorialViewController.closeButtonPressed), for: .touchUpInside)
     self.closeButton.contentEdgeInsets = Layout.BackButton.insets
+    self.closeButton.accessibilityIdentifier = "TutorialViewController.closeButton"
 
     self.view.addSubview(self.closeButton)
     self.closeButton.snp.makeConstraints { make in
@@ -80,6 +81,7 @@ class TutorialViewController: UIViewController {
     self.closeFirstUseButton.setAttributedTitle(title, for: .normal)
     self.closeFirstUseButton.addTarget(self, action: #selector(TutorialViewController.closeButtonPressed), for: .touchUpInside)
     self.closeFirstUseButton.contentEdgeInsets = Layout.SkipButton.insets
+    self.closeFirstUseButton.accessibilityIdentifier = "TutorialViewController.closeFirstUseButton"
 
     self.view.addSubview(self.closeFirstUseButton)
     self.closeFirstUseButton.snp.makeConstraints { make in

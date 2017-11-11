@@ -1,13 +1,12 @@
 //
-//  Radar_Tests.swift
-//  Radar-Tests
-//
-//  Created by Michal Matuszczyk on 09/11/2017.
+//  Created by Michal Matuszczyk
+//  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
 import XCTest
 import Quick
 import Nimble
+@testable import Radar
 
 class Radar_Tests: XCTestCase {
 
@@ -24,6 +23,8 @@ class Radar_Tests: XCTestCase {
   // MARK: Tests
 
   func testExample() {
+    let hasCompletedTutorial = Managers.tutorial.hasCompleted
+
     expect(1 + 1).to(equal(2))
     expect(1.2).to(beCloseTo(1.1, within: 0.1))
     expect(3) > 2
