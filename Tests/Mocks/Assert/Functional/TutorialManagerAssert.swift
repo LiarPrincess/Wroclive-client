@@ -13,4 +13,3 @@ class TutorialManagerAssert: TutorialManager {
     assertNotCalled()
   }
 }
-

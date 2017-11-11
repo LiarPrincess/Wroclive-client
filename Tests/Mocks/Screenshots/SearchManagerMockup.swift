@@ -48,4 +48,3 @@
 //    return SearchManagerMockup(state: state)
 //  }
 //}
-

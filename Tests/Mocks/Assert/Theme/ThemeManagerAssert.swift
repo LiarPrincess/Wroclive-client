@@ -26,4 +26,3 @@ class ThemeManagerAssert: ThemeManager {
     assertNotCalled()
   }
 }
-
