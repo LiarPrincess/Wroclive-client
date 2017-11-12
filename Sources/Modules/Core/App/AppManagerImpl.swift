@@ -4,20 +4,13 @@
 //
 
 import UIKit
-#if DEBUG
-  import SimulatorStatusMagic
-#endif
 
 class AppManagerImpl: AppManager {
 
-  func enableStatusBarOverrides() {
+  func enableScreenshotOverrides() {
     #if DEBUG
-      if ProcessInfo.processInfo.environment["Screenshots"] != nil {
-        SDStatusBarManager.sharedInstance().enableOverrides()
-      }
-      else {
-        SDStatusBarManager.sharedInstance().disableOverrides()
-      }
+      self.prepareStatusBar()
+      self.mockEnvironment()
     #endif
   }
 

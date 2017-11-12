@@ -7,8 +7,11 @@ import UIKit
 
 protocol AppManager {
 
-  // Replace status bar with 9:41
-  func enableStatusBarOverrides()
+  /// Prepare app for taking screenshot:
+  /// - replace status bar with 9:41
+  /// - mock managers
+  /// - etc.
+  func enableScreenshotOverrides()
 
   /// Open app website in Safari
   func openWebsite()

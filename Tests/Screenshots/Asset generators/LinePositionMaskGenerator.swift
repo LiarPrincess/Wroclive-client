@@ -8,8 +8,7 @@ import UIKit
 /// This class can be used to generate mask for color scheme test view for trams/busses
 /// To use it:
 /// 1. Add this file to 'Radar' target (TEMPORARY)
-/// 2. Create instance of LinePositionMaskGenerator
-/// 3. Use 'generate(:)' method on root view controller
+/// 2. Use 'createMaskImages()'
 class LinePositionMaskGenerator {
 
   static func createMaskImages() {
