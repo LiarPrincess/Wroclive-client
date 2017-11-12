@@ -17,8 +17,11 @@ extension ProcessInfo {
   var bookmarksEmpty:  Bool { return arguments.contains("BookmarksEmpty")  }
   var bookmarksFilled: Bool { return arguments.contains("BookmarksFilled") }
 
+  var searchTramLoading:    Bool { return arguments.contains("Search_Tram_Loading")    }
   var searchTramSelected:   Bool { return arguments.contains("Search_Tram_Selected")   }
   var searchTramNoSelected: Bool { return arguments.contains("Search_Tram_NoSelected") }
+
+  var searchBusLoading:     Bool { return arguments.contains("Search_Bus_Loading")     }
   var searchBusSelected:    Bool { return arguments.contains("Search_Bus_Selected")    }
   var searchBusNoSelected:  Bool { return arguments.contains("Search_Bus_NoSelected")  }
 }
@@ -52,10 +55,10 @@ extension AppManagerImpl {
       environment.bookmarks = self.createEmptyBookmarksManager()
     }
 
-    // Search
-    if self.process.searchTramSelected {
-      environment.api    = self.createFilledLinesApiManager()
-      environment.search = self.createEmptySearchStateManager(selected: .tram)
+    // Search - Tram
+    if self.process.searchTramLoading {
+      environment.api    = self.createEmptyLinesApiManager(delay: 20.0)
+      environment.search = self.createFilledSearchManager(selected: .tram)
     }
 
     if self.process.searchTramNoSelected {
@@ -63,14 +66,25 @@ extension AppManagerImpl {
       environment.search = self.createFilledSearchManager(selected: .tram)
     }
 
-    if self.process.searchBusSelected {
+    if self.process.searchTramSelected {
       environment.api    = self.createFilledLinesApiManager()
-      environment.search = self.createEmptySearchStateManager(selected: .bus)
+      environment.search = self.createEmptySearchStateManager(selected: .tram)
+    }
+
+    // Search - Bus
+    if self.process.searchBusLoading {
+      environment.api    = self.createEmptyLinesApiManager(delay: 20.0)
+      environment.search = self.createFilledSearchManager(selected: .bus)
     }
 
     if self.process.searchBusNoSelected {
       environment.api    = self.createFilledLinesApiManager()
       environment.search = self.createFilledSearchManager(selected: .bus)
+    }
+
+    if self.process.searchBusSelected {
+      environment.api    = self.createFilledLinesApiManager()
+      environment.search = self.createEmptySearchStateManager(selected: .bus)
     }
 
     AppEnvironment.push(environment)
@@ -173,6 +187,10 @@ extension AppManagerImpl {
 
     let lines: [Line] = [tram1, tram3, tram4, tram5, busA, busC, busD, tram0L, tram0P, tram10, tram11, tram14, tram20, tram24, tram31, tram32, tram33, bus107, bus125, bus126, bus134, bus136, bus145, bus146, bus149, bus241, bus246, bus248, bus251, bus257, bus319, bus325]
     return ApiManagerMock(lines: lines, vehicles: [])
+  }
+
+  private func createEmptyLinesApiManager(delay: TimeInterval) -> ApiManager {
+    return ApiManagerMock(lines: [], vehicles: [], delay: delay)
   }
 
   // MARK: Search manager mocks

@@ -32,4 +32,15 @@ class BookmarkScreenshots: XCTestCase {
     app.toolbars["MainViewController.toolbar"].buttons["MainViewController.bookmarks"].tap()
     snapshot("Bookmarks_Filled")
   }
+
+  func testFilledEditScreenshots() {
+    self.app = XCUIApplication()
+    self.app.launchArguments.append("BookmarksFilled")
+    setupSnapshot(app)
+    self.app.launch()
+
+    app.toolbars["MainViewController.toolbar"].buttons["MainViewController.bookmarks"].tap()
+    app.buttons["BookmarksViewController.edit"].tap()
+    snapshot("Bookmarks_Filled_Edit")
+  }
 }

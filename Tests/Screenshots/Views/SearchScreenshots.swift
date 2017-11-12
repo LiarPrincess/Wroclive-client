@@ -11,16 +11,16 @@ class SearchScreenshots: XCTestCase {
 
   fileprivate(set) var app: XCUIApplication!
 
-  // MARK: Tests
+  // MARK: Test - Trams
 
-  func testTramSelectedScreenshots() {
+  func testTramLoading() {
     self.app = XCUIApplication()
-    self.app.launchArguments.append("Search_Tram_Selected")
+    self.app.launchArguments.append("Search_Tram_Loading")
     setupSnapshot(app)
     self.app.launch()
 
     app.toolbars["MainViewController.toolbar"].buttons["MainViewController.search"].tap()
-    snapshot("Search_Tram_Selected")
+    snapshot("Search_Tram_Loading")
   }
 
   func testTramNoSelectedScreenshots() {
@@ -33,14 +33,26 @@ class SearchScreenshots: XCTestCase {
     snapshot("Search_Tram_NoSelected")
   }
 
-  func testBusSelectedScreenshots() {
+  func testTramSelectedScreenshots() {
     self.app = XCUIApplication()
-    self.app.launchArguments.append("Search_Bus_Selected")
+    self.app.launchArguments.append("Search_Tram_Selected")
     setupSnapshot(app)
     self.app.launch()
 
     app.toolbars["MainViewController.toolbar"].buttons["MainViewController.search"].tap()
-    snapshot("Search_Bus_Selected")
+    snapshot("Search_Tram_Selected")
+  }
+
+  // MARK: Test - Bus
+
+  func testBusLoading() {
+    self.app = XCUIApplication()
+    self.app.launchArguments.append("Search_Bus_Loading")
+    setupSnapshot(app)
+    self.app.launch()
+
+    app.toolbars["MainViewController.toolbar"].buttons["MainViewController.search"].tap()
+    snapshot("Search_Bus_Loading")
   }
 
   func testBusNoSelectedScreenshots() {
@@ -51,5 +63,15 @@ class SearchScreenshots: XCTestCase {
 
     app.toolbars["MainViewController.toolbar"].buttons["MainViewController.search"].tap()
     snapshot("Search_Bus_NoSelected")
+  }
+
+  func testBusSelectedScreenshots() {
+    self.app = XCUIApplication()
+    self.app.launchArguments.append("Search_Bus_Selected")
+    setupSnapshot(app)
+    self.app.launch()
+
+    app.toolbars["MainViewController.toolbar"].buttons["MainViewController.search"].tap()
+    snapshot("Search_Bus_Selected")
   }
 }

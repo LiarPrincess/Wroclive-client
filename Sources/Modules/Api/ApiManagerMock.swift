@@ -12,21 +12,25 @@ class ApiManagerMock: ApiManager {
 
   private let lines:    [Line]
   private let vehicles: [Vehicle]
+  private let delay:    TimeInterval
 
   // MARK: - Init
 
-  init(lines: [Line] = [], vehicles: [Vehicle] = []) {
+  init(lines: [Line] = [], vehicles: [Vehicle] = [], delay: TimeInterval = 0.0) {
     self.lines    = lines
     self.vehicles = vehicles
+    self.delay    = delay
   }
 
   // MARK: - NetworkManager
 
   func getAvailableLines() -> Promise<[Line]> {
-    return Promise(value: self.lines)
+    return after(seconds: self.delay)
+      .then { return Promise(value: self.lines) }
   }
 
   func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
-    return Promise(value: self.vehicles)
+    return after(seconds: self.delay)
+      .then { return Promise(value: self.vehicles) }
   }
 }
