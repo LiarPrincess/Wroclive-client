@@ -9,8 +9,6 @@ import UIKit
 import SimulatorStatusMagic
 
 // swiftlint:disable function_body_length
-// swiftlint:disable type_body_length
-// swiftlint:disable file_length
 
 extension ProcessInfo {
   var snapshot: Bool { return arguments.contains("-FASTLANE_SNAPSHOT") }
@@ -36,7 +34,7 @@ extension AppManagerImpl {
   func mockEnvironment() {
     let environment = Environment()
 
-    let isShowingTutorial = true //self.process.isShowingTutorial
+    let isShowingTutorial = self.process.isShowingTutorial
     environment.tutorial = TutorialManagerMock(completed: !isShowingTutorial)
 
     if self.process.hasBookmarksFilled {

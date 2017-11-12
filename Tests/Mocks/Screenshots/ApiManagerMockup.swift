@@ -16,7 +16,7 @@
 //    self.vehicles = vehicles
 //  }
 //
-//  func getAvailableLines()  -> Promise<[Line]> {
+//  func getAvailableLines() -> Promise<[Line]> {
 //    return Promise(value: self.lines)
 //  }
 //

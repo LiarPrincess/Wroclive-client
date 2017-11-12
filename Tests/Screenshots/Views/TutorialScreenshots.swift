@@ -19,14 +19,11 @@ class TutorialScreenshots: XCTestCase {
     setupSnapshot(app)
     self.app.launch()
 
-    snapshot("01Tutorial")
+    snapshot("Tutorial_Page01")
     let element = XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0)
     element.swipeLeft()
-    snapshot("02Tutorial")
+    snapshot("Tutorial_Page02")
     element.swipeLeft()
-    snapshot("03Tutorial")
-
-    //    app.toolbars["MainViewController.toolbar"].buttons["MainViewController.bookmarks"].tap()
-    //    snapshot("02BookmarksEmpty")
+    snapshot("Tutorial_Page03")
   }
 }
