@@ -13,16 +13,6 @@ class BookmarkScreenshots: XCTestCase {
 
   // MARK: Tests
 
-  func testFilledScreenshots() {
-    self.app = XCUIApplication()
-    self.app.launchArguments.append("BookmarksFilled")
-    setupSnapshot(app)
-    self.app.launch()
-
-    app.toolbars["MainViewController.toolbar"].buttons["MainViewController.bookmarks"].tap()
-    snapshot("Bookmarks_Filled")
-  }
-
   func testEmptyScreenshots() {
     self.app = XCUIApplication()
     self.app.launchArguments.append("BookmarksEmpty")
@@ -31,5 +21,15 @@ class BookmarkScreenshots: XCTestCase {
 
     app.toolbars["MainViewController.toolbar"].buttons["MainViewController.bookmarks"].tap()
     snapshot("Bookmarks_Empty")
+  }
+
+  func testFilledScreenshots() {
+    self.app = XCUIApplication()
+    self.app.launchArguments.append("BookmarksFilled")
+    setupSnapshot(app)
+    self.app.launch()
+
+    app.toolbars["MainViewController.toolbar"].buttons["MainViewController.bookmarks"].tap()
+    snapshot("Bookmarks_Filled")
   }
 }

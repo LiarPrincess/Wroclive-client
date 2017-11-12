@@ -15,7 +15,7 @@ class TutorialScreenshots: XCTestCase {
 
   func testScreenshots() {
     self.app = XCUIApplication()
-    self.app.launchArguments.append("ShowTutorial")
+    self.app.launchArguments.append("Tutorial")
     setupSnapshot(app)
     self.app.launch()
 

@@ -163,6 +163,9 @@
 		909074A81FB8540B00C8DD51 /* TutorialManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074A71FB8540B00C8DD51 /* TutorialManagerMock.swift */; };
 		909074AA1FB8566100C8DD51 /* AppManagerImpl+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074A91FB8566100C8DD51 /* AppManagerImpl+Screenshot.swift */; };
 		909074B11FB89AED00C8DD51 /* BookmarkScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074AF1FB89ACB00C8DD51 /* BookmarkScreenshots.swift */; };
+		909074B31FB8A96600C8DD51 /* ApiManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074B21FB8A96600C8DD51 /* ApiManagerMock.swift */; };
+		909074B51FB8AB3800C8DD51 /* SearchManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074B41FB8AB3800C8DD51 /* SearchManagerMock.swift */; };
+		909074B71FB8AF1700C8DD51 /* SearchScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074B61FB8AF1700C8DD51 /* SearchScreenshots.swift */; };
 		90940D8A1FB721F400F3A316 /* UserDefaultsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90940D891FB721F400F3A316 /* UserDefaultsManagerImpl.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		909D5B151F8FD4AF008DAF9D /* DeviceImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */; };
@@ -357,8 +360,6 @@
 		903920341F1AB70E00250162 /* ArrayOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayOfLines.swift; sourceTree = "<group>"; };
 		903BC5251F88DF0E0098469F /* ColorSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionCoordinator.swift; sourceTree = "<group>"; };
 		903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		903F7AC91FAF9A5600C872A9 /* SearchManagerMockup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManagerMockup.swift; sourceTree = "<group>"; };
-		903F7ACE1FAF9DD100C872A9 /* ApiManagerMockup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerMockup.swift; sourceTree = "<group>"; };
 		9044A5331F69A13D00F26C17 /* ColorSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionCell.swift; sourceTree = "<group>"; };
 		9044A5341F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionFooterView.swift; sourceTree = "<group>"; };
 		9044A5351F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -418,6 +419,9 @@
 		909074A71FB8540B00C8DD51 /* TutorialManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialManagerMock.swift; sourceTree = "<group>"; };
 		909074A91FB8566100C8DD51 /* AppManagerImpl+Screenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppManagerImpl+Screenshot.swift"; sourceTree = "<group>"; };
 		909074AF1FB89ACB00C8DD51 /* BookmarkScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkScreenshots.swift; sourceTree = "<group>"; };
+		909074B21FB8A96600C8DD51 /* ApiManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerMock.swift; sourceTree = "<group>"; };
+		909074B41FB8AB3800C8DD51 /* SearchManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManagerMock.swift; sourceTree = "<group>"; };
+		909074B61FB8AF1700C8DD51 /* SearchScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenshots.swift; sourceTree = "<group>"; };
 		90940D891FB721F400F3A316 /* UserDefaultsManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerImpl.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceImageView.swift; sourceTree = "<group>"; };
@@ -585,6 +589,7 @@
 				900CAE961F482E750044C8A6 /* Endpoints */,
 				900CAE9E1F482E750044C8A6 /* ApiManager.swift */,
 				900CAE9F1F482E750044C8A6 /* ApiManagerImpl.swift */,
+				909074B21FB8A96600C8DD51 /* ApiManagerMock.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -613,6 +618,7 @@
 			children = (
 				900CAEA11F482E750044C8A6 /* SearchManager.swift */,
 				900CAEA21F482E750044C8A6 /* SearchManagerImpl.swift */,
+				909074B41FB8AB3800C8DD51 /* SearchManagerMock.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1220,6 +1226,7 @@
 			children = (
 				90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */,
 				909074AF1FB89ACB00C8DD51 /* BookmarkScreenshots.swift */,
+				909074B61FB8AF1700C8DD51 /* SearchScreenshots.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1402,18 +1409,8 @@
 			isa = PBXGroup;
 			children = (
 				90D8E41A1FB4D12700006140 /* Assert */,
-				90D8E4161FB4CD5D00006140 /* Screenshots */,
 			);
 			path = Mocks;
-			sourceTree = "<group>";
-		};
-		90D8E4161FB4CD5D00006140 /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				903F7ACE1FAF9DD100C872A9 /* ApiManagerMockup.swift */,
-				903F7AC91FAF9A5600C872A9 /* SearchManagerMockup.swift */,
-			);
-			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		90D8E41A1FB4D12700006140 /* Assert */ = {
@@ -2022,6 +2019,7 @@
 				90541FCF1FA79E6C0055350E /* DocumentsManager.swift in Sources */,
 				9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */,
 				9044A5441F69A13D00F26C17 /* ColorSelectionCell.swift in Sources */,
+				909074B31FB8A96600C8DD51 /* ApiManagerMock.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
 				90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */,
 				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
@@ -2049,6 +2047,7 @@
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManagerImpl.swift in Sources */,
 				90AF2BE31EE9E4ED006E61D6 /* ThemeManagerEnumerations.swift in Sources */,
 				90AFEE5C1F842753009716B6 /* AppCoordinator.swift in Sources */,
+				909074B51FB8AB3800C8DD51 /* SearchManagerMock.swift in Sources */,
 				9044A5481F69A13D00F26C17 /* ColorSelectionViewControllerConstants.swift in Sources */,
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
 				90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */,
@@ -2182,6 +2181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90FB9DC51FB64DD700DEA125 /* TutorialScreenshots.swift in Sources */,
+				909074B71FB8AF1700C8DD51 /* SearchScreenshots.swift in Sources */,
 				90FB9DC61FB64DDA00DEA125 /* SnapshotHelper.swift in Sources */,
 				909074B11FB89AED00C8DD51 /* BookmarkScreenshots.swift in Sources */,
 			);
