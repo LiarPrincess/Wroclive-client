@@ -166,6 +166,7 @@
 		909074B31FB8A96600C8DD51 /* ApiManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074B21FB8A96600C8DD51 /* ApiManagerMock.swift */; };
 		909074B51FB8AB3800C8DD51 /* SearchManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074B41FB8AB3800C8DD51 /* SearchManagerMock.swift */; };
 		909074B71FB8AF1700C8DD51 /* SearchScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074B61FB8AF1700C8DD51 /* SearchScreenshots.swift */; };
+		909074BA1FB8BD8500C8DD51 /* MapScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074B81FB8BD8100C8DD51 /* MapScreenshots.swift */; };
 		90940D8A1FB721F400F3A316 /* UserDefaultsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90940D891FB721F400F3A316 /* UserDefaultsManagerImpl.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		909D5B151F8FD4AF008DAF9D /* DeviceImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */; };
@@ -422,6 +423,7 @@
 		909074B21FB8A96600C8DD51 /* ApiManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerMock.swift; sourceTree = "<group>"; };
 		909074B41FB8AB3800C8DD51 /* SearchManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManagerMock.swift; sourceTree = "<group>"; };
 		909074B61FB8AF1700C8DD51 /* SearchScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenshots.swift; sourceTree = "<group>"; };
+		909074B81FB8BD8100C8DD51 /* MapScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenshots.swift; sourceTree = "<group>"; };
 		90940D891FB721F400F3A316 /* UserDefaultsManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerImpl.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		909D5B141F8FD4AF008DAF9D /* DeviceImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceImageView.swift; sourceTree = "<group>"; };
@@ -1221,14 +1223,15 @@
 			path = "Reusable cell";
 			sourceTree = "<group>";
 		};
-		909074AB1FB85BD800C8DD51 /* Views */ = {
+		909074AB1FB85BD800C8DD51 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
 				90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */,
 				909074AF1FB89ACB00C8DD51 /* BookmarkScreenshots.swift */,
 				909074B61FB8AF1700C8DD51 /* SearchScreenshots.swift */,
+				909074B81FB8BD8100C8DD51 /* MapScreenshots.swift */,
 			);
-			path = Views;
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		9096CDCB1F40EF0C00FEF20A /* Configuration */ = {
@@ -1478,15 +1481,15 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		90D95A491FB4E9FD000A1A8C /* Screenshots */ = {
+		90D95A491FB4E9FD000A1A8C /* UI Tests */ = {
 			isa = PBXGroup;
 			children = (
-				909074AB1FB85BD800C8DD51 /* Views */,
+				909074AB1FB85BD800C8DD51 /* Screenshots */,
 				902FC75A1FB7923B002E09FE /* Asset generators */,
 				90B304381FB50A3700F5F20C /* SnapshotHelper.swift */,
 				90FB9DBF1FB64DC700DEA125 /* Info.plist */,
 			);
-			path = Screenshots;
+			path = "UI Tests";
 			sourceTree = "<group>";
 		};
 		90DED6CC1F93F4A000FF1540 /* Tutorial */ = {
@@ -1591,7 +1594,7 @@
 			children = (
 				90D8E4151FB4CD4C00006140 /* Mocks */,
 				90D95A481FB4E9F5000A1A8C /* Tests */,
-				90D95A491FB4E9FD000A1A8C /* Screenshots */,
+				90D95A491FB4E9FD000A1A8C /* UI Tests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -2180,6 +2183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909074BA1FB8BD8500C8DD51 /* MapScreenshots.swift in Sources */,
 				90FB9DC51FB64DD700DEA125 /* TutorialScreenshots.swift in Sources */,
 				909074B71FB8AF1700C8DD51 /* SearchScreenshots.swift in Sources */,
 				90FB9DC61FB64DDA00DEA125 /* SnapshotHelper.swift in Sources */,
@@ -2455,7 +2459,7 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = Tests/Screenshots/Info.plist;
+				INFOPLIST_FILE = "Tests/UI Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -2498,7 +2502,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = Tests/Screenshots/Info.plist;
+				INFOPLIST_FILE = "Tests/UI Tests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
