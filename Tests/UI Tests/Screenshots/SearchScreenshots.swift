@@ -71,4 +71,3 @@ class SearchScreenshots: XCTestCase {
     snapshot("Search_Bus_Selected")
   }
 }
-
