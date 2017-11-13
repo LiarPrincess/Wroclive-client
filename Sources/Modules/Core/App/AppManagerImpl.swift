@@ -9,8 +9,7 @@ class AppManagerImpl: AppManager {
 
   func enableScreenshotOverrides() {
     #if DEBUG
-      self.prepareStatusBar()
-      self.mockEnvironment()
+      self.enableOverrides()
     #endif
   }
 

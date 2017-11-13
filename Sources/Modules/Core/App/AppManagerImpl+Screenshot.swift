@@ -10,12 +10,12 @@ import SimulatorStatusMagic
 
 // swiftlint:disable function_body_length
 
-extension ProcessInfo {
+fileprivate extension ProcessInfo {
   var snapshot: Bool { return arguments.contains("-FASTLANE_SNAPSHOT") }
 
   var tutorial:        Bool { return arguments.contains("Tutorial")        }
-  var bookmarksEmpty:  Bool { return arguments.contains("BookmarksEmpty")  }
-  var bookmarksFilled: Bool { return arguments.contains("BookmarksFilled") }
+  var bookmarksEmpty:  Bool { return arguments.contains("Bookmarks_Empty")  }
+  var bookmarksFilled: Bool { return arguments.contains("Bookmarks_Filled") }
 
   var searchTramLoading:    Bool { return arguments.contains("Search_Tram_Loading")    }
   var searchTramSelected:   Bool { return arguments.contains("Search_Tram_Selected")   }
@@ -30,9 +30,10 @@ extension AppManagerImpl {
 
   private var process: ProcessInfo { return ProcessInfo.processInfo }
 
-  func prepareStatusBar() {
+  func enableOverrides() {
     if self.process.snapshot {
       SDStatusBarManager.sharedInstance().enableOverrides()
+      self.mockEnvironment()
     }
     else {
       SDStatusBarManager.sharedInstance().disableOverrides()

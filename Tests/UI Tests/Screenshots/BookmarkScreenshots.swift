@@ -15,7 +15,7 @@ class BookmarkScreenshots: XCTestCase {
 
   func testEmptyScreenshots() {
     self.app = XCUIApplication()
-    self.app.launchArguments.append("BookmarksEmpty")
+    self.app.launchArguments.append("Bookmarks_Empty")
     setupSnapshot(app)
     self.app.launch()
 
@@ -25,7 +25,7 @@ class BookmarkScreenshots: XCTestCase {
 
   func testFilledScreenshots() {
     self.app = XCUIApplication()
-    self.app.launchArguments.append("BookmarksFilled")
+    self.app.launchArguments.append("Bookmarks_Filled")
     setupSnapshot(app)
     self.app.launch()
 
@@ -35,7 +35,7 @@ class BookmarkScreenshots: XCTestCase {
 
   func testFilledEditScreenshots() {
     self.app = XCUIApplication()
-    self.app.launchArguments.append("BookmarksFilled")
+    self.app.launchArguments.append("Bookmarks_Filled")
     setupSnapshot(app)
     self.app.launch()
 
