@@ -7,16 +7,10 @@ import XCTest
 
 class MapScreenshots: XCTestCase {
 
-  // MARK: Properties
-
-  fileprivate(set) var app: XCUIApplication!
-
-  // MARK: Tests
-
-  func testScreenshots() {
-    self.app = XCUIApplication()
+  func testEmpty() {
+    let app = XCUIApplication()
     setupSnapshot(app)
-    self.app.launch()
+    app.launch()
 
     snapshot("Map")
   }

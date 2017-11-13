@@ -53,8 +53,9 @@ extension ConfigurationDataSource: UITableViewDataSource {
 
     cell.textLabel?.attributedText = NSAttributedString(string: cellViewModel.text, attributes: textAttributes)
     cell.backgroundColor = Managers.theme.colors.background
-    cell.accessoryType = cellViewModel.accessoryType
+    cell.accessoryType   = cellViewModel.accessoryType
 //    cell.isEnabled     = cellViewModel.isEnabled
+    cell.accessibilityIdentifier = cellViewModel.accessibilityIdentifier
     return cell
   }
 }

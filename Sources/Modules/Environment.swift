@@ -20,7 +20,6 @@ class Environment {
   var api: ApiManager
 
   // func
-  var tutorial:  TutorialManager
   var search:    SearchManager
   var bookmarks: BookmarksManager
   var location:  LocationManager
@@ -43,7 +42,6 @@ class Environment {
     bookmarks:    BookmarksManager    = BookmarksManagerImpl(),
     location:     LocationManager     = LocationManagerImpl(),
     tracking:     TrackingManager     = TrackingManagerImpl(),
-    tutorial:     TutorialManager     = TutorialManagerImpl(),
     alert:        AlertManager        = AlertManagerImpl(),
     theme:        ThemeManager        = ThemeManagerImpl()) {
 
@@ -59,7 +57,6 @@ class Environment {
     self.bookmarks     = bookmarks
     self.location      = location
     self.tracking      = tracking
-    self.tutorial      = tutorial
     self.alert         = alert
     self.theme         = theme
   }

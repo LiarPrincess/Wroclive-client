@@ -30,4 +30,15 @@ enum ConfigurationCell: ConfigurationCellViewModel {
     default:               return true
     }
   }
+
+  var accessibilityIdentifier: String {
+    let base = "ConfigurationCellView."
+    switch self {
+    case .personalization: return base + "colors"
+    case .tutorial:        return base + "tutorial"
+    case .contact:         return base + "contact"
+    case .share:           return base + "share"
+    case .rate:            return base + "rate"
+    }
+  }
 }

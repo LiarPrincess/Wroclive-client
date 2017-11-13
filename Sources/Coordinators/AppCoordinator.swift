@@ -21,29 +21,9 @@ class AppCoordinator: Coordinator {
 }
 
 extension AppCoordinator: MainViewControllerDelegate,
-                          TutorialCoordinatorDelegate,
                           SearchCoordinatorDelegate,
                           BookmarksCoordinatorDelegate,
                           ConfigurationCoordinatorDelegate {
-
-  // MARK: - Tutorial
-
-  func mainViewControllerDidAppear(_ viewController: MainViewController) {
-    guard !Managers.tutorial.hasCompleted else { return }
-
-    let coordinator = TutorialCoordinator(parent: viewController, mode: .firstUse, delegate: self)
-    self.childCoordinators.append(coordinator)
-    coordinator.start()
-  }
-
-  func tutorialCoordinatorDidClose(_ coordinator: TutorialCoordinator) {
-    self.removeChildCoordinator(coordinator)
-
-    if coordinator.mode == .firstUse {
-      Managers.tutorial.markAsCompleted()
-      Managers.location.requestAuthorization()
-    }
-  }
 
   // MARK: - Search
 

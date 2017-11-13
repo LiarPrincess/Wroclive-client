@@ -19,7 +19,6 @@ class AppEnvironment {
 
   static var api:          ApiManager          { return current.api          }
 
-  static var tutorial:     TutorialManager     { return current.tutorial     }
   static var search:       SearchManager       { return current.search       }
   static var bookmarks:    BookmarksManager    { return current.bookmarks    }
   static var location:     LocationManager     { return current.location     }
@@ -50,7 +49,6 @@ class AppEnvironment {
     bookmarks:    BookmarksManager    = bookmarks,
     location:     LocationManager     = location,
     tracking:     TrackingManager     = tracking,
-    tutorial:     TutorialManager     = tutorial,
     alert:        AlertManager        = alert,
     theme:        ThemeManager        = theme) {
 
@@ -67,7 +65,6 @@ class AppEnvironment {
       bookmarks:    bookmarks,
       location:     location,
       tracking:     tracking,
-      tutorial:     tutorial,
       alert:        alert,
       theme:        theme))
   }

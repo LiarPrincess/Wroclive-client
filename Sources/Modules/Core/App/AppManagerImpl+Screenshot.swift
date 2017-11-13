@@ -43,10 +43,6 @@ extension AppManagerImpl {
   func mockEnvironment() {
     let environment = Environment()
 
-    // Tutorial
-    let showTutorial = self.process.tutorial
-    environment.tutorial = self.createTutorialManager(completed: !showTutorial)
-
     // Bookmarks
     if self.process.bookmarksFilled {
       environment.bookmarks = self.createFilledBookmarksManager()
@@ -89,12 +85,6 @@ extension AppManagerImpl {
     }
 
     AppEnvironment.push(environment)
-  }
-
-  // MARK: Tutorial manager mocks
-
-  private func createTutorialManager(completed: Bool) -> TutorialManager {
-    return TutorialManagerMock(completed: completed)
   }
 
   // MARK: Bookmarks manager mocks

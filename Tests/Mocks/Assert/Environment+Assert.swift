@@ -19,7 +19,6 @@ extension Environment {
       bookmarks:    BookmarksManagerAssert(),
       location:     LocationManagerAssert(),
       tracking:     TrackingManagerAssert(),
-      tutorial:     TutorialManagerAssert(),
       alert:        AlertManagerAssert(),
       theme:        ThemeManagerAssert())
   }
