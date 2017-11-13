@@ -51,7 +51,12 @@ extension MainViewController {
     self.view.addSubview(self.toolbar)
 
     self.toolbar.snp.makeConstraints { make in
-      make.left.right.bottom.equalToSuperview()
+      make.left.right.equalToSuperview()
+
+      if #available(iOS 11.0, *) {
+        make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+      }
+      else { make.bottom.equalToSuperview() }
     }
   }
 

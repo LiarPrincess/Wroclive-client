@@ -64,7 +64,12 @@ extension TutorialPresentation {
     self.pageControl.snp.makeConstraints { make in
       make.top.equalTo(self.pageViewController.view.snp.bottom).offset(Layout.PageControl.topOffset)
       make.centerX.equalToSuperview()
-      make.bottom.equalToSuperview().offset(-Layout.PageControl.bottomOffset)
+
+      let bottomOffset = -Layout.PageControl.bottomOffset
+      if #available(iOS 11.0, *) {
+        make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(bottomOffset)
+      }
+      else { make.bottom.equalToSuperview().offset(bottomOffset) }
     }
   }
 }
