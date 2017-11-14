@@ -25,6 +25,7 @@ struct AppInfo {
   #else
   #endif
 
+  static let locationAuthorizationDelay: TimeInterval = 2.0
   static let locationUpdateInterval:     TimeInterval = 5.0
   static let failedLinesRequestDelay:    TimeInterval = 2.0
   static let failedLocationRequestDelay: TimeInterval = 3.0

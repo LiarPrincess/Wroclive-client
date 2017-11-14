@@ -25,6 +25,23 @@ extension AppCoordinator: MainViewControllerDelegate,
                           BookmarksCoordinatorDelegate,
                           ConfigurationCoordinatorDelegate {
 
+  // MARK: - Main
+
+  func mainViewControllerDidAppear(_ viewController: MainViewController) {
+    let authorization = Managers.location.authorization
+
+    if authorization == .notDetermined {
+      let delay = AppInfo.locationAuthorizationDelay
+      self.requestLocationAuthorization(after: delay)
+    }
+  }
+
+  private func requestLocationAuthorization(after: TimeInterval) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + after) {
+      Managers.location.requestAuthorization()
+    }
+  }
+
   // MARK: - Search
 
   func mainViewControllerDidTapSearchButton(_ viewController: MainViewController) {

@@ -11,6 +11,8 @@ import PromiseKit
 private typealias Constants = MainViewControllerConstants
 
 protocol MainViewControllerDelegate: class {
+  func mainViewControllerDidAppear(_ viewController: MainViewController)
+
   func mainViewControllerDidTapSearchButton(_ viewController: MainViewController)
   func mainViewControllerDidTapBookmarksButton(_ viewController: MainViewController)
   func mainViewControllerDidTapConfigurationButton(_ viewController: MainViewController)
@@ -57,6 +59,11 @@ class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.delegate?.mainViewControllerDidAppear(self)
   }
 
   // MARK: - Actions
