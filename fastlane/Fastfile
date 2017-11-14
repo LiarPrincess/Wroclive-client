@@ -7,6 +7,11 @@ default_platform :ios
 #   scan
 # end
 
+desc "Regenerate Localizable.swift file"
+lane :translate do
+  sh "python actions/create_localizations.py ../Sources/App"
+end
+
 desc "Creates new app screenshots"
 lane :screenshot do
   snapshot
@@ -34,8 +39,9 @@ end
 # end
 
 after_all do |lane|
-  notify "Fastlane finished '#{lane}'"
+  notification(subtitle: nil, message: "Finished line '#{lane}'.")
 end
 
 error do |lane, exception|
+  notification(subtitle: nil, message: "Error when executing line '#{lane}'.")
 end

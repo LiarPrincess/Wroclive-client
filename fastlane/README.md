@@ -29,6 +29,11 @@ xcode-select --install
 </table>
 
 # Available Actions
+### translate
+```
+fastlane translate
+```
+Regenerate Localizable.swift file
 ### screenshot
 ```
 fastlane screenshot

@@ -9,14 +9,20 @@ import collections
 # ========
 # = init =
 # ========
-
+zzz
 # set default encoding to utf-8 as we are dealing with polish characters and python 2.7
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-localization_directory = os.path.join(os.getcwd(), 'Sources', 'App')
+if len(sys.argv) < 2:
+  print 'Missing localization path argument'
+  sys.exit(0)
+
+localization_directory = sys.argv[1]
 localization_line_pattern = re.compile('"(.*)"\W* = "(.*)";')
 localization_separator = '_'
+
+output_file = os.path.join(localization_directory, 'Localizable.swift')
 
 base_language = 'en'
 languages = ['Base', 'pl']
@@ -126,6 +132,8 @@ for language in languages:
     localization_values = merge_dictionaries(localization_values, values)
 
 validate(localization_values)
+
+sys.stdout = open(output_file, 'w')
 
 print '//'
 print '//  Created by Michal Matuszczyk'
