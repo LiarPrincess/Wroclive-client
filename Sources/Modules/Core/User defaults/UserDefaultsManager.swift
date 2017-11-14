@@ -5,10 +5,6 @@
 
 import UIKit
 
-enum UserDefaultsBoolKey {
-  case hasCompletedTutorial
-}
-
 enum UserDefaultsStringKey {
   case preferredTintColor
   case preferredTramColor
@@ -17,9 +13,9 @@ enum UserDefaultsStringKey {
 
 protocol UserDefaultsManager {
 
-  func getBool  (_ key: UserDefaultsBoolKey)   -> Bool
+  /// Get value for given key from store
   func getString(_ key: UserDefaultsStringKey) -> String?
 
-  func setBool  (_ key: UserDefaultsBoolKey,   to value: Bool)
+  /// Store given value
   func setString(_ key: UserDefaultsStringKey, to value: String)
 }
