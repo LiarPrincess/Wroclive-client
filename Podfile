@@ -2,7 +2,7 @@ use_frameworks!
 
 platform :ios, "10.2"
 
-target 'Radar' do
+target 'Wroclive' do
   pod 'SnapKit',                           '~> 3.2.0'
   pod 'Alamofire',                         '~> 4.4'
   pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
@@ -13,10 +13,10 @@ target 'Radar' do
   pod 'SimulatorStatusMagic',              '~> 2.0', :configurations => ['Debug']
 end
 
-target 'Radar-Tests' do
+target 'Wroclive-Tests' do
   pod 'Quick',  '~> 1.2.0'
   pod 'Nimble', '~> 7.0.2'
 end
 
-target 'Radar-Screenshots' do
+target 'Wroclive-Screenshots' do
 end

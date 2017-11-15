@@ -24,7 +24,7 @@
 "Alert_Location_GloballyDenied_Ok"      = "OK";
 "Alert_Location_GloballyDenied_Title"   = "Location Services Off";
 
-"Alert_InvalidCity_Message" = "Radar works best in Wrocław.\nWould you like to visit?";
+"Alert_InvalidCity_Message" = "Wroclive works best in Wrocław.\nWould you like to visit?";
 "Alert_InvalidCity_No"      = "No";
 "Alert_InvalidCity_Title"   = "Adventure time!";
 "Alert_InvalidCity_Yes"     = "Yes";
@@ -69,7 +69,7 @@
 
 "Presentation_InAppPurchase_Bookmarks_Caption" = "Save more than 2 bookmarks to travel faster across the city.";
 "Presentation_InAppPurchase_Bookmarks_Title"   = "Unlimited Bookmarks";
-"Presentation_InAppPurchase_Colors_Caption"    = "Brighten up your life and personalize Radar to your favorite color.";
+"Presentation_InAppPurchase_Colors_Caption"    = "Brighten up your life and personalize Wroclive to your favorite color.";
 "Presentation_InAppPurchase_Colors_Title"      = "Personalization";
 "Presentation_InAppPurchase_Restore_Link"      = "Restore Purchase";
 "Presentation_InAppPurchase_Restore_Text"      = "Previously upgraded?";
@@ -89,4 +89,4 @@
 "Search_BookmarkAdded_Title"   = "Bookmark added!";
 "Search_BookmarkAdded_Caption" = "Use <star> from map view to see all saved bookmarks.";
 
-"Share_Message" = "Bus radar - Real time public transport! %@";
+"Share_Message" = "Wroclive - Real time public transport! %@";

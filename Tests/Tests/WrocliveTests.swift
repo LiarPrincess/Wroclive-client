@@ -6,9 +6,9 @@
 import XCTest
 import Quick
 import Nimble
-@testable import Radar
+@testable import Wroclive
 
-class RadarTests: XCTestCase {
+class WrocliveTests: XCTestCase {
 
   // MARK: Init/Deinit
 
@@ -23,7 +23,7 @@ class RadarTests: XCTestCase {
   // MARK: Tests
 
   func testExample() {
-    let hasCompletedTutorial = Managers.tutorial.hasCompleted
+    let appName = Managers.bundle.name
 
     expect(1 + 1).to(equal(2))
     expect(1.2).to(beCloseTo(1.1, within: 0.1))

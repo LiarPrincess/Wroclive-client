@@ -7,7 +7,7 @@ import UIKit
 
 /// This class can be used to generate mask for color scheme test view for trams/busses
 /// To use it:
-/// 1. Add this file to 'Radar' target (TEMPORARY)
+/// 1. Add this file to 'Wroclive' target (TEMPORARY)
 /// 2. Use 'createMaskImages()'
 class LinePositionMaskGenerator {
 

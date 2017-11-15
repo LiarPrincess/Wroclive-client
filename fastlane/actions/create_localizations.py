@@ -9,7 +9,7 @@ import collections
 # ========
 # = init =
 # ========
-zzz
+
 # set default encoding to utf-8 as we are dealing with polish characters and python 2.7
 reload(sys)
 sys.setdefaultencoding('utf-8')

@@ -23,5 +23,5 @@ stop_after_first_error true
 # SimulatorStatusMagic is only for debug
 configuration "Debug"
 
-workspace "./Radar.xcworkspace"
-scheme "Radar-Screenshots"
+workspace "./Wroclive.xcworkspace"
+scheme "Wroclive-Screenshots"

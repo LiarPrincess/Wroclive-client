@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B422178C97855B2765F0C63 /* Pods_Radar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8885078077A6F4C3E997EB /* Pods_Radar.framework */; };
-		9009BD4A1FB63CA1009FB075 /* RadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A2C1FB4E8DA000A1A8C /* RadarTests.swift */; };
+		2CA53A00574F6624D5CB7A39 /* Pods_Wroclive_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */; };
+		5D357255A53DA237A02B2F71 /* Pods_Wroclive_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500F7A00FA0C7231B7408B0 /* Pods_Wroclive_Tests.framework */; };
+		9009BD4A1FB63CA1009FB075 /* WrocliveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A2C1FB4E8DA000A1A8C /* WrocliveTests.swift */; };
 		900CAEA61F482E750044C8A6 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8B1F482E750044C8A6 /* AlertManager.swift */; };
 		900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8C1F482E750044C8A6 /* AlertManagerImpl.swift */; };
 		900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8F1F482E750044C8A6 /* BookmarksManager.swift */; };
@@ -213,8 +214,7 @@
 		90FB9DC51FB64DD700DEA125 /* TutorialScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */; };
 		90FB9DC61FB64DDA00DEA125 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B304381FB50A3700F5F20C /* SnapshotHelper.swift */; };
 		90FBE35A1FB23AC7002AFF7A /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FBE3591FB23AC7002AFF7A /* LocalizedString.swift */; };
-		AA945AB03275EB1572FFDB4D /* Pods_Radar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D01C18B1DF53B3219BDF173 /* Pods_Radar_Tests.framework */; };
-		DDDBA6D486F6A7F3C6D74C82 /* Pods_Radar_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE9128B1E5EDD44802192E0 /* Pods_Radar_Screenshots.framework */; };
+		E09BFC9A407B45CC68C9A94F /* Pods_Wroclive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7457A7B86C6B076B5865A45F /* Pods_Wroclive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,18 +249,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0C81217B2B7F9B81972EB428 /* Pods-Radar-Screenshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar-Screenshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Radar-Screenshots/Pods-Radar-Screenshots.release.xcconfig"; sourceTree = "<group>"; };
-		12B269CCBFB520DE1059C1A8 /* Pods_App_Radar_Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Radar_Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		20E336A0B603164AB3766E13 /* Pods_App_Radar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_Radar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D01C18B1DF53B3219BDF173 /* Pods_Radar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2FF252255EE233DA858D9EAF /* Pods-Radar-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Radar-Tests/Pods-Radar-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DBDB41D23A8A827B114E501 /* Pods_Tests_Radar_Screenshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_Radar_Screenshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71B7DF0B634B2141F448E420 /* Pods-App-Radar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Radar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-Radar/Pods-App-Radar.debug.xcconfig"; sourceTree = "<group>"; };
-		7E6263F0130512F872603069 /* Pods-App-Radar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Radar.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-Radar/Pods-App-Radar.release.xcconfig"; sourceTree = "<group>"; };
-		7F491951B4F145C2C659241C /* Pods-App-Radar-Framework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Radar-Framework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-Radar-Framework/Pods-App-Radar-Framework.debug.xcconfig"; sourceTree = "<group>"; };
-		83794BA0ED0CF667D51DCA8D /* Pods-Tests-Radar-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-Radar-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests-Radar-Tests/Pods-Tests-Radar-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		85004F059265DC160C5FA14F /* Pods-Radar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Radar/Pods-Radar.debug.xcconfig"; sourceTree = "<group>"; };
-		9009BD401FB63C7B009FB075 /* Radar-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Radar-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E552C9694FA2B36860027B3 /* Pods-Wroclive-Screenshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Screenshots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Screenshots/Pods-Wroclive-Screenshots.debug.xcconfig"; sourceTree = "<group>"; };
+		12F3CD8E67447A91DA7A4E65 /* Pods-Wroclive-Screenshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Screenshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Screenshots/Pods-Wroclive-Screenshots.release.xcconfig"; sourceTree = "<group>"; };
+		25E0D00666EF79DC6A2DF946 /* Pods-Wroclive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive/Pods-Wroclive.release.xcconfig"; sourceTree = "<group>"; };
+		2CB1453494EE5E82400496F9 /* Pods-Wroclive-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Tests/Pods-Wroclive-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		36BD40B07CC6253D5D5DC753 /* Pods-Wroclive-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Tests/Pods-Wroclive-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		5EAC0BE67BAC1EB5A1223BFF /* Pods-Wroclive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive/Pods-Wroclive.debug.xcconfig"; sourceTree = "<group>"; };
+		7457A7B86C6B076B5865A45F /* Pods_Wroclive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7500F7A00FA0C7231B7408B0 /* Pods_Wroclive_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive_Screenshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9009BD401FB63C7B009FB075 /* Wroclive-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wroclive-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9009BD441FB63C7B009FB075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		900CAE8B1F482E750044C8A6 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		900CAE8C1F482E750044C8A6 /* AlertManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManagerImpl.swift; sourceTree = "<group>"; };
@@ -341,7 +339,7 @@
 		902330EC1EDF37F500FA8F43 /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
 		9024C6101F9667E600025503 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9024C6121F96699500025503 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		902812881E59DD8500F26027 /* Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		902812881E59DD8500F26027 /* Wroclive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wroclive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902FC75B1FB79254002E09FE /* LinePositionMaskGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePositionMaskGenerator.swift; sourceTree = "<group>"; };
 		903294FA1F9D0B67006A6D05 /* ColorSchemeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeTestView.swift; sourceTree = "<group>"; };
 		9032F07A1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntrinsicCollectionView.swift; sourceTree = "<group>"; };
@@ -465,7 +463,7 @@
 		90D95A201FB4E245000A1A8C /* TrackingManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManagerAssert.swift; sourceTree = "<group>"; };
 		90D95A221FB4E259000A1A8C /* AlertManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManagerAssert.swift; sourceTree = "<group>"; };
 		90D95A241FB4E26B000A1A8C /* ThemeManagerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManagerAssert.swift; sourceTree = "<group>"; };
-		90D95A2C1FB4E8DA000A1A8C /* RadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarTests.swift; sourceTree = "<group>"; };
+		90D95A2C1FB4E8DA000A1A8C /* WrocliveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrocliveTests.swift; sourceTree = "<group>"; };
 		90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenshots.swift; sourceTree = "<group>"; };
 		90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapCenter.swift"; sourceTree = "<group>"; };
 		90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+UpdateVehicleLocations.swift"; sourceTree = "<group>"; };
@@ -484,19 +482,10 @@
 		90F0A2D21F73198B00C641C8 /* ColorSchemeObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemeObserver.swift; sourceTree = "<group>"; };
 		90F0A2D31F73198B00C641C8 /* NotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
 		90F0A2D41F73198B00C641C8 /* VehicleLocationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocationObserver.swift; sourceTree = "<group>"; };
-		90F45BC01F9BC40F006E965A /* Pods_Radar_Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Radar_Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
-		90FB9DBB1FB64DC700DEA125 /* Radar-Screenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Radar-Screenshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90FB9DBB1FB64DC700DEA125 /* Wroclive-Screenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wroclive-Screenshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90FB9DBF1FB64DC700DEA125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90FBE3591FB23AC7002AFF7A /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
-		96DFFE33EA2604E02730F937 /* Pods_Tests_Radar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_Radar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9BC3C50C81DA6B8764B5B9C1 /* Pods-Radar-Screenshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar-Screenshots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Radar-Screenshots/Pods-Radar-Screenshots.debug.xcconfig"; sourceTree = "<group>"; };
-		9E91D5A733484551144352EF /* Pods-Tests-Radar-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-Radar-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests-Radar-Tests/Pods-Tests-Radar-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		AA8885078077A6F4C3E997EB /* Pods_Radar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC003998A202FA8FE3073506 /* Pods-Radar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Radar/Pods-Radar.release.xcconfig"; sourceTree = "<group>"; };
-		DDC7F048D7ACDFB11E34A09F /* Pods-Radar-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radar-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Radar-Tests/Pods-Radar-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		ECE9128B1E5EDD44802192E0 /* Pods_Radar_Screenshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radar_Screenshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FDBCD436239D3B2264638125 /* Pods-App-Radar-Framework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Radar-Framework.release.xcconfig"; path = "Pods/Target Support Files/Pods-App-Radar-Framework/Pods-App-Radar-Framework.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -504,7 +493,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA945AB03275EB1572FFDB4D /* Pods_Radar_Tests.framework in Frameworks */,
+				5D357255A53DA237A02B2F71 /* Pods_Wroclive_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +503,7 @@
 			files = (
 				905A3B721F9533BE003D668F /* UIKit.framework in Frameworks */,
 				905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */,
-				3B422178C97855B2765F0C63 /* Pods_Radar.framework in Frameworks */,
+				E09BFC9A407B45CC68C9A94F /* Pods_Wroclive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +511,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDDBA6D486F6A7F3C6D74C82 /* Pods_Radar_Screenshots.framework in Frameworks */,
+				2CA53A00574F6624D5CB7A39 /* Pods_Wroclive_Screenshots.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,18 +521,12 @@
 		4A3B2CBD6F0B3CF6ADE0EBAE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				85004F059265DC160C5FA14F /* Pods-Radar.debug.xcconfig */,
-				CC003998A202FA8FE3073506 /* Pods-Radar.release.xcconfig */,
-				71B7DF0B634B2141F448E420 /* Pods-App-Radar.debug.xcconfig */,
-				7E6263F0130512F872603069 /* Pods-App-Radar.release.xcconfig */,
-				7F491951B4F145C2C659241C /* Pods-App-Radar-Framework.debug.xcconfig */,
-				FDBCD436239D3B2264638125 /* Pods-App-Radar-Framework.release.xcconfig */,
-				9E91D5A733484551144352EF /* Pods-Tests-Radar-Tests.debug.xcconfig */,
-				83794BA0ED0CF667D51DCA8D /* Pods-Tests-Radar-Tests.release.xcconfig */,
-				2FF252255EE233DA858D9EAF /* Pods-Radar-Tests.debug.xcconfig */,
-				DDC7F048D7ACDFB11E34A09F /* Pods-Radar-Tests.release.xcconfig */,
-				9BC3C50C81DA6B8764B5B9C1 /* Pods-Radar-Screenshots.debug.xcconfig */,
-				0C81217B2B7F9B81972EB428 /* Pods-Radar-Screenshots.release.xcconfig */,
+				5EAC0BE67BAC1EB5A1223BFF /* Pods-Wroclive.debug.xcconfig */,
+				25E0D00666EF79DC6A2DF946 /* Pods-Wroclive.release.xcconfig */,
+				0E552C9694FA2B36860027B3 /* Pods-Wroclive-Screenshots.debug.xcconfig */,
+				12F3CD8E67447A91DA7A4E65 /* Pods-Wroclive-Screenshots.release.xcconfig */,
+				36BD40B07CC6253D5D5DC753 /* Pods-Wroclive-Tests.debug.xcconfig */,
+				2CB1453494EE5E82400496F9 /* Pods-Wroclive-Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -966,14 +949,9 @@
 			children = (
 				905A3B6A1F9532F0003D668F /* UIKit.framework */,
 				905A3B6E1F953301003D668F /* MapKit.framework */,
-				AA8885078077A6F4C3E997EB /* Pods_Radar.framework */,
-				90F45BC01F9BC40F006E965A /* Pods_Radar_Framework.framework */,
-				5DBDB41D23A8A827B114E501 /* Pods_Tests_Radar_Screenshots.framework */,
-				96DFFE33EA2604E02730F937 /* Pods_Tests_Radar_Tests.framework */,
-				20E336A0B603164AB3766E13 /* Pods_App_Radar.framework */,
-				12B269CCBFB520DE1059C1A8 /* Pods_App_Radar_Framework.framework */,
-				2D01C18B1DF53B3219BDF173 /* Pods_Radar_Tests.framework */,
-				ECE9128B1E5EDD44802192E0 /* Pods_Radar_Screenshots.framework */,
+				7457A7B86C6B076B5865A45F /* Pods_Wroclive.framework */,
+				7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */,
+				7500F7A00FA0C7231B7408B0 /* Pods_Wroclive_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1467,7 +1445,7 @@
 		90D95A481FB4E9F5000A1A8C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				90D95A2C1FB4E8DA000A1A8C /* RadarTests.swift */,
+				90D95A2C1FB4E8DA000A1A8C /* WrocliveTests.swift */,
 				9009BD441FB63C7B009FB075 /* Info.plist */,
 			);
 			path = Tests;
@@ -1583,9 +1561,9 @@
 		OBJ_42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				902812881E59DD8500F26027 /* Radar.app */,
-				9009BD401FB63C7B009FB075 /* Radar-Tests.xctest */,
-				90FB9DBB1FB64DC700DEA125 /* Radar-Screenshots.xctest */,
+				902812881E59DD8500F26027 /* Wroclive.app */,
+				9009BD401FB63C7B009FB075 /* Wroclive-Tests.xctest */,
+				90FB9DBB1FB64DC700DEA125 /* Wroclive-Screenshots.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -1618,9 +1596,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9009BD3F1FB63C7B009FB075 /* Radar-Tests */ = {
+		9009BD3F1FB63C7B009FB075 /* Wroclive-Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9009BD471FB63C7B009FB075 /* Build configuration list for PBXNativeTarget "Radar-Tests" */;
+			buildConfigurationList = 9009BD471FB63C7B009FB075 /* Build configuration list for PBXNativeTarget "Wroclive-Tests" */;
 			buildPhases = (
 				B756BAC8EF382E30A67B0ADF /* [CP] Check Pods Manifest.lock */,
 				9009BD3C1FB63C7B009FB075 /* Sources */,
@@ -1634,14 +1612,14 @@
 			dependencies = (
 				9009BD461FB63C7B009FB075 /* PBXTargetDependency */,
 			);
-			name = "Radar-Tests";
-			productName = "Radar-Tests";
-			productReference = 9009BD401FB63C7B009FB075 /* Radar-Tests.xctest */;
+			name = "Wroclive-Tests";
+			productName = "Wroclive-Tests";
+			productReference = 9009BD401FB63C7B009FB075 /* Wroclive-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		902812871E59DD8500F26027 /* Radar */ = {
+		902812871E59DD8500F26027 /* Wroclive */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 902812971E59DD8500F26027 /* Build configuration list for PBXNativeTarget "Radar" */;
+			buildConfigurationList = 902812971E59DD8500F26027 /* Build configuration list for PBXNativeTarget "Wroclive" */;
 			buildPhases = (
 				355FAE024C9C1A8DC1CEB679 /* [CP] Check Pods Manifest.lock */,
 				902812841E59DD8500F26027 /* Sources */,
@@ -1656,14 +1634,14 @@
 			);
 			dependencies = (
 			);
-			name = Radar;
-			productName = Kek;
-			productReference = 902812881E59DD8500F26027 /* Radar.app */;
+			name = Wroclive;
+			productName = Wroclive;
+			productReference = 902812881E59DD8500F26027 /* Wroclive.app */;
 			productType = "com.apple.product-type.application";
 		};
-		90FB9DBA1FB64DC700DEA125 /* Radar-Screenshots */ = {
+		90FB9DBA1FB64DC700DEA125 /* Wroclive-Screenshots */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 90FB9DC41FB64DC700DEA125 /* Build configuration list for PBXNativeTarget "Radar-Screenshots" */;
+			buildConfigurationList = 90FB9DC41FB64DC700DEA125 /* Build configuration list for PBXNativeTarget "Wroclive-Screenshots" */;
 			buildPhases = (
 				CF3124EAA581D01DADDEA5F2 /* [CP] Check Pods Manifest.lock */,
 				90FB9DB71FB64DC700DEA125 /* Sources */,
@@ -1677,9 +1655,9 @@
 			dependencies = (
 				90FB9DC11FB64DC700DEA125 /* PBXTargetDependency */,
 			);
-			name = "Radar-Screenshots";
-			productName = "Radar-Screenshots";
-			productReference = 90FB9DBB1FB64DC700DEA125 /* Radar-Screenshots.xctest */;
+			name = "Wroclive-Screenshots";
+			productName = "Wroclive-Screenshots";
+			productReference = 90FB9DBB1FB64DC700DEA125 /* Wroclive-Screenshots.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -1715,7 +1693,7 @@
 					};
 				};
 			};
-			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Radar" */;
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Wroclive" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1728,9 +1706,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				902812871E59DD8500F26027 /* Radar */,
-				9009BD3F1FB63C7B009FB075 /* Radar-Tests */,
-				90FB9DBA1FB64DC700DEA125 /* Radar-Screenshots */,
+				902812871E59DD8500F26027 /* Wroclive */,
+				9009BD3F1FB63C7B009FB075 /* Wroclive-Tests */,
+				90FB9DBA1FB64DC700DEA125 /* Wroclive-Screenshots */,
 			);
 		};
 /* End PBXProject section */
@@ -1778,7 +1756,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Radar-Screenshots/Pods-Radar-Screenshots-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Screenshots/Pods-Wroclive-Screenshots-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		355FAE024C9C1A8DC1CEB679 /* [CP] Check Pods Manifest.lock */ = {
@@ -1792,7 +1770,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Radar-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Wroclive-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1805,7 +1783,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Radar-Tests/Pods-Radar-Tests-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Tests/Pods-Wroclive-Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -1816,7 +1794,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Radar-Tests/Pods-Radar-Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Tests/Pods-Wroclive-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5DEC447C1D1B97C6C6572D9E /* [CP] Embed Pods Frameworks */ = {
@@ -1825,7 +1803,6 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Radar-Screenshots/Pods-Radar-Screenshots-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -1840,7 +1817,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Radar-Screenshots/Pods-Radar-Screenshots-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Screenshots/Pods-Wroclive-Screenshots-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		77687F7431E0E8C5EE44996A /* [CP] Copy Pods Resources */ = {
@@ -1855,7 +1832,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Radar/Pods-Radar-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive/Pods-Wroclive-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7C6B10EE542CE6054AEF38F4 /* [CP] Embed Pods Frameworks */ = {
@@ -1864,7 +1841,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Radar/Pods-Radar-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive/Pods-Wroclive-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -1881,7 +1858,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Radar/Pods-Radar-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive/Pods-Wroclive-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		90C5EE3D1EFB2DFE007D11D5 /* SwiftLint */ = {
@@ -1910,7 +1887,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Radar-Tests/Pods-Radar-Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Tests/Pods-Wroclive-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B756BAC8EF382E30A67B0ADF /* [CP] Check Pods Manifest.lock */ = {
@@ -1924,7 +1901,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Radar-Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Wroclive-Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1942,7 +1919,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Radar-Screenshots-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Wroclive-Screenshots-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1956,7 +1933,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9009BD4A1FB63CA1009FB075 /* RadarTests.swift in Sources */,
+				9009BD4A1FB63CA1009FB075 /* WrocliveTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2174,12 +2151,12 @@
 /* Begin PBXTargetDependency section */
 		9009BD461FB63C7B009FB075 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 902812871E59DD8500F26027 /* Radar */;
+			target = 902812871E59DD8500F26027 /* Wroclive */;
 			targetProxy = 9009BD451FB63C7B009FB075 /* PBXContainerItemProxy */;
 		};
 		90FB9DC11FB64DC700DEA125 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 902812871E59DD8500F26027 /* Radar */;
+			target = 902812871E59DD8500F26027 /* Wroclive */;
 			targetProxy = 90FB9DC01FB64DC700DEA125 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2208,7 +2185,7 @@
 /* Begin XCBuildConfiguration section */
 		9009BD481FB63C7B009FB075 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FF252255EE233DA858D9EAF /* Pods-Radar-Tests.debug.xcconfig */;
+			baseConfigurationReference = 36BD40B07CC6253D5D5DC753 /* Pods-Wroclive-Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2243,18 +2220,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.Radar-Tests.Radar-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.wroclive-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Radar.app/Radar";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wroclive.app/Wroclive";
 			};
 			name = Debug;
 		};
 		9009BD491FB63C7B009FB075 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDC7F048D7ACDFB11E34A09F /* Pods-Radar-Tests.release.xcconfig */;
+			baseConfigurationReference = 2CB1453494EE5E82400496F9 /* Pods-Wroclive-Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2286,18 +2263,18 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.Radar-Tests.Radar-Tests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.wroclive-tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Radar.app/Radar";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wroclive.app/Wroclive";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		902812981E59DD8500F26027 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85004F059265DC160C5FA14F /* Pods-Radar.debug.xcconfig */;
+			baseConfigurationReference = 5EAC0BE67BAC1EB5A1223BFF /* Pods-Wroclive.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2344,7 +2321,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nopoint.Radar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nopoint.wroclive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -2354,7 +2331,7 @@
 		};
 		902812991E59DD8500F26027 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC003998A202FA8FE3073506 /* Pods-Radar.release.xcconfig */;
+			baseConfigurationReference = 25E0D00666EF79DC6A2DF946 /* Pods-Wroclive.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2396,7 +2373,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nopoint.Radar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nopoint.wroclive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -2407,7 +2384,7 @@
 		};
 		90FB9DC21FB64DC700DEA125 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9BC3C50C81DA6B8764B5B9C1 /* Pods-Radar-Screenshots.debug.xcconfig */;
+			baseConfigurationReference = 0E552C9694FA2B36860027B3 /* Pods-Wroclive-Screenshots.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2441,19 +2418,20 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.Radar-Screenshots.Radar-Screenshots";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.wroclive-screenshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "";
-				TEST_TARGET_NAME = Radar;
+				TEST_TARGET_NAME = Wroclive;
 			};
 			name = Debug;
 		};
 		90FB9DC31FB64DC700DEA125 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C81217B2B7F9B81972EB428 /* Pods-Radar-Screenshots.release.xcconfig */;
+			baseConfigurationReference = 12F3CD8E67447A91DA7A4E65 /* Pods-Wroclive-Screenshots.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2484,12 +2462,13 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.Radar-Screenshots.Radar-Screenshots";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.wroclive-screenshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "";
-				TEST_TARGET_NAME = Radar;
+				TEST_TARGET_NAME = Wroclive;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2580,7 +2559,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9009BD471FB63C7B009FB075 /* Build configuration list for PBXNativeTarget "Radar-Tests" */ = {
+		9009BD471FB63C7B009FB075 /* Build configuration list for PBXNativeTarget "Wroclive-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9009BD481FB63C7B009FB075 /* Debug */,
@@ -2589,7 +2568,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		902812971E59DD8500F26027 /* Build configuration list for PBXNativeTarget "Radar" */ = {
+		902812971E59DD8500F26027 /* Build configuration list for PBXNativeTarget "Wroclive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				902812981E59DD8500F26027 /* Debug */,
@@ -2598,7 +2577,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		90FB9DC41FB64DC700DEA125 /* Build configuration list for PBXNativeTarget "Radar-Screenshots" */ = {
+		90FB9DC41FB64DC700DEA125 /* Build configuration list for PBXNativeTarget "Wroclive-Screenshots" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90FB9DC21FB64DC700DEA125 /* Debug */,
@@ -2607,7 +2586,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_2 /* Build configuration list for PBXProject "Radar" */ = {
+		OBJ_2 /* Build configuration list for PBXProject "Wroclive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_3 /* Debug */,

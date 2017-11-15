@@ -68,9 +68,9 @@ public struct Localizable {
 
     struct InvalidCity {
 
-      /// Radar works best in Wrocław.\nWould you like to visit?
-      /// - **en**: Radar works best in Wrocław.\nWould you like to visit?
-      /// - **pl**: Radar działa najlepiej we Wrocławiu.\nPokazać?
+      /// Wroclive works best in Wrocław.\nWould you like to visit?
+      /// - **en**: Wroclive works best in Wrocław.\nWould you like to visit?
+      /// - **pl**: Wroclive działa najlepiej we Wrocławiu.\nPokazać?
       static var message: String { return localizedString("Alert_InvalidCity_Message") }
 
       /// No
@@ -344,9 +344,9 @@ public struct Localizable {
 
       struct Colors {
 
-        /// Brighten up your life and personalize Radar to your favorite color.
-        /// - **en**: Brighten up your life and personalize Radar to your favorite color.
-        /// - **pl**: Dopasuj Radar do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!
+        /// Brighten up your life and personalize Wroclive to your favorite color.
+        /// - **en**: Brighten up your life and personalize Wroclive to your favorite color.
+        /// - **pl**: Dopasuj Wroclive do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!
         static var caption: String { return localizedString("Presentation_InAppPurchase_Colors_Caption") }
 
         /// Personalization
@@ -455,9 +455,9 @@ public struct Localizable {
 
   struct Share {
 
-    /// Bus radar - Real time public transport! %@
-    /// - **en**: Bus radar - Real time public transport! %@
-    /// - **pl**: Bus radar - Komunikacja miejska na żywo! %@
+    /// Wroclive - Real time public transport! %@
+    /// - **en**: Wroclive - Real time public transport! %@
+    /// - **pl**: Wroclive - Komunikacja miejska na żywo! %@
     static var message: String { return localizedString("Share_Message") }
   }
 }
