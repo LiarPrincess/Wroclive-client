@@ -142,7 +142,6 @@
 		9073F9981FA7A80400924584 /* CachedDocumentsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073F9971FA7A80400924584 /* CachedDocumentsManagerImpl.swift */; };
 		9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* AppInfo.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		907ECF181F3BB41900DB27DB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907ECF171F3BB41900DB27DB /* Info.plist */; };
 		907F267C1F74517B000C272B /* LocationAuthorizationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F267B1F74517B000C272B /* LocationAuthorizationObserver.swift */; };
 		907F267E1F74585C000C272B /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F267D1F74585C000C272B /* LocationError.swift */; };
 		907F26811F7460E4000C272B /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F26801F7460E4000C272B /* CLLocation.swift */; };
@@ -1667,7 +1666,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0910;
 				TargetAttributes = {
 					9009BD3F1FB63C7B009FB075 = {
 						CreatedOnToolsVersion = 9.1;
@@ -1729,7 +1728,6 @@
 				9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */,
 				90ED50FD1F3BADC500C782D5 /* Localizable.strings in Resources */,
 				908346FA1F521E1500654FF6 /* FontAwesome.otf in Resources */,
-				907ECF181F3BB41900DB27DB /* Info.plist in Resources */,
 				90ED51061F3BAFF800C782D5 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2296,14 +2294,13 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"DEBUG_INFORMATION_FORMAT[sdk=iphoneos*]" = "dwarf-with-dsym";
+				"DEBUG_INFORMATION_FORMAT[sdk=iphonesimulator*]" = dwarf;
 				DEVELOPMENT_TEAM = AEAQ6C3MPC;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2321,10 +2318,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Onone";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nopoint.wroclive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -2357,10 +2356,7 @@
 				DEVELOPMENT_TEAM = AEAQ6C3MPC;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2477,12 +2473,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2520,12 +2522,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
