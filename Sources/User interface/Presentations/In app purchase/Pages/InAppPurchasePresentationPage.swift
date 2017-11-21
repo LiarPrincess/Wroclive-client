@@ -59,7 +59,7 @@ class InAppPurchasePresentationPage: UIViewController {
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
 
-    self.titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000.0), for: .vertical)
+    self.titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1_000.0), for: .vertical)
     self.labelContainer.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Title.topOffset)

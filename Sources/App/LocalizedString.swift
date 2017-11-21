@@ -3,7 +3,6 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import UIKit
 import Foundation
 
 private class BundleHook {}

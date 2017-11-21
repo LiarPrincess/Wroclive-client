@@ -6,11 +6,15 @@
 //=======================================================================
 //
 // This file is computer generated from Localizable.strings. Do not edit.
+// Run 'fastlane translate' to genereate it again.
 //
 //=======================================================================
 
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable identifier_name
 // swiftlint:disable valid_docs
 // swiftlint:disable line_length
+// swiftlint:disable type_body_length
 // swiftlint:disable file_length
 
 public struct Localizable {

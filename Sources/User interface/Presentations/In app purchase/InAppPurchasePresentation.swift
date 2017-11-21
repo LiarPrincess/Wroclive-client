@@ -32,11 +32,13 @@ class InAppPurchasePresentation: UIViewController, PageViewControllerContainer {
 
   // MARK: - Actions
 
-  @objc func upgradeButtonPressed() {
+  @objc
+  func upgradeButtonPressed() {
     Managers.appStore.buyUpgrade()
   }
 
-  @objc func restorePurchaseLabelPressed(tapGestureRecognizer: UITapGestureRecognizer) {
+  @objc
+  func restorePurchaseLabelPressed(tapGestureRecognizer: UITapGestureRecognizer) {
     Managers.appStore.restorePurchase()
   }
 }
@@ -52,7 +54,11 @@ extension InAppPurchasePresentation: UIPageViewControllerDelegate, UIPageViewCon
     return self.viewControllerAfter(viewController)
   }
 
-  func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+  func pageViewController(
+      _ pageViewController: UIPageViewController,
+      didFinishAnimating finished: Bool,
+      previousViewControllers: [UIViewController],
+      transitionCompleted completed: Bool) {
     if let selectedPage = self.pageViewController.viewControllers?.first, let index = self.pages.index(of: selectedPage) {
       self.pageControl.currentPage = index
     }

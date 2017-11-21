@@ -68,15 +68,18 @@ class MainViewController: UIViewController {
 
   // MARK: - Actions
 
-  @objc func searchButtonPressed() {
+  @objc
+  func searchButtonPressed() {
     self.delegate?.mainViewControllerDidTapSearchButton(self)
   }
 
-  @objc func bookmarksButtonPressed() {
+  @objc
+  func bookmarksButtonPressed() {
     self.delegate?.mainViewControllerDidTapBookmarksButton(self)
   }
 
-  @objc func configurationButtonPressed() {
+  @objc
+  func configurationButtonPressed() {
     self.delegate?.mainViewControllerDidTapConfigurationButton(self)
   }
 }

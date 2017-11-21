@@ -20,7 +20,7 @@ struct LineSelectionSectionViewModelFactory {
   // MARK: - Sort
 
   private static func sortViewModels(_ viewModels: [LineSelectionSectionViewModel]) -> [LineSelectionSectionViewModel] {
-    return viewModels.sorted { (lhs, rhs) in
+    return viewModels.sorted { lhs, rhs in
       return getSubtypeOrder(for: lhs.subtype) < getSubtypeOrder(for: rhs.subtype)
     }
   }

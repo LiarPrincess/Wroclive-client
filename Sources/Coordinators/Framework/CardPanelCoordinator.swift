@@ -4,7 +4,6 @@
 //
 
 import UIKit
-import Foundation
 
 protocol CardPanelCoordinator: Coordinator {
   var cardPanelTransitionDelegate: UIViewControllerTransitioningDelegate? { get set }

@@ -39,7 +39,11 @@ extension TutorialPresentation: UIPageViewControllerDelegate, UIPageViewControll
     return self.viewControllerAfter(viewController)
   }
 
-  func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+  func pageViewController(
+      _ pageViewController: UIPageViewController,
+      didFinishAnimating finished: Bool,
+      previousViewControllers: [UIViewController],
+      transitionCompleted completed: Bool) {
     if let selectedPage = self.pageViewController.viewControllers?.first, let index = self.pages.index(of: selectedPage) {
       self.pageControl.currentPage = index
     }

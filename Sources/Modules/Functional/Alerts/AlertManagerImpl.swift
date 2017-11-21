@@ -108,7 +108,8 @@ class AlertManagerImpl: AlertManager {
     parent.present(alert, animated: true, completion: nil)
   }
 
-  @objc private static func enableConfirmIfTextNotEmpty(_ sender: UITextField) {
+  @objc
+  private static func enableConfirmIfTextNotEmpty(_ sender: UITextField) {
     let isTextEmpty = sender.text?.isEmpty ?? false
 
     if let alertController = parentAlertController(of: sender) {

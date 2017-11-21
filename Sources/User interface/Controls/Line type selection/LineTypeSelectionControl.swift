@@ -53,7 +53,8 @@ class LineTypeSelectionControl: UISegmentedControl {
 
   // MARK: - Actions
 
-  @objc func valueChanged() {
+  @objc
+  func valueChanged() {
     self.delegateDidSelect()
   }
 

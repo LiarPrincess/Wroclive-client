@@ -75,7 +75,8 @@ class InAppPurchaseColorsPage: InAppPurchasePresentationPage {
     self.timer?.tolerance = interval * 0.1
   }
 
-  @objc func timerFired(timer: Timer) {
+  @objc
+  func timerFired(timer: Timer) {
     self.showNextPreset()
   }
 

@@ -20,7 +20,7 @@ class TrackingManagerImpl: TrackingManager {
   fileprivate func startTimer() {
     self.stopTimer()
 
-    guard self.trackedLines.count > 0 else {
+    guard self.trackedLines.any else {
       self.result = .success(locations: [])
       return
     }
@@ -33,7 +33,8 @@ class TrackingManagerImpl: TrackingManager {
     self.trackingTimer?.fire()
   }
 
-  @objc func timerFired(timer: Timer) {
+  @objc
+  func timerFired(timer: Timer) {
     guard timer.isValid else { return }
 
     firstly { return Managers.api.getVehicleLocations(for: self.trackedLines) }

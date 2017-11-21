@@ -92,7 +92,8 @@ class TutorialViewController: UIViewController {
 
   // MARK: - Actions
 
-  @objc func closeButtonPressed() {
+  @objc
+  func closeButtonPressed() {
     self.delegate?.tutorialViewControllerDidTapCloseButton(self)
   }
 }

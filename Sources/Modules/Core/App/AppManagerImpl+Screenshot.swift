@@ -8,7 +8,11 @@
 import UIKit
 import SimulatorStatusMagic
 
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable line_length
 // swiftlint:disable function_body_length
+// swiftlint:disable type_body_length
+// swiftlint:disable file_length
 
 fileprivate extension ProcessInfo {
   var snapshot: Bool { return arguments.contains("-FASTLANE_SNAPSHOT") }

@@ -21,6 +21,7 @@ extension SearchViewController {
 
   // MARK: - Private
 
+  // swiftlint:disable:next function_body_length
   private func initHeader() {
     self.headerView.contentView.addBorder(at: .bottom)
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)

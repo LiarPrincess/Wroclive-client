@@ -109,10 +109,11 @@ class SearchViewController: UIViewController {
 
   // MARK: - Actions
 
-  @objc func bookmarkButtonPressed() {
+  @objc
+  func bookmarkButtonPressed() {
     let selectedLines = self.linesSelector.selectedLines
 
-    guard selectedLines.count > 0 else {
+    guard selectedLines.any else {
       Managers.alert.showBookmarkNoLinesSelectedAlert(in: self)
       return
     }
@@ -142,37 +143,38 @@ class SearchViewController: UIViewController {
     let duration = Constants.BookmarksPopup.duration
 
     UIView.animateKeyframes(withDuration: duration, delay: delay, options: [],
-    animations: {
-      UIView.addKeyframe(withRelativeStartTime: 0.00, relativeDuration: 0.00, animations: {
-        popup.alpha     = 0.0
-        popup.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-      })
+      animations: {
+        UIView.addKeyframe(withRelativeStartTime: 0.00, relativeDuration: 0.00, animations: {
+          popup.alpha     = 0.0
+          popup.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        })
 
-      // present
-      UIView.addKeyframe(withRelativeStartTime: 0.05, relativeDuration: 0.10, animations: {
-        popup.alpha = 0.5
-      })
+        // present
+        UIView.addKeyframe(withRelativeStartTime: 0.05, relativeDuration: 0.10, animations: {
+          popup.alpha = 0.5
+        })
 
-      UIView.addKeyframe(withRelativeStartTime: 0.05, relativeDuration: 0.10, animations: {
-        popup.alpha     = 1.0
-        popup.transform = CGAffineTransform.identity
-      })
+        UIView.addKeyframe(withRelativeStartTime: 0.05, relativeDuration: 0.10, animations: {
+          popup.alpha     = 1.0
+          popup.transform = CGAffineTransform.identity
+        })
 
-      // dismiss
-      UIView.addKeyframe(withRelativeStartTime: 0.85, relativeDuration: 0.10, animations: {
-        popup.alpha     = 0.5
-        popup.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-      })
+        // dismiss
+        UIView.addKeyframe(withRelativeStartTime: 0.85, relativeDuration: 0.10, animations: {
+          popup.alpha     = 0.5
+          popup.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        })
 
-      UIView.addKeyframe(withRelativeStartTime: 0.95, relativeDuration: 0.05, animations: {
-        popup.alpha = 0.0
-      })
-    },
-    completion: { _ in popup.removeFromSuperview() }
+        UIView.addKeyframe(withRelativeStartTime: 0.95, relativeDuration: 0.05, animations: {
+          popup.alpha = 0.0
+        })
+      },
+      completion: { _ in popup.removeFromSuperview() }
     )
   }
 
-  @objc func searchButtonPressed() {
+  @objc
+  func searchButtonPressed() {
     guard self.mode == .selectingLines else { return }
 
     let lines = self.linesSelector.selectedLines
@@ -269,7 +271,11 @@ extension SearchViewController: LineTypeSelectionControlDelegate {
 // MARK: - LineSelectionViewControllerDelegate
 
 extension SearchViewController: UIPageViewControllerDelegate {
-  func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+  func pageViewController(
+      _ pageViewController: UIPageViewController,
+      didFinishAnimating finished: Bool,
+      previousViewControllers: [UIViewController],
+      transitionCompleted completed: Bool) {
     if completed {
       self.updateViewFromLineSelector()
     }

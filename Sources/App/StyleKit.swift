@@ -5,6 +5,9 @@
 
 import UIKit
 
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable force_unwrapping
+// swiftlint:disable line_length
 // swiftlint:disable function_body_length
 // swiftlint:disable type_body_length
 // swiftlint:disable file_length
@@ -13,7 +16,8 @@ public class StyleKit : NSObject {
 
   //// Drawing Methods
 
-  @objc dynamic public class func drawSearch(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
+  @objc
+  dynamic public class func drawSearch(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 
@@ -48,7 +52,8 @@ public class StyleKit : NSObject {
     context.restoreGState()
   }
 
-  @objc dynamic public class func drawStar(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
+  @objc
+  dynamic public class func drawStar(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 
@@ -79,7 +84,8 @@ public class StyleKit : NSObject {
     context.restoreGState()
   }
 
-  @objc dynamic public class func drawStarFilled(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
+  @objc
+  dynamic public class func drawStarFilled(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 
@@ -112,7 +118,8 @@ public class StyleKit : NSObject {
     context.restoreGState()
   }
 
-  @objc dynamic public class func drawCogwheel(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
+  @objc
+  dynamic public class func drawCogwheel(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 
@@ -271,7 +278,8 @@ public class StyleKit : NSObject {
     context.restoreGState()
   }
 
-  @objc dynamic public class func drawPin(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), color: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), resizing: ResizingBehavior = .aspectFit) {
+  @objc
+  dynamic public class func drawPin(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), color: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 
@@ -307,7 +315,8 @@ public class StyleKit : NSObject {
     context.restoreGState()
   }
 
-  @objc dynamic public class func drawPinNoArrow(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), color: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), resizing: ResizingBehavior = .aspectFit) {
+  @objc
+  dynamic public class func drawPinNoArrow(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), color: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 
@@ -345,7 +354,8 @@ public class StyleKit : NSObject {
     context.restoreGState()
   }
 
-  @objc dynamic public class func drawClose(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
+  @objc
+  dynamic public class func drawClose(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 
@@ -382,7 +392,8 @@ public class StyleKit : NSObject {
     context.restoreGState()
   }
 
-  @objc dynamic public class func drawBack(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
+  @objc
+  dynamic public class func drawBack(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 
@@ -409,7 +420,8 @@ public class StyleKit : NSObject {
     context.restoreGState()
   }
 
-  @objc dynamic public class func drawRoundedRectangle(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
+  @objc
+  dynamic public class func drawRoundedRectangle(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), resizing: ResizingBehavior = .aspectFit) {
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
 

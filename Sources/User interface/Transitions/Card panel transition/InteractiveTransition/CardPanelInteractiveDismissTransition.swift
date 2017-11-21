@@ -31,7 +31,8 @@ class CardPanelInteractiveDismissTransition: UIPercentDrivenInteractiveTransitio
 
   // MARK: - Gesture recognizers
 
-  @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+  @objc
+  func handlePan(_ gesture: UIPanGestureRecognizer) {
     guard let presentable = self.presentable else { return }
 
     let mainView    = UIApplication.shared.keyWindow!.rootViewController!.view

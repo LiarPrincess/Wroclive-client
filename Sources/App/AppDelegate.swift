@@ -8,9 +8,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  var window: UIWindow? = {
-    return UIWindow(frame: UIScreen.main.bounds)
-  }()
+  var window: UIWindow? = { return UIWindow(frame: UIScreen.main.bounds) }()
 
   var appCoordinator: AppCoordinator!
 

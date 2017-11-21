@@ -22,13 +22,5 @@ class WrocliveTests: XCTestCase {
 
   // MARK: Tests
 
-  func testExample() {
-    let appName = Managers.bundle.name
-
-    expect(1 + 1).to(equal(2))
-    expect(1.2).to(beCloseTo(1.1, within: 0.1))
-    expect(3) > 2
-    expect("seahorse").to(contain("sea"))
-    expect(["Atlantic", "Pacific"]).toNot(contain("Mississippi"))
-  }
+  func testExample() { }
 }

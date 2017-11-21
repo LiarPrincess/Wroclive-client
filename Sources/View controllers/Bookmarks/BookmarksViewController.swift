@@ -126,7 +126,8 @@ class BookmarksViewController: UIViewController {
 
   // MARK: - Actions
 
-  @objc func editButtonPressed() {
+  @objc
+  func editButtonPressed() {
     self.setEditing(!self.isEditing, animated: true)
   }
 
@@ -139,7 +140,7 @@ class BookmarksViewController: UIViewController {
   fileprivate func showPlaceholderIfEmpty() {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
 
-    let isPlaceholderVisible = bookmarks.count == 0
+    let isPlaceholderVisible = !bookmarks.isEmpty
     self.editButton.isHidden      = isPlaceholderVisible
     self.placeholderView.isHidden = !isPlaceholderVisible
   }

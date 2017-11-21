@@ -115,7 +115,8 @@ class ColorSelectionViewController: UIViewController {
 
   // MARK: - Actions
 
-  @objc func closeButtonPressed() {
+  @objc
+  func closeButtonPressed() {
     self.delegate?.colorSelectionViewControllerDidTapCloseButton(self)
   }
 

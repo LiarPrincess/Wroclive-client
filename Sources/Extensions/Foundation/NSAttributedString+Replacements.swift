@@ -36,10 +36,10 @@ extension NSAttributedString {
     return self.string
       .findPositions(of: replacedTexts)
       .map     { ($0, nsString.substring(with: $0)) }
-      .flatMap { (position, substring) in
+      .flatMap { position, substring in
         return replacements
           .first { $0.text.caseInsensitiveCompare(substring) == .orderedSame }
           .map   { (position, $0) }
-    }
+      }
   }
 }
