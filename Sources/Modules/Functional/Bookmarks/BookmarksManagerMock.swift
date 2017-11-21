@@ -19,13 +19,8 @@ class BookmarksManagerMock: BookmarksManager {
 
   // MARK: - BookmarksManager
 
-  @discardableResult
-  func addNew(name: String, lines: [Line]) -> Bookmark {
-    let bookmark = Bookmark(name: name, lines: lines)
-
-    var bookmarks = self.bookmarks
-    bookmarks.append(bookmark)
-    return bookmark
+  func addNew(_ bookmark: Bookmark) {
+    self.bookmarks.append(bookmark)
   }
 
   func getAll() -> [Bookmark] {

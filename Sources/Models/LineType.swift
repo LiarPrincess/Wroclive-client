@@ -3,9 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import Foundation
-
-enum LineType: Int {
+enum LineType: Int, Codable {
   case tram
   case bus
 }

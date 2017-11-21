@@ -119,7 +119,8 @@ class SearchViewController: UIViewController {
 
     Managers.alert.showBookmarkNameInputAlert(in: self) { [weak self] name in
       guard let name = name else { return }
-      Managers.bookmarks.addNew(name: name, lines: selectedLines)
+      let bookmark = Bookmark(name: name, lines: selectedLines)
+      Managers.bookmarks.addNew(bookmark)
       self?.showBookmarkCreatedPopup()
     }
   }

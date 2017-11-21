@@ -10,9 +10,9 @@ class VehicleAnnotation: NSObject, MKAnnotation {
 
   // MARK: - Properties
 
-  @objc dynamic var vehicleId:  String
-  @objc dynamic var line:       Line
-  @objc dynamic var angle:      CGFloat
+  var vehicleId:  String
+  var line:       Line
+  var angle:      CGFloat
   dynamic var coordinate: CLLocationCoordinate2D
 
   // MARK: - Init

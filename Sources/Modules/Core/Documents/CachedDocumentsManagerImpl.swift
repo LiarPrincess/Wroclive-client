@@ -3,8 +3,6 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import UIKit
-
 class CachedDocumentsManagerImpl: DocumentsManager {
 
   private let innerManager: DocumentsManager
@@ -24,8 +22,8 @@ class CachedDocumentsManagerImpl: DocumentsManager {
     return value
   }
 
-  func write(_ value: Any, as document: Document) {
-    self.cache[document] = value
-    self.innerManager.write(value, as: document)
+  func write(_ documentData: DocumentData) {
+    self.cache[documentData.document] = documentData.data
+    self.innerManager.write(documentData)
   }
 }

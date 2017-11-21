@@ -7,31 +7,19 @@ import Foundation
 
 class BookmarksManagerImpl: BookmarksManager {
 
-  // MARK: - Properties
-
-  private var bookmarks: [Bookmark] {
-    let fileContent = Managers.documents.read(.bookmarks)
-    return fileContent as? [Bookmark] ?? []
-  }
-
-  // MARK: - BookmarksManager
-
-  @discardableResult
-  func addNew(name: String, lines: [Line]) -> Bookmark {
-    let bookmark = Bookmark(name: name, lines: lines)
-
-    var bookmarks = self.bookmarks
+  func addNew(_ bookmark: Bookmark) {
+    var bookmarks = self.getAll()
     bookmarks.append(bookmark)
     self.save(bookmarks)
-
-    return bookmark
   }
 
   func getAll() -> [Bookmark] {
-    return self.bookmarks
+    let document = Managers.documents.read(.bookmarks)
+    return document as? [Bookmark] ?? []
   }
 
   func save(_ bookmarks: [Bookmark]) {
-    Managers.documents.write(bookmarks, as: .bookmarks)
+    let document = DocumentData.bookmarks(value: bookmarks)
+    Managers.documents.write(document)
   }
 }

@@ -8,8 +8,7 @@ import Foundation
 protocol BookmarksManager {
 
   /// Create new user-defined bookmark
-  @discardableResult
-  func addNew(name: String, lines: [Line]) -> Bookmark
+  func addNew(_ bookmark: Bookmark)
 
   /// Retrieve all of the user-defined bookmarks
   func getAll() -> [Bookmark]

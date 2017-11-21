@@ -8,19 +8,52 @@ import UIKit
 class DocumentsManagerImpl: DocumentsManager {
 
   func read(_ document: Document) -> Any? {
-    let path = self.getDocumentFilePath(document)
-    return NSKeyedUnarchiver.unarchiveObject(withFile: path)
+    do {
+      let url  = self.getDocumentURL(document)
+      let data = try Data(contentsOf: url)
+      return try self.decode(document, from: data)
+    }
+    catch { }
+    return nil
   }
 
-  func write(_ value: Any, as document: Document) {
-    let path = self.getDocumentFilePath(document)
-    NSKeyedArchiver.archiveRootObject(value, toFile: path)
+  func write(_ documentData: DocumentData) {
+    do {
+      let url  = self.getDocumentURL(documentData.document)
+      let data = try self.encode(documentData)
+      try data.write(to: url, options: .atomicWrite)
+    }
+    catch { }
   }
 
-  private func getDocumentFilePath(_ document: Document) -> String {
+  // MARK: - Decode/Encode
+
+  private func decode(_ documnet: Document, from data: Data) throws -> Any? {
+    let decoder = PropertyListDecoder()
+
+    switch documnet {
+    case .bookmarks:   return try decoder.decode([Bookmark].self, from: data)
+    case .searchState: return try decoder.decode(SearchState.self, from: data)
+    }
+  }
+
+  private func encode(_ documentData: DocumentData) throws -> Data {
+    let encoder = PropertyListEncoder()
+    encoder.outputFormat = .xml
+
+    // Swift 4 forces us to use concrete type when encoding not an generic Encodable
+    switch documentData {
+    case let .bookmarks(value):   return try encoder.encode(value)
+    case let .searchState(value): return try encoder.encode(value)
+    }
+  }
+
+  // MARK: - URL
+
+  private func getDocumentURL(_ document: Document) -> URL {
     let filename = self.getDocumentFilename(document)
     let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    return documentsDirectory.appendingPathComponent(filename).path
+    return documentsDirectory.appendingPathComponent(filename)
   }
 
   private func getDocumentFilename(_ document: Document) -> String {

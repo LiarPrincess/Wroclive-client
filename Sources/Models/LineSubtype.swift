@@ -3,9 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import Foundation
-
-enum LineSubtype: Int {
+enum LineSubtype: Int, Codable {
   case regular
   case express
   case peakHour
