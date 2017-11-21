@@ -3,10 +3,10 @@ use_frameworks!
 platform :ios, "10.2"
 
 target 'Wroclive' do
-  pod 'SnapKit',                           '~> 3.2.0'
-  pod 'Alamofire',                         '~> 4.4'
+  pod 'SnapKit',                           '~> 4.0.0'
+  pod 'Alamofire',                         '~> 4.5'
   pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
-  pod 'PromiseKit',                        '~> 4.0'
+  pod 'PromiseKit',                        '~> 4.5'
   pod 'PromiseKit/Alamofire',              '~> 4.0'
 
   # debug only
