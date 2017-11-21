@@ -42,7 +42,7 @@ class TutorialPresentationPage: UIViewController {
     super.viewDidLoad()
     self.view.clipsToBounds = true
 
-    self.deviceImageView.setContentCompressionResistancePriority(100.0, for: .vertical)
+    self.deviceImageView.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 100.0), for: .vertical)
 
     self.view.addSubview(self.deviceImageView)
     self.deviceImageView.snp.makeConstraints { make in
@@ -59,7 +59,7 @@ class TutorialPresentationPage: UIViewController {
       make.right.equalToSuperview().offset(-Layout.rightOffset)
     }
 
-    self.titleLabel.setContentHuggingPriority(1000.0, for: .vertical)
+    self.titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000.0), for: .vertical)
     self.labelContainer.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Title.topOffset)

@@ -79,7 +79,7 @@ extension InAppPurchasePresentation {
     let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, color: .presentationSecondary)
 
     var underlineAttributes = textAttributes
-    underlineAttributes[NSUnderlineStyleAttributeName] = NSUnderlineStyle.styleSingle.rawValue
+    underlineAttributes[NSAttributedStringKey.underlineStyle] = NSUnderlineStyle.styleSingle.rawValue
 
     let text = NSMutableAttributedString(string: Localization.Restore.text, attributes: textAttributes)
     text.append(NSAttributedString(string: " ", attributes: textAttributes))

@@ -31,7 +31,7 @@ class PushInteractiveDismissTransition: UIPercentDrivenInteractiveTransition {
 
   // MARK: - Gesture recognizers
 
-  func handleGesture(gesture: UIPanGestureRecognizer) {
+  @objc func handleGesture(gesture: UIPanGestureRecognizer) {
     guard let viewController = self.viewController else { return }
 
     switch gesture.state {

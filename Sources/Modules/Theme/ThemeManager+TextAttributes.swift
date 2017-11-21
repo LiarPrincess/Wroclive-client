@@ -11,15 +11,13 @@ extension ThemeManager {
                       fontType:      FontType        = .text,
                       alignment:     NSTextAlignment = .natural,
                       lineSpacing:   CGFloat         = 0.0,
-                      color:         TextColor       = TextColor.text) -> [String:Any] {
-    let result: [String:Any] = [
-      NSFontAttributeName:            self.fontValue(fontType, textStyle),
-      NSKernAttributeName:            self.trackingValue(fontType, textStyle),
-      NSForegroundColorAttributeName: self.colorValue(color),
-      NSParagraphStyleAttributeName:  self.paragraphStyle(alignment, lineSpacing)
+                      color:         TextColor       = TextColor.text) -> [NSAttributedStringKey:Any] {
+    return [
+      NSAttributedStringKey.font:            self.fontValue(fontType, textStyle),
+      NSAttributedStringKey.kern:            self.trackingValue(fontType, textStyle),
+      NSAttributedStringKey.foregroundColor: self.colorValue(color),
+      NSAttributedStringKey.paragraphStyle:  self.paragraphStyle(alignment, lineSpacing)
     ]
-
-    return result
   }
 
   private func colorValue(_ color: TextColor) -> UIColor {

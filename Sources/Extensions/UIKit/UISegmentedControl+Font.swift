@@ -7,7 +7,7 @@ import UIKit
 
 extension UISegmentedControl {
   var font: UIFont {
-    get { return self.titleTextAttributes(for: .normal)?[NSFontAttributeName] as! UIFont }
-    set { self.setTitleTextAttributes([NSFontAttributeName: newValue as Any], for: .normal) }
+    get { return self.titleTextAttributes(for: .normal)?[NSAttributedStringKey.font] as! UIFont }
+    set { self.setTitleTextAttributes([NSAttributedStringKey.font: newValue as Any], for: .normal) }
   }
 }
