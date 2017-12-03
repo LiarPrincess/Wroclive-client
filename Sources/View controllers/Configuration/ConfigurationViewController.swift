@@ -29,11 +29,6 @@ class ConfigurationViewController: UIViewController {
 
   let cardTitle = UILabel()
 
-  let scrollView        = UIScrollView()
-  let scrollViewContent = UIView()
-
-  lazy var inAppPurchasePresentation = InAppPurchasePresentation()
-
   let tableView           = IntrinsicTableView(frame: .zero, style: .grouped)
   let tableViewDataSource = ConfigurationDataSource()
 
@@ -64,16 +59,9 @@ class ConfigurationViewController: UIViewController {
     self.initLayout()
   }
 
-  private var isFirstTimeLayout = true
-
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-
-    if self.isFirstTimeLayout {
-      self.insetScrolViewVerticalIndicatorBelowHeaderView()
-      self.offsetScrolViewToInitialPosition() // can also be in viewWillAppear
-      self.isFirstTimeLayout = false
-    }
+    self.insetTableViewContentBelowHeaderView()
   }
 
   override func viewDidDisappear(_ animated: Bool) {
@@ -81,37 +69,14 @@ class ConfigurationViewController: UIViewController {
     self.delegate?.configurationViewControllerDidClose(self)
   }
 
-  // MARK: - Scroll view
+  private func insetTableViewContentBelowHeaderView() {
+    let currentInset = self.tableView.contentInset
+    let headerHeight = self.headerView.bounds.height
 
-  private func insetScrolViewVerticalIndicatorBelowHeaderView() {
-    let headerHeight  = self.headerView.bounds.height
-    let currentInsets = self.scrollView.scrollIndicatorInsets
-
-    if currentInsets.top < headerHeight {
-      var insets = currentInsets
-      insets.top = headerHeight
-      self.scrollView.scrollIndicatorInsets = insets
-    }
-  }
-
-  private func offsetScrolViewToInitialPosition() {
-    DispatchQueue.main.async { [weak self] in
-      if let strongSelf = self {
-        let offset = strongSelf.height * Layout.Content.initialScrollPercent
-        strongSelf.scrollView.contentOffset = CGPoint(x: 0.0, y: offset)
-      }
-    }
-  }
-
-  fileprivate func updateScrollViewBackgroundColor() {
-    let gradientColor = Managers.theme.colors.presentation.gradient.first
-    let tableColor    = Managers.theme.colors.configurationBackground
-
-    let scrollPosition  = scrollView.contentOffset.y
-    let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor
-
-    if let backgroundColor = backgroundColor, self.scrollView.backgroundColor != backgroundColor {
-      self.scrollView.backgroundColor = backgroundColor
+    if currentInset.top < headerHeight {
+      let newInset = UIEdgeInsets(top: headerHeight, left: currentInset.left, bottom: currentInset.bottom, right: currentInset.right)
+      self.tableView.contentInset          = newInset
+      self.tableView.scrollIndicatorInsets = newInset
     }
   }
 }
@@ -129,15 +94,6 @@ extension ConfigurationViewController: ColorSchemeObserver {
 
   func colorSchemeDidChange() {
     self.view.tintColor = Managers.theme.colors.tint.value
-  }
-}
-
-// MARK: - UIScrollViewDelegate
-
-extension ConfigurationViewController: UIScrollViewDelegate {
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    guard scrollView == self.scrollView else { return }
-    self.updateScrollViewBackgroundColor()
   }
 }
 

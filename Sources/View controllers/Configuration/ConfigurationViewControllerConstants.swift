@@ -27,6 +27,6 @@ struct ConfigurationViewControllerConstants {
   }
 
   struct CardPanel {
-    static let relativeHeight: CGFloat = 0.96
+    static let relativeHeight: CGFloat = 0.75
   }
 }

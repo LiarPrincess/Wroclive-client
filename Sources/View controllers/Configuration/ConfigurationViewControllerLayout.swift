@@ -15,7 +15,7 @@ extension ConfigurationViewController {
   func initLayout() {
     self.view.backgroundColor = Managers.theme.colors.background
     self.initHeader()
-    self.initScrollView()
+    self.initContent()
   }
 
   private func initHeader() {
@@ -41,47 +41,19 @@ extension ConfigurationViewController {
     }
   }
 
-  private func initScrollView() {
-    self.scrollView.delegate = self
-    self.scrollView.alwaysBounceVertical           = true
-    self.scrollView.showsHorizontalScrollIndicator = false
-
-    self.view.insertSubview(self.scrollView, belowSubview: self.headerView)
-    self.scrollView.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
-
-    scrollView.addSubview(self.scrollViewContent)
-    self.scrollViewContent.snp.makeConstraints { make in
-      make.top.bottom.centerX.width.equalToSuperview()
-    }
-
-    // in-app purchase
-    self.addChildViewController(self.inAppPurchasePresentation)
-    self.scrollViewContent.addSubview(self.inAppPurchasePresentation.view)
-
-    self.inAppPurchasePresentation.view.snp.makeConstraints { make in
-      make.top.equalToSuperview()
-      make.centerX.width.equalToSuperview()
-      make.height.equalTo(self.view.snp.height)
-    }
-
-    self.inAppPurchasePresentation.didMove(toParentViewController: self)
-
-    // table view
+  private func initContent() {
     self.tableView.register(UITableViewCell.self)
     self.tableView.backgroundColor = Managers.theme.colors.configurationBackground
     self.tableView.separatorInset  = .zero
     self.tableView.dataSource      = self.tableViewDataSource
     self.tableView.delegate        = self
 
-    self.scrollViewContent.addSubview(self.tableView)
-    self.tableView.snp.makeConstraints { make in
-      make.top.equalTo(self.inAppPurchasePresentation.view.snp.bottom)
-      make.bottom.centerX.width.equalToSuperview()
-    }
-
     self.tableView.tableFooterView = self.createTableFooter()
+
+    self.view.insertSubview(self.tableView, belowSubview: self.headerView)
+    self.tableView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
   }
 
   private func createTableFooter() -> UIView {
@@ -97,7 +69,7 @@ extension ConfigurationViewController {
     footerView.addSubview(footerLabel)
     footerLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Footer.topOffset)
-      make.left.right.equalToSuperview()
+      make.left.right.bottom.equalToSuperview()
     }
 
     return footerView

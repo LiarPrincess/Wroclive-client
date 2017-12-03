@@ -6,7 +6,7 @@
 import UIKit
 
 enum ConfigurationSectionType {
-  case personalization
+   case personalization
   case about
 }
 
@@ -22,7 +22,7 @@ struct ConfigurationSection: ConfigurationSectionViewModel {
   private static func createCells(for type: ConfigurationSectionType) -> [ConfigurationCell] {
     switch type {
     case .personalization: return [.personalization]
-    case .about:           return [.share, .tutorial, .contact, .rate]
+    case .about:           return [.share, .contact, .rate]
     }
   }
 }
