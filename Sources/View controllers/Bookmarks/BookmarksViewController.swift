@@ -140,7 +140,7 @@ class BookmarksViewController: UIViewController {
   fileprivate func showPlaceholderIfEmpty() {
     let bookmarks = self.bookmarksTableDataSource.bookmarks
 
-    let isPlaceholderVisible = !bookmarks.isEmpty
+    let isPlaceholderVisible = bookmarks.isEmpty
     self.editButton.isHidden      = isPlaceholderVisible
     self.placeholderView.isHidden = !isPlaceholderVisible
   }

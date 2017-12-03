@@ -4,8 +4,8 @@
 //
 
 import XCTest
-import Quick
-import Nimble
+//import Quick
+//import Nimble
 @testable import Wroclive
 
 class WrocliveTests: XCTestCase {
