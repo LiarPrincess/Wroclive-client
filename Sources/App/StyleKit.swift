@@ -279,38 +279,59 @@ public class StyleKit : NSObject {
   }
 
   @objc
-  dynamic public class func drawPin(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60), color: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), resizing: ResizingBehavior = .aspectFit) {
-    //// General Declarations
+  dynamic public class func drawRectanglePin(
+    frame targetFrame: CGRect           = CGRect(x: 0, y: 0, width: 100, height: 100),
+    color:             UIColor          = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000),
+    resizing:          ResizingBehavior = .aspectFit)
+  {
+    // dimensions (x4):
+    // arrow height: 24 |  6
+    // arrow width:  64 | 16
+
+    // arrow gap:      4 |  1
+    // rect width:   128 | 32
+    // total: 2 * (24 + 4) + 128 = 184 | 46
+
+    // border width:    8 |  2
+    // corners radius: 40 | 10
+
+    // Constants
+    let contextSize: CGFloat = 52.0
+
+    let arrowWidth:  CGFloat = 16.0
+    let arrowHeight: CGFloat =  6.0
+    let arrowGap:    CGFloat =  2.0
+
+    let rectBorderWidth:  CGFloat =  2.0
+    let rectCornerRadius: CGFloat = 10.0
+    let rectSize:         CGFloat = contextSize - 2 * (arrowHeight + arrowGap)
+
+    let rectFrame = CGRect(x: arrowHeight + arrowGap, y: arrowHeight + arrowGap, width: rectSize, height: rectSize)
+
+    // Drawing
     let context = UIGraphicsGetCurrentContext()!
 
-    //// Resize to Target Frame
     context.saveGState()
-    let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 60, height: 60), target: targetFrame)
+    let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0.0, y: 0.0, width: contextSize, height: contextSize), target: targetFrame)
     context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-    context.scaleBy(x: resizedFrame.width / 60, y: resizedFrame.height / 60)
+    context.scaleBy(x: resizedFrame.width / contextSize, y: resizedFrame.height / contextSize)
 
-    //// Color Declarations
-    let arrowColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+    // Rounded rect
+    let rectPath  = UIBezierPath(roundedRect: rectFrame, cornerRadius: rectCornerRadius)
+    color.withAlphaComponent(0.75).setFill()
+    rectPath.fill()
+    color.setStroke()
+    rectPath.lineWidth = rectBorderWidth
+    rectPath.stroke()
 
-    //// Oval Drawing
-    let ovalPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))
-    color.setFill()
-    ovalPath.fill()
-
-    //// Arrow Drawing
+    // Arrow
     let arrowPath = UIBezierPath()
-    arrowPath.move(to: CGPoint(x: 20, y: 42))
-    arrowPath.addLine(to: CGPoint(x: 30, y: 14))
-    arrowPath.addLine(to: CGPoint(x: 40, y: 42))
-    arrowPath.addLine(to: CGPoint(x: 30, y: 38))
-    arrowPath.addLine(to: CGPoint(x: 20, y: 42))
+    arrowPath.move(to: CGPoint(x: (contextSize - arrowWidth) / 2, y: arrowHeight))
+    arrowPath.addLine(to: CGPoint(x: contextSize / 2, y: 0))
+    arrowPath.addLine(to: CGPoint(x: (contextSize + arrowWidth) / 2, y: arrowHeight))
     arrowPath.close()
-    arrowColor.setFill()
+    color.setFill()
     arrowPath.fill()
-    arrowColor.setStroke()
-    arrowPath.lineWidth = 2
-    arrowPath.lineJoinStyle = .round
-    arrowPath.stroke()
 
     context.restoreGState()
   }

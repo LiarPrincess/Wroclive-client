@@ -9,7 +9,7 @@ import MapKit
 struct MapViewControllerConstants {
 
   struct Pin {
-    static let imageSize:              CGSize       = CGSize(width: 28.0, height: 28.0)
+    static let imageSize:              CGSize       = CGSize(width: 50.0, height: 50.0)
     static let minAngleChangeToRedraw: CGFloat      = 3.0
     static let animationDuration:      TimeInterval = 1.5
   }

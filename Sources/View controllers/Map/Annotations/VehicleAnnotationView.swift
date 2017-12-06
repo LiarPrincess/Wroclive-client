@@ -70,13 +70,13 @@ class VehicleAnnotationView: MKAnnotationView {
   func updateLabel() {
     guard let annotation = self.annotation as? VehicleAnnotation else { return }
 
-    let textColor = self.textColor(for: annotation)
+    let textColor = TextColor.background
     let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
     self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name, attributes: textAttributes)
 
     let imageSize  = Constants.imageSize
     let labelSize  = self.pinLabel.intrinsicContentSize
-    let labelOrgin = CGPoint(x: (imageSize.width - labelSize.width) / 2.0, y: imageSize.height)
+    let labelOrgin = CGPoint(x: (imageSize.width - labelSize.width) / 2.0, y: (imageSize.height - labelSize.height) / 2.0)
     self.pinLabel.frame = CGRect(origin: labelOrgin, size: labelSize)
   }
 
