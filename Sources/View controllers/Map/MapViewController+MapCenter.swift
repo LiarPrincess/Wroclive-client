@@ -11,7 +11,34 @@ private typealias Constants = MapViewControllerConstants
 
 extension MapViewController {
 
-  func centerDefaultRegion(animated: Bool) {
+  func centerDefaultLocation(animated: Bool) {
+    Swift.print("\(type(of: self)) -> \(#function) \(#line): \(0)")
+    let authorization = Managers.location.authorization
+
+    let isAuthorized = authorization == .authorizedAlways || authorization == .authorizedWhenInUse
+    if isAuthorized {
+      self.centerUserLocation(animated: animated)
+    }
+    else {
+      self.centerCityCenter(animated: animated)
+    }
+  }
+
+  func centerUserLocation(animated: Bool) {
+    Swift.print("\(type(of: self)) -> \(#function) \(#line): \(0)")
+    _ = Managers.location.getCurrent()
+      .then { userLocation -> () in
+        self.setMapCenter(userLocation, animated: animated)
+        self.alertWhenFarFromDefaultCity(userLocation: userLocation)
+        return ()
+      }
+      .catch { _ in
+        self.centerCityCenter(animated: animated)
+      }
+  }
+
+  private func centerCityCenter(animated: Bool) {
+    Swift.print("\(type(of: self)) -> \(#function) \(#line): \(0)")
     typealias Defaults = Constants.Defaults
 
     let newCenter = Defaults.cityCenter
@@ -23,25 +50,15 @@ extension MapViewController {
 
     // Prevent min flicker when we set the same center 2nd time
     if hasLatitudeChanged || hasLongitudeChanged {
-      let newRegion = MKCoordinateRegionMakeWithDistance(newCenter, Defaults.regionSize, Defaults.regionSize)
-      self.mapView.setRegion(newRegion, animated: animated)
+      self.setMapCenter(newCenter, animated: animated)
     }
   }
 
-  func centerUserLocationIfAuthorized(animated: Bool) {
-    let authorization = Managers.location.authorization
-
-    guard authorization == .authorizedAlways || authorization == .authorizedWhenInUse
-      else { return }
-
-    _ = Managers.location.getCurrent()
-      .then { userLocation -> () in
-        self.mapView.setCenter(userLocation, animated: true)
-        self.alertWhenFarFromDefaultCity(userLocation: userLocation)
-        return ()
-      }
-      // if we don't have access then leave as it is
-      .catch { _ in () }
+  private func setMapCenter(_ center: CLLocationCoordinate2D, animated: Bool) {
+    Swift.print("\(type(of: self)) -> \(#function) \(#line): \(0)")
+    typealias Defaults = Constants.Defaults
+    let region = MKCoordinateRegionMakeWithDistance(center, Defaults.regionSize, Defaults.regionSize)
+    self.mapView.setRegion(region, animated: animated)
   }
 
   private func alertWhenFarFromDefaultCity(userLocation: CLLocationCoordinate2D) {
@@ -53,7 +70,7 @@ extension MapViewController {
 
     Managers.alert.showInvalidCityAlert(in: self) { [weak self] result in
       if result == .showDefault {
-        self?.centerDefaultRegion(animated: true)
+        self?.centerCityCenter(animated: true)
       }
     }
   }

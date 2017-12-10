@@ -17,7 +17,7 @@ struct MapViewControllerConstants {
   struct Defaults {
     static let cityCenter = CLLocationCoordinate2D(latitude: 51.109_524, longitude: 17.032_564)
     static let cityRadius = CLLocationDistance(25_000.0) // m
-    static let regionSize = CLLocationDistance( 2_500.0) // m
+    static let regionSize = CLLocationDistance( 3_500.0) // m
 
     static let minDegChangeToUpdate: CLLocationDegrees = 0.01
   }

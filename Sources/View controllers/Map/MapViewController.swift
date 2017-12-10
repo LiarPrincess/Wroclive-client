@@ -26,7 +26,6 @@ class MapViewController: UIViewController {
     super.init(nibName: nil, bundle: nil)
     self.insetViewToShowMapLegalInfo()
     self.startObservingColorScheme()
-    self.startObservingApplicationActivity()
     self.startObservingLocationAuthorization()
   }
 
@@ -36,7 +35,6 @@ class MapViewController: UIViewController {
 
   deinit {
     self.stopObservingColorScheme()
-    self.stopObservingApplicationActivity()
     self.stopObservingLocationAuthorization()
   }
 
@@ -55,17 +53,12 @@ class MapViewController: UIViewController {
     self.mapView.isPitchEnabled    = false
     self.mapView.delegate          = self
 
-    self.centerDefaultRegion(animated: false)
+    self.centerDefaultLocation(animated: false)
 
     self.view.addSubview(self.mapView)
     self.mapView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
-  }
-
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    self.centerUserLocationIfAuthorized(animated: true)
   }
 
   // MARK: - Map legal info
@@ -86,13 +79,13 @@ class MapViewController: UIViewController {
   // MARK: Annotations
 
   func getVehicleAnnotations() -> [VehicleAnnotation] {
-    return self.mapView.annotations.flatMap { return $0 as? VehicleAnnotation }
+    return self.mapView.annotations.flatMap { $0 as? VehicleAnnotation }
   }
 }
 
 // MARK: - Notifications
 
-extension MapViewController: ColorSchemeObserver, LocationAuthorizationObserver, ApplicationActivityObserver {
+extension MapViewController: ColorSchemeObserver, LocationAuthorizationObserver {
 
   func colorSchemeDidChange() {
     for annotation in self.getVehicleAnnotations() {
@@ -103,15 +96,10 @@ extension MapViewController: ColorSchemeObserver, LocationAuthorizationObserver,
     }
   }
 
+  // called also on app startup
   func locationAuthorizationDidChange() {
-    self.centerUserLocationIfAuthorized(animated: true)
+    self.centerDefaultLocation(animated: true)
   }
-
-  func applicationDidBecomeActive() {
-    self.centerUserLocationIfAuthorized(animated: true)
-  }
-
-  func applicationWillResignActive() { }
 }
 
 // MARK: - MKMapViewDelegate
