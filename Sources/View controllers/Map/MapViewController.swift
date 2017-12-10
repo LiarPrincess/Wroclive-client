@@ -51,6 +51,8 @@ class MapViewController: UIViewController {
     self.mapView.showsBuildings    = true
     self.mapView.showsCompass      = true
     self.mapView.showsUserLocation = true
+    self.mapView.isRotateEnabled   = false
+    self.mapView.isPitchEnabled    = false
     self.mapView.delegate          = self
 
     self.centerDefaultRegion(animated: false)
