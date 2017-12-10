@@ -19,8 +19,9 @@ struct AppInfo {
 
   #if DEBUG
   struct Endpoints {
-    static let lines     = "http://192.168.1.100:8080/lines"
-    static let locations = "http://192.168.1.100:8080/locations"
+    private static let server = "139.59.154.250"
+    static let lines     = "http://" + server + "/lines"
+    static let locations = "http://" + server + "/locations"
   }
   #else
   #endif
