@@ -206,7 +206,7 @@ class SearchViewController: UIViewController {
       guard let strongSelf = self else { return }
 
       let retry = { [weak self] in
-        let delay = AppInfo.failedLinesRequestDelay
+        let delay = AppInfo.Timings.FailedRequestDelay.lines
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
           self?.refreshAvailableLines(selectedLines)
         }

@@ -31,7 +31,7 @@ extension AppCoordinator: MainViewControllerDelegate,
     let authorization = Managers.location.authorization
 
     if authorization == .notDetermined {
-      let delay = AppInfo.locationAuthorizationDelay
+      let delay = AppInfo.Timings.locationAuthorizationPromptDelay
       self.requestLocationAuthorization(after: delay)
     }
   }

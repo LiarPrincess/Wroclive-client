@@ -11,5 +11,5 @@ struct MainViewControllerConstants {
     static let toolbarImageSize = CGSize(width: 22.0, height: 22.0)
   }
 
-  static let failedLocationRequestDelay = AppInfo.failedLocationRequestDelay
+  static let failedLocationRequestDelay = AppInfo.Timings.FailedRequestDelay.location
 }

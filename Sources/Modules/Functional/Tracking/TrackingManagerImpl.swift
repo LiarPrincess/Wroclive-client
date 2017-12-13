@@ -6,8 +6,6 @@
 import Foundation
 import PromiseKit
 
-private typealias Constants = TrackingManagerConstants
-
 class TrackingManagerImpl: TrackingManager {
 
   private(set) var result: TrackingResult = .success(locations: []) {
@@ -25,7 +23,7 @@ class TrackingManagerImpl: TrackingManager {
       return
     }
 
-    let interval = Constants.locationUpdateInterval
+    let interval = AppInfo.Timings.locationUpdateInterval
     self.trackingTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
     self.trackingTimer?.tolerance = interval * 0.1
 
