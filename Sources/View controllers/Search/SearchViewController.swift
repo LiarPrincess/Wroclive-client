@@ -114,11 +114,11 @@ class SearchViewController: UIViewController {
     let selectedLines = self.linesSelector.selectedLines
 
     guard selectedLines.any else {
-      Managers.alert.showBookmarkNoLinesSelectedAlert(in: self)
+      BookmarkAlerts.showBookmarkNoLinesSelectedAlert(in: self)
       return
     }
 
-    Managers.alert.showBookmarkNameInputAlert(in: self) { [weak self] name in
+    BookmarkAlerts.showBookmarkNameInputAlert(in: self) { [weak self] name in
       guard let name = name else { return }
       let bookmark = Bookmark(name: name, lines: selectedLines)
       Managers.bookmarks.addNew(bookmark)
@@ -214,9 +214,9 @@ class SearchViewController: UIViewController {
 
       switch error {
       case NetworkError.noInternet:
-        Managers.alert.showNoInternetAlert(in: strongSelf, retry: retry)
+        NetworkAlerts.showNoInternetAlert(in: strongSelf, retry: retry)
       default:
-        Managers.alert.showNetworkingErrorAlert(in: strongSelf, retry: retry)
+        NetworkAlerts.showNetworkingErrorAlert(in: strongSelf, retry: retry)
       }
     }
   }

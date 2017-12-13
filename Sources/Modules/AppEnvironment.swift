@@ -23,7 +23,6 @@ class AppEnvironment {
   static var bookmarks:    BookmarksManager    { return current.bookmarks    }
   static var location:     LocationManager     { return current.location     }
   static var tracking:     TrackingManager     { return current.tracking     }
-  static var alert:        AlertManager        { return current.alert        }
 
   static var theme:        ThemeManager        { return current.theme        }
 
@@ -49,7 +48,6 @@ class AppEnvironment {
     bookmarks:    BookmarksManager    = bookmarks,
     location:     LocationManager     = location,
     tracking:     TrackingManager     = tracking,
-    alert:        AlertManager        = alert,
     theme:        ThemeManager        = theme) {
 
     push(Environment(
@@ -65,7 +63,6 @@ class AppEnvironment {
       bookmarks:    bookmarks,
       location:     location,
       tracking:     tracking,
-      alert:        alert,
       theme:        theme))
   }
 

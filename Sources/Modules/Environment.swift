@@ -24,7 +24,6 @@ class Environment {
   var bookmarks: BookmarksManager
   var location:  LocationManager
   var tracking:  TrackingManager
-  var alert:     AlertManager
 
   // theme
   var theme: ThemeManager
@@ -42,7 +41,6 @@ class Environment {
     bookmarks:    BookmarksManager    = BookmarksManagerImpl(),
     location:     LocationManager     = LocationManagerImpl(),
     tracking:     TrackingManager     = TrackingManagerImpl(),
-    alert:        AlertManager        = AlertManagerImpl(),
     theme:        ThemeManager        = ThemeManagerImpl()) {
 
     self.app           = app
@@ -57,7 +55,6 @@ class Environment {
     self.bookmarks     = bookmarks
     self.location      = location
     self.tracking      = tracking
-    self.alert         = alert
     self.theme         = theme
   }
 }

@@ -10,8 +10,9 @@
 		2CA53A00574F6624D5CB7A39 /* Pods_Wroclive_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */; };
 		5D357255A53DA237A02B2F71 /* Pods_Wroclive_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500F7A00FA0C7231B7408B0 /* Pods_Wroclive_Tests.framework */; };
 		9009BD4A1FB63CA1009FB075 /* WrocliveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A2C1FB4E8DA000A1A8C /* WrocliveTests.swift */; };
-		900CAEA61F482E750044C8A6 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8B1F482E750044C8A6 /* AlertManager.swift */; };
-		900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8C1F482E750044C8A6 /* AlertManagerImpl.swift */; };
+		900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976B1FE1BD4500AC7C35 /* LocationAlerts.swift */; };
+		900B976E1FE1BE1F00AC7C35 /* BookmarkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976D1FE1BE1F00AC7C35 /* BookmarkAlerts.swift */; };
+		900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976F1FE1BED200AC7C35 /* NetworkAlerts.swift */; };
 		900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE8F1F482E750044C8A6 /* BookmarksManager.swift */; };
 		900CAEAA1F482E750044C8A6 /* BookmarksManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE901F482E750044C8A6 /* BookmarksManagerImpl.swift */; };
 		900CAEAB1F482E750044C8A6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAE921F482E750044C8A6 /* LocationManager.swift */; };
@@ -260,8 +261,9 @@
 		7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive_Screenshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9009BD401FB63C7B009FB075 /* Wroclive-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wroclive-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9009BD441FB63C7B009FB075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		900CAE8B1F482E750044C8A6 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
-		900CAE8C1F482E750044C8A6 /* AlertManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManagerImpl.swift; sourceTree = "<group>"; };
+		900B976B1FE1BD4500AC7C35 /* LocationAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAlerts.swift; sourceTree = "<group>"; };
+		900B976D1FE1BE1F00AC7C35 /* BookmarkAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAlerts.swift; sourceTree = "<group>"; };
+		900B976F1FE1BED200AC7C35 /* NetworkAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAlerts.swift; sourceTree = "<group>"; };
 		900CAE8F1F482E750044C8A6 /* BookmarksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManager.swift; sourceTree = "<group>"; };
 		900CAE901F482E750044C8A6 /* BookmarksManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksManagerImpl.swift; sourceTree = "<group>"; };
 		900CAE921F482E750044C8A6 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -541,11 +543,24 @@
 			path = Collections;
 			sourceTree = "<group>";
 		};
+		900B976A1FE1BB4D00AC7C35 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				900CAE8A1F482E750044C8A6 /* Alerts */,
+				9032F0791F5DF66B00E1C9BC /* Intrinsic collections */,
+				908FB1971F48B3CA00121584 /* Reusable cell */,
+				908FB1951F48B3CA00121584 /* Layout guide */,
+				90B967611F9D304600E9BC75 /* Page view controller container */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		900CAE8A1F482E750044C8A6 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				900CAE8B1F482E750044C8A6 /* AlertManager.swift */,
-				900CAE8C1F482E750044C8A6 /* AlertManagerImpl.swift */,
+				900B976B1FE1BD4500AC7C35 /* LocationAlerts.swift */,
+				900B976D1FE1BE1F00AC7C35 /* BookmarkAlerts.swift */,
+				900B976F1FE1BED200AC7C35 /* NetworkAlerts.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -762,7 +777,6 @@
 		9021F3DB1F12C9EF000A6949 /* User interface */ = {
 			isa = PBXGroup;
 			children = (
-				9021F3F11F12C9EF000A6949 /* Helpers */,
 				9021F3DF1F12C9EF000A6949 /* Controls */,
 				90D6ACF71F4DEBE600B36DCB /* Presentations */,
 				9021F3F81F12C9EF000A6949 /* Transitions */,
@@ -801,17 +815,6 @@
 				907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */,
 			);
 			path = "Line selection";
-			sourceTree = "<group>";
-		};
-		9021F3F11F12C9EF000A6949 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				908FB1951F48B3CA00121584 /* Layout guide */,
-				908FB1971F48B3CA00121584 /* Reusable cell */,
-				9032F0791F5DF66B00E1C9BC /* Intrinsic collections */,
-				90B967611F9D304600E9BC75 /* Page view controller container */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		9021F3F81F12C9EF000A6949 /* Transitions */ = {
@@ -1508,7 +1511,6 @@
 				900CAE8E1F482E750044C8A6 /* Bookmarks */,
 				900CAE911F482E750044C8A6 /* Location */,
 				90546BEC1F6AF21B00E8E75F /* Tracking */,
-				900CAE8A1F482E750044C8A6 /* Alerts */,
 			);
 			path = Functional;
 			sourceTree = "<group>";
@@ -1571,6 +1573,7 @@
 				902330E41EDF37F500FA8F43 /* App */,
 				902330E81EDF37F500FA8F43 /* Models */,
 				902330ED1EDF37F500FA8F43 /* Modules */,
+				900B976A1FE1BB4D00AC7C35 /* Helpers */,
 				9021F3871F12C95D000A6949 /* Extensions */,
 				9061355D1F842633006634C7 /* Coordinators */,
 				9021F3DB1F12C9EF000A6949 /* User interface */,
@@ -1961,7 +1964,6 @@
 				907F26811F7460E4000C272B /* CLLocation.swift in Sources */,
 				908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */,
 				90374CCB1F6D3935008D78CE /* SessionManager.swift in Sources */,
-				900CAEA61F482E750044C8A6 /* AlertManager.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
 				90145E5B1F61B9E30068698D /* InAppPurchasePresentation.swift in Sources */,
 				90541FCF1FA79E6C0055350E /* DocumentsManager.swift in Sources */,
@@ -1970,7 +1972,6 @@
 				909074B31FB8A96600C8DD51 /* ApiManagerMock.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
 				90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */,
-				900CAEA71F482E750044C8A6 /* AlertManagerImpl.swift in Sources */,
 				90541FD11FA79F760055350E /* DocumentsManagerImpl.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManagerImpl.swift in Sources */,
 				90546BF91F6B15A000E8E75F /* TutorialPresentationLayout.swift in Sources */,
@@ -2043,7 +2044,9 @@
 				9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */,
 				9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */,
 				909EFD1B1F9D1D8F00C487AD /* InAppPurchasePresentationPage.swift in Sources */,
+				900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */,
 				909EFD171F9D175100C487AD /* ColorSelectionPresentationConstants.swift in Sources */,
+				900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */,
 				9044A5451F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift in Sources */,
 				909074A61FB84F4100C8DD51 /* BookmarksManagerMock.swift in Sources */,
 				9034E0A61F9D2A8700864132 /* TutorialPresentationPage.swift in Sources */,
@@ -2081,6 +2084,7 @@
 				9055C8E81F462F5C00D1EBDA /* ConfigurationViewControllerConstants.swift in Sources */,
 				908252571F703F0E001C2926 /* Notification.swift in Sources */,
 				900CAEAB1F482E750044C8A6 /* LocationManager.swift in Sources */,
+				900B976E1FE1BE1F00AC7C35 /* BookmarkAlerts.swift in Sources */,
 				907F70A01F13F66200F43902 /* LineSelectionViewControllerConstants.swift in Sources */,
 				90D6ACF61F4DEB6300B36DCB /* AppStoreManagerImpl.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,

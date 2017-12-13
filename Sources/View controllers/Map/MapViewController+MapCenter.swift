@@ -68,7 +68,7 @@ extension MapViewController {
     guard distance > Constants.Defaults.cityRadius
       else { return }
 
-    Managers.alert.showInvalidCityAlert(in: self) { [weak self] result in
+    LocationAlerts.showInvalidCityAlert(in: self) { [weak self] result in
       if result == .showDefault {
         self?.centerCityCenter(animated: true)
       }
