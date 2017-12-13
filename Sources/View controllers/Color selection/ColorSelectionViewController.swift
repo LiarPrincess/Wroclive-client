@@ -18,11 +18,6 @@ class ColorSelectionViewController: UIViewController {
 
   weak var delegate: ColorSelectionViewControllerDelegate?
 
-  let scrollView        = UIScrollView()
-  let scrollViewContent = UIView()
-
-  let presentation = ColorSelectionPresentation()
-
   let collectionViewDataSource = ColorSelectionDataSource()
   let collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -170,26 +165,6 @@ extension ColorSelectionViewController: ColorSchemeObserver {
     let colorScheme = Managers.theme.colors
     self.view.tintColor       = colorScheme.tint.value
     self.backButton.tintColor = colorScheme.tint.value
-  }
-}
-
-// MARK: - UIScrollViewDelegate
-
-extension ColorSelectionViewController: UIScrollViewDelegate {
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    self.updateScrollViewBackgroundColor()
-  }
-
-  private func updateScrollViewBackgroundColor() {
-    let gradientColor = Managers.theme.colors.presentation.gradient.first
-    let tableColor    = Managers.theme.colors.configurationBackground
-
-    let scrollPosition  = scrollView.contentOffset.y
-    let backgroundColor = scrollPosition <= 0.0 ? gradientColor : tableColor
-
-    if let backgroundColor = backgroundColor, self.scrollView.backgroundColor != backgroundColor {
-      self.scrollView.backgroundColor = backgroundColor
-    }
   }
 }
 

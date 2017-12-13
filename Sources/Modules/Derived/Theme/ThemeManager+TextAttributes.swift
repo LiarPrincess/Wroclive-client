@@ -29,8 +29,6 @@ extension ThemeManager {
     case .tint:                  return self.colors.tint.value
     case .bus:                   return self.colors.bus.value
     case .tram:                  return self.colors.tram.value
-    case .presentationPrimary:   return self.colors.presentation.textPrimary
-    case .presentationSecondary: return self.colors.presentation.textSecondary
     }
   }
 

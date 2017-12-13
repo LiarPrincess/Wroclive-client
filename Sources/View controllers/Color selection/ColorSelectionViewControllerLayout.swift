@@ -12,38 +12,11 @@ extension ColorSelectionViewController {
 
   func initLayout() {
     self.view.backgroundColor = Managers.theme.colors.configurationBackground
-    self.initScrollView()
+    self.initCollectionView()
     self.initBackButton()
   }
 
-  private func initScrollView() {
-    self.scrollView.delegate = self
-    self.scrollView.alwaysBounceVertical = true
-    self.scrollView.showsHorizontalScrollIndicator = false
-
-    self.view.addSubview(self.scrollView)
-    self.scrollView.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
-
-    scrollView.addSubview(self.scrollViewContent)
-    self.scrollViewContent.snp.makeConstraints { make in
-      make.top.bottom.centerX.width.equalToSuperview()
-    }
-
-    // presentation
-    self.addChildViewController(self.presentation)
-    self.scrollViewContent.addSubview(self.presentation.view)
-
-    self.presentation.view.snp.makeConstraints { make in
-      make.top.equalToSuperview()
-      make.centerX.width.equalToSuperview()
-      make.height.equalTo(Managers.device.screenBounds.height * Layout.Presentation.relativeHeight)
-    }
-
-    self.presentation.didMove(toParentViewController: self)
-
-    // collection view
+  private func initCollectionView() {
     self.collectionView.register(ColorSelectionCell.self)
     self.collectionView.registerSupplementary(ColorSelectionSectionHeaderView.self, ofKind: .header)
     self.collectionView.registerSupplementary(ColorSelectionSectionFooterView.self, ofKind: .footer)
@@ -54,11 +27,9 @@ extension ColorSelectionViewController {
     self.collectionView.dataSource = self.collectionViewDataSource
     self.collectionView.delegate   = self
 
-    self.scrollViewContent.addSubview(self.collectionView)
+    self.view.addSubview(self.collectionView)
     self.collectionView.snp.makeConstraints { make in
-      make.top.equalTo(self.presentation.view.snp.bottom)
-      make.centerX.width.equalToSuperview()
-      make.bottom.equalToSuperview().offset(-Layout.bottomOffset)
+      make.edges.equalToSuperview()
     }
   }
 

@@ -9,7 +9,6 @@ private typealias Localization = Localizable.Configuration.Cell
 
 enum ConfigurationCell: ConfigurationCellViewModel {
   case personalization
-  case tutorial
   case contact
   case share
   case rate
@@ -17,7 +16,6 @@ enum ConfigurationCell: ConfigurationCellViewModel {
   var text: String {
     switch self {
     case .personalization: return Localization.colors
-    case .tutorial:        return Localization.tutorial
     case .contact:         return Localization.contact
     case .share:           return Localization.share
     case .rate:            return Localization.rate
@@ -35,7 +33,6 @@ enum ConfigurationCell: ConfigurationCellViewModel {
     let base = "ConfigurationCellView."
     switch self {
     case .personalization: return base + "colors"
-    case .tutorial:        return base + "tutorial"
     case .contact:         return base + "contact"
     case .share:           return base + "share"
     case .rate:            return base + "rate"

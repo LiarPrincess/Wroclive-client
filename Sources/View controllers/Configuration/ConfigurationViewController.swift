@@ -12,7 +12,6 @@ protocol ConfigurationViewControllerDelegate: class {
   func configurationViewControllerDidClose(_ viewController: ConfigurationViewController)
 
   func configurationViewControllerDidTapColorSelectionButton(_ viewController: ConfigurationViewController)
-  func configurationViewControllerDidTapTutorialButton(_ viewController: ConfigurationViewController)
   func configurationViewControllerDidTapShareButton(_ viewController: ConfigurationViewController)
 }
 
@@ -104,7 +103,6 @@ extension ConfigurationViewController: UITableViewDelegate {
     let cell = self.tableViewDataSource.cellAt(indexPath)
     switch cell {
     case .personalization: self.delegate?.configurationViewControllerDidTapColorSelectionButton(self)
-    case .tutorial:        self.delegate?.configurationViewControllerDidTapTutorialButton(self)
     case .contact:         Managers.app.openWebsite()
     case .share:           self.delegate?.configurationViewControllerDidTapShareButton(self)
     case .rate:            Managers.app.rateApp()

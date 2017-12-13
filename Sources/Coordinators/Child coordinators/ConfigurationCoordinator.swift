@@ -30,9 +30,7 @@ class ConfigurationCoordinator: CardPanelCoordinator {
   }
 }
 
-extension ConfigurationCoordinator: ConfigurationViewControllerDelegate,
-                                    ColorSelectionCoordinatorDelegate,
-                                    TutorialCoordinatorDelegate {
+extension ConfigurationCoordinator: ConfigurationViewControllerDelegate, ColorSelectionCoordinatorDelegate {
 
   // MARK: - Close
 
@@ -49,18 +47,6 @@ extension ConfigurationCoordinator: ConfigurationViewControllerDelegate,
   }
 
   func coordinatorDidClose(_ coordinator: ColorSelectionCoordinator) {
-    self.removeChildCoordinator(coordinator)
-  }
-
-  // MARK: - Tutorial
-
-  func configurationViewControllerDidTapTutorialButton(_ viewController: ConfigurationViewController) {
-    let coordinator = TutorialCoordinator(parent: viewController, mode: .default, delegate: self)
-    self.childCoordinators.append(coordinator)
-    coordinator.start()
-  }
-
-  func tutorialCoordinatorDidClose(_ coordinator: TutorialCoordinator) {
     self.removeChildCoordinator(coordinator)
   }
 

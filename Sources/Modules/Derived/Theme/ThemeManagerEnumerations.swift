@@ -13,8 +13,6 @@ enum TextColor {
   case tint
   case bus
   case tram
-  case presentationPrimary
-  case presentationSecondary
 }
 
 enum TextStyle {

@@ -21,7 +21,8 @@ class AppManagerImpl: AppManager {
 
   func showShareActivity(in viewController: UIViewController) {
     let text  = String(format: Localizable.Share.message, AppInfo.AppStore.shareUrl)
-    let items = [text] as [Any]
+    let image = Assets.shareImage
+    let items = [text, image] as [Any]
 
     let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
     activityViewController.excludedActivityTypes = [.assignToContact, .saveToCameraRoll, .addToReadingList, .postToFlickr, .postToVimeo, .openInIBooks, .print]
@@ -33,4 +34,3 @@ class AppManagerImpl: AppManager {
     UIApplication.shared.open(url)
   }
 }
-
