@@ -34,4 +34,3 @@
 //      .then { return Promise(value: self.vehicles) }
 //  }
 //}
-

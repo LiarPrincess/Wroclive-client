@@ -73,4 +73,3 @@ enum AppEnvironment {
     _ = stack.popLast()
   }
 }
-
