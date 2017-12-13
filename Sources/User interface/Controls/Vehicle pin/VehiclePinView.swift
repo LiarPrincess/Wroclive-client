@@ -30,6 +30,6 @@ class VehiclePinView: UIView {
   override func draw(_ rect: CGRect) {
     let color    = self.tintColor ?? UIColor.black
     let resizing = StyleKit.ResizingBehavior.aspectFit
-    StyleKit.drawRectanglePin(frame: self.bounds, color: color, resizing: resizing)
+    StyleKit.drawVehiclePin(frame: self.bounds, color: color, resizing: resizing)
   }
 }

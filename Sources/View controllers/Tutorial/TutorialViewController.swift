@@ -60,7 +60,7 @@ class TutorialViewController: UIViewController {
   // MARK: - Buttons
 
   private func initBackButton() {
-    let image = StyleKit.drawBackTemplateImage(size: Layout.BackButton.imageSize)
+    let image = StyleKit.drawBackArrowTemplateImage(size: Layout.BackButton.imageSize)
 
     self.closeButton.setImage(image, for: .normal)
     self.closeButton.addTarget(self, action: #selector(TutorialViewController.closeButtonPressed), for: .touchUpInside)

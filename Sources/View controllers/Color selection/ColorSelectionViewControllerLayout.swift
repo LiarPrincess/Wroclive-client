@@ -65,7 +65,7 @@ extension ColorSelectionViewController {
   private func initBackButton() {
     typealias ButtonLayout = Layout.BackButton
 
-    let image = StyleKit.drawBackTemplateImage(size: ButtonLayout.imageSize)
+    let image = StyleKit.drawBackArrowTemplateImage(size: ButtonLayout.imageSize)
 
     self.backButton.setImage(image, for: .normal)
     self.backButton.addTarget(self, action: #selector(ColorSelectionViewController.closeButtonPressed), for: .touchUpInside)
