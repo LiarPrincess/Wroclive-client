@@ -532,6 +532,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		900B97691FE1BAE200AC7C35 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				903920341F1AB70E00250162 /* ArrayOfLines.swift */,
+				901C71861F9A5DFA00697EEC /* ArrayOfBookmarks.swift */,
+			);
+			path = Collections;
+			sourceTree = "<group>";
+		};
 		900CAE8A1F482E750044C8A6 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -915,13 +924,12 @@
 		902330E81EDF37F500FA8F43 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				900B97691FE1BAE200AC7C35 /* Collections */,
 				902330EA1EDF37F500FA8F43 /* Line.swift */,
 				902330EC1EDF37F500FA8F43 /* LineType.swift */,
 				902330EB1EDF37F500FA8F43 /* LineSubtype.swift */,
 				90B1DAA01F2BD92500FAE18A /* Bookmark.swift */,
 				90665CBD1F430D7B00D8CFBC /* Vehicle.swift */,
-				903920341F1AB70E00250162 /* ArrayOfLines.swift */,
-				901C71861F9A5DFA00697EEC /* ArrayOfBookmarks.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
