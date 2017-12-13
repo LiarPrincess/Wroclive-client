@@ -6,7 +6,7 @@
 import Foundation
 import PromiseKit
 
-protocol ApiManager {
+protocol MPKManager {
 
   /// Get all currently available lines
   func getAvailableLines() -> Promise<[Line]>

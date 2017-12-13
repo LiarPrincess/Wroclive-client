@@ -3,58 +3,49 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import UIKit
-
 class Environment {
 
-  // device
   var app:          AppManager
-  var bundle:       BundleManager
   var device:       DeviceManager
-  var appStore:     AppStoreManager
+  var network:      NetworkManager
+  var location:     LocationManager
   var notification: NotificationManager
   var userDefaults: UserDefaultsManager
   var documents:    DocumentsManager
 
-  // api
-  var api: ApiManager
-
-  // func
+  var theme:     ThemeManager
+  var mpk:       MPKManager
   var search:    SearchManager
   var bookmarks: BookmarksManager
-  var location:  LocationManager
   var tracking:  TrackingManager
-
-  // theme
-  var theme: ThemeManager
 
   init(
     app:          AppManager          = AppManagerImpl(),
-    bundle:       BundleManager       = BundleManagerImpl(),
     device:       DeviceManager       = DeviceManagerImpl(),
-    appStore:     AppStoreManager     = AppStoreManagerImpl(),
+    network:      NetworkManager      = NetworkManagerImpl(),
+    location:     LocationManager     = LocationManagerImpl(),
     notification: NotificationManager = NotificationManagerImpl(),
     userDefaults: UserDefaultsManager = UserDefaultsManagerImpl(),
     documents:    DocumentsManager    = CachedDocumentsManagerImpl(DocumentsManagerImpl()),
-    api:          ApiManager          = ApiManagerImpl(),
+
+    theme:        ThemeManager        = ThemeManagerImpl(),
+    mpk:          MPKManager          = MPKManagerImpl(),
     search:       SearchManager       = SearchManagerImpl(),
     bookmarks:    BookmarksManager    = BookmarksManagerImpl(),
-    location:     LocationManager     = LocationManagerImpl(),
-    tracking:     TrackingManager     = TrackingManagerImpl(),
-    theme:        ThemeManager        = ThemeManagerImpl()) {
+    tracking:     TrackingManager     = TrackingManagerImpl()) {
 
     self.app           = app
-    self.bundle        = bundle
     self.device        = device
-    self.appStore      = appStore
+    self.network       = network
+    self.location      = location
     self.notification  = notification
     self.userDefaults  = userDefaults
     self.documents     = documents
-    self.api           = api
+
+    self.theme         = theme
+    self.mpk           = mpk
     self.search        = search
     self.bookmarks     = bookmarks
-    self.location      = location
     self.tracking      = tracking
-    self.theme         = theme
   }
 }

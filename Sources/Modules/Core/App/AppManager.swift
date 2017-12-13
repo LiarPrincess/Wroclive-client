@@ -7,15 +7,21 @@ import UIKit
 
 protocol AppManager {
 
-  /// Prepare app for taking screenshot:
-  /// - replace status bar with 9:41
-  /// - mock managers
-  /// - etc.
-  func enableScreenshotOverrides()
+  /// App name (e.g. Wroclive)
+  var name: String { get }
 
-  /// Open app website in Safari
-  func openWebsite()
+  /// App version (e.g. 1.0)
+  var version: String { get }
+
+  // App bundle (e.g. pl.nopoint.wroclive)
+  var identifier: String { get }
+
+  /// Asks user to rate app in AppStore
+  func rateApp()
 
   /// Present bottom panel to share app
   func showShareActivity(in viewController: UIViewController)
+
+  /// Open app website in Safari
+  func openWebsite()
 }

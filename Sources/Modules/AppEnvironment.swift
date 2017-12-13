@@ -5,26 +5,23 @@
 
 typealias Managers = AppEnvironment
 
-class AppEnvironment {
+enum AppEnvironment {
 
-  // MARK: Stack
+  // MARK: Managers
 
-  static var app:          AppManager          { return current.app          }
-  static var bundle:       BundleManager       { return current.bundle       }
-  static var device:       DeviceManager       { return current.device       }
-  static var appStore:     AppStoreManager     { return current.appStore     }
+  static var app:          AppManager          { return current.app }
+  static var device:       DeviceManager       { return current.device }
+  static var network:      NetworkManager      { return current.network }
+  static var location:     LocationManager     { return current.location }
   static var notification: NotificationManager { return current.notification }
   static var userDefaults: UserDefaultsManager { return current.userDefaults }
-  static var documents:    DocumentsManager    { return current.documents    }
+  static var documents:    DocumentsManager    { return current.documents }
 
-  static var api:          ApiManager          { return current.api          }
-
-  static var search:       SearchManager       { return current.search       }
-  static var bookmarks:    BookmarksManager    { return current.bookmarks    }
-  static var location:     LocationManager     { return current.location     }
-  static var tracking:     TrackingManager     { return current.tracking     }
-
-  static var theme:        ThemeManager        { return current.theme        }
+  static var theme:        ThemeManager        { return current.theme }
+  static var mpk:          MPKManager          { return current.mpk }
+  static var search:       SearchManager       { return current.search }
+  static var bookmarks:    BookmarksManager    { return current.bookmarks }
+  static var tracking:     TrackingManager     { return current.tracking }
 
   // MARK: Stack
 
@@ -37,33 +34,33 @@ class AppEnvironment {
 
   static func push(
     app:          AppManager          = app,
-    bundle:       BundleManager       = bundle,
     device:       DeviceManager       = device,
-    appStore:     AppStoreManager     = appStore,
+    network:      NetworkManager      = network,
+    location:     LocationManager     = location,
     notification: NotificationManager = notification,
     userDefaults: UserDefaultsManager = userDefaults,
     documents:    DocumentsManager    = documents,
-    api:          ApiManager          = api,
+
+    theme:        ThemeManager        = theme,
+    mpk:          MPKManager          = mpk,
     search:       SearchManager       = search,
     bookmarks:    BookmarksManager    = bookmarks,
-    location:     LocationManager     = location,
-    tracking:     TrackingManager     = tracking,
-    theme:        ThemeManager        = theme) {
+    tracking:     TrackingManager     = tracking) {
 
     push(Environment(
-      app:          app,
-      bundle:       bundle,
-      device:       device,
-      appStore:     appStore,
-      notification: notification,
-      userDefaults: userDefaults,
-      documents:    documents,
-      api:          api,
-      search:       search,
-      bookmarks:    bookmarks,
-      location:     location,
-      tracking:     tracking,
-      theme:        theme))
+      app:           app,
+      device:        device,
+      network:       network,
+      location:      location,
+      notification:  notification,
+      userDefaults:  userDefaults,
+      documents:     documents,
+
+      theme:         theme,
+      mpk:           mpk,
+      search:        search,
+      bookmarks:     bookmarks,
+      tracking:      tracking))
   }
 
   static func push(_ environment: Environment) {
@@ -76,3 +73,4 @@ class AppEnvironment {
     _ = stack.popLast()
   }
 }
+

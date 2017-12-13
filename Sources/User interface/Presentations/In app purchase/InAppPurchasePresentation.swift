@@ -34,12 +34,12 @@ class InAppPurchasePresentation: UIViewController, PageViewControllerContainer {
 
   @objc
   func upgradeButtonPressed() {
-    Managers.appStore.buyUpgrade()
+    // Managers.appStore.buyUpgrade()
   }
 
   @objc
   func restorePurchaseLabelPressed(tapGestureRecognizer: UITapGestureRecognizer) {
-    Managers.appStore.restorePurchase()
+    // Managers.appStore.restorePurchase()
   }
 }
 

@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     AppEnvironment.push(Environment())
-    Managers.app.enableScreenshotOverrides()
     Managers.theme.applyColorScheme()
 
     self.appCoordinator = AppCoordinator(window: self.window!)

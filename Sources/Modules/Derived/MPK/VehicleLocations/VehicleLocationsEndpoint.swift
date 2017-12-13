@@ -7,7 +7,7 @@ import Foundation
 import Alamofire
 import PromiseKit
 
-class VehicleLocationEndpoint: Endpoint {
+class VehicleLocationsEndpoint: Endpoint {
 
   // MARK: - Properties
 
@@ -20,15 +20,8 @@ class VehicleLocationEndpoint: Endpoint {
 
   func encodeParameters(_ data: [Line]) -> Parameters? {
     var parameters      = Parameters()
-    parameters["lines"] = self.encodeLines(data)
+    parameters["lines"] = VehicleLocationsSerialization.encode(data)
     return parameters
-  }
-
-  private func encodeLines(_ lines: [Line]) -> [[String:Any]] {
-    return lines.map {[
-      "name": $0.name,
-      "type": $0.type == .bus ? "bus" : "tram"
-    ]}
   }
 
   // MARK: - Response
@@ -40,7 +33,7 @@ class VehicleLocationEndpoint: Endpoint {
 
     return Promise { fulfill, reject in
       do {
-        let locations = try jsonArray.flatMap { return try LineLocationsParser.parse($0) }
+        let locations = try jsonArray.flatMap { return try VehicleLocationsSerialization.decode($0) }
         fulfill(locations)
       } catch {
         reject(NetworkError.invalidResponse)

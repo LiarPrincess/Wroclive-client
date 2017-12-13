@@ -13,7 +13,7 @@ class ThemeManagerImpl: ThemeManager {
 
   fileprivate(set) lazy var textFont: Font        = SystemFont()
   fileprivate(set) lazy var iconFont: Font        = FontAwesomeFont()
-  fileprivate(set) lazy var colors:   ColorScheme = ColorSchemeManager.load()
+  fileprivate(set) lazy var colors:   ColorScheme = ColorSchemeManager.load(from: Managers.userDefaults)
 
   // MARK: - Fonts
 
@@ -27,7 +27,7 @@ class ThemeManagerImpl: ThemeManager {
   func setColorScheme(tint: TintColor, tram: VehicleColor, bus: VehicleColor) {
     self.colors = ColorScheme(tint: tint, tram: tram, bus: bus)
     self.applyColorScheme()
-    ColorSchemeManager.save(self.colors)
+    ColorSchemeManager.save(self.colors, to: Managers.userDefaults)
     Managers.notification.post(.colorSchemeDidChange)
   }
 }

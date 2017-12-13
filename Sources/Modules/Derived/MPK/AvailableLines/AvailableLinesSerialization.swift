@@ -3,17 +3,17 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-class LinesParser {
+class AvailableLinesSerialization {
 
   private init() {}
 
-  static func parse(_ json: JSONDictionary) throws -> Line {
+  static func decode(_ json: JSONDictionary) throws -> Line {
     guard let name          = json["name"]    as? String,
           let typeString    = json["type"]    as? String,
           let subtypeString = json["subtype"] as? String,
 
-          let type    = LinesParser.parseLineType(typeString),
-          let subtype = LinesParser.parseLineSubtype(subtypeString)
+          let type    = AvailableLinesSerialization.parseLineType(typeString),
+          let subtype = AvailableLinesSerialization.parseLineSubtype(subtypeString)
       else { throw NetworkError.invalidResponse }
 
     return Line(name: name, type: type, subtype: subtype)

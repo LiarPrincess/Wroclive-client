@@ -107,7 +107,7 @@ extension ConfigurationViewController: UITableViewDelegate {
     case .tutorial:        self.delegate?.configurationViewControllerDidTapTutorialButton(self)
     case .contact:         Managers.app.openWebsite()
     case .share:           self.delegate?.configurationViewControllerDidTapShareButton(self)
-    case .rate:            Managers.appStore.rateApp()
+    case .rate:            Managers.app.rateApp()
     }
     tableView.deselectRow(at: indexPath, animated: true)
   }

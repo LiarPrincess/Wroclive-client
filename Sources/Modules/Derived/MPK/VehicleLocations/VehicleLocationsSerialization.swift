@@ -5,17 +5,24 @@
 
 import Foundation
 
-class LineLocationsParser {
+class VehicleLocationsSerialization {
 
   private init() {}
 
-  static func parse(_ json: JSONDictionary) throws -> [Vehicle] {
+  static func encode(_ lines: [Line]) -> [[String:Any]] {
+    return lines.map {[
+      "name": $0.name,
+      "type": $0.type == .bus ? "bus" : "tram"
+    ]}
+  }
+
+  static func decode(_ json: JSONDictionary) throws -> [Vehicle] {
     guard let lineJson     = json["line"]     as? JSONDictionary,
           let vehiclesJson = json["vehicles"] as? JSONArray
       else { throw NetworkError.invalidResponse }
 
-    let line = try LinesParser.parse(lineJson)
-    return try vehiclesJson.map { return try LineLocationsParser.parseVehicleLocation(line, json: $0) }
+    let line = try AvailableLinesSerialization.decode(lineJson)
+    return try vehiclesJson.map { return try VehicleLocationsSerialization.parseVehicleLocation(line, json: $0) }
   }
 
   private static func parseVehicleLocation(_ line: Line, json: JSONDictionary) throws -> Vehicle {

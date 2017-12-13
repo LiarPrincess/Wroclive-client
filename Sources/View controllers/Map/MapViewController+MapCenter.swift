@@ -12,7 +12,6 @@ private typealias Constants = MapViewControllerConstants
 extension MapViewController {
 
   func centerDefaultLocation(animated: Bool) {
-    Swift.print("\(type(of: self)) -> \(#function) \(#line): \(0)")
     let authorization = Managers.location.authorization
 
     let isAuthorized = authorization == .authorizedAlways || authorization == .authorizedWhenInUse
@@ -25,7 +24,6 @@ extension MapViewController {
   }
 
   func centerUserLocation(animated: Bool) {
-    Swift.print("\(type(of: self)) -> \(#function) \(#line): \(0)")
     _ = Managers.location.getCurrent()
       .then { userLocation -> () in
         self.setMapCenter(userLocation, animated: animated)
@@ -38,7 +36,6 @@ extension MapViewController {
   }
 
   private func centerCityCenter(animated: Bool) {
-    Swift.print("\(type(of: self)) -> \(#function) \(#line): \(0)")
     typealias Defaults = Constants.Defaults
 
     let newCenter = Defaults.cityCenter
@@ -55,7 +52,6 @@ extension MapViewController {
   }
 
   private func setMapCenter(_ center: CLLocationCoordinate2D, animated: Bool) {
-    Swift.print("\(type(of: self)) -> \(#function) \(#line): \(0)")
     typealias Defaults = Constants.Defaults
     let region = MKCoordinateRegionMakeWithDistance(center, Defaults.regionSize, Defaults.regionSize)
     self.mapView.setRegion(region, animated: animated)
