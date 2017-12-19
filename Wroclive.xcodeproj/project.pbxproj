@@ -123,10 +123,10 @@
 		905D719F1FE1C545006D1DB6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71991FE1C544006D1DB6 /* NetworkManager.swift */; };
 		905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */; };
 		905D71AB1FE1C5BD006D1DB6 /* VehicleLocationsSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A31FE1C5BD006D1DB6 /* VehicleLocationsSerialization.swift */; };
-		905D71AC1FE1C5BD006D1DB6 /* MPKManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A41FE1C5BD006D1DB6 /* MPKManagerImpl.swift */; };
+		905D71AC1FE1C5BD006D1DB6 /* ApiManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A41FE1C5BD006D1DB6 /* ApiManagerImpl.swift */; };
 		905D71AD1FE1C5BD006D1DB6 /* AvailableLinesSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A61FE1C5BD006D1DB6 /* AvailableLinesSerialization.swift */; };
 		905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */; };
-		905D71AF1FE1C5BD006D1DB6 /* MPKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A81FE1C5BD006D1DB6 /* MPKManager.swift */; };
+		905D71AF1FE1C5BD006D1DB6 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A81FE1C5BD006D1DB6 /* ApiManager.swift */; };
 		905D71B61FE1C6A8006D1DB6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */; };
 		905D71B71FE1C6A8006D1DB6 /* TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B31FE1C6A8006D1DB6 /* TintColor.swift */; };
 		905D71B81FE1C6A8006D1DB6 /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B41FE1C6A8006D1DB6 /* ColorSchemeManager.swift */; };
@@ -352,10 +352,10 @@
 		905D71991FE1C544006D1DB6 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationsEndpoint.swift; sourceTree = "<group>"; };
 		905D71A31FE1C5BD006D1DB6 /* VehicleLocationsSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationsSerialization.swift; sourceTree = "<group>"; };
-		905D71A41FE1C5BD006D1DB6 /* MPKManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPKManagerImpl.swift; sourceTree = "<group>"; };
+		905D71A41FE1C5BD006D1DB6 /* ApiManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManagerImpl.swift; sourceTree = "<group>"; };
 		905D71A61FE1C5BD006D1DB6 /* AvailableLinesSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableLinesSerialization.swift; sourceTree = "<group>"; };
 		905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableLinesEndpoint.swift; sourceTree = "<group>"; };
-		905D71A81FE1C5BD006D1DB6 /* MPKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPKManager.swift; sourceTree = "<group>"; };
+		905D71A81FE1C5BD006D1DB6 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		905D71A91FE1C5BD006D1DB6 /* ApiManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiManagerMock.swift; path = ../../Sources/Modules/Derived/MPK/ApiManagerMock.swift; sourceTree = "<group>"; };
 		905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		905D71B31FE1C6A8006D1DB6 /* TintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TintColor.swift; sourceTree = "<group>"; };
@@ -1017,15 +1017,15 @@
 			path = Session;
 			sourceTree = "<group>";
 		};
-		905D71A01FE1C5BD006D1DB6 /* MPK */ = {
+		905D71A01FE1C5BD006D1DB6 /* Api */ = {
 			isa = PBXGroup;
 			children = (
 				905D71A51FE1C5BD006D1DB6 /* AvailableLines */,
 				905D71A11FE1C5BD006D1DB6 /* VehicleLocations */,
-				905D71A81FE1C5BD006D1DB6 /* MPKManager.swift */,
-				905D71A41FE1C5BD006D1DB6 /* MPKManagerImpl.swift */,
+				905D71A81FE1C5BD006D1DB6 /* ApiManager.swift */,
+				905D71A41FE1C5BD006D1DB6 /* ApiManagerImpl.swift */,
 			);
-			path = MPK;
+			path = Api;
 			sourceTree = "<group>";
 		};
 		905D71A11FE1C5BD006D1DB6 /* VehicleLocations */ = {
@@ -1372,7 +1372,7 @@
 		90EBB43A1F97C7D300291B1E /* Derived */ = {
 			isa = PBXGroup;
 			children = (
-				905D71A01FE1C5BD006D1DB6 /* MPK */,
+				905D71A01FE1C5BD006D1DB6 /* Api */,
 				900CAEA01F482E750044C8A6 /* Search */,
 				900CAE8E1F482E750044C8A6 /* Bookmarks */,
 				90546BEC1F6AF21B00E8E75F /* Tracking */,
@@ -1861,7 +1861,7 @@
 				9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */,
 				907F267C1F74517B000C272B /* LocationAuthorizationObserver.swift in Sources */,
 				9021F43B1F12D698000A6949 /* LineSelectionPage.swift in Sources */,
-				905D71AF1FE1C5BD006D1DB6 /* MPKManager.swift in Sources */,
+				905D71AF1FE1C5BD006D1DB6 /* ApiManager.swift in Sources */,
 				901D46861F57089000A9F6BD /* ThemeManager.swift in Sources */,
 				900CAEA91F482E750044C8A6 /* BookmarksManager.swift in Sources */,
 				9044A54C1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift in Sources */,
@@ -1934,7 +1934,7 @@
 				907246051F883E140069B940 /* ConfigurationCoordinator.swift in Sources */,
 				90940D8A1FB721F400F3A316 /* UserDefaultsManagerImpl.swift in Sources */,
 				90F0A2D71F732A6C00C641C8 /* NotificationObserver.swift in Sources */,
-				905D71AC1FE1C5BD006D1DB6 /* MPKManagerImpl.swift in Sources */,
+				905D71AC1FE1C5BD006D1DB6 /* ApiManagerImpl.swift in Sources */,
 				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
 				9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */,

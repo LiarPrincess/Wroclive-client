@@ -6,7 +6,7 @@
 import Foundation
 import PromiseKit
 
-class MPKManagerImpl: MPKManager {
+class ApiManagerImpl: ApiManager {
 
   func getAvailableLines() -> Promise<[Line]> {
     let endpoint = AvailableLinesEndpoint()

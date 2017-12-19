@@ -14,7 +14,7 @@ class Environment {
   var documents:    DocumentsManager
 
   var theme:     ThemeManager
-  var mpk:       MPKManager
+  var api:       ApiManager
   var search:    SearchManager
   var bookmarks: BookmarksManager
   var tracking:  TrackingManager
@@ -29,7 +29,7 @@ class Environment {
     documents:    DocumentsManager    = CachedDocumentsManagerImpl(DocumentsManagerImpl()),
 
     theme:        ThemeManager        = ThemeManagerImpl(),
-    mpk:          MPKManager          = MPKManagerImpl(),
+    api:          ApiManager          = ApiManagerImpl(),
     search:       SearchManager       = SearchManagerImpl(),
     bookmarks:    BookmarksManager    = BookmarksManagerImpl(),
     tracking:     TrackingManager     = TrackingManagerImpl()) {
@@ -43,7 +43,7 @@ class Environment {
     self.documents     = documents
 
     self.theme         = theme
-    self.mpk           = mpk
+    self.api           = api
     self.search        = search
     self.bookmarks     = bookmarks
     self.tracking      = tracking

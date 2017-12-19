@@ -18,7 +18,7 @@ enum AppEnvironment {
   static var documents:    DocumentsManager    { return current.documents }
 
   static var theme:        ThemeManager        { return current.theme }
-  static var mpk:          MPKManager          { return current.mpk }
+  static var api:          ApiManager          { return current.api }
   static var search:       SearchManager       { return current.search }
   static var bookmarks:    BookmarksManager    { return current.bookmarks }
   static var tracking:     TrackingManager     { return current.tracking }
@@ -42,7 +42,7 @@ enum AppEnvironment {
     documents:    DocumentsManager    = documents,
 
     theme:        ThemeManager        = theme,
-    mpk:          MPKManager          = mpk,
+    api:          ApiManager          = api,
     search:       SearchManager       = search,
     bookmarks:    BookmarksManager    = bookmarks,
     tracking:     TrackingManager     = tracking) {
@@ -57,7 +57,7 @@ enum AppEnvironment {
       documents:     documents,
 
       theme:         theme,
-      mpk:           mpk,
+      api:           api,
       search:        search,
       bookmarks:     bookmarks,
       tracking:      tracking))
