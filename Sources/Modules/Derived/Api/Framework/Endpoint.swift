@@ -6,7 +6,8 @@
 import Foundation
 import Alamofire
 
-typealias ResponseParserType = ResponseParser
+typealias ParameterEncoderType = ParameterEncoder
+typealias ResponseParserType   = ResponseParser
 
 protocol Endpoint {
   var url:               URLConvertible    { get }
@@ -14,8 +15,9 @@ protocol Endpoint {
   var parameterEncoding: ParameterEncoding { get }
   var headers:           HTTPHeaders?      { get }
 
-  associatedtype RequestData
-  func encodeParameters(_ data: RequestData) -> Parameters?
+  associatedtype ParameterEncoder: ParameterEncoderType
+  associatedtype ResponseParser:   ResponseParserType
 
-  associatedtype ResponseParser: ResponseParserType
+  typealias ParameterData = ParameterEncoder.ParameterData
+  typealias ResponseData  = ResponseParser.ResponseData
 }

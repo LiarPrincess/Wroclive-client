@@ -24,6 +24,7 @@
 		90145E451F61AED10068698D /* ConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E441F61AED10068698D /* ConfigurationCell.swift */; };
 		90145E471F61AEEB0068698D /* ConfigurationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E461F61AEEB0068698D /* ConfigurationSection.swift */; };
 		90145E491F61AF060068698D /* ConfigurationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E481F61AF060068698D /* ConfigurationDataSource.swift */; };
+		901787A91FE9B51700AAF7A3 /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901787A81FE9B51700AAF7A3 /* ParameterEncoder.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksViewController.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */; };
 		9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */; };
@@ -254,6 +255,7 @@
 		90145E441F61AED10068698D /* ConfigurationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationCell.swift; sourceTree = "<group>"; };
 		90145E461F61AEEB0068698D /* ConfigurationSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationSection.swift; sourceTree = "<group>"; };
 		90145E481F61AF060068698D /* ConfigurationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationDataSource.swift; sourceTree = "<group>"; };
+		901787A81FE9B51700AAF7A3 /* ParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoder.swift; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerConstants.swift; sourceTree = "<group>"; };
 		9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewControllerLayout.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 				905D71941FE1C544006D1DB6 /* ApiError.swift */,
 				905D71951FE1C544006D1DB6 /* Endpoint.swift */,
 				90184A171FE93AB800313598 /* Endpoint+sendRequest.swift */,
+				901787A81FE9B51700AAF7A3 /* ParameterEncoder.swift */,
 				90BB55131FE9850200283D94 /* ResponseParser.swift */,
 			);
 			path = Framework;
@@ -1843,6 +1846,7 @@
 				9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */,
 				905D719D1FE1C545006D1DB6 /* SessionManager.swift in Sources */,
 				9044A5441F69A13D00F26C17 /* ColorSelectionCell.swift in Sources */,
+				901787A91FE9B51700AAF7A3 /* ParameterEncoder.swift in Sources */,
 				90BB55161FE9A46400283D94 /* VehicleLocationsResponse.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
 				90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */,

@@ -8,12 +8,12 @@ import Alamofire
 import PromiseKit
 
 extension Endpoint {
-  func sendRequest(data: Self.RequestData) -> Promise<Self.ResponseParser.ResponseData> {
+  func sendRequest(data: Self.ParameterData) -> Promise<Self.ResponseData> {
     return Managers.network
       .request(
         self.url,
         method:     self.method,
-        parameters: self.encodeParameters(data),
+        parameters: Self.ParameterEncoder.encode(data),
         encoding:   self.parameterEncoding,
         headers:    self.headers
       )
@@ -38,7 +38,7 @@ extension Endpoint {
   }
 }
 
-extension Endpoint where RequestData == Void {
+extension Endpoint where ParameterEncoder.ParameterData == Void {
   func sendRequest() -> Promise<Self.ResponseParser.ResponseData> {
     return self.sendRequest(data: ())
   }
