@@ -123,7 +123,7 @@ extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
     }
 
     switch error {
-    case NetworkError.noInternet:
+    case ApiError.noInternet:
       NetworkAlerts.showNoInternetAlert(in: self, retry: retry)
     default:
       NetworkAlerts.showNetworkingErrorAlert(in: self, retry: retry)

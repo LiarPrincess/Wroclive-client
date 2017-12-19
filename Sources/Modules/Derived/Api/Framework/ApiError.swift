@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-enum NetworkError: Error {
+enum ApiError: Error {
 
   /// No internet connection
   case noInternet

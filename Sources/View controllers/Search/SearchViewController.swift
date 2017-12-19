@@ -213,7 +213,7 @@ class SearchViewController: UIViewController {
       }
 
       switch error {
-      case NetworkError.noInternet:
+      case ApiError.noInternet:
         NetworkAlerts.showNoInternetAlert(in: strongSelf, retry: retry)
       default:
         NetworkAlerts.showNetworkingErrorAlert(in: strongSelf, retry: retry)

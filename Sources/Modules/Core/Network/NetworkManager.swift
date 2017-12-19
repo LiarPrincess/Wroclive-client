@@ -4,10 +4,17 @@
 //
 
 import Foundation
+import Alamofire
 import PromiseKit
 
 protocol NetworkManager {
 
+  var reachabilityStatus: ReachabilityStatus { get }
+
   /// Send request
-  func send<TEndpoint: Endpoint>(endpoint: TEndpoint, data: TEndpoint.RequestData) -> Promise<TEndpoint.ResponseData>
+  func request(_ url:      URLConvertible,
+               method:     HTTPMethod,
+               parameters: Parameters?,
+               encoding:   ParameterEncoding,
+               headers:    HTTPHeaders?) -> DataRequest
 }

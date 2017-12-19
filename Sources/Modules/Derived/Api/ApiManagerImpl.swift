@@ -10,11 +10,11 @@ class ApiManagerImpl: ApiManager {
 
   func getAvailableLines() -> Promise<[Line]> {
     let endpoint = AvailableLinesEndpoint()
-    return Managers.network.send(endpoint: endpoint, data: ())
+    return endpoint.sendRequest()
   }
 
   func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
     let endpoint = VehicleLocationsEndpoint()
-    return Managers.network.send(endpoint: endpoint, data: lines)
+    return endpoint.sendRequest(data: lines)
   }
 }

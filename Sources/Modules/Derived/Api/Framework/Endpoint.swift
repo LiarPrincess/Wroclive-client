@@ -5,7 +5,8 @@
 
 import Foundation
 import Alamofire
-import PromiseKit
+
+typealias ResponseParserType = ResponseParser
 
 protocol Endpoint {
   var url:               URLConvertible    { get }
@@ -16,14 +17,5 @@ protocol Endpoint {
   associatedtype RequestData
   func encodeParameters(_ data: RequestData) -> Parameters?
 
-  associatedtype ResponseData
-  func decodeResponse(_ json: Any) -> Promise<ResponseData>
-}
-
-// MARK: - Default values
-
-extension Endpoint {
-  var method:   HTTPMethod        { return .get }
-  var encoding: ParameterEncoding { return URLEncoding.default }
-  var headers:  HTTPHeaders?      { return nil }
+  associatedtype ResponseParser: ResponseParserType
 }

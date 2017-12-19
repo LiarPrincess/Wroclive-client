@@ -28,10 +28,10 @@ class DocumentsManagerImpl: DocumentsManager {
 
   // MARK: - Decode/Encode
 
-  private func decode(_ documnet: Document, from data: Data) throws -> Any? {
+  private func decode(_ document: Document, from data: Data) throws -> Any? {
     let decoder = PropertyListDecoder()
 
-    switch documnet {
+    switch document {
     case .bookmarks:   return try decoder.decode([Bookmark].self, from: data)
     case .searchState: return try decoder.decode(SearchState.self, from: data)
     }

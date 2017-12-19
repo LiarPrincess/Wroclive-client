@@ -5,7 +5,6 @@
 
 import Foundation
 import Alamofire
-import PromiseKit
 
 class AvailableLinesEndpoint: Endpoint {
 
@@ -18,24 +17,12 @@ class AvailableLinesEndpoint: Endpoint {
 
   // MARK: - Request
 
-  func encodeParameters(_ data: Void) -> Parameters? {
+  typealias RequestData  = Void
+  func encodeParameters(_ data: RequestData) -> Parameters? {
     return nil
   }
 
   // MARK: - Response
 
-  func decodeResponse(_ json: Any) -> Promise<[Line]> {
-    guard let jsonArray = json as? JSONArray else {
-      return Promise(error: NetworkError.invalidResponse)
-    }
-
-    return Promise { fulfill, reject in
-      do {
-        let lines = try jsonArray.map { return try AvailableLinesSerialization.decode($0) }
-        fulfill(lines)
-      } catch let error {
-        reject(error)
-      }
-    }
-  }
+  typealias ResponseParser = AvailableLinesResponseParser
 }
