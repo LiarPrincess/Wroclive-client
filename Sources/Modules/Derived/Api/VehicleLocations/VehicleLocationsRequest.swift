@@ -12,14 +12,21 @@ class VehicleLocationsParameterEncoder: ParameterEncoder {
 
   static func encode(_ data: ParameterData) -> Parameters? {
     var parameters      = Parameters()
-    parameters["lines"] = encodeLines(data)
+    parameters["lines"] = data.map(encodeLine)
     return parameters
   }
 
-  static func encodeLines(_ lines: [Line]) -> [[String:Any]] {
-    return lines.map {[
-      "name": $0.name,
-      "type": $0.type == .bus ? "bus" : "tram"
-    ]}
+  private static func encodeLine(_ line: Line) -> [String:Any] {
+    return [
+      "name": line.name,
+      "type": self.encodeType(line.type)
+    ]
+  }
+
+  private static func encodeType(_ type: LineType) -> String {
+    switch type {
+    case .bus:  return "bus"
+    case .tram: return "tram"
+    }
   }
 }
