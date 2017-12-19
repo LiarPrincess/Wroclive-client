@@ -31,3 +31,4 @@ class ThemeManagerImpl: ThemeManager {
     Managers.notification.post(.colorSchemeDidChange)
   }
 }
+

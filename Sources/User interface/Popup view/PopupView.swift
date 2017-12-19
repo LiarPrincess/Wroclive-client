@@ -75,7 +75,7 @@ class PopupView: UIVisualEffectView {
   }
 
   private func createAttributedCaption(_ caption: String) -> NSAttributedString {
-    let alignment   = NSTextAlignment.center
+    let alignment   = TextAlignment.center
     let color       = TextColor.accentDark
     let lineSpacing = CGFloat(Layout.Caption.lineSpacing)
 
