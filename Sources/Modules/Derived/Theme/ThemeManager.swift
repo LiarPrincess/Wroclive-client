@@ -41,4 +41,3 @@ extension ThemeManager {
     UINavigationBar.appearance().titleTextAttributes = self.textAttributes(for : .bodyBold)
   }
 }
-

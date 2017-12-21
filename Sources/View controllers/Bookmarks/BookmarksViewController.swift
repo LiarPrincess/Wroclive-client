@@ -164,7 +164,7 @@ extension BookmarksViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return Layout.Cell.estimatedHeight
+    return Layout.TableView.estimatedHeight
   }
 
   // MARK: - Selection

@@ -158,6 +158,7 @@
 		909074BA1FB8BD8500C8DD51 /* MapScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074B81FB8BD8100C8DD51 /* MapScreenshots.swift */; };
 		90940D8A1FB721F400F3A316 /* UserDefaultsManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90940D891FB721F400F3A316 /* UserDefaultsManagerImpl.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
+		909B9FDC1FEBC3E2007CB59D /* BookmarkCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90ACDC431F88518D005A4B79 /* BookmarksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACDC421F88518D005A4B79 /* BookmarksCoordinator.swift */; };
 		90ACDC461F88B69A005A4B79 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACDC451F88B69A005A4B79 /* SearchCoordinator.swift */; };
@@ -359,7 +360,6 @@
 		905D71A41FE1C5BD006D1DB6 /* ApiManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManagerImpl.swift; sourceTree = "<group>"; };
 		905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableLinesEndpoint.swift; sourceTree = "<group>"; };
 		905D71A81FE1C5BD006D1DB6 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
-		905D71A91FE1C5BD006D1DB6 /* ApiManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiManagerMock.swift; path = ../../Sources/Modules/Derived/MPK/ApiManagerMock.swift; sourceTree = "<group>"; };
 		905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		905D71B31FE1C6A8006D1DB6 /* TintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TintColor.swift; sourceTree = "<group>"; };
 		905D71B41FE1C6A8006D1DB6 /* ColorSchemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
@@ -396,6 +396,7 @@
 		909074B81FB8BD8100C8DD51 /* MapScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenshots.swift; sourceTree = "<group>"; };
 		90940D891FB721F400F3A316 /* UserDefaultsManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerImpl.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellConstants.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90ACDC421F88518D005A4B79 /* BookmarksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCoordinator.swift; sourceTree = "<group>"; };
 		90ACDC451F88B69A005A4B79 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
@@ -586,7 +587,6 @@
 			isa = PBXGroup;
 			children = (
 				9017C36D1EE33AA300063377 /* Cells */,
-				9017C3B31EE3DEDC00063377 /* View models */,
 				9017C3741EE33B8000063377 /* Data source */,
 				9017C3411EE339FD00063377 /* BookmarksViewController.swift */,
 				9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */,
@@ -621,6 +621,8 @@
 			isa = PBXGroup;
 			children = (
 				9017C36E1EE33AA300063377 /* BookmarkCell.swift */,
+				9017C3B41EE3DEF400063377 /* BookmarkCellViewModel.swift */,
+				909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -633,15 +635,6 @@
 			);
 			path = "Data source";
 			sourceTree = "<group>";
-		};
-		9017C3B31EE3DEDC00063377 /* View models */ = {
-			isa = PBXGroup;
-			children = (
-				9017C3B41EE3DEF400063377 /* BookmarkCellViewModel.swift */,
-			);
-			name = "View models";
-			path = "Sources/View controllers/Bookmarks/View models";
-			sourceTree = SOURCE_ROOT;
 		};
 		90184A161FE936D800313598 /* Framework */ = {
 			isa = PBXGroup;
@@ -1255,7 +1248,6 @@
 			children = (
 				909074B41FB8AB3800C8DD51 /* SearchManagerMock.swift */,
 				909074A51FB84F4100C8DD51 /* BookmarksManagerMock.swift */,
-				905D71A91FE1C5BD006D1DB6 /* ApiManagerMock.swift */,
 				909074A91FB8566100C8DD51 /* AppManagerImpl+Screenshot.swift */,
 				909074B21FB8A96600C8DD51 /* ApiManagerMock.swift */,
 				90D8E41A1FB4D12700006140 /* Assert */,
@@ -1848,6 +1840,7 @@
 				9044A5441F69A13D00F26C17 /* ColorSelectionCell.swift in Sources */,
 				901787A91FE9B51700AAF7A3 /* ParameterEncoder.swift in Sources */,
 				90BB55161FE9A46400283D94 /* VehicleLocationsResponse.swift in Sources */,
+				909B9FDC1FEBC3E2007CB59D /* BookmarkCellConstants.swift in Sources */,
 				9021F43E1F12D698000A6949 /* LineSelectionPageLayout.swift in Sources */,
 				90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */,
 				90541FD11FA79F760055350E /* DocumentsManagerImpl.swift in Sources */,

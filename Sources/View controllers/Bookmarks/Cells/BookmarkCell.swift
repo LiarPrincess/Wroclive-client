@@ -6,7 +6,8 @@
 import UIKit
 import SnapKit
 
-private typealias Layout = BookmarksViewControllerConstants.Layout.Cell
+private typealias Layout     = BookmarkCellConstants.Layout
+private typealias TextStyles = BookmarkCellConstants.TextStyles
 
 // https://stackoverflow.com/a/25967370 - preferredMaxLayoutWidth
 // https://stackoverflow.com/a/18746930 - auto layout for UITableView
@@ -16,9 +17,14 @@ class BookmarkCell: UITableViewCell {
 
   // MARK: - Properties
 
-  let bookmarkName = UILabel()
-  let tramLines    = UILabel()
-  let busLines     = UILabel()
+  let nameLabel  = UILabel()
+  let linesLabel = UILabel()
+
+  // disable alpha, so we dont end up with transparent cells when reordering
+  override var alpha: CGFloat {
+    get { return 1.0 }
+    set { }
+  }
 
   // MARK: - Init
 
@@ -27,27 +33,19 @@ class BookmarkCell: UITableViewCell {
 
     self.backgroundColor = Managers.theme.colors.background
 
-    self.bookmarkName.numberOfLines = 0
-    self.tramLines.numberOfLines    = 0
-    self.busLines.numberOfLines     = 0
+    self.nameLabel.numberOfLines  = 0
+    self.linesLabel.numberOfLines = 0
 
-    self.contentView.addSubview(self.bookmarkName)
-    self.bookmarkName.snp.makeConstraints { make in
+    self.contentView.addSubview(self.nameLabel)
+    self.nameLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.topInset)
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)
     }
 
-    self.contentView.addSubview(self.tramLines)
-    self.tramLines.snp.makeConstraints { make in
-      make.top.equalTo(self.bookmarkName.snp.bottom).offset(Layout.verticalSpacing)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
-    }
-
-    self.contentView.addSubview(self.busLines)
-    self.busLines.snp.makeConstraints { make in
-      make.top.equalTo(self.tramLines.snp.bottom).offset(Layout.verticalSpacing)
+    self.contentView.addSubview(self.linesLabel)
+    self.linesLabel.snp.makeConstraints { make in
+      make.top.equalTo(self.nameLabel.snp.bottom).offset(Layout.verticalSpacing)
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)
       make.bottom.equalToSuperview().offset(-Layout.bottomInset)
@@ -60,12 +58,6 @@ class BookmarkCell: UITableViewCell {
 
   // MARK: - Overriden
 
-  // disable alpha, so we dont end up with transparent cells when reordering
-  override var alpha: CGFloat {
-    get { return 1.0 }
-    set { }
-  }
-
   override func willTransition(to state: UITableViewCellStateMask) {
     super.willTransition(to: state)
     self.disallowIndentWhileEditing()
@@ -77,14 +69,6 @@ class BookmarkCell: UITableViewCell {
     self.disallowIndentWhileEditing()
   }
 
-  private func updateLabelPreferredWidths() {
-    // hack: we need to calculate from cell not content view as content view will shrink on edit
-    let labelWidth = self.bounds.width - Layout.leftInset - Layout.rightInset
-    self.bookmarkName.preferredMaxLayoutWidth = labelWidth
-    self.tramLines.preferredMaxLayoutWidth    = labelWidth
-    self.busLines.preferredMaxLayoutWidth     = labelWidth
-  }
-
   private func disallowIndentWhileEditing() {
     if self.isEditing {
       self.contentView.frame.origin.x   = self.bounds.minX
@@ -92,43 +76,40 @@ class BookmarkCell: UITableViewCell {
     }
   }
 
-  override func updateConstraints() {
-    func calculateTopOffset(for label: UILabel) -> CGFloat {
-      let text = label.text
-      let isTextEmpty = text == nil || text!.isEmpty
-      return isTextEmpty ? 0.0 : Layout.verticalSpacing
-    }
-
-    self.tramLines.snp.updateConstraints { make in
-      let topOffset = calculateTopOffset(for: self.tramLines)
-      make.top.equalTo(self.bookmarkName.snp.bottom).offset(topOffset)
-    }
-
-    self.busLines.snp.updateConstraints { make in
-      let topOffset = calculateTopOffset(for: self.busLines)
-      make.top.equalTo(self.tramLines.snp.bottom).offset(topOffset)
-    }
-
-    super.updateConstraints()
+  private func updateLabelPreferredWidths() {
+    // hack: we need to calculate from cell not content view as content view will shrink on edit
+    let labelWidth = self.bounds.width - Layout.leftInset - Layout.rightInset
+    self.nameLabel.preferredMaxLayoutWidth  = labelWidth
+    self.linesLabel.preferredMaxLayoutWidth = labelWidth
   }
 
   // MARK: - Methods
 
   func setUp(with viewModel: BookmarkCellViewModel) {
-    let nameAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
-    self.bookmarkName.attributedText = NSAttributedString(string: viewModel.bookmarkName, attributes: nameAttributes)
+    let name = viewModel.bookmarkName
+    self.nameLabel.attributedText = NSAttributedString(string: name, attributes: TextStyles.name.value)
 
-    self.setLineLabel(self.tramLines, text: viewModel.tramLines)
-    self.setLineLabel(self.busLines,  text: viewModel.busLines)
-
-    // update constraints, so that the layout will not break when we hide label
-    self.setNeedsUpdateConstraints()
-    self.setNeedsLayout()
+    let lines = self.createLineLabelText(tramLines: viewModel.tramLines, busLines: viewModel.busLines)
+    self.linesLabel.attributedText = NSAttributedString(string: lines, attributes: TextStyles.lines.value)
   }
 
-  private func setLineLabel(_ label: UILabel, text: String) {
-    let textAttributes   = Managers.theme.textAttributes(for: .body, alignment: .center, lineSpacing: Layout.LinesLabel.lineSpacing, color: .tint)
-    label.isHidden       = text.isEmpty
-    label.attributedText = NSAttributedString(string: text, attributes: textAttributes)
+  private func createLineLabelText(tramLines: String, busLines: String) -> String {
+    let hasTramLines = !tramLines.isEmpty
+    let hasBusLines  = !busLines.isEmpty
+
+    var result = ""
+    if hasTramLines {
+      result += tramLines
+    }
+
+    if hasTramLines && hasBusLines {
+      result += "\n"
+    }
+
+    if hasBusLines {
+      result += busLines
+    }
+
+    return result
   }
 }
