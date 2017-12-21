@@ -5,6 +5,8 @@
 
 import UIKit
 
+private typealias Constants = CardPanelConstants.Presenter
+
 class CardPanelPresenter : UIPresentationController {
 
   // MARK: - Properties
@@ -40,7 +42,7 @@ class CardPanelPresenter : UIPresentationController {
           let coordinator   = self.presentingViewController.transitionCoordinator
       else { return }
 
-    self.presentedViewController.view.roundTopCorners(radius: 8.0)
+    self.presentedViewController.view.roundTopCorners(radius: Constants.topCornerRadius)
     self.addChevronView()
 
     self.dimmingView = UIView(frame: containerView.frame)

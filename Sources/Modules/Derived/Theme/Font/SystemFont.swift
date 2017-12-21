@@ -20,12 +20,12 @@ struct SystemFont: Font {
   }
 
   mutating func recalculateSizes() {
-    let preferredFontSize = Managers.device.preferredFontSize
+    let baseSize = Managers.device.preferredFontSize
 
-    self.headline    = UIFont.systemFont(ofSize: preferredFontSize + 17.0, weight: UIFont.Weight.bold)
-    self.subheadline = UIFont.systemFont(ofSize: preferredFontSize +  5.0, weight: UIFont.Weight.bold)
-    self.body        = UIFont.systemFont(ofSize: preferredFontSize,        weight: UIFont.Weight.regular)
-    self.bodyBold    = UIFont.systemFont(ofSize: preferredFontSize,        weight: UIFont.Weight.bold)
-    self.caption     = UIFont.systemFont(ofSize: preferredFontSize -  2.0, weight: UIFont.Weight.regular)
+    self.headline    = UIFont.systemFont(ofSize: baseSize + 14.0, weight: UIFont.Weight.bold)
+    self.subheadline = UIFont.systemFont(ofSize: baseSize +  5.0, weight: UIFont.Weight.bold)
+    self.body        = UIFont.systemFont(ofSize: baseSize,        weight: UIFont.Weight.regular)
+    self.bodyBold    = UIFont.systemFont(ofSize: baseSize,        weight: UIFont.Weight.bold)
+    self.caption     = UIFont.systemFont(ofSize: baseSize -  2.0, weight: UIFont.Weight.regular)
   }
 }

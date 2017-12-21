@@ -6,8 +6,8 @@
 import UIKit
 import SnapKit
 
-private typealias Constants    = BookmarksViewControllerConstants
-private typealias Layout       = Constants.Layout
+private typealias Layout       = BookmarksViewControllerConstants.Layout
+private typealias TextStyles   = BookmarksViewControllerConstants.TextStyles
 private typealias Localization = Localizable.Bookmarks
 
 extension BookmarksViewController {
@@ -16,7 +16,7 @@ extension BookmarksViewController {
     self.view.backgroundColor = Managers.theme.colors.background
     self.initHeader()
     self.initBookmarksTable()
-    self.initBookmarksTablePlaceholder()
+    self.initPlaceholder()
   }
 
   // MARK: - Private
@@ -24,18 +24,17 @@ extension BookmarksViewController {
   private func initHeader() {
     self.headerView.contentView.addBorder(at: .bottom)
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
-    self.view.addSubview(self.headerView)
 
+    self.view.addSubview(self.headerView)
     self.headerView.snp.makeConstraints { make in
       make.left.top.right.equalToSuperview()
     }
 
-    let titleAttributes           = Managers.theme.textAttributes(for: .headline)
-    self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
+    self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: TextStyles.cardTitle)
     self.cardTitle.numberOfLines  = 0
     self.cardTitle.lineBreakMode  = .byWordWrapping
-    self.headerView.contentView.addSubview(self.cardTitle)
 
+    self.headerView.contentView.addSubview(self.cardTitle)
     self.cardTitle.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Header.topInset)
       make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
@@ -70,44 +69,13 @@ extension BookmarksViewController {
     }
   }
 
-  private func initBookmarksTablePlaceholder() {
+  private func initPlaceholder() {
     // we cant use 'self.bookmarksTable.backgroundView' as this would result in incorrect left <-> right constraints
     self.view.addSubview(self.placeholderView)
-
     self.placeholderView.snp.makeConstraints { make in
       make.left.equalToSuperview().offset(Layout.Placeholder.leftInset)
       make.right.equalToSuperview().offset(-Layout.Placeholder.rightInset)
       make.centerY.equalTo(self.view)
     }
-
-    let titleAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
-    self.placeholderTitle.attributedText = NSAttributedString(string: Localization.Placeholder.title, attributes: titleAttributes)
-    self.placeholderTitle.numberOfLines  = 0
-    self.placeholderTitle.lineBreakMode  = .byWordWrapping
-    self.placeholderView.addSubview(self.placeholderTitle)
-
-    self.placeholderTitle.snp.makeConstraints { make in
-      make.left.top.right.equalToSuperview()
-    }
-
-    self.placeholderContent.attributedText = self.createPlaceholderContent()
-    self.placeholderContent.numberOfLines  = 0
-    self.placeholderView.addSubview(self.placeholderContent)
-
-    self.placeholderContent.snp.makeConstraints { make in
-      make.top.equalTo(self.placeholderTitle.snp.bottom).offset(Layout.Placeholder.verticalSpacing)
-      make.left.bottom.right.equalToSuperview()
-    }
-  }
-
-  private func createPlaceholderContent() -> NSAttributedString {
-    let lineSpacing    = Layout.Placeholder.lineSpacing
-    let textAttributes = Managers.theme.textAttributes(for: .body, fontType: .text, alignment: .center, lineSpacing: lineSpacing)
-    let iconAttributes = Managers.theme.textAttributes(for: .body, fontType: .icon, alignment: .center, lineSpacing: lineSpacing)
-
-    let starReplacement = TextReplacement("<star>", NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
-
-    return NSAttributedString(string: Localization.Placeholder.content, attributes: textAttributes)
-      .withReplacements([starReplacement])
   }
 }

@@ -5,21 +5,23 @@
 
 import UIKit
 
-struct CardPanelConstants {
+enum CardPanelConstants {
 
-  struct AnimationDuration {
+  enum AnimationDuration {
     static let present: TimeInterval = 0.3
     static let dismiss: TimeInterval = 0.3
   }
 
-  struct FinishConditions {
+  enum FinishConditions {
     static let minVelocityUp:   CGFloat = 150.0
     static let minVelocityDown: CGFloat = 550.0
     static let minProgress:     CGFloat =   0.5
   }
 
-  struct Presenter {
+  enum Presenter {
     static let backgroundColor: UIColor = .black
     static let backgroundAlpha: CGFloat = 0.4
+
+    static let topCornerRadius: CGFloat = 12.0
   }
 }

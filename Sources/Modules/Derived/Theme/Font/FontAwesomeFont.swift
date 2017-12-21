@@ -20,14 +20,14 @@ struct FontAwesomeFont: Font {
   }
 
   mutating func recalculateSizes() {
-    let name              = "FontAwesome"
-    let preferredFontSize = Managers.device.preferredFontSize
-    let fontDescriptor    = UIFontDescriptor(name: name, size: preferredFontSize)
+    let name           = "FontAwesome"
+    let baseSize       = Managers.device.preferredFontSize
+    let fontDescriptor = UIFontDescriptor(name: name, size: baseSize)
 
-    self.headline    = UIFont(descriptor: fontDescriptor, size: preferredFontSize + 18.0)
-    self.subheadline = UIFont(descriptor: fontDescriptor, size: preferredFontSize +  6.0)
-    self.body        = UIFont(descriptor: fontDescriptor, size: preferredFontSize +  1.0)
-    self.bodyBold    = UIFont(descriptor: fontDescriptor, size: preferredFontSize +  1.0)
-    self.caption     = UIFont(descriptor: fontDescriptor, size: preferredFontSize -  1.0)
+    self.headline    = UIFont(descriptor: fontDescriptor, size: baseSize + 18.0)
+    self.subheadline = UIFont(descriptor: fontDescriptor, size: baseSize +  6.0)
+    self.body        = UIFont(descriptor: fontDescriptor, size: baseSize +  1.0)
+    self.bodyBold    = UIFont(descriptor: fontDescriptor, size: baseSize +  1.0)
+    self.caption     = UIFont(descriptor: fontDescriptor, size: baseSize -  1.0)
   }
 }

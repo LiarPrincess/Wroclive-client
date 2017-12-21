@@ -95,12 +95,12 @@ class BookmarkCell: UITableViewCell {
 
   private func initBindings() {
     self.viewModel.outputs.name
-      .map { NSAttributedString(string: $0, attributes: TextStyles.name.value) }
+      .map { NSAttributedString(string: $0, attributes: TextStyles.name) }
       .drive(self.nameLabel.rx.attributedText)
       .disposed(by: self.disposeBag)
 
     self.viewModel.outputs.lines
-      .map { NSAttributedString(string: $0, attributes: TextStyles.lines.value) }
+      .map { NSAttributedString(string: $0, attributes: TextStyles.lines) }
       .drive(self.linesLabel.rx.attributedText)
       .disposed(by: self.disposeBag)
   }

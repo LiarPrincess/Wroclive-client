@@ -32,6 +32,38 @@ struct TextAttributes {
     self.paragraphSpacing = paragraphSpacing
   }
 
+  // MARK: - Mutation
+
+  mutating func withStyle(_ style: TextStyle) -> TextAttributes {
+    self.style = style
+    return self
+  }
+
+  mutating func withFont(_ font:  FontType) -> TextAttributes {
+    self.font = font
+    return self
+  }
+
+  mutating func withColor(_ color: TextColor) -> TextAttributes {
+    self.color = color
+    return self
+  }
+
+  mutating func withAlignment(_ alignment: TextAlignment) -> TextAttributes {
+    self.alignment = alignment
+    return self
+  }
+
+  mutating func withLineSpacing(_ lineSpacing: CGFloat) -> TextAttributes {
+    self.lineSpacing = lineSpacing
+    return self
+  }
+
+  mutating func withParagraphSpacing(_ paragraphSpacing: CGFloat) -> TextAttributes {
+    self.paragraphSpacing = paragraphSpacing
+    return self
+  }
+
   // MARK: - Value
 
   var value: [NSAttributedStringKey:Any] {

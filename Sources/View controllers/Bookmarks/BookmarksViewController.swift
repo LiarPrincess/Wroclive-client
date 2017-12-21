@@ -5,9 +5,11 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
-private typealias Constants    = BookmarksViewControllerConstants
-private typealias Layout       = Constants.Layout
+private typealias Layout       = BookmarksViewControllerConstants.Layout
+private typealias TextStyles   = BookmarksViewControllerConstants.TextStyles
 private typealias Localization = Localizable.Bookmarks
 
 protocol BookmarksViewControllerDelegate: class {
@@ -29,12 +31,10 @@ class BookmarksViewController: UIViewController {
   let cardTitle   = UILabel()
   let editButton  = UIButton()
 
-  var bookmarksTableDataSource: BookmarksDataSource!
   let bookmarksTable = UITableView()
+  var bookmarksTableDataSource: BookmarksDataSource!
 
-  let placeholderView    = UIView()
-  let placeholderTitle   = UILabel()
-  let placeholderContent = UILabel()
+  let placeholderView = BookmarksPlaceholderView()
 
   // MARK: - Init
 
@@ -106,15 +106,13 @@ class BookmarksViewController: UIViewController {
   }
 
   func setEditButtonEdit() {
-    let textAttributes = Managers.theme.textAttributes(for: .body, color: .tint)
-    let title          = NSAttributedString(string: Localization.Edit.edit, attributes: textAttributes)
-    self.editButton.setAttributedTitle(title, for: .normal)
+    let text = NSAttributedString(string: Localization.Edit.edit, attributes: TextStyles.Edit.edit)
+    self.editButton.setAttributedTitle(text, for: .normal)
   }
 
   func setEditButtonDone() {
-    let textAttributes = Managers.theme.textAttributes(for: .bodyBold, color: .tint)
-    let title          = NSAttributedString(string: Localization.Edit.done, attributes: textAttributes)
-    self.editButton.setAttributedTitle(title, for: .normal)
+    let text = NSAttributedString(string: Localization.Edit.done, attributes: TextStyles.Edit.done)
+    self.editButton.setAttributedTitle(text, for: .normal)
   }
 
   private func closeSwipeToDelte() {
@@ -150,7 +148,7 @@ class BookmarksViewController: UIViewController {
 
 extension BookmarksViewController: CardPanelPresentable {
   var header: UIView  { return self.headerView.contentView }
-  var height: CGFloat { return Constants.CardPanel.relativeHeight * screenHeight }
+  var height: CGFloat { return Layout.CardPanel.height }
 }
 
 // MARK: - UITableViewDelegate
@@ -164,7 +162,7 @@ extension BookmarksViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return Layout.TableView.estimatedHeight
+    return Layout.TableView.estimatedCellHeight
   }
 
   // MARK: - Selection
