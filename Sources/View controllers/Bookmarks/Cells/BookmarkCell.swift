@@ -5,6 +5,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 private typealias Layout     = BookmarkCellConstants.Layout
 private typealias TextStyles = BookmarkCellConstants.TextStyles
@@ -17,8 +19,11 @@ class BookmarkCell: UITableViewCell {
 
   // MARK: - Properties
 
-  let nameLabel  = UILabel()
-  let linesLabel = UILabel()
+  private let nameLabel  = UILabel()
+  private let linesLabel = UILabel()
+  private let disposeBag = DisposeBag()
+
+  let viewModel = BookmarkCellViewModel()
 
   // disable alpha, so we dont end up with transparent cells when reordering
   override var alpha: CGFloat {
@@ -30,26 +35,8 @@ class BookmarkCell: UITableViewCell {
 
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-    self.backgroundColor = Managers.theme.colors.background
-
-    self.nameLabel.numberOfLines  = 0
-    self.linesLabel.numberOfLines = 0
-
-    self.contentView.addSubview(self.nameLabel)
-    self.nameLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.topInset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
-    }
-
-    self.contentView.addSubview(self.linesLabel)
-    self.linesLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.nameLabel.snp.bottom).offset(Layout.verticalSpacing)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
-      make.bottom.equalToSuperview().offset(-Layout.bottomInset)
-    }
+    self.initLayout()
+    self.initBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -83,33 +70,38 @@ class BookmarkCell: UITableViewCell {
     self.linesLabel.preferredMaxLayoutWidth = labelWidth
   }
 
-  // MARK: - Methods
+  // MARK: - Init
 
-  func setUp(with viewModel: BookmarkCellViewModel) {
-    let name = viewModel.bookmarkName
-    self.nameLabel.attributedText = NSAttributedString(string: name, attributes: TextStyles.name.value)
+  private func initLayout() {
+    self.backgroundColor = Managers.theme.colors.background
+    self.nameLabel.numberOfLines  = 0
+    self.linesLabel.numberOfLines = 0
 
-    let lines = self.createLineLabelText(tramLines: viewModel.tramLines, busLines: viewModel.busLines)
-    self.linesLabel.attributedText = NSAttributedString(string: lines, attributes: TextStyles.lines.value)
+    self.contentView.addSubview(self.nameLabel)
+    self.nameLabel.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(Layout.topInset)
+      make.left.equalToSuperview().offset(Layout.leftInset)
+      make.right.equalToSuperview().offset(-Layout.rightInset)
+    }
+
+    self.contentView.addSubview(self.linesLabel)
+    self.linesLabel.snp.makeConstraints { make in
+      make.top.equalTo(self.nameLabel.snp.bottom).offset(Layout.LinesLabel.topMargin)
+      make.left.equalToSuperview().offset(Layout.leftInset)
+      make.right.equalToSuperview().offset(-Layout.rightInset)
+      make.bottom.equalToSuperview().offset(-Layout.bottomInset)
+    }
   }
 
-  private func createLineLabelText(tramLines: String, busLines: String) -> String {
-    let hasTramLines = !tramLines.isEmpty
-    let hasBusLines  = !busLines.isEmpty
+  private func initBindings() {
+    self.viewModel.outputs.name
+      .map { NSAttributedString(string: $0, attributes: TextStyles.name.value) }
+      .drive(self.nameLabel.rx.attributedText)
+      .disposed(by: self.disposeBag)
 
-    var result = ""
-    if hasTramLines {
-      result += tramLines
-    }
-
-    if hasTramLines && hasBusLines {
-      result += "\n"
-    }
-
-    if hasBusLines {
-      result += busLines
-    }
-
-    return result
+    self.viewModel.outputs.lines
+      .map { NSAttributedString(string: $0, attributes: TextStyles.lines.value) }
+      .drive(self.linesLabel.rx.attributedText)
+      .disposed(by: self.disposeBag)
   }
 }

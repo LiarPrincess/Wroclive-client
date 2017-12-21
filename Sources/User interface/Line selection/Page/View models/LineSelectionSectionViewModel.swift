@@ -16,7 +16,7 @@ struct LineSelectionSectionViewModel {
     self.subtype     = subtype
     self.sectionName = LineSelectionSectionViewModel.createSectionName(subtype: subtype)
 
-    let sortedLines     = lines.sortedByName()
+    let sortedLines     = lines.sorted(by: .name)
     self.lines          = sortedLines
     self.lineViewModels = sortedLines.map { LineSelectionCellViewModel(from: $0) }
   }

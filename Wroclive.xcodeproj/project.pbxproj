@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2CA53A00574F6624D5CB7A39 /* Pods_Wroclive_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */; };
-		5D357255A53DA237A02B2F71 /* Pods_Wroclive_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7500F7A00FA0C7231B7408B0 /* Pods_Wroclive_Tests.framework */; };
-		9009BD4A1FB63CA1009FB075 /* WrocliveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A2C1FB4E8DA000A1A8C /* WrocliveTests.swift */; };
+		3ABC029B80A2D9E17BE2B18D /* Pods_Wroclive_Wroclive_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0C0629C43753F478CB3162 /* Pods_Wroclive_Wroclive_Tests.framework */; };
 		900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976B1FE1BD4500AC7C35 /* LocationAlerts.swift */; };
 		900B976E1FE1BE1F00AC7C35 /* BookmarkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976D1FE1BE1F00AC7C35 /* BookmarkAlerts.swift */; };
 		900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976F1FE1BED200AC7C35 /* NetworkAlerts.swift */; };
@@ -39,11 +38,9 @@
 		9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C36E1EE33AA300063377 /* BookmarkCell.swift */; };
 		9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3751EE33B8000063377 /* BookmarksDataSource.swift */; };
 		9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */; };
-		9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3B41EE3DEF400063377 /* BookmarkCellViewModel.swift */; };
 		90184A181FE93AB800313598 /* Endpoint+sendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90184A171FE93AB800313598 /* Endpoint+sendRequest.swift */; };
 		901A3F6B1FAFAFF900383B02 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A3F6A1FAFAFF900383B02 /* PopupView.swift */; };
 		901A3F6E1FAFB6A300383B02 /* PopupViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A3F6D1FAFB6A300383B02 /* PopupViewConstants.swift */; };
-		901C71871F9A5DFA00697EEC /* ArrayOfBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901C71861F9A5DFA00697EEC /* ArrayOfBookmarks.swift */; };
 		901D46861F57089000A9F6BD /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901D46851F57089000A9F6BD /* ThemeManager.swift */; };
 		901FEAD91FE1EC8900C36A71 /* TextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FEAD31FE1EC8900C36A71 /* TextColor.swift */; };
 		901FEADA1FE1EC8900C36A71 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FEAD41FE1EC8900C36A71 /* TextStyle.swift */; };
@@ -179,6 +176,8 @@
 		90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */; };
 		90D383BC1FE88A3300C2E1D2 /* ThemeManager+TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D383BB1FE88A3300C2E1D2 /* ThemeManager+TextAttributes.swift */; };
 		90D383BE1FE8907600C2E1D2 /* AvailableLinesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D383BD1FE8907600C2E1D2 /* AvailableLinesResponse.swift */; };
+		90D3A3DE1FEBD32F00FB7485 /* BookmarkCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3DD1FEBD32F00FB7485 /* BookmarkCellViewModel.swift */; };
+		90D3A3E11FEBE61D00FB7485 /* BookmarkCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3DF1FEBD34700FB7485 /* BookmarkCellViewModelTests.swift */; };
 		90D6FF381F9D352E00F6CC12 /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6FF371F9D352E00F6CC12 /* Array+Random.swift */; };
 		90DBA3DA1FAE355300C4685A /* MapViewController+MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */; };
 		90DBA3DC1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */; };
@@ -242,6 +241,7 @@
 		7457A7B86C6B076B5865A45F /* Pods_Wroclive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7500F7A00FA0C7231B7408B0 /* Pods_Wroclive_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive_Screenshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D3E3CDED638C75A673E4C48 /* Pods-Wroclive-Wroclive-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Wroclive-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Wroclive-Tests/Pods-Wroclive-Wroclive-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9009BD401FB63C7B009FB075 /* Wroclive-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wroclive-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9009BD441FB63C7B009FB075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		900B976B1FE1BD4500AC7C35 /* LocationAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAlerts.swift; sourceTree = "<group>"; };
@@ -273,11 +273,9 @@
 		9017C36E1EE33AA300063377 /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
 		9017C3751EE33B8000063377 /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
 		9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSourceDelegate.swift; sourceTree = "<group>"; };
-		9017C3B41EE3DEF400063377 /* BookmarkCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellViewModel.swift; sourceTree = "<group>"; };
 		90184A171FE93AB800313598 /* Endpoint+sendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Endpoint+sendRequest.swift"; sourceTree = "<group>"; };
 		901A3F6A1FAFAFF900383B02 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		901A3F6D1FAFB6A300383B02 /* PopupViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewConstants.swift; sourceTree = "<group>"; };
-		901C71861F9A5DFA00697EEC /* ArrayOfBookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayOfBookmarks.swift; sourceTree = "<group>"; };
 		901D46851F57089000A9F6BD /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		901FEAD31FE1EC8900C36A71 /* TextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextColor.swift; sourceTree = "<group>"; };
 		901FEAD41FE1EC8900C36A71 /* TextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
@@ -415,9 +413,11 @@
 		90BC8AFE1F69B62800AF4B84 /* PushPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPresentationTransition.swift; sourceTree = "<group>"; };
 		90D383BB1FE88A3300C2E1D2 /* ThemeManager+TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemeManager+TextAttributes.swift"; sourceTree = "<group>"; };
 		90D383BD1FE8907600C2E1D2 /* AvailableLinesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableLinesResponse.swift; sourceTree = "<group>"; };
+		90D3A3DD1FEBD32F00FB7485 /* BookmarkCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellViewModel.swift; sourceTree = "<group>"; };
+		90D3A3DF1FEBD34700FB7485 /* BookmarkCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellViewModelTests.swift; sourceTree = "<group>"; };
+		90D3A3E31FEBEE1A00FB7485 /* Pods_Wroclive_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Wroclive_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D6FF371F9D352E00F6CC12 /* Array+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Random.swift"; sourceTree = "<group>"; };
 		90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertNotCalled.swift; sourceTree = "<group>"; };
-		90D95A2C1FB4E8DA000A1A8C /* WrocliveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrocliveTests.swift; sourceTree = "<group>"; };
 		90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenshots.swift; sourceTree = "<group>"; };
 		90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapCenter.swift"; sourceTree = "<group>"; };
 		90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+UpdateVehicleLocations.swift"; sourceTree = "<group>"; };
@@ -439,6 +439,8 @@
 		90FB9DBB1FB64DC700DEA125 /* Wroclive-Screenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wroclive-Screenshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90FB9DBF1FB64DC700DEA125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90FBE3591FB23AC7002AFF7A /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		AD0C0629C43753F478CB3162 /* Pods_Wroclive_Wroclive_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive_Wroclive_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E363964B5AE9910F453510B7 /* Pods-Wroclive-Wroclive-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Wroclive-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Wroclive-Tests/Pods-Wroclive-Wroclive-Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,7 +448,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D357255A53DA237A02B2F71 /* Pods_Wroclive_Tests.framework in Frameworks */,
+				3ABC029B80A2D9E17BE2B18D /* Pods_Wroclive_Wroclive_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +482,8 @@
 				12F3CD8E67447A91DA7A4E65 /* Pods-Wroclive-Screenshots.release.xcconfig */,
 				36BD40B07CC6253D5D5DC753 /* Pods-Wroclive-Tests.debug.xcconfig */,
 				2CB1453494EE5E82400496F9 /* Pods-Wroclive-Tests.release.xcconfig */,
+				7D3E3CDED638C75A673E4C48 /* Pods-Wroclive-Wroclive-Tests.debug.xcconfig */,
+				E363964B5AE9910F453510B7 /* Pods-Wroclive-Wroclive-Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -488,7 +492,6 @@
 			isa = PBXGroup;
 			children = (
 				903920341F1AB70E00250162 /* ArrayOfLines.swift */,
-				901C71861F9A5DFA00697EEC /* ArrayOfBookmarks.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -605,7 +608,7 @@
 			isa = PBXGroup;
 			children = (
 				9017C36E1EE33AA300063377 /* BookmarkCell.swift */,
-				9017C3B41EE3DEF400063377 /* BookmarkCellViewModel.swift */,
+				90D3A3DD1FEBD32F00FB7485 /* BookmarkCellViewModel.swift */,
 				909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */,
 			);
 			path = Cells;
@@ -870,11 +873,13 @@
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				90D3A3E31FEBEE1A00FB7485 /* Pods_Wroclive_Tests.framework */,
 				905A3B6A1F9532F0003D668F /* UIKit.framework */,
 				905A3B6E1F953301003D668F /* MapKit.framework */,
 				7457A7B86C6B076B5865A45F /* Pods_Wroclive.framework */,
 				7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */,
 				7500F7A00FA0C7231B7408B0 /* Pods_Wroclive_Tests.framework */,
+				AD0C0629C43753F478CB3162 /* Pods_Wroclive_Wroclive_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1163,6 +1168,7 @@
 		909B9FE01FEBD136007CB59D /* Bookmarks */ = {
 			isa = PBXGroup;
 			children = (
+				90D3A3DF1FEBD34700FB7485 /* BookmarkCellViewModelTests.swift */,
 			);
 			path = Bookmarks;
 			sourceTree = "<group>";
@@ -1335,7 +1341,6 @@
 			isa = PBXGroup;
 			children = (
 				909B9FDF1FEBD12E007CB59D /* View controllers */,
-				90D95A2C1FB4E8DA000A1A8C /* WrocliveTests.swift */,
 				9009BD441FB63C7B009FB075 /* Info.plist */,
 			);
 			path = Tests;
@@ -1569,18 +1574,30 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Tests/Pods-Wroclive-Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Wroclive-Tests/Pods-Wroclive-Wroclive-Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Tests/Pods-Wroclive-Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Wroclive-Tests/Pods-Wroclive-Wroclive-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5DEC447C1D1B97C6C6572D9E /* [CP] Embed Pods Frameworks */ = {
@@ -1631,6 +1648,8 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
@@ -1639,6 +1658,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -1673,7 +1694,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Tests/Pods-Wroclive-Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Wroclive-Tests/Pods-Wroclive-Wroclive-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B756BAC8EF382E30A67B0ADF /* [CP] Check Pods Manifest.lock */ = {
@@ -1687,7 +1708,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Wroclive-Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Wroclive-Wroclive-Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1719,7 +1740,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9009BD4A1FB63CA1009FB075 /* WrocliveTests.swift in Sources */,
+				90D3A3E11FEBE61D00FB7485 /* BookmarkCellViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1734,6 +1755,7 @@
 				905D71B61FE1C6A8006D1DB6 /* ColorScheme.swift in Sources */,
 				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90145E451F61AED10068698D /* ConfigurationCell.swift in Sources */,
+				90D3A3DE1FEBD32F00FB7485 /* BookmarkCellViewModel.swift in Sources */,
 				90DBA3DA1FAE355300C4685A /* MapViewController+MapCenter.swift in Sources */,
 				90D6FF381F9D352E00F6CC12 /* Array+Random.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksViewController.swift in Sources */,
@@ -1743,7 +1765,6 @@
 				9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */,
 				90BB55121FE9501B00283D94 /* VehicleLocationsRequest.swift in Sources */,
 				905D718E1FE1C444006D1DB6 /* LocationManagerImpl.swift in Sources */,
-				901C71871F9A5DFA00697EEC /* ArrayOfBookmarks.swift in Sources */,
 				907246071F88403A0069B940 /* CardPanelCoordinator.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */,
@@ -1888,7 +1909,6 @@
 				9032F07C1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift in Sources */,
 				9044A5491F69A13D00F26C17 /* ColorSelectionViewControllerLayout.swift in Sources */,
 				90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */,
-				9017C3B51EE3DEF400063377 /* BookmarkCellViewModel.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
 				901FEADA1FE1EC8900C36A71 /* TextStyle.swift in Sources */,
@@ -1956,7 +1976,7 @@
 /* Begin XCBuildConfiguration section */
 		9009BD481FB63C7B009FB075 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36BD40B07CC6253D5D5DC753 /* Pods-Wroclive-Tests.debug.xcconfig */;
+			baseConfigurationReference = 7D3E3CDED638C75A673E4C48 /* Pods-Wroclive-Wroclive-Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2003,7 +2023,7 @@
 		};
 		9009BD491FB63C7B009FB075 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CB1453494EE5E82400496F9 /* Pods-Wroclive-Tests.release.xcconfig */;
+			baseConfigurationReference = E363964B5AE9910F453510B7 /* Pods-Wroclive-Wroclive-Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
