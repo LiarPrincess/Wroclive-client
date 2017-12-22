@@ -41,9 +41,7 @@ extension BookmarksViewController {
       make.left.equalToSuperview().offset(Layout.leftInset)
     }
 
-    self.setEditButtonEdit()
-    self.editButton.contentEdgeInsets = Layout.Header.editButtonInsets
-    self.editButton.addTarget(self, action: #selector(editButtonPressed), for: .touchUpInside)
+    self.editButton.contentEdgeInsets       = Layout.Header.editButtonInsets
     self.editButton.accessibilityIdentifier = "BookmarksViewController.edit"
 
     self.headerView.contentView.addSubview(self.editButton)

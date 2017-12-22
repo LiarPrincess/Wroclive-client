@@ -20,7 +20,7 @@ protocol BookmarkCellViewModelOutput {
 
 class BookmarkCellViewModel: BookmarkCellViewModelInput, BookmarkCellViewModelOutput {
 
-  private let _bookmark  = PublishSubject<Bookmark>()
+  private let _bookmark = PublishSubject<Bookmark>()
 
   // input
   var bookmark: AnyObserver<Bookmark> { return self._bookmark.asObserver() }

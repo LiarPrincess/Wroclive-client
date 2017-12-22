@@ -43,35 +43,6 @@ class BookmarkCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Overriden
-
-  override func willTransition(to state: UITableViewCellStateMask) {
-    super.willTransition(to: state)
-    self.disallowIndentWhileEditing()
-  }
-
-  override func layoutSubviews() {
-    self.updateLabelPreferredWidths()
-    super.layoutSubviews()
-    self.disallowIndentWhileEditing()
-  }
-
-  private func disallowIndentWhileEditing() {
-    if self.isEditing {
-      self.contentView.frame.origin.x   = self.bounds.minX
-      self.contentView.frame.size.width = self.bounds.maxX
-    }
-  }
-
-  private func updateLabelPreferredWidths() {
-    // hack: we need to calculate from cell not content view as content view will shrink on edit
-    let labelWidth = self.bounds.width - Layout.leftInset - Layout.rightInset
-    self.nameLabel.preferredMaxLayoutWidth  = labelWidth
-    self.linesLabel.preferredMaxLayoutWidth = labelWidth
-  }
-
-  // MARK: - Init
-
   private func initLayout() {
     self.backgroundColor = Managers.theme.colors.background
     self.nameLabel.numberOfLines  = 0
@@ -103,5 +74,32 @@ class BookmarkCell: UITableViewCell {
       .map { NSAttributedString(string: $0, attributes: TextStyles.lines) }
       .drive(self.linesLabel.rx.attributedText)
       .disposed(by: self.disposeBag)
+  }
+
+  // MARK: - Overriden
+
+  override func willTransition(to state: UITableViewCellStateMask) {
+    super.willTransition(to: state)
+    self.disallowIndentWhileEditing()
+  }
+
+  override func layoutSubviews() {
+    self.updateLabelPreferredWidths()
+    super.layoutSubviews()
+    self.disallowIndentWhileEditing()
+  }
+
+  private func disallowIndentWhileEditing() {
+    if self.isEditing {
+      self.contentView.frame.origin.x   = self.bounds.minX
+      self.contentView.frame.size.width = self.bounds.maxX
+    }
+  }
+
+  private func updateLabelPreferredWidths() {
+    // hack: we need to calculate from cell not content view as content view will shrink on edit
+    let labelWidth = self.bounds.width - Layout.leftInset - Layout.rightInset
+    self.nameLabel.preferredMaxLayoutWidth  = labelWidth
+    self.linesLabel.preferredMaxLayoutWidth = labelWidth
   }
 }

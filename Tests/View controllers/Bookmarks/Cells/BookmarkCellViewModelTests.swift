@@ -5,6 +5,7 @@
 
 import XCTest
 import RxSwift
+import RxCocoa
 import RxTest
 @testable import Wroclive
 
@@ -16,7 +17,7 @@ final class BookmarkCellViewModelTests: XCTestCase {
   private var testScheduler: TestScheduler!
   private let disposeBag = DisposeBag()
 
-  // MARK: setUp/tearDown
+  // MARK: - Init
 
   override func setUp() {
     super.setUp()
@@ -30,24 +31,9 @@ final class BookmarkCellViewModelTests: XCTestCase {
     self.testScheduler = nil
   }
 
-  // MARK: Tests
+  // MARK: - Test - Name
 
-  func test_emitName_onBookmarkInput() {
-    let source = PublishSubject<Bookmark>()
-    source
-      .bind(to: self.viewModel.inputs.bookmark)
-      .disposed(by: self.disposeBag)
-
-    var result: String!
-    self.viewModel.outputs.name
-      .drive(onNext: { result = $0 })
-      .disposed(by: self.disposeBag)
-
-    source.onNext(Bookmark(name: "test", lines: []))
-    XCTAssertEqual(result, "test")
-  }
-
-  func test_changeName_onBookmarkChange() {
+  func test_nameChanges_onBookmarkChange() {
     let event0 = BookmarkEvent(time: 100, bookmark: Bookmark(name: "test0", lines: []))
     let event1 = BookmarkEvent(time: 200, bookmark: Bookmark(name: "test1", lines: []))
     self.simulateBookmarkEvents(event0, event1)
@@ -58,34 +44,13 @@ final class BookmarkCellViewModelTests: XCTestCase {
       .disposed(by: self.disposeBag)
     self.testScheduler.start()
 
-    let events         = observer.events
     let expectedEvents = [next(100, "test0"), next(200, "test1")]
-    XCTAssertEqual(events, expectedEvents)
+    XCTAssertEqual(observer.events, expectedEvents)
   }
 
-  func test_emitSortedLines_onBookmarkInput() {
-    let source = PublishSubject<Bookmark>()
-    source
-      .bind(to: self.viewModel.inputs.bookmark)
-      .disposed(by: self.disposeBag)
+  // MARK: - Test - Lines
 
-    var result: String!
-    self.viewModel.outputs.lines
-      .drive(onNext: { result = $0 })
-      .disposed(by: self.disposeBag)
-
-    let tram1 = Line(name: "1", type: .tram, subtype: .regular)
-    let tram2 = Line(name: "2", type: .tram, subtype: .regular)
-    let tram3 = Line(name: "3", type: .tram, subtype: .regular)
-
-    let bus1 = Line(name: "A", type: .bus, subtype: .regular)
-    let bus2 = Line(name: "B", type: .bus, subtype: .regular)
-
-    source.onNext(Bookmark(name: "", lines: [bus1, bus2, tram1, tram3, tram2]))
-    XCTAssertEqual(result, "1   2   3\nA   B")
-  }
-
-  func test_changeLines_onBookmarkChange() {
+  func test_linesChange_onBookmarkChange() {
     let tram1 = Line(name: "1", type: .tram, subtype: .regular)
     let tram2 = Line(name: "2", type: .tram, subtype: .regular)
 
@@ -102,12 +67,11 @@ final class BookmarkCellViewModelTests: XCTestCase {
       .disposed(by: self.disposeBag)
     self.testScheduler.start()
 
-    let events         = observer.events
     let expectedEvents = [next(100, "1\nA"), next(200, "1   2\nA   B")]
-    XCTAssertEqual(events, expectedEvents)
+    XCTAssertEqual(observer.events, expectedEvents)
   }
 
-  // MARK: - BookmarkEvent
+  // MARK: - Helper - Events
 
   private struct BookmarkEvent {
     let time:     TestTime
@@ -120,8 +84,7 @@ final class BookmarkCellViewModelTests: XCTestCase {
 
   private func simulateBookmarkEvents(_ events: BookmarkEvent...) {
     let recordedEvents = events.map { $0.recordedEvent }
-    let observable = testScheduler.createHotObservable(recordedEvents)
-    observable
+    testScheduler.createHotObservable(recordedEvents)
       .bind(to: self.viewModel.inputs.bookmark)
       .disposed(by: self.disposeBag)
   }

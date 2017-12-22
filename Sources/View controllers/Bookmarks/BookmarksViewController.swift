@@ -23,13 +23,16 @@ class BookmarksViewController: UIViewController {
 
   weak var delegate: BookmarksViewControllerDelegate?
 
+  let viewModel = BookmarksViewModel()
+  private let disposeBag = DisposeBag()
+
   lazy var headerView: UIVisualEffectView = {
     let headerViewBlur = UIBlurEffect(style: Managers.theme.colors.blurStyle)
     return UIVisualEffectView(effect: headerViewBlur)
   }()
 
-  let cardTitle   = UILabel()
-  let editButton  = UIButton()
+  let cardTitle  = UILabel()
+  let editButton = UIButton()
 
   let bookmarksTable = UITableView()
   var bookmarksTableDataSource: BookmarksDataSource!
@@ -57,6 +60,7 @@ class BookmarksViewController: UIViewController {
     super.viewDidLoad()
     self.initDataSource()
     self.initLayout()
+    self.initBindings()
     self.showPlaceholderIfEmpty()
   }
 
@@ -64,6 +68,28 @@ class BookmarksViewController: UIViewController {
     let bookmarks = Managers.bookmarks.getAll()
     self.bookmarksTableDataSource = BookmarksDataSource(with: bookmarks, delegate: self)
   }
+
+  private func initBindings() {
+    self.initEditBindings()
+  }
+
+  private func initEditBindings() {
+    // input
+    self.editButton.rx.tap
+      .bind(to: self.viewModel.inputs.editButtonPressed)
+      .disposed(by: self.disposeBag)
+
+    // output
+    self.viewModel.outputs.isEditing
+      .drive(onNext: { [weak self] in self?.setEditing($0, animated: true) })
+      .disposed(by: self.disposeBag)
+
+    self.viewModel.outputs.editButtonText
+      .drive(self.editButton.rx.attributedTitle())
+      .disposed(by: self.disposeBag)
+  }
+
+  // MARK: - Override
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
@@ -91,28 +117,11 @@ class BookmarksViewController: UIViewController {
     self.delegate?.bookmarksViewControllerDidClose(self)
   }
 
-  // MARK: - Editing
-
   override func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
 
-    if editing {
-      self.setEditButtonDone()
-      self.closeSwipeToDelte()
-    }
-    else { self.setEditButtonEdit() }
-
+    if editing { self.closeSwipeToDelte() }
     self.bookmarksTable.setEditing(editing, animated: true)
-  }
-
-  func setEditButtonEdit() {
-    let text = NSAttributedString(string: Localization.Edit.edit, attributes: TextStyles.Edit.edit)
-    self.editButton.setAttributedTitle(text, for: .normal)
-  }
-
-  func setEditButtonDone() {
-    let text = NSAttributedString(string: Localization.Edit.done, attributes: TextStyles.Edit.done)
-    self.editButton.setAttributedTitle(text, for: .normal)
   }
 
   private func closeSwipeToDelte() {
@@ -123,11 +132,6 @@ class BookmarksViewController: UIViewController {
   }
 
   // MARK: - Actions
-
-  @objc
-  func editButtonPressed() {
-    self.setEditing(!self.isEditing, animated: true)
-  }
 
   fileprivate func selectBookmark(_ bookmark: Bookmark) {
     self.delegate?.bookmarksViewController(self, didSelect: bookmark)
