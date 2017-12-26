@@ -36,8 +36,6 @@
 		9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3551EE339FD00063377 /* MapViewController.swift */; };
 		9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */; };
 		9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C36E1EE33AA300063377 /* BookmarkCell.swift */; };
-		9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3751EE33B8000063377 /* BookmarksDataSource.swift */; };
-		9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */; };
 		90184A181FE93AB800313598 /* Endpoint+sendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90184A171FE93AB800313598 /* Endpoint+sendRequest.swift */; };
 		901A3F6B1FAFAFF900383B02 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A3F6A1FAFAFF900383B02 /* PopupView.swift */; };
 		901A3F6E1FAFB6A300383B02 /* PopupViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A3F6D1FAFB6A300383B02 /* PopupViewConstants.swift */; };
@@ -284,8 +282,6 @@
 		9017C3551EE339FD00063377 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerConstants.swift; sourceTree = "<group>"; };
 		9017C36E1EE33AA300063377 /* BookmarkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCell.swift; sourceTree = "<group>"; };
-		9017C3751EE33B8000063377 /* BookmarksDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSource.swift; sourceTree = "<group>"; };
-		9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksDataSourceDelegate.swift; sourceTree = "<group>"; };
 		90184A171FE93AB800313598 /* Endpoint+sendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Endpoint+sendRequest.swift"; sourceTree = "<group>"; };
 		901A3F6A1FAFAFF900383B02 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		901A3F6D1FAFB6A300383B02 /* PopupViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewConstants.swift; sourceTree = "<group>"; };
@@ -601,7 +597,6 @@
 			isa = PBXGroup;
 			children = (
 				9017C36D1EE33AA300063377 /* Cells */,
-				9017C3741EE33B8000063377 /* Data source */,
 				90D3A3E81FEC0C5800FB7485 /* Placeholder */,
 				9017C3411EE339FD00063377 /* BookmarksViewController.swift */,
 				9017C3431EE339FD00063377 /* BookmarksViewControllerLayout.swift */,
@@ -643,15 +638,6 @@
 				909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		9017C3741EE33B8000063377 /* Data source */ = {
-			isa = PBXGroup;
-			children = (
-				9017C3751EE33B8000063377 /* BookmarksDataSource.swift */,
-				9017C3771EE33B9200063377 /* BookmarksDataSourceDelegate.swift */,
-			);
-			path = "Data source";
 			sourceTree = "<group>";
 		};
 		90184A161FE936D800313598 /* Framework */ = {
@@ -1963,7 +1949,6 @@
 				9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */,
 				905D718F1FE1C444006D1DB6 /* LocationManager.swift in Sources */,
 				905D719C1FE1C545006D1DB6 /* Endpoint.swift in Sources */,
-				9017C3761EE33B8000063377 /* BookmarksDataSource.swift in Sources */,
 				900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */,
 				905D719F1FE1C545006D1DB6 /* NetworkManager.swift in Sources */,
 				900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */,
@@ -2006,7 +1991,6 @@
 				90940D8A1FB721F400F3A316 /* UserDefaultsManagerImpl.swift in Sources */,
 				90F0A2D71F732A6C00C641C8 /* NotificationObserver.swift in Sources */,
 				905D71AC1FE1C5BD006D1DB6 /* ApiManagerImpl.swift in Sources */,
-				9017C3781EE33B9200063377 /* BookmarksDataSourceDelegate.swift in Sources */,
 				9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
