@@ -615,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				907DC6E61FF2B73F001C5DD6 /* Line type */,
+				9021F3E31F12C9EF000A6949 /* Lines */,
 				9017C34E1EE339FD00063377 /* SearchViewController.swift */,
 				9017C3501EE339FD00063377 /* SearchViewControllerLayout.swift */,
 				9017C34F1EE339FD00063377 /* SearchViewControllerConstants.swift */,
@@ -744,7 +745,6 @@
 				9021F3E01F12C9EF000A6949 /* Chevron */,
 				903294F81F9CCF49006A6D05 /* Vehicle pin */,
 				901A3F691FAFAFE000383B02 /* Popup view */,
-				9021F3E31F12C9EF000A6949 /* Line selection */,
 				9021F3F81F12C9EF000A6949 /* Transitions */,
 			);
 			path = "User interface";
@@ -759,14 +759,14 @@
 			path = Chevron;
 			sourceTree = "<group>";
 		};
-		9021F3E31F12C9EF000A6949 /* Line selection */ = {
+		9021F3E31F12C9EF000A6949 /* Lines */ = {
 			isa = PBXGroup;
 			children = (
 				9021F42A1F12D698000A6949 /* Page */,
 				9021F4421F12D6C5000A6949 /* LineSelectionViewController.swift */,
 				907F709F1F13F66200F43902 /* LineSelectionViewControllerConstants.swift */,
 			);
-			path = "Line selection";
+			path = Lines;
 			sourceTree = "<group>";
 		};
 		9021F3F81F12C9EF000A6949 /* Transitions */ = {
