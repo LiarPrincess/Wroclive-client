@@ -6,6 +6,8 @@
 import UIKit
 import SnapKit
 import PromiseKit
+import RxSwift
+import RxCocoa
 
 private typealias Constants    = SearchViewControllerConstants
 private typealias Layout       = Constants.Layout
@@ -31,12 +33,14 @@ class SearchViewController: UIViewController {
   let bookmarkButton = UIButton()
   let searchButton   = UIButton()
 
-  lazy var lineTypeSelector = LineTypeSelectionControl()
+  lazy var lineTypeSelector = LineTypeSelector()
   lazy var linesSelector    = LineSelectionViewController(withLines: [])
 
   let placeholderView    = UIView()
   let placeholderLabel   = UILabel()
   let placeholderSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+
+  private let disposeBag = DisposeBag()
 
   fileprivate enum ControlMode {
     case loadingData, selectingLines
@@ -67,6 +71,12 @@ class SearchViewController: UIViewController {
   init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: SearchViewControllerDelegate? = nil) {
     self.delegate = delegate
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+
+    self.lineTypeSelector.value.asDriver()
+      .drive(onNext: { _ in
+        self.updateViewFromLineTypeSelector(animated: true)
+      })
+    .disposed(by: self.disposeBag)
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -185,7 +195,7 @@ class SearchViewController: UIViewController {
 
   private func loadSavedState() {
     let state = Managers.search.getSavedState()
-    self.lineTypeSelector.value = state.selectedLineType
+    self.lineTypeSelector.rawValue = state.selectedLineType
     self.refreshAvailableLines(state.selectedLines)
   }
 
@@ -225,7 +235,7 @@ class SearchViewController: UIViewController {
     // if we have not downloaded lines then avoid override of state
     guard self.mode == .selectingLines else { return }
 
-    let lineType = self.lineTypeSelector.value
+    let lineType = self.lineTypeSelector.rawValue
     let lines    = self.linesSelector.selectedLines
 
     let state = SearchState(withSelected: lineType, lines: lines)
@@ -238,15 +248,15 @@ class SearchViewController: UIViewController {
     guard self.mode == .selectingLines else { return }
 
     let lineType = self.linesSelector.currentPage
-    if self.lineTypeSelector.value != lineType {
-      self.lineTypeSelector.value = lineType
+    if self.lineTypeSelector.rawValue != lineType {
+      self.lineTypeSelector.rawValue = lineType
     }
   }
 
   fileprivate func updateViewFromLineTypeSelector(animated: Bool) {
     guard self.mode == .selectingLines else { return }
 
-    let lineType = self.lineTypeSelector.value
+    let lineType = self.lineTypeSelector.rawValue
     if lineType != self.linesSelector.currentPage {
       self.linesSelector.setCurrentPage(lineType, animated: animated)
     }
@@ -258,14 +268,6 @@ class SearchViewController: UIViewController {
 extension SearchViewController : CardPanelPresentable {
   var header: UIView  { return self.headerView.contentView }
   var height: CGFloat { return Constants.CardPanel.relativeHeight * screenHeight}
-}
-
-// MARK: - LineTypeSelectionControlDelegate
-
-extension SearchViewController: LineTypeSelectionControlDelegate {
-  func lineTypeSelectionControl(_ control: LineTypeSelectionControl, didSelect lineType: LineType) {
-    self.updateViewFromLineTypeSelector(animated: true)
-  }
 }
 
 // MARK: - LineSelectionViewControllerDelegate

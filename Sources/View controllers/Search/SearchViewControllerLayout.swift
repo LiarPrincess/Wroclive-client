@@ -67,7 +67,6 @@ extension SearchViewController {
       make.right.equalToSuperview()
     }
 
-    self.lineTypeSelector.delegate = self
     self.headerView.contentView.addSubview(self.lineTypeSelector)
 
     self.lineTypeSelector.snp.makeConstraints { make in
@@ -75,7 +74,7 @@ extension SearchViewController {
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)
       make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
-      make.height.equalTo(LineTypeSelectionControl.nominalHeight)
+      make.height.equalTo(LineTypeSelectorConstants.Layout.nominalHeight)
     }
   }
 
