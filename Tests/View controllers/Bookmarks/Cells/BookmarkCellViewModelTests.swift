@@ -9,13 +9,15 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
+// swiftlint:disable implicitly_unwrapped_optional
+
 final class BookmarkCellViewModelTests: XCTestCase {
 
   // MARK: - Properties
 
-  private var viewModel:     BookmarkCellViewModel!
-  private var testScheduler: TestScheduler!
-  private let disposeBag = DisposeBag()
+  var viewModel:     BookmarkCellViewModel!
+  var testScheduler: TestScheduler!
+  let disposeBag = DisposeBag()
 
   // MARK: - Init
 
@@ -31,11 +33,11 @@ final class BookmarkCellViewModelTests: XCTestCase {
     self.testScheduler = nil
   }
 
-  // MARK: - Test - Name
+  // MARK: - Name
 
   func test_nameChanges_onBookmarkChange() {
-    let event0 = BookmarkEvent(time: 100, bookmark: Bookmark(name: "test0", lines: []))
-    let event1 = BookmarkEvent(time: 200, bookmark: Bookmark(name: "test1", lines: []))
+    let event0 = next(100, Bookmark(name: "test0", lines: []))
+    let event1 = next(200, Bookmark(name: "test1", lines: []))
     self.simulateBookmarkEvents(event0, event1)
 
     let observer = self.testScheduler.createObserver(String.self)
@@ -48,7 +50,7 @@ final class BookmarkCellViewModelTests: XCTestCase {
     XCTAssertEqual(observer.events, expectedEvents)
   }
 
-  // MARK: - Test - Lines
+  // MARK: - Lines
 
   func test_linesChange_onBookmarkChange() {
     let tram1 = Line(name: "1", type: .tram, subtype: .regular)
@@ -57,8 +59,8 @@ final class BookmarkCellViewModelTests: XCTestCase {
     let bus1 = Line(name: "A", type: .bus, subtype: .regular)
     let bus2 = Line(name: "B", type: .bus, subtype: .regular)
 
-    let event0 = BookmarkEvent(time: 100, bookmark: Bookmark(name: "", lines: [tram1, bus1]))
-    let event1 = BookmarkEvent(time: 200, bookmark: Bookmark(name: "", lines: [tram1, bus1, tram2, bus2]))
+    let event0 = next(100, Bookmark(name: "", lines: [tram1, bus1]))
+    let event1 = next(200, Bookmark(name: "", lines: [tram1, bus1, tram2, bus2]))
     self.simulateBookmarkEvents(event0, event1)
 
     let observer = self.testScheduler.createObserver(String.self)
@@ -69,23 +71,5 @@ final class BookmarkCellViewModelTests: XCTestCase {
 
     let expectedEvents = [next(100, "1\nA"), next(200, "1   2\nA   B")]
     XCTAssertEqual(observer.events, expectedEvents)
-  }
-
-  // MARK: - Helper - Events
-
-  private struct BookmarkEvent {
-    let time:     TestTime
-    let bookmark: Bookmark
-
-    var recordedEvent: Recorded<Event<Bookmark>> {
-      return next(self.time, self.bookmark)
-    }
-  }
-
-  private func simulateBookmarkEvents(_ events: BookmarkEvent...) {
-    let recordedEvents = events.map { $0.recordedEvent }
-    testScheduler.createHotObservable(recordedEvents)
-      .bind(to: self.viewModel.inputs.bookmark)
-      .disposed(by: self.disposeBag)
   }
 }

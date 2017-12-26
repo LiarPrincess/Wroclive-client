@@ -23,20 +23,20 @@ class BookmarkCellViewModel: BookmarkCellViewModelInput, BookmarkCellViewModelOu
   private let _bookmark = PublishSubject<Bookmark>()
 
   // input
-  var bookmark: AnyObserver<Bookmark> { return self._bookmark.asObserver() }
+  lazy var bookmark: AnyObserver<Bookmark> = self._bookmark.asObserver()
 
   // output
   let name:  Driver<String>
   let lines: Driver<String>
 
   init() {
-    let bookmarkStream = self._bookmark.asObservable().share()
+    let sharedBookmark = self._bookmark.asObservable().share()
 
-    self.name = bookmarkStream
+    self.name = sharedBookmark
       .map { createName($0) }
       .asDriver(onErrorDriveWith: .never())
 
-    self.lines = bookmarkStream
+    self.lines = sharedBookmark
       .map { createLinesLabel($0) }
       .asDriver(onErrorDriveWith: .never())
   }

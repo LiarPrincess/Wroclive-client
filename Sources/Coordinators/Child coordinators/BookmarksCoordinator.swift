@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol BookmarksCoordinatorDelegate: class {
   func coordinatorDidClose(_ coordinator: BookmarksCoordinator)
@@ -17,6 +18,8 @@ class BookmarksCoordinator: CardPanelCoordinator {
   weak var parent:   UIViewController?
   weak var delegate: BookmarksCoordinatorDelegate?
 
+  private let disposeBag = DisposeBag()
+
   init(parent: UIViewController, delegate: BookmarksCoordinatorDelegate) {
     self.parent   = parent
     self.delegate = delegate
@@ -25,19 +28,22 @@ class BookmarksCoordinator: CardPanelCoordinator {
   func start() {
     guard let parent = self.parent else { return }
 
-    let panel = BookmarksViewController(delegate: self)
-    self.presentCardPanel(panel, in: parent, animated: true)
-  }
-}
-
-extension BookmarksCoordinator: BookmarksViewControllerDelegate {
-
-  func bookmarksViewController(_ viewController: BookmarksViewController, didSelect bookmark: Bookmark) {
-    Managers.tracking.start(bookmark.lines)
-    viewController.dismiss(animated: true, completion: nil)
+    let viewModel      = BookmarksViewModel()
+    let viewController = BookmarksViewController(viewModel)
+    self.bindViewModel(viewModel, viewController)
+    self.presentCardPanel(viewController, in: parent, animated: true)
   }
 
-  func bookmarksViewControllerDidClose(_ viewController: BookmarksViewController) {
-    self.delegate?.coordinatorDidClose(self)
+  private func bindViewModel(_ viewModel: BookmarksViewModel, _ viewController: BookmarksViewController) {
+    viewModel.outputs.selectedItem
+      .drive(onNext: { (bookmark: Bookmark) -> Void in
+        Managers.tracking.start(bookmark.lines)
+        viewController.dismiss(animated: true, completion: nil)
+      })
+      .disposed(by: self.disposeBag)
+
+    viewModel.outputs.didClose
+      .drive(onNext: { self.delegate?.coordinatorDidClose(self) })
+      .disposed(by: self.disposeBag)
   }
 }

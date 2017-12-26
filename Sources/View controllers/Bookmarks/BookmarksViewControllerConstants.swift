@@ -25,10 +25,6 @@ enum BookmarksViewControllerConstants {
       static let leftInset:  CGFloat = 35.0
       static let rightInset: CGFloat = leftInset
     }
-
-    enum CardPanel {
-      static var height: CGFloat { return 0.75 * Managers.device.screenBounds.height }
-    }
   }
 
   enum TextStyles {
@@ -45,5 +41,9 @@ enum BookmarksViewControllerConstants {
         return TextAttributes(style: .bodyBold, color: .tint)
       }
     }
+  }
+
+  enum CardPanel {
+    static var height: CGFloat { return 0.75 * Managers.device.screenBounds.height }
   }
 }

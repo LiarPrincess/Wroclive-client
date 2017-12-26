@@ -30,12 +30,12 @@ extension BookmarksViewController {
       make.left.top.right.equalToSuperview()
     }
 
-    self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: TextStyles.cardTitle)
-    self.cardTitle.numberOfLines  = 0
-    self.cardTitle.lineBreakMode  = .byWordWrapping
+    self.titleLabel.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: TextStyles.cardTitle)
+    self.titleLabel.numberOfLines  = 0
+    self.titleLabel.lineBreakMode  = .byWordWrapping
 
-    self.headerView.contentView.addSubview(self.cardTitle)
-    self.cardTitle.snp.makeConstraints { make in
+    self.headerView.contentView.addSubview(self.titleLabel)
+    self.titleLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Header.topInset)
       make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
       make.left.equalToSuperview().offset(Layout.leftInset)
@@ -46,23 +46,23 @@ extension BookmarksViewController {
 
     self.headerView.contentView.addSubview(self.editButton)
     self.editButton.snp.makeConstraints { make in
-      make.lastBaseline.equalTo(self.cardTitle.snp.lastBaseline)
+      make.lastBaseline.equalTo(self.titleLabel.snp.lastBaseline)
       make.right.equalToSuperview()
     }
   }
 
   private func initBookmarksTable() {
-    self.bookmarksTable.register(BookmarkCell.self)
-    self.bookmarksTable.separatorInset  = UIEdgeInsets(top: 0.0, left: Layout.leftInset, bottom: 0.0, right: Layout.rightInset)
-    self.bookmarksTable.backgroundColor = Managers.theme.colors.background
-    self.bookmarksTable.dataSource      = self.bookmarksTableDataSource
-    self.bookmarksTable.delegate        = self
+    self.tableView.register(BookmarkCell.self)
+    self.tableView.separatorInset     = UIEdgeInsets(top: 0.0, left: Layout.leftInset, bottom: 0.0, right: Layout.rightInset)
+    self.tableView.backgroundColor    = Managers.theme.colors.background
+    self.tableView.rowHeight          = UITableViewAutomaticDimension
+    self.tableView.estimatedRowHeight = Layout.TableView.estimatedCellHeight
 
     // remove empty cells below (http://swiftandpainless.com/table-view-footer-in-plain-table-view/)
-    self.bookmarksTable.tableFooterView = UIView(frame: .zero)
+    self.tableView.tableFooterView = UIView(frame: .zero)
 
-    self.view.insertSubview(self.bookmarksTable, belowSubview: self.headerView)
-    self.bookmarksTable.snp.makeConstraints { make in
+    self.view.insertSubview(self.tableView, belowSubview: self.headerView)
+    self.tableView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
   }
