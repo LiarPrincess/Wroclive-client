@@ -34,34 +34,34 @@ struct TextAttributes {
 
   // MARK: - Mutation
 
-  mutating func withStyle(_ style: TextStyle) -> TextAttributes {
-    self.style = style
-    return self
+  func withStyle(_ style: TextStyle) -> TextAttributes {
+    return self.copy { $0.style = style }
   }
 
-  mutating func withFont(_ font:  FontType) -> TextAttributes {
-    self.font = font
-    return self
+  func withFont(_ font:  FontType) -> TextAttributes {
+    return self.copy { $0.font = font }
   }
 
-  mutating func withColor(_ color: TextColor) -> TextAttributes {
-    self.color = color
-    return self
+  func withColor(_ color: TextColor) -> TextAttributes {
+    return self.copy { $0.color = color }
   }
 
-  mutating func withAlignment(_ alignment: TextAlignment) -> TextAttributes {
-    self.alignment = alignment
-    return self
+  func withAlignment(_ alignment: TextAlignment) -> TextAttributes {
+    return self.copy { $0.alignment = alignment }
   }
 
-  mutating func withLineSpacing(_ lineSpacing: CGFloat) -> TextAttributes {
-    self.lineSpacing = lineSpacing
-    return self
+  func withLineSpacing(_ lineSpacing: CGFloat) -> TextAttributes {
+    return self.copy { $0.lineSpacing = lineSpacing }
   }
 
-  mutating func withParagraphSpacing(_ paragraphSpacing: CGFloat) -> TextAttributes {
-    self.paragraphSpacing = paragraphSpacing
-    return self
+  func withParagraphSpacing(_ paragraphSpacing: CGFloat) -> TextAttributes {
+    return self.copy { $0.paragraphSpacing = paragraphSpacing }
+  }
+
+  private func copy(_ mutate: (inout TextAttributes) -> Void) -> TextAttributes {
+    var copy = self
+    mutate(&copy)
+    return copy
   }
 
   // MARK: - Value

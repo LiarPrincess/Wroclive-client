@@ -18,7 +18,7 @@ struct LineSelectionSectionViewModel {
 
     let sortedLines     = lines.sorted(by: .name)
     self.lines          = sortedLines
-    self.lineViewModels = sortedLines.map { LineSelectionCellViewModel(from: $0) }
+    self.lineViewModels = [] // sortedLines.map { LineSelectionCellViewModel(from: $0) }
   }
 
   private static func createSectionName(subtype: LineSubtype) -> String {

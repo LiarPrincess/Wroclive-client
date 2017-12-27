@@ -5,8 +5,9 @@
 
 import UIKit
 
-private typealias Constants = LineSelectionViewControllerConstants
-private typealias Layout    = Constants.Layout
+private typealias Constants  = LineSelectionViewControllerConstants
+private typealias Layout     = Constants.Layout
+private typealias CellLayout = LineSelectionCellConstants.Layout
 
 class LineSelectionPage: UIViewController {
 
@@ -104,8 +105,8 @@ class LineSelectionPage: UIViewController {
     // solve for cellWidth: cellWidth = (totalWidth - (n-1) * margin) / n
 
     let totalWidth   = self.collectionView.contentWidth
-    let margin       = Layout.Cell.margin
-    let minCellWidth = Layout.Cell.minSize
+    let margin       = CellLayout.margin
+    let minCellWidth = CellLayout.minSize
 
     let numSectionsThatFit = floor((totalWidth + margin) / (minCellWidth + margin))
     let cellWidth          = (totalWidth - (numSectionsThatFit - 1) * margin) / numSectionsThatFit
@@ -144,11 +145,11 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
   // MARK: - Margin
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return Layout.Cell.margin
+    return CellLayout.margin
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return Layout.Cell.margin
+    return CellLayout.margin
   }
 
   // MARK: - Selection

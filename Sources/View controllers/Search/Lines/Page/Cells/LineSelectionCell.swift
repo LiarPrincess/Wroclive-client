@@ -5,20 +5,35 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
-private typealias Layout = LineSelectionViewControllerConstants.Layout.Cell
+private typealias Layout = LineSelectionCellConstants.Layout
 
 class LineSelectionCell: UICollectionViewCell {
 
   // MARK: - Properties
 
-  private let lineNameLabel = UILabel()
+  private let textLabel = UILabel()
+
+  let viewModel = LineSelectionCellViewModel()
+  private let disposeBag = DisposeBag()
+
+  override var alpha: CGFloat {
+    get { return 1.0 }
+    set { }
+  }
+
+  override var isSelected: Bool {
+    didSet { self.viewModel.inputs.isSelected.onNext(isSelected) }
+  }
 
   // MARK: - Init
 
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
+    self.initBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -30,44 +45,18 @@ class LineSelectionCell: UICollectionViewCell {
     self.selectedBackgroundView?.backgroundColor    = Managers.theme.colors.tint.value
     self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
 
-    self.lineNameLabel.numberOfLines = 1
-    self.lineNameLabel.isUserInteractionEnabled = false
+    self.textLabel.numberOfLines = 1
+    self.textLabel.isUserInteractionEnabled = false
 
-    self.contentView.addSubview(self.lineNameLabel)
-    self.lineNameLabel.snp.makeConstraints { make in
+    self.contentView.addSubview(self.textLabel)
+    self.textLabel.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
   }
 
-  // MARK: - Overriden
-
-  override var alpha: CGFloat {
-    get { return 1.0 }
-    set { }
-  }
-
-  override var isSelected: Bool {
-    didSet {
-      if oldValue != self.isSelected { // performance
-        self.updateTextColorForSelectionStatus()
-      }
-    }
-  }
-
-  private func updateTextColorForSelectionStatus() {
-    let text = self.lineNameLabel.attributedText?.string ?? self.lineNameLabel.text ?? ""
-    self.setLineLabel(text)
-  }
-
-  // MARK: - Methods
-
-  func setUp(with viewModel: LineSelectionCellViewModel) {
-    self.setLineLabel(viewModel.lineName)
-  }
-
-  private func setLineLabel(_ value: String) {
-    let textColor: TextColor = self.isSelected ? .background : .text
-    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
-    self.lineNameLabel.attributedText = NSAttributedString(string: value, attributes: textAttributes)
+  private func initBindings() {
+    self.viewModel.outputs.text
+      .drive(self.textLabel.rx.attributedText)
+      .disposed(by: self.disposeBag)
   }
 }

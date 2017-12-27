@@ -109,13 +109,4 @@ extension BookmarksViewModelTests {
       XCTAssertEqual(lhsEvent.time, rhsEvent.time)
     }
   }
-
-  // MARK: - General - attributed strings
-
-  typealias StringEvent           = Recorded<Event<String>>
-  typealias AttributedStringEvent = Recorded<Event<NSAttributedString>>
-
-  func extractString(_ events: [AttributedStringEvent]) -> [StringEvent] {
-    return events.map { next($0.time, $0.value.element!.string) }
-  }
 }

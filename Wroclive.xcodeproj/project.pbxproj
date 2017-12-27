@@ -87,6 +87,9 @@
 		90425D331FF11EFB00F1800E /* BookmarksManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90425D311FF11EF400F1800E /* BookmarksManagerMock.swift */; };
 		90425D361FF262EF00F1800E /* BookmarksViewModelTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90425D341FF262E700F1800E /* BookmarksViewModelTests+Helpers.swift */; };
 		90425D391FF2811A00F1800E /* BookmarkCellViewModelTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90425D371FF2811500F1800E /* BookmarkCellViewModelTests+Helpers.swift */; };
+		9042EDBF1FF2D71500F5D01D /* LineSelectionCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDBE1FF2D71500F5D01D /* LineSelectionCellConstants.swift */; };
+		9042EDC31FF2E7D800F5D01D /* LineSelectionCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDC11FF2E7D500F5D01D /* LineSelectionCellTests.swift */; };
+		9042EDC61FF2E86300F5D01D /* LineSelectionCellTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDC41FF2E80600F5D01D /* LineSelectionCellTests+Helpers.swift */; };
 		9044A5441F69A13D00F26C17 /* ColorSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A5331F69A13D00F26C17 /* ColorSelectionCell.swift */; };
 		9044A5451F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A5341F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift */; };
 		9044A5461F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A5351F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift */; };
@@ -335,6 +338,9 @@
 		90425D311FF11EF400F1800E /* BookmarksManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksManagerMock.swift; sourceTree = "<group>"; };
 		90425D341FF262E700F1800E /* BookmarksViewModelTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarksViewModelTests+Helpers.swift"; sourceTree = "<group>"; };
 		90425D371FF2811500F1800E /* BookmarkCellViewModelTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarkCellViewModelTests+Helpers.swift"; sourceTree = "<group>"; };
+		9042EDBE1FF2D71500F5D01D /* LineSelectionCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectionCellConstants.swift; sourceTree = "<group>"; };
+		9042EDC11FF2E7D500F5D01D /* LineSelectionCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectionCellTests.swift; sourceTree = "<group>"; };
+		9042EDC41FF2E80600F5D01D /* LineSelectionCellTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineSelectionCellTests+Helpers.swift"; sourceTree = "<group>"; };
 		9044A5331F69A13D00F26C17 /* ColorSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionCell.swift; sourceTree = "<group>"; };
 		9044A5341F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionFooterView.swift; sourceTree = "<group>"; };
 		9044A5351F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -806,6 +812,7 @@
 			isa = PBXGroup;
 			children = (
 				9021F42B1F12D698000A6949 /* Cells */,
+				9042EDBD1FF2D5C900F5D01D /* Sections */,
 				9021F4341F12D698000A6949 /* View models */,
 				9021F42E1F12D698000A6949 /* Data source */,
 				9021F4301F12D698000A6949 /* LineSelectionPage.swift */,
@@ -818,7 +825,8 @@
 			isa = PBXGroup;
 			children = (
 				9021F42C1F12D698000A6949 /* LineSelectionCell.swift */,
-				9021F42D1F12D698000A6949 /* LineSelectionSectionHeaderView.swift */,
+				9021F4351F12D698000A6949 /* LineSelectionCellViewModel.swift */,
+				9042EDBE1FF2D71500F5D01D /* LineSelectionCellConstants.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -834,8 +842,6 @@
 		9021F4341F12D698000A6949 /* View models */ = {
 			isa = PBXGroup;
 			children = (
-				9021F4351F12D698000A6949 /* LineSelectionCellViewModel.swift */,
-				9021F4361F12D698000A6949 /* LineSelectionSectionViewModel.swift */,
 				9021F4371F12D698000A6949 /* LineSelectionSectionViewModelFactory.swift */,
 			);
 			path = "View models";
@@ -922,6 +928,24 @@
 				90425D311FF11EF400F1800E /* BookmarksManagerMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		9042EDBD1FF2D5C900F5D01D /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				9021F42D1F12D698000A6949 /* LineSelectionSectionHeaderView.swift */,
+				9021F4361F12D698000A6949 /* LineSelectionSectionViewModel.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		9042EDC01FF2E7BE00F5D01D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9042EDC11FF2E7D500F5D01D /* LineSelectionCellTests.swift */,
+				9042EDC41FF2E80600F5D01D /* LineSelectionCellTests+Helpers.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		9044A5311F69A13D00F26C17 /* Color selection */ = {
@@ -1098,6 +1122,7 @@
 		907DC6EB1FF2B774001C5DD6 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				9042EDC01FF2E7BE00F5D01D /* Cells */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1830,6 +1855,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				90D3A3F31FEC24D400FB7485 /* BookmarksViewModelTests.swift in Sources */,
+				9042EDC61FF2E86300F5D01D /* LineSelectionCellTests+Helpers.swift in Sources */,
+				9042EDC31FF2E7D800F5D01D /* LineSelectionCellTests.swift in Sources */,
 				90425D331FF11EFB00F1800E /* BookmarksManagerMock.swift in Sources */,
 				90425D361FF262EF00F1800E /* BookmarksViewModelTests+Helpers.swift in Sources */,
 				90425D391FF2811A00F1800E /* BookmarkCellViewModelTests+Helpers.swift in Sources */,
@@ -1949,6 +1976,7 @@
 				9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */,
 				905D718F1FE1C444006D1DB6 /* LocationManager.swift in Sources */,
 				905D719C1FE1C545006D1DB6 /* Endpoint.swift in Sources */,
+				9042EDBF1FF2D71500F5D01D /* LineSelectionCellConstants.swift in Sources */,
 				900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */,
 				905D719F1FE1C545006D1DB6 /* NetworkManager.swift in Sources */,
 				900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */,

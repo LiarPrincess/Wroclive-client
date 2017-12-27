@@ -24,15 +24,8 @@ enum BookmarksPlaceholderViewConstants {
         return TextAttributes(style: .body, color: .text, alignment: .center, lineSpacing: lineSpacing)
       }
 
-      static var text: TextAttributes {
-        var mutableBase = base
-        return mutableBase.withFont(.text)
-      }
-
-      static var icon: TextAttributes {
-        var mutableBase = base
-        return mutableBase.withFont(.icon)
-      }
+      static var text: TextAttributes { return base.withFont(.text) }
+      static var icon: TextAttributes { return base.withFont(.icon) }
     }
   }
 }

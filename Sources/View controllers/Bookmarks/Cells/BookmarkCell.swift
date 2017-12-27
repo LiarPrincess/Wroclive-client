@@ -21,9 +21,9 @@ class BookmarkCell: UITableViewCell {
 
   private let nameLabel  = UILabel()
   private let linesLabel = UILabel()
-  private let disposeBag = DisposeBag()
 
   let viewModel = BookmarkCellViewModel()
+  private let disposeBag = DisposeBag()
 
   // disable alpha, so we dont end up with transparent cells when reordering
   override var alpha: CGFloat {

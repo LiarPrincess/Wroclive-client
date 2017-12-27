@@ -12,6 +12,9 @@ import RxTest
 // swiftlint:disable file_length
 // swiftlint:disable implicitly_unwrapped_optional
 
+private typealias TextStyles   = BookmarksViewControllerConstants.TextStyles
+private typealias Localization = Localizable.Bookmarks
+
 final class BookmarksViewModelTests: XCTestCase {
 
   // MARK: - Properties
@@ -92,10 +95,11 @@ final class BookmarksViewModelTests: XCTestCase {
       .disposed(by: self.disposeBag)
     self.testScheduler.start()
 
-    let expectedEvent0 = next(  0, [BookmarksSection(model: "", items: bookmarks)])
-    let expectedEvent1 = next(100, [BookmarksSection(model: "", items: [bookmarks[1], bookmarks[2], bookmarks[0]])])
-    let expectedEvent2 = next(200, [BookmarksSection(model: "", items: [bookmarks[2], bookmarks[1], bookmarks[0]])])
-    let expectedEvents = [expectedEvent0, expectedEvent1, expectedEvent2]
+    let expectedEvents = [
+      next(  0, [BookmarksSection(model: "", items: bookmarks)]),
+      next(100, [BookmarksSection(model: "", items: [bookmarks[1], bookmarks[2], bookmarks[0]])]),
+      next(200, [BookmarksSection(model: "", items: [bookmarks[2], bookmarks[1], bookmarks[0]])])
+    ]
     self.assertEqual(observer.events, expectedEvents)
   }
 
@@ -117,11 +121,12 @@ final class BookmarksViewModelTests: XCTestCase {
       .disposed(by: self.disposeBag)
     self.testScheduler.start()
 
-    let expectedEvent0 = next(  0, [BookmarksSection(model: "", items: bookmarks)])
-    let expectedEvent1 = next(100, [BookmarksSection(model: "", items: [bookmarks[0], bookmarks[2]])])
-    let expectedEvent2 = next(200, [BookmarksSection(model: "", items: [bookmarks[0]])])
-    let expectedEvent3 = next(300, [BookmarksSection(model: "", items: [])])
-    let expectedEvents = [expectedEvent0, expectedEvent1, expectedEvent2, expectedEvent3]
+    let expectedEvents = [
+      next(  0, [BookmarksSection(model: "", items: bookmarks)]),
+      next(100, [BookmarksSection(model: "", items: [bookmarks[0], bookmarks[2]])]),
+      next(200, [BookmarksSection(model: "", items: [bookmarks[0]])]),
+      next(300, [BookmarksSection(model: "", items: [])])
+    ]
     self.assertEqual(observer.events, expectedEvents)
   }
 
@@ -256,10 +261,12 @@ final class BookmarksViewModelTests: XCTestCase {
       .disposed(by: self.disposeBag)
     self.testScheduler.start()
 
-    let editString = Localizable.Bookmarks.Edit.edit
-    let doneString = Localizable.Bookmarks.Edit.done
-    let expectedEvents = [next(0, editString), next(100, doneString), next(200, editString)]
-    XCTAssertEqual(self.extractString(observer.events), expectedEvents)
+    let expectedEvents = [
+      next(  0, NSAttributedString(string: Localization.Edit.edit, attributes: TextStyles.Edit.edit)),
+      next(100, NSAttributedString(string: Localization.Edit.done, attributes: TextStyles.Edit.done)),
+      next(200, NSAttributedString(string: Localization.Edit.edit, attributes: TextStyles.Edit.edit))
+    ]
+    XCTAssertEqual(observer.events, expectedEvents)
   }
 
   // MARK: - Close

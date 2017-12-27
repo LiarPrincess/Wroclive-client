@@ -80,9 +80,9 @@ extension LineSelectionDataSource: UICollectionViewDataSource {
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(ofType: LineSelectionCell.self, forIndexPath: indexPath)
-    let viewModel = self.viewModels[indexPath.section].lineViewModels[indexPath.row]
+    let line = self.viewModels[indexPath.section].lines[indexPath.item]
+    cell.viewModel.inputs.line.onNext(line)
 
-    cell.setUp(with: viewModel)
     return cell
   }
 }

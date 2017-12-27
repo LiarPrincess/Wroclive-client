@@ -14,12 +14,5 @@ struct LineSelectionViewControllerConstants {
 
       static let fallbackHeight: CGFloat = topInset + 28.0 + bottomInset
     }
-
-    struct Cell {
-      static let margin:  CGFloat =  2.0
-      static let minSize: CGFloat = 50.0
-
-      static let cornerRadius: CGFloat = 8.0
-    }
   }
 }
