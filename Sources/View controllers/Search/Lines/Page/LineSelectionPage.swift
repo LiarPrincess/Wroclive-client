@@ -8,6 +8,7 @@ import UIKit
 private typealias HeaderLayout     = LineSelectionHeaderViewConstants.Layout
 private typealias HeaderTextStyles = LineSelectionHeaderViewConstants.TextStyles
 private typealias CellLayout       = LineSelectionCellConstants.Layout
+private typealias Localization     = Localizable.LineSelection
 
 class LineSelectionPage: UIViewController {
 
@@ -121,7 +122,7 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
     let width  = self.collectionView.contentWidth
     let bounds = CGSize(width: width, height: .greatestFiniteMagnitude)
 
-    let text     = NSAttributedString(string: "", attributes: HeaderTextStyles.header)
+    let text     = NSAttributedString(string: Localization.SectionName.regular, attributes: HeaderTextStyles.header)
     let textSize = text.boundingRect(with: bounds, options: .usesLineFragmentOrigin, context: nil)
 
     let height = textSize.height + HeaderLayout.topInset + HeaderLayout.bottomInset + 1.0

@@ -7,8 +7,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-private typealias Localization = Localizable.LineSelection.SectionName
 private typealias TextStyles   = LineSelectionHeaderViewConstants.TextStyles
+private typealias Localization = Localizable.LineSelection.SectionName
 
 protocol LineSelectionHeaderViewModelInput {
   var section: AnyObserver<LineSelectionSection> { get }
