@@ -53,7 +53,7 @@ extension BookmarksViewController {
 
   private func initBookmarksTable() {
     self.tableView.register(BookmarkCell.self)
-    self.tableView.separatorInset     = UIEdgeInsets(top: 0.0, left: Layout.leftInset, bottom: 0.0, right: Layout.rightInset)
+    self.tableView.separatorInset     = .zero
     self.tableView.backgroundColor    = Managers.theme.colors.background
     self.tableView.rowHeight          = UITableViewAutomaticDimension
     self.tableView.estimatedRowHeight = Layout.TableView.estimatedCellHeight

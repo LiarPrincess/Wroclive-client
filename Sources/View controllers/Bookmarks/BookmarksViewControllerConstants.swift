@@ -11,7 +11,7 @@ enum BookmarksViewControllerConstants {
     static let rightInset: CGFloat = leftInset
 
     enum Header {
-      static let topInset:    CGFloat = 32.0
+      static let topInset:    CGFloat = 28.0
       static let bottomInset: CGFloat =  8.0
 
       static let editButtonInsets = UIEdgeInsets(top: 20.0, left: Layout.rightInset, bottom: 4.0, right: Layout.rightInset)

@@ -11,7 +11,7 @@ struct ConfigurationViewControllerConstants {
     static let rightInset: CGFloat = leftInset
 
     struct Header {
-      static let topInset:    CGFloat = 32.0
+      static let topInset:    CGFloat = 28.0
       static let bottomInset: CGFloat =  8.0
     }
 

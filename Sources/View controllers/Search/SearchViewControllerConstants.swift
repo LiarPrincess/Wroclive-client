@@ -19,7 +19,7 @@ struct SearchViewControllerConstants {
       // [line type selector]
       // bottom inset
 
-      static let topInset:    CGFloat = 32.0
+      static let topInset:    CGFloat = 28.0
       static let bottomInset: CGFloat = 16.0
 
       static let verticalSpacing: CGFloat = 8.0
