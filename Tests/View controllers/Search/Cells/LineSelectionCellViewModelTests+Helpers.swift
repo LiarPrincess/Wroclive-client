@@ -10,7 +10,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-extension LineSelectionCellTests {
+extension LineSelectionCellViewModelTests {
 
   // MARK: - Line
 

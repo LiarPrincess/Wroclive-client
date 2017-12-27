@@ -9,47 +9,38 @@ class LineSelectionDataSource: NSObject {
 
   // MARK: - Properties
 
-  var lines: [Line] { return self.viewModels.flatMap { $0.lines } }
+  var lines: [Line] { return self.sections.flatMap { $0.lines } }
 
-  fileprivate var viewModels: [LineSelectionSectionViewModel]
+  fileprivate var sections: [LineSelectionSection]
 
   // MARK: - Init
 
   init(with lines: [Line]) {
-    self.viewModels = LineSelectionSectionViewModelFactory.convert(lines)
+    self.sections = LineSelectionSectionFactory.convert(lines)
   }
 
   // MARK: - Methods
 
-  func sectionName(at section: Int) -> String? {
-    return section < self.viewModels.count ? self.viewModels[section].sectionName : nil
-  }
-
   func index(of line: Line) -> IndexPath? {
-    guard let sectionIndex = self.viewModels.index(where: { $0.subtype == line.subtype }) else {
-      return nil
-    }
+    guard let sectionIndex = self.sections.index(where: { $0.subtype == line.subtype })
+      else { return nil }
 
-    guard let itemIndex = self.viewModels[sectionIndex].lines.index(where: { $0 == line }) else {
-      return nil
-    }
+    guard let itemIndex = self.sections[sectionIndex].lines.index(where: { $0 == line })
+      else { return nil }
 
     return IndexPath(item: itemIndex, section: sectionIndex)
   }
 
   func line(at indexPath: IndexPath) -> Line? {
-    guard indexPath.section < self.viewModels.count else {
-      return nil
-    }
+    guard indexPath.section < self.sections.count
+      else { return nil }
 
-    let section = self.viewModels[indexPath.section]
-    guard indexPath.row < section.lines.count else {
-      return nil
-    }
+    let section = self.sections[indexPath.section]
+    guard indexPath.item < section.lines.count
+      else { return nil }
 
     return section.lines[indexPath.row]
   }
-
 }
 
 // MARK: - UICollectionViewDataSource
@@ -57,20 +48,19 @@ class LineSelectionDataSource: NSObject {
 extension LineSelectionDataSource: UICollectionViewDataSource {
 
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return self.viewModels.count
+    return self.sections.count
   }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return self.viewModels[section].lines.count
+    return self.sections[section].lines.count
   }
 
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     switch kind {
     case UICollectionElementKindSectionHeader:
-      let view      = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectionSectionHeaderView.self, kind: .header, for: indexPath)
-      let viewModel = self.viewModels[indexPath.section]
-
-      view.setUp(with: viewModel)
+      let view  = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectionHeaderView.self, kind: .header, for: indexPath)
+      let section = self.sections[indexPath.section]
+      view.viewModel.inputs.section.onNext(section)
       return view
 
     default:
@@ -79,8 +69,9 @@ extension LineSelectionDataSource: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(ofType: LineSelectionCell.self, forIndexPath: indexPath)
-    let line = self.viewModels[indexPath.section].lines[indexPath.item]
+    let cell    = collectionView.dequeueReusableCell(ofType: LineSelectionCell.self, forIndexPath: indexPath)
+    let section = self.sections[indexPath.section]
+    let line    = section.lines[indexPath.item]
     cell.viewModel.inputs.line.onNext(line)
 
     return cell

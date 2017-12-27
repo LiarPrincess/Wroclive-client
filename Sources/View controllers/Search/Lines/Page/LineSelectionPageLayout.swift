@@ -10,7 +10,7 @@ extension LineSelectionPage {
 
   func initLayout() {
     self.collectionView.register(LineSelectionCell.self)
-    self.collectionView.registerSupplementary(LineSelectionSectionHeaderView.self, ofKind: .header)
+    self.collectionView.registerSupplementary(LineSelectionHeaderView.self, ofKind: .header)
     self.collectionView.backgroundColor         = Managers.theme.colors.background
     self.collectionView.allowsSelection         = true
     self.collectionView.allowsMultipleSelection = true

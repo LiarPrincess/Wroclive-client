@@ -5,9 +5,9 @@
 
 import UIKit
 
-private typealias Constants  = LineSelectionViewControllerConstants
-private typealias Layout     = Constants.Layout
-private typealias CellLayout = LineSelectionCellConstants.Layout
+private typealias HeaderLayout     = LineSelectionHeaderViewConstants.Layout
+private typealias HeaderTextStyles = LineSelectionHeaderViewConstants.TextStyles
+private typealias CellLayout       = LineSelectionCellConstants.Layout
 
 class LineSelectionPage: UIViewController {
 
@@ -19,11 +19,7 @@ class LineSelectionPage: UIViewController {
   }
 
   var selectedLines: [Line] {
-    get {
-      return self.collectionView.indexPathsForSelectedItems?.flatMap {
-        return self.collectionDataSource.line(at: $0)
-      } ?? []
-    }
+    get { return self.collectionView.indexPathsForSelectedItems?.flatMap { return self.collectionDataSource.line(at: $0) } ?? [] }
     set {
       for line in self.lines {
         if let indexPath = self.collectionDataSource.index(of: line) {
@@ -122,20 +118,14 @@ extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
   // MARK: - Size
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    let width = self.collectionView.contentWidth
+    let width  = self.collectionView.contentWidth
+    let bounds = CGSize(width: width, height: .greatestFiniteMagnitude)
 
-    guard let sectionName = self.collectionDataSource.sectionName(at: section) else {
-      return CGSize(width: width, height: Layout.SectionHeader.fallbackHeight)
-    }
+    let text     = NSAttributedString(string: "", attributes: HeaderTextStyles.header)
+    let textSize = text.boundingRect(with: bounds, options: .usesLineFragmentOrigin, context: nil)
 
-    let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-    let textAttributes = Managers.theme.textAttributes(for: .subheadline, alignment: .center)
-    let textSize       = sectionName.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: textAttributes, context: nil)
-
-    typealias HeaderLayout = Layout.SectionHeader
-    let topInset    = HeaderLayout.topInset
-    let bottomInset = HeaderLayout.bottomInset
-    return CGSize(width: width, height: textSize.height + topInset + bottomInset + 1.0)
+    let height = textSize.height + HeaderLayout.topInset + HeaderLayout.bottomInset + 1.0
+    return CGSize(width: width, height: height)
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

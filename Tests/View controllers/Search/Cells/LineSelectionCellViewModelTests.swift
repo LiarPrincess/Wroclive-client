@@ -13,7 +13,7 @@ import RxTest
 
 private typealias TextStyles = LineSelectionCellConstants.TextStyles
 
-final class LineSelectionCellTests: XCTestCase {
+final class LineSelectionCellViewModelTests: XCTestCase {
 
   // MARK: - Properties
 
