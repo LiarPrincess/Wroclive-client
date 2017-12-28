@@ -22,8 +22,7 @@ struct TextAttributes {
     color:            TextColor     = .text,
     alignment:        TextAlignment = .natural,
     lineSpacing:      CGFloat       = 0.0,
-    paragraphSpacing: CGFloat       = 0.0)
-  {
+    paragraphSpacing: CGFloat       = 0.0) {
     self.style     = style
     self.font      = font
     self.color     = color

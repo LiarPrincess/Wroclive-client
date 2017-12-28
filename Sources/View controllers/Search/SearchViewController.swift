@@ -152,7 +152,10 @@ class SearchViewController: UIViewController {
     let delay    = Constants.BookmarksPopup.delay
     let duration = Constants.BookmarksPopup.duration
 
-    UIView.animateKeyframes(withDuration: duration, delay: delay, options: [],
+    UIView.animateKeyframes(
+      withDuration: duration,
+      delay:        delay,
+      options:      [],
       animations: {
         UIView.addKeyframe(withRelativeStartTime: 0.00, relativeDuration: 0.00, animations: {
           popup.alpha     = 0.0
@@ -202,7 +205,7 @@ class SearchViewController: UIViewController {
   private func refreshAvailableLines(_ selectedLines: [Line]) {
     self.mode = .loadingData
 
-    firstly { return Managers.api.getAvailableLines() }
+    firstly { Managers.api.getAvailableLines() }
     .then { [weak self] lines -> () in
       guard let strongSelf = self else { return }
 

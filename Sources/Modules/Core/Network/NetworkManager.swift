@@ -26,7 +26,7 @@ class NetworkManager: NetworkManagerType {
   var reachabilityStatus: ReachabilityStatus {
     let status = self.reachability?.networkReachabilityStatus ?? .unknown
     switch status {
-    case .reachable(_): return .reachable
+    case .reachable:    return .reachable
     case .notReachable: return .notReachable
     case .unknown:      return .unknown
     }

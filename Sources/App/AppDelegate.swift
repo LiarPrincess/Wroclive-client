@@ -8,9 +8,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  var window: UIWindow? = { return UIWindow(frame: UIScreen.main.bounds) }()
-
-  var appCoordinator: AppCoordinator!
+  lazy var window:         UIWindow?      = UIWindow(frame: UIScreen.main.bounds)
+  lazy var appCoordinator: AppCoordinator = AppCoordinator(window: self.window!)
 
   // MARK: - Launch
 
@@ -18,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     AppEnvironment.push(Environment())
     Managers.theme.applyColorScheme()
 
-    self.appCoordinator = AppCoordinator(window: self.window!)
     self.appCoordinator.start()
 
     return true

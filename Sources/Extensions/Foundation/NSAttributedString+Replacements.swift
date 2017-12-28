@@ -37,7 +37,7 @@ extension NSAttributedString {
       .findPositions(of: replacedTexts)
       .map     { ($0, nsString.substring(with: $0)) }
       .flatMap { position, substring in
-        return replacements
+        replacements
           .first { $0.text.caseInsensitiveCompare(substring) == .orderedSame }
           .map   { (position, $0) }
       }
