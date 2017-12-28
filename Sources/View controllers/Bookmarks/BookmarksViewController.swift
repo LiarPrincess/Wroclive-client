@@ -33,9 +33,11 @@ class BookmarksViewController: UIViewController {
   init(_ viewModel: BookmarksViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
+
     self.initTableViewBindings()
     self.initVisibilityBindings()
     self.initEditBindings()
+    self.initCloseBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -93,6 +95,13 @@ class BookmarksViewController: UIViewController {
       .disposed(by: self.disposeBag)
   }
 
+  private func initCloseBindings() {
+    self.rx.methodInvoked(#selector(BookmarksViewController.viewDidDisappear(_:)))
+      .map { _ in () }
+      .bind(to: self.viewModel.inputs.viewClosed)
+      .disposed(by: self.disposeBag)
+  }
+
   // MARK: - Data source
 
   private static func createDataSource() -> RxTableViewDataSource<BookmarksSection> {
@@ -101,7 +110,7 @@ class BookmarksViewController: UIViewController {
         let cell = tableView.dequeueReusableCell(ofType: BookmarkCell.self, forIndexPath: indexPath)
         cell.viewModel.inputs.bookmarkChanged.onNext(model)
         return cell
-    },
+      },
       canEditRowAtIndexPath: { _, _ in true },
       canMoveRowAtIndexPath: { _, _ in true }
     )
@@ -147,11 +156,6 @@ class BookmarksViewController: UIViewController {
     if hasSwipeToDeleteOpen {
       self.tableView.setEditing(false, animated: false)
     }
-  }
-
-  override func viewDidDisappear(_ animated: Bool) {
-    super.viewDidDisappear(animated)
-    self.viewModel.inputs.viewDidDisappear.onNext(())
   }
 }
 

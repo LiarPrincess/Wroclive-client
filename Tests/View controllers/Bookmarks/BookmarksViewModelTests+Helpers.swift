@@ -93,10 +93,10 @@ extension BookmarksViewModelTests {
 
   // MARK: - Close
 
-  func simulateViewDidDisappearEvents(in viewModel: BookmarksViewModel, times: [TestTime]) {
+  func simulateViewClosedEvents(in viewModel: BookmarksViewModel, times: [TestTime]) {
     let events = times.map { next($0, ()) }
     testScheduler.createHotObservable(events)
-      .bind(to: viewModel.inputs.viewDidDisappear)
+      .bind(to: viewModel.inputs.viewClosed)
       .disposed(by: self.disposeBag)
   }
 

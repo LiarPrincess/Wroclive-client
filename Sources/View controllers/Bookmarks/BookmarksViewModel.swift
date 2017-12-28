@@ -18,7 +18,7 @@ protocol BookmarksViewModelInput {
   var itemDeleted:  AnyObserver<IndexPath>      { get }
 
   var editButtonPressed: AnyObserver<Void> { get }
-  var viewDidDisappear:  AnyObserver<Void> { get }
+  var viewClosed:        AnyObserver<Void> { get }
 }
 
 protocol BookmarksViewModelOutput {
@@ -46,7 +46,7 @@ class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
   private let _itemDeleted  = PublishSubject<IndexPath>()
 
   private let _editButtonPressed = PublishSubject<Void>()
-  private let _viewDidDisappear  = PublishSubject<Void>()
+  private let _viewClosed        = PublishSubject<Void>()
 
   private let disposeBag = DisposeBag()
 
@@ -56,7 +56,7 @@ class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
   lazy var itemDeleted:  AnyObserver<IndexPath>      = self._itemDeleted.asObserver()
 
   lazy var editButtonPressed: AnyObserver<Void> = self._editButtonPressed.asObserver()
-  lazy var viewDidDisappear:  AnyObserver<Void> = self._viewDidDisappear.asObserver()
+  lazy var viewClosed:        AnyObserver<Void> = self._viewClosed.asObserver()
 
   // output
   let items:        Driver<[BookmarksSection]>
@@ -95,7 +95,7 @@ class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
       .asDriver()
       .map { createEditButtonLabel(isEditing: $0) }
 
-    self.didClose = self._viewDidDisappear.asDriver(onErrorDriveWith: .never())
+    self.didClose = self._viewClosed.asDriver(onErrorDriveWith: .never())
 
     self.bindInputs()
   }

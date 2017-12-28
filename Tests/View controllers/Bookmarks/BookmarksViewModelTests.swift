@@ -273,7 +273,7 @@ final class BookmarksViewModelTests: XCTestCase {
 
   func test_didClose_onViewDidDisappear() {
     let viewModel = BookmarksViewModel()
-    self.simulateViewDidDisappearEvents(in: viewModel, times: [100, 200])
+    self.simulateViewClosedEvents(in: viewModel, times: [100, 200])
 
     let observer = self.testScheduler.createObserver(Void.self)
     viewModel.outputs.didClose
