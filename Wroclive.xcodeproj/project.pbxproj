@@ -44,11 +44,16 @@
 		901ECDAD1FF570DE004765AA /* LineSelectionPageViewModelTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDAB1FF570D9004765AA /* LineSelectionPageViewModelTests+Helpers.swift */; };
 		901ECDB11FF5774B004765AA /* LineSelectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDAF1FF57746004765AA /* LineSelectionViewModelTests.swift */; };
 		901ECDB51FF57789004765AA /* LineSelectionViewModelTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB31FF5777C004765AA /* LineSelectionViewModelTests+Helpers.swift */; };
+		901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB61FF586F5004765AA /* TextAlignment.swift */; };
+		901ECDB91FF5875F004765AA /* FontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB81FF5875F004765AA /* FontType.swift */; };
+		901ECDBD1FF587B7004765AA /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDBC1FF587B6004765AA /* TextStyle.swift */; };
+		901ECDBF1FF587F1004765AA /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDBE1FF587F1004765AA /* TextAttributes.swift */; };
+		901ECDC11FF58844004765AA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDC01FF58844004765AA /* NotificationManager.swift */; };
+		901ECDC31FF5886C004765AA /* NotificationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDC21FF5886C004765AA /* NotificationManagerType.swift */; };
+		901ECDC51FF588BA004765AA /* VehicleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDC41FF588BA004765AA /* VehicleColor.swift */; };
+		901ECDC71FF58915004765AA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDC61FF58915004765AA /* NetworkManager.swift */; };
+		901ECDC91FF58951004765AA /* NetworkManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDC81FF58951004765AA /* NetworkManagerType.swift */; };
 		901FEAD91FE1EC8900C36A71 /* TextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FEAD31FE1EC8900C36A71 /* TextColor.swift */; };
-		901FEADA1FE1EC8900C36A71 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FEAD41FE1EC8900C36A71 /* TextStyle.swift */; };
-		901FEADB1FE1EC8900C36A71 /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FEAD51FE1EC8900C36A71 /* TextAlignment.swift */; };
-		901FEADC1FE1EC8900C36A71 /* FontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FEAD61FE1EC8900C36A71 /* FontType.swift */; };
-		901FEADD1FE1EC8900C36A71 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FEAD71FE1EC8900C36A71 /* TextAttributes.swift */; };
 		9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3891F12C95D000A6949 /* CGFloat+Rad.swift */; };
 		9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38B1F12C95D000A6949 /* Array+GroupedBy.swift */; };
 		9021F3941F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38C1F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift */; };
@@ -125,8 +130,6 @@
 		905D719B1FE1C545006D1DB6 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71941FE1C544006D1DB6 /* ApiError.swift */; };
 		905D719C1FE1C545006D1DB6 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71951FE1C544006D1DB6 /* Endpoint.swift */; };
 		905D719D1FE1C545006D1DB6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71971FE1C544006D1DB6 /* SessionManager.swift */; };
-		905D719E1FE1C545006D1DB6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71981FE1C544006D1DB6 /* NetworkManager.swift */; };
-		905D719F1FE1C545006D1DB6 /* NetworkManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71991FE1C544006D1DB6 /* NetworkManagerType.swift */; };
 		905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */; };
 		905D71AC1FE1C5BD006D1DB6 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A41FE1C5BD006D1DB6 /* ApiManager.swift */; };
 		905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */; };
@@ -134,7 +137,6 @@
 		905D71B61FE1C6A8006D1DB6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */; };
 		905D71B71FE1C6A8006D1DB6 /* TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B31FE1C6A8006D1DB6 /* TintColor.swift */; };
 		905D71B81FE1C6A8006D1DB6 /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B41FE1C6A8006D1DB6 /* ColorSchemeManager.swift */; };
-		905D71B91FE1C6A8006D1DB6 /* VehicleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B51FE1C6A8006D1DB6 /* VehicleColor.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
 		907246051F883E140069B940 /* ConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246041F883E140069B940 /* ConfigurationCoordinator.swift */; };
 		907246071F88403A0069B940 /* CardPanelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246061F88403A0069B940 /* CardPanelCoordinator.swift */; };
@@ -146,8 +148,6 @@
 		907DC6ED1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC6EC1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift */; };
 		907F267C1F74517B000C272B /* LocationAuthorizationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F267B1F74517B000C272B /* LocationAuthorizationObserver.swift */; };
 		907F26811F7460E4000C272B /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F26801F7460E4000C272B /* CLLocation.swift */; };
-		908252511F703B4C001C2926 /* NotificationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252501F703B4C001C2926 /* NotificationManagerType.swift */; };
-		908252531F703BC7001C2926 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252521F703BC7001C2926 /* NotificationManager.swift */; };
 		908252571F703F0E001C2926 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252551F703F0E001C2926 /* Notification.swift */; };
 		908252581F703F0E001C2926 /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908252561F703F0E001C2926 /* NotificationData.swift */; };
 		908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */; };
@@ -300,11 +300,16 @@
 		901ECDAB1FF570D9004765AA /* LineSelectionPageViewModelTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineSelectionPageViewModelTests+Helpers.swift"; sourceTree = "<group>"; };
 		901ECDAF1FF57746004765AA /* LineSelectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectionViewModelTests.swift; sourceTree = "<group>"; };
 		901ECDB31FF5777C004765AA /* LineSelectionViewModelTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineSelectionViewModelTests+Helpers.swift"; sourceTree = "<group>"; };
+		901ECDB61FF586F5004765AA /* TextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignment.swift; sourceTree = "<group>"; };
+		901ECDB81FF5875F004765AA /* FontType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontType.swift; sourceTree = "<group>"; };
+		901ECDBC1FF587B6004765AA /* TextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
+		901ECDBE1FF587F1004765AA /* TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
+		901ECDC01FF58844004765AA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		901ECDC21FF5886C004765AA /* NotificationManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerType.swift; sourceTree = "<group>"; };
+		901ECDC41FF588BA004765AA /* VehicleColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleColor.swift; sourceTree = "<group>"; };
+		901ECDC61FF58915004765AA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		901ECDC81FF58951004765AA /* NetworkManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerType.swift; sourceTree = "<group>"; };
 		901FEAD31FE1EC8900C36A71 /* TextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextColor.swift; sourceTree = "<group>"; };
-		901FEAD41FE1EC8900C36A71 /* TextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
-		901FEAD51FE1EC8900C36A71 /* TextAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAlignment.swift; sourceTree = "<group>"; };
-		901FEAD61FE1EC8900C36A71 /* FontType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontType.swift; sourceTree = "<group>"; };
-		901FEAD71FE1EC8900C36A71 /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		9021F3891F12C95D000A6949 /* CGFloat+Rad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Rad.swift"; sourceTree = "<group>"; };
 		9021F38B1F12C95D000A6949 /* Array+GroupedBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+GroupedBy.swift"; sourceTree = "<group>"; };
 		9021F38C1F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArrayOfEquatable+ContainsAll.swift"; sourceTree = "<group>"; };
@@ -383,8 +388,6 @@
 		905D71941FE1C544006D1DB6 /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		905D71951FE1C544006D1DB6 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		905D71971FE1C544006D1DB6 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		905D71981FE1C544006D1DB6 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		905D71991FE1C544006D1DB6 /* NetworkManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerType.swift; sourceTree = "<group>"; };
 		905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationsEndpoint.swift; sourceTree = "<group>"; };
 		905D71A41FE1C5BD006D1DB6 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableLinesEndpoint.swift; sourceTree = "<group>"; };
@@ -392,7 +395,6 @@
 		905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		905D71B31FE1C6A8006D1DB6 /* TintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TintColor.swift; sourceTree = "<group>"; };
 		905D71B41FE1C6A8006D1DB6 /* ColorSchemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
-		905D71B51FE1C6A8006D1DB6 /* VehicleColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleColor.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		907246041F883E140069B940 /* ConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCoordinator.swift; sourceTree = "<group>"; };
 		907246061F88403A0069B940 /* CardPanelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPanelCoordinator.swift; sourceTree = "<group>"; };
@@ -404,8 +406,6 @@
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		907F267B1F74517B000C272B /* LocationAuthorizationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuthorizationObserver.swift; sourceTree = "<group>"; };
 		907F26801F7460E4000C272B /* CLLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocation.swift; sourceTree = "<group>"; };
-		908252501F703B4C001C2926 /* NotificationManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManagerType.swift; sourceTree = "<group>"; };
-		908252521F703BC7001C2926 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		908252551F703F0E001C2926 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		908252561F703F0E001C2926 /* NotificationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		908346F31F51FE0300654FF6 /* NSRange+StartEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRange+StartEnd.swift"; sourceTree = "<group>"; };
@@ -713,7 +713,7 @@
 			isa = PBXGroup;
 			children = (
 				901FEAD21FE1EC8900C36A71 /* Enumerations */,
-				901FEAD71FE1EC8900C36A71 /* TextAttributes.swift */,
+				901ECDBE1FF587F1004765AA /* TextAttributes.swift */,
 			);
 			path = "Text attributes";
 			sourceTree = "<group>";
@@ -722,9 +722,9 @@
 			isa = PBXGroup;
 			children = (
 				901FEAD31FE1EC8900C36A71 /* TextColor.swift */,
-				901FEAD41FE1EC8900C36A71 /* TextStyle.swift */,
-				901FEAD51FE1EC8900C36A71 /* TextAlignment.swift */,
-				901FEAD61FE1EC8900C36A71 /* FontType.swift */,
+				901ECDB81FF5875F004765AA /* FontType.swift */,
+				901ECDBC1FF587B6004765AA /* TextStyle.swift */,
+				901ECDB61FF586F5004765AA /* TextAlignment.swift */,
 			);
 			path = Enumerations;
 			sourceTree = "<group>";
@@ -1068,8 +1068,8 @@
 			isa = PBXGroup;
 			children = (
 				905D71921FE1C544006D1DB6 /* Types */,
-				905D71991FE1C544006D1DB6 /* NetworkManagerType.swift */,
-				905D71981FE1C544006D1DB6 /* NetworkManager.swift */,
+				901ECDC81FF58951004765AA /* NetworkManagerType.swift */,
+				901ECDC61FF58915004765AA /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1118,7 +1118,7 @@
 			isa = PBXGroup;
 			children = (
 				905D71B31FE1C6A8006D1DB6 /* TintColor.swift */,
-				905D71B51FE1C6A8006D1DB6 /* VehicleColor.swift */,
+				901ECDC41FF588BA004765AA /* VehicleColor.swift */,
 				905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */,
 				905D71B41FE1C6A8006D1DB6 /* ColorSchemeManager.swift */,
 			);
@@ -1176,8 +1176,8 @@
 			children = (
 				908252541F703F0E001C2926 /* Values */,
 				90F0A2D11F73198B00C641C8 /* Observers */,
-				908252501F703B4C001C2926 /* NotificationManagerType.swift */,
-				908252521F703BC7001C2926 /* NotificationManager.swift */,
+				901ECDC21FF5886C004765AA /* NotificationManagerType.swift */,
+				901ECDC01FF58844004765AA /* NotificationManager.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1939,14 +1939,20 @@
 				907246071F88403A0069B940 /* CardPanelCoordinator.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksViewControllerLayout.swift in Sources */,
 				90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */,
-				901FEADD1FE1EC8900C36A71 /* TextAttributes.swift in Sources */,
 				900CAEAA1F482E750044C8A6 /* BookmarksManager.swift in Sources */,
 				90ACDC461F88B69A005A4B79 /* SearchCoordinator.swift in Sources */,
+				901ECDBF1FF587F1004765AA /* TextAttributes.swift in Sources */,
+				901ECDC91FF58951004765AA /* NetworkManagerType.swift in Sources */,
+				901ECDC71FF58915004765AA /* NetworkManager.swift in Sources */,
+				901ECDC51FF588BA004765AA /* VehicleColor.swift in Sources */,
+				901ECDC31FF5886C004765AA /* NotificationManagerType.swift in Sources */,
+				901ECDC11FF58844004765AA /* NotificationManager.swift in Sources */,
+				901ECDB91FF5875F004765AA /* FontType.swift in Sources */,
+				901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */,
 				9042EDDB1FF3ECC700F5D01D /* RxCollectionViewDataSource.swift in Sources */,
 				907DC6ED1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift in Sources */,
 				90B2611E1FF501100076EC69 /* LineSelectionViewModel.swift in Sources */,
 				9021F4401F12D698000A6949 /* LineSelectionHeaderViewModel.swift in Sources */,
-				908252531F703BC7001C2926 /* NotificationManager.swift in Sources */,
 				90D3A4011FEDB7FD00FB7485 /* UIView+IsVisible.swift in Sources */,
 				901A3F6B1FAFAFF900383B02 /* PopupView.swift in Sources */,
 				90FBE35A1FB23AC7002AFF7A /* LocalizedString.swift in Sources */,
@@ -1955,7 +1961,6 @@
 				907F26811F7460E4000C272B /* CLLocation.swift in Sources */,
 				908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */,
 				90184A181FE93AB800313598 /* Endpoint+sendRequest.swift in Sources */,
-				905D71B91FE1C6A8006D1DB6 /* VehicleColor.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksViewControllerConstants.swift in Sources */,
 				90541FCF1FA79E6C0055350E /* DocumentsManagerType.swift in Sources */,
 				9032F07D1F5DF66B00E1C9BC /* IntrinsicTableView.swift in Sources */,
@@ -2016,7 +2021,6 @@
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
 				900CEC021FC4D5D7001C6B04 /* Document.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
-				908252511F703B4C001C2926 /* NotificationManagerType.swift in Sources */,
 				9042EDD91FF3E16700F5D01D /* LineSelectionPageViewModel.swift in Sources */,
 				901FEAD91FE1EC8900C36A71 /* TextColor.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
@@ -2029,10 +2033,10 @@
 				90546BF01F6AF25800E8E75F /* TrackingManager.swift in Sources */,
 				9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */,
 				905D718F1FE1C444006D1DB6 /* LocationManagerType.swift in Sources */,
+				901ECDBD1FF587B7004765AA /* TextStyle.swift in Sources */,
 				905D719C1FE1C545006D1DB6 /* Endpoint.swift in Sources */,
 				9042EDBF1FF2D71500F5D01D /* LineSelectionCellConstants.swift in Sources */,
 				900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */,
-				905D719F1FE1C545006D1DB6 /* NetworkManagerType.swift in Sources */,
 				900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */,
 				9044A5451F69A13D00F26C17 /* ColorSelectionSectionFooterView.swift in Sources */,
 				9056F6571F5229A500F7EF48 /* Font.swift in Sources */,
@@ -2049,7 +2053,6 @@
 				908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */,
 				90F0A2D61F732A6A00C641C8 /* ColorSchemeObserver.swift in Sources */,
 				90D3A3EA1FEC108D00FB7485 /* BookmarksPlaceholderView.swift in Sources */,
-				905D719E1FE1C545006D1DB6 /* NetworkManager.swift in Sources */,
 				9021F4161F12C9EF000A6949 /* CardPanelConstants.swift in Sources */,
 				9021F4431F12D6C5000A6949 /* LineSelectionViewController.swift in Sources */,
 				90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */,
@@ -2077,7 +2080,6 @@
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
 				9024C6111F9667E600025503 /* Environment.swift in Sources */,
 				9021F43F1F12D698000A6949 /* LineSelectionCellViewModel.swift in Sources */,
-				901FEADB1FE1EC8900C36A71 /* TextAlignment.swift in Sources */,
 				90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */,
 				908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */,
 				9044A54B1F69A13D00F26C17 /* ColorSelectionSection.swift in Sources */,
@@ -2091,10 +2093,8 @@
 				90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
-				901FEADA1FE1EC8900C36A71 /* TextStyle.swift in Sources */,
 				9021F3981F12C95D000A6949 /* UIView+RoundCorners.swift in Sources */,
 				9021F4381F12D698000A6949 /* LineSelectionCell.swift in Sources */,
-				901FEADC1FE1EC8900C36A71 /* FontType.swift in Sources */,
 				905D719B1FE1C545006D1DB6 /* ApiError.swift in Sources */,
 				9073F9981FA7A80400924584 /* CachedDocumentsManager.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,
