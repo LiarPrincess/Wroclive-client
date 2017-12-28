@@ -13,16 +13,12 @@ private typealias Constants    = SearchViewControllerConstants
 private typealias Layout       = Constants.Layout
 private typealias Localization = Localizable.Search
 
-protocol SearchViewControllerDelegate: class {
-  func searchViewController(_ viewController: SearchViewController, didSelect lines: [Line])
-  func searchViewControllerDidClose(_ viewController: SearchViewController)
-}
-
 class SearchViewController: UIViewController {
 
   // MARK: - Properties
 
-  weak var delegate: SearchViewControllerDelegate?
+  private let viewModel: SearchViewModel
+  private let disposeBag = DisposeBag()
 
   var headerView: UIVisualEffectView = {
     let headerViewBlur = UIBlurEffect(style: Managers.theme.colors.blurStyle)
@@ -37,8 +33,6 @@ class SearchViewController: UIViewController {
   var linesSelector    = LineSelectionViewController()
 
   let placeholderView = SearchPlaceholderView()
-
-  private let disposeBag = DisposeBag()
 
   fileprivate enum ControlMode {
     case loadingData, selectingLines
@@ -62,21 +56,31 @@ class SearchViewController: UIViewController {
 
   // MARK: - Init
 
-  convenience init(delegate: SearchViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil, delegate: delegate)
+  init(_ viewModel: SearchViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+
+    self.initGeneralBindings()
+    self.initCloseBindings()
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: SearchViewControllerDelegate? = nil) {
-    self.delegate = delegate
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
+  // MARK: - Bindings
+
+  private func initGeneralBindings() {
     self.lineTypeSelector.value.asDriver()
       .drive(onNext: { _ in self.updateViewFromLineTypeSelector(animated: true) })
       .disposed(by: self.disposeBag)
   }
 
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+  private func initCloseBindings() {
+    self.rx.methodInvoked(#selector(SearchViewController.viewDidDisappear(_:)))
+      .map { _ in () }
+      .bind(to: self.viewModel.inputs.viewClosed)
+      .disposed(by: self.disposeBag)
   }
 
   // MARK: - Overriden
@@ -110,7 +114,6 @@ class SearchViewController: UIViewController {
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     self.saveState()
-    self.delegate?.searchViewControllerDidClose(self)
   }
 
   // MARK: - Actions

@@ -43,7 +43,10 @@ class BookmarksCoordinator: CardPanelCoordinator {
       .disposed(by: self.disposeBag)
 
     viewModel.outputs.didClose
-      .drive(onNext: { self.delegate?.coordinatorDidClose(self) })
+      .drive(onNext: { [weak self] _ in
+        guard let strongSelf = self else { return }
+        strongSelf.delegate?.coordinatorDidClose(strongSelf)
+      })
       .disposed(by: self.disposeBag)
   }
 }

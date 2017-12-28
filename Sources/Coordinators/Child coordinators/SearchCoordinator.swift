@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol SearchCoordinatorDelegate: class {
   func coordinatorDidClose(_ coordinator: SearchCoordinator)
@@ -17,6 +18,8 @@ class SearchCoordinator: CardPanelCoordinator {
   weak var parent:   UIViewController?
   weak var delegate: SearchCoordinatorDelegate?
 
+  private let disposeBag = DisposeBag()
+
   init(parent: UIViewController, delegate: SearchCoordinatorDelegate) {
     self.parent   = parent
     self.delegate = delegate
@@ -25,19 +28,26 @@ class SearchCoordinator: CardPanelCoordinator {
   func start() {
     guard let parent = self.parent else { return }
 
-    let panel = SearchViewController(delegate: self)
-    self.presentCardPanel(panel, in: parent, animated: true)
-  }
-}
-
-extension SearchCoordinator: SearchViewControllerDelegate {
-
-  func searchViewController(_ viewController: SearchViewController, didSelect lines: [Line]) {
-    Managers.tracking.start(lines)
-    viewController.dismiss(animated: true, completion: nil)
+    let viewModel      = SearchViewModel()
+    let viewController = SearchViewController(viewModel)
+    self.bindViewModel(viewModel, viewController)
+    self.presentCardPanel(viewController, in: parent, animated: true)
   }
 
-  func searchViewControllerDidClose(_ viewController: SearchViewController) {
-    self.delegate?.coordinatorDidClose(self)
+  private func bindViewModel(_ viewModel: SearchViewModel, _ viewController: SearchViewController) {
+    viewModel.outputs.searchButtonPressed
+      .withLatestFrom(viewModel.outputs.selectedLines) { $1 }
+      .drive(onNext: { (lines: [Line]) -> Void in
+        Managers.tracking.start(lines)
+        viewController.dismiss(animated: true, completion: nil)
+      })
+      .disposed(by: self.disposeBag)
+
+    viewModel.outputs.didClose
+      .drive(onNext: { [weak self] _ in
+        guard let strongSelf = self else { return }
+        strongSelf.delegate?.coordinatorDidClose(strongSelf)
+      })
+      .disposed(by: self.disposeBag)
   }
 }
