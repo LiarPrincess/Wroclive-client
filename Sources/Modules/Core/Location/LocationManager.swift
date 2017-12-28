@@ -7,14 +7,43 @@ import UIKit
 import MapKit
 import PromiseKit
 
-protocol LocationManager {
+class LocationManager: NSObject, LocationManagerType {
 
-  /// Returns user location
-  func getCurrent() -> Promise<CLLocationCoordinate2D>
+  // MARK: - Properties
 
-  /// Current authorization status
-  var authorization: CLAuthorizationStatus { get }
+  private lazy var locationManager: CLLocationManager = {
+    let manager             = CLLocationManager()
+    manager.delegate        = self
+    manager.distanceFilter  = 5.0
+    manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+    manager.pausesLocationUpdatesAutomatically = true
+    return manager
+  }()
 
-  /// Request authorization
-  func requestAuthorization()
+  // MARK: - LocationManager
+
+  func getCurrent() -> Promise<CLLocationCoordinate2D> {
+    return Promise { fulfill, reject in
+      if let location = self.locationManager.location?.coordinate {
+        fulfill(location)
+      }
+      else { reject(LocationError.unableToObtainUserLocation) }
+    }
+  }
+
+  var authorization: CLAuthorizationStatus {
+    return CLLocationManager.authorizationStatus()
+  }
+
+  func requestAuthorization() {
+    self.locationManager.requestWhenInUseAuthorization()
+  }
+}
+
+// MARK: - CLLocationManagerDelegate
+
+extension LocationManager: CLLocationManagerDelegate {
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    Managers.notification.post(.locationAuthorizationDidChange)
+  }
 }

@@ -4,40 +4,30 @@
 //
 
 import UIKit
-import MapKit
 import Foundation
 
-protocol ThemeManager {
+// source: https://medium.com/@abhimuralidharan/maintaining-a-colour-theme-manager-on-ios-swift-178b8a6a92
+class ThemeManager: ThemeManagerType {
+
+  // MARK: - Properties
+
+  fileprivate(set) lazy var textFont: Font        = SystemFont()
+  fileprivate(set) lazy var iconFont: Font        = FontAwesomeFont()
+  fileprivate(set) lazy var colors:   ColorScheme = ColorSchemeManager.load(from: Managers.userDefaults)
 
   // MARK: - Fonts
 
-  var textFont: Font { get }
-  var iconFont: Font { get }
+  func recalculateFontSizes() {
+    self.textFont.recalculateSizes()
+    self.iconFont.recalculateSizes()
+  }
 
-  func recalculateFontSizes()
+  // Mark - Color scheme
 
-  // MARK: - Color scheme
-
-  var colors: ColorScheme { get }
-
-  func applyColorScheme()
-  func setColorScheme(tint: TintColor, tram: VehicleColor, bus: VehicleColor)
-}
-
-extension ThemeManager {
-  func applyColorScheme() {
-    let tintColor = self.colors.tint.value
-
-    UIApplication.shared.delegate?.window??.tintColor = tintColor
-
-    UIWindow.appearance().tintColor = tintColor
-    UIView.appearance().tintColor   = tintColor
-
-    // Make user location pin blue
-    MKAnnotationView.appearance().tintColor = UIColor(red: 0.0, green: 0.5, blue: 1.0, alpha: 1.0)
-
-    UIToolbar.appearance().barStyle       = self.colors.barStyle
-    UINavigationBar.appearance().barStyle = self.colors.barStyle
-    UINavigationBar.appearance().titleTextAttributes = self.textAttributes(for : .bodyBold)
+  func setColorScheme(tint: TintColor, tram: VehicleColor, bus: VehicleColor) {
+    self.colors = ColorScheme(tint: tint, tram: tram, bus: bus)
+    self.applyColorScheme()
+    ColorSchemeManager.save(self.colors, to: Managers.userDefaults)
+    Managers.notification.post(.colorSchemeDidChange)
   }
 }

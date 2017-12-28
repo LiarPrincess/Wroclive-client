@@ -7,7 +7,7 @@ import Foundation
 
 class ColorSchemeManager {
 
-  static func load(from userDefaults: UserDefaultsManager) -> ColorScheme {
+  static func load(from userDefaults: UserDefaultsManagerType) -> ColorScheme {
     guard let tintColorString = userDefaults.getString(.preferredTintColor),
           let tramColorString = userDefaults.getString(.preferredTramColor),
           let busColorString  = userDefaults.getString(.preferredBusColor),
@@ -20,7 +20,7 @@ class ColorSchemeManager {
     return ColorScheme(tint: tintColor, tram: tramColor, bus: busColor)
   }
 
-  static func save(_ colorScheme: ColorScheme, to userDefaults: UserDefaultsManager) {
+  static func save(_ colorScheme: ColorScheme, to userDefaults: UserDefaultsManagerType) {
     userDefaults.setString(.preferredTintColor, to: colorScheme.tint.rawValue)
     userDefaults.setString(.preferredTramColor, to: colorScheme.tram.rawValue)
     userDefaults.setString(.preferredBusColor,  to: colorScheme.bus.rawValue)

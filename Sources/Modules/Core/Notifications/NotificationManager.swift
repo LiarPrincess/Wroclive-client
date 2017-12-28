@@ -5,14 +5,20 @@
 
 import Foundation
 
-protocol NotificationManager {
+class NotificationManager: NotificationManagerType {
 
-  /// Post notification
-  func post(_ notificationData: NotificationData)
+  private var notificationCenter: NotificationCenter { return NotificationCenter.default }
 
-  /// Substribe to single notification using @selector
-  func subscribe(_ subscriber: AnyObject, to notification: Notification, using selector: Selector)
+  func post(_ notificationData: NotificationData) {
+    let name = notificationData.notification.name
+    self.notificationCenter.post(name: name, object: nil)
+  }
 
-  /// Unsubscribe from single notification
-  func unsubscribe(_ subscriber: AnyObject, from notification: Notification)
+  func subscribe(_ subscriber: AnyObject, to notification: Notification, using selector: Selector) {
+    self.notificationCenter.addObserver(subscriber, selector: selector, name: notification.name, object: nil)
+  }
+
+  func unsubscribe(_ subscriber: AnyObject, from notification: Notification) {
+    self.notificationCenter.removeObserver(subscriber, name: notification.name, object: nil)
+  }
 }

@@ -3,12 +3,17 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-protocol SearchManager {
+import Foundation
 
-  /// Retrieve the most recently saved state
-  /// or default if no states were saved
-  func getSavedState() -> SearchState
+class SearchManager: SearchManagerType {
 
-  /// Save current state
-  func saveState(_ state: SearchState)
+  func getSavedState() -> SearchState {
+    let document = Managers.documents.read(.searchState)
+    return document as? SearchState ?? SearchState(withSelected: .tram, lines: [])
+  }
+
+  func saveState(_ state: SearchState) {
+    let document = DocumentData.searchState(value: state)
+    Managers.documents.write(document)
+  }
 }

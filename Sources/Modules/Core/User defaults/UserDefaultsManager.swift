@@ -3,19 +3,25 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-enum UserDefaultsStringKey {
-  case preferredTintColor
-  case preferredTramColor
-  case preferredBusColor
-}
+class UserDefaultsManager: UserDefaultsManagerType {
 
-protocol UserDefaultsManager {
+  private var defaults: UserDefaults { return UserDefaults.standard }
 
-  /// Get value for given key from store
-  func getString(_ key: UserDefaultsStringKey) -> String?
+  func getString(_ key: UserDefaultsStringKey) -> String? {
+    return self.defaults.string(forKey: self.getKeyValue(key))
+  }
 
-  /// Store given value
-  func setString(_ key: UserDefaultsStringKey, to value: String)
+  func setString(_ key: UserDefaultsStringKey, to value: String) {
+    self.defaults.setValue(value, forKey: self.getKeyValue(key))
+  }
+
+  private func getKeyValue(_ key: UserDefaultsStringKey) -> String {
+    switch key {
+    case .preferredTintColor:   return "String_preferredTintColor"
+    case .preferredTramColor:   return "String_preferredTramColor"
+    case .preferredBusColor:    return "String_preferredBusColor"
+    }
+  }
 }

@@ -5,7 +5,7 @@
 
 import UIKit
 
-extension ThemeManager {
+extension ThemeManagerType {
 
   func textAttributes(for style:     TextStyle,
                       fontType font: FontType      = .text,

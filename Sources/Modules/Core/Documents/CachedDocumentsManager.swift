@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-class CachedDocumentsManagerImpl: DocumentsManager {
+class CachedDocumentsManager: DocumentsManagerType {
 
   private let innerManager: DocumentsManager
   private var cache:        [Document: Any]  = [:]

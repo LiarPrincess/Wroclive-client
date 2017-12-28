@@ -6,11 +6,15 @@
 import Foundation
 import PromiseKit
 
-protocol ApiManager {
+class ApiManager: ApiManagerType {
 
-  /// Get all currently available lines
-  func getAvailableLines() -> Promise<[Line]>
+  func getAvailableLines() -> Promise<[Line]> {
+    let endpoint = AvailableLinesEndpoint()
+    return endpoint.sendRequest()
+  }
 
-  /// Get current vehicle locations for selected lines
-  func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]>
+  func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
+    let endpoint = VehicleLocationsEndpoint()
+    return endpoint.sendRequest(data: lines)
+  }
 }

@@ -9,19 +9,19 @@ enum AppEnvironment {
 
   // MARK: Managers
 
-  static var app:          AppManager          { return current.app }
-  static var device:       DeviceManager       { return current.device }
-  static var network:      NetworkManager      { return current.network }
-  static var location:     LocationManager     { return current.location }
-  static var notification: NotificationManager { return current.notification }
-  static var userDefaults: UserDefaultsManager { return current.userDefaults }
-  static var documents:    DocumentsManager    { return current.documents }
+  static var app:          AppManagerType          { return current.app }
+  static var device:       DeviceManagerType       { return current.device }
+  static var network:      NetworkManagerType      { return current.network }
+  static var location:     LocationManagerType     { return current.location }
+  static var notification: NotificationManagerType { return current.notification }
+  static var userDefaults: UserDefaultsManagerType { return current.userDefaults }
+  static var documents:    DocumentsManagerType    { return current.documents }
 
-  static var theme:        ThemeManager        { return current.theme }
-  static var api:          ApiManager          { return current.api }
-  static var search:       SearchManager       { return current.search }
-  static var bookmarks:    BookmarksManager    { return current.bookmarks }
-  static var tracking:     TrackingManager     { return current.tracking }
+  static var theme:        ThemeManagerType        { return current.theme }
+  static var api:          ApiManagerType          { return current.api }
+  static var search:       SearchManagerType       { return current.search }
+  static var bookmarks:    BookmarksManagerType    { return current.bookmarks }
+  static var tracking:     TrackingManagerType     { return current.tracking }
 
   // MARK: Stack
 
@@ -33,19 +33,19 @@ enum AppEnvironment {
   }
 
   static func push(
-    app:          AppManager          = app,
-    device:       DeviceManager       = device,
-    network:      NetworkManager      = network,
-    location:     LocationManager     = location,
-    notification: NotificationManager = notification,
-    userDefaults: UserDefaultsManager = userDefaults,
-    documents:    DocumentsManager    = documents,
+    app:          AppManagerType          = app,
+    device:       DeviceManagerType       = device,
+    network:      NetworkManagerType      = network,
+    location:     LocationManagerType     = location,
+    notification: NotificationManagerType = notification,
+    userDefaults: UserDefaultsManagerType = userDefaults,
+    documents:    DocumentsManagerType    = documents,
 
-    theme:        ThemeManager        = theme,
-    api:          ApiManager          = api,
-    search:       SearchManager       = search,
-    bookmarks:    BookmarksManager    = bookmarks,
-    tracking:     TrackingManager     = tracking) {
+    theme:        ThemeManagerType        = theme,
+    api:          ApiManagerType          = api,
+    search:       SearchManagerType       = search,
+    bookmarks:    BookmarksManagerType    = bookmarks,
+    tracking:     TrackingManagerType     = tracking) {
 
     push(Environment(
       app:           app,

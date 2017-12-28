@@ -3,22 +3,60 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-enum TrackingResult {
-  case success(locations: [Vehicle])
-  case error(error: Error)
+import Foundation
+import PromiseKit
+
+class TrackingManager: TrackingManagerType {
+
+  private(set) var result: TrackingResult = .success(locations: []) {
+    didSet { Managers.notification.post(.vehicleLocationsDidUpdate) }
+  }
+
+  fileprivate var trackedLines: [Line] = []
+  private var trackingTimer:    Timer?
+
+  fileprivate func startTimer() {
+    self.stopTimer()
+
+    guard self.trackedLines.any else {
+      self.result = .success(locations: [])
+      return
+    }
+
+    let interval = AppInfo.Timings.locationUpdateInterval
+    self.trackingTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+    self.trackingTimer?.tolerance = interval * 0.1
+
+    // manually perform first tick
+    self.trackingTimer?.fire()
+  }
+
+  @objc
+  func timerFired(timer: Timer) {
+    guard timer.isValid else { return }
+
+    firstly { return Managers.api.getVehicleLocations(for: self.trackedLines) }
+    .then  { self.result = .success(locations: $0) }
+    .catch { self.result = .error(error: $0) }
+  }
+
+  fileprivate func stopTimer() {
+    self.trackingTimer?.invalidate()
+    self.trackingTimer = nil
+  }
 }
 
-protocol TrackingManager {
+extension TrackingManager {
+  func start(_ lines: [Line]) {
+    self.trackedLines = lines
+    self.startTimer()
+  }
 
-  /// Last obtained tracking result
-  var result: TrackingResult { get }
+  func pause() {
+    self.stopTimer()
+  }
 
-  /// Start tracking new set of lines
-  func start(_ lines: [Line])
-
-  /// Pause tracking, so that new notifications will not be issued
-  func pause()
-
-  /// Resume tracking
-  func resume()
+  func resume() {
+    self.startTimer()
+  }
 }

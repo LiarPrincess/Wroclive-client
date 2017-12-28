@@ -5,14 +5,21 @@
 
 import Foundation
 
-protocol BookmarksManager {
+class BookmarksManager: BookmarksManagerType {
 
-  /// Create new user-defined bookmark
-  func addNew(_ bookmark: Bookmark)
+  func addNew(_ bookmark: Bookmark) {
+    var bookmarks = self.getAll()
+    bookmarks.append(bookmark)
+    self.save(bookmarks)
+  }
 
-  /// Retrieve all of the user-defined bookmarks
-  func getAll() -> [Bookmark]
+  func getAll() -> [Bookmark] {
+    let document = Managers.documents.read(.bookmarks)
+    return document as? [Bookmark] ?? []
+  }
 
-  /// Updates definitions of all of the provided bookmarks
-  func save(_ bookmarks: [Bookmark])
+  func save(_ bookmarks: [Bookmark]) {
+    let document = DocumentData.bookmarks(value: bookmarks)
+    Managers.documents.write(document)
+  }
 }

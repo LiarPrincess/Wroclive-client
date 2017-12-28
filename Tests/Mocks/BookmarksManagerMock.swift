@@ -6,7 +6,7 @@
 import Foundation
 @testable import Wroclive
 
-class BookmarksManagerMock: BookmarksManager {
+class BookmarksManagerMock: BookmarksManagerType {
 
   var bookmarks = [Bookmark]()
 

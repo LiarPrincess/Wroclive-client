@@ -5,23 +5,32 @@
 
 import UIKit
 
-protocol AppManager {
+class AppManager: AppManagerType {
 
-  /// App name (e.g. Wroclive)
-  var name: String { get }
+  var name:       String { return self.bundleInformation(key: kCFBundleExecutableKey as String) ?? "Unknown" }
+  var version:    String { return self.bundleInformation(key: "CFBundleShortVersionString")     ?? "0" }
+  var identifier: String { return self.bundleInformation(key: kCFBundleIdentifierKey as String) ?? "Unknown" }
 
-  /// App version (e.g. 1.0)
-  var version: String { get }
+  private func bundleInformation(key: String) -> String? {
+    return Bundle.main.infoDictionary?[key] as? String
+  }
 
-  // App bundle (e.g. pl.nopoint.wroclive)
-  var identifier: String { get }
+  func rateApp() {
+    UIApplication.shared.open(URL(string: AppInfo.AppStore.writeReviewUrl)!)
+  }
 
-  /// Asks user to rate app in AppStore
-  func rateApp()
+  func showShareActivity(in viewController: UIViewController) {
+    let text  = String(format: Localizable.Share.message, AppInfo.AppStore.shareUrl)
+    let image = Assets.shareImage
+    let items = [text, image] as [Any]
 
-  /// Present bottom panel to share app
-  func showShareActivity(in viewController: UIViewController)
+    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+    activityViewController.excludedActivityTypes = [.assignToContact, .saveToCameraRoll, .addToReadingList, .postToFlickr, .postToVimeo, .openInIBooks, .print]
+    viewController.present(activityViewController, animated: true, completion: nil)
+  }
 
-  /// Open app website in Safari
-  func openWebsite()
+  func openWebsite() {
+    let url = URL(string: AppInfo.websiteHttps)!
+    UIApplication.shared.open(url)
+  }
 }

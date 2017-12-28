@@ -5,34 +5,34 @@
 
 class Environment {
 
-  var app:          AppManager
-  var device:       DeviceManager
-  var network:      NetworkManager
-  var location:     LocationManager
-  var notification: NotificationManager
-  var userDefaults: UserDefaultsManager
-  var documents:    DocumentsManager
+  var app:          AppManagerType
+  var device:       DeviceManagerType
+  var network:      NetworkManagerType
+  var location:     LocationManagerType
+  var notification: NotificationManagerType
+  var userDefaults: UserDefaultsManagerType
+  var documents:    DocumentsManagerType
 
-  var theme:     ThemeManager
-  var api:       ApiManager
-  var search:    SearchManager
-  var bookmarks: BookmarksManager
-  var tracking:  TrackingManager
+  var theme:     ThemeManagerType
+  var api:       ApiManagerType
+  var search:    SearchManagerType
+  var bookmarks: BookmarksManagerType
+  var tracking:  TrackingManagerType
 
   init(
-    app:          AppManager          = AppManagerImpl(),
-    device:       DeviceManager       = DeviceManagerImpl(),
-    network:      NetworkManager      = NetworkManagerImpl(),
-    location:     LocationManager     = LocationManagerImpl(),
-    notification: NotificationManager = NotificationManagerImpl(),
-    userDefaults: UserDefaultsManager = UserDefaultsManagerImpl(),
-    documents:    DocumentsManager    = CachedDocumentsManagerImpl(DocumentsManagerImpl()),
+    app:          AppManagerType          = AppManager(),
+    device:       DeviceManagerType       = DeviceManager(),
+    network:      NetworkManagerType      = NetworkManager(),
+    location:     LocationManagerType     = LocationManager(),
+    notification: NotificationManagerType = NotificationManager(),
+    userDefaults: UserDefaultsManagerType = UserDefaultsManager(),
+    documents:    DocumentsManagerType    = CachedDocumentsManager(DocumentsManager()),
 
-    theme:        ThemeManager        = ThemeManagerImpl(),
-    api:          ApiManager          = ApiManagerImpl(),
-    search:       SearchManager       = SearchManagerImpl(),
-    bookmarks:    BookmarksManager    = BookmarksManagerImpl(),
-    tracking:     TrackingManager     = TrackingManagerImpl()) {
+    theme:        ThemeManagerType        = ThemeManager(),
+    api:          ApiManagerType          = ApiManager(),
+    search:       SearchManagerType       = SearchManager(),
+    bookmarks:    BookmarksManagerType    = BookmarksManager(),
+    tracking:     TrackingManagerType     = TrackingManager()) {
 
     self.app           = app
     self.device        = device

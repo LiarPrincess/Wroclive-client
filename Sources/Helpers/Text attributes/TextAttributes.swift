@@ -12,7 +12,7 @@ struct TextAttributes {
   private var lineSpacing:      CGFloat
   private var paragraphSpacing: CGFloat
 
-  private var theme: ThemeManager { return Managers.theme }
+  private var theme: ThemeManagerType { return Managers.theme }
 
   // MARK: - Init
 

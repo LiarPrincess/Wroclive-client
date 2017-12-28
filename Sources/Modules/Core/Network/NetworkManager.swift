@@ -5,16 +5,38 @@
 
 import Foundation
 import Alamofire
-import PromiseKit
+import AlamofireNetworkActivityIndicator
 
-protocol NetworkManager {
+class NetworkManager: NetworkManagerType {
 
-  var reachabilityStatus: ReachabilityStatus { get }
+  // MARK: - Properties
 
-  /// Send request
+  private lazy var session      = SessionManager()
+  private lazy var reachability = NetworkReachabilityManager(host: "www.google.com")
+
+  // MARK: - Init
+
+  init() {
+    NetworkActivityIndicatorManager.shared.isEnabled = true
+    self.reachability?.startListening()
+  }
+
+  // MARK: - NetworkManager
+
+  var reachabilityStatus: ReachabilityStatus {
+    let status = self.reachability?.networkReachabilityStatus ?? .unknown
+    switch status {
+    case .reachable(_): return .reachable
+    case .notReachable: return .notReachable
+    case .unknown:      return .unknown
+    }
+  }
+
   func request(_ url:      URLConvertible,
                method:     HTTPMethod,
                parameters: Parameters?,
                encoding:   ParameterEncoding,
-               headers:    HTTPHeaders?) -> DataRequest
+               headers:    HTTPHeaders?) -> DataRequest {
+    return self.session.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers)
+  }
 }

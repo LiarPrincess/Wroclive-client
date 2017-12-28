@@ -5,27 +5,24 @@
 
 import UIKit
 
-protocol DeviceManager {
+class DeviceManager: DeviceManagerType {
 
   // MARK: - Device
 
-  /// iPhone, iPod touch
-  var model: String { get }
+  var model:         String { return self.device.model }
+  var systemName:    String { return self.device.systemName }
+  var systemVersion: String { return self.device.systemVersion }
 
-  /// iOS, watchOS, tvOS
-  var systemName: String { get }
-
-  /// 10.2
-  var systemVersion: String { get }
+  private var device: UIDevice { return UIDevice.current }
 
   // MARK: - Screen
 
-  /// Point to pixel ratio
-  var screenScale:  CGFloat { get }
+  var screenScale:  CGFloat { return screen.scale }
+  var screenBounds: CGRect  { return screen.bounds }
 
-  /// Screen resolution
-  var screenBounds: CGRect  { get }
+  private var screen: UIScreen { return UIScreen.main }
 
-  // 17pt for UIContentSizeCategoryLarge
-  var preferredFontSize: CGFloat { get }
+  var preferredFontSize: CGFloat  {
+    return UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).pointSize
+  }
 }
