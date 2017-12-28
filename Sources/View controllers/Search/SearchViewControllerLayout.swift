@@ -16,7 +16,7 @@ extension SearchViewController {
     self.view.backgroundColor = Managers.theme.colors.background
     self.initHeader()
     self.initLinesSelector()
-    self.initLinesSelectorPlaceholder()
+    self.initPlaceholder()
   }
 
   // MARK: - Private
@@ -91,32 +91,20 @@ extension SearchViewController {
     self.linesSelector.didMove(toParentViewController: self)
   }
 
-  private func initLinesSelectorPlaceholder() {
-    self.view.insertSubview(self.placeholderView, belowSubview: self.linesSelector.view)
+  private func initPlaceholder() {
+    let container = UIView()
 
+    self.view.insertSubview(container, belowSubview: self.linesSelector.view)
+    container.snp.makeConstraints { make in
+      make.top.equalTo(self.headerView.contentView.snp.bottom)
+      make.left.right.bottom.equalToSuperview()
+    }
+
+    container.addSubview(self.placeholderView)
     self.placeholderView.snp.makeConstraints { make in
-      make.top.equalTo(self.headerView.snp.bottom)
+      make.bottom.equalTo(container.snp.centerY)
       make.left.equalToSuperview().offset(Layout.Placeholder.leftInset)
       make.right.equalToSuperview().offset(-Layout.Placeholder.rightInset)
-      make.bottom.equalToSuperview()
-    }
-
-    self.placeholderView.addSubview(self.placeholderSpinner)
-
-    self.placeholderSpinner.snp.makeConstraints { make in
-      make.centerX.equalToSuperview()
-    }
-
-    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center)
-    self.placeholderLabel.attributedText = NSAttributedString(string: Localization.loading, attributes: textAttributes)
-    self.placeholderLabel.numberOfLines  = 0
-    self.placeholderLabel.lineBreakMode  = .byWordWrapping
-    self.placeholderView.addSubview(self.placeholderLabel)
-
-    self.placeholderLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.placeholderSpinner.snp.bottom).offset(Layout.Placeholder.verticalSpacing)
-      make.left.right.equalToSuperview()
-      make.bottom.equalTo(self.placeholderView.snp.centerY)
     }
   }
 }

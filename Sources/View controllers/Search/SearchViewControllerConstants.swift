@@ -5,14 +5,14 @@
 
 import UIKit
 
-struct SearchViewControllerConstants {
-  struct Layout {
+enum SearchViewControllerConstants {
+  enum Layout {
     static let leftInset:   CGFloat = 16.0
     static let rightInset:  CGFloat = leftInset
 
     static let bottomInset: CGFloat = 24.0
 
-    struct Header {
+    enum Header {
       // topInset
       // [card title]
       // vertical spacing
@@ -30,19 +30,17 @@ struct SearchViewControllerConstants {
       static let bookmarkButtonSize = CGSize(width: 23.0, height: 23.0)
     }
 
-    struct Placeholder {
+    enum Placeholder {
       static let leftInset:  CGFloat = 35.0
       static let rightInset: CGFloat = leftInset
-
-      static let verticalSpacing: CGFloat = 8.0
     }
   }
 
-  struct CardPanel {
+  enum CardPanel {
     static let relativeHeight: CGFloat = 0.90
   }
 
-  struct BookmarksPopup {
+  enum BookmarksPopup {
     static let delay:     TimeInterval = 0.1
     static let duration:  TimeInterval = 1.4
     static let imageSize: CGSize       = CGSize(width: 64.0, height: 64.0)

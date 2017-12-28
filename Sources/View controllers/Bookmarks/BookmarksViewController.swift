@@ -16,7 +16,7 @@ class BookmarksViewController: UIViewController {
   private let viewModel: BookmarksViewModel
   private let disposeBag = DisposeBag()
 
-  lazy var headerView: UIVisualEffectView = {
+  var headerView: UIVisualEffectView = {
     let headerViewBlur = UIBlurEffect(style: Managers.theme.colors.blurStyle)
     return UIVisualEffectView(effect: headerViewBlur)
   }()
@@ -25,8 +25,8 @@ class BookmarksViewController: UIViewController {
   let editButton      = UIButton()
   let placeholderView = BookmarksPlaceholderView()
 
-  lazy var tableView           = UITableView()
-  lazy var tableViewDataSource = BookmarksViewController.createDataSource()
+  let tableView           = UITableView()
+  let tableViewDataSource = BookmarksViewController.createDataSource()
 
   // MARK: - Init
 

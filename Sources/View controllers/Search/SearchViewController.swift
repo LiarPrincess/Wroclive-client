@@ -24,7 +24,7 @@ class SearchViewController: UIViewController {
 
   weak var delegate: SearchViewControllerDelegate?
 
-  lazy var headerView: UIVisualEffectView = {
+  var headerView: UIVisualEffectView = {
     let headerViewBlur = UIBlurEffect(style: Managers.theme.colors.blurStyle)
     return UIVisualEffectView(effect: headerViewBlur)
   }()
@@ -33,12 +33,10 @@ class SearchViewController: UIViewController {
   let bookmarkButton = UIButton()
   let searchButton   = UIButton()
 
-  lazy var lineTypeSelector = LineTypeSelector()
-  lazy var linesSelector    = LineSelectionViewController()
+  var lineTypeSelector = LineTypeSelector()
+  var linesSelector    = LineSelectionViewController()
 
-  let placeholderView    = UIView()
-  let placeholderLabel   = UILabel()
-  let placeholderSpinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+  let placeholderView = SearchPlaceholderView()
 
   private let disposeBag = DisposeBag()
 
@@ -50,12 +48,12 @@ class SearchViewController: UIViewController {
     didSet {
       switch self.mode {
       case .loadingData:
-        self.placeholderSpinner.startAnimating()
+        self.placeholderView.startAnimating()
         self.placeholderView.isHidden    = false
         self.linesSelector.view.isHidden = true
 
       case .selectingLines:
-        self.placeholderSpinner.stopAnimating()
+        self.placeholderView.stopAnimating()
         self.placeholderView.isHidden    = true
         self.linesSelector.view.isHidden = false
       }
@@ -73,10 +71,8 @@ class SearchViewController: UIViewController {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
     self.lineTypeSelector.value.asDriver()
-      .drive(onNext: { _ in
-        self.updateViewFromLineTypeSelector(animated: true)
-      })
-    .disposed(by: self.disposeBag)
+      .drive(onNext: { _ in self.updateViewFromLineTypeSelector(animated: true) })
+      .disposed(by: self.disposeBag)
   }
 
   required init?(coder aDecoder: NSCoder) {
