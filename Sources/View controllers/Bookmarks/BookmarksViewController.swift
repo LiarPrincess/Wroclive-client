@@ -23,15 +23,16 @@ class BookmarksViewController: UIViewController {
 
   let titleLabel      = UILabel()
   let editButton      = UIButton()
-  let tableView       = UITableView()
   let placeholderView = BookmarksPlaceholderView()
+
+  lazy var tableView           = UITableView()
+  lazy var tableViewDataSource = BookmarksViewController.createDataSource()
 
   // MARK: - Init
 
   init(_ viewModel: BookmarksViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
-
     self.initTableViewBindings()
     self.initVisibilityBindings()
     self.initEditBindings()
@@ -44,10 +45,11 @@ class BookmarksViewController: UIViewController {
   // MARK: - Bindings
 
   private func initTableViewBindings() {
-    let dataSource = self.createDataSource()
+    self.tableView.rx.setDelegate(self)
+      .disposed(by: disposeBag)
 
     self.viewModel.outputs.items
-      .drive(self.tableView.rx.items(dataSource: dataSource))
+      .drive(self.tableView.rx.items(dataSource: self.tableViewDataSource))
       .disposed(by: disposeBag)
 
     self.tableView.rx.itemSelected
@@ -61,18 +63,6 @@ class BookmarksViewController: UIViewController {
     self.tableView.rx.itemDeleted
       .bind(to: self.viewModel.inputs.itemDeleted)
       .disposed(by: self.disposeBag)
-  }
-
-  private func createDataSource() -> RxTableViewDataSource<BookmarksSection> {
-    return RxTableViewDataSource(
-      configureCell: { _, tableView, index, model -> UITableViewCell in
-        let cell = tableView.dequeueReusableCell(ofType: BookmarkCell.self, forIndexPath: index)
-        cell.viewModel.inputs.bookmark.onNext(model)
-        return cell
-      },
-      canEditRowAtIndexPath: { _, _ in true },
-      canMoveRowAtIndexPath: { _, _ in true }
-    )
   }
 
   private func initVisibilityBindings() {
@@ -101,6 +91,20 @@ class BookmarksViewController: UIViewController {
     self.viewModel.outputs.editButtonText
       .drive(self.editButton.rx.attributedTitle())
       .disposed(by: self.disposeBag)
+  }
+
+  // MARK: - Data source
+
+  private static func createDataSource() -> RxTableViewDataSource<BookmarksSection> {
+    return RxTableViewDataSource(
+      configureCell: { _, tableView, indexPath, model -> UITableViewCell in
+        let cell = tableView.dequeueReusableCell(ofType: BookmarkCell.self, forIndexPath: indexPath)
+        cell.viewModel.inputs.bookmark.onNext(model)
+        return cell
+    },
+      canEditRowAtIndexPath: { _, _ in true },
+      canMoveRowAtIndexPath: { _, _ in true }
+    )
   }
 
   // MARK: - Override
@@ -157,3 +161,7 @@ extension BookmarksViewController: CardPanelPresentable {
   var header: UIView  { return self.headerView.contentView }
   var height: CGFloat { return CardPanel.height }
 }
+
+// MARK: - UITableViewDelegate
+
+extension BookmarksViewController: UITableViewDelegate { }

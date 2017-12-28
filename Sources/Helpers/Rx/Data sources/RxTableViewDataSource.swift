@@ -7,18 +7,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-// swiftlint:disable line_length
-
-class RxTableViewDataSource<TSectionType: RxSectionType>: NSObject, UITableViewDataSource, RxTableViewDataSourceType {
+class RxTableViewDataSource<TSectionType: RxSectionType>
+  : NSObject, UITableViewDataSource, RxTableViewDataSourceType {
 
   // MARK: - Properties
 
   typealias TSection = TSectionType.Model
   typealias TItem    = TSectionType.Item
 
-  typealias ConfigureCell = (RxTableViewDataSource<TSectionType>, UITableView, IndexPath, TItem) -> UITableViewCell
-  typealias CanEditRowAtIndexPath   = (RxTableViewDataSource<TSectionType>, IndexPath) -> Bool
-  typealias CanMoveRowAtIndexPath   = (RxTableViewDataSource<TSectionType>, IndexPath) -> Bool
+  typealias ConfigureCell         = (RxTableViewDataSource<TSectionType>, UITableView, IndexPath, TItem) -> UITableViewCell
+  typealias CanEditRowAtIndexPath = (RxTableViewDataSource<TSectionType>, IndexPath) -> Bool
+  typealias CanMoveRowAtIndexPath = (RxTableViewDataSource<TSectionType>, IndexPath) -> Bool
 
   var configureCell: ConfigureCell {
     didSet {
@@ -68,6 +67,14 @@ class RxTableViewDataSource<TSectionType: RxSectionType>: NSObject, UITableViewD
 
   private var _sectionModels: [SectionModelSnapshot] = []
 
+  subscript(section: Int) -> RxSectionModel<TSection, TItem> {
+    return self._sectionModels[section]
+  }
+
+  subscript(indexPath: IndexPath) -> TItem {
+    return self._sectionModels[indexPath.section].items[indexPath.item]
+  }
+
   // MARK: - RxTableViewDataSourceType
 
   typealias Element = [TSectionType]
@@ -93,6 +100,7 @@ class RxTableViewDataSource<TSectionType: RxSectionType>: NSObject, UITableViewD
   private var _dataSourceBound: Bool = false
 
   private func ensureNotMutatedAfterBinding() {
+    // swiftlint:disable:next line_length
     assert(!_dataSourceBound, "Data source is already bound. Please write this line before binding call (`bindTo`, `drive`). Data source must first be completely configured, and then bound after that, otherwise there could be runtime bugs, glitches, or partial malfunctions.")
   }
 
@@ -111,8 +119,7 @@ class RxTableViewDataSource<TSectionType: RxSectionType>: NSObject, UITableViewD
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     precondition(indexPath.item < self._sectionModels[indexPath.section].items.count)
-    let item = self._sectionModels[indexPath.section].items[indexPath.item]
-    return configureCell(self, tableView, indexPath, item)
+    return configureCell(self, tableView, indexPath, self._sectionModels[indexPath])
   }
 
   // MARK: - Moving/reordering

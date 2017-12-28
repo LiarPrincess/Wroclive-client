@@ -34,7 +34,7 @@ class SearchViewController: UIViewController {
   let searchButton   = UIButton()
 
   lazy var lineTypeSelector = LineTypeSelector()
-  lazy var linesSelector    = LineSelectionViewController(withLines: [])
+  lazy var linesSelector    = LineSelectionViewController()
 
   let placeholderView    = UIView()
   let placeholderLabel   = UILabel()
@@ -121,19 +121,19 @@ class SearchViewController: UIViewController {
 
   @objc
   func bookmarkButtonPressed() {
-    let selectedLines = self.linesSelector.selectedLines
-
-    guard selectedLines.any else {
-      BookmarkAlerts.showBookmarkNoLinesSelectedAlert(in: self)
-      return
-    }
-
-    BookmarkAlerts.showBookmarkNameInputAlert(in: self) { [weak self] name in
-      guard let name = name else { return }
-      let bookmark = Bookmark(name: name, lines: selectedLines)
-      Managers.bookmarks.addNew(bookmark)
-      self?.showBookmarkCreatedPopup()
-    }
+//    let selectedLines = self.linesSelector.selectedLines
+//
+//    guard selectedLines.any else {
+//      BookmarkAlerts.showBookmarkNoLinesSelectedAlert(in: self)
+//      return
+//    }
+//
+//    BookmarkAlerts.showBookmarkNameInputAlert(in: self) { [weak self] name in
+//      guard let name = name else { return }
+//      let bookmark = Bookmark(name: name, lines: selectedLines)
+//      Managers.bookmarks.addNew(bookmark)
+//      self?.showBookmarkCreatedPopup()
+//    }
   }
 
   private func showBookmarkCreatedPopup() {
@@ -185,10 +185,10 @@ class SearchViewController: UIViewController {
 
   @objc
   func searchButtonPressed() {
-    guard self.mode == .selectingLines else { return }
-
-    let lines = self.linesSelector.selectedLines
-    self.delegate?.searchViewController(self, didSelect: lines)
+//    guard self.mode == .selectingLines else { return }
+//
+//    let lines = self.linesSelector.selectedLines
+//    self.delegate?.searchViewController(self, didSelect: lines)
   }
 
   // MARK: - Private - State
@@ -206,8 +206,8 @@ class SearchViewController: UIViewController {
     .then { [weak self] lines -> () in
       guard let strongSelf = self else { return }
 
-      strongSelf.linesSelector.lines         = lines
-      strongSelf.linesSelector.selectedLines = selectedLines
+      strongSelf.linesSelector.viewModel.inputs.linesChanged.onNext(lines)
+      strongSelf.linesSelector.viewModel.inputs.selectedLinesChanged.onNext(selectedLines)
 
       strongSelf.mode = .selectingLines
       strongSelf.updateViewFromLineTypeSelector(animated: false)
@@ -233,13 +233,13 @@ class SearchViewController: UIViewController {
 
   private func saveState() {
     // if we have not downloaded lines then avoid override of state
-    guard self.mode == .selectingLines else { return }
-
-    let lineType = self.lineTypeSelector.rawValue
-    let lines    = self.linesSelector.selectedLines
-
-    let state = SearchState(withSelected: lineType, lines: lines)
-    Managers.search.saveState(state)
+//    guard self.mode == .selectingLines else { return }
+//
+//    let lineType = self.lineTypeSelector.rawValue
+//    let lines    = self.linesSelector.selectedLines
+//
+//    let state = SearchState(withSelected: lineType, lines: lines)
+//    Managers.search.saveState(state)
   }
 
   // MARK: - Private - Update methods

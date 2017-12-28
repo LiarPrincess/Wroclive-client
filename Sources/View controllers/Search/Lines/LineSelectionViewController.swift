@@ -4,10 +4,19 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class LineSelectionViewController: UIPageViewController {
 
   // MARK: - Properties
+
+  let viewModel = LineSelectionViewModel()
+  private let disposeBag = DisposeBag()
+
+  private let tramPage = LineSelectionPage()
+  private let busPage  = LineSelectionPage()
+  private lazy var pages = [self.tramPage, self.busPage]
 
   var currentPage: LineType {
     get {
@@ -18,60 +27,48 @@ class LineSelectionViewController: UIPageViewController {
     set { self.setCurrentPage(newValue, animated: false) }
   }
 
-  var lines: [Line] {
-    get { return self.tramPage.lines + self.busPage.lines }
-    set {
-      self.tramPage.lines = newValue.filter(.tram)
-      self.busPage.lines  = newValue.filter(.bus )
-    }
-  }
-
-  var selectedLines: [Line] {
-    get { return self.tramPage.selectedLines + self.busPage.selectedLines }
-    set {
-      self.tramPage.selectedLines = newValue.filter(.tram)
-      self.busPage.selectedLines  = newValue.filter(.bus )
-    }
-  }
-
   var contentInset: UIEdgeInsets {
     get { return self.tramPage.contentInset }
-    set {
-      self.tramPage.contentInset = newValue
-      self.busPage.contentInset  = newValue
-    }
+    set { self.pages.forEach { $0.contentInset = newValue } }
   }
 
   var scrollIndicatorInsets: UIEdgeInsets {
     get { return self.tramPage.scrollIndicatorInsets }
-    set {
-      self.tramPage.scrollIndicatorInsets = newValue
-      self.busPage.scrollIndicatorInsets  = newValue
-    }
+    set { self.pages.forEach { $0.scrollIndicatorInsets = newValue } }
   }
-
-  fileprivate let tramPage: LineSelectionPage
-  fileprivate let busPage:  LineSelectionPage
-
-  fileprivate lazy var pages: [LineSelectionPage] = {
-    return [self.tramPage, self.busPage]
-  }()
 
   // MARK: - Init
 
-  init(withLines lines: [Line]) {
-    self.tramPage = LineSelectionPage(withLines: lines.filter(.tram))
-    self.busPage  = LineSelectionPage(withLines: lines.filter(.bus))
-
+  init() {
     super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 
     // load view so we can select/deselect cells right away
     self.pages.forEach { _ = $0.view }
     self.dataSource = self
+
+    self.initBindings()
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  private func initBindings() {
+    self.viewModel.outputs.tramLines
+      .drive(self.tramPage.viewModel.inputs.linesChanged)
+      .disposed(by: disposeBag)
+
+    self.viewModel.outputs.busLines
+      .drive(self.busPage.viewModel.inputs.linesChanged)
+      .disposed(by: disposeBag)
+
+    self.viewModel.outputs.selectedTramLines
+      .drive(self.tramPage.viewModel.inputs.selectedLinesChanged)
+      .disposed(by: disposeBag)
+
+    self.viewModel.outputs.selectedBusLines
+      .drive(self.busPage.viewModel.inputs.selectedLinesChanged)
+      .disposed(by: disposeBag)
   }
 
   // MARK: - Override
@@ -98,20 +95,22 @@ class LineSelectionViewController: UIPageViewController {
 
 extension LineSelectionViewController: UIPageViewControllerDataSource {
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    guard let index = self.pages.index(of: viewController as! LineSelectionPage) else {
-      return nil
-    }
+    guard let index = self.index(of: viewController)
+      else { return nil }
 
     let previousIndex = index - 1
     return previousIndex >= 0 ? self.pages[previousIndex] : nil
   }
 
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    guard let index = self.pages.index(of: viewController as! LineSelectionPage) else {
-      return nil
-    }
+    guard let index = self.index(of: viewController)
+      else { return nil }
 
     let nextIndex = index + 1
     return nextIndex < self.pages.count ? self.pages[nextIndex] : nil
+  }
+
+  private func index(of viewController: UIViewController) -> Int? {
+    return self.pages.index { $0 === viewController }
   }
 }

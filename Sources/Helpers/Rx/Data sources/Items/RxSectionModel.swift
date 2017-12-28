@@ -12,7 +12,7 @@ struct RxSectionModel<TModel: Equatable, TItem: Equatable>: RxSectionType, Equat
     self.items = items
   }
 
-  static func ==(lhs: RxSectionModel<TModel, TItem>, rhs: RxSectionModel<TModel, TItem>) -> Bool {
+  static func == (lhs: RxSectionModel<TModel, TItem>, rhs: RxSectionModel<TModel, TItem>) -> Bool {
     return lhs.model == rhs.model
         && lhs.items == rhs.items
   }

@@ -7,8 +7,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-private typealias TextStyles   = LineSelectionHeaderViewConstants.TextStyles
-private typealias Localization = Localizable.LineSelection.SectionName
+private typealias TextStyles = LineSelectionHeaderViewConstants.TextStyles
 
 protocol LineSelectionHeaderViewModelInput {
   var section: AnyObserver<LineSelectionSection> { get }
@@ -29,7 +28,7 @@ class LineSelectionHeaderViewModel: LineSelectionHeaderViewModelInput, LineSelec
 
   init() {
     self.text = self._section
-      .map { createText($0.subtype) }
+      .map { createText($0.model) }
       .asDriver(onErrorDriveWith: .never())
   }
 
@@ -39,20 +38,6 @@ class LineSelectionHeaderViewModel: LineSelectionHeaderViewModelInput, LineSelec
   var outputs: LineSelectionHeaderViewModelOutput { return self }
 }
 
-private func createText(_ subtype: LineSubtype) -> NSAttributedString {
-  let value = createTextValue(subtype)
-  return NSAttributedString(string: value, attributes: TextStyles.header)
-}
-
-private func createTextValue(_ subtype: LineSubtype) -> String {
-  switch subtype {
-  case .regular:   return Localization.regular
-  case .express:   return Localization.express
-  case .peakHour:  return Localization.peakHour
-  case .suburban:  return Localization.suburban
-  case .zone:      return Localization.zone
-  case .limited:   return Localization.limited
-  case .temporary: return Localization.temporary
-  case .night:     return Localization.night
-  }
+private func createText(_ sectionData: LineSelectionSectionData) -> NSAttributedString {
+  return NSAttributedString(string: sectionData.lineSubtypeTranslation, attributes: TextStyles.header)
 }

@@ -4,6 +4,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 private typealias HeaderLayout     = LineSelectionHeaderViewConstants.Layout
 private typealias HeaderTextStyles = LineSelectionHeaderViewConstants.TextStyles
@@ -14,69 +16,73 @@ class LineSelectionPage: UIViewController {
 
   // MARK: - Properties
 
-  var lines: [Line] {
-    get { return self.collectionDataSource.lines }
-    set { self.collectionDataSource = LineSelectionDataSource(with: newValue) }
-  }
+  let viewModel = LineSelectionPageViewModel()
+  private let disposeBag = DisposeBag()
 
-  var selectedLines: [Line] {
-    get { return self.collectionView.indexPathsForSelectedItems?.flatMap { return self.collectionDataSource.line(at: $0) } ?? [] }
-    set {
-      for line in self.lines {
-        if let indexPath = self.collectionDataSource.index(of: line) {
-          let isSelected = newValue.contains(line)
-
-          if isSelected { self.collectionView.selectItem  (at: indexPath, animated: false, scrollPosition: []) }
-          else          { self.collectionView.deselectItem(at: indexPath, animated: false) }
-        }
-      } // end for(...)
-    }
-  }
-
-  // MARK: Collection
-
-  private(set) var collectionDataSource: LineSelectionDataSource {
-    didSet {
-      self.collectionView.dataSource = self.collectionDataSource
-      self.collectionView.reloadData()
-    }
-  }
-
-  lazy var collectionView: UICollectionView = {
-    let layout = UICollectionViewFlowLayout()
-    return UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-  }()
-
-  // MARK: Layout
+  private lazy var collectionView           = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewLayout)
+  private lazy var collectionViewLayout     = UICollectionViewFlowLayout()
+  private lazy var collectionViewDataSource = LineSelectionPage.createDataSource()
 
   var contentInset: UIEdgeInsets {
     get { return self.collectionView.contentInset }
-    set {
-      if self.collectionView.contentInset != newValue {
-        self.collectionView.contentInset = newValue
-        self.recalculateItemSize()
-      }
-    }
+    set { self.collectionView.contentInset = newValue }
   }
 
   var scrollIndicatorInsets: UIEdgeInsets {
     get { return self.collectionView.scrollIndicatorInsets }
-    set {
-      if self.collectionView.scrollIndicatorInsets != newValue {
-        self.collectionView.scrollIndicatorInsets = newValue
-      }
-    }
+    set { self.collectionView.scrollIndicatorInsets = newValue }
   }
 
   // MARK: - Init
 
-  init(withLines lines: [Line]) {
-    self.collectionDataSource = LineSelectionDataSource(with: lines)
+  init() {
     super.init(nibName: nil, bundle: nil)
+    self.initBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  private func initBindings() {
+    self.collectionView.rx.setDelegate(self)
+      .disposed(by: disposeBag)
+
+    self.viewModel.outputs.sections
+      .drive(self.collectionView.rx.items(dataSource: self.collectionViewDataSource))
+      .disposed(by: disposeBag)
+
+    let itemSelected   = self.collectionView.rx.itemSelected.map   { _ in () }
+    let itemDeselected = self.collectionView.rx.itemDeselected.map { _ in () }
+
+    Observable.merge(itemSelected, itemDeselected)
+      .map { [weak self] in self?.collectionView.indexPathsForSelectedItems ?? [] }
+      .map { [weak self] in $0.flatMap { self?.collectionViewDataSource[$0] }}
+      .bind(to: self.viewModel.inputs.selectedLinesChanged)
+      .disposed(by: disposeBag)
+  }
+
+  // MARK: - Data source
+
+  private static func createDataSource() -> RxCollectionViewDataSource<LineSelectionSection> {
+    return RxCollectionViewDataSource(
+      configureCell: { _, collectionView, indexPath, model -> UICollectionViewCell in
+        let cell = collectionView.dequeueReusableCell(ofType: LineSelectionCell.self, forIndexPath: indexPath)
+        cell.viewModel.inputs.line.onNext(model)
+        return cell
+      },
+      configureSupplementaryView: { dataSource, collectionView, kind, indexPath -> UICollectionReusableView in
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+          let view = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectionHeaderView.self, kind: .header, for: indexPath)
+          let section = dataSource[indexPath.section]
+          view.viewModel.inputs.section.onNext(section)
+          return view
+        default:
+          fatalError("Unexpected element kind")
+        }
+      }
+    )
   }
 
   // MARK: - Overriden
@@ -86,14 +92,29 @@ class LineSelectionPage: UIViewController {
     self.initLayout()
   }
 
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-    self.recalculateItemSize()
+  private func initLayout() {
+    self.collectionViewLayout.minimumLineSpacing      = CellLayout.margin
+    self.collectionViewLayout.minimumInteritemSpacing = CellLayout.margin
+
+    self.collectionView.register(LineSelectionCell.self)
+    self.collectionView.registerSupplementary(LineSelectionHeaderView.self, ofKind: .header)
+    self.collectionView.backgroundColor         = Managers.theme.colors.background
+    self.collectionView.allowsSelection         = true
+    self.collectionView.allowsMultipleSelection = true
+    self.collectionView.alwaysBounceVertical    = true
+
+    self.view.addSubview(self.collectionView)
+    self.collectionView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
   }
 
-  fileprivate var itemSize = CGSize()
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    self.collectionViewLayout.itemSize = self.calculateItemSize()
+  }
 
-  private func recalculateItemSize() {
+  private func calculateItemSize() -> CGSize {
     // number of cells:   n
     // number of margins: n-1
 
@@ -108,48 +129,23 @@ class LineSelectionPage: UIViewController {
     let numSectionsThatFit = floor((totalWidth + margin) / (minCellWidth + margin))
     let cellWidth          = (totalWidth - (numSectionsThatFit - 1) * margin) / numSectionsThatFit
 
-    self.itemSize = CGSize(width: cellWidth, height: cellWidth)
+    return CGSize(width: cellWidth, height: cellWidth)
   }
 }
 
 // MARK: - CollectionViewDelegateFlowLayout
 
 extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
-
-  // MARK: - Size
-
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    let sectionData = self.collectionViewDataSource[section].model
+
     let width  = self.collectionView.contentWidth
     let bounds = CGSize(width: width, height: .greatestFiniteMagnitude)
 
-    let text     = NSAttributedString(string: Localization.SectionName.regular, attributes: HeaderTextStyles.header)
+    let text     = NSAttributedString(string: sectionData.lineSubtypeTranslation, attributes: HeaderTextStyles.header)
     let textSize = text.boundingRect(with: bounds, options: .usesLineFragmentOrigin, context: nil)
 
     let height = textSize.height + HeaderLayout.topInset + HeaderLayout.bottomInset + 1.0
     return CGSize(width: width, height: height)
-  }
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return self.itemSize
-  }
-
-  // MARK: - Margin
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return CellLayout.margin
-  }
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return CellLayout.margin
-  }
-
-  // MARK: - Selection
-
-  func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-    return true
-  }
-
-  func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-    return true
   }
 }
