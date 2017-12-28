@@ -14,21 +14,21 @@ extension LineSelectionCellViewModelTests {
 
   // MARK: - Line
 
-  typealias LineEvent = Recorded<Event<Line>>
+  typealias LineChangedEvent = Recorded<Event<Line>>
 
-  func simulateLineEvents(_ events: LineEvent...) {
+  func simulateLineEvents(_ events: LineChangedEvent...) {
     testScheduler.createHotObservable(events)
-      .bind(to: self.viewModel.inputs.line)
+      .bind(to: self.viewModel.inputs.lineChanged)
       .disposed(by: self.disposeBag)
   }
 
   // MARK: - Is selected
 
-  typealias IsSelectedEvent = Recorded<Event<Bool>>
+  typealias IsSelectedChangedEvent = Recorded<Event<Bool>>
 
-  func simulateIsSelectedEvents(_ events: IsSelectedEvent...) {
+  func simulateIsSelectedEvents(_ events: IsSelectedChangedEvent...) {
     testScheduler.createHotObservable(events)
-      .bind(to: self.viewModel.inputs.isSelected)
+      .bind(to: self.viewModel.inputs.isSelectedChanged)
       .disposed(by: self.disposeBag)
   }
 }

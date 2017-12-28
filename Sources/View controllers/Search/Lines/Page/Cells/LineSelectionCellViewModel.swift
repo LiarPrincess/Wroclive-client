@@ -10,8 +10,8 @@ import RxCocoa
 private typealias TextStyles = LineSelectionCellConstants.TextStyles
 
 protocol LineSelectionCellViewModelInput {
-  var line:       AnyObserver<Line> { get }
-  var isSelected: AnyObserver<Bool> { get }
+  var lineChanged:       AnyObserver<Line> { get }
+  var isSelectedChanged: AnyObserver<Bool> { get }
 }
 
 protocol LineSelectionCellViewModelOutput {
@@ -19,31 +19,31 @@ protocol LineSelectionCellViewModelOutput {
 }
 
 class LineSelectionCellViewModel: LineSelectionCellViewModelInput, LineSelectionCellViewModelOutput {
-  private let _line       = PublishSubject<Line>()
-  private let _isSelected = BehaviorSubject(value: false)
-  private let _lineName   = BehaviorSubject(value: "")
+  private let _lineChanged       = PublishSubject<Line>()
+  private let _isSelectedChanged = BehaviorSubject(value: false)
+  private let _lineNameChanged   = BehaviorSubject(value: "")
 
   private let disposeBag = DisposeBag()
 
   // input
-  lazy var line:       AnyObserver<Line> = self._line.asObserver()
-  lazy var isSelected: AnyObserver<Bool> = self._isSelected.asObserver()
+  lazy var lineChanged:       AnyObserver<Line> = self._lineChanged.asObserver()
+  lazy var isSelectedChanged: AnyObserver<Bool> = self._isSelectedChanged.asObserver()
 
   // output
   let text: Driver<NSAttributedString>
 
   init() {
-    self._line
+    self._lineChanged
       .map { $0.name }
-      .bind(to: self._lineName)
+      .bind(to: self._lineNameChanged)
       .disposed(by: self.disposeBag)
 
-    let didChangeLineName   = self._lineName.map   { _ in () }
-    let didChangeIsSelected = self._isSelected.map { _ in () }
+    let anyLineNameChanged   = self._lineNameChanged.map   { _ in () }
+    let anyIsSelectedChanged = self._isSelectedChanged.map { _ in () }
 
-    self.text = Observable.merge(didChangeLineName, didChangeIsSelected)
-      .withLatestFrom(self._lineName)   { $1 }
-      .withLatestFrom(self._isSelected) { ($0, $1) }
+    self.text = Observable.merge(anyLineNameChanged, anyIsSelectedChanged)
+      .withLatestFrom(self._lineNameChanged)   { $1 }
+      .withLatestFrom(self._isSelectedChanged) { ($0, $1) }
       .distinctUntilChanged(areEqual)
       .map { createText($0.0, isSelected: $0.1) }
       .asDriver(onErrorDriveWith: .never())

@@ -99,7 +99,7 @@ class BookmarksViewController: UIViewController {
     return RxTableViewDataSource(
       configureCell: { _, tableView, indexPath, model -> UITableViewCell in
         let cell = tableView.dequeueReusableCell(ofType: BookmarkCell.self, forIndexPath: indexPath)
-        cell.viewModel.inputs.bookmark.onNext(model)
+        cell.viewModel.inputs.bookmarkChanged.onNext(model)
         return cell
     },
       canEditRowAtIndexPath: { _, _ in true },
