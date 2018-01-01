@@ -171,6 +171,7 @@
 		90915B0B1FFA6D16009FE942 /* Nope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0A1FFA6D16009FE942 /* Nope.swift */; };
 		90915B0E1FFA6FF5009FE942 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchViewModelTests.swift */; };
 		90915B111FFA700B009FE942 /* SearchViewModelTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0F1FFA7007009FE942 /* SearchViewModelTests+Helpers.swift */; };
+		90915B131FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */; };
 		90940D8A1FB721F400F3A316 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90940D891FB721F400F3A316 /* UserDefaultsManager.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		909B9FDC1FEBC3E2007CB59D /* BookmarkCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */; };
@@ -439,6 +440,7 @@
 		90915B0A1FFA6D16009FE942 /* Nope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nope.swift; sourceTree = "<group>"; };
 		90915B0C1FFA6FF0009FE942 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		90915B0F1FFA7007009FE942 /* SearchViewModelTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewModelTests+Helpers.swift"; sourceTree = "<group>"; };
+		90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardNetworkAdapter.swift; sourceTree = "<group>"; };
 		90940D891FB721F400F3A316 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellConstants.swift; sourceTree = "<group>"; };
@@ -650,7 +652,7 @@
 				907DC6E61FF2B73F001C5DD6 /* Line type */,
 				9021F3E31F12C9EF000A6949 /* Lines */,
 				901ECDCA1FF58D36004765AA /* Placeholder */,
-				901ECDD11FF5B478004765AA /* Random */,
+				901ECDD11FF5B478004765AA /* Helpers */,
 				9017C34E1EE339FD00063377 /* SearchViewController.swift */,
 				9017C3501EE339FD00063377 /* SearchViewControllerLayout.swift */,
 				901ECDCF1FF5A003004765AA /* SearchViewModel.swift */,
@@ -732,13 +734,14 @@
 			path = Placeholder;
 			sourceTree = "<group>";
 		};
-		901ECDD11FF5B478004765AA /* Random */ = {
+		901ECDD11FF5B478004765AA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				901ECDD21FF5BD8E004765AA /* AABookmarkButton.swift */,
 				901ECDD41FF5BDB2004765AA /* AASearchState.swift */,
+				90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */,
 			);
-			path = Random;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		901FEAD11FE1EC8900C36A71 /* Text attributes */ = {
@@ -2074,6 +2077,7 @@
 				901FEAD91FE1EC8900C36A71 /* TextColor.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				901ECDD01FF5A003004765AA /* SearchViewModel.swift in Sources */,
+				90915B131FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift in Sources */,
 				90F0A2D81F732A6F00C641C8 /* VehicleLocationObserver.swift in Sources */,
 				90145E411F61AE720068698D /* ConfigurationCellViewModel.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,

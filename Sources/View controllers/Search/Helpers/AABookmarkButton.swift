@@ -19,7 +19,7 @@
 //  //      self?.showBookmarkCreatedPopup()
 //  //    }
 //}
-//
+
 //private func showBookmarkCreatedPopup() {
 //  let image   = StyleKit.drawStarFilledTemplateImage(size: Constants.BookmarksPopup.imageSize)
 //  let title   = Localization.BookmarkAdded.title

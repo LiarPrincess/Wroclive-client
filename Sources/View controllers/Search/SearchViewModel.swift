@@ -119,14 +119,7 @@ class SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
   }
 
   private func bindInputs() {
-    let line0 = Line(name:  "1", type: .tram, subtype: .regular)
-    let line1 = Line(name:  "4", type: .tram, subtype: .regular)
-    let line2 = Line(name: "20", type: .tram, subtype: .regular)
-    let line3 = Line(name:  "A", type:  .bus, subtype: .regular)
-    let line4 = Line(name:  "D", type:  .bus, subtype: .regular)
-
-    Observable.just([line0, line1, line2, line3, line4])
-      .delay(2, scheduler: MainScheduler.instance)
+    SearchCardNetworkAdapter.getAvailableLines()
       .bind(to: self._lines)
       .disposed(by: self.disposeBag)
 
@@ -138,7 +131,7 @@ class SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
 //      .debug("_selectedLines")
 //      .subscribe()
 //      .disposed(by: self.disposeBag)
-//
+
 //    // did close -> self.saveState()
 //    self._viewClosed
 //      .debug("_viewClosed")
