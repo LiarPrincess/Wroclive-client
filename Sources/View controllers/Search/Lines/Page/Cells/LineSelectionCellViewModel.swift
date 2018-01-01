@@ -20,10 +20,7 @@ protocol LineSelectionCellViewModelOutput {
 
 class LineSelectionCellViewModel: LineSelectionCellViewModelInput, LineSelectionCellViewModelOutput {
   private let _lineChanged       = PublishSubject<Line>()
-  private let _isSelectedChanged = BehaviorSubject(value: false)
-  private let _lineNameChanged   = BehaviorSubject(value: "")
-
-  private let disposeBag = DisposeBag()
+  private let _isSelectedChanged = PublishSubject<Bool>()
 
   // input
   lazy var lineChanged:       AnyObserver<Line> = self._lineChanged.asObserver()
@@ -33,17 +30,10 @@ class LineSelectionCellViewModel: LineSelectionCellViewModelInput, LineSelection
   let text: Driver<NSAttributedString>
 
   init() {
-    self._lineChanged
-      .map { $0.name }
-      .bind(to: self._lineNameChanged)
-      .disposed(by: self.disposeBag)
+    let lineName   = self._lineChanged.map { $0.name }.startWith("")
+    let isSelected = self._isSelectedChanged.startWith(false)
 
-    let anyLineNameChanged   = self._lineNameChanged.map   { _ in () }
-    let anyIsSelectedChanged = self._isSelectedChanged.map { _ in () }
-
-    self.text = Observable.merge(anyLineNameChanged, anyIsSelectedChanged)
-      .withLatestFrom(self._lineNameChanged)   { $1 }
-      .withLatestFrom(self._isSelectedChanged) { ($0, $1) }
+    self.text = Observable.combineLatest(lineName, isSelected)
       .distinctUntilChanged(areEqual)
       .map { createText($0.0, isSelected: $0.1) }
       .asDriver(onErrorDriveWith: .never())
