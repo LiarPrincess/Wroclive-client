@@ -8,11 +8,15 @@ import RxSwift
 import RxCocoa
 
 protocol LineSelectionViewModelInput {
+  var pageChanged: AnyObserver<LineType> { get }
+
   var linesChanged:         AnyObserver<[Line]> { get }
   var selectedLinesChanged: AnyObserver<[Line]> { get }
 }
 
 protocol LineSelectionViewModelOutput {
+  var page: Driver<LineType> { get }
+
   var tramLines: Driver<[Line]> { get }
   var busLines:  Driver<[Line]> { get }
 
@@ -24,14 +28,19 @@ class LineSelectionViewModel: LineSelectionViewModelInput, LineSelectionViewMode
 
   // MARK: - Properties
 
+  private let _page                 = PublishSubject<LineType>()
   private let _linesChanged         = PublishSubject<[Line]>()
   private let _selectedLinesChanged = PublishSubject<[Line]>()
 
   // input
+  lazy var pageChanged: AnyObserver<LineType> = self._page.asObserver()
+
   lazy var linesChanged:         AnyObserver<[Line]> = self._linesChanged.asObserver()
   lazy var selectedLinesChanged: AnyObserver<[Line]> = self._selectedLinesChanged.asObserver()
 
   // output
+  let page: Driver<LineType>
+
   let tramLines: Driver<[Line]>
   let busLines:  Driver<[Line]>
 
@@ -41,6 +50,8 @@ class LineSelectionViewModel: LineSelectionViewModelInput, LineSelectionViewMode
   // MARK: - Init
 
   init() {
+    self.page = self._page.asDriver(onErrorDriveWith: .never())
+
     self.tramLines = self._linesChanged
       .map { filterTrams($0) }
       .asDriver(onErrorJustReturn: [])

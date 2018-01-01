@@ -17,6 +17,10 @@ class SearchPlaceholderView: UIView {
   private let label   = UILabel()
   private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 
+  override var isHidden: Bool {
+    didSet { self.updateAnimationState() }
+  }
+
   // MARK: - Init
 
   convenience init() {
@@ -48,13 +52,10 @@ class SearchPlaceholderView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Animation
+  // MARK: - Private - Animation state
 
-  func startAnimating() {
-    self.spinner.startAnimating()
-  }
-
-  func stopAnimating() {
-    self.spinner.stopAnimating()
+  private func updateAnimationState() {
+    if self.isHidden { self.spinner.stopAnimating()  }
+    else             { self.spinner.startAnimating() }
   }
 }

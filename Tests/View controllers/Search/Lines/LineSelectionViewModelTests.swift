@@ -33,6 +33,26 @@ final class LineSelectionViewModelTests: XCTestCase {
     self.testScheduler = nil
   }
 
+  // MARK: - Page changed
+
+  func test_emitsPage_onPageChange() {
+    let event0 = next(100, LineType.bus)
+    let event1 = next(200, LineType.tram)
+    self.simulatePageChangedEvents(event0, event1)
+
+    let observer = self.testScheduler.createObserver(LineType.self)
+    self.viewModel.outputs.page
+      .drive(observer)
+      .disposed(by: self.disposeBag)
+    self.testScheduler.start()
+
+    let expectedEvents = [
+      next(100, LineType.bus),
+      next(200, LineType.tram)
+    ]
+    XCTAssertEqual(observer.events, expectedEvents)
+  }
+
   // MARK: - Lines changed
 
   func test_tramLinesChange_onLinesChange() {

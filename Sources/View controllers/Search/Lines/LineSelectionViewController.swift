@@ -19,12 +19,10 @@ class LineSelectionViewController: UIPageViewController {
   private lazy var pages = [self.tramPage, self.busPage]
 
   var currentPage: LineType {
-    get {
-      // note that one of the pages is ALWAYS selected
-      let page = self.viewControllers?.first as? LineSelectionPage
-      return page == self.tramPage ? .tram : .bus
-    }
-    set { self.setCurrentPage(newValue, animated: false) }
+    let page = self.viewControllers?.first
+    if page === self.tramPage { return .tram }
+    if page === self.busPage  { return  .bus }
+    fatalError("Invalid page selected")
   }
 
   var contentInset: UIEdgeInsets {
@@ -42,10 +40,13 @@ class LineSelectionViewController: UIPageViewController {
   init() {
     super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 
-    // load view so we can select/deselect cells right away
+    // load views so we can select/deselect cells right away
     self.pages.forEach { _ = $0.view }
+
+    self.delegate   = self
     self.dataSource = self
 
+    self.initLayout()
     self.initBindings()
   }
 
@@ -53,7 +54,16 @@ class LineSelectionViewController: UIPageViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  private func initLayout() {
+    // show 1st page as default
+    let firstPage = self.pages[0]
+    self.setViewControllers([firstPage], direction: .forward, animated: false, completion: nil)
+  }
+
   private func initBindings() {
+    // input page bindings are handled in:
+    // self.pageViewController(_:didFinishAnimating:previousViewControllers:transitionCompleted:)
+
     self.viewModel.outputs.tramLines
       .drive(self.tramPage.viewModel.inputs.linesChanged)
       .disposed(by: disposeBag)
@@ -71,23 +81,20 @@ class LineSelectionViewController: UIPageViewController {
       .disposed(by: disposeBag)
   }
 
-  // MARK: - Override
+  // MARK: - Current page
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.setViewControllers([self.tramPage], direction: .forward, animated: false, completion: nil)
-  }
-
-  // MARK: - Methods
-
-  func setCurrentPage(_ lineType: LineType, animated: Bool) {
+  /// Set current page without invoking Rx observers
+  func setCurrentPageNotReactive(_ lineType: LineType, animated: Bool) {
     typealias Direction = UIPageViewControllerNavigationDirection
 
     let isTram    = lineType == .tram
     let page      = isTram ? self.tramPage     : self.busPage
     let direction = isTram ? Direction.reverse : Direction.forward
 
-    self.setViewControllers([page], direction: direction, animated: animated, completion: nil)
+    let selectedPage = self.viewControllers?.first
+    if selectedPage !== page {
+      self.setViewControllers([page], direction: direction, animated: animated, completion: nil)
+    }
   }
 }
 
@@ -112,5 +119,20 @@ extension LineSelectionViewController: UIPageViewControllerDataSource {
 
   private func index(of viewController: UIViewController) -> Int? {
     return self.pages.index { $0 === viewController }
+  }
+}
+
+// MARK: - UIPageViewControllerDelegate
+
+extension LineSelectionViewController: UIPageViewControllerDelegate {
+
+  func pageViewController(_ pageViewController:          UIPageViewController,
+                          didFinishAnimating finished:   Bool,
+                          previousViewControllers:       [UIViewController],
+                          transitionCompleted completed: Bool) {
+    if completed {
+      let currentPage = self.currentPage
+      self.viewModel.inputs.pageChanged.onNext(currentPage)
+    }
   }
 }

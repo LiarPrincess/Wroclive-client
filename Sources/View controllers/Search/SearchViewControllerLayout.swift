@@ -6,8 +6,8 @@
 import UIKit
 import SnapKit
 
-private typealias Constants    = SearchViewControllerConstants
-private typealias Layout       = Constants.Layout
+private typealias Layout       = SearchViewControllerConstants.Layout
+private typealias TextStyles   = SearchViewControllerConstants.TextStyles
 private typealias Localization = Localizable.Search
 
 extension SearchViewController {
@@ -25,52 +25,47 @@ extension SearchViewController {
   private func initHeader() {
     self.headerView.contentView.addBorder(at: .bottom)
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
-    self.view.addSubview(self.headerView)
 
+    self.view.addSubview(self.headerView)
     self.headerView.snp.makeConstraints { make in
       make.left.top.right.equalToSuperview()
     }
 
-    let titleAttributes = Managers.theme.textAttributes(for: .headline)
-    self.cardTitle.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: titleAttributes)
-    self.cardTitle.numberOfLines  = 0
-    self.cardTitle.lineBreakMode  = .byWordWrapping
-    self.headerView.contentView.addSubview(self.cardTitle)
+    self.titleLabel.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: TextStyles.cardTitle)
+    self.titleLabel.numberOfLines  = 0
+    self.titleLabel.lineBreakMode  = .byWordWrapping
 
-    self.cardTitle.snp.makeConstraints { make in
+    self.headerView.contentView.addSubview(self.titleLabel)
+    self.titleLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Header.topInset)
       make.left.equalToSuperview().offset(Layout.leftInset)
     }
 
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.bookmarkButtonSize)
-
-    self.bookmarkButton.tintColor = Managers.theme.colors.tint.value
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
-    self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
-    self.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonPressed), for: .touchUpInside)
-    self.headerView.contentView.addSubview(self.bookmarkButton)
 
+    self.bookmarkButton.tintColor         = Managers.theme.colors.tint.value
+    self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
+
+    self.headerView.contentView.addSubview(self.bookmarkButton)
     self.bookmarkButton.snp.makeConstraints { make in
-      make.lastBaseline.equalTo(self.cardTitle.snp.lastBaseline)
-      make.left.equalTo(self.cardTitle.snp.right)
+      make.lastBaseline.equalTo(self.titleLabel.snp.lastBaseline)
+      make.left.equalTo(self.titleLabel.snp.right)
     }
 
-    let searchAttributes = Managers.theme.textAttributes(for: .body, color: .tint)
-    let searchTitle      = NSAttributedString(string: Localization.search, attributes: searchAttributes)
+    let searchTitle = NSAttributedString(string: Localization.search, attributes: TextStyles.search)
     self.searchButton.setAttributedTitle(searchTitle, for: .normal)
     self.searchButton.contentEdgeInsets = Layout.Header.searchButtonInsets
-    self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
-    self.headerView.contentView.addSubview(self.searchButton)
 
+    self.headerView.contentView.addSubview(self.searchButton)
     self.searchButton.snp.makeConstraints { make in
-      make.lastBaseline.equalTo(self.cardTitle.snp.lastBaseline)
+      make.lastBaseline.equalTo(self.titleLabel.snp.lastBaseline)
       make.right.equalToSuperview()
     }
 
     self.headerView.contentView.addSubview(self.lineTypeSelector)
-
     self.lineTypeSelector.snp.makeConstraints { make in
-      make.top.equalTo(self.cardTitle.snp.bottom).offset(Layout.Header.verticalSpacing)
+      make.top.equalTo(self.titleLabel.snp.bottom).offset(Layout.Header.verticalSpacing)
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)
       make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
@@ -79,22 +74,20 @@ extension SearchViewController {
   }
 
   private func initLinesSelector() {
-    self.linesSelector.delegate = self
+    self.addChildViewController(self.lineSelector)
 
-    self.addChildViewController(self.linesSelector)
-    self.view.insertSubview(self.linesSelector.view, belowSubview: self.headerView)
-
-    self.linesSelector.view.snp.makeConstraints { make in
+    self.view.insertSubview(self.lineSelector.view, belowSubview: self.headerView)
+    self.lineSelector.view.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
 
-    self.linesSelector.didMove(toParentViewController: self)
+    self.lineSelector.didMove(toParentViewController: self)
   }
 
   private func initPlaceholder() {
     let container = UIView()
 
-    self.view.insertSubview(container, belowSubview: self.linesSelector.view)
+    self.view.insertSubview(container, belowSubview: self.lineSelector.view)
     container.snp.makeConstraints { make in
       make.top.equalTo(self.headerView.contentView.snp.bottom)
       make.left.right.bottom.equalToSuperview()

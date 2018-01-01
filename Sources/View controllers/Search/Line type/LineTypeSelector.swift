@@ -4,8 +4,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 private typealias TextStyles   = LineTypeSelectorConstants.TextStyles
 private typealias Localization = Localizable.LineTypeSelection
@@ -14,16 +12,7 @@ class LineTypeSelector: UISegmentedControl {
 
   // MARK: - Properties
 
-  var value: ControlProperty<LineType> {
-    return self.rx.controlProperty(
-      editingEvents: [.allEditingEvents, .valueChanged],
-      getter: { selector        in valueAt(selector.selectedSegmentIndex) },
-      setter: { selector, value in selector.selectedSegmentIndex = indexOf(value) }
-    )
-  }
-
-  /// Unitl 'Search' is not fully moved to Rx
-  var rawValue: LineType {
+  var selectedValue: LineType {
     get { return valueAt(self.selectedSegmentIndex) }
     set { self.selectedSegmentIndex = indexOf(newValue) }
   }
@@ -36,11 +25,20 @@ class LineTypeSelector: UISegmentedControl {
     self.setTitleTextAttributes(TextStyles.title.value, for: .normal)
     self.insertSegment(withTitle: Localization.tram, at: Indices.tram, animated: false)
     self.insertSegment(withTitle: Localization.bus,  at: Indices.bus,  animated: false)
-    self.rawValue = .tram
+    self.selectedValue = .tram
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: - Value
+
+  /// Programatically set new value without invoking Rx observers
+  func setSelectedValueNotReactive(_ value: LineType) {
+    if self.selectedValue != value {
+      self.selectedValue = value
+    }
   }
 }
 

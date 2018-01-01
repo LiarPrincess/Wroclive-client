@@ -12,6 +12,16 @@ import RxTest
 
 extension LineSelectionViewModelTests {
 
+  // MARK: - Page changed
+
+  typealias PageChangedEvent = Recorded<Event<LineType>>
+
+  func simulatePageChangedEvents(_ events: PageChangedEvent...) {
+    testScheduler.createHotObservable(events)
+      .bind(to: self.viewModel.inputs.pageChanged)
+      .disposed(by: self.disposeBag)
+  }
+
   // MARK: - Lines changed
 
   typealias LinesChangedEvent = Recorded<Event<[Line]>>

@@ -23,12 +23,12 @@ protocol BookmarksViewModelInput {
 
 protocol BookmarksViewModelOutput {
   var items:        Driver<[BookmarksSection]> { get }
-  var selectedItem: Driver<Bookmark>          { get }
+  var selectedItem: Driver<Bookmark>           { get }
 
   var isTableViewVisible:   Driver<Bool> { get }
   var isPlaceholderVisible: Driver<Bool> { get }
 
-  var isEditing:      Driver<Bool> { get }
+  var isEditing:      Driver<Bool>               { get }
   var editButtonText: Driver<NSAttributedString> { get }
 
   var didClose: Driver<Void> { get }
@@ -38,7 +38,7 @@ class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
 
   // MARK: - Properties
 
-  private let _items:      Variable<[BookmarksSection]>
+  private let _items     = Variable(BookmarksViewModel.getBookmarks())
   private let _isEditing = Variable(false)
 
   private let _itemSelected = PublishSubject<IndexPath>()
@@ -73,19 +73,18 @@ class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
   // MARK: - Init
 
   init() {
-    self._items = Variable(BookmarksViewModel.getBookmarks())
-    self.items  = self._items.asDriver()
+    self.items = self._items.asDriver()
 
     self.selectedItem = self._itemSelected
       .withLatestFrom(self.items) { $1[$0] }
       .asDriver(onErrorDriveWith: .never())
 
     self.isTableViewVisible = self.items
-      .map { any($0) }
+      .map(any)
       .asDriver(onErrorDriveWith: .never())
 
     self.isPlaceholderVisible = self.items
-      .map { isEmpty($0) }
+      .map(isEmpty)
       .asDriver(onErrorDriveWith: .never())
 
     self.isEditing = self._isEditing
@@ -95,7 +94,8 @@ class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
       .asDriver()
       .map { createEditButtonLabel(isEditing: $0) }
 
-    self.didClose = self._viewClosed.asDriver(onErrorDriveWith: .never())
+    self.didClose = self._viewClosed
+      .asDriver(onErrorDriveWith: .never())
 
     self.bindInputs()
   }

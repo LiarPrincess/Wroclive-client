@@ -36,8 +36,18 @@ enum SearchViewControllerConstants {
     }
   }
 
+  enum TextStyles {
+    static var cardTitle: TextAttributes {
+      return TextAttributes(style: .headline)
+    }
+
+    static var search: TextAttributes {
+      return TextAttributes(style: .body, color: .tint)
+    }
+  }
+
   enum CardPanel {
-    static let relativeHeight: CGFloat = 0.90
+    static var height: CGFloat { return 0.90 * Managers.device.screenBounds.height }
   }
 
   enum BookmarksPopup {
