@@ -28,8 +28,8 @@ class SearchViewController: UIViewController {
   let searchButton    = UIButton()
   let placeholderView = SearchPlaceholderView()
 
-  var lineTypeSelector = LineTypeSelector()
-  var lineSelector     = LineSelectionViewController()
+  let lineTypeSelector = LineTypeSelector()
+  let lineSelector     = LineSelectionViewController()
 
   // MARK: - Init
 
@@ -50,25 +50,17 @@ class SearchViewController: UIViewController {
 
   // MARK: - Bindings
 
-  private func invert(_ page: LineType) -> LineType {
-    switch page {
-    case .tram: return .bus
-    case .bus:  return .tram
-    }
-  }
-
   private func initPageBindings() {
     // outputs first, so we sync with view model
     self.viewModel.outputs.page
       .drive(onNext: { [weak self] newValue in
-        self?.lineTypeSelector.setSelectedValueNotReactive(newValue)
+        self?.lineTypeSelector.selectedValue = newValue
         self?.lineSelector.setCurrentPageNotReactive(newValue, animated: true)
       })
       .disposed(by: self.disposeBag)
 
     // inputs
-    self.lineTypeSelector.rx.selectedValue
-      .skip(1) // skip first value as 'selectedValue' has 'replay(1)' property
+    self.lineTypeSelector.rx.selectedValueChanged
       .bind(to: self.viewModel.inputs.lineTypeSelectorPageChanged)
       .disposed(by: self.disposeBag)
 
@@ -104,9 +96,13 @@ class SearchViewController: UIViewController {
   }
 
   private func initCloseBindings() {
+    self.viewModel.outputs.shouldClose
+      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
+      .disposed(by: self.disposeBag)
+
     self.rx.methodInvoked(#selector(SearchViewController.viewDidDisappear(_:)))
       .map { _ in () }
-      .bind(to: self.viewModel.inputs.viewClosed)
+      .bind(to: self.viewModel.inputs.didClose)
       .disposed(by: self.disposeBag)
   }
 

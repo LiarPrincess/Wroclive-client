@@ -30,24 +30,16 @@ class SearchCoordinator: CardPanelCoordinator {
 
     let viewModel      = SearchViewModel()
     let viewController = SearchViewController(viewModel)
-    self.bindViewModel(viewModel, viewController)
+    self.bindOnClosed(viewController)
     self.presentCardPanel(viewController, in: parent, animated: true)
   }
 
-  private func bindViewModel(_ viewModel: SearchViewModel, _ viewController: SearchViewController) {
-//    viewModel.outputs.searchButtonPressed
-//      .withLatestFrom(viewModel.outputs.selectedLines) { $1 }
-//      .drive(onNext: { (lines: [Line]) -> Void in
-//        Managers.tracking.start(lines)
-//        viewController.dismiss(animated: true, completion: nil)
-//      })
-//      .disposed(by: self.disposeBag)
-
-    viewModel.outputs.didClose
-      .drive(onNext: { [weak self] _ in
+  private func bindOnClosed(_ viewController: SearchViewController) {
+    viewController.rx.methodInvoked(#selector(SearchViewController.viewDidDisappear(_:)))
+      .bind { [weak self] _ in
         guard let strongSelf = self else { return }
         strongSelf.delegate?.coordinatorDidClose(strongSelf)
-      })
+      }
       .disposed(by: self.disposeBag)
   }
 }

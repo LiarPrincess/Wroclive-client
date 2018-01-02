@@ -31,15 +31,6 @@ class LineTypeSelector: UISegmentedControl {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-
-  // MARK: - Value
-
-  /// Programatically set new value without invoking Rx observers
-  func setSelectedValueNotReactive(_ value: LineType) {
-    if self.selectedValue != value {
-      self.selectedValue = value
-    }
-  }
 }
 
 // MARK: - Indices

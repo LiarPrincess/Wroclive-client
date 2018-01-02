@@ -175,6 +175,8 @@
 		90915B171FFAFD5A009FE942 /* RxSectionTypeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */; };
 		90915B191FFB005C009FE942 /* ObservableType+Reducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B181FFB005C009FE942 /* ObservableType+Reducing.swift */; };
 		90915B1D1FFC070F009FE942 /* TrackingManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */; };
+		90915B201FFC17A7009FE942 /* ApiManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B1E1FFC178E009FE942 /* ApiManagerMock.swift */; };
+		90915B231FFC1EA0009FE942 /* SearchManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B211FFC1E9B009FE942 /* SearchManagerMock.swift */; };
 		90940D8A1FB721F400F3A316 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90940D891FB721F400F3A316 /* UserDefaultsManager.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		909B9FDC1FEBC3E2007CB59D /* BookmarkCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */; };
@@ -447,6 +449,8 @@
 		90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionTypeArray.swift; sourceTree = "<group>"; };
 		90915B181FFB005C009FE942 /* ObservableType+Reducing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Reducing.swift"; sourceTree = "<group>"; };
 		90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManagerMock.swift; sourceTree = "<group>"; };
+		90915B1E1FFC178E009FE942 /* ApiManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerMock.swift; sourceTree = "<group>"; };
+		90915B211FFC1E9B009FE942 /* SearchManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManagerMock.swift; sourceTree = "<group>"; };
 		90940D891FB721F400F3A316 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellConstants.swift; sourceTree = "<group>"; };
@@ -991,7 +995,9 @@
 		90425D301FF11ED900F1800E /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				90915B1E1FFC178E009FE942 /* ApiManagerMock.swift */,
 				90425D311FF11EF400F1800E /* BookmarksManagerMock.swift */,
+				90915B211FFC1E9B009FE942 /* SearchManagerMock.swift */,
 				90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */,
 			);
 			path = Mocks;
@@ -1969,10 +1975,12 @@
 				901ECDB51FF57789004765AA /* LineSelectionViewModelTests+Helpers.swift in Sources */,
 				90915B1D1FFC070F009FE942 /* TrackingManagerMock.swift in Sources */,
 				9042EDC31FF2E7D800F5D01D /* LineSelectionCellViewModelTests.swift in Sources */,
+				90915B231FFC1EA0009FE942 /* SearchManagerMock.swift in Sources */,
 				90425D331FF11EFB00F1800E /* BookmarksManagerMock.swift in Sources */,
 				901ECDAA1FF570C0004765AA /* LineSelectionPageViewModelTests.swift in Sources */,
 				9042EDD51FF3C28B00F5D01D /* LineSelectionHeaderViewModelTests+Helpers.swift in Sources */,
 				90425D361FF262EF00F1800E /* BookmarksViewModelTests+Helpers.swift in Sources */,
+				90915B201FFC17A7009FE942 /* ApiManagerMock.swift in Sources */,
 				901ECDB11FF5774B004765AA /* LineSelectionViewModelTests.swift in Sources */,
 				90425D391FF2811A00F1800E /* BookmarkCellViewModelTests+Helpers.swift in Sources */,
 				90915B0E1FFA6FF5009FE942 /* SearchViewModelTests.swift in Sources */,
