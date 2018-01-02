@@ -28,14 +28,14 @@ class BookmarksCoordinator: CardPanelCoordinator {
   func start() {
     guard let parent = self.parent else { return }
 
-    let viewModel      = BookmarksViewModel()
-    let viewController = BookmarksViewController(viewModel)
+    let viewModel      = BookmarksCardViewModel()
+    let viewController = BookmarksCard(viewModel)
     self.bindOnClosed(viewController)
     self.presentCardPanel(viewController, in: parent, animated: true)
   }
 
-  private func bindOnClosed(_ viewController: BookmarksViewController) {
-    viewController.rx.methodInvoked(#selector(BookmarksViewController.viewDidDisappear(_:)))
+  private func bindOnClosed(_ viewController: BookmarksCard) {
+    viewController.rx.methodInvoked(#selector(BookmarksCard.viewDidDisappear(_:)))
       .bind { [weak self] _ in
         guard let strongSelf = self else { return }
         strongSelf.delegate?.coordinatorDidClose(strongSelf)

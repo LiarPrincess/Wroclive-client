@@ -7,12 +7,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-private typealias TextStyles   = BookmarksViewControllerConstants.TextStyles
+private typealias TextStyles   = BookmarksCardConstants.TextStyles
 private typealias Localization = Localizable.Bookmarks
 
 typealias BookmarksSection = RxSectionModel<String, Bookmark>
 
-protocol BookmarksViewModelInput {
+protocol BookmarksCardViewModelInput {
   var itemSelected: AnyObserver<IndexPath>      { get }
   var itemMoved:    AnyObserver<ItemMovedEvent> { get }
   var itemDeleted:  AnyObserver<IndexPath>      { get }
@@ -20,7 +20,7 @@ protocol BookmarksViewModelInput {
   var editButtonPressed: AnyObserver<Void> { get }
 }
 
-protocol BookmarksViewModelOutput {
+protocol BookmarksCardViewModelOutput {
   var bookmarks: Driver<[BookmarksSection]> { get }
 
   var isTableViewVisible:   Driver<Bool> { get }
@@ -32,7 +32,7 @@ protocol BookmarksViewModelOutput {
   var shouldClose: Driver<Void> { get }
 }
 
-class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
+class BookmarksCardViewModel: BookmarksCardViewModelInput, BookmarksCardViewModelOutput {
 
   // MARK: - Properties
 
@@ -53,7 +53,7 @@ class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
   // MARK: - Output
 
   lazy var bookmarks: Driver<[BookmarksSection]> = {
-    let defaultValue = BookmarksViewModel.getBookmarks()
+    let defaultValue = BookmarksCardViewModel.getBookmarks()
     let moveOperation   = self._itemMoved.map   { RxCollectionOperation.move(from: $0.sourceIndex, to: $0.destinationIndex) }
     let deleteOperation = self._itemDeleted.map { RxCollectionOperation.delete(indexPath: $0) }
 
@@ -89,12 +89,12 @@ class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
   init() {
     self.bookmarks
       .skip(1) // skip initial binding
-      .drive(onNext: { BookmarksViewModel.saveBookmarks($0) })
+      .drive(onNext: { BookmarksCardViewModel.saveBookmarks($0) })
       .disposed(by: self.disposeBag)
 
     self._itemSelected
       .withLatestFrom(self.bookmarks) { index, items in items[index] }
-      .bind(onNext: { BookmarksViewModel.startTracking($0) })
+      .bind(onNext: { BookmarksCardViewModel.startTracking($0) })
       .disposed(by: self.disposeBag)
   }
 
@@ -116,8 +116,8 @@ class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
 
   // MARK: - Input/Output
 
-  var inputs:  BookmarksViewModelInput  { return self }
-  var outputs: BookmarksViewModelOutput { return self }
+  var inputs:  BookmarksCardViewModelInput  { return self }
+  var outputs: BookmarksCardViewModelOutput { return self }
 }
 
 // MARK: - Edit

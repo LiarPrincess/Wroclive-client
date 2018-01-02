@@ -6,11 +6,11 @@
 import UIKit
 import SnapKit
 
-private typealias Layout       = BookmarksViewControllerConstants.Layout
-private typealias TextStyles   = BookmarksViewControllerConstants.TextStyles
+private typealias Layout       = BookmarksCardConstants.Layout
+private typealias TextStyles   = BookmarksCardConstants.TextStyles
 private typealias Localization = Localizable.Bookmarks
 
-extension BookmarksViewController {
+extension BookmarksCard {
 
   func initLayout() {
     self.view.backgroundColor = Managers.theme.colors.background

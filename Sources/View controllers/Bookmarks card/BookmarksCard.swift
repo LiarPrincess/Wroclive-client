@@ -7,13 +7,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-private typealias CardPanel = BookmarksViewControllerConstants.CardPanel
+private typealias CardPanel = BookmarksCardConstants.CardPanel
 
-class BookmarksViewController: UIViewController {
+class BookmarksCard: UIViewController {
 
   // MARK: - Properties
 
-  private let viewModel: BookmarksViewModel
+  private let viewModel: BookmarksCardViewModel
   private let disposeBag = DisposeBag()
 
   var headerView: UIVisualEffectView = {
@@ -26,11 +26,11 @@ class BookmarksViewController: UIViewController {
   let placeholderView = BookmarksPlaceholderView()
 
   let tableView           = UITableView()
-  let tableViewDataSource = BookmarksViewController.createDataSource()
+  let tableViewDataSource = BookmarksCard.createDataSource()
 
   // MARK: - Init
 
-  init(_ viewModel: BookmarksViewModel) {
+  init(_ viewModel: BookmarksCardViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
 
@@ -160,11 +160,11 @@ class BookmarksViewController: UIViewController {
 
 // MARK: - CardPanelPresentable
 
-extension BookmarksViewController: CardPanelPresentable {
+extension BookmarksCard: CardPanelPresentable {
   var header: UIView  { return self.headerView.contentView }
   var height: CGFloat { return CardPanel.height }
 }
 
 // MARK: - UITableViewDelegate
 
-extension BookmarksViewController: UITableViewDelegate { }
+extension BookmarksCard: UITableViewDelegate { }

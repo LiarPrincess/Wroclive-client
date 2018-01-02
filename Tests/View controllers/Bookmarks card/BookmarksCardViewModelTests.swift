@@ -12,17 +12,17 @@ import RxTest
 // swiftlint:disable file_length
 // swiftlint:disable implicitly_unwrapped_optional
 
-private typealias TextStyles   = BookmarksViewControllerConstants.TextStyles
+private typealias TextStyles   = BookmarksCardConstants.TextStyles
 private typealias Localization = Localizable.Bookmarks
 
-final class BookmarksViewModelTests: XCTestCase {
+final class BookmarksCardViewModelTests: XCTestCase {
 
   // MARK: - Properties
 
   var bookmarksManager: BookmarksManagerMock!
   var trackingManager:  TrackingManagerMock!
 
-  var viewModel:        BookmarksViewModel!
+  var viewModel:        BookmarksCardViewModel!
   var testScheduler:    TestScheduler!
   var disposeBag:       DisposeBag!
 
@@ -51,7 +51,7 @@ final class BookmarksViewModelTests: XCTestCase {
   func test_containsItems_fromManager() {
     let bookmarks = self.testData
     self.bookmarksManager.bookmarks = bookmarks
-    self.viewModel = BookmarksViewModel()
+    self.viewModel = BookmarksCardViewModel()
 
     let observer = self.testScheduler.createObserver([BookmarksSection].self)
     viewModel.outputs.bookmarks
@@ -67,7 +67,7 @@ final class BookmarksViewModelTests: XCTestCase {
   func test_updatesItems_onMove() {
     let bookmarks = self.testData
     self.bookmarksManager.bookmarks = bookmarks
-    self.viewModel = BookmarksViewModel()
+    self.viewModel = BookmarksCardViewModel()
 
     let event0 = next(100, ItemMovedEvent(IndexPath(item: 0, section: 0), IndexPath(item: 2, section: 0)))
     let event1 = next(200, ItemMovedEvent(IndexPath(item: 1, section: 0), IndexPath(item: 0, section: 0)))
@@ -91,7 +91,7 @@ final class BookmarksViewModelTests: XCTestCase {
   func test_updatesItems_onDelete() {
     let bookmarks = self.testData
     self.bookmarksManager.bookmarks = bookmarks
-    self.viewModel = BookmarksViewModel()
+    self.viewModel = BookmarksCardViewModel()
 
     let event0 = next(100, IndexPath(item: 1, section: 0)) // middle
     let event1 = next(200, IndexPath(item: 1, section: 0)) // last
@@ -119,7 +119,7 @@ final class BookmarksViewModelTests: XCTestCase {
   func test_startsTracking_onItemSelected() {
     let bookmarks = self.testData
     self.bookmarksManager.bookmarks = bookmarks
-    self.viewModel = BookmarksViewModel()
+    self.viewModel = BookmarksCardViewModel()
 
     let event0 = next(100, IndexPath(item: 0, section: 0)) // first
     let event1 = next(200, IndexPath(item: 1, section: 0)) // middle
@@ -133,7 +133,7 @@ final class BookmarksViewModelTests: XCTestCase {
 
   func test_closes_onItemSelected() {
     self.bookmarksManager.bookmarks = self.testData
-    self.viewModel = BookmarksViewModel()
+    self.viewModel = BookmarksCardViewModel()
 
     let event0 = next(100, IndexPath(item: 0, section: 0)) // first
     let event1 = next(200, IndexPath(item: 1, section: 0)) // middle
@@ -153,7 +153,7 @@ final class BookmarksViewModelTests: XCTestCase {
 
   func test_showsPlaceholder_whenNoBookmarks() {
     self.bookmarksManager.bookmarks = []
-    self.viewModel = BookmarksViewModel()
+    self.viewModel = BookmarksCardViewModel()
 
     let placeholderObserver = self.testScheduler.createObserver(Bool.self)
     viewModel.outputs.isPlaceholderVisible
@@ -176,7 +176,7 @@ final class BookmarksViewModelTests: XCTestCase {
 
   func test_showsTableView_whenBookmarksPresent() {
     self.bookmarksManager.bookmarks = self.testData
-    self.viewModel = BookmarksViewModel()
+    self.viewModel = BookmarksCardViewModel()
 
     let placeholderObserver = self.testScheduler.createObserver(Bool.self)
     viewModel.outputs.isPlaceholderVisible
@@ -199,7 +199,7 @@ final class BookmarksViewModelTests: XCTestCase {
 
   func test_showsPlaceholder_whenAllBookmarksDeleted() {
     self.bookmarksManager.bookmarks = self.testData
-    self.viewModel = BookmarksViewModel()
+    self.viewModel = BookmarksCardViewModel()
 
     let event0 = next(100, IndexPath(item: 1, section: 0)) // middle
     let event1 = next(200, IndexPath(item: 1, section: 0)) // last
@@ -228,7 +228,7 @@ final class BookmarksViewModelTests: XCTestCase {
   // MARK: - Edit
 
   func test_changesIsEditing_onEditClick() {
-    self.viewModel = BookmarksViewModel()
+    self.viewModel = BookmarksCardViewModel()
     self.simulateEditClickEvents(at: 100, 200)
 
     let observer = self.testScheduler.createObserver(Bool.self)
@@ -242,7 +242,7 @@ final class BookmarksViewModelTests: XCTestCase {
   }
 
   func test_changesEditButtonText_onEditClick() {
-    self.viewModel = BookmarksViewModel()
+    self.viewModel = BookmarksCardViewModel()
     self.simulateEditClickEvents(at: 100, 200)
 
     let observer = self.testScheduler.createObserver(NSAttributedString.self)

@@ -9,7 +9,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-extension BookmarksViewModelTests {
+extension BookmarksCardViewModelTests {
 
   // MARK: - Data
 
