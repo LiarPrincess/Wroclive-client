@@ -7,15 +7,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LineSelectionViewController: UIPageViewController {
+class LineSelector: UIPageViewController {
 
   // MARK: - Properties
 
-  let viewModel = LineSelectionViewModel()
+  let viewModel = LineSelectorViewModel()
   private let disposeBag = DisposeBag()
 
-  private let tramPage = LineSelectionPage()
-  private let busPage  = LineSelectionPage()
+  private let tramPage = LineSelectorPage()
+  private let busPage  = LineSelectorPage()
   private lazy var pages = [self.tramPage, self.busPage]
 
   var currentPage: LineType {
@@ -100,7 +100,7 @@ class LineSelectionViewController: UIPageViewController {
 
 // MARK: UIPageViewControllerDataSource
 
-extension LineSelectionViewController: UIPageViewControllerDataSource {
+extension LineSelector: UIPageViewControllerDataSource {
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
     guard let index = self.index(of: viewController)
       else { return nil }
@@ -124,7 +124,7 @@ extension LineSelectionViewController: UIPageViewControllerDataSource {
 
 // MARK: - UIPageViewControllerDelegate
 
-extension LineSelectionViewController: UIPageViewControllerDelegate {
+extension LineSelector: UIPageViewControllerDelegate {
 
   func pageViewController(_ pageViewController:          UIPageViewController,
                           didFinishAnimating finished:   Bool,

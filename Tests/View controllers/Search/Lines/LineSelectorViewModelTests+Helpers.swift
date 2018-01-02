@@ -10,7 +10,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-extension LineSelectionViewModelTests {
+extension LineSelectorViewModelTests {
 
   // MARK: - Page changed
 

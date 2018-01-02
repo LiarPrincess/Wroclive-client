@@ -12,16 +12,16 @@ private typealias HeaderTextStyles = LineSelectionHeaderViewConstants.TextStyles
 private typealias CellLayout       = LineSelectionCellConstants.Layout
 private typealias Localization     = Localizable.LineSelection
 
-class LineSelectionPage: UIViewController {
+class LineSelectorPage: UIViewController {
 
   // MARK: - Properties
 
-  let viewModel = LineSelectionPageViewModel()
+  let viewModel = LineSelectorPageViewModel()
   private let disposeBag = DisposeBag()
 
   private lazy var collectionView           = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewLayout)
   private lazy var collectionViewLayout     = UICollectionViewFlowLayout()
-  private lazy var collectionViewDataSource = LineSelectionPage.createDataSource()
+  private lazy var collectionViewDataSource = LineSelectorPage.createDataSource()
 
   var contentInset: UIEdgeInsets {
     get { return self.collectionView.contentInset }
@@ -135,7 +135,7 @@ class LineSelectionPage: UIViewController {
 
 // MARK: - CollectionViewDelegateFlowLayout
 
-extension LineSelectionPage: UICollectionViewDelegateFlowLayout {
+extension LineSelectorPage: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
     let sectionData = self.collectionViewDataSource[section].model
 

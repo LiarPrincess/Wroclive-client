@@ -7,14 +7,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol LineSelectionViewModelInput {
+protocol LineSelectorViewModelInput {
   var pageChanged: AnyObserver<LineType> { get }
 
   var linesChanged:         AnyObserver<[Line]> { get }
   var selectedLinesChanged: AnyObserver<[Line]> { get }
 }
 
-protocol LineSelectionViewModelOutput {
+protocol LineSelectorViewModelOutput {
   var page: Driver<LineType> { get }
 
   var tramLines: Driver<[Line]> { get }
@@ -24,7 +24,7 @@ protocol LineSelectionViewModelOutput {
   var selectedBusLines:  Driver<[Line]> { get }
 }
 
-class LineSelectionViewModel: LineSelectionViewModelInput, LineSelectionViewModelOutput {
+class LineSelectorViewModel: LineSelectorViewModelInput, LineSelectorViewModelOutput {
 
   // MARK: - Properties
 
@@ -71,8 +71,8 @@ class LineSelectionViewModel: LineSelectionViewModelInput, LineSelectionViewMode
 
   // MARK: - Input/Output
 
-  var inputs:  LineSelectionViewModelInput  { return self }
-  var outputs: LineSelectionViewModelOutput { return self }
+  var inputs:  LineSelectorViewModelInput  { return self }
+  var outputs: LineSelectorViewModelOutput { return self }
 }
 
 private func filterTrams(_ lines: [Line]) -> [Line] {

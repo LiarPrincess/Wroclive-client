@@ -29,7 +29,7 @@ class SearchCard: UIViewController {
   let placeholderView = SearchPlaceholderView()
 
   let lineTypeSelector = LineTypeSelector()
-  let lineSelector     = LineSelectionViewController()
+  let lineSelector     = LineSelector()
 
   // MARK: - Init
 

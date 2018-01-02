@@ -7,17 +7,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol LineSelectionPageViewModelInput {
+protocol LineSelectorPageViewModelInput {
   var linesChanged:         AnyObserver<[Line]> { get }
   var selectedLinesChanged: AnyObserver<[Line]> { get }
 }
 
-protocol LineSelectionPageViewModelOutput {
+protocol LineSelectorPageViewModelOutput {
   var sections:      Driver<[LineSelectionSection]> { get }
   var selectedLines: Driver<[Line]>                 { get }
 }
 
-class LineSelectionPageViewModel: LineSelectionPageViewModelInput, LineSelectionPageViewModelOutput {
+class LineSelectorPageViewModel: LineSelectorPageViewModelInput, LineSelectorPageViewModelOutput {
 
   // MARK: - Properties
 
@@ -45,8 +45,8 @@ class LineSelectionPageViewModel: LineSelectionPageViewModelInput, LineSelection
 
   // MARK: - Input/Output
 
-  var inputs:  LineSelectionPageViewModelInput  { return self }
-  var outputs: LineSelectionPageViewModelOutput { return self }
+  var inputs:  LineSelectorPageViewModelInput  { return self }
+  var outputs: LineSelectorPageViewModelOutput { return self }
 }
 
 // MARK: - Items

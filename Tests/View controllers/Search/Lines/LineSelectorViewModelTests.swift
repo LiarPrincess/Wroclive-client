@@ -11,11 +11,11 @@ import RxTest
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-final class LineSelectionViewModelTests: XCTestCase {
+final class LineSelectorViewModelTests: XCTestCase {
 
   // MARK: - Properties
 
-  var viewModel:     LineSelectionViewModel!
+  var viewModel:     LineSelectorViewModel!
   var testScheduler: TestScheduler!
   let disposeBag = DisposeBag()
 
@@ -23,7 +23,7 @@ final class LineSelectionViewModelTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    self.viewModel     = LineSelectionViewModel()
+    self.viewModel     = LineSelectorViewModel()
     self.testScheduler = TestScheduler(initialClock: 0)
   }
 
