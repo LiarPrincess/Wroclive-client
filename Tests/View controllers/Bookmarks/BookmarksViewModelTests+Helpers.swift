@@ -11,14 +11,6 @@ import RxTest
 
 extension BookmarksViewModelTests {
 
-  // MARK: - Operation count
-
-  func assertBookmarkOperationCount(add: Int, get: Int, save: Int) {
-    XCTAssertEqual(self.bookmarksManager.addCount, add)
-    XCTAssertEqual(self.bookmarksManager.getCount, get)
-    XCTAssertEqual(self.bookmarksManager.saveCount, save)
-  }
-
   // MARK: - Data
 
   var testData: [Bookmark] {
@@ -36,25 +28,68 @@ extension BookmarksViewModelTests {
 
   // MARK: - Bookmarks
 
-  typealias MoveEvent = Recorded<Event<ItemMovedEvent>>
+  typealias MoveEvent   = Recorded<Event<ItemMovedEvent>>
+  typealias DeleteEvent = Recorded<Event<IndexPath>>
 
-  func simulateMoveEvents(in viewModel: BookmarksViewModel, events: [MoveEvent]) {
+  func simulateMoveEvents(_ events: MoveEvent...) {
     testScheduler.createHotObservable(events)
       .bind(to: viewModel.inputs.itemMoved)
       .disposed(by: self.disposeBag)
   }
 
-  typealias DeleteEvent = Recorded<Event<IndexPath>>
-
-  func simulateDeleteEvents(in viewModel: BookmarksViewModel, events: [DeleteEvent]) {
+  func simulateDeleteEvents(_ events: DeleteEvent...) {
     testScheduler.createHotObservable(events)
       .bind(to: viewModel.inputs.itemDeleted)
       .disposed(by: self.disposeBag)
   }
 
-  typealias RecordedItemEvent = Recorded<Event<[BookmarksSection]>>
+  // MARK: - Selection
 
-  func assertEqual(_ lhs: [RecordedItemEvent], _ rhs: [RecordedItemEvent]) {
+  typealias SelectionEvent = Recorded<Event<IndexPath>>
+
+  func simulateSelectionEvents(_ events: SelectionEvent...) {
+    testScheduler.createHotObservable(events)
+      .bind(to: viewModel.inputs.itemSelected)
+      .disposed(by: self.disposeBag)
+  }
+
+  // MARK: - Visibility
+
+  typealias VisiblityEvent = Recorded<Event<Bool>>
+
+  func opposite(of events: [VisiblityEvent]) -> [VisiblityEvent] {
+    return events.map { next($0.time, !$0.value.element!) }
+  }
+
+  // MARK: - Edit
+
+  func simulateEditClickEvents(at times: TestTime...) {
+    let events = times.map { next($0, ()) }
+    testScheduler.createHotObservable(events)
+      .bind(to: viewModel.inputs.editButtonPressed)
+      .disposed(by: self.disposeBag)
+  }
+
+  // MARK: - Asserts
+
+  func assertBookmarkOperationCount(add: Int, get: Int, save: Int) {
+    XCTAssertEqual(self.bookmarksManager.addCount, add)
+    XCTAssertEqual(self.bookmarksManager.getCount, get)
+    XCTAssertEqual(self.bookmarksManager.saveCount, save)
+  }
+
+  typealias VoidEvent    = Recorded<Event<Void>>
+  typealias SectionEvent = Recorded<Event<[BookmarksSection]>>
+
+  func assertEqual(_ lhs: [VoidEvent], _ rhs: [VoidEvent]) {
+    XCTAssertEqual(lhs.count, rhs.count)
+
+    for (lhsEvent, rhsEvent) in zip(lhs, rhs) {
+      XCTAssertEqual(lhsEvent.time, rhsEvent.time)
+    }
+  }
+
+  func assertEqual(_ lhs: [SectionEvent], _ rhs: [SectionEvent]) {
     XCTAssertEqual(lhs.count, rhs.count)
 
     for (lhsEvent, rhsEvent) in zip(lhs, rhs) {
@@ -66,50 +101,11 @@ extension BookmarksViewModelTests {
     }
   }
 
-  // MARK: - Selection
-
-  typealias SelectionEvent = Recorded<Event<IndexPath>>
-
-  func simulateSelectionEvents(in viewModel: BookmarksViewModel, events: [SelectionEvent]) {
-    testScheduler.createHotObservable(events)
-      .bind(to: viewModel.inputs.itemSelected)
-      .disposed(by: self.disposeBag)
-  }
-
   func assertEqual(_ lhs: [[Line]], _ rhs: [[Line]]) {
     XCTAssertEqual(lhs.count, rhs.count)
 
     for (lhsLines, rhsLines) in zip(lhs, rhs) {
       XCTAssertEqual(lhsLines, rhsLines)
     }
-  }
-
-  typealias VoidEvent = Recorded<Event<Void>>
-
-  func assertEqual(_ lhs: [VoidEvent], _ rhs: [VoidEvent]) {
-    XCTAssertEqual(lhs.count, rhs.count)
-
-    for (lhsEvent, rhsEvent) in zip(lhs, rhs) {
-      XCTAssertEqual(lhsEvent.time, rhsEvent.time)
-    }
-  }
-
-  // MARK: - Visibility
-
-  typealias VisiblityEvent = Recorded<Event<Bool>>
-
-  func oppositeVisibilityEvents(_ events: [VisiblityEvent]) -> [VisiblityEvent] {
-    return events.map { next($0.time, !$0.value.element!) }
-  }
-
-  // MARK: - Edit
-
-  typealias EditClickEvent = Recorded<Event<Void>>
-
-  func simulateEditClickEvents(in viewModel: BookmarksViewModel, times: [TestTime]) {
-    let events = times.map { next($0, ()) }
-    testScheduler.createHotObservable(events)
-      .bind(to: viewModel.inputs.editButtonPressed)
-      .disposed(by: self.disposeBag)
   }
 }

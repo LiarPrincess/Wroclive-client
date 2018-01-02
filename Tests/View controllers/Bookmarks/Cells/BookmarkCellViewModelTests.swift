@@ -17,7 +17,7 @@ final class BookmarkCellViewModelTests: XCTestCase {
 
   var viewModel:     BookmarkCellViewModel!
   var testScheduler: TestScheduler!
-  let disposeBag = DisposeBag()
+  var disposeBag:    DisposeBag!
 
   // MARK: - Init
 
@@ -25,12 +25,14 @@ final class BookmarkCellViewModelTests: XCTestCase {
     super.setUp()
     self.viewModel     = BookmarkCellViewModel()
     self.testScheduler = TestScheduler(initialClock: 0)
+    self.disposeBag    = DisposeBag()
   }
 
   override func tearDown() {
     super.tearDown()
     self.viewModel     = nil
     self.testScheduler = nil
+    self.disposeBag    = nil
   }
 
   // MARK: - Name
