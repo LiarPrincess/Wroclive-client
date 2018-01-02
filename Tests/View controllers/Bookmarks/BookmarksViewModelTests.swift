@@ -21,6 +21,7 @@ final class BookmarksViewModelTests: XCTestCase {
 
   var bookmarksManager: BookmarksManagerMock!
   var trackingManager:  TrackingManagerMock!
+
   var viewModel:        BookmarksViewModel!
   var testScheduler:    TestScheduler!
   var disposeBag:       DisposeBag!
@@ -130,7 +131,7 @@ final class BookmarksViewModelTests: XCTestCase {
     self.assertEqual(self.trackingManager.requestedLines, expectedLines)
   }
 
-  func test_shouldClose_onItemSelected() {
+  func test_closes_onItemSelected() {
     self.bookmarksManager.bookmarks = self.testData
     self.viewModel = BookmarksViewModel()
 
@@ -226,7 +227,7 @@ final class BookmarksViewModelTests: XCTestCase {
 
   // MARK: - Edit
 
-  func test_isEditingChanges_onEditClick() {
+  func test_changesIsEditing_onEditClick() {
     self.viewModel = BookmarksViewModel()
     self.simulateEditClickEvents(at: 100, 200)
 
@@ -240,7 +241,7 @@ final class BookmarksViewModelTests: XCTestCase {
     XCTAssertEqual(observer.events, expectedEvents)
   }
 
-  func test_editButtonTextChanges_onEditClick() {
+  func test_changesEditButtonText_onEditClick() {
     self.viewModel = BookmarksViewModel()
     self.simulateEditClickEvents(at: 100, 200)
 

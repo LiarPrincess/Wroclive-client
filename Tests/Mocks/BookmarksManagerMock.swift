@@ -19,8 +19,8 @@ class BookmarksManagerMock: BookmarksManagerType {
   }
 
   func add(_ bookmark: Bookmark) {
-    self.bookmarks.append(bookmark)
     self.addCount += 1
+    self.bookmarks.append(bookmark)
   }
 
   func get() -> [Bookmark] {
@@ -29,7 +29,7 @@ class BookmarksManagerMock: BookmarksManagerType {
   }
 
   func save(_ bookmarks: [Bookmark]) {
-    self.bookmarks = bookmarks
     self.saveCount += 1
+    self.bookmarks = bookmarks
   }
 }

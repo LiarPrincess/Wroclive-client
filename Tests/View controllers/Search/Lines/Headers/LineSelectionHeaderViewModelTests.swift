@@ -38,7 +38,7 @@ final class LineSelectionHeaderViewModelTests: XCTestCase {
 
   // MARK: - Line
 
-  func test_textChanges_onSectionChange() {
+  func test_changesText_onSectionChange() {
     let event0 = next(100, LineSelectionSection(model: LineSelectionSectionData(for: .regular), items: []))
     let event1 = next(200, LineSelectionSection(model: LineSelectionSectionData(for: .night),   items: []))
     self.simulateSectionEvents(event0, event1)

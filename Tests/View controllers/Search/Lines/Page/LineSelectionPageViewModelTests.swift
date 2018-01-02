@@ -35,7 +35,7 @@ final class LineSelectionPageViewModelTests: XCTestCase {
 
   // MARK: - Lines changed
 
-  func test_sectionsChange_onLinesChange() {
+  func test_updatesSections_onLinesChange() {
     let line0 = Line(name: "3", type: .tram, subtype: .regular)
     let line1 = Line(name: "2", type: .tram, subtype: .regular)
     let line2 = Line(name: "1", type: .tram, subtype: .express)
@@ -70,7 +70,7 @@ final class LineSelectionPageViewModelTests: XCTestCase {
 
   // MARK: - Selected lines changed
 
-  func test_selectedLinesChange_onSelectedLinesChange() {
+  func test_updatesSelectedLines_onSelectedLinesChange() {
     let line0 = Line(name: "3", type: .tram, subtype: .regular)
     let line1 = Line(name: "2", type: .tram, subtype: .regular)
     let line2 = Line(name: "1", type: .tram, subtype: .express)

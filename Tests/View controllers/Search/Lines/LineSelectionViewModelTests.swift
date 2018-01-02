@@ -55,7 +55,7 @@ final class LineSelectionViewModelTests: XCTestCase {
 
   // MARK: - Lines changed
 
-  func test_tramLinesChange_onLinesChange() {
+  func test_updatesTramLines_onLinesChange() {
     let line0 = Line(name: "3", type: .tram, subtype: .regular)
     let line1 = Line(name: "2", type: .tram, subtype: .regular)
     let line2 = Line(name: "1", type: .tram, subtype: .express)
@@ -81,7 +81,7 @@ final class LineSelectionViewModelTests: XCTestCase {
     self.assertEqual(observer.events, expectedEvents)
   }
 
-  func test_busLinesChange_onLinesChange() {
+  func test_updatesBusLines_onLinesChange() {
     let line0 = Line(name: "3", type: .tram, subtype: .regular)
     let line1 = Line(name: "2", type: .tram, subtype: .regular)
     let line2 = Line(name: "1", type: .tram, subtype: .express)
@@ -109,7 +109,7 @@ final class LineSelectionViewModelTests: XCTestCase {
 
   // MARK: - Selected lines changed
 
-  func test_selectedTramLinesChange_onSelectedLinesChange() {
+  func test_updatesSelectedTramLines_onSelectedLinesChange() {
     let line0 = Line(name: "3", type: .tram, subtype: .regular)
     let line1 = Line(name: "2", type: .tram, subtype: .regular)
     let line2 = Line(name: "1", type: .tram, subtype: .express)
@@ -135,7 +135,7 @@ final class LineSelectionViewModelTests: XCTestCase {
     self.assertEqual(observer.events, expectedEvents)
   }
 
-  func test_selectedBusLinesChange_onSelectedLinesChange() {
+  func test_updatesSelectedBusLines_onSelectedLinesChange() {
     let line0 = Line(name: "3", type: .tram, subtype: .regular)
     let line1 = Line(name: "2", type: .tram, subtype: .regular)
     let line2 = Line(name: "1", type: .tram, subtype: .express)

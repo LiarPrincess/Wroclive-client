@@ -37,7 +37,7 @@ final class BookmarkCellViewModelTests: XCTestCase {
 
   // MARK: - Name
 
-  func test_nameChanges_onBookmarkChange() {
+  func test_changesName_onBookmarkChange() {
     let event0 = next(100, Bookmark(name: "test0", lines: []))
     let event1 = next(200, Bookmark(name: "test1", lines: []))
     self.simulateBookmarkEvents(event0, event1)
@@ -54,7 +54,7 @@ final class BookmarkCellViewModelTests: XCTestCase {
 
   // MARK: - Lines
 
-  func test_linesChange_onBookmarkChange() {
+  func test_changesLines_onBookmarkChange() {
     let tram1 = Line(name: "1", type: .tram, subtype: .regular)
     let tram2 = Line(name: "2", type: .tram, subtype: .regular)
 

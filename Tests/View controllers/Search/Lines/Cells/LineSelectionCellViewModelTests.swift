@@ -37,7 +37,7 @@ final class LineSelectionCellViewModelTests: XCTestCase {
 
   // MARK: - Line
 
-  func test_textChanges_onLineChange() {
+  func test_changesText_onLineChange() {
     let event0 = next(100, Line(name: "0l", type: .tram, subtype: .regular))
     let event1 = next(200, Line(name:  "a", type:  .bus, subtype: .express))
     self.simulateLineEvents(event0, event1)
@@ -58,7 +58,7 @@ final class LineSelectionCellViewModelTests: XCTestCase {
 
   // MARK: - IsSelected
 
-  func test_textChanges_onIsSelectedChange() {
+  func test_changesText_onIsSelectedChange() {
     self.simulateIsSelectedEvents(next(100, true), next(200, false))
 
     let observer = self.testScheduler.createObserver(NSAttributedString.self)
