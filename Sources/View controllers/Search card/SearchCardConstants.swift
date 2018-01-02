@@ -5,7 +5,7 @@
 
 import UIKit
 
-enum SearchViewControllerConstants {
+enum SearchCardConstants {
   enum Layout {
     static let leftInset:   CGFloat = 16.0
     static let rightInset:  CGFloat = leftInset

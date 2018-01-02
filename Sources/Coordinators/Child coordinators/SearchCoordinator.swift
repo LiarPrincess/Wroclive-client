@@ -28,14 +28,14 @@ class SearchCoordinator: CardPanelCoordinator {
   func start() {
     guard let parent = self.parent else { return }
 
-    let viewModel      = SearchViewModel()
-    let viewController = SearchViewController(viewModel)
+    let viewModel      = SearchCardViewModel()
+    let viewController = SearchCard(viewModel)
     self.bindOnClosed(viewController)
     self.presentCardPanel(viewController, in: parent, animated: true)
   }
 
-  private func bindOnClosed(_ viewController: SearchViewController) {
-    viewController.rx.methodInvoked(#selector(SearchViewController.viewDidDisappear(_:)))
+  private func bindOnClosed(_ viewController: SearchCard) {
+    viewController.rx.methodInvoked(#selector(SearchCard.viewDidDisappear(_:)))
       .bind { [weak self] _ in
         guard let strongSelf = self else { return }
         strongSelf.delegate?.coordinatorDidClose(strongSelf)

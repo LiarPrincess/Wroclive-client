@@ -13,7 +13,7 @@ import RxTest
 
 private typealias TextStyles = LineSelectionCellConstants.TextStyles
 
-final class SearchViewModelTests: XCTestCase {
+final class SearchCardViewModelTests: XCTestCase {
 
   // MARK: - Properties
 
@@ -21,7 +21,7 @@ final class SearchViewModelTests: XCTestCase {
   var searchManager:   SearchManagerMock!
   var apiManager:      ApiManagerMock!
 
-  var viewModel:     SearchViewModel!
+  var viewModel:     SearchCardViewModel!
   var testScheduler: TestScheduler!
   var disposeBag:    DisposeBag!
 
@@ -49,7 +49,7 @@ final class SearchViewModelTests: XCTestCase {
 
   func test_emitsPage_onPageChange() {
     self.searchManager.searchState = SearchState(withSelected: .tram, lines: [])
-    self.viewModel = SearchViewModel()
+    self.viewModel = SearchCardViewModel()
 
     let type0 = next( 50, LineType.bus)
     let type1 = next(150, LineType.tram)
@@ -102,7 +102,7 @@ final class SearchViewModelTests: XCTestCase {
   }
 
   func test_closes_onSearchButtonPressedPressed() {
-    self.viewModel = SearchViewModel()
+    self.viewModel = SearchCardViewModel()
 
     self.simulateSearchButtonPressedEvents(at: 100, 200)
 
@@ -121,7 +121,7 @@ final class SearchViewModelTests: XCTestCase {
   // TODO: selected lines <- self.testLines
   func test_savesState_onClose() {
     self.searchManager.searchState = SearchState(withSelected: .tram, lines: [])
-    self.viewModel = SearchViewModel()
+    self.viewModel = SearchCardViewModel()
 
     self.simulateLineTypeSelectorPageChangedEvents(next(100, LineType.bus))
     // self.simulateSlectedLinesEvents()

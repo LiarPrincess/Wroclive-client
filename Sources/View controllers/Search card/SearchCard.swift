@@ -7,15 +7,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-private typealias CardPanel    = SearchViewControllerConstants.CardPanel
-private typealias Layout       = SearchViewControllerConstants.Layout
+private typealias CardPanel    = SearchCardConstants.CardPanel
+private typealias Layout       = SearchCardConstants.Layout
 private typealias Localization = Localizable.Search
 
-class SearchViewController: UIViewController {
+class SearchCard: UIViewController {
 
   // MARK: - Properties
 
-  private let viewModel: SearchViewModel
+  private let viewModel: SearchCardViewModel
   private let disposeBag = DisposeBag()
 
   var headerView: UIVisualEffectView = {
@@ -33,7 +33,7 @@ class SearchViewController: UIViewController {
 
   // MARK: - Init
 
-  init(_ viewModel: SearchViewModel) {
+  init(_ viewModel: SearchCardViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
 
@@ -100,7 +100,7 @@ class SearchViewController: UIViewController {
       .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
       .disposed(by: self.disposeBag)
 
-    self.rx.methodInvoked(#selector(SearchViewController.viewDidDisappear(_:)))
+    self.rx.methodInvoked(#selector(SearchCard.viewDidDisappear(_:)))
       .map { _ in () }
       .bind(to: self.viewModel.inputs.didClose)
       .disposed(by: self.disposeBag)
@@ -136,7 +136,7 @@ class SearchViewController: UIViewController {
 
 // MARK: - CardPanelPresentable
 
-extension SearchViewController : CardPanelPresentable {
+extension SearchCard : CardPanelPresentable {
   var header: UIView  { return self.headerView.contentView }
   var height: CGFloat { return CardPanel.height }
 }

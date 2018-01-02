@@ -10,7 +10,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-extension SearchViewModelTests {
+extension SearchCardViewModelTests {
 
   // MARK: - Data
 

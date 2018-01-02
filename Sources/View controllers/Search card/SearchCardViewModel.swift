@@ -7,7 +7,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol SearchViewModelInput {
+// TODO: lines (+failed alerts, +retry)
+// TODO: selected lines
+// TODO: bookmark
+// TODO: use saved state
+
+protocol SearchCardViewModelInput {
   var lineTypeSelectorPageChanged: AnyObserver<LineType> { get }
   var lineSelectorPageChanged:     AnyObserver<LineType> { get }
 
@@ -19,7 +24,7 @@ protocol SearchViewModelInput {
   var didClose: AnyObserver<Void> { get }
 }
 
-protocol SearchViewModelOutput {
+protocol SearchCardViewModelOutput {
   var page: Driver<LineType> { get }
 
   var lines:         Driver<[Line]> { get }
@@ -31,7 +36,7 @@ protocol SearchViewModelOutput {
   var shouldClose: Driver<Void> { get }
 }
 
-class SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
+class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
   // MARK: - Properties
 
@@ -87,14 +92,14 @@ class SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
 
     self._searchButtonPressed
       .withLatestFrom(self.selectedLines) { $1 }
-      .bind(onNext: { SearchViewModel.startTracking($0) })
+      .bind(onNext: { SearchCardViewModel.startTracking($0) })
       .disposed(by: self.disposeBag)
 
     self._didClose
       .withLatestFrom(self.page) { $1 }
       .withLatestFrom(self.selectedLines) { ($0, $1) }
       .map { SearchState(withSelected: $0.0, lines: $0.1) }
-      .bind { SearchViewModel.saveState($0) }
+      .bind { SearchCardViewModel.saveState($0) }
       .disposed(by: self.disposeBag)
   }
 
@@ -114,6 +119,6 @@ class SearchViewModel: SearchViewModelInput, SearchViewModelOutput {
 
   // MARK: - Input/Output
 
-  var inputs:  SearchViewModelInput  { return self }
-  var outputs: SearchViewModelOutput { return self }
+  var inputs:  SearchCardViewModelInput  { return self }
+  var outputs: SearchCardViewModelOutput { return self }
 }

@@ -6,11 +6,11 @@
 import UIKit
 import SnapKit
 
-private typealias Layout       = SearchViewControllerConstants.Layout
-private typealias TextStyles   = SearchViewControllerConstants.TextStyles
+private typealias Layout       = SearchCardConstants.Layout
+private typealias TextStyles   = SearchCardConstants.TextStyles
 private typealias Localization = Localizable.Search
 
-extension SearchViewController {
+extension SearchCard {
 
   func initLayout() {
     self.view.backgroundColor = Managers.theme.colors.background
