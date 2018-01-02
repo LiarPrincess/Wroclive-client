@@ -30,23 +30,16 @@ class BookmarksCoordinator: CardPanelCoordinator {
 
     let viewModel      = BookmarksViewModel()
     let viewController = BookmarksViewController(viewModel)
-    self.bindViewModel(viewModel, viewController)
+    self.bindOnClosed(viewController)
     self.presentCardPanel(viewController, in: parent, animated: true)
   }
 
-  private func bindViewModel(_ viewModel: BookmarksViewModel, _ viewController: BookmarksViewController) {
-    viewModel.outputs.selectedItem
-      .drive(onNext: { (bookmark: Bookmark) -> Void in
-        Managers.tracking.start(bookmark.lines)
-        viewController.dismiss(animated: true, completion: nil)
-      })
-      .disposed(by: self.disposeBag)
-
-    viewModel.outputs.didClose
-      .drive(onNext: { [weak self] _ in
+  private func bindOnClosed(_ viewController: BookmarksViewController) {
+    viewController.rx.methodInvoked(#selector(BookmarksViewController.viewDidDisappear(_:)))
+      .bind { [weak self] _ in
         guard let strongSelf = self else { return }
         strongSelf.delegate?.coordinatorDidClose(strongSelf)
-      })
+      }
       .disposed(by: self.disposeBag)
   }
 }

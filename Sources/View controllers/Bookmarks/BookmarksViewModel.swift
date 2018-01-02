@@ -18,12 +18,10 @@ protocol BookmarksViewModelInput {
   var itemDeleted:  AnyObserver<IndexPath>      { get }
 
   var editButtonPressed: AnyObserver<Void> { get }
-  var viewClosed:        AnyObserver<Void> { get }
 }
 
 protocol BookmarksViewModelOutput {
-  var items:        Driver<[BookmarksSection]> { get }
-  var selectedItem: Driver<Bookmark>           { get }
+  var bookmarks: Driver<[BookmarksSection]> { get }
 
   var isTableViewVisible:   Driver<Bool> { get }
   var isPlaceholderVisible: Driver<Bool> { get }
@@ -31,103 +29,79 @@ protocol BookmarksViewModelOutput {
   var isEditing:      Driver<Bool>               { get }
   var editButtonText: Driver<NSAttributedString> { get }
 
-  var didClose: Driver<Void> { get }
+  var shouldClose: Driver<Void> { get }
 }
 
 class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
 
   // MARK: - Properties
 
-  private let _items     = Variable(BookmarksViewModel.getBookmarks())
-  private let _isEditing = Variable(false)
-
-  private let _itemSelected = PublishSubject<IndexPath>()
-  private let _itemMoved    = PublishSubject<ItemMovedEvent>()
-  private let _itemDeleted  = PublishSubject<IndexPath>()
-
+  private let _itemSelected      = PublishSubject<IndexPath>()
+  private let _itemMoved         = PublishSubject<ItemMovedEvent>()
+  private let _itemDeleted       = PublishSubject<IndexPath>()
   private let _editButtonPressed = PublishSubject<Void>()
-  private let _viewClosed        = PublishSubject<Void>()
 
   private let disposeBag = DisposeBag()
 
-  // input
-  lazy var itemSelected: AnyObserver<IndexPath>      = self._itemSelected.asObserver()
-  lazy var itemMoved:    AnyObserver<ItemMovedEvent> = self._itemMoved.asObserver()
-  lazy var itemDeleted:  AnyObserver<IndexPath>      = self._itemDeleted.asObserver()
+  // MARK: - Input
 
-  lazy var editButtonPressed: AnyObserver<Void> = self._editButtonPressed.asObserver()
-  lazy var viewClosed:        AnyObserver<Void> = self._viewClosed.asObserver()
+  lazy var itemSelected:      AnyObserver<IndexPath>      = self._itemSelected.asObserver()
+  lazy var itemMoved:         AnyObserver<ItemMovedEvent> = self._itemMoved.asObserver()
+  lazy var itemDeleted:       AnyObserver<IndexPath>      = self._itemDeleted.asObserver()
+  lazy var editButtonPressed: AnyObserver<Void>           = self._editButtonPressed.asObserver()
 
-  // output
-  let items:        Driver<[BookmarksSection]>
-  let selectedItem: Driver<Bookmark>
+  // MARK: - Output
 
-  let isTableViewVisible:   Driver<Bool>
-  let isPlaceholderVisible: Driver<Bool>
+  lazy var bookmarks: Driver<[BookmarksSection]> = {
+    let defaultValue = BookmarksViewModel.getBookmarks()
+    let moveOperation   = self._itemMoved.map   { RxCollectionOperation.move(from: $0.sourceIndex, to: $0.destinationIndex) }
+    let deleteOperation = self._itemDeleted.map { RxCollectionOperation.delete(indexPath: $0) }
 
-  let isEditing:      Driver<Bool>
-  let editButtonText: Driver<NSAttributedString>
+    return Observable.merge(moveOperation, deleteOperation)
+      .reducing(defaultValue) { current, operation in current.apply(operation) }
+      .asDriver(onErrorJustReturn: [])
+  }()
 
-  let didClose: Driver<Void>
+  lazy var isTableViewVisible: Driver<Bool> = self.bookmarks
+    .map { $0.hasItems() }
+    .asDriver(onErrorDriveWith: .never())
+
+  // swiftlint:disable:next array_init
+  lazy var isPlaceholderVisible: Driver<Bool> = self.isTableViewVisible
+    .map { !$0 }
+
+  lazy var isEditing: Driver<Bool> = {
+    let defaultValue = false
+    return self._editButtonPressed
+      .reducing(defaultValue) { current, _ in !current }
+      .asDriver(onErrorDriveWith: .never())
+  }()
+
+  lazy var editButtonText: Driver<NSAttributedString> = self.isEditing
+    .map(createEditButtonLabel)
+
+  lazy var shouldClose: Driver<Void> = self._itemSelected
+    .map { _ in () }
+    .asDriver(onErrorDriveWith: .never())
 
   // MARK: - Init
 
   init() {
-    self.items = self._items.asDriver()
-
-    self.selectedItem = self._itemSelected
-      .withLatestFrom(self.items) { $1[$0] }
-      .asDriver(onErrorDriveWith: .never())
-
-    self.isTableViewVisible = self.items
-      .map(any)
-      .asDriver(onErrorDriveWith: .never())
-
-    self.isPlaceholderVisible = self.items
-      .map(isEmpty)
-      .asDriver(onErrorDriveWith: .never())
-
-    self.isEditing = self._isEditing
-      .asDriver()
-
-    self.editButtonText = self._isEditing
-      .asDriver()
-      .map { createEditButtonLabel(isEditing: $0) }
-
-    self.didClose = self._viewClosed
-      .asDriver(onErrorDriveWith: .never())
-
-    self.bindInputs()
-  }
-
-  private func bindInputs() {
-    self._itemMoved
-      .bind { [weak self] in self?._items.value.move(from: $0.sourceIndex, to: $0.destinationIndex) }
+    self.bookmarks
+      .skip(1) // skip initial binding
+      .drive(onNext: { BookmarksViewModel.saveBookmarks($0) })
       .disposed(by: self.disposeBag)
 
-    self._itemDeleted
-      .bind { [weak self] in self?._items.value.remove(at: $0) }
-      .disposed(by: self.disposeBag)
-
-    let didMoveItem   = self._itemMoved.map   { _ in () }
-    let didDeleteItem = self._itemDeleted.map { _ in () }
-    Observable.merge(didMoveItem, didDeleteItem)
-      .withLatestFrom(self.items)
-      .bind { BookmarksViewModel.saveBookmarks($0) }
-      .disposed(by: self.disposeBag)
-
-    // swiftlint:disable:next array_init
-    self._editButtonPressed
-      .withLatestFrom(self.isEditing)
-      .map { !$0 }
-      .bind(to: self._isEditing)
+    self._itemSelected
+      .withLatestFrom(self.bookmarks) { index, items in items[index] }
+      .bind(onNext: { BookmarksViewModel.startTracking($0) })
       .disposed(by: self.disposeBag)
   }
 
-  // MARK: - Bookmarks
+  // MARK: - Managers
 
   private static func getBookmarks() -> [BookmarksSection] {
-    let bookmarks = Managers.bookmarks.getAll()
+    let bookmarks = Managers.bookmarks.get()
     return [BookmarksSection(model: "", items: bookmarks)]
   }
 
@@ -136,21 +110,14 @@ class BookmarksViewModel: BookmarksViewModelInput, BookmarksViewModelOutput {
     Managers.bookmarks.save(bookmarks)
   }
 
+  private static func startTracking(_ bookmark: Bookmark) {
+    Managers.tracking.start(bookmark.lines)
+  }
+
   // MARK: - Input/Output
 
   var inputs:  BookmarksViewModelInput  { return self }
   var outputs: BookmarksViewModelOutput { return self }
-}
-
-// MARK: - Items
-
-private func any(_ sections: [BookmarksSection]) -> Bool {
-  return !isEmpty(sections)
-}
-
-private func isEmpty(_ sections: [BookmarksSection]) -> Bool {
-  let firstNotEmpty = sections.first { $0.items.any }
-  return firstNotEmpty == nil
 }
 
 // MARK: - Edit

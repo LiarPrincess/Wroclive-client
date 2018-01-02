@@ -7,13 +7,13 @@ import Foundation
 
 class BookmarksManager: BookmarksManagerType {
 
-  func addNew(_ bookmark: Bookmark) {
-    var bookmarks = self.getAll()
+  func add(_ bookmark: Bookmark) {
+    var bookmarks = self.get()
     bookmarks.append(bookmark)
     self.save(bookmarks)
   }
 
-  func getAll() -> [Bookmark] {
+  func get() -> [Bookmark] {
     let document = Managers.documents.read(.bookmarks)
     return document as? [Bookmark] ?? []
   }

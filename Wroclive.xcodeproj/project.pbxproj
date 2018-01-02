@@ -172,6 +172,9 @@
 		90915B0E1FFA6FF5009FE942 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchViewModelTests.swift */; };
 		90915B111FFA700B009FE942 /* SearchViewModelTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0F1FFA7007009FE942 /* SearchViewModelTests+Helpers.swift */; };
 		90915B131FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */; };
+		90915B171FFAFD5A009FE942 /* RxSectionTypeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */; };
+		90915B191FFB005C009FE942 /* ObservableType+Reducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B181FFB005C009FE942 /* ObservableType+Reducing.swift */; };
+		90915B1D1FFC070F009FE942 /* TrackingManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */; };
 		90940D8A1FB721F400F3A316 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90940D891FB721F400F3A316 /* UserDefaultsManager.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		909B9FDC1FEBC3E2007CB59D /* BookmarkCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */; };
@@ -441,6 +444,9 @@
 		90915B0C1FFA6FF0009FE942 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		90915B0F1FFA7007009FE942 /* SearchViewModelTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewModelTests+Helpers.swift"; sourceTree = "<group>"; };
 		90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardNetworkAdapter.swift; sourceTree = "<group>"; };
+		90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionTypeArray.swift; sourceTree = "<group>"; };
+		90915B181FFB005C009FE942 /* ObservableType+Reducing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Reducing.swift"; sourceTree = "<group>"; };
+		90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManagerMock.swift; sourceTree = "<group>"; };
 		90940D891FB721F400F3A316 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellConstants.swift; sourceTree = "<group>"; };
@@ -986,6 +992,7 @@
 			isa = PBXGroup;
 			children = (
 				90425D311FF11EF400F1800E /* BookmarksManagerMock.swift */,
+				90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1284,6 +1291,14 @@
 			path = "Line type";
 			sourceTree = "<group>";
 		};
+		90915B1A1FFB0072009FE942 /* Cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				90D3A3FF1FEDB58800FB7485 /* UIView+IsVisible.swift */,
+			);
+			path = Cocoa;
+			sourceTree = "<group>";
+		};
 		9096CDCB1F40EF0C00FEF20A /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -1419,7 +1434,8 @@
 		90D3A3FE1FEDB57000FB7485 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
-				90D3A3FF1FEDB58800FB7485 /* UIView+IsVisible.swift */,
+				90915B1A1FFB0072009FE942 /* Cocoa */,
+				90915B181FFB005C009FE942 /* ObservableType+Reducing.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1448,6 +1464,7 @@
 			children = (
 				90D3A4081FEFE6D400FB7485 /* RxSectionType.swift */,
 				90D3A40D1FEFE89C00FB7485 /* RxSectionModel.swift */,
+				90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -1950,6 +1967,7 @@
 				90D3A3F31FEC24D400FB7485 /* BookmarksViewModelTests.swift in Sources */,
 				9042EDC61FF2E86300F5D01D /* LineSelectionCellViewModelTests+Helpers.swift in Sources */,
 				901ECDB51FF57789004765AA /* LineSelectionViewModelTests+Helpers.swift in Sources */,
+				90915B1D1FFC070F009FE942 /* TrackingManagerMock.swift in Sources */,
 				9042EDC31FF2E7D800F5D01D /* LineSelectionCellViewModelTests.swift in Sources */,
 				90425D331FF11EFB00F1800E /* BookmarksManagerMock.swift in Sources */,
 				901ECDAA1FF570C0004765AA /* LineSelectionPageViewModelTests.swift in Sources */,
@@ -2022,6 +2040,7 @@
 				90D3A3EF1FEC148C00FB7485 /* NSAttributedString+TextAttributes.swift in Sources */,
 				90AFEE5A1F8426AC009716B6 /* Coordinator.swift in Sources */,
 				90541FD11FA79F760055350E /* DocumentsManager.swift in Sources */,
+				90915B171FFAFD5A009FE942 /* RxSectionTypeArray.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManager.swift in Sources */,
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
 				9044A5471F69A13D00F26C17 /* ColorSelectionViewController.swift in Sources */,
@@ -2102,6 +2121,7 @@
 				907246091F8846690069B940 /* PushCoordinator.swift in Sources */,
 				908F55091F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
+				90915B191FFB005C009FE942 /* ObservableType+Reducing.swift in Sources */,
 				9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */,
 				9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */,
 				908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */,

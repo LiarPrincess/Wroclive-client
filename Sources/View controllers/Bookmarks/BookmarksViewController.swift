@@ -50,7 +50,7 @@ class BookmarksViewController: UIViewController {
     self.tableView.rx.setDelegate(self)
       .disposed(by: disposeBag)
 
-    self.viewModel.outputs.items
+    self.viewModel.outputs.bookmarks
       .drive(self.tableView.rx.items(dataSource: self.tableViewDataSource))
       .disposed(by: disposeBag)
 
@@ -96,9 +96,8 @@ class BookmarksViewController: UIViewController {
   }
 
   private func initCloseBindings() {
-    self.rx.methodInvoked(#selector(BookmarksViewController.viewDidDisappear(_:)))
-      .map { _ in () }
-      .bind(to: self.viewModel.inputs.viewClosed)
+    self.viewModel.outputs.shouldClose
+      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
       .disposed(by: self.disposeBag)
   }
 

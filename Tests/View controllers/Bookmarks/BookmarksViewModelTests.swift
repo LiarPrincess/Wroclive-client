@@ -20,10 +20,11 @@ final class BookmarksViewModelTests: XCTestCase {
   // MARK: - Properties
 
   var bookmarksManager: BookmarksManagerMock!
+  var trackingManager:  TrackingManagerMock!
   var testScheduler:    TestScheduler!
   let disposeBag = DisposeBag()
 
-  // MARK: Init
+  // MARK: - Init
 
   override func setUp() {
     super.setUp()
@@ -31,7 +32,8 @@ final class BookmarksViewModelTests: XCTestCase {
     self.testScheduler = TestScheduler(initialClock: 0)
 
     self.bookmarksManager = BookmarksManagerMock(bookmarks: [])
-    AppEnvironment.push(bookmarks: self.bookmarksManager)
+    self.trackingManager  = TrackingManagerMock()
+    AppEnvironment.push(bookmarks: self.bookmarksManager, tracking: self.trackingManager)
   }
 
   override func tearDown() {
@@ -40,47 +42,25 @@ final class BookmarksViewModelTests: XCTestCase {
     AppEnvironment.pop()
   }
 
-  // MARK: - Items
+  // MARK: - Bookmarks
 
-  func test_containsItems_fromBookmarkManager() {
+  func test_containsItems_fromManager() {
     let bookmarks = self.testData
     self.bookmarksManager.bookmarks = bookmarks
     let viewModel = BookmarksViewModel()
 
     let observer = self.testScheduler.createObserver([BookmarksSection].self)
-    viewModel.outputs.items
+    viewModel.outputs.bookmarks
       .drive(observer)
       .disposed(by: self.disposeBag)
     self.testScheduler.start()
 
     let expectedEvents = [next(0, [BookmarksSection(model: "", items: bookmarks)])]
     self.assertEqual(observer.events, expectedEvents)
+    self.assertBookmarkOperationCount(add: 0, get: 1, save: 0)
   }
 
-  // MARK: - Selection
-
-  func test_selectsItem_onItemSelected() {
-    let bookmarks = self.testData
-    self.bookmarksManager.bookmarks = bookmarks
-    let viewModel = BookmarksViewModel()
-
-    let event0 = next(100, IndexPath(item: 0, section: 0)) // first
-    let event1 = next(200, IndexPath(item: 1, section: 0)) // middle
-    self.simulateSelectionEvents(in: viewModel, events: [event0, event1])
-
-    let observer = self.testScheduler.createObserver(Bookmark.self)
-    viewModel.outputs.selectedItem
-      .drive(observer)
-      .disposed(by: self.disposeBag)
-    self.testScheduler.start()
-
-    let expectedEvents = [next(100, bookmarks[0]), next(200, bookmarks[1])]
-    XCTAssertEqual(observer.events, expectedEvents)
-  }
-
-  // MARK: - Move
-
-  func test_updatesItems_onItemMoved() {
+  func test_updatesItems_onMove() {
     let bookmarks = self.testData
     self.bookmarksManager.bookmarks = bookmarks
     let viewModel = BookmarksViewModel()
@@ -90,7 +70,7 @@ final class BookmarksViewModelTests: XCTestCase {
     self.simulateMoveEvents(in: viewModel, events: [event0, event1])
 
     let observer = self.testScheduler.createObserver([BookmarksSection].self)
-    viewModel.outputs.items
+    viewModel.outputs.bookmarks
       .drive(observer)
       .disposed(by: self.disposeBag)
     self.testScheduler.start()
@@ -101,11 +81,10 @@ final class BookmarksViewModelTests: XCTestCase {
       next(200, [BookmarksSection(model: "", items: [bookmarks[2], bookmarks[1], bookmarks[0]])])
     ]
     self.assertEqual(observer.events, expectedEvents)
+    self.assertBookmarkOperationCount(add: 0, get: 1, save: 2)
   }
 
-  // MARK: - Delete
-
-  func test_updatesItems_onItemDeleted() {
+  func test_updatesItems_onDelete() {
     let bookmarks = self.testData
     self.bookmarksManager.bookmarks = bookmarks
     let viewModel = BookmarksViewModel()
@@ -116,7 +95,7 @@ final class BookmarksViewModelTests: XCTestCase {
     self.simulateDeleteEvents(in: viewModel, events: [event0, event1, event2])
 
     let observer = self.testScheduler.createObserver([BookmarksSection].self)
-    viewModel.outputs.items
+    viewModel.outputs.bookmarks
       .drive(observer)
       .disposed(by: self.disposeBag)
     self.testScheduler.start()
@@ -128,36 +107,43 @@ final class BookmarksViewModelTests: XCTestCase {
       next(300, [BookmarksSection(model: "", items: [])])
     ]
     self.assertEqual(observer.events, expectedEvents)
+    self.assertBookmarkOperationCount(add: 0, get: 1, save: 3)
   }
 
-  // MARK: - Save
+  // MARK: - Selection
 
-  func test_saveItems_onMove() {
+  func test_startsTracking_onItemSelected() {
     let bookmarks = self.testData
     self.bookmarksManager.bookmarks = bookmarks
     let viewModel = BookmarksViewModel()
 
-    let event = next(100, ItemMovedEvent(IndexPath(item: 0, section: 0), IndexPath(item: 2, section: 0)))
-    self.simulateMoveEvents(in: viewModel, events: [event])
+    let event0 = next(100, IndexPath(item: 0, section: 0)) // first
+    let event1 = next(200, IndexPath(item: 1, section: 0)) // middle
+    self.simulateSelectionEvents(in: viewModel, events: [event0, event1])
 
     self.testScheduler.start()
 
-    let expectedBookmarks = [bookmarks[1], bookmarks[2], bookmarks[0]]
-    XCTAssertEqual(self.bookmarksManager.bookmarks, expectedBookmarks)
+    let expectedLines = [bookmarks[0].lines, bookmarks[1].lines]
+    self.assertEqual(self.trackingManager.requestedLines, expectedLines)
   }
 
-  func test_saveItems_onDelete() {
+  func test_shouldClose_onItemSelected() {
     let bookmarks = self.testData
     self.bookmarksManager.bookmarks = bookmarks
     let viewModel = BookmarksViewModel()
 
-    let event = next(100, IndexPath(item: 1, section: 0)) // middle
-    self.simulateDeleteEvents(in: viewModel, events: [event])
+    let event0 = next(100, IndexPath(item: 0, section: 0)) // first
+    let event1 = next(200, IndexPath(item: 1, section: 0)) // middle
+    self.simulateSelectionEvents(in: viewModel, events: [event0, event1])
 
+    let observer = self.testScheduler.createObserver(Void.self)
+    viewModel.outputs.shouldClose
+      .drive(observer)
+      .disposed(by: self.disposeBag)
     self.testScheduler.start()
 
-    let expectedBookmarks = [bookmarks[0], bookmarks[2]]
-    XCTAssertEqual(self.bookmarksManager.bookmarks, expectedBookmarks)
+    let expectedEvents = [next(100, ()), next(200, ())]
+    self.assertEqual(observer.events, expectedEvents)
   }
 
   // MARK: - IsVisible
@@ -267,21 +253,5 @@ final class BookmarksViewModelTests: XCTestCase {
       next(200, NSAttributedString(string: Localization.Edit.edit, attributes: TextStyles.Edit.edit))
     ]
     XCTAssertEqual(observer.events, expectedEvents)
-  }
-
-  // MARK: - Close
-
-  func test_didClose_onViewDidDisappear() {
-    let viewModel = BookmarksViewModel()
-    self.simulateViewClosedEvents(in: viewModel, times: [100, 200])
-
-    let observer = self.testScheduler.createObserver(Void.self)
-    viewModel.outputs.didClose
-      .drive(observer)
-      .disposed(by: self.disposeBag)
-    self.testScheduler.start()
-
-    let expectedEvents = [next(100, ()), next(200, ())]
-    self.assertEqual(observer.events, expectedEvents)
   }
 }
