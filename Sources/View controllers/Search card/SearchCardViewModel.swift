@@ -7,11 +7,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-// TODO: lines (+failed alerts, +retry)
-// TODO: selected lines
-// TODO: bookmark
-// TODO: use saved state
-
 protocol SearchCardViewModelInput {
   var lineTypeSelectorPageChanged: AnyObserver<LineType> { get }
   var lineSelectorPageChanged:     AnyObserver<LineType> { get }
@@ -71,9 +66,8 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   lazy var isLineSelectorVisible: Driver<Bool> = self.lines
     .map { $0.any }
 
-  // swiftlint:disable:next array_init
   lazy var isPlaceholderVisible: Driver<Bool> = self.isLineSelectorVisible
-    .map { !$0 }
+    .not()
 
   lazy var shouldClose: Driver<Void> = self._searchButtonPressed
     .map { _ in () }

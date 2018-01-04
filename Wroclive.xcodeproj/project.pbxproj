@@ -173,10 +173,13 @@
 		90915B111FFA700B009FE942 /* SearchCardViewModelTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0F1FFA7007009FE942 /* SearchCardViewModelTests+Helpers.swift */; };
 		90915B131FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */; };
 		90915B171FFAFD5A009FE942 /* RxSectionTypeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */; };
-		90915B191FFB005C009FE942 /* ObservableType+Reducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B181FFB005C009FE942 /* ObservableType+Reducing.swift */; };
+		90915B191FFB005C009FE942 /* Observable+Reducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B181FFB005C009FE942 /* Observable+Reducing.swift */; };
 		90915B1D1FFC070F009FE942 /* TrackingManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */; };
 		90915B201FFC17A7009FE942 /* ApiManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B1E1FFC178E009FE942 /* ApiManagerMock.swift */; };
 		90915B231FFC1EA0009FE942 /* SearchManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B211FFC1E9B009FE942 /* SearchManagerMock.swift */; };
+		90915B251FFD8D35009FE942 /* ObservableOfBool+Not.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B241FFD8D35009FE942 /* ObservableOfBool+Not.swift */; };
+		90915B281FFD8FAE009FE942 /* Observable+FilterMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B271FFD8FAE009FE942 /* Observable+FilterMap.swift */; };
+		90915B2A1FFD9085009FE942 /* ObservableOfOptional+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B291FFD9085009FE942 /* ObservableOfOptional+Unwrap.swift */; };
 		90940D8A1FB721F400F3A316 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90940D891FB721F400F3A316 /* UserDefaultsManager.swift */; };
 		9096CDCD1F40EF2200FEF20A /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */; };
 		909B9FDC1FEBC3E2007CB59D /* BookmarkCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */; };
@@ -447,10 +450,13 @@
 		90915B0F1FFA7007009FE942 /* SearchCardViewModelTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Helpers.swift"; sourceTree = "<group>"; };
 		90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardNetworkAdapter.swift; sourceTree = "<group>"; };
 		90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionTypeArray.swift; sourceTree = "<group>"; };
-		90915B181FFB005C009FE942 /* ObservableType+Reducing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Reducing.swift"; sourceTree = "<group>"; };
+		90915B181FFB005C009FE942 /* Observable+Reducing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Reducing.swift"; sourceTree = "<group>"; };
 		90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManagerMock.swift; sourceTree = "<group>"; };
 		90915B1E1FFC178E009FE942 /* ApiManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerMock.swift; sourceTree = "<group>"; };
 		90915B211FFC1E9B009FE942 /* SearchManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManagerMock.swift; sourceTree = "<group>"; };
+		90915B241FFD8D35009FE942 /* ObservableOfBool+Not.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableOfBool+Not.swift"; sourceTree = "<group>"; };
+		90915B271FFD8FAE009FE942 /* Observable+FilterMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+FilterMap.swift"; sourceTree = "<group>"; };
+		90915B291FFD9085009FE942 /* ObservableOfOptional+Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableOfOptional+Unwrap.swift"; sourceTree = "<group>"; };
 		90940D891FB721F400F3A316 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellConstants.swift; sourceTree = "<group>"; };
@@ -1289,6 +1295,17 @@
 			path = Cocoa;
 			sourceTree = "<group>";
 		};
+		90915B261FFD8F2D009FE942 /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				90915B181FFB005C009FE942 /* Observable+Reducing.swift */,
+				90915B271FFD8FAE009FE942 /* Observable+FilterMap.swift */,
+				90915B241FFD8D35009FE942 /* ObservableOfBool+Not.swift */,
+				90915B291FFD9085009FE942 /* ObservableOfOptional+Unwrap.swift */,
+			);
+			path = Operators;
+			sourceTree = "<group>";
+		};
 		9096CDCB1F40EF0C00FEF20A /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -1425,7 +1442,7 @@
 			isa = PBXGroup;
 			children = (
 				90915B1A1FFB0072009FE942 /* Cocoa */,
-				90915B181FFB005C009FE942 /* ObservableType+Reducing.swift */,
+				90915B261FFD8F2D009FE942 /* Operators */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -2014,6 +2031,7 @@
 				90B2611E1FF501100076EC69 /* LineSelectorViewModel.swift in Sources */,
 				9021F4401F12D698000A6949 /* LineSelectionHeaderViewModel.swift in Sources */,
 				90D3A4011FEDB7FD00FB7485 /* UIView+IsVisible.swift in Sources */,
+				90915B251FFD8D35009FE942 /* ObservableOfBool+Not.swift in Sources */,
 				901A3F6B1FAFAFF900383B02 /* PopupView.swift in Sources */,
 				90FBE35A1FB23AC7002AFF7A /* LocalizedString.swift in Sources */,
 				90D3A4031FEEF78400FB7485 /* RxTableViewDataSource.swift in Sources */,
@@ -2035,6 +2053,7 @@
 				90915B171FFAFD5A009FE942 /* RxSectionTypeArray.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManager.swift in Sources */,
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
+				90915B281FFD8FAE009FE942 /* Observable+FilterMap.swift in Sources */,
 				9044A5471F69A13D00F26C17 /* ColorSelectionViewController.swift in Sources */,
 				90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */,
 				90145E491F61AF060068698D /* ConfigurationDataSource.swift in Sources */,
@@ -2113,7 +2132,7 @@
 				907246091F8846690069B940 /* PushCoordinator.swift in Sources */,
 				908F55091F69CDED00DB25A8 /* PushInteractiveDismissTransition.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
-				90915B191FFB005C009FE942 /* ObservableType+Reducing.swift in Sources */,
+				90915B191FFB005C009FE942 /* Observable+Reducing.swift in Sources */,
 				9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */,
 				9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */,
 				908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */,
@@ -2156,6 +2175,7 @@
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
 				9032F07C1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift in Sources */,
 				9044A5491F69A13D00F26C17 /* ColorSelectionViewControllerLayout.swift in Sources */,
+				90915B2A1FFD9085009FE942 /* ObservableOfOptional+Unwrap.swift in Sources */,
 				90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,

@@ -7,16 +7,14 @@ import RxSwift
 import PromiseKit
 
 class SearchCardNetworkAdapter {
-
-  static func getAvailableLines() -> Observable<[Line]> {
-    return .create { (observer: AnyObserver<[Line]>) -> Disposable in
+  static func getAvailableLines() -> Single<[Line]> {
+    return Single<[Line]>.create { single -> Disposable in
       Managers.api.getAvailableLines()
         .then { (lines: [Line]) -> [Line] in
-          observer.onNext(lines)
-          observer.onCompleted()
+          single(.success(lines))
           return lines
         }
-        .catch { observer.onError($0) }
+        .catch { single(.error($0)) }
 
       return Disposables.create()
     }

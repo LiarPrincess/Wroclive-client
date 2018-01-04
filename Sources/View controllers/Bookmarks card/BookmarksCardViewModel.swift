@@ -66,9 +66,8 @@ class BookmarksCardViewModel: BookmarksCardViewModelInput, BookmarksCardViewMode
     .map { $0.hasItems() }
     .asDriver(onErrorDriveWith: .never())
 
-  // swiftlint:disable:next array_init
   lazy var isPlaceholderVisible: Driver<Bool> = self.isTableViewVisible
-    .map { !$0 }
+    .not()
 
   lazy var isEditing: Driver<Bool> = {
     let defaultValue = false
