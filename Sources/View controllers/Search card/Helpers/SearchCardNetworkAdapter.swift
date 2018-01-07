@@ -4,21 +4,28 @@
 //
 
 import RxSwift
-import PromiseKit
+import Result
+
+typealias ApiResponse<Data> = Observable<Result<Data, ApiError>>
 
 class SearchCardNetworkAdapter {
-  static func getAvailableLines() -> Single<[Line]> {
-    return Single<[Line]>.create { single -> Disposable in
+  static func getAvailableLines() -> ApiResponse<[Line]> {
+    return ApiResponse.create { observer -> Disposable in
       Managers.api.getAvailableLines()
-        .then { (lines: [Line]) -> [Line] in
-          single(.success(lines))
-          return lines
+        .tap { result in
+          switch result {
+          case let .fulfilled(lines): observer.onNext(.success(lines))
+          case let .rejected(error):  observer.onNext(.failure(toApiError(error)))
+          }
+          observer.onCompleted()
         }
-        .catch { single(.error($0)) }
-
       return Disposables.create()
     }
   }
+}
+
+private func toApiError(_ error: Error) -> ApiError {
+  return error as? ApiError ?? ApiError.connectionError
 }
 
 //private func refreshAvailableLines(_ selectedLines: [Line]) {

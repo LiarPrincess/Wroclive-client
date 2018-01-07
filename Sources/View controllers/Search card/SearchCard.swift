@@ -38,10 +38,10 @@ class SearchCard: UIViewController {
     super.init(nibName: nil, bundle: nil)
 
     self.initPageBindings()
-    self.initLineBindings()
-    self.initButtonBindings()
+    self.initLineSelectorBindings()
     self.initVisibilityBindings()
-    self.initCloseBindings()
+    self.initButtonBindings()
+    self.initViewControlerLifecycleBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -51,15 +51,6 @@ class SearchCard: UIViewController {
   // MARK: - Bindings
 
   private func initPageBindings() {
-    // outputs first, so we sync with view model
-    self.viewModel.outputs.page
-      .drive(onNext: { [weak self] newValue in
-        self?.lineTypeSelector.selectedValue = newValue
-        self?.lineSelector.setCurrentPageNotReactive(newValue, animated: true)
-      })
-      .disposed(by: self.disposeBag)
-
-    // inputs
     self.lineTypeSelector.rx.selectedValueChanged
       .bind(to: self.viewModel.inputs.lineTypeSelectorPageChanged)
       .disposed(by: self.disposeBag)
@@ -67,21 +58,18 @@ class SearchCard: UIViewController {
     self.lineSelector.viewModel.outputs.page
       .drive(self.viewModel.inputs.lineSelectorPageChanged)
       .disposed(by: self.disposeBag)
+
+    self.viewModel.outputs.page
+      .drive(onNext: { [weak self] newValue in
+        self?.lineTypeSelector.selectedValue = newValue
+        self?.lineSelector.setCurrentPageNotReactive(newValue, animated: true)
+      })
+      .disposed(by: self.disposeBag)
   }
 
-  private func initLineBindings() {
+  private func initLineSelectorBindings() {
     self.viewModel.outputs.lines
       .drive(self.lineSelector.viewModel.inputs.linesChanged)
-      .disposed(by: self.disposeBag)
-  }
-
-  private func initButtonBindings() {
-    self.bookmarkButton.rx.tap
-      .bind(to: self.viewModel.inputs.bookmarkButtonPressed)
-      .disposed(by: self.disposeBag)
-
-    self.searchButton.rx.tap
-      .bind(to: self.viewModel.inputs.searchButtonPressed)
       .disposed(by: self.disposeBag)
   }
 
@@ -95,9 +83,27 @@ class SearchCard: UIViewController {
       .disposed(by: self.disposeBag)
   }
 
-  private func initCloseBindings() {
+  private func initButtonBindings() {
+    self.bookmarkButton.rx.tap
+      .bind(to: self.viewModel.inputs.bookmarkButtonPressed)
+      .disposed(by: self.disposeBag)
+
+    self.searchButton.rx.tap
+      .bind(to: self.viewModel.inputs.searchButtonPressed)
+      .disposed(by: self.disposeBag)
+  }
+
+  private func initViewControlerLifecycleBindings() {
     self.viewModel.outputs.shouldClose
       .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
+      .disposed(by: self.disposeBag)
+
+    // modal view controllers can send multiple messages when user cancels gesture
+    // also simple binding would propagate also .onCompleted events
+    self.rx.methodInvoked(#selector(SearchCard.viewDidAppear(_:)))
+      .map { _ in () }
+      .take(1)
+      .bind { [weak self] _ in self?.viewModel.inputs.didOpen.onNext() }
       .disposed(by: self.disposeBag)
 
     self.rx.methodInvoked(#selector(SearchCard.viewDidDisappear(_:)))
@@ -136,7 +142,7 @@ class SearchCard: UIViewController {
 
 // MARK: - CardPanelPresentable
 
-extension SearchCard : CardPanelPresentable {
+extension SearchCard: CardPanelPresentable {
   var header: UIView  { return self.headerView.contentView }
   var height: CGFloat { return CardPanel.height }
 }
