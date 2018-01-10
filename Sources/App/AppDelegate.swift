@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //      _ = Observable<Int>
 //        .interval(1, scheduler: MainScheduler.instance)
 //        .subscribe { _ in print("Resource count \(RxSwift.Resources.total)") }
+
+//      URLCache.shared.removeAllCachedResponses()
     #endif
 
     return true

@@ -41,6 +41,7 @@ class SearchCard: UIViewController {
     self.initLineSelectorBindings()
     self.initVisibilityBindings()
     self.initButtonBindings()
+    self.initAlertBindings()
     self.initViewControlerLifecycleBindings()
   }
 
@@ -93,6 +94,23 @@ class SearchCard: UIViewController {
       .disposed(by: self.disposeBag)
   }
 
+  private func initAlertBindings() {
+    self.viewModel.outputs.lineErrors.asObservable()
+      .flatMap(self.createAlert)
+      .bind(to: self.viewModel.inputs.lineErrorsAlertClosed)
+      .disposed(by: self.disposeBag)
+  }
+
+  private func createAlert(_ error: ApiError) -> Observable<Void> {
+    switch error {
+    case .noInternet:
+      return NetworkAlerts.showNoInternetAlert()
+    case .connectionError,
+         .invalidResponse:
+      return NetworkAlerts.showErrorAlert()
+    }
+  }
+
   private func initViewControlerLifecycleBindings() {
     self.viewModel.outputs.shouldClose
       .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
@@ -101,7 +119,6 @@ class SearchCard: UIViewController {
     // modal view controllers can send multiple messages when user cancels gesture
     // also simple binding would propagate also .onCompleted events
     self.rx.methodInvoked(#selector(SearchCard.viewDidAppear(_:)))
-      .map { _ in () }
       .take(1)
       .bind { [weak self] _ in self?.viewModel.inputs.didOpen.onNext() }
       .disposed(by: self.disposeBag)

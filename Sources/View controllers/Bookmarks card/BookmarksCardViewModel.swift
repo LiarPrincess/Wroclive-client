@@ -62,12 +62,8 @@ class BookmarksCardViewModel: BookmarksCardViewModelInput, BookmarksCardViewMode
       .asDriver(onErrorJustReturn: [])
   }()
 
-  lazy var isTableViewVisible: Driver<Bool> = self.bookmarks
-    .map { $0.hasItems() }
-    .asDriver(onErrorDriveWith: .never())
-
-  lazy var isPlaceholderVisible: Driver<Bool> = self.isTableViewVisible
-    .not()
+  lazy var isTableViewVisible:   Driver<Bool> = self.bookmarks.map { $0.hasItems() }
+  lazy var isPlaceholderVisible: Driver<Bool> = self.isTableViewVisible.not()
 
   lazy var isEditing: Driver<Bool> = {
     let defaultValue = false

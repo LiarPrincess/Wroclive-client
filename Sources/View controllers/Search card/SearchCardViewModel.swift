@@ -15,6 +15,8 @@ protocol SearchCardViewModelInput {
   var bookmarkButtonPressed: AnyObserver<Void> { get }
   var searchButtonPressed:   AnyObserver<Void> { get }
 
+  var lineErrorsAlertClosed: AnyObserver<Void> { get }
+
   var didOpen:  AnyObserver<Void> { get }
   var didClose: AnyObserver<Void> { get }
 }
@@ -22,8 +24,8 @@ protocol SearchCardViewModelInput {
 protocol SearchCardViewModelOutput {
   var page: Driver<LineType> { get }
 
-  var lines:    Driver<[Line]> { get }
-  var apiError: Driver<ApiError> { get }
+  var lines:      Driver<[Line]>   { get }
+  var lineErrors: Driver<ApiError> { get }
 
   var isLineSelectorVisible: Driver<Bool> { get }
   var isPlaceholderVisible:  Driver<Bool> { get }
@@ -39,14 +41,20 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   private let _lineSelectorPageChanged     = PublishSubject<LineType>()
   private let _bookmarkButtonPressed       = PublishSubject<Void>()
   private let _searchButtonPressed         = PublishSubject<Void>()
+  private let _lineErrorsAlertClosed       = PublishSubject<Void>()
 
   private let _didOpen  = PublishSubject<Void>()
   private let _didClose = PublishSubject<Void>()
 
-  private lazy var lineResponse: ApiResponse<[Line]> = self._didOpen
-    .flatMap { _ in SearchCardNetworkAdapter.getAvailableLines().catchError { _ in .empty() } }
-    .startWith(.success([]))
-    .share()
+  private lazy var lineResponse: ApiResponse<[Line]> = {
+    let delay = AppInfo.Timings.FailedRequestDelay.lines
+    let delayedAlertClosed = self._lineErrorsAlertClosed.delay(delay, scheduler: MainScheduler.instance)
+
+    return Observable.merge(self._didOpen, delayedAlertClosed)
+      .flatMap { _ in SearchCardNetworkAdapter.getAvailableLines().catchError { _ in .empty() } }
+      .startWith(.success([]))
+      .share()
+  }()
 
   private let disposeBag = DisposeBag()
 
@@ -56,6 +64,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   lazy var lineSelectorPageChanged:     AnyObserver<LineType> = self._lineSelectorPageChanged.asObserver()
   lazy var bookmarkButtonPressed:       AnyObserver<Void>     = self._bookmarkButtonPressed.asObserver()
   lazy var searchButtonPressed:         AnyObserver<Void>     = self._searchButtonPressed.asObserver()
+  lazy var lineErrorsAlertClosed:       AnyObserver<Void>     = self._lineErrorsAlertClosed.asObserver()
 
   lazy var didOpen:  AnyObserver<Void> = self._didOpen.asObserver()
   lazy var didClose: AnyObserver<Void> = self._didClose.asObserver()
@@ -67,21 +76,18 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
     .asDriver(onErrorDriveWith: .never())
 
   lazy var lines: Driver<[Line]> = self.lineResponse
-    .flatMap { Observable.from(optional: $0.value) }
+    .flatMapLatest { Observable.from(optional: $0.value) }
     .asDriver(onErrorJustReturn: [])
 
-  lazy var apiError: Driver<ApiError> = self.lineResponse
+  lazy var lineErrors: Driver<ApiError> = self.lineResponse
     .flatMap { Observable.from(optional: $0.error) }
     .asDriver(onErrorDriveWith: .never())
 
   let selectedLines: Driver<[Line]> = Observable.just([])
     .asDriver(onErrorDriveWith: .never())
 
-  lazy var isLineSelectorVisible: Driver<Bool> = self.lines
-    .map { $0.any }
-
-  lazy var isPlaceholderVisible: Driver<Bool> = self.isLineSelectorVisible
-    .not()
+  lazy var isLineSelectorVisible: Driver<Bool> = self.lines.map { $0.any }
+  lazy var isPlaceholderVisible:  Driver<Bool> = self.isLineSelectorVisible.not()
 
   lazy var shouldClose: Driver<Void> = self._searchButtonPressed
     .map { _ in () }
