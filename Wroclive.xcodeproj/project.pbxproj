@@ -145,7 +145,6 @@
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
 		906A7B511FFEC252004EC8A4 /* ObserverOfVoid+Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B501FFEC252004EC8A4 /* ObserverOfVoid+Next.swift */; };
 		906A7B5520025750004EC8A4 /* ObservableOfOptional+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5220025750004EC8A4 /* ObservableOfOptional+Unwrap.swift */; };
-		906A7B5620025750004EC8A4 /* Observable+FilterMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5320025750004EC8A4 /* Observable+FilterMap.swift */; };
 		906A7B5720025750004EC8A4 /* ObservableOfBool+Not.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5420025750004EC8A4 /* ObservableOfBool+Not.swift */; };
 		907246051F883E140069B940 /* ConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246041F883E140069B940 /* ConfigurationCoordinator.swift */; };
 		907246071F88403A0069B940 /* CardPanelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907246061F88403A0069B940 /* CardPanelCoordinator.swift */; };
@@ -187,6 +186,8 @@
 		909B9FDD1FEBD0AE007CB59D /* Screenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074A91FB8566100C8DD51 /* Screenshots.swift */; };
 		909B9FDE1FEBD0C2007CB59D /* AssertNotCalled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
+		90AACC76200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC75200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift */; };
+		90AACC78200954AC0064EDFD /* SearchCardAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC77200954AC0064EDFD /* SearchCardAlerts.swift */; };
 		90ACDC431F88518D005A4B79 /* BookmarksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACDC421F88518D005A4B79 /* BookmarksCoordinator.swift */; };
 		90ACDC461F88B69A005A4B79 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ACDC451F88B69A005A4B79 /* SearchCoordinator.swift */; };
 		90AF2BD41EE9DE00006E61D6 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* ThemeManager.swift */; };
@@ -422,7 +423,6 @@
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		906A7B501FFEC252004EC8A4 /* ObserverOfVoid+Next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObserverOfVoid+Next.swift"; sourceTree = "<group>"; };
 		906A7B5220025750004EC8A4 /* ObservableOfOptional+Unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObservableOfOptional+Unwrap.swift"; sourceTree = "<group>"; };
-		906A7B5320025750004EC8A4 /* Observable+FilterMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+FilterMap.swift"; sourceTree = "<group>"; };
 		906A7B5420025750004EC8A4 /* ObservableOfBool+Not.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObservableOfBool+Not.swift"; sourceTree = "<group>"; };
 		907246041F883E140069B940 /* ConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCoordinator.swift; sourceTree = "<group>"; };
 		907246061F88403A0069B940 /* CardPanelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPanelCoordinator.swift; sourceTree = "<group>"; };
@@ -463,6 +463,8 @@
 		9096CDCC1F40EF2200FEF20A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		909B9FDB1FEBC3E2007CB59D /* BookmarkCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCellConstants.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
+		90AACC75200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableOfResult+ValuesErrors.swift"; sourceTree = "<group>"; };
+		90AACC77200954AC0064EDFD /* SearchCardAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardAlerts.swift; sourceTree = "<group>"; };
 		90ACDC421F88518D005A4B79 /* BookmarksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCoordinator.swift; sourceTree = "<group>"; };
 		90ACDC451F88B69A005A4B79 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		90AF2BD31EE9DE00006E61D6 /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -749,6 +751,7 @@
 			children = (
 				901ECDD21FF5BD8E004765AA /* AABookmarkButton.swift */,
 				901ECDD41FF5BDB2004765AA /* AASearchState.swift */,
+				90AACC77200954AC0064EDFD /* SearchCardAlerts.swift */,
 				90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */,
 			);
 			path = Helpers;
@@ -1309,9 +1312,9 @@
 			isa = PBXGroup;
 			children = (
 				90915B181FFB005C009FE942 /* Observable+Reducing.swift */,
-				906A7B5320025750004EC8A4 /* Observable+FilterMap.swift */,
 				906A7B5420025750004EC8A4 /* ObservableOfBool+Not.swift */,
 				906A7B5220025750004EC8A4 /* ObservableOfOptional+Unwrap.swift */,
+				90AACC75200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift */,
 			);
 			path = Operators;
 			sourceTree = "<group>";
@@ -2046,6 +2049,7 @@
 				907DC6ED1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift in Sources */,
 				90B2611E1FF501100076EC69 /* LineSelectorViewModel.swift in Sources */,
 				9021F4401F12D698000A6949 /* LineSelectionHeaderViewModel.swift in Sources */,
+				90AACC76200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift in Sources */,
 				90D3A4011FEDB7FD00FB7485 /* UIView+IsVisible.swift in Sources */,
 				901A3F6B1FAFAFF900383B02 /* PopupView.swift in Sources */,
 				90FBE35A1FB23AC7002AFF7A /* LocalizedString.swift in Sources */,
@@ -2084,6 +2088,7 @@
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,
 				908252581F703F0E001C2926 /* NotificationData.swift in Sources */,
 				907DC6E91FF2B740001C5DD6 /* LineTypeSelector.swift in Sources */,
+				90AACC78200954AC0064EDFD /* SearchCardAlerts.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectionHeaderView.swift in Sources */,
 				90E8A6C61F4CD43300CE5AE9 /* DeviceManagerType.swift in Sources */,
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManager.swift in Sources */,
@@ -2171,7 +2176,6 @@
 				908252571F703F0E001C2926 /* Notification.swift in Sources */,
 				900B976E1FE1BE1F00AC7C35 /* BookmarkAlerts.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
-				906A7B5620025750004EC8A4 /* Observable+FilterMap.swift in Sources */,
 				907246051F883E140069B940 /* ConfigurationCoordinator.swift in Sources */,
 				90940D8A1FB721F400F3A316 /* UserDefaultsManager.swift in Sources */,
 				90F0A2D71F732A6C00C641C8 /* NotificationObserver.swift in Sources */,

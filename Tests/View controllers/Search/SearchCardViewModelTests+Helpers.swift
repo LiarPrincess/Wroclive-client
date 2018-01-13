@@ -12,35 +12,22 @@ import RxTest
 
 extension SearchCardViewModelTests {
 
-  // MARK: - Data
-
-  var testLines: [Line] {
-    let line0 = Line(name:  "1", type: .tram, subtype: .regular)
-    let line1 = Line(name:  "4", type: .tram, subtype: .regular)
-    let line2 = Line(name: "20", type: .tram, subtype: .regular)
-    let line3 = Line(name:  "A", type:  .bus, subtype: .regular)
-    let line4 = Line(name:  "D", type:  .bus, subtype: .regular)
-    return [line0, line1, line2, line3, line4]
-  }
-
   // MARK: - Page
 
-  typealias LineTypeSelectorPageChangedEvent = Recorded<Event<LineType>>
-  typealias LineSelectorPageChangedEvent     = Recorded<Event<LineType>>
+  typealias PageSelectedEvent      = Recorded<Event<LineType>>
+  typealias PageDidTransitionEvent = Recorded<Event<LineType>>
 
-  func simulateLineTypeSelectorPageChangedEvents(_ events: LineTypeSelectorPageChangedEvent...) {
+  func simulatePageSelectedEvents(_ events: PageSelectedEvent...) {
     testScheduler.createHotObservable(events)
-      .bind(to: self.viewModel.inputs.lineTypeSelectorPageChanged)
+      .bind(to: self.viewModel.inputs.pageSelected)
       .disposed(by: self.disposeBag)
   }
 
-  func simulateLineSelectorPageChangedEvents(_ events: LineSelectorPageChangedEvent...) {
+  func simulatePageDidTransitionEvents(_ events: PageDidTransitionEvent...) {
     testScheduler.createHotObservable(events)
-      .bind(to: self.viewModel.inputs.lineSelectorPageChanged)
+      .bind(to: self.viewModel.inputs.pageDidTransition)
       .disposed(by: self.disposeBag)
   }
-
-  // MARK: - Lines
 
   // MARK: - Buttons
 
@@ -58,12 +45,28 @@ extension SearchCardViewModelTests {
       .disposed(by: self.disposeBag)
   }
 
-  // MARK: - Close
+  // MARK: - Alerts
 
-  func simulateDidCloseEvents(at times: TestTime...) {
+  func simulateApiAlertTryAgainButtonPressedEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
     testScheduler.createHotObservable(events)
-      .bind(to: self.viewModel.inputs.didClose)
+      .bind(to: self.viewModel.inputs.apiAlertTryAgainButtonPressed)
+      .disposed(by: self.disposeBag)
+  }
+
+  // MARK: - View controller lifecycle
+
+  func simulateViewDidAppearEvents(at times: TestTime...) {
+    let events = times.map { next($0, ()) }
+    testScheduler.createHotObservable(events)
+      .bind(to: self.viewModel.inputs.viewDidAppear)
+      .disposed(by: self.disposeBag)
+  }
+
+  func simulateViewDidDisappearEvents(at times: TestTime...) {
+    let events = times.map { next($0, ()) }
+    testScheduler.createHotObservable(events)
+      .bind(to: self.viewModel.inputs.viewDidDisappear)
       .disposed(by: self.disposeBag)
   }
 

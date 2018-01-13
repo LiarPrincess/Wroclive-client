@@ -9,48 +9,51 @@ import RxSwift
 import RxCocoa
 
 protocol SearchCardViewModelInput {
-  var lineTypeSelectorPageChanged: AnyObserver<LineType> { get }
-  var lineSelectorPageChanged:     AnyObserver<LineType> { get }
+  var pageSelected:      AnyObserver<LineType> { get }
+  var pageDidTransition: AnyObserver<LineType> { get }
 
   var bookmarkButtonPressed: AnyObserver<Void> { get }
   var searchButtonPressed:   AnyObserver<Void> { get }
 
-  var lineErrorsAlertClosed: AnyObserver<Void> { get }
+  var apiAlertTryAgainButtonPressed: AnyObserver<Void> { get }
 
-  var didOpen:  AnyObserver<Void> { get }
-  var didClose: AnyObserver<Void> { get }
+  var viewDidAppear:    AnyObserver<Void> { get }
+  var viewDidDisappear: AnyObserver<Void> { get }
 }
 
 protocol SearchCardViewModelOutput {
   var page: Driver<LineType> { get }
 
-  var lines:      Driver<[Line]>   { get }
-  var lineErrors: Driver<ApiError> { get }
+  var lines: Driver<[Line]> { get }
 
   var isLineSelectorVisible: Driver<Bool> { get }
   var isPlaceholderVisible:  Driver<Bool> { get }
 
-  var shouldClose: Driver<Void> { get }
+  var showApiErrorAlert: Driver<SearchCardApiAlert> { get }
+
+  var close: Driver<Void> { get }
 }
 
 class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
   // MARK: - Properties
 
-  private let _lineTypeSelectorPageChanged = PublishSubject<LineType>()
-  private let _lineSelectorPageChanged     = PublishSubject<LineType>()
-  private let _bookmarkButtonPressed       = PublishSubject<Void>()
-  private let _searchButtonPressed         = PublishSubject<Void>()
-  private let _lineErrorsAlertClosed       = PublishSubject<Void>()
+  private let _pageSelected          = PublishSubject<LineType>()
+  private let _pageDidTransition     = PublishSubject<LineType>()
+  private let _bookmarkButtonPressed = PublishSubject<Void>()
+  private let _searchButtonPressed   = PublishSubject<Void>()
 
-  private let _didOpen  = PublishSubject<Void>()
-  private let _didClose = PublishSubject<Void>()
+  private let _apiAlertTryAgainButtonPressed = PublishSubject<Void>()
+
+  private let _viewDidAppear    = PublishSubject<Void>()
+  private let _viewDidDisappear = PublishSubject<Void>()
 
   private lazy var lineResponse: ApiResponse<[Line]> = {
-    let delay = AppInfo.Timings.FailedRequestDelay.lines
-    let delayedAlertClosed = self._lineErrorsAlertClosed.delay(delay, scheduler: MainScheduler.instance)
+    let viewDidAppear = self._viewDidAppear
+    let tryAgain      = self._apiAlertTryAgainButtonPressed
+      .delay(AppInfo.Timings.FailedRequestDelay.lines, scheduler: MainScheduler.instance)
 
-    return Observable.merge(self._didOpen, delayedAlertClosed)
+    return Observable.merge(viewDidAppear, tryAgain)
       .flatMap { _ in SearchCardNetworkAdapter.getAvailableLines().catchError { _ in .empty() } }
       .startWith(.success([]))
       .share()
@@ -60,27 +63,29 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
   // MARK: - Input
 
-  lazy var lineTypeSelectorPageChanged: AnyObserver<LineType> = self._lineTypeSelectorPageChanged.asObserver()
-  lazy var lineSelectorPageChanged:     AnyObserver<LineType> = self._lineSelectorPageChanged.asObserver()
-  lazy var bookmarkButtonPressed:       AnyObserver<Void>     = self._bookmarkButtonPressed.asObserver()
-  lazy var searchButtonPressed:         AnyObserver<Void>     = self._searchButtonPressed.asObserver()
-  lazy var lineErrorsAlertClosed:       AnyObserver<Void>     = self._lineErrorsAlertClosed.asObserver()
+  lazy var pageSelected:          AnyObserver<LineType> = self._pageSelected.asObserver()
+  lazy var pageDidTransition:     AnyObserver<LineType> = self._pageDidTransition.asObserver()
+  lazy var bookmarkButtonPressed: AnyObserver<Void>     = self._bookmarkButtonPressed.asObserver()
+  lazy var searchButtonPressed:   AnyObserver<Void>     = self._searchButtonPressed.asObserver()
 
-  lazy var didOpen:  AnyObserver<Void> = self._didOpen.asObserver()
-  lazy var didClose: AnyObserver<Void> = self._didClose.asObserver()
+  lazy var apiAlertTryAgainButtonPressed: AnyObserver<Void> = self._apiAlertTryAgainButtonPressed.asObserver()
+
+  lazy var viewDidAppear:    AnyObserver<Void> = self._viewDidAppear.asObserver()
+  lazy var viewDidDisappear: AnyObserver<Void> = self._viewDidDisappear.asObserver()
 
   // MARK: - Output
 
-  lazy var page: Driver<LineType> = Observable.merge(self._lineTypeSelectorPageChanged, self._lineSelectorPageChanged)
+  lazy var page: Driver<LineType> = Observable.merge(self._pageSelected, self._pageDidTransition)
     .startWith(LineType.tram)
     .asDriver(onErrorDriveWith: .never())
 
   lazy var lines: Driver<[Line]> = self.lineResponse
-    .flatMapLatest { Observable.from(optional: $0.value) }
+    .values()
     .asDriver(onErrorJustReturn: [])
 
-  lazy var lineErrors: Driver<ApiError> = self.lineResponse
-    .flatMap { Observable.from(optional: $0.error) }
+  lazy var showApiErrorAlert: Driver<SearchCardApiAlert> = self.lineResponse
+    .errors()
+    .map(toApiAlert)
     .asDriver(onErrorDriveWith: .never())
 
   let selectedLines: Driver<[Line]> = Observable.just([])
@@ -89,7 +94,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   lazy var isLineSelectorVisible: Driver<Bool> = self.lines.map { $0.any }
   lazy var isPlaceholderVisible:  Driver<Bool> = self.isLineSelectorVisible.not()
 
-  lazy var shouldClose: Driver<Void> = self._searchButtonPressed
+  lazy var close: Driver<Void> = self._searchButtonPressed
     .map { _ in () }
     .asDriver(onErrorDriveWith: .never())
 
@@ -101,7 +106,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
       .bind(onNext: { SearchCardViewModel.startTracking($0) })
       .disposed(by: self.disposeBag)
 
-    self._didClose
+    self._viewDidDisappear
       .withLatestFrom(self.page) { $1 }
       .withLatestFrom(self.selectedLines) { ($0, $1) }
       .map { SearchState(withSelected: $0.0, lines: $0.1) }
@@ -127,4 +132,14 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
   var inputs:  SearchCardViewModelInput  { return self }
   var outputs: SearchCardViewModelOutput { return self }
+}
+
+private func toApiAlert(_ error: ApiError) -> SearchCardApiAlert {
+  switch error {
+  case .noInternet:
+    return .noInternet
+  case .connectionError,
+       .invalidResponse:
+    return .connectionError
+  }
 }

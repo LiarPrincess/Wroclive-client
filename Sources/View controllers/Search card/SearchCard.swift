@@ -53,11 +53,11 @@ class SearchCard: UIViewController {
 
   private func initPageBindings() {
     self.lineTypeSelector.rx.selectedValueChanged
-      .bind(to: self.viewModel.inputs.lineTypeSelectorPageChanged)
+      .bind(to: self.viewModel.inputs.pageSelected)
       .disposed(by: self.disposeBag)
 
     self.lineSelector.viewModel.outputs.page
-      .drive(self.viewModel.inputs.lineSelectorPageChanged)
+      .drive(self.viewModel.inputs.pageDidTransition)
       .disposed(by: self.disposeBag)
 
     self.viewModel.outputs.page
@@ -95,24 +95,21 @@ class SearchCard: UIViewController {
   }
 
   private func initAlertBindings() {
-    self.viewModel.outputs.lineErrors.asObservable()
-      .flatMap(self.createAlert)
-      .bind(to: self.viewModel.inputs.lineErrorsAlertClosed)
+    self.viewModel.outputs.showApiErrorAlert.asObservable()
+      .flatMapLatest(self.createAlert)
+      .bind(to: self.viewModel.inputs.apiAlertTryAgainButtonPressed)
       .disposed(by: self.disposeBag)
   }
 
-  private func createAlert(_ error: ApiError) -> Observable<Void> {
-    switch error {
-    case .noInternet:
-      return NetworkAlerts.showNoInternetAlert()
-    case .connectionError,
-         .invalidResponse:
-      return NetworkAlerts.showErrorAlert()
+  private func createAlert(_ apiAlert: SearchCardApiAlert) -> Observable<Void> {
+    switch apiAlert {
+    case .noInternet:      return NetworkAlerts.showNoInternetAlert()
+    case .connectionError: return NetworkAlerts.showErrorAlert()
     }
   }
 
   private func initViewControlerLifecycleBindings() {
-    self.viewModel.outputs.shouldClose
+    self.viewModel.outputs.close
       .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
       .disposed(by: self.disposeBag)
 
@@ -120,12 +117,12 @@ class SearchCard: UIViewController {
     // also simple binding would propagate also .onCompleted events
     self.rx.methodInvoked(#selector(SearchCard.viewDidAppear(_:)))
       .take(1)
-      .bind { [weak self] _ in self?.viewModel.inputs.didOpen.onNext() }
+      .bind { [weak self] _ in self?.viewModel.inputs.viewDidAppear.onNext() }
       .disposed(by: self.disposeBag)
 
     self.rx.methodInvoked(#selector(SearchCard.viewDidDisappear(_:)))
       .map { _ in () }
-      .bind(to: self.viewModel.inputs.didClose)
+      .bind(to: self.viewModel.inputs.viewDidDisappear)
       .disposed(by: self.disposeBag)
   }
 

@@ -45,19 +45,24 @@ final class SearchCardViewModelTests: XCTestCase {
     AppEnvironment.pop()
   }
 
+  // MARK: - State
+
+  func test_appearing_shouldShowSavedState() {
+  }
+
   // MARK: - Page
 
-  func test_emitsPage_onPageChange() {
+  func test_selectingPage_shouldUpdatePage() {
     self.searchManager.searchState = SearchState(withSelected: .tram, lines: [])
     self.viewModel = SearchCardViewModel()
 
     let type0 = next( 50, LineType.bus)
     let type1 = next(150, LineType.tram)
-    self.simulateLineTypeSelectorPageChangedEvents(type0, type1)
+    self.simulatePageSelectedEvents(type0, type1)
 
     let line0 = next(100, LineType.tram)
     let line1 = next(200, LineType.bus)
-    self.simulateLineSelectorPageChangedEvents(line0, line1)
+    self.simulatePageDidTransitionEvents(line0, line1)
 
     let observer = self.testScheduler.createObserver(LineType.self)
     self.viewModel.outputs.page
@@ -77,37 +82,48 @@ final class SearchCardViewModelTests: XCTestCase {
 
   // MARK: - Lines
 
-  // lines -> lines, isLineSelectorVisible, isPlaceholderVisible
+  func test_appearing_shouldUpdateLines() {
+    // lines      update
+    // lineErrors no changes
+    // isLineSelectorVisible update
+    // isPlaceholderVisible  update
+  }
+
+  func test_closingApiAlert_shouldDelay_andUpdateLines() {
+    // lines      update
+    // lineErrors no changes
+    // isLineSelectorVisible update
+    // isPlaceholderVisible  update
+  }
+
+  func test_requestingLines_withoutInternet_shouldShowAlert() {
+    // lines      no changes
+    // lineErrors update
+  }
+
+  func test_requestingLines_onError_shouldShowAlert() {
+    // lines      no changes
+    // lineErrors update
+  }
 
   // MARK: - Buttons
 
-  // TODO: bookmarkButtonPressed -> nothing
-  func test_doesNothing_onBookmarkButtonPressed() {
+  func test_bookmarkButton_withLines_shouldCreateBookmark() {
   }
 
-  // TODO: selected lines <- self.testLines
-  func test_startsTracking_onSearchButtonPressedPressed() {
-//    let bookmarks = self.testData
-//    self.bookmarksManager.bookmarks = bookmarks
-//    self.viewModel = BookmarksViewModel()
-//
-//    let event0 = next(100, IndexPath(item: 0, section: 0)) // first
-//    let event1 = next(200, IndexPath(item: 1, section: 0)) // middle
-//    self.simulateSelectionEvents(event0, event1)
-//
-//    self.testScheduler.start()
-//
-//    let expectedLines = [bookmarks[0].lines, bookmarks[1].lines]
-//    self.assertEqual(self.trackingManager.requestedLines, expectedLines)
+  func test_bookmarkButton_withoutLines_shouldShowAlert() {
   }
 
-  func test_closes_onSearchButtonPressedPressed() {
+  func test_searchButton_shouldStartTracking() {
+  }
+
+  func test_searchButton_shouldClose() {
     self.viewModel = SearchCardViewModel()
 
     self.simulateSearchButtonPressedEvents(at: 100, 200)
 
     let observer = self.testScheduler.createObserver(Void.self)
-    viewModel.outputs.shouldClose
+    viewModel.outputs.close
       .drive(observer)
       .disposed(by: self.disposeBag)
     self.testScheduler.start()
@@ -118,15 +134,11 @@ final class SearchCardViewModelTests: XCTestCase {
 
   // MARK: - Close
 
-  // TODO: selected lines <- self.testLines
-  func test_savesState_onClose() {
-    self.searchManager.searchState = SearchState(withSelected: .tram, lines: [])
+  func test_close_shouldSaveState() {
+    self.searchManager.searchState = SearchState(withSelected: .bus, lines: [])
     self.viewModel = SearchCardViewModel()
 
-    self.simulateLineTypeSelectorPageChangedEvents(next(100, LineType.bus))
-    // self.simulateSlectedLinesEvents()
-
-    self.simulateDidCloseEvents(at: 300)
+    self.simulateViewDidDisappearEvents(at: 300)
     self.testScheduler.start()
 
     let expected = SearchState(withSelected: .bus, lines: [])
