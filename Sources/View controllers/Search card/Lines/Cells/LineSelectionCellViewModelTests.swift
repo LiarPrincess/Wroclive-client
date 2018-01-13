@@ -75,3 +75,28 @@ final class LineSelectionCellViewModelTests: XCTestCase {
     XCTAssertEqual(observer.events, expectedEvents)
   }
 }
+
+// MARK: - Helpers
+
+extension LineSelectionCellViewModelTests {
+
+  // MARK: - Line
+
+  typealias LineChangedEvent = Recorded<Event<Line>>
+
+  func simulateLineEvents(_ events: LineChangedEvent...) {
+    testScheduler.createHotObservable(events)
+      .bind(to: self.viewModel.inputs.lineChanged)
+      .disposed(by: self.disposeBag)
+  }
+
+  // MARK: - Is selected
+
+  typealias IsSelectedChangedEvent = Recorded<Event<Bool>>
+
+  func simulateIsSelectedEvents(_ events: IsSelectedChangedEvent...) {
+    testScheduler.createHotObservable(events)
+      .bind(to: self.viewModel.inputs.isSelectedChanged)
+      .disposed(by: self.disposeBag)
+  }
+}

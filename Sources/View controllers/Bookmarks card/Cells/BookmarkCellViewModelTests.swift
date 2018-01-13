@@ -37,7 +37,7 @@ final class BookmarkCellViewModelTests: XCTestCase {
 
   // MARK: - Name
 
-  func test_changesName_onBookmarkChange() {
+  func test_changingBookmark_updatesName() {
     let event0 = next(100, Bookmark(name: "test0", lines: []))
     let event1 = next(200, Bookmark(name: "test1", lines: []))
     self.simulateBookmarkEvents(event0, event1)
@@ -54,7 +54,7 @@ final class BookmarkCellViewModelTests: XCTestCase {
 
   // MARK: - Lines
 
-  func test_changesLines_onBookmarkChange() {
+  func test_changingBookmark_updatesLines() {
     let tram1 = Line(name: "1", type: .tram, subtype: .regular)
     let tram2 = Line(name: "2", type: .tram, subtype: .regular)
 
@@ -73,5 +73,20 @@ final class BookmarkCellViewModelTests: XCTestCase {
 
     let expectedEvents = [next(100, "1\nA"), next(200, "1   2\nA   B")]
     XCTAssertEqual(observer.events, expectedEvents)
+  }
+}
+
+// MARK: - Helpers
+
+extension BookmarkCellViewModelTests {
+
+  // MARK: - Bookmark
+
+  typealias BookmarkChangedEvent = Recorded<Event<Bookmark>>
+
+  func simulateBookmarkEvents(_ events: BookmarkChangedEvent...) {
+    testScheduler.createHotObservable(events)
+      .bind(to: self.viewModel.inputs.bookmarkChanged)
+      .disposed(by: self.disposeBag)
   }
 }

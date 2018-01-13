@@ -56,3 +56,19 @@ final class LineSelectionHeaderViewModelTests: XCTestCase {
     XCTAssertEqual(observer.events, expectedEvents)
   }
 }
+
+// MARK: - Helpers
+
+extension LineSelectionHeaderViewModelTests {
+
+  // MARK: - Section
+
+  typealias SectionChangedEvent = Recorded<Event<LineSelectionSection>>
+
+  func simulateSectionEvents(_ events: SectionChangedEvent...) {
+    testScheduler.createHotObservable(events)
+      .bind(to: self.viewModel.inputs.sectionChanged)
+      .disposed(by: self.disposeBag)
+  }
+}
+

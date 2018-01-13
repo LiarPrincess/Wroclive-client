@@ -31,7 +31,7 @@ protocol SearchCardViewModelOutput {
 
   var showApiErrorAlert: Driver<SearchCardApiAlert> { get }
 
-  var close: Driver<Void> { get }
+  var shouldClose: Driver<Void> { get }
 }
 
 class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
@@ -94,7 +94,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   lazy var isLineSelectorVisible: Driver<Bool> = self.lines.map { $0.any }
   lazy var isPlaceholderVisible:  Driver<Bool> = self.isLineSelectorVisible.not()
 
-  lazy var close: Driver<Void> = self._searchButtonPressed
+  lazy var shouldClose: Driver<Void> = self._searchButtonPressed
     .map { _ in () }
     .asDriver(onErrorDriveWith: .never())
 

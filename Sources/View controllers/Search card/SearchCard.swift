@@ -109,7 +109,7 @@ class SearchCard: UIViewController {
   }
 
   private func initViewControlerLifecycleBindings() {
-    self.viewModel.outputs.close
+    self.viewModel.outputs.shouldClose
       .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
       .disposed(by: self.disposeBag)
 
