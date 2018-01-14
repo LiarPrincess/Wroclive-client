@@ -95,16 +95,28 @@ class SearchCard: UIViewController {
   }
 
   private func initAlertBindings() {
+    self.viewModel.outputs.showBookmarkAlert.asObservable()
+      .flatMapLatest(self.createAlert)
+      .bind(to: self.viewModel.inputs.bookmarkAlertNameEntered)
+      .disposed(by: self.disposeBag)
+
     self.viewModel.outputs.showApiErrorAlert.asObservable()
       .flatMapLatest(self.createAlert)
       .bind(to: self.viewModel.inputs.apiAlertTryAgainButtonPressed)
       .disposed(by: self.disposeBag)
   }
 
+  private func createAlert(_ bookmarkAlert: SearchCardBookmarkAlert) -> Observable<String?> {
+    switch bookmarkAlert {
+    case .nameInput:     return BookmarkAlerts.showNameInputAlert(in: self)
+    case .noLineSelcted: return BookmarkAlerts.showNoLinesSelectedAlert(in: self).map { _ in  nil }
+    }
+  }
+
   private func createAlert(_ apiAlert: SearchCardApiAlert) -> Observable<Void> {
     switch apiAlert {
-    case .noInternet:      return NetworkAlerts.showNoInternetAlert()
-    case .connectionError: return NetworkAlerts.showErrorAlert()
+    case .noInternet:      return NetworkAlerts.showNoInternetAlert(in: self)
+    case .connectionError: return NetworkAlerts.showConnectionErrorAlert(in: self)
     }
   }
 
