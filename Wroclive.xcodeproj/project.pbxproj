@@ -575,11 +575,10 @@
 		900B976A1FE1BB4D00AC7C35 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				901FEAD11FE1EC8900C36A71 /* Text attributes */,
 				900CAE8A1F482E750044C8A6 /* Alerts */,
-				9032F0791F5DF66B00E1C9BC /* Intrinsic collections */,
-				908FB1971F48B3CA00121584 /* Reusable cell */,
-				908FB1951F48B3CA00121584 /* Layout guide */,
+				90AACC93200BD3F40064EDFD /* User interface */,
+				90AACC99200BD7350064EDFD /* Controls */,
+				90AACC95200BD44F0064EDFD /* Transitions */,
 				90D3A4041FEFE68500FB7485 /* Rx */,
 			);
 			path = Helpers;
@@ -681,6 +680,7 @@
 		9017C3541EE339FD00063377 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				90AACC98200BD47F0064EDFD /* Pin */,
 				90FAF06F1F35D8C20040E0AE /* Annotations */,
 				9017C3551EE339FD00063377 /* MapViewController.swift */,
 				90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */,
@@ -808,24 +808,13 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		9021F3DB1F12C9EF000A6949 /* User interface */ = {
-			isa = PBXGroup;
-			children = (
-				9021F3E01F12C9EF000A6949 /* Chevron */,
-				903294F81F9CCF49006A6D05 /* Vehicle pin */,
-				901A3F691FAFAFE000383B02 /* Popup view */,
-				9021F3F81F12C9EF000A6949 /* Transitions */,
-			);
-			path = "User interface";
-			sourceTree = "<group>";
-		};
-		9021F3E01F12C9EF000A6949 /* Chevron */ = {
+		9021F3E01F12C9EF000A6949 /* Chevron view */ = {
 			isa = PBXGroup;
 			children = (
 				9021F3E21F12C9EF000A6949 /* ChevronViewState.swift */,
 				9021F3E11F12C9EF000A6949 /* ChevronView.swift */,
 			);
-			path = Chevron;
+			path = "Chevron view";
 			sourceTree = "<group>";
 		};
 		9021F3E31F12C9EF000A6949 /* Lines selector */ = {
@@ -842,15 +831,6 @@
 				901ECDA81FF570BC004765AA /* LineSelectorPageViewModelTests.swift */,
 			);
 			path = "Lines selector";
-			sourceTree = "<group>";
-		};
-		9021F3F81F12C9EF000A6949 /* Transitions */ = {
-			isa = PBXGroup;
-			children = (
-				90BC8AF41F69B62800AF4B84 /* Push transition */,
-				9021F3F91F12C9EF000A6949 /* Card panel transition */,
-			);
-			path = Transitions;
 			sourceTree = "<group>";
 		};
 		9021F3F91F12C9EF000A6949 /* Card panel transition */ = {
@@ -1293,6 +1273,43 @@
 			path = Creator;
 			sourceTree = "<group>";
 		};
+		90AACC93200BD3F40064EDFD /* User interface */ = {
+			isa = PBXGroup;
+			children = (
+				901FEAD11FE1EC8900C36A71 /* Text attributes */,
+				9032F0791F5DF66B00E1C9BC /* Intrinsic collections */,
+				908FB1971F48B3CA00121584 /* Reusable cell */,
+				908FB1951F48B3CA00121584 /* Layout guide */,
+			);
+			path = "User interface";
+			sourceTree = "<group>";
+		};
+		90AACC95200BD44F0064EDFD /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				90BC8AF41F69B62800AF4B84 /* Push transition */,
+				9021F3F91F12C9EF000A6949 /* Card panel transition */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		90AACC98200BD47F0064EDFD /* Pin */ = {
+			isa = PBXGroup;
+			children = (
+				903294F81F9CCF49006A6D05 /* Vehicle pin */,
+			);
+			path = Pin;
+			sourceTree = "<group>";
+		};
+		90AACC99200BD7350064EDFD /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				901A3F691FAFAFE000383B02 /* Popup view */,
+				9021F3E01F12C9EF000A6949 /* Chevron view */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		90ACDC441F8851D8005A4B79 /* Child coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -1555,7 +1572,6 @@
 				9021F3871F12C95D000A6949 /* Extensions */,
 				900B976A1FE1BB4D00AC7C35 /* Helpers */,
 				9061355D1F842633006634C7 /* Coordinators */,
-				9021F3DB1F12C9EF000A6949 /* User interface */,
 				9017C33D1EE339FD00063377 /* View controllers */,
 			);
 			path = Sources;
