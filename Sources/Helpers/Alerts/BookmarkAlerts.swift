@@ -13,7 +13,7 @@ class BookmarkAlerts {
     typealias Localization = Localizable.Alert.Bookmark.NoLinesSelected
     return AlertCreator.createAlert(
       title:   Localization.title,
-      message: Localization.content,
+      message: Localization.message,
       buttons: [AlertButton(title: Localization.ok, style: .default, result: ())],
       in:      parent
     )
@@ -24,7 +24,7 @@ class BookmarkAlerts {
     typealias Localization = Localizable.Alert.Bookmark.NameInput
     return AlertCreator.createTextInputAlert(
       title:       Localization.title,
-      message:     Localization.content,
+      message:     Localization.message,
       placeholder: Localization.placeholder,
       confirm:     AlertButton(title: Localization.save,   style: .default, result: ()),
       cancel:      AlertButton(title: Localization.cancel, style: .cancel,  result: ()),

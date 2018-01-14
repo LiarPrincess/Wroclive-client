@@ -21,7 +21,7 @@ class LocationAlerts {
   /// Prompt for authorization change in settings
   static func showDeniedLocationAuthorizationAlert(in parent: UIViewController) {
     let title   = AuthorizationDenied.title
-    let message = AuthorizationDenied.content
+    let message = AuthorizationDenied.message
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
     let settingsAction = UIAlertAction(title: AuthorizationDenied.settings, style: .default) { _ in
@@ -42,7 +42,7 @@ class LocationAlerts {
   /// Notify that it is not possible to show user location
   static func showGloballyDeniedLocationAuthorizationAlert(in parent: UIViewController) {
     let title   = AuthorizationGloballyDenied.title
-    let message = AuthorizationGloballyDenied.content
+    let message = AuthorizationGloballyDenied.message
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
     let okAction = UIAlertAction(title: AuthorizationGloballyDenied.ok, style: .default, handler: nil)

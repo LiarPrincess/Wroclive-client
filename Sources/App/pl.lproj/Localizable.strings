@@ -6,21 +6,21 @@
  */
 
 "Alert_Bookmark_NameInput_Cancel"      = "Anuluj";
-"Alert_Bookmark_NameInput_Content"     = "Wprowadź nazwę nowej zakładki.";
+"Alert_Bookmark_NameInput_Message"     = "Wprowadź nazwę nowej zakładki.";
 "Alert_Bookmark_NameInput_Placeholder" = "Nazwa";
 "Alert_Bookmark_NameInput_Save"        = "Zachowaj";
 "Alert_Bookmark_NameInput_Title"       = "Nowa zakładka";
 
-"Alert_Bookmark_NoLinesSelected_Content" = "Zanim dodasz zakładkę musisz zaznaczyć przynajmniej 1 linię.";
+"Alert_Bookmark_NoLinesSelected_Message" = "Zanim dodasz zakładkę musisz zaznaczyć przynajmniej 1 linię.";
 "Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
 "Alert_Bookmark_NoLinesSelected_Title"   = "Nie wybrano żadnych linii";
 
-"Alert_Location_Denied_Content"  = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
+"Alert_Location_Denied_Message"  = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
 "Alert_Location_Denied_Ok"       = "OK";
 "Alert_Location_Denied_Settings" = "Ustawienia";
 "Alert_Location_Denied_Title"    = "Usługi lokalizacji wyłączone";
 
-"Alert_Location_GloballyDenied_Content" = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
+"Alert_Location_GloballyDenied_Message" = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
 "Alert_Location_GloballyDenied_Ok"      = "OK";
 "Alert_Location_GloballyDenied_Title"   = "Usługi lokalizacji wyłączone";
 
@@ -29,11 +29,11 @@
 "Alert_InvalidCity_Title"   = "Pora na przygodę!";
 "Alert_InvalidCity_Yes"     = "Tak";
 
-"Alert_Network_ConnectionError_Content"  = "Błąd połączenia z serwerem.";
+"Alert_Network_ConnectionError_Message"  = "Błąd połączenia z serwerem.";
 "Alert_Network_ConnectionError_Title"    = "Nie można pobrać danych";
 "Alert_Network_ConnectionError_TryAgain" = "Spróbuj ponownie";
 
-"Alert_Network_NoInternet_Content"  = "Sprawdź swoje połączenie z internetem.";
+"Alert_Network_NoInternet_Message"  = "Sprawdź swoje połączenie z internetem.";
 "Alert_Network_NoInternet_Title"    = "Nie można pobrać danych";
 "Alert_Network_NoInternet_TryAgain" = "Spróbuj ponownie";
 

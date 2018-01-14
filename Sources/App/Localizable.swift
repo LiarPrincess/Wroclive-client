@@ -33,7 +33,7 @@ public struct Localizable {
         /// Enter name for this bookmark.
         /// - **en**: Enter name for this bookmark.
         /// - **pl**: Wprowadź nazwę nowej zakładki.
-        static var content: String { return localizedString("Alert_Bookmark_NameInput_Content") }
+        static var message: String { return localizedString("Alert_Bookmark_NameInput_Message") }
 
         /// Name
         /// - **en**: Name
@@ -56,7 +56,7 @@ public struct Localizable {
         /// Please select some lines before trying to create bookmark.
         /// - **en**: Please select some lines before trying to create bookmark.
         /// - **pl**: Zanim dodasz zakładkę musisz zaznaczyć przynajmniej 1 linię.
-        static var content: String { return localizedString("Alert_Bookmark_NoLinesSelected_Content") }
+        static var message: String { return localizedString("Alert_Bookmark_NoLinesSelected_Message") }
 
         /// OK
         /// - **en**: OK
@@ -100,7 +100,7 @@ public struct Localizable {
         /// Turn on Location Services in Settings > Privacy to allow to determine your current location.
         /// - **en**: Turn on Location Services in Settings > Privacy to allow to determine your current location.
         /// - **pl**: Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).
-        static var content: String { return localizedString("Alert_Location_Denied_Content") }
+        static var message: String { return localizedString("Alert_Location_Denied_Message") }
 
         /// OK
         /// - **en**: OK
@@ -123,7 +123,7 @@ public struct Localizable {
         /// Turn on Location Services in Settings > Privacy to allow to determine your current location.
         /// - **en**: Turn on Location Services in Settings > Privacy to allow to determine your current location.
         /// - **pl**: Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).
-        static var content: String { return localizedString("Alert_Location_GloballyDenied_Content") }
+        static var message: String { return localizedString("Alert_Location_GloballyDenied_Message") }
 
         /// OK
         /// - **en**: OK
@@ -144,7 +144,7 @@ public struct Localizable {
         /// Could not connect to server.
         /// - **en**: Could not connect to server.
         /// - **pl**: Błąd połączenia z serwerem.
-        static var content: String { return localizedString("Alert_Network_ConnectionError_Content") }
+        static var message: String { return localizedString("Alert_Network_ConnectionError_Message") }
 
         /// Unable to retrieve data
         /// - **en**: Unable to retrieve data
@@ -162,7 +162,7 @@ public struct Localizable {
         /// Please check your internet connection.
         /// - **en**: Please check your internet connection.
         /// - **pl**: Sprawdź swoje połączenie z internetem.
-        static var content: String { return localizedString("Alert_Network_NoInternet_Content") }
+        static var message: String { return localizedString("Alert_Network_NoInternet_Message") }
 
         /// Unable to retrieve data
         /// - **en**: Unable to retrieve data

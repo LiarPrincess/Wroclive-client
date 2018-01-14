@@ -6,21 +6,21 @@
  */
 
 "Alert_Bookmark_NameInput_Cancel"      = "Cancel";
-"Alert_Bookmark_NameInput_Content"     = "Enter name for this bookmark.";
+"Alert_Bookmark_NameInput_Message"     = "Enter name for this bookmark.";
 "Alert_Bookmark_NameInput_Placeholder" = "Name";
 "Alert_Bookmark_NameInput_Save"        = "Save";
 "Alert_Bookmark_NameInput_Title"       = "New bookmark";
 
-"Alert_Bookmark_NoLinesSelected_Content" = "Please select some lines before trying to create bookmark.";
+"Alert_Bookmark_NoLinesSelected_Message" = "Please select some lines before trying to create bookmark.";
 "Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
 "Alert_Bookmark_NoLinesSelected_Title"   = "No lines selected";
 
-"Alert_Location_Denied_Content"  = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
+"Alert_Location_Denied_Message"  = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
 "Alert_Location_Denied_Ok"       = "OK";
 "Alert_Location_Denied_Settings" = "Settings";
 "Alert_Location_Denied_Title"    = "Location Services Off";
 
-"Alert_Location_GloballyDenied_Content" = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
+"Alert_Location_GloballyDenied_Message" = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
 "Alert_Location_GloballyDenied_Ok"      = "OK";
 "Alert_Location_GloballyDenied_Title"   = "Location Services Off";
 
@@ -29,11 +29,11 @@
 "Alert_InvalidCity_Title"   = "Adventure time!";
 "Alert_InvalidCity_Yes"     = "Yes";
 
-"Alert_Network_ConnectionError_Content"  = "Could not connect to server.";
+"Alert_Network_ConnectionError_Message"  = "Could not connect to server.";
 "Alert_Network_ConnectionError_Title"    = "Unable to retrieve data";
 "Alert_Network_ConnectionError_TryAgain" = "Try again";
 
-"Alert_Network_NoInternet_Content"  = "Please check your internet connection.";
+"Alert_Network_NoInternet_Message"  = "Please check your internet connection.";
 "Alert_Network_NoInternet_Title"    = "Unable to retrieve data";
 "Alert_Network_NoInternet_TryAgain" = "Try again";
 
