@@ -8,7 +8,8 @@ import RxSwift
 
 typealias ApiResponse<Data> = Observable<Result<Data, ApiError>>
 
-class SearchCardNetworkAdapter {
+enum SearchCardNetworkAdapter {
+
   static func getAvailableLines() -> ApiResponse<[Line]> {
     return ApiResponse.create { observer -> Disposable in
       Managers.api.getAvailableLines()

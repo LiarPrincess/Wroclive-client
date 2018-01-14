@@ -38,7 +38,7 @@ final class LineSelectionHeaderViewModelTests: XCTestCase {
 
   // MARK: - Line
 
-  func test_changesText_onSectionChange() {
+  func test_changingSection_updatesText() {
     let event0 = next(100, LineSelectionSection(model: LineSelectionSectionData(for: .regular), items: []))
     let event1 = next(200, LineSelectionSection(model: LineSelectionSectionData(for: .night),   items: []))
     self.simulateSectionEvents(event0, event1)
@@ -63,12 +63,11 @@ extension LineSelectionHeaderViewModelTests {
 
   // MARK: - Section
 
-  typealias SectionChangedEvent = Recorded<Event<LineSelectionSection>>
+  typealias SectionEvent = Recorded<Event<LineSelectionSection>>
 
-  func simulateSectionEvents(_ events: SectionChangedEvent...) {
+  func simulateSectionEvents(_ events: SectionEvent...) {
     testScheduler.createHotObservable(events)
-      .bind(to: self.viewModel.inputs.sectionChanged)
+      .bind(to: self.viewModel.inputs.section)
       .disposed(by: self.disposeBag)
   }
 }
-

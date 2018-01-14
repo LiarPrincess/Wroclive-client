@@ -211,4 +211,3 @@ extension LineSelectorViewModelTests {
     }
   }
 }
-

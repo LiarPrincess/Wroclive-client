@@ -226,4 +226,3 @@ extension SearchCardViewModelTests {
     }
   }
 }
-

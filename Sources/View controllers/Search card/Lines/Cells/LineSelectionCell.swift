@@ -25,7 +25,7 @@ class LineSelectionCell: UICollectionViewCell {
   }
 
   override var isSelected: Bool {
-    didSet { self.viewModel.inputs.isSelectedChanged.onNext(isSelected) }
+    didSet { self.viewModel.inputs.isSelected.onNext(isSelected) }
   }
 
   // MARK: - Init

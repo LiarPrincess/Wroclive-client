@@ -12,6 +12,8 @@ protocol SearchCardViewModelInput {
   var pageSelected:      AnyObserver<LineType> { get }
   var pageDidTransition: AnyObserver<LineType> { get }
 
+  var linesSelected: AnyObserver<[Line]> { get }
+
   var bookmarkButtonPressed: AnyObserver<Void> { get }
   var searchButtonPressed:   AnyObserver<Void> { get }
 
@@ -23,9 +25,8 @@ protocol SearchCardViewModelInput {
 }
 
 protocol SearchCardViewModelOutput {
-  var page: Driver<LineType> { get }
-
-  var lines: Driver<[Line]> { get }
+  var page:  Driver<LineType>        { get }
+  var lines: Driver<SearchCardLines> { get }
 
   var isLineSelectorVisible: Driver<Bool> { get }
   var isPlaceholderVisible:  Driver<Bool> { get }
@@ -42,6 +43,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
   private let _pageSelected          = PublishSubject<LineType>()
   private let _pageDidTransition     = PublishSubject<LineType>()
+  private let _linesSelected         = PublishSubject<[Line]>()
   private let _bookmarkButtonPressed = PublishSubject<Void>()
   private let _searchButtonPressed   = PublishSubject<Void>()
 
@@ -67,6 +69,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
   lazy var pageSelected:          AnyObserver<LineType> = self._pageSelected.asObserver()
   lazy var pageDidTransition:     AnyObserver<LineType> = self._pageDidTransition.asObserver()
+  lazy var linesSelected:         AnyObserver<[Line]>   = self._linesSelected.asObserver()
   lazy var bookmarkButtonPressed: AnyObserver<Void>     = self._bookmarkButtonPressed.asObserver()
   lazy var searchButtonPressed:   AnyObserver<Void>     = self._searchButtonPressed.asObserver()
 
@@ -78,19 +81,16 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
   // MARK: - Output
 
-  lazy var page: Driver<LineType> = Observable.merge(self._pageSelected, self._pageDidTransition)
-    .startWith(LineType.tram)
-    .asDriver(onErrorDriveWith: .never())
+  let page:          Driver<LineType>
+  let selectedLines: Driver<[Line]>
 
-  lazy var lines: Driver<[Line]> = self.lineResponse
+  lazy var lines: Driver<SearchCardLines> = self.lineResponse
     .values()
-    .startWith([])
-    .asDriver(onErrorJustReturn: [])
-
-  let selectedLines: Driver<[Line]> = Observable.just([Line(name: "A", type: .bus, subtype: .regular)])
+    .withLatestFrom(self.selectedLines) { SearchCardLines(lines: $0, selectedLines: $1) }
+    .startWith(SearchCardLines(lines: [], selectedLines: []))
     .asDriver(onErrorDriveWith: .never())
 
-  lazy var isLineSelectorVisible: Driver<Bool> = self.lines.map { $0.any }
+  lazy var isLineSelectorVisible: Driver<Bool> = self.lines.map { $0.lines.any }
   lazy var isPlaceholderVisible:  Driver<Bool> = self.isLineSelectorVisible.not()
 
   lazy var showApiErrorAlert: Driver<SearchCardApiAlert> = self.lineResponse
@@ -110,10 +110,20 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   // MARK: - Init
 
   init() {
+    let state = Managers.search.getState()
+
+    self.page = Observable.merge(self._pageSelected, self._pageDidTransition)
+      .startWith(state.selectedLineType)
+      .asDriver(onErrorDriveWith: .never())
+
+    self.selectedLines = self._linesSelected
+      .startWith(state.selectedLines)
+      .asDriver(onErrorDriveWith: .never())
+
     self._bookmarkAlertNameEntered
       .flatMap { Observable.from(optional: $0) }
       .withLatestFrom(self.selectedLines) { (name: $0, lines: $1) }
-      .map { Bookmark(name: $0.name, lines: $0.lines) }
+      .map  { Bookmark(name: $0.name, lines: $0.lines) }
       .bind { Managers.bookmarks.add($0) }
       .disposed(by: self.disposeBag)
 

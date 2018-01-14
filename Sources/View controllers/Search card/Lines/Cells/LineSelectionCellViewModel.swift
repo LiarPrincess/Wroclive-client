@@ -10,8 +10,8 @@ import RxCocoa
 private typealias TextStyles = LineSelectionCellConstants.TextStyles
 
 protocol LineSelectionCellViewModelInput {
-  var lineChanged:       AnyObserver<Line> { get }
-  var isSelectedChanged: AnyObserver<Bool> { get }
+  var line:       AnyObserver<Line> { get }
+  var isSelected: AnyObserver<Bool> { get }
 }
 
 protocol LineSelectionCellViewModelOutput {
@@ -19,25 +19,28 @@ protocol LineSelectionCellViewModelOutput {
 }
 
 class LineSelectionCellViewModel: LineSelectionCellViewModelInput, LineSelectionCellViewModelOutput {
-  private let _lineChanged       = PublishSubject<Line>()
-  private let _isSelectedChanged = PublishSubject<Bool>()
 
-  // input
-  lazy var lineChanged:       AnyObserver<Line> = self._lineChanged.asObserver()
-  lazy var isSelectedChanged: AnyObserver<Bool> = self._isSelectedChanged.asObserver()
+  // MARK: - Properties
 
-  // output
-  let text: Driver<NSAttributedString>
+  private let _line       = PublishSubject<Line>()
+  private let _isSelected = PublishSubject<Bool>()
 
-  init() {
-    let lineName   = self._lineChanged.map { $0.name }.startWith("")
-    let isSelected = self._isSelectedChanged.startWith(false)
+  // MARK: - Input
 
-    self.text = Observable.combineLatest(lineName, isSelected)
+  lazy var line:       AnyObserver<Line> = self._line.asObserver()
+  lazy var isSelected: AnyObserver<Bool> = self._isSelected.asObserver()
+
+  // MARK: - Output
+
+  lazy var text: Driver<NSAttributedString> = {
+    let lineName   = self._line.map { $0.name }.startWith("")
+    let isSelected = self._isSelected.startWith(false)
+
+    return Observable.combineLatest(lineName, isSelected)
       .distinctUntilChanged(areEqual)
       .map { createText($0.0, isSelected: $0.1) }
       .asDriver(onErrorDriveWith: .never())
-  }
+  }()
 
   // MARK: - Input/Output
 

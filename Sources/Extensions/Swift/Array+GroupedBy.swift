@@ -3,8 +3,6 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import Foundation
-
 extension Array {
 
   func groupedBy <K: Hashable> (_ grouping: (Element) -> K) -> [K:[Element]] {

@@ -70,7 +70,10 @@ class SearchCard: UIViewController {
 
   private func initLineSelectorBindings() {
     self.viewModel.outputs.lines
-      .drive(self.lineSelector.viewModel.inputs.linesChanged)
+      .drive(onNext: { [weak self] lines in
+        self?.lineSelector.viewModel.inputs.linesChanged.onNext(lines.lines)
+        self?.lineSelector.viewModel.inputs.selectedLinesChanged.onNext(lines.selectedLines)
+      })
       .disposed(by: self.disposeBag)
   }
 

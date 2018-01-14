@@ -10,7 +10,7 @@ import RxCocoa
 private typealias TextStyles = LineSelectionHeaderViewConstants.TextStyles
 
 protocol LineSelectionHeaderViewModelInput {
-  var sectionChanged: AnyObserver<LineSelectionSection> { get }
+  var section: AnyObserver<LineSelectionSection> { get }
 }
 
 protocol LineSelectionHeaderViewModelOutput {
@@ -18,19 +18,20 @@ protocol LineSelectionHeaderViewModelOutput {
 }
 
 class LineSelectionHeaderViewModel: LineSelectionHeaderViewModelInput, LineSelectionHeaderViewModelOutput {
-  private let _sectionChanged = PublishSubject<LineSelectionSection>()
 
-  // input
-  lazy var sectionChanged: AnyObserver<LineSelectionSection> = self._sectionChanged.asObserver()
+  // MARK: - Properties
 
-  // output
-  let text: Driver<NSAttributedString>
+  private let _section = PublishSubject<LineSelectionSection>()
 
-  init() {
-    self.text = self._sectionChanged
-      .map { createText($0.model) }
-      .asDriver(onErrorDriveWith: .never())
-  }
+  // MARK: - Input
+
+  lazy var section: AnyObserver<LineSelectionSection> = self._section.asObserver()
+
+  // MARK: - Output
+
+  lazy var text: Driver<NSAttributedString> = self._section
+    .map { createText($0.model) }
+    .asDriver(onErrorDriveWith: .never())
 
   // MARK: - Input/Output
 

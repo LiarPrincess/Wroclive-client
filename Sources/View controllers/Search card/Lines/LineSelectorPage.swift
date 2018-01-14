@@ -68,7 +68,7 @@ class LineSelectorPage: UIViewController {
     return RxCollectionViewDataSource(
       configureCell: { _, collectionView, indexPath, model -> UICollectionViewCell in
         let cell = collectionView.dequeueReusableCell(ofType: LineSelectionCell.self, forIndexPath: indexPath)
-        cell.viewModel.inputs.lineChanged.onNext(model)
+        cell.viewModel.inputs.line.onNext(model)
         return cell
       },
       configureSupplementaryView: { dataSource, collectionView, kind, indexPath -> UICollectionReusableView in
@@ -76,7 +76,7 @@ class LineSelectorPage: UIViewController {
         case UICollectionElementKindSectionHeader:
           let view = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectionHeaderView.self, kind: .header, for: indexPath)
           let section = dataSource[indexPath.section]
-          view.viewModel.inputs.sectionChanged.onNext(section)
+          view.viewModel.inputs.section.onNext(section)
           return view
         default:
           fatalError("Unexpected element kind")

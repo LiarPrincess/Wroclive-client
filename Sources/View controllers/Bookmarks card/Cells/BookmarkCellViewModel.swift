@@ -29,7 +29,7 @@ class BookmarkCellViewModel: BookmarkCellViewModelInput, BookmarkCellViewModelOu
   lazy var bookmark: AnyObserver<Bookmark> = self._bookmark.asObserver()
 
   // MARK: - Output
-  
+
   lazy var name: Driver<String> = self._bookmark
     .map { createName($0) }
     .asDriver(onErrorDriveWith: .never())
