@@ -47,7 +47,7 @@ final class LineSelectorPageViewModelTests: XCTestCase {
     let event2 = next(300, [Line]())
     self.simulateLinesChangedEvents(event0, event1, event2)
 
-    let observer = self.testScheduler.createObserver([LineSelectionSection].self)
+    let observer = self.testScheduler.createObserver([LineSelectorSection].self)
     self.viewModel.outputs.sections
       .drive(observer)
       .disposed(by: self.disposeBag)
@@ -63,7 +63,7 @@ final class LineSelectorPageViewModelTests: XCTestCase {
         self.createSection(subtype: .regular, lines: [line1, line0]),
         self.createSection(subtype: .night,   lines: [line4])
       ]),
-      next(300, [LineSelectionSection]())
+      next(300, [LineSelectorSection]())
     ]
     self.assertEqual(observer.events, expectedEvents)
   }
@@ -100,7 +100,7 @@ extension LineSelectorPageViewModelTests {
   // MARK: - Lines changed
 
   typealias LinesChangedEvent = Recorded<Event<[Line]>>
-  typealias SectionEvent      = Recorded<Event<[LineSelectionSection]>>
+  typealias SectionEvent      = Recorded<Event<[LineSelectorSection]>>
 
   func simulateLinesChangedEvents(_ events: LinesChangedEvent...) {
     testScheduler.createHotObservable(events)
@@ -108,9 +108,9 @@ extension LineSelectorPageViewModelTests {
       .disposed(by: self.disposeBag)
   }
 
-  func createSection(subtype lineSubtype: LineSubtype, lines: [Line]) -> LineSelectionSection {
-    let data = LineSelectionSectionData(for: lineSubtype)
-    return LineSelectionSection(model: data, items: lines.sorted(by: .name))
+  func createSection(subtype lineSubtype: LineSubtype, lines: [Line]) -> LineSelectorSection {
+    let data = LineSelectorSectionData(for: lineSubtype)
+    return LineSelectorSection(model: data, items: lines.sorted(by: .name))
   }
 
   func assertEqual(_ lhs: [SectionEvent], _ rhs: [SectionEvent]) {

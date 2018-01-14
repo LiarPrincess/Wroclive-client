@@ -3,11 +3,11 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-private typealias Localization = Localizable.LineSelection.SectionName
+private typealias Localization = Localizable.LineSelector.SectionName
 
-typealias LineSelectionSection = RxSectionModel<LineSelectionSectionData, Line>
+typealias LineSelectorSection = RxSectionModel<LineSelectorSectionData, Line>
 
-struct LineSelectionSectionData: Equatable {
+struct LineSelectorSectionData: Equatable {
   let lineSubtype: LineSubtype
 
   var lineSubtypeTranslation: String {
@@ -27,7 +27,7 @@ struct LineSelectionSectionData: Equatable {
     self.lineSubtype = lineSubtype
   }
 
-  static func == (lhs: LineSelectionSectionData, rhs: LineSelectionSectionData) -> Bool {
+  static func == (lhs: LineSelectorSectionData, rhs: LineSelectorSectionData) -> Bool {
     return lhs.lineSubtype == rhs.lineSubtype
   }
 }

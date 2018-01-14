@@ -5,7 +5,7 @@
 
 import UIKit
 
-enum LineSelectionCellConstants {
+enum LineSelectorCellConstants {
   enum Layout {
     static let margin:  CGFloat =  2.0
     static let minSize: CGFloat = 50.0

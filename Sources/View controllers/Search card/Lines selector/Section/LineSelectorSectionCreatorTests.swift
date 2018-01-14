@@ -6,11 +6,11 @@
 import XCTest
 @testable import Wroclive
 
-final class LineSelectionSectionCreatorTests: XCTestCase {
+final class LineSelectorSectionCreatorTests: XCTestCase {
 
   func test_noLines_returnNoSections() {
     let lines = [Line]()
-    let sections = LineSelectionSectionCreator.create(lines)
+    let sections = LineSelectorSectionCreator.create(lines)
     XCTAssertEqual(sections, [])
   }
 
@@ -27,7 +27,7 @@ final class LineSelectionSectionCreatorTests: XCTestCase {
     let line9 = Line(name: "9", type:  .bus, subtype: .temporary)
 
     let lines = [line0, line1, line2, line3, line4, line5, line6, line7, line8, line9].reversed().toArray()
-    let sections = LineSelectionSectionCreator.create(lines)
+    let sections = LineSelectorSectionCreator.create(lines)
 
     let expectedSections = [
       self.createSection(subtype: .express,   lines: line0, line1),
@@ -42,8 +42,8 @@ final class LineSelectionSectionCreatorTests: XCTestCase {
     XCTAssertEqual(sections, expectedSections)
   }
 
-  func createSection(subtype lineSubtype: LineSubtype, lines: Line...) -> LineSelectionSection {
-    let data = LineSelectionSectionData(for: lineSubtype)
-    return LineSelectionSection(model: data, items: lines)
+  func createSection(subtype lineSubtype: LineSubtype, lines: Line...) -> LineSelectorSection {
+    let data = LineSelectorSectionData(for: lineSubtype)
+    return LineSelectorSection(model: data, items: lines)
   }
 }

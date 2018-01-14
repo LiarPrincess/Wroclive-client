@@ -7,10 +7,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-private typealias HeaderLayout     = LineSelectionHeaderViewConstants.Layout
-private typealias HeaderTextStyles = LineSelectionHeaderViewConstants.TextStyles
-private typealias CellLayout       = LineSelectionCellConstants.Layout
-private typealias Localization     = Localizable.LineSelection
+private typealias HeaderLayout     = LineSelectorHeaderViewConstants.Layout
+private typealias HeaderTextStyles = LineSelectorHeaderViewConstants.TextStyles
+private typealias CellLayout       = LineSelectorCellConstants.Layout
+private typealias Localization     = Localizable.LineSelector
 
 class LineSelectorPage: UIViewController {
 
@@ -64,17 +64,17 @@ class LineSelectorPage: UIViewController {
 
   // MARK: - Data source
 
-  private static func createDataSource() -> RxCollectionViewDataSource<LineSelectionSection> {
+  private static func createDataSource() -> RxCollectionViewDataSource<LineSelectorSection> {
     return RxCollectionViewDataSource(
       configureCell: { _, collectionView, indexPath, model -> UICollectionViewCell in
-        let cell = collectionView.dequeueReusableCell(ofType: LineSelectionCell.self, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(ofType: LineSelectorCell.self, forIndexPath: indexPath)
         cell.viewModel.inputs.line.onNext(model)
         return cell
       },
       configureSupplementaryView: { dataSource, collectionView, kind, indexPath -> UICollectionReusableView in
         switch kind {
         case UICollectionElementKindSectionHeader:
-          let view = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectionHeaderView.self, kind: .header, for: indexPath)
+          let view = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectorHeaderView.self, kind: .header, for: indexPath)
           let section = dataSource[indexPath.section]
           view.viewModel.inputs.section.onNext(section)
           return view
@@ -96,8 +96,8 @@ class LineSelectorPage: UIViewController {
     self.collectionViewLayout.minimumLineSpacing      = CellLayout.margin
     self.collectionViewLayout.minimumInteritemSpacing = CellLayout.margin
 
-    self.collectionView.register(LineSelectionCell.self)
-    self.collectionView.registerSupplementary(LineSelectionHeaderView.self, ofKind: .header)
+    self.collectionView.register(LineSelectorCell.self)
+    self.collectionView.registerSupplementary(LineSelectorHeaderView.self, ofKind: .header)
     self.collectionView.backgroundColor         = Managers.theme.colors.background
     self.collectionView.allowsSelection         = true
     self.collectionView.allowsMultipleSelection = true

@@ -55,14 +55,14 @@
 "Configuration_Theme_Tram"    = "Tram";
 "Configuration_Title"         = "Settings";
 
-"LineSelection_SectionName_Express"   = "Express";
-"LineSelection_SectionName_Limited"   = "Limited";
-"LineSelection_SectionName_Night"     = "Night";
-"LineSelection_SectionName_PeakHour"  = "Peak-hour";
-"LineSelection_SectionName_Regular"   = "Regular";
-"LineSelection_SectionName_Suburban"  = "Suburban";
-"LineSelection_SectionName_Temporary" = "Temporary";
-"LineSelection_SectionName_Zone"      = "Zone";
+"LineSelector_SectionName_Express"   = "Express";
+"LineSelector_SectionName_Limited"   = "Limited";
+"LineSelector_SectionName_Night"     = "Night";
+"LineSelector_SectionName_PeakHour"  = "Peak-hour";
+"LineSelector_SectionName_Regular"   = "Regular";
+"LineSelector_SectionName_Suburban"  = "Suburban";
+"LineSelector_SectionName_Temporary" = "Temporary";
+"LineSelector_SectionName_Zone"      = "Zone";
 
 "LineTypeSelection_Bus"  = "Buses";
 "LineTypeSelection_Tram" = "Trams";

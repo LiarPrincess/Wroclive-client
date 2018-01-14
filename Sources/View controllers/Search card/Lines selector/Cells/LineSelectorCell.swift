@@ -8,15 +8,15 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-private typealias Layout = LineSelectionCellConstants.Layout
+private typealias Layout = LineSelectorCellConstants.Layout
 
-class LineSelectionCell: UICollectionViewCell {
+class LineSelectorCell: UICollectionViewCell {
 
   // MARK: - Properties
 
   private let textLabel = UILabel()
 
-  let viewModel = LineSelectionCellViewModel()
+  let viewModel = LineSelectorCellViewModel()
   private let disposeBag = DisposeBag()
 
   override var alpha: CGFloat {

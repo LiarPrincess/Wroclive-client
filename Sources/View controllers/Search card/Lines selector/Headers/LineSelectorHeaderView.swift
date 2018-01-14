@@ -8,15 +8,15 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-private typealias Layout = LineSelectionHeaderViewConstants.Layout
+private typealias Layout = LineSelectorHeaderViewConstants.Layout
 
-class LineSelectionHeaderView: UICollectionReusableView {
+class LineSelectorHeaderView: UICollectionReusableView {
 
   // MARK: - Properties
 
   private let textLabel = UILabel()
 
-  let viewModel = LineSelectionHeaderViewModel()
+  let viewModel = LineSelectorHeaderViewModel()
   private let disposeBag = DisposeBag()
 
   override var alpha: CGFloat {

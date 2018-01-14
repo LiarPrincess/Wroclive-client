@@ -7,18 +7,18 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-private typealias TextStyles = LineSelectionCellConstants.TextStyles
+private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
-protocol LineSelectionCellViewModelInput {
+protocol LineSelectorCellViewModelInput {
   var line:       AnyObserver<Line> { get }
   var isSelected: AnyObserver<Bool> { get }
 }
 
-protocol LineSelectionCellViewModelOutput {
+protocol LineSelectorCellViewModelOutput {
   var text: Driver<NSAttributedString> { get }
 }
 
-class LineSelectionCellViewModel: LineSelectionCellViewModelInput, LineSelectionCellViewModelOutput {
+class LineSelectorCellViewModel: LineSelectorCellViewModelInput, LineSelectorCellViewModelOutput {
 
   // MARK: - Properties
 
@@ -44,8 +44,8 @@ class LineSelectionCellViewModel: LineSelectionCellViewModelInput, LineSelection
 
   // MARK: - Input/Output
 
-  var inputs:  LineSelectionCellViewModelInput  { return self }
-  var outputs: LineSelectionCellViewModelOutput { return self }
+  var inputs:  LineSelectorCellViewModelInput  { return self }
+  var outputs: LineSelectorCellViewModelOutput { return self }
 }
 
 private func areEqual<T1: Equatable, T2: Equatable> (lhs: (T1, T2), rhs: (T1, T2)) -> Bool {

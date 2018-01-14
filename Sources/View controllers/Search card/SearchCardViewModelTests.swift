@@ -11,7 +11,7 @@ import RxTest
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-private typealias TextStyles = LineSelectionCellConstants.TextStyles
+private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
 final class SearchCardViewModelTests: XCTestCase {
 

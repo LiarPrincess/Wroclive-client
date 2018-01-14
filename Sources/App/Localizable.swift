@@ -270,49 +270,49 @@ public struct Localizable {
     static var title: String { return localizedString("Configuration_Title") }
   }
 
-  struct LineSelection {
+  struct LineSelector {
 
     struct SectionName {
 
       /// Express
       /// - **en**: Express
       /// - **pl**: Pośpieszne
-      static var express: String { return localizedString("LineSelection_SectionName_Express") }
+      static var express: String { return localizedString("LineSelector_SectionName_Express") }
 
       /// Limited
       /// - **en**: Limited
       /// - **pl**: Zastępcze
-      static var limited: String { return localizedString("LineSelection_SectionName_Limited") }
+      static var limited: String { return localizedString("LineSelector_SectionName_Limited") }
 
       /// Night
       /// - **en**: Night
       /// - **pl**: Nocne
-      static var night: String { return localizedString("LineSelection_SectionName_Night") }
+      static var night: String { return localizedString("LineSelector_SectionName_Night") }
 
       /// Peak-hour
       /// - **en**: Peak-hour
       /// - **pl**: Szczytowe
-      static var peakHour: String { return localizedString("LineSelection_SectionName_PeakHour") }
+      static var peakHour: String { return localizedString("LineSelector_SectionName_PeakHour") }
 
       /// Regular
       /// - **en**: Regular
       /// - **pl**: Normalne
-      static var regular: String { return localizedString("LineSelection_SectionName_Regular") }
+      static var regular: String { return localizedString("LineSelector_SectionName_Regular") }
 
       /// Suburban
       /// - **en**: Suburban
       /// - **pl**: Podmiejskie
-      static var suburban: String { return localizedString("LineSelection_SectionName_Suburban") }
+      static var suburban: String { return localizedString("LineSelector_SectionName_Suburban") }
 
       /// Temporary
       /// - **en**: Temporary
       /// - **pl**: Tymczasowe
-      static var temporary: String { return localizedString("LineSelection_SectionName_Temporary") }
+      static var temporary: String { return localizedString("LineSelector_SectionName_Temporary") }
 
       /// Zone
       /// - **en**: Zone
       /// - **pl**: Strefowe
-      static var zone: String { return localizedString("LineSelection_SectionName_Zone") }
+      static var zone: String { return localizedString("LineSelector_SectionName_Zone") }
     }
   }
 

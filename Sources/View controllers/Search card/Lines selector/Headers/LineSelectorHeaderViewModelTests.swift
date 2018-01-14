@@ -11,14 +11,14 @@ import RxTest
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-private typealias Localization = Localizable.LineSelection.SectionName
-private typealias TextStyles   = LineSelectionHeaderViewConstants.TextStyles
+private typealias Localization = Localizable.LineSelector.SectionName
+private typealias TextStyles   = LineSelectorHeaderViewConstants.TextStyles
 
-final class LineSelectionHeaderViewModelTests: XCTestCase {
+final class LineSelectorHeaderViewModelTests: XCTestCase {
 
   // MARK: - Properties
 
-  var viewModel:     LineSelectionHeaderViewModel!
+  var viewModel:     LineSelectorHeaderViewModel!
   var testScheduler: TestScheduler!
   let disposeBag = DisposeBag()
 
@@ -26,7 +26,7 @@ final class LineSelectionHeaderViewModelTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    self.viewModel     = LineSelectionHeaderViewModel()
+    self.viewModel     = LineSelectorHeaderViewModel()
     self.testScheduler = TestScheduler(initialClock: 0)
   }
 
@@ -39,8 +39,8 @@ final class LineSelectionHeaderViewModelTests: XCTestCase {
   // MARK: - Line
 
   func test_changingSection_updatesText() {
-    let event0 = next(100, LineSelectionSection(model: LineSelectionSectionData(for: .regular), items: []))
-    let event1 = next(200, LineSelectionSection(model: LineSelectionSectionData(for: .night),   items: []))
+    let event0 = next(100, LineSelectorSection(model: LineSelectorSectionData(for: .regular), items: []))
+    let event1 = next(200, LineSelectorSection(model: LineSelectorSectionData(for: .night),   items: []))
     self.simulateSectionEvents(event0, event1)
 
     let observer = self.testScheduler.createObserver(NSAttributedString.self)
@@ -59,11 +59,11 @@ final class LineSelectionHeaderViewModelTests: XCTestCase {
 
 // MARK: - Helpers
 
-extension LineSelectionHeaderViewModelTests {
+extension LineSelectorHeaderViewModelTests {
 
   // MARK: - Section
 
-  typealias SectionEvent = Recorded<Event<LineSelectionSection>>
+  typealias SectionEvent = Recorded<Event<LineSelectorSection>>
 
   func simulateSectionEvents(_ events: SectionEvent...) {
     testScheduler.createHotObservable(events)

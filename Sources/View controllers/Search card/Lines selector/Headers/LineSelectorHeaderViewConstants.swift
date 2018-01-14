@@ -5,7 +5,7 @@
 
 import UIKit
 
-enum LineSelectionHeaderViewConstants {
+enum LineSelectorHeaderViewConstants {
   enum Layout {
     static let topInset:    CGFloat = 16.0
     static let bottomInset: CGFloat =  8.0

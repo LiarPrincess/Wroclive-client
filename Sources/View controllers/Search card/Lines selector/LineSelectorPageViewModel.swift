@@ -13,8 +13,8 @@ protocol LineSelectorPageViewModelInput {
 }
 
 protocol LineSelectorPageViewModelOutput {
-  var sections:      Driver<[LineSelectionSection]> { get }
-  var selectedLines: Driver<[Line]>                 { get }
+  var sections:      Driver<[LineSelectorSection]> { get }
+  var selectedLines: Driver<[Line]>                { get }
 }
 
 class LineSelectorPageViewModel: LineSelectorPageViewModelInput, LineSelectorPageViewModelOutput {
@@ -31,8 +31,8 @@ class LineSelectorPageViewModel: LineSelectorPageViewModelInput, LineSelectorPag
 
   // MARK: - Output
 
-  lazy var sections: Driver<[LineSelectionSection]> = self._linesChanged
-    .map { LineSelectionSectionCreator.create($0) }
+  lazy var sections: Driver<[LineSelectorSection]> = self._linesChanged
+    .map { LineSelectorSectionCreator.create($0) }
     .asDriver(onErrorJustReturn: [])
 
   lazy var selectedLines: Driver<[Line]> = self._selectedLinesChanged

@@ -11,13 +11,13 @@ import RxTest
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-private typealias TextStyles = LineSelectionCellConstants.TextStyles
+private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
-final class LineSelectionCellViewModelTests: XCTestCase {
+final class LineSelectorCellViewModelTests: XCTestCase {
 
   // MARK: - Properties
 
-  var viewModel:     LineSelectionCellViewModel!
+  var viewModel:     LineSelectorCellViewModel!
   var testScheduler: TestScheduler!
   let disposeBag = DisposeBag()
 
@@ -25,7 +25,7 @@ final class LineSelectionCellViewModelTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    self.viewModel     = LineSelectionCellViewModel()
+    self.viewModel     = LineSelectorCellViewModel()
     self.testScheduler = TestScheduler(initialClock: 0)
   }
 
@@ -78,7 +78,7 @@ final class LineSelectionCellViewModelTests: XCTestCase {
 
 // MARK: - Helpers
 
-extension LineSelectionCellViewModelTests {
+extension LineSelectorCellViewModelTests {
 
   // MARK: - Line
 

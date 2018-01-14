@@ -55,14 +55,14 @@
 "Configuration_Theme_Tram"    = "Tramwaje";
 "Configuration_Title"         = "Ustawienia";
 
-"LineSelection_SectionName_Express"   = "Pośpieszne";
-"LineSelection_SectionName_Limited"   = "Zastępcze";
-"LineSelection_SectionName_Night"     = "Nocne";
-"LineSelection_SectionName_PeakHour"  = "Szczytowe";
-"LineSelection_SectionName_Regular"   = "Normalne";
-"LineSelection_SectionName_Suburban"  = "Podmiejskie";
-"LineSelection_SectionName_Temporary" = "Tymczasowe";
-"LineSelection_SectionName_Zone"      = "Strefowe";
+"LineSelector_SectionName_Express"   = "Pośpieszne";
+"LineSelector_SectionName_Limited"   = "Zastępcze";
+"LineSelector_SectionName_Night"     = "Nocne";
+"LineSelector_SectionName_PeakHour"  = "Szczytowe";
+"LineSelector_SectionName_Regular"   = "Normalne";
+"LineSelector_SectionName_Suburban"  = "Podmiejskie";
+"LineSelector_SectionName_Temporary" = "Tymczasowe";
+"LineSelector_SectionName_Zone"      = "Strefowe";
 
 "LineTypeSelection_Bus"  = "Autobusy";
 "LineTypeSelection_Tram" = "Tramwaje";
