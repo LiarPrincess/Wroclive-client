@@ -10,7 +10,7 @@ import RxCocoa
 private typealias Layout = BookmarkCellConstants.Layout
 
 protocol BookmarkCellViewModelInput {
-  var bookmarkChanged: AnyObserver<Bookmark> { get }
+  var bookmark: AnyObserver<Bookmark> { get }
 }
 
 protocol BookmarkCellViewModelOutput {
@@ -20,26 +20,23 @@ protocol BookmarkCellViewModelOutput {
 
 class BookmarkCellViewModel: BookmarkCellViewModelInput, BookmarkCellViewModelOutput {
 
-  private let _bookmarkChanged = PublishSubject<Bookmark>()
+  // MARK: - Properties
 
-  // input
-  lazy var bookmarkChanged: AnyObserver<Bookmark> = self._bookmarkChanged.asObserver()
+  private let _bookmark = PublishSubject<Bookmark>()
 
-  // output
-  let name:  Driver<String>
-  let lines: Driver<String>
+  // MARK: - Input
 
-  init() {
-    let sharedBookmark = self._bookmarkChanged.asObservable().share()
+  lazy var bookmark: AnyObserver<Bookmark> = self._bookmark.asObserver()
 
-    self.name = sharedBookmark
-      .map { createName($0) }
-      .asDriver(onErrorDriveWith: .never())
+  // MARK: - Output
+  
+  lazy var name: Driver<String> = self._bookmark
+    .map { createName($0) }
+    .asDriver(onErrorDriveWith: .never())
 
-    self.lines = sharedBookmark
-      .map { createLinesLabel($0) }
-      .asDriver(onErrorDriveWith: .never())
-  }
+  lazy var lines: Driver<String> = self._bookmark
+    .map { createLinesLabel($0) }
+    .asDriver(onErrorDriveWith: .never())
 
   // MARK: - Input/Output
 
