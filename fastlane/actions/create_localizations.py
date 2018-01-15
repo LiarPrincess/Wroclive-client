@@ -114,7 +114,7 @@ def generate_code(dictionary, level = 0):
             # static var cardTitle: String { return localizedString("Search_CardTitle") }
             print(indent + 'static var ' + key + ': String { return localizedString("' + localization_key + '") }')
         else:
-            print(indent + 'struct ' + str(key) + ' {')
+            print(indent + 'enum ' + str(key) + ' {')
             generate_code(value, level + 1)
             print(indent + '}')
 

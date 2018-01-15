@@ -19,11 +19,11 @@
 
 public struct Localizable {
 
-  struct Alert {
+  enum Alert {
 
-    struct Bookmark {
+    enum Bookmark {
 
-      struct NameInput {
+      enum NameInput {
 
         /// Cancel
         /// - **en**: Cancel
@@ -51,7 +51,7 @@ public struct Localizable {
         static var title: String { return localizedString("Alert_Bookmark_NameInput_Title") }
       }
 
-      struct NoLinesSelected {
+      enum NoLinesSelected {
 
         /// Please select some lines before trying to create bookmark.
         /// - **en**: Please select some lines before trying to create bookmark.
@@ -70,7 +70,7 @@ public struct Localizable {
       }
     }
 
-    struct InvalidCity {
+    enum InvalidCity {
 
       /// Wroclive works best in Wrocław.\nWould you like to visit?
       /// - **en**: Wroclive works best in Wrocław.\nWould you like to visit?
@@ -93,9 +93,9 @@ public struct Localizable {
       static var yes: String { return localizedString("Alert_InvalidCity_Yes") }
     }
 
-    struct Location {
+    enum Location {
 
-      struct Denied {
+      enum Denied {
 
         /// Turn on Location Services in Settings > Privacy to allow to determine your current location.
         /// - **en**: Turn on Location Services in Settings > Privacy to allow to determine your current location.
@@ -118,7 +118,7 @@ public struct Localizable {
         static var title: String { return localizedString("Alert_Location_Denied_Title") }
       }
 
-      struct GloballyDenied {
+      enum GloballyDenied {
 
         /// Turn on Location Services in Settings > Privacy to allow to determine your current location.
         /// - **en**: Turn on Location Services in Settings > Privacy to allow to determine your current location.
@@ -137,9 +137,9 @@ public struct Localizable {
       }
     }
 
-    struct Network {
+    enum Network {
 
-      struct ConnectionError {
+      enum ConnectionError {
 
         /// Could not connect to server.
         /// - **en**: Could not connect to server.
@@ -157,7 +157,7 @@ public struct Localizable {
         static var tryAgain: String { return localizedString("Alert_Network_ConnectionError_TryAgain") }
       }
 
-      struct NoInternet {
+      enum NoInternet {
 
         /// Please check your internet connection.
         /// - **en**: Please check your internet connection.
@@ -177,9 +177,9 @@ public struct Localizable {
     }
   }
 
-  struct Bookmarks {
+  enum Bookmarks {
 
-    struct Edit {
+    enum Edit {
 
       /// Done
       /// - **en**: Done
@@ -192,7 +192,7 @@ public struct Localizable {
       static var edit: String { return localizedString("Bookmarks_Edit_Edit") }
     }
 
-    struct Placeholder {
+    enum Placeholder {
 
       /// To add bookmark press <star> when selecting lines.
       /// - **en**: To add bookmark press <star> when selecting lines.
@@ -211,9 +211,9 @@ public struct Localizable {
     static var cardTitle: String { return localizedString("Bookmarks_CardTitle") }
   }
 
-  struct Configuration {
+  enum Configuration {
 
-    struct Cell {
+    enum Cell {
 
       /// Personalization
       /// - **en**: Personalization
@@ -241,7 +241,7 @@ public struct Localizable {
       static var tutorial: String { return localizedString("Configuration_Cell_Tutorial") }
     }
 
-    struct Theme {
+    enum Theme {
 
       /// Bus
       /// - **en**: Bus
@@ -270,9 +270,9 @@ public struct Localizable {
     static var title: String { return localizedString("Configuration_Title") }
   }
 
-  struct LineSelector {
+  enum LineSelector {
 
-    struct SectionName {
+    enum SectionName {
 
       /// Express
       /// - **en**: Express
@@ -316,7 +316,7 @@ public struct Localizable {
     }
   }
 
-  struct LineTypeSelection {
+  enum LineTypeSelection {
 
     /// Buses
     /// - **en**: Buses
@@ -329,11 +329,11 @@ public struct Localizable {
     static var tram: String { return localizedString("LineTypeSelection_Tram") }
   }
 
-  struct Presentation {
+  enum Presentation {
 
-    struct InAppPurchase {
+    enum InAppPurchase {
 
-      struct Bookmarks {
+      enum Bookmarks {
 
         /// Save more than 2 bookmarks to travel faster across the city.
         /// - **en**: Save more than 2 bookmarks to travel faster across the city.
@@ -346,7 +346,7 @@ public struct Localizable {
         static var title: String { return localizedString("Presentation_InAppPurchase_Bookmarks_Title") }
       }
 
-      struct Colors {
+      enum Colors {
 
         /// Brighten up your life and personalize Wroclive to your favorite color.
         /// - **en**: Brighten up your life and personalize Wroclive to your favorite color.
@@ -359,7 +359,7 @@ public struct Localizable {
         static var title: String { return localizedString("Presentation_InAppPurchase_Colors_Title") }
       }
 
-      struct Restore {
+      enum Restore {
 
         /// Restore Purchase
         /// - **en**: Restore Purchase
@@ -378,9 +378,9 @@ public struct Localizable {
       static var upgrade: String { return localizedString("Presentation_InAppPurchase_Upgrade") }
     }
 
-    struct Tutorial {
+    enum Tutorial {
 
-      struct Page0 {
+      enum Page0 {
 
         /// To locate vehicles use <search>, select lines and then tap “Search”.
         /// - **en**: To locate vehicles use <search>, select lines and then tap “Search”.
@@ -393,7 +393,7 @@ public struct Localizable {
         static var title: String { return localizedString("Presentation_Tutorial_Page0_Title") }
       }
 
-      struct Page1 {
+      enum Page1 {
 
         /// To add bookmark chose lines, tap <star> and enter bookmark name.
         /// - **en**: To add bookmark chose lines, tap <star> and enter bookmark name.
@@ -406,7 +406,7 @@ public struct Localizable {
         static var title: String { return localizedString("Presentation_Tutorial_Page1_Title") }
       }
 
-      struct Page2 {
+      enum Page2 {
 
         /// Use <star> to see all saved bookmarks.
         /// - **en**: Use <star> to see all saved bookmarks.
@@ -426,9 +426,9 @@ public struct Localizable {
     }
   }
 
-  struct Search {
+  enum Search {
 
-    struct BookmarkAdded {
+    enum BookmarkAdded {
 
       /// Use <star> from map view to see all saved bookmarks.
       /// - **en**: Use <star> from map view to see all saved bookmarks.
@@ -457,7 +457,7 @@ public struct Localizable {
     static var search: String { return localizedString("Search_Search") }
   }
 
-  struct Share {
+  enum Share {
 
     /// Wroclive - Real time public transport! %@
     /// - **en**: Wroclive - Real time public transport! %@
