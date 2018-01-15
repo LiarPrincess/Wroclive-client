@@ -52,8 +52,6 @@
 		901ECDCC1FF58D5C004765AA /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDCB1FF58D5C004765AA /* SearchPlaceholderView.swift */; };
 		901ECDCE1FF58D74004765AA /* SearchPlaceholderViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDCD1FF58D74004765AA /* SearchPlaceholderViewConstants.swift */; };
 		901ECDD01FF5A003004765AA /* SearchCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDCF1FF5A003004765AA /* SearchCardViewModel.swift */; };
-		901ECDD31FF5BD8E004765AA /* AABookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDD21FF5BD8E004765AA /* AABookmarkButton.swift */; };
-		901ECDD51FF5BDB2004765AA /* AASearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDD41FF5BDB2004765AA /* AASearchState.swift */; };
 		901FEAD91FE1EC8900C36A71 /* TextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FEAD31FE1EC8900C36A71 /* TextColor.swift */; };
 		9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3891F12C95D000A6949 /* CGFloat+Rad.swift */; };
 		9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38B1F12C95D000A6949 /* Array+GroupedBy.swift */; };
@@ -324,8 +322,6 @@
 		901ECDCB1FF58D5C004765AA /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
 		901ECDCD1FF58D74004765AA /* SearchPlaceholderViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderViewConstants.swift; sourceTree = "<group>"; };
 		901ECDCF1FF5A003004765AA /* SearchCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModel.swift; sourceTree = "<group>"; };
-		901ECDD21FF5BD8E004765AA /* AABookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABookmarkButton.swift; sourceTree = "<group>"; };
-		901ECDD41FF5BDB2004765AA /* AASearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASearchState.swift; sourceTree = "<group>"; };
 		901FEAD31FE1EC8900C36A71 /* TextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextColor.swift; sourceTree = "<group>"; };
 		9021F3891F12C95D000A6949 /* CGFloat+Rad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Rad.swift"; sourceTree = "<group>"; };
 		9021F38B1F12C95D000A6949 /* Array+GroupedBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+GroupedBy.swift"; sourceTree = "<group>"; };
@@ -732,8 +728,6 @@
 		901ECDD11FF5B478004765AA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				901ECDD21FF5BD8E004765AA /* AABookmarkButton.swift */,
-				901ECDD41FF5BDB2004765AA /* AASearchState.swift */,
 				90AACC8A200B7C390064EDFD /* SearchCardLines.swift */,
 				90AACC77200954AC0064EDFD /* SearchCardAlerts.swift */,
 				90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */,
@@ -2058,7 +2052,6 @@
 				90E8A6BF1F4CB08400CE5AE9 /* AppManagerType.swift in Sources */,
 				90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */,
 				9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */,
-				901ECDD51FF5BDB2004765AA /* AASearchState.swift in Sources */,
 				90D3A3F11FEC239100FB7485 /* BookmarksCardViewModel.swift in Sources */,
 				9042EDCF1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift in Sources */,
 				908FB19B1F48B3CA00121584 /* LayoutGuide.swift in Sources */,
@@ -2150,7 +2143,6 @@
 				901ECDCE1FF58D74004765AA /* SearchPlaceholderViewConstants.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarkCell.swift in Sources */,
 				900CAEB71F482E750044C8A6 /* SearchManager.swift in Sources */,
-				901ECDD31FF5BD8E004765AA /* AABookmarkButton.swift in Sources */,
 				9017C3651EE339FD00063377 /* SearchCardConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
