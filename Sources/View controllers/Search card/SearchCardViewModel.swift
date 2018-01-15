@@ -12,7 +12,8 @@ protocol SearchCardViewModelInput {
   var pageSelected:      AnyObserver<LineType> { get }
   var pageDidTransition: AnyObserver<LineType> { get }
 
-  var linesSelected: AnyObserver<[Line]> { get }
+  var lineSelected:   AnyObserver<Line> { get }
+  var lineDeselected: AnyObserver<Line> { get }
 
   var bookmarkButtonPressed: AnyObserver<Void> { get }
   var searchButtonPressed:   AnyObserver<Void> { get }
@@ -43,7 +44,8 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
   private let _pageSelected          = PublishSubject<LineType>()
   private let _pageDidTransition     = PublishSubject<LineType>()
-  private let _linesSelected         = PublishSubject<[Line]>()
+  private let _lineSelected          = PublishSubject<Line>()
+  private let _lineDeselected        = PublishSubject<Line>()
   private let _bookmarkButtonPressed = PublishSubject<Void>()
   private let _searchButtonPressed   = PublishSubject<Void>()
 
@@ -59,7 +61,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
       .delay(AppInfo.Timings.FailedRequestDelay.lines, scheduler: MainScheduler.instance)
 
     return Observable.merge(viewDidAppear, tryAgain)
-      .flatMap { _ in SearchCardNetworkAdapter.getAvailableLines().catchError { _ in .empty() } }
+      .flatMapLatest { _ in SearchCardNetworkAdapter.getAvailableLines().catchError { _ in .empty() } }
       .share()
   }()
 
@@ -69,7 +71,8 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
   lazy var pageSelected:          AnyObserver<LineType> = self._pageSelected.asObserver()
   lazy var pageDidTransition:     AnyObserver<LineType> = self._pageDidTransition.asObserver()
-  lazy var linesSelected:         AnyObserver<[Line]>   = self._linesSelected.asObserver()
+  lazy var lineSelected:          AnyObserver<Line>     = self._lineSelected.asObserver()
+  lazy var lineDeselected:        AnyObserver<Line>     = self._lineDeselected.asObserver()
   lazy var bookmarkButtonPressed: AnyObserver<Void>     = self._bookmarkButtonPressed.asObserver()
   lazy var searchButtonPressed:   AnyObserver<Void>     = self._searchButtonPressed.asObserver()
 
@@ -116,10 +119,17 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
       .startWith(state.selectedLineType)
       .asDriver(onErrorDriveWith: .never())
 
-    self.selectedLines = self._linesSelected
-      .startWith(state.selectedLines)
+    let selectOperation   = self._lineSelected  .map { ArrayOperation.append(element: $0) }
+    let deselectOperation = self._lineDeselected.map { ArrayOperation.remove(element: $0) }
+
+    self.selectedLines = Observable.merge(selectOperation, deselectOperation)
+      .reducing(state.selectedLines) { $0.apply($1) }
       .asDriver(onErrorDriveWith: .never())
 
+    self.initOperations()
+  }
+
+  private func initOperations() {
     self._bookmarkAlertNameEntered
       .flatMap { Observable.from(optional: $0) }
       .withLatestFrom(self.selectedLines) { (name: $0, lines: $1) }

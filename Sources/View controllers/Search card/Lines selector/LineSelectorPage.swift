@@ -16,8 +16,14 @@ class LineSelectorPage: UIViewController {
 
   // MARK: - Properties
 
-  let viewModel = LineSelectorPageViewModel()
+  private let sections   = PublishSubject<[LineSelectorSection]>()
   private let disposeBag = DisposeBag()
+
+  lazy var lineSelected = self.collectionView.rx.itemSelected
+    .flatMap { [weak self] in Observable.from(optional: self?.collectionViewDataSource[$0]) }
+
+  lazy var lineDeselected = self.collectionView.rx.itemDeselected
+    .flatMap { [weak self] in Observable.from(optional: self?.collectionViewDataSource[$0]) }
 
   private lazy var collectionView           = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewLayout)
   private lazy var collectionViewLayout     = UICollectionViewFlowLayout()
@@ -48,17 +54,8 @@ class LineSelectorPage: UIViewController {
     self.collectionView.rx.setDelegate(self)
       .disposed(by: disposeBag)
 
-    self.viewModel.outputs.sections
-      .drive(self.collectionView.rx.items(dataSource: self.collectionViewDataSource))
-      .disposed(by: disposeBag)
-
-    let itemSelected   = self.collectionView.rx.itemSelected.map   { _ in () }
-    let itemDeselected = self.collectionView.rx.itemDeselected.map { _ in () }
-
-    Observable.merge(itemSelected, itemDeselected)
-      .map { [weak self] in self?.collectionView.indexPathsForSelectedItems ?? [] }
-      .map { [weak self] in $0.flatMap { self?.collectionViewDataSource[$0] }}
-      .bind(to: self.viewModel.inputs.selectedLinesChanged)
+    self.sections.asObservable()
+      .bind(to: self.collectionView.rx.items(dataSource: self.collectionViewDataSource))
       .disposed(by: disposeBag)
   }
 
@@ -131,6 +128,30 @@ class LineSelectorPage: UIViewController {
 
     return CGSize(width: cellWidth, height: cellWidth)
   }
+
+  // MARK: - Setters
+
+  func setLines(_ lines: [Line], selected selectedLines: [Line]) {
+    let sections = LineSelectorSectionCreator.create(lines)
+    self.sections.onNext(sections)
+
+    let selectedIndices = self.collectionView.indexPathsForSelectedItems ?? []
+
+    for (sectionIndex, section) in sections.enumerated() {
+      for (lineIndex, line) in section.items.enumerated() {
+        let indexPath = IndexPath(row: lineIndex, section: sectionIndex)
+
+        let isSelected   = selectedIndices.contains(indexPath)
+        let shouldSelect = selectedLines.contains(line)
+
+        if isSelected != shouldSelect {
+          if shouldSelect { self.collectionView.selectItem  (at: indexPath, animated: false, scrollPosition: []) }
+          else            { self.collectionView.deselectItem(at: indexPath, animated: false) }
+        }
+      }
+    } /* for end */
+  }
+
 }
 
 // MARK: - CollectionViewDelegateFlowLayout

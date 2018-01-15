@@ -6,7 +6,7 @@
 import Foundation
 
 enum RxCollectionOperation {
-  case delete(indexPath: IndexPath)
+  case remove(indexPath: IndexPath)
   case move(from: IndexPath, to: IndexPath)
 }
 
@@ -23,7 +23,7 @@ extension Array where Element: RxSectionType {
   func apply(_ operation: RxCollectionOperation) -> [Element] {
     var copy = self
     switch operation {
-    case let .delete(index):  copy.remove(at: index)
+    case let .remove(index):  copy.remove(at: index)
     case let .move(from, to): copy.move(from: from, to: to)
     }
     return copy

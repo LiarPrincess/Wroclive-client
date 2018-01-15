@@ -55,7 +55,7 @@ class BookmarksCardViewModel: BookmarksCardViewModelInput, BookmarksCardViewMode
   lazy var bookmarks: Driver<[BookmarksSection]> = {
     let defaultValue = BookmarksCardViewModel.getBookmarks()
     let moveOperation   = self._itemMoved.map   { RxCollectionOperation.move(from: $0.sourceIndex, to: $0.destinationIndex) }
-    let deleteOperation = self._itemDeleted.map { RxCollectionOperation.delete(indexPath: $0) }
+    let deleteOperation = self._itemDeleted.map { RxCollectionOperation.remove(indexPath: $0) }
 
     return Observable.merge(moveOperation, deleteOperation)
       .reducing(defaultValue) { current, operation in current.apply(operation) }

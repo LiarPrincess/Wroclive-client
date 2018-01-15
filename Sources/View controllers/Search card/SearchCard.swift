@@ -56,24 +56,29 @@ class SearchCard: UIViewController {
       .bind(to: self.viewModel.inputs.pageSelected)
       .disposed(by: self.disposeBag)
 
-    self.lineSelector.viewModel.outputs.page
-      .drive(self.viewModel.inputs.pageDidTransition)
+    self.lineSelector.rx.pageDidTransition
+      .bind(to: self.viewModel.inputs.pageDidTransition)
       .disposed(by: self.disposeBag)
 
     self.viewModel.outputs.page
       .drive(onNext: { [weak self] newValue in
         self?.lineTypeSelector.selectedValue = newValue
-        self?.lineSelector.setCurrentPageNotReactive(newValue, animated: true)
+        self?.lineSelector.setPage(newValue, animated: true)
       })
       .disposed(by: self.disposeBag)
   }
 
   private func initLineSelectorBindings() {
+    self.lineSelector.rx.lineSelected
+      .bind(to: self.viewModel.inputs.lineSelected)
+      .disposed(by: self.disposeBag)
+
+    self.lineSelector.rx.lineDeselected
+      .bind(to: self.viewModel.inputs.lineDeselected)
+      .disposed(by: self.disposeBag)
+
     self.viewModel.outputs.lines
-      .drive(onNext: { [weak self] lines in
-        self?.lineSelector.viewModel.inputs.linesChanged.onNext(lines.lines)
-        self?.lineSelector.viewModel.inputs.selectedLinesChanged.onNext(lines.selectedLines)
-      })
+      .drive(onNext: { [weak self] in self?.lineSelector.setLines($0.lines, selected: $0.selectedLines) })
       .disposed(by: self.disposeBag)
   }
 

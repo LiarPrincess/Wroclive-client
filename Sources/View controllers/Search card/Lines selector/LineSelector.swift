@@ -11,19 +11,24 @@ class LineSelector: UIPageViewController {
 
   // MARK: - Properties
 
-  let viewModel = LineSelectorViewModel()
-  private let disposeBag = DisposeBag()
-
   private let tramPage = LineSelectorPage()
   private let busPage  = LineSelectorPage()
   private lazy var pages = [self.tramPage, self.busPage]
 
-  var currentPage: LineType {
-    let page = self.viewControllers?.first
-    if page === self.tramPage { return .tram }
-    if page === self.busPage  { return  .bus }
-    fatalError("Invalid page selected")
-  }
+  private let _pageDidTransition = PublishSubject<LineType>()
+  lazy var pageDidTransition: Observable<LineType> = self._pageDidTransition.asObservable()
+
+  lazy var lineSelected: Observable<Line> = {
+    let tramSelected = self.tramPage.rx.lineSelected.asObservable()
+    let busSelected  = self.busPage .rx.lineSelected.asObservable()
+    return Observable.merge(tramSelected, busSelected)
+  }()
+
+  lazy var lineDeselected: Observable<Line> = {
+    let tramDeselected = self.tramPage.rx.lineDeselected.asObservable()
+    let busDeselected  = self.busPage .rx.lineDeselected.asObservable()
+    return Observable.merge(tramDeselected, busDeselected)
+  }()
 
   var contentInset: UIEdgeInsets {
     get { return self.tramPage.contentInset }
@@ -47,7 +52,6 @@ class LineSelector: UIPageViewController {
     self.dataSource = self
 
     self.initLayout()
-    self.initBindings()
   }
 
   required init?(coder: NSCoder) {
@@ -60,31 +64,10 @@ class LineSelector: UIPageViewController {
     self.setViewControllers([firstPage], direction: .forward, animated: false, completion: nil)
   }
 
-  private func initBindings() {
-    // input page bindings are handled in:
-    // self.pageViewController(_:didFinishAnimating:previousViewControllers:transitionCompleted:)
-
-    self.viewModel.outputs.tramLines
-      .drive(self.tramPage.viewModel.inputs.linesChanged)
-      .disposed(by: disposeBag)
-
-    self.viewModel.outputs.busLines
-      .drive(self.busPage.viewModel.inputs.linesChanged)
-      .disposed(by: disposeBag)
-
-    self.viewModel.outputs.selectedTramLines
-      .drive(self.tramPage.viewModel.inputs.selectedLinesChanged)
-      .disposed(by: disposeBag)
-
-    self.viewModel.outputs.selectedBusLines
-      .drive(self.busPage.viewModel.inputs.selectedLinesChanged)
-      .disposed(by: disposeBag)
-  }
-
-  // MARK: - Current page
+  // MARK: - Setters
 
   /// Set current page without invoking Rx observers
-  func setCurrentPageNotReactive(_ lineType: LineType, animated: Bool) {
+  func setPage(_ lineType: LineType, animated: Bool) {
     typealias Direction = UIPageViewControllerNavigationDirection
 
     let isTram    = lineType == .tram
@@ -95,6 +78,12 @@ class LineSelector: UIPageViewController {
     if selectedPage !== page {
       self.setViewControllers([page], direction: direction, animated: animated, completion: nil)
     }
+  }
+
+  /// Set lines without invoking Rx observers
+  func setLines(_ lines: [Line], selected selectedLines: [Line]) {
+    self.tramPage.setLines(lines.filter(.tram), selected: selectedLines.filter(.tram))
+    self.busPage .setLines(lines.filter(.bus),  selected: selectedLines.filter(.bus))
   }
 }
 
@@ -126,13 +115,19 @@ extension LineSelector: UIPageViewControllerDataSource {
 
 extension LineSelector: UIPageViewControllerDelegate {
 
+  var currentPage: LineType {
+    let page = self.viewControllers?.first
+    if page === self.tramPage { return .tram }
+    if page === self.busPage  { return .bus  }
+    fatalError("Invalid page selected")
+  }
+
   func pageViewController(_ pageViewController:          UIPageViewController,
                           didFinishAnimating finished:   Bool,
                           previousViewControllers:       [UIViewController],
                           transitionCompleted completed: Bool) {
     if completed {
-      let currentPage = self.currentPage
-      self.viewModel.inputs.pageChanged.onNext(currentPage)
+      self._pageDidTransition.onNext(self.currentPage)
     }
   }
 }
