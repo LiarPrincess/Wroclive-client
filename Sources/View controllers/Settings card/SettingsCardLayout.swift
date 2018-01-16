@@ -52,36 +52,11 @@ extension SettingsCard {
     self.tableView.dataSource      = self.tableViewDataSource
     self.tableView.delegate        = self
 
-    self.tableView.tableFooterView = self.createTableViewFooter()
+    self.tableView.tableFooterView = SettingsCardFooterView()
 
     self.view.insertSubview(self.tableView, belowSubview: self.headerView)
     self.tableView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
-  }
-
-  private func createTableViewFooter() -> UIView {
-    let text = NSAttributedString(string: Localization.footer, attributes: TextStyles.footer)
-
-    let footerFrame = CGRect(x: 0.0, y: 0.0, width: 1.0, height: self.calculateMinFooterHeight(text))
-    let footerView = UIView(frame: footerFrame)
-
-    let footerLabel = UILabel()
-    footerLabel.attributedText = text
-    footerLabel.numberOfLines  = 0
-
-    footerView.addSubview(footerLabel)
-    footerLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.Footer.topOffset)
-      make.left.right.bottom.equalToSuperview()
-    }
-
-    return footerView
-  }
-
-  private func calculateMinFooterHeight(_ footerContent: NSAttributedString) -> CGFloat {
-    let textRect = CGSize(width: Managers.device.screenBounds.width, height: CGFloat.infinity)
-    let textSize = footerContent.boundingRect(with: textRect, options: .usesLineFragmentOrigin, context: nil)
-    return textSize.height + Layout.Footer.topOffset + Layout.Footer.bottomOffset
   }
 }

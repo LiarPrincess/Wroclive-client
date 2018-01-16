@@ -40,6 +40,8 @@
 		901A3F6B1FAFAFF900383B02 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A3F6A1FAFAFF900383B02 /* PopupView.swift */; };
 		901A3F6E1FAFB6A300383B02 /* PopupViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A3F6D1FAFB6A300383B02 /* PopupViewConstants.swift */; };
 		901A8087200E81930013CCD9 /* BookmarksSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A8086200E81930013CCD9 /* BookmarksSection.swift */; };
+		901A808A200E96EE0013CCD9 /* SettingsCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A8089200E96EE0013CCD9 /* SettingsCardFooterView.swift */; };
+		901A808C200E97430013CCD9 /* SettingsCardFooterConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */; };
 		901D46861F57089000A9F6BD /* ThemeManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901D46851F57089000A9F6BD /* ThemeManagerType.swift */; };
 		901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB61FF586F5004765AA /* TextAlignment.swift */; };
 		901ECDB91FF5875F004765AA /* FontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB81FF5875F004765AA /* FontType.swift */; };
@@ -311,6 +313,8 @@
 		901A3F6A1FAFAFF900383B02 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		901A3F6D1FAFB6A300383B02 /* PopupViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewConstants.swift; sourceTree = "<group>"; };
 		901A8086200E81930013CCD9 /* BookmarksSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksSection.swift; sourceTree = "<group>"; };
+		901A8089200E96EE0013CCD9 /* SettingsCardFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardFooterView.swift; sourceTree = "<group>"; };
+		901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardFooterConstants.swift; sourceTree = "<group>"; };
 		901D46851F57089000A9F6BD /* ThemeManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerType.swift; sourceTree = "<group>"; };
 		901ECDB61FF586F5004765AA /* TextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignment.swift; sourceTree = "<group>"; };
 		901ECDB81FF5875F004765AA /* FontType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontType.swift; sourceTree = "<group>"; };
@@ -725,6 +729,15 @@
 				901A8086200E81930013CCD9 /* BookmarksSection.swift */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		901A8088200E96DD0013CCD9 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				901A8089200E96EE0013CCD9 /* SettingsCardFooterView.swift */,
+				901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */,
+			);
+			path = Footer;
 			sourceTree = "<group>";
 		};
 		901ECDCA1FF58D36004765AA /* Placeholder */ = {
@@ -1260,6 +1273,7 @@
 			children = (
 				90145E3F1F61AE4A0068698D /* View models */,
 				90145E3E1F61AE4A0068698D /* Data source */,
+				901A8088200E96DD0013CCD9 /* Footer */,
 				9096CDCC1F40EF2200FEF20A /* SettingsCard.swift */,
 				9055C8E51F462F2F00D1EBDA /* SettingsCardLayout.swift */,
 				9055C8E71F462F5C00D1EBDA /* SettingsCardConstants.swift */,
@@ -2042,6 +2056,7 @@
 				9021F4391F12D698000A6949 /* LineSelectorHeaderView.swift in Sources */,
 				90E8A6C61F4CD43300CE5AE9 /* DeviceManagerType.swift in Sources */,
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManager.swift in Sources */,
+				901A808C200E97430013CCD9 /* SettingsCardFooterConstants.swift in Sources */,
 				90AFEE5C1F842753009716B6 /* AppCoordinator.swift in Sources */,
 				9044A5481F69A13D00F26C17 /* ColorSelectionViewControllerConstants.swift in Sources */,
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
@@ -2082,6 +2097,7 @@
 				90E8A6C11F4CB81400CE5AE9 /* AppManager.swift in Sources */,
 				905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */,
 				903920351F1AB70E00250162 /* ArrayOfLines.swift in Sources */,
+				901A808A200E96EE0013CCD9 /* SettingsCardFooterView.swift in Sources */,
 				90AACC9F200D2CF70064EDFD /* ArrayOfEquatable+Operations.swift in Sources */,
 				90546BF01F6AF25800E8E75F /* TrackingManager.swift in Sources */,
 				9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */,

@@ -14,17 +14,10 @@ enum SettingsCardConstants {
       static let topInset:    CGFloat = 28.0
       static let bottomInset: CGFloat =  8.0
     }
-
-    enum Footer {
-      static let topOffset:    CGFloat =  5.0
-      static let bottomOffset: CGFloat = 20.0
-      static let lineSpacing:  CGFloat =  5.0
-    }
   }
 
   enum TextStyles {
     static var cardTitle: TextAttributes { return TextAttributes(style: .headline) }
-    static var footer:    TextAttributes { return TextAttributes(style: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing) }
   }
 
   enum CardPanel {
