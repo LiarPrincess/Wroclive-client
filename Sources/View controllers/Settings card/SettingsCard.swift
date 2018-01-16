@@ -7,14 +7,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-private typealias CardPanel = SettingsCardConstants.CardPanel
+private typealias TextStyles   = SettingsCardConstants.TextStyles
+private typealias CardPanel    = SettingsCardConstants.CardPanel
+private typealias Localization = Localizable.Configuration
 
 class SettingsCard: UIViewController {
 
   // MARK: - Properties
 
-//  private let viewModel: BookmarksCardViewModel
-//  private let disposeBag = DisposeBag()
+  private let viewModel: SettingsCardViewModel
+  private let disposeBag = DisposeBag()
 
   lazy var headerView: UIVisualEffectView = {
     let blur = UIBlurEffect(style: Managers.theme.colors.blurStyle)
@@ -24,17 +26,59 @@ class SettingsCard: UIViewController {
   let titleLabel = UILabel()
 
   let tableView           = UITableView(frame: .zero, style: .grouped)
-  let tableViewDataSource = ConfigurationDataSource()
+  let tableViewDataSource = SettingsCard.createDataSource()
 
   // MARK: - Init
 
-//  convenience init() { // _ viewModel: BookmarksCardViewModel
-//    self.init(nibName: nil, bundle: nil)
-//  }
-//
-//  required init?(coder aDecoder: NSCoder) {
-//    fatalError("init(coder:) has not been implemented")
-//  }
+  init(_ viewModel: SettingsCardViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+
+    self.initTableViewBindings()
+    self.initViewControlerLifecycleBindings()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: - Bindings
+
+  private func initTableViewBindings() {
+    self.tableView.rx.setDelegate(self)
+      .disposed(by: disposeBag)
+
+    self.viewModel.outputs.items
+      .drive(self.tableView.rx.items(dataSource: self.tableViewDataSource))
+      .disposed(by: disposeBag)
+
+    self.tableView.rx.itemSelected
+      .do(onNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) })
+      .bind(to: self.viewModel.inputs.itemSelected)
+      .disposed(by: self.disposeBag)
+  }
+
+  private func initViewControlerLifecycleBindings() {
+    self.viewModel.outputs.shouldClose
+      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
+      .disposed(by: self.disposeBag)
+  }
+
+  // MARK: - Data source
+
+  private static func createDataSource() -> RxTableViewDataSource<SettingsSection> {
+    return RxTableViewDataSource(
+      configureCell: { _, tableView, indexPath, model -> UITableViewCell in
+        let cell = tableView.dequeueReusableCell(ofType: UITableViewCell.self, forIndexPath: indexPath)
+        cell.textLabel?.attributedText = NSAttributedString(string: createCellText(model), attributes: TextStyles.cellText)
+        cell.backgroundColor           = Managers.theme.colors.background
+        cell.accessoryType             = .disclosureIndicator
+        return cell
+      },
+      canEditRowAtIndexPath: { _, _ in false },
+      canMoveRowAtIndexPath: { _, _ in false }
+    )
+  }
 
   // MARK: - Overriden
 
@@ -56,11 +100,6 @@ class SettingsCard: UIViewController {
       let newInset = UIEdgeInsets(top: headerHeight, left: currentInset.left, bottom: currentInset.bottom, right: currentInset.right)
       self.tableView.contentInset          = newInset
       self.tableView.scrollIndicatorInsets = newInset
-
-      // scroll up to preserve current scroll position
-//      let currentOffset = self.tableView.contentOffset
-//      let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
-//      self.tableView.setContentOffset(newOffset, animated: false)
     }
   }
 }
@@ -74,15 +113,15 @@ extension SettingsCard: CardPanelPresentable {
 
 // MARK: - UITableViewDelegate
 
-extension SettingsCard: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    let cell = self.tableViewDataSource.cellAt(indexPath)
-//    switch cell {
-//    case .personalization: self.delegate?.configurationViewControllerDidTapColorSelectionButton(self)
-//    case .contact:         Managers.app.openWebsite()
-//    case .share:           self.delegate?.configurationViewControllerDidTapShareButton(self)
-//    case .rate:            Managers.app.rateApp()
-//    }
-    tableView.deselectRow(at: indexPath, animated: true)
+extension SettingsCard: UITableViewDelegate { }
+
+// MARK: - Helpers
+
+private func createCellText(_ cellType: SettingsCellType) -> String {
+  switch cellType {
+  case .mapType: return Localization.Cell.colors
+  case .about:   return Localization.Cell.contact
+  case .share:   return Localization.Cell.share
+  case .rate:    return Localization.Cell.rate
   }
 }

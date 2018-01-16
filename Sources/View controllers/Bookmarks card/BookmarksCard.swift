@@ -37,7 +37,7 @@ class BookmarksCard: UIViewController {
     self.initTableViewBindings()
     self.initVisibilityBindings()
     self.initEditBindings()
-    self.initCloseBindings()
+    self.initViewControlerLifecycleBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -95,7 +95,7 @@ class BookmarksCard: UIViewController {
       .disposed(by: self.disposeBag)
   }
 
-  private func initCloseBindings() {
+  private func initViewControlerLifecycleBindings() {
     self.viewModel.outputs.shouldClose
       .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
       .disposed(by: self.disposeBag)

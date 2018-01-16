@@ -14,10 +14,15 @@ enum SettingsCardConstants {
       static let topInset:    CGFloat = 28.0
       static let bottomInset: CGFloat =  8.0
     }
+
+    enum TableView {
+      static let estimatedCellHeight: CGFloat = 50.0
+    }
   }
 
   enum TextStyles {
     static var cardTitle: TextAttributes { return TextAttributes(style: .headline) }
+    static var cellText:  TextAttributes { return TextAttributes(style: .body)     }
   }
 
   enum CardPanel {

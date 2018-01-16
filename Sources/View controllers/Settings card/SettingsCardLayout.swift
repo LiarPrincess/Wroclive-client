@@ -44,13 +44,11 @@ extension SettingsCard {
 
   private func initTableView() {
     self.tableView.register(UITableViewCell.self)
-//    self.tableView.separatorInset  = .zero
-    self.tableView.separatorColor  = Managers.theme.colors.accentLight
-    self.tableView.backgroundColor = Managers.theme.colors.background
-//    self.tableView.rowHeight          = UITableViewAutomaticDimension
-//    self.tableView.estimatedRowHeight = Layout.TableView.estimatedCellHeight
-    self.tableView.dataSource      = self.tableViewDataSource
-    self.tableView.delegate        = self
+//    self.tableView.separatorInset     = .zero
+//    self.tableView.separatorColor     = Managers.theme.colors.accentLight
+//    self.tableView.backgroundColor    = Managers.theme.colors.background
+    self.tableView.rowHeight          = UITableViewAutomaticDimension
+    self.tableView.estimatedRowHeight = Layout.TableView.estimatedCellHeight
 
     self.tableView.tableFooterView = SettingsCardFooterView()
 
