@@ -17,7 +17,6 @@ class AlertCreator {
   static func createAlert<Result>(title:     String,
                                   message:   String,
                                   buttons:   [AlertButton<Result>],
-                                  in parent: UIViewController,
                                   animated:  Bool = true) -> Observable<Result> {
     return .create { observer in
       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -29,18 +28,16 @@ class AlertCreator {
         })
       }
 
-      parent.present(alert, animated: animated, completion: nil)
-      return Disposables.create { alert.dismiss(animated: animated, completion: nil) }
+      present(alert, animated: animated)
+      return Disposables.create { dismiss(alert, animated: animated) }
     }
   }
 
-  // swiftlint:disable:next function_parameter_count
   static func createTextInputAlert(title:       String,
                                    message:     String,
                                    placeholder: String,
                                    confirm:     AlertButton<Void>,
                                    cancel:      AlertButton<Void>,
-                                   in parent:   UIViewController,
                                    animated:    Bool = true) -> Observable<String?> {
     return .create { observer in
       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -63,8 +60,8 @@ class AlertCreator {
       confirmAction.isEnabled = false
       alert.addAction(confirmAction)
 
-      parent.present(alert, animated: animated, completion: nil)
-      return Disposables.create { alert.dismiss(animated: animated, completion: nil) }
+      present(alert, animated: animated)
+      return Disposables.create { dismiss(alert, animated: animated) }
     }
   }
 
@@ -84,5 +81,37 @@ class AlertCreator {
       responder = responder.next
     }
     return responder as? UIAlertController
+  }
+
+  // MARK: - Present, Dismiss
+
+  private static var topViewController: UIViewController? {
+    var result = UIApplication.shared.keyWindow?.rootViewController
+    var child  = result?.presentedViewController
+
+    while child != nil {
+      result = child
+      child = result?.presentedViewController
+    }
+
+    return result
+  }
+
+  private static func present(_ alertController: UIAlertController, animated: Bool) {
+    guard let viewController = topViewController else {
+      Swift.print("Unable to show alert. Could not find top view controller.")
+      return
+    }
+
+    if viewController is UIAlertController {
+      Swift.print("Unable to show alert. Another alert is already presenting.")
+      return
+    }
+
+    viewController.present(alertController, animated: animated, completion: nil)
+  }
+
+  private static func dismiss(_ alertController: UIAlertController, animated: Bool) {
+    alertController.dismiss(animated: animated, completion: nil)
   }
 }

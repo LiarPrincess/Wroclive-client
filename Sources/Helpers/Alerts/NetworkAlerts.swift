@@ -9,24 +9,22 @@ import RxSwift
 class NetworkAlerts {
 
   /// Check network settings and try again
-  static func showNoInternetAlert(in parent: UIViewController) -> Observable<Void> {
+  static func showNoInternetAlert() -> Observable<Void> {
     typealias Localization = Localizable.Alert.Network.NoInternet
     return AlertCreator.createAlert(
       title:   Localization.title,
       message: Localization.message,
-      buttons: [AlertButton(title: Localization.tryAgain, style: .default, result: ())],
-      in:      parent
+      buttons: [AlertButton(title: Localization.tryAgain, style: .default, result: ())]
     )
   }
 
   /// Cehck connection error alert. try again
-  static func showConnectionErrorAlert(in parent: UIViewController) -> Observable<Void> {
+  static func showConnectionErrorAlert() -> Observable<Void> {
     typealias Localization = Localizable.Alert.Network.ConnectionError
     return AlertCreator.createAlert(
       title:   Localization.title,
       message: Localization.message,
-      buttons: [AlertButton(title: Localization.tryAgain, style: .default, result: ())],
-      in:      parent
+      buttons: [AlertButton(title: Localization.tryAgain, style: .default, result: ())]
     )
   }
 

@@ -104,35 +104,17 @@ class SearchCard: UIViewController {
 
   private func initAlertBindings() {
     self.viewModel.outputs.showBookmarkAlert.asObservable()
-      .flatMapLatest(self.createAlert)
+      .flatMapLatest(createAlert)
       .bind(to: self.viewModel.inputs.bookmarkAlertNameEntered)
       .disposed(by: self.disposeBag)
 
     self.viewModel.outputs.showApiErrorAlert.asObservable()
-      .flatMapLatest(self.createAlert)
+      .flatMapLatest(createAlert)
       .bind(to: self.viewModel.inputs.apiAlertTryAgainButtonPressed)
       .disposed(by: self.disposeBag)
   }
 
-  private func createAlert(_ bookmarkAlert: SearchCardBookmarkAlert) -> Observable<String?> {
-    switch bookmarkAlert {
-    case .nameInput:     return BookmarkAlerts.showNameInputAlert(in: self)
-    case .noLineSelcted: return BookmarkAlerts.showNoLinesSelectedAlert(in: self).map { _ in  nil }
-    }
-  }
-
-  private func createAlert(_ apiAlert: SearchCardApiAlert) -> Observable<Void> {
-    switch apiAlert {
-    case .noInternet:      return NetworkAlerts.showNoInternetAlert(in: self)
-    case .connectionError: return NetworkAlerts.showConnectionErrorAlert(in: self)
-    }
-  }
-
   private func initViewControlerLifecycleBindings() {
-    self.viewModel.outputs.shouldClose
-      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
-      .disposed(by: self.disposeBag)
-
     // modal view controllers can send multiple messages when user cancels gesture
     // also simple binding would propagate also .onCompleted events
     self.rx.methodInvoked(#selector(SearchCard.viewDidAppear(_:)))
@@ -143,6 +125,10 @@ class SearchCard: UIViewController {
     self.rx.methodInvoked(#selector(SearchCard.viewDidDisappear(_:)))
       .map { _ in () }
       .bind(to: self.viewModel.inputs.viewDidDisappear)
+      .disposed(by: self.disposeBag)
+
+    self.viewModel.outputs.shouldClose
+      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
       .disposed(by: self.disposeBag)
   }
 
@@ -179,4 +165,20 @@ class SearchCard: UIViewController {
 extension SearchCard: CardPanelPresentable {
   var header: UIView  { return self.headerView.contentView }
   var height: CGFloat { return CardPanel.height }
+}
+
+// MARK: - Helpers
+
+private func createAlert(_ bookmarkAlert: SearchCardBookmarkAlert) -> Observable<String?> {
+  switch bookmarkAlert {
+  case .nameInput:     return BookmarkAlerts.showNameInputAlert()
+  case .noLineSelcted: return BookmarkAlerts.showNoLinesSelectedAlert().map { _ in nil }
+  }
+}
+
+private func createAlert(_ apiAlert: SearchCardApiAlert) -> Observable<Void> {
+  switch apiAlert {
+  case .noInternet:      return NetworkAlerts.showNoInternetAlert()
+  case .connectionError: return NetworkAlerts.showConnectionErrorAlert()
+  }
 }
