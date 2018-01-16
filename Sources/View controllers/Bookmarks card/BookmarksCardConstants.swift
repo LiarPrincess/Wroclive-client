@@ -28,18 +28,11 @@ enum BookmarksCardConstants {
   }
 
   enum TextStyles {
-    static var cardTitle: TextAttributes {
-      return TextAttributes(style: .headline)
-    }
+    static var cardTitle: TextAttributes { return TextAttributes(style: .headline) }
 
     enum Edit {
-      static var edit: TextAttributes {
-        return TextAttributes(style: .body, color: .tint)
-      }
-
-      static var done: TextAttributes {
-        return TextAttributes(style: .bodyBold, color: .tint)
-      }
+      static var edit: TextAttributes { return TextAttributes(style: .body,     color: .tint) }
+      static var done: TextAttributes { return TextAttributes(style: .bodyBold, color: .tint) }
     }
   }
 

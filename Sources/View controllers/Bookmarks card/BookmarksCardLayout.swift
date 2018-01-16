@@ -15,7 +15,7 @@ extension BookmarksCard {
   func initLayout() {
     self.view.backgroundColor = Managers.theme.colors.background
     self.initHeader()
-    self.initBookmarksTable()
+    self.initTableView()
     self.initPlaceholder()
   }
 
@@ -51,7 +51,7 @@ extension BookmarksCard {
     }
   }
 
-  private func initBookmarksTable() {
+  private func initTableView() {
     self.tableView.register(BookmarksCell.self)
     self.tableView.separatorInset     = .zero
     self.tableView.backgroundColor    = Managers.theme.colors.background

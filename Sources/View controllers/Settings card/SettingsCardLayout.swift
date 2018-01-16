@@ -6,17 +6,19 @@
 import UIKit
 import SnapKit
 
-private typealias Constants    = ConfigurationViewControllerConstants
-private typealias Layout       = Constants.Layout
+private typealias Layout       = SettingsCardConstants.Layout
+private typealias TextStyles   = SettingsCardConstants.TextStyles
 private typealias Localization = Localizable.Configuration
 
-extension ConfigurationViewController {
+extension SettingsCard {
 
   func initLayout() {
     self.view.backgroundColor = Managers.theme.colors.background
     self.initHeader()
-    self.initContent()
+    self.initTableView()
   }
+
+  // MARK: - Private
 
   private func initHeader() {
     self.headerView.contentView.addBorder(at: .bottom)
@@ -27,13 +29,12 @@ extension ConfigurationViewController {
       make.left.top.right.equalToSuperview()
     }
 
-    let titleAttributes           = Managers.theme.textAttributes(for: .headline)
-    self.cardTitle.attributedText = NSAttributedString(string: Localization.title, attributes: titleAttributes)
-    self.cardTitle.numberOfLines  = 0
-    self.cardTitle.lineBreakMode  = .byWordWrapping
+    self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
+    self.titleLabel.numberOfLines  = 0
+    self.titleLabel.lineBreakMode  = .byWordWrapping
 
-    self.headerView.contentView.addSubview(self.cardTitle)
-    self.cardTitle.snp.makeConstraints { make in
+    self.headerView.contentView.addSubview(self.titleLabel)
+    self.titleLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.Header.topInset)
       make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
       make.left.equalToSuperview().offset(Layout.leftInset)
@@ -41,14 +42,17 @@ extension ConfigurationViewController {
     }
   }
 
-  private func initContent() {
+  private func initTableView() {
     self.tableView.register(UITableViewCell.self)
-    self.tableView.backgroundColor = Managers.theme.colors.configurationBackground
-    self.tableView.separatorInset  = .zero
+//    self.tableView.separatorInset  = .zero
+    self.tableView.separatorColor  = Managers.theme.colors.accentLight
+    self.tableView.backgroundColor = Managers.theme.colors.background
+//    self.tableView.rowHeight          = UITableViewAutomaticDimension
+//    self.tableView.estimatedRowHeight = Layout.TableView.estimatedCellHeight
     self.tableView.dataSource      = self.tableViewDataSource
     self.tableView.delegate        = self
 
-    self.tableView.tableFooterView = self.createTableFooter()
+    self.tableView.tableFooterView = self.createTableViewFooter()
 
     self.view.insertSubview(self.tableView, belowSubview: self.headerView)
     self.tableView.snp.makeConstraints { make in
@@ -56,8 +60,8 @@ extension ConfigurationViewController {
     }
   }
 
-  private func createTableFooter() -> UIView {
-    let text = self.createTableFooterText()
+  private func createTableViewFooter() -> UIView {
+    let text = NSAttributedString(string: Localization.footer, attributes: TextStyles.footer)
 
     let footerFrame = CGRect(x: 0.0, y: 0.0, width: 1.0, height: self.calculateMinFooterHeight(text))
     let footerView = UIView(frame: footerFrame)
@@ -73,11 +77,6 @@ extension ConfigurationViewController {
     }
 
     return footerView
-  }
-
-  private func createTableFooterText() -> NSAttributedString {
-    let textAttributes = Managers.theme.textAttributes(for: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing)
-    return NSAttributedString(string: Localization.footer, attributes: textAttributes)
   }
 
   private func calculateMinFooterHeight(_ footerContent: NSAttributedString) -> CGFloat {

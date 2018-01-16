@@ -5,28 +5,29 @@
 
 import UIKit
 
-struct ConfigurationViewControllerConstants {
-  struct Layout {
+enum SettingsCardConstants {
+  enum Layout {
     static let leftInset:  CGFloat = 16.0
     static let rightInset: CGFloat = leftInset
 
-    struct Header {
+    enum Header {
       static let topInset:    CGFloat = 28.0
       static let bottomInset: CGFloat =  8.0
     }
 
-    struct Content {
-      static let initialScrollPercent: CGFloat = 0.125
-    }
-
-    struct Footer {
+    enum Footer {
       static let topOffset:    CGFloat =  5.0
       static let bottomOffset: CGFloat = 20.0
       static let lineSpacing:  CGFloat =  5.0
     }
   }
 
-  struct CardPanel {
-    static let relativeHeight: CGFloat = 0.75
+  enum TextStyles {
+    static var cardTitle: TextAttributes { return TextAttributes(style: .headline) }
+    static var footer:    TextAttributes { return TextAttributes(style: .caption, alignment: .center, lineSpacing: Layout.Footer.lineSpacing) }
+  }
+
+  enum CardPanel {
+    static var height: CGFloat { return 0.75 * Managers.device.screenBounds.height }
   }
 }

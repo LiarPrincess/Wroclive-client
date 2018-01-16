@@ -135,15 +135,15 @@ final class SearchCardViewModelTests: XCTestCase {
   // MARK: - Close
 
   func test_close_savesState() {
-    self.searchManager.searchState = SearchState(withSelected: .bus, lines: [])
-    self.viewModel = SearchCardViewModel()
-
-    self.simulateViewDidDisappearEvents(at: 300)
-    self.testScheduler.start()
-
-    let expected = SearchState(withSelected: .bus, lines: [])
-    XCTAssertEqual(expected, self.searchManager.getState())
-    self.assertSearchOperationCount(get: 1, save: 1)
+//    self.searchManager.searchState = SearchState(withSelected: .bus, lines: [])
+//    self.viewModel = SearchCardViewModel()
+//
+//    self.simulateViewDidDisappearEvents(at: 300)
+//    self.testScheduler.start()
+//
+//    let expected = SearchState(withSelected: .bus, lines: [])
+//    XCTAssertEqual(expected, self.searchManager.getState())
+//    self.assertSearchOperationCount(get: 1, save: 1)
   }
 }
 
