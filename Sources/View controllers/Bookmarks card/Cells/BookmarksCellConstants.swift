@@ -5,7 +5,7 @@
 
 import UIKit
 
-enum BookmarkCellConstants {
+enum BookmarksCellConstants {
   enum Layout {
     static let topInset:    CGFloat = 10.0
     static let bottomInset: CGFloat = topInset

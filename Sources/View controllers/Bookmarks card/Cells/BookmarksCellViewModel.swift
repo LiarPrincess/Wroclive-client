@@ -7,18 +7,18 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-private typealias Layout = BookmarkCellConstants.Layout
+private typealias Layout = BookmarksCellConstants.Layout
 
-protocol BookmarkCellViewModelInput {
+protocol BookmarksCellViewModelInput {
   var bookmark: AnyObserver<Bookmark> { get }
 }
 
-protocol BookmarkCellViewModelOutput {
+protocol BookmarksCellViewModelOutput {
   var name:  Driver<String> { get }
   var lines: Driver<String> { get }
 }
 
-class BookmarkCellViewModel: BookmarkCellViewModelInput, BookmarkCellViewModelOutput {
+class BookmarksCellViewModel: BookmarksCellViewModelInput, BookmarksCellViewModelOutput {
 
   // MARK: - Properties
 
@@ -40,8 +40,8 @@ class BookmarkCellViewModel: BookmarkCellViewModelInput, BookmarkCellViewModelOu
 
   // MARK: - Input/Output
 
-  var inputs:  BookmarkCellViewModelInput  { return self }
-  var outputs: BookmarkCellViewModelOutput { return self }
+  var inputs:  BookmarksCellViewModelInput  { return self }
+  var outputs: BookmarksCellViewModelOutput { return self }
 }
 
 private func createName(_ bookmark: Bookmark) -> String {

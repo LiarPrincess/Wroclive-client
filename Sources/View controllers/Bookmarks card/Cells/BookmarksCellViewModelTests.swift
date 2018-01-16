@@ -11,11 +11,11 @@ import RxTest
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-final class BookmarkCellViewModelTests: XCTestCase {
+final class BookmarksCellViewModelTests: XCTestCase {
 
   // MARK: - Properties
 
-  var viewModel:     BookmarkCellViewModel!
+  var viewModel:     BookmarksCellViewModel!
   var testScheduler: TestScheduler!
   var disposeBag:    DisposeBag!
 
@@ -23,7 +23,7 @@ final class BookmarkCellViewModelTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    self.viewModel     = BookmarkCellViewModel()
+    self.viewModel     = BookmarksCellViewModel()
     self.testScheduler = TestScheduler(initialClock: 0)
     self.disposeBag    = DisposeBag()
   }
@@ -78,7 +78,7 @@ final class BookmarkCellViewModelTests: XCTestCase {
 
 // MARK: - Helpers
 
-extension BookmarkCellViewModelTests {
+extension BookmarksCellViewModelTests {
 
   // MARK: - Bookmark
 

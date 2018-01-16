@@ -8,21 +8,21 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-private typealias Layout     = BookmarkCellConstants.Layout
-private typealias TextStyles = BookmarkCellConstants.TextStyles
+private typealias Layout     = BookmarksCellConstants.Layout
+private typealias TextStyles = BookmarksCellConstants.TextStyles
 
 // https://stackoverflow.com/a/25967370 - preferredMaxLayoutWidth
 // https://stackoverflow.com/a/18746930 - auto layout for UITableView
 // https://stackoverflow.com/a/2063776  - recalculate cell height
 
-class BookmarkCell: UITableViewCell {
+class BookmarksCell: UITableViewCell {
 
   // MARK: - Properties
 
   private let nameLabel  = UILabel()
   private let linesLabel = UILabel()
 
-  let viewModel = BookmarkCellViewModel()
+  let viewModel = BookmarksCellViewModel()
   private let disposeBag = DisposeBag()
 
   // disable alpha, so we dont end up with transparent cells when reordering

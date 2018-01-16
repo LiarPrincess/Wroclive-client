@@ -10,8 +10,6 @@ import RxCocoa
 private typealias TextStyles   = BookmarksCardConstants.TextStyles
 private typealias Localization = Localizable.Bookmarks
 
-typealias BookmarksSection = RxSectionModel<String, Bookmark>
-
 protocol BookmarksCardViewModelInput {
   var itemSelected: AnyObserver<IndexPath>      { get }
   var itemMoved:    AnyObserver<ItemMovedEvent> { get }
@@ -53,7 +51,7 @@ class BookmarksCardViewModel: BookmarksCardViewModelInput, BookmarksCardViewMode
   // MARK: - Output
 
   lazy var bookmarks: Driver<[BookmarksSection]> = {
-    let defaultValue = BookmarksCardViewModel.getBookmarks()
+    let defaultValue    = [BookmarksSection(model: "", items: Managers.bookmarks.get())]
     let moveOperation   = self._itemMoved.map   { RxSectionOperation.move(from: $0.sourceIndex, to: $0.destinationIndex) }
     let deleteOperation = self._itemDeleted.map { RxSectionOperation.remove(indexPath: $0) }
 
@@ -84,29 +82,14 @@ class BookmarksCardViewModel: BookmarksCardViewModelInput, BookmarksCardViewMode
   init() {
     self.bookmarks
       .skip(1) // skip initial binding
-      .drive(onNext: { BookmarksCardViewModel.saveBookmarks($0) })
+      .map(toBookmarks)
+      .drive(onNext: { Managers.bookmarks.save($0) })
       .disposed(by: self.disposeBag)
 
     self._itemSelected
       .withLatestFrom(self.bookmarks) { index, items in items[index] }
-      .bind(onNext: { BookmarksCardViewModel.startTracking($0) })
+      .bind(onNext: { Managers.tracking.start($0.lines) })
       .disposed(by: self.disposeBag)
-  }
-
-  // MARK: - Managers
-
-  private static func getBookmarks() -> [BookmarksSection] {
-    let bookmarks = Managers.bookmarks.get()
-    return [BookmarksSection(model: "", items: bookmarks)]
-  }
-
-  private static func saveBookmarks(_ sections: [BookmarksSection]) {
-    let bookmarks = sections.flatMap { $0.items }
-    Managers.bookmarks.save(bookmarks)
-  }
-
-  private static func startTracking(_ bookmark: Bookmark) {
-    Managers.tracking.start(bookmark.lines)
   }
 
   // MARK: - Input/Output
@@ -115,11 +98,15 @@ class BookmarksCardViewModel: BookmarksCardViewModelInput, BookmarksCardViewMode
   var outputs: BookmarksCardViewModelOutput { return self }
 }
 
-// MARK: - Edit
+// MARK: - Helpers
 
 private func createEditButtonLabel(isEditing: Bool) -> NSAttributedString {
   switch isEditing {
   case true:  return NSAttributedString(string: Localization.Edit.done, attributes: TextStyles.Edit.done)
   case false: return NSAttributedString(string: Localization.Edit.edit, attributes: TextStyles.Edit.edit)
   }
+}
+
+private func toBookmarks(_ sections: [BookmarksSection]) -> [Bookmark] {
+  return sections.flatMap { $0.items }
 }
