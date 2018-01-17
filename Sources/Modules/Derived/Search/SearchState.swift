@@ -3,22 +3,22 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-struct SearchState: Codable {
+struct SearchCardState: Codable {
 
-  let selectedLineType: LineType
-  let selectedLines:    [Line]
+  let page:          LineType
+  let selectedLines: [Line]
 
-  init(withSelected lineType: LineType, lines: [Line]) {
-    self.selectedLineType = lineType
-    self.selectedLines    = lines
+  init(page: LineType, selectedLines: [Line]) {
+    self.page          = page
+    self.selectedLines = selectedLines
   }
 }
 
 // MARK: Equatable
 
-extension SearchState: Equatable {
-  static func == (lhs: SearchState, rhs: SearchState) -> Bool {
-    return lhs.selectedLineType == rhs.selectedLineType
-        && lhs.selectedLines    == rhs.selectedLines
+extension SearchCardState: Equatable {
+  static func == (lhs: SearchCardState, rhs: SearchCardState) -> Bool {
+    return lhs.page == rhs.page
+        && lhs.selectedLines == rhs.selectedLines
   }
 }

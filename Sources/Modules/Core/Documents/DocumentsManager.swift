@@ -32,8 +32,8 @@ class DocumentsManager: DocumentsManagerType {
     let decoder = PropertyListDecoder()
 
     switch document {
-    case .bookmarks:   return try decoder.decode([Bookmark].self, from: data)
-    case .searchState: return try decoder.decode(SearchState.self, from: data)
+    case .bookmarks:       return try decoder.decode([Bookmark].self,      from: data)
+    case .searchCardState: return try decoder.decode(SearchCardState.self, from: data)
     }
   }
 
@@ -43,8 +43,8 @@ class DocumentsManager: DocumentsManagerType {
 
     // Swift 4 forces us to use concrete type when encoding not an generic Encodable
     switch documentData {
-    case let .bookmarks(value):   return try encoder.encode(value)
-    case let .searchState(value): return try encoder.encode(value)
+    case let .bookmarks(value):       return try encoder.encode(value)
+    case let .searchCardState(value): return try encoder.encode(value)
     }
   }
 
@@ -58,8 +58,8 @@ class DocumentsManager: DocumentsManagerType {
 
   private func getDocumentFilename(_ document: Document) -> String {
     switch document {
-    case .bookmarks:   return "bookmarks"
-    case .searchState: return "searchState"
+    case .bookmarks:       return "bookmarks"
+    case .searchCardState: return "searchCardState"
     }
   }
 }

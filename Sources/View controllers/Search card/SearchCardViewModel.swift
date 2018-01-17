@@ -116,7 +116,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
     let state = Managers.search.getState()
 
     self.page = Observable.merge(self._pageSelected, self._pageDidTransition)
-      .startWith(state.selectedLineType)
+      .startWith(state.page)
       .asDriver(onErrorDriveWith: .never())
 
     let selectOperation   = self._lineSelected  .map { ArrayOperation.append(element: $0) }
@@ -144,16 +144,10 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
     self._viewDidDisappear
       .withLatestFrom(self.page) { $1 }
-      .withLatestFrom(self.selectedLines) { (lineType: $0, lines: $1) }
-      .map { SearchState(withSelected: $0.lineType, lines: $0.lines) }
+      .withLatestFrom(self.selectedLines) { (page: $0, selectedLines: $1) }
+      .map  { SearchCardState(page: $0.page, selectedLines: $0.selectedLines) }
       .bind { Managers.search.save($0) }
       .disposed(by: self.disposeBag)
-  }
-
-  // MARK: - Managers
-
-  private static func getSavedState() -> SearchState {
-    return Managers.search.getState()
   }
 
   // MARK: - Input/Output

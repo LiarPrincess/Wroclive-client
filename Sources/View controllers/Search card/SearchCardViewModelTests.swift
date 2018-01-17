@@ -53,7 +53,7 @@ final class SearchCardViewModelTests: XCTestCase {
   // MARK: - Page
 
   func test_selectingPage_updatesPage() {
-    self.searchManager.searchState = SearchState(withSelected: .tram, lines: [])
+    self.searchManager.state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
     let type0 = next( 50, LineType.bus)

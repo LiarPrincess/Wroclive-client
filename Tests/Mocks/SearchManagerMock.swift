@@ -8,18 +8,18 @@ import Foundation
 
 class SearchManagerMock: SearchManagerType {
 
-  var searchState = SearchState(withSelected: .tram, lines: [])
+  var state = SearchCardState(page: .tram, selectedLines: [])
 
   private(set) var getStateCount = 0
   private(set) var saveCount     = 0
 
-  func getState() -> SearchState {
+  func getState() -> SearchCardState {
     self.getStateCount += 1
-    return self.searchState
+    return self.state
   }
 
-  func save(_ state: SearchState) {
+  func save(_ state: SearchCardState) {
     self.saveCount += 1
-    self.searchState = state
+    self.state = state
   }
 }

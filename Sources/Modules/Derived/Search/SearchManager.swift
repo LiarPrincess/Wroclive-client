@@ -7,13 +7,13 @@ import Foundation
 
 class SearchManager: SearchManagerType {
 
-  func getState() -> SearchState {
-    let document = Managers.documents.read(.searchState)
-    return document as? SearchState ?? SearchState(withSelected: .tram, lines: [])
+  func getState() -> SearchCardState {
+    let document = Managers.documents.read(.searchCardState)
+    return document as? SearchCardState ?? SearchCardState(page: .tram, selectedLines: [])
   }
 
-  func save(_ state: SearchState) {
-    let document = DocumentData.searchState(value: state)
+  func save(_ state: SearchCardState) {
+    let document = DocumentData.searchCardState(value: state)
     Managers.documents.write(document)
   }
 }

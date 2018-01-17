@@ -11,7 +11,7 @@ import RxTest
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-private typealias Localization = Localizable.LineSelector.SectionName
+private typealias Localization = Localizable.Search.Sections
 private typealias TextStyles   = LineSelectorHeaderViewConstants.TextStyles
 
 final class LineSelectorHeaderViewModelTests: XCTestCase {

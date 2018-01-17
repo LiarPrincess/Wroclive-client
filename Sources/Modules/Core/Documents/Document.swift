@@ -5,24 +5,24 @@
 
 enum Document {
   case bookmarks
-  case searchState
+  case searchCardState
 }
 
 enum DocumentData {
-  case bookmarks  (value: [Bookmark])
-  case searchState(value: SearchState)
+  case bookmarks(value: [Bookmark])
+  case searchCardState(value: SearchCardState)
 
   var document: Document {
     switch self {
-    case .bookmarks:   return .bookmarks
-    case .searchState: return .searchState
+    case .bookmarks:       return .bookmarks
+    case .searchCardState: return .searchCardState
     }
   }
 
   var data: Any {
     switch self {
-    case let .bookmarks(value: value):   return value
-    case let .searchState(value: value): return value
+    case let .bookmarks(value: value):       return value
+    case let .searchCardState(value: value): return value
     }
   }
 }
