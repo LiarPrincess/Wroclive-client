@@ -180,7 +180,6 @@
 		90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */; };
 		90AACC86200ABB0B0064EDFD /* BookmarksCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTests.swift */; };
 		90AACC89200ACA890064EDFD /* AlertCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC88200ACA890064EDFD /* AlertCreator.swift */; };
-		90AACC8B200B7C390064EDFD /* SearchCardLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC8A200B7C390064EDFD /* SearchCardLines.swift */; };
 		90AACC8D200BA01A0064EDFD /* LineSelectorSectionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */; };
 		90AACC90200BA6E70064EDFD /* LineSelectorSectionCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */; };
 		90AACC92200BAF940064EDFD /* Sequence+ToArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC91200BAF940064EDFD /* Sequence+ToArray.swift */; };
@@ -451,7 +450,6 @@
 		90AACC75200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableOfResult+ValuesErrors.swift"; sourceTree = "<group>"; };
 		90AACC77200954AC0064EDFD /* SearchCardAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardAlerts.swift; sourceTree = "<group>"; };
 		90AACC88200ACA890064EDFD /* AlertCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCreator.swift; sourceTree = "<group>"; };
-		90AACC8A200B7C390064EDFD /* SearchCardLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardLines.swift; sourceTree = "<group>"; };
 		90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreator.swift; sourceTree = "<group>"; };
 		90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreatorTests.swift; sourceTree = "<group>"; };
 		90AACC91200BAF940064EDFD /* Sequence+ToArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+ToArray.swift"; sourceTree = "<group>"; };
@@ -748,7 +746,6 @@
 		901ECDD11FF5B478004765AA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				90AACC8A200B7C390064EDFD /* SearchCardLines.swift */,
 				90AACC77200954AC0064EDFD /* SearchCardAlerts.swift */,
 				90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */,
 			);
@@ -2001,7 +1998,6 @@
 				901ECDC31FF5886C004765AA /* NotificationManagerType.swift in Sources */,
 				901ECDC11FF58844004765AA /* NotificationManager.swift in Sources */,
 				901ECDB91FF5875F004765AA /* FontType.swift in Sources */,
-				90AACC8B200B7C390064EDFD /* SearchCardLines.swift in Sources */,
 				901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */,
 				9042EDDB1FF3ECC700F5D01D /* RxCollectionViewDataSource.swift in Sources */,
 				907DC6ED1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift in Sources */,

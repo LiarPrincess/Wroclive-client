@@ -78,6 +78,7 @@ class SearchCard: UIViewController {
       .disposed(by: self.disposeBag)
 
     self.viewModel.outputs.lines
+      .withLatestFrom(self.viewModel.outputs.selectedLines) { (lines: $0, selectedLines: $1) }
       .drive(onNext: { [weak self] in self?.lineSelector.setLines($0.lines, selected: $0.selectedLines) })
       .disposed(by: self.disposeBag)
   }
@@ -105,6 +106,7 @@ class SearchCard: UIViewController {
   private func initAlertBindings() {
     self.viewModel.outputs.showBookmarkAlert.asObservable()
       .flatMapLatest(createAlert)
+      .unwrap()
       .bind(to: self.viewModel.inputs.bookmarkAlertNameEntered)
       .disposed(by: self.disposeBag)
 

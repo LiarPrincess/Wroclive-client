@@ -19,15 +19,16 @@ protocol SearchCardViewModelInput {
   var searchButtonPressed:   AnyObserver<Void> { get }
 
   var apiAlertTryAgainButtonPressed: AnyObserver<Void>    { get }
-  var bookmarkAlertNameEntered:      AnyObserver<String?> { get }
+  var bookmarkAlertNameEntered:      AnyObserver<String> { get }
 
   var viewDidAppear:    AnyObserver<Void> { get }
   var viewDidDisappear: AnyObserver<Void> { get }
 }
 
 protocol SearchCardViewModelOutput {
-  var page:  Driver<LineType>        { get }
-  var lines: Driver<SearchCardLines> { get }
+  var page:          Driver<LineType> { get }
+  var lines:         Driver<[Line]>   { get }
+  var selectedLines: Driver<[Line]>   { get }
 
   var isLineSelectorVisible: Driver<Bool> { get }
   var isPlaceholderVisible:  Driver<Bool> { get }
@@ -50,7 +51,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   private let _searchButtonPressed   = PublishSubject<Void>()
 
   private let _apiAlertTryAgainButtonPressed = PublishSubject<Void>()
-  private let _bookmarkAlertNameEntered      = PublishSubject<String?>()
+  private let _bookmarkAlertNameEntered      = PublishSubject<String>()
 
   private let _viewDidAppear    = PublishSubject<Void>()
   private let _viewDidDisappear = PublishSubject<Void>()
@@ -76,8 +77,8 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   lazy var bookmarkButtonPressed: AnyObserver<Void>     = self._bookmarkButtonPressed.asObserver()
   lazy var searchButtonPressed:   AnyObserver<Void>     = self._searchButtonPressed.asObserver()
 
-  lazy var apiAlertTryAgainButtonPressed: AnyObserver<Void>    = self._apiAlertTryAgainButtonPressed.asObserver()
-  lazy var bookmarkAlertNameEntered:      AnyObserver<String?> = self._bookmarkAlertNameEntered.asObserver()
+  lazy var apiAlertTryAgainButtonPressed: AnyObserver<Void>   = self._apiAlertTryAgainButtonPressed.asObserver()
+  lazy var bookmarkAlertNameEntered:      AnyObserver<String> = self._bookmarkAlertNameEntered.asObserver()
 
   lazy var viewDidAppear:    AnyObserver<Void> = self._viewDidAppear.asObserver()
   lazy var viewDidDisappear: AnyObserver<Void> = self._viewDidDisappear.asObserver()
@@ -87,13 +88,12 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   let page:          Driver<LineType>
   let selectedLines: Driver<[Line]>
 
-  lazy var lines: Driver<SearchCardLines> = self.lineResponse
+  lazy var lines: Driver<[Line]> = self.lineResponse
     .values()
-    .withLatestFrom(self.selectedLines) { SearchCardLines(lines: $0, selectedLines: $1) }
-    .startWith(SearchCardLines(lines: [], selectedLines: []))
+    .startWith([])
     .asDriver(onErrorDriveWith: .never())
 
-  lazy var isLineSelectorVisible: Driver<Bool> = self.lines.map { $0.lines.any }
+  lazy var isLineSelectorVisible: Driver<Bool> = self.lines.map { $0.any }
   lazy var isPlaceholderVisible:  Driver<Bool> = self.isLineSelectorVisible.not()
 
   lazy var showApiErrorAlert: Driver<SearchCardApiAlert> = self.lineResponse
@@ -131,7 +131,6 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
 
   private func initOperations() {
     self._bookmarkAlertNameEntered
-      .flatMap { Observable.from(optional: $0) }
       .withLatestFrom(self.selectedLines) { (name: $0, lines: $1) }
       .map  { Bookmark(name: $0.name, lines: $0.lines) }
       .bind { Managers.bookmarks.add($0) }
