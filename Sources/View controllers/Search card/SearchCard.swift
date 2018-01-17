@@ -180,7 +180,7 @@ private func createAlert(_ bookmarkAlert: SearchCardBookmarkAlert) -> Observable
 
 private func createAlert(_ apiAlert: SearchCardApiAlert) -> Observable<Void> {
   switch apiAlert {
-  case .noInternet:      return NetworkAlerts.showNoInternetAlert()
-  case .connectionError: return NetworkAlerts.showConnectionErrorAlert()
+  case .noInternet:   return NetworkAlerts.showNoInternetAlert()
+  case .generalError: return NetworkAlerts.showConnectionErrorAlert()
   }
 }

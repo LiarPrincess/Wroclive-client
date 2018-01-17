@@ -5,7 +5,7 @@
 
 enum SearchCardApiAlert {
   case noInternet
-  case connectionError
+  case generalError
 }
 
 enum SearchCardBookmarkAlert {

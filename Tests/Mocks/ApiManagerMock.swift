@@ -7,10 +7,17 @@ import Foundation
 import PromiseKit
 @testable import Wroclive
 
+// swiftlint:disable implicitly_unwrapped_optional
+
 class ApiManagerMock: ApiManagerType {
 
+  var availableLines: Promise<[Line]>!
+
+  private(set) var availableLinesCallCount = 0
+
   func getAvailableLines() -> Promise<[Line]> {
-    return Promise(value: [])
+    self.availableLinesCallCount += 1
+    return self.availableLines
   }
 
   func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {

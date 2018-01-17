@@ -56,13 +56,14 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   private let _viewDidAppear    = PublishSubject<Void>()
   private let _viewDidDisappear = PublishSubject<Void>()
 
-  private lazy var lineResponse: ApiResponse<[Line]> = {
+  private lazy var lineResponse: SearchCardApiResponse = {
     let viewDidAppear = self._viewDidAppear
     let tryAgain      = self._apiAlertTryAgainButtonPressed
       .delay(AppInfo.Timings.FailedRequestDelay.lines, scheduler: MainScheduler.instance)
 
     return Observable.merge(viewDidAppear, tryAgain)
       .flatMapLatest { _ in SearchCardNetworkAdapter.getAvailableLines().catchError { _ in .empty() } }
+      .map(toApiResponse)
       .share()
   }()
 
@@ -155,10 +156,26 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   var outputs: SearchCardViewModelOutput { return self }
 }
 
-private func toApiAlert(_ error: ApiError) -> SearchCardApiAlert {
+private func toApiResponse(_ response: Result<[Line], ApiError>) -> Result<[Line], SearchCardApiError> {
+  switch response {
+  case let .success(lines):
+    switch lines.any {
+    case true:  return .success(lines)
+    case false: return .failure(.generalError)
+    }
+  case let .failure(apiError):
+    switch apiError {
+    case .noInternet:      return .failure(.noInternet)
+    case .connectionError,
+         .invalidResponse: return .failure(.generalError)
+    }
+  }
+}
+
+private func toApiAlert(_ error: SearchCardApiError) -> SearchCardApiAlert {
   switch error {
-  case .noInternet:                        return .noInternet
-  case .connectionError, .invalidResponse: return .connectionError
+  case .noInternet:   return .noInternet
+  case .generalError: return .generalError
   }
 }
 
