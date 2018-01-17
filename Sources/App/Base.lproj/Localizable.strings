@@ -5,6 +5,54 @@
 
  */
 
+/* Bookmarks */
+
+"Bookmarks_Title"     = "Bookmarks";
+"Bookmarks_Edit_Done" = "Done";
+"Bookmarks_Edit_Edit" = "Edit";
+
+"Bookmarks_Placeholder_Title"   = "You have not saved any bookmarks";
+"Bookmarks_Placeholder_Content" = "To add bookmark press <star> when selecting lines.";
+
+/* Search */
+
+"Search_Title"   = "Lines";
+"Search_Search"  = "Search";
+"Search_Loading" = "Loading…";
+
+"Search_Pages_Tram" = "Trams";
+"Search_Pages_Bus"  = "Buses";
+
+"Search_Sections_Express"   = "Express";
+"Search_Sections_Limited"   = "Limited";
+"Search_Sections_Night"     = "Night";
+"Search_Sections_PeakHour"  = "Peak-hour";
+"Search_Sections_Regular"   = "Regular";
+"Search_Sections_Suburban"  = "Suburban";
+"Search_Sections_Temporary" = "Temporary";
+"Search_Sections_Zone"      = "Zone";
+
+/* Settings */
+
+"Settings_Title"  = "Settings";
+"Settings_Footer" = "Data provided by MPK Wrocław";
+
+"Settings_Table_MapType_Title"     = "Map type";
+"Settings_Table_MapType_Map"       = "Map";
+"Settings_Table_MapType_Transport" = "Transport";
+"Settings_Table_MapType_Satelite"  = "Satelite";
+
+"Settings_Table_General_Title" = "General";
+"Settings_Table_General_Share" = "Share";
+"Settings_Table_General_Rate"  = "Rate app";
+"Settings_Table_General_About" = "About";
+
+/* App */
+
+"Share_Message" = "Wroclive - Real time public transport! %@";
+
+/* Alerts */
+
 "Alert_Bookmark_NameInput_Cancel"      = "Cancel";
 "Alert_Bookmark_NameInput_Message"     = "Enter name for this bookmark.";
 "Alert_Bookmark_NameInput_Placeholder" = "Name";
@@ -37,35 +85,14 @@
 "Alert_Network_NoInternet_Title"    = "Unable to retrieve data";
 "Alert_Network_NoInternet_TryAgain" = "Try again";
 
-"Bookmarks_CardTitle"           = "Bookmarks";
-"Bookmarks_Edit_Done"           = "Done";
-"Bookmarks_Edit_Edit"           = "Edit";
-"Bookmarks_Placeholder_Content" = "To add bookmark press <star> when selecting lines.";
-"Bookmarks_Placeholder_Title"   = "You have not saved any bookmarks";
+/* Unused */
 
-"Configuration_Cell_Colors"   = "Personalization";
-"Configuration_Cell_Contact"  = "Contact";
-"Configuration_Cell_Rate"     = "Rate app";
-"Configuration_Cell_Share"    = "Share";
-"Configuration_Cell_Tutorial" = "Tutorial";
+"Search_BookmarkAdded_Title"   = "Bookmark added!";
+"Search_BookmarkAdded_Caption" = "Use <star> from map view to see all saved bookmarks.";
 
-"Configuration_Footer"        = "Data provided by MPK Wrocław";
-"Configuration_Theme_Bus"     = "Bus";
-"Configuration_Theme_Tint"    = "Interface";
-"Configuration_Theme_Tram"    = "Tram";
-"Configuration_Title"         = "Settings";
-
-"LineSelector_SectionName_Express"   = "Express";
-"LineSelector_SectionName_Limited"   = "Limited";
-"LineSelector_SectionName_Night"     = "Night";
-"LineSelector_SectionName_PeakHour"  = "Peak-hour";
-"LineSelector_SectionName_Regular"   = "Regular";
-"LineSelector_SectionName_Suburban"  = "Suburban";
-"LineSelector_SectionName_Temporary" = "Temporary";
-"LineSelector_SectionName_Zone"      = "Zone";
-
-"LineTypeSelection_Bus"  = "Buses";
-"LineTypeSelection_Tram" = "Trams";
+"Settings_Theme_Bus"  = "Buses";
+"Settings_Theme_Tint" = "Interface";
+"Settings_Theme_Tram" = "Trams";
 
 "Presentation_InAppPurchase_Bookmarks_Caption" = "Save more than 2 bookmarks to travel faster across the city.";
 "Presentation_InAppPurchase_Bookmarks_Title"   = "Unlimited Bookmarks";
@@ -82,11 +109,3 @@
 "Presentation_Tutorial_Page2_Caption" = "Use <star> to see all saved bookmarks.";
 "Presentation_Tutorial_Page2_Title"   = "Bookmarks";
 "Presentation_Tutorial_Skip"          = "Skip";
-
-"Search_CardTitle"             = "Lines";
-"Search_Loading"               = "Loading…";
-"Search_Search"                = "Search";
-"Search_BookmarkAdded_Title"   = "Bookmark added!";
-"Search_BookmarkAdded_Caption" = "Use <star> from map view to see all saved bookmarks.";
-
-"Share_Message" = "Wroclive - Real time public transport! %@";

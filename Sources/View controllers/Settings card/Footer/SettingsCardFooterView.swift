@@ -8,7 +8,7 @@ import SnapKit
 
 private typealias Layout       = SettingsCardFooterConstants.Layout
 private typealias TextStyles   = SettingsCardFooterConstants.TextStyles
-private typealias Localization = Localizable.Configuration
+private typealias Localization = Localizable.Settings
 
 class SettingsCardFooterView: UIView {
 

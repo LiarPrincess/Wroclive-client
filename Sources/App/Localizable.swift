@@ -6,7 +6,7 @@
 //=======================================================================
 //
 // This file is computer generated from Localizable.strings. Do not edit.
-// Run 'fastlane translate' to genereate it again.
+// Run 'fastlane translate' to generate it again.
 //
 //=======================================================================
 
@@ -208,125 +208,7 @@ public struct Localizable {
     /// Bookmarks
     /// - **en**: Bookmarks
     /// - **pl**: Zakładki
-    static var cardTitle: String { return localizedString("Bookmarks_CardTitle") }
-  }
-
-  enum Configuration {
-
-    enum Cell {
-
-      /// Personalization
-      /// - **en**: Personalization
-      /// - **pl**: Personalizacja
-      static var colors: String { return localizedString("Configuration_Cell_Colors") }
-
-      /// Contact
-      /// - **en**: Contact
-      /// - **pl**: Kontakt
-      static var contact: String { return localizedString("Configuration_Cell_Contact") }
-
-      /// Rate app
-      /// - **en**: Rate app
-      /// - **pl**: Oceń aplikację
-      static var rate: String { return localizedString("Configuration_Cell_Rate") }
-
-      /// Share
-      /// - **en**: Share
-      /// - **pl**: Udostępnij
-      static var share: String { return localizedString("Configuration_Cell_Share") }
-
-      /// Tutorial
-      /// - **en**: Tutorial
-      /// - **pl**: Instrukcje
-      static var tutorial: String { return localizedString("Configuration_Cell_Tutorial") }
-    }
-
-    enum Theme {
-
-      /// Bus
-      /// - **en**: Bus
-      /// - **pl**: Autobusy
-      static var bus: String { return localizedString("Configuration_Theme_Bus") }
-
-      /// Interface
-      /// - **en**: Interface
-      /// - **pl**: Interfejs
-      static var tint: String { return localizedString("Configuration_Theme_Tint") }
-
-      /// Tram
-      /// - **en**: Tram
-      /// - **pl**: Tramwaje
-      static var tram: String { return localizedString("Configuration_Theme_Tram") }
-    }
-
-    /// Data provided by MPK Wrocław
-    /// - **en**: Data provided by MPK Wrocław
-    /// - **pl**: Dane uzyskano dzięki uprzejmości MPK Wrocław
-    static var footer: String { return localizedString("Configuration_Footer") }
-
-    /// Settings
-    /// - **en**: Settings
-    /// - **pl**: Ustawienia
-    static var title: String { return localizedString("Configuration_Title") }
-  }
-
-  enum LineSelector {
-
-    enum SectionName {
-
-      /// Express
-      /// - **en**: Express
-      /// - **pl**: Pośpieszne
-      static var express: String { return localizedString("LineSelector_SectionName_Express") }
-
-      /// Limited
-      /// - **en**: Limited
-      /// - **pl**: Zastępcze
-      static var limited: String { return localizedString("LineSelector_SectionName_Limited") }
-
-      /// Night
-      /// - **en**: Night
-      /// - **pl**: Nocne
-      static var night: String { return localizedString("LineSelector_SectionName_Night") }
-
-      /// Peak-hour
-      /// - **en**: Peak-hour
-      /// - **pl**: Szczytowe
-      static var peakHour: String { return localizedString("LineSelector_SectionName_PeakHour") }
-
-      /// Regular
-      /// - **en**: Regular
-      /// - **pl**: Normalne
-      static var regular: String { return localizedString("LineSelector_SectionName_Regular") }
-
-      /// Suburban
-      /// - **en**: Suburban
-      /// - **pl**: Podmiejskie
-      static var suburban: String { return localizedString("LineSelector_SectionName_Suburban") }
-
-      /// Temporary
-      /// - **en**: Temporary
-      /// - **pl**: Tymczasowe
-      static var temporary: String { return localizedString("LineSelector_SectionName_Temporary") }
-
-      /// Zone
-      /// - **en**: Zone
-      /// - **pl**: Strefowe
-      static var zone: String { return localizedString("LineSelector_SectionName_Zone") }
-    }
-  }
-
-  enum LineTypeSelection {
-
-    /// Buses
-    /// - **en**: Buses
-    /// - **pl**: Autobusy
-    static var bus: String { return localizedString("LineTypeSelection_Bus") }
-
-    /// Trams
-    /// - **en**: Trams
-    /// - **pl**: Tramwaje
-    static var tram: String { return localizedString("LineTypeSelection_Tram") }
+    static var title: String { return localizedString("Bookmarks_Title") }
   }
 
   enum Presentation {
@@ -441,10 +323,61 @@ public struct Localizable {
       static var title: String { return localizedString("Search_BookmarkAdded_Title") }
     }
 
-    /// Lines
-    /// - **en**: Lines
-    /// - **pl**: Linie
-    static var cardTitle: String { return localizedString("Search_CardTitle") }
+    enum Pages {
+
+      /// Buses
+      /// - **en**: Buses
+      /// - **pl**: Autobusy
+      static var bus: String { return localizedString("Search_Pages_Bus") }
+
+      /// Trams
+      /// - **en**: Trams
+      /// - **pl**: Tramwaje
+      static var tram: String { return localizedString("Search_Pages_Tram") }
+    }
+
+    enum Sections {
+
+      /// Express
+      /// - **en**: Express
+      /// - **pl**: Pośpieszne
+      static var express: String { return localizedString("Search_Sections_Express") }
+
+      /// Limited
+      /// - **en**: Limited
+      /// - **pl**: Zastępcze
+      static var limited: String { return localizedString("Search_Sections_Limited") }
+
+      /// Night
+      /// - **en**: Night
+      /// - **pl**: Nocne
+      static var night: String { return localizedString("Search_Sections_Night") }
+
+      /// Peak-hour
+      /// - **en**: Peak-hour
+      /// - **pl**: Szczytowe
+      static var peakHour: String { return localizedString("Search_Sections_PeakHour") }
+
+      /// Regular
+      /// - **en**: Regular
+      /// - **pl**: Normalne
+      static var regular: String { return localizedString("Search_Sections_Regular") }
+
+      /// Suburban
+      /// - **en**: Suburban
+      /// - **pl**: Podmiejskie
+      static var suburban: String { return localizedString("Search_Sections_Suburban") }
+
+      /// Temporary
+      /// - **en**: Temporary
+      /// - **pl**: Tymczasowe
+      static var temporary: String { return localizedString("Search_Sections_Temporary") }
+
+      /// Zone
+      /// - **en**: Zone
+      /// - **pl**: Strefowe
+      static var zone: String { return localizedString("Search_Sections_Zone") }
+    }
 
     /// Loading…
     /// - **en**: Loading…
@@ -455,6 +388,91 @@ public struct Localizable {
     /// - **en**: Search
     /// - **pl**: Szukaj
     static var search: String { return localizedString("Search_Search") }
+
+    /// Lines
+    /// - **en**: Lines
+    /// - **pl**: Linie
+    static var title: String { return localizedString("Search_Title") }
+  }
+
+  enum Settings {
+
+    enum Table {
+
+      enum General {
+
+        /// About
+        /// - **en**: About
+        /// - **pl**: O nas
+        static var about: String { return localizedString("Settings_Table_General_About") }
+
+        /// Rate app
+        /// - **en**: Rate app
+        /// - **pl**: Oceń
+        static var rate: String { return localizedString("Settings_Table_General_Rate") }
+
+        /// Share
+        /// - **en**: Share
+        /// - **pl**: Udostępnij
+        static var share: String { return localizedString("Settings_Table_General_Share") }
+
+        /// General
+        /// - **en**: General
+        /// - **pl**: Ogólne
+        static var title: String { return localizedString("Settings_Table_General_Title") }
+      }
+
+      enum MapType {
+
+        /// Map
+        /// - **en**: Map
+        /// - **pl**: Mapa
+        static var map: String { return localizedString("Settings_Table_MapType_Map") }
+
+        /// Satelite
+        /// - **en**: Satelite
+        /// - **pl**: Satelitarna
+        static var satelite: String { return localizedString("Settings_Table_MapType_Satelite") }
+
+        /// Map type
+        /// - **en**: Map type
+        /// - **pl**: Typ mapy
+        static var title: String { return localizedString("Settings_Table_MapType_Title") }
+
+        /// Transport
+        /// - **en**: Transport
+        /// - **pl**: Transport
+        static var transport: String { return localizedString("Settings_Table_MapType_Transport") }
+      }
+    }
+
+    enum Theme {
+
+      /// Buses
+      /// - **en**: Buses
+      /// - **pl**: Autobusy
+      static var bus: String { return localizedString("Settings_Theme_Bus") }
+
+      /// Interface
+      /// - **en**: Interface
+      /// - **pl**: Interfejs
+      static var tint: String { return localizedString("Settings_Theme_Tint") }
+
+      /// Trams
+      /// - **en**: Trams
+      /// - **pl**: Tramwaje
+      static var tram: String { return localizedString("Settings_Theme_Tram") }
+    }
+
+    /// Data provided by MPK Wrocław
+    /// - **en**: Data provided by MPK Wrocław
+    /// - **pl**: Dane uzyskano dzięki uprzejmości MPK Wrocław
+    static var footer: String { return localizedString("Settings_Footer") }
+
+    /// Settings
+    /// - **en**: Settings
+    /// - **pl**: Ustawienia
+    static var title: String { return localizedString("Settings_Title") }
   }
 
   enum Share {

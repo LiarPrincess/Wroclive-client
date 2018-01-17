@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-private typealias Localization = Localizable.LineSelector.SectionName
+private typealias Localization = Localizable.Search.Sections
 
 typealias LineSelectorSection = RxSectionModel<LineSelectorSectionData, Line>
 

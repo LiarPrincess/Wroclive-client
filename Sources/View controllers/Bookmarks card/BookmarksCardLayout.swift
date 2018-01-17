@@ -30,7 +30,7 @@ extension BookmarksCard {
       make.left.top.right.equalToSuperview()
     }
 
-    self.titleLabel.attributedText = NSAttributedString(string: Localization.cardTitle, attributes: TextStyles.cardTitle)
+    self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
 

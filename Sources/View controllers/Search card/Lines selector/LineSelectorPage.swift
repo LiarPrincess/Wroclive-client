@@ -10,7 +10,7 @@ import RxCocoa
 private typealias HeaderLayout     = LineSelectorHeaderViewConstants.Layout
 private typealias HeaderTextStyles = LineSelectorHeaderViewConstants.TextStyles
 private typealias CellLayout       = LineSelectorCellConstants.Layout
-private typealias Localization     = Localizable.LineSelector
+private typealias Localization     = Localizable.Search
 
 class LineSelectorPage: UIViewController {
 

@@ -8,7 +8,7 @@ import SnapKit
 
 private typealias Layout       = SettingsCardConstants.Layout
 private typealias TextStyles   = SettingsCardConstants.TextStyles
-private typealias Localization = Localizable.Configuration
+private typealias Localization = Localizable.Settings
 
 extension SettingsCard {
 

@@ -5,6 +5,54 @@
 
  */
 
+/* Bookmarks */
+
+"Bookmarks_Title"     = "Zakładki";
+"Bookmarks_Edit_Done" = "Gotowe";
+"Bookmarks_Edit_Edit" = "Edycja";
+
+"Bookmarks_Placeholder_Title"   = "Brak zakładek";
+"Bookmarks_Placeholder_Content" = "By dodać zakładkę użyj <star> podczas wyboru linii.";
+
+/* Search */
+
+"Search_Title"   = "Linie";
+"Search_Search"  = "Szukaj";
+"Search_Loading" = "Wczytywanie…";
+
+"Search_Pages_Tram" = "Tramwaje";
+"Search_Pages_Bus"  = "Autobusy";
+
+"Search_Sections_Express"   = "Pośpieszne";
+"Search_Sections_Limited"   = "Zastępcze";
+"Search_Sections_Night"     = "Nocne";
+"Search_Sections_PeakHour"  = "Szczytowe";
+"Search_Sections_Regular"   = "Normalne";
+"Search_Sections_Suburban"  = "Podmiejskie";
+"Search_Sections_Temporary" = "Tymczasowe";
+"Search_Sections_Zone"      = "Strefowe";
+
+/* Settings */
+
+"Settings_Title"  = "Ustawienia";
+"Settings_Footer" = "Dane uzyskano dzięki uprzejmości MPK Wrocław";
+
+"Settings_Table_MapType_Title"     = "Typ mapy";
+"Settings_Table_MapType_Map"       = "Mapa";
+"Settings_Table_MapType_Transport" = "Transport";
+"Settings_Table_MapType_Satelite"  = "Satelitarna";
+
+"Settings_Table_General_Title" = "Ogólne";
+"Settings_Table_General_Share" = "Udostępnij";
+"Settings_Table_General_Rate"  = "Oceń";
+"Settings_Table_General_About" = "O nas";
+
+/* App */
+
+"Share_Message" = "Wroclive - Komunikacja miejska na żywo! %@";
+
+/* Alerts */
+
 "Alert_Bookmark_NameInput_Cancel"      = "Anuluj";
 "Alert_Bookmark_NameInput_Message"     = "Wprowadź nazwę nowej zakładki.";
 "Alert_Bookmark_NameInput_Placeholder" = "Nazwa";
@@ -37,35 +85,14 @@
 "Alert_Network_NoInternet_Title"    = "Nie można pobrać danych";
 "Alert_Network_NoInternet_TryAgain" = "Spróbuj ponownie";
 
-"Bookmarks_CardTitle"           = "Zakładki";
-"Bookmarks_Edit_Done"           = "Gotowe";
-"Bookmarks_Edit_Edit"           = "Edycja";
-"Bookmarks_Placeholder_Content" = "By dodać zakładkę użyj <star> podczas wyboru linii.";
-"Bookmarks_Placeholder_Title"   = "Brak zakładek";
+/* Unused */
 
-"Configuration_Cell_Colors"   = "Personalizacja";
-"Configuration_Cell_Contact"  = "Kontakt";
-"Configuration_Cell_Rate"     = "Oceń aplikację";
-"Configuration_Cell_Share"    = "Udostępnij";
-"Configuration_Cell_Tutorial" = "Instrukcje";
+"Search_BookmarkAdded_Title"   = "Zakładka dodana!";
+"Search_BookmarkAdded_Caption" = "Użyj <star>, by zobaczyć wszystkie zapisane zakładki.";
 
-"Configuration_Footer"        = "Dane uzyskano dzięki uprzejmości MPK Wrocław";
-"Configuration_Theme_Bus"     = "Autobusy";
-"Configuration_Theme_Tint"    = "Interfejs";
-"Configuration_Theme_Tram"    = "Tramwaje";
-"Configuration_Title"         = "Ustawienia";
-
-"LineSelector_SectionName_Express"   = "Pośpieszne";
-"LineSelector_SectionName_Limited"   = "Zastępcze";
-"LineSelector_SectionName_Night"     = "Nocne";
-"LineSelector_SectionName_PeakHour"  = "Szczytowe";
-"LineSelector_SectionName_Regular"   = "Normalne";
-"LineSelector_SectionName_Suburban"  = "Podmiejskie";
-"LineSelector_SectionName_Temporary" = "Tymczasowe";
-"LineSelector_SectionName_Zone"      = "Strefowe";
-
-"LineTypeSelection_Bus"  = "Autobusy";
-"LineTypeSelection_Tram" = "Tramwaje";
+"Settings_Theme_Bus"  = "Autobusy";
+"Settings_Theme_Tint" = "Interfejs";
+"Settings_Theme_Tram" = "Tramwaje";
 
 "Presentation_InAppPurchase_Bookmarks_Caption" = "Zapisz więcej niż 2 zakładki, by szybciej poruszać się po mieście.";
 "Presentation_InAppPurchase_Bookmarks_Title"   = "Nielimitowane zakładki";
@@ -82,11 +109,3 @@
 "Presentation_Tutorial_Page2_Caption" = "Użyj <star> by zobaczyć wszystkie zapisane zakładki.";
 "Presentation_Tutorial_Page2_Title"   = "Zakładki";
 "Presentation_Tutorial_Skip"          = "Pomiń";
-
-"Search_CardTitle"             = "Linie";
-"Search_Loading"               = "Wczytywanie…";
-"Search_Search"                = "Szukaj";
-"Search_BookmarkAdded_Title"   = "Zakładka dodana!";
-"Search_BookmarkAdded_Caption" = "Użyj <star>, by zobaczyć wszystkie zapisane zakładki.";
-
-"Share_Message" = "Wroclive - Komunikacja miejska na żywo! %@";

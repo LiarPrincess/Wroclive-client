@@ -9,7 +9,7 @@ import RxCocoa
 
 private typealias TextStyles   = SettingsCardConstants.TextStyles
 private typealias CardPanel    = SettingsCardConstants.CardPanel
-private typealias Localization = Localizable.Configuration
+private typealias Localization = Localizable.Settings
 
 class SettingsCard: UIViewController {
 
@@ -70,7 +70,7 @@ class SettingsCard: UIViewController {
     return RxTableViewDataSource(
       configureCell: { _, tableView, indexPath, model -> UITableViewCell in
         let cell = tableView.dequeueReusableCell(ofType: UITableViewCell.self, forIndexPath: indexPath)
-        cell.textLabel?.attributedText = NSAttributedString(string: createCellText(model), attributes: TextStyles.cellText)
+        cell.textLabel?.attributedText = NSAttributedString(string: model.text, attributes: TextStyles.cellText)
         cell.backgroundColor           = Managers.theme.colors.background
         cell.accessoryType             = .disclosureIndicator
         return cell
@@ -113,15 +113,16 @@ extension SettingsCard: CardPanelPresentable {
 
 // MARK: - UITableViewDelegate
 
-extension SettingsCard: UITableViewDelegate { }
+extension SettingsCard: UITableViewDelegate {
 
-// MARK: - Helpers
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
-private func createCellText(_ cellType: SettingsCellType) -> String {
-  switch cellType {
-  case .mapType: return Localization.Cell.colors
-  case .about:   return Localization.Cell.contact
-  case .share:   return Localization.Cell.share
-  case .rate:    return Localization.Cell.rate
+//    let subviews = cell.subviews
+//    Swift.print("____:__:__ __:__:__:___: [\(type(of: self)) \(#line)] \(subviews.count)")
+//    if subviews.count >= 3 {
+//      for subview in subviews where subview != cell.contentView {
+//        subview.removeFromSuperview()
+//      }
+//    }
   }
 }

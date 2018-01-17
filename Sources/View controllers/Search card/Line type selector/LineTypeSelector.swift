@@ -6,7 +6,7 @@
 import UIKit
 
 private typealias TextStyles   = LineTypeSelectorConstants.TextStyles
-private typealias Localization = Localizable.LineTypeSelection
+private typealias Localization = Localizable.Search
 
 class LineTypeSelector: UISegmentedControl {
 
@@ -23,8 +23,8 @@ class LineTypeSelector: UISegmentedControl {
     super.init(frame: .zero)
 
     self.setTitleTextAttributes(TextStyles.title.value, for: .normal)
-    self.insertSegment(withTitle: Localization.tram, at: Indices.tram, animated: false)
-    self.insertSegment(withTitle: Localization.bus,  at: Indices.bus,  animated: false)
+    self.insertSegment(withTitle: Localization.Pages.tram, at: Indices.tram, animated: false)
+    self.insertSegment(withTitle: Localization.Pages.bus,  at: Indices.bus,  animated: false)
     self.selectedValue = .tram
   }
 
