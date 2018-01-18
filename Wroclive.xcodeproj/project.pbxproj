@@ -41,7 +41,6 @@
 		901A808E200E9EF00013CCD9 /* SettingsCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */; };
 		901A8090200E9F580013CCD9 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A808F200E9F580013CCD9 /* SettingsSection.swift */; };
 		901A8092200EA2750013CCD9 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A8091200EA2750013CCD9 /* File.swift */; };
-		901A8094201006890013CCD9 /* SearchCardApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A8093201006890013CCD9 /* SearchCardApiResponse.swift */; };
 		901D46861F57089000A9F6BD /* ThemeManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901D46851F57089000A9F6BD /* ThemeManagerType.swift */; };
 		901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB61FF586F5004765AA /* TextAlignment.swift */; };
 		901ECDB91FF5875F004765AA /* FontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB81FF5875F004765AA /* FontType.swift */; };
@@ -174,7 +173,7 @@
 		909B9FDE1FEBD0C2007CB59D /* AssertNotCalled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90AACC76200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC75200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift */; };
-		90AACC78200954AC0064EDFD /* SearchCardAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC77200954AC0064EDFD /* SearchCardAlerts.swift */; };
+		90AACC78200954AC0064EDFD /* SearchCardTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC77200954AC0064EDFD /* SearchCardTypes.swift */; };
 		90AACC7C200ABA500064EDFD /* LineSelectorCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */; };
 		90AACC7D200ABA550064EDFD /* LineSelectorHeaderViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */; };
 		90AACC7E200ABA590064EDFD /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */; };
@@ -313,7 +312,6 @@
 		901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardViewModel.swift; sourceTree = "<group>"; };
 		901A808F200E9F580013CCD9 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		901A8091200EA2750013CCD9 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		901A8093201006890013CCD9 /* SearchCardApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardApiResponse.swift; sourceTree = "<group>"; };
 		901D46851F57089000A9F6BD /* ThemeManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerType.swift; sourceTree = "<group>"; };
 		901ECDB61FF586F5004765AA /* TextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignment.swift; sourceTree = "<group>"; };
 		901ECDB81FF5875F004765AA /* FontType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontType.swift; sourceTree = "<group>"; };
@@ -450,7 +448,7 @@
 		909B9FDB1FEBC3E2007CB59D /* BookmarksCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCellConstants.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90AACC75200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableOfResult+ValuesErrors.swift"; sourceTree = "<group>"; };
-		90AACC77200954AC0064EDFD /* SearchCardAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardAlerts.swift; sourceTree = "<group>"; };
+		90AACC77200954AC0064EDFD /* SearchCardTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardTypes.swift; sourceTree = "<group>"; };
 		90AACC88200ACA890064EDFD /* AlertCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCreator.swift; sourceTree = "<group>"; };
 		90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreator.swift; sourceTree = "<group>"; };
 		90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreatorTests.swift; sourceTree = "<group>"; };
@@ -748,8 +746,7 @@
 		901ECDD11FF5B478004765AA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				90AACC77200954AC0064EDFD /* SearchCardAlerts.swift */,
-				901A8093201006890013CCD9 /* SearchCardApiResponse.swift */,
+				90AACC77200954AC0064EDFD /* SearchCardTypes.swift */,
 				90915B121FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift */,
 			);
 			path = Helpers;
@@ -2001,7 +1998,6 @@
 				901ECDC71FF58915004765AA /* NetworkManager.swift in Sources */,
 				901ECDC51FF588BA004765AA /* VehicleColor.swift in Sources */,
 				901ECDC31FF5886C004765AA /* NotificationManagerType.swift in Sources */,
-				901A8094201006890013CCD9 /* SearchCardApiResponse.swift in Sources */,
 				901ECDC11FF58844004765AA /* NotificationManager.swift in Sources */,
 				901ECDB91FF5875F004765AA /* FontType.swift in Sources */,
 				901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */,
@@ -2050,7 +2046,7 @@
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,
 				908252581F703F0E001C2926 /* NotificationData.swift in Sources */,
 				907DC6E91FF2B740001C5DD6 /* LineTypeSelector.swift in Sources */,
-				90AACC78200954AC0064EDFD /* SearchCardAlerts.swift in Sources */,
+				90AACC78200954AC0064EDFD /* SearchCardTypes.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectorHeaderView.swift in Sources */,
 				90E8A6C61F4CD43300CE5AE9 /* DeviceManagerType.swift in Sources */,
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManager.swift in Sources */,

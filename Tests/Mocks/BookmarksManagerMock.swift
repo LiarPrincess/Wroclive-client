@@ -14,7 +14,7 @@ class BookmarksManagerMock: BookmarksManagerType {
   private(set) var getCount  = 0
   private(set) var saveCount = 0
 
-  init(bookmarks: [Bookmark]) {
+  init(bookmarks: [Bookmark] = []) {
     self.bookmarks = bookmarks
   }
 

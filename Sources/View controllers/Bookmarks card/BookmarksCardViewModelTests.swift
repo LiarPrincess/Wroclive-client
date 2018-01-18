@@ -128,7 +128,7 @@ final class BookmarksCardViewModelTests: XCTestCase {
     self.testScheduler.start()
 
     let expectedLines = [bookmarks[0].lines, bookmarks[1].lines]
-    self.assertEqual(self.trackingManager.requestedLines, expectedLines)
+    self.assertEqual(self.trackingManager.trackedLines, expectedLines)
   }
 
   func test_selectingItem_closes() {

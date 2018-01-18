@@ -3,12 +3,17 @@
 //  Copyright © 2018 Michal Matuszczyk. All rights reserved.
 //
 
-enum SearchCardApiAlert {
+import Result
+import RxSwift
+
+typealias SearchCardApiResponse = Observable<Result<[Line], SearchCardApiError>>
+
+enum SearchCardApiError: Error {
   case noInternet
   case generalError
 }
 
 enum SearchCardBookmarkAlert {
   case nameInput
-  case noLineSelcted
+  case noLinesSelected
 }

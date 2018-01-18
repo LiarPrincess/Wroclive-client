@@ -171,16 +171,16 @@ extension SearchCard: CardPanelPresentable {
 
 // MARK: - Helpers
 
-private func createAlert(_ bookmarkAlert: SearchCardBookmarkAlert) -> Observable<String?> {
-  switch bookmarkAlert {
-  case .nameInput:     return BookmarkAlerts.showNameInputAlert()
-  case .noLineSelcted: return BookmarkAlerts.showNoLinesSelectedAlert().map { _ in nil }
+private func createAlert(_ error: SearchCardApiError) -> Observable<Void> {
+  switch error {
+  case .noInternet:   return NetworkAlerts.showNoInternetAlert()
+  case .generalError: return NetworkAlerts.showConnectionErrorAlert()
   }
 }
 
-private func createAlert(_ apiAlert: SearchCardApiAlert) -> Observable<Void> {
-  switch apiAlert {
-  case .noInternet:   return NetworkAlerts.showNoInternetAlert()
-  case .generalError: return NetworkAlerts.showConnectionErrorAlert()
+private func createAlert(_ bookmarkAlert: SearchCardBookmarkAlert) -> Observable<String?> {
+  switch bookmarkAlert {
+  case .nameInput:       return BookmarkAlerts.showNameInputAlert()
+  case .noLinesSelected: return BookmarkAlerts.showNoLinesSelectedAlert().map { _ in nil }
   }
 }

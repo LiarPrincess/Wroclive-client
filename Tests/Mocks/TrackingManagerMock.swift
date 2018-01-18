@@ -8,14 +8,19 @@ import Foundation
 
 class TrackingManagerMock: TrackingManagerType {
 
-  private(set) var requestedLines = [[Line]]()
+  private(set) var trackedLines = [[Line]]()
+
+  private(set) var startCount  = 0
+  private(set) var pauseCount  = 0
+  private(set) var resumeCount = 0
 
   lazy var result: TrackingResult = .success(locations: [])
 
   func start(_ lines: [Line]) {
-    self.requestedLines.append(lines)
+    self.startCount += 1
+    self.trackedLines.append(lines)
   }
 
-  func pause()  { }
-  func resume() { }
+  func pause()  { self.pauseCount  += 1 }
+  func resume() { self.resumeCount += 1 }
 }

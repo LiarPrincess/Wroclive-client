@@ -33,7 +33,7 @@ protocol SearchCardViewModelOutput {
   var isLineSelectorVisible: Driver<Bool> { get }
   var isPlaceholderVisible:  Driver<Bool> { get }
 
-  var showApiErrorAlert: Driver<SearchCardApiAlert>      { get }
+  var showApiErrorAlert: Driver<SearchCardApiError>      { get }
   var showBookmarkAlert: Driver<SearchCardBookmarkAlert> { get }
 
   var shouldClose: Driver<Void> { get }
@@ -97,9 +97,8 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   lazy var isLineSelectorVisible: Driver<Bool> = self.lines.map { $0.any }
   lazy var isPlaceholderVisible:  Driver<Bool> = self.isLineSelectorVisible.not()
 
-  lazy var showApiErrorAlert: Driver<SearchCardApiAlert> = self.lineResponse
+  lazy var showApiErrorAlert: Driver<SearchCardApiError> = self.lineResponse
     .errors()
-    .map(toApiAlert)
     .asDriver(onErrorDriveWith: .never())
 
   lazy var showBookmarkAlert: Driver<SearchCardBookmarkAlert> = self._bookmarkButtonPressed
@@ -172,16 +171,9 @@ private func toApiResponse(_ response: Result<[Line], ApiError>) -> Result<[Line
   }
 }
 
-private func toApiAlert(_ error: SearchCardApiError) -> SearchCardApiAlert {
-  switch error {
-  case .noInternet:   return .noInternet
-  case .generalError: return .generalError
-  }
-}
-
 private func toBookmarkAlert(_ selectedLines: [Line]) -> SearchCardBookmarkAlert {
   switch selectedLines.any {
   case true:  return .nameInput
-  case false: return .noLineSelcted
+  case false: return .noLinesSelected
   }
 }

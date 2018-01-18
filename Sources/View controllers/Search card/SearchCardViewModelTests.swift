@@ -14,19 +14,16 @@ import RxBlocking
 // swiftlint:disable file_length
 // swiftlint:disable implicitly_unwrapped_optional
 
-// TODO: add test: bookmark button + search button
-// TODO: add test: api alert close -> request retry
-// TODO: add test: bookmark alert -> name -> save bookmark
-
 private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
 final class SearchCardViewModelTests: XCTestCase {
 
   // MARK: - Properties
 
-  var trackingManager: TrackingManagerMock!
-  var searchManager:   SearchManagerMock!
-  var apiManager:      ApiManagerMock!
+  var bookmarksManager: BookmarksManagerMock!
+  var trackingManager:  TrackingManagerMock!
+  var searchManager:    SearchManagerMock!
+  var apiManager:       ApiManagerMock!
 
   var viewModel:     SearchCardViewModel!
   var testScheduler: TestScheduler!
@@ -39,10 +36,11 @@ final class SearchCardViewModelTests: XCTestCase {
     self.testScheduler = TestScheduler(initialClock: 0)
     self.disposeBag    = DisposeBag()
 
-    self.trackingManager = TrackingManagerMock()
-    self.searchManager   = SearchManagerMock()
-    self.apiManager      = ApiManagerMock()
-    AppEnvironment.push(api: self.apiManager, search: self.searchManager, tracking: self.trackingManager)
+    self.bookmarksManager = BookmarksManagerMock()
+    self.trackingManager  = TrackingManagerMock()
+    self.searchManager    = SearchManagerMock()
+    self.apiManager       = ApiManagerMock()
+    AppEnvironment.push(api: self.apiManager, search: self.searchManager, bookmarks: self.bookmarksManager, tracking: self.trackingManager)
   }
 
   override func tearDown() {
@@ -113,25 +111,14 @@ final class SearchCardViewModelTests: XCTestCase {
 
     self.simulateViewDidAppearEvents(at: 100)
 
-    let lineObserver = self.testScheduler.createObserver([Line].self)
-    self.viewModel.outputs.lines.drive(lineObserver).disposed(by: self.disposeBag)
-
-    let showApiErrorAlertObserver = self.testScheduler.createObserver(SearchCardApiAlert.self)
-    self.viewModel.outputs.showApiErrorAlert.drive(showApiErrorAlertObserver).disposed(by: self.disposeBag)
-
-    let isLineSelectorVisibleObserver = self.testScheduler.createObserver(Bool.self)
-    self.viewModel.outputs.isLineSelectorVisible.drive(isLineSelectorVisibleObserver).disposed(by: self.disposeBag)
-
-    let isPlaceholderVisibleObserver = self.testScheduler.createObserver(Bool.self)
-    self.viewModel.outputs.isPlaceholderVisible.drive(isPlaceholderVisibleObserver).disposed(by: self.disposeBag)
-
+    let observers = self.bindLineObserters()
     self.testScheduler.start()
     self.waitForLineResponse(1)
 
-    self.assertEqual(lineObserver.events,                [next(0, []), next(100, self.testLines)])
-    XCTAssertEqual(showApiErrorAlertObserver.events,     [])
-    XCTAssertEqual(isLineSelectorVisibleObserver.events, [next(0, false), next(100, true)])
-    XCTAssertEqual(isPlaceholderVisibleObserver.events,  [next(0, true),  next(100, false)])
+    self.assertEqual(observers.line.events,                [next(0, []), next(100, self.testLines)])
+    XCTAssertEqual(observers.showApiErrorAlert.events,     [])
+    XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false), next(100, true)])
+    XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true),  next(100, false)])
     self.assertApiOperationCount(availableLines: 1)
   }
 
@@ -142,25 +129,14 @@ final class SearchCardViewModelTests: XCTestCase {
 
     self.simulateViewDidAppearEvents(at: 100)
 
-    let lineObserver = self.testScheduler.createObserver([Line].self)
-    self.viewModel.outputs.lines.drive(lineObserver).disposed(by: self.disposeBag)
-
-    let showApiErrorAlertObserver = self.testScheduler.createObserver(SearchCardApiAlert.self)
-    self.viewModel.outputs.showApiErrorAlert.drive(showApiErrorAlertObserver).disposed(by: self.disposeBag)
-
-    let isLineSelectorVisibleObserver = self.testScheduler.createObserver(Bool.self)
-    self.viewModel.outputs.isLineSelectorVisible.drive(isLineSelectorVisibleObserver).disposed(by: self.disposeBag)
-
-    let isPlaceholderVisibleObserver = self.testScheduler.createObserver(Bool.self)
-    self.viewModel.outputs.isPlaceholderVisible.drive(isPlaceholderVisibleObserver).disposed(by: self.disposeBag)
-
+    let observers = self.bindLineObserters()
     self.testScheduler.start()
     self.waitForApiErrorAlert(1)
 
-    self.assertEqual(lineObserver.events,                [next(0, [])])
-    XCTAssertEqual(showApiErrorAlertObserver.events,     [next(100, SearchCardApiAlert.generalError)])
-    XCTAssertEqual(isLineSelectorVisibleObserver.events, [next(0, false)])
-    XCTAssertEqual(isPlaceholderVisibleObserver.events,  [next(0, true)])
+    self.assertEqual(observers.line.events,                [next(0, [])])
+    XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, SearchCardApiError.generalError)])
+    XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
+    XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
     self.assertApiOperationCount(availableLines: 1)
   }
 
@@ -171,25 +147,14 @@ final class SearchCardViewModelTests: XCTestCase {
 
     self.simulateViewDidAppearEvents(at: 100)
 
-    let lineObserver = self.testScheduler.createObserver([Line].self)
-    viewModel.outputs.lines.drive(lineObserver).disposed(by: self.disposeBag)
-
-    let showApiErrorAlertObserver = self.testScheduler.createObserver(SearchCardApiAlert.self)
-    viewModel.outputs.showApiErrorAlert.drive(showApiErrorAlertObserver).disposed(by: self.disposeBag)
-
-    let isLineSelectorVisibleObserver = self.testScheduler.createObserver(Bool.self)
-    viewModel.outputs.isLineSelectorVisible.drive(isLineSelectorVisibleObserver).disposed(by: self.disposeBag)
-
-    let isPlaceholderVisibleObserver = self.testScheduler.createObserver(Bool.self)
-    viewModel.outputs.isPlaceholderVisible.drive(isPlaceholderVisibleObserver).disposed(by: self.disposeBag)
-
+    let observers = self.bindLineObserters()
     self.testScheduler.start()
     self.waitForApiErrorAlert(1)
 
-    self.assertEqual(lineObserver.events,                [next(0, [])])
-    XCTAssertEqual(showApiErrorAlertObserver.events,     [next(100, SearchCardApiAlert.noInternet)])
-    XCTAssertEqual(isLineSelectorVisibleObserver.events, [next(0, false)])
-    XCTAssertEqual(isPlaceholderVisibleObserver.events,  [next(0, true)])
+    self.assertEqual(observers.line.events,                [next(0, [])])
+    XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, SearchCardApiError.noInternet)])
+    XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
+    XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
     self.assertApiOperationCount(availableLines: 1)
   }
 
@@ -200,25 +165,14 @@ final class SearchCardViewModelTests: XCTestCase {
 
     self.simulateViewDidAppearEvents(at: 100)
 
-    let lineObserver = self.testScheduler.createObserver([Line].self)
-    viewModel.outputs.lines.drive(lineObserver).disposed(by: self.disposeBag)
-
-    let showApiErrorAlertObserver = self.testScheduler.createObserver(SearchCardApiAlert.self)
-    viewModel.outputs.showApiErrorAlert.drive(showApiErrorAlertObserver).disposed(by: self.disposeBag)
-
-    let isLineSelectorVisibleObserver = self.testScheduler.createObserver(Bool.self)
-    viewModel.outputs.isLineSelectorVisible.drive(isLineSelectorVisibleObserver).disposed(by: self.disposeBag)
-
-    let isPlaceholderVisibleObserver = self.testScheduler.createObserver(Bool.self)
-    viewModel.outputs.isPlaceholderVisible.drive(isPlaceholderVisibleObserver).disposed(by: self.disposeBag)
-
+    let observers = self.bindLineObserters()
     self.testScheduler.start()
     self.waitForApiErrorAlert(1)
 
-    self.assertEqual(lineObserver.events,                [next(0, [])])
-    XCTAssertEqual(showApiErrorAlertObserver.events,     [next(100, SearchCardApiAlert.generalError)])
-    XCTAssertEqual(isLineSelectorVisibleObserver.events, [next(0, false)])
-    XCTAssertEqual(isPlaceholderVisibleObserver.events,  [next(0, true)])
+    self.assertEqual(observers.line.events,                [next(0, [])])
+    XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, SearchCardApiError.generalError)])
+    XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
+    XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
     self.assertApiOperationCount(availableLines: 1)
   }
 
@@ -230,7 +184,6 @@ final class SearchCardViewModelTests: XCTestCase {
 
     let observer = self.testScheduler.createObserver([Line].self)
     viewModel.outputs.selectedLines.drive(observer).disposed(by: self.disposeBag)
-
     self.testScheduler.start()
 
     self.assertEqual(observer.events, [next(0, self.testLines)])
@@ -247,7 +200,6 @@ final class SearchCardViewModelTests: XCTestCase {
 
     let observer = self.testScheduler.createObserver([Line].self)
     viewModel.outputs.selectedLines.drive(observer).disposed(by: self.disposeBag)
-
     self.testScheduler.start()
 
     let expectedEvents = [
@@ -268,7 +220,6 @@ final class SearchCardViewModelTests: XCTestCase {
 
     let observer = self.testScheduler.createObserver([Line].self)
     viewModel.outputs.selectedLines.drive(observer).disposed(by: self.disposeBag)
-
     self.testScheduler.start()
 
     let expectedEvents = [
@@ -282,12 +233,40 @@ final class SearchCardViewModelTests: XCTestCase {
   // MARK: - Buttons
 
   func test_bookmarkButton_withLines_showsNameAlert() {
+    self.searchManager.state = SearchCardState(page: .tram, selectedLines: self.testLines)
+    self.viewModel = SearchCardViewModel()
+
+    self.simulateBookmarkButtonPressedEvents(at: 100)
+
+    let observer = self.testScheduler.createObserver(SearchCardBookmarkAlert.self)
+    viewModel.outputs.showBookmarkAlert.drive(observer).disposed(by: self.disposeBag)
+    self.testScheduler.start()
+
+    XCTAssertEqual(observer.events, [next(100, SearchCardBookmarkAlert.nameInput)])
   }
 
   func test_bookmarkButton_withoutLines_showsAlert() {
+    self.searchManager.state = SearchCardState(page: .tram, selectedLines: [])
+    self.viewModel = SearchCardViewModel()
+
+    self.simulateBookmarkButtonPressedEvents(at: 100)
+
+    let observer = self.testScheduler.createObserver(SearchCardBookmarkAlert.self)
+    viewModel.outputs.showBookmarkAlert.drive(observer).disposed(by: self.disposeBag)
+    self.testScheduler.start()
+
+    XCTAssertEqual(observer.events, [next(100, SearchCardBookmarkAlert.noLinesSelected)])
   }
 
   func test_searchButton_startsTracking() {
+    self.searchManager.state = SearchCardState(page: .tram, selectedLines: self.testLines)
+    self.viewModel = SearchCardViewModel()
+
+    self.simulateSearchButtonPressedEvents(at: 100)
+    self.testScheduler.start()
+
+    self.assertEqual(self.trackingManager.trackedLines, [self.testLines])
+    XCTAssertEqual(self.trackingManager.startCount, 1)
   }
 
   func test_searchButton_closes() {
@@ -296,22 +275,42 @@ final class SearchCardViewModelTests: XCTestCase {
     self.simulateSearchButtonPressedEvents(at: 100, 200)
 
     let observer = self.testScheduler.createObserver(Void.self)
-    viewModel.outputs.shouldClose
-      .drive(observer)
-      .disposed(by: self.disposeBag)
+    viewModel.outputs.shouldClose.drive(observer).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
-    let expectedEvents = [next(100, ()), next(200, ())]
-    self.assertEqual(observer.events, expectedEvents)
+    self.assertEqual(observer.events, [next(100, ()), next(200, ())])
   }
 
   // MARK: - Alerts
 
   func test_closingApiAlert_delays_andUpdatesLines() {
+    self.searchManager.state       = SearchCardState(page: .tram, selectedLines: [])
+    self.apiManager.availableLines = Promise(value: self.testLines)
+    self.viewModel = SearchCardViewModel()
 
+    self.simulateApiAlertTryAgainButtonPressedEvents(at: 100)
+
+    let observers = self.bindLineObserters()
+    self.testScheduler.start()
+    self.waitForLineResponse(1, timeout: AppInfo.Timings.FailedRequestDelay.lines + 1)
+
+    self.assertEqual(observers.line.events,                [next(0, []), next(100, self.testLines)])
+    XCTAssertEqual(observers.showApiErrorAlert.events,     [])
+    XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false), next(100, true)])
+    XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true),  next(100, false)])
+    self.assertApiOperationCount(availableLines: 1)
   }
 
-  func test_closingBookmarkAlert_withName_savesBookmark() {
+  func test_enteringNameInBookmarkAlert_createsBookmark() {
+    self.bookmarksManager.bookmarks = []
+    self.searchManager.state = SearchCardState(page: .tram, selectedLines: self.testLines)
+    self.viewModel = SearchCardViewModel()
+
+    let bookmark = Bookmark(name: "Test", lines: self.testLines)
+    self.simulateBookmarkAlertNameEnteredEvents(next(100, bookmark.name))
+    self.testScheduler.start()
+
+    XCTAssertEqual(self.bookmarksManager.bookmarks, [bookmark])
   }
 
   // MARK: - Close
@@ -321,7 +320,7 @@ final class SearchCardViewModelTests: XCTestCase {
     self.viewModel = SearchCardViewModel()
 
     let page = LineType.bus
-    let line = Line(name: "Test0", type: .bus,  subtype: .express)
+    let line = Line(name: "Test", type: .bus,  subtype: .express)
 
     self.simulatePageSelectedEvents(next(100, page))
     self.simulateLineSelectedEvents(next(200, line))
@@ -329,8 +328,7 @@ final class SearchCardViewModelTests: XCTestCase {
     self.simulateViewDidDisappearEvents(at: 300)
     self.testScheduler.start()
 
-    let expected = SearchCardState(page: page, selectedLines: [line])
-    XCTAssertEqual(expected, self.searchManager.state)
+    XCTAssertEqual(self.searchManager.state, SearchCardState(page: page, selectedLines: [line]))
     self.assertSearchOperationCount(get: 1, save: 1)
   }
 }
@@ -409,6 +407,14 @@ extension SearchCardViewModelTests {
       .disposed(by: self.disposeBag)
   }
 
+  typealias BookmarkAlertNameEnteredEvent = Recorded<Event<String>>
+
+  func simulateBookmarkAlertNameEnteredEvents(_ events: BookmarkAlertNameEnteredEvent...) {
+    testScheduler.createHotObservable(events)
+      .bind(to: self.viewModel.inputs.bookmarkAlertNameEntered)
+      .disposed(by: self.disposeBag)
+  }
+
   // MARK: - View controller lifecycle
 
   func simulateViewDidAppearEvents(at times: TestTime...) {
@@ -425,25 +431,53 @@ extension SearchCardViewModelTests {
       .disposed(by: self.disposeBag)
   }
 
+  // MARK: - Lines observer
+
+  private struct LinesObserver {
+    let line:                  TestableObserver<[Line]>
+    let showApiErrorAlert:     TestableObserver<SearchCardApiError>
+    let isLineSelectorVisible: TestableObserver<Bool>
+    let isPlaceholderVisible:  TestableObserver<Bool>
+  }
+
+  private func bindLineObserters() -> LinesObserver {
+    let lineObserver = self.testScheduler.createObserver([Line].self)
+    self.viewModel.outputs.lines.drive(lineObserver).disposed(by: self.disposeBag)
+
+    let showApiErrorAlertObserver = self.testScheduler.createObserver(SearchCardApiError.self)
+    self.viewModel.outputs.showApiErrorAlert.drive(showApiErrorAlertObserver).disposed(by: self.disposeBag)
+
+    let isLineSelectorVisibleObserver = self.testScheduler.createObserver(Bool.self)
+    self.viewModel.outputs.isLineSelectorVisible.drive(isLineSelectorVisibleObserver).disposed(by: self.disposeBag)
+
+    let isPlaceholderVisibleObserver = self.testScheduler.createObserver(Bool.self)
+    self.viewModel.outputs.isPlaceholderVisible.drive(isPlaceholderVisibleObserver).disposed(by: self.disposeBag)
+
+    return LinesObserver(line:                  lineObserver,
+                         showApiErrorAlert:     showApiErrorAlertObserver,
+                         isLineSelectorVisible: isLineSelectorVisibleObserver,
+                         isPlaceholderVisible:  isPlaceholderVisibleObserver)
+  }
+
   // MARK: - Blocking
 
-  /// Waif 'till PromiseKit dispatch_async response
-  private func waitForLineResponse(_ count: Int) {
+  /// Waif for PromiseKit dispatch_async response
+  private func waitForLineResponse(_ count: Int, timeout: RxTimeInterval? = 2) {
     let startsWith = 1
     let observable = self.viewModel.outputs.showApiErrorAlert.asObservable()
-    self.wait(for: observable, count: startsWith + count)
+    self.wait(for: observable, timeout: timeout, count: startsWith + count)
   }
 
-  /// Waif 'till PromiseKit dispatch_async response
-  private func waitForApiErrorAlert(_ count: Int) {
+  /// Waif for PromiseKit dispatch_async response
+  private func waitForApiErrorAlert(_ count: Int, timeout: RxTimeInterval? = 2) {
     let observable = self.viewModel.outputs.showApiErrorAlert.asObservable()
-    self.wait(for: observable, count: count)
+    self.wait(for: observable, timeout: timeout, count: count)
   }
 
-  private func wait<Element>(for observable: Observable<Element>, count: Int) {
+  private func wait<Element>(for observable: Observable<Element>, timeout: RxTimeInterval?, count: Int) {
     _ = try? observable
       .take(count)
-      .toBlocking(timeout: 2)
+      .toBlocking(timeout: timeout)
       .toArray()
   }
 
@@ -466,6 +500,14 @@ extension SearchCardViewModelTests {
 
     for (lhsEvent, rhsEvent) in zip(lhs, rhs) {
       XCTAssertEqual(lhsEvent.time, rhsEvent.time)
+    }
+  }
+
+  func assertEqual(_ lhs: [[Line]], _ rhs: [[Line]]) {
+    XCTAssertEqual(lhs.count, rhs.count)
+
+    for (lhsLines, rhsLines) in zip(lhs, rhs) {
+      XCTAssertEqual(lhsLines, rhsLines)
     }
   }
 
