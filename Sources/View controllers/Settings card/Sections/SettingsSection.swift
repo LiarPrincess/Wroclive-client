@@ -13,7 +13,7 @@ enum SettingsCellType {
 
   var text: String {
     switch self {
-    case .mapType: return Localization.MapType.title
+    case .mapType: return String.empty
     case .about:   return Localization.General.about
     case .share:   return Localization.General.share
     case .rate:    return Localization.General.rate

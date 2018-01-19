@@ -18,7 +18,7 @@
 		900CAEB71F482E750044C8A6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAEA21F482E750044C8A6 /* SearchManager.swift */; };
 		900CEC021FC4D5D7001C6B04 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC011FC4D5D7001C6B04 /* Document.swift */; };
 		900CEC041FC4E3F1001C6B04 /* Array+Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC031FC4E3F1001C6B04 /* Array+Any.swift */; };
-		90145E491F61AF060068698D /* ConfigurationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E481F61AF060068698D /* ConfigurationDataSource.swift */; };
+		90145E491F61AF060068698D /* AADataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90145E481F61AF060068698D /* AADataSource.swift */; };
 		901787A91FE9B51700AAF7A3 /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901787A81FE9B51700AAF7A3 /* ParameterEncoder.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksCard.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */; };
@@ -40,7 +40,11 @@
 		901A808C200E97430013CCD9 /* SettingsCardFooterConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */; };
 		901A808E200E9EF00013CCD9 /* SettingsCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */; };
 		901A8090200E9F580013CCD9 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A808F200E9F580013CCD9 /* SettingsSection.swift */; };
-		901A8092200EA2750013CCD9 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A8091200EA2750013CCD9 /* File.swift */; };
+		901A8092200EA2750013CCD9 /* AASelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A8091200EA2750013CCD9 /* AASelect.swift */; };
+		901A809720126DAE0013CCD9 /* MapTypeSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A809620126DAE0013CCD9 /* MapTypeSelectionCell.swift */; };
+		901A809A20127EC40013CCD9 /* MapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A809920127EC40013CCD9 /* MapType.swift */; };
+		901A809C20127F700013CCD9 /* String+empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A809B20127F700013CCD9 /* String+empty.swift */; };
+		901A809E201291300013CCD9 /* MapTypeSelectionCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A809D201291300013CCD9 /* MapTypeSelectionCellConstants.swift */; };
 		901D46861F57089000A9F6BD /* ThemeManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901D46851F57089000A9F6BD /* ThemeManagerType.swift */; };
 		901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB61FF586F5004765AA /* TextAlignment.swift */; };
 		901ECDB91FF5875F004765AA /* FontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB81FF5875F004765AA /* FontType.swift */; };
@@ -289,7 +293,7 @@
 		900CAEA21F482E750044C8A6 /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		900CEC011FC4D5D7001C6B04 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		900CEC031FC4E3F1001C6B04 /* Array+Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Any.swift"; sourceTree = "<group>"; };
-		90145E481F61AF060068698D /* ConfigurationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationDataSource.swift; sourceTree = "<group>"; };
+		90145E481F61AF060068698D /* AADataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AADataSource.swift; sourceTree = "<group>"; };
 		901787A81FE9B51700AAF7A3 /* ParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoder.swift; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCard.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardConstants.swift; sourceTree = "<group>"; };
@@ -311,7 +315,11 @@
 		901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardFooterConstants.swift; sourceTree = "<group>"; };
 		901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardViewModel.swift; sourceTree = "<group>"; };
 		901A808F200E9F580013CCD9 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
-		901A8091200EA2750013CCD9 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		901A8091200EA2750013CCD9 /* AASelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASelect.swift; sourceTree = "<group>"; };
+		901A809620126DAE0013CCD9 /* MapTypeSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTypeSelectionCell.swift; sourceTree = "<group>"; };
+		901A809920127EC40013CCD9 /* MapType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapType.swift; sourceTree = "<group>"; };
+		901A809B20127F700013CCD9 /* String+empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+empty.swift"; sourceTree = "<group>"; };
+		901A809D201291300013CCD9 /* MapTypeSelectionCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTypeSelectionCellConstants.swift; sourceTree = "<group>"; };
 		901D46851F57089000A9F6BD /* ThemeManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManagerType.swift; sourceTree = "<group>"; };
 		901ECDB61FF586F5004765AA /* TextAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlignment.swift; sourceTree = "<group>"; };
 		901ECDB81FF5875F004765AA /* FontType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontType.swift; sourceTree = "<group>"; };
@@ -618,15 +626,6 @@
 			path = Sections;
 			sourceTree = "<group>";
 		};
-		90145E3F1F61AE4A0068698D /* Old */ = {
-			isa = PBXGroup;
-			children = (
-				90145E481F61AF060068698D /* ConfigurationDataSource.swift */,
-				901A8091200EA2750013CCD9 /* File.swift */,
-			);
-			path = Old;
-			sourceTree = "<group>";
-		};
 		9017C33D1EE339FD00063377 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +733,25 @@
 			path = Footer;
 			sourceTree = "<group>";
 		};
+		901A809520126D780013CCD9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				901A809620126DAE0013CCD9 /* MapTypeSelectionCell.swift */,
+				901A809D201291300013CCD9 /* MapTypeSelectionCellConstants.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		901A809820127AA00013CCD9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				90145E481F61AF060068698D /* AADataSource.swift */,
+				901A8091200EA2750013CCD9 /* AASelect.swift */,
+				901A809920127EC40013CCD9 /* MapType.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		901ECDCA1FF58D36004765AA /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
@@ -801,6 +819,7 @@
 				9021F38B1F12C95D000A6949 /* Array+GroupedBy.swift */,
 				90AACC9E200D2CF70064EDFD /* ArrayOfEquatable+Operations.swift */,
 				9021F38C1F12C95D000A6949 /* ArrayOfEquatable+ContainsAll.swift */,
+				901A809B20127F700013CCD9 /* String+empty.swift */,
 				908346F51F5202AE00654FF6 /* String+FindPositions.swift */,
 				90AACC91200BAF940064EDFD /* Sequence+ToArray.swift */,
 			);
@@ -1264,9 +1283,10 @@
 		9096CDCB1F40EF0C00FEF20A /* Settings card */ = {
 			isa = PBXGroup;
 			children = (
-				90145E3F1F61AE4A0068698D /* Old */,
+				901A809520126D780013CCD9 /* Cells */,
 				90145E3E1F61AE4A0068698D /* Sections */,
 				901A8088200E96DD0013CCD9 /* Footer */,
+				901A809820127AA00013CCD9 /* Helpers */,
 				9096CDCC1F40EF2200FEF20A /* SettingsCard.swift */,
 				9055C8E51F462F2F00D1EBDA /* SettingsCardLayout.swift */,
 				901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */,
@@ -1998,6 +2018,7 @@
 				901ECDC71FF58915004765AA /* NetworkManager.swift in Sources */,
 				901ECDC51FF588BA004765AA /* VehicleColor.swift in Sources */,
 				901ECDC31FF5886C004765AA /* NotificationManagerType.swift in Sources */,
+				901A809A20127EC40013CCD9 /* MapType.swift in Sources */,
 				901ECDC11FF58844004765AA /* NotificationManager.swift in Sources */,
 				901ECDB91FF5875F004765AA /* FontType.swift in Sources */,
 				901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */,
@@ -2031,7 +2052,7 @@
 				908346F41F51FE0300654FF6 /* NSRange+StartEnd.swift in Sources */,
 				9044A5471F69A13D00F26C17 /* ColorSelectionViewController.swift in Sources */,
 				90BC8B051F69B62800AF4B84 /* PushPresentationTransition.swift in Sources */,
-				90145E491F61AF060068698D /* ConfigurationDataSource.swift in Sources */,
+				90145E491F61AF060068698D /* AADataSource.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchCard.swift in Sources */,
 				90BB55101FE946FC00283D94 /* ReachabilityStatus.swift in Sources */,
 				90D383BE1FE8907600C2E1D2 /* AvailableLinesResponse.swift in Sources */,
@@ -2046,8 +2067,10 @@
 				9021F3931F12C95D000A6949 /* Array+GroupedBy.swift in Sources */,
 				908252581F703F0E001C2926 /* NotificationData.swift in Sources */,
 				907DC6E91FF2B740001C5DD6 /* LineTypeSelector.swift in Sources */,
+				901A809C20127F700013CCD9 /* String+empty.swift in Sources */,
 				90AACC78200954AC0064EDFD /* SearchCardTypes.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectorHeaderView.swift in Sources */,
+				901A809E201291300013CCD9 /* MapTypeSelectionCellConstants.swift in Sources */,
 				90E8A6C61F4CD43300CE5AE9 /* DeviceManagerType.swift in Sources */,
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManager.swift in Sources */,
 				901A808C200E97430013CCD9 /* SettingsCardFooterConstants.swift in Sources */,
@@ -2092,6 +2115,7 @@
 				905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */,
 				903920351F1AB70E00250162 /* ArrayOfLines.swift in Sources */,
 				901A808A200E96EE0013CCD9 /* SettingsCardFooterView.swift in Sources */,
+				901A809720126DAE0013CCD9 /* MapTypeSelectionCell.swift in Sources */,
 				90AACC9F200D2CF70064EDFD /* ArrayOfEquatable+Operations.swift in Sources */,
 				90546BF01F6AF25800E8E75F /* TrackingManager.swift in Sources */,
 				9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */,
@@ -2144,7 +2168,7 @@
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
 				9024C6111F9667E600025503 /* Environment.swift in Sources */,
-				901A8092200EA2750013CCD9 /* File.swift in Sources */,
+				901A8092200EA2750013CCD9 /* AASelect.swift in Sources */,
 				9021F43F1F12D698000A6949 /* LineSelectorCellViewModel.swift in Sources */,
 				90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */,
 				908FB19E1F48B3CA00121584 /* ReusableSuplementaryViewContainer.swift in Sources */,
