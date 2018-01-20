@@ -106,7 +106,7 @@ class BookmarksCard: UIViewController {
   private static func createDataSource() -> RxTableViewDataSource<BookmarksSection> {
     return RxTableViewDataSource(
       configureCell: { _, tableView, indexPath, model -> UITableViewCell in
-        let cell = tableView.dequeueReusableCell(ofType: BookmarksCell.self, forIndexPath: indexPath)
+        let cell = tableView.dequeueCell(ofType: BookmarksCell.self, forIndexPath: indexPath)
         cell.viewModel.inputs.bookmark.onNext(model)
         return cell
       },

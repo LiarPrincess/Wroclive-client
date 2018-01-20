@@ -7,6 +7,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+typealias SettingsSection = RxSectionModel<SettingsSectionType, SettingsCellType>
+
 protocol SettingsCardViewModelInput {
   var itemSelected: AnyObserver<IndexPath> { get }
 }
@@ -30,8 +32,8 @@ class SettingsCardViewModel: SettingsCardViewModelInput, SettingsCardViewModelOu
   // MARK: - Output
 
   lazy var items: Driver<[SettingsSection]> = {
-    let mapTypeSection = SettingsSection(model: "Map type", items: [.mapType])
-    let generalSection = SettingsSection(model: "General",  items: [.share, .rate, .about])
+    let mapTypeSection = SettingsSection(model: .mapType, items: [.mapType])
+    let generalSection = SettingsSection(model: .general, items: [.share, .rate, .about])
 
     return Observable.just([mapTypeSection, generalSection])
       .asDriver(onErrorJustReturn: [])

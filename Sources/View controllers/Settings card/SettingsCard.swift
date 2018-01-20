@@ -26,20 +26,21 @@ class SettingsCard: UIViewController {
   let titleLabel = UILabel()
 
   let tableView            = UITableView(frame: .zero, style: .grouped)
-  let tableViewMapTypeCell = MapTypeSelectionCell(style: .default, reuseIdentifier: nil)
+  let tableViewMapTypeCell = SettingsMapTypeCell(style: .default, reuseIdentifier: nil)
 
   lazy var tableViewDataSource: RxTableViewDataSource<SettingsSection> = {
     return RxTableViewDataSource( // swiftlint:disable:this implicit_return
-      configureCell: { [unowned self] _, tableView, indexPath, model -> UITableViewCell in
+      configureCell: { [unowned self] dataSource, tableView, indexPath, model -> UITableViewCell in
         switch model {
         case .mapType:
-          let cell = tableView.dequeueReusableCell(ofType: UITableViewCell.self, forIndexPath: indexPath)
           return self.tableViewMapTypeCell
         case .share, .rate, .about:
-          let cell = tableView.dequeueReusableCell(ofType: UITableViewCell.self, forIndexPath: indexPath)
+          let lastItemIndex = dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
+
+          let cell = tableView.dequeueCell(ofType: SettingsTextCell.self, forIndexPath: indexPath)
           cell.textLabel?.attributedText = NSAttributedString(string: model.text, attributes: TextStyles.cellText)
-          cell.backgroundColor           = Managers.theme.colors.background
           cell.accessoryType             = .disclosureIndicator
+          cell.isBottomBorderVisible     = indexPath.item != lastItemIndex
           return cell
         }
       },
@@ -104,6 +105,11 @@ class SettingsCard: UIViewController {
       let newInset = UIEdgeInsets(top: headerHeight, left: currentInset.left, bottom: currentInset.bottom, right: currentInset.right)
       self.tableView.contentInset          = newInset
       self.tableView.scrollIndicatorInsets = newInset
+
+      // scroll up to preserve current scroll position
+      let currentOffset = self.tableView.contentOffset
+      let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
+      self.tableView.setContentOffset(newOffset, animated: false)
     }
   }
 }
@@ -119,7 +125,7 @@ extension SettingsCard: CardPanelPresentable {
 
 extension SettingsCard: UITableViewDelegate {
 
-  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //    let subviews = cell.subviews
 //    Swift.print("____:__:__ __:__:__:___: [\(type(of: self)) \(#line)] \(subviews.count)")
 //    if subviews.count >= 3 {
@@ -127,5 +133,30 @@ extension SettingsCard: UITableViewDelegate {
 //        subview.removeFromSuperview()
 //      }
 //    }
+//  }
+
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    typealias HeaderLayout = SettingsSectionHeaderViewConstants.Layout
+
+    let width  = tableView.bounds.width - HeaderLayout.leftInset - HeaderLayout.rightInset
+    let bounds = CGSize(width: width, height: .greatestFiniteMagnitude)
+
+    let sectionType = self.tableViewDataSource[section].model
+    let text        = NSAttributedString(string: sectionType.text, attributes: TextStyles.sectionTitle)
+    let textSize    = text.boundingRect(with: bounds, options: .usesLineFragmentOrigin, context: nil)
+
+    return textSize.height + HeaderLayout.topInset + HeaderLayout.bottomInset + 1.0
+  }
+
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 1
+  }
+
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let sectionType = self.tableViewDataSource[section].model
+
+    let view = tableView.dequeueSupplementary(ofType: SettingsSectionHeaderView.self)
+    view.titleLabel.attributedText = NSAttributedString(string: sectionType.text, attributes: TextStyles.sectionTitle)
+    return view
   }
 }

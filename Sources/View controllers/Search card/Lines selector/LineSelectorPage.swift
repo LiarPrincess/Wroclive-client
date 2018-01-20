@@ -64,14 +64,14 @@ class LineSelectorPage: UIViewController {
   private static func createDataSource() -> RxCollectionViewDataSource<LineSelectorSection> {
     return RxCollectionViewDataSource(
       configureCell: { _, collectionView, indexPath, model -> UICollectionViewCell in
-        let cell = collectionView.dequeueReusableCell(ofType: LineSelectorCell.self, forIndexPath: indexPath)
+        let cell = collectionView.dequeueCell(ofType: LineSelectorCell.self, forIndexPath: indexPath)
         cell.viewModel.inputs.line.onNext(model)
         return cell
       },
       configureSupplementaryView: { dataSource, collectionView, kind, indexPath -> UICollectionReusableView in
         switch kind {
         case UICollectionElementKindSectionHeader:
-          let view = collectionView.dequeueReusableSupplementaryView(ofType: LineSelectorHeaderView.self, kind: .header, for: indexPath)
+          let view = collectionView.dequeueSupplementary(ofType: LineSelectorHeaderView.self, kind: .header, for: indexPath)
           let section = dataSource[indexPath.section]
           view.viewModel.inputs.section.onNext(section)
           return view
@@ -93,7 +93,7 @@ class LineSelectorPage: UIViewController {
     self.collectionViewLayout.minimumLineSpacing      = CellLayout.margin
     self.collectionViewLayout.minimumInteritemSpacing = CellLayout.margin
 
-    self.collectionView.register(LineSelectorCell.self)
+    self.collectionView.registerCell(LineSelectorCell.self)
     self.collectionView.registerSupplementary(LineSelectorHeaderView.self, ofKind: .header)
     self.collectionView.backgroundColor         = Managers.theme.colors.background
     self.collectionView.allowsSelection         = true

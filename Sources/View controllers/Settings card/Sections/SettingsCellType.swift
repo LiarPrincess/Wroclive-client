@@ -20,5 +20,3 @@ enum SettingsCellType {
     }
   }
 }
-
-typealias SettingsSection = RxSectionModel<String, SettingsCellType>

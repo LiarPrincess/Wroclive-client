@@ -5,13 +5,11 @@
 
 import UIKit
 import SnapKit
-import RxSwift
-import RxCocoa
 
-private typealias Layout       = MapTypeSelectionCellConstants.Layout
+private typealias Layout       = SettingsMapTypeCellConstants.Layout
 private typealias Localization = Localizable.Settings.Table.MapType
 
-class MapTypeSelectionCell: UITableViewCell {
+class SettingsMapTypeCell: UITableViewCell {
 
   // MARK: - Properties
 
@@ -44,9 +42,11 @@ class MapTypeSelectionCell: UITableViewCell {
     self.contentView.addSubview(self.segmentedControl)
     self.segmentedControl.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.topInset)
+      make.height.equalTo(Layout.nominalHeight)
+      make.bottom.equalToSuperview().offset(-Layout.bottomInset)
+
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)
-      make.bottom.equalToSuperview().offset(-Layout.topInset)
     }
   }
 }

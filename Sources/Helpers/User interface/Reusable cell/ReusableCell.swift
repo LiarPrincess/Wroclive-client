@@ -5,20 +5,14 @@
 
 import UIKit
 
-// MARK: - ReusableCell
-
 protocol ReusableCell {
   static var identifier: String { get }
 }
 
-// MARK: - UITableViewCell
-
-extension UITableViewCell: ReusableCell {
+extension ReusableCell {
   static var identifier: String { return String(describing: self) }
 }
 
-// MARK: - UICollectionViewCell
-
-extension UICollectionReusableView: ReusableCell {
-  static var identifier: String { return String(describing: self) }
-}
+extension UITableViewCell:             ReusableCell { }
+extension UITableViewHeaderFooterView: ReusableCell { }
+extension UICollectionReusableView:    ReusableCell { }

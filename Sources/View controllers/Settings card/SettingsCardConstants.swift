@@ -21,8 +21,9 @@ enum SettingsCardConstants {
   }
 
   enum TextStyles {
-    static var cardTitle: TextAttributes { return TextAttributes(style: .headline) }
-    static var cellText:  TextAttributes { return TextAttributes(style: .body)     }
+    static var cardTitle:    TextAttributes { return TextAttributes(style: .headline)    }
+    static var sectionTitle: TextAttributes { return TextAttributes(style: .subheadline) }
+    static var cellText:     TextAttributes { return TextAttributes(style: .body)        }
   }
 
   enum CardPanel {

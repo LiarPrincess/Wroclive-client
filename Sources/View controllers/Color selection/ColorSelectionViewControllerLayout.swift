@@ -17,7 +17,7 @@ extension ColorSelectionViewController {
   }
 
   private func initCollectionView() {
-    self.collectionView.register(ColorSelectionCell.self)
+    self.collectionView.registerCell(ColorSelectionCell.self)
     self.collectionView.registerSupplementary(ColorSelectionSectionHeaderView.self, ofKind: .header)
     self.collectionView.registerSupplementary(ColorSelectionSectionFooterView.self, ofKind: .footer)
     self.collectionView.backgroundColor         = Managers.theme.colors.background
