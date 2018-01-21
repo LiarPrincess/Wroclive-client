@@ -9,8 +9,7 @@ import RxSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  lazy var window:         UIWindow?      = UIWindow(frame: UIScreen.main.bounds)
-  lazy var appCoordinator: AppCoordinator = AppCoordinator(window: self.window!)
+  lazy var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
 
   // MARK: - Launch
 
@@ -18,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     AppEnvironment.push(Environment())
     Managers.theme.applyColorScheme()
 
-    self.appCoordinator.start()
+    self.window!.rootViewController = MainViewController()
+    self.window!.makeKeyAndVisible()
 
     #if DEBUG
 //      _ = Observable<Int>

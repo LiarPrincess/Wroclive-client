@@ -10,19 +10,9 @@ import PromiseKit
 
 private typealias Constants = MainViewControllerConstants
 
-protocol MainViewControllerDelegate: class {
-  func mainViewControllerDidAppear(_ viewController: MainViewController)
-
-  func mainViewControllerDidTapSearchButton(_ viewController: MainViewController)
-  func mainViewControllerDidTapBookmarksButton(_ viewController: MainViewController)
-  func mainViewControllerDidTapConfigurationButton(_ viewController: MainViewController)
-}
-
 class MainViewController: UIViewController {
 
   // MARK: - Properties
-
-  weak var delegate: MainViewControllerDelegate?
 
   let mapViewController: MapViewController = MapViewController()
 
@@ -32,15 +22,17 @@ class MainViewController: UIViewController {
   let bookmarksButton     = UIBarButtonItem()
   let configurationButton = UIBarButtonItem()
 
+  var card:                   UIViewController?
+  var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+
   // MARK: - Init
 
-  convenience init(delegate: MainViewControllerDelegate? = nil) {
-    self.init(nibName: nil, bundle: nil, delegate: delegate)
+  convenience init() {
+    self.init(nibName: nil, bundle: nil)
   }
 
-  init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, delegate: MainViewControllerDelegate? = nil) {
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    self.delegate = delegate
     self.startObservingColorScheme()
     self.startObservingVehicleLocations()
   }
@@ -63,24 +55,62 @@ class MainViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    self.delegate?.mainViewControllerDidAppear(self)
+    self.requestLocationAuthorizationIfNeeded()
+  }
+
+  private func requestLocationAuthorizationIfNeeded() {
+    let authorization = Managers.location.authorization
+    guard authorization == .notDetermined else { return }
+
+    let delay = AppInfo.Timings.locationAuthorizationPromptDelay
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+      Managers.location.requestAuthorization()
+    }
   }
 
   // MARK: - Actions
 
   @objc
   func searchButtonPressed() {
-    self.delegate?.mainViewControllerDidTapSearchButton(self)
+    let viewModel      = SearchCardViewModel()
+    let viewController = SearchCard(viewModel)
+    self.openCard(viewController, animated: true)
   }
 
   @objc
   func bookmarksButtonPressed() {
-    self.delegate?.mainViewControllerDidTapBookmarksButton(self)
+    let viewModel      = BookmarksCardViewModel()
+    let viewController = BookmarksCard(viewModel)
+    self.openCard(viewController, animated: true)
   }
 
   @objc
   func configurationButtonPressed() {
-    self.delegate?.mainViewControllerDidTapConfigurationButton(self)
+    let viewModel      = SettingsCardViewModel()
+    let viewController = SettingsCard(viewModel)
+    self.openCard(viewController, animated: true)
+  }
+}
+
+// MARK: - Open card
+
+extension MainViewController {
+  func openCard<Card: UIViewController & CardPanelPresentable>(_ card: Card, animated: Bool) {
+    if let currentCard = self.card {
+      currentCard.dismiss(animated: true) { [unowned self] in
+        self.card = nil
+        self.cardTransitionDelegate = nil
+        self.openCardInner(card, animated: animated)
+      }
+    }
+    else { self.openCardInner(card, animated: animated) }
+  }
+
+  private func openCardInner<Card: UIViewController & CardPanelPresentable>(_ card: Card, animated: Bool) {
+    self.cardTransitionDelegate = CardPanelTransitionDelegate(for: card)
+    card.modalPresentationStyle = .custom
+    card.transitioningDelegate  = self.cardTransitionDelegate!
+    self.present(card, animated: animated, completion: nil)
   }
 }
 
@@ -123,10 +153,8 @@ extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
     }
 
     switch error {
-    case ApiError.noInternet:
-      NetworkAlerts.showNoInternetAlert(in: self, retry: retry)
-    default:
-      NetworkAlerts.showNetworkingErrorAlert(in: self, retry: retry)
+    case ApiError.noInternet: NetworkAlerts.showNoInternetAlert(in: self, retry: retry)
+    default:                  NetworkAlerts.showNetworkingErrorAlert(in: self, retry: retry)
     }
   }
 }
