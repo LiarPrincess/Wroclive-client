@@ -137,16 +137,6 @@ extension SettingsCard: CardPanelPresentable {
 
 extension SettingsCard: UITableViewDelegate {
 
-//  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//    let subviews = cell.subviews
-//    Swift.print("____:__:__ __:__:__:___: [\(type(of: self)) \(#line)] \(subviews.count)")
-//    if subviews.count >= 3 {
-//      for subview in subviews where subview != cell.contentView {
-//        subview.removeFromSuperview()
-//      }
-//    }
-//  }
-
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     typealias HeaderLayout = SettingsSectionHeaderViewConstants.Layout
 

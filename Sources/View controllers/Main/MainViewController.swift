@@ -118,7 +118,7 @@ extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
     Managers.tracking.pause()
 
     let retry: () -> () = {
-      let delay = Constants.failedLocationRequestDelay
+      let delay = AppInfo.Timings.FailedRequestDelay.location
       DispatchQueue.main.asyncAfter(deadline: .now() + delay) { Managers.tracking.resume() }
     }
 

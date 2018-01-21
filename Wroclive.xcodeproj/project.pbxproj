@@ -644,9 +644,8 @@
 		9017C33D1EE339FD00063377 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9017C3541EE339FD00063377 /* Map */,
-				9017C3441EE339FD00063377 /* Search card */,
 				9017C33E1EE339FD00063377 /* Bookmarks card */,
+				9017C3441EE339FD00063377 /* Search card */,
 				9096CDCB1F40EF0C00FEF20A /* Settings card */,
 				9044A5311F69A13D00F26C17 /* Color selection */,
 				9061355A1F84246A006634C7 /* Main */,
@@ -1179,6 +1178,7 @@
 		9061355A1F84246A006634C7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				9017C3541EE339FD00063377 /* Map */,
 				9017C3511EE339FD00063377 /* MainViewController.swift */,
 				9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */,
 				9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */,

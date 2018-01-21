@@ -18,8 +18,8 @@ extension MainViewController {
 
   private func initMapView() {
     self.addChildViewController(self.mapViewController)
-    self.view.addSubview(self.mapViewController.view)
 
+    self.view.addSubview(self.mapViewController.view)
     self.mapViewController.view.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
@@ -48,8 +48,8 @@ extension MainViewController {
     self.configurationButton.accessibilityIdentifier = "MainViewController.configuration"
 
     self.toolbar.setItems(self.layoutToolbarItems(), animated: false)
-    self.view.addSubview(self.toolbar)
 
+    self.view.addSubview(self.toolbar)
     self.toolbar.snp.makeConstraints { make in
       make.left.right.equalToSuperview()
 
@@ -61,12 +61,12 @@ extension MainViewController {
   }
 
   private func layoutToolbarItems() -> [UIBarButtonItem] {
-    let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
     let result: [UIBarButtonItem] = [
-      self.userTrackingButton,  flexible,
-      self.searchButton,        flexible,
-      self.bookmarksButton,     flexible,
+      self.userTrackingButton,  space,
+      self.searchButton,        space,
+      self.bookmarksButton,     space,
       self.configurationButton
     ]
     return result
