@@ -15,18 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     AppEnvironment.push(Environment())
+    Managers.debug.initialize()
     Managers.theme.applyColorScheme()
 
     self.window!.rootViewController = MainViewController()
     self.window!.makeKeyAndVisible()
-
-    #if DEBUG
-//      _ = Observable<Int>
-//        .interval(1, scheduler: MainScheduler.instance)
-//        .subscribe { _ in print("Resource count \(RxSwift.Resources.total)") }
-
-//      URLCache.shared.removeAllCachedResponses()
-    #endif
 
     return true
   }

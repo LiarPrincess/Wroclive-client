@@ -145,6 +145,8 @@
 		906A7B5720025750004EC8A4 /* ObservableOfBool+Not.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5420025750004EC8A4 /* ObservableOfBool+Not.swift */; };
 		906C40522013F6AC00E32571 /* UIApplication+topViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40512013F6AC00E32571 /* UIApplication+topViewController.swift */; };
 		906C40542014A27E00E32571 /* SearchCardOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40532014A27E00E32571 /* SearchCardOperations.swift */; };
+		906C40572014C55000E32571 /* DebugManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40562014C55000E32571 /* DebugManagerType.swift */; };
+		906C40592014C55700E32571 /* DebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40582014C55700E32571 /* DebugManager.swift */; };
 		9073F9981FA7A80400924584 /* CachedDocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073F9971FA7A80400924584 /* CachedDocumentsManager.swift */; };
 		9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* AppInfo.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -423,6 +425,8 @@
 		906A7B5420025750004EC8A4 /* ObservableOfBool+Not.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObservableOfBool+Not.swift"; sourceTree = "<group>"; };
 		906C40512013F6AC00E32571 /* UIApplication+topViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+topViewController.swift"; sourceTree = "<group>"; };
 		906C40532014A27E00E32571 /* SearchCardOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardOperations.swift; sourceTree = "<group>"; };
+		906C40562014C55000E32571 /* DebugManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugManagerType.swift; sourceTree = "<group>"; };
+		906C40582014C55700E32571 /* DebugManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugManager.swift; sourceTree = "<group>"; };
 		9073F9971FA7A80400924584 /* CachedDocumentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedDocumentsManager.swift; sourceTree = "<group>"; };
 		9079DCD51F6C545600C6ABCD /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		907DC6E71FF2B73F001C5DD6 /* LineTypeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelector.swift; sourceTree = "<group>"; };
@@ -1178,6 +1182,15 @@
 			path = Observers;
 			sourceTree = "<group>";
 		};
+		906C40552014C53900E32571 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				906C40562014C55000E32571 /* DebugManagerType.swift */,
+				906C40582014C55700E32571 /* DebugManager.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		907DC6E61FF2B73F001C5DD6 /* Line type selector */ = {
 			isa = PBXGroup;
 			children = (
@@ -1507,6 +1520,7 @@
 				905D718A1FE1C443006D1DB6 /* Location */,
 				90B4124E1F97E70C008F05E9 /* User defaults */,
 				90541FCD1FA79E530055350E /* Documents */,
+				906C40552014C53900E32571 /* Debug */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -2079,6 +2093,7 @@
 				9042EDCF1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift in Sources */,
 				908FB19B1F48B3CA00121584 /* LayoutGuide.swift in Sources */,
 				901A3F6E1FAFB6A300383B02 /* PopupViewConstants.swift in Sources */,
+				906C40592014C55700E32571 /* DebugManager.swift in Sources */,
 				90AACC92200BAF940064EDFD /* Sequence+ToArray.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
 				900CEC021FC4D5D7001C6B04 /* Document.swift in Sources */,
@@ -2089,6 +2104,7 @@
 				90915B131FFA7E2F009FE942 /* SearchCardNetworkAdapter.swift in Sources */,
 				901A8090200E9F580013CCD9 /* SettingsSectionType.swift in Sources */,
 				90F0A2D81F732A6F00C641C8 /* VehicleLocationObserver.swift in Sources */,
+				906C40572014C55000E32571 /* DebugManagerType.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				90E8A6C11F4CB81400CE5AE9 /* AppManager.swift in Sources */,
 				905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */,

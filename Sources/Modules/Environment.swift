@@ -12,6 +12,7 @@ class Environment {
   var notification: NotificationManagerType
   var userDefaults: UserDefaultsManagerType
   var documents:    DocumentsManagerType
+  var debug:        DebugManagerType
 
   var theme:     ThemeManagerType
   var api:       ApiManagerType
@@ -27,6 +28,7 @@ class Environment {
     notification: NotificationManagerType = NotificationManager(),
     userDefaults: UserDefaultsManagerType = UserDefaultsManager(),
     documents:    DocumentsManagerType    = CachedDocumentsManager(DocumentsManager()),
+    debug:        DebugManagerType        = DebugManager(),
 
     theme:        ThemeManagerType        = ThemeManager(),
     api:          ApiManagerType          = ApiManager(),
@@ -41,6 +43,7 @@ class Environment {
     self.notification  = notification
     self.userDefaults  = userDefaults
     self.documents     = documents
+    self.debug         = debug
 
     self.theme         = theme
     self.api           = api
