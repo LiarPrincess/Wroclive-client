@@ -3,8 +3,6 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import UIKit
-
 protocol AppManagerType {
 
   /// App name (e.g. Wroclive)
@@ -15,13 +13,4 @@ protocol AppManagerType {
 
   // App bundle (e.g. pl.nopoint.wroclive)
   var identifier: String { get }
-
-  /// Asks user to rate app in AppStore
-  func rateApp()
-
-  /// Present bottom panel to share app
-  func showShareActivity(in viewController: UIViewController)
-
-  /// Open app website in Safari
-  func openWebsite()
 }

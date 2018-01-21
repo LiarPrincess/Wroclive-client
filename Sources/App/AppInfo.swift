@@ -7,8 +7,9 @@ import Foundation
 
 enum AppInfo {
 
-  static let website      = "www.nopoint.pl"
-  static let websiteHttps = "https://\(website)"
+  enum Website {
+    static let about = "https://www.overcast.fm"
+  }
 
   enum AppStore {
     private static let appId = "888422857"

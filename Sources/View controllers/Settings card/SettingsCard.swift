@@ -56,7 +56,7 @@ class SettingsCard: UIViewController {
     super.init(nibName: nil, bundle: nil)
 
     self.initTableViewBindings()
-    self.initViewControlerLifecycleBindings()
+    self.initCellOperationsBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -73,15 +73,27 @@ class SettingsCard: UIViewController {
       .drive(self.tableView.rx.items(dataSource: self.tableViewDataSource))
       .disposed(by: disposeBag)
 
+    self.tableViewMapTypeCell.rx.selectedValueChanged
+      .bind(to: self.viewModel.inputs.mapTypeSelected)
+      .disposed(by: self.disposeBag)
+
     self.tableView.rx.itemSelected
       .do(onNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) })
       .bind(to: self.viewModel.inputs.itemSelected)
       .disposed(by: self.disposeBag)
   }
 
-  private func initViewControlerLifecycleBindings() {
-    self.viewModel.outputs.shouldClose
-      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
+  private func initCellOperationsBindings() {
+    self.viewModel.outputs.showShareControl
+      .drive(onNext: { [unowned self] _ in SearchCardOperations.showShareActivity(in: self) })
+      .disposed(by: self.disposeBag)
+
+    self.viewModel.outputs.showRateControl
+      .drive(onNext: { _ in SearchCardOperations.rateApp() })
+      .disposed(by: self.disposeBag)
+
+    self.viewModel.outputs.showAboutPage
+      .drive(onNext: { [unowned self] _ in SearchCardOperations.showAboutPage(in: self) })
       .disposed(by: self.disposeBag)
   }
 

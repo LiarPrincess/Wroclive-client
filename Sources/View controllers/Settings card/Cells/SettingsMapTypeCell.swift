@@ -5,6 +5,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 private typealias Layout       = SettingsMapTypeCellConstants.Layout
 private typealias Localization = Localizable.Settings.Table.MapType
@@ -18,6 +20,10 @@ class SettingsMapTypeCell: UITableViewCell {
     return UISegmentedControl(items: mapTypes.map(translationOf))
   }()
 
+  var selectedValue: Observable<MapType> {
+    return self.segmentedControl.rx.selectedSegmentIndex.map(valueAt)
+  }
+
   override var alpha: CGFloat {
     get { return 1.0 }
     set { }
@@ -27,6 +33,7 @@ class SettingsMapTypeCell: UITableViewCell {
 
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
+    self.selectionStyle = .none
     self.initLayout()
   }
 

@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class AppManager: AppManagerType {
 
@@ -13,24 +13,5 @@ class AppManager: AppManagerType {
 
   private func bundleInformation(key: String) -> String? {
     return Bundle.main.infoDictionary?[key] as? String
-  }
-
-  func rateApp() {
-    UIApplication.shared.open(URL(string: AppInfo.AppStore.writeReviewUrl)!)
-  }
-
-  func showShareActivity(in viewController: UIViewController) {
-    let text  = String(format: Localizable.Share.message, AppInfo.AppStore.shareUrl)
-    let image = Assets.shareImage
-    let items = [text, image] as [Any]
-
-    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-    activityViewController.excludedActivityTypes = [.assignToContact, .saveToCameraRoll, .addToReadingList, .postToFlickr, .postToVimeo, .openInIBooks, .print]
-    viewController.present(activityViewController, animated: true, completion: nil)
-  }
-
-  func openWebsite() {
-    let url = URL(string: AppInfo.websiteHttps)!
-    UIApplication.shared.open(url)
   }
 }

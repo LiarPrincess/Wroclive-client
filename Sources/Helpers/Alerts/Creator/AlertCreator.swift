@@ -85,23 +85,8 @@ class AlertCreator {
 
   // MARK: - Present, Dismiss
 
-  private static var topViewController: UIViewController? {
-    var result = UIApplication.shared.keyWindow?.rootViewController
-    var child  = result?.presentedViewController
-
-    while child != nil {
-      result = child
-      child = result?.presentedViewController
-    }
-
-    return result
-  }
-
   private static func present(_ alertController: UIAlertController, animated: Bool) {
-    guard let viewController = topViewController else {
-      Swift.print("Unable to show alert. Could not find top view controller.")
-      return
-    }
+    let viewController = UIApplication.topViewController
 
     if viewController is UIAlertController {
       Swift.print("Unable to show alert. Another alert is already presenting.")
