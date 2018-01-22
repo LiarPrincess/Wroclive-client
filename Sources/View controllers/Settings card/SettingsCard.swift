@@ -6,6 +6,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SafariServices
 
 private typealias TextStyles   = SettingsCardConstants.TextStyles
 private typealias CardPanel    = SettingsCardConstants.CardPanel
@@ -56,7 +57,7 @@ class SettingsCard: UIViewController {
     super.init(nibName: nil, bundle: nil)
 
     self.initTableViewBindings()
-    self.initCellOperationsBindings()
+    self.initCellButtonsBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -83,17 +84,17 @@ class SettingsCard: UIViewController {
       .disposed(by: self.disposeBag)
   }
 
-  private func initCellOperationsBindings() {
+  private func initCellButtonsBindings() {
     self.viewModel.outputs.showShareControl
-      .drive(onNext: { [unowned self] _ in SearchCardOperations.showShareActivity(in: self) })
+      .drive(onNext: { [unowned self] _ in self.showShareActivity() })
       .disposed(by: self.disposeBag)
 
     self.viewModel.outputs.showRateControl
-      .drive(onNext: { _ in SearchCardOperations.rateApp() })
+      .drive(onNext: { [unowned self] _ in self.rateApp() })
       .disposed(by: self.disposeBag)
 
     self.viewModel.outputs.showAboutPage
-      .drive(onNext: { [unowned self] _ in SearchCardOperations.showAboutPage(in: self) })
+      .drive(onNext: { [unowned self] _ in self.showAboutPage() })
       .disposed(by: self.disposeBag)
   }
 
@@ -123,6 +124,32 @@ class SettingsCard: UIViewController {
       let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
       self.tableView.setContentOffset(newOffset, animated: false)
     }
+  }
+
+  // MARK: - Buttons
+
+  func rateApp() {
+    let url = URL(string: AppInfo.AppStore.writeReviewUrl)!
+    UIApplication.shared.open(url)
+  }
+
+  func showShareActivity() {
+    let text  = String(format: Localizable.Share.message, AppInfo.AppStore.shareUrl)
+    let image = Assets.shareImage
+    let items = [text, image] as [Any]
+
+    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+    activityViewController.excludedActivityTypes  = [.assignToContact, .saveToCameraRoll, .addToReadingList, .postToFlickr, .postToVimeo, .openInIBooks, .print]
+    activityViewController.modalPresentationStyle = .overCurrentContext
+    self.present(activityViewController, animated: true, completion: nil)
+  }
+
+  func showAboutPage() {
+    let url = URL(string: AppInfo.Website.about)!
+
+    let safariViewController = SFSafariViewController(url: url)
+    safariViewController.modalPresentationStyle = .overFullScreen
+    self.present(safariViewController, animated: true, completion: nil)
   }
 }
 

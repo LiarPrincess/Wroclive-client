@@ -143,7 +143,6 @@
 		906A7B5520025750004EC8A4 /* ObservableOfOptional+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5220025750004EC8A4 /* ObservableOfOptional+Unwrap.swift */; };
 		906A7B5720025750004EC8A4 /* ObservableOfBool+Not.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5420025750004EC8A4 /* ObservableOfBool+Not.swift */; };
 		906C40522013F6AC00E32571 /* UIApplication+topViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40512013F6AC00E32571 /* UIApplication+topViewController.swift */; };
-		906C40542014A27E00E32571 /* SearchCardOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40532014A27E00E32571 /* SearchCardOperations.swift */; };
 		906C40572014C55000E32571 /* DebugManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40562014C55000E32571 /* DebugManagerType.swift */; };
 		906C40592014C55700E32571 /* DebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40582014C55700E32571 /* DebugManager.swift */; };
 		906C405C2014CD0300E32571 /* MapAnnotationUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C405B2014CD0300E32571 /* MapAnnotationUpdates.swift */; };
@@ -426,7 +425,6 @@
 		906A7B5220025750004EC8A4 /* ObservableOfOptional+Unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObservableOfOptional+Unwrap.swift"; sourceTree = "<group>"; };
 		906A7B5420025750004EC8A4 /* ObservableOfBool+Not.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObservableOfBool+Not.swift"; sourceTree = "<group>"; };
 		906C40512013F6AC00E32571 /* UIApplication+topViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+topViewController.swift"; sourceTree = "<group>"; };
-		906C40532014A27E00E32571 /* SearchCardOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardOperations.swift; sourceTree = "<group>"; };
 		906C40562014C55000E32571 /* DebugManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugManagerType.swift; sourceTree = "<group>"; };
 		906C40582014C55700E32571 /* DebugManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugManager.swift; sourceTree = "<group>"; };
 		906C405B2014CD0300E32571 /* MapAnnotationUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationUpdates.swift; sourceTree = "<group>"; };
@@ -757,7 +755,6 @@
 			isa = PBXGroup;
 			children = (
 				901A809920127EC40013CCD9 /* MapType.swift */,
-				906C40532014A27E00E32571 /* SearchCardOperations.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2177,7 +2174,6 @@
 				9032F07C1F5DF66B00E1C9BC /* IntrinsicCollectionView.swift in Sources */,
 				9044A5491F69A13D00F26C17 /* ColorSelectionViewControllerLayout.swift in Sources */,
 				90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */,
-				906C40542014A27E00E32571 /* SearchCardOperations.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
 				9021F3981F12C95D000A6949 /* UIView+RoundCorners.swift in Sources */,
