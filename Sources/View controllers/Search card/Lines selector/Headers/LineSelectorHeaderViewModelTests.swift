@@ -57,7 +57,7 @@ final class LineSelectorHeaderViewModelTests: XCTestCase {
   }
 }
 
-// MARK: - Helpers
+// MARK: - Events
 
 extension LineSelectorHeaderViewModelTests {
 

@@ -3,6 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
+import XCTest
 import Foundation
 import PromiseKit
 @testable import Wroclive
@@ -23,4 +24,8 @@ class ApiManagerMock: ApiManagerType {
   func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
     return Promise(value: [])
   }
+}
+
+func XCTAssertOperationCount(_ manager: ApiManagerMock, availableLines: Int, file: StaticString = #file, line: UInt = #line) {
+  XCTAssertEqual(manager.availableLinesCallCount, availableLines, file: file, line: line)
 }

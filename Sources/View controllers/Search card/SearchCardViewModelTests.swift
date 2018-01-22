@@ -62,7 +62,7 @@ final class SearchCardViewModelTests: XCTestCase {
     self.testScheduler.start()
 
     XCTAssertEqual(observer1.events, [next(0, LineType.tram)])
-    assertSearchOperationCount(get: 1, save: 0)
+    XCTAssertOperationCount(self.searchManager, get: 1, save: 0)
 
     // bus
     self.searchManager.state = SearchCardState(page: .bus, selectedLines: [])
@@ -73,7 +73,7 @@ final class SearchCardViewModelTests: XCTestCase {
     self.testScheduler.start()
 
     XCTAssertEqual(observer2.events, [next(0, LineType.bus)])
-    assertSearchOperationCount(get: 2, save: 0)
+    XCTAssertOperationCount(self.searchManager, get: 2, save: 0)
   }
 
   func test_selectingPage_updatesPage() {
@@ -115,11 +115,11 @@ final class SearchCardViewModelTests: XCTestCase {
     self.testScheduler.start()
     self.waitForLineResponse(1)
 
-    self.assertEqual(observers.line.events,                [next(0, []), next(100, self.testLines)])
+    XCTAssertEqual(observers.line.events,                  [next(0, []), next(100, self.testLines)])
     XCTAssertEqual(observers.showApiErrorAlert.events,     [])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false), next(100, true)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true),  next(100, false)])
-    self.assertApiOperationCount(availableLines: 1)
+    XCTAssertOperationCount(self.apiManager, availableLines: 1)
   }
 
   func test_appearing_withoutLines_showsAlert() {
@@ -133,11 +133,11 @@ final class SearchCardViewModelTests: XCTestCase {
     self.testScheduler.start()
     self.waitForApiErrorAlert(1)
 
-    self.assertEqual(observers.line.events,                [next(0, [])])
+    XCTAssertEqual(observers.line.events,                  [next(0, [])])
     XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, SearchCardApiError.generalError)])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
-    self.assertApiOperationCount(availableLines: 1)
+    XCTAssertOperationCount(self.apiManager, availableLines: 1)
   }
 
   func test_appearing_withoutInternet_showsAlert() {
@@ -151,11 +151,11 @@ final class SearchCardViewModelTests: XCTestCase {
     self.testScheduler.start()
     self.waitForApiErrorAlert(1)
 
-    self.assertEqual(observers.line.events,                [next(0, [])])
+    XCTAssertEqual(observers.line.events,                  [next(0, [])])
     XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, SearchCardApiError.noInternet)])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
-    self.assertApiOperationCount(availableLines: 1)
+    XCTAssertOperationCount(self.apiManager, availableLines: 1)
   }
 
   func test_appearing_withApiError_showsAlert() {
@@ -169,11 +169,11 @@ final class SearchCardViewModelTests: XCTestCase {
     self.testScheduler.start()
     self.waitForApiErrorAlert(1)
 
-    self.assertEqual(observers.line.events,                [next(0, [])])
+    XCTAssertEqual(observers.line.events,                  [next(0, [])])
     XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, SearchCardApiError.generalError)])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
-    self.assertApiOperationCount(availableLines: 1)
+    XCTAssertOperationCount(self.apiManager, availableLines: 1)
   }
 
   // MARK: - Selected lines
@@ -186,8 +186,8 @@ final class SearchCardViewModelTests: XCTestCase {
     viewModel.outputs.selectedLines.drive(observer).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
-    self.assertEqual(observer.events, [next(0, self.testLines)])
-    assertSearchOperationCount(get: 1, save: 0)
+    XCTAssertEqual(observer.events, [next(0, self.testLines)])
+    XCTAssertOperationCount(self.searchManager, get: 1, save: 0)
   }
 
   func test_selectingLine_updatesSelectedLines() {
@@ -206,8 +206,8 @@ final class SearchCardViewModelTests: XCTestCase {
       next(  0, self.testLines),
       next(100, self.testLines + [event0.value.element!]),
       next(200, self.testLines + [event1.value.element!, event1.value.element!])]
-    self.assertEqual(observer.events, expectedEvents)
-    assertSearchOperationCount(get: 1, save: 0)
+    XCTAssertEqual(observer.events, expectedEvents)
+    XCTAssertOperationCount(self.searchManager, get: 1, save: 0)
   }
 
   func test_deselectingLine_updatesSelectedLines() {
@@ -226,8 +226,8 @@ final class SearchCardViewModelTests: XCTestCase {
       next(  0, self.testLines),
       next(100, [self.testLines[1], self.testLines[2], self.testLines[3], self.testLines[4]]),
       next(200, [self.testLines[1], self.testLines[2], self.testLines[4]])]
-    self.assertEqual(observer.events, expectedEvents)
-    assertSearchOperationCount(get: 1, save: 0)
+    XCTAssertEqual(observer.events, expectedEvents)
+    XCTAssertOperationCount(self.searchManager, get: 1, save: 0)
   }
 
   // MARK: - Buttons
@@ -265,7 +265,7 @@ final class SearchCardViewModelTests: XCTestCase {
     self.simulateSearchButtonPressedEvents(at: 100)
     self.testScheduler.start()
 
-    self.assertEqual(self.trackingManager.trackedLines, [self.testLines])
+    XCTAssertEqual(self.trackingManager.trackedLines, [self.testLines])
     XCTAssertEqual(self.trackingManager.startCount, 1)
   }
 
@@ -278,7 +278,7 @@ final class SearchCardViewModelTests: XCTestCase {
     viewModel.outputs.shouldClose.drive(observer).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
-    self.assertEqual(observer.events, [next(100, ()), next(200, ())])
+    XCTAssertEqual(observer.events, [next(100, ()), next(200, ())])
   }
 
   // MARK: - Alerts
@@ -294,11 +294,11 @@ final class SearchCardViewModelTests: XCTestCase {
     self.testScheduler.start()
     self.waitForLineResponse(1, timeout: AppInfo.Timings.FailedRequestDelay.lines + 1)
 
-    self.assertEqual(observers.line.events,                [next(0, []), next(100, self.testLines)])
+    XCTAssertEqual(observers.line.events,                [next(0, []), next(100, self.testLines)])
     XCTAssertEqual(observers.showApiErrorAlert.events,     [])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false), next(100, true)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true),  next(100, false)])
-    self.assertApiOperationCount(availableLines: 1)
+    XCTAssertOperationCount(self.apiManager, availableLines: 1)
   }
 
   func test_enteringNameInBookmarkAlert_createsBookmark() {
@@ -329,16 +329,13 @@ final class SearchCardViewModelTests: XCTestCase {
     self.testScheduler.start()
 
     XCTAssertEqual(self.searchManager.state, SearchCardState(page: page, selectedLines: [line]))
-    self.assertSearchOperationCount(get: 1, save: 1)
+    XCTAssertOperationCount(self.searchManager, get: 1, save: 1)
   }
 }
 
-// MARK: - Helpers
+// MARK: - Data
 
 extension SearchCardViewModelTests {
-
-  // MARK: - Data
-
   var testLines: [Line] {
     let line0 = Line(name:  "1", type: .tram, subtype: .regular)
     let line1 = Line(name:  "4", type: .tram, subtype: .regular)
@@ -347,6 +344,11 @@ extension SearchCardViewModelTests {
     let line4 = Line(name:  "D", type:  .bus, subtype: .regular)
     return [line0, line1, line2, line3, line4]
   }
+}
+
+// MARK: - Events
+
+extension SearchCardViewModelTests {
 
   // MARK: - Page
 
@@ -430,6 +432,11 @@ extension SearchCardViewModelTests {
       .bind(to: self.viewModel.inputs.viewDidDisappear)
       .disposed(by: self.disposeBag)
   }
+}
+
+// MARK: - Helpers
+
+extension SearchCardViewModelTests {
 
   // MARK: - Lines observer
 
@@ -480,42 +487,34 @@ extension SearchCardViewModelTests {
       .toBlocking(timeout: timeout)
       .toArray()
   }
+}
 
-  // MARK: - Asserts
+// MARK: - Asserts
 
-  typealias VoidEvent  = Recorded<Event<Void>>
-  typealias LinesEvent = Recorded<Event<[Line]>>
+private typealias VoidEvent  = Recorded<Event<Void>>
 
-  func assertSearchOperationCount(get: Int, save: Int) {
-    XCTAssertEqual(self.searchManager.getStateCount, get)
-    XCTAssertEqual(self.searchManager.saveCount, save)
+private func XCTAssertEqual(_ lhs: [VoidEvent], _ rhs: [VoidEvent], file: StaticString = #file, line: UInt = #line) {
+  XCTAssertEqual(lhs.count, rhs.count, file: file, line: line)
+
+  for (lhsEvent, rhsEvent) in zip(lhs, rhs) {
+    XCTAssertEqual(lhsEvent.time, rhsEvent.time, file: file, line: line)
   }
+}
 
-  func assertApiOperationCount(availableLines: Int) {
-    XCTAssertEqual(self.apiManager.availableLinesCallCount, availableLines)
+private typealias LinesEvent = Recorded<Event<[Line]>>
+
+private func XCTAssertEqual(_ lhs: [LinesEvent], _ rhs: [LinesEvent], file: StaticString = #file, line: UInt = #line) {
+  XCTAssertEqual(lhs.count, rhs.count, file: file, line: line)
+
+  for (lhsEvent, rhsEvent) in zip(lhs, rhs) {
+    XCTAssertEqual(lhsEvent.time, rhsEvent.time, file: file, line: line)
   }
+}
 
-  func assertEqual(_ lhs: [VoidEvent], _ rhs: [VoidEvent]) {
-    XCTAssertEqual(lhs.count, rhs.count)
+private func XCTAssertEqual(_ lhs: [[Line]], _ rhs: [[Line]], file: StaticString = #file, line: UInt = #line) {
+  XCTAssertEqual(lhs.count, rhs.count, file: file, line: line)
 
-    for (lhsEvent, rhsEvent) in zip(lhs, rhs) {
-      XCTAssertEqual(lhsEvent.time, rhsEvent.time)
-    }
-  }
-
-  func assertEqual(_ lhs: [[Line]], _ rhs: [[Line]]) {
-    XCTAssertEqual(lhs.count, rhs.count)
-
-    for (lhsLines, rhsLines) in zip(lhs, rhs) {
-      XCTAssertEqual(lhsLines, rhsLines)
-    }
-  }
-
-  func assertEqual(_ lhs: [LinesEvent], _ rhs: [LinesEvent]) {
-    XCTAssertEqual(lhs.count, rhs.count)
-
-    for (lhsEvent, rhsEvent) in zip(lhs, rhs) {
-      XCTAssertEqual(lhsEvent.time, rhsEvent.time)
-    }
+  for (lhsLines, rhsLines) in zip(lhs, rhs) {
+    XCTAssertEqual(lhsLines, rhsLines, file: file, line: line)
   }
 }

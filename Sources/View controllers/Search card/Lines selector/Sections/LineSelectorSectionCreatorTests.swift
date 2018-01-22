@@ -42,7 +42,7 @@ final class LineSelectorSectionCreatorTests: XCTestCase {
     XCTAssertEqual(sections, expectedSections)
   }
 
-  func createSection(subtype lineSubtype: LineSubtype, lines: Line...) -> LineSelectorSection {
+  private func createSection(subtype lineSubtype: LineSubtype, lines: Line...) -> LineSelectorSection {
     let data = LineSelectorSectionData(for: lineSubtype)
     return LineSelectorSection(model: data, items: lines)
   }
