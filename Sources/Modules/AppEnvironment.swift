@@ -18,11 +18,11 @@ enum AppEnvironment {
   static var documents:    DocumentsManagerType    { return current.documents    }
   static var debug:        DebugManagerType        { return current.debug        }
 
-  static var theme:        ThemeManagerType        { return current.theme     }
-  static var api:          ApiManagerType          { return current.api       }
-  static var search:       SearchManagerType       { return current.search    }
-  static var bookmarks:    BookmarksManagerType    { return current.bookmarks }
-  static var tracking:     TrackingManagerType     { return current.tracking  }
+  static var theme:     ThemeManagerType     { return current.theme     }
+  static var api:       ApiManagerType       { return current.api       }
+  static var search:    SearchManagerType    { return current.search    }
+  static var bookmarks: BookmarksManagerType { return current.bookmarks }
+  static var map:       MapManagerType       { return current.map       }
 
   // MARK: Stack
 
@@ -43,11 +43,11 @@ enum AppEnvironment {
     documents:    DocumentsManagerType    = documents,
     debug:        DebugManagerType        = debug,
 
-    theme:        ThemeManagerType        = theme,
-    api:          ApiManagerType          = api,
-    search:       SearchManagerType       = search,
-    bookmarks:    BookmarksManagerType    = bookmarks,
-    tracking:     TrackingManagerType     = tracking) {
+    theme:     ThemeManagerType     = theme,
+    api:       ApiManagerType       = api,
+    search:    SearchManagerType    = search,
+    bookmarks: BookmarksManagerType = bookmarks,
+    map:       MapManagerType       = map) {
 
     push(Environment(
       app:           app,
@@ -59,11 +59,11 @@ enum AppEnvironment {
       documents:     documents,
       debug:         debug,
 
-      theme:         theme,
-      api:           api,
-      search:        search,
-      bookmarks:     bookmarks,
-      tracking:      tracking))
+      theme:     theme,
+      api:       api,
+      search:    search,
+      bookmarks: bookmarks,
+      map:       map))
   }
 
   static func push(_ environment: Environment) {

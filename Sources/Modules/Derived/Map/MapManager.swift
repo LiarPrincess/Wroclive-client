@@ -6,7 +6,7 @@
 import Foundation
 import PromiseKit
 
-class TrackingManager: TrackingManagerType {
+class MapManager: MapManagerType {
 
   private(set) var result: TrackingResult = .success(locations: []) {
     didSet { Managers.notification.post(.vehicleLocationsDidUpdate) }
@@ -46,7 +46,7 @@ class TrackingManager: TrackingManagerType {
   }
 }
 
-extension TrackingManager {
+extension MapManager {
   func start(_ lines: [Line]) {
     self.trackedLines = lines
     self.startTimer()

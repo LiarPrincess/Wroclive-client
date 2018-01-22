@@ -137,7 +137,7 @@ extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
   }
 
   func vehicleLocationsDidUpdate() {
-    let result = Managers.tracking.result
+    let result = Managers.map.result
     switch result {
     case .success(let locations): self.mapViewController.updateVehicleLocations(locations)
     case .error(let error):       self.presentTrackingError(error)
@@ -145,11 +145,11 @@ extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
   }
 
   private func presentTrackingError(_ error: Error) {
-    Managers.tracking.pause()
+    Managers.map.pause()
 
     let retry: () -> () = {
       let delay = AppInfo.Timings.FailedRequestDelay.location
-      DispatchQueue.main.asyncAfter(deadline: .now() + delay) { Managers.tracking.resume() }
+      DispatchQueue.main.asyncAfter(deadline: .now() + delay) { Managers.map.resume() }
     }
 
     switch error {

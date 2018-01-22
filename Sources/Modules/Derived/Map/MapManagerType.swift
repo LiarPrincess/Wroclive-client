@@ -3,12 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-enum TrackingResult {
-  case success(locations: [Vehicle])
-  case error(error: Error)
-}
-
-protocol TrackingManagerType {
+protocol MapManagerType {
 
   /// Last obtained tracking result
   var result: TrackingResult { get }

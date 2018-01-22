@@ -18,7 +18,7 @@ class Environment {
   var api:       ApiManagerType
   var search:    SearchManagerType
   var bookmarks: BookmarksManagerType
-  var tracking:  TrackingManagerType
+  var map:       MapManagerType
 
   init(
     app:          AppManagerType          = AppManager(),
@@ -30,11 +30,11 @@ class Environment {
     documents:    DocumentsManagerType    = CachedDocumentsManager(DocumentsManager()),
     debug:        DebugManagerType        = DebugManager(),
 
-    theme:        ThemeManagerType        = ThemeManager(),
-    api:          ApiManagerType          = ApiManager(),
-    search:       SearchManagerType       = SearchManager(),
-    bookmarks:    BookmarksManagerType    = BookmarksManager(),
-    tracking:     TrackingManagerType     = TrackingManager()) {
+    theme:     ThemeManagerType     = ThemeManager(),
+    api:       ApiManagerType       = ApiManager(),
+    search:    SearchManagerType    = SearchManager(),
+    bookmarks: BookmarksManagerType = BookmarksManager(),
+    map:       MapManagerType       = MapManager()) {
 
     self.app           = app
     self.device        = device
@@ -45,10 +45,10 @@ class Environment {
     self.documents     = documents
     self.debug         = debug
 
-    self.theme         = theme
-    self.api           = api
-    self.search        = search
-    self.bookmarks     = bookmarks
-    self.tracking      = tracking
+    self.theme     = theme
+    self.api       = api
+    self.search    = search
+    self.bookmarks = bookmarks
+    self.map       = map
   }
 }
