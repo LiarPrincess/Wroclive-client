@@ -39,7 +39,6 @@
 		901A808C200E97430013CCD9 /* SettingsCardFooterConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */; };
 		901A808E200E9EF00013CCD9 /* SettingsCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */; };
 		901A8090200E9F580013CCD9 /* SettingsSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A808F200E9F580013CCD9 /* SettingsSectionType.swift */; };
-		901A8092200EA2750013CCD9 /* AASelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A8091200EA2750013CCD9 /* AASelect.swift */; };
 		901A809720126DAE0013CCD9 /* SettingsMapTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A809620126DAE0013CCD9 /* SettingsMapTypeCell.swift */; };
 		901A809A20127EC40013CCD9 /* MapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A809920127EC40013CCD9 /* MapType.swift */; };
 		901A809C20127F700013CCD9 /* String+empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A809B20127F700013CCD9 /* String+empty.swift */; };
@@ -114,7 +113,7 @@
 		9044A54C1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A53D1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift */; };
 		9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */; };
 		9045C2E31F9BDB3F002F35C3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2E21F9BDB3F002F35C3 /* Assets.swift */; };
-		904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehiclePinView.swift */; };
+		904A6B131F43183E00EE98FD /* VehicleAnnotationPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehicleAnnotationPinView.swift */; };
 		90541FCF1FA79E6C0055350E /* DocumentsManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FCE1FA79E6C0055350E /* DocumentsManagerType.swift */; };
 		90541FD11FA79F760055350E /* DocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FD01FA79F760055350E /* DocumentsManager.swift */; };
 		90546BEE1F6AF23100E8E75F /* TrackingManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BED1F6AF23100E8E75F /* TrackingManagerType.swift */; };
@@ -147,6 +146,9 @@
 		906C40542014A27E00E32571 /* SearchCardOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40532014A27E00E32571 /* SearchCardOperations.swift */; };
 		906C40572014C55000E32571 /* DebugManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40562014C55000E32571 /* DebugManagerType.swift */; };
 		906C40592014C55700E32571 /* DebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40582014C55700E32571 /* DebugManager.swift */; };
+		906C405C2014CD0300E32571 /* MapAnnotationUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C405B2014CD0300E32571 /* MapAnnotationUpdates.swift */; };
+		906C405E2014CD1B00E32571 /* MapAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C405D2014CD1B00E32571 /* MapAnnotationManager.swift */; };
+		906C40612014E78000E32571 /* MapAnnotationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C405F2014E77B00E32571 /* MapAnnotationManagerTests.swift */; };
 		9073F9981FA7A80400924584 /* CachedDocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9073F9971FA7A80400924584 /* CachedDocumentsManager.swift */; };
 		9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* AppInfo.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -315,7 +317,6 @@
 		901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardFooterConstants.swift; sourceTree = "<group>"; };
 		901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardViewModel.swift; sourceTree = "<group>"; };
 		901A808F200E9F580013CCD9 /* SettingsSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionType.swift; sourceTree = "<group>"; };
-		901A8091200EA2750013CCD9 /* AASelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASelect.swift; sourceTree = "<group>"; };
 		901A809620126DAE0013CCD9 /* SettingsMapTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMapTypeCell.swift; sourceTree = "<group>"; };
 		901A809920127EC40013CCD9 /* MapType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapType.swift; sourceTree = "<group>"; };
 		901A809B20127F700013CCD9 /* String+empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+empty.swift"; sourceTree = "<group>"; };
@@ -394,7 +395,7 @@
 		9044A53D1F69A13D00F26C17 /* ColorSelectionCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionCellViewModel.swift; sourceTree = "<group>"; };
 		9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionViewModel.swift; sourceTree = "<group>"; };
 		9045C2E21F9BDB3F002F35C3 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
-		904A6B121F43183E00EE98FD /* VehiclePinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclePinView.swift; sourceTree = "<group>"; };
+		904A6B121F43183E00EE98FD /* VehicleAnnotationPinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationPinView.swift; sourceTree = "<group>"; };
 		90541FCE1FA79E6C0055350E /* DocumentsManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsManagerType.swift; sourceTree = "<group>"; };
 		90541FD01FA79F760055350E /* DocumentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsManager.swift; sourceTree = "<group>"; };
 		90546BED1F6AF23100E8E75F /* TrackingManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingManagerType.swift; sourceTree = "<group>"; };
@@ -427,6 +428,9 @@
 		906C40532014A27E00E32571 /* SearchCardOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardOperations.swift; sourceTree = "<group>"; };
 		906C40562014C55000E32571 /* DebugManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugManagerType.swift; sourceTree = "<group>"; };
 		906C40582014C55700E32571 /* DebugManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugManager.swift; sourceTree = "<group>"; };
+		906C405B2014CD0300E32571 /* MapAnnotationUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationUpdates.swift; sourceTree = "<group>"; };
+		906C405D2014CD1B00E32571 /* MapAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationManager.swift; sourceTree = "<group>"; };
+		906C405F2014E77B00E32571 /* MapAnnotationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationManagerTests.swift; sourceTree = "<group>"; };
 		9073F9971FA7A80400924584 /* CachedDocumentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedDocumentsManager.swift; sourceTree = "<group>"; };
 		9079DCD51F6C545600C6ABCD /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		907DC6E71FF2B73F001C5DD6 /* LineTypeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelector.swift; sourceTree = "<group>"; };
@@ -676,8 +680,8 @@
 		9017C3541EE339FD00063377 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				90AACC98200BD47F0064EDFD /* Pin */,
 				90FAF06F1F35D8C20040E0AE /* Annotations */,
+				906C405A2014CCB600E32571 /* Annotation update */,
 				9017C3551EE339FD00063377 /* MapViewController.swift */,
 				90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */,
 				90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */,
@@ -750,7 +754,6 @@
 		901A809820127AA00013CCD9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				901A8091200EA2750013CCD9 /* AASelect.swift */,
 				901A809920127EC40013CCD9 /* MapType.swift */,
 				906C40532014A27E00E32571 /* SearchCardOperations.swift */,
 			);
@@ -982,14 +985,6 @@
 			path = "Asset generators";
 			sourceTree = "<group>";
 		};
-		903294F81F9CCF49006A6D05 /* Vehicle pin */ = {
-			isa = PBXGroup;
-			children = (
-				904A6B121F43183E00EE98FD /* VehiclePinView.swift */,
-			);
-			path = "Vehicle pin";
-			sourceTree = "<group>";
-		};
 		9032F0791F5DF66B00E1C9BC /* Intrinsic collections */ = {
 			isa = PBXGroup;
 			children = (
@@ -1191,6 +1186,16 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
+		906C405A2014CCB600E32571 /* Annotation update */ = {
+			isa = PBXGroup;
+			children = (
+				906C405B2014CD0300E32571 /* MapAnnotationUpdates.swift */,
+				906C405D2014CD1B00E32571 /* MapAnnotationManager.swift */,
+				906C405F2014E77B00E32571 /* MapAnnotationManagerTests.swift */,
+			);
+			path = "Annotation update";
+			sourceTree = "<group>";
+		};
 		907DC6E61FF2B73F001C5DD6 /* Line type selector */ = {
 			isa = PBXGroup;
 			children = (
@@ -1337,14 +1342,6 @@
 				9021F3F91F12C9EF000A6949 /* Card panel transition */,
 			);
 			path = Transitions;
-			sourceTree = "<group>";
-		};
-		90AACC98200BD47F0064EDFD /* Pin */ = {
-			isa = PBXGroup;
-			children = (
-				903294F81F9CCF49006A6D05 /* Vehicle pin */,
-			);
-			path = Pin;
 			sourceTree = "<group>";
 		};
 		90AACC99200BD7350064EDFD /* Controls */ = {
@@ -1554,6 +1551,7 @@
 			children = (
 				90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */,
 				90A913771F376E390095B873 /* VehicleAnnotationView.swift */,
+				904A6B121F43183E00EE98FD /* VehicleAnnotationPinView.swift */,
 			);
 			path = Annotations;
 			sourceTree = "<group>";
@@ -1971,6 +1969,7 @@
 				90425D331FF11EFB00F1800E /* BookmarksManagerMock.swift in Sources */,
 				90AACC7D200ABA550064EDFD /* LineSelectorHeaderViewModelTests.swift in Sources */,
 				90AACC7C200ABA500064EDFD /* LineSelectorCellViewModelTests.swift in Sources */,
+				906C40612014E78000E32571 /* MapAnnotationManagerTests.swift in Sources */,
 				90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */,
 				90AACC90200BA6E70064EDFD /* LineSelectorSectionCreatorTests.swift in Sources */,
 				90AACC86200ABB0B0064EDFD /* BookmarksCardViewModelTests.swift in Sources */,
@@ -1992,6 +1991,7 @@
 				90DBA3DA1FAE355300C4685A /* MapViewController+MapCenter.swift in Sources */,
 				90D6FF381F9D352E00F6CC12 /* Array+Random.swift in Sources */,
 				906A7B511FFEC252004EC8A4 /* ObserverOfVoid+Next.swift in Sources */,
+				906C405E2014CD1B00E32571 /* MapAnnotationManager.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */,
 				905D71B81FE1C6A8006D1DB6 /* ColorSchemeManager.swift in Sources */,
 				90AACC8D200BA01A0064EDFD /* LineSelectorSectionCreator.swift in Sources */,
@@ -2048,7 +2048,7 @@
 				9017C3641EE339FD00063377 /* SearchCard.swift in Sources */,
 				90BB55101FE946FC00283D94 /* ReachabilityStatus.swift in Sources */,
 				90D383BE1FE8907600C2E1D2 /* AvailableLinesResponse.swift in Sources */,
-				904A6B131F43183E00EE98FD /* VehiclePinView.swift in Sources */,
+				904A6B131F43183E00EE98FD /* VehicleAnnotationPinView.swift in Sources */,
 				905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
 				9024C6131F96699500025503 /* AppEnvironment.swift in Sources */,
@@ -2117,6 +2117,7 @@
 				906A7B5720025750004EC8A4 /* ObservableOfBool+Not.swift in Sources */,
 				905D718F1FE1C444006D1DB6 /* LocationManagerType.swift in Sources */,
 				901ECDBD1FF587B7004765AA /* TextStyle.swift in Sources */,
+				906C405C2014CD0300E32571 /* MapAnnotationUpdates.swift in Sources */,
 				905D719C1FE1C545006D1DB6 /* Endpoint.swift in Sources */,
 				9042EDBF1FF2D71500F5D01D /* LineSelectorCellConstants.swift in Sources */,
 				900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */,
@@ -2161,7 +2162,6 @@
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
 				9024C6111F9667E600025503 /* Environment.swift in Sources */,
-				901A8092200EA2750013CCD9 /* AASelect.swift in Sources */,
 				9021F43F1F12D698000A6949 /* LineSelectorCellViewModel.swift in Sources */,
 				90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */,
 				908FB19E1F48B3CA00121584 /* ReusableCell+UICollectionView.swift in Sources */,

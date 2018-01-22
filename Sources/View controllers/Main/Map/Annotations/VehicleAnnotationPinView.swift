@@ -5,7 +5,7 @@
 
 import UIKit
 
-class VehiclePinView: UIView {
+class VehicleAnnotationPinView: UIView {
 
   // MARK: - Properties
 

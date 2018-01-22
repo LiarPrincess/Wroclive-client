@@ -11,7 +11,7 @@ private typealias Constants = MapViewControllerConstants.Pin
 
 class VehicleAnnotationView: MKAnnotationView {
 
-  private let pinView  = VehiclePinView()
+  private let pinView  = VehicleAnnotationPinView()
   private let pinLabel = UILabel()
 
   // MARK: - Init
