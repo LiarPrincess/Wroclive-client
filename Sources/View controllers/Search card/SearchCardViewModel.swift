@@ -62,7 +62,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
       .delay(AppInfo.Timings.FailedRequestDelay.lines, scheduler: MainScheduler.instance)
 
     return Observable.merge(viewDidAppear, tryAgain)
-      .flatMapLatest { _ in SearchCardNetworkAdapter.getAvailableLines().catchError { _ in .empty() } }
+      .flatMapLatest { _ in ApiManagerAdapter.getAvailableLines().catchError { _ in .empty() } }
       .map(toApiResponse)
       .share()
   }()

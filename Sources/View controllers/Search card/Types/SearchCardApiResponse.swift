@@ -12,8 +12,3 @@ enum SearchCardApiError: Error {
   case noInternet
   case generalError
 }
-
-enum SearchCardBookmarkAlert {
-  case nameInput
-  case noLinesSelected
-}
