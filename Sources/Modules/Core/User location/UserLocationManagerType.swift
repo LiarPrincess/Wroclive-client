@@ -7,7 +7,7 @@ import UIKit
 import MapKit
 import PromiseKit
 
-protocol LocationManagerType {
+protocol UserLocationManagerType {
 
   /// Returns user location
   func getCurrent() -> Promise<CLLocationCoordinate2D>

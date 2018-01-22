@@ -109,11 +109,11 @@ extension MapViewController: MKMapViewDelegate {
   // MARK: - Tracking mode
 
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-    let authorization = Managers.location.authorization
+    let authorization = Managers.userLocation.authorization
     switch authorization {
     case .denied:        LocationAlerts.showDeniedLocationAuthorizationAlert(in: self)
     case .restricted:    LocationAlerts.showGloballyDeniedLocationAuthorizationAlert(in: self)
-    case .notDetermined: Managers.location.requestAuthorization()
+    case .notDetermined: Managers.userLocation.requestAuthorization()
     default: break
     }
   }

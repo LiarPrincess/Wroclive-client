@@ -59,12 +59,12 @@ class MainViewController: UIViewController {
   }
 
   private func requestLocationAuthorizationIfNeeded() {
-    let authorization = Managers.location.authorization
+    let authorization = Managers.userLocation.authorization
     guard authorization == .notDetermined else { return }
 
     let delay = AppInfo.Timings.locationAuthorizationPromptDelay
     DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-      Managers.location.requestAuthorization()
+      Managers.userLocation.requestAuthorization()
     }
   }
 

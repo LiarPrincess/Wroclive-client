@@ -8,7 +8,7 @@ class Environment {
   var app:          AppManagerType
   var device:       DeviceManagerType
   var network:      NetworkManagerType
-  var location:     LocationManagerType
+  var userLocation: UserLocationManagerType
   var notification: NotificationManagerType
   var userDefaults: UserDefaultsManagerType
   var documents:    DocumentsManagerType
@@ -24,7 +24,7 @@ class Environment {
     app:          AppManagerType          = AppManager(),
     device:       DeviceManagerType       = DeviceManager(),
     network:      NetworkManagerType      = NetworkManager(),
-    location:     LocationManagerType     = LocationManager(),
+    userLocation: UserLocationManagerType = UserLocationManager(),
     notification: NotificationManagerType = NotificationManager(),
     userDefaults: UserDefaultsManagerType = UserDefaultsManager(),
     documents:    DocumentsManagerType    = CachedDocumentsManager(DocumentsManager()),
@@ -39,7 +39,7 @@ class Environment {
     self.app           = app
     self.device        = device
     self.network       = network
-    self.location      = location
+    self.userLocation  = userLocation
     self.notification  = notification
     self.userDefaults  = userDefaults
     self.documents     = documents

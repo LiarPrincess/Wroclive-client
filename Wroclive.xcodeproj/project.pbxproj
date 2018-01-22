@@ -125,9 +125,9 @@
 		9056F6581F5229A500F7EF48 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
 		905A3B721F9533BE003D668F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6A1F9532F0003D668F /* UIKit.framework */; };
 		905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6E1F953301003D668F /* MapKit.framework */; };
-		905D718E1FE1C444006D1DB6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718B1FE1C443006D1DB6 /* LocationManager.swift */; };
-		905D718F1FE1C444006D1DB6 /* LocationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718C1FE1C443006D1DB6 /* LocationManagerType.swift */; };
-		905D71901FE1C444006D1DB6 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718D1FE1C443006D1DB6 /* LocationError.swift */; };
+		905D718E1FE1C444006D1DB6 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */; };
+		905D718F1FE1C444006D1DB6 /* UserLocationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */; };
+		905D71901FE1C444006D1DB6 /* UserLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718D1FE1C443006D1DB6 /* UserLocationError.swift */; };
 		905D719B1FE1C545006D1DB6 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71941FE1C544006D1DB6 /* ApiError.swift */; };
 		905D719C1FE1C545006D1DB6 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71951FE1C544006D1DB6 /* Endpoint.swift */; };
 		905D719D1FE1C545006D1DB6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71971FE1C544006D1DB6 /* SessionManager.swift */; };
@@ -408,9 +408,9 @@
 		9056F6551F5229A500F7EF48 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
 		905A3B6A1F9532F0003D668F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		905A3B6E1F953301003D668F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
-		905D718B1FE1C443006D1DB6 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		905D718C1FE1C443006D1DB6 /* LocationManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerType.swift; sourceTree = "<group>"; };
-		905D718D1FE1C443006D1DB6 /* LocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
+		905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
+		905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManagerType.swift; sourceTree = "<group>"; };
+		905D718D1FE1C443006D1DB6 /* UserLocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationError.swift; sourceTree = "<group>"; };
 		905D71941FE1C544006D1DB6 /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		905D71951FE1C544006D1DB6 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		905D71971FE1C544006D1DB6 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
@@ -1089,14 +1089,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		905D718A1FE1C443006D1DB6 /* Location */ = {
+		905D718A1FE1C443006D1DB6 /* User location */ = {
 			isa = PBXGroup;
 			children = (
-				905D718D1FE1C443006D1DB6 /* LocationError.swift */,
-				905D718C1FE1C443006D1DB6 /* LocationManagerType.swift */,
-				905D718B1FE1C443006D1DB6 /* LocationManager.swift */,
+				905D718D1FE1C443006D1DB6 /* UserLocationError.swift */,
+				905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */,
+				905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */,
 			);
-			path = Location;
+			path = "User location";
 			sourceTree = "<group>";
 		};
 		905D71911FE1C4F6006D1DB6 /* Network */ = {
@@ -1517,7 +1517,7 @@
 				90E8A6C41F4CD42000CE5AE9 /* Device */,
 				905D71911FE1C4F6006D1DB6 /* Network */,
 				9082524A1F703A18001C2926 /* Notifications */,
-				905D718A1FE1C443006D1DB6 /* Location */,
+				905D718A1FE1C443006D1DB6 /* User location */,
 				90B4124E1F97E70C008F05E9 /* User defaults */,
 				90541FCD1FA79E530055350E /* Documents */,
 				906C40552014C53900E32571 /* Debug */,
@@ -2003,7 +2003,7 @@
 				9096CDCD1F40EF2200FEF20A /* SettingsCard.swift in Sources */,
 				90BB55121FE9501B00283D94 /* VehicleLocationsRequest.swift in Sources */,
 				90915B081FF97191009FE942 /* LineTypeSelector+Rx.swift in Sources */,
-				905D718E1FE1C444006D1DB6 /* LocationManager.swift in Sources */,
+				905D718E1FE1C444006D1DB6 /* UserLocationManager.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksCardLayout.swift in Sources */,
 				90BC8B011F69B62800AF4B84 /* PushTransitionDelegate.swift in Sources */,
 				900CAEAA1F482E750044C8A6 /* BookmarksManager.swift in Sources */,
@@ -2119,7 +2119,7 @@
 				90546BF01F6AF25800E8E75F /* TrackingManager.swift in Sources */,
 				9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */,
 				906A7B5720025750004EC8A4 /* ObservableOfBool+Not.swift in Sources */,
-				905D718F1FE1C444006D1DB6 /* LocationManagerType.swift in Sources */,
+				905D718F1FE1C444006D1DB6 /* UserLocationManagerType.swift in Sources */,
 				901ECDBD1FF587B7004765AA /* TextStyle.swift in Sources */,
 				906C405C2014CD0300E32571 /* MapAnnotationUpdates.swift in Sources */,
 				905D719C1FE1C545006D1DB6 /* Endpoint.swift in Sources */,
@@ -2145,7 +2145,7 @@
 				9021F4431F12D6C5000A6949 /* LineSelector.swift in Sources */,
 				90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */,
 				9021F41C1F12C9EF000A6949 /* CardPanelPresentationTransition.swift in Sources */,
-				905D71901FE1C444006D1DB6 /* LocationError.swift in Sources */,
+				905D71901FE1C444006D1DB6 /* UserLocationError.swift in Sources */,
 				9021F4071F12C9EF000A6949 /* ChevronViewState.swift in Sources */,
 				90D3A40E1FEFE89C00FB7485 /* RxSectionModel.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchCardLayout.swift in Sources */,

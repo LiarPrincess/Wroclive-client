@@ -12,7 +12,7 @@ private typealias Constants = MapViewControllerConstants
 extension MapViewController {
 
   func centerDefaultLocation(animated: Bool) {
-    let authorization = Managers.location.authorization
+    let authorization = Managers.userLocation.authorization
 
     let isAuthorized = authorization == .authorizedAlways || authorization == .authorizedWhenInUse
     if isAuthorized {
@@ -24,7 +24,7 @@ extension MapViewController {
   }
 
   func centerUserLocation(animated: Bool) {
-    _ = Managers.location.getCurrent()
+    _ = Managers.userLocation.getCurrent()
       .then { userLocation -> () in
         self.setMapCenter(userLocation, animated: animated)
         self.alertWhenFarFromDefaultCity(userLocation: userLocation)

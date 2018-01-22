@@ -3,8 +3,8 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-enum LocationError: Error {
+enum UserLocationError: Error {
 
   /// Unable to obtain user location
-  case unableToObtainUserLocation
+  case unableToObtain
 }

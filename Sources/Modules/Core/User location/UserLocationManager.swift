@@ -7,7 +7,7 @@ import UIKit
 import MapKit
 import PromiseKit
 
-class LocationManager: NSObject, LocationManagerType {
+class UserLocationManager: NSObject, UserLocationManagerType {
 
   // MARK: - Properties
 
@@ -27,7 +27,7 @@ class LocationManager: NSObject, LocationManagerType {
       if let location = self.locationManager.location?.coordinate {
         fulfill(location)
       }
-      else { reject(LocationError.unableToObtainUserLocation) }
+      else { reject(UserLocationError.unableToObtain) }
     }
   }
 
@@ -42,7 +42,7 @@ class LocationManager: NSObject, LocationManagerType {
 
 // MARK: - CLLocationManagerDelegate
 
-extension LocationManager: CLLocationManagerDelegate {
+extension UserLocationManager: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
     Managers.notification.post(.locationAuthorizationDidChange)
   }

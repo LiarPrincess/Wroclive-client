@@ -12,7 +12,7 @@ enum AppEnvironment {
   static var app:          AppManagerType          { return current.app          }
   static var device:       DeviceManagerType       { return current.device       }
   static var network:      NetworkManagerType      { return current.network      }
-  static var location:     LocationManagerType     { return current.location     }
+  static var userLocation: UserLocationManagerType { return current.userLocation }
   static var notification: NotificationManagerType { return current.notification }
   static var userDefaults: UserDefaultsManagerType { return current.userDefaults }
   static var documents:    DocumentsManagerType    { return current.documents    }
@@ -37,7 +37,7 @@ enum AppEnvironment {
     app:          AppManagerType          = app,
     device:       DeviceManagerType       = device,
     network:      NetworkManagerType      = network,
-    location:     LocationManagerType     = location,
+    userLocation: UserLocationManagerType = userLocation,
     notification: NotificationManagerType = notification,
     userDefaults: UserDefaultsManagerType = userDefaults,
     documents:    DocumentsManagerType    = documents,
@@ -53,7 +53,7 @@ enum AppEnvironment {
       app:           app,
       device:        device,
       network:       network,
-      location:      location,
+      userLocation:  userLocation,
       notification:  notification,
       userDefaults:  userDefaults,
       documents:     documents,
