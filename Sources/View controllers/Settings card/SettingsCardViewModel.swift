@@ -15,7 +15,8 @@ protocol SettingsCardViewModelInput {
 }
 
 protocol SettingsCardViewModelOutput {
-  var items: Driver<[SettingsSection]> { get }
+  var mapType: Driver<MapType>           { get }
+  var items:   Driver<[SettingsSection]> { get }
 
   var showShareControl: Driver<Void> { get }
   var showRateControl:  Driver<Void> { get }
@@ -38,6 +39,8 @@ class SettingsCardViewModel: SettingsCardViewModelInput, SettingsCardViewModelOu
 
   // MARK: - Output
 
+  lazy var mapType: Driver<MapType> = Managers.map.mapType.asDriver(onErrorDriveWith: .never())
+
   lazy var items: Driver<[SettingsSection]> = {
     let mapTypeSection = SettingsSection(model: .mapType, items: [.mapType])
     let generalSection = SettingsSection(model: .general, items: [.share, .rate, .about])
@@ -56,8 +59,7 @@ class SettingsCardViewModel: SettingsCardViewModelInput, SettingsCardViewModelOu
 
   init() {
     self._mapTypeSelected
-      .debug("[SettingsCardViewModel.mapTypeSelected]")
-      .subscribe()
+      .bind(onNext: Managers.map.setMapType(_:))
       .disposed(by: self.disposeBag)
   }
 

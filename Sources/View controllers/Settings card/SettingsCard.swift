@@ -56,6 +56,7 @@ class SettingsCard: UIViewController {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
 
+    self.initMapTypeBindings()
     self.initTableViewBindings()
     self.initCellButtonsBindings()
   }
@@ -66,6 +67,16 @@ class SettingsCard: UIViewController {
 
   // MARK: - Bindings
 
+  private func initMapTypeBindings() {
+    self.viewModel.outputs.mapType
+      .drive(onNext: { [unowned self] in self.tableViewMapTypeCell.selectedValue = $0 })
+      .disposed(by: self.disposeBag)
+
+    self.tableViewMapTypeCell.rx.selectedValueChanged
+      .bind(to: self.viewModel.inputs.mapTypeSelected)
+      .disposed(by: self.disposeBag)
+  }
+
   private func initTableViewBindings() {
     self.tableView.rx.setDelegate(self)
       .disposed(by: disposeBag)
@@ -73,10 +84,6 @@ class SettingsCard: UIViewController {
     self.viewModel.outputs.items
       .drive(self.tableView.rx.items(dataSource: self.tableViewDataSource))
       .disposed(by: disposeBag)
-
-    self.tableViewMapTypeCell.rx.selectedValueChanged
-      .bind(to: self.viewModel.inputs.mapTypeSelected)
-      .disposed(by: self.disposeBag)
 
     self.tableView.rx.itemSelected
       .do(onNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) })

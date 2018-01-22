@@ -16,12 +16,19 @@ class SettingsMapTypeCell: UITableViewCell {
   // MARK: - Properties
 
   private lazy var segmentedControl: UISegmentedControl = {
-    let mapTypes: [MapType] = [.map, .transport, .satelite]
+    let mapTypes: [MapType] = [.standard, .satellite, .hybrid]
     return UISegmentedControl(items: mapTypes.map(translationOf))
   }()
 
-  var selectedValue: Observable<MapType> {
-    return self.segmentedControl.rx.selectedSegmentIndex.map(valueAt)
+  var selectedValue: MapType {
+    get { return valueAt(self.segmentedControl.selectedSegmentIndex) }
+    set { self.segmentedControl.selectedSegmentIndex = indexOf(newValue) }
+  }
+
+  var selectedValueChanged: Observable<MapType> {
+    return self.segmentedControl.rx.selectedSegmentIndex
+      .map(valueAt)
+      .skip(1) // skip initial value
   }
 
   override var alpha: CGFloat {
@@ -60,33 +67,33 @@ class SettingsMapTypeCell: UITableViewCell {
 
 // MARK: - Indices
 
-private struct Indices {
-  static let map        = 0
-  static let transport  = 1
-  static let satelite   = 2
+private enum Indices {
+  static let standard  = 0
+  static let satellite = 1
+  static let hybrid    = 2
 }
 
 private func indexOf(_ mapType: MapType) -> Int {
   switch mapType {
-  case .map:       return Indices.map
-  case .transport: return Indices.transport
-  case .satelite:  return Indices.satelite
+  case .standard:  return Indices.standard
+  case .satellite: return Indices.satellite
+  case .hybrid:    return Indices.hybrid
   }
 }
 
 private func translationOf(_ mapType: MapType) -> String {
   switch mapType {
-  case .map:       return Localization.map
-  case .transport: return Localization.transport
-  case .satelite:  return Localization.satelite
+  case .standard:  return Localization.standard
+  case .satellite: return Localization.satellite
+  case .hybrid:    return Localization.hybrid
   }
 }
 
 private func valueAt(_ index: Int) -> MapType {
   switch index {
-  case Indices.map:       return .map
-  case Indices.transport: return .transport
-  case Indices.satelite:  return .satelite
+  case Indices.standard:  return .standard
+  case Indices.satellite: return .satellite
+  case Indices.hybrid:    return .hybrid
   default: fatalError("Invalid index selected")
   }
 }

@@ -429,20 +429,20 @@ public struct Localizable {
         /// - **pl**: Typ mapy
         static var header: String { return localizedString("Settings_Table_MapType_Header") }
 
-        /// Map
-        /// - **en**: Map
-        /// - **pl**: Mapa
-        static var map: String { return localizedString("Settings_Table_MapType_Map") }
-
-        /// Satelite
-        /// - **en**: Satelite
-        /// - **pl**: Satelitarna
-        static var satelite: String { return localizedString("Settings_Table_MapType_Satelite") }
-
         /// Transport
         /// - **en**: Transport
         /// - **pl**: Transport
-        static var transport: String { return localizedString("Settings_Table_MapType_Transport") }
+        static var hybrid: String { return localizedString("Settings_Table_MapType_Hybrid") }
+
+        /// Satellite
+        /// - **en**: Satellite
+        /// - **pl**: Satelitarna
+        static var satellite: String { return localizedString("Settings_Table_MapType_Satellite") }
+
+        /// Map
+        /// - **en**: Map
+        /// - **pl**: Mapa
+        static var standard: String { return localizedString("Settings_Table_MapType_Standard") }
       }
     }
 

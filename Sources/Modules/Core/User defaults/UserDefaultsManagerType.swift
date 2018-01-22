@@ -9,6 +9,7 @@ enum UserDefaultsStringKey {
   case preferredTintColor
   case preferredTramColor
   case preferredBusColor
+  case preferredMapType
 }
 
 protocol UserDefaultsManagerType {

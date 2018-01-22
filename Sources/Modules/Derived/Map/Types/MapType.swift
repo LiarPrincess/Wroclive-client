@@ -4,7 +4,7 @@
 //
 
 enum MapType {
-  case map
-  case transport
-  case satelite
+  case standard
+  case satellite
+  case hybrid
 }

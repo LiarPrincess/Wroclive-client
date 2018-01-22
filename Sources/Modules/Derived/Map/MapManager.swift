@@ -5,8 +5,25 @@
 
 import Foundation
 import PromiseKit
+import RxSwift
 
 class MapManager: MapManagerType {
+
+  // MARK: - Map type
+
+  private lazy var _mapType: BehaviorSubject<MapType> = {
+    let preferredMapType = Managers.userDefaults.getString(.preferredMapType).flatMap(decode)
+    return BehaviorSubject(value: preferredMapType ?? .standard)
+  }()
+
+  lazy var mapType: Observable<MapType> = self._mapType.asObservable().share(replay: 1)
+
+  func setMapType(_ mapType: MapType) {
+    Managers.userDefaults.setString(.preferredMapType, to: encode(mapType))
+    self._mapType.onNext(mapType)
+  }
+
+  // MARK: - Tracking
 
   private(set) var result: TrackingResult = .success(locations: []) {
     didSet { Managers.notification.post(.vehicleLocationsDidUpdate) }
@@ -58,5 +75,30 @@ extension MapManager {
 
   func resume() {
     self.startTimer()
+  }
+}
+
+// MARK: - Map type encoding
+
+private enum MapTypeEncodings {
+  static let standard  = "standard"
+  static let satellite = "satelite"
+  static let hybrid    = "hybrid"
+}
+
+private func encode(_ mapType: MapType) -> String {
+  switch mapType {
+  case .standard:  return MapTypeEncodings.standard
+  case .satellite: return MapTypeEncodings.satellite
+  case .hybrid:    return MapTypeEncodings.hybrid
+  }
+}
+
+private func decode(_ value: String) -> MapType? {
+  switch value.lowercased() {
+  case MapTypeEncodings.standard:  return MapType.standard
+  case MapTypeEncodings.satellite: return MapType.satellite
+  case MapTypeEncodings.hybrid:    return MapType.hybrid
+  default: return nil
   }
 }

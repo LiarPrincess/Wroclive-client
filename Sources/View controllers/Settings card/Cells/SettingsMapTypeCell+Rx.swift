@@ -10,7 +10,6 @@ import RxCocoa
 extension Reactive where Base: SettingsMapTypeCell {
 
   var selectedValueChanged: ControlEvent<MapType> {
-    // skip initial value
-    return ControlEvent(events: self.base.selectedValue.skip(1))
+    return ControlEvent(events: self.base.selectedValueChanged)
   }
 }

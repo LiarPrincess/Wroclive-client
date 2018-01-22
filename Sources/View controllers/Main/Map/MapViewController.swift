@@ -7,6 +7,7 @@ import UIKit
 import MapKit
 import SnapKit
 import PromiseKit
+import RxSwift
 
 private typealias Constants = MapViewControllerConstants
 
@@ -15,6 +16,7 @@ class MapViewController: UIViewController {
   // MARK: - Properties
 
   let mapView = MKMapView()
+  private let disposeBag = DisposeBag()
 
   // MARK: - Init
 
@@ -27,6 +29,8 @@ class MapViewController: UIViewController {
     self.insetViewToShowMapLegalInfo()
     self.startObservingColorScheme()
     self.startObservingLocationAuthorization()
+
+    self.initMapTypeBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -38,12 +42,21 @@ class MapViewController: UIViewController {
     self.stopObservingLocationAuthorization()
   }
 
+  // MARK: - Bindings
+
+  private func initMapTypeBindings() {
+    Managers.map.mapType
+      .map(toMKMapType)
+      .asDriver(onErrorDriveWith: .never())
+      .drive(self.mapView.rx.mapType)
+      .disposed(by: self.disposeBag)
+  }
+
   // MARK: - Overriden
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.mapView.mapType           = .standard
     self.mapView.showsScale        = false
     self.mapView.showsTraffic      = false
     self.mapView.showsBuildings    = true
@@ -140,5 +153,15 @@ extension MapViewController: MKMapViewDelegate {
     default:
       return nil
     }
+  }
+}
+
+// MARK: - Helpers
+
+private func toMKMapType(_ mapType: MapType) -> MKMapType {
+  switch mapType {
+  case .standard:  return .standard
+  case .satellite: return .satellite
+  case .hybrid:    return .hybrid
   }
 }
