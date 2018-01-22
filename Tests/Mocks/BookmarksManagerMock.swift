@@ -3,6 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
+import XCTest
 import Foundation
 @testable import Wroclive
 
@@ -32,4 +33,10 @@ class BookmarksManagerMock: BookmarksManagerType {
     self.saveCount += 1
     self.bookmarks = bookmarks
   }
+}
+
+func XCTAssertOperationCount(_ manager: BookmarksManagerMock, add: Int, get: Int, save: Int, file: StaticString = #file, line: UInt = #line) {
+  XCTAssertEqual(manager.addCount,   add, file: file, line: line)
+  XCTAssertEqual(manager.getCount,   get, file: file, line: line)
+  XCTAssertEqual(manager.saveCount, save, file: file, line: line)
 }

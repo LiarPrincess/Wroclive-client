@@ -76,7 +76,7 @@ final class BookmarksCellViewModelTests: XCTestCase {
   }
 }
 
-// MARK: - Helpers
+// MARK: - Events
 
 extension BookmarksCellViewModelTests {
 
