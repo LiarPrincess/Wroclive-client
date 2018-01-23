@@ -88,7 +88,7 @@ class BookmarksCardViewModel: BookmarksCardViewModelInput, BookmarksCardViewMode
 
     self._itemSelected
       .withLatestFrom(self.bookmarks) { index, items in items[index] }
-      .bind(onNext: { Managers.map.start($0.lines) })
+      .bind(onNext: { Managers.map.startTracking($0.lines) })
       .disposed(by: self.disposeBag)
   }
 

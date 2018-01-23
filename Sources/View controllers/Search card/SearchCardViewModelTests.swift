@@ -21,8 +21,8 @@ final class SearchCardViewModelTests: XCTestCase {
   // MARK: - Properties
 
   var bookmarksManager: BookmarksManagerMock!
-  var trackingManager:  TrackingManagerMock!
   var searchManager:    SearchManagerMock!
+  var mapManager:       MapManagerMock!
   var apiManager:       ApiManagerMock!
 
   var viewModel:     SearchCardViewModel!
@@ -37,10 +37,10 @@ final class SearchCardViewModelTests: XCTestCase {
     self.disposeBag    = DisposeBag()
 
     self.bookmarksManager = BookmarksManagerMock()
-    self.trackingManager  = TrackingManagerMock()
     self.searchManager    = SearchManagerMock()
+    self.mapManager       = MapManagerMock()
     self.apiManager       = ApiManagerMock()
-    AppEnvironment.push(api: self.apiManager, search: self.searchManager, bookmarks: self.bookmarksManager, tracking: self.trackingManager)
+    AppEnvironment.push(api: self.apiManager, search: self.searchManager, bookmarks: self.bookmarksManager, map: self.mapManager)
   }
 
   override func tearDown() {
@@ -265,8 +265,8 @@ final class SearchCardViewModelTests: XCTestCase {
     self.simulateSearchButtonPressedEvents(at: 100)
     self.testScheduler.start()
 
-    XCTAssertEqual(self.trackingManager.trackedLines, [self.testLines])
-    XCTAssertEqual(self.trackingManager.startCount, 1)
+    XCTAssertEqual(self.mapManager.trackedLines, [self.testLines])
+    XCTAssertEqual(self.mapManager.startTrackingCount, 1)
   }
 
   func test_searchButton_closes() {

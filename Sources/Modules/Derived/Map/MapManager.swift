@@ -25,56 +25,34 @@ class MapManager: MapManagerType {
 
   // MARK: - Tracking
 
-  private(set) var result: TrackingResult = .success(locations: []) {
-    didSet { Managers.notification.post(.vehicleLocationsDidUpdate) }
+  private var trackedLines       = [Line]()
+  private let trackingOperations = PublishSubject<TrackingOperation>()
+
+  private enum TrackingOperation {
+    case start
+    case stop
   }
 
-  fileprivate var trackedLines: [Line] = []
-  private var trackingTimer:    Timer?
-
-  fileprivate func startTimer() {
-    self.stopTimer()
-
-    guard self.trackedLines.any else {
-      self.result = .success(locations: [])
-      return
+  lazy var vehicleLocations: ApiResponse<[Vehicle]> = trackingOperations.asObservable()
+    .flatMapLatest { [unowned self] operation -> ApiResponse<[Vehicle]> in
+      switch operation {
+      case .start: return createTrackingObservable(lines: self.trackedLines)
+      case .stop:  return .never()
+      }
     }
+    .share(replay: 1)
 
-    let interval = AppInfo.Timings.locationUpdateInterval
-    self.trackingTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
-    self.trackingTimer?.tolerance = interval * 0.1
-
-    // manually perform first tick
-    self.trackingTimer?.fire()
-  }
-
-  @objc
-  func timerFired(timer: Timer) {
-    guard timer.isValid else { return }
-
-    firstly { Managers.api.getVehicleLocations(for: self.trackedLines) }
-    .then  { self.result = .success(locations: $0) }
-    .catch { self.result = .error(error: $0) }
-  }
-
-  fileprivate func stopTimer() {
-    self.trackingTimer?.invalidate()
-    self.trackingTimer = nil
-  }
-}
-
-extension MapManager {
-  func start(_ lines: [Line]) {
+  func startTracking(_ lines: [Line]) {
     self.trackedLines = lines
-    self.startTimer()
+    self.trackingOperations.onNext(.start)
   }
 
-  func pause() {
-    self.stopTimer()
+  func resumeTracking() {
+    self.trackingOperations.onNext(.start)
   }
 
-  func resume() {
-    self.startTimer()
+  func pauseTracking() {
+    self.trackingOperations.onNext(.stop)
   }
 }
 
@@ -101,4 +79,22 @@ private func decode(_ value: String) -> MapType? {
   case MapTypeEncodings.hybrid:    return MapType.hybrid
   default: return nil
   }
+}
+
+// MARK: - Tracking
+
+private func createTrackingObservable(lines: [Line]) -> ApiResponse<[Vehicle]> {
+  // if we don't have any lines then just send single empty to reset map
+  guard lines.any else {
+    return Observable.just(.success([]))
+  }
+
+  let interval = AppInfo.Timings.locationUpdateInterval
+
+  let initialTick   = Observable<Void>.just(())
+  let trackingTimer = Observable<Int>.interval(interval, scheduler: MainScheduler.instance).map { _ in () }
+
+  return initialTick
+    .concat(trackingTimer)
+    .flatMap { _ in ApiManagerAdapter.getVehicleLocations(for: lines) }
 }

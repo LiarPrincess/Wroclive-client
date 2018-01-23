@@ -17,15 +17,15 @@ protocol MapManagerType {
 
   // MARK: - Tracking
 
-  /// Last obtained tracking result
-  var result: TrackingResult { get }
+  /// Tracking results
+  var vehicleLocations: ApiResponse<[Vehicle]> { get }
 
   /// Start tracking new set of lines
-  func start(_ lines: [Line])
-
-  /// Pause tracking, so that new notifications will not be issued
-  func pause()
+  func startTracking(_ lines: [Line])
 
   /// Resume tracking
-  func resume()
+  func resumeTracking()
+
+  /// Pause tracking, so that new values will not be send
+  func pauseTracking()
 }

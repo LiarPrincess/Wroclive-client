@@ -23,6 +23,20 @@ enum ApiManagerAdapter {
       return Disposables.create()
     }
   }
+
+  static func getVehicleLocations(for lines: [Line]) -> ApiResponse<[Vehicle]> {
+    return ApiResponse.create { observer -> Disposable in
+      Managers.api.getVehicleLocations(for: lines)
+        .tap { result in
+          switch result {
+          case let .fulfilled(vehicles): observer.onNext(.success(vehicles))
+          case let .rejected(error):     observer.onNext(.failure(toApiError(error)))
+          }
+          observer.onCompleted()
+        }
+      return Disposables.create()
+    }
+  }
 }
 
 private func toApiError(_ error: Error) -> ApiError {

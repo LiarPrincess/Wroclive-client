@@ -20,7 +20,7 @@ final class BookmarksCardViewModelTests: XCTestCase {
   // MARK: - Properties
 
   var bookmarksManager: BookmarksManagerMock!
-  var trackingManager:  TrackingManagerMock!
+  var mapManager:       MapManagerMock!
 
   var viewModel:        BookmarksCardViewModel!
   var testScheduler:    TestScheduler!
@@ -35,8 +35,8 @@ final class BookmarksCardViewModelTests: XCTestCase {
     self.disposeBag    = DisposeBag()
 
     self.bookmarksManager = BookmarksManagerMock(bookmarks: [])
-    self.trackingManager  = TrackingManagerMock()
-    AppEnvironment.push(bookmarks: self.bookmarksManager, tracking: self.trackingManager)
+    self.mapManager       = MapManagerMock()
+    AppEnvironment.push(bookmarks: self.bookmarksManager, map: self.mapManager)
   }
 
   override func tearDown() {
@@ -128,7 +128,7 @@ final class BookmarksCardViewModelTests: XCTestCase {
     self.testScheduler.start()
 
     let expectedLines = [bookmarks[0].lines, bookmarks[1].lines]
-    XCTAssertEqual(self.trackingManager.trackedLines, expectedLines)
+    XCTAssertEqual(self.mapManager.trackedLines, expectedLines)
   }
 
   func test_selectingItem_closes() {

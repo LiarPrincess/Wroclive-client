@@ -176,7 +176,7 @@
 		90915B131FFA7E2F009FE942 /* ApiManagerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B121FFA7E2F009FE942 /* ApiManagerAdapter.swift */; };
 		90915B171FFAFD5A009FE942 /* RxSectionTypeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */; };
 		90915B191FFB005C009FE942 /* Observable+Reducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B181FFB005C009FE942 /* Observable+Reducing.swift */; };
-		90915B1D1FFC070F009FE942 /* TrackingManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */; };
+		90915B1D1FFC070F009FE942 /* MapManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B1B1FFC0708009FE942 /* MapManagerMock.swift */; };
 		90915B201FFC17A7009FE942 /* ApiManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B1E1FFC178E009FE942 /* ApiManagerMock.swift */; };
 		90915B231FFC1EA0009FE942 /* SearchManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B211FFC1E9B009FE942 /* SearchManagerMock.swift */; };
 		90940D8A1FB721F400F3A316 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90940D891FB721F400F3A316 /* UserDefaultsManager.swift */; };
@@ -225,7 +225,6 @@
 		90D3A40E1FEFE89C00FB7485 /* RxSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A40D1FEFE89C00FB7485 /* RxSectionModel.swift */; };
 		90D6FF381F9D352E00F6CC12 /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6FF371F9D352E00F6CC12 /* Array+Random.swift */; };
 		90DBA3DA1FAE355300C4685A /* MapViewController+MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */; };
-		90DBA3DC1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */; };
 		90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
 		90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */; };
 		90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E77A1F1F4E21D5006882A4 /* Localizable.swift */; };
@@ -462,7 +461,7 @@
 		90915B121FFA7E2F009FE942 /* ApiManagerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerAdapter.swift; sourceTree = "<group>"; };
 		90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionTypeArray.swift; sourceTree = "<group>"; };
 		90915B181FFB005C009FE942 /* Observable+Reducing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Reducing.swift"; sourceTree = "<group>"; };
-		90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingManagerMock.swift; sourceTree = "<group>"; };
+		90915B1B1FFC0708009FE942 /* MapManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManagerMock.swift; sourceTree = "<group>"; };
 		90915B1E1FFC178E009FE942 /* ApiManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerMock.swift; sourceTree = "<group>"; };
 		90915B211FFC1E9B009FE942 /* SearchManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManagerMock.swift; sourceTree = "<group>"; };
 		90940D891FB721F400F3A316 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -510,7 +509,6 @@
 		90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertNotCalled.swift; sourceTree = "<group>"; };
 		90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenshots.swift; sourceTree = "<group>"; };
 		90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapCenter.swift"; sourceTree = "<group>"; };
-		90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+UpdateVehicleLocations.swift"; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
 		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "Sources/App/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
 		90E77A1F1F4E21D5006882A4 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
@@ -688,7 +686,6 @@
 				906C405A2014CCB600E32571 /* Annotation update */,
 				9017C3551EE339FD00063377 /* MapViewController.swift */,
 				90DBA3D91FAE355300C4685A /* MapViewController+MapCenter.swift */,
-				90DBA3DB1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift */,
 				9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */,
 			);
 			path = Map;
@@ -995,7 +992,7 @@
 				90915B1E1FFC178E009FE942 /* ApiManagerMock.swift */,
 				90425D311FF11EF400F1800E /* BookmarksManagerMock.swift */,
 				90915B211FFC1E9B009FE942 /* SearchManagerMock.swift */,
-				90915B1B1FFC0708009FE942 /* TrackingManagerMock.swift */,
+				90915B1B1FFC0708009FE942 /* MapManagerMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1970,7 +1967,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90AACC7E200ABA590064EDFD /* SearchCardViewModelTests.swift in Sources */,
-				90915B1D1FFC070F009FE942 /* TrackingManagerMock.swift in Sources */,
+				90915B1D1FFC070F009FE942 /* MapManagerMock.swift in Sources */,
 				90915B231FFC1EA0009FE942 /* SearchManagerMock.swift in Sources */,
 				90425D331FF11EFB00F1800E /* BookmarksManagerMock.swift in Sources */,
 				90AACC7D200ABA550064EDFD /* LineSelectorHeaderViewModelTests.swift in Sources */,
@@ -2157,7 +2154,6 @@
 				9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				9044A5461F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift in Sources */,
 				908FB19D1F48B3CA00121584 /* ReusableCell+UITableView.swift in Sources */,
-				90DBA3DC1FAE35EB00C4685A /* MapViewController+UpdateVehicleLocations.swift in Sources */,
 				9055C8E81F462F5C00D1EBDA /* SettingsCardConstants.swift in Sources */,
 				90D3A3ED1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift in Sources */,
 				908252571F703F0E001C2926 /* Notification.swift in Sources */,

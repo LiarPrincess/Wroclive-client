@@ -30,7 +30,7 @@ class MapViewController: UIViewController {
     self.startObservingColorScheme()
     self.startObservingLocationAuthorization()
 
-    self.initMapTypeBindings()
+    self.initMapBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -44,11 +44,22 @@ class MapViewController: UIViewController {
 
   // MARK: - Bindings
 
-  private func initMapTypeBindings() {
+  private func initMapBindings() {
     Managers.map.mapType
       .map(toMKMapType)
       .asDriver(onErrorDriveWith: .never())
       .drive(self.mapView.rx.mapType)
+      .disposed(by: self.disposeBag)
+
+    Managers.map.vehicleLocations
+      .values()
+      .bind { [unowned self] in self.updateVehicleLocations($0) }
+      .disposed(by: self.disposeBag)
+
+    Managers.map.vehicleLocations
+      .errors()
+      .flatMapLatest(createAlert)
+      .subscribe()
       .disposed(by: self.disposeBag)
   }
 
@@ -91,8 +102,29 @@ class MapViewController: UIViewController {
 
   // MARK: Annotations
 
-  func getVehicleAnnotations() -> [VehicleAnnotation] {
+  private func getVehicleAnnotations() -> [VehicleAnnotation] {
     return self.mapView.annotations.flatMap { $0 as? VehicleAnnotation }
+  }
+
+  private func updateVehicleLocations(_ vehicles: [Vehicle]) {
+    let annotations = self.getVehicleAnnotations()
+    let updates     = MapAnnotationManager.calculateUpdates(for: annotations, with: vehicles)
+
+    // updated
+    UIView.animate(withDuration: Constants.Pin.animationDuration) {
+      for (vehicle, annotation) in updates.updatedAnnotations {
+        annotation.angle      = CGFloat(vehicle.angle)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: vehicle.latitude, longitude: vehicle.longitude)
+
+        if let annotationView = self.mapView.view(for: annotation) as? VehicleAnnotationView {
+          annotationView.updateImage()
+        }
+      }
+    }
+
+    // created, removed
+    self.mapView.addAnnotations(updates.createdAnnotations)
+    self.mapView.removeAnnotations(updates.removedAnnotations)
   }
 }
 
@@ -163,5 +195,13 @@ private func toMKMapType(_ mapType: MapType) -> MKMapType {
   case .standard:  return .standard
   case .satellite: return .satellite
   case .hybrid:    return .hybrid
+  }
+}
+
+private func createAlert(_ error: ApiError) -> Observable<Void> {
+  switch error {
+  case .noInternet:   return NetworkAlerts.showNoInternetAlert()
+  case .connectionError,
+       .invalidResponse: return NetworkAlerts.showConnectionErrorAlert()
   }
 }

@@ -34,7 +34,6 @@ class MainViewController: UIViewController {
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     self.startObservingColorScheme()
-    self.startObservingVehicleLocations()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -43,7 +42,6 @@ class MainViewController: UIViewController {
 
   deinit {
     self.stopObservingColorScheme()
-    self.stopObservingVehicleLocations()
   }
 
   // MARK: - Overriden
@@ -90,12 +88,10 @@ class MainViewController: UIViewController {
     let viewController = SettingsCard(viewModel)
     self.openCard(viewController, animated: true)
   }
-}
 
-// MARK: - Open card
+  // MARK: - Open card
 
-extension MainViewController {
-  func openCard<Card: UIViewController & CardPanelPresentable>(_ card: Card, animated: Bool) {
+  private func openCard<Card: UIViewController & CardPanelPresentable>(_ card: Card, animated: Bool) {
     if let currentCard = self.card {
       currentCard.dismiss(animated: true) { [unowned self] in
         self.card = nil
@@ -114,9 +110,9 @@ extension MainViewController {
   }
 }
 
-// MARK: - ColorSchemeObserver, VehicleLocationObserver
+// MARK: - ColorSchemeObserver
 
-extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
+extension MainViewController: ColorSchemeObserver {
 
   func colorSchemeDidChange() {
     let tintColor = Managers.theme.colors.tint.value
@@ -133,28 +129,6 @@ extension MainViewController: ColorSchemeObserver, VehicleLocationObserver {
     for subview in view.subviews {
       block(subview)
       forEachRecurrentSubview(of: subview, do: block)
-    }
-  }
-
-  func vehicleLocationsDidUpdate() {
-    let result = Managers.map.result
-    switch result {
-    case .success(let locations): self.mapViewController.updateVehicleLocations(locations)
-    case .error(let error):       self.presentTrackingError(error)
-    }
-  }
-
-  private func presentTrackingError(_ error: Error) {
-    Managers.map.pause()
-
-    let retry: () -> () = {
-      let delay = AppInfo.Timings.FailedRequestDelay.location
-      DispatchQueue.main.asyncAfter(deadline: .now() + delay) { Managers.map.resume() }
-    }
-
-    switch error {
-    case ApiError.noInternet: NetworkAlerts.showNoInternetAlert(in: self, retry: retry)
-    default:                  NetworkAlerts.showNetworkingErrorAlert(in: self, retry: retry)
     }
   }
 }
