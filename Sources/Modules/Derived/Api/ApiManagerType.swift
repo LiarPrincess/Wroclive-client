@@ -4,13 +4,12 @@
 //
 
 import Foundation
-import PromiseKit
 
 protocol ApiManagerType {
 
   /// Get all currently available lines
-  func getAvailableLines() -> Promise<[Line]>
+  var availableLines: ApiResponse<[Line]> { get }
 
   /// Get current vehicle locations for selected lines
-  func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]>
+  func vehicleLocations(for lines: [Line]) -> ApiResponse<[Vehicle]>
 }

@@ -4,7 +4,7 @@
 //
 
 enum ReachabilityStatus {
-  case unknown
-  case notReachable
   case reachable
+  case notReachable
+  case unknown
 }

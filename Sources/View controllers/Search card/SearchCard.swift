@@ -171,10 +171,11 @@ extension SearchCard: CardPanelPresentable {
 
 // MARK: - Helpers
 
-private func createAlert(_ error: SearchCardApiError) -> Observable<Void> {
+private func createAlert(_ error: ApiError) -> Observable<Void> {
   switch error {
-  case .noInternet:   return NetworkAlerts.showNoInternetAlert()
-  case .generalError: return NetworkAlerts.showConnectionErrorAlert()
+  case .noInternet:      return NetworkAlerts.showNoInternetAlert()
+  case .invalidResponse,
+       .generalError:    return NetworkAlerts.showConnectionErrorAlert()
   }
 }
 

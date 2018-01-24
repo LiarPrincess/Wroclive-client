@@ -18,7 +18,7 @@ protocol SearchCardViewModelInput {
   var bookmarkButtonPressed: AnyObserver<Void> { get }
   var searchButtonPressed:   AnyObserver<Void> { get }
 
-  var apiAlertTryAgainButtonPressed: AnyObserver<Void>    { get }
+  var apiAlertTryAgainButtonPressed: AnyObserver<Void>   { get }
   var bookmarkAlertNameEntered:      AnyObserver<String> { get }
 
   var viewDidAppear:    AnyObserver<Void> { get }
@@ -33,7 +33,7 @@ protocol SearchCardViewModelOutput {
   var isLineSelectorVisible: Driver<Bool> { get }
   var isPlaceholderVisible:  Driver<Bool> { get }
 
-  var showApiErrorAlert: Driver<SearchCardApiError>      { get }
+  var showApiErrorAlert: Driver<ApiError>                { get }
   var showBookmarkAlert: Driver<SearchCardBookmarkAlert> { get }
 
   var shouldClose: Driver<Void> { get }
@@ -56,14 +56,14 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   private let _viewDidAppear    = PublishSubject<Void>()
   private let _viewDidDisappear = PublishSubject<Void>()
 
-  private lazy var lineResponse: SearchCardApiResponse = {
+  private lazy var lineResponse: ApiResponse<[Line]> = {
     let viewDidAppear = self._viewDidAppear
     let tryAgain      = self._apiAlertTryAgainButtonPressed
       .delay(AppInfo.Timings.FailedRequestDelay.lines, scheduler: MainScheduler.instance)
 
     return Observable.merge(viewDidAppear, tryAgain)
-      .flatMapLatest { _ in ApiManagerAdapter.getAvailableLines().catchError { _ in .empty() } }
-      .map(toApiResponse)
+      .flatMapLatest { _ in Managers.api.availableLines.catchError { _ in .empty() } }
+      .map(emptyResponseAsError)
       .share()
   }()
 
@@ -97,7 +97,7 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   lazy var isLineSelectorVisible: Driver<Bool> = self.lines.map { $0.any }
   lazy var isPlaceholderVisible:  Driver<Bool> = self.isLineSelectorVisible.not()
 
-  lazy var showApiErrorAlert: Driver<SearchCardApiError> = self.lineResponse
+  lazy var showApiErrorAlert: Driver<ApiError> = self.lineResponse
     .errors()
     .asDriver(onErrorDriveWith: .never())
 
@@ -155,19 +155,14 @@ class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
   var outputs: SearchCardViewModelOutput { return self }
 }
 
-private func toApiResponse(_ response: Result<[Line], ApiError>) -> Result<[Line], SearchCardApiError> {
+private func emptyResponseAsError(_ response: Result<[Line], ApiError>) -> Result<[Line], ApiError> {
   switch response {
   case let .success(lines):
     switch lines.any {
     case true:  return .success(lines)
     case false: return .failure(.generalError)
     }
-  case let .failure(apiError):
-    switch apiError {
-    case .noInternet:      return .failure(.noInternet)
-    case .connectionError,
-         .invalidResponse: return .failure(.generalError)
-    }
+  case .failure: return response
   }
 }
 

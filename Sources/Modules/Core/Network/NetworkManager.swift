@@ -6,13 +6,10 @@
 import Foundation
 import Alamofire
 import AlamofireNetworkActivityIndicator
+import RxSwift
+import RxAlamofire
 
 class NetworkManager: NetworkManagerType {
-
-  // MARK: - Properties
-
-  private lazy var session      = SessionManager()
-  private lazy var reachability = NetworkReachabilityManager(host: "www.google.com")
 
   // MARK: - Init
 
@@ -21,7 +18,9 @@ class NetworkManager: NetworkManagerType {
     self.reachability?.startListening()
   }
 
-  // MARK: - NetworkManager
+  // MARK: - Reachability
+
+  private lazy var reachability = NetworkReachabilityManager(host: "www.google.com")
 
   var reachabilityStatus: ReachabilityStatus {
     let status = self.reachability?.networkReachabilityStatus ?? .unknown
@@ -32,11 +31,16 @@ class NetworkManager: NetworkManagerType {
     }
   }
 
+  // MARK: - Requests
+
+  private lazy var session = SessionManager()
+
   func request(_ url:      URLConvertible,
                method:     HTTPMethod,
                parameters: Parameters?,
                encoding:   ParameterEncoding,
-               headers:    HTTPHeaders?) -> DataRequest {
-    return self.session.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers)
+               headers:    HTTPHeaders?) -> Observable<Data> {
+    return self.session.rx.request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+      .flatMap { $0.validate().rx.data() }
   }
 }

@@ -96,5 +96,5 @@ private func createTrackingObservable(lines: [Line]) -> ApiResponse<[Vehicle]> {
 
   return initialTick
     .concat(trackingTimer)
-    .flatMap { _ in ApiManagerAdapter.getVehicleLocations(for: lines) }
+    .flatMap { _ in Managers.api.vehicleLocations(for: lines) }
 }

@@ -9,7 +9,7 @@ import RxSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  lazy var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+  let window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
 
   // MARK: - Launch
 

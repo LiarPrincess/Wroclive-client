@@ -4,16 +4,17 @@
 //
 
 import Foundation
-import PromiseKit
+import RxSwift
+import Result
 
 class ApiManager: ApiManagerType {
 
-  func getAvailableLines() -> Promise<[Line]> {
+  var availableLines: ApiResponse<[Line]> {
     let endpoint = AvailableLinesEndpoint()
     return endpoint.sendRequest()
   }
 
-  func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
+  func vehicleLocations(for lines: [Line]) -> ApiResponse<[Vehicle]> {
     let endpoint = VehicleLocationsEndpoint()
     return endpoint.sendRequest(data: lines)
   }

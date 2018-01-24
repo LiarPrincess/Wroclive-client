@@ -5,16 +5,21 @@
 
 import Foundation
 import Alamofire
-import PromiseKit
+import RxSwift
 
 protocol NetworkManagerType {
 
+  // MARK: - Reachability
+
+  /// Current network status
   var reachabilityStatus: ReachabilityStatus { get }
 
-  /// Send request
+  // MARK: - Requests
+
+  /// Send request expecting JSON response or error
   func request(_ url:      URLConvertible,
                method:     HTTPMethod,
                parameters: Parameters?,
                encoding:   ParameterEncoding,
-               headers:    HTTPHeaders?) -> DataRequest
+               headers:    HTTPHeaders?) -> Observable<Data>
 }

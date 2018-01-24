@@ -200,8 +200,8 @@ private func toMKMapType(_ mapType: MapType) -> MKMapType {
 
 private func createAlert(_ error: ApiError) -> Observable<Void> {
   switch error {
-  case .noInternet:   return NetworkAlerts.showNoInternetAlert()
-  case .connectionError,
-       .invalidResponse: return NetworkAlerts.showConnectionErrorAlert()
+  case .noInternet:      return NetworkAlerts.showNoInternetAlert()
+  case .invalidResponse,
+       .generalError:    return NetworkAlerts.showConnectionErrorAlert()
   }
 }
