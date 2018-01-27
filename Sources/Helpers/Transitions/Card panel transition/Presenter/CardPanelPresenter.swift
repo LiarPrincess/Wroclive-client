@@ -30,12 +30,15 @@ class CardPanelPresenter : UIPresentationController {
       return .zero
     }
 
-    let viewHeight = self.presentable?.height ?? containerView.bounds.height
-    let topOffset  = containerView.bounds.height - viewHeight
-    return CGRect(x: 0.0, y: topOffset, width: containerView.bounds.width, height: viewHeight)
+    let containerViewBounds = containerView.bounds
+    let viewHeight          = self.presentable?.height ?? containerViewBounds.height
+    return CGRect(x:      0.0,
+                  y:      containerViewBounds.height - viewHeight,
+                  width:  containerView.bounds.width,
+                  height: viewHeight)
   }
 
-  // MARK: - Presentation
+  // MARK: - Present
 
   override func presentationTransitionWillBegin() {
     guard let containerView = self.containerView,
@@ -58,7 +61,7 @@ class CardPanelPresenter : UIPresentationController {
 
   private func addChevronView() {
     guard let presentable = self.presentable,
-              presentable.shouldShowChevronView
+              presentable.showChevronView
       else { return }
 
     self.chevronView = ChevronView()
@@ -77,7 +80,7 @@ class CardPanelPresenter : UIPresentationController {
     }
   }
 
-  // MARK: - Dismissal
+  // MARK: - Dismiss
 
   override func dismissalTransitionWillBegin() {
     guard let coordinator = presentingViewController.transitionCoordinator

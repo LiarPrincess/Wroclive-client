@@ -39,12 +39,16 @@ class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitionin
     let duration = self.transitionDuration(using: transitionContext)
     let options: UIViewAnimationOptions = transitionContext.isInteractive ? .curveLinear : .curveEaseOut
 
-    UIView.animate(withDuration: duration, delay: 0.0, options: options, animations: {
-      snapshot!.frame = offScreenFrame
-    }, completion: { _ in
-      presentedViewController.view.isHidden = false
-      snapshot!.removeFromSuperview()
-      transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-    })
+    UIView.animate(
+      withDuration: duration,
+      delay:        0.0,
+      options:      options,
+      animations:   { snapshot!.frame = offScreenFrame },
+      completion:   { _ in
+        presentedViewController.view.isHidden = false
+        snapshot!.removeFromSuperview()
+        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+      }
+    )
   }
 }

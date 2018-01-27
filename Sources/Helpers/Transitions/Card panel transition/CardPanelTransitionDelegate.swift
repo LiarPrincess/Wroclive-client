@@ -5,11 +5,11 @@
 
 import UIKit
 
-// source: http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
-//         https://github.com/HarshilShah/DeckTransition
+// source: https://github.com/HarshilShah/DeckTransition <- THIS
+//         http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
 //         https://stackoverflow.com/a/36775217
 
-private typealias Constants = CardPanelConstants
+private typealias AnimationDurations = CardPanelConstants.AnimationDurations
 
 class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
@@ -29,13 +29,11 @@ class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelega
   // MARK: - Transition
 
   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    let duration = self.presentable?.presentationTransitionDuration ?? Constants.AnimationDuration.present
-    return CardPanelPresentationTransition(duration)
+    return CardPanelPresentationTransition(AnimationDurations.present)
   }
 
   func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    let duration = self.presentable?.dismissTransitionDuration ?? Constants.AnimationDuration.dismiss
-    return CardPanelDismissTransition(duration)
+    return CardPanelDismissTransition(AnimationDurations.dismiss)
   }
 
   // MARK: - Interactive transition

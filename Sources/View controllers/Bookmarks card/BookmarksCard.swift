@@ -161,8 +161,10 @@ class BookmarksCard: UIViewController {
 // MARK: - CardPanelPresentable
 
 extension BookmarksCard: CardPanelPresentable {
-  var header: UIView  { return self.headerView.contentView }
   var height: CGFloat { return CardPanel.height }
+
+  var header:     UIView        { return self.view } // headerView.contentView }
+  var scrollView: UIScrollView? { return self.tableView }
 }
 
 // MARK: - UITableViewDelegate

@@ -7,7 +7,7 @@ import UIKit
 
 enum CardPanelConstants {
 
-  enum AnimationDuration {
+  enum AnimationDurations {
     static let present: TimeInterval = 0.3
     static let dismiss: TimeInterval = 0.3
   }
