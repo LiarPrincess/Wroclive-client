@@ -18,6 +18,9 @@
 		900CAEB71F482E750044C8A6 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CAEA21F482E750044C8A6 /* SearchManager.swift */; };
 		900CEC021FC4D5D7001C6B04 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC011FC4D5D7001C6B04 /* Document.swift */; };
 		900CEC041FC4E3F1001C6B04 /* Array+Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC031FC4E3F1001C6B04 /* Array+Any.swift */; };
+		9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */; };
+		9010D5B5201FA04500563BDB /* ScrollViewDismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */; };
+		9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksCard.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */; };
 		9017C35C1EE339FD00063377 /* BookmarksCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3431EE339FD00063377 /* BookmarksCardLayout.swift */; };
@@ -71,9 +74,7 @@
 		9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3E11F12C9EF000A6949 /* ChevronView.swift */; };
 		9021F4071F12C9EF000A6949 /* ChevronViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3E21F12C9EF000A6949 /* ChevronViewState.swift */; };
 		9021F4161F12C9EF000A6949 /* CardPanelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3FA1F12C9EF000A6949 /* CardPanelConstants.swift */; };
-		9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3FB1F12C9EF000A6949 /* CardPanelPresentable.swift */; };
 		9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3FC1F12C9EF000A6949 /* CardPanelTransitionDelegate.swift */; };
-		9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3FE1F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift */; };
 		9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4001F12C9EF000A6949 /* CardPanelPresenter.swift */; };
 		9021F41B1F12C9EF000A6949 /* CardPanelDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4021F12C9EF000A6949 /* CardPanelDismissTransition.swift */; };
 		9021F41C1F12C9EF000A6949 /* CardPanelPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4031F12C9EF000A6949 /* CardPanelPresentationTransition.swift */; };
@@ -112,6 +113,7 @@
 		9044A54D1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */; };
 		9045C2E31F9BDB3F002F35C3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2E21F9BDB3F002F35C3 /* Assets.swift */; };
 		904A6B131F43183E00EE98FD /* VehicleAnnotationPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehicleAnnotationPinView.swift */; };
+		90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90538DD1201CADCF0000BBBE /* CardPanel.swift */; };
 		90541FCF1FA79E6C0055350E /* DocumentsManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FCE1FA79E6C0055350E /* DocumentsManagerType.swift */; };
 		90541FD11FA79F760055350E /* DocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FD01FA79F760055350E /* DocumentsManager.swift */; };
 		90546BEE1F6AF23100E8E75F /* MapManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BED1F6AF23100E8E75F /* MapManagerType.swift */; };
@@ -290,6 +292,9 @@
 		900CAEA21F482E750044C8A6 /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		900CEC011FC4D5D7001C6B04 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		900CEC031FC4E3F1001C6B04 /* Array+Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Any.swift"; sourceTree = "<group>"; };
+		9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
+		9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewDismissGestureHandler.swift; sourceTree = "<group>"; };
+		9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandlerType.swift; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCard.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardConstants.swift; sourceTree = "<group>"; };
 		9017C3431EE339FD00063377 /* BookmarksCardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardLayout.swift; sourceTree = "<group>"; };
@@ -343,9 +348,7 @@
 		9021F3E11F12C9EF000A6949 /* ChevronView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
 		9021F3E21F12C9EF000A6949 /* ChevronViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronViewState.swift; sourceTree = "<group>"; };
 		9021F3FA1F12C9EF000A6949 /* CardPanelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelConstants.swift; sourceTree = "<group>"; };
-		9021F3FB1F12C9EF000A6949 /* CardPanelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentable.swift; sourceTree = "<group>"; };
 		9021F3FC1F12C9EF000A6949 /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
-		9021F3FE1F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelInteractiveDismissTransition.swift; sourceTree = "<group>"; };
 		9021F4001F12C9EF000A6949 /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
 		9021F4021F12C9EF000A6949 /* CardPanelDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelDismissTransition.swift; sourceTree = "<group>"; };
 		9021F4031F12C9EF000A6949 /* CardPanelPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentationTransition.swift; sourceTree = "<group>"; };
@@ -388,6 +391,7 @@
 		9044A53E1F69A13D00F26C17 /* ColorSelectionSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionSectionViewModel.swift; sourceTree = "<group>"; };
 		9045C2E21F9BDB3F002F35C3 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehicleAnnotationPinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationPinView.swift; sourceTree = "<group>"; };
+		90538DD1201CADCF0000BBBE /* CardPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPanel.swift; sourceTree = "<group>"; };
 		90541FCE1FA79E6C0055350E /* DocumentsManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsManagerType.swift; sourceTree = "<group>"; };
 		90541FD01FA79F760055350E /* DocumentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsManager.swift; sourceTree = "<group>"; };
 		90546BED1F6AF23100E8E75F /* MapManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManagerType.swift; sourceTree = "<group>"; };
@@ -576,6 +580,7 @@
 				900CAE8A1F482E750044C8A6 /* Alerts */,
 				90AACC93200BD3F40064EDFD /* User interface */,
 				90AACC99200BD7350064EDFD /* Controls */,
+				9021F3F91F12C9EF000A6949 /* Card panel */,
 				90AACC95200BD44F0064EDFD /* Transitions */,
 				90D3A4041FEFE68500FB7485 /* Rx */,
 			);
@@ -610,6 +615,16 @@
 				900CAEA21F482E750044C8A6 /* SearchManager.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		9010D5B1201FA01000563BDB /* Dismiss gesture */ = {
+			isa = PBXGroup;
+			children = (
+				9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */,
+				9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */,
+				9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */,
+			);
+			path = "Dismiss gesture";
 			sourceTree = "<group>";
 		};
 		90145E3E1F61AE4A0068698D /* Sections */ = {
@@ -843,30 +858,22 @@
 			path = "Lines selector";
 			sourceTree = "<group>";
 		};
-		9021F3F91F12C9EF000A6949 /* Card panel transition */ = {
+		9021F3F91F12C9EF000A6949 /* Card panel */ = {
 			isa = PBXGroup;
 			children = (
 				9021F3FF1F12C9EF000A6949 /* Presenter */,
 				9021F4011F12C9EF000A6949 /* Transition */,
-				9021F3FD1F12C9EF000A6949 /* InteractiveTransition */,
+				90538DD1201CADCF0000BBBE /* CardPanel.swift */,
 				9021F3FC1F12C9EF000A6949 /* CardPanelTransitionDelegate.swift */,
-				9021F3FB1F12C9EF000A6949 /* CardPanelPresentable.swift */,
 				9021F3FA1F12C9EF000A6949 /* CardPanelConstants.swift */,
 			);
-			path = "Card panel transition";
-			sourceTree = "<group>";
-		};
-		9021F3FD1F12C9EF000A6949 /* InteractiveTransition */ = {
-			isa = PBXGroup;
-			children = (
-				9021F3FE1F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift */,
-			);
-			path = InteractiveTransition;
+			path = "Card panel";
 			sourceTree = "<group>";
 		};
 		9021F3FF1F12C9EF000A6949 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				9010D5B1201FA01000563BDB /* Dismiss gesture */,
 				9021F4001F12C9EF000A6949 /* CardPanelPresenter.swift */,
 			);
 			path = Presenter;
@@ -1313,7 +1320,6 @@
 			isa = PBXGroup;
 			children = (
 				90BC8AF41F69B62800AF4B84 /* Push transition */,
-				9021F3F91F12C9EF000A6949 /* Card panel transition */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -1964,7 +1970,6 @@
 				90BC8AFF1F69B62800AF4B84 /* PushConstants.swift in Sources */,
 				90AACC89200ACA890064EDFD /* AlertCreator.swift in Sources */,
 				905D71B61FE1C6A8006D1DB6 /* ColorScheme.swift in Sources */,
-				9021F4171F12C9EF000A6949 /* CardPanelPresentable.swift in Sources */,
 				90D3A3DE1FEBD32F00FB7485 /* BookmarksCellViewModel.swift in Sources */,
 				90DBA3DA1FAE355300C4685A /* MapViewController+MapCenter.swift in Sources */,
 				90D6FF381F9D352E00F6CC12 /* Array+Random.swift in Sources */,
@@ -1991,6 +1996,7 @@
 				901A809A20127EC40013CCD9 /* MapType.swift in Sources */,
 				901A80A12012992F0013CCD9 /* SettingsSectionHeaderView.swift in Sources */,
 				901ECDC11FF58844004765AA /* NotificationManager.swift in Sources */,
+				9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */,
 				901ECDB91FF5875F004765AA /* FontType.swift in Sources */,
 				901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */,
 				906C40662016902100E32571 /* TrackingResult.swift in Sources */,
@@ -2027,6 +2033,7 @@
 				904A6B131F43183E00EE98FD /* VehicleAnnotationPinView.swift in Sources */,
 				905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
+				90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */,
 				9024C6131F96699500025503 /* AppEnvironment.swift in Sources */,
 				90546BEE1F6AF23100E8E75F /* MapManagerType.swift in Sources */,
 				901A8087200E81930013CCD9 /* BookmarksSection.swift in Sources */,
@@ -2084,6 +2091,8 @@
 				905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */,
 				903920351F1AB70E00250162 /* ArrayOfLines.swift in Sources */,
 				901A808A200E96EE0013CCD9 /* SettingsCardFooterView.swift in Sources */,
+				9010D5B5201FA04500563BDB /* ScrollViewDismissGestureHandler.swift in Sources */,
+				9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */,
 				901A809720126DAE0013CCD9 /* SettingsMapTypeCell.swift in Sources */,
 				90AACC9F200D2CF70064EDFD /* ArrayOfEquatable+Operations.swift in Sources */,
 				90546BF01F6AF25800E8E75F /* MapManager.swift in Sources */,
@@ -2119,7 +2128,6 @@
 				9021F4071F12C9EF000A6949 /* ChevronViewState.swift in Sources */,
 				90D3A40E1FEFE89C00FB7485 /* RxSectionModel.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchCardLayout.swift in Sources */,
-				9021F4191F12C9EF000A6949 /* CardPanelInteractiveDismissTransition.swift in Sources */,
 				906C406E2019000B00E32571 /* ApiResponse.swift in Sources */,
 				9044A5461F69A13D00F26C17 /* ColorSelectionSectionHeaderView.swift in Sources */,
 				908FB19D1F48B3CA00121584 /* ReusableCell+UITableView.swift in Sources */,

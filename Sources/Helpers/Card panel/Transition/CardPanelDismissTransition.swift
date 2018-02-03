@@ -5,6 +5,8 @@
 
 import UIKit
 
+private typealias AnimationDurations = CardPanelConstants.AnimationDurations
+
 class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
   private let duration: TimeInterval
@@ -29,13 +31,6 @@ class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitionin
 
     // animation
 
-    let snapshot = presentedViewController.view.snapshotView(afterScreenUpdates: true)
-    snapshot!.frame = onScreenFrame
-    containerView.addSubview(snapshot!)
-
-    // this line HAS to be after snapshot!
-    presentedViewController.view.isHidden = true
-
     let duration = self.transitionDuration(using: transitionContext)
     let options: UIViewAnimationOptions = transitionContext.isInteractive ? .curveLinear : .curveEaseOut
 
@@ -43,12 +38,8 @@ class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitionin
       withDuration: duration,
       delay:        0.0,
       options:      options,
-      animations:   { snapshot!.frame = offScreenFrame },
-      completion:   { _ in
-        presentedViewController.view.isHidden = false
-        snapshot!.removeFromSuperview()
-        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-      }
+      animations:   { presentedViewController.view.frame = offScreenFrame },
+      completion:   { _ in transitionContext.completeTransition(!transitionContext.transitionWasCancelled) }
     )
   }
 }

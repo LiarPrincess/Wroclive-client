@@ -7,9 +7,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-private typealias CardPanel = BookmarksCardConstants.CardPanel
-
-class BookmarksCard: UIViewController {
+class BookmarksCard: CardPanel {
 
   // MARK: - Properties
 
@@ -27,6 +25,11 @@ class BookmarksCard: UIViewController {
 
   let tableView           = UITableView()
   let tableViewDataSource = BookmarksCard.createDataSource()
+
+  // MARK: - Card panel
+
+  override var height:     CGFloat       { return 0.75 * Managers.device.screenBounds.height }
+  override var scrollView: UIScrollView? { return self.tableView }
 
   // MARK: - Init
 
@@ -156,15 +159,6 @@ class BookmarksCard: UIViewController {
       self.tableView.setEditing(false, animated: false)
     }
   }
-}
-
-// MARK: - CardPanelPresentable
-
-extension BookmarksCard: CardPanelPresentable {
-  var height: CGFloat { return CardPanel.height }
-
-  var header:     UIView        { return self.view } // headerView.contentView }
-  var scrollView: UIScrollView? { return self.tableView }
 }
 
 // MARK: - UITableViewDelegate

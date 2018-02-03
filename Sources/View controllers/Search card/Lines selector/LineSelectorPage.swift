@@ -29,6 +29,8 @@ class LineSelectorPage: UIViewController {
   private lazy var collectionViewLayout     = UICollectionViewFlowLayout()
   private lazy var collectionViewDataSource = LineSelectorPage.createDataSource()
 
+  var scrollView: UIScrollView { return self.collectionView }
+
   var contentInset: UIEdgeInsets {
     get { return self.collectionView.contentInset }
     set { self.collectionView.contentInset = newValue }

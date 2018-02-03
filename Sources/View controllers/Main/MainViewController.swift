@@ -91,22 +91,22 @@ class MainViewController: UIViewController {
 
   // MARK: - Open card
 
-  private func openCard<Card: UIViewController & CardPanelPresentable>(_ card: Card, animated: Bool) {
+  private func openCard(_ cardPanel: CardPanel, animated: Bool) {
     if let currentCard = self.card {
       currentCard.dismiss(animated: true) { [unowned self] in
         self.card = nil
         self.cardTransitionDelegate = nil
-        self.openCardInner(card, animated: animated)
+        self.openCardInner(cardPanel, animated: animated)
       }
     }
-    else { self.openCardInner(card, animated: animated) }
+    else { self.openCardInner(cardPanel, animated: animated) }
   }
 
-  private func openCardInner<Card: UIViewController & CardPanelPresentable>(_ card: Card, animated: Bool) {
-    self.cardTransitionDelegate = CardPanelTransitionDelegate(for: card)
-    card.modalPresentationStyle = .custom
-    card.transitioningDelegate  = self.cardTransitionDelegate!
-    self.present(card, animated: animated, completion: nil)
+  private func openCardInner(_ cardPanel: CardPanel, animated: Bool) {
+    self.cardTransitionDelegate = CardPanelTransitionDelegate(for: cardPanel)
+    cardPanel.modalPresentationStyle = .custom
+    cardPanel.transitioningDelegate  = self.cardTransitionDelegate!
+    self.present(cardPanel, animated: animated, completion: nil)
   }
 }
 

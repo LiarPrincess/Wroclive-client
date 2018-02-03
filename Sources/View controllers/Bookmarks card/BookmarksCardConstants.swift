@@ -11,10 +11,14 @@ enum BookmarksCardConstants {
     static let rightInset: CGFloat = leftInset
 
     enum Header {
-      static let topInset:    CGFloat = 28.0
-      static let bottomInset: CGFloat =  8.0
+      enum Title {
+        static let topOffset:    CGFloat = 8.0
+        static let bottomOffset: CGFloat = 8.0
+      }
 
-      static let editButtonInsets = UIEdgeInsets(top: 20.0, left: Layout.rightInset, bottom: 4.0, right: Layout.rightInset)
+      enum Edit {
+        static let insets = UIEdgeInsets(top: 20.0, left: Layout.rightInset, bottom: 4.0, right: Layout.rightInset)
+      }
     }
 
     enum TableView {
@@ -34,9 +38,5 @@ enum BookmarksCardConstants {
       static var edit: TextAttributes { return TextAttributes(style: .body,     color: .tint) }
       static var done: TextAttributes { return TextAttributes(style: .bodyBold, color: .tint) }
     }
-  }
-
-  enum CardPanel {
-    static var height: CGFloat { return 0.75 * Managers.device.screenBounds.height }
   }
 }

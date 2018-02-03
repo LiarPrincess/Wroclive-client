@@ -46,10 +46,6 @@ enum SearchCardConstants {
     }
   }
 
-  enum CardPanel {
-    static var height: CGFloat { return 0.90 * Managers.device.screenBounds.height }
-  }
-
   enum BookmarksPopup {
     static let delay:     TimeInterval = 0.1
     static let duration:  TimeInterval = 1.4

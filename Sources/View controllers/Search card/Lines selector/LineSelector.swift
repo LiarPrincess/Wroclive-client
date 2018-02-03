@@ -15,6 +15,13 @@ class LineSelector: UIPageViewController {
   private let busPage  = LineSelectorPage()
   private lazy var pages = [self.tramPage, self.busPage]
 
+  private var currentPage: LineType {
+    let page = self.viewControllers?.first
+    if page === self.tramPage { return .tram }
+    if page === self.busPage  { return .bus  }
+    fatalError("Invalid page selected")
+  }
+
   private let _pageDidTransition = PublishSubject<LineType>()
   lazy var pageDidTransition: Observable<LineType> = self._pageDidTransition.asObservable()
 
@@ -38,6 +45,13 @@ class LineSelector: UIPageViewController {
   var scrollIndicatorInsets: UIEdgeInsets {
     get { return self.tramPage.scrollIndicatorInsets }
     set { self.pages.forEach { $0.scrollIndicatorInsets = newValue } }
+  }
+
+  var scrollView: UIScrollView {
+    switch self.currentPage {
+    case .tram: return self.tramPage.scrollView
+    case .bus:  return self.busPage .scrollView
+    }
   }
 
   // MARK: - Init
@@ -114,13 +128,6 @@ extension LineSelector: UIPageViewControllerDataSource {
 // MARK: - UIPageViewControllerDelegate
 
 extension LineSelector: UIPageViewControllerDelegate {
-
-  var currentPage: LineType {
-    let page = self.viewControllers?.first
-    if page === self.tramPage { return .tram }
-    if page === self.busPage  { return .bus  }
-    fatalError("Invalid page selected")
-  }
 
   func pageViewController(_ pageViewController:          UIPageViewController,
                           didFinishAnimating finished:   Bool,

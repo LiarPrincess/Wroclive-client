@@ -7,11 +7,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-private typealias CardPanel    = SearchCardConstants.CardPanel
 private typealias Layout       = SearchCardConstants.Layout
 private typealias Localization = Localizable.Search
 
-class SearchCard: UIViewController {
+class SearchCard: CardPanel {
 
   // MARK: - Properties
 
@@ -30,6 +29,11 @@ class SearchCard: UIViewController {
 
   let lineTypeSelector = LineTypeSelector()
   let lineSelector     = LineSelector()
+
+  // MARK: - Card panel
+
+  override var height: CGFloat { return 0.90 * Managers.device.screenBounds.height }
+  override var scrollView: UIScrollView? { return self.lineSelector.scrollView }
 
   // MARK: - Init
 
@@ -160,13 +164,6 @@ class SearchCard: UIViewController {
       self.lineSelector.scrollIndicatorInsets = UIEdgeInsets(top: topInset, left: 0.0,       bottom: 0.0,         right: 0.0)
     }
   }
-}
-
-// MARK: - CardPanelPresentable
-
-extension SearchCard: CardPanelPresentable {
-  var header: UIView  { return self.headerView.contentView }
-  var height: CGFloat { return CardPanel.height }
 }
 
 // MARK: - Helpers

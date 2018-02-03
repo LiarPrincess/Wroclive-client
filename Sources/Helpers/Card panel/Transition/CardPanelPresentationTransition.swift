@@ -5,6 +5,8 @@
 
 import UIKit
 
+private typealias AnimationDurations = CardPanelConstants.AnimationDurations
+
 class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
   private let duration: TimeInterval

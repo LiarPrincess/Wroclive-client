@@ -25,8 +25,4 @@ enum SettingsCardConstants {
     static var sectionTitle: TextAttributes { return TextAttributes(style: .subheadline) }
     static var cellText:     TextAttributes { return TextAttributes(style: .body)        }
   }
-
-  enum CardPanel {
-    static var height: CGFloat { return 0.75 * Managers.device.screenBounds.height }
-  }
 }

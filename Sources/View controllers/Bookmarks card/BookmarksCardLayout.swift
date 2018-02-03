@@ -25,7 +25,7 @@ extension BookmarksCard {
     self.headerView.contentView.addBorder(at: .bottom)
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.addSubview(self.headerView)
+    self.view.insertSubview(self.headerView, belowSubview: self.chevronViewContainer)
     self.headerView.snp.makeConstraints { make in
       make.left.top.right.equalToSuperview()
     }
@@ -36,12 +36,12 @@ extension BookmarksCard {
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.Header.topInset)
-      make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
+      make.top.equalTo(self.chevronView.snp.bottom).offset(Layout.Header.Title.topOffset)
+      make.bottom.equalToSuperview().offset(-Layout.Header.Title.bottomOffset)
       make.left.equalToSuperview().offset(Layout.leftInset)
     }
 
-    self.editButton.contentEdgeInsets       = Layout.Header.editButtonInsets
+    self.editButton.contentEdgeInsets       = Layout.Header.Edit.insets
     self.editButton.accessibilityIdentifier = "BookmarksViewController.edit"
 
     self.headerView.contentView.addSubview(self.editButton)

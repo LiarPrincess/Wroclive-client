@@ -9,10 +9,9 @@ import RxCocoa
 import SafariServices
 
 private typealias TextStyles   = SettingsCardConstants.TextStyles
-private typealias CardPanel    = SettingsCardConstants.CardPanel
 private typealias Localization = Localizable.Settings
 
-class SettingsCard: UIViewController {
+class SettingsCard: CardPanel {
 
   // MARK: - Properties
 
@@ -26,29 +25,14 @@ class SettingsCard: UIViewController {
 
   let titleLabel = UILabel()
 
-  let tableView            = UITableView(frame: .zero, style: .grouped)
-  let tableViewMapTypeCell = SettingsMapTypeCell(style: .default, reuseIdentifier: nil)
+  lazy var tableView            = UITableView(frame: .zero, style: .grouped)
+  lazy var tableViewDataSource  = SettingsCard.createDataSource(self)
+  lazy var tableViewMapTypeCell = SettingsMapTypeCell(style: .default, reuseIdentifier: nil)
 
-  lazy var tableViewDataSource: RxTableViewDataSource<SettingsSection> = {
-    return RxTableViewDataSource( // swiftlint:disable:this implicit_return
-      configureCell: { [unowned self] dataSource, tableView, indexPath, model -> UITableViewCell in
-        switch model {
-        case .mapType:
-          return self.tableViewMapTypeCell
-        case .share, .rate, .about:
-          let lastItemIndex = dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
+  // MARK: - Card panel
 
-          let cell = tableView.dequeueCell(ofType: SettingsTextCell.self, forIndexPath: indexPath)
-          cell.textLabel?.attributedText = NSAttributedString(string: model.text, attributes: TextStyles.cellText)
-          cell.accessoryType             = .disclosureIndicator
-          cell.isBottomBorderVisible     = indexPath.item != lastItemIndex
-          return cell
-        }
-      },
-      canEditRowAtIndexPath: { _, _ in false },
-      canMoveRowAtIndexPath: { _, _ in false }
-    )
-  }()
+  override var height:     CGFloat       { return 0.75 * Managers.device.screenBounds.height }
+  override var scrollView: UIScrollView? { return self.tableView }
 
   // MARK: - Init
 
@@ -105,6 +89,29 @@ class SettingsCard: UIViewController {
       .disposed(by: self.disposeBag)
   }
 
+  // MARK: - Data source
+
+  private static func createDataSource(_ card: SettingsCard) -> RxTableViewDataSource<SettingsSection> {
+    return RxTableViewDataSource(
+      configureCell: { dataSource, tableView, indexPath, model -> UITableViewCell in
+        switch model {
+        case .mapType:
+          return card.tableViewMapTypeCell
+        case .share, .rate, .about:
+          let lastItemIndex = dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
+
+          let cell = tableView.dequeueCell(ofType: SettingsTextCell.self, forIndexPath: indexPath)
+          cell.textLabel?.attributedText = NSAttributedString(string: model.text, attributes: TextStyles.cellText)
+          cell.accessoryType             = .disclosureIndicator
+          cell.isBottomBorderVisible     = indexPath.item != lastItemIndex
+          return cell
+        }
+      },
+      canEditRowAtIndexPath: { _, _ in false },
+      canMoveRowAtIndexPath: { _, _ in false }
+    )
+  }
+
   // MARK: - Overriden
 
   override func viewDidLoad() {
@@ -158,13 +165,6 @@ class SettingsCard: UIViewController {
     safariViewController.modalPresentationStyle = .overFullScreen
     self.present(safariViewController, animated: true, completion: nil)
   }
-}
-
-// MARK: - CardPanelPresentable
-
-extension SettingsCard: CardPanelPresentable {
-  var header: UIView  { return self.headerView.contentView }
-  var height: CGFloat { return CardPanel.height }
 }
 
 // MARK: - UITableViewDelegate

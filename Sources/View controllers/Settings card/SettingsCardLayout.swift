@@ -24,7 +24,7 @@ extension SettingsCard {
     self.headerView.contentView.addBorder(at: .bottom)
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.addSubview(self.headerView)
+    self.view.insertSubview(self.headerView, belowSubview: self.chevronViewContainer)
     self.headerView.snp.makeConstraints { make in
       make.left.top.right.equalToSuperview()
     }
