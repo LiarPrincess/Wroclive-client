@@ -10,9 +10,11 @@ enum SettingsCardConstants {
     static let leftInset:  CGFloat = 16.0
     static let rightInset: CGFloat = leftInset
 
+    static var height: CGFloat { return 0.75 * Managers.device.screenBounds.height }
+
     enum Header {
-      static let topInset:    CGFloat = 28.0
-      static let bottomInset: CGFloat =  8.0
+      static let topInset:    CGFloat = 8.0
+      static let bottomInset: CGFloat = 8.0
     }
 
     enum TableView {

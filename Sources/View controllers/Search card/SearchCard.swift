@@ -32,7 +32,7 @@ class SearchCard: CardPanel {
 
   // MARK: - Card panel
 
-  override var height: CGFloat { return 0.90 * Managers.device.screenBounds.height }
+  override var height:     CGFloat       { return Layout.height  }
   override var scrollView: UIScrollView? { return self.lineSelector.scrollView }
 
   // MARK: - Init
@@ -158,7 +158,7 @@ class SearchCard: CardPanel {
       let topInset    = headerHeight
       let leftInset   = Layout.leftInset
       let rightInset  = Layout.rightInset
-      let bottomInset = Layout.bottomInset
+      let bottomInset = Layout.LineSelector.bottomInset
 
       self.lineSelector.contentInset          = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
       self.lineSelector.scrollIndicatorInsets = UIEdgeInsets(top: topInset, left: 0.0,       bottom: 0.0,         right: 0.0)

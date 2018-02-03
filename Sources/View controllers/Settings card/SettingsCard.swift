@@ -8,6 +8,7 @@ import RxSwift
 import RxCocoa
 import SafariServices
 
+private typealias Layout       = SettingsCardConstants.Layout
 private typealias TextStyles   = SettingsCardConstants.TextStyles
 private typealias Localization = Localizable.Settings
 
@@ -31,7 +32,7 @@ class SettingsCard: CardPanel {
 
   // MARK: - Card panel
 
-  override var height:     CGFloat       { return 0.75 * Managers.device.screenBounds.height }
+  override var height:     CGFloat       { return Layout.height  }
   override var scrollView: UIScrollView? { return self.tableView }
 
   // MARK: - Init

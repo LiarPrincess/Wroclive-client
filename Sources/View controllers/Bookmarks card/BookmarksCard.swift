@@ -7,6 +7,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+private typealias Layout = BookmarksCardConstants.Layout
+
 class BookmarksCard: CardPanel {
 
   // MARK: - Properties
@@ -28,7 +30,7 @@ class BookmarksCard: CardPanel {
 
   // MARK: - Card panel
 
-  override var height:     CGFloat       { return 0.75 * Managers.device.screenBounds.height }
+  override var height:     CGFloat       { return Layout.height }
   override var scrollView: UIScrollView? { return self.tableView }
 
   // MARK: - Init

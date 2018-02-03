@@ -35,7 +35,7 @@ extension SettingsCard {
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.Header.topInset)
+      make.top.equalTo(self.chevronView.snp.bottom).offset(Layout.Header.topInset)
       make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)

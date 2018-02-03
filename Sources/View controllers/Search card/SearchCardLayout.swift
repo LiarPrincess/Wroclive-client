@@ -37,15 +37,15 @@ extension SearchCard {
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.Header.topInset)
+      make.top.equalTo(self.chevronView.snp.bottom).offset(Layout.Header.Title.topOffset)
       make.left.equalToSuperview().offset(Layout.leftInset)
     }
 
-    let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.bookmarkButtonSize)
+    let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.Bookmark.size)
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
 
     self.bookmarkButton.tintColor         = Managers.theme.colors.tint.value
-    self.bookmarkButton.contentEdgeInsets = Layout.Header.bookmarkButtonInsets
+    self.bookmarkButton.contentEdgeInsets = Layout.Header.Bookmark.insets
 
     self.headerView.contentView.addSubview(self.bookmarkButton)
     self.bookmarkButton.snp.makeConstraints { make in
@@ -55,7 +55,7 @@ extension SearchCard {
 
     let searchTitle = NSAttributedString(string: Localization.search, attributes: TextStyles.search)
     self.searchButton.setAttributedTitle(searchTitle, for: .normal)
-    self.searchButton.contentEdgeInsets = Layout.Header.searchButtonInsets
+    self.searchButton.contentEdgeInsets = Layout.Header.Search.insets
 
     self.headerView.contentView.addSubview(self.searchButton)
     self.searchButton.snp.makeConstraints { make in
@@ -65,10 +65,10 @@ extension SearchCard {
 
     self.headerView.contentView.addSubview(self.lineTypeSelector)
     self.lineTypeSelector.snp.makeConstraints { make in
-      make.top.equalTo(self.titleLabel.snp.bottom).offset(Layout.Header.verticalSpacing)
+      make.top.equalTo(self.titleLabel.snp.bottom).offset(Layout.Header.LineType.topOffset)
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)
-      make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
+      make.bottom.equalToSuperview().offset(-Layout.Header.LineType.bottomOffset)
       make.height.equalTo(LineTypeSelectorConstants.Layout.nominalHeight)
     }
   }

@@ -10,29 +10,35 @@ enum SearchCardConstants {
     static let leftInset:   CGFloat = 16.0
     static let rightInset:  CGFloat = leftInset
 
-    static let bottomInset: CGFloat = 24.0
+    static var height: CGFloat { return 0.9 * Managers.device.screenBounds.height }
 
     enum Header {
-      // topInset
-      // [card title]
-      // vertical spacing
-      // [line type selector]
-      // bottom inset
+      enum Title {
+        static let topOffset: CGFloat = 8.0
+      }
 
-      static let topInset:    CGFloat = 28.0
-      static let bottomInset: CGFloat = 16.0
+      enum Bookmark {
+        static let size   = CGSize(width: 23.0, height: 23.0)
+        static let insets = UIEdgeInsets(top: 15.0, left: 6.0, bottom: 8.0, right: 16.0)
+      }
 
-      static let verticalSpacing: CGFloat = 8.0
+      enum Search {
+        static let insets = UIEdgeInsets(top: 20.0, left: Layout.rightInset, bottom: 4.0, right: Layout.rightInset)
+      }
 
-      static let bookmarkButtonInsets = UIEdgeInsets(top: 15.0, left: 6.0,               bottom: 8.0, right: 16.0)
-      static let searchButtonInsets   = UIEdgeInsets(top: 20.0, left: Layout.rightInset, bottom: 4.0, right: Layout.rightInset)
-
-      static let bookmarkButtonSize = CGSize(width: 23.0, height: 23.0)
+      enum LineType {
+        static let topOffset:    CGFloat =  8.0
+        static let bottomOffset: CGFloat = 16.0
+      }
     }
 
     enum Placeholder {
       static let leftInset:  CGFloat = 35.0
       static let rightInset: CGFloat = leftInset
+    }
+
+    enum LineSelector {
+      static let bottomInset: CGFloat = 24.0
     }
   }
 
