@@ -33,8 +33,6 @@
 		9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3551EE339FD00063377 /* MapViewController.swift */; };
 		9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */; };
 		9017C36F1EE33AA300063377 /* BookmarksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C36E1EE33AA300063377 /* BookmarksCell.swift */; };
-		901A3F6B1FAFAFF900383B02 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A3F6A1FAFAFF900383B02 /* PopupView.swift */; };
-		901A3F6E1FAFB6A300383B02 /* PopupViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A3F6D1FAFB6A300383B02 /* PopupViewConstants.swift */; };
 		901A8087200E81930013CCD9 /* BookmarksSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A8086200E81930013CCD9 /* BookmarksSection.swift */; };
 		901A808A200E96EE0013CCD9 /* SettingsCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A8089200E96EE0013CCD9 /* SettingsCardFooterView.swift */; };
 		901A808C200E97430013CCD9 /* SettingsCardFooterConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */; };
@@ -297,8 +295,6 @@
 		9017C3551EE339FD00063377 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerConstants.swift; sourceTree = "<group>"; };
 		9017C36E1EE33AA300063377 /* BookmarksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCell.swift; sourceTree = "<group>"; };
-		901A3F6A1FAFAFF900383B02 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
-		901A3F6D1FAFB6A300383B02 /* PopupViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewConstants.swift; sourceTree = "<group>"; };
 		901A8086200E81930013CCD9 /* BookmarksSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksSection.swift; sourceTree = "<group>"; };
 		901A8089200E96EE0013CCD9 /* SettingsCardFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardFooterView.swift; sourceTree = "<group>"; };
 		901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardFooterConstants.swift; sourceTree = "<group>"; };
@@ -559,7 +555,6 @@
 			children = (
 				900CAE8A1F482E750044C8A6 /* Alerts */,
 				90AACC93200BD3F40064EDFD /* User interface */,
-				90AACC99200BD7350064EDFD /* Controls */,
 				9021F3F91F12C9EF000A6949 /* Card panel */,
 				90AACC95200BD44F0064EDFD /* Transitions */,
 				90D3A4041FEFE68500FB7485 /* Rx */,
@@ -680,15 +675,6 @@
 				909B9FDB1FEBC3E2007CB59D /* BookmarksCellConstants.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		901A3F691FAFAFE000383B02 /* Popup view */ = {
-			isa = PBXGroup;
-			children = (
-				901A3F6A1FAFAFF900383B02 /* PopupView.swift */,
-				901A3F6D1FAFB6A300383B02 /* PopupViewConstants.swift */,
-			);
-			path = "Popup view";
 			sourceTree = "<group>";
 		};
 		901A8085200E81820013CCD9 /* Sections */ = {
@@ -840,6 +826,7 @@
 		9021F3F91F12C9EF000A6949 /* Card panel */ = {
 			isa = PBXGroup;
 			children = (
+				9021F3E01F12C9EF000A6949 /* Chevron view */,
 				9021F3FF1F12C9EF000A6949 /* Presenter */,
 				9021F4011F12C9EF000A6949 /* Transition */,
 				90538DD1201CADCF0000BBBE /* CardPanel.swift */,
@@ -1260,15 +1247,6 @@
 				90BC8AF41F69B62800AF4B84 /* Push transition */,
 			);
 			path = Transitions;
-			sourceTree = "<group>";
-		};
-		90AACC99200BD7350064EDFD /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				901A3F691FAFAFE000383B02 /* Popup view */,
-				9021F3E01F12C9EF000A6949 /* Chevron view */,
-			);
-			path = Controls;
 			sourceTree = "<group>";
 		};
 		90AF2BD21EE9DDE4006E61D6 /* Theme */ = {
@@ -1944,7 +1922,6 @@
 				9021F4401F12D698000A6949 /* LineSelectorHeaderViewModel.swift in Sources */,
 				90AACC76200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift in Sources */,
 				90D3A4011FEDB7FD00FB7485 /* UIView+IsVisible.swift in Sources */,
-				901A3F6B1FAFAFF900383B02 /* PopupView.swift in Sources */,
 				90FBE35A1FB23AC7002AFF7A /* LocalizedString.swift in Sources */,
 				90D3A4031FEEF78400FB7485 /* RxTableViewDataSource.swift in Sources */,
 				907F26811F7460E4000C272B /* CLLocation.swift in Sources */,
@@ -2007,7 +1984,6 @@
 				90D3A3F11FEC239100FB7485 /* BookmarksCardViewModel.swift in Sources */,
 				9042EDCF1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift in Sources */,
 				908FB19B1F48B3CA00121584 /* LayoutGuide.swift in Sources */,
-				901A3F6E1FAFB6A300383B02 /* PopupViewConstants.swift in Sources */,
 				906C40592014C55700E32571 /* DebugManager.swift in Sources */,
 				90AACC92200BAF940064EDFD /* Sequence+ToArray.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
