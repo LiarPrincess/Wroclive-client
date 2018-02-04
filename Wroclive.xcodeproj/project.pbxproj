@@ -540,9 +540,11 @@
 			isa = PBXGroup;
 			children = (
 				900CAE8A1F482E750044C8A6 /* Alerts */,
-				90AACC93200BD3F40064EDFD /* User interface */,
 				9021F3F91F12C9EF000A6949 /* Card panel */,
-				90D3A4041FEFE68500FB7485 /* Rx */,
+				908FB1951F48B3CA00121584 /* Layout guide */,
+				908FB1971F48B3CA00121584 /* Reusable cell */,
+				901FEAD11FE1EC8900C36A71 /* Text attributes */,
+				90D3A4051FEFE68F00FB7485 /* Rx data sources */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1198,16 +1200,6 @@
 			path = Creator;
 			sourceTree = "<group>";
 		};
-		90AACC93200BD3F40064EDFD /* User interface */ = {
-			isa = PBXGroup;
-			children = (
-				901FEAD11FE1EC8900C36A71 /* Text attributes */,
-				908FB1971F48B3CA00121584 /* Reusable cell */,
-				908FB1951F48B3CA00121584 /* Layout guide */,
-			);
-			path = "User interface";
-			sourceTree = "<group>";
-		};
 		90AF2BD21EE9DDE4006E61D6 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -1271,15 +1263,7 @@
 			path = Rx;
 			sourceTree = "<group>";
 		};
-		90D3A4041FEFE68500FB7485 /* Rx */ = {
-			isa = PBXGroup;
-			children = (
-				90D3A4051FEFE68F00FB7485 /* Data sources */,
-			);
-			path = Rx;
-			sourceTree = "<group>";
-		};
-		90D3A4051FEFE68F00FB7485 /* Data sources */ = {
+		90D3A4051FEFE68F00FB7485 /* Rx data sources */ = {
 			isa = PBXGroup;
 			children = (
 				90D3A40A1FEFE84000FB7485 /* Items */,
@@ -1287,7 +1271,7 @@
 				90D3A4021FEEF78400FB7485 /* RxTableViewDataSource.swift */,
 				9042EDDA1FF3ECC700F5D01D /* RxCollectionViewDataSource.swift */,
 			);
-			path = "Data sources";
+			path = "Rx data sources";
 			sourceTree = "<group>";
 		};
 		90D3A40A1FEFE84000FB7485 /* Items */ = {
