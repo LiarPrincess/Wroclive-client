@@ -5,7 +5,7 @@
 
 import UIKit
 
-private class BundleHook {}
+private class BundleHook { }
 
 private func imageNamed(_ name: String) -> UIImage {
   let bundle = Bundle(for: BundleHook.self)
