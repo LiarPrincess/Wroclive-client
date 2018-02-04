@@ -48,17 +48,17 @@ class VehicleAnnotationView: MKAnnotationView {
     guard let annotation = self.annotation as? VehicleAnnotation else { return }
 
     let color = self.imageColor(for: annotation)
-    let hasColorChanged = self.pinView.tintColor != color.value
+    let hasColorChanged = self.pinView.tintColor != color
     let hasAngleChanged = abs(self.pinView.angle - annotation.angle) > Constants.minAngleChangeToRedraw
 
     if hasColorChanged || hasAngleChanged {
-      self.pinView.tintColor = color.value
+      self.pinView.tintColor = color
       self.pinView.angle     = annotation.angle
       self.pinView.setNeedsDisplay()
     }
   }
 
-  private func imageColor(for annotation: VehicleAnnotation) -> VehicleColor {
+  private func imageColor(for annotation: VehicleAnnotation) -> UIColor {
     switch annotation.line.type {
     case .tram: return Managers.theme.colors.tram
     case .bus:  return Managers.theme.colors.bus

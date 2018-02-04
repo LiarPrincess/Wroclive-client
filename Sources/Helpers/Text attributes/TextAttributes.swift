@@ -85,9 +85,9 @@ struct TextAttributes {
     case .accentLight:           return self.theme.colors.accentLight
     case .accentDark:            return self.theme.colors.accentDark
     case .text:                  return self.theme.colors.text
-    case .tint:                  return self.theme.colors.tint.value
-    case .bus:                   return self.theme.colors.bus.value
-    case .tram:                  return self.theme.colors.tram.value
+    case .tint:                  return self.theme.colors.tint
+    case .bus:                   return self.theme.colors.bus
+    case .tram:                  return self.theme.colors.tram
     }
   }
 

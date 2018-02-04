@@ -44,7 +44,7 @@ extension SearchCard {
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.Bookmark.size)
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
 
-    self.bookmarkButton.tintColor         = Managers.theme.colors.tint.value
+    self.bookmarkButton.tintColor         = Managers.theme.colors.tint
     self.bookmarkButton.contentEdgeInsets = Layout.Header.Bookmark.insets
 
     self.headerView.contentView.addSubview(self.bookmarkButton)

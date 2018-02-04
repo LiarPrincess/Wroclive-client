@@ -13,7 +13,7 @@ class ThemeManager: ThemeManagerType {
 
   fileprivate(set) lazy var textFont: Font        = SystemFont()
   fileprivate(set) lazy var iconFont: Font        = FontAwesomeFont()
-  fileprivate(set) lazy var colors:   ColorScheme = ColorSchemeManager.load(from: Managers.userDefaults)
+  fileprivate(set) lazy var colors:   ColorScheme = ColorScheme()
 
   // MARK: - Fonts
 

@@ -19,9 +19,6 @@ class UserDefaultsManager: UserDefaultsManagerType {
 
   private func getKeyValue(_ key: UserDefaultsStringKey) -> String {
     switch key {
-    case .preferredTintColor: return "String_preferredTintColor"
-    case .preferredTramColor: return "String_preferredTramColor"
-    case .preferredBusColor:  return "String_preferredBusColor"
     case .preferredMapType:   return "String_preferredMapType"
     }
   }

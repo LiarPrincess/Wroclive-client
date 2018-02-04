@@ -6,9 +6,6 @@
 import UIKit
 
 enum UserDefaultsStringKey {
-  case preferredTintColor
-  case preferredTramColor
-  case preferredBusColor
   case preferredMapType
 }
 

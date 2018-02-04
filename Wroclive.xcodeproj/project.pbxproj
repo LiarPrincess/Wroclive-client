@@ -53,7 +53,6 @@
 		901ECDB91FF5875F004765AA /* FontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB81FF5875F004765AA /* FontType.swift */; };
 		901ECDBD1FF587B7004765AA /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDBC1FF587B6004765AA /* TextStyle.swift */; };
 		901ECDBF1FF587F1004765AA /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDBE1FF587F1004765AA /* TextAttributes.swift */; };
-		901ECDC51FF588BA004765AA /* VehicleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDC41FF588BA004765AA /* VehicleColor.swift */; };
 		901ECDC71FF58915004765AA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDC61FF58915004765AA /* NetworkManager.swift */; };
 		901ECDC91FF58951004765AA /* NetworkManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDC81FF58951004765AA /* NetworkManagerType.swift */; };
 		901ECDCC1FF58D5C004765AA /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDCB1FF58D5C004765AA /* SearchPlaceholderView.swift */; };
@@ -117,8 +116,6 @@
 		905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */; };
 		905D71AF1FE1C5BD006D1DB6 /* ApiManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A81FE1C5BD006D1DB6 /* ApiManagerType.swift */; };
 		905D71B61FE1C6A8006D1DB6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */; };
-		905D71B71FE1C6A8006D1DB6 /* TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B31FE1C6A8006D1DB6 /* TintColor.swift */; };
-		905D71B81FE1C6A8006D1DB6 /* ColorSchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B41FE1C6A8006D1DB6 /* ColorSchemeManager.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
 		906A7B511FFEC252004EC8A4 /* ObserverOfVoid+Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B501FFEC252004EC8A4 /* ObserverOfVoid+Next.swift */; };
 		906A7B5520025750004EC8A4 /* ObservableOfOptional+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5220025750004EC8A4 /* ObservableOfOptional+Unwrap.swift */; };
@@ -298,7 +295,6 @@
 		901ECDB81FF5875F004765AA /* FontType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontType.swift; sourceTree = "<group>"; };
 		901ECDBC1FF587B6004765AA /* TextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		901ECDBE1FF587F1004765AA /* TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
-		901ECDC41FF588BA004765AA /* VehicleColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleColor.swift; sourceTree = "<group>"; };
 		901ECDC61FF58915004765AA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		901ECDC81FF58951004765AA /* NetworkManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerType.swift; sourceTree = "<group>"; };
 		901ECDCB1FF58D5C004765AA /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
@@ -366,8 +362,6 @@
 		905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableLinesEndpoint.swift; sourceTree = "<group>"; };
 		905D71A81FE1C5BD006D1DB6 /* ApiManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManagerType.swift; sourceTree = "<group>"; };
 		905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
-		905D71B31FE1C6A8006D1DB6 /* TintColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TintColor.swift; sourceTree = "<group>"; };
-		905D71B41FE1C6A8006D1DB6 /* ColorSchemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeManager.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		906A7B501FFEC252004EC8A4 /* ObserverOfVoid+Next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObserverOfVoid+Next.swift"; sourceTree = "<group>"; };
 		906A7B5220025750004EC8A4 /* ObservableOfOptional+Unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObservableOfOptional+Unwrap.swift"; sourceTree = "<group>"; };
@@ -986,10 +980,7 @@
 		905D71B11FE1C6A8006D1DB6 /* Color scheme */ = {
 			isa = PBXGroup;
 			children = (
-				905D71B31FE1C6A8006D1DB6 /* TintColor.swift */,
-				901ECDC41FF588BA004765AA /* VehicleColor.swift */,
 				905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */,
-				905D71B41FE1C6A8006D1DB6 /* ColorSchemeManager.swift */,
 			);
 			path = "Color scheme";
 			sourceTree = "<group>";
@@ -1760,7 +1751,6 @@
 				906A7B511FFEC252004EC8A4 /* ObserverOfVoid+Next.swift in Sources */,
 				906C405E2014CD1B00E32571 /* MapAnnotationManager.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */,
-				905D71B81FE1C6A8006D1DB6 /* ColorSchemeManager.swift in Sources */,
 				90AACC8D200BA01A0064EDFD /* LineSelectorSectionCreator.swift in Sources */,
 				90AACC9B200BE4110064EDFD /* LineSelectorPage+Rx.swift in Sources */,
 				900CAEB61F482E750044C8A6 /* SearchManagerType.swift in Sources */,
@@ -1774,7 +1764,6 @@
 				901ECDC91FF58951004765AA /* NetworkManagerType.swift in Sources */,
 				901A80A52012A5E00013CCD9 /* SettingsCellType.swift in Sources */,
 				901ECDC71FF58915004765AA /* NetworkManager.swift in Sources */,
-				901ECDC51FF588BA004765AA /* VehicleColor.swift in Sources */,
 				901A809A20127EC40013CCD9 /* MapType.swift in Sources */,
 				901A80A12012992F0013CCD9 /* SettingsSectionHeaderView.swift in Sources */,
 				9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */,
@@ -1874,7 +1863,6 @@
 				9056F6571F5229A500F7EF48 /* Font.swift in Sources */,
 				90D3A4071FEFE6AC00FB7485 /* AnimationConfiguration.swift in Sources */,
 				900CEC041FC4E3F1001C6B04 /* Array+Any.swift in Sources */,
-				905D71B71FE1C6A8006D1DB6 /* TintColor.swift in Sources */,
 				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
 				90915B191FFB005C009FE942 /* Observable+Reducing.swift in Sources */,

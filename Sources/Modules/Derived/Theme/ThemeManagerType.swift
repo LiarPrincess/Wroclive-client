@@ -25,7 +25,7 @@ protocol ThemeManagerType {
 
 extension ThemeManagerType {
   func applyColorScheme() {
-    let tintColor = self.colors.tint.value
+    let tintColor = self.colors.tint
 
     UIApplication.shared.delegate?.window??.tintColor = tintColor
 

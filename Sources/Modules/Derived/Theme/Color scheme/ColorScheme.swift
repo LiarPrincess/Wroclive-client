@@ -7,29 +7,15 @@ import UIKit
 
 struct ColorScheme {
 
-  let tint: TintColor
-  let bus:  VehicleColor
-  let tram: VehicleColor
+  let tint = UIColor(hue: 0.00, saturation: 0.85, brightness: 0.95, alpha: 1.0)
+  let tram = UIColor(hue: 0.60, saturation: 0.65, brightness: 0.80, alpha: 1.0)
+  let bus  = UIColor(hue: 0.00, saturation: 0.85, brightness: 0.80, alpha: 1.0)
 
   let background  = UIColor.white
   let accentLight = UIColor(white: 0.8, alpha: 1.0)
   let accentDark  = UIColor(white: 0.3, alpha: 1.0)
   let text        = UIColor.black
 
-  let configurationBackground = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1.0)
-
   let barStyle  = UIBarStyle.default
   let blurStyle = UIBlurEffectStyle.extraLight
-
-  // MARK: - Init
-
-  init(tint: TintColor, tram: VehicleColor, bus: VehicleColor) {
-    self.tint = tint
-    self.bus  = bus
-    self.tram = tram
-  }
-
-  static var `default`: ColorScheme {
-    return ColorScheme(tint: .red, tram: .blue, bus: .red)
-  }
 }
