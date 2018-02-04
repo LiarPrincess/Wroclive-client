@@ -58,7 +58,7 @@ class ColorSelectionCell: UICollectionViewCell {
 
   // MARK: - Methods
 
-  func setUp<TViewModel: ColorSelectionCellViewModel>(with viewModel: TViewModel) {
+  func setUp<ViewModel: ColorSelectionCellViewModel>(with viewModel: ViewModel) {
     self.backgroundColor = viewModel.color
   }
 }

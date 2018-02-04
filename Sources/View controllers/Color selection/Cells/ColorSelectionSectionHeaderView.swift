@@ -39,7 +39,7 @@ class ColorSelectionSectionHeaderView: UICollectionReusableView {
 
   // MARK: - Methods
 
-  func setUp<TViewModel: ColorSelectionSectionViewModel>(with viewModel: TViewModel) {
+  func setUp<ViewModel: ColorSelectionSectionViewModel>(with viewModel: ViewModel) {
     var textAttributes = Managers.theme.textAttributes(for: .caption)
     textAttributes[NSAttributedStringKey.foregroundColor] = UIColor(white: 0.4, alpha: 1.0)
     self.sectionName.attributedText = NSAttributedString(string: viewModel.name, attributes: textAttributes)

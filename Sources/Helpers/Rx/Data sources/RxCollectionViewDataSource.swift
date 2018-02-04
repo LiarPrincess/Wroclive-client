@@ -7,16 +7,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RxCollectionViewDataSource<TSectionType: RxSectionType>
+class RxCollectionViewDataSource<SectionType: RxSectionType>
   : NSObject, UICollectionViewDataSource, RxCollectionViewDataSourceType {
 
   // MARK: - Properties
 
-  typealias TSection = TSectionType.Model
-  typealias TItem    = TSectionType.Item
+  typealias Section = SectionType.Model
+  typealias Item    = SectionType.Item
 
-  typealias ConfigureCell              = (RxCollectionViewDataSource<TSectionType>, UICollectionView, IndexPath, TItem)  -> UICollectionViewCell
-  typealias ConfigureSupplementaryView = (RxCollectionViewDataSource<TSectionType>, UICollectionView, String, IndexPath) -> UICollectionReusableView
+  typealias ConfigureCell              = (RxCollectionViewDataSource<SectionType>, UICollectionView, IndexPath, Item)  -> UICollectionViewCell
+  typealias ConfigureSupplementaryView = (RxCollectionViewDataSource<SectionType>, UICollectionView, String, IndexPath) -> UICollectionReusableView
 
   var configureCell: ConfigureCell {
     didSet {
@@ -51,21 +51,21 @@ class RxCollectionViewDataSource<TSectionType: RxSectionType>
   // and their relationship with section.
   // If particular item is mutable, that is irrelevant for this logic to function
   // properly.
-  private typealias SectionModelSnapshot = RxSectionModel<TSection, TItem>
+  private typealias SectionModelSnapshot = RxSectionModel<Section, Item>
 
   private var _sectionModels: [SectionModelSnapshot] = []
 
-  subscript(section: Int) -> RxSectionModel<TSection, TItem> {
+  subscript(section: Int) -> RxSectionModel<Section, Item> {
     return self._sectionModels[section]
   }
 
-  subscript(indexPath: IndexPath) -> TItem {
+  subscript(indexPath: IndexPath) -> Item {
     return self._sectionModels[indexPath.section].items[indexPath.item]
   }
 
   // MARK: - RxCollectionViewDataSourceType
 
-  typealias Element = [TSectionType]
+  typealias Element = [SectionType]
 
   func collectionView(_ collectionView: UICollectionView, observedEvent: Event<Element>) {
     Binder(self) { dataSource, elements in

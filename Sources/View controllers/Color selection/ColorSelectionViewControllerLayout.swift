@@ -39,7 +39,7 @@ extension ColorSelectionViewController {
     let image = StyleKit.drawBackArrowTemplateImage(size: ButtonLayout.imageSize)
 
     self.backButton.setImage(image, for: .normal)
-    self.backButton.addTarget(self, action: #selector(ColorSelectionViewController.closeButtonPressed), for: .touchUpInside)
+    self.backButton.addTarget(self, action: #selector(closeButtonPressed), for: .touchUpInside)
     self.backButton.contentEdgeInsets = ButtonLayout.insets
 
     self.view.addSubview(self.backButton)

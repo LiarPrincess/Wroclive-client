@@ -30,7 +30,7 @@ class ColorSelectionDataSource: NSObject {
     return self.indexOf(cell: busColor, inSection: .bus)
   }
 
-  private func indexOf<TCell: ColorSelectionCellViewModel>(cell: TCell, inSection sectionType: ColorSelectionSectionType) -> IndexPath? {
+  private func indexOf<Cell: ColorSelectionCellViewModel>(cell: Cell, inSection sectionType: ColorSelectionSectionType) -> IndexPath? {
     if let section = self.sections.index(where: { $0.type == sectionType }),
        let row     = self.sections[section].cells.index(where: { $0.color == cell.color }) {
       return IndexPath(row: row, section: section)

@@ -7,17 +7,17 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RxTableViewDataSource<TSectionType: RxSectionType>
+class RxTableViewDataSource<SectionType: RxSectionType>
   : NSObject, UITableViewDataSource, RxTableViewDataSourceType {
 
   // MARK: - Properties
 
-  typealias TSection = TSectionType.Model
-  typealias TItem    = TSectionType.Item
+  typealias Section = SectionType.Model
+  typealias Item    = SectionType.Item
 
-  typealias ConfigureCell         = (RxTableViewDataSource<TSectionType>, UITableView, IndexPath, TItem) -> UITableViewCell
-  typealias CanEditRowAtIndexPath = (RxTableViewDataSource<TSectionType>, IndexPath) -> Bool
-  typealias CanMoveRowAtIndexPath = (RxTableViewDataSource<TSectionType>, IndexPath) -> Bool
+  typealias ConfigureCell         = (RxTableViewDataSource<SectionType>, UITableView, IndexPath, Item) -> UITableViewCell
+  typealias CanEditRowAtIndexPath = (RxTableViewDataSource<SectionType>, IndexPath) -> Bool
+  typealias CanMoveRowAtIndexPath = (RxTableViewDataSource<SectionType>, IndexPath) -> Bool
 
   var configureCell: ConfigureCell {
     didSet {
@@ -63,21 +63,21 @@ class RxTableViewDataSource<TSectionType: RxSectionType>
   // and their relationship with section.
   // If particular item is mutable, that is irrelevant for this logic to function
   // properly.
-  private typealias SectionModelSnapshot = RxSectionModel<TSection, TItem>
+  private typealias SectionModelSnapshot = RxSectionModel<Section, Item>
 
   private var _sectionModels: [SectionModelSnapshot] = []
 
-  subscript(section: Int) -> RxSectionModel<TSection, TItem> {
+  subscript(section: Int) -> RxSectionModel<Section, Item> {
     return self._sectionModels[section]
   }
 
-  subscript(indexPath: IndexPath) -> TItem {
+  subscript(indexPath: IndexPath) -> Item {
     return self._sectionModels[indexPath.section].items[indexPath.item]
   }
 
   // MARK: - RxTableViewDataSourceType
 
-  typealias Element = [TSectionType]
+  typealias Element = [SectionType]
 
   func tableView(_ tableView: UITableView, observedEvent: Event<Element>) {
     Binder(self) { dataSource, elements in
