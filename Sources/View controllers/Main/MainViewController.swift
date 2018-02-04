@@ -31,19 +31,6 @@ class MainViewController: UIViewController {
     self.init(nibName: nil, bundle: nil)
   }
 
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    self.startObservingColorScheme()
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-  deinit {
-    self.stopObservingColorScheme()
-  }
-
   // MARK: - Overriden
 
   override func viewDidLoad() {
@@ -107,28 +94,5 @@ class MainViewController: UIViewController {
     cardPanel.modalPresentationStyle = .custom
     cardPanel.transitioningDelegate  = self.cardTransitionDelegate!
     self.present(cardPanel, animated: animated, completion: nil)
-  }
-}
-
-// MARK: - ColorSchemeObserver
-
-extension MainViewController: ColorSchemeObserver {
-
-  func colorSchemeDidChange() {
-    let tintColor = Managers.theme.colors.tint.value
-
-    self.view.tintColor    = tintColor
-    self.toolbar.tintColor = tintColor
-
-    // HACK: In iOS 11 UIBarButtonItem are contained in _UIModernBarButton that prevents seting tint color.
-    // Previously: button.customView?.tintColor = color
-    self.forEachRecurrentSubview(of: self.toolbar) { $0.tintColor = tintColor }
-  }
-
-  private func forEachRecurrentSubview(of view: UIView, do block: (UIView) -> ()) {
-    for subview in view.subviews {
-      block(subview)
-      forEachRecurrentSubview(of: subview, do: block)
-    }
   }
 }

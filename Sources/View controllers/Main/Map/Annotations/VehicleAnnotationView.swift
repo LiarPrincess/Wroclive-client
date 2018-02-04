@@ -70,8 +70,7 @@ class VehicleAnnotationView: MKAnnotationView {
   func updateLabel() {
     guard let annotation = self.annotation as? VehicleAnnotation else { return }
 
-    let textColor = TextColor.background
-    let textAttributes = Managers.theme.textAttributes(for: .body, alignment: .center, color: textColor)
+    let textAttributes = TextAttributes(style: .body, color: .background, alignment: .center)
     self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name, attributes: textAttributes)
 
     let imageSize  = Constants.imageSize

@@ -21,13 +21,4 @@ class ThemeManager: ThemeManagerType {
     self.textFont.recalculateSizes()
     self.iconFont.recalculateSizes()
   }
-
-  // Mark - Color scheme
-
-  func setColorScheme(tint: TintColor, tram: VehicleColor, bus: VehicleColor) {
-    self.colors = ColorScheme(tint: tint, tram: tram, bus: bus)
-    self.applyColorScheme()
-    ColorSchemeManager.save(self.colors, to: Managers.userDefaults)
-    Managers.notification.post(.colorSchemeDidChange)
-  }
 }

@@ -27,19 +27,11 @@ class MapViewController: UIViewController {
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nil, bundle: nil)
     self.insetViewToShowMapLegalInfo()
-    self.startObservingColorScheme()
-    self.startObservingLocationAuthorization()
-
     self.initMapBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-
-  deinit {
-    self.stopObservingColorScheme()
-    self.stopObservingLocationAuthorization()
   }
 
   // MARK: - Bindings
@@ -125,25 +117,6 @@ class MapViewController: UIViewController {
     // created, removed
     self.mapView.addAnnotations(updates.createdAnnotations)
     self.mapView.removeAnnotations(updates.removedAnnotations)
-  }
-}
-
-// MARK: - Notifications
-
-extension MapViewController: ColorSchemeObserver, LocationAuthorizationObserver {
-
-  func colorSchemeDidChange() {
-    for annotation in self.getVehicleAnnotations() {
-      if let annotationView = self.mapView.view(for: annotation) as? VehicleAnnotationView {
-        annotationView.updateImage()
-        annotationView.updateLabel()
-      }
-    }
-  }
-
-  // called also on app startup
-  func locationAuthorizationDidChange() {
-    self.centerDefaultLocation(animated: true)
   }
 }
 

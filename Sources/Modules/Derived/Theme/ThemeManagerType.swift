@@ -21,7 +21,6 @@ protocol ThemeManagerType {
   var colors: ColorScheme { get }
 
   func applyColorScheme()
-  func setColorScheme(tint: TintColor, tram: VehicleColor, bus: VehicleColor)
 }
 
 extension ThemeManagerType {
@@ -38,6 +37,6 @@ extension ThemeManagerType {
 
     UIToolbar.appearance().barStyle       = self.colors.barStyle
     UINavigationBar.appearance().barStyle = self.colors.barStyle
-    UINavigationBar.appearance().titleTextAttributes = self.textAttributes(for: .bodyBold)
+    UINavigationBar.appearance().titleTextAttributes = TextAttributes(style: .bodyBold).value
   }
 }
