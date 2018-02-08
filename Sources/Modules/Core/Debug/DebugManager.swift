@@ -8,28 +8,19 @@ import RxSwift
 
 class DebugManager: DebugManagerType {
 
-  #if !DEBUG
-
-  func initialize() { }
-
-  #else
+  #if DEBUG
 
   let disposeBag = DisposeBag()
 
-  func initialize() {
-//    self.observeRxResources()
-//    self.removeNetworkCache()
+  func clearNetworkCache() {
+    URLCache.shared.removeAllCachedResponses()
   }
 
-  private func observeRxResources() {
+  func debugRxResources() {
     _ = Observable<Int>
       .interval(1, scheduler: MainScheduler.instance)
-      .subscribe { _ in print("Resource count \(RxSwift.Resources.total)") }
+      .subscribe { _ in print("Resource count: \(RxSwift.Resources.total)") }
       .disposed(by: self.disposeBag)
-  }
-
-  private func removeNetworkCache() {
-    URLCache.shared.removeAllCachedResponses()
   }
 
   #endif

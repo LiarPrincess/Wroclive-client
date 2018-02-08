@@ -4,6 +4,14 @@
 //
 
 protocol DebugManagerType {
-  /// Initialize debugging functions
-  func initialize()
+
+  #if DEBUG
+
+  /// Clear NSURLSession cache
+  func clearNetworkCache()
+
+  /// Print Rx resource count every 1s
+  func debugRxResources()
+
+  #endif
 }

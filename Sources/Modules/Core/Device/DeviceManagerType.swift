@@ -26,6 +26,7 @@ protocol DeviceManagerType {
   /// Screen resolution
   var screenBounds: CGRect  { get }
 
-  // 17pt for UIContentSizeCategoryLarge
+  /// May vary depending on user settings.
+  /// By default 17pt for UIContentSizeCategoryLarge
   var preferredFontSize: CGFloat { get }
 }
