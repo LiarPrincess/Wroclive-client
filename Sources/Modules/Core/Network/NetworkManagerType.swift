@@ -4,17 +4,14 @@
 //
 
 import Foundation
+import Reachability
 import Alamofire
 import RxSwift
 
 protocol NetworkManagerType {
 
-  // MARK: - Reachability
-
   /// Current network status
-  var reachabilityStatus: ReachabilityStatus { get }
-
-  // MARK: - Requests
+  var reachability: Observable<Reachability.Connection> { get }
 
   /// Send request expecting JSON response or error
   func request(_ url:      URLConvertible,

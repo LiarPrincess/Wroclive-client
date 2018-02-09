@@ -6,8 +6,10 @@
 import Foundation
 import Alamofire
 import AlamofireNetworkActivityIndicator
+import Reachability
 import RxSwift
 import RxAlamofire
+import RxReachability
 
 class NetworkManager: NetworkManagerType {
 
@@ -15,32 +17,35 @@ class NetworkManager: NetworkManagerType {
 
   init() {
     NetworkActivityIndicatorManager.shared.isEnabled = true
-    self.reachability?.startListening()
+    try? self._reachability?.startNotifier()
+  }
+
+  deinit {
+    self._reachability?.stopNotifier()
   }
 
   // MARK: - Reachability
 
-  private lazy var reachability = NetworkReachabilityManager(host: "www.google.com")
+  private lazy var _reachability = Reachability()
 
-  var reachabilityStatus: ReachabilityStatus {
-    let status = self.reachability?.networkReachabilityStatus ?? .unknown
-    switch status {
-    case .reachable:    return .reachable
-    case .notReachable: return .notReachable
-    case .unknown:      return .unknown
+  var reachability: Observable<Reachability.Connection> {
+    if let reachability = self._reachability {
+      return reachability.rx.status.startWith(reachability.connection)
     }
+    // If reachability failed then assume that cellular connection is available
+    return Observable.just(Reachability.Connection.cellular)
   }
 
   // MARK: - Requests
 
-  private lazy var session = SessionManager()
+  private lazy var _session = SessionManager()
 
   func request(_ url:      URLConvertible,
                method:     HTTPMethod,
                parameters: Parameters?,
                encoding:   ParameterEncoding,
                headers:    HTTPHeaders?) -> Observable<Data> {
-    return self.session.rx.request(method, url, parameters: parameters, encoding: encoding, headers: headers)
+    return self._session.rx.request(method, url, parameters: parameters, encoding: encoding, headers: headers)
       .flatMap { $0.validate().rx.data() }
   }
 }

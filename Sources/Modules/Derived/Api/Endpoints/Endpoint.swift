@@ -33,7 +33,7 @@ extension Endpoint {
       )
       .map(self.decode)
       .map { .success($0) }
-      .catchError { Observable.just(.failure(apiError($0))) }
+      .catchError { toApiError($0).map { .failure($0) }}
       .share(replay: 1)
   }
 
@@ -49,15 +49,15 @@ extension Endpoint {
   }
 }
 
-private func apiError(_ error: Error) -> ApiError {
+private func toApiError(_ error: Error) -> Observable<ApiError> {
   switch error {
-  case ApiError.invalidResponse: return .invalidResponse
+  case ApiError.invalidResponse: return Observable.just(.invalidResponse)
   default:
-    let reachabilityStatus = Managers.network.reachabilityStatus
-    switch reachabilityStatus {
-    case .notReachable: return .noInternet
-    case .reachable,
-         .unknown:      return .generalError
+    return Managers.network.reachability.map {
+      switch $0 {
+      case .none:            return .noInternet
+      case .wifi, .cellular: return .generalError
+      }
     }
   }
 }
