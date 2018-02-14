@@ -4,7 +4,7 @@
 //
 
 import XCTest
-import PromiseKit
+import Result
 import RxSwift
 import RxCocoa
 import RxTest
@@ -105,8 +105,8 @@ final class SearchCardViewModelTests: XCTestCase {
   // MARK: - Lines - Appearing
 
   func test_appearing_updatesLines() {
-    self.searchManager.state       = SearchCardState(page: .tram, selectedLines: [])
-    self.apiManager.availableLines = Promise(value: self.testLines)
+    self.searchManager.state            = SearchCardState(page: .tram, selectedLines: [])
+    self.apiManager.availableLinesValue = availableLines(self.testLines)
     self.viewModel = SearchCardViewModel()
 
     self.simulateViewDidAppearEvents(at: 100)
@@ -123,8 +123,8 @@ final class SearchCardViewModelTests: XCTestCase {
   }
 
   func test_appearing_withoutLines_showsAlert() {
-    self.searchManager.state       = SearchCardState(page: .tram, selectedLines: [])
-    self.apiManager.availableLines = Promise(value: [Line]())
+    self.searchManager.state            = SearchCardState(page: .tram, selectedLines: [])
+    self.apiManager.availableLinesValue = Observable.just(.success([Line]()))
     self.viewModel = SearchCardViewModel()
 
     self.simulateViewDidAppearEvents(at: 100)
@@ -134,15 +134,15 @@ final class SearchCardViewModelTests: XCTestCase {
     self.waitForApiErrorAlert(1)
 
     XCTAssertEqual(observers.line.events,                  [next(0, [])])
-    XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, SearchCardApiError.generalError)])
+    XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, ApiError.generalError)])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
     XCTAssertOperationCount(self.apiManager, availableLines: 1)
   }
 
   func test_appearing_withoutInternet_showsAlert() {
-    self.searchManager.state       = SearchCardState(page: .tram, selectedLines: [])
-    self.apiManager.availableLines = Promise(error: ApiError.noInternet)
+    self.searchManager.state            = SearchCardState(page: .tram, selectedLines: [])
+    self.apiManager.availableLinesValue = availableLines(ApiError.noInternet)
     self.viewModel = SearchCardViewModel()
 
     self.simulateViewDidAppearEvents(at: 100)
@@ -152,15 +152,16 @@ final class SearchCardViewModelTests: XCTestCase {
     self.waitForApiErrorAlert(1)
 
     XCTAssertEqual(observers.line.events,                  [next(0, [])])
-    XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, SearchCardApiError.noInternet)])
+    XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, ApiError.noInternet)])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
     XCTAssertOperationCount(self.apiManager, availableLines: 1)
   }
 
   func test_appearing_withApiError_showsAlert() {
-    self.searchManager.state       = SearchCardState(page: .tram, selectedLines: [])
-    self.apiManager.availableLines = Promise(error: ApiError.connectionError)
+    self.searchManager.state            = SearchCardState(page: .tram, selectedLines: [])
+    self.apiManager.availableLinesValue = availableLines(ApiError.generalError)
+
     self.viewModel = SearchCardViewModel()
 
     self.simulateViewDidAppearEvents(at: 100)
@@ -170,7 +171,7 @@ final class SearchCardViewModelTests: XCTestCase {
     self.waitForApiErrorAlert(1)
 
     XCTAssertEqual(observers.line.events,                  [next(0, [])])
-    XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, SearchCardApiError.generalError)])
+    XCTAssertEqual(observers.showApiErrorAlert.events,     [next(100, ApiError.generalError)])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
     XCTAssertOperationCount(self.apiManager, availableLines: 1)
@@ -284,8 +285,8 @@ final class SearchCardViewModelTests: XCTestCase {
   // MARK: - Alerts
 
   func test_closingApiAlert_delays_andUpdatesLines() {
-    self.searchManager.state       = SearchCardState(page: .tram, selectedLines: [])
-    self.apiManager.availableLines = Promise(value: self.testLines)
+    self.searchManager.state            = SearchCardState(page: .tram, selectedLines: [])
+    self.apiManager.availableLinesValue = availableLines(self.testLines)
     self.viewModel = SearchCardViewModel()
 
     self.simulateApiAlertTryAgainButtonPressedEvents(at: 100)
@@ -442,7 +443,7 @@ extension SearchCardViewModelTests {
 
   private struct LinesObserver {
     let line:                  TestableObserver<[Line]>
-    let showApiErrorAlert:     TestableObserver<SearchCardApiError>
+    let showApiErrorAlert:     TestableObserver<ApiError>
     let isLineSelectorVisible: TestableObserver<Bool>
     let isPlaceholderVisible:  TestableObserver<Bool>
   }
@@ -451,8 +452,8 @@ extension SearchCardViewModelTests {
     let lineObserver = self.testScheduler.createObserver([Line].self)
     self.viewModel.outputs.lines.drive(lineObserver).disposed(by: self.disposeBag)
 
-    let showApiErrorAlertObserver = self.testScheduler.createObserver(SearchCardApiError.self)
-    self.viewModel.outputs.showApiErrorAlert.drive(showApiErrorAlertObserver).disposed(by: self.disposeBag)
+    let apiErrorObserver = self.testScheduler.createObserver(ApiError.self)
+    self.viewModel.outputs.showApiErrorAlert.drive(apiErrorObserver).disposed(by: self.disposeBag)
 
     let isLineSelectorVisibleObserver = self.testScheduler.createObserver(Bool.self)
     self.viewModel.outputs.isLineSelectorVisible.drive(isLineSelectorVisibleObserver).disposed(by: self.disposeBag)
@@ -461,7 +462,7 @@ extension SearchCardViewModelTests {
     self.viewModel.outputs.isPlaceholderVisible.drive(isPlaceholderVisibleObserver).disposed(by: self.disposeBag)
 
     return LinesObserver(line:                  lineObserver,
-                         showApiErrorAlert:     showApiErrorAlertObserver,
+                         showApiErrorAlert:     apiErrorObserver,
                          isLineSelectorVisible: isLineSelectorVisibleObserver,
                          isPlaceholderVisible:  isPlaceholderVisibleObserver)
   }
@@ -487,6 +488,16 @@ extension SearchCardViewModelTests {
       .toBlocking(timeout: timeout)
       .toArray()
   }
+}
+
+// MARK: - Factory
+
+private func availableLines(_ value: [Line]) -> ApiResponse<[Line]> {
+  return Observable.just(.success(value))
+}
+
+private func availableLines(_ error: ApiError) -> ApiResponse<[Line]> {
+  return Observable.just(.failure(error))
 }
 
 // MARK: - Asserts

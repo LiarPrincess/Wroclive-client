@@ -11,9 +11,9 @@ class BookmarksManagerMock: BookmarksManagerType {
 
   var bookmarks = [Bookmark]()
 
-  private(set) var addCount  = 0
-  private(set) var getCount  = 0
-  private(set) var saveCount = 0
+  fileprivate var addCount  = 0
+  fileprivate var getCount  = 0
+  fileprivate var saveCount = 0
 
   init(bookmarks: [Bookmark] = []) {
     self.bookmarks = bookmarks
@@ -35,7 +35,12 @@ class BookmarksManagerMock: BookmarksManagerType {
   }
 }
 
-func XCTAssertOperationCount(_ manager: BookmarksManagerMock, add: Int, get: Int, save: Int, file: StaticString = #file, line: UInt = #line) {
+func XCTAssertOperationCount(_ manager: BookmarksManagerMock,
+                             add:  Int,
+                             get:  Int,
+                             save: Int,
+                             file: StaticString = #file,
+                             line: UInt = #line) {
   XCTAssertEqual(manager.addCount,   add, file: file, line: line)
   XCTAssertEqual(manager.getCount,   get, file: file, line: line)
   XCTAssertEqual(manager.saveCount, save, file: file, line: line)

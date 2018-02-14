@@ -5,27 +5,35 @@
 
 import XCTest
 import Foundation
-import PromiseKit
+import RxSwift
 @testable import Wroclive
 
 // swiftlint:disable implicitly_unwrapped_optional
 
 class ApiManagerMock: ApiManagerType {
 
-  var availableLines: Promise<[Line]>!
+  fileprivate var availableLinesCallCount   = 0
+  fileprivate var vehicleLocationsCallCount = 0
 
-  private(set) var availableLinesCallCount = 0
+  var availableLinesValue:   ApiResponse<[Line]>!
+  var vehicleLocationsValue: ApiResponse<[Vehicle]>!
 
-  func getAvailableLines() -> Promise<[Line]> {
+  var availableLines: ApiResponse<[Line]> {
     self.availableLinesCallCount += 1
-    return self.availableLines
+    return self.availableLinesValue
   }
 
-  func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
-    return Promise(value: [])
+  func vehicleLocations(for lines: [Line]) -> ApiResponse<[Vehicle]> {
+    self.vehicleLocationsCallCount += 1
+    return self.vehicleLocationsValue
   }
 }
 
-func XCTAssertOperationCount(_ manager: ApiManagerMock, availableLines: Int, file: StaticString = #file, line: UInt = #line) {
-  XCTAssertEqual(manager.availableLinesCallCount, availableLines, file: file, line: line)
+func XCTAssertOperationCount(_ manager:        ApiManagerMock,
+                             availableLines:   Int = 0,
+                             vehicleLocations: Int = 0,
+                             file:             StaticString = #file,
+                             line:             UInt = #line) {
+  XCTAssertEqual(manager.availableLinesCallCount,   availableLines,   file: file, line: line)
+  XCTAssertEqual(manager.vehicleLocationsCallCount, vehicleLocations, file: file, line: line)
 }
