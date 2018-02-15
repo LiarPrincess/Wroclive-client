@@ -66,7 +66,7 @@ extension LineSelectorHeaderViewModelTests {
   typealias SectionEvent = Recorded<Event<LineSelectorSection>>
 
   func simulateSectionEvents(_ events: SectionEvent...) {
-    testScheduler.createHotObservable(events)
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.section)
       .disposed(by: self.disposeBag)
   }

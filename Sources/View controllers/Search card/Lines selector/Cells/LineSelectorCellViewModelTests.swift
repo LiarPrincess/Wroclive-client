@@ -85,7 +85,7 @@ extension LineSelectorCellViewModelTests {
   typealias LineChangedEvent = Recorded<Event<Line>>
 
   func simulateLineEvents(_ events: LineChangedEvent...) {
-    testScheduler.createHotObservable(events)
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.line)
       .disposed(by: self.disposeBag)
   }
@@ -95,7 +95,7 @@ extension LineSelectorCellViewModelTests {
   typealias IsSelectedChangedEvent = Recorded<Event<Bool>>
 
   func simulateIsSelectedEvents(_ events: IsSelectedChangedEvent...) {
-    testScheduler.createHotObservable(events)
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.isSelected)
       .disposed(by: self.disposeBag)
   }

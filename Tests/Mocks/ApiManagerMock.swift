@@ -5,27 +5,31 @@
 
 import XCTest
 import Foundation
+import Result
 import RxSwift
+import RxTest
 @testable import Wroclive
 
-// swiftlint:disable implicitly_unwrapped_optional
+// swiftlint:disable identifier_name
 
 class ApiManagerMock: ApiManagerType {
 
   fileprivate var availableLinesCallCount   = 0
   fileprivate var vehicleLocationsCallCount = 0
 
-  var availableLinesValue:   ApiResponse<[Line]>!
-  var vehicleLocationsValue: ApiResponse<[Vehicle]>!
+  let _availableLines   = ReplaySubject<Result<[Line],    ApiError>>.create(bufferSize: 1)
+  let _vehicleLocations = ReplaySubject<Result<[Vehicle], ApiError>>.create(bufferSize: 1)
+
+  private let disposeBag = DisposeBag()
 
   var availableLines: ApiResponse<[Line]> {
     self.availableLinesCallCount += 1
-    return self.availableLinesValue
+    return self._availableLines.share(replay: 1)
   }
 
   func vehicleLocations(for lines: [Line]) -> ApiResponse<[Vehicle]> {
     self.vehicleLocationsCallCount += 1
-    return self.vehicleLocationsValue
+    return self._vehicleLocations.share(replay: 1)
   }
 }
 

@@ -85,7 +85,7 @@ extension BookmarksCellViewModelTests {
   typealias BookmarkEvent = Recorded<Event<Bookmark>>
 
   func simulateBookmarkEvents(_ events: BookmarkEvent...) {
-    testScheduler.createHotObservable(events)
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.bookmark)
       .disposed(by: self.disposeBag)
   }

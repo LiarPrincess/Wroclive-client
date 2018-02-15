@@ -7,21 +7,23 @@ import XCTest
 import Foundation
 @testable import Wroclive
 
+// swiftlint:disable identifier_name
+
 class SearchManagerMock: SearchManagerType {
 
-  var state = SearchCardState(page: .tram, selectedLines: [])
+  var _state = SearchCardState(page: .tram, selectedLines: [])
 
   fileprivate var getStateCount = 0
   fileprivate var saveCount     = 0
 
   func getState() -> SearchCardState {
     self.getStateCount += 1
-    return self.state
+    return self._state
   }
 
   func save(_ state: SearchCardState) {
     self.saveCount += 1
-    self.state = state
+    self._state = state
   }
 }
 

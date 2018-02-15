@@ -52,24 +52,24 @@ final class SearchCardViewModelTests: XCTestCase {
 
   // MARK: - Page
 
-  func test_startsWithPage_fromManager() {
+  func test_page_comesFromManager() {
     // tram
-    self.searchManager.state = SearchCardState(page: .tram, selectedLines: [])
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
     let observer1 = self.testScheduler.createObserver(LineType.self)
-    viewModel.outputs.page.drive(observer1).disposed(by: self.disposeBag)
+    self.viewModel.outputs.page.drive(observer1).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
     XCTAssertEqual(observer1.events, [next(0, LineType.tram)])
     XCTAssertOperationCount(self.searchManager, get: 1, save: 0)
 
     // bus
-    self.searchManager.state = SearchCardState(page: .bus, selectedLines: [])
+    self.searchManager._state = SearchCardState(page: .bus, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
     let observer2 = self.testScheduler.createObserver(LineType.self)
-    viewModel.outputs.page.drive(observer2).disposed(by: self.disposeBag)
+    self.viewModel.outputs.page.drive(observer2).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
     XCTAssertEqual(observer2.events, [next(0, LineType.bus)])
@@ -77,7 +77,7 @@ final class SearchCardViewModelTests: XCTestCase {
   }
 
   func test_selectingPage_updatesPage() {
-    self.searchManager.state = SearchCardState(page: .tram, selectedLines: [])
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
     let type0 = next( 50, LineType.bus)
@@ -105,10 +105,10 @@ final class SearchCardViewModelTests: XCTestCase {
   // MARK: - Lines - Appearing
 
   func test_appearing_updatesLines() {
-    self.searchManager.state            = SearchCardState(page: .tram, selectedLines: [])
-    self.apiManager.availableLinesValue = availableLines(self.testLines)
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
+    self.simulateApiAvailableLinesEvents(next(0, .success(self.testLines)))
     self.simulateViewDidAppearEvents(at: 100)
 
     let observers = self.bindLineObserters()
@@ -123,10 +123,10 @@ final class SearchCardViewModelTests: XCTestCase {
   }
 
   func test_appearing_withoutLines_showsAlert() {
-    self.searchManager.state            = SearchCardState(page: .tram, selectedLines: [])
-    self.apiManager.availableLinesValue = Observable.just(.success([Line]()))
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
+    self.simulateApiAvailableLinesEvents(next(0, .success([])))
     self.simulateViewDidAppearEvents(at: 100)
 
     let observers = self.bindLineObserters()
@@ -141,10 +141,10 @@ final class SearchCardViewModelTests: XCTestCase {
   }
 
   func test_appearing_withoutInternet_showsAlert() {
-    self.searchManager.state            = SearchCardState(page: .tram, selectedLines: [])
-    self.apiManager.availableLinesValue = availableLines(ApiError.noInternet)
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
+    self.simulateApiAvailableLinesEvents(next(0, .failure(ApiError.noInternet)))
     self.simulateViewDidAppearEvents(at: 100)
 
     let observers = self.bindLineObserters()
@@ -159,11 +159,10 @@ final class SearchCardViewModelTests: XCTestCase {
   }
 
   func test_appearing_withApiError_showsAlert() {
-    self.searchManager.state            = SearchCardState(page: .tram, selectedLines: [])
-    self.apiManager.availableLinesValue = availableLines(ApiError.generalError)
-
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
+    self.simulateApiAvailableLinesEvents(next(0, .failure(ApiError.generalError)))
     self.simulateViewDidAppearEvents(at: 100)
 
     let observers = self.bindLineObserters()
@@ -180,11 +179,11 @@ final class SearchCardViewModelTests: XCTestCase {
   // MARK: - Selected lines
 
   func test_startsWithSelectedLines_fromManager() {
-    self.searchManager.state = SearchCardState(page: .tram, selectedLines: self.testLines)
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: self.testLines)
     self.viewModel = SearchCardViewModel()
 
     let observer = self.testScheduler.createObserver([Line].self)
-    viewModel.outputs.selectedLines.drive(observer).disposed(by: self.disposeBag)
+    self.viewModel.outputs.selectedLines.drive(observer).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
     XCTAssertEqual(observer.events, [next(0, self.testLines)])
@@ -192,7 +191,7 @@ final class SearchCardViewModelTests: XCTestCase {
   }
 
   func test_selectingLine_updatesSelectedLines() {
-    self.searchManager.state = SearchCardState(page: .tram, selectedLines: self.testLines)
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: self.testLines)
     self.viewModel = SearchCardViewModel()
 
     let event0 = next(100, Line(name: "Test0", type: .tram, subtype: .regular))
@@ -200,19 +199,19 @@ final class SearchCardViewModelTests: XCTestCase {
     self.simulateLineSelectedEvents(event0, event1)
 
     let observer = self.testScheduler.createObserver([Line].self)
-    viewModel.outputs.selectedLines.drive(observer).disposed(by: self.disposeBag)
+    self.viewModel.outputs.selectedLines.drive(observer).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
     let expectedEvents = [
       next(  0, self.testLines),
       next(100, self.testLines + [event0.value.element!]),
-      next(200, self.testLines + [event1.value.element!, event1.value.element!])]
+      next(200, self.testLines + [event0.value.element!, event1.value.element!])]
     XCTAssertEqual(observer.events, expectedEvents)
     XCTAssertOperationCount(self.searchManager, get: 1, save: 0)
   }
 
   func test_deselectingLine_updatesSelectedLines() {
-    self.searchManager.state = SearchCardState(page: .tram, selectedLines: self.testLines)
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: self.testLines)
     self.viewModel = SearchCardViewModel()
 
     let event0 = next(100, self.testLines[0])
@@ -220,13 +219,13 @@ final class SearchCardViewModelTests: XCTestCase {
     self.simulateLineDeselectedEvents(event0, event1)
 
     let observer = self.testScheduler.createObserver([Line].self)
-    viewModel.outputs.selectedLines.drive(observer).disposed(by: self.disposeBag)
+    self.viewModel.outputs.selectedLines.drive(observer).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
     let expectedEvents = [
       next(  0, self.testLines),
       next(100, [self.testLines[1], self.testLines[2], self.testLines[3], self.testLines[4]]),
-      next(200, [self.testLines[1], self.testLines[2], self.testLines[4]])]
+      next(200, [self.testLines[1], self.testLines[3], self.testLines[4]])]
     XCTAssertEqual(observer.events, expectedEvents)
     XCTAssertOperationCount(self.searchManager, get: 1, save: 0)
   }
@@ -234,40 +233,40 @@ final class SearchCardViewModelTests: XCTestCase {
   // MARK: - Buttons
 
   func test_bookmarkButton_withLines_showsNameAlert() {
-    self.searchManager.state = SearchCardState(page: .tram, selectedLines: self.testLines)
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: self.testLines)
     self.viewModel = SearchCardViewModel()
 
     self.simulateBookmarkButtonPressedEvents(at: 100)
 
     let observer = self.testScheduler.createObserver(SearchCardBookmarkAlert.self)
-    viewModel.outputs.showBookmarkAlert.drive(observer).disposed(by: self.disposeBag)
+    self.viewModel.outputs.showBookmarkAlert.drive(observer).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
     XCTAssertEqual(observer.events, [next(100, SearchCardBookmarkAlert.nameInput)])
   }
 
   func test_bookmarkButton_withoutLines_showsAlert() {
-    self.searchManager.state = SearchCardState(page: .tram, selectedLines: [])
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
     self.simulateBookmarkButtonPressedEvents(at: 100)
 
     let observer = self.testScheduler.createObserver(SearchCardBookmarkAlert.self)
-    viewModel.outputs.showBookmarkAlert.drive(observer).disposed(by: self.disposeBag)
+    self.viewModel.outputs.showBookmarkAlert.drive(observer).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
     XCTAssertEqual(observer.events, [next(100, SearchCardBookmarkAlert.noLinesSelected)])
   }
 
   func test_searchButton_startsTracking() {
-    self.searchManager.state = SearchCardState(page: .tram, selectedLines: self.testLines)
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: self.testLines)
     self.viewModel = SearchCardViewModel()
 
     self.simulateSearchButtonPressedEvents(at: 100)
     self.testScheduler.start()
 
-    XCTAssertEqual(self.mapManager.trackedLines, [self.testLines])
-    XCTAssertEqual(self.mapManager.startTrackingCount, 1)
+    XCTAssertEqual(self.mapManager._trackedLines, self.testLines)
+    XCTAssertOperationCount(self.mapManager, startTracking: 1)
   }
 
   func test_searchButton_closes() {
@@ -276,7 +275,7 @@ final class SearchCardViewModelTests: XCTestCase {
     self.simulateSearchButtonPressedEvents(at: 100, 200)
 
     let observer = self.testScheduler.createObserver(Void.self)
-    viewModel.outputs.shouldClose.drive(observer).disposed(by: self.disposeBag)
+    self.viewModel.outputs.shouldClose.drive(observer).disposed(by: self.disposeBag)
     self.testScheduler.start()
 
     XCTAssertEqual(observer.events, [next(100, ()), next(200, ())])
@@ -285,17 +284,17 @@ final class SearchCardViewModelTests: XCTestCase {
   // MARK: - Alerts
 
   func test_closingApiAlert_delays_andUpdatesLines() {
-    self.searchManager.state            = SearchCardState(page: .tram, selectedLines: [])
-    self.apiManager.availableLinesValue = availableLines(self.testLines)
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
+    self.simulateApiAvailableLinesEvents(next(0, .success(self.testLines)))
     self.simulateApiAlertTryAgainButtonPressedEvents(at: 100)
 
     let observers = self.bindLineObserters()
     self.testScheduler.start()
     self.waitForLineResponse(1, timeout: AppInfo.Timings.FailedRequestDelay.lines + 1)
 
-    XCTAssertEqual(observers.line.events,                [next(0, []), next(100, self.testLines)])
+    XCTAssertEqual(observers.line.events,                  [next(0, []), next(100, self.testLines)])
     XCTAssertEqual(observers.showApiErrorAlert.events,     [])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false), next(100, true)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true),  next(100, false)])
@@ -303,21 +302,21 @@ final class SearchCardViewModelTests: XCTestCase {
   }
 
   func test_enteringNameInBookmarkAlert_createsBookmark() {
-    self.bookmarksManager.bookmarks = []
-    self.searchManager.state = SearchCardState(page: .tram, selectedLines: self.testLines)
+    self.bookmarksManager._bookmarks = []
+    self.searchManager._state        = SearchCardState(page: .tram, selectedLines: self.testLines)
     self.viewModel = SearchCardViewModel()
 
     let bookmark = Bookmark(name: "Test", lines: self.testLines)
     self.simulateBookmarkAlertNameEnteredEvents(next(100, bookmark.name))
     self.testScheduler.start()
 
-    XCTAssertEqual(self.bookmarksManager.bookmarks, [bookmark])
+    XCTAssertEqual(self.bookmarksManager._bookmarks, [bookmark])
   }
 
   // MARK: - Close
 
   func test_close_savesState() {
-    self.searchManager.state = SearchCardState(page: .tram, selectedLines: [])
+    self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
     let page = LineType.bus
@@ -329,7 +328,7 @@ final class SearchCardViewModelTests: XCTestCase {
     self.simulateViewDidDisappearEvents(at: 300)
     self.testScheduler.start()
 
-    XCTAssertEqual(self.searchManager.state, SearchCardState(page: page, selectedLines: [line]))
+    XCTAssertEqual(self.searchManager._state, SearchCardState(page: page, selectedLines: [line]))
     XCTAssertOperationCount(self.searchManager, get: 1, save: 1)
   }
 }
@@ -337,7 +336,7 @@ final class SearchCardViewModelTests: XCTestCase {
 // MARK: - Data
 
 extension SearchCardViewModelTests {
-  var testLines: [Line] {
+  private var testLines: [Line] {
     let line0 = Line(name:  "1", type: .tram, subtype: .regular)
     let line1 = Line(name:  "4", type: .tram, subtype: .regular)
     let line2 = Line(name: "20", type: .tram, subtype: .regular)
@@ -351,85 +350,95 @@ extension SearchCardViewModelTests {
 
 extension SearchCardViewModelTests {
 
+  // MARK: - Api
+
+  private typealias ApiAvailableLinesEvent = Recorded<Event<Result<[Line], ApiError>>>
+
+  private func simulateApiAvailableLinesEvents(_ events: ApiAvailableLinesEvent...) {
+    self.testScheduler.createHotObservable(events)
+      .bind(to: self.apiManager._availableLines)
+      .disposed(by: self.disposeBag)
+  }
+
   // MARK: - Page
 
-  typealias PageSelectedEvent      = Recorded<Event<LineType>>
-  typealias PageDidTransitionEvent = Recorded<Event<LineType>>
+  private typealias PageSelectedEvent      = Recorded<Event<LineType>>
+  private typealias PageDidTransitionEvent = Recorded<Event<LineType>>
 
-  func simulatePageSelectedEvents(_ events: PageSelectedEvent...) {
-    testScheduler.createHotObservable(events)
+  private func simulatePageSelectedEvents(_ events: PageSelectedEvent...) {
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.pageSelected)
       .disposed(by: self.disposeBag)
   }
 
-  func simulatePageDidTransitionEvents(_ events: PageDidTransitionEvent...) {
-    testScheduler.createHotObservable(events)
+  private func simulatePageDidTransitionEvents(_ events: PageDidTransitionEvent...) {
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.pageDidTransition)
       .disposed(by: self.disposeBag)
   }
 
   // MARK: - Selected lines
 
-  typealias LineSelectedEvent   = Recorded<Event<Line>>
-  typealias LineDeselectedEvent = Recorded<Event<Line>>
+  private typealias LineSelectedEvent   = Recorded<Event<Line>>
+  private typealias LineDeselectedEvent = Recorded<Event<Line>>
 
-  func simulateLineSelectedEvents(_ events: LineSelectedEvent...) {
-    testScheduler.createHotObservable(events)
+  private func simulateLineSelectedEvents(_ events: LineSelectedEvent...) {
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.lineSelected)
       .disposed(by: self.disposeBag)
   }
 
-  func simulateLineDeselectedEvents(_ events: LineDeselectedEvent...) {
-    testScheduler.createHotObservable(events)
+  private func simulateLineDeselectedEvents(_ events: LineDeselectedEvent...) {
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.lineDeselected)
       .disposed(by: self.disposeBag)
   }
 
   // MARK: - Buttons
 
-  func simulateBookmarkButtonPressedEvents(at times: TestTime...) {
+  private func simulateBookmarkButtonPressedEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    testScheduler.createHotObservable(events)
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.bookmarkButtonPressed)
       .disposed(by: self.disposeBag)
   }
 
-  func simulateSearchButtonPressedEvents(at times: TestTime...) {
+  private func simulateSearchButtonPressedEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    testScheduler.createHotObservable(events)
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.searchButtonPressed)
       .disposed(by: self.disposeBag)
   }
 
   // MARK: - Alerts
 
-  func simulateApiAlertTryAgainButtonPressedEvents(at times: TestTime...) {
+  private func simulateApiAlertTryAgainButtonPressedEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    testScheduler.createHotObservable(events)
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.apiAlertTryAgainButtonPressed)
       .disposed(by: self.disposeBag)
   }
 
-  typealias BookmarkAlertNameEnteredEvent = Recorded<Event<String>>
+  private typealias BookmarkAlertNameEnteredEvent = Recorded<Event<String>>
 
-  func simulateBookmarkAlertNameEnteredEvents(_ events: BookmarkAlertNameEnteredEvent...) {
-    testScheduler.createHotObservable(events)
+  private func simulateBookmarkAlertNameEnteredEvents(_ events: BookmarkAlertNameEnteredEvent...) {
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.bookmarkAlertNameEntered)
       .disposed(by: self.disposeBag)
   }
 
   // MARK: - View controller lifecycle
 
-  func simulateViewDidAppearEvents(at times: TestTime...) {
+  private func simulateViewDidAppearEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    testScheduler.createHotObservable(events)
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.viewDidAppear)
       .disposed(by: self.disposeBag)
   }
 
-  func simulateViewDidDisappearEvents(at times: TestTime...) {
+  private func simulateViewDidDisappearEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    testScheduler.createHotObservable(events)
+    self.testScheduler.createHotObservable(events)
       .bind(to: self.viewModel.inputs.viewDidDisappear)
       .disposed(by: self.disposeBag)
   }
@@ -490,19 +499,9 @@ extension SearchCardViewModelTests {
   }
 }
 
-// MARK: - Factory
-
-private func availableLines(_ value: [Line]) -> ApiResponse<[Line]> {
-  return Observable.just(.success(value))
-}
-
-private func availableLines(_ error: ApiError) -> ApiResponse<[Line]> {
-  return Observable.just(.failure(error))
-}
-
 // MARK: - Asserts
 
-private typealias VoidEvent  = Recorded<Event<Void>>
+private typealias VoidEvent = Recorded<Event<Void>>
 
 private func XCTAssertEqual(_ lhs: [VoidEvent], _ rhs: [VoidEvent], file: StaticString = #file, line: UInt = #line) {
   XCTAssertEqual(lhs.count, rhs.count, file: file, line: line)
@@ -519,13 +518,6 @@ private func XCTAssertEqual(_ lhs: [LinesEvent], _ rhs: [LinesEvent], file: Stat
 
   for (lhsEvent, rhsEvent) in zip(lhs, rhs) {
     XCTAssertEqual(lhsEvent.time, rhsEvent.time, file: file, line: line)
-  }
-}
-
-private func XCTAssertEqual(_ lhs: [[Line]], _ rhs: [[Line]], file: StaticString = #file, line: UInt = #line) {
-  XCTAssertEqual(lhs.count, rhs.count, file: file, line: line)
-
-  for (lhsLines, rhsLines) in zip(lhs, rhs) {
-    XCTAssertEqual(lhsLines, rhsLines, file: file, line: line)
+    XCTAssertEqual(lhsEvent.value.element!, rhsEvent.value.element!, file: file, line: line)
   }
 }
