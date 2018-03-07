@@ -6,16 +6,18 @@
 import UIKit
 import MapKit
 import SnapKit
-import PromiseKit
 import RxSwift
 
-private typealias Constants = MapViewControllerConstants
+private typealias Pin      = MapViewControllerConstants.Pin
+private typealias Defaults = MapViewControllerConstants.Defaults
 
 class MapViewController: UIViewController {
 
   // MARK: - Properties
 
   let mapView = MKMapView()
+
+  private let viewModel: MapViewModelType = MapViewModel()
   private let disposeBag = DisposeBag()
 
   // MARK: - Init
@@ -27,7 +29,11 @@ class MapViewController: UIViewController {
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nil, bundle: nil)
     self.insetViewToShowMapLegalInfo()
+
     self.initMapBindings()
+    self.initLiveBindings()
+    self.initAlertBindings()
+    self.initViewControlerLifecycleBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -37,21 +43,47 @@ class MapViewController: UIViewController {
   // MARK: - Bindings
 
   private func initMapBindings() {
-    Managers.map.mapType
-      .map(toMKMapType)
-      .asDriver(onErrorDriveWith: .never())
+    self.rx.methodInvoked(#selector(MKMapViewDelegate.mapView(_:didChange:animated:)))
+      .map { [unowned self] _ in self.mapView.userTrackingMode }
+      .bind(to: self.viewModel.inputs.trackingModeChanged)
+      .disposed(by: self.disposeBag)
+
+    self.viewModel.outputs.mapType
       .drive(self.mapView.rx.mapType)
       .disposed(by: self.disposeBag)
 
-    Managers.map.vehicleLocations
-      .values()
-      .bind { [unowned self] in self.updateVehicleLocations($0) }
+    self.viewModel.outputs.mapCenter
+      .drive(onNext: { [unowned self] in self.setMapCenter($0, Defaults.zoom, animated: true) })
+      .disposed(by: self.disposeBag)
+  }
+
+  private func initLiveBindings() {
+    self.viewModel.outputs.vehicleLocations
+      .drive(onNext: { [unowned self] in self.updateVehicleLocations($0) })
+      .disposed(by: self.disposeBag)
+  }
+
+  private func initAlertBindings() {
+    self.viewModel.outputs.showLocationAuthorizationAlert
+      .drive(onNext: { _ in Managers.userLocation.requestWhenInUseAuthorization() })
       .disposed(by: self.disposeBag)
 
-    Managers.map.vehicleLocations
-      .errors()
-      .flatMapLatest(createAlert)
+    self.viewModel.outputs.showDeniedLocationAuthorizationAlert.asObservable()
+      .flatMapLatest(createDeniedLocalizationAuthorizationAlert)
       .subscribe()
+      .disposed(by: self.disposeBag)
+
+    self.viewModel.outputs.showApiErrorAlert.asObservable()
+      .flatMapLatest(createApiErrorAlert)
+      .subscribe()
+      .disposed(by: self.disposeBag)
+  }
+
+  private func initViewControlerLifecycleBindings() {
+    // simple binding would propagate also .onCompleted events
+    self.rx.methodInvoked(#selector(MapViewController.viewDidAppear(_:)))
+      .take(1)
+      .bind { [weak self] _ in self?.viewModel.inputs.viewDidAppear.onNext() }
       .disposed(by: self.disposeBag)
   }
 
@@ -67,9 +99,8 @@ class MapViewController: UIViewController {
     self.mapView.showsUserLocation = true
     self.mapView.isRotateEnabled   = false
     self.mapView.isPitchEnabled    = false
-    self.mapView.delegate          = self
 
-    self.centerDefaultLocation(animated: false)
+    self.mapView.delegate = self
 
     self.view.addSubview(self.mapView)
     self.mapView.snp.makeConstraints { make in
@@ -92,51 +123,49 @@ class MapViewController: UIViewController {
     }
   }
 
-  // MARK: Annotations
+  // MARK: - Map
 
-  private func getVehicleAnnotations() -> [VehicleAnnotation] {
+  private func setMapCenter(_ center: CLLocationCoordinate2D, _ radius: CLLocationDistance, animated: Bool) {
+    let currentCenter = self.mapView.centerCoordinate
+    let distance      = currentCenter.distance(from: center)
+
+    if distance > 10.0 { // meters
+      let region = MKCoordinateRegionMakeWithDistance(center, 2 * radius, 2 * radius)
+      self.mapView.setRegion(region, animated: animated)
+    }
+  }
+}
+
+// MARK: - Annotations
+
+extension MapViewController {
+
+  private var vehicleAnnotations: [VehicleAnnotation] {
     return self.mapView.annotations.flatMap { $0 as? VehicleAnnotation }
   }
 
   private func updateVehicleLocations(_ vehicles: [Vehicle]) {
-    let annotations = self.getVehicleAnnotations()
-    let updates     = MapAnnotationManager.calculateUpdates(for: annotations, with: vehicles)
+    let updates = MapAnnotationManager.calculateUpdates(for: self.vehicleAnnotations, with: vehicles)
 
-    // updated
-    UIView.animate(withDuration: Constants.Pin.animationDuration) {
+    self.mapView.addAnnotations(updates.createdAnnotations)
+    self.mapView.removeAnnotations(updates.removedAnnotations)
+
+    UIView.animate(withDuration: Pin.animationDuration) {
       for (vehicle, annotation) in updates.updatedAnnotations {
         annotation.angle      = CGFloat(vehicle.angle)
         annotation.coordinate = CLLocationCoordinate2D(latitude: vehicle.latitude, longitude: vehicle.longitude)
 
-        if let annotationView = self.mapView.view(for: annotation) as? VehicleAnnotationView {
-          annotationView.updateImage()
-        }
+        let annotationView = self.mapView.view(for: annotation) as? VehicleAnnotationView
+        annotationView?.updateImage()
       }
     }
-
-    // created, removed
-    self.mapView.addAnnotations(updates.createdAnnotations)
-    self.mapView.removeAnnotations(updates.removedAnnotations)
   }
+
 }
 
 // MARK: - MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
-
-  // MARK: - Tracking mode
-
-  func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
-    let authorization = Managers.userLocation.authorization
-    switch authorization {
-    case .denied:        LocationAlerts.showDeniedLocationAuthorizationAlert(in: self)
-    case .restricted:    LocationAlerts.showGloballyDeniedLocationAuthorizationAlert(in: self)
-    case .notDetermined: Managers.userLocation.requestAuthorization()
-    default: break
-    }
-  }
-
-  // MARK: - Annotations
 
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     switch annotation {
@@ -159,19 +188,24 @@ extension MapViewController: MKMapViewDelegate {
       return nil
     }
   }
+
+  func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+    // empty, just so we can use bindings
+  }
 }
 
 // MARK: - Helpers
 
-private func toMKMapType(_ mapType: MapType) -> MKMapType {
-  switch mapType {
-  case .standard:  return .standard
-  case .satellite: return .satellite
-  case .hybrid:    return .hybrid
+private func createDeniedLocalizationAuthorizationAlert(_ alert: DeniedLocationAuthorizationAlert) -> Observable<Void> {
+  switch alert {
+  case .deniedLocationAuthorization:
+    return LocationAlerts.showDeniedLocationAuthorizationAlert()
+  case .globallyDeniedLocationAuthorization:
+    return LocationAlerts.showGloballyDeniedLocationAuthorizationAlert()
   }
 }
 
-private func createAlert(_ error: ApiError) -> Observable<Void> {
+private func createApiErrorAlert(_ error: ApiError) -> Observable<Void> {
   switch error {
   case .noInternet:      return NetworkAlerts.showNoInternetAlert()
   case .invalidResponse,

@@ -5,7 +5,8 @@
 
 import UIKit
 import MapKit
-import PromiseKit
+import RxSwift
+import RxCoreLocation
 
 class UserLocationManager: NSObject, UserLocationManagerType {
 
@@ -19,22 +20,33 @@ class UserLocationManager: NSObject, UserLocationManagerType {
     return manager
   }()
 
-  // MARK: - LocationManager
+  // MARK: - UserLocationManagerType
 
-  func getCurrent() -> Promise<CLLocationCoordinate2D> {
-    return Promise { fulfill, reject in
-      if let location = self.locationManager.location?.coordinate {
-        fulfill(location)
+  var current: Observable<CLLocationCoordinate2D> {
+    return self.locationManager.rx.status
+      .flatMapLatest { authorization -> Observable<CLLocation?> in
+        switch authorization {
+        case .authorizedAlways,
+             .authorizedWhenInUse: return self.locationManager.rx.location
+        case .notDetermined:       throw UserLocationError.permissionNotDetermined
+        case .restricted,
+             .denied:              throw UserLocationError.permissionDenied
+        }
       }
-      else { reject(UserLocationError.unableToObtain) }
-    }
+      .map { location -> CLLocationCoordinate2D in
+        switch location?.coordinate {
+        case let .some(coordinate): return coordinate
+        case .none:                 throw UserLocationError.generalError
+        }
+      }
   }
 
-  var authorization: CLAuthorizationStatus {
-    return CLLocationManager.authorizationStatus()
+  var authorization: Observable<CLAuthorizationStatus> {
+    return self.locationManager.rx.didChangeAuthorization
+      .map { $0.status }
   }
 
-  func requestAuthorization() {
+  func requestWhenInUseAuthorization() {
     self.locationManager.requestWhenInUseAuthorization()
   }
 }

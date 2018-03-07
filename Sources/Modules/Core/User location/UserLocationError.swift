@@ -5,6 +5,12 @@
 
 enum UserLocationError: Error {
 
-  /// Unable to obtain user location
-  case unableToObtain
+  // User has not yet made a choice whether to allow to use his location
+  case permissionNotDetermined
+
+  // User has denied location authorization
+  case permissionDenied
+
+  /// E.g. GPS error/timeout
+  case generalError
 }

@@ -15,6 +15,8 @@ target 'Wroclive' do
   pod 'ReachabilitySwift', '~> 4.1'
   pod 'RxReachability',    :git => 'https://github.com/ivanbruel/RxReachability.git'
 
+  pod 'RxCoreLocation', '~> 1.0.0'
+
   pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
 
   pod 'PromiseKit',           '~> 4.5'

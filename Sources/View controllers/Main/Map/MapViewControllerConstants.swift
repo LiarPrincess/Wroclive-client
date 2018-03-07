@@ -6,19 +6,16 @@
 import UIKit
 import MapKit
 
-struct MapViewControllerConstants {
+enum MapViewControllerConstants {
 
-  struct Pin {
+  enum Pin {
     static let imageSize:              CGSize       = CGSize(width: 50.0, height: 50.0)
     static let minAngleChangeToRedraw: CGFloat      = 3.0
     static let animationDuration:      TimeInterval = 1.5
   }
 
   struct Defaults {
-    static let cityCenter = CLLocationCoordinate2D(latitude: 51.109_524, longitude: 17.032_564)
-    static let cityRadius = CLLocationDistance(25_000.0) // m
-    static let regionSize = CLLocationDistance( 3_500.0) // m
-
-    static let minDegChangeToUpdate: CLLocationDegrees = 0.01
+    static let location = CLLocationCoordinate2D(latitude: 51.109_524, longitude: 17.032_564)
+    static let zoom     = CLLocationDistance(3_500.0) // m
   }
 }

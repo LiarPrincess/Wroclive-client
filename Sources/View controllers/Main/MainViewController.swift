@@ -7,6 +7,7 @@ import UIKit
 import MapKit
 import SnapKit
 import PromiseKit
+import RxSwift
 
 private typealias Constants = MainViewControllerConstants
 
@@ -14,7 +15,7 @@ class MainViewController: UIViewController {
 
   // MARK: - Properties
 
-  let mapViewController: MapViewController = MapViewController()
+  let mapViewController = MapViewController()
 
   let toolbar = UIToolbar()
   let userTrackingButton  = MKUserTrackingBarButtonItem()
@@ -36,21 +37,6 @@ class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
-  }
-
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    self.requestLocationAuthorizationIfNeeded()
-  }
-
-  private func requestLocationAuthorizationIfNeeded() {
-    let authorization = Managers.userLocation.authorization
-    guard authorization == .notDetermined else { return }
-
-    let delay = AppInfo.Timings.locationAuthorizationPromptDelay
-    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-      Managers.userLocation.requestAuthorization()
-    }
   }
 
   // MARK: - Actions

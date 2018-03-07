@@ -5,16 +5,16 @@
 
 import UIKit
 import MapKit
-import PromiseKit
+import RxSwift
 
 protocol UserLocationManagerType {
 
   /// Returns user location
-  func getCurrent() -> Promise<CLLocationCoordinate2D>
+  var current: Observable<CLLocationCoordinate2D> { get }
 
   /// Current authorization status
-  var authorization: CLAuthorizationStatus { get }
+  var authorization: Observable<CLAuthorizationStatus> { get }
 
-  /// Request authorization
-  func requestAuthorization()
+  /// Request when in use authorization
+  func requestWhenInUseAuthorization()
 }

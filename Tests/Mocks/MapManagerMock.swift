@@ -3,40 +3,81 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
+import XCTest
 import Foundation
-import RxSwift
 import Result
+import RxSwift
+import RxTest
 @testable import Wroclive
+
+// swiftlint:disable identifier_name
+// swiftlint:disable implicitly_unwrapped_optional
 
 class MapManagerMock: MapManagerType {
 
   // MARK: - Map type
 
-  private(set) var setMapTypeCount = 0
+  fileprivate var mapTypeCallCount    = 0
+  fileprivate var setMapTypeCallCount = 0
 
-  let mapTypeSource = Variable(MapType.standard)
-  lazy var mapType: Observable<MapType> = self.mapTypeSource.asObservable()
+  var _mapType: TestableObservable<MapType>!
+
+  var mapType: Observable<MapType> {
+    self.mapTypeCallCount += 1
+    return self._mapType.asObservable()
+  }
 
   func setMapType(_ mapType: MapType) {
-    self.setMapTypeCount += 1
+    self.setMapTypeCallCount += 1
   }
 
   // MARK: - Tracking
 
-  private(set) var trackedLines = [[Line]]()
+  fileprivate var vehicleLocationsCallCount  = 0
+  fileprivate var startTrackingCallCount     = 0
+  fileprivate var resumeTrackingCallCount    = 0
+  fileprivate var pauseTrackingCallCount     = 0
 
-  private(set) var startTrackingCount  = 0
-  private(set) var resumeTrackingCount = 0
-  private(set) var pauseTrackingCount  = 0
+  var _vehicleLocations: TestableObservable<Result<[Vehicle], ApiError>>!
+  private(set) var _trackedLines = [Line]()
 
-  let vehicleLocationsSource = Variable(Result<[Vehicle], ApiError>.success([Vehicle]()))
-  lazy var vehicleLocations: ApiResponse<[Vehicle]> = self.vehicleLocationsSource.asObservable()
-
-  func startTracking(_ lines: [Line]) {
-    self.startTrackingCount += 1
-    self.trackedLines.append(lines)
+  var vehicleLocations: ApiResponse<[Vehicle]> {
+    self.vehicleLocationsCallCount += 1
+    return self._vehicleLocations.asObservable()
   }
 
-  func resumeTracking() { self.resumeTrackingCount += 1 }
-  func pauseTracking()  { self.pauseTrackingCount  += 1 }
+  func startTracking(_ lines: [Line]) {
+    self.startTrackingCallCount += 1
+    self._trackedLines = lines
+  }
+
+  func resumeTracking() { self.resumeTrackingCallCount += 1 }
+  func pauseTracking()  { self.pauseTrackingCallCount  += 1 }
+}
+
+func XCTAssertOperationCount(_ manager:  MapManagerMock,
+                             mapType:    Int = 0,
+                             setMapType: Int = 0,
+                             file:       StaticString = #file,
+                             line:       UInt         = #line) {
+  XCTAssertEqual(manager.mapTypeCallCount,    mapType,    file: file, line: line)
+  XCTAssertEqual(manager.setMapTypeCallCount, setMapType, file: file, line: line)
+}
+
+func XCTAssertOperationCount(_ manager:        MapManagerMock,
+                             vehicleLocations: Int = 0,
+                             file:             StaticString = #file,
+                             line:             UInt         = #line) {
+  XCTAssertEqual(manager.vehicleLocationsCallCount, vehicleLocations, file: file, line: line)
+}
+
+func XCTAssertOperationCount(_ manager:      MapManagerMock,
+                             startTracking:  Int = 0,
+                             resumeTracking: Int = 0,
+                             pauseTracking:  Int = 0,
+                             file:           StaticString = #file,
+                             line:           UInt         = #line) {
+  XCTAssertEqual(manager.startTrackingCallCount,  startTracking,  file: file, line: line)
+  XCTAssertEqual(manager.resumeTrackingCallCount, resumeTracking, file: file, line: line)
+  XCTAssertEqual(manager.pauseTrackingCallCount,  pauseTracking,  file: file, line: line)
 }

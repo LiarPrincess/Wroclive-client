@@ -88,7 +88,7 @@ final class MapAnnotationManagerTests: XCTestCase {
 // MARK: - Vehicle init
 
 extension Vehicle {
-  init(id: String, num: Double) {
+  fileprivate init(id: String, num: Double) {
     let line = Line(name: "line", type: .tram, subtype: .regular)
     self.init(id: id, line: line, latitude: num, longitude: num, angle: num)
   }
