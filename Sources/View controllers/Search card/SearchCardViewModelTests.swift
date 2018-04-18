@@ -102,9 +102,9 @@ final class SearchCardViewModelTests: XCTestCase {
     XCTAssertEqual(observer.events, expectedEvents)
   }
 
-  // MARK: - Lines - Appearing
+  // MARK: - Lines - Did appear
 
-  func test_appearing_updatesLines() {
+  func test_didAppear_updatesLines() {
     self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
@@ -122,7 +122,7 @@ final class SearchCardViewModelTests: XCTestCase {
     XCTAssertOperationCount(self.apiManager, availableLines: 1)
   }
 
-  func test_appearing_withoutLines_showsAlert() {
+  func test_didAppear_withoutLines_showsAlert() {
     self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
@@ -140,7 +140,7 @@ final class SearchCardViewModelTests: XCTestCase {
     XCTAssertOperationCount(self.apiManager, availableLines: 1)
   }
 
-  func test_appearing_withoutInternet_showsAlert() {
+  func test_didAppear_withoutInternet_showsAlert() {
     self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
@@ -158,7 +158,7 @@ final class SearchCardViewModelTests: XCTestCase {
     XCTAssertOperationCount(self.apiManager, availableLines: 1)
   }
 
-  func test_appearing_withApiError_showsAlert() {
+  func test_didAppear_withApiError_showsAlert() {
     self.searchManager._state = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 

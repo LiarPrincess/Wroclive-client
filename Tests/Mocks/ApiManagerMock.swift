@@ -37,7 +37,7 @@ func XCTAssertOperationCount(_ manager:        ApiManagerMock,
                              availableLines:   Int = 0,
                              vehicleLocations: Int = 0,
                              file:             StaticString = #file,
-                             line:             UInt = #line) {
+                             line:             UInt         = #line) {
   XCTAssertEqual(manager.availableLinesCallCount,   availableLines,   file: file, line: line)
   XCTAssertEqual(manager.vehicleLocationsCallCount, vehicleLocations, file: file, line: line)
 }

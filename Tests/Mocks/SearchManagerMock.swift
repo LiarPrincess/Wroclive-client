@@ -31,7 +31,7 @@ func XCTAssertOperationCount(_ manager: SearchManagerMock,
                              get:  Int,
                              save: Int,
                              file: StaticString = #file,
-                             line: UInt = #line) {
+                             line: UInt         = #line) {
   XCTAssertEqual(manager.getStateCount, get, file: file, line: line)
   XCTAssertEqual(manager.saveCount,    save, file: file, line: line)
 }

@@ -42,7 +42,7 @@ func XCTAssertOperationCount(_ manager: BookmarksManagerMock,
                              get:  Int,
                              save: Int,
                              file: StaticString = #file,
-                             line: UInt = #line) {
+                             line: UInt         = #line) {
   XCTAssertEqual(manager.addCount,   add, file: file, line: line)
   XCTAssertEqual(manager.getCount,   get, file: file, line: line)
   XCTAssertEqual(manager.saveCount, save, file: file, line: line)

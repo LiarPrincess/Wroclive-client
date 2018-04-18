@@ -13,7 +13,7 @@ protocol NetworkManagerType {
   /// Current network status
   var reachability: Observable<Reachability.Connection> { get }
 
-  /// Send request expecting JSON response or error
+  /// Send request expecting single data or error
   func request(_ url:      URLConvertible,
                method:     HTTPMethod,
                parameters: Parameters?,
