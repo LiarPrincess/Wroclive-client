@@ -9,7 +9,6 @@ class Environment {
   var device:       DeviceManagerType
   var network:      NetworkManagerType
   var userLocation: UserLocationManagerType
-  var userDefaults: UserDefaultsManagerType
   var documents:    DocumentsManagerType
   var debug:        DebugManagerType
 
@@ -24,7 +23,6 @@ class Environment {
     device:       DeviceManagerType       = DeviceManager(),
     network:      NetworkManagerType      = NetworkManager(),
     userLocation: UserLocationManagerType = UserLocationManager(),
-    userDefaults: UserDefaultsManagerType = UserDefaultsManager(),
     documents:    DocumentsManagerType    = CachedDocumentsManager(DocumentsManager()),
     debug:        DebugManagerType        = DebugManager(),
 
@@ -38,7 +36,6 @@ class Environment {
     self.device        = device
     self.network       = network
     self.userLocation  = userLocation
-    self.userDefaults  = userDefaults
     self.documents     = documents
     self.debug         = debug
 

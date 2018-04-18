@@ -37,11 +37,6 @@
 "Settings_Title"  = "Ustawienia";
 "Settings_Footer" = "Dane uzyskano dzięki uprzejmości MPK Wrocław";
 
-"Settings_Table_MapType_Header"    = "Typ mapy";
-"Settings_Table_MapType_Standard"  = "Mapa";
-"Settings_Table_MapType_Satellite" = "Satelitarna";
-"Settings_Table_MapType_Hybrid"    = "Transport";
-
 "Settings_Table_General_Header" = "Ogólne";
 "Settings_Table_General_Share"  = "Udostępnij";
 "Settings_Table_General_Rate"   = "Oceń";

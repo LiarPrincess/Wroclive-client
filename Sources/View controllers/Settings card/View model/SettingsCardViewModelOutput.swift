@@ -10,11 +10,6 @@ import RxCocoa
 protocol SettingsCardViewModelOutput {
 
   /**
-   - from manager
-   */
-  var mapType: Driver<MapType> { get }
-
-  /**
    - custom
    */
   var items: Driver<[SettingsSection]> { get }

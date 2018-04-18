@@ -7,16 +7,6 @@ import RxSwift
 
 protocol MapManagerType {
 
-  // MARK: - Map type
-
-  /// Preferred map type
-  var mapType: Observable<MapType> { get }
-
-  /// Change preferred map type
-  func setMapType(_ mapType: MapType)
-
-  // MARK: - Tracking
-
   /// Tracking results
   var vehicleLocations: ApiResponse<[Vehicle]> { get }
 

@@ -28,7 +28,6 @@ class SettingsCard: CardPanel {
 
   lazy var tableView            = UITableView(frame: .zero, style: .grouped)
   lazy var tableViewDataSource  = SettingsCard.createDataSource(self)
-  lazy var tableViewMapTypeCell = SettingsMapTypeCell(style: .default, reuseIdentifier: nil)
 
   // MARK: - Card panel
 
@@ -41,7 +40,6 @@ class SettingsCard: CardPanel {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
 
-    self.initMapTypeBindings()
     self.initTableViewBindings()
     self.initCellButtonsBindings()
   }
@@ -51,16 +49,6 @@ class SettingsCard: CardPanel {
   }
 
   // MARK: - Bindings
-
-  private func initMapTypeBindings() {
-    self.viewModel.outputs.mapType
-      .drive(onNext: { [unowned self] in self.tableViewMapTypeCell.selectedValue = $0 })
-      .disposed(by: self.disposeBag)
-
-    self.tableViewMapTypeCell.rx.selectedValueChanged
-      .bind(to: self.viewModel.inputs.mapTypeSelected)
-      .disposed(by: self.disposeBag)
-  }
 
   private func initTableViewBindings() {
     self.tableView.rx.setDelegate(self)
@@ -96,8 +84,6 @@ class SettingsCard: CardPanel {
     return RxTableViewDataSource(
       configureCell: { dataSource, tableView, indexPath, model -> UITableViewCell in
         switch model {
-        case .mapType:
-          return card.tableViewMapTypeCell
         case .share, .rate, .about:
           let lastItemIndex = dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
 

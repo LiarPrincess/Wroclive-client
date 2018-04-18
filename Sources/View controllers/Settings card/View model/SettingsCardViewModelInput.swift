@@ -8,6 +8,5 @@ import RxSwift
 import RxCocoa
 
 protocol SettingsCardViewModelInput {
-  var mapTypeSelected: AnyObserver<MapType>   { get }
-  var itemSelected:    AnyObserver<IndexPath> { get }
+  var itemSelected: AnyObserver<IndexPath> { get }
 }

@@ -48,10 +48,6 @@ class MapViewController: UIViewController {
       .bind(to: self.viewModel.inputs.trackingModeChanged)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.mapType
-      .drive(self.mapView.rx.mapType)
-      .disposed(by: self.disposeBag)
-
     self.viewModel.outputs.mapCenter
       .drive(onNext: { [unowned self] in self.setMapCenter($0, Defaults.zoom, animated: true) })
       .disposed(by: self.disposeBag)
@@ -99,6 +95,7 @@ class MapViewController: UIViewController {
     self.mapView.showsUserLocation = true
     self.mapView.isRotateEnabled   = false
     self.mapView.isPitchEnabled    = false
+    self.mapView.mapType           = .standard
 
     self.mapView.delegate = self
 

@@ -23,11 +23,8 @@ class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutputs {
   private let _viewDidAppear       = PublishSubject<Void>()
 
   // hot observables:
-  private lazy var _mapType:               Observable<MapType>               = Managers.map.mapType.share()
   private lazy var _locationAuthorization: Observable<CLAuthorizationStatus> = Managers.userLocation.authorization.share()
   private lazy var _vehicleLocations:      ApiResponse<[Vehicle]>            = Managers.map.vehicleLocations.share()
-
-  private let disposeBag = DisposeBag()
 
   // MARK: - Input
 
@@ -35,10 +32,6 @@ class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutputs {
   lazy var viewDidAppear:       AnyObserver<Void>               = self._viewDidAppear.asObserver()
 
   // MARK: - Output
-
-  lazy var mapType: Driver<MKMapType> = self._mapType
-    .map(toMKMapType)
-    .asDriver(onErrorDriveWith: .never())
 
   lazy var mapCenter: Driver<CLLocationCoordinate2D> = {
     let viewDidAppearWithAuthorization = self._viewDidAppear
@@ -90,14 +83,6 @@ class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutputs {
 }
 
 // MARK: - Helpers
-
-private func toMKMapType(_ mapType: MapType) -> MKMapType {
-  switch mapType {
-  case .standard:  return .standard
-  case .satellite: return .satellite
-  case .hybrid:    return .hybrid
-  }
-}
 
 private func toSingleUserLocationIfAuthorized(_ authorization: CLAuthorizationStatus) -> Observable<CLLocationCoordinate2D> {
   switch authorization {

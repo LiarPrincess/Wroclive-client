@@ -421,29 +421,6 @@ public struct Localizable {
         /// - **pl**: Udostępnij
         static var share: String { return localizedString("Settings_Table_General_Share") }
       }
-
-      enum MapType {
-
-        /// Map type
-        /// - **en**: Map type
-        /// - **pl**: Typ mapy
-        static var header: String { return localizedString("Settings_Table_MapType_Header") }
-
-        /// Transport
-        /// - **en**: Transport
-        /// - **pl**: Transport
-        static var hybrid: String { return localizedString("Settings_Table_MapType_Hybrid") }
-
-        /// Satellite
-        /// - **en**: Satellite
-        /// - **pl**: Satelitarna
-        static var satellite: String { return localizedString("Settings_Table_MapType_Satellite") }
-
-        /// Map
-        /// - **en**: Map
-        /// - **pl**: Mapa
-        static var standard: String { return localizedString("Settings_Table_MapType_Standard") }
-      }
     }
 
     enum Theme {

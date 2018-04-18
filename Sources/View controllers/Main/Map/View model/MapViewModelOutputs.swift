@@ -11,11 +11,6 @@ import RxCocoa
 protocol MapViewModelOutputs {
 
   /**
-   - from manager
-   */
-  var mapType: Driver<MKMapType> { get }
-
-  /**
    - view shown -> is authorized
    - changed authorization -> from not determined -> is authorized
    default: city center
