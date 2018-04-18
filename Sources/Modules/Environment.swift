@@ -5,44 +5,41 @@
 
 class Environment {
 
-  var bundle:       BundleManagerType
-  var device:       DeviceManagerType
+  var bundle: BundleManagerType
+  var device: DeviceManagerType
+
+  var theme:   ThemeManagerType
+  var storage: StorageManagerType
+
+  var api:          ApiManagerType
+  var live:         LiveManagerType
   var network:      NetworkManagerType
   var userLocation: UserLocationManagerType
-  var documents:    DocumentsManagerType
-  var debug:        DebugManagerType
 
-  var theme:     ThemeManagerType
-  var api:       ApiManagerType
-  var search:    SearchManagerType
-  var bookmarks: BookmarksManagerType
-  var live:      LiveManagerType
+  var debug: DebugManagerType
 
   init(
     bundle:       BundleManagerType       = BundleManager(),
     device:       DeviceManagerType       = DeviceManager(),
+    theme:        ThemeManagerType        = ThemeManager(),
+    storage:      StorageManagerType      = StorageManager(),
+    api:          ApiManagerType          = ApiManager(),
+    live:         LiveManagerType         = LiveManager(),
     network:      NetworkManagerType      = NetworkManager(),
     userLocation: UserLocationManagerType = UserLocationManager(),
-    documents:    DocumentsManagerType    = CachedDocumentsManager(DocumentsManager()),
-    debug:        DebugManagerType        = DebugManager(),
+    debug:        DebugManagerType        = DebugManager()) {
 
-    theme:     ThemeManagerType     = ThemeManager(),
-    api:       ApiManagerType       = ApiManager(),
-    search:    SearchManagerType    = SearchManager(),
-    bookmarks: BookmarksManagerType = BookmarksManager(),
-    live:      LiveManagerType      = LiveManager()) {
+    self.bundle = bundle
+    self.device = device
 
-    self.bundle        = bundle
-    self.device        = device
-    self.network       = network
-    self.userLocation  = userLocation
-    self.documents     = documents
-    self.debug         = debug
+    self.theme   = theme
+    self.storage = storage
 
-    self.theme     = theme
-    self.api       = api
-    self.search    = search
-    self.bookmarks = bookmarks
-    self.live      = live
+    self.api          = api
+    self.live         = live
+    self.network      = network
+    self.userLocation = userLocation
+
+    self.debug = debug
   }
 }

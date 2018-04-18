@@ -5,7 +5,7 @@
 
 import UIKit
 
-class DocumentsManager: DocumentsManagerType {
+class DocumentManager {
 
   func read(_ document: Document) -> Any? {
     do {
@@ -13,8 +13,7 @@ class DocumentsManager: DocumentsManagerType {
       let data = try Data(contentsOf: url)
       return try self.decode(document, from: data)
     }
-    catch { }
-    return nil
+    catch { return nil }
   }
 
   func write(_ documentData: DocumentData) {

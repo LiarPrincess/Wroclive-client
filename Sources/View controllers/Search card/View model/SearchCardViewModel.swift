@@ -87,7 +87,7 @@ class SearchCardViewModel: SearchCardViewModelType, SearchCardViewModelInput, Se
   // MARK: - Init
 
   init() {
-    let state = Managers.search.getState()
+    let state = Managers.storage.searchCardState
 
     self.page = Observable.merge(self._pageSelected, self._pageDidTransition)
       .startWith(state.page)
@@ -107,7 +107,7 @@ class SearchCardViewModel: SearchCardViewModelType, SearchCardViewModelInput, Se
     self._bookmarkAlertNameEntered
       .withLatestFrom(self.selectedLines) { (name: $0, lines: $1) }
       .map  { Bookmark(name: $0.name, lines: $0.lines) }
-      .bind { Managers.bookmarks.add($0) }
+      .bind { Managers.storage.addBookmark($0) }
       .disposed(by: self.disposeBag)
 
     self._searchButtonPressed
@@ -119,7 +119,7 @@ class SearchCardViewModel: SearchCardViewModelType, SearchCardViewModelInput, Se
       .withLatestFrom(self.page) { $1 }
       .withLatestFrom(self.selectedLines) { (page: $0, selectedLines: $1) }
       .map  { SearchCardState(page: $0.page, selectedLines: $0.selectedLines) }
-      .bind { Managers.search.save($0) }
+      .bind { Managers.storage.saveSearchCardState($0) }
       .disposed(by: self.disposeBag)
   }
 

@@ -36,7 +36,7 @@ class BookmarksCardViewModel: BookmarksCardViewModelType, BookmarksCardViewModel
   // MARK: - Output
 
   lazy var bookmarks: Driver<[BookmarksSection]> = {
-    let defaultValue    = [BookmarksSection(model: "", items: Managers.bookmarks.get())]
+    let defaultValue    = [BookmarksSection(model: "", items: Managers.storage.bookmarks)]
     let moveOperation   = self._itemMoved.map   { RxSectionOperation.move(from: $0.sourceIndex, to: $0.destinationIndex) }
     let deleteOperation = self._itemDeleted.map { RxSectionOperation.remove(indexPath: $0) }
 
@@ -68,7 +68,7 @@ class BookmarksCardViewModel: BookmarksCardViewModelType, BookmarksCardViewModel
     self.bookmarks
       .skip(1) // skip initial binding
       .map(toBookmarks)
-      .drive(onNext: { Managers.bookmarks.save($0) })
+      .drive(onNext: { Managers.storage.saveBookmarks($0) })
       .disposed(by: self.disposeBag)
 
     self._itemSelected
