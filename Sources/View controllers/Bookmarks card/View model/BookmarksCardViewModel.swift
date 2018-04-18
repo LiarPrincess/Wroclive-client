@@ -10,27 +10,12 @@ import RxCocoa
 private typealias TextStyles   = BookmarksCardConstants.TextStyles
 private typealias Localization = Localizable.Bookmarks
 
-protocol BookmarksCardViewModelInput {
-  var itemSelected: AnyObserver<IndexPath>      { get }
-  var itemMoved:    AnyObserver<ItemMovedEvent> { get }
-  var itemDeleted:  AnyObserver<IndexPath>      { get }
-
-  var editButtonPressed: AnyObserver<Void> { get }
+protocol BookmarksCardViewModelType {
+  var inputs:  BookmarksCardViewModelInput  { get }
+  var outputs: BookmarksCardViewModelOutput { get }
 }
 
-protocol BookmarksCardViewModelOutput {
-  var bookmarks: Driver<[BookmarksSection]> { get }
-
-  var isTableViewVisible:   Driver<Bool> { get }
-  var isPlaceholderVisible: Driver<Bool> { get }
-
-  var isEditing:      Driver<Bool>               { get }
-  var editButtonText: Driver<NSAttributedString> { get }
-
-  var shouldClose: Driver<Void> { get }
-}
-
-class BookmarksCardViewModel: BookmarksCardViewModelInput, BookmarksCardViewModelOutput {
+class BookmarksCardViewModel: BookmarksCardViewModelType, BookmarksCardViewModelInput, BookmarksCardViewModelOutput {
 
   // MARK: - Properties
 

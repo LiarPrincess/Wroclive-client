@@ -13,7 +13,7 @@ class BookmarksCard: CardPanel {
 
   // MARK: - Properties
 
-  private let viewModel: BookmarksCardViewModel
+  private let viewModel: BookmarksCardViewModelType
   private let disposeBag = DisposeBag()
 
   var headerView: UIVisualEffectView = {

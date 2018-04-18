@@ -11,42 +11,35 @@ import RxCocoa
 protocol MapViewModelOutputs {
 
   /**
-   Scenarios:
-   1. from manager
+   - from manager
    */
   var mapType: Driver<MKMapType> { get }
 
   /**
-   Scenarios:
-   1. user opened app -> view shown -> is authorized
-   2. user opened app -> user changed location authorization -> from not determined -> is authorized
-
-   Start with: default
+   - view shown -> is authorized
+   - changed authorization -> from not determined -> is authorized
+   default: city center
    */
   var mapCenter: Driver<CLLocationCoordinate2D> { get }
 
   /**
-   Scenarios:
-   1. vehicles from manager -> filter data
+   - from manager -> filter values
    */
   var vehicleLocations: Driver<[Vehicle]> { get }
 
   /**
-   Scenarios:
-   1. user opened app -> view shown -> not determined authorization
-   2. user changed tracking -> not determined authorization
+   - view shown -> not determined authorization
+   - changed tracking mode -> not determined authorization
    */
   var showLocationAuthorizationAlert: Driver<Void> { get }
 
   /**
-   Scenarios:
-   1. user changed tracking -> denied authorization
+   - changed tracking mode -> denied authorization
    */
   var showDeniedLocationAuthorizationAlert: Driver<DeniedLocationAuthorizationAlert> { get }
 
   /**
-   Scenarios:
-   1. vehicles from manager -> filter errors
+   - vehicles from manager -> filter errors
    */
   var showApiErrorAlert: Driver<ApiError> { get }
 }
