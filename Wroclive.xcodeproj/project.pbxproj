@@ -839,11 +839,11 @@
 				90E8A6C41F4CD42000CE5AE9 /* Device */,
 				90AF2BD21EE9DDE4006E61D6 /* Theme */,
 				905070592087EB30007DDA80 /* Storage */,
+				905D71A01FE1C5BD006D1DB6 /* Api */,
 				90546BEC1F6AF21B00E8E75F /* Live */,
 				905D71911FE1C4F6006D1DB6 /* Network */,
 				905D718A1FE1C443006D1DB6 /* User location */,
 				906C40552014C53900E32571 /* Debug */,
-				90EBB4391F97C7CD00291B1E /* Redo */,
 				9024C6101F9667E600025503 /* Environment.swift */,
 				9024C6121F96699500025503 /* AppEnvironment.swift */,
 			);
@@ -1336,14 +1336,6 @@
 				90E8A6C71F4CD49800CE5AE9 /* DeviceManager.swift */,
 			);
 			path = Device;
-			sourceTree = "<group>";
-		};
-		90EBB4391F97C7CD00291B1E /* Redo */ = {
-			isa = PBXGroup;
-			children = (
-				905D71A01FE1C5BD006D1DB6 /* Api */,
-			);
-			path = Redo;
 			sourceTree = "<group>";
 		};
 		90FAF06F1F35D8C20040E0AE /* Annotations */ = {

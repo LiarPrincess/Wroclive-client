@@ -6,41 +6,19 @@
 import Foundation
 import Alamofire
 
-class VehicleLocationsEndpoint: Endpoint {
+class AvailableLinesEndpoint: Endpoint {
 
-  let url:               URLConvertible    = AppInfo.Endpoints.locations
-  let method:            HTTPMethod        = .post
+  let url:               URLConvertible    = AppInfo.Endpoints.lines
+  let method:            HTTPMethod        = .get
   let parameterEncoding: ParameterEncoding = JSONEncoding.default
   let headers:           HTTPHeaders?      = ["Accept": "application/json"]
 
-  typealias ParameterData = [Line]
-  typealias ResponseData  = [Vehicle]
+  typealias ParameterData = Void
+  typealias ResponseData  = [Line]
 
-  func encodeParameters(_ data: [Line]) -> Parameters? {
-    var parameters      = Parameters()
-    parameters["lines"] = data.map(encodeLine)
-    return parameters
-  }
-
-  func decode(_ data: Data) throws -> ResponseData {
+  func decodeResponse(_ data: Data) throws -> ResponseData {
     let model = try self.parseJSON(ResponseModel.self, from: data)
-    return try model.data.flatMap(parseVehicleLocations)
-  }
-}
-
-// MARK: - Request
-
-private func encodeLine(_ line: Line) -> [String:Any] {
-  return [
-    "name": line.name,
-    "type": encodeLineType(line.type)
-  ]
-}
-
-private func encodeLineType(_ type: LineType) -> String {
-  switch type {
-  case .bus:  return "bus"
-  case .tram: return "tram"
+    return try model.data.map(parseLine)
   }
 }
 
@@ -48,31 +26,12 @@ private func encodeLineType(_ type: LineType) -> String {
 
 private struct ResponseModel: Decodable {
   let timestamp: String
-  let data:      [LineLocationModel]
-
-  struct LineLocationModel: Decodable {
-    let line:     LineModel
-    let vehicles: [VehicleModel]
-  }
+  let data:      [LineModel]
 
   struct LineModel: Decodable {
     let name:    String
     let type:    String
     let subtype: String
-  }
-
-  struct VehicleModel: Decodable {
-    let id:    String
-    let lat:   Double
-    let lng:   Double
-    let angle: Double
-  }
-}
-
-private func parseVehicleLocations(_ model: ResponseModel.LineLocationModel) throws -> [Vehicle] {
-  let line = try parseLine(model.line)
-  return model.vehicles.map {
-    Vehicle(id: $0.id, line: line, latitude: $0.lat, longitude: $0.lng, angle: $0.angle)
   }
 }
 

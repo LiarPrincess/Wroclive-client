@@ -18,7 +18,7 @@ protocol Endpoint {
   func encodeParameters(_ data: ParameterData) -> Parameters?
 
   associatedtype ResponseData
-  func decode(_ data: Data) throws -> ResponseData
+  func decodeResponse(_ data: Data) throws -> ResponseData
 }
 
 extension Endpoint {
@@ -31,10 +31,23 @@ extension Endpoint {
         encoding:   self.parameterEncoding,
         headers:    self.headers
       )
-      .map(self.decode)
+      .map(self.decodeResponse)
       .map { .success($0) }
-      .catchError { toApiError($0).map { .failure($0) }}
+      .catchError { self.toApiError($0).map { .failure($0) }}
       .share(replay: 1)
+  }
+
+  private func toApiError(_ error: Error) -> Observable<ApiError> {
+    switch error {
+    case ApiError.invalidResponse: return Observable.just(.invalidResponse)
+    default:
+      return Managers.network.reachability.map {
+        switch $0 {
+        case .none:            return .noInternet
+        case .wifi, .cellular: return .generalError
+        }
+      }
+    }
   }
 
   // Just an commonly used method
@@ -45,19 +58,6 @@ extension Endpoint {
     }
     catch {
       throw ApiError.invalidResponse
-    }
-  }
-}
-
-private func toApiError(_ error: Error) -> Observable<ApiError> {
-  switch error {
-  case ApiError.invalidResponse: return Observable.just(.invalidResponse)
-  default:
-    return Managers.network.reachability.map {
-      switch $0 {
-      case .none:            return .noInternet
-      case .wifi, .cellular: return .generalError
-      }
     }
   }
 }
