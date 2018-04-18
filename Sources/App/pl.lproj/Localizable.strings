@@ -79,28 +79,3 @@
 "Alert_Network_NoInternet_Message"  = "Sprawdź swoje połączenie z internetem.";
 "Alert_Network_NoInternet_Title"    = "Nie można pobrać danych";
 "Alert_Network_NoInternet_TryAgain" = "Spróbuj ponownie";
-
-/* Unused */
-
-"Search_BookmarkAdded_Title"   = "Zakładka dodana!";
-"Search_BookmarkAdded_Caption" = "Użyj <star>, by zobaczyć wszystkie zapisane zakładki.";
-
-"Settings_Theme_Bus"  = "Autobusy";
-"Settings_Theme_Tint" = "Interfejs";
-"Settings_Theme_Tram" = "Tramwaje";
-
-"Presentation_InAppPurchase_Bookmarks_Caption" = "Zapisz więcej niż 2 zakładki, by szybciej poruszać się po mieście.";
-"Presentation_InAppPurchase_Bookmarks_Title"   = "Nielimitowane zakładki";
-"Presentation_InAppPurchase_Colors_Caption"    = "Dopasuj Wroclive do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!";
-"Presentation_InAppPurchase_Colors_Title"      = "Personalizacja";
-"Presentation_InAppPurchase_Restore_Link"      = "Odtwórz";
-"Presentation_InAppPurchase_Restore_Text"      = "Już kupione?";
-"Presentation_InAppPurchase_Upgrade"           = "Kup 4,99 zł";
-
-"Presentation_Tutorial_Page0_Caption" = "By wyszukać pojazdy użyj <search>, wybierz linie, a następnie kliknij “Szukaj”.";
-"Presentation_Tutorial_Page0_Title"   = "Wyszukiwanie pojazdów";
-"Presentation_Tutorial_Page1_Caption" = "By dodać zakładkę wybierz linie, kliknij <star> i wprowadź nazwę nowej zakładki.";
-"Presentation_Tutorial_Page1_Title"   = "Dodawanie zakładek";
-"Presentation_Tutorial_Page2_Caption" = "Użyj <star> by zobaczyć wszystkie zapisane zakładki.";
-"Presentation_Tutorial_Page2_Title"   = "Zakładki";
-"Presentation_Tutorial_Skip"          = "Pomiń";

@@ -211,117 +211,7 @@ public struct Localizable {
     static var title: String { return localizedString("Bookmarks_Title") }
   }
 
-  enum Presentation {
-
-    enum InAppPurchase {
-
-      enum Bookmarks {
-
-        /// Save more than 2 bookmarks to travel faster across the city.
-        /// - **en**: Save more than 2 bookmarks to travel faster across the city.
-        /// - **pl**: Zapisz więcej niż 2 zakładki, by szybciej poruszać się po mieście.
-        static var caption: String { return localizedString("Presentation_InAppPurchase_Bookmarks_Caption") }
-
-        /// Unlimited Bookmarks
-        /// - **en**: Unlimited Bookmarks
-        /// - **pl**: Nielimitowane zakładki
-        static var title: String { return localizedString("Presentation_InAppPurchase_Bookmarks_Title") }
-      }
-
-      enum Colors {
-
-        /// Brighten up your life and personalize Wroclive to your favorite color.
-        /// - **en**: Brighten up your life and personalize Wroclive to your favorite color.
-        /// - **pl**: Dopasuj Wroclive do siebie, by uczynić swój dzień jeszcze bardziej kolorowym!
-        static var caption: String { return localizedString("Presentation_InAppPurchase_Colors_Caption") }
-
-        /// Personalization
-        /// - **en**: Personalization
-        /// - **pl**: Personalizacja
-        static var title: String { return localizedString("Presentation_InAppPurchase_Colors_Title") }
-      }
-
-      enum Restore {
-
-        /// Restore Purchase
-        /// - **en**: Restore Purchase
-        /// - **pl**: Odtwórz
-        static var link: String { return localizedString("Presentation_InAppPurchase_Restore_Link") }
-
-        /// Previously upgraded?
-        /// - **en**: Previously upgraded?
-        /// - **pl**: Już kupione?
-        static var text: String { return localizedString("Presentation_InAppPurchase_Restore_Text") }
-      }
-
-      /// Upgrade 1,09 €
-      /// - **en**: Upgrade 1,09 €
-      /// - **pl**: Kup 4,99 zł
-      static var upgrade: String { return localizedString("Presentation_InAppPurchase_Upgrade") }
-    }
-
-    enum Tutorial {
-
-      enum Page0 {
-
-        /// To locate vehicles use <search>, select lines and then tap “Search”.
-        /// - **en**: To locate vehicles use <search>, select lines and then tap “Search”.
-        /// - **pl**: By wyszukać pojazdy użyj <search>, wybierz linie, a następnie kliknij “Szukaj”.
-        static var caption: String { return localizedString("Presentation_Tutorial_Page0_Caption") }
-
-        /// Locating vehicles
-        /// - **en**: Locating vehicles
-        /// - **pl**: Wyszukiwanie pojazdów
-        static var title: String { return localizedString("Presentation_Tutorial_Page0_Title") }
-      }
-
-      enum Page1 {
-
-        /// To add bookmark chose lines, tap <star> and enter bookmark name.
-        /// - **en**: To add bookmark chose lines, tap <star> and enter bookmark name.
-        /// - **pl**: By dodać zakładkę wybierz linie, kliknij <star> i wprowadź nazwę nowej zakładki.
-        static var caption: String { return localizedString("Presentation_Tutorial_Page1_Caption") }
-
-        /// Adding bookmarks
-        /// - **en**: Adding bookmarks
-        /// - **pl**: Dodawanie zakładek
-        static var title: String { return localizedString("Presentation_Tutorial_Page1_Title") }
-      }
-
-      enum Page2 {
-
-        /// Use <star> to see all saved bookmarks.
-        /// - **en**: Use <star> to see all saved bookmarks.
-        /// - **pl**: Użyj <star> by zobaczyć wszystkie zapisane zakładki.
-        static var caption: String { return localizedString("Presentation_Tutorial_Page2_Caption") }
-
-        /// Bookmarks
-        /// - **en**: Bookmarks
-        /// - **pl**: Zakładki
-        static var title: String { return localizedString("Presentation_Tutorial_Page2_Title") }
-      }
-
-      /// Skip
-      /// - **en**: Skip
-      /// - **pl**: Pomiń
-      static var skip: String { return localizedString("Presentation_Tutorial_Skip") }
-    }
-  }
-
   enum Search {
-
-    enum BookmarkAdded {
-
-      /// Use <star> from map view to see all saved bookmarks.
-      /// - **en**: Use <star> from map view to see all saved bookmarks.
-      /// - **pl**: Użyj <star>, by zobaczyć wszystkie zapisane zakładki.
-      static var caption: String { return localizedString("Search_BookmarkAdded_Caption") }
-
-      /// Bookmark added!
-      /// - **en**: Bookmark added!
-      /// - **pl**: Zakładka dodana!
-      static var title: String { return localizedString("Search_BookmarkAdded_Title") }
-    }
 
     enum Pages {
 
@@ -421,24 +311,6 @@ public struct Localizable {
         /// - **pl**: Udostępnij
         static var share: String { return localizedString("Settings_Table_General_Share") }
       }
-    }
-
-    enum Theme {
-
-      /// Buses
-      /// - **en**: Buses
-      /// - **pl**: Autobusy
-      static var bus: String { return localizedString("Settings_Theme_Bus") }
-
-      /// Interface
-      /// - **en**: Interface
-      /// - **pl**: Interfejs
-      static var tint: String { return localizedString("Settings_Theme_Tint") }
-
-      /// Trams
-      /// - **en**: Trams
-      /// - **pl**: Tramwaje
-      static var tram: String { return localizedString("Settings_Theme_Tram") }
     }
 
     /// Data provided by MPK Wrocław

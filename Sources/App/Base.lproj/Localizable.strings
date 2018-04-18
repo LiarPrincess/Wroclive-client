@@ -79,28 +79,3 @@
 "Alert_Network_NoInternet_Message"  = "Please check your internet connection.";
 "Alert_Network_NoInternet_Title"    = "Unable to retrieve data";
 "Alert_Network_NoInternet_TryAgain" = "Try again";
-
-/* Unused */
-
-"Search_BookmarkAdded_Title"   = "Bookmark added!";
-"Search_BookmarkAdded_Caption" = "Use <star> from map view to see all saved bookmarks.";
-
-"Settings_Theme_Bus"  = "Buses";
-"Settings_Theme_Tint" = "Interface";
-"Settings_Theme_Tram" = "Trams";
-
-"Presentation_InAppPurchase_Bookmarks_Caption" = "Save more than 2 bookmarks to travel faster across the city.";
-"Presentation_InAppPurchase_Bookmarks_Title"   = "Unlimited Bookmarks";
-"Presentation_InAppPurchase_Colors_Caption"    = "Brighten up your life and personalize Wroclive to your favorite color.";
-"Presentation_InAppPurchase_Colors_Title"      = "Personalization";
-"Presentation_InAppPurchase_Restore_Link"      = "Restore Purchase";
-"Presentation_InAppPurchase_Restore_Text"      = "Previously upgraded?";
-"Presentation_InAppPurchase_Upgrade"           = "Upgrade 1,09 €";
-
-"Presentation_Tutorial_Page0_Caption" = "To locate vehicles use <search>, select lines and then tap “Search”.";
-"Presentation_Tutorial_Page0_Title"   = "Locating vehicles";
-"Presentation_Tutorial_Page1_Caption" = "To add bookmark chose lines, tap <star> and enter bookmark name.";
-"Presentation_Tutorial_Page1_Title"   = "Adding bookmarks";
-"Presentation_Tutorial_Page2_Caption" = "Use <star> to see all saved bookmarks.";
-"Presentation_Tutorial_Page2_Title"   = "Bookmarks";
-"Presentation_Tutorial_Skip"          = "Skip";
