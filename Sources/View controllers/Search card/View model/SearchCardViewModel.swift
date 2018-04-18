@@ -112,7 +112,7 @@ class SearchCardViewModel: SearchCardViewModelType, SearchCardViewModelInput, Se
 
     self._searchButtonPressed
       .withLatestFrom(self.selectedLines) { $1 }
-      .bind(onNext: { Managers.map.startTracking($0) })
+      .bind(onNext: { Managers.live.startTracking($0) })
       .disposed(by: self.disposeBag)
 
     self._viewDidDisappear

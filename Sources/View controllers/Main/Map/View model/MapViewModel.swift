@@ -24,7 +24,7 @@ class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutputs {
 
   // hot observables:
   private lazy var _locationAuthorization: Observable<CLAuthorizationStatus> = Managers.userLocation.authorization.share()
-  private lazy var _vehicleLocations:      ApiResponse<[Vehicle]>            = Managers.map.vehicleLocations.share()
+  private lazy var _vehicleLocations:      ApiResponse<[Vehicle]>            = Managers.live.vehicleLocations.share()
 
   // MARK: - Input
 

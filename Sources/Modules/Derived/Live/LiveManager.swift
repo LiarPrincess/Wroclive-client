@@ -7,7 +7,7 @@ import Foundation
 import PromiseKit
 import RxSwift
 
-class MapManager: MapManagerType {
+class LiveManager: LiveManagerType {
 
   private var trackedLines       = [Line]()
   private let trackingOperations = PublishSubject<TrackingOperation>()

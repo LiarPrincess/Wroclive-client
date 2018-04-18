@@ -5,7 +5,7 @@
 
 import RxSwift
 
-protocol MapManagerType {
+protocol LiveManagerType {
 
   /// Tracking results
   var vehicleLocations: ApiResponse<[Vehicle]> { get }

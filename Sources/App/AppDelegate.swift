@@ -27,10 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationDidBecomeActive(_ application: UIApplication) {
     Managers.theme.recalculateFontSizes()
-    Managers.map.resumeTracking()
+    Managers.live.resumeTracking()
   }
 
   func applicationWillResignActive(_ application: UIApplication) {
-    Managers.map.pauseTracking()
+    Managers.live.pauseTracking()
   }
 }

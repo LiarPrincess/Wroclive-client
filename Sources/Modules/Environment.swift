@@ -16,7 +16,7 @@ class Environment {
   var api:       ApiManagerType
   var search:    SearchManagerType
   var bookmarks: BookmarksManagerType
-  var map:       MapManagerType
+  var live:      LiveManagerType
 
   init(
     bundle:       BundleManagerType       = BundleManager(),
@@ -30,7 +30,7 @@ class Environment {
     api:       ApiManagerType       = ApiManager(),
     search:    SearchManagerType    = SearchManager(),
     bookmarks: BookmarksManagerType = BookmarksManager(),
-    map:       MapManagerType       = MapManager()) {
+    live:      LiveManagerType      = LiveManager()) {
 
     self.bundle        = bundle
     self.device        = device
@@ -43,6 +43,6 @@ class Environment {
     self.api       = api
     self.search    = search
     self.bookmarks = bookmarks
-    self.map       = map
+    self.live      = live
   }
 }
