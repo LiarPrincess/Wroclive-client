@@ -17,7 +17,7 @@ class LiveManager: LiveManagerType {
     case stop
   }
 
-  lazy var vehicleLocations: ApiResponse<[Vehicle]> = trackingOperations.asObservable()
+  lazy var mpkVehicles: ApiResponse<[Vehicle]> = trackingOperations.asObservable()
     .flatMapLatest { [unowned self] operation -> ApiResponse<[Vehicle]> in
       switch operation {
       case .start: return createTrackingObservable(lines: self.trackedLines)
@@ -31,11 +31,11 @@ class LiveManager: LiveManagerType {
     self.trackingOperations.onNext(.start)
   }
 
-  func resumeTracking() {
+  func resumeUpdates() {
     self.trackingOperations.onNext(.start)
   }
 
-  func pauseTracking() {
+  func pauseUpdates() {
     self.trackingOperations.onNext(.stop)
   }
 }

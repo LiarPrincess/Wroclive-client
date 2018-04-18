@@ -8,14 +8,14 @@ import RxSwift
 protocol LiveManagerType {
 
   /// Tracking results
-  var vehicleLocations: ApiResponse<[Vehicle]> { get }
+  var mpkVehicles: ApiResponse<[Vehicle]> { get }
 
   /// Start tracking new set of lines
   func startTracking(_ lines: [Line])
 
-  /// Resume tracking
-  func resumeTracking()
+  /// Resume updates
+  func resumeUpdates()
 
-  /// Pause tracking, so that new values will not be send
-  func pauseTracking()
+  /// Pause updates, so that new values will not be send
+  func pauseUpdates()
 }
