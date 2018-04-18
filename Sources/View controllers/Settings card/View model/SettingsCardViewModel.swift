@@ -9,21 +9,12 @@ import RxCocoa
 
 typealias SettingsSection = RxSectionModel<SettingsSectionType, SettingsCellType>
 
-protocol SettingsCardViewModelInput {
-  var mapTypeSelected: AnyObserver<MapType>   { get }
-  var itemSelected:    AnyObserver<IndexPath> { get }
+protocol SettingsCardViewModelType {
+  var inputs:  SettingsCardViewModelInput  { get }
+  var outputs: SettingsCardViewModelOutput { get }
 }
 
-protocol SettingsCardViewModelOutput {
-  var mapType: Driver<MapType>           { get }
-  var items:   Driver<[SettingsSection]> { get }
-
-  var showShareControl: Driver<Void> { get }
-  var showRateControl:  Driver<Void> { get }
-  var showAboutPage:    Driver<Void> { get }
-}
-
-class SettingsCardViewModel: SettingsCardViewModelInput, SettingsCardViewModelOutput {
+class SettingsCardViewModel: SettingsCardViewModelType, SettingsCardViewModelInput, SettingsCardViewModelOutput {
 
   // MARK: - Properties
 

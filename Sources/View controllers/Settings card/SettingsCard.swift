@@ -16,7 +16,7 @@ class SettingsCard: CardPanel {
 
   // MARK: - Properties
 
-  private let viewModel: SettingsCardViewModel
+  private let viewModel: SettingsCardViewModelType
   private let disposeBag = DisposeBag()
 
   lazy var headerView: UIVisualEffectView = {
