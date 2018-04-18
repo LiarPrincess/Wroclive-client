@@ -207,8 +207,8 @@
 		90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
 		90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */; };
 		90E77A201F4E21D5006882A4 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E77A1F1F4E21D5006882A4 /* Localizable.swift */; };
-		90E8A6BF1F4CB08400CE5AE9 /* AppManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6BE1F4CB08400CE5AE9 /* AppManagerType.swift */; };
-		90E8A6C11F4CB81400CE5AE9 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6C01F4CB81400CE5AE9 /* AppManager.swift */; };
+		90E8A6BF1F4CB08400CE5AE9 /* BundleManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6BE1F4CB08400CE5AE9 /* BundleManagerType.swift */; };
+		90E8A6C11F4CB81400CE5AE9 /* BundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */; };
 		90E8A6C61F4CD43300CE5AE9 /* DeviceManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6C51F4CD43300CE5AE9 /* DeviceManagerType.swift */; };
 		90E8A6C81F4CD49800CE5AE9 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6C71F4CD49800CE5AE9 /* DeviceManager.swift */; };
 		90EB296520477ED2006C591E /* CLLocationCoordinate2D+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB296420477ED2006C591E /* CLLocationCoordinate2D+Distance.swift */; };
@@ -468,8 +468,8 @@
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
 		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "Sources/App/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
 		90E77A1F1F4E21D5006882A4 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
-		90E8A6BE1F4CB08400CE5AE9 /* AppManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManagerType.swift; sourceTree = "<group>"; };
-		90E8A6C01F4CB81400CE5AE9 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		90E8A6BE1F4CB08400CE5AE9 /* BundleManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManagerType.swift; sourceTree = "<group>"; };
+		90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
 		90E8A6C51F4CD43300CE5AE9 /* DeviceManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManagerType.swift; sourceTree = "<group>"; };
 		90E8A6C71F4CD49800CE5AE9 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		90EB296420477ED2006C591E /* CLLocationCoordinate2D+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Distance.swift"; sourceTree = "<group>"; };
@@ -1362,13 +1362,13 @@
 			name = Localizable;
 			sourceTree = "<group>";
 		};
-		90E8A6BD1F4CB04A00CE5AE9 /* App */ = {
+		90E8A6BD1F4CB04A00CE5AE9 /* Bundle */ = {
 			isa = PBXGroup;
 			children = (
-				90E8A6BE1F4CB08400CE5AE9 /* AppManagerType.swift */,
-				90E8A6C01F4CB81400CE5AE9 /* AppManager.swift */,
+				90E8A6BE1F4CB08400CE5AE9 /* BundleManagerType.swift */,
+				90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */,
 			);
-			path = App;
+			path = Bundle;
 			sourceTree = "<group>";
 		};
 		90E8A6C41F4CD42000CE5AE9 /* Device */ = {
@@ -1383,7 +1383,7 @@
 		90EBB4391F97C7CD00291B1E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				90E8A6BD1F4CB04A00CE5AE9 /* App */,
+				90E8A6BD1F4CB04A00CE5AE9 /* Bundle */,
 				90E8A6C41F4CD42000CE5AE9 /* Device */,
 				905D71911FE1C4F6006D1DB6 /* Network */,
 				905D718A1FE1C443006D1DB6 /* User location */,
@@ -1953,7 +1953,7 @@
 				90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */,
 				90C4B13A203213D600920706 /* MapViewModel.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
-				90E8A6BF1F4CB08400CE5AE9 /* AppManagerType.swift in Sources */,
+				90E8A6BF1F4CB08400CE5AE9 /* BundleManagerType.swift in Sources */,
 				906C406C2018FFC200E32571 /* ApiError.swift in Sources */,
 				90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */,
 				9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */,
@@ -1972,7 +1972,7 @@
 				901A8090200E9F580013CCD9 /* SettingsSectionType.swift in Sources */,
 				906C40572014C55000E32571 /* DebugManagerType.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
-				90E8A6C11F4CB81400CE5AE9 /* AppManager.swift in Sources */,
+				90E8A6C11F4CB81400CE5AE9 /* BundleManager.swift in Sources */,
 				905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */,
 				903920351F1AB70E00250162 /* ArrayOfLines.swift in Sources */,
 				901A808A200E96EE0013CCD9 /* SettingsCardFooterView.swift in Sources */,

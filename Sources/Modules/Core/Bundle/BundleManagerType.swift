@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-protocol AppManagerType {
+protocol BundleManagerType {
 
   /// App name (e.g. Wroclive)
   var name: String { get }

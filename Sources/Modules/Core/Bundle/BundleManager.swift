@@ -5,7 +5,7 @@
 
 import Foundation
 
-class AppManager: AppManagerType {
+class BundleManager: BundleManagerType {
 
   var name:       String { return self.bundleInformation(key: kCFBundleExecutableKey as String) ?? "Unknown" }
   var version:    String { return self.bundleInformation(key: "CFBundleShortVersionString")     ?? "0" }

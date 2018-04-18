@@ -5,7 +5,7 @@
 
 class Environment {
 
-  var app:          AppManagerType
+  var bundle:       BundleManagerType
   var device:       DeviceManagerType
   var network:      NetworkManagerType
   var userLocation: UserLocationManagerType
@@ -20,7 +20,7 @@ class Environment {
   var map:       MapManagerType
 
   init(
-    app:          AppManagerType          = AppManager(),
+    bundle:       BundleManagerType       = BundleManager(),
     device:       DeviceManagerType       = DeviceManager(),
     network:      NetworkManagerType      = NetworkManager(),
     userLocation: UserLocationManagerType = UserLocationManager(),
@@ -34,7 +34,7 @@ class Environment {
     bookmarks: BookmarksManagerType = BookmarksManager(),
     map:       MapManagerType       = MapManager()) {
 
-    self.app           = app
+    self.bundle        = bundle
     self.device        = device
     self.network       = network
     self.userLocation  = userLocation

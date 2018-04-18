@@ -5,11 +5,11 @@
 
 typealias Managers = AppEnvironment
 
-enum AppEnvironment {
+struct AppEnvironment {
 
   // MARK: Managers
 
-  static var app:          AppManagerType          { return current.app          }
+  static var bundle:       BundleManagerType       { return current.bundle       }
   static var device:       DeviceManagerType       { return current.device       }
   static var network:      NetworkManagerType      { return current.network      }
   static var userLocation: UserLocationManagerType { return current.userLocation }
@@ -30,37 +30,6 @@ enum AppEnvironment {
   private static var current: Environment {
     precondition(stack.any, "Attempting to use empty environment stack.")
     return stack.last!
-  }
-
-  static func push(
-    app:          AppManagerType          = app,
-    device:       DeviceManagerType       = device,
-    network:      NetworkManagerType      = network,
-    userLocation: UserLocationManagerType = userLocation,
-    userDefaults: UserDefaultsManagerType = userDefaults,
-    documents:    DocumentsManagerType    = documents,
-    debug:        DebugManagerType        = debug,
-
-    theme:     ThemeManagerType     = theme,
-    api:       ApiManagerType       = api,
-    search:    SearchManagerType    = search,
-    bookmarks: BookmarksManagerType = bookmarks,
-    map:       MapManagerType       = map) {
-
-    push(Environment(
-      app:           app,
-      device:        device,
-      network:       network,
-      userLocation:  userLocation,
-      userDefaults:  userDefaults,
-      documents:     documents,
-      debug:         debug,
-
-      theme:     theme,
-      api:       api,
-      search:    search,
-      bookmarks: bookmarks,
-      map:       map))
   }
 
   static func push(_ environment: Environment) {

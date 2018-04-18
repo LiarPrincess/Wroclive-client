@@ -27,9 +27,9 @@ class SessionManager: Alamofire.SessionManager {
       return "\(model) \(systemName) \(systemVersion)"
     }()
 
-    let executable = Managers.app.name
-    let appVersion = Managers.app.version
-    let bundle     = Managers.app.identifier
+    let executable = Managers.bundle.name
+    let appVersion = Managers.bundle.version
+    let bundle     = Managers.bundle.identifier
     return "\(executable)/\(appVersion) (\(bundle); \(deviceOSVersion))"
   }
 }

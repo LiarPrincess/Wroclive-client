@@ -11,6 +11,7 @@ import UIKit
 // swiftlint:disable function_body_length
 // swiftlint:disable type_body_length
 // swiftlint:disable file_length
+// swiftlint:disable identifier_name
 
 public class StyleKit : NSObject {
 
