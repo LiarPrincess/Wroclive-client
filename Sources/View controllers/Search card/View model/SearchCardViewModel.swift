@@ -8,38 +8,12 @@ import Result
 import RxSwift
 import RxCocoa
 
-protocol SearchCardViewModelInput {
-  var pageSelected:      AnyObserver<LineType> { get }
-  var pageDidTransition: AnyObserver<LineType> { get }
-
-  var lineSelected:   AnyObserver<Line> { get }
-  var lineDeselected: AnyObserver<Line> { get }
-
-  var bookmarkButtonPressed: AnyObserver<Void> { get }
-  var searchButtonPressed:   AnyObserver<Void> { get }
-
-  var apiAlertTryAgainButtonPressed: AnyObserver<Void>   { get }
-  var bookmarkAlertNameEntered:      AnyObserver<String> { get }
-
-  var viewDidAppear:    AnyObserver<Void> { get }
-  var viewDidDisappear: AnyObserver<Void> { get }
+protocol SearchCardViewModelType {
+  var inputs:  SearchCardViewModelInput  { get }
+  var outputs: SearchCardViewModelOutput { get }
 }
 
-protocol SearchCardViewModelOutput {
-  var page:          Driver<LineType> { get }
-  var lines:         Driver<[Line]>   { get }
-  var selectedLines: Driver<[Line]>   { get }
-
-  var isLineSelectorVisible: Driver<Bool> { get }
-  var isPlaceholderVisible:  Driver<Bool> { get }
-
-  var showApiErrorAlert: Driver<ApiError>                { get }
-  var showBookmarkAlert: Driver<SearchCardBookmarkAlert> { get }
-
-  var shouldClose: Driver<Void> { get }
-}
-
-class SearchCardViewModel: SearchCardViewModelInput, SearchCardViewModelOutput {
+class SearchCardViewModel: SearchCardViewModelType, SearchCardViewModelInput, SearchCardViewModelOutput {
 
   // MARK: - Properties
 

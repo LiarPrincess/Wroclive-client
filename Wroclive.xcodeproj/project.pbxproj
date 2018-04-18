@@ -103,6 +103,9 @@
 		9050704B2087C981007DDA80 /* BookmarksCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTests.swift */; };
 		9050704E2087CAEB007DDA80 /* SettingsCardViewModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050704D2087CAEB007DDA80 /* SettingsCardViewModelInput.swift */; };
 		905070502087CB08007DDA80 /* SettingsCardViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050704F2087CB08007DDA80 /* SettingsCardViewModelOutput.swift */; };
+		905070532087CDC7007DDA80 /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */; };
+		905070552087CDD7007DDA80 /* SearchCardViewModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905070542087CDD7007DDA80 /* SearchCardViewModelInput.swift */; };
+		905070572087CDFE007DDA80 /* SearchCardViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905070562087CDFE007DDA80 /* SearchCardViewModelOutput.swift */; };
 		90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90538DD1201CADCF0000BBBE /* CardPanel.swift */; };
 		90541FCF1FA79E6C0055350E /* DocumentsManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FCE1FA79E6C0055350E /* DocumentsManagerType.swift */; };
 		90541FD11FA79F760055350E /* DocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90541FD01FA79F760055350E /* DocumentsManager.swift */; };
@@ -172,7 +175,6 @@
 		90AACC76200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC75200951B20064EDFD /* ObservableOfResult+ValuesErrors.swift */; };
 		90AACC7C200ABA500064EDFD /* LineSelectorCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */; };
 		90AACC7D200ABA550064EDFD /* LineSelectorHeaderViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */; };
-		90AACC7E200ABA590064EDFD /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */; };
 		90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */; };
 		90AACC89200ACA890064EDFD /* AlertCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC88200ACA890064EDFD /* AlertCreator.swift */; };
 		90AACC8D200BA01A0064EDFD /* LineSelectorSectionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */; };
@@ -361,6 +363,8 @@
 		905070492087B1F2007DDA80 /* BookmarksCardViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelOutput.swift; sourceTree = "<group>"; };
 		9050704D2087CAEB007DDA80 /* SettingsCardViewModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardViewModelInput.swift; sourceTree = "<group>"; };
 		9050704F2087CB08007DDA80 /* SettingsCardViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardViewModelOutput.swift; sourceTree = "<group>"; };
+		905070542087CDD7007DDA80 /* SearchCardViewModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelInput.swift; sourceTree = "<group>"; };
+		905070562087CDFE007DDA80 /* SearchCardViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelOutput.swift; sourceTree = "<group>"; };
 		90538DD1201CADCF0000BBBE /* CardPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPanel.swift; sourceTree = "<group>"; };
 		90541FCE1FA79E6C0055350E /* DocumentsManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsManagerType.swift; sourceTree = "<group>"; };
 		90541FD01FA79F760055350E /* DocumentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsManager.swift; sourceTree = "<group>"; };
@@ -629,10 +633,9 @@
 				9021F3E31F12C9EF000A6949 /* Lines selector */,
 				901ECDCA1FF58D36004765AA /* Placeholder */,
 				901ECDD11FF5B478004765AA /* Types */,
+				905070512087CDAB007DDA80 /* View model */,
 				9017C34E1EE339FD00063377 /* SearchCard.swift */,
 				9017C3501EE339FD00063377 /* SearchCardLayout.swift */,
-				901ECDCF1FF5A003004765AA /* SearchCardViewModel.swift */,
-				90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */,
 				9017C34F1EE339FD00063377 /* SearchCardConstants.swift */,
 			);
 			path = "Search card";
@@ -963,6 +966,17 @@
 				901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */,
 				9050704D2087CAEB007DDA80 /* SettingsCardViewModelInput.swift */,
 				9050704F2087CB08007DDA80 /* SettingsCardViewModelOutput.swift */,
+			);
+			path = "View model";
+			sourceTree = "<group>";
+		};
+		905070512087CDAB007DDA80 /* View model */ = {
+			isa = PBXGroup;
+			children = (
+				901ECDCF1FF5A003004765AA /* SearchCardViewModel.swift */,
+				90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */,
+				905070542087CDD7007DDA80 /* SearchCardViewModelInput.swift */,
+				905070562087CDFE007DDA80 /* SearchCardViewModelOutput.swift */,
 			);
 			path = "View model";
 			sourceTree = "<group>";
@@ -1827,13 +1841,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90AACC7E200ABA590064EDFD /* SearchCardViewModelTests.swift in Sources */,
 				90915B1D1FFC070F009FE942 /* MapManagerMock.swift in Sources */,
 				90915B231FFC1EA0009FE942 /* SearchManagerMock.swift in Sources */,
 				904CAC122039AC3C00B4DABA /* Vehicle+Equatable.swift in Sources */,
 				90425D331FF11EFB00F1800E /* BookmarksManagerMock.swift in Sources */,
 				90AACC7D200ABA550064EDFD /* LineSelectorHeaderViewModelTests.swift in Sources */,
 				90AACC7C200ABA500064EDFD /* LineSelectorCellViewModelTests.swift in Sources */,
+				905070532087CDC7007DDA80 /* SearchCardViewModelTests.swift in Sources */,
 				906C40612014E78000E32571 /* MapAnnotationManagerTests.swift in Sources */,
 				90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */,
 				90C74A6A204F287C006524EC /* MapViewModelTests.swift in Sources */,
@@ -1874,6 +1888,7 @@
 				901A809A20127EC40013CCD9 /* MapType.swift in Sources */,
 				901A80A12012992F0013CCD9 /* SettingsSectionHeaderView.swift in Sources */,
 				9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */,
+				905070552087CDD7007DDA80 /* SearchCardViewModelInput.swift in Sources */,
 				901ECDB91FF5875F004765AA /* FontType.swift in Sources */,
 				901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */,
 				906C40662016902100E32571 /* TrackingResult.swift in Sources */,
@@ -1950,6 +1965,7 @@
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,
 				900CEC021FC4D5D7001C6B04 /* Document.swift in Sources */,
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
+				905070572087CDFE007DDA80 /* SearchCardViewModelOutput.swift in Sources */,
 				901FEAD91FE1EC8900C36A71 /* TextColor.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				901ECDD01FF5A003004765AA /* SearchCardViewModel.swift in Sources */,

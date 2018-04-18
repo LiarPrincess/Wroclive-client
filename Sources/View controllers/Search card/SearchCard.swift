@@ -14,7 +14,7 @@ class SearchCard: CardPanel {
 
   // MARK: - Properties
 
-  private let viewModel: SearchCardViewModel
+  private let viewModel: SearchCardViewModelType
   private let disposeBag = DisposeBag()
 
   var headerView: UIVisualEffectView = {
