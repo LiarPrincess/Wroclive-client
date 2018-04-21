@@ -23,8 +23,8 @@ class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutputs {
   private let _viewDidAppear       = PublishSubject<Void>()
 
   // hot observables:
-  private lazy var _locationAuthorization: Observable<CLAuthorizationStatus> = Managers.userLocation.authorization.share()
-  private lazy var _vehicleLocations:      ApiResponse<[Vehicle]>            = Managers.live.mpkVehicles
+  private lazy var _locationAuthorization: Observable<CLAuthorizationStatus> = AppEnvironment.userLocation.authorization.share()
+  private lazy var _vehicleLocations:      ApiResponse<[Vehicle]>            = AppEnvironment.live.mpkVehicles
 
   // MARK: - Input
 
@@ -56,8 +56,8 @@ class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutputs {
     .asDriver(onErrorJustReturn: [])
 
   lazy var showLocationAuthorizationAlert: Driver<Void> = {
-    let delay          = Managers.variables.timings.locationAuthorizationPromptDelay
-    let delayScheduler = Managers.schedulers.main
+    let delay          = AppEnvironment.variables.timings.locationAuthorizationPromptDelay
+    let delayScheduler = AppEnvironment.schedulers.main
 
     let delayedViewDidAppear = self._viewDidAppear.delay(delay, scheduler: delayScheduler)
     let trackingModeChanged  = self._trackingModeChanged.map { _ in () }
@@ -89,7 +89,7 @@ class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutputs {
 private func toSingleUserLocationIfAuthorized(_ authorization: CLAuthorizationStatus) -> Observable<CLLocationCoordinate2D> {
   switch authorization {
   case .authorizedAlways,
-       .authorizedWhenInUse: return Managers.userLocation.current.catchError { _ in .never() }.take(1)
+       .authorizedWhenInUse: return AppEnvironment.userLocation.current.catchError { _ in .never() }.take(1)
   case .notDetermined,
        .denied,
        .restricted: return .never()

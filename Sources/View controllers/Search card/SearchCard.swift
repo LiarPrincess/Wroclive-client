@@ -18,7 +18,7 @@ class SearchCard: CardPanel {
   private let disposeBag = DisposeBag()
 
   var headerView: UIVisualEffectView = {
-    let headerViewBlur = UIBlurEffect(style: Managers.theme.colors.blurStyle)
+    let headerViewBlur = UIBlurEffect(style: AppEnvironment.theme.colors.blurStyle)
     return UIVisualEffectView(effect: headerViewBlur)
   }()
 

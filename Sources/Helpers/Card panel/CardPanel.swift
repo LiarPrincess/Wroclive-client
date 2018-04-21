@@ -15,7 +15,7 @@ class CardPanel: UIViewController {
   let chevronView          = ChevronView()
   let chevronViewContainer = UIView()
 
-  var height: CGFloat { return 0.5 * Managers.device.screenBounds.height }
+  var height: CGFloat { return 0.5 * AppEnvironment.device.screenBounds.height }
 
   var scrollView: UIScrollView? { return nil }
 
@@ -44,7 +44,7 @@ class CardPanel: UIViewController {
     }
 
     self.chevronView.state = .down
-    self.chevronView.color = Managers.theme.colors.accentLight
+    self.chevronView.color = AppEnvironment.theme.colors.accentLight
     self.chevronView.animationDuration = 0.1
 
     self.chevronViewContainer.addSubview(self.chevronView)

@@ -48,13 +48,13 @@ private func createTrackingObservable(lines: [Line]) -> ApiResponse<[Vehicle]> {
     return Observable.just(.success([]))
   }
 
-  let interval  = Managers.variables.timings.locationUpdateInterval
-  let scheduler = Managers.schedulers.main
+  let interval  = AppEnvironment.variables.timings.locationUpdateInterval
+  let scheduler = AppEnvironment.schedulers.main
 
   let initialTick   = Observable<Void>.just(())
   let trackingTimer = Observable<Int>.interval(interval, scheduler: scheduler).map { _ in () }
 
   return initialTick
     .concat(trackingTimer)
-    .flatMap { _ in Managers.api.vehicleLocations(for: lines) }
+    .flatMap { _ in AppEnvironment.api.vehicleLocations(for: lines) }
 }

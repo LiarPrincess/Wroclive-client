@@ -43,7 +43,7 @@ class SettingsCardFooterView: UIView {
   }
 
   private static func calculateMinHeight(_ text: NSAttributedString) -> CGFloat {
-    let textRect = CGSize(width: Managers.device.screenBounds.width, height: CGFloat.infinity)
+    let textRect = CGSize(width: AppEnvironment.device.screenBounds.width, height: CGFloat.infinity)
     let textSize = text.boundingRect(with: textRect, options: .usesLineFragmentOrigin, context: nil)
     return textSize.height + Layout.topOffset + Layout.bottomOffset
   }

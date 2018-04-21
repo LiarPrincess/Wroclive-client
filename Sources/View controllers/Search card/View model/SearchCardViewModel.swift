@@ -31,14 +31,14 @@ class SearchCardViewModel: SearchCardViewModelType, SearchCardViewModelInput, Se
   private let _viewDidDisappear = PublishSubject<Void>()
 
   private lazy var lineResponse: ApiResponse<[Line]> = {
-    let tryAgainScheduler = Managers.schedulers.main
-    let tryAgainDelay     = Managers.variables.timings.failedRequestDelay.lines
+    let tryAgainScheduler = AppEnvironment.schedulers.main
+    let tryAgainDelay     = AppEnvironment.variables.timings.failedRequestDelay.lines
 
     let viewDidAppear = self._viewDidAppear
     let tryAgain      = self._apiAlertTryAgainButtonPressed.delay(tryAgainDelay, scheduler: tryAgainScheduler)
 
     return Observable.merge(viewDidAppear, tryAgain)
-      .flatMapLatest { _ in Managers.api.availableLines.catchError { _ in .empty() } }
+      .flatMapLatest { _ in AppEnvironment.api.availableLines.catchError { _ in .empty() } }
       .map(emptyResponseAsError)
       .share()
   }()
@@ -89,7 +89,7 @@ class SearchCardViewModel: SearchCardViewModelType, SearchCardViewModelInput, Se
   // MARK: - Init
 
   init() {
-    let state = Managers.storage.searchCardState
+    let state = AppEnvironment.storage.searchCardState
 
     self.page = Observable.merge(self._pageSelected, self._pageDidTransition)
       .startWith(state.page)
@@ -109,19 +109,19 @@ class SearchCardViewModel: SearchCardViewModelType, SearchCardViewModelInput, Se
     self._bookmarkAlertNameEntered
       .withLatestFrom(self.selectedLines) { (name: $0, lines: $1) }
       .map  { Bookmark(name: $0.name, lines: $0.lines) }
-      .bind { Managers.storage.addBookmark($0) }
+      .bind { AppEnvironment.storage.addBookmark($0) }
       .disposed(by: self.disposeBag)
 
     self._searchButtonPressed
       .withLatestFrom(self.selectedLines) { $1 }
-      .bind(onNext: { Managers.live.startTracking($0) })
+      .bind(onNext: { AppEnvironment.live.startTracking($0) })
       .disposed(by: self.disposeBag)
 
     self._viewDidDisappear
       .withLatestFrom(self.page) { $1 }
       .withLatestFrom(self.selectedLines) { (page: $0, selectedLines: $1) }
       .map  { SearchCardState(page: $0.page, selectedLines: $0.selectedLines) }
-      .bind { Managers.storage.saveSearchCardState($0) }
+      .bind { AppEnvironment.storage.saveSearchCardState($0) }
       .disposed(by: self.disposeBag)
   }
 

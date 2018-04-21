@@ -61,7 +61,7 @@ class MapViewController: UIViewController {
 
   private func initAlertBindings() {
     self.viewModel.outputs.showLocationAuthorizationAlert
-      .drive(onNext: { _ in Managers.userLocation.requestWhenInUseAuthorization() })
+      .drive(onNext: { _ in AppEnvironment.userLocation.requestWhenInUseAuthorization() })
       .disposed(by: self.disposeBag)
 
     self.viewModel.outputs.showDeniedLocationAuthorizationAlert.asObservable()

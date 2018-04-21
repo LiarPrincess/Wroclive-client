@@ -31,16 +31,16 @@ class SettingsTextCell: UITableViewCell {
   }
 
   private func initLayout() {
-    self.backgroundColor = Managers.theme.colors.background
+    self.backgroundColor = AppEnvironment.theme.colors.background
 
-    self.bottomBorder.backgroundColor = Managers.theme.colors.accentLight
+    self.bottomBorder.backgroundColor = AppEnvironment.theme.colors.accentLight
 
     self.addSubview(self.bottomBorder)
     self.bottomBorder.snp.makeConstraints { make in
       make.left.equalToSuperview().offset(Layout.BottomBorder.leftInset)
       make.right.equalToSuperview()
       make.bottom.equalToSuperview()
-      make.height.equalTo(1.0 / Managers.device.screenScale)
+      make.height.equalTo(1.0 / AppEnvironment.device.screenScale)
     }
   }
 

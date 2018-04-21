@@ -14,12 +14,12 @@ enum BorderEdge {
 extension UIView {
   func addBorder(at borderEdge: BorderEdge) {
     let view = UIView()
-    view.backgroundColor = Managers.theme.colors.accentLight
+    view.backgroundColor = AppEnvironment.theme.colors.accentLight
     self.addSubview(view)
 
     view.snp.makeConstraints { make in
       make.left.right.equalToSuperview()
-      make.height.equalTo(CGFloat(1.0) / Managers.device.screenScale)
+      make.height.equalTo(CGFloat(1.0) / AppEnvironment.device.screenScale)
 
       switch borderEdge {
       case .top:
