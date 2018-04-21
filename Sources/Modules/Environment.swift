@@ -3,18 +3,20 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-class Environment {
+struct Environment {
 
-  var bundle: BundleManagerType
-  var device: DeviceManagerType
+  let bundle: BundleManagerType
+  let device: DeviceManagerType
 
-  var theme:   ThemeManagerType
-  var storage: StorageManagerType
+  let theme:      ThemeManagerType
+  let storage:    StorageManagerType
+  let variables:  EnvironmentVariables
+  let schedulers: SchedulerManagerType
 
-  var api:          ApiManagerType
-  var live:         LiveManagerType
-  var network:      NetworkManagerType
-  var userLocation: UserLocationManagerType
+  let api:          ApiManagerType
+  let live:         LiveManagerType
+  let network:      NetworkManagerType
+  let userLocation: UserLocationManagerType
 
   var debug: DebugManagerType
 
@@ -23,6 +25,8 @@ class Environment {
     device:       DeviceManagerType       = DeviceManager(),
     theme:        ThemeManagerType        = ThemeManager(),
     storage:      StorageManagerType      = StorageManager(),
+    variables:    EnvironmentVariables    = EnvironmentVariables(),
+    schedulers:   SchedulerManagerType    = SchedulerManager(),
     api:          ApiManagerType          = ApiManager(),
     live:         LiveManagerType         = LiveManager(),
     network:      NetworkManagerType      = NetworkManager(),
@@ -32,8 +36,10 @@ class Environment {
     self.bundle = bundle
     self.device = device
 
-    self.theme   = theme
-    self.storage = storage
+    self.theme      = theme
+    self.storage    = storage
+    self.variables  = variables
+    self.schedulers = schedulers
 
     self.api          = api
     self.live         = live

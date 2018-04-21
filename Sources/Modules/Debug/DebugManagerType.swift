@@ -11,7 +11,7 @@ protocol DebugManagerType {
   func clearNetworkCache()
 
   /// Print Rx resource count every 1s
-  func debugRxResources()
+  func printRxResources()
 
   #endif
 }

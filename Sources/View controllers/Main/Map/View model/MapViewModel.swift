@@ -56,12 +56,14 @@ class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutputs {
     .asDriver(onErrorJustReturn: [])
 
   lazy var showLocationAuthorizationAlert: Driver<Void> = {
-    let delayedViewDidAppear = self._viewDidAppear.delay(AppInfo.Timings.locationAuthorizationPromptDelay, scheduler: MainScheduler.asyncInstance)
+    let delay          = Managers.variables.timings.locationAuthorizationPromptDelay
+    let delayScheduler = Managers.schedulers.main
+
+    let delayedViewDidAppear = self._viewDidAppear.delay(delay, scheduler: delayScheduler)
     let trackingModeChanged  = self._trackingModeChanged.map { _ in () }
 
     return Observable.merge(delayedViewDidAppear, trackingModeChanged)
       .flatMapLatest { [unowned self] _ in self._locationAuthorization.take(1) }
-      .debug("[\(type(of: self)) \(#line)]")
       .filter { $0 == .notDetermined }
       .map { _ in () }
       .asDriver(onErrorDriveWith: .never())

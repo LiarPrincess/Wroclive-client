@@ -31,9 +31,11 @@ class SearchCardViewModel: SearchCardViewModelType, SearchCardViewModelInput, Se
   private let _viewDidDisappear = PublishSubject<Void>()
 
   private lazy var lineResponse: ApiResponse<[Line]> = {
+    let tryAgainScheduler = Managers.schedulers.main
+    let tryAgainDelay     = Managers.variables.timings.failedRequestDelay.lines
+
     let viewDidAppear = self._viewDidAppear
-    let tryAgain      = self._apiAlertTryAgainButtonPressed
-      .delay(AppInfo.Timings.FailedRequestDelay.lines, scheduler: MainScheduler.instance)
+    let tryAgain      = self._apiAlertTryAgainButtonPressed.delay(tryAgainDelay, scheduler: tryAgainScheduler)
 
     return Observable.merge(viewDidAppear, tryAgain)
       .flatMapLatest { _ in Managers.api.availableLines.catchError { _ in .empty() } }

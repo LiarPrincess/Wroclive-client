@@ -130,12 +130,12 @@ class SettingsCard: CardPanel {
   // MARK: - Buttons
 
   func rateApp() {
-    let url = URL(string: AppInfo.AppStore.writeReviewUrl)!
-    UIApplication.shared.open(url)
+    UIApplication.shared.open(Managers.variables.appStore.writeReviewUrl)
   }
 
   func showShareActivity() {
-    let text  = String(format: Localizable.Share.message, AppInfo.AppStore.shareUrl)
+    let url   = Managers.variables.appStore.shareUrl
+    let text  = String(format: Localizable.Share.message, url.absoluteString)
     let image = Assets.shareImage
     let items = [text, image] as [Any]
 
@@ -146,9 +146,7 @@ class SettingsCard: CardPanel {
   }
 
   func showAboutPage() {
-    let url = URL(string: AppInfo.Website.about)!
-
-    let safariViewController = SFSafariViewController(url: url)
+    let safariViewController = SFSafariViewController(url: Managers.variables.websiteUrl)
     safariViewController.modalPresentationStyle = .overFullScreen
     self.present(safariViewController, animated: true, completion: nil)
   }

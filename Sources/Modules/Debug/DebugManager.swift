@@ -16,9 +16,9 @@ class DebugManager: DebugManagerType {
     URLCache.shared.removeAllCachedResponses()
   }
 
-  func debugRxResources() {
+  func printRxResources() {
     _ = Observable<Int>
-      .interval(1, scheduler: MainScheduler.instance)
+      .interval(1, scheduler: Managers.schedulers.main)
       .subscribe { _ in print("Resource count: \(RxSwift.Resources.total)") }
       .disposed(by: self.disposeBag)
   }

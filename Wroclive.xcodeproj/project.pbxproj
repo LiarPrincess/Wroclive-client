@@ -17,6 +17,8 @@
 		9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */; };
 		9010D5B5201FA04500563BDB /* ScrollViewDismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */; };
 		9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */; };
+		9016FD0A208B48820043524D /* SchedulerManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD09208B48820043524D /* SchedulerManagerType.swift */; };
+		9016FD0C208B48EC0043524D /* SchedulerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD0B208B48EC0043524D /* SchedulerManager.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksCard.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */; };
 		9017C35C1EE339FD00063377 /* BookmarksCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3431EE339FD00063377 /* BookmarksCardLayout.swift */; };
@@ -134,7 +136,7 @@
 		906C406C2018FFC200E32571 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406B2018FFC200E32571 /* ApiError.swift */; };
 		906C406E2019000B00E32571 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406D2019000B00E32571 /* ApiResponse.swift */; };
 		906C4070201915D900E32571 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406F201915D900E32571 /* Endpoint.swift */; };
-		9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* AppInfo.swift */; };
+		9079DCD61F6C545600C6ABCD /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907DC6E91FF2B740001C5DD6 /* LineTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC6E71FF2B73F001C5DD6 /* LineTypeSelector.swift */; };
 		907DC6ED1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC6EC1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift */; };
@@ -261,6 +263,8 @@
 		9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
 		9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewDismissGestureHandler.swift; sourceTree = "<group>"; };
 		9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandlerType.swift; sourceTree = "<group>"; };
+		9016FD09208B48820043524D /* SchedulerManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerManagerType.swift; sourceTree = "<group>"; };
+		9016FD0B208B48EC0043524D /* SchedulerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerManager.swift; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCard.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardConstants.swift; sourceTree = "<group>"; };
 		9017C3431EE339FD00063377 /* BookmarksCardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardLayout.swift; sourceTree = "<group>"; };
@@ -381,7 +385,7 @@
 		906C406B2018FFC200E32571 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		906C406D2019000B00E32571 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		906C406F201915D900E32571 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		9079DCD51F6C545600C6ABCD /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
 		907DC6E71FF2B73F001C5DD6 /* LineTypeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelector.swift; sourceTree = "<group>"; };
 		907DC6EC1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTypeSelectorConstants.swift; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -555,6 +559,15 @@
 				901A808F200E9F580013CCD9 /* SettingsSectionType.swift */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		9016FD08208B485A0043524D /* Schedulers */ = {
+			isa = PBXGroup;
+			children = (
+				9016FD09208B48820043524D /* SchedulerManagerType.swift */,
+				9016FD0B208B48EC0043524D /* SchedulerManager.swift */,
+			);
+			path = Schedulers;
 			sourceTree = "<group>";
 		};
 		9017C33D1EE339FD00063377 /* View controllers */ = {
@@ -811,7 +824,6 @@
 			children = (
 				90B412481F97D4F1008F05E9 /* Assets */,
 				90E77A271F4E3C20006882A4 /* Localizable */,
-				9079DCD51F6C545600C6ABCD /* AppInfo.swift */,
 				902330E51EDF37F500FA8F43 /* AppDelegate.swift */,
 				907ECF171F3BB41900DB27DB /* Info.plist */,
 			);
@@ -839,12 +851,14 @@
 				90E8A6C41F4CD42000CE5AE9 /* Device */,
 				90AF2BD21EE9DDE4006E61D6 /* Theme */,
 				905070592087EB30007DDA80 /* Storage */,
+				9016FD08208B485A0043524D /* Schedulers */,
 				905D71A01FE1C5BD006D1DB6 /* Api */,
 				90546BEC1F6AF21B00E8E75F /* Live */,
 				905D71911FE1C4F6006D1DB6 /* Network */,
 				905D718A1FE1C443006D1DB6 /* User location */,
 				906C40552014C53900E32571 /* Debug */,
 				9024C6101F9667E600025503 /* Environment.swift */,
+				9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */,
 				9024C6121F96699500025503 /* AppEnvironment.swift */,
 			);
 			path = Modules;
@@ -1804,6 +1818,7 @@
 				906A7B511FFEC252004EC8A4 /* ObserverOfVoid+Next.swift in Sources */,
 				906C405E2014CD1B00E32571 /* MapAnnotationManager.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */,
+				9016FD0A208B48820043524D /* SchedulerManagerType.swift in Sources */,
 				90AACC8D200BA01A0064EDFD /* LineSelectorSectionCreator.swift in Sources */,
 				90AACC9B200BE4110064EDFD /* LineSelectorPage+Rx.swift in Sources */,
 				9096CDCD1F40EF2200FEF20A /* SettingsCard.swift in Sources */,
@@ -1910,6 +1925,7 @@
 				905D718F1FE1C444006D1DB6 /* UserLocationManagerType.swift in Sources */,
 				901ECDBD1FF587B7004765AA /* TextStyle.swift in Sources */,
 				906C405C2014CD0300E32571 /* MapAnnotationUpdates.swift in Sources */,
+				9016FD0C208B48EC0043524D /* SchedulerManager.swift in Sources */,
 				9042EDBF1FF2D71500F5D01D /* LineSelectorCellConstants.swift in Sources */,
 				900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */,
 				900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */,
@@ -1940,7 +1956,7 @@
 				900B976E1FE1BE1F00AC7C35 /* BookmarkAlerts.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				905D71AC1FE1C5BD006D1DB6 /* ApiManager.swift in Sources */,
-				9079DCD61F6C545600C6ABCD /* AppInfo.swift in Sources */,
+				9079DCD61F6C545600C6ABCD /* EnvironmentVariables.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchCardState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
