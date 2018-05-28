@@ -19,14 +19,14 @@ public class StyleKit : NSObject {
 
   @objc
   dynamic public class func drawSearch(
-    frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60),
-    resizing: ResizingBehavior = .aspectFit) {
+    frame targetFrame: CGRect           = CGRect(x: 0, y: 0, width: 60, height: 60),
+    resizing:          ResizingBehavior = .aspectFit) {
 
     //// General Declarations
     let context = UIGraphicsGetCurrentContext()!
+    context.saveGState()
 
     //// Resize to Target Frame
-    context.saveGState()
     let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 60, height: 60), target: targetFrame)
     context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
     context.scaleBy(x: resizedFrame.width / 60, y: resizedFrame.height / 60)
@@ -41,7 +41,7 @@ public class StyleKit : NSObject {
 
     let handlePath = UIBezierPath(rect: CGRect(x: -0.5, y: -10.71, width: 1, height: 21.42))
     fillColor.setStroke()
-    handlePath.lineWidth = 2.5
+    handlePath.lineWidth = 3.5
     handlePath.lineJoinStyle = .round
     handlePath.stroke()
 
@@ -50,7 +50,7 @@ public class StyleKit : NSObject {
     //// Glass Drawing
     let glassPath = UIBezierPath(ovalIn: CGRect(x: 1.25, y: 1.25, width: 48.25, height: 48.25))
     fillColor.setStroke()
-    glassPath.lineWidth = 2.5
+    glassPath.lineWidth = 3.5
     glassPath.stroke()
 
     context.restoreGState()
@@ -328,7 +328,7 @@ public class StyleKit : NSObject {
     context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
     context.scaleBy(x: resizedFrame.width / contextSize, y: resizedFrame.height / contextSize)
 
-    // Rounded rect
+    //// Rounded rect Drawing
     let rectPath  = UIBezierPath(roundedRect: rectFrame, cornerRadius: rectCornerRadius)
     color.withAlphaComponent(0.75).setFill()
     rectPath.fill()
@@ -336,7 +336,7 @@ public class StyleKit : NSObject {
     rectPath.lineWidth = rectBorderWidth
     rectPath.stroke()
 
-    // Arrow
+    //// Arrow Drawing
     let arrowPath = UIBezierPath()
     arrowPath.move(to: CGPoint(x: (contextSize - arrowWidth) / 2, y: arrowHeight))
     arrowPath.addLine(to: CGPoint(x: contextSize / 2, y: 0))
@@ -385,37 +385,6 @@ public class StyleKit : NSObject {
     bezier2Path.stroke()
 
     context.restoreGState()
-
-    context.restoreGState()
-  }
-
-  @objc
-  dynamic public class func drawBackArrow(
-    frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60),
-    resizing: ResizingBehavior = .aspectFit) {
-
-    //// General Declarations
-    let context = UIGraphicsGetCurrentContext()!
-
-    //// Resize to Target Frame
-    context.saveGState()
-    let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 60, height: 60), target: targetFrame)
-    context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-    context.scaleBy(x: resizedFrame.width / 60, y: resizedFrame.height / 60)
-
-    //// Constants
-    let x = 16.5
-
-    //// Bezier Drawing
-    let bezierPath = UIBezierPath()
-    bezierPath.move(to: CGPoint(x: 60.0 - x, y: 3.0))
-    bezierPath.addLine(to: CGPoint(x: x, y: 30.00))
-    bezierPath.addLine(to: CGPoint(x: 60.0 - x, y: 57.0))
-
-    UIColor.black.setStroke()
-    bezierPath.lineWidth = 7
-    bezierPath.lineCapStyle = .round
-    bezierPath.stroke()
 
     context.restoreGState()
   }

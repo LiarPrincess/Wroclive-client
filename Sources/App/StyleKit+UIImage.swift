@@ -44,13 +44,6 @@ extension StyleKit {
     }
   }
 
-  static func drawBackArrowTemplateImage(size: CGSize) -> UIImage {
-    return StyleKit.drawTemplateImage(size: size) {
-      let frame = CGRect(origin: CGPoint(), size: size)
-      StyleKit.drawBackArrow(frame: frame, resizing: resizingBehavior)
-    }
-  }
-
   // MARK: - Private - Drawing
 
   private static var resizingBehavior: ResizingBehavior { return .aspectFit }
