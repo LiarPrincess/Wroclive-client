@@ -5,8 +5,6 @@
 
 import UIKit
 import SnapKit
-import RxSwift
-import RxCocoa
 
 private typealias Layout = LineSelectorCellConstants.Layout
 
@@ -15,9 +13,7 @@ class LineSelectorCell: UICollectionViewCell {
   // MARK: - Properties
 
   private let textLabel = UILabel()
-
-  let viewModel = LineSelectorCellViewModel()
-  private let disposeBag = DisposeBag()
+  private var viewModel: LineSelectorCellViewModel?
 
   override var alpha: CGFloat {
     get { return 1.0 }
@@ -25,7 +21,7 @@ class LineSelectorCell: UICollectionViewCell {
   }
 
   override var isSelected: Bool {
-    didSet { self.viewModel.inputs.isSelected.onNext(isSelected) }
+    didSet { self.updateTextLabel() }
   }
 
   // MARK: - Init
@@ -33,7 +29,6 @@ class LineSelectorCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
-    self.initBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -54,9 +49,16 @@ class LineSelectorCell: UICollectionViewCell {
     }
   }
 
-  private func initBindings() {
-    self.viewModel.outputs.text
-      .drive(self.textLabel.rx.attributedText)
-      .disposed(by: self.disposeBag)
+  // MARK: - Methods
+
+  func update(from viewModel: LineSelectorCellViewModel) {
+    // note that self.isSelected for new cell is set BEFORE tableView(_:cellForRowAt:) is called
+    self.viewModel = viewModel
+    self.updateTextLabel()
+  }
+
+  private func updateTextLabel() {
+    self.viewModel?.updateText(isCellSelected: self.isSelected)
+    self.textLabel.attributedText = self.viewModel?.text
   }
 }

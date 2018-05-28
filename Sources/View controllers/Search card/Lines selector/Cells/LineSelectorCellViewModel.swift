@@ -4,52 +4,21 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
 
 private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
-protocol LineSelectorCellViewModelInput {
-  var line:       AnyObserver<Line> { get }
-  var isSelected: AnyObserver<Bool> { get }
-}
+class LineSelectorCellViewModel {
+  private      var line: Line
+  private(set) var text: NSAttributedString
 
-protocol LineSelectorCellViewModelOutput {
-  var text: Driver<NSAttributedString> { get }
-}
+  init(_ line: Line) {
+    self.line = line
+    self.text = createText(line.name, isSelected: false)
+  }
 
-class LineSelectorCellViewModel: LineSelectorCellViewModelInput, LineSelectorCellViewModelOutput {
-
-  // MARK: - Properties
-
-  private let _line       = PublishSubject<Line>()
-  private let _isSelected = PublishSubject<Bool>()
-
-  // MARK: - Input
-
-  lazy var line:       AnyObserver<Line> = self._line.asObserver()
-  lazy var isSelected: AnyObserver<Bool> = self._isSelected.asObserver()
-
-  // MARK: - Output
-
-  lazy var text: Driver<NSAttributedString> = {
-    let lineName   = self._line.map { $0.name }.startWith("")
-    let isSelected = self._isSelected.startWith(false)
-
-    return Observable.combineLatest(lineName, isSelected)
-      .distinctUntilChanged(areEqual)
-      .map { createText($0.0, isSelected: $0.1) }
-      .asDriver(onErrorDriveWith: .never())
-  }()
-
-  // MARK: - Input/Output
-
-  var inputs:  LineSelectorCellViewModelInput  { return self }
-  var outputs: LineSelectorCellViewModelOutput { return self }
-}
-
-private func areEqual<T1: Equatable, T2: Equatable> (lhs: (T1, T2), rhs: (T1, T2)) -> Bool {
-  return (lhs.0 == rhs.0) && (lhs.1 == rhs.1)
+  func updateText(isCellSelected: Bool) {
+    self.text = createText(line.name, isSelected: isCellSelected)
+  }
 }
 
 private func createText(_ value: String, isSelected: Bool) -> NSAttributedString {

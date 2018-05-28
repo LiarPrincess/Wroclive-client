@@ -67,7 +67,7 @@ class LineSelectorPage: UIViewController {
     return RxCollectionViewDataSource(
       configureCell: { _, collectionView, indexPath, model -> UICollectionViewCell in
         let cell = collectionView.dequeueCell(ofType: LineSelectorCell.self, forIndexPath: indexPath)
-        cell.viewModel.inputs.line.onNext(model)
+        cell.update(from: LineSelectorCellViewModel(model))
         return cell
       },
       configureSupplementaryView: { dataSource, collectionView, kind, indexPath -> UICollectionReusableView in
