@@ -5,13 +5,12 @@
 
 extension Array {
 
-  func groupedBy <K: Hashable> (_ grouping: (Element) -> K) -> [K:[Element]] {
-    var result: [K:[Element]] = [:]
+  func grouped<Key: Hashable>(_ grouping: (Element) -> Key) -> [Key:[Element]] {
+    var result: [Key:[Element]] = [:]
 
     for value in self {
       let key = grouping(value)
-      result[key] = result[key] ?? []
-      result[key]?.append(value)
+      result[key, default: []].append(value)
     }
 
     return result

@@ -5,8 +5,6 @@
 
 import UIKit
 import SnapKit
-import RxSwift
-import RxCocoa
 
 private typealias Layout = LineSelectorHeaderViewConstants.Layout
 
@@ -15,9 +13,6 @@ class LineSelectorHeaderView: UICollectionReusableView {
   // MARK: - Properties
 
   private let textLabel = UILabel()
-
-  let viewModel = LineSelectorHeaderViewModel()
-  private let disposeBag = DisposeBag()
 
   override var alpha: CGFloat {
     get { return 1.0 }
@@ -29,7 +24,6 @@ class LineSelectorHeaderView: UICollectionReusableView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
-    self.initBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -49,9 +43,9 @@ class LineSelectorHeaderView: UICollectionReusableView {
     }
   }
 
-  private func initBindings() {
-    self.viewModel.outputs.text
-      .drive(self.textLabel.rx.attributedText)
-      .disposed(by: self.disposeBag)
+  // MARK: - Methods
+
+  func update(from viewModel: LineSelectorHeaderViewModel) {
+    self.textLabel.attributedText = viewModel.text
   }
 }

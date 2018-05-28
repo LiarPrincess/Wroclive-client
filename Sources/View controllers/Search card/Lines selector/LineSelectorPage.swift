@@ -74,8 +74,7 @@ class LineSelectorPage: UIViewController {
         switch kind {
         case UICollectionElementKindSectionHeader:
           let view = collectionView.dequeueSupplementary(ofType: LineSelectorHeaderView.self, kind: .header, for: indexPath)
-          let section = dataSource[indexPath.section]
-          view.viewModel.inputs.section.onNext(section)
+          view.update(from: LineSelectorHeaderViewModel(dataSource[indexPath.section]))
           return view
         default:
           fatalError("Unexpected element kind")
@@ -153,19 +152,18 @@ class LineSelectorPage: UIViewController {
       }
     } /* for end */
   }
-
 }
 
 // MARK: - CollectionViewDelegateFlowLayout
 
 extension LineSelectorPage: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    let sectionData = self.collectionViewDataSource[section].model
+    let header = self.collectionViewDataSource[section].model
 
     let width  = self.collectionView.contentWidth
     let bounds = CGSize(width: width, height: .greatestFiniteMagnitude)
 
-    let text     = NSAttributedString(string: sectionData.lineSubtypeTranslation, attributes: HeaderTextStyles.header)
+    let text     = NSAttributedString(string: header.lineSubtypeTranslation, attributes: HeaderTextStyles.header)
     let textSize = text.boundingRect(with: bounds, options: .usesLineFragmentOrigin, context: nil)
 
     let height = textSize.height + HeaderLayout.topInset + HeaderLayout.bottomInset + 1.0
