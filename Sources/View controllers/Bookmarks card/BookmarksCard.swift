@@ -112,7 +112,7 @@ class BookmarksCard: CardPanel {
     return RxTableViewDataSource(
       configureCell: { _, tableView, indexPath, model -> UITableViewCell in
         let cell = tableView.dequeueCell(ofType: BookmarksCell.self, forIndexPath: indexPath)
-        cell.viewModel.inputs.bookmark.onNext(model)
+        cell.update(from: BookmarkCellViewModel(model))
         return cell
       },
       canEditRowAtIndexPath: { _, _ in true },

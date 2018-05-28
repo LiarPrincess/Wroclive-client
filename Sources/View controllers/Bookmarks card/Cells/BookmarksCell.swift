@@ -5,8 +5,6 @@
 
 import UIKit
 import SnapKit
-import RxSwift
-import RxCocoa
 
 private typealias Layout     = BookmarksCellConstants.Layout
 private typealias TextStyles = BookmarksCellConstants.TextStyles
@@ -22,9 +20,6 @@ class BookmarksCell: UITableViewCell {
   private let nameLabel  = UILabel()
   private let linesLabel = UILabel()
 
-  let viewModel = BookmarksCellViewModel()
-  private let disposeBag = DisposeBag()
-
   // disable alpha, so we dont end up with transparent cells when reordering
   override var alpha: CGFloat {
     get { return 1.0 }
@@ -36,7 +31,6 @@ class BookmarksCell: UITableViewCell {
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     self.initLayout()
-    self.initBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -64,18 +58,6 @@ class BookmarksCell: UITableViewCell {
     }
   }
 
-  private func initBindings() {
-    self.viewModel.outputs.name
-      .map { NSAttributedString(string: $0, attributes: TextStyles.name) }
-      .drive(self.nameLabel.rx.attributedText)
-      .disposed(by: self.disposeBag)
-
-    self.viewModel.outputs.lines
-      .map { NSAttributedString(string: $0, attributes: TextStyles.lines) }
-      .drive(self.linesLabel.rx.attributedText)
-      .disposed(by: self.disposeBag)
-  }
-
   // MARK: - Overriden
 
   override func willTransition(to state: UITableViewCellStateMask) {
@@ -101,5 +83,12 @@ class BookmarksCell: UITableViewCell {
     let labelWidth = self.bounds.width - Layout.leftInset - Layout.rightInset
     self.nameLabel.preferredMaxLayoutWidth  = labelWidth
     self.linesLabel.preferredMaxLayoutWidth = labelWidth
+  }
+
+  // MARK: - Methods
+
+  func update(from viewModel: BookmarkCellViewModel) {
+    self.nameLabel.attributedText  = viewModel.name
+    self.linesLabel.attributedText = viewModel.lines
   }
 }

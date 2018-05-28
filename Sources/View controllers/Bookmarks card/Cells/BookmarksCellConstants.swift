@@ -28,9 +28,12 @@ enum BookmarksCellConstants {
     }
 
     static var lines: TextAttributes {
-      let lineSpacing      = Layout.LinesLabel.lineSpacing
-      let paragraphSpacing = Layout.LinesLabel.paragraphSpacing
-      return TextAttributes(style: .body, color: .tint, alignment: .center, lineSpacing: lineSpacing, paragraphSpacing: paragraphSpacing)
+      return TextAttributes(
+        style:            .body,
+        color:            .tint,
+        alignment:        .center,
+        lineSpacing:      Layout.LinesLabel.lineSpacing,
+        paragraphSpacing: Layout.LinesLabel.paragraphSpacing)
     }
   }
 }

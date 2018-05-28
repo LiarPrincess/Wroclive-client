@@ -4,56 +4,26 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
 
-private typealias Layout = BookmarksCellConstants.Layout
+private typealias Layout     = BookmarksCellConstants.Layout
+private typealias TextStyles = BookmarksCellConstants.TextStyles
 
-protocol BookmarksCellViewModelInput {
-  var bookmark: AnyObserver<Bookmark> { get }
-}
+struct BookmarkCellViewModel {
+  let name:  NSAttributedString
+  let lines: NSAttributedString
 
-protocol BookmarksCellViewModelOutput {
-  var name:  Driver<String> { get }
-  var lines: Driver<String> { get }
-}
-
-class BookmarksCellViewModel: BookmarksCellViewModelInput, BookmarksCellViewModelOutput {
-
-  // MARK: - Properties
-
-  private let _bookmark = PublishSubject<Bookmark>()
-
-  // MARK: - Input
-
-  lazy var bookmark: AnyObserver<Bookmark> = self._bookmark.asObserver()
-
-  // MARK: - Output
-
-  lazy var name: Driver<String> = self._bookmark
-    .map { createName($0) }
-    .asDriver(onErrorDriveWith: .never())
-
-  lazy var lines: Driver<String> = self._bookmark
-    .map { createLinesLabel($0) }
-    .asDriver(onErrorDriveWith: .never())
-
-  // MARK: - Input/Output
-
-  var inputs:  BookmarksCellViewModelInput  { return self }
-  var outputs: BookmarksCellViewModelOutput { return self }
-}
-
-private func createName(_ bookmark: Bookmark) -> String {
-  return bookmark.name
+  init(_ bookmark: Bookmark) {
+    self.name  = NSAttributedString(string: bookmark.name,              attributes: TextStyles.name)
+    self.lines = NSAttributedString(string: createLinesLabel(bookmark), attributes: TextStyles.lines)
+  }
 }
 
 private func createLinesLabel(_ bookmark: Bookmark) -> String {
   let tramLines = bookmark.lines.filter(.tram)
   let busLines  = bookmark.lines.filter(.bus)
 
-  let hasTramLines = !tramLines.isEmpty
-  let hasBusLines  = !busLines.isEmpty
+  let hasTramLines = tramLines.any
+  let hasBusLines  = busLines.any
   let hasTramAndBusLines = hasTramLines && hasBusLines
 
   var result = ""

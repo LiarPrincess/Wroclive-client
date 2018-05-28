@@ -4,89 +4,51 @@
 //
 
 import XCTest
-import RxSwift
-import RxCocoa
-import RxTest
 @testable import Wroclive
 
-// swiftlint:disable implicitly_unwrapped_optional
+private typealias TextStyles = BookmarksCellConstants.TextStyles
 
 final class BookmarksCellViewModelTests: XCTestCase {
 
-  // MARK: - Properties
+  func test_bookmark_withoutLines_showsJustName() {
+    let bookmark  = Bookmark(name: "name", lines: [])
+    let viewModel = BookmarkCellViewModel(bookmark)
 
-  var viewModel:     BookmarksCellViewModel!
-  var testScheduler: TestScheduler!
-  var disposeBag:    DisposeBag!
-
-  // MARK: - Init
-
-  override func setUp() {
-    super.setUp()
-    self.viewModel     = BookmarksCellViewModel()
-    self.testScheduler = TestScheduler(initialClock: 0)
-    self.disposeBag    = DisposeBag()
+    XCTAssertEqual(viewModel.name,  NSAttributedString(string: "name", attributes: TextStyles.name))
+    XCTAssertEqual(viewModel.lines, NSAttributedString(string: "",     attributes: TextStyles.lines))
   }
 
-  override func tearDown() {
-    super.tearDown()
-    self.viewModel     = nil
-    self.testScheduler = nil
-    self.disposeBag    = nil
+  func test_bookmark_withSingleTram_showsSingleTramLine() {
+    let tram1     = Line(name: "1", type: .tram, subtype: .regular)
+    let bookmark  = Bookmark(name: "name", lines: [tram1])
+    let viewModel = BookmarkCellViewModel(bookmark)
+
+    XCTAssertEqual(viewModel.name,  NSAttributedString(string: "name", attributes: TextStyles.name))
+    XCTAssertEqual(viewModel.lines, NSAttributedString(string: "1",    attributes: TextStyles.lines))
   }
 
-  // MARK: - Name
+  func test_bookmark_withSingleBus_showsSingleBusLine() {
+    let bus1 = Line(name: "A", type: .bus, subtype: .regular)
+    let bookmark  = Bookmark(name: "name", lines: [bus1])
+    let viewModel = BookmarkCellViewModel(bookmark)
 
-  func test_changingBookmark_updatesName() {
-    let event0 = next(100, Bookmark(name: "test0", lines: []))
-    let event1 = next(200, Bookmark(name: "test1", lines: []))
-    self.simulateBookmarkEvents(event0, event1)
-
-    let observer = self.testScheduler.createObserver(String.self)
-    self.viewModel.outputs.name
-      .drive(observer)
-      .disposed(by: self.disposeBag)
-    self.testScheduler.start()
-
-    let expectedEvents = [next(100, "test0"), next(200, "test1")]
-    XCTAssertEqual(observer.events, expectedEvents)
+    XCTAssertEqual(viewModel.name,  NSAttributedString(string: "name", attributes: TextStyles.name))
+    XCTAssertEqual(viewModel.lines, NSAttributedString(string: "A",     attributes: TextStyles.lines))
   }
 
-  // MARK: - Lines
-
-  func test_changingBookmark_updatesLines() {
+  func test_bookmark_withMultipleLines_showsSortedLines() {
     let tram1 = Line(name: "1", type: .tram, subtype: .regular)
     let tram2 = Line(name: "2", type: .tram, subtype: .regular)
 
     let bus1 = Line(name: "A", type: .bus, subtype: .regular)
     let bus2 = Line(name: "B", type: .bus, subtype: .regular)
+    let bus3 = Line(name: "C", type: .bus, subtype: .regular)
 
-    let event0 = next(100, Bookmark(name: "", lines: [tram1, bus1]))
-    let event1 = next(200, Bookmark(name: "", lines: [tram1, bus1, tram2, bus2]))
-    self.simulateBookmarkEvents(event0, event1)
+    // changer order, so we also test sorting
+    let bookmark  = Bookmark(name: "name", lines: [tram2, tram1, bus3, bus2, bus1])
+    let viewModel = BookmarkCellViewModel(bookmark)
 
-    let observer = self.testScheduler.createObserver(String.self)
-    self.viewModel.outputs.lines
-      .drive(observer)
-      .disposed(by: self.disposeBag)
-    self.testScheduler.start()
-
-    let expectedEvents = [next(100, "1\nA"), next(200, "1   2\nA   B")]
-    XCTAssertEqual(observer.events, expectedEvents)
-  }
-}
-
-// MARK: - Events
-
-extension BookmarksCellViewModelTests {
-
-  // MARK: - Bookmark
-
-  typealias BookmarkEvent = Recorded<Event<Bookmark>>
-
-  func simulateBookmarkEvents(_ events: BookmarkEvent...) {
-    self.testScheduler.createHotObservable(events)
-      .bind(to: self.viewModel.inputs.bookmark)
-      .disposed(by: self.disposeBag)
+    XCTAssertEqual(viewModel.name,  NSAttributedString(string: "name",         attributes: TextStyles.name))
+    XCTAssertEqual(viewModel.lines, NSAttributedString(string: "1   2\nA   B   C", attributes: TextStyles.lines))
   }
 }
