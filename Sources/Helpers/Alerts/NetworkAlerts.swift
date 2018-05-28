@@ -18,7 +18,7 @@ class NetworkAlerts {
     )
   }
 
-  /// Cehck connection error alert. try again
+  /// 'Check connection' alert and try again
   static func showConnectionErrorAlert() -> Observable<Void> {
     typealias Localization = Localizable.Alert.Network.ConnectionError
     return AlertCreator.createAlert(

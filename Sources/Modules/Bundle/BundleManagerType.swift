@@ -11,6 +11,6 @@ protocol BundleManagerType {
   /// App version (e.g. 1.0)
   var version: String { get }
 
-  // App bundle (e.g. pl.nopoint.wroclive)
+  /// App bundle (e.g. pl.nopoint.wroclive)
   var identifier: String { get }
 }

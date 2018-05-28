@@ -10,7 +10,7 @@ struct EnvironmentVariables {
 
   let websiteUrl = URL(string: "https://www.overcast.fm")!
   let endpoints  = Endpoints()
-  let appStore   = Appstore()
+  let appStore   = AppStore()
   let timings    = Timings()
 
   struct Endpoints {
@@ -19,7 +19,7 @@ struct EnvironmentVariables {
     var locations: String { return "http://" + server + "/locations" }
   }
 
-  struct Appstore {
+  struct AppStore {
     private let appId = "888422857"
     var writeReviewUrl: URL { return URL(string: "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8")! }
     var shareUrl:       URL { return URL(string: "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8")! }
