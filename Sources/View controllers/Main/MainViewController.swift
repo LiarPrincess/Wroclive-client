@@ -53,6 +53,13 @@ class MainViewController: UIViewController {
     let viewModel      = BookmarksCardViewModel()
     let viewController = BookmarksCard(viewModel)
     self.openCard(viewController, animated: true)
+
+    viewModel.selectedBookmark
+      .drive(onNext: { [weak viewController] bookmark in
+        AppEnvironment.live.startTracking(bookmark.lines)
+        viewController?.dismiss(animated: true, completion: nil)
+      })
+      .disposed(by: viewModel.disposeBag)
   }
 
   @objc

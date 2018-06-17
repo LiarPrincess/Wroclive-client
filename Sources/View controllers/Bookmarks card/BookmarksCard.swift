@@ -8,12 +8,13 @@ import RxSwift
 import RxCocoa
 
 private typealias Layout = BookmarksCardConstants.Layout
+typealias BookmarksSection = RxSectionModel<String, Bookmark>
 
 class BookmarksCard: CardPanel {
 
   // MARK: - Properties
 
-  private let viewModel: BookmarksCardViewModelType
+  private let viewModel: BookmarksCardViewModel
   private let disposeBag = DisposeBag()
 
   var headerView: UIVisualEffectView = {
@@ -42,7 +43,6 @@ class BookmarksCard: CardPanel {
     self.initTableViewBindings()
     self.initVisibilityBindings()
     self.initEditBindings()
-    self.initViewControlerLifecycleBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -55,54 +55,52 @@ class BookmarksCard: CardPanel {
     self.tableView.rx.setDelegate(self)
       .disposed(by: disposeBag)
 
-    self.viewModel.outputs.bookmarks
+    self.viewModel.bookmarks
+      .map { [BookmarksSection(model: "", items: $0)] }
       .drive(self.tableView.rx.items(dataSource: self.tableViewDataSource))
       .disposed(by: disposeBag)
 
     self.tableView.rx.itemSelected
-      .bind(to: self.viewModel.inputs.itemSelected)
+      .map { $0.row }
+      .bind(to: self.viewModel.didSelectItem)
       .disposed(by: self.disposeBag)
 
     self.tableView.rx.itemMoved
-      .bind(to: self.viewModel.inputs.itemMoved)
+      .map { source, destination in (source.row, destination.row) }
+      .bind(to: self.viewModel.didMoveItem)
       .disposed(by: self.disposeBag)
 
     self.tableView.rx.itemDeleted
-      .bind(to: self.viewModel.inputs.itemDeleted)
+      .map { $0.row }
+      .bind(to: self.viewModel.didDeleteItem)
       .disposed(by: self.disposeBag)
   }
 
   private func initVisibilityBindings() {
-    self.viewModel.outputs.isTableViewVisible
+    self.viewModel.isTableViewVisible
       .drive(self.tableView.rx.isVisible)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.isTableViewVisible
+    self.viewModel.isTableViewVisible
       .drive(self.editButton.rx.isVisible)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.isPlaceholderVisible
+    self.viewModel.isPlaceholderVisible
       .drive(self.placeholderView.rx.isVisible)
       .disposed(by: self.disposeBag)
   }
 
   private func initEditBindings() {
     self.editButton.rx.tap
-      .bind(to: self.viewModel.inputs.editButtonPressed)
+      .bind(to: self.viewModel.didPressEditButton)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.isEditing
+    self.viewModel.isEditing
       .drive(onNext: { [weak self] in self?.setEditing($0, animated: true) })
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.editButtonText
+    self.viewModel.editButtonText
       .drive(self.editButton.rx.attributedTitle())
-      .disposed(by: self.disposeBag)
-  }
-
-  private func initViewControlerLifecycleBindings() {
-    self.viewModel.outputs.shouldClose
-      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
       .disposed(by: self.disposeBag)
   }
 

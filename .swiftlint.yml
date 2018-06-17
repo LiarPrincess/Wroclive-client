@@ -16,10 +16,6 @@ file_length:
   warning: 250
   error:   300
 
-identifier_name:
-  excluded:
-    - id
-
 force_cast:
   severity: warning
 
@@ -50,11 +46,13 @@ opt_in_rules:
   - vertical_parameter_alignment_on_call
 
 disabled_rules:
+  - identifier_name # annoying
+
   - colon                   # align properties
   - comma                   # align func params
   - return_arrow_whitespace # align return type
 
-  - nesting            # nested constants  
+  - nesting            # nested constants
   - void_return        # prefer () to Void
 
   - opening_brace      # if true { ... }
