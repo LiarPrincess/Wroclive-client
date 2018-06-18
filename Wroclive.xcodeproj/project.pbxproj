@@ -81,6 +81,10 @@
 		902331301EDF37F500FA8F43 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EC1EDF37F500FA8F43 /* LineType.swift */; };
 		9024C6111F9667E600025503 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024C6101F9667E600025503 /* Environment.swift */; };
 		9024C6131F96699500025503 /* EnvironmentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024C6121F96699500025503 /* EnvironmentStack.swift */; };
+		90374B4B20D876C600315F80 /* BookmarksCardViewModelBookmarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4920D8766F00315F80 /* BookmarksCardViewModelBookmarksTests.swift */; };
+		90374B4F20D877F200315F80 /* BookmarksCardViewModelVisibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4D20D8777600315F80 /* BookmarksCardViewModelVisibilityTests.swift */; };
+		90374B5220D8786100315F80 /* BookmarksCardViewModelEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5020D8785C00315F80 /* BookmarksCardViewModelEditTests.swift */; };
+		90374B5520D878D000315F80 /* BookmarksCardViewModelSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5320D878CC00315F80 /* BookmarksCardViewModelSelectionTests.swift */; };
 		903920351F1AB70E00250162 /* ArrayOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLines.swift */; };
 		903F6F961F7D822B00FCC56B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */; };
 		90425D331FF11EFB00F1800E /* StorageManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90425D311FF11EF400F1800E /* StorageManagerMock.swift */; };
@@ -95,7 +99,7 @@
 		9050705B2087EB4B007DDA80 /* StorageManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050705A2087EB4B007DDA80 /* StorageManagerType.swift */; };
 		9050705F2087EE66007DDA80 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050705E2087EE66007DDA80 /* StorageManager.swift */; };
 		905070622087EF53007DDA80 /* DocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905070612087EF53007DDA80 /* DocumentManager.swift */; };
-		9050954320D709A3005E2BF8 /* BookmarksCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTests.swift */; };
+		9050954320D709A3005E2BF8 /* BookmarksCardViewModelTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTestsBase.swift */; };
 		9050954520D725DC005E2BF8 /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */; };
 		90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90538DD1201CADCF0000BBBE /* CardPanel.swift */; };
 		90546BEE1F6AF23100E8E75F /* LiveManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BED1F6AF23100E8E75F /* LiveManagerType.swift */; };
@@ -316,6 +320,10 @@
 		9024C6121F96699500025503 /* EnvironmentStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStack.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Wroclive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wroclive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902FC75B1FB79254002E09FE /* LinePositionMaskGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePositionMaskGenerator.swift; sourceTree = "<group>"; };
+		90374B4920D8766F00315F80 /* BookmarksCardViewModelBookmarksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelBookmarksTests.swift; sourceTree = "<group>"; };
+		90374B4D20D8777600315F80 /* BookmarksCardViewModelVisibilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelVisibilityTests.swift; sourceTree = "<group>"; };
+		90374B5020D8785C00315F80 /* BookmarksCardViewModelEditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelEditTests.swift; sourceTree = "<group>"; };
+		90374B5320D878CC00315F80 /* BookmarksCardViewModelSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelSelectionTests.swift; sourceTree = "<group>"; };
 		903920341F1AB70E00250162 /* ArrayOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayOfLines.swift; sourceTree = "<group>"; };
 		903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		90425D311FF11EF400F1800E /* StorageManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerMock.swift; sourceTree = "<group>"; };
@@ -410,7 +418,7 @@
 		90D3A3EC1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksPlaceholderConstants.swift; sourceTree = "<group>"; };
 		90D3A3EE1FEC148C00FB7485 /* NSAttributedString+TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+TextAttributes.swift"; sourceTree = "<group>"; };
 		90D3A3F01FEC239100FB7485 /* BookmarksCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModel.swift; sourceTree = "<group>"; };
-		90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelTests.swift; sourceTree = "<group>"; };
+		90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTestsBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelTestsBase.swift; sourceTree = "<group>"; };
 		90D3A3FF1FEDB58800FB7485 /* RxUIView+IsVisible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxUIView+IsVisible.swift"; sourceTree = "<group>"; };
 		90D3A4021FEEF78400FB7485 /* RxTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewDataSource.swift; sourceTree = "<group>"; };
 		90D3A4081FEFE6D400FB7485 /* RxSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionType.swift; sourceTree = "<group>"; };
@@ -549,14 +557,12 @@
 			children = (
 				9017C36E1EE33AA300063377 /* BookmarksCell.swift */,
 				908FE5B620BC77D80001E9B0 /* BookmarksCellViewModel.swift */,
-				90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */,
 				909B9FDB1FEBC3E2007CB59D /* BookmarksCellConstants.swift */,
 				90D3A3E91FEC108D00FB7485 /* BookmarksPlaceholderView.swift */,
 				90D3A3EC1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift */,
 				9017C3411EE339FD00063377 /* BookmarksCard.swift */,
 				9017C3431EE339FD00063377 /* BookmarksCardLayout.swift */,
 				90D3A3F01FEC239100FB7485 /* BookmarksCardViewModel.swift */,
-				90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTests.swift */,
 				9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */,
 			);
 			path = "Bookmarks card";
@@ -805,6 +811,35 @@
 				901ECDB61FF586F5004765AA /* TextAlignment.swift */,
 			);
 			path = Enumerations;
+			sourceTree = "<group>";
+		};
+		90374B4720D871C900315F80 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				90374B4C20D8773100315F80 /* Bookmarks cell */,
+				90374B4820D871EA00315F80 /* Bookmarks card */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		90374B4820D871EA00315F80 /* Bookmarks card */ = {
+			isa = PBXGroup;
+			children = (
+				90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTestsBase.swift */,
+				90374B4920D8766F00315F80 /* BookmarksCardViewModelBookmarksTests.swift */,
+				90374B4D20D8777600315F80 /* BookmarksCardViewModelVisibilityTests.swift */,
+				90374B5020D8785C00315F80 /* BookmarksCardViewModelEditTests.swift */,
+				90374B5320D878CC00315F80 /* BookmarksCardViewModelSelectionTests.swift */,
+			);
+			path = "Bookmarks card";
+			sourceTree = "<group>";
+		};
+		90374B4C20D8773100315F80 /* Bookmarks cell */ = {
+			isa = PBXGroup;
+			children = (
+				90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */,
+			);
+			path = "Bookmarks cell";
 			sourceTree = "<group>";
 		};
 		90425D301FF11ED900F1800E /* Mocks */ = {
@@ -1182,6 +1217,7 @@
 			children = (
 				904CAC0E2039AC1300B4DABA /* Extensions */,
 				90425D301FF11ED900F1800E /* Mocks */,
+				90374B4720D871C900315F80 /* View Models */,
 				9009BD441FB63C7B009FB075 /* Info.plist */,
 			);
 			path = Tests;
@@ -1606,13 +1642,17 @@
 				90425D331FF11EFB00F1800E /* StorageManagerMock.swift in Sources */,
 				90AACC7D200ABA550064EDFD /* LineSelectorHeaderViewModelTests.swift in Sources */,
 				90AACC7C200ABA500064EDFD /* LineSelectorCellViewModelTests.swift in Sources */,
+				90374B5220D8786100315F80 /* BookmarksCardViewModelEditTests.swift in Sources */,
 				9050954520D725DC005E2BF8 /* SearchCardViewModelTests.swift in Sources */,
+				90374B4F20D877F200315F80 /* BookmarksCardViewModelVisibilityTests.swift in Sources */,
 				906C40612014E78000E32571 /* MapAnnotationManagerTests.swift in Sources */,
 				90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */,
 				90C74A6A204F287C006524EC /* MapViewModelTests.swift in Sources */,
+				90374B5520D878D000315F80 /* BookmarksCardViewModelSelectionTests.swift in Sources */,
+				90374B4B20D876C600315F80 /* BookmarksCardViewModelBookmarksTests.swift in Sources */,
 				90AACC90200BA6E70064EDFD /* LineSelectorSectionCreatorTests.swift in Sources */,
 				90203F8C203785EF00CC5148 /* UserLocationManagerMock.swift in Sources */,
-				9050954320D709A3005E2BF8 /* BookmarksCardViewModelTests.swift in Sources */,
+				9050954320D709A3005E2BF8 /* BookmarksCardViewModelTestsBase.swift in Sources */,
 				90915B201FFC17A7009FE942 /* ApiManagerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

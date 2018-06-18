@@ -26,8 +26,8 @@ final class LineSelectorSectionCreatorTests: XCTestCase {
     let line8 = Line(name: "8", type:  .bus, subtype: .limited)
     let line9 = Line(name: "9", type:  .bus, subtype: .temporary)
 
-    let lines = [line0, line1, line2, line3, line4, line5, line6, line7, line8, line9].reversed().toArray()
-    let sections = LineSelectorSectionCreator.create(lines)
+    let lines = [line0, line1, line2, line3, line4, line5, line6, line7, line8, line9].reversed()
+    let sections = LineSelectorSectionCreator.create(Array(lines))
 
     let expectedSections = [
       self.createSection(subtype: .express,   lines: line0, line1),
