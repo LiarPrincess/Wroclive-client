@@ -117,7 +117,7 @@ final class BookmarksCardViewModelTests: XCTestCase {
 
   // MARK: - Selection
 
-  func test_selectingItem_selectsBookmark() {
+  func test_selectingItem_startsTracking() {
     let bookmarks = self.testData
     self.storageManager._bookmarks = bookmarks
     self.viewModel = BookmarksCardViewModel()
@@ -126,7 +126,7 @@ final class BookmarksCardViewModelTests: XCTestCase {
     self.simulateSelectionEvents(event)
 
     let observer = self.testScheduler.createObserver(Bookmark.self)
-    viewModel.selectedBookmark
+    viewModel.startTracking
       .drive(observer)
       .disposed(by: self.disposeBag)
     self.testScheduler.start()

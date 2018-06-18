@@ -32,11 +32,10 @@ class BookmarksCardViewModel {
   let isEditing:      Driver<Bool>
   let editButtonText: Driver<NSAttributedString>
 
-  let selectedBookmark: Driver<Bookmark>
+  let startTracking: Driver<Bookmark>
 
   // MARK: - Init
 
-  // swiftlint:disable:next function_body_length
   init() {
     let _didSelectItem = PublishSubject<Int>()
     self.didSelectItem = _didSelectItem.asObserver()
@@ -54,21 +53,14 @@ class BookmarksCardViewModel {
     let moveOperation   = _didMoveItem.map   { Operation.move(from: $0.from, to: $0.to) }
     let removeOperation = _didDeleteItem.map { Operation.remove(index: $0) }
 
-    let data = AppEnvironment.storage.bookmarks
     self.bookmarks = Observable.merge(moveOperation, removeOperation)
-      .scan(data, accumulator: apply)
-      .startWith(data)
+      .reducing(AppEnvironment.storage.bookmarks, apply: apply)
       .asDriver(onErrorJustReturn: [])
 
     self.isTableViewVisible   = self.bookmarks.map { $0.any }
     self.isPlaceholderVisible = self.bookmarks.map { $0.isEmpty }
 
-    self.bookmarks
-      .skip(1) // skip initial binding
-      .drive(onNext: { AppEnvironment.storage.saveBookmarks($0) })
-      .disposed(by: self.disposeBag)
-
-    // edit button
+    // edit
     let isEditing = _didPressEditButton
       .reducing(false) { current, _ in !current }
       .asDriver(onErrorDriveWith: .never())
@@ -76,9 +68,19 @@ class BookmarksCardViewModel {
     self.isEditing      = isEditing
     self.editButtonText = isEditing.map(createEditButtonLabel)
 
-    self.selectedBookmark = _didSelectItem
+    // selected bookmark
+    self.startTracking = _didSelectItem
       .withLatestFrom(self.bookmarks) { index, bookmarks in bookmarks[index] }
       .asDriver(onErrorDriveWith: .never())
+
+    self.initBindings()
+  }
+
+  private func initBindings() {
+    self.bookmarks
+      .skip(1) // skip initial binding
+      .drive(onNext: { AppEnvironment.storage.saveBookmarks($0) })
+      .disposed(by: self.disposeBag)
   }
 }
 

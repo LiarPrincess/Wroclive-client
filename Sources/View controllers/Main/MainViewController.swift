@@ -45,6 +45,14 @@ class MainViewController: UIViewController {
   func searchButtonPressed() {
     let viewModel      = SearchCardViewModel()
     let viewController = SearchCard(viewModel)
+
+    viewModel.startTracking
+      .drive(onNext: { [weak viewController] lines in
+        AppEnvironment.live.startTracking(lines)
+        viewController?.dismiss(animated: true, completion: nil)
+      })
+      .disposed(by: viewModel.disposeBag)
+
     self.openCard(viewController, animated: true)
   }
 
@@ -52,14 +60,15 @@ class MainViewController: UIViewController {
   func bookmarksButtonPressed() {
     let viewModel      = BookmarksCardViewModel()
     let viewController = BookmarksCard(viewModel)
-    self.openCard(viewController, animated: true)
 
-    viewModel.selectedBookmark
+    viewModel.startTracking
       .drive(onNext: { [weak viewController] bookmark in
         AppEnvironment.live.startTracking(bookmark.lines)
         viewController?.dismiss(animated: true, completion: nil)
       })
       .disposed(by: viewModel.disposeBag)
+
+    self.openCard(viewController, animated: true)
   }
 
   @objc

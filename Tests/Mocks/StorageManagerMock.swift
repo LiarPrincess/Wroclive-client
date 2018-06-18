@@ -44,6 +44,15 @@ func XCTAssertOperationCount(_ manager:      StorageManagerMock,
                              saveBookmarks:  Int,
                              file: StaticString = #file,
                              line: UInt         = #line) {
-  XCTAssertEqual(manager.getBookmarksCount,  getBookmarks, file: file, line: line)
+  XCTAssertEqual(manager.getBookmarksCount,  getBookmarks,  file: file, line: line)
   XCTAssertEqual(manager.saveBookmarksCount, saveBookmarks, file: file, line: line)
+}
+
+func XCTAssertOperationCount(_ manager:           StorageManagerMock,
+                             getSearchCardState:  Int,
+                             saveSearchCardState: Int,
+                             file: StaticString = #file,
+                             line: UInt         = #line) {
+  XCTAssertEqual(manager.getSearchCardStateCount,  getSearchCardState,  file: file, line: line)
+  XCTAssertEqual(manager.saveSearchCardStateCount, saveSearchCardState, file: file, line: line)
 }

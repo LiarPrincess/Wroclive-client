@@ -14,7 +14,7 @@ class SearchCard: CardPanel {
 
   // MARK: - Properties
 
-  private let viewModel: SearchCardViewModelType
+  private let viewModel: SearchCardViewModel
   private let disposeBag = DisposeBag()
 
   var headerView: UIVisualEffectView = {
@@ -42,7 +42,7 @@ class SearchCard: CardPanel {
     super.init(nibName: nil, bundle: nil)
 
     self.initPageBindings()
-    self.initLineSelectorBindings()
+    self.initLineBindings()
     self.initVisibilityBindings()
     self.initButtonBindings()
     self.initAlertBindings()
@@ -57,14 +57,14 @@ class SearchCard: CardPanel {
 
   private func initPageBindings() {
     self.lineTypeSelector.rx.selectedValueChanged
-      .bind(to: self.viewModel.inputs.pageSelected)
+      .bind(to: self.viewModel.didSelectPage)
       .disposed(by: self.disposeBag)
 
     self.lineSelector.rx.pageDidTransition
-      .bind(to: self.viewModel.inputs.pageDidTransition)
+      .bind(to: self.viewModel.didTransitionToPage)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.page
+    self.viewModel.page
       .drive(onNext: { [weak self] newValue in
         self?.lineTypeSelector.selectedValue = newValue
         self?.lineSelector.setPage(newValue, animated: true)
@@ -72,51 +72,56 @@ class SearchCard: CardPanel {
       .disposed(by: self.disposeBag)
   }
 
-  private func initLineSelectorBindings() {
+  private func initLineBindings() {
     self.lineSelector.rx.lineSelected
-      .bind(to: self.viewModel.inputs.lineSelected)
+      .bind(to: self.viewModel.didSelectLine)
       .disposed(by: self.disposeBag)
 
     self.lineSelector.rx.lineDeselected
-      .bind(to: self.viewModel.inputs.lineDeselected)
+      .bind(to: self.viewModel.didDeselectLine)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.lines
-      .withLatestFrom(self.viewModel.outputs.selectedLines) { (lines: $0, selectedLines: $1) }
+    self.viewModel.lines
+      .withLatestFrom(self.viewModel.selectedLines) { (lines: $0, selectedLines: $1) }
       .drive(onNext: { [weak self] in self?.lineSelector.setLines($0.lines, selected: $0.selectedLines) })
       .disposed(by: self.disposeBag)
   }
 
   private func initVisibilityBindings() {
-    self.viewModel.outputs.isLineSelectorVisible
+    self.viewModel.isLineSelectorVisible
       .drive(self.lineSelector.view.rx.isVisible)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.isPlaceholderVisible
+    self.viewModel.isPlaceholderVisible
       .drive(self.placeholderView.rx.isVisible)
       .disposed(by: self.disposeBag)
   }
 
   private func initButtonBindings() {
     self.bookmarkButton.rx.tap
-      .bind(to: self.viewModel.inputs.bookmarkButtonPressed)
+      .bind(to: self.viewModel.didPressBookmarkButton)
       .disposed(by: self.disposeBag)
 
     self.searchButton.rx.tap
-      .bind(to: self.viewModel.inputs.searchButtonPressed)
+      .bind(to: self.viewModel.didPressSearchButton)
       .disposed(by: self.disposeBag)
   }
 
   private func initAlertBindings() {
-    self.viewModel.outputs.showBookmarkAlert.asObservable()
-      .flatMapLatest(createAlert)
+    self.viewModel.showAlert.asObservable()
+      .flatMapLatest(createBookmarkNameInputAlert)
       .unwrap()
-      .bind(to: self.viewModel.inputs.bookmarkAlertNameEntered)
+      .bind(to: self.viewModel.didEnterBookmarkName)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.showApiErrorAlert.asObservable()
-      .flatMapLatest(createAlert)
-      .bind(to: self.viewModel.inputs.apiAlertTryAgainButtonPressed)
+    self.viewModel.showAlert.asObservable()
+      .flatMapLatest(createBookmarkNoLinesSelectedAlert)
+      .subscribe()
+      .disposed(by: self.disposeBag)
+
+    self.viewModel.showAlert.asObservable()
+      .flatMapLatest(createApiErrorAlert)
+      .bind(to: self.viewModel.didPressAlertTryAgainButton)
       .disposed(by: self.disposeBag)
   }
 
@@ -125,16 +130,12 @@ class SearchCard: CardPanel {
     // also simple binding would propagate also .onCompleted events
     self.rx.methodInvoked(#selector(SearchCard.viewDidAppear(_:)))
       .take(1)
-      .bind { [weak self] _ in self?.viewModel.inputs.viewDidAppear.onNext() }
+      .bind { [weak self] _ in self?.viewModel.viewDidAppear.onNext() }
       .disposed(by: self.disposeBag)
 
     self.rx.methodInvoked(#selector(SearchCard.viewDidDisappear(_:)))
       .map { _ in () }
-      .bind(to: self.viewModel.inputs.viewDidDisappear)
-      .disposed(by: self.disposeBag)
-
-    self.viewModel.outputs.shouldClose
-      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
+      .bind(to: self.viewModel.viewDidDisappear)
       .disposed(by: self.disposeBag)
   }
 
@@ -168,17 +169,28 @@ class SearchCard: CardPanel {
 
 // MARK: - Helpers
 
-private func createAlert(_ error: ApiError) -> Observable<Void> {
-  switch error {
-  case .noInternet:      return NetworkAlerts.showNoInternetAlert()
-  case .invalidResponse,
-       .generalError:    return NetworkAlerts.showConnectionErrorAlert()
+private func createBookmarkNameInputAlert(_ alert: SearchCardAlert) -> Observable<String?> {
+  switch alert {
+  case .bookmarkNameInput: return BookmarkAlerts.showNameInputAlert()
+  default: return .empty()
   }
 }
 
-private func createAlert(_ bookmarkAlert: SearchCardBookmarkAlert) -> Observable<String?> {
-  switch bookmarkAlert {
-  case .nameInput:       return BookmarkAlerts.showNameInputAlert()
-  case .noLinesSelected: return BookmarkAlerts.showNoLinesSelectedAlert().map { _ in nil }
+private func createBookmarkNoLinesSelectedAlert(_ alert: SearchCardAlert) -> Observable<Void> {
+  switch alert {
+  case .bookmarkNoLineSelected: return BookmarkAlerts.showNoLinesSelectedAlert()
+  default: return .empty()
+  }
+}
+
+private func createApiErrorAlert(_ alert: SearchCardAlert) -> Observable<Void> {
+  switch alert {
+  case let .apiError(error):
+    switch error {
+    case .noInternet:      return NetworkAlerts.showNoInternetAlert()
+    case .invalidResponse,
+         .generalError:    return NetworkAlerts.showConnectionErrorAlert()
+    }
+  default: return .empty()
   }
 }
