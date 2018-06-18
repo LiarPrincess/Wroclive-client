@@ -8,7 +8,6 @@ import RxSwift
 import RxCocoa
 
 extension Reactive where Base: LineTypeSelector {
-
   var selectedValueChanged: ControlEvent<LineType> {
     return ControlEvent(events:
       self.controlEvent([.allEditingEvents, .valueChanged])

@@ -85,6 +85,9 @@
 		90374B4F20D877F200315F80 /* BookmarksCardViewModelVisibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4D20D8777600315F80 /* BookmarksCardViewModelVisibilityTests.swift */; };
 		90374B5220D8786100315F80 /* BookmarksCardViewModelEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5020D8785C00315F80 /* BookmarksCardViewModelEditTests.swift */; };
 		90374B5520D878D000315F80 /* BookmarksCardViewModelSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5320D878CC00315F80 /* BookmarksCardViewModelSelectionTests.swift */; };
+		90374B5620D87E6300315F80 /* LineSelectorCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */; };
+		90374B5720D87E6800315F80 /* LineSelectorHeaderViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */; };
+		90374B5820D87E6B00315F80 /* LineSelectorSectionCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */; };
 		903920351F1AB70E00250162 /* ArrayOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLines.swift */; };
 		903F6F961F7D822B00FCC56B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */; };
 		90425D331FF11EFB00F1800E /* StorageManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90425D311FF11EF400F1800E /* StorageManagerMock.swift */; };
@@ -160,12 +163,9 @@
 		909B9FDE1FEBD0C2007CB59D /* AssertNotCalled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90AACC76200951B20064EDFD /* Observable+ValuesErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC75200951B20064EDFD /* Observable+ValuesErrors.swift */; };
-		90AACC7C200ABA500064EDFD /* LineSelectorCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */; };
-		90AACC7D200ABA550064EDFD /* LineSelectorHeaderViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */; };
 		90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */; };
 		90AACC89200ACA890064EDFD /* AlertCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC88200ACA890064EDFD /* AlertCreator.swift */; };
 		90AACC8D200BA01A0064EDFD /* LineSelectorSectionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */; };
-		90AACC90200BA6E70064EDFD /* LineSelectorSectionCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */; };
 		90AACC9B200BE4110064EDFD /* LineSelectorPage+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC9A200BE4110064EDFD /* LineSelectorPage+Rx.swift */; };
 		90AF2BD41EE9DE00006E61D6 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AF2BD31EE9DE00006E61D6 /* ThemeManager.swift */; };
 		90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B1DAA01F2BD92500FAE18A /* Bookmark.swift */; };
@@ -573,13 +573,14 @@
 			children = (
 				907DC6E61FF2B73F001C5DD6 /* Line type selector */,
 				9021F3E31F12C9EF000A6949 /* Lines selector */,
-				901ECDCA1FF58D36004765AA /* Placeholder */,
-				901ECDD11FF5B478004765AA /* Types */,
+				901ECDCB1FF58D5C004765AA /* SearchPlaceholderView.swift */,
+				901ECDCD1FF58D74004765AA /* SearchPlaceholderViewConstants.swift */,
 				9017C34E1EE339FD00063377 /* SearchCard.swift */,
 				9017C3501EE339FD00063377 /* SearchCardLayout.swift */,
 				901ECDCF1FF5A003004765AA /* SearchCardViewModel.swift */,
 				90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */,
 				9017C34F1EE339FD00063377 /* SearchCardConstants.swift */,
+				906C40622016786E00E32571 /* SearchCardAlert.swift */,
 			);
 			path = "Search card";
 			sourceTree = "<group>";
@@ -621,23 +622,6 @@
 				901A80A220129DCD0013CCD9 /* SettingsSectionHeaderViewConstants.swift */,
 			);
 			path = Headers;
-			sourceTree = "<group>";
-		};
-		901ECDCA1FF58D36004765AA /* Placeholder */ = {
-			isa = PBXGroup;
-			children = (
-				901ECDCB1FF58D5C004765AA /* SearchPlaceholderView.swift */,
-				901ECDCD1FF58D74004765AA /* SearchPlaceholderViewConstants.swift */,
-			);
-			path = Placeholder;
-			sourceTree = "<group>";
-		};
-		901ECDD11FF5B478004765AA /* Types */ = {
-			isa = PBXGroup;
-			children = (
-				906C40622016786E00E32571 /* SearchCardAlert.swift */,
-			);
-			path = Types;
 			sourceTree = "<group>";
 		};
 		901FEAD11FE1EC8900C36A71 /* Text attributes */ = {
@@ -687,9 +671,17 @@
 		9021F3E31F12C9EF000A6949 /* Lines selector */ = {
 			isa = PBXGroup;
 			children = (
-				9021F42B1F12D698000A6949 /* Cells */,
-				9042EDBD1FF2D5C900F5D01D /* Headers */,
-				90B2611F1FF501330076EC69 /* Sections */,
+				9021F42C1F12D698000A6949 /* LineSelectorCell.swift */,
+				9021F4351F12D698000A6949 /* LineSelectorCellViewModel.swift */,
+				9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */,
+				9042EDBE1FF2D71500F5D01D /* LineSelectorCellConstants.swift */,
+				9021F42D1F12D698000A6949 /* LineSelectorHeaderView.swift */,
+				9021F4361F12D698000A6949 /* LineSelectorHeaderViewModel.swift */,
+				9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */,
+				9042EDCE1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift */,
+				90B261201FF501510076EC69 /* LineSelectorSection.swift */,
+				90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */,
+				90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */,
 				9021F4421F12D6C5000A6949 /* LineSelector.swift */,
 				90B2611D1FF501100076EC69 /* LineSelector+Rx.swift */,
 				9021F4301F12D698000A6949 /* LineSelectorPage.swift */,
@@ -721,17 +713,6 @@
 				9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */,
 			);
 			path = DismissGesture;
-			sourceTree = "<group>";
-		};
-		9021F42B1F12D698000A6949 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				9021F42C1F12D698000A6949 /* LineSelectorCell.swift */,
-				9021F4351F12D698000A6949 /* LineSelectorCellViewModel.swift */,
-				9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */,
-				9042EDBE1FF2D71500F5D01D /* LineSelectorCellConstants.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		902330E41EDF37F500FA8F43 /* App */ = {
@@ -851,17 +832,6 @@
 				90915B1B1FFC0708009FE942 /* MapManagerMock.swift */,
 			);
 			path = Mocks;
-			sourceTree = "<group>";
-		};
-		9042EDBD1FF2D5C900F5D01D /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				9021F42D1F12D698000A6949 /* LineSelectorHeaderView.swift */,
-				9021F4361F12D698000A6949 /* LineSelectorHeaderViewModel.swift */,
-				9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */,
-				9042EDCE1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift */,
-			);
-			path = Headers;
 			sourceTree = "<group>";
 		};
 		904CAC0E2039AC1300B4DABA /* Extensions */ = {
@@ -1097,16 +1067,6 @@
 			name = Theme;
 			path = Sources/Modules/Theme;
 			sourceTree = SOURCE_ROOT;
-		};
-		90B2611F1FF501330076EC69 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				90B261201FF501510076EC69 /* LineSelectorSection.swift */,
-				90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */,
-				90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
 		};
 		90B412481F97D4F1008F05E9 /* Assets */ = {
 			isa = PBXGroup;
@@ -1640,8 +1600,6 @@
 				90915B1D1FFC070F009FE942 /* MapManagerMock.swift in Sources */,
 				904CAC122039AC3C00B4DABA /* Vehicle+Equatable.swift in Sources */,
 				90425D331FF11EFB00F1800E /* StorageManagerMock.swift in Sources */,
-				90AACC7D200ABA550064EDFD /* LineSelectorHeaderViewModelTests.swift in Sources */,
-				90AACC7C200ABA500064EDFD /* LineSelectorCellViewModelTests.swift in Sources */,
 				90374B5220D8786100315F80 /* BookmarksCardViewModelEditTests.swift in Sources */,
 				9050954520D725DC005E2BF8 /* SearchCardViewModelTests.swift in Sources */,
 				90374B4F20D877F200315F80 /* BookmarksCardViewModelVisibilityTests.swift in Sources */,
@@ -1650,7 +1608,6 @@
 				90C74A6A204F287C006524EC /* MapViewModelTests.swift in Sources */,
 				90374B5520D878D000315F80 /* BookmarksCardViewModelSelectionTests.swift in Sources */,
 				90374B4B20D876C600315F80 /* BookmarksCardViewModelBookmarksTests.swift in Sources */,
-				90AACC90200BA6E70064EDFD /* LineSelectorSectionCreatorTests.swift in Sources */,
 				90203F8C203785EF00CC5148 /* UserLocationManagerMock.swift in Sources */,
 				9050954320D709A3005E2BF8 /* BookmarksCardViewModelTestsBase.swift in Sources */,
 				90915B201FFC17A7009FE942 /* ApiManagerMock.swift in Sources */,
@@ -1790,6 +1747,7 @@
 				90D3A40E1FEFE89C00FB7485 /* RxSectionModel.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchCardLayout.swift in Sources */,
 				906C406E2019000B00E32571 /* ApiResponse.swift in Sources */,
+				90374B5820D87E6B00315F80 /* LineSelectorSectionCreatorTests.swift in Sources */,
 				908FB19D1F48B3CA00121584 /* ReusableCell+UITableView.swift in Sources */,
 				9055C8E81F462F5C00D1EBDA /* SettingsCardConstants.swift in Sources */,
 				90D3A3ED1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift in Sources */,
@@ -1798,6 +1756,8 @@
 				905D71AC1FE1C5BD006D1DB6 /* ApiManager.swift in Sources */,
 				9079DCD61F6C545600C6ABCD /* EnvironmentVariables.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchCardState.swift in Sources */,
+				90374B5620D87E6300315F80 /* LineSelectorCellViewModelTests.swift in Sources */,
+				90374B5720D87E6800315F80 /* LineSelectorHeaderViewModelTests.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
 				90C74A66204F269D006524EC /* MapViewModelInputs.swift in Sources */,
