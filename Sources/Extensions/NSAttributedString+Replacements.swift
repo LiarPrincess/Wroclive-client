@@ -34,7 +34,7 @@ extension NSAttributedString {
     let replacedTexts = replacements.map { $0.text }
 
     return self.string
-      .findPositions(of: replacedTexts)
+      .indices(of: replacedTexts)
       .map     { ($0, nsString.substring(with: $0)) }
       .flatMap { position, substring in
         replacements

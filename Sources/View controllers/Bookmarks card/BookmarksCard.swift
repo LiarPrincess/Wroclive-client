@@ -56,7 +56,7 @@ class BookmarksCard: CardPanel {
       .disposed(by: disposeBag)
 
     self.viewModel.bookmarks
-      .map { [BookmarksSection(model: "", items: $0)] }
+      .map { [BookmarksSection(model: .empty, items: $0)] }
       .drive(self.tableView.rx.items(dataSource: self.tableViewDataSource))
       .disposed(by: disposeBag)
 

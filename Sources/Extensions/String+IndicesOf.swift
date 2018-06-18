@@ -6,12 +6,7 @@
 import Foundation
 
 extension String {
-
-  func findPosition(of substring: String) -> [NSRange] {
-    return self.findPositions(of: [substring])
-  }
-
-  func findPositions(of substrings: [String]) -> [NSRange] {
+  func indices(of substrings: [String]) -> [NSRange] {
     let nsSelf = NSString(string: self)
 
     // swiftlint:disable force_try

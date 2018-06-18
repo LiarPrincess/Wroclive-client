@@ -6,5 +6,7 @@
 import UIKit
 
 extension UICollectionView {
-  var contentWidth: CGFloat { return self.bounds.width - self.contentInset.left - self.contentInset.right }
+  var contentWidth: CGFloat {
+    return self.bounds.width - self.contentInset.left - self.contentInset.right
+  }
 }

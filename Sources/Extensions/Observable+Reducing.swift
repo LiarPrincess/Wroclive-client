@@ -6,7 +6,6 @@
 import RxSwift
 
 extension ObservableType {
-
   func reducing<A>(_ seed: A, apply: @escaping (A, Self.E) throws -> A) -> Observable<A> {
     return self
       .scan(seed, accumulator: apply)

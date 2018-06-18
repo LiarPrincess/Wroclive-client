@@ -4,7 +4,6 @@
 //
 
 extension Array {
-
   func grouped<Key: Hashable>(_ grouping: (Element) -> Key) -> [Key:[Element]] {
     var result: [Key:[Element]] = [:]
 
@@ -12,7 +11,6 @@ extension Array {
       let key = grouping(value)
       result[key, default: []].append(value)
     }
-
     return result
   }
 }
