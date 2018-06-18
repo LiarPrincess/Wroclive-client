@@ -7,6 +7,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// Copy of: https://github.com/RxSwiftCommunity/RxDataSources
+// Simplified for performance, not exactly Rx-correct
 class RxCollectionViewDataSource<SectionType: RxSectionType>
   : NSObject, UICollectionViewDataSource, RxCollectionViewDataSourceType {
 

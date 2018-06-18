@@ -22,8 +22,6 @@ class CardPanel: UIViewController {
   var presentationDuration: TimeInterval { return AnimationDurations.present }
   var dismissalDuration:    TimeInterval { return AnimationDurations.dismiss }
 
-  // MARK: - Init
-
   // MARK: - Overriden
 
   override func viewDidLoad() {

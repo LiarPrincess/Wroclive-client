@@ -7,6 +7,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// Copy of: https://github.com/RxSwiftCommunity/RxDataSources
+// Simplified for performance, not exactly Rx-correct
 class RxTableViewDataSource<SectionType: RxSectionType>
   : NSObject, UITableViewDataSource, RxTableViewDataSourceType {
 
@@ -41,8 +43,6 @@ class RxTableViewDataSource<SectionType: RxSectionType>
       #endif
     }
   }
-
-  var animations: AnimationConfiguration = .default
 
   // MARK: - Init
 
@@ -142,7 +142,7 @@ class RxTableViewDataSource<SectionType: RxSectionType>
     switch editingStyle {
     case .delete:
       self._sectionModels.remove(at: indexPath)
-      tableView.deleteRows(at: [indexPath], with: self.animations.delete)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
     case .none, .insert: break
     }
   }
