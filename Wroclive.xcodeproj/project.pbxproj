@@ -573,8 +573,12 @@
 		9017C33E1EE339FD00063377 /* Bookmarks card */ = {
 			isa = PBXGroup;
 			children = (
-				9017C36D1EE33AA300063377 /* Cells */,
-				90D3A3E81FEC0C5800FB7485 /* Placeholder */,
+				9017C36E1EE33AA300063377 /* BookmarksCell.swift */,
+				908FE5B620BC77D80001E9B0 /* BookmarksCellViewModel.swift */,
+				90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */,
+				909B9FDB1FEBC3E2007CB59D /* BookmarksCellConstants.swift */,
+				90D3A3E91FEC108D00FB7485 /* BookmarksPlaceholderView.swift */,
+				90D3A3EC1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift */,
 				9017C3411EE339FD00063377 /* BookmarksCard.swift */,
 				9017C3431EE339FD00063377 /* BookmarksCardLayout.swift */,
 				90D3A3F01FEC239100FB7485 /* BookmarksCardViewModel.swift */,
@@ -610,17 +614,6 @@
 				9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */,
 			);
 			path = Map;
-			sourceTree = "<group>";
-		};
-		9017C36D1EE33AA300063377 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				9017C36E1EE33AA300063377 /* BookmarksCell.swift */,
-				908FE5B620BC77D80001E9B0 /* BookmarksCellViewModel.swift */,
-				90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */,
-				909B9FDB1FEBC3E2007CB59D /* BookmarksCellConstants.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		901A8088200E96DD0013CCD9 /* Footer */ = {
@@ -1226,15 +1219,6 @@
 				90C74A67204F26B7006524EC /* MapViewModelOutputs.swift */,
 			);
 			path = "View model";
-			sourceTree = "<group>";
-		};
-		90D3A3E81FEC0C5800FB7485 /* Placeholder */ = {
-			isa = PBXGroup;
-			children = (
-				90D3A3E91FEC108D00FB7485 /* BookmarksPlaceholderView.swift */,
-				90D3A3EC1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift */,
-			);
-			path = Placeholder;
 			sourceTree = "<group>";
 		};
 		90D3A3FE1FEDB57000FB7485 /* Rx */ = {
