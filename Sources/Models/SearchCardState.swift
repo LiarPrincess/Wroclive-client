@@ -3,7 +3,7 @@
 //  Copyright © 2017 Michal Matuszczyk. All rights reserved.
 //
 
-enum LineType: Int, Codable, Equatable {
-  case tram
-  case bus
+struct SearchCardState: Codable, Equatable {
+  let page:          LineType
+  let selectedLines: [Line]
 }

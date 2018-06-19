@@ -14,7 +14,7 @@ enum LineSelectorSectionCreator {
 
   private static func createSection(subtype lineSubtype: LineSubtype, lines: [Line]) -> LineSelectorSection {
     let data = LineSelectorSectionData(for: lineSubtype)
-    return LineSelectorSection(model: data, items: lines.sorted(by: .name))
+    return LineSelectorSection(model: data, items: lines.sortedByName())
   }
 
   private static func getOrder(subtype lineSubtype: LineSubtype) -> Int {

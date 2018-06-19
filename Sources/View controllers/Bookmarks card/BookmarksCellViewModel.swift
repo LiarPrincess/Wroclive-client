@@ -36,7 +36,7 @@ private func createLinesLabel(_ bookmark: Bookmark) -> String {
 
 private func concatNames(_ lines: [Line]) -> String {
   return lines
-    .sorted(by: .name)
+    .sortedByName()
     .map { (line: Line) in line.name }
     .joined(separator: Layout.LinesLabel.horizontalSpacing)
 }
