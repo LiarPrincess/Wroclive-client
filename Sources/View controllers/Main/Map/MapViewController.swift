@@ -138,7 +138,7 @@ class MapViewController: UIViewController {
 extension MapViewController {
 
   private var vehicleAnnotations: [VehicleAnnotation] {
-    return self.mapView.annotations.flatMap { $0 as? VehicleAnnotation }
+    return self.mapView.annotations.compactMap { $0 as? VehicleAnnotation }
   }
 
   private func updateVehicleLocations(_ vehicles: [Vehicle]) {
@@ -157,7 +157,6 @@ extension MapViewController {
       }
     }
   }
-
 }
 
 // MARK: - MKMapViewDelegate
