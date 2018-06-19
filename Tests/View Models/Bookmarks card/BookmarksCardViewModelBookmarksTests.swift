@@ -10,6 +10,7 @@ import RxTest
 @testable import Wroclive
 
 class BookmarksCardViewModelBookmarksTests: BookmarksCardViewModelTestsBase {
+
   func test_startsWithBookmarks_fromManager() {
     let bookmarks = self.testData
     self.storageManager._bookmarks = bookmarks

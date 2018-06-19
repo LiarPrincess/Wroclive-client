@@ -13,6 +13,7 @@ private typealias TextStyles   = BookmarksCardConstants.TextStyles.Edit
 private typealias Localization = Localizable.Bookmarks.Edit
 
 class BookmarksCardViewModelEditTests: BookmarksCardViewModelTestsBase {
+
   func test_editButton_changesIsEditing() {
     self.viewModel = BookmarksCardViewModel()
     self.simulateEditClickEvents(at: 100, 200)

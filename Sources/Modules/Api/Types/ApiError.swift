@@ -3,7 +3,7 @@
 //  Copyright © 2018 Michal Matuszczyk. All rights reserved.
 //
 
-enum ApiError: Error {
+enum ApiError: Error, Equatable, Hashable {
 
   /// No internet connection
   case noInternet

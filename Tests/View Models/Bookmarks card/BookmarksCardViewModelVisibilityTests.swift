@@ -10,6 +10,7 @@ import RxTest
 @testable import Wroclive
 
 class BookmarksCardViewModelVisibilityTests: BookmarksCardViewModelTestsBase {
+
   func test_withoutBookmarks_showsPlaceholder() {
     self.storageManager._bookmarks = []
     self.viewModel = BookmarksCardViewModel()
@@ -82,5 +83,11 @@ class BookmarksCardViewModelVisibilityTests: BookmarksCardViewModelTestsBase {
 
     let expectedTableViewEvents = self.oppositeVisibility(expectedPlaceholderEvents)
     XCTAssertEqual(tableViewObserver.events, expectedTableViewEvents)
+  }
+
+  typealias VisiblityEvent = Recorded<Event<Bool>>
+
+  func oppositeVisibility(_ events: [VisiblityEvent]) -> [VisiblityEvent] {
+    return events.map { next($0.time, !$0.value.element!) }
   }
 }

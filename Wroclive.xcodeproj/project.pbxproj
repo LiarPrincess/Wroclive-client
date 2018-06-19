@@ -85,9 +85,16 @@
 		90374B4F20D877F200315F80 /* BookmarksCardViewModelVisibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4D20D8777600315F80 /* BookmarksCardViewModelVisibilityTests.swift */; };
 		90374B5220D8786100315F80 /* BookmarksCardViewModelEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5020D8785C00315F80 /* BookmarksCardViewModelEditTests.swift */; };
 		90374B5520D878D000315F80 /* BookmarksCardViewModelSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5320D878CC00315F80 /* BookmarksCardViewModelSelectionTests.swift */; };
-		90374B5620D87E6300315F80 /* LineSelectorCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */; };
-		90374B5720D87E6800315F80 /* LineSelectorHeaderViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */; };
-		90374B5820D87E6B00315F80 /* LineSelectorSectionCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */; };
+		90374B5C20D87FA600315F80 /* LineSelectorCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */; };
+		90374B5D20D87FA600315F80 /* LineSelectorHeaderViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */; };
+		90374B5E20D87FA600315F80 /* LineSelectorSectionCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */; };
+		90374B6120D9747A00315F80 /* SearchCardViewModelPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5F20D9744F00315F80 /* SearchCardViewModelPageTests.swift */; };
+		90374B6320D9775E00315F80 /* SearchCardViewModelSelectedLinesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B6220D9775D00315F80 /* SearchCardViewModelSelectedLinesTests.swift */; };
+		90374B6520D9780600315F80 /* SearchCardViewModelBookmarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B6420D9780600315F80 /* SearchCardViewModelBookmarksTests.swift */; };
+		90374B6720D9857B00315F80 /* SearchCardViewModelSaveStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B6620D9857B00315F80 /* SearchCardViewModelSaveStateTests.swift */; };
+		90374B6920D9883700315F80 /* SearchCardViewModelLinesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B6820D9883700315F80 /* SearchCardViewModelLinesTests.swift */; };
+		90374B6B20D98F2700315F80 /* SchedulerManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B6A20D98F2700315F80 /* SchedulerManagerMock.swift */; };
+		90374B6E20D9A04700315F80 /* SearchCardViewModelTrackingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B6C20D9A03800315F80 /* SearchCardViewModelTrackingTests.swift */; };
 		903920351F1AB70E00250162 /* ArrayOfLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903920341F1AB70E00250162 /* ArrayOfLines.swift */; };
 		903F6F961F7D822B00FCC56B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */; };
 		90425D331FF11EFB00F1800E /* StorageManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90425D311FF11EF400F1800E /* StorageManagerMock.swift */; };
@@ -103,7 +110,7 @@
 		9050705F2087EE66007DDA80 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050705E2087EE66007DDA80 /* StorageManager.swift */; };
 		905070622087EF53007DDA80 /* DocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905070612087EF53007DDA80 /* DocumentManager.swift */; };
 		9050954320D709A3005E2BF8 /* BookmarksCardViewModelTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTestsBase.swift */; };
-		9050954520D725DC005E2BF8 /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */; };
+		9050954520D725DC005E2BF8 /* SearchCardViewModelTestsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTestsBase.swift */; };
 		90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90538DD1201CADCF0000BBBE /* CardPanel.swift */; };
 		90546BEE1F6AF23100E8E75F /* LiveManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BED1F6AF23100E8E75F /* LiveManagerType.swift */; };
 		90546BF01F6AF25800E8E75F /* LiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BEF1F6AF25800E8E75F /* LiveManager.swift */; };
@@ -324,6 +331,13 @@
 		90374B4D20D8777600315F80 /* BookmarksCardViewModelVisibilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelVisibilityTests.swift; sourceTree = "<group>"; };
 		90374B5020D8785C00315F80 /* BookmarksCardViewModelEditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelEditTests.swift; sourceTree = "<group>"; };
 		90374B5320D878CC00315F80 /* BookmarksCardViewModelSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelSelectionTests.swift; sourceTree = "<group>"; };
+		90374B5F20D9744F00315F80 /* SearchCardViewModelPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelPageTests.swift; sourceTree = "<group>"; };
+		90374B6220D9775D00315F80 /* SearchCardViewModelSelectedLinesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelSelectedLinesTests.swift; sourceTree = "<group>"; };
+		90374B6420D9780600315F80 /* SearchCardViewModelBookmarksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelBookmarksTests.swift; sourceTree = "<group>"; };
+		90374B6620D9857B00315F80 /* SearchCardViewModelSaveStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelSaveStateTests.swift; sourceTree = "<group>"; };
+		90374B6820D9883700315F80 /* SearchCardViewModelLinesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelLinesTests.swift; sourceTree = "<group>"; };
+		90374B6A20D98F2700315F80 /* SchedulerManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerManagerMock.swift; sourceTree = "<group>"; };
+		90374B6C20D9A03800315F80 /* SearchCardViewModelTrackingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelTrackingTests.swift; sourceTree = "<group>"; };
 		903920341F1AB70E00250162 /* ArrayOfLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayOfLines.swift; sourceTree = "<group>"; };
 		903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		90425D311FF11EF400F1800E /* StorageManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerMock.swift; sourceTree = "<group>"; };
@@ -390,7 +404,7 @@
 		909074B61FB8AF1700C8DD51 /* SearchScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenshots.swift; sourceTree = "<group>"; };
 		909074B81FB8BD8100C8DD51 /* MapScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenshots.swift; sourceTree = "<group>"; };
 		90915B071FF97191009FE942 /* LineTypeSelector+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineTypeSelector+Rx.swift"; sourceTree = "<group>"; };
-		90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelTests.swift; sourceTree = "<group>"; };
+		90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTestsBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelTestsBase.swift; sourceTree = "<group>"; };
 		90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionTypeArray.swift; sourceTree = "<group>"; };
 		90915B181FFB005C009FE942 /* Observable+Reducing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Reducing.swift"; sourceTree = "<group>"; };
 		90915B1B1FFC0708009FE942 /* MapManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManagerMock.swift; sourceTree = "<group>"; };
@@ -578,7 +592,6 @@
 				9017C34E1EE339FD00063377 /* SearchCard.swift */,
 				9017C3501EE339FD00063377 /* SearchCardLayout.swift */,
 				901ECDCF1FF5A003004765AA /* SearchCardViewModel.swift */,
-				90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */,
 				9017C34F1EE339FD00063377 /* SearchCardConstants.swift */,
 				906C40622016786E00E32571 /* SearchCardAlert.swift */,
 			);
@@ -673,15 +686,12 @@
 			children = (
 				9021F42C1F12D698000A6949 /* LineSelectorCell.swift */,
 				9021F4351F12D698000A6949 /* LineSelectorCellViewModel.swift */,
-				9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */,
 				9042EDBE1FF2D71500F5D01D /* LineSelectorCellConstants.swift */,
 				9021F42D1F12D698000A6949 /* LineSelectorHeaderView.swift */,
 				9021F4361F12D698000A6949 /* LineSelectorHeaderViewModel.swift */,
-				9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */,
 				9042EDCE1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift */,
 				90B261201FF501510076EC69 /* LineSelectorSection.swift */,
 				90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */,
-				90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */,
 				9021F4421F12D6C5000A6949 /* LineSelector.swift */,
 				90B2611D1FF501100076EC69 /* LineSelector+Rx.swift */,
 				9021F4301F12D698000A6949 /* LineSelectorPage.swift */,
@@ -799,6 +809,8 @@
 			children = (
 				90374B4C20D8773100315F80 /* Bookmarks cell */,
 				90374B4820D871EA00315F80 /* Bookmarks card */,
+				90374B5920D87EAA00315F80 /* Search card cells */,
+				90374B5B20D87F0F00315F80 /* Search card */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -823,13 +835,38 @@
 			path = "Bookmarks cell";
 			sourceTree = "<group>";
 		};
+		90374B5920D87EAA00315F80 /* Search card cells */ = {
+			isa = PBXGroup;
+			children = (
+				9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */,
+				9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */,
+				90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */,
+			);
+			path = "Search card cells";
+			sourceTree = "<group>";
+		};
+		90374B5B20D87F0F00315F80 /* Search card */ = {
+			isa = PBXGroup;
+			children = (
+				90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTestsBase.swift */,
+				90374B5F20D9744F00315F80 /* SearchCardViewModelPageTests.swift */,
+				90374B6820D9883700315F80 /* SearchCardViewModelLinesTests.swift */,
+				90374B6220D9775D00315F80 /* SearchCardViewModelSelectedLinesTests.swift */,
+				90374B6420D9780600315F80 /* SearchCardViewModelBookmarksTests.swift */,
+				90374B6620D9857B00315F80 /* SearchCardViewModelSaveStateTests.swift */,
+				90374B6C20D9A03800315F80 /* SearchCardViewModelTrackingTests.swift */,
+			);
+			path = "Search card";
+			sourceTree = "<group>";
+		};
 		90425D301FF11ED900F1800E /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				90203F8A2037855300CC5148 /* UserLocationManagerMock.swift */,
 				90915B1E1FFC178E009FE942 /* ApiManagerMock.swift */,
 				90425D311FF11EF400F1800E /* StorageManagerMock.swift */,
+				90374B6A20D98F2700315F80 /* SchedulerManagerMock.swift */,
 				90915B1B1FFC0708009FE942 /* MapManagerMock.swift */,
+				90203F8A2037855300CC5148 /* UserLocationManagerMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1599,17 +1636,27 @@
 			files = (
 				90915B1D1FFC070F009FE942 /* MapManagerMock.swift in Sources */,
 				904CAC122039AC3C00B4DABA /* Vehicle+Equatable.swift in Sources */,
+				90374B5D20D87FA600315F80 /* LineSelectorHeaderViewModelTests.swift in Sources */,
+				90374B6320D9775E00315F80 /* SearchCardViewModelSelectedLinesTests.swift in Sources */,
 				90425D331FF11EFB00F1800E /* StorageManagerMock.swift in Sources */,
+				90374B5E20D87FA600315F80 /* LineSelectorSectionCreatorTests.swift in Sources */,
+				90374B6B20D98F2700315F80 /* SchedulerManagerMock.swift in Sources */,
 				90374B5220D8786100315F80 /* BookmarksCardViewModelEditTests.swift in Sources */,
-				9050954520D725DC005E2BF8 /* SearchCardViewModelTests.swift in Sources */,
+				9050954520D725DC005E2BF8 /* SearchCardViewModelTestsBase.swift in Sources */,
 				90374B4F20D877F200315F80 /* BookmarksCardViewModelVisibilityTests.swift in Sources */,
 				906C40612014E78000E32571 /* MapAnnotationManagerTests.swift in Sources */,
+				90374B6E20D9A04700315F80 /* SearchCardViewModelTrackingTests.swift in Sources */,
+				90374B6520D9780600315F80 /* SearchCardViewModelBookmarksTests.swift in Sources */,
 				90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */,
 				90C74A6A204F287C006524EC /* MapViewModelTests.swift in Sources */,
+				90374B5C20D87FA600315F80 /* LineSelectorCellViewModelTests.swift in Sources */,
 				90374B5520D878D000315F80 /* BookmarksCardViewModelSelectionTests.swift in Sources */,
+				90374B6720D9857B00315F80 /* SearchCardViewModelSaveStateTests.swift in Sources */,
+				90374B6120D9747A00315F80 /* SearchCardViewModelPageTests.swift in Sources */,
 				90374B4B20D876C600315F80 /* BookmarksCardViewModelBookmarksTests.swift in Sources */,
 				90203F8C203785EF00CC5148 /* UserLocationManagerMock.swift in Sources */,
 				9050954320D709A3005E2BF8 /* BookmarksCardViewModelTestsBase.swift in Sources */,
+				90374B6920D9883700315F80 /* SearchCardViewModelLinesTests.swift in Sources */,
 				90915B201FFC17A7009FE942 /* ApiManagerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1747,7 +1794,6 @@
 				90D3A40E1FEFE89C00FB7485 /* RxSectionModel.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchCardLayout.swift in Sources */,
 				906C406E2019000B00E32571 /* ApiResponse.swift in Sources */,
-				90374B5820D87E6B00315F80 /* LineSelectorSectionCreatorTests.swift in Sources */,
 				908FB19D1F48B3CA00121584 /* ReusableCell+UITableView.swift in Sources */,
 				9055C8E81F462F5C00D1EBDA /* SettingsCardConstants.swift in Sources */,
 				90D3A3ED1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift in Sources */,
@@ -1756,8 +1802,6 @@
 				905D71AC1FE1C5BD006D1DB6 /* ApiManager.swift in Sources */,
 				9079DCD61F6C545600C6ABCD /* EnvironmentVariables.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchCardState.swift in Sources */,
-				90374B5620D87E6300315F80 /* LineSelectorCellViewModelTests.swift in Sources */,
-				90374B5720D87E6800315F80 /* LineSelectorHeaderViewModelTests.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
 				90C74A66204F269D006524EC /* MapViewModelInputs.swift in Sources */,

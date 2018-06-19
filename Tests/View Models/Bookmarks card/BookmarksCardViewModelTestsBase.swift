@@ -56,7 +56,6 @@ class BookmarksCardViewModelTestsBase: XCTestCase {
   typealias SelectionEvent = Recorded<Event<Int>>
   typealias MoveEvent      = Recorded<Event<(from: Int, to: Int)>>
   typealias DeleteEvent    = Recorded<Event<Int>>
-  typealias VisiblityEvent = Recorded<Event<Bool>>
 
   func simulateMoveEvents(_ events: MoveEvent...) {
     self.testScheduler.createHotObservable(events)
@@ -68,10 +67,6 @@ class BookmarksCardViewModelTestsBase: XCTestCase {
     self.testScheduler.createHotObservable(events)
       .bind(to: viewModel.didDeleteItem)
       .disposed(by: self.disposeBag)
-  }
-
-  func oppositeVisibility(_ events: [VisiblityEvent]) -> [VisiblityEvent] {
-    return events.map { next($0.time, !$0.value.element!) }
   }
 
   func simulateEditClickEvents(at times: TestTime...) {

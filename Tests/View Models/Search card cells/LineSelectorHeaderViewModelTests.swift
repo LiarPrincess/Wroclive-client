@@ -6,10 +6,9 @@
 import XCTest
 @testable import Wroclive
 
-private typealias Localization = Localizable.Search.Sections
-private typealias TextStyles   = LineSelectorHeaderViewConstants.TextStyles
+private typealias TextStyles = LineSelectorHeaderViewConstants.TextStyles
 
-final class LineSelectorHeaderViewModelTests: XCTestCase {
+class LineSelectorHeaderViewModelTests: XCTestCase {
 
   var lineSubtypes: [LineSubtype] {
     return [.regular, .express, .peakHour, .suburban, .zone, .limited, .temporary, .night]

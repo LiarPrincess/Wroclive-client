@@ -7,6 +7,6 @@ import UIKit
 import RxSwift
 
 class SchedulerManager: SchedulerManagerType {
-  var main:      SerialDispatchQueueScheduler { return MainScheduler.instance }
-  var mainAsync: SerialDispatchQueueScheduler { return MainScheduler.asyncInstance }
+  var main:      SchedulerType { return MainScheduler.instance }
+  var mainAsync: SchedulerType { return MainScheduler.asyncInstance }
 }

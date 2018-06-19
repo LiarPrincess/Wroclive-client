@@ -20,8 +20,6 @@ class ApiManagerMock: ApiManagerType {
   let _availableLines   = ReplaySubject<Result<[Line],    ApiError>>.create(bufferSize: 1)
   let _vehicleLocations = ReplaySubject<Result<[Vehicle], ApiError>>.create(bufferSize: 1)
 
-  private let disposeBag = DisposeBag()
-
   var availableLines: ApiResponse<[Line]> {
     self.availableLinesCallCount += 1
     return self._availableLines.share(replay: 1)
