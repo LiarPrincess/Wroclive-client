@@ -144,7 +144,7 @@
 		906C406E2019000B00E32571 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406D2019000B00E32571 /* ApiResponse.swift */; };
 		906C4070201915D900E32571 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406F201915D900E32571 /* Endpoint.swift */; };
 		9079DCD61F6C545600C6ABCD /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */; };
-		907D917D1E63A7CC00502CBD /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907DC6E91FF2B740001C5DD6 /* LineTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC6E71FF2B73F001C5DD6 /* LineTypeSelector.swift */; };
 		907DC6ED1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC6EC1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift */; };
 		907F26811F7460E4000C272B /* CLLocation+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F26801F7460E4000C272B /* CLLocation+Init.swift */; };
@@ -232,7 +232,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				907D917D1E63A7CC00502CBD /* BuildFile in Embed Frameworks */,
+				907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,15 +536,6 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
-		90145E3E1F61AE4A0068698D /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				901A80A42012A5E00013CCD9 /* SettingsCellType.swift */,
-				901A808F200E9F580013CCD9 /* SettingsSectionType.swift */,
-			);
-			path = Sections;
-			sourceTree = "<group>";
-		};
 		9016FD08208B485A0043524D /* Schedulers */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,33 +599,6 @@
 				9017C3561EE339FD00063377 /* MapViewControllerConstants.swift */,
 			);
 			path = Map;
-			sourceTree = "<group>";
-		};
-		901A8088200E96DD0013CCD9 /* Footer */ = {
-			isa = PBXGroup;
-			children = (
-				901A8089200E96EE0013CCD9 /* SettingsCardFooterView.swift */,
-				901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */,
-			);
-			path = Footer;
-			sourceTree = "<group>";
-		};
-		901A809520126D780013CCD9 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				901A80A8201382240013CCD9 /* SettingsTextCell.swift */,
-				901A80AA2013897A0013CCD9 /* SettingsTextCellConstants.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		901A809F201297B20013CCD9 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				901A80A02012992F0013CCD9 /* SettingsSectionHeaderView.swift */,
-				901A80A220129DCD0013CCD9 /* SettingsSectionHeaderViewConstants.swift */,
-			);
-			path = Headers;
 			sourceTree = "<group>";
 		};
 		901FEAD11FE1EC8900C36A71 /* Text attributes */ = {
@@ -887,16 +851,6 @@
 			path = Equatable;
 			sourceTree = "<group>";
 		};
-		9050704C2087CAA4007DDA80 /* View model */ = {
-			isa = PBXGroup;
-			children = (
-				901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */,
-				9050704D2087CAEB007DDA80 /* SettingsCardViewModelInput.swift */,
-				9050704F2087CB08007DDA80 /* SettingsCardViewModelOutput.swift */,
-			);
-			path = "View model";
-			sourceTree = "<group>";
-		};
 		905070592087EB30007DDA80 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1081,11 +1035,17 @@
 		9096CDCB1F40EF0C00FEF20A /* Settings card */ = {
 			isa = PBXGroup;
 			children = (
-				901A809520126D780013CCD9 /* Cells */,
-				901A809F201297B20013CCD9 /* Headers */,
-				90145E3E1F61AE4A0068698D /* Sections */,
-				901A8088200E96DD0013CCD9 /* Footer */,
-				9050704C2087CAA4007DDA80 /* View model */,
+				901A80A8201382240013CCD9 /* SettingsTextCell.swift */,
+				901A80AA2013897A0013CCD9 /* SettingsTextCellConstants.swift */,
+				901A80A02012992F0013CCD9 /* SettingsSectionHeaderView.swift */,
+				901A80A220129DCD0013CCD9 /* SettingsSectionHeaderViewConstants.swift */,
+				901A80A42012A5E00013CCD9 /* SettingsCellType.swift */,
+				901A808F200E9F580013CCD9 /* SettingsSectionType.swift */,
+				901A8089200E96EE0013CCD9 /* SettingsCardFooterView.swift */,
+				901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */,
+				901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */,
+				9050704D2087CAEB007DDA80 /* SettingsCardViewModelInput.swift */,
+				9050704F2087CB08007DDA80 /* SettingsCardViewModelOutput.swift */,
 				9096CDCC1F40EF2200FEF20A /* SettingsCard.swift */,
 				9055C8E51F462F2F00D1EBDA /* SettingsCardLayout.swift */,
 				9055C8E71F462F5C00D1EBDA /* SettingsCardConstants.swift */,
