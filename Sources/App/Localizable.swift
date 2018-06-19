@@ -17,6 +17,15 @@
 // swiftlint:disable type_body_length
 // swiftlint:disable file_length
 
+import Foundation
+
+private class BundleHook { }
+
+private func localizedString(_ key: String) -> String {
+  let bundle = Bundle(for: BundleHook.self)
+  return NSLocalizedString(key, bundle: bundle, comment: "")
+}
+
 public struct Localizable {
 
   enum Alert {
