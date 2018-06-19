@@ -7,7 +7,7 @@ class StorageManager: StorageManagerType {
 
   private var _bookmarks:       [Bookmark]?
   private var _searchCardState: SearchCardState?
-  private let _documentManager = DocumentManager()
+  private let _fileSystem     = FileSystem()
 
   // MARK: - StorageManagerType
 
@@ -38,10 +38,10 @@ class StorageManager: StorageManagerType {
   // MARK: - Document manager helpers
 
   private func readDocument(_ document: Document) -> Any? {
-    return self._documentManager.read(document)
+    return self._fileSystem.read(document)
   }
 
   private func writeDocument(_ document: DocumentData) {
-    self._documentManager.write(document)
+    self._fileSystem.write(document)
   }
 }

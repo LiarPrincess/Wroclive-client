@@ -5,7 +5,7 @@
 
 import UIKit
 
-class DocumentManager {
+class FileSystem {
 
   func read(_ document: Document) -> Any? {
     do {
