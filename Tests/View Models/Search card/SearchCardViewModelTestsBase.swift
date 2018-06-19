@@ -8,7 +8,6 @@ import Result
 import RxSwift
 import RxCocoa
 import RxTest
-import RxBlocking
 @testable import Wroclive
 
 // swiftlint:disable implicitly_unwrapped_optional

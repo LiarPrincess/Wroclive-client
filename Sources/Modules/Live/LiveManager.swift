@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import PromiseKit
 import RxSwift
 
 class LiveManager: LiveManagerType {

@@ -6,7 +6,6 @@
 import UIKit
 import MapKit
 import SnapKit
-import PromiseKit
 import RxSwift
 
 private typealias Constants = MainViewControllerConstants
