@@ -15,7 +15,7 @@ class SettingsCard: CardPanel {
 
   // MARK: - Properties
 
-  private let viewModel: SettingsCardViewModelType
+  private let viewModel: SettingsCardViewModel
   private let disposeBag = DisposeBag()
 
   lazy var headerView: UIVisualEffectView = {
@@ -25,8 +25,8 @@ class SettingsCard: CardPanel {
 
   let titleLabel = UILabel()
 
-  lazy var tableView            = UITableView(frame: .zero, style: .grouped)
-  lazy var tableViewDataSource  = SettingsCard.createDataSource(self)
+  let tableView            = UITableView(frame: .zero, style: .grouped)
+  let tableViewDataSource  = SettingsCard.createDataSource()
 
   // MARK: - Card panel
 
@@ -53,33 +53,33 @@ class SettingsCard: CardPanel {
     self.tableView.rx.setDelegate(self)
       .disposed(by: disposeBag)
 
-    self.viewModel.outputs.items
+    self.viewModel.items
       .drive(self.tableView.rx.items(dataSource: self.tableViewDataSource))
       .disposed(by: disposeBag)
 
     self.tableView.rx.itemSelected
       .do(onNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) })
-      .bind(to: self.viewModel.inputs.itemSelected)
+      .bind(to: self.viewModel.itemSelected)
       .disposed(by: self.disposeBag)
   }
 
   private func initCellButtonsBindings() {
-    self.viewModel.outputs.showShareControl
+    self.viewModel.showShareControl
       .drive(onNext: { [unowned self] _ in self.showShareActivity() })
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.showRateControl
+    self.viewModel.showRateControl
       .drive(onNext: { [unowned self] _ in self.rateApp() })
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.showAboutPage
+    self.viewModel.showAboutPage
       .drive(onNext: { [unowned self] _ in self.showAboutPage() })
       .disposed(by: self.disposeBag)
   }
 
   // MARK: - Data source
 
-  private static func createDataSource(_ card: SettingsCard) -> RxTableViewDataSource<SettingsSection> {
+  private static func createDataSource() -> RxTableViewDataSource<SettingsSection> {
     return RxTableViewDataSource(
       configureCell: { dataSource, tableView, indexPath, model -> UITableViewCell in
         switch model {
@@ -98,7 +98,7 @@ class SettingsCard: CardPanel {
     )
   }
 
-  // MARK: - Overriden
+  // MARK: - Override
 
   override func viewDidLoad() {
     super.viewDidLoad()

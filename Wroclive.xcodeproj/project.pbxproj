@@ -104,8 +104,6 @@
 		9045C2E31F9BDB3F002F35C3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045C2E21F9BDB3F002F35C3 /* Assets.swift */; };
 		904A6B131F43183E00EE98FD /* VehicleAnnotationPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904A6B121F43183E00EE98FD /* VehicleAnnotationPinView.swift */; };
 		904CAC122039AC3C00B4DABA /* Vehicle+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904CAC102039AC3800B4DABA /* Vehicle+Equatable.swift */; };
-		9050704E2087CAEB007DDA80 /* SettingsCardViewModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050704D2087CAEB007DDA80 /* SettingsCardViewModelInput.swift */; };
-		905070502087CB08007DDA80 /* SettingsCardViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050704F2087CB08007DDA80 /* SettingsCardViewModelOutput.swift */; };
 		9050705B2087EB4B007DDA80 /* StorageManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050705A2087EB4B007DDA80 /* StorageManagerType.swift */; };
 		9050705F2087EE66007DDA80 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050705E2087EE66007DDA80 /* StorageManager.swift */; };
 		905070622087EF53007DDA80 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905070612087EF53007DDA80 /* FileSystem.swift */; };
@@ -348,8 +346,6 @@
 		9045C2E21F9BDB3F002F35C3 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		904A6B121F43183E00EE98FD /* VehicleAnnotationPinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationPinView.swift; sourceTree = "<group>"; };
 		904CAC102039AC3800B4DABA /* Vehicle+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vehicle+Equatable.swift"; sourceTree = "<group>"; };
-		9050704D2087CAEB007DDA80 /* SettingsCardViewModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardViewModelInput.swift; sourceTree = "<group>"; };
-		9050704F2087CB08007DDA80 /* SettingsCardViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardViewModelOutput.swift; sourceTree = "<group>"; };
 		9050705A2087EB4B007DDA80 /* StorageManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerType.swift; sourceTree = "<group>"; };
 		9050705E2087EE66007DDA80 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		905070612087EF53007DDA80 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
@@ -948,19 +944,17 @@
 		9096CDCB1F40EF0C00FEF20A /* Settings card */ = {
 			isa = PBXGroup;
 			children = (
+				901A80A42012A5E00013CCD9 /* SettingsCellType.swift */,
+				901A808F200E9F580013CCD9 /* SettingsSectionType.swift */,
 				901A80A8201382240013CCD9 /* SettingsTextCell.swift */,
 				901A80AA2013897A0013CCD9 /* SettingsTextCellConstants.swift */,
 				901A80A02012992F0013CCD9 /* SettingsSectionHeaderView.swift */,
 				901A80A220129DCD0013CCD9 /* SettingsSectionHeaderViewConstants.swift */,
-				901A80A42012A5E00013CCD9 /* SettingsCellType.swift */,
-				901A808F200E9F580013CCD9 /* SettingsSectionType.swift */,
 				901A8089200E96EE0013CCD9 /* SettingsCardFooterView.swift */,
 				901A808B200E97430013CCD9 /* SettingsCardFooterConstants.swift */,
-				901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */,
-				9050704D2087CAEB007DDA80 /* SettingsCardViewModelInput.swift */,
-				9050704F2087CB08007DDA80 /* SettingsCardViewModelOutput.swift */,
 				9096CDCC1F40EF2200FEF20A /* SettingsCard.swift */,
 				9055C8E51F462F2F00D1EBDA /* SettingsCardLayout.swift */,
+				901A808D200E9EF00013CCD9 /* SettingsCardViewModel.swift */,
 				9055C8E71F462F5C00D1EBDA /* SettingsCardConstants.swift */,
 			);
 			path = "Settings card";
@@ -1467,7 +1461,6 @@
 				908346F61F5202AE00654FF6 /* String+IndicesOf.swift in Sources */,
 				9021F3931F12C95D000A6949 /* Array+Grouped.swift in Sources */,
 				907DC6E91FF2B740001C5DD6 /* LineTypeSelector.swift in Sources */,
-				905070502087CB08007DDA80 /* SettingsCardViewModelOutput.swift in Sources */,
 				901A809C20127F700013CCD9 /* String+Empty.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectorHeaderView.swift in Sources */,
 				90E8A6C61F4CD43300CE5AE9 /* DeviceManagerType.swift in Sources */,
@@ -1527,7 +1520,6 @@
 				90D3A3EA1FEC108D00FB7485 /* BookmarksPlaceholderView.swift in Sources */,
 				9021F4161F12C9EF000A6949 /* CardPanelConstants.swift in Sources */,
 				9021F4431F12D6C5000A6949 /* LineSelector.swift in Sources */,
-				9050704E2087CAEB007DDA80 /* SettingsCardViewModelInput.swift in Sources */,
 				90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */,
 				9021F41C1F12C9EF000A6949 /* CardPanelPresentationTransition.swift in Sources */,
 				905D71901FE1C444006D1DB6 /* UserLocationError.swift in Sources */,

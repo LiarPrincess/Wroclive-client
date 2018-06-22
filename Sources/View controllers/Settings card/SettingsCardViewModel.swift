@@ -8,40 +8,39 @@ import RxCocoa
 
 typealias SettingsSection = RxSectionModel<SettingsSectionType, SettingsCellType>
 
-protocol SettingsCardViewModelType {
-  var inputs:  SettingsCardViewModelInput  { get }
-  var outputs: SettingsCardViewModelOutput { get }
-}
+class SettingsCardViewModel {
 
-class SettingsCardViewModel: SettingsCardViewModelType, SettingsCardViewModelInput, SettingsCardViewModelOutput {
+  // MARK: - Inputs
 
-  // MARK: - Properties
+  let itemSelected: AnyObserver<IndexPath>
 
-  private let _itemSelected = PublishSubject<IndexPath>()
+  // MARK: - Outputs
 
-  // MARK: - Input
-
-  lazy var itemSelected: AnyObserver<IndexPath> = self._itemSelected.asObserver()
-
-  // MARK: - Output
-
-  lazy var items: Driver<[SettingsSection]> = {
+  let items: Driver<[SettingsSection]> = {
     let generalSection = SettingsSection(model: .general, items: [.share, .rate, .about])
 
     return Observable.just([generalSection])
       .asDriver(onErrorJustReturn: [])
   }()
 
-  lazy var selectedCell = self._itemSelected.withLatestFrom(self.items) { $1[$0] }.share()
+  let showShareControl: Driver<Void>
+  let showRateControl:  Driver<Void>
+  let showAboutPage:    Driver<Void>
 
-  lazy var showShareControl: Driver<Void> = self.selectedCell.filter(.share).asDriver(onErrorDriveWith: .never())
-  lazy var showRateControl:  Driver<Void> = self.selectedCell.filter(.rate) .asDriver(onErrorDriveWith: .never())
-  lazy var showAboutPage:    Driver<Void> = self.selectedCell.filter(.about).asDriver(onErrorDriveWith: .never())
+  // MARK: - Init
 
-  // MARK: - Input/Output
+  init() {
+    let _itemSelected = PublishSubject<IndexPath>()
+    self.itemSelected = _itemSelected.asObserver()
 
-  var inputs:  SettingsCardViewModelInput  { return self }
-  var outputs: SettingsCardViewModelOutput { return self }
+    let selectedCell = _itemSelected
+      .withLatestFrom(self.items) { $1[$0] }
+      .share()
+
+    self.showShareControl = selectedCell.filter(.share).asDriver(onErrorDriveWith: .never())
+    self.showRateControl  = selectedCell.filter(.rate) .asDriver(onErrorDriveWith: .never())
+    self.showAboutPage    = selectedCell.filter(.about).asDriver(onErrorDriveWith: .never())
+  }
 }
 
 // MARK: - Helpers
