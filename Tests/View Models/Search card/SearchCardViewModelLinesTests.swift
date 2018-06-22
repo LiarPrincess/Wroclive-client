@@ -19,7 +19,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     self.simulateViewDidAppearEvents(at: 100)
     self.simulateApiLinesEvents(next(200, .success(lines)))
 
-    let observers = self.bindObserters()
+    let observers = self.bindObservers()
     self.testScheduler.start()
 
     XCTAssertEqual(observers.lines.events,                 [next(0, []), next(200, lines)])
@@ -36,7 +36,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     self.simulateViewDidAppearEvents(at: 100)
     self.simulateApiLinesEvents(next(200, .success(lines)))
 
-    let observers = self.bindObserters()
+    let observers = self.bindObservers()
     self.testScheduler.start()
 
     XCTAssertEqual(observers.lines.events,                 [next(0, [])])
@@ -52,7 +52,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     self.simulateViewDidAppearEvents(at: 100)
     self.simulateApiLinesEvents(next(200, .failure(ApiError.noInternet)))
 
-    let observers = self.bindObserters()
+    let observers = self.bindObservers()
     self.testScheduler.start()
 
     XCTAssertEqual(observers.lines.events,                 [next(0, [])])
@@ -68,7 +68,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     self.simulateViewDidAppearEvents(at: 100)
     self.simulateApiLinesEvents(next(200, .failure(ApiError.generalError)))
 
-    let observers = self.bindObserters()
+    let observers = self.bindObservers()
     self.testScheduler.start()
 
     XCTAssertEqual(observers.lines.events,                 [next(0, [])])
@@ -85,7 +85,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     self.simulateTryAgainButtonPressedEvents(at: 100)
     self.simulateApiLinesEvents(next(200, .success(lines)))
 
-    let observers = self.bindObserters()
+    let observers = self.bindObservers()
     self.testScheduler.start()
 
     XCTAssertEqual(observers.lines.events,                  [next(0, []), next(200, lines)])
@@ -102,7 +102,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     let isPlaceholderVisible:  TestableObserver<Bool>
   }
 
-  private func bindObserters() -> Observers {
+  private func bindObservers() -> Observers {
     let linesObserver = self.testScheduler.createObserver([Line].self)
     self.viewModel.lines
       .drive(linesObserver)
