@@ -6,7 +6,6 @@ import UIKit
 import RxSwift
 import MapKit
 
-@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   let window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
