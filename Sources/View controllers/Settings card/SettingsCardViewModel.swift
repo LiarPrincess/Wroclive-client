@@ -12,7 +12,7 @@ class SettingsCardViewModel {
 
   // MARK: - Inputs
 
-  let itemSelected: AnyObserver<IndexPath>
+  let didSelectItem: AnyObserver<IndexPath>
 
   // MARK: - Outputs
 
@@ -30,23 +30,26 @@ class SettingsCardViewModel {
   // MARK: - Init
 
   init() {
-    let _itemSelected = PublishSubject<IndexPath>()
-    self.itemSelected = _itemSelected.asObserver()
+    let _didSelectItem = PublishSubject<IndexPath>()
+    self.didSelectItem = _didSelectItem.asObserver()
 
-    let selectedCell = _itemSelected
-      .withLatestFrom(self.items) { $1[$0] }
+    let selectedCell = _didSelectItem
+      .withLatestFrom(self.items) { index, items in items[index] }
       .share()
 
-    self.showShareControl = selectedCell.filter(.share).asDriver(onErrorDriveWith: .never())
-    self.showRateControl  = selectedCell.filter(.rate) .asDriver(onErrorDriveWith: .never())
-    self.showAboutPage    = selectedCell.filter(.about).asDriver(onErrorDriveWith: .never())
+    self.showShareControl = selectedCell.showControl(.share)
+    self.showRateControl  = selectedCell.showControl(.rate)
+    self.showAboutPage    = selectedCell.showControl(.about)
   }
 }
 
 // MARK: - Helpers
 
 private extension Observable where E == SettingsCellType {
-  func filter(_ cell: SettingsCellType) -> Observable<Void> {
-    return self.filter { $0 == cell }.map { _ in () }
+  func showControl(_ cell: SettingsCellType) -> Driver<Void> {
+    return self
+      .filter { $0 == cell }
+      .map { _ in () }
+      .asDriver(onErrorDriveWith: .never())
   }
 }

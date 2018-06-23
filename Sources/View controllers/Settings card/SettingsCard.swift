@@ -59,7 +59,7 @@ class SettingsCard: CardPanel {
 
     self.tableView.rx.itemSelected
       .do(onNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) })
-      .bind(to: self.viewModel.itemSelected)
+      .bind(to: self.viewModel.didSelectItem)
       .disposed(by: self.disposeBag)
   }
 
