@@ -241,8 +241,6 @@
 		0E552C9694FA2B36860027B3 /* Pods-Wroclive-Screenshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Screenshots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Screenshots/Pods-Wroclive-Screenshots.debug.xcconfig"; sourceTree = "<group>"; };
 		12F3CD8E67447A91DA7A4E65 /* Pods-Wroclive-Screenshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Screenshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Screenshots/Pods-Wroclive-Screenshots.release.xcconfig"; sourceTree = "<group>"; };
 		25E0D00666EF79DC6A2DF946 /* Pods-Wroclive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive/Pods-Wroclive.release.xcconfig"; sourceTree = "<group>"; };
-		2CB1453494EE5E82400496F9 /* Pods-Wroclive-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Tests/Pods-Wroclive-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		36BD40B07CC6253D5D5DC753 /* Pods-Wroclive-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Tests/Pods-Wroclive-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5EAC0BE67BAC1EB5A1223BFF /* Pods-Wroclive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive/Pods-Wroclive.debug.xcconfig"; sourceTree = "<group>"; };
 		7457A7B86C6B076B5865A45F /* Pods_Wroclive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7500F7A00FA0C7231B7408B0 /* Pods_Wroclive_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,8 +490,6 @@
 				25E0D00666EF79DC6A2DF946 /* Pods-Wroclive.release.xcconfig */,
 				0E552C9694FA2B36860027B3 /* Pods-Wroclive-Screenshots.debug.xcconfig */,
 				12F3CD8E67447A91DA7A4E65 /* Pods-Wroclive-Screenshots.release.xcconfig */,
-				36BD40B07CC6253D5D5DC753 /* Pods-Wroclive-Tests.debug.xcconfig */,
-				2CB1453494EE5E82400496F9 /* Pods-Wroclive-Tests.release.xcconfig */,
 				7D3E3CDED638C75A673E4C48 /* Pods-Wroclive-Wroclive-Tests.debug.xcconfig */,
 				E363964B5AE9910F453510B7 /* Pods-Wroclive-Wroclive-Tests.release.xcconfig */,
 			);
@@ -1228,7 +1224,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework",
-				"${BUILT_PRODUCTS_DIR}/RxReachability/RxReachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -1243,7 +1238,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreLocation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxReachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -1268,7 +1262,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework",
-				"${BUILT_PRODUCTS_DIR}/RxReachability/RxReachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -1282,7 +1275,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreLocation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxReachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",

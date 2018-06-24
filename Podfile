@@ -14,7 +14,6 @@ target 'Wroclive' do
   pod 'RxCocoa',        '~> 4.0'
   pod 'RxAlamofire',    '~> 4.0'
   pod 'RxCoreLocation', '~> 1.0.0'
-  pod 'RxReachability', :git => 'https://github.com/ivanbruel/RxReachability.git'
 
   pod 'SimulatorStatusMagic', '~> 2.0', :configurations => ['Debug']
 
