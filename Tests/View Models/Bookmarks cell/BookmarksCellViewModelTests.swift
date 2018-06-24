@@ -8,7 +8,7 @@ import XCTest
 private typealias Layout     = BookmarksCellConstants.Layout
 private typealias TextStyles = BookmarksCellConstants.TextStyles
 
-class BookmarksCellViewModelTests: XCTestCase {
+class BookmarksCellViewModelTests: TestCase {
 
   func test_bookmark_withoutLines_showsJustName() {
     let bookmark  = Bookmark(name: "name", lines: [])

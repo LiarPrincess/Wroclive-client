@@ -14,15 +14,9 @@ import RxTest
 
 private typealias Defaults = MapViewControllerConstants.Defaults
 
-class MapViewModelTestsBase: XCTestCase {
+class MapViewModelTestsBase: TestCase {
 
-  var liveManager:         LiveManagerMock!
-  var userLocationManager: UserLocationManagerMock!
-  var schedulerManager:    SchedulerManagerMock!
-
-  var viewModel:     MapViewModel!
-  var testScheduler: TestScheduler!
-  var disposeBag:    DisposeBag!
+  var viewModel: MapViewModel!
 
   var mapCenterObserver: TestableObserver<CLLocationCoordinate2D>!
   var vehiclesObserver:  TestableObserver<[Vehicle]>!
@@ -30,34 +24,17 @@ class MapViewModelTestsBase: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    self.testScheduler = TestScheduler(initialClock: 0)
-    self.disposeBag    = DisposeBag()
-
-    self.liveManager         = LiveManagerMock(self.testScheduler)
-    self.userLocationManager = UserLocationManagerMock(self.testScheduler)
-    self.schedulerManager    = SchedulerManagerMock(main: self.testScheduler, mainAsync: self.testScheduler)
-
-    AppEnvironment.push(schedulers:   self.schedulerManager,
-                        live:         self.liveManager,
-                        userLocation: self.userLocationManager)
 
     self.viewModel = MapViewModel()
 
-    self.mapCenterObserver = self.testScheduler.createObserver(CLLocationCoordinate2D.self)
+    self.mapCenterObserver = self.scheduler.createObserver(CLLocationCoordinate2D.self)
     self.viewModel.mapCenter.drive(mapCenterObserver).disposed(by: self.disposeBag)
 
-    self.vehiclesObserver = self.testScheduler.createObserver([Vehicle].self)
+    self.vehiclesObserver = self.scheduler.createObserver([Vehicle].self)
     self.viewModel.vehicles.drive(vehiclesObserver).disposed(by: self.disposeBag)
 
-    self.showAlertObserver = self.testScheduler.createObserver(MapViewAlert.self)
+    self.showAlertObserver = self.scheduler.createObserver(MapViewAlert.self)
     self.viewModel.showAlert.drive(showAlertObserver).disposed(by: self.disposeBag)
-  }
-
-  override func tearDown() {
-    super.tearDown()
-    self.testScheduler = nil
-    self.disposeBag = nil
-    AppEnvironment.pop()
   }
 
   // MARK: - Events
@@ -67,7 +44,7 @@ class MapViewModelTestsBase: XCTestCase {
   func mockTrackingModeChangedEvents(_ events: TrackingModeChangedEvent...) {
     let rxEvents = events.map { Recorded.next($0.time, $0.data) }
 
-    self.testScheduler.createHotObservable(rxEvents)
+    self.scheduler.createHotObservable(rxEvents)
       .bind(to: self.viewModel.didChangeTrackingMode)
       .disposed(by: self.disposeBag)
   }
@@ -91,7 +68,7 @@ class MapViewModelTestsBase: XCTestCase {
   func mockViewDidAppearEvent(at time: TestTime) {
     let rxEvents = [next(time, ())]
 
-    self.testScheduler.createHotObservable(rxEvents)
+    self.scheduler.createHotObservable(rxEvents)
       .bind(to: self.viewModel.viewDidAppear)
       .disposed(by: self.disposeBag)
   }

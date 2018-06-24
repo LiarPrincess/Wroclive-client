@@ -5,7 +5,7 @@
 import XCTest
 @testable import Wroclive
 
-final class VehicleAnnotationUpdaterTests: XCTestCase {
+final class VehicleAnnotationUpdaterTests: TestCase {
 
   // MARK: - Sanity checks
 

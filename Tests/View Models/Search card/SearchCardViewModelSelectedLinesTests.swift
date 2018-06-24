@@ -16,11 +16,11 @@ class SearchCardViewModelLineSelectionTests: SearchCardViewModelTestsBase {
     self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: lines)
     self.viewModel = SearchCardViewModel()
 
-    let observer = self.testScheduler.createObserver([Line].self)
+    let observer = self.scheduler.createObserver([Line].self)
     self.viewModel.selectedLines
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(observer.events, [next(0, lines)])
     XCTAssertOperationCount(self.storageManager, getSearchCardState: 1, saveSearchCardState: 0)
@@ -34,11 +34,11 @@ class SearchCardViewModelLineSelectionTests: SearchCardViewModelTestsBase {
     let event1 = next(200, Line(name: "Test1", type: .bus,  subtype: .express))
     self.simulateLineSelectedEvents(event0, event1)
 
-    let observer = self.testScheduler.createObserver([Line].self)
+    let observer = self.scheduler.createObserver([Line].self)
     self.viewModel.selectedLines
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedEvents = [
       next(  0, self.testLines),
@@ -56,11 +56,11 @@ class SearchCardViewModelLineSelectionTests: SearchCardViewModelTestsBase {
     let event1 = next(200, self.testLines[2])
     self.simulateLineDeselectedEvents(event0, event1)
 
-    let observer = self.testScheduler.createObserver([Line].self)
+    let observer = self.scheduler.createObserver([Line].self)
     self.viewModel.selectedLines
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedEvents = [
       next(  0, self.testLines),

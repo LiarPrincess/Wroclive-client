@@ -17,11 +17,11 @@ class SearchCardViewModelBookmarksTests: SearchCardViewModelTestsBase {
 
     self.simulateBookmarkButtonPressedEvents(at: 100)
 
-    let observer = self.testScheduler.createObserver(SearchCardAlert.self)
+    let observer = self.scheduler.createObserver(SearchCardAlert.self)
     self.viewModel.showAlert
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(observer.events, [next(100, SearchCardAlert.bookmarkNoLineSelected)])
   }
@@ -32,11 +32,11 @@ class SearchCardViewModelBookmarksTests: SearchCardViewModelTestsBase {
 
     self.simulateBookmarkButtonPressedEvents(at: 100)
 
-    let observer = self.testScheduler.createObserver(SearchCardAlert.self)
+    let observer = self.scheduler.createObserver(SearchCardAlert.self)
     self.viewModel.showAlert
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(observer.events, [next(100, SearchCardAlert.bookmarkNameInput)])
   }
@@ -48,7 +48,7 @@ class SearchCardViewModelBookmarksTests: SearchCardViewModelTestsBase {
 
     let bookmark = Bookmark(name: "Test", lines: self.testLines)
     self.simulateBookmarkAlertNameEnteredEvents(next(100, bookmark.name))
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(self.storageManager._bookmarks, [bookmark])
     XCTAssertOperationCount(self.storageManager, getBookmarks: 1, saveBookmarks: 1)

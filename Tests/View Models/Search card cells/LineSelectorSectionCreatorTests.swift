@@ -5,7 +5,7 @@
 import XCTest
 @testable import Wroclive
 
-class LineSelectorSectionCreatorTests: XCTestCase {
+class LineSelectorSectionCreatorTests: TestCase {
 
   func test_withoutLines_returnsNoSections() {
     let lines = [Line]()

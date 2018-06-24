@@ -202,6 +202,7 @@
 		90F9F8A820DFA7FC00793E4C /* MapViewModelNextLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F8A720DFA7FC00793E4C /* MapViewModelNextLaunchTests.swift */; };
 		90F9F8AA20DFAD3D00793E4C /* MapViewModelVehiclesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F8A920DFAD3D00793E4C /* MapViewModelVehiclesTests.swift */; };
 		90F9F8AC20DFC68800793E4C /* MapViewModelTrackingModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F8AB20DFC68800793E4C /* MapViewModelTrackingModeTests.swift */; };
+		90F9F8AF20E002B500793E4C /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F8AE20E002B500793E4C /* TestCase.swift */; };
 		90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */; };
 		90FB9DC51FB64DD700DEA125 /* TutorialScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */; };
 		90FB9DC61FB64DDA00DEA125 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B304381FB50A3700F5F20C /* SnapshotHelper.swift */; };
@@ -452,6 +453,7 @@
 		90F9F8A720DFA7FC00793E4C /* MapViewModelNextLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelNextLaunchTests.swift; sourceTree = "<group>"; };
 		90F9F8A920DFAD3D00793E4C /* MapViewModelVehiclesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelVehiclesTests.swift; sourceTree = "<group>"; };
 		90F9F8AB20DFC68800793E4C /* MapViewModelTrackingModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTrackingModeTests.swift; sourceTree = "<group>"; };
+		90F9F8AE20E002B500793E4C /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
 		90FB9DBB1FB64DC700DEA125 /* Wroclive-Screenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wroclive-Screenshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90FB9DBF1FB64DC700DEA125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1014,6 +1016,7 @@
 				90425D301FF11ED900F1800E /* Mocks */,
 				90F9F8A420DFA66F00793E4C /* Extensions */,
 				90374B4720D871C900315F80 /* View Models */,
+				90F9F8AE20E002B500793E4C /* TestCase.swift */,
 				9009BD441FB63C7B009FB075 /* Info.plist */,
 			);
 			path = Tests;
@@ -1357,6 +1360,7 @@
 			files = (
 				90F9F89320DE7E3700793E4C /* MapViewModelFirstLaunchTests.swift in Sources */,
 				90915B1D1FFC070F009FE942 /* LiveManagerMock.swift in Sources */,
+				90F9F8AF20E002B500793E4C /* TestCase.swift in Sources */,
 				90374B5D20D87FA600315F80 /* LineSelectorHeaderViewModelTests.swift in Sources */,
 				90374B6320D9775E00315F80 /* SearchCardViewModelSelectedLinesTests.swift in Sources */,
 				90F9F89A20DEAA3D00793E4C /* Assertions.swift in Sources */,

@@ -19,7 +19,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     self.simulateApiLinesEvents(next(200, .success(lines)))
 
     let observers = self.bindObservers()
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(observers.lines.events,                 [next(0, []), next(200, lines)])
     XCTAssertEqual(observers.showAlert.events,           [])
@@ -36,7 +36,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     self.simulateApiLinesEvents(next(200, .success(lines)))
 
     let observers = self.bindObservers()
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(observers.lines.events,                 [next(0, [])])
     XCTAssertEqual(observers.showAlert.events,           [next(200, .apiError(error: .generalError))])
@@ -52,7 +52,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     self.simulateApiLinesEvents(next(200, .failure(ApiError.noInternet)))
 
     let observers = self.bindObservers()
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(observers.lines.events,                 [next(0, [])])
     XCTAssertEqual(observers.showAlert.events,           [next(200, .apiError(error: .noInternet))])
@@ -68,7 +68,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     self.simulateApiLinesEvents(next(200, .failure(ApiError.generalError)))
 
     let observers = self.bindObservers()
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(observers.lines.events,                 [next(0, [])])
     XCTAssertEqual(observers.showAlert.events,           [next(200, .apiError(error: .generalError))])
@@ -85,7 +85,7 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
     self.simulateApiLinesEvents(next(200, .success(lines)))
 
     let observers = self.bindObservers()
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(observers.lines.events,                  [next(0, []), next(200, lines)])
     XCTAssertEqual(observers.showAlert.events,           [])
@@ -102,22 +102,22 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
   }
 
   private func bindObservers() -> Observers {
-    let linesObserver = self.testScheduler.createObserver([Line].self)
+    let linesObserver = self.scheduler.createObserver([Line].self)
     self.viewModel.lines
       .drive(linesObserver)
       .disposed(by: self.disposeBag)
 
-    let showAlertObserver = self.testScheduler.createObserver(SearchCardAlert.self)
+    let showAlertObserver = self.scheduler.createObserver(SearchCardAlert.self)
     self.viewModel.showAlert
       .drive(showAlertObserver)
       .disposed(by: self.disposeBag)
 
-    let isLineSelectorVisibleObserver = self.testScheduler.createObserver(Bool.self)
+    let isLineSelectorVisibleObserver = self.scheduler.createObserver(Bool.self)
     self.viewModel.isLineSelectorVisible
       .drive(isLineSelectorVisibleObserver)
       .disposed(by: self.disposeBag)
 
-    let isPlaceholderVisibleObserver = self.testScheduler.createObserver(Bool.self)
+    let isPlaceholderVisibleObserver = self.scheduler.createObserver(Bool.self)
     self.viewModel.isPlaceholderVisible
       .drive(isPlaceholderVisibleObserver)
       .disposed(by: self.disposeBag)

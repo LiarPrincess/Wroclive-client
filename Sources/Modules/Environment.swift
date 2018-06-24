@@ -17,5 +17,4 @@ struct Environment {
   let userLocation: UserLocationManagerType
 
   var debug: DebugManagerType
-    variables:    EnvironmentVariables    = EnvironmentVariables(),
 }

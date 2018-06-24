@@ -15,11 +15,11 @@ class BookmarksCardViewModelBookmarksTests: BookmarksCardViewModelTestsBase {
     self.storageManager._bookmarks = bookmarks
     self.viewModel = BookmarksCardViewModel()
 
-    let observer = self.testScheduler.createObserver([Bookmark].self)
+    let observer = self.scheduler.createObserver([Bookmark].self)
     viewModel.bookmarks
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedEvents = [next(0, bookmarks)]
     XCTAssertEqual(observer.events, expectedEvents)
@@ -35,11 +35,11 @@ class BookmarksCardViewModelBookmarksTests: BookmarksCardViewModelTestsBase {
     let event1 = next(200, (from: 1, to: 0))
     self.simulateMoveEvents(event0, event1)
 
-    let observer = self.testScheduler.createObserver([Bookmark].self)
+    let observer = self.scheduler.createObserver([Bookmark].self)
     viewModel.bookmarks
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedEvents = [
       next(  0, bookmarks),
@@ -62,11 +62,11 @@ class BookmarksCardViewModelBookmarksTests: BookmarksCardViewModelTestsBase {
     let event2 = next(300, 0) // first
     self.simulateDeleteEvents(event0, event1, event2)
 
-    let observer = self.testScheduler.createObserver([Bookmark].self)
+    let observer = self.scheduler.createObserver([Bookmark].self)
     viewModel.bookmarks
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedEvents = [
       next(  0, bookmarks),

@@ -18,11 +18,11 @@ class SearchCardViewModelTrackingTests: SearchCardViewModelTestsBase {
 
     self.simulateSearchButtonPressedEvents(at: 100)
 
-    let observer = self.testScheduler.createObserver([Line].self)
+    let observer = self.scheduler.createObserver([Line].self)
     self.viewModel.startTracking
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(observer.events, [next(100, lines)])
   }

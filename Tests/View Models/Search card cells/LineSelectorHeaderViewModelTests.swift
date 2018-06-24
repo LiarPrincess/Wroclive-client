@@ -7,7 +7,7 @@ import XCTest
 
 private typealias TextStyles = LineSelectorHeaderViewConstants.TextStyles
 
-class LineSelectorHeaderViewModelTests: XCTestCase {
+class LineSelectorHeaderViewModelTests: TestCase {
 
   var lineSubtypes: [LineSubtype] {
     return [.regular, .express, .peakHour, .suburban, .zone, .limited, .temporary, .night]

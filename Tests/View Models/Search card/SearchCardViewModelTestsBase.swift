@@ -13,36 +13,9 @@ import RxTest
 
 private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
-class SearchCardViewModelTestsBase: XCTestCase {
+class SearchCardViewModelTestsBase: TestCase {
 
-  var apiManager:       ApiManagerMock!
-  var storageManager:   StorageManagerMock!
-  var schedulerManager: SchedulerManagerMock!
-
-  var viewModel:     SearchCardViewModel!
-  var testScheduler: TestScheduler!
-  var disposeBag:    DisposeBag!
-
-  override func setUp() {
-    super.setUp()
-    self.testScheduler = TestScheduler(initialClock: 0)
-    self.disposeBag    = DisposeBag()
-
-    self.apiManager       = ApiManagerMock()
-    self.storageManager   = StorageManagerMock()
-    self.schedulerManager = SchedulerManagerMock(main: testScheduler, mainAsync: testScheduler)
-
-    AppEnvironment.push(storage:    self.storageManager,
-                        schedulers: self.schedulerManager,
-                        api:        self.apiManager)
-  }
-
-  override func tearDown() {
-    super.tearDown()
-    self.testScheduler = nil
-    self.disposeBag    = nil
-    AppEnvironment.pop()
-  }
+  var viewModel: SearchCardViewModel!
 
   // MARK: - Test data
 
@@ -61,13 +34,13 @@ class SearchCardViewModelTestsBase: XCTestCase {
   typealias PageDidTransitionEvent = Recorded<Event<LineType>>
 
   func simulatePageSelectedEvents(_ events: PageSelectedEvent...) {
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didSelectPage)
       .disposed(by: self.disposeBag)
   }
 
   func simulatePageDidTransitionEvents(_ events: PageDidTransitionEvent...) {
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didTransitionToPage)
       .disposed(by: self.disposeBag)
   }
@@ -75,14 +48,14 @@ class SearchCardViewModelTestsBase: XCTestCase {
   typealias ApiLinesEvent = Recorded<Event<Result<[Line], ApiError>>>
 
   func simulateApiLinesEvents(_ events: ApiLinesEvent...) {
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.apiManager._availableLines)
       .disposed(by: self.disposeBag)
   }
 
   func simulateTryAgainButtonPressedEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didPressAlertTryAgainButton)
       .disposed(by: self.disposeBag)
   }
@@ -91,20 +64,20 @@ class SearchCardViewModelTestsBase: XCTestCase {
   typealias LineDeselectedEvent = Recorded<Event<Line>>
 
   func simulateLineSelectedEvents(_ events: LineSelectedEvent...) {
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didSelectLine)
       .disposed(by: self.disposeBag)
   }
 
   func simulateLineDeselectedEvents(_ events: LineDeselectedEvent...) {
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didDeselectLine)
       .disposed(by: self.disposeBag)
   }
 
   func simulateBookmarkButtonPressedEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didPressBookmarkButton)
       .disposed(by: self.disposeBag)
   }
@@ -112,28 +85,28 @@ class SearchCardViewModelTestsBase: XCTestCase {
   typealias NameEnteredEvent = Recorded<Event<String>>
 
   func simulateBookmarkAlertNameEnteredEvents(_ events: NameEnteredEvent...) {
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didEnterBookmarkName)
       .disposed(by: self.disposeBag)
   }
 
   func simulateSearchButtonPressedEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didPressSearchButton)
       .disposed(by: self.disposeBag)
   }
 
   func simulateViewDidAppearEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.viewDidAppear)
       .disposed(by: self.disposeBag)
   }
 
   func simulateViewDidDisappearEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.viewDidDisappear)
       .disposed(by: self.disposeBag)
   }

@@ -10,30 +10,9 @@ import RxTest
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-class BookmarksCardViewModelTestsBase: XCTestCase {
+class BookmarksCardViewModelTestsBase: TestCase {
 
-  var storageManager: StorageManagerMock!
-
-  var viewModel:     BookmarksCardViewModel!
-  var testScheduler: TestScheduler!
-  var disposeBag:    DisposeBag!
-
-  override func setUp() {
-    super.setUp()
-
-    self.testScheduler = TestScheduler(initialClock: 0)
-    self.disposeBag    = DisposeBag()
-
-    self.storageManager = StorageManagerMock()
-    AppEnvironment.push(storage: self.storageManager)
-  }
-
-  override func tearDown() {
-    super.tearDown()
-    self.testScheduler = nil
-    self.disposeBag    = nil
-    AppEnvironment.pop()
-  }
+  var viewModel: BookmarksCardViewModel!
 
   // MARK: - Test data
 
@@ -57,26 +36,26 @@ class BookmarksCardViewModelTestsBase: XCTestCase {
   typealias DeleteEvent    = Recorded<Event<Int>>
 
   func simulateMoveEvents(_ events: MoveEvent...) {
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didMoveItem)
       .disposed(by: self.disposeBag)
   }
 
   func simulateDeleteEvents(_ events: DeleteEvent...) {
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: viewModel.didDeleteItem)
       .disposed(by: self.disposeBag)
   }
 
   func simulateEditClickEvents(at times: TestTime...) {
     let events = times.map { next($0, ()) }
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didPressEditButton)
       .disposed(by: self.disposeBag)
   }
 
   func simulateSelectionEvents(_ events: SelectionEvent...) {
-    self.testScheduler.createHotObservable(events)
+    self.scheduler.createHotObservable(events)
       .bind(to: self.viewModel.didSelectItem)
       .disposed(by: self.disposeBag)
   }

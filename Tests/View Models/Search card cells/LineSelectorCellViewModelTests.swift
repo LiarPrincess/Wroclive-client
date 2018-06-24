@@ -7,7 +7,7 @@ import XCTest
 
 private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
-class LineSelectorCellViewModelTests: XCTestCase {
+class LineSelectorCellViewModelTests: TestCase {
 
   func test_initialCell_hasDeselectedStyle() {
     let line      = Line(name: "0l", type: .tram, subtype: .regular)

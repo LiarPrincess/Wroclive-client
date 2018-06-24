@@ -14,17 +14,17 @@ class BookmarksCardViewModelVisibilityTests: BookmarksCardViewModelTestsBase {
     self.storageManager._bookmarks = []
     self.viewModel = BookmarksCardViewModel()
 
-    let placeholderObserver = self.testScheduler.createObserver(Bool.self)
+    let placeholderObserver = self.scheduler.createObserver(Bool.self)
     viewModel.isPlaceholderVisible
       .drive(placeholderObserver)
       .disposed(by: self.disposeBag)
 
-    let tableViewObserver = self.testScheduler.createObserver(Bool.self)
+    let tableViewObserver = self.scheduler.createObserver(Bool.self)
     viewModel.isTableViewVisible
       .drive(tableViewObserver)
       .disposed(by: self.disposeBag)
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedPlaceholderEvents = [next(0, true)]
     XCTAssertEqual(placeholderObserver.events, expectedPlaceholderEvents)
@@ -37,17 +37,17 @@ class BookmarksCardViewModelVisibilityTests: BookmarksCardViewModelTestsBase {
     self.storageManager._bookmarks = self.testData
     self.viewModel = BookmarksCardViewModel()
 
-    let placeholderObserver = self.testScheduler.createObserver(Bool.self)
+    let placeholderObserver = self.scheduler.createObserver(Bool.self)
     viewModel.isPlaceholderVisible
       .drive(placeholderObserver)
       .disposed(by: self.disposeBag)
 
-    let tableViewObserver = self.testScheduler.createObserver(Bool.self)
+    let tableViewObserver = self.scheduler.createObserver(Bool.self)
     viewModel.isTableViewVisible
       .drive(tableViewObserver)
       .disposed(by: self.disposeBag)
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedPlaceholderEvents = [next(0, false)]
     XCTAssertEqual(placeholderObserver.events, expectedPlaceholderEvents)
@@ -65,17 +65,17 @@ class BookmarksCardViewModelVisibilityTests: BookmarksCardViewModelTestsBase {
     let event2 = next(300, 0) // first
     self.simulateDeleteEvents(event0, event1, event2)
 
-    let placeholderObserver = self.testScheduler.createObserver(Bool.self)
+    let placeholderObserver = self.scheduler.createObserver(Bool.self)
     viewModel.isPlaceholderVisible
       .drive(placeholderObserver)
       .disposed(by: self.disposeBag)
 
-    let tableViewObserver = self.testScheduler.createObserver(Bool.self)
+    let tableViewObserver = self.scheduler.createObserver(Bool.self)
     viewModel.isTableViewVisible
       .drive(tableViewObserver)
       .disposed(by: self.disposeBag)
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedPlaceholderEvents = [next(0, false), next(100, false), next(200, false), next(300, true)]
     XCTAssertEqual(placeholderObserver.events, expectedPlaceholderEvents)

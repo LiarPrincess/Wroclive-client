@@ -24,7 +24,7 @@ class SearchCardViewModelSaveStateTests: SearchCardViewModelTestsBase {
     self.simulateLineSelectedEvents(next(300, line1))
 
     self.simulateViewDidDisappearEvents(at: 400)
-    self.testScheduler.start()
+    self.startScheduler()
 
     let state = self.storageManager._searchCardState
     XCTAssertEqual(state, SearchCardState(page: page, selectedLines: [line0, line1]))

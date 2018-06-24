@@ -15,11 +15,11 @@ class SearchCardViewModelPageTests: SearchCardViewModelTestsBase {
     self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: [])
     self.viewModel = SearchCardViewModel()
 
-    let observer = self.testScheduler.createObserver(LineType.self)
+    let observer = self.scheduler.createObserver(LineType.self)
     self.viewModel.page
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(observer.events, [next(0, LineType.tram)])
     XCTAssertOperationCount(self.storageManager, getSearchCardState: 1, saveSearchCardState: 0)
@@ -38,11 +38,11 @@ class SearchCardViewModelPageTests: SearchCardViewModelTestsBase {
     let line3 = next(200, LineType.bus)
     self.simulatePageDidTransitionEvents(line1, line3)
 
-    let observer = self.testScheduler.createObserver(LineType.self)
+    let observer = self.scheduler.createObserver(LineType.self)
     self.viewModel.page
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedEvents = [next(0, initialPage), line0, line1, line2, line3]
     XCTAssertEqual(observer.events, expectedEvents)

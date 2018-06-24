@@ -18,11 +18,11 @@ class BookmarksCardViewModelSelectionTests: BookmarksCardViewModelTestsBase {
     let event = next(100, 1)
     self.simulateSelectionEvents(event)
 
-    let observer = self.testScheduler.createObserver(Bookmark.self)
+    let observer = self.scheduler.createObserver(Bookmark.self)
     viewModel.startTracking
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedEvents = [next(100, bookmarks[1])]
     XCTAssertEqual(observer.events, expectedEvents)

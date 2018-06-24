@@ -12,7 +12,7 @@ enum AppEnvironment {
   }
 
   static func pushDefault() {
-    push(bundle:        BundleManager(),
+    push(bundle:       BundleManager(),
          device:       DeviceManager(),
          theme:        ThemeManager(),
          storage:      StorageManager(),

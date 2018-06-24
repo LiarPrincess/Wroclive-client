@@ -19,7 +19,7 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
   }
 
   func test_lauching_centersOnDefaultLocation() {
-    self.testScheduler.start()
+    self.startScheduler()
     XCTAssertEqual(self.mapCenterObserver.events, [next(0, Defaults.location)])
   }
 
@@ -43,7 +43,7 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
     self.mockAuthorizationEvents(AuthorizationEvent(200, .authorizedWhenInUse))
     self.mockUserLocationEvents(UserLocationEvent(300, userLocation))
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     let showAlertEvents = self.showAlertObserver.events
     let authorizationTime = 100 + self.locationAuthorizationPromptDelay
@@ -72,7 +72,7 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
     self.mockAuthorizationEvents(AuthorizationEvent(200, .authorizedWhenInUse))
     self.mockUserLocationError(UserLocationErrorEvent(300, .generalError))
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     let showAlertEvents = self.showAlertObserver.events
     let authorizationTime = 100 + self.locationAuthorizationPromptDelay
@@ -102,7 +102,7 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
     self.mockAuthorizationEvents(AuthorizationEvent(200, .denied))
     self.mockUserLocationEvents(UserLocationEvent(300, userLocation)) // should not be used
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     let showAlertEvents = self.showAlertObserver.events
     let authorizationTime = 100 + self.locationAuthorizationPromptDelay

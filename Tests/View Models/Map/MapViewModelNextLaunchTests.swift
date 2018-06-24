@@ -31,7 +31,7 @@ class MapViewModelNextLaunchTests: MapViewModelTestsBase {
     self.mockViewDidAppearEvent(at: 100)
     self.mockUserLocationEvents(UserLocationEvent(200, userLocation))
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     let showAlertEvents = self.showAlertObserver.events
     XCTAssertEqual(showAlertEvents, [])
@@ -56,7 +56,7 @@ class MapViewModelNextLaunchTests: MapViewModelTestsBase {
     self.mockViewDidAppearEvent(at: 100)
     self.mockUserLocationError(UserLocationErrorEvent(200, .generalError))
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     let showAlertEvents = self.showAlertObserver.events
     XCTAssertEqual(showAlertEvents, [])
@@ -79,7 +79,7 @@ class MapViewModelNextLaunchTests: MapViewModelTestsBase {
     self.mockAuthorizationEvents(AuthorizationEvent(0, .denied))
     self.mockViewDidAppearEvent(at: 100)
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     let showAlertEvents = self.showAlertObserver.events
     XCTAssertEqual(showAlertEvents, [])

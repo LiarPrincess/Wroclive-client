@@ -35,7 +35,7 @@ class MapViewModelTrackingModeTests: MapViewModelTestsBase {
       TrackingModeChangedEvent(400, .none)
     )
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     let showAlertEvents = self.showAlertObserver.events
     let delayedDidAppear = (Int) (100 + AppEnvironment.current.variables.timings.locationAuthorizationPromptDelay)
@@ -70,7 +70,7 @@ class MapViewModelTrackingModeTests: MapViewModelTestsBase {
       TrackingModeChangedEvent(400, .none)
     )
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(self.showAlertObserver.events, [
       Recorded.next(200, .deniedLocationAuthorization),
@@ -102,7 +102,7 @@ class MapViewModelTrackingModeTests: MapViewModelTestsBase {
       TrackingModeChangedEvent(400, .none)
     )
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(self.showAlertObserver.events, [
       Recorded.next(200, .globallyDeniedLocationAuthorization),

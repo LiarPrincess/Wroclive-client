@@ -36,7 +36,7 @@ class MapViewModelVehiclesTests: MapViewModelTestsBase {
       VehicleResponseEvent(600, .noInternet)
     )
 
-    self.testScheduler.start()
+    self.startScheduler()
 
     XCTAssertEqual(self.vehiclesObserver.events, [
       next(200, vehicles1),

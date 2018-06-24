@@ -17,11 +17,11 @@ class BookmarksCardViewModelEditTests: BookmarksCardViewModelTestsBase {
     self.viewModel = BookmarksCardViewModel()
     self.simulateEditClickEvents(at: 100, 200)
 
-    let observer = self.testScheduler.createObserver(Bool.self)
+    let observer = self.scheduler.createObserver(Bool.self)
     viewModel.isEditing
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedEvents = [next(0, false), next(100, true), next(200, false)]
     XCTAssertEqual(observer.events, expectedEvents)
@@ -31,11 +31,11 @@ class BookmarksCardViewModelEditTests: BookmarksCardViewModelTestsBase {
     self.viewModel = BookmarksCardViewModel()
     self.simulateEditClickEvents(at: 100, 200)
 
-    let observer = self.testScheduler.createObserver(NSAttributedString.self)
+    let observer = self.scheduler.createObserver(NSAttributedString.self)
     viewModel.editButtonText
       .drive(observer)
       .disposed(by: self.disposeBag)
-    self.testScheduler.start()
+    self.startScheduler()
 
     let expectedEvents = [
       next(  0, NSAttributedString(string: Localization.edit, attributes: TextStyles.edit)),
