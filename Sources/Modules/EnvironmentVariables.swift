@@ -13,7 +13,7 @@ struct EnvironmentVariables {
   let timings    = Timings()
 
   struct Endpoints {
-    private let server = "139.59.154.250"
+    private let server = "127.0.0.1:3000"// "139.59.154.250"
     var lines:     String { return "http://" + server + "/lines" }
     var locations: String { return "http://" + server + "/locations" }
   }

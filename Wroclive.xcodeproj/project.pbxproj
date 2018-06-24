@@ -47,8 +47,6 @@
 		901ECDB91FF5875F004765AA /* FontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDB81FF5875F004765AA /* FontType.swift */; };
 		901ECDBD1FF587B7004765AA /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDBC1FF587B6004765AA /* TextStyle.swift */; };
 		901ECDBF1FF587F1004765AA /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDBE1FF587F1004765AA /* TextAttributes.swift */; };
-		901ECDC71FF58915004765AA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDC61FF58915004765AA /* NetworkManager.swift */; };
-		901ECDC91FF58951004765AA /* NetworkManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDC81FF58951004765AA /* NetworkManagerType.swift */; };
 		901ECDCC1FF58D5C004765AA /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDCB1FF58D5C004765AA /* SearchPlaceholderView.swift */; };
 		901ECDCE1FF58D74004765AA /* SearchPlaceholderViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDCD1FF58D74004765AA /* SearchPlaceholderViewConstants.swift */; };
 		901ECDD01FF5A003004765AA /* SearchCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901ECDCF1FF5A003004765AA /* SearchCardViewModel.swift */; };
@@ -119,7 +117,6 @@
 		905D718E1FE1C444006D1DB6 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */; };
 		905D718F1FE1C444006D1DB6 /* UserLocationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */; };
 		905D71901FE1C444006D1DB6 /* UserLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718D1FE1C443006D1DB6 /* UserLocationError.swift */; };
-		905D719D1FE1C545006D1DB6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71971FE1C544006D1DB6 /* SessionManager.swift */; };
 		905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */; };
 		905D71AC1FE1C5BD006D1DB6 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A41FE1C5BD006D1DB6 /* ApiManager.swift */; };
 		905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */; };
@@ -291,8 +288,6 @@
 		901ECDB81FF5875F004765AA /* FontType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontType.swift; sourceTree = "<group>"; };
 		901ECDBC1FF587B6004765AA /* TextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		901ECDBE1FF587F1004765AA /* TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
-		901ECDC61FF58915004765AA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		901ECDC81FF58951004765AA /* NetworkManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerType.swift; sourceTree = "<group>"; };
 		901ECDCB1FF58D5C004765AA /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
 		901ECDCD1FF58D74004765AA /* SearchPlaceholderViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderViewConstants.swift; sourceTree = "<group>"; };
 		901ECDCF1FF5A003004765AA /* SearchCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModel.swift; sourceTree = "<group>"; };
@@ -363,7 +358,6 @@
 		905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManagerType.swift; sourceTree = "<group>"; };
 		905D718D1FE1C443006D1DB6 /* UserLocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationError.swift; sourceTree = "<group>"; };
-		905D71971FE1C544006D1DB6 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationsEndpoint.swift; sourceTree = "<group>"; };
 		905D71A41FE1C5BD006D1DB6 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableLinesEndpoint.swift; sourceTree = "<group>"; };
@@ -718,7 +712,7 @@
 			children = (
 				905D71B11FE1C6A8006D1DB6 /* Theme */,
 				905070602087EF28007DDA80 /* File system */,
-				906C40712019213B00E32571 /* Network */,
+				906C40712019213B00E32571 /* Endpoints */,
 				90E8A6BE1F4CB08400CE5AE9 /* BundleManagerType.swift */,
 				90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */,
 				90E8A6C51F4CD43300CE5AE9 /* DeviceManagerType.swift */,
@@ -733,14 +727,12 @@
 				905D71A41FE1C5BD006D1DB6 /* ApiManager.swift */,
 				90546BED1F6AF23100E8E75F /* LiveManagerType.swift */,
 				90546BEF1F6AF25800E8E75F /* LiveManager.swift */,
-				901ECDC81FF58951004765AA /* NetworkManagerType.swift */,
-				901ECDC61FF58915004765AA /* NetworkManager.swift */,
 				905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */,
 				905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */,
 				906C40562014C55000E32571 /* DebugManagerType.swift */,
 				906C40582014C55700E32571 /* DebugManager.swift */,
-				9024C6101F9667E600025503 /* Environment.swift */,
 				9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */,
+				9024C6101F9667E600025503 /* Environment.swift */,
 				9016FD0D208B4D6A0043524D /* AppEnvironment.swift */,
 			);
 			path = Modules;
@@ -878,15 +870,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		906C40712019213B00E32571 /* Network */ = {
+		906C40712019213B00E32571 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
 				906C406F201915D900E32571 /* Endpoint.swift */,
 				905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */,
 				905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */,
-				905D71971FE1C544006D1DB6 /* SessionManager.swift */,
 			);
-			path = Network;
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 		907DC6E61FF2B73F001C5DD6 /* Line type selector */ = {
@@ -1413,9 +1404,7 @@
 				9017C35C1EE339FD00063377 /* BookmarksCardLayout.swift in Sources */,
 				901ECDBF1FF587F1004765AA /* TextAttributes.swift in Sources */,
 				901ECDCC1FF58D5C004765AA /* SearchPlaceholderView.swift in Sources */,
-				901ECDC91FF58951004765AA /* NetworkManagerType.swift in Sources */,
 				901A80A52012A5E00013CCD9 /* SettingsCellType.swift in Sources */,
-				901ECDC71FF58915004765AA /* NetworkManager.swift in Sources */,
 				901A80A12012992F0013CCD9 /* SettingsSectionHeaderView.swift in Sources */,
 				9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */,
 				905070622087EF53007DDA80 /* FileSystem.swift in Sources */,
@@ -1434,7 +1423,6 @@
 				906A7B5520025750004EC8A4 /* Observable+Unwrap.swift in Sources */,
 				908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksCardConstants.swift in Sources */,
-				905D719D1FE1C545006D1DB6 /* SessionManager.swift in Sources */,
 				901A80A9201382240013CCD9 /* SettingsTextCell.swift in Sources */,
 				90C4B13D2032152A00920706 /* MapViewAlert.swift in Sources */,
 				906C40632016786E00E32571 /* SearchCardAlert.swift in Sources */,

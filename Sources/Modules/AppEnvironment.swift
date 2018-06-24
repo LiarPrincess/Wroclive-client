@@ -20,7 +20,6 @@ enum AppEnvironment {
          schedulers:   SchedulerManager(),
          api:          ApiManager(),
          live:         LiveManager(),
-         network:      NetworkManager(),
          userLocation: UserLocationManager(),
          debug:        DebugManager())
   }
@@ -33,7 +32,6 @@ enum AppEnvironment {
                    schedulers:   SchedulerManagerType    = current.schedulers,
                    api:          ApiManagerType          = current.api,
                    live:         LiveManagerType         = current.live,
-                   network:      NetworkManagerType      = current.network,
                    userLocation: UserLocationManagerType = current.userLocation,
                    debug:        DebugManagerType        = current.debug) {
     push(Environment(bundle: bundle,
@@ -44,7 +42,6 @@ enum AppEnvironment {
                      schedulers: schedulers,
                      api: api,
                      live: live,
-                     network: network,
                      userLocation: userLocation,
                      debug: debug))
   }

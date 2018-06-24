@@ -13,7 +13,6 @@ struct Environment {
 
   let api:          ApiManagerType
   let live:         LiveManagerType
-  let network:      NetworkManagerType
   let userLocation: UserLocationManagerType
 
   var debug: DebugManagerType

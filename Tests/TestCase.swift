@@ -34,17 +34,16 @@ class TestCase: XCTestCase {
     self.liveManager         = LiveManagerMock(self.scheduler)
     self.userLocationManager = UserLocationManagerMock(self.scheduler)
 
-    AppEnvironment.push(Environment(bundle:        BundleManager(),
-                                    device:        DeviceManager(),
-                                    theme:         ThemeManager(),
-                                    storage:       self.storageManager,
-                                    variables:     EnvironmentVariables(),
-                                    schedulers:    self.schedulerManager,
-                                    api:           self.apiManager,
-                                    live:          self.liveManager,
-                                    network:       NetworkManager(),
-                                    userLocation:  self.userLocationManager,
-                                    debug:         DebugManager()))
+    AppEnvironment.push(bundle:        BundleManager(),
+                        device:        DeviceManager(),
+                        theme:         ThemeManager(),
+                        storage:       self.storageManager,
+                        variables:     EnvironmentVariables(),
+                        schedulers:    self.schedulerManager,
+                        api:           self.apiManager,
+                        live:          self.liveManager,
+                        userLocation:  self.userLocationManager,
+                        debug:         DebugManager())
   }
 
   override func tearDown() {
