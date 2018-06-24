@@ -7,7 +7,7 @@ import Alamofire
 
 class AvailableLinesEndpoint: Endpoint {
 
-  let url:               URLConvertible    = AppEnvironment.variables.endpoints.lines
+  let url:               URLConvertible    = AppEnvironment.current.variables.endpoints.lines
   let method:            HTTPMethod        = .get
   let parameterEncoding: ParameterEncoding = JSONEncoding.default
   let headers:           HTTPHeaders?      = ["Accept": "application/json"]

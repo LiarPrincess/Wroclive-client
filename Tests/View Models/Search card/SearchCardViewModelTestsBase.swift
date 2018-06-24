@@ -32,18 +32,16 @@ class SearchCardViewModelTestsBase: XCTestCase {
     self.storageManager   = StorageManagerMock()
     self.schedulerManager = SchedulerManagerMock(main: testScheduler, mainAsync: testScheduler)
 
-    EnvironmentStack.push(Environment(
-      storage:    self.storageManager,
-      schedulers: self.schedulerManager,
-      api:        self.apiManager
-    ))
+    AppEnvironment.push(storage:    self.storageManager,
+                        schedulers: self.schedulerManager,
+                        api:        self.apiManager)
   }
 
   override func tearDown() {
     super.tearDown()
     self.testScheduler = nil
     self.disposeBag    = nil
-    EnvironmentStack.pop()
+    AppEnvironment.pop()
   }
 
   // MARK: - Test data

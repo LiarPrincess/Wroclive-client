@@ -9,7 +9,7 @@ enum BookmarksCardConstants {
     static let leftInset:  CGFloat = 16.0
     static let rightInset: CGFloat = leftInset
 
-    static var height: CGFloat { return 0.75 * AppEnvironment.device.screenBounds.height }
+    static var height: CGFloat { return 0.75 * AppEnvironment.current.device.screenBounds.height }
 
     enum Header {
       enum Title {

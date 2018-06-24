@@ -20,15 +20,15 @@ class SessionManager: Alamofire.SessionManager {
   // Example: 'Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)'
   private static var userAgentString: String {
     let deviceOSVersion: String = {
-      let model         = AppEnvironment.device.model
-      let systemName    = AppEnvironment.device.systemName
-      let systemVersion = AppEnvironment.device.systemVersion
+      let model         = AppEnvironment.current.device.model
+      let systemName    = AppEnvironment.current.device.systemName
+      let systemVersion = AppEnvironment.current.device.systemVersion
       return "\(model) \(systemName) \(systemVersion)"
     }()
 
-    let executable = AppEnvironment.bundle.name
-    let appVersion = AppEnvironment.bundle.version
-    let bundle     = AppEnvironment.bundle.identifier
+    let executable = AppEnvironment.current.bundle.name
+    let appVersion = AppEnvironment.current.bundle.version
+    let bundle     = AppEnvironment.current.bundle.identifier
     return "\(executable)/\(appVersion) (\(bundle); \(deviceOSVersion))"
   }
 }

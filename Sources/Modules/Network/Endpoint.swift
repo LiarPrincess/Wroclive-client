@@ -22,7 +22,7 @@ protocol Endpoint {
 
 extension Endpoint {
   func sendRequest(data: ParameterData) -> ApiResponse<ResponseData> {
-    return AppEnvironment.network
+    return AppEnvironment.current.network
       .request(
         self.url,
         method:     self.method,
@@ -40,7 +40,7 @@ extension Endpoint {
     switch error {
     case ApiError.invalidResponse: return Observable.just(.invalidResponse)
     default:
-      return AppEnvironment.network.reachability.map {
+      return AppEnvironment.current.network.reachability.map {
         switch $0 {
         case .none:            return .noInternet
         case .wifi, .cellular: return .generalError

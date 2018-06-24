@@ -53,7 +53,7 @@ class BookmarksCardViewModel {
     let removeOperation = _didDeleteItem.map { Operation.remove(index: $0) }
 
     self.bookmarks = Observable.merge(moveOperation, removeOperation)
-      .reducing(AppEnvironment.storage.bookmarks, apply: apply)
+      .reducing(AppEnvironment.current.storage.bookmarks, apply: apply)
       .asDriver(onErrorJustReturn: [])
 
     self.isTableViewVisible   = self.bookmarks.map { $0.any }
@@ -78,7 +78,7 @@ class BookmarksCardViewModel {
   private func initBindings() {
     self.bookmarks
       .skip(1) // skip initial binding
-      .drive(onNext: { AppEnvironment.storage.saveBookmarks($0) })
+      .drive(onNext: { AppEnvironment.current.storage.saveBookmarks($0) })
       .disposed(by: self.disposeBag)
   }
 }

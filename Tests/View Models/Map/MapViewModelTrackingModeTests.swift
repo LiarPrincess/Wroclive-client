@@ -38,7 +38,7 @@ class MapViewModelTrackingModeTests: MapViewModelTestsBase {
     self.testScheduler.start()
 
     let showAlertEvents = self.showAlertObserver.events
-    let delayedDidAppear = (Int) (100 + AppEnvironment.variables.timings.locationAuthorizationPromptDelay)
+    let delayedDidAppear = (Int) (100 + AppEnvironment.current.variables.timings.locationAuthorizationPromptDelay)
     XCTAssertEqual(showAlertEvents, [
       Recorded.next(delayedDidAppear, .requestLocationAuthorization), // viewDidLoad also shows prompt, lets ignore it
       Recorded.next(200, .requestLocationAuthorization),

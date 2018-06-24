@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Launch
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    EnvironmentStack.push(Environment())
+    AppEnvironment.pushDefault()
     self.applyColorScheme()
 
     self.window!.rootViewController = MainViewController()
@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func applyColorScheme() {
-    let tintColor = AppEnvironment.theme.colors.tint
-    let barStyle  = AppEnvironment.theme.colors.barStyle
+    let tintColor = AppEnvironment.current.theme.colors.tint
+    let barStyle  = AppEnvironment.current.theme.colors.barStyle
 
     UIApplication.shared.delegate?.window??.tintColor = tintColor
 
@@ -42,11 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Activity
 
   func applicationDidBecomeActive(_ application: UIApplication) {
-    AppEnvironment.theme.recalculateFontSizes()
-    AppEnvironment.live.resumeUpdates()
+    AppEnvironment.current.theme.recalculateFontSizes()
+    AppEnvironment.current.live.resumeUpdates()
   }
 
   func applicationWillResignActive(_ application: UIApplication) {
-    AppEnvironment.live.pauseUpdates()
+    AppEnvironment.current.live.pauseUpdates()
   }
 }

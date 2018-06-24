@@ -76,7 +76,7 @@ class SearchCardViewModel {
     let _viewDidDisappear = PublishSubject<Void>()
     self.viewDidDisappear = _viewDidDisappear.asObserver()
 
-    let state = AppEnvironment.storage.searchCardState
+    let state = AppEnvironment.current.storage.searchCardState
 
     // page
     self.page = Observable.merge(_didSelectPage, _didTransitionToPage)
@@ -84,12 +84,12 @@ class SearchCardViewModel {
       .asDriver(onErrorDriveWith: .never())
 
     // lines
-    let tryAgainScheduler = AppEnvironment.schedulers.main
-    let tryAgainDelay     = AppEnvironment.variables.timings.failedRequestDelay.lines
+    let tryAgainScheduler = AppEnvironment.current.schedulers.main
+    let tryAgainDelay     = AppEnvironment.current.variables.timings.failedRequestDelay.lines
     let tryAgain          = _didPressAlertTryAgainButton.delay(tryAgainDelay, scheduler: tryAgainScheduler)
 
     let lineResponse = Observable.merge(_viewDidAppear, tryAgain)
-      .flatMapLatest { _ in AppEnvironment.api.availableLines.catchError { _ in .empty() } }
+      .flatMapLatest { _ in AppEnvironment.current.api.availableLines.catchError { _ in .empty() } }
       .map(emptyResponseAsError)
       .share()
 
@@ -131,14 +131,14 @@ class SearchCardViewModel {
   private func initBindings(_ didEnterBookmarkName: Observable<String>, _ viewDidDisappear: Observable<Void>) {
     didEnterBookmarkName
       .withLatestFrom(self.selectedLines) { Bookmark(name: $0, lines: $1) }
-      .bind { AppEnvironment.storage.addBookmark($0) }
+      .bind { AppEnvironment.current.storage.addBookmark($0) }
       .disposed(by: self.disposeBag)
 
     viewDidDisappear
       .withLatestFrom(self.page) { $1 }
       .withLatestFrom(self.selectedLines) { (page: $0, selectedLines: $1) }
       .map  { SearchCardState(page: $0.page, selectedLines: $0.selectedLines) }
-      .bind { AppEnvironment.storage.saveSearchCardState($0) }
+      .bind { AppEnvironment.current.storage.saveSearchCardState($0) }
       .disposed(by: self.disposeBag)
   }
 }

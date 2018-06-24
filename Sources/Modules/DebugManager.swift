@@ -17,7 +17,7 @@ class DebugManager: DebugManagerType {
 
   func printRxResources() {
     _ = Observable<Int>
-      .interval(1, scheduler: AppEnvironment.schedulers.main)
+      .interval(1, scheduler: AppEnvironment.current.schedulers.main)
       .subscribe { _ in print("Resource count: \(RxSwift.Resources.total)") }
       .disposed(by: self.disposeBag)
   }

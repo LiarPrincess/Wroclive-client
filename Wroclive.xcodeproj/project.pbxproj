@@ -80,7 +80,6 @@
 		9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EB1EDF37F500FA8F43 /* LineSubtype.swift */; };
 		902331301EDF37F500FA8F43 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EC1EDF37F500FA8F43 /* LineType.swift */; };
 		9024C6111F9667E600025503 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024C6101F9667E600025503 /* Environment.swift */; };
-		9024C6131F96699500025503 /* EnvironmentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024C6121F96699500025503 /* EnvironmentStack.swift */; };
 		90374B4B20D876C600315F80 /* BookmarksCardViewModelBookmarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4920D8766F00315F80 /* BookmarksCardViewModelBookmarksTests.swift */; };
 		90374B4F20D877F200315F80 /* BookmarksCardViewModelVisibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4D20D8777600315F80 /* BookmarksCardViewModelVisibilityTests.swift */; };
 		90374B5220D8786100315F80 /* BookmarksCardViewModelEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5020D8785C00315F80 /* BookmarksCardViewModelEditTests.swift */; };
@@ -325,7 +324,6 @@
 		902330EB1EDF37F500FA8F43 /* LineSubtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSubtype.swift; sourceTree = "<group>"; };
 		902330EC1EDF37F500FA8F43 /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
 		9024C6101F9667E600025503 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		9024C6121F96699500025503 /* EnvironmentStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStack.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Wroclive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wroclive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902FC75B1FB79254002E09FE /* LinePositionMaskGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePositionMaskGenerator.swift; sourceTree = "<group>"; };
 		90374B4920D8766F00315F80 /* BookmarksCardViewModelBookmarksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelBookmarksTests.swift; sourceTree = "<group>"; };
@@ -740,7 +738,6 @@
 				906C40562014C55000E32571 /* DebugManagerType.swift */,
 				906C40582014C55700E32571 /* DebugManager.swift */,
 				9024C6101F9667E600025503 /* Environment.swift */,
-				9024C6121F96699500025503 /* EnvironmentStack.swift */,
 				9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */,
 				9016FD0D208B4D6A0043524D /* AppEnvironment.swift */,
 			);
@@ -1446,7 +1443,6 @@
 				905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
 				90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */,
-				9024C6131F96699500025503 /* EnvironmentStack.swift in Sources */,
 				90546BEE1F6AF23100E8E75F /* LiveManagerType.swift in Sources */,
 				901A80A320129DCD0013CCD9 /* SettingsSectionHeaderViewConstants.swift in Sources */,
 				9016FD0E208B4D6A0043524D /* AppEnvironment.swift in Sources */,

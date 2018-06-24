@@ -36,7 +36,7 @@ class LineSelectorCell: UICollectionViewCell {
 
   private func initLayout() {
     self.selectedBackgroundView = UIView()
-    self.selectedBackgroundView?.backgroundColor    = AppEnvironment.theme.colors.tint
+    self.selectedBackgroundView?.backgroundColor    = AppEnvironment.current.theme.colors.tint
     self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
 
     self.textLabel.numberOfLines = 1

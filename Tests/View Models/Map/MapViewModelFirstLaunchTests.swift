@@ -14,6 +14,10 @@ private typealias Defaults = MapViewControllerConstants.Defaults
 
 class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
 
+  private var locationAuthorizationPromptDelay: Int {
+    return Int(AppEnvironment.current.variables.timings.locationAuthorizationPromptDelay)
+  }
+
   func test_lauching_centersOnDefaultLocation() {
     self.testScheduler.start()
     XCTAssertEqual(self.mapCenterObserver.events, [next(0, Defaults.location)])
@@ -42,7 +46,7 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
     self.testScheduler.start()
 
     let showAlertEvents = self.showAlertObserver.events
-    let authorizationTime = (Int) (100 + AppEnvironment.variables.timings.locationAuthorizationPromptDelay)
+    let authorizationTime = 100 + self.locationAuthorizationPromptDelay
     XCTAssertEqual(showAlertEvents, [next(authorizationTime, .requestLocationAuthorization)])
 
     let mapCenterEvents = self.mapCenterObserver.events
@@ -71,7 +75,7 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
     self.testScheduler.start()
 
     let showAlertEvents = self.showAlertObserver.events
-    let authorizationTime = (Int) (100 + AppEnvironment.variables.timings.locationAuthorizationPromptDelay)
+    let authorizationTime = 100 + self.locationAuthorizationPromptDelay
     XCTAssertEqual(showAlertEvents, [next(authorizationTime, .requestLocationAuthorization)])
 
     let mapCenterEvents = self.mapCenterObserver.events
@@ -101,7 +105,7 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
     self.testScheduler.start()
 
     let showAlertEvents = self.showAlertObserver.events
-    let authorizationTime = (Int) (100 + AppEnvironment.variables.timings.locationAuthorizationPromptDelay)
+    let authorizationTime = 100 + self.locationAuthorizationPromptDelay
     XCTAssertEqual(showAlertEvents, [next(authorizationTime, .requestLocationAuthorization)])
 
     let mapCenterEvents = self.mapCenterObserver.events

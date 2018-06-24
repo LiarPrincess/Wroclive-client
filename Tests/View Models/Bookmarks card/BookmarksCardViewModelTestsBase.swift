@@ -25,14 +25,14 @@ class BookmarksCardViewModelTestsBase: XCTestCase {
     self.disposeBag    = DisposeBag()
 
     self.storageManager = StorageManagerMock()
-    EnvironmentStack.push(Environment(storage: self.storageManager))
+    AppEnvironment.push(storage: self.storageManager)
   }
 
   override func tearDown() {
     super.tearDown()
     self.testScheduler = nil
     self.disposeBag    = nil
-    EnvironmentStack.pop()
+    AppEnvironment.pop()
   }
 
   // MARK: - Test data

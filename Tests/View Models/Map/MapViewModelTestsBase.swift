@@ -37,11 +37,9 @@ class MapViewModelTestsBase: XCTestCase {
     self.userLocationManager = UserLocationManagerMock(self.testScheduler)
     self.schedulerManager    = SchedulerManagerMock(main: self.testScheduler, mainAsync: self.testScheduler)
 
-    EnvironmentStack.push(Environment(
-      schedulers:   self.schedulerManager,
-      live:         self.liveManager,
-      userLocation: self.userLocationManager
-    ))
+    AppEnvironment.push(schedulers:   self.schedulerManager,
+                        live:         self.liveManager,
+                        userLocation: self.userLocationManager)
 
     self.viewModel = MapViewModel()
 
@@ -59,7 +57,7 @@ class MapViewModelTestsBase: XCTestCase {
     super.tearDown()
     self.testScheduler = nil
     self.disposeBag = nil
-    EnvironmentStack.pop()
+    AppEnvironment.pop()
   }
 
   // MARK: - Events
