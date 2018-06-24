@@ -9,17 +9,25 @@ import RxSwift
 import RxTest
 @testable import Wroclive
 
-// swiftlint:disable identifier_name
-// swiftlint:disable implicitly_unwrapped_optional
+typealias UserLocationEvent      = RecordedEvent<CLLocationCoordinate2D>
+typealias UserLocationErrorEvent = RecordedEvent<UserLocationError>
+typealias AuthorizationEvent     = RecordedEvent<CLAuthorizationStatus>
 
-class UserLocationManagerMock: UserLocationManagerType {
+class UserLocationManagerMock: RxMock, UserLocationManagerType {
 
-  fileprivate var currentCallCount       = 0
-  fileprivate var authorizationCallCount = 0
-  fileprivate var requestWhenInUseAuthorizationCallCount = 0
+  let scheduler: TestScheduler
+  private var _current       = PublishSubject<CLLocationCoordinate2D>()
+  private var _authorization = PublishSubject<CLAuthorizationStatus>()
 
-  var _current:       TestableObservable<CLLocationCoordinate2D>!
-  var _authorization: TestableObservable<CLAuthorizationStatus>!
+  init(_ scheduler: TestScheduler) {
+    self.scheduler = scheduler
+  }
+
+  // MARK: - UserLocationManagerType
+
+  private var currentCallCount       = 0
+  private var authorizationCallCount = 0
+  private var requestWhenInUseAuthorizationCallCount = 0
 
   var current: Observable<CLLocationCoordinate2D> {
     self.currentCallCount += 1
@@ -34,15 +42,28 @@ class UserLocationManagerMock: UserLocationManagerType {
   func requestWhenInUseAuthorization() {
     self.requestWhenInUseAuthorizationCallCount += 1
   }
-}
 
-func XCTAssertOperationCount(_ manager:                     UserLocationManagerMock,
-                             current:                       Int = 0,
-                             authorization:                 Int = 0,
-                             requestWhenInUseAuthorization: Int = 0,
-                             file:                          StaticString = #file,
-                             line:                          UInt         = #line) {
-  XCTAssertEqual(manager.currentCallCount,       current,       file: file, line: line)
-  XCTAssertEqual(manager.authorizationCallCount, authorization, file: file, line: line)
-  XCTAssertEqual(manager.requestWhenInUseAuthorizationCallCount, requestWhenInUseAuthorization, file: file, line: line)
+  // MARK: - Helpers
+
+  func mockUserLocationEvents(_ events: [UserLocationEvent]) {
+    self.mockEvents(self._current, events)
+  }
+
+  func mockUserLocationError(_ event: UserLocationErrorEvent) {
+    self.mockError(self._current, event)
+  }
+
+  func mockAuthorizationEvents(_ events: [AuthorizationEvent]) {
+    self.mockEvents(self._authorization, events)
+  }
+
+  func assertOperationCount(current:                       Int,
+                            authorization:                 Int,
+                            requestWhenInUseAuthorization: Int,
+                            file:                          StaticString = #file,
+                            line:                          UInt         = #line) {
+    XCTAssertEqual(self.currentCallCount,       current,       file: file, line: line)
+    XCTAssertEqual(self.authorizationCallCount, authorization, file: file, line: line)
+    XCTAssertEqual(self.requestWhenInUseAuthorizationCallCount, requestWhenInUseAuthorization, file: file, line: line)
+  }
 }

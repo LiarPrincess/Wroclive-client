@@ -2,10 +2,18 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-enum MapAnnotationManager {
+class VehicleAnnotationUpdates {
+  typealias AnnotationAssignment = (vehicle: Vehicle, annotation: VehicleAnnotation)
 
-  static func calculateUpdates(for annotations: [VehicleAnnotation], with vehicles: [Vehicle]) -> MapAnnotationUpdates {
-    let result = MapAnnotationUpdates()
+  var newAnnotations     = [VehicleAnnotation]()
+  var updatedAnnotations = [AnnotationAssignment]()
+  var removedAnnotations = [VehicleAnnotation]()
+}
+
+enum VehicleAnnotationUpdater {
+
+  static func calculateUpdates(for annotations: [VehicleAnnotation], from vehicles: [Vehicle]) -> VehicleAnnotationUpdates {
+    let result = VehicleAnnotationUpdates()
 
     // annotations with duplicate vehicleId will be readded, as we can't animate location change for them
     let uniqueAnnotations            = filterUniqueVehicleIds(annotations)
@@ -13,10 +21,10 @@ enum MapAnnotationManager {
 
     // assign all of the vehicles to either created or updated annotations
     for vehicle in vehicles {
-      if let annotation = uniqueAnnotationsByVehicleId.removeValue(forKey: vehicle.id) {
-        result.updatedAnnotations.append((vehicle, annotation))
+      if let existingAnnotation = uniqueAnnotationsByVehicleId.removeValue(forKey: vehicle.id) {
+        result.updatedAnnotations.append((vehicle, existingAnnotation))
       }
-      else { result.createdAnnotations.append(VehicleAnnotation(from: vehicle)) }
+      else { result.newAnnotations.append(VehicleAnnotation(from: vehicle)) }
     }
 
     // remove remaining annotations

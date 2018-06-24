@@ -7,14 +7,10 @@ import MapKit
 
 class VehicleAnnotation: NSObject, MKAnnotation {
 
-  // MARK: - Properties
-
-  var vehicleId:  String
-  var line:       Line
-  var angle:      CGFloat
+  var vehicleId: String
+  var line:      Line
+  var angle:     CGFloat
   dynamic var coordinate: CLLocationCoordinate2D
-
-  // MARK: - Init
 
   init(from vehicle: Vehicle) {
     self.vehicleId  = vehicle.id
@@ -22,8 +18,6 @@ class VehicleAnnotation: NSObject, MKAnnotation {
     self.coordinate = CLLocationCoordinate2D(latitude: vehicle.latitude, longitude: vehicle.longitude)
     self.angle      = CGFloat(vehicle.angle)
   }
-
-  // MARK: - Update
 
   func update(from vehicle: Vehicle) {
     self.vehicleId  = vehicle.id

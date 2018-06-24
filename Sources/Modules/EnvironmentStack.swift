@@ -16,7 +16,6 @@ struct EnvironmentStack {
   }
 
   static func pop() {
-    precondition(stack.count > 1, "Attempting to remove last entry in environment stack.")
     _ = stack.popLast()
   }
 }

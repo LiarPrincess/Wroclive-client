@@ -16,8 +16,8 @@ class MapViewController: UIViewController {
 
   let mapView = MKMapView()
 
-  private let viewModel: MapViewModelType = MapViewModel()
-  private let disposeBag = DisposeBag()
+  let viewModel  = MapViewModel()
+  let disposeBag = DisposeBag()
 
   // MARK: - Init
 
@@ -28,11 +28,7 @@ class MapViewController: UIViewController {
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nil, bundle: nil)
     self.insetViewToShowMapLegalInfo()
-
-    self.initMapBindings()
-    self.initLiveBindings()
-    self.initAlertBindings()
-    self.initViewControlerLifecycleBindings()
+    self.initBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -41,44 +37,38 @@ class MapViewController: UIViewController {
 
   // MARK: - Bindings
 
-  private func initMapBindings() {
+  private func initBindings() {
+    // map
     self.rx.methodInvoked(#selector(MKMapViewDelegate.mapView(_:didChange:animated:)))
       .map { [unowned self] _ in self.mapView.userTrackingMode }
-      .bind(to: self.viewModel.inputs.trackingModeChanged)
+      .bind(to: self.viewModel.didChangeTrackingMode)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.mapCenter
+    self.viewModel.mapCenter
       .drive(onNext: { [unowned self] in self.setMapCenter($0, Defaults.zoom, animated: true) })
       .disposed(by: self.disposeBag)
-  }
 
-  private func initLiveBindings() {
-    self.viewModel.outputs.vehicleLocations
+    // annotations
+    self.viewModel.vehicles
       .drive(onNext: { [unowned self] in self.updateVehicleLocations($0) })
       .disposed(by: self.disposeBag)
-  }
 
-  private func initAlertBindings() {
-    self.viewModel.outputs.showLocationAuthorizationAlert
+    // alert
+    self.viewModel.showAlert
+      .filter { $0 == .requestLocationAuthorization }
       .drive(onNext: { _ in AppEnvironment.userLocation.requestWhenInUseAuthorization() })
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.showDeniedLocationAuthorizationAlert.asObservable()
-      .flatMapLatest(createDeniedLocalizationAuthorizationAlert)
+    self.viewModel.showAlert.asObservable()
+      .flatMapLatest(createAlert)
       .subscribe()
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs.showApiErrorAlert.asObservable()
-      .flatMapLatest(createApiErrorAlert)
-      .subscribe()
-      .disposed(by: self.disposeBag)
-  }
-
-  private func initViewControlerLifecycleBindings() {
+    // view controler lifecycle
     // simple binding would propagate also .onCompleted events
     self.rx.methodInvoked(#selector(MapViewController.viewDidAppear(_:)))
       .take(1)
-      .bind { [weak self] _ in self?.viewModel.inputs.viewDidAppear.onNext() }
+      .bind { [weak self] _ in self?.viewModel.viewDidAppear.onNext() }
       .disposed(by: self.disposeBag)
   }
 
@@ -141,9 +131,9 @@ extension MapViewController {
   }
 
   private func updateVehicleLocations(_ vehicles: [Vehicle]) {
-    let updates = MapAnnotationManager.calculateUpdates(for: self.vehicleAnnotations, with: vehicles)
+    let updates = VehicleAnnotationUpdater.calculateUpdates(for: self.vehicleAnnotations, from: vehicles)
 
-    self.mapView.addAnnotations(updates.createdAnnotations)
+    self.mapView.addAnnotations(updates.newAnnotations)
     self.mapView.removeAnnotations(updates.removedAnnotations)
 
     UIView.animate(withDuration: Pin.animationDuration) {
@@ -191,19 +181,19 @@ extension MapViewController: MKMapViewDelegate {
 
 // MARK: - Helpers
 
-private func createDeniedLocalizationAuthorizationAlert(_ alert: DeniedLocationAuthorizationAlert) -> Observable<Void> {
+private func createAlert(_ alert: MapViewAlert) -> Observable<Void> {
   switch alert {
   case .deniedLocationAuthorization:
     return LocationAlerts.showDeniedLocationAuthorizationAlert()
   case .globallyDeniedLocationAuthorization:
     return LocationAlerts.showGloballyDeniedLocationAuthorizationAlert()
-  }
-}
-
-private func createApiErrorAlert(_ error: ApiError) -> Observable<Void> {
-  switch error {
-  case .noInternet:      return NetworkAlerts.showNoInternetAlert()
-  case .invalidResponse,
-       .generalError:    return NetworkAlerts.showConnectionErrorAlert()
+  case let .apiError(error):
+    switch error {
+    case .noInternet:      return NetworkAlerts.showNoInternetAlert()
+    case .invalidResponse,
+         .generalError:    return NetworkAlerts.showConnectionErrorAlert()
+    }
+  case .requestLocationAuthorization:
+      return .never()
   }
 }

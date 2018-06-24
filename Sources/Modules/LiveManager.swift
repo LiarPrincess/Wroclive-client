@@ -15,7 +15,7 @@ class LiveManager: LiveManagerType {
     case stop
   }
 
-  lazy var mpkVehicles: ApiResponse<[Vehicle]> = trackingOperations.asObservable()
+  lazy var vehicles: ApiResponse<[Vehicle]> = trackingOperations.asObservable()
     .flatMapLatest { [unowned self] operation -> ApiResponse<[Vehicle]> in
       switch operation {
       case .start: return createTrackingObservable(lines: self.trackedLines)

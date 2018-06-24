@@ -2,13 +2,9 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import UIKit
-import MapKit
-import RxSwift
-import RxCocoa
-
-protocol MapViewModelInputs {
-  var trackingModeChanged: AnyObserver<MKUserTrackingMode> { get }
-
-  var viewDidAppear: AnyObserver<Void> { get }
+enum MapViewAlert: Equatable {
+  case requestLocationAuthorization
+  case deniedLocationAuthorization
+  case globallyDeniedLocationAuthorization
+  case apiError(error: ApiError)
 }

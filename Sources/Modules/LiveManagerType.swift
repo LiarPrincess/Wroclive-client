@@ -7,7 +7,7 @@ import RxSwift
 protocol LiveManagerType {
 
   /// Tracking results
-  var mpkVehicles: ApiResponse<[Vehicle]> { get }
+  var vehicles: ApiResponse<[Vehicle]> { get }
 
   /// Start tracking new set of lines
   func startTracking(_ lines: [Line])

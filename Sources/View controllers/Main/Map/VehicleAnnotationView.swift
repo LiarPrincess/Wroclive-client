@@ -10,7 +10,7 @@ private typealias Constants = MapViewControllerConstants.Pin
 
 class VehicleAnnotationView: MKAnnotationView {
 
-  private let pinView  = VehicleAnnotationPinView()
+  private let pinView  = VehiclePinView()
   private let pinLabel = UILabel()
 
   // MARK: - Init
@@ -83,5 +83,30 @@ class VehicleAnnotationView: MKAnnotationView {
     case .tram: return .tram
     case .bus:  return .bus
     }
+  }
+}
+
+// MARK: - VehiclePinView
+
+private class VehiclePinView: UIView {
+
+  var angle: CGFloat = 0.0 {
+    didSet { self.transform = CGAffineTransform(rotationAngle: self.angle.rad) }
+  }
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    self.layer.allowsEdgeAntialiasing = true
+    self.backgroundColor              = UIColor.clear
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  override func draw(_ rect: CGRect) {
+    let color    = self.tintColor ?? UIColor.black
+    let resizing = StyleKit.ResizingBehavior.aspectFit
+    StyleKit.drawVehiclePin(frame: self.bounds, color: color, resizing: resizing)
   }
 }
