@@ -108,19 +108,14 @@ class SearchCard: CardPanel {
 
   private func initAlertBindings() {
     self.viewModel.showAlert.asObservable()
-      .flatMapLatest(createBookmarkNameInputAlert)
+      .flatMapLatest(createBookmarkNameAlert)
       .unwrap()
       .bind(to: self.viewModel.didEnterBookmarkName)
       .disposed(by: self.disposeBag)
 
     self.viewModel.showAlert.asObservable()
-      .flatMapLatest(createBookmarkNoLinesSelectedAlert)
+      .flatMapLatest(createAlert)
       .subscribe()
-      .disposed(by: self.disposeBag)
-
-    self.viewModel.showAlert.asObservable()
-      .flatMapLatest(createApiErrorAlert)
-      .bind(to: self.viewModel.didPressAlertTryAgainButton)
       .disposed(by: self.disposeBag)
   }
 
@@ -168,28 +163,22 @@ class SearchCard: CardPanel {
 
 // MARK: - Helpers
 
-private func createBookmarkNameInputAlert(_ alert: SearchCardAlert) -> Observable<String?> {
+private func createBookmarkNameAlert(_ alert: SearchCardAlert) -> Observable<String?> {
   switch alert {
   case .bookmarkNameInput: return BookmarkAlerts.showNameInputAlert()
-  default: return .empty()
+  default: return .never()
   }
 }
 
-private func createBookmarkNoLinesSelectedAlert(_ alert: SearchCardAlert) -> Observable<Void> {
+private func createAlert(_ alert: SearchCardAlert) -> Observable<Void> {
   switch alert {
   case .bookmarkNoLineSelected: return BookmarkAlerts.showNoLinesSelectedAlert()
-  default: return .empty()
-  }
-}
-
-private func createApiErrorAlert(_ alert: SearchCardAlert) -> Observable<Void> {
-  switch alert {
   case let .apiError(error):
     switch error {
     case .noInternet:      return NetworkAlerts.showNoInternetAlert()
     case .invalidResponse,
          .generalError:    return NetworkAlerts.showConnectionErrorAlert()
     }
-  default: return .empty()
+  default: return .never()
   }
 }
