@@ -3,7 +3,6 @@ PODS:
   - AlamofireNetworkActivityIndicator (2.2.1):
     - Alamofire (~> 4.7)
   - ReachabilitySwift (4.1.0)
-  - Result (3.2.4)
   - RxAlamofire (4.2.0):
     - RxAlamofire/Core (= 4.2.0)
   - RxAlamofire/Core (4.2.0):
@@ -26,7 +25,6 @@ DEPENDENCIES:
   - Alamofire (~> 4.5)
   - AlamofireNetworkActivityIndicator (~> 2.2)
   - ReachabilitySwift (~> 4.1)
-  - Result (~> 3.0)
   - RxAlamofire (~> 4.0)
   - RxCocoa (~> 4.0)
   - RxCoreLocation (~> 1.0.0)
@@ -40,7 +38,6 @@ SPEC REPOS:
     - Alamofire
     - AlamofireNetworkActivityIndicator
     - ReachabilitySwift
-    - Result
     - RxAlamofire
     - RxCocoa
     - RxCoreLocation
@@ -53,7 +50,6 @@ SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireNetworkActivityIndicator: aeac50e6ecb78ec71a5f1f29098bcf4ec2962910
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
-  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
   RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
   RxCoreLocation: 720d166b2692ceae5703f1b47817ea974356fff2
@@ -62,6 +58,6 @@ SPEC CHECKSUMS:
   SimulatorStatusMagic: 0389a805fa8bd001e2977c4046730bdbd6642861
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 4177976582ba785f196e6fdb21a4357328012544
+PODFILE CHECKSUM: e5ecfae6dd0f8af0a62b922b1f14fc2142845ed2
 
 COCOAPODS: 1.5.2

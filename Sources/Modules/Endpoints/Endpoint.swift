@@ -4,8 +4,6 @@
 
 import Foundation
 import Alamofire
-import RxSwift
-import Result
 
 protocol Endpoint {
   var url:               URLConvertible    { get }

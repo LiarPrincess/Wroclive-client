@@ -4,7 +4,6 @@
 
 import XCTest
 import MapKit
-import Result
 import RxSwift
 import RxCocoa
 import RxTest
