@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import Result
 import RxSwift
 import RxCocoa
 
@@ -84,34 +83,39 @@ class SearchCardViewModel {
       .asDriver(onErrorDriveWith: .never())
 
     // lines
-    let tryAgainScheduler = AppEnvironment.current.schedulers.main
-    let tryAgainDelay     = AppEnvironment.current.variables.timings.failedRequestDelay.lines
-    let tryAgain          = _didPressAlertTryAgainButton.delay(tryAgainDelay, scheduler: tryAgainScheduler)
+    let lineResponses: Observable<Event<[Line]>> = {
+      let tryAgainScheduler = AppEnvironment.current.schedulers.main
+      let tryAgainDelay     = AppEnvironment.current.variables.timings.failedRequestDelay.lines
+      let tryAgain = _didPressAlertTryAgainButton.delay(tryAgainDelay, scheduler: tryAgainScheduler)
 
-    let lineResponse = Observable.merge(_viewDidAppear, tryAgain)
-      .flatMapLatest { _ in AppEnvironment.current.api.availableLines.catchError { _ in .empty() } }
-      .map(emptyResponseAsError)
-      .share()
+      return Observable.merge(_viewDidAppear, tryAgain)
+        .flatMapLatest { _ in
+          AppEnvironment.current.api.availableLines
+            .materialize()
+            .map(noLinesToError)
+        }
+        .share()
+    }()
 
-    self.lines = lineResponse
-      .values()
+    self.lines = lineResponses.elements()
       .startWith([])
       .asDriver(onErrorDriveWith: .never())
 
-    let selectOperation   = _didSelectLine.map   { Operation.append(line: $0) }
-    let deselectOperation = _didDeselectLine.map { Operation.remove(line: $0) }
+    self.selectedLines = {
+      let selectOperation   = _didSelectLine.map   { Operation.append(line: $0) }
+      let deselectOperation = _didDeselectLine.map { Operation.remove(line: $0) }
 
-    self.selectedLines = Observable.merge(selectOperation, deselectOperation)
-      .reducing(state.selectedLines, apply: apply)
-      .asDriver(onErrorDriveWith: .never())
+      return Observable.merge(selectOperation, deselectOperation)
+        .reducing(state.selectedLines, apply: apply)
+        .asDriver(onErrorDriveWith: .never())
+    }()
 
     self.isLineSelectorVisible = self.lines.map { $0.any }
     self.isPlaceholderVisible  = self.lines.map { $0.isEmpty }
 
     // alerts
-    let showApiErrorAlert = lineResponse
-      .errors()
-      .map { SearchCardAlert.apiError(error: $0) }
+    let showApiErrorAlert = lineResponses.errors()
+      .map(toApiErrorAlert)
 
     let showBookmarkAlert = _didPressBookmarkButton
       .withLatestFrom(self.selectedLines)
@@ -143,15 +147,16 @@ class SearchCardViewModel {
   }
 }
 
-private func emptyResponseAsError(_ response: Result<[Line], ApiError>) -> Result<[Line], ApiError> {
-  switch response {
-  case let .success(lines):
-    switch lines.any {
-    case true:  return .success(lines)
-    case false: return .failure(.generalError)
-    }
-  case .failure: return response
+private func noLinesToError(_ event: Event<[Line]>) -> Event<[Line]> {
+  switch event {
+  case let .next(lines): return lines.any ? .next(lines) : .error(ApiError.generalError)
+  default: return event
   }
+}
+
+private func toApiErrorAlert(_ error: Error) -> SearchCardAlert {
+  let apiError = error as? ApiError ?? .generalError
+  return .apiError(error: apiError)
 }
 
 private func toBookmarkAlert(_ selectedLines: [Line]) -> SearchCardAlert {

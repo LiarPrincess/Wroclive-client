@@ -2,27 +2,26 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import XCTest
 import Foundation
-import Result
 import RxSwift
 import RxTest
-import XCTest
 @testable import Wroclive
 
-class VehicleResponseEvent: RecordedEvent<Result<[Vehicle], ApiError>> {
-  init(_ time: TestTime, _ vehicles: [Vehicle]) {
-    super.init(time, .success(vehicles))
+class VehicleResponseEvent: RecordedEvent<Event<[Vehicle]>> {
+  init(_ time: TestTime, _ data: [Vehicle]) {
+    super.init(time, .next(data))
   }
 
-  init(_ time: TestTime, _ error: ApiError) {
-    super.init(time, .failure(error))
+  init(_ time: TestTime, _ error: Error) {
+    super.init(time, .error(error))
   }
 }
 
 class LiveManagerMock: RxMock, LiveManagerType {
 
   let scheduler: TestScheduler
-  private var _vehicles     = PublishSubject<Result<[Vehicle], ApiError>>()
+  private var _vehicles     = PublishSubject<Event<[Vehicle]>>()
   private var _trackedLines = [Line]()
 
   init(_ scheduler: TestScheduler) {
@@ -36,7 +35,7 @@ class LiveManagerMock: RxMock, LiveManagerType {
   private var resumeUpdatesCallCount = 0
   private var pauseUpdatesCallCount  = 0
 
-  var vehicles: ApiResponse<[Vehicle]> {
+  var vehicles: Observable<Event<[Vehicle]>> {
     self.vehiclesCallCount += 1
     return self._vehicles.asObservable()
   }

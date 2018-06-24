@@ -30,10 +30,10 @@ class MapViewModelVehiclesTests: MapViewModelTestsBase {
     self.mockViewDidAppearEvent(at: 100)
     self.mockVehicleResponseEvents(
       VehicleResponseEvent(200, vehicles1),
-      VehicleResponseEvent(300, .generalError),
-      VehicleResponseEvent(400, .invalidResponse),
+      VehicleResponseEvent(300, ApiError.generalError),
+      VehicleResponseEvent(400, ApiError.invalidResponse),
       VehicleResponseEvent(500, vehicles2),
-      VehicleResponseEvent(600, .noInternet)
+      VehicleResponseEvent(600, ApiError.noInternet)
     )
 
     self.startScheduler()
@@ -44,9 +44,9 @@ class MapViewModelVehiclesTests: MapViewModelTestsBase {
     ])
 
     XCTAssertEqual(self.showAlertObserver.events, [
-      next(300, .apiError(error: .generalError)),
-      next(400, .apiError(error: .invalidResponse)),
-      next(600, .apiError(error: .noInternet))
+      next(300, .apiError(error: ApiError.generalError)),
+      next(400, .apiError(error: ApiError.invalidResponse)),
+      next(600, .apiError(error: ApiError.noInternet))
     ])
 
     self.liveManager.assertOperationCount(vehicles: 1)

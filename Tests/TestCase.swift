@@ -28,7 +28,7 @@ class TestCase: XCTestCase {
     self.scheduler  = TestScheduler(initialClock: 0)
     self.disposeBag = DisposeBag()
 
-    self.apiManager          = ApiManagerMock()
+    self.apiManager          = ApiManagerMock(self.scheduler)
     self.storageManager      = StorageManagerMock()
     self.schedulerManager    = SchedulerManagerMock(main: self.scheduler, mainAsync: self.scheduler)
     self.liveManager         = LiveManagerMock(self.scheduler)

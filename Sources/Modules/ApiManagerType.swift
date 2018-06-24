@@ -3,12 +3,13 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import Foundation
+import RxSwift
 
 protocol ApiManagerType {
 
   /// Get all currently available lines
-  var availableLines: ApiResponse<[Line]> { get }
+  var availableLines: Observable<[Line]> { get }
 
   /// Get current vehicle locations for selected lines
-  func vehicleLocations(for lines: [Line]) -> ApiResponse<[Vehicle]>
+  func vehicleLocations(for lines: [Line]) -> Observable<[Vehicle]>
 }

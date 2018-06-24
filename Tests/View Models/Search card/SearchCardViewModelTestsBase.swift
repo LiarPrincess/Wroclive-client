@@ -45,12 +45,8 @@ class SearchCardViewModelTestsBase: TestCase {
       .disposed(by: self.disposeBag)
   }
 
-  typealias ApiLinesEvent = Recorded<Event<Result<[Line], ApiError>>>
-
-  func simulateApiLinesEvents(_ events: ApiLinesEvent...) {
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.apiManager._availableLines)
-      .disposed(by: self.disposeBag)
+  func mockLineResponses(_ events: LinesResponseEvent...) {
+    self.apiManager.mockLineResponses(events)
   }
 
   func simulateTryAgainButtonPressedEvents(at times: TestTime...) {

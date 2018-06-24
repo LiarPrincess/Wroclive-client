@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import Foundation
-import Result
 import Alamofire
 import AlamofireNetworkActivityIndicator
 import RxSwift
@@ -37,17 +36,17 @@ class ApiManager: ApiManagerType {
 
   // MARK: - ApiManager
 
-  var availableLines: ApiResponse<[Line]> {
+  var availableLines: Observable<[Line]> {
     let endpoint = AvailableLinesEndpoint()
     return self.sendRequest(endpoint, ())
   }
 
-  func vehicleLocations(for lines: [Line]) -> ApiResponse<[Vehicle]> {
+  func vehicleLocations(for lines: [Line]) -> Observable<[Vehicle]> {
     let endpoint = VehicleLocationsEndpoint()
     return self.sendRequest(endpoint, lines)
   }
 
-  private func sendRequest<E: Endpoint>(_ endpoint: E, _ data: E.ParameterData) -> ApiResponse<E.ResponseData> {
+  private func sendRequest<E: Endpoint>(_ endpoint: E, _ data: E.ParameterData) -> Observable<E.ResponseData> {
     return self.session.rx
       .request(endpoint.method,
                endpoint.url,
@@ -57,8 +56,7 @@ class ApiManager: ApiManagerType {
       .validate()
       .data()
       .map { try endpoint.decodeResponse($0) }
-      .map { Result.success($0) }
-      .catchError { Observable.just(.failure(self.toApiError($0))) }
+      .catchError { throw self.toApiError($0) }
   }
 
   private func toApiError(_ error: Error) -> ApiError {

@@ -48,11 +48,11 @@ class MapViewModel {
         .asDriver(onErrorDriveWith: .never())
     }()
 
-    self.vehicles = vehicleResponses.values()
+    self.vehicles = vehicleResponses.elements()
       .asDriver(onErrorDriveWith: .never())
 
     self.showAlert = {
-      let requestAuthorizationAlert: Observable<MapViewAlert> = {
+      let requestAuthorizationAlerts: Observable<MapViewAlert> = {
         let delay          = AppEnvironment.current.variables.timings.locationAuthorizationPromptDelay
         let delayScheduler = AppEnvironment.current.schedulers.main
 
@@ -64,20 +64,25 @@ class MapViewModel {
           .flatMapLatest(toRequestAuthorizationAlert)
       }()
 
-      let deniedAuthorizationAlert = _didChangeTrackingMode
+      let deniedAuthorizationAlerts = _didChangeTrackingMode
         .withLatestFrom(authorizations)
         .flatMapLatest(toDeniedAuthorizationAlert)
 
-      let apiErrorAlert = vehicleResponses.errors()
+      let apiErrorAlerts = vehicleResponses.errors()
+        .map(toApiError)
         .map { MapViewAlert.apiError(error: $0) }
 
-      return Observable.merge(requestAuthorizationAlert, deniedAuthorizationAlert, apiErrorAlert)
+      return Observable.merge(requestAuthorizationAlerts, deniedAuthorizationAlerts, apiErrorAlerts)
         .asDriver(onErrorDriveWith: .never())
     }()
   }
 }
 
 // MARK: - Helpers
+
+private func toApiError(_ error: Error) -> ApiError {
+  return error as? ApiError ?? .generalError
+}
 
 private func toRequestAuthorizationAlert(_ authorization: CLAuthorizationStatus) -> Observable<MapViewAlert> {
   switch authorization {

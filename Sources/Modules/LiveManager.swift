@@ -15,14 +15,13 @@ class LiveManager: LiveManagerType {
     case stop
   }
 
-  lazy var vehicles: ApiResponse<[Vehicle]> = trackingOperations.asObservable()
-    .flatMapLatest { [unowned self] operation -> ApiResponse<[Vehicle]> in
+  lazy var vehicles: Observable<Event<[Vehicle]>> = trackingOperations.asObservable()
+    .flatMapLatest { [unowned self] operation -> Observable<Event<[Vehicle]>> in
       switch operation {
       case .start: return createTrackingObservable(lines: self.trackedLines)
       case .stop:  return .never()
       }
     }
-    .share(replay: 1)
 
   func startTracking(_ lines: [Line]) {
     self.trackedLines = lines
@@ -40,10 +39,10 @@ class LiveManager: LiveManagerType {
 
 // MARK: - Helpers
 
-private func createTrackingObservable(lines: [Line]) -> ApiResponse<[Vehicle]> {
+private func createTrackingObservable(lines: [Line]) -> Observable<Event<[Vehicle]>> {
   // if we don't have any lines then just send single empty to reset map
   guard lines.any else {
-    return Observable.just(.success([]))
+    return Observable.just(.next([]))
   }
 
   let interval  = AppEnvironment.current.variables.timings.locationUpdateInterval
@@ -55,4 +54,5 @@ private func createTrackingObservable(lines: [Line]) -> ApiResponse<[Vehicle]> {
   return initialTick
     .concat(trackingTimer)
     .flatMap { _ in AppEnvironment.current.api.vehicleLocations(for: lines) }
+    .materialize()
 }

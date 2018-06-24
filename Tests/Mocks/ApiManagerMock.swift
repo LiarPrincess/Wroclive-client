@@ -4,37 +4,62 @@
 
 import XCTest
 import Foundation
-import Result
 import RxSwift
 import RxTest
 @testable import Wroclive
 
 // swiftlint:disable identifier_name
 
-class ApiManagerMock: ApiManagerType {
+class LinesResponseEvent: RecordedEvent<Event<[Line]>> {
+  init(_ time: TestTime, _ data: [Line]) {
+    super.init(time, .next(data))
+  }
+
+  init(_ time: TestTime, _ error: Error) {
+    super.init(time, .error(error))
+  }
+}
+
+class ApiManagerMock: RxMock, ApiManagerType {
+
+  let scheduler: TestScheduler
+  let _availableLines   = PublishSubject<[Line]>()
+  let _vehicleLocations = PublishSubject<[Vehicle]>()
+
+  init(_ scheduler: TestScheduler) {
+    self.scheduler = scheduler
+  }
+
+  // MARK: - ApiManagerType
 
   fileprivate var availableLinesCallCount   = 0
   fileprivate var vehicleLocationsCallCount = 0
 
-  let _availableLines   = ReplaySubject<Result<[Line],    ApiError>>.create(bufferSize: 1)
-  let _vehicleLocations = ReplaySubject<Result<[Vehicle], ApiError>>.create(bufferSize: 1)
-
-  var availableLines: ApiResponse<[Line]> {
+  var availableLines: Observable<[Line]> {
     self.availableLinesCallCount += 1
-    return self._availableLines.share(replay: 1)
+    return self._availableLines.asObservable()
   }
 
-  func vehicleLocations(for lines: [Line]) -> ApiResponse<[Vehicle]> {
+  func vehicleLocations(for lines: [Line]) -> Observable<[Vehicle]> {
     self.vehicleLocationsCallCount += 1
-    return self._vehicleLocations.share(replay: 1)
+    return self._vehicleLocations.asObservable()
   }
-}
 
-func XCTAssertOperationCount(_ manager:        ApiManagerMock,
-                             availableLines:   Int = 0,
-                             vehicleLocations: Int = 0,
-                             file:             StaticString = #file,
-                             line:             UInt         = #line) {
-  XCTAssertEqual(manager.availableLinesCallCount,   availableLines,   file: file, line: line)
-  XCTAssertEqual(manager.vehicleLocationsCallCount, vehicleLocations, file: file, line: line)
+  // MARK: - Helpers
+
+  func mockLineResponses(_ events: [LinesResponseEvent]) {
+//    self.mockEvents(self._vehicles, events)
+  }
+
+  func assertOperationCount(availableLines: Int,
+                            file:           StaticString = #file,
+                            line:           UInt         = #line) {
+    XCTAssertEqual(self.availableLinesCallCount, availableLines, file: file, line: line)
+  }
+
+  func assertOperationCount(vehicleLocations: Int,
+                            file:             StaticString = #file,
+                            line:             UInt         = #line) {
+    XCTAssertEqual(self.vehicleLocationsCallCount, vehicleLocations, file: file, line: line)
+  }
 }

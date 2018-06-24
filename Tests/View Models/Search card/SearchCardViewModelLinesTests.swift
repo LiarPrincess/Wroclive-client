@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import XCTest
-import Result
 import RxSwift
 import RxCocoa
 import RxTest
@@ -16,16 +15,16 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
 
     let lines = self.testLines
     self.simulateViewDidAppearEvents(at: 100)
-    self.simulateApiLinesEvents(next(200, .success(lines)))
+    self.mockLineResponses(LinesResponseEvent(200, lines))
 
     let observers = self.bindObservers()
     self.startScheduler()
 
-    XCTAssertEqual(observers.lines.events,                 [next(0, []), next(200, lines)])
-    XCTAssertEqual(observers.showAlert.events,           [])
+    XCTAssertEqual(observers.lines.events,     [next(0, []), next(200, lines)])
+    XCTAssertEqual(observers.showAlert.events, [])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false), next(200, true)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true),  next(200, false)])
-    XCTAssertOperationCount(self.apiManager, availableLines: 1)
+    self.apiManager.assertOperationCount(availableLines: 1)
   }
 
   func test_didAppear_withoutLines_showsAlert() {
@@ -33,48 +32,48 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
 
     let lines = [Line]()
     self.simulateViewDidAppearEvents(at: 100)
-    self.simulateApiLinesEvents(next(200, .success(lines)))
+    self.mockLineResponses(LinesResponseEvent(200, lines))
 
     let observers = self.bindObservers()
     self.startScheduler()
 
-    XCTAssertEqual(observers.lines.events,                 [next(0, [])])
-    XCTAssertEqual(observers.showAlert.events,           [next(200, .apiError(error: .generalError))])
+    XCTAssertEqual(observers.lines.events,     [next(0, [])])
+    XCTAssertEqual(observers.showAlert.events, [next(200, .apiError(error: .generalError))])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
-    XCTAssertOperationCount(self.apiManager, availableLines: 1)
+    self.apiManager.assertOperationCount(availableLines: 1)
   }
 
   func test_didAppear_withoutInternet_showsAlert() {
     self.viewModel = SearchCardViewModel()
 
     self.simulateViewDidAppearEvents(at: 100)
-    self.simulateApiLinesEvents(next(200, .failure(ApiError.noInternet)))
+    self.mockLineResponses(LinesResponseEvent(200, ApiError.noInternet))
 
     let observers = self.bindObservers()
     self.startScheduler()
 
-    XCTAssertEqual(observers.lines.events,                 [next(0, [])])
-    XCTAssertEqual(observers.showAlert.events,           [next(200, .apiError(error: .noInternet))])
+    XCTAssertEqual(observers.lines.events,     [next(0, [])])
+    XCTAssertEqual(observers.showAlert.events, [next(200, .apiError(error: .noInternet))])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
-    XCTAssertOperationCount(self.apiManager, availableLines: 1)
+    self.apiManager.assertOperationCount(availableLines: 1)
   }
 
   func test_didAppear_withApiError_showsAlert() {
     self.viewModel = SearchCardViewModel()
 
     self.simulateViewDidAppearEvents(at: 100)
-    self.simulateApiLinesEvents(next(200, .failure(ApiError.generalError)))
+    self.mockLineResponses(LinesResponseEvent(200, ApiError.generalError))
 
     let observers = self.bindObservers()
     self.startScheduler()
 
-    XCTAssertEqual(observers.lines.events,                 [next(0, [])])
-    XCTAssertEqual(observers.showAlert.events,           [next(200, .apiError(error: .generalError))])
+    XCTAssertEqual(observers.lines.events,     [next(0, [])])
+    XCTAssertEqual(observers.showAlert.events, [next(200, .apiError(error: .generalError))])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
-    XCTAssertOperationCount(self.apiManager, availableLines: 1)
+    self.apiManager.assertOperationCount(availableLines: 1)
   }
 
   func test_closingApiAlert_delays_andUpdatesLines() {
@@ -82,16 +81,16 @@ class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
 
     let lines = self.testLines
     self.simulateTryAgainButtonPressedEvents(at: 100)
-    self.simulateApiLinesEvents(next(200, .success(lines)))
+    self.mockLineResponses(LinesResponseEvent(200, lines))
 
     let observers = self.bindObservers()
     self.startScheduler()
 
-    XCTAssertEqual(observers.lines.events,                  [next(0, []), next(200, lines)])
-    XCTAssertEqual(observers.showAlert.events,           [])
+    XCTAssertEqual(observers.lines.events,     [next(0, []), next(200, lines)])
+    XCTAssertEqual(observers.showAlert.events, [])
     XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false), next(200, true)])
     XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true),  next(200, false)])
-    XCTAssertOperationCount(self.apiManager, availableLines: 1)
+    self.apiManager.assertOperationCount(availableLines: 1)
   }
 
   private struct Observers {
