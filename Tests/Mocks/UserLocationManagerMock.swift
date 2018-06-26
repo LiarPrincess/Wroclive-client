@@ -9,60 +9,59 @@ import RxSwift
 import RxTest
 @testable import Wroclive
 
-typealias UserLocationEvent      = RecordedEvent<CLLocationCoordinate2D>
-typealias UserLocationErrorEvent = RecordedEvent<UserLocationError>
-typealias AuthorizationEvent     = RecordedEvent<CLAuthorizationStatus>
-
 class UserLocationManagerMock: RxMock, UserLocationManagerType {
 
   let scheduler: TestScheduler
-  private var _current       = PublishSubject<CLLocationCoordinate2D>()
-  private var _authorization = PublishSubject<CLAuthorizationStatus>()
+
+  private var currentLocationCallCount = 0
+  private var authorizationCallCount = 0
+  private var requestWhenInUseAuthorizationCallCount = 0
 
   init(_ scheduler: TestScheduler) {
     self.scheduler = scheduler
   }
 
-  // MARK: - UserLocationManagerType
+  // MARK: - Current location
 
-  private var currentCallCount       = 0
-  private var authorizationCallCount = 0
-  private var requestWhenInUseAuthorizationCallCount = 0
+  private var _userLocations = [TestTime:Single<CLLocationCoordinate2D>]()
 
-  var current: Observable<CLLocationCoordinate2D> {
-    self.currentCallCount += 1
-    return self._current.asObservable()
+  var currentLocation: Single<CLLocationCoordinate2D> {
+    self.currentLocationCallCount += 1
+    return self.current(from: self._userLocations)
   }
+
+  func mockUserLocation(at time: TestTime, _ value: Single<CLLocationCoordinate2D>) {
+    self.preventDoubleScheduling(at: time, in: self._userLocations)
+    self._userLocations[time] = value
+  }
+
+  // MARK: - Authorization
+
+  private var _authorizations = PublishSubject<CLAuthorizationStatus>()
 
   var authorization: Observable<CLAuthorizationStatus> {
     self.authorizationCallCount += 1
-    return self._authorization.asObservable()
+    return self._authorizations.asObservable()
   }
+
+  func mockAuthorization(at time: TestTime, _ value: CLAuthorizationStatus) {
+    self.mockNext(self._authorizations, at: time, element: value)
+  }
+
+  // MARK: - Request authorization
 
   func requestWhenInUseAuthorization() {
     self.requestWhenInUseAuthorizationCallCount += 1
   }
 
-  // MARK: - Helpers
+  // MARK: - Asserts
 
-  func mockUserLocationEvents(_ events: [UserLocationEvent]) {
-    self.mockEvents(self._current, events)
-  }
-
-  func mockUserLocationError(_ event: UserLocationErrorEvent) {
-    self.mockError(self._current, event)
-  }
-
-  func mockAuthorizationEvents(_ events: [AuthorizationEvent]) {
-    self.mockEvents(self._authorization, events)
-  }
-
-  func assertOperationCount(current:                       Int,
+  func assertOperationCount(currentLocation:               Int,
                             authorization:                 Int,
                             requestWhenInUseAuthorization: Int,
                             file:                          StaticString = #file,
                             line:                          UInt         = #line) {
-    XCTAssertEqual(self.currentCallCount,       current,       file: file, line: line)
+    XCTAssertEqual(self.currentLocationCallCount, currentLocation, file: file, line: line)
     XCTAssertEqual(self.authorizationCallCount, authorization, file: file, line: line)
     XCTAssertEqual(self.requestWhenInUseAuthorizationCallCount, requestWhenInUseAuthorization, file: file, line: line)
   }

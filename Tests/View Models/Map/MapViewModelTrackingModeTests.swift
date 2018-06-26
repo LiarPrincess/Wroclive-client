@@ -13,6 +13,10 @@ private typealias Defaults = MapViewControllerConstants.Defaults
 
 class MapViewModelTrackingModeTests: MapViewModelTestsBase {
 
+  private var locationAuthorizationPromptDelay: Int {
+    return Int(AppEnvironment.current.variables.timings.locationAuthorizationPromptDelay)
+  }
+
   /**
    Prerequisites:
    - Authorization: .notDetermined
@@ -26,26 +30,24 @@ class MapViewModelTrackingModeTests: MapViewModelTestsBase {
    400 Change tracking to .none
    */
   func test_changingTrackingMode_withoutAutorization_requestsForAuthorization() {
-    self.mockAuthorizationEvents(AuthorizationEvent(0, .notDetermined))
-    self.mockViewDidAppearEvent(at: 100)
-    self.mockTrackingModeChangedEvents(
-      TrackingModeChangedEvent(200, .follow),
-      TrackingModeChangedEvent(300, .followWithHeading),
-      TrackingModeChangedEvent(400, .none)
-    )
+    let delayedViewDidAppear = 100 + self.locationAuthorizationPromptDelay
+
+    self.mockAuthorization(at: 0, .notDetermined)
+    self.mockViewDidAppear(at: 100)
+    self.mockTrackingModeChange(at: 200, .follow)
+    self.mockTrackingModeChange(at: 300, .followWithHeading)
+    self.mockTrackingModeChange(at: 400, .none)
 
     self.startScheduler()
 
-    let showAlertEvents = self.showAlertObserver.events
-    let delayedDidAppear = (Int) (100 + AppEnvironment.current.variables.timings.locationAuthorizationPromptDelay)
-    XCTAssertEqual(showAlertEvents, [
-      Recorded.next(delayedDidAppear, .requestLocationAuthorization), // viewDidLoad also shows prompt, lets ignore it
+    XCTAssertEqual(self.showAlertObserver.events, [
+      Recorded.next(delayedViewDidAppear, .requestLocationAuthorization), // viewDidLoad also shows prompt, lets ignore it
       Recorded.next(200, .requestLocationAuthorization),
       Recorded.next(300, .requestLocationAuthorization),
       Recorded.next(400, .requestLocationAuthorization)
     ])
 
-    self.userLocationManager.assertOperationCount(current: 0, authorization: 1, requestWhenInUseAuthorization: 0)
+    self.userLocationManager.assertOperationCount(currentLocation: 0, authorization: 1, requestWhenInUseAuthorization: 0)
   }
 
   /**
@@ -61,13 +63,11 @@ class MapViewModelTrackingModeTests: MapViewModelTestsBase {
    400 Change tracking to .none
    */
   func test_changingTrackingMode_withDeniedAuthorization_showsAuthorizationDeniedAlert() {
-    self.mockAuthorizationEvents(AuthorizationEvent(0, .denied))
-    self.mockViewDidAppearEvent(at: 100)
-    self.mockTrackingModeChangedEvents(
-      TrackingModeChangedEvent(200, .follow),
-      TrackingModeChangedEvent(300, .followWithHeading),
-      TrackingModeChangedEvent(400, .none)
-    )
+    self.mockAuthorization(at: 0, .denied)
+    self.mockViewDidAppear(at: 100)
+    self.mockTrackingModeChange(at: 200, .follow)
+    self.mockTrackingModeChange(at: 300, .followWithHeading)
+    self.mockTrackingModeChange(at: 400, .none)
 
     self.startScheduler()
 
@@ -77,7 +77,7 @@ class MapViewModelTrackingModeTests: MapViewModelTestsBase {
       Recorded.next(400, .deniedLocationAuthorization)
     ])
 
-    self.userLocationManager.assertOperationCount(current: 0, authorization: 1, requestWhenInUseAuthorization: 0)
+    self.userLocationManager.assertOperationCount(currentLocation: 0, authorization: 1, requestWhenInUseAuthorization: 0)
   }
 
   /**
@@ -93,13 +93,11 @@ class MapViewModelTrackingModeTests: MapViewModelTestsBase {
    400 Change tracking to .none
    */
   func test_changingTrackingMode_withGloballyDeniedAuthorization_showsAuthorizationGloballyDeniedAlert() {
-    self.mockAuthorizationEvents(AuthorizationEvent(0, .restricted))
-    self.mockViewDidAppearEvent(at: 100)
-    self.mockTrackingModeChangedEvents(
-      TrackingModeChangedEvent(200, .follow),
-      TrackingModeChangedEvent(300, .followWithHeading),
-      TrackingModeChangedEvent(400, .none)
-    )
+    self.mockAuthorization(at: 0, .restricted)
+    self.mockViewDidAppear(at: 100)
+    self.mockTrackingModeChange(at: 200, .follow)
+    self.mockTrackingModeChange(at: 300, .followWithHeading)
+    self.mockTrackingModeChange(at: 400, .none)
 
     self.startScheduler()
 
@@ -109,6 +107,6 @@ class MapViewModelTrackingModeTests: MapViewModelTestsBase {
       Recorded.next(400, .globallyDeniedLocationAuthorization)
     ])
 
-    self.userLocationManager.assertOperationCount(current: 0, authorization: 1, requestWhenInUseAuthorization: 0)
+    self.userLocationManager.assertOperationCount(currentLocation: 0, authorization: 1, requestWhenInUseAuthorization: 0)
   }
 }

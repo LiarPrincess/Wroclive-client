@@ -38,37 +38,27 @@ class MapViewModelTestsBase: TestCase {
 
   // MARK: - Events
 
-  typealias TrackingModeChangedEvent = RecordedEvent<MKUserTrackingMode>
-
-  func mockTrackingModeChangedEvents(_ events: TrackingModeChangedEvent...) {
-    let rxEvents = events.map { Recorded.next($0.time, $0.data) }
-
-    self.scheduler.createHotObservable(rxEvents)
-      .bind(to: self.viewModel.didChangeTrackingMode)
-      .disposed(by: self.disposeBag)
+  func mockTrackingModeChange(at time: TestTime, _ value: MKUserTrackingMode) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.didChangeTrackingMode.onNext(value)
+    }
   }
 
-  func mockAuthorizationEvents(_ events: AuthorizationEvent...) {
-    self.userLocationManager.mockAuthorizationEvents(events)
+  func mockAuthorization(at time: TestTime, _ value: CLAuthorizationStatus) {
+    self.userLocationManager.mockAuthorization(at: time, value)
   }
 
-  func mockUserLocationEvents(_ events: UserLocationEvent...) {
-    self.userLocationManager.mockUserLocationEvents(events)
+  func mockUserLocation(at time: TestTime, _ value: Single<CLLocationCoordinate2D>) {
+    self.userLocationManager.mockUserLocation(at: time, value)
   }
 
-  func mockUserLocationError(_ event: UserLocationErrorEvent) {
-    self.userLocationManager.mockUserLocationError(event)
+  func mockVehicleResponse(at time: TestTime, value: Event<[Vehicle]>) {
+    self.liveManager.mockVehicleResponse(at: time, value)
   }
 
-  func mockVehicleResponseEvents(_ events: VehicleResponseEvent...) {
-    self.liveManager.mockVehicleResponses(events)
-  }
-
-  func mockViewDidAppearEvent(at time: TestTime) {
-    let rxEvents = [next(time, ())]
-
-    self.scheduler.createHotObservable(rxEvents)
-      .bind(to: self.viewModel.viewDidAppear)
-      .disposed(by: self.disposeBag)
+  func mockViewDidAppear(at time: TestTime) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.viewDidAppear.onNext()
+    }
   }
 }

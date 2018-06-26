@@ -43,16 +43,19 @@ class MapViewModel {
 
       return Observable.merge(initialAuthorization, authorizationChangedFromNonDetermined)
         .filter { $0 == .authorizedAlways || $0 == .authorizedWhenInUse }
-        .flatMapLatest { _ in AppEnvironment.current.userLocation.current.take(1) }
+        .flatMapLatest { _ in
+          AppEnvironment.current.userLocation.currentLocation.catchError { _ in .never() }
+        }
         .startWith(Defaults.location)
         .asDriver(onErrorDriveWith: .never())
     }()
 
-    self.vehicles = vehicleResponses.elements()
+    self.vehicles = vehicleResponses
+      .elements()
       .asDriver(onErrorDriveWith: .never())
 
     self.showAlert = {
-      let requestAuthorizationAlerts: Observable<MapViewAlert> = {
+      let requestAuthorizationAlert: Observable<MapViewAlert> = {
         let delay          = AppEnvironment.current.variables.timings.locationAuthorizationPromptDelay
         let delayScheduler = AppEnvironment.current.schedulers.main
 
@@ -64,15 +67,16 @@ class MapViewModel {
           .flatMapLatest(toRequestAuthorizationAlert)
       }()
 
-      let deniedAuthorizationAlerts = _didChangeTrackingMode
+      let deniedAuthorizationAlert = _didChangeTrackingMode
         .withLatestFrom(authorizations)
         .flatMapLatest(toDeniedAuthorizationAlert)
 
-      let apiErrorAlerts = vehicleResponses.errors()
+      let apiErrorAlert = vehicleResponses
+        .errors()
         .map(toApiError)
         .map { MapViewAlert.apiError(error: $0) }
 
-      return Observable.merge(requestAuthorizationAlerts, deniedAuthorizationAlerts, apiErrorAlerts)
+      return Observable.merge(requestAuthorizationAlert, deniedAuthorizationAlert, apiErrorAlert)
         .asDriver(onErrorDriveWith: .never())
     }()
   }
@@ -96,7 +100,7 @@ private func toRequestAuthorizationAlert(_ authorization: CLAuthorizationStatus)
 
 private func toDeniedAuthorizationAlert(_ authorization: CLAuthorizationStatus) -> Observable<MapViewAlert> {
   switch authorization {
-  case .denied:     return .just(.deniedLocationAuthorization)
+  case .denied: return .just(.deniedLocationAuthorization)
   case .restricted: return .just(.globallyDeniedLocationAuthorization)
   case .notDetermined,
        .authorizedAlways,

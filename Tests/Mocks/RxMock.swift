@@ -24,6 +24,9 @@ protocol RxMock {
 }
 
 extension RxMock {
+
+  // MARK: - Hot
+
   func mockEvents<D>(_ source: PublishSubject<D>, _ events: [RecordedEvent<D>]) {
     for event in events {
       self.scheduler.scheduleAt(event.time) { source.onNext(event.data) }
@@ -32,5 +35,27 @@ extension RxMock {
 
   func mockError<D, E: Error>(_ source: PublishSubject<D>, _ event: RecordedEvent<E>) {
     self.scheduler.scheduleAt(event.time) { source.onError(event.data) }
+  }
+
+  func mockNext<Element>(_ source: PublishSubject<Element>, at time: TestTime, element: Element) {
+    self.scheduler.scheduleAt(time) { source.onNext(element) }
+  }
+
+  // MARK: - Cold
+
+  func current<Source>(from events: [TestTime:Source]) -> Source {
+    let time = self.scheduler.clock
+
+    guard let event = events[time] else {
+      fatalError("No event scheduled at \(time)!")
+    }
+
+    return event
+  }
+
+  func preventDoubleScheduling<E>(at time: TestTime, in events: [TestTime:E]) {
+    if events[time] != nil {
+      fatalError("Another event is already scheduled at \(time)!")
+    }
   }
 }

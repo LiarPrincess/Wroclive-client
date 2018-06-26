@@ -31,27 +31,31 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
    100 View did appear
    102 Show authorization alert after delay
    200 User allows authorization
-   300 User location retrieved
-   300 Center on user location
+   200 Get user location
+   250 User location retrieved
+   250 Center on user location
    */
   func test_firstLaunch_grantingAutorization_centersOnUserLocation() {
     let userLocation = CLLocationCoordinate2D(latitude: 5.0, longitude: 9.0)
+    let delayedViewDidAppear = 100 + self.locationAuthorizationPromptDelay
 
-    self.mockAuthorizationEvents(AuthorizationEvent(0, .notDetermined))
-    self.mockViewDidAppearEvent(at: 100)
-    self.mockAuthorizationEvents(AuthorizationEvent(200, .authorizedWhenInUse))
-    self.mockUserLocationEvents(UserLocationEvent(300, userLocation))
+    self.mockAuthorization(at: 0, .notDetermined)
+    self.mockViewDidAppear(at: 100)
+    self.mockAuthorization(at: 200, .authorizedWhenInUse)
+    self.mockUserLocation(at: 200, Single.just(userLocation).delay(50, scheduler: self.scheduler))
 
     self.startScheduler()
 
-    let showAlertEvents = self.showAlertObserver.events
-    let authorizationTime = 100 + self.locationAuthorizationPromptDelay
-    XCTAssertEqual(showAlertEvents, [next(authorizationTime, .requestLocationAuthorization)])
+    XCTAssertEqual(self.showAlertObserver.events, [
+      Recorded.next(delayedViewDidAppear, .requestLocationAuthorization)
+    ])
 
-    let mapCenterEvents = self.mapCenterObserver.events
-    XCTAssertEqual(mapCenterEvents, [next(0, Defaults.location), next(300, userLocation)])
+    XCTAssertEqual(self.mapCenterObserver.events, [
+      Recorded.next(0, Defaults.location),
+      Recorded.next(250, userLocation)
+    ])
 
-    self.userLocationManager.assertOperationCount(current: 1, authorization: 1, requestWhenInUseAuthorization: 0)
+    self.userLocationManager.assertOperationCount(currentLocation: 1, authorization: 1, requestWhenInUseAuthorization: 0)
   }
 
   /**
@@ -63,24 +67,28 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
    100 View did appear
    102 Show authorization alert after delay
    200 User allows authorization
-   300 User location error
+   200 Get user location
+   250 User location error
    */
   func test_firstLaunch_grantingAutorization_locationError_centersOnDefault() {
-    self.mockAuthorizationEvents(AuthorizationEvent(0, .notDetermined))
-    self.mockViewDidAppearEvent(at: 100)
-    self.mockAuthorizationEvents(AuthorizationEvent(200, .authorizedWhenInUse))
-    self.mockUserLocationError(UserLocationErrorEvent(300, .generalError))
+    let delayedViewDidAppear = 100 + self.locationAuthorizationPromptDelay
+
+    self.mockAuthorization(at: 0, .notDetermined)
+    self.mockViewDidAppear(at: 100)
+    self.mockAuthorization(at: 200, .authorizedWhenInUse)
+    self.mockUserLocation(at: 200, Single.error(UserLocationError.generalError).delay(50, scheduler: self.scheduler))
 
     self.startScheduler()
 
-    let showAlertEvents = self.showAlertObserver.events
-    let authorizationTime = 100 + self.locationAuthorizationPromptDelay
-    XCTAssertEqual(showAlertEvents, [next(authorizationTime, .requestLocationAuthorization)])
+    XCTAssertEqual(self.showAlertObserver.events, [
+      Recorded.next(delayedViewDidAppear, .requestLocationAuthorization)
+    ])
 
-    let mapCenterEvents = self.mapCenterObserver.events
-    XCTAssertEqual(mapCenterEvents, [next(0, Defaults.location)])
+    XCTAssertEqual(self.mapCenterObserver.events, [
+      Recorded.next(0, Defaults.location)
+    ])
 
-    self.userLocationManager.assertOperationCount(current: 1, authorization: 1, requestWhenInUseAuthorization: 0)
+    self.userLocationManager.assertOperationCount(currentLocation: 1, authorization: 1, requestWhenInUseAuthorization: 0)
   }
 
   /**
@@ -95,21 +103,23 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
    */
   func test_firstLaunch_denyingAutorization_centersOnDefault() {
     let userLocation = CLLocationCoordinate2D(latitude: 5.0, longitude: 9.0)
+    let delayedViewDidAppear = 100 + self.locationAuthorizationPromptDelay
 
-    self.mockAuthorizationEvents(AuthorizationEvent(0, .notDetermined))
-    self.mockViewDidAppearEvent(at: 100)
-    self.mockAuthorizationEvents(AuthorizationEvent(200, .denied))
-    self.mockUserLocationEvents(UserLocationEvent(300, userLocation)) // should not be used
+    self.mockAuthorization(at: 0, .notDetermined)
+    self.mockViewDidAppear(at: 100)
+    self.mockAuthorization(at: 200, .denied)
+    self.mockUserLocation(at: 200, Single.just(userLocation)) // should not be used
 
     self.startScheduler()
 
-    let showAlertEvents = self.showAlertObserver.events
-    let authorizationTime = 100 + self.locationAuthorizationPromptDelay
-    XCTAssertEqual(showAlertEvents, [next(authorizationTime, .requestLocationAuthorization)])
+    XCTAssertEqual(self.showAlertObserver.events, [
+      Recorded.next(delayedViewDidAppear, .requestLocationAuthorization)
+    ])
 
-    let mapCenterEvents = self.mapCenterObserver.events
-    XCTAssertEqual(mapCenterEvents, [next(0, Defaults.location)])
+    XCTAssertEqual(self.mapCenterObserver.events, [
+      Recorded.next(0, Defaults.location)
+    ])
 
-    self.userLocationManager.assertOperationCount(current: 0, authorization: 1, requestWhenInUseAuthorization: 0)
+    self.userLocationManager.assertOperationCount(currentLocation: 0, authorization: 1, requestWhenInUseAuthorization: 0)
   }
 }

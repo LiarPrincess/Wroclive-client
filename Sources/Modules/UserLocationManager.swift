@@ -21,23 +21,23 @@ class UserLocationManager: NSObject, UserLocationManagerType {
 
   // MARK: - UserLocationManagerType
 
-  var current: Observable<CLLocationCoordinate2D> {
-    return self.locationManager.rx.status
-      .flatMapLatest { authorization -> Observable<CLLocation?> in
-        switch authorization {
-        case .authorizedAlways,
-             .authorizedWhenInUse: return self.locationManager.rx.location
-        case .notDetermined:       throw UserLocationError.permissionNotDetermined
-        case .restricted,
-             .denied:              throw UserLocationError.permissionDenied
+  var currentLocation: Single<CLLocationCoordinate2D> {
+    return self.locationManager.rx.location
+      .map { location in
+        switch location {
+        case .none:
+          let authorization = CLLocationManager.authorizationStatus()
+          switch authorization {
+          case .authorizedAlways,
+               .authorizedWhenInUse: throw UserLocationError.generalError
+          case .notDetermined: throw UserLocationError.permissionNotDetermined
+          case .restricted,
+               .denied: throw UserLocationError.permissionDenied
+          }
+        case let .some(location): return location.coordinate
         }
       }
-      .map { location -> CLLocationCoordinate2D in
-        switch location?.coordinate {
-        case let .some(coordinate): return coordinate
-        case .none:                 throw UserLocationError.generalError
-        }
-      }
+      .asSingle()
   }
 
   var authorization: Observable<CLAuthorizationStatus> {

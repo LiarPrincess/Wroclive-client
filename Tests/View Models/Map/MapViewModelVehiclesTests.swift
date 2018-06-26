@@ -26,26 +26,24 @@ class MapViewModelVehiclesTests: MapViewModelTestsBase {
     let vehicles1 = self.vehicles1
     let vehicles2 = self.vehicles2
 
-    self.mockViewDidAppearEvent(at: 100)
-    self.mockVehicleResponseEvents(
-      VehicleResponseEvent(200, vehicles1),
-      VehicleResponseEvent(300, ApiError.generalError),
-      VehicleResponseEvent(400, ApiError.invalidResponse),
-      VehicleResponseEvent(500, vehicles2),
-      VehicleResponseEvent(600, ApiError.noInternet)
-    )
+    self.mockViewDidAppear(at: 100)
+    self.mockVehicleResponse(at: 200, value: .next(vehicles1))
+    self.mockVehicleResponse(at: 300, value: .error(ApiError.generalError))
+    self.mockVehicleResponse(at: 400, value: .error(ApiError.invalidResponse))
+    self.mockVehicleResponse(at: 500, value: .next(vehicles2))
+    self.mockVehicleResponse(at: 600, value: .error(ApiError.noInternet))
 
     self.startScheduler()
 
     XCTAssertEqual(self.vehiclesObserver.events, [
-      next(200, vehicles1),
-      next(500, vehicles2)
+      Recorded.next(200, vehicles1),
+      Recorded.next(500, vehicles2)
     ])
 
     XCTAssertEqual(self.showAlertObserver.events, [
-      next(300, .apiError(error: ApiError.generalError)),
-      next(400, .apiError(error: ApiError.invalidResponse)),
-      next(600, .apiError(error: ApiError.noInternet))
+      Recorded.next(300, .apiError(error: ApiError.generalError)),
+      Recorded.next(400, .apiError(error: ApiError.invalidResponse)),
+      Recorded.next(600, .apiError(error: ApiError.noInternet))
     ])
 
     self.liveManager.assertOperationCount(vehicles: 1)

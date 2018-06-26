@@ -8,37 +8,35 @@ import RxSwift
 import RxTest
 @testable import Wroclive
 
-class VehicleResponseEvent: RecordedEvent<Event<[Vehicle]>> {
-  init(_ time: TestTime, _ data: [Vehicle]) {
-    super.init(time, .next(data))
-  }
-
-  init(_ time: TestTime, _ error: Error) {
-    super.init(time, .error(error))
-  }
-}
-
 class LiveManagerMock: RxMock, LiveManagerType {
 
   let scheduler: TestScheduler
-  private var _vehicles     = PublishSubject<Event<[Vehicle]>>()
-  private var _trackedLines = [Line]()
-
-  init(_ scheduler: TestScheduler) {
-    self.scheduler = scheduler
-  }
-
-  // MARK: - LiveManagerType
 
   private var vehiclesCallCount      = 0
   private var startTrackingCallCount = 0
   private var resumeUpdatesCallCount = 0
   private var pauseUpdatesCallCount  = 0
 
+  init(_ scheduler: TestScheduler) {
+    self.scheduler = scheduler
+  }
+
+  // MARK: - Vehicles
+
+  private var _vehicles = PublishSubject<Event<[Vehicle]>>()
+
   var vehicles: Observable<Event<[Vehicle]>> {
     self.vehiclesCallCount += 1
     return self._vehicles.asObservable()
   }
+
+  func mockVehicleResponse(at time: TestTime, _ value: Event<[Vehicle]>) {
+    self.mockNext(self._vehicles, at: time, element: value)
+  }
+
+  // MARK: - Start, stop, pause
+
+  private var _trackedLines = [Line]()
 
   func startTracking(_ lines: [Line]) {
     self.startTrackingCallCount += 1
@@ -48,11 +46,7 @@ class LiveManagerMock: RxMock, LiveManagerType {
   func resumeUpdates() { self.resumeUpdatesCallCount += 1 }
   func pauseUpdates()  { self.pauseUpdatesCallCount  += 1 }
 
-  // MARK: - Helpers
-
-  func mockVehicleResponses(_ events: [VehicleResponseEvent]) {
-    self.mockEvents(self._vehicles, events)
-  }
+  // MARK: - Asserts
 
   func assertOperationCount(vehicles:  Int = 0,
                             file:      StaticString = #file,
