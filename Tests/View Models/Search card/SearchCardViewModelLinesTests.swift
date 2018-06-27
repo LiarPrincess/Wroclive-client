@@ -10,120 +10,127 @@ import RxTest
 
 class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
 
-  func test_didAppear_updatesLines() {
-    self.viewModel = SearchCardViewModel()
+  /**
+   Steps:
+   100 View did appear
+   100 Request lines
+   150 Line response
+   150 Show lines, hide placeholder
+   */
+  func test_didAppear_withLineResponse_updatesLines() {
+    self.initViewModel()
 
-    let lines = self.testLines
-    self.simulateViewDidAppearEvents(at: 100)
-    self.mockLineResponses(LinesResponseEvent(200, lines))
+    let lines = self.testData
+    self.mockViewDidAppear(at: 100)
+    self.mockLineResponse(at: 100, Single.just(lines).delay(50, scheduler: self.scheduler))
 
-    let observers = self.bindObservers()
     self.startScheduler()
 
-    XCTAssertEqual(observers.lines.events,     [next(0, []), next(200, lines)])
-    XCTAssertEqual(observers.showAlert.events, [])
-    XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false), next(200, true)])
-    XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true),  next(200, false)])
+    XCTAssertEqual(self.linesObserver.events,     [Recorded.next(0, []), Recorded.next(150, lines)])
+    XCTAssertEqual(self.showAlertObserver.events, [])
+
+    let isLineSelectorVisible = [Recorded.next(0, false), Recorded.next(150, true)]
+    XCTAssertEqual(self.isLineSelectorVisibleObserver.events, isLineSelectorVisible)
+    XCTAssertEqual(self.isPlaceholderVisibleObserver.events,  self.opposite(isLineSelectorVisible))
+
     self.apiManager.assertOperationCount(availableLines: 1)
   }
 
-  func test_didAppear_withoutLines_showsAlert() {
-    self.viewModel = SearchCardViewModel()
+  /**
+   Steps:
+   100 View did appear
+   100 Request lines
+   150 Line response without lines
+   150 Show error, preserve placeholder
+   */
+  func test_didAppear_withLineResponse_withoutLines_showsAlert() {
+    self.initViewModel()
 
     let lines = [Line]()
-    self.simulateViewDidAppearEvents(at: 100)
-    self.mockLineResponses(LinesResponseEvent(200, lines))
+    self.mockViewDidAppear(at: 100)
+    self.mockLineResponse(at: 100, Single.just(lines).delay(50, scheduler: self.scheduler))
 
-    let observers = self.bindObservers()
     self.startScheduler()
 
-    XCTAssertEqual(observers.lines.events,     [next(0, [])])
-    XCTAssertEqual(observers.showAlert.events, [next(200, .apiError(error: .generalError))])
-    XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
-    XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
+    XCTAssertEqual(self.linesObserver.events,     [Recorded.next(0, [])])
+    XCTAssertEqual(self.showAlertObserver.events, [Recorded.next(150, .apiError(.generalError))])
+
+    let isLineSelectorVisible = [Recorded.next(0, false)]
+    XCTAssertEqual(self.isLineSelectorVisibleObserver.events, isLineSelectorVisible)
+    XCTAssertEqual(self.isPlaceholderVisibleObserver.events,  self.opposite(isLineSelectorVisible))
+
     self.apiManager.assertOperationCount(availableLines: 1)
   }
 
-  func test_didAppear_withoutInternet_showsAlert() {
-    self.viewModel = SearchCardViewModel()
+  /**
+   Steps:
+   100 View did appear
+   100 Request lines
+   100 ApiError
+   100 Show error, preserve placeholder
+   200 Tap 'try again'
+   250 Line response
+   250 Show lines, hide placeholder
+   */
+  func test_didAppear_withApiError_thenRetry_withLineResponse_updatesLines() {
+    self.initViewModel()
 
-    self.simulateViewDidAppearEvents(at: 100)
-    self.mockLineResponses(LinesResponseEvent(200, ApiError.noInternet))
+    let lines = self.testData
+    self.mockViewDidAppear(at: 100)
+    self.mockLineResponse(at: 100, Single.error(ApiError.generalError))
+    self.mockTryAgainButtonPressed(at: 200)
+    self.mockLineResponse(at: 200, Single.just(lines).delay(50, scheduler: self.scheduler))
 
-    let observers = self.bindObservers()
     self.startScheduler()
 
-    XCTAssertEqual(observers.lines.events,     [next(0, [])])
-    XCTAssertEqual(observers.showAlert.events, [next(200, .apiError(error: .noInternet))])
-    XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
-    XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
-    self.apiManager.assertOperationCount(availableLines: 1)
+    XCTAssertEqual(self.linesObserver.events,     [Recorded.next(0, []), Recorded.next(250, lines)])
+    XCTAssertEqual(self.showAlertObserver.events, [Recorded.next(100, .apiError(.generalError))])
+
+    let isLineSelectorVisible = [Recorded.next(0, false), Recorded.next(250, true)]
+    XCTAssertEqual(self.isLineSelectorVisibleObserver.events, isLineSelectorVisible)
+    XCTAssertEqual(self.isPlaceholderVisibleObserver.events,  self.opposite(isLineSelectorVisible))
+
+    self.apiManager.assertOperationCount(availableLines: 2)
   }
 
-  func test_didAppear_withApiError_showsAlert() {
-    self.viewModel = SearchCardViewModel()
+  /**
+   Steps:
+   100 View did appear
+   100 Request lines
+   100 ApiError
+   100 Show error, preserve placeholder
+   200 Tap 'try again'
+   200 ApiError
+   200 Show error, preserve placeholder
+   */
+  func test_didAppear_withApiError_thenRetry_withApiError_showsAlerts() {
+    self.initViewModel()
 
-    self.simulateViewDidAppearEvents(at: 100)
-    self.mockLineResponses(LinesResponseEvent(200, ApiError.generalError))
+    self.mockViewDidAppear(at: 100)
+    self.mockLineResponse(at: 100, Single.error(ApiError.generalError))
+    self.mockTryAgainButtonPressed(at: 200)
+    self.mockLineResponse(at: 200, Single.error(ApiError.noInternet))
 
-    let observers = self.bindObservers()
     self.startScheduler()
 
-    XCTAssertEqual(observers.lines.events,     [next(0, [])])
-    XCTAssertEqual(observers.showAlert.events, [next(200, .apiError(error: .generalError))])
-    XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false)])
-    XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true)])
-    self.apiManager.assertOperationCount(availableLines: 1)
+    XCTAssertEqual(self.linesObserver.events, [Recorded.next(0, [])])
+
+    XCTAssertEqual(self.showAlertObserver.events, [
+      next(100, .apiError(.generalError)),
+      next(200, .apiError(.noInternet))
+    ])
+
+    let isLineSelectorVisible = [Recorded.next(0, false)]
+    XCTAssertEqual(self.isLineSelectorVisibleObserver.events, isLineSelectorVisible)
+    XCTAssertEqual(self.isPlaceholderVisibleObserver.events,  self.opposite(isLineSelectorVisible))
+
+    self.apiManager.assertOperationCount(availableLines: 2)
   }
 
-  func test_closingApiAlert_delays_andUpdatesLines() {
-    self.viewModel = SearchCardViewModel()
-
-    let lines = self.testLines
-    self.simulateTryAgainButtonPressedEvents(at: 100)
-    self.mockLineResponses(LinesResponseEvent(200, lines))
-
-    let observers = self.bindObservers()
-    self.startScheduler()
-
-    XCTAssertEqual(observers.lines.events,     [next(0, []), next(200, lines)])
-    XCTAssertEqual(observers.showAlert.events, [])
-    XCTAssertEqual(observers.isLineSelectorVisible.events, [next(0, false), next(200, true)])
-    XCTAssertEqual(observers.isPlaceholderVisible.events,  [next(0, true),  next(200, false)])
-    self.apiManager.assertOperationCount(availableLines: 1)
-  }
-
-  private struct Observers {
-    let lines:                 TestableObserver<[Line]>
-    let showAlert:             TestableObserver<SearchCardAlert>
-    let isLineSelectorVisible: TestableObserver<Bool>
-    let isPlaceholderVisible:  TestableObserver<Bool>
-  }
-
-  private func bindObservers() -> Observers {
-    let linesObserver = self.scheduler.createObserver([Line].self)
-    self.viewModel.lines
-      .drive(linesObserver)
-      .disposed(by: self.disposeBag)
-
-    let showAlertObserver = self.scheduler.createObserver(SearchCardAlert.self)
-    self.viewModel.showAlert
-      .drive(showAlertObserver)
-      .disposed(by: self.disposeBag)
-
-    let isLineSelectorVisibleObserver = self.scheduler.createObserver(Bool.self)
-    self.viewModel.isLineSelectorVisible
-      .drive(isLineSelectorVisibleObserver)
-      .disposed(by: self.disposeBag)
-
-    let isPlaceholderVisibleObserver = self.scheduler.createObserver(Bool.self)
-    self.viewModel.isPlaceholderVisible
-      .drive(isPlaceholderVisibleObserver)
-      .disposed(by: self.disposeBag)
-
-    return Observers(lines:                 linesObserver,
-                     showAlert:             showAlertObserver,
-                     isLineSelectorVisible: isLineSelectorVisibleObserver,
-                     isPlaceholderVisible:  isPlaceholderVisibleObserver)
+  private func opposite(_ events: [Recorded<Event<Bool>>]) -> [Recorded<Event<Bool>>] {
+    return events.map { event in
+      let value = event.value.element!
+      return Recorded.next(event.time, !value)
+    }
   }
 }

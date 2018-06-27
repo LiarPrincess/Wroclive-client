@@ -36,17 +36,17 @@ class ApiManager: ApiManagerType {
 
   // MARK: - ApiManager
 
-  var availableLines: Observable<[Line]> {
+  var availableLines: Single<[Line]> {
     let endpoint = AvailableLinesEndpoint()
     return self.sendRequest(endpoint, ())
   }
 
-  func vehicleLocations(for lines: [Line]) -> Observable<[Vehicle]> {
+  func vehicleLocations(for lines: [Line]) -> Single<[Vehicle]> {
     let endpoint = VehicleLocationsEndpoint()
     return self.sendRequest(endpoint, lines)
   }
 
-  private func sendRequest<E: Endpoint>(_ endpoint: E, _ data: E.ParameterData) -> Observable<E.ResponseData> {
+  private func sendRequest<E: Endpoint>(_ endpoint: E, _ data: E.ParameterData) -> Single<E.ResponseData> {
     return self.session.rx
       .request(endpoint.method,
                endpoint.url,
@@ -57,6 +57,7 @@ class ApiManager: ApiManagerType {
       .data()
       .map { try endpoint.decodeResponse($0) }
       .catchError { throw self.toApiError($0) }
+      .asSingle()
   }
 
   private func toApiError(_ error: Error) -> ApiError {

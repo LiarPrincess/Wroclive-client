@@ -11,18 +11,16 @@ import RxTest
 class SearchCardViewModelTrackingTests: SearchCardViewModelTestsBase {
 
   func test_search_startsTracking() {
-    let lines = self.testLines
-    self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: lines)
-    self.viewModel = SearchCardViewModel()
+    let lines = self.testData
+    let state = SearchCardState(page: .tram, selectedLines: lines)
+    self.storageManager.mockSearchCardState(state)
 
-    self.simulateSearchButtonPressedEvents(at: 100)
-
-    let observer = self.scheduler.createObserver([Line].self)
-    self.viewModel.startTracking
-      .drive(observer)
-      .disposed(by: self.disposeBag)
+    self.initViewModel()
+    self.mockSearchButtonPressed(at: 100)
     self.startScheduler()
 
-    XCTAssertEqual(observer.events, [next(100, lines)])
+    XCTAssertEqual(self.startTrackingObserver.events, [
+      Recorded.next(100, lines)
+    ])
   }
 }

@@ -27,13 +27,13 @@ class MapViewModelTestsBase: TestCase {
     self.viewModel = MapViewModel()
 
     self.mapCenterObserver = self.scheduler.createObserver(CLLocationCoordinate2D.self)
-    self.viewModel.mapCenter.drive(mapCenterObserver).disposed(by: self.disposeBag)
+    self.viewModel.mapCenter.drive(self.mapCenterObserver).disposed(by: self.disposeBag)
 
     self.vehiclesObserver = self.scheduler.createObserver([Vehicle].self)
-    self.viewModel.vehicles.drive(vehiclesObserver).disposed(by: self.disposeBag)
+    self.viewModel.vehicles.drive(self.vehiclesObserver).disposed(by: self.disposeBag)
 
     self.showAlertObserver = self.scheduler.createObserver(MapViewAlert.self)
-    self.viewModel.showAlert.drive(showAlertObserver).disposed(by: self.disposeBag)
+    self.viewModel.showAlert.drive(self.showAlertObserver).disposed(by: self.disposeBag)
   }
 
   // MARK: - Events

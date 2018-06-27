@@ -11,61 +11,60 @@ import RxTest
 class SearchCardViewModelLineSelectionTests: SearchCardViewModelTestsBase {
 
   func test_startsWithSelectedLines_fromManager() {
-    let lines = self.testLines
-    self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: lines)
-    self.viewModel = SearchCardViewModel()
+    let lines = self.testData
+    let state = SearchCardState(page: .tram, selectedLines: lines)
+    self.storageManager.mockSearchCardState(state)
 
-    let observer = self.scheduler.createObserver([Line].self)
-    self.viewModel.selectedLines
-      .drive(observer)
-      .disposed(by: self.disposeBag)
+    self.initViewModel()
     self.startScheduler()
 
-    XCTAssertEqual(observer.events, [next(0, lines)])
-    XCTAssertOperationCount(self.storageManager, getSearchCardState: 1, saveSearchCardState: 0)
+    XCTAssertEqual(self.selectedLinesObserver.events, [Recorded.next(0, lines)])
+    self.storageManager.assertSearchCardStateOperationCount(get: 1, save: 0)
   }
 
   func test_selectingLine_updatesSelectedLines() {
-    self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: self.testLines)
-    self.viewModel = SearchCardViewModel()
+    let lines = self.testData
+    let state = SearchCardState(page: .tram, selectedLines: lines)
+    let line0 = Line(name: "Test0", type: .tram, subtype: .regular)
+    let line1 = Line(name: "Test1", type: .bus,  subtype: .express)
 
-    let event0 = next(100, Line(name: "Test0", type: .tram, subtype: .regular))
-    let event1 = next(200, Line(name: "Test1", type: .bus,  subtype: .express))
-    self.simulateLineSelectedEvents(event0, event1)
+    self.storageManager.mockSearchCardState(state)
+    self.initViewModel()
 
-    let observer = self.scheduler.createObserver([Line].self)
-    self.viewModel.selectedLines
-      .drive(observer)
-      .disposed(by: self.disposeBag)
+    self.mockSelectedLine(at: 100, line0)
+    self.mockSelectedLine(at: 200, line1)
+
     self.startScheduler()
 
-    let expectedEvents = [
-      next(  0, self.testLines),
-      next(100, self.testLines + [event0.value.element!]),
-      next(200, self.testLines + [event0.value.element!, event1.value.element!])]
-    XCTAssertEqual(observer.events, expectedEvents)
-    XCTAssertOperationCount(self.storageManager, getSearchCardState: 1, saveSearchCardState: 0)
+    XCTAssertEqual(self.selectedLinesObserver.events, [
+      Recorded.next(0, lines),
+      Recorded.next(100, lines + [line0]),
+      Recorded.next(200, lines + [line0, line1])
+    ])
+
+    self.storageManager.assertSearchCardStateOperationCount(get: 1, save: 0)
   }
 
   func test_deselectingLine_updatesSelectedLines() {
-    self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: self.testLines)
-    self.viewModel = SearchCardViewModel()
+    let lines = self.testData
+    let state = SearchCardState(page: .tram, selectedLines: lines)
+    let line0 = lines[0]
+    let line1 = lines[2]
 
-    let event0 = next(100, self.testLines[0])
-    let event1 = next(200, self.testLines[2])
-    self.simulateLineDeselectedEvents(event0, event1)
+    self.storageManager.mockSearchCardState(state)
+    self.initViewModel()
 
-    let observer = self.scheduler.createObserver([Line].self)
-    self.viewModel.selectedLines
-      .drive(observer)
-      .disposed(by: self.disposeBag)
+    self.mockDeselectedLine(at: 100, line0)
+    self.mockDeselectedLine(at: 200, line1)
+
     self.startScheduler()
 
-    let expectedEvents = [
-      next(  0, self.testLines),
-      next(100, [self.testLines[1], self.testLines[2], self.testLines[3], self.testLines[4]]),
-      next(200, [self.testLines[1], self.testLines[3], self.testLines[4]])]
-    XCTAssertEqual(observer.events, expectedEvents)
-    XCTAssertOperationCount(self.storageManager, getSearchCardState: 1, saveSearchCardState: 0)
+    XCTAssertEqual(self.selectedLinesObserver.events, [
+      Recorded.next(0, lines),
+      Recorded.next(100, [lines[1], lines[2], lines[3], lines[4]]),
+      Recorded.next(200, [lines[1], lines[3], lines[4]])
+    ])
+
+    self.storageManager.assertSearchCardStateOperationCount(get: 1, save: 0)
   }
 }

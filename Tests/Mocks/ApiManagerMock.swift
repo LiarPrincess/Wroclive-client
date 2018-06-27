@@ -10,46 +10,37 @@ import RxTest
 
 // swiftlint:disable identifier_name
 
-class LinesResponseEvent: RecordedEvent<Event<[Line]>> {
-  init(_ time: TestTime, _ data: [Line]) {
-    super.init(time, .next(data))
-  }
-
-  init(_ time: TestTime, _ error: Error) {
-    super.init(time, .error(error))
-  }
-}
-
 class ApiManagerMock: RxMock, ApiManagerType {
 
   let scheduler: TestScheduler
-  let _availableLines   = PublishSubject<[Line]>()
-  let _vehicleLocations = PublishSubject<[Vehicle]>()
+
+  fileprivate var availableLinesCallCount   = 0
+  fileprivate var vehicleLocationsCallCount = 0
 
   init(_ scheduler: TestScheduler) {
     self.scheduler = scheduler
   }
 
-  // MARK: - ApiManagerType
+  // MARK: - Lines
 
-  fileprivate var availableLinesCallCount   = 0
-  fileprivate var vehicleLocationsCallCount = 0
+  private var _availableLineResponses = [TestTime:Single<[Line]>]()
 
-  var availableLines: Observable<[Line]> {
+  var availableLines: Single<[Line]> {
     self.availableLinesCallCount += 1
-    return self._availableLines.asObservable()
+    return self.current(from: self._availableLineResponses)
   }
 
-  func vehicleLocations(for lines: [Line]) -> Observable<[Vehicle]> {
-    self.vehicleLocationsCallCount += 1
-    return self._vehicleLocations.asObservable()
+  func mockAvailableLineResponse(at time: TestTime, _ value: Single<[Line]>) {
+    self.schedule(at: time, value, in: &self._availableLineResponses)
+  }
+
+  // MARK: - Vehicles
+
+  func vehicleLocations(for lines: [Line]) -> Single<[Vehicle]> {
+    return .never()
   }
 
   // MARK: - Helpers
-
-  func mockLineResponses(_ events: [LinesResponseEvent]) {
-//    self.mockEvents(self._vehicles, events)
-  }
 
   func assertOperationCount(availableLines: Int,
                             file:           StaticString = #file,

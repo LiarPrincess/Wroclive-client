@@ -83,19 +83,15 @@ class SearchCardViewModel {
       .asDriver(onErrorDriveWith: .never())
 
     // lines
-    let lineResponses: Observable<Event<[Line]>> = {
-      let tryAgainScheduler = AppEnvironment.current.schedulers.main
-      let tryAgainDelay     = AppEnvironment.current.variables.timings.failedRequestDelay.lines
-      let tryAgain = _didPressAlertTryAgainButton.delay(tryAgainDelay, scheduler: tryAgainScheduler)
-
-      return Observable.merge(_viewDidAppear, tryAgain)
-        .flatMapLatest { _ in
-          AppEnvironment.current.api.availableLines
-            .materialize()
-            .map(noLinesToError)
-        }
-        .share()
-    }()
+    let lineResponses = Observable.merge(_viewDidAppear, _didPressAlertTryAgainButton)
+      .flatMapLatest { _ in
+        AppEnvironment.current.api.availableLines
+          .map(noLinesToError)
+          // basically materialize:
+          .map { lines in Event.next(lines) }
+          .catchError { error in Single.just(Event.error(error)) }
+      }
+      .share()
 
     self.lines = lineResponses.elements()
       .startWith([])
@@ -147,16 +143,17 @@ class SearchCardViewModel {
   }
 }
 
-private func noLinesToError(_ event: Event<[Line]>) -> Event<[Line]> {
-  switch event {
-  case let .next(lines): return lines.any ? .next(lines) : .error(ApiError.generalError)
-  default: return event
+private func noLinesToError(_ lines: [Line]) throws -> [Line] {
+  if lines.isEmpty {
+    throw ApiError.generalError
   }
+
+  return lines
 }
 
 private func toApiErrorAlert(_ error: Error) -> SearchCardAlert {
   let apiError = error as? ApiError ?? .generalError
-  return .apiError(error: apiError)
+  return .apiError(apiError)
 }
 
 private func toBookmarkAlert(_ selectedLines: [Line]) -> SearchCardAlert {

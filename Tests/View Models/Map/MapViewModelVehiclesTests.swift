@@ -47,7 +47,7 @@ class MapViewModelVehiclesTests: MapViewModelTestsBase {
     ])
 
     self.liveManager.assertOperationCount(vehicles: 1)
-    self.liveManager.assertOperationCount(startTracking: 0, resumeTracking: 0, pauseTracking: 0)
+    self.liveManager.assertTrackingOperationCount(start: 0, resume: 0, pause: 0)
   }
 
   private var vehicles1: [Vehicle] {

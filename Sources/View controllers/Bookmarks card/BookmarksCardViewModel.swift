@@ -49,22 +49,23 @@ class BookmarksCardViewModel {
     self.didPressEditButton = _didPressEditButton.asObserver()
 
     // bookmarks
-    let moveOperation   = _didMoveItem.map   { Operation.move(from: $0.from, to: $0.to) }
-    let removeOperation = _didDeleteItem.map { Operation.remove(index: $0) }
+    self.bookmarks = {
+      let moveOperation   = _didMoveItem.map   { Operation.move(from: $0.from, to: $0.to) }
+      let removeOperation = _didDeleteItem.map { Operation.remove(index: $0) }
 
-    self.bookmarks = Observable.merge(moveOperation, removeOperation)
-      .reducing(AppEnvironment.current.storage.bookmarks, apply: apply)
-      .asDriver(onErrorJustReturn: [])
+      return Observable.merge(moveOperation, removeOperation)
+        .reducing(AppEnvironment.current.storage.bookmarks, apply: apply)
+        .asDriver(onErrorJustReturn: [])
+    }()
 
     self.isTableViewVisible   = self.bookmarks.map { $0.any }
     self.isPlaceholderVisible = self.bookmarks.map { $0.isEmpty }
 
     // edit
-    let isEditing = _didPressEditButton
+    self.isEditing = _didPressEditButton
       .reducing(false) { current, _ in !current }
       .asDriver(onErrorDriveWith: .never())
 
-    self.isEditing      = isEditing
     self.editButtonText = isEditing.map(createEditButtonLabel)
 
     // selected bookmark

@@ -76,7 +76,7 @@ class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
     self.mockAuthorization(at: 0, .notDetermined)
     self.mockViewDidAppear(at: 100)
     self.mockAuthorization(at: 200, .authorizedWhenInUse)
-    self.mockUserLocation(at: 200, Single.error(UserLocationError.generalError).delay(50, scheduler: self.scheduler))
+    self.mockUserLocation(at: 200, Single.error(UserLocationError.generalError))
 
     self.startScheduler()
 

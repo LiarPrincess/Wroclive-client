@@ -8,8 +8,8 @@ import RxSwift
 protocol ApiManagerType {
 
   /// Get all currently available lines
-  var availableLines: Observable<[Line]> { get }
+  var availableLines: Single<[Line]> { get }
 
   /// Get current vehicle locations for selected lines
-  func vehicleLocations(for lines: [Line]) -> Observable<[Vehicle]>
+  func vehicleLocations(for lines: [Line]) -> Single<[Vehicle]>
 }

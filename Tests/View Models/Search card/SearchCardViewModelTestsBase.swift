@@ -16,9 +16,42 @@ class SearchCardViewModelTestsBase: TestCase {
 
   var viewModel: SearchCardViewModel!
 
-  // MARK: - Test data
+  var pageObserver:                  TestableObserver<LineType>!
+  var linesObserver:                 TestableObserver<[Line]>!
+  var selectedLinesObserver:         TestableObserver<[Line]>!
+  var isLineSelectorVisibleObserver: TestableObserver<Bool>!
+  var isPlaceholderVisibleObserver:  TestableObserver<Bool>!
+  var showAlertObserver:             TestableObserver<SearchCardAlert>!
+  var startTrackingObserver:         TestableObserver<[Line]>!
 
-  var testLines: [Line] {
+  func initViewModel() {
+    self.viewModel = SearchCardViewModel()
+
+    self.pageObserver = self.scheduler.createObserver(LineType.self)
+    self.viewModel.page.drive(self.pageObserver).disposed(by: self.disposeBag)
+
+    self.linesObserver = self.scheduler.createObserver([Line].self)
+    self.viewModel.lines.drive(self.linesObserver).disposed(by: self.disposeBag)
+
+    self.selectedLinesObserver = self.scheduler.createObserver([Line].self)
+    self.viewModel.selectedLines.drive(self.selectedLinesObserver).disposed(by: self.disposeBag)
+
+    self.isLineSelectorVisibleObserver = self.scheduler.createObserver(Bool.self)
+    self.viewModel.isLineSelectorVisible.drive(self.isLineSelectorVisibleObserver).disposed(by: self.disposeBag)
+
+    self.isPlaceholderVisibleObserver = self.scheduler.createObserver(Bool.self)
+    self.viewModel.isPlaceholderVisible.drive(self.isPlaceholderVisibleObserver).disposed(by: self.disposeBag)
+
+    self.showAlertObserver = self.scheduler.createObserver(SearchCardAlert.self)
+    self.viewModel.showAlert.drive(self.showAlertObserver).disposed(by: self.disposeBag)
+
+    self.startTrackingObserver = self.scheduler.createObserver([Line].self)
+    self.viewModel.startTracking.drive(self.startTrackingObserver).disposed(by: self.disposeBag)
+  }
+
+  // MARK: - Data
+
+  var testData: [Line] {
     let line0 = Line(name:  "1", type: .tram, subtype: .regular)
     let line1 = Line(name:  "4", type: .tram, subtype: .regular)
     let line2 = Line(name: "20", type: .tram, subtype: .regular)
@@ -29,102 +62,67 @@ class SearchCardViewModelTestsBase: TestCase {
 
   // MARK: - Events
 
-  typealias PageSelectedEvent      = Recorded<Event<LineType>>
-  typealias PageDidTransitionEvent = Recorded<Event<LineType>>
-
-  func simulatePageSelectedEvents(_ events: PageSelectedEvent...) {
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.viewModel.didSelectPage)
-      .disposed(by: self.disposeBag)
+  func mockPageSelected(at time: TestTime, _ value: LineType) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.didSelectPage.onNext(value)
+    }
   }
 
-  func simulatePageDidTransitionEvents(_ events: PageDidTransitionEvent...) {
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.viewModel.didTransitionToPage)
-      .disposed(by: self.disposeBag)
+  func mockPageTransition(at time: TestTime, _ value: LineType) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.didTransitionToPage.onNext(value)
+    }
   }
 
-  func mockLineResponses(_ events: LinesResponseEvent...) {
-    self.apiManager.mockLineResponses(events)
+  func mockLineResponse(at time: TestTime, _ value: Single<[Line]>) {
+    self.apiManager.mockAvailableLineResponse(at: time, value)
   }
 
-  func simulateTryAgainButtonPressedEvents(at times: TestTime...) {
-    let events = times.map { next($0, ()) }
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.viewModel.didPressAlertTryAgainButton)
-      .disposed(by: self.disposeBag)
+  func mockTryAgainButtonPressed(at time: TestTime) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.didPressAlertTryAgainButton.onNext()
+    }
   }
 
-  typealias LineSelectedEvent   = Recorded<Event<Line>>
-  typealias LineDeselectedEvent = Recorded<Event<Line>>
-
-  func simulateLineSelectedEvents(_ events: LineSelectedEvent...) {
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.viewModel.didSelectLine)
-      .disposed(by: self.disposeBag)
+  func mockSelectedLine(at time: TestTime, _ value: Line) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.didSelectLine.onNext(value)
+    }
   }
 
-  func simulateLineDeselectedEvents(_ events: LineDeselectedEvent...) {
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.viewModel.didDeselectLine)
-      .disposed(by: self.disposeBag)
+  func mockDeselectedLine(at time: TestTime, _ value: Line) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.didDeselectLine.onNext(value)
+    }
   }
 
-  func simulateBookmarkButtonPressedEvents(at times: TestTime...) {
-    let events = times.map { next($0, ()) }
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.viewModel.didPressBookmarkButton)
-      .disposed(by: self.disposeBag)
+  func mockBookmarkButtonPressed(at time: TestTime) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.didPressBookmarkButton.onNext()
+    }
   }
 
-  typealias NameEnteredEvent = Recorded<Event<String>>
-
-  func simulateBookmarkAlertNameEnteredEvents(_ events: NameEnteredEvent...) {
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.viewModel.didEnterBookmarkName)
-      .disposed(by: self.disposeBag)
+  func mockBookmarkAlertNameEntered(at time: TestTime, _ value: String) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.didEnterBookmarkName.onNext(value)
+    }
   }
 
-  func simulateSearchButtonPressedEvents(at times: TestTime...) {
-    let events = times.map { next($0, ()) }
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.viewModel.didPressSearchButton)
-      .disposed(by: self.disposeBag)
+  func mockSearchButtonPressed(at time: TestTime) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.didPressSearchButton.onNext()
+    }
   }
 
-  func simulateViewDidAppearEvents(at times: TestTime...) {
-    let events = times.map { next($0, ()) }
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.viewModel.viewDidAppear)
-      .disposed(by: self.disposeBag)
+  func mockViewDidAppear(at time: TestTime) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.viewDidAppear.onNext()
+    }
   }
 
-  func simulateViewDidDisappearEvents(at times: TestTime...) {
-    let events = times.map { next($0, ()) }
-    self.scheduler.createHotObservable(events)
-      .bind(to: self.viewModel.viewDidDisappear)
-      .disposed(by: self.disposeBag)
-  }
-}
-
-func XCTAssertEqual(_ lhs: [Recorded<Event<SearchCardAlert>>],
-                    _ rhs: [Recorded<Event<SearchCardAlert>>],
-                    file: StaticString = #file,
-                    line: UInt = #line) {
-  XCTAssertEqual(lhs.count, rhs.count, file: file, line: line)
-
-  for (lhsEvent, rhsEvent) in zip(lhs, rhs) {
-    XCTAssertEqual(lhsEvent.time, rhsEvent.time, file: file, line: line)
-
-    let lhsAlert = lhsEvent.value.element!
-    let rhsAlert = rhsEvent.value.element!
-
-    switch (lhsAlert, rhsAlert) {
-    case (.bookmarkNameInput, .bookmarkNameInput): break
-    case (.bookmarkNoLineSelected, .bookmarkNoLineSelected): break
-    case let (.apiError(error1), .apiError(error2)): XCTAssertEqual(error1, error2)
-    default:
-      XCTAssertTrue(false, "Alerts \(lhsAlert) and \(rhsAlert) are not equal.", file: file, line: line)
+  func mockViewDidDisappear(at time: TestTime) {
+    self.scheduler.scheduleAt(time) {
+      self.viewModel.viewDidDisappear.onNext()
     }
   }
 }

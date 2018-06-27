@@ -26,13 +26,6 @@ struct EnvironmentVariables {
 
   struct Timings {
     let locationAuthorizationPromptDelay: TimeInterval = 2.0
-    let locationUpdateInterval:           TimeInterval = 5.0
-
-    let failedRequestDelay = FailedRequestDelay()
-
-    struct FailedRequestDelay {
-      let lines:    TimeInterval = 2.0
-      let location: TimeInterval = 3.0
-    }
+    let vehicleUpdateInterval:            TimeInterval = 5.0
   }
 }

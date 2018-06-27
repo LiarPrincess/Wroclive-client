@@ -11,22 +11,25 @@ import RxTest
 class SearchCardViewModelSaveStateTests: SearchCardViewModelTestsBase {
 
   func test_didDisappear_savesState() {
-    self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: [])
-    self.viewModel = SearchCardViewModel()
+    let initialLines = self.testData
+    let initialState = SearchCardState(page: .tram, selectedLines: initialLines)
 
     let page = LineType.bus
-    let line0 = Line(name: "Test0", type: .bus,  subtype: .express)
-    let line1 = Line(name: "Test1", type: .tram, subtype: .regular)
+    let line0 = Line(name: "Test0", type: .tram, subtype: .regular)
+    let line1 = Line(name: "Test1", type: .bus,  subtype: .express)
 
-    self.simulatePageSelectedEvents(next(100, page))
-    self.simulateLineSelectedEvents(next(200, line0))
-    self.simulateLineSelectedEvents(next(300, line1))
+    self.storageManager.mockSearchCardState(initialState)
+    self.initViewModel()
 
-    self.simulateViewDidDisappearEvents(at: 400)
+    self.mockPageSelected(at: 100, page)
+    self.mockSelectedLine(at: 200, line0)
+    self.mockSelectedLine(at: 300, line1)
+
+    self.mockViewDidDisappear(at: 400)
     self.startScheduler()
 
-    let state = self.storageManager._searchCardState
-    XCTAssertEqual(state, SearchCardState(page: page, selectedLines: [line0, line1]))
-    XCTAssertOperationCount(self.storageManager, getSearchCardState: 1, saveSearchCardState: 1)
+    let newState = SearchCardState(page: page, selectedLines: initialLines + [line0, line1])
+    self.storageManager.assertSearchCardStateOperation(newState)
+    self.storageManager.assertSearchCardStateOperationCount(get: 1, save: 1)
   }
 }

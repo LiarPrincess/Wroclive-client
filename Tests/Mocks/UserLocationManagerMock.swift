@@ -31,8 +31,7 @@ class UserLocationManagerMock: RxMock, UserLocationManagerType {
   }
 
   func mockUserLocation(at time: TestTime, _ value: Single<CLLocationCoordinate2D>) {
-    self.preventDoubleScheduling(at: time, in: self._userLocations)
-    self._userLocations[time] = value
+    self.schedule(at: time, value, in: &self._userLocations)
   }
 
   // MARK: - Authorization

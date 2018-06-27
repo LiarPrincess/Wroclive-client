@@ -10,40 +10,55 @@ import RxTest
 
 class SearchCardViewModelPageTests: SearchCardViewModelTestsBase {
 
-  func test_startsWithPage_fromManager() {
-    self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: [])
-    self.viewModel = SearchCardViewModel()
+  func test_opening_startsWithPage_fromSavedState() {
+    let state = SearchCardState(page: .tram, selectedLines: [])
+    self.storageManager.mockSearchCardState(state)
 
-    let observer = self.scheduler.createObserver(LineType.self)
-    self.viewModel.page
-      .drive(observer)
-      .disposed(by: self.disposeBag)
+    self.initViewModel()
     self.startScheduler()
 
-    XCTAssertEqual(observer.events, [next(0, LineType.tram)])
-    XCTAssertOperationCount(self.storageManager, getSearchCardState: 1, saveSearchCardState: 0)
+    XCTAssertEqual(self.pageObserver.events, [
+      Recorded.next(0, state.page)
+    ])
+
+    self.storageManager.assertSearchCardStateOperationCount(get: 1, save: 0)
   }
 
+  /**
+   Steps:
+   0 Bus
+   100 Selector -> Tram
+   200 Gesture -> Bus
+   300 Gesture -> Bus
+   400 Gesture -> Tram
+   500 Selector -> Bus
+   500 Selector -> Bus
+   */
   func test_changingPage_updatesPage() {
-    let initialPage = LineType.bus
-    self.storageManager._searchCardState = SearchCardState(page: initialPage, selectedLines: [])
-    self.viewModel = SearchCardViewModel()
+    let state = SearchCardState(page: .tram, selectedLines: [])
+    self.storageManager.mockSearchCardState(state)
 
-    let line0 = next( 50, LineType.bus)
-    let line2 = next(150, LineType.tram)
-    self.simulatePageSelectedEvents(line0, line2)
+    self.initViewModel()
 
-    let line1 = next(100, LineType.tram)
-    let line3 = next(200, LineType.bus)
-    self.simulatePageDidTransitionEvents(line1, line3)
+    self.mockPageSelected(at: 100, .tram)
+    self.mockPageTransition(at: 200, .bus)
+    self.mockPageTransition(at: 300, .bus)
+    self.mockPageTransition(at: 400, .tram)
+    self.mockPageSelected(at: 500, .bus)
+    self.mockPageSelected(at: 600, .bus)
 
-    let observer = self.scheduler.createObserver(LineType.self)
-    self.viewModel.page
-      .drive(observer)
-      .disposed(by: self.disposeBag)
     self.startScheduler()
 
-    let expectedEvents = [next(0, initialPage), line0, line1, line2, line3]
-    XCTAssertEqual(observer.events, expectedEvents)
+    XCTAssertEqual(self.pageObserver.events, [
+      Recorded.next(0, state.page),
+      Recorded.next(100, LineType.tram),
+      Recorded.next(200, LineType.bus),
+      Recorded.next(300, LineType.bus),
+      Recorded.next(400, LineType.tram),
+      Recorded.next(500, LineType.bus),
+      Recorded.next(600, LineType.bus)
+    ])
+
+    self.storageManager.assertSearchCardStateOperationCount(get: 1, save: 0)
   }
 }

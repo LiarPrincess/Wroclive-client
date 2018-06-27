@@ -11,45 +11,43 @@ import RxTest
 class SearchCardViewModelBookmarksTests: SearchCardViewModelTestsBase {
 
   func test_bookmarkButton_withoutSelectedLines_showsNoLineSelectedAlert() {
-    self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: [])
-    self.viewModel = SearchCardViewModel()
+    let state = SearchCardState(page: .tram, selectedLines: [])
+    self.storageManager.mockSearchCardState(state)
 
-    self.simulateBookmarkButtonPressedEvents(at: 100)
-
-    let observer = self.scheduler.createObserver(SearchCardAlert.self)
-    self.viewModel.showAlert
-      .drive(observer)
-      .disposed(by: self.disposeBag)
+    self.initViewModel()
+    self.mockBookmarkButtonPressed(at: 100)
     self.startScheduler()
 
-    XCTAssertEqual(observer.events, [next(100, SearchCardAlert.bookmarkNoLineSelected)])
+    XCTAssertEqual(self.showAlertObserver.events, [
+      Recorded.next(100, SearchCardAlert.bookmarkNoLineSelected)
+    ])
   }
 
   func test_bookmarkButton_withSelectedLines_showsNameAlert() {
-    self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: self.testLines)
-    self.viewModel = SearchCardViewModel()
+    let lines = self.testData
+    let state = SearchCardState(page: .tram, selectedLines: lines)
+    self.storageManager.mockSearchCardState(state)
 
-    self.simulateBookmarkButtonPressedEvents(at: 100)
-
-    let observer = self.scheduler.createObserver(SearchCardAlert.self)
-    self.viewModel.showAlert
-      .drive(observer)
-      .disposed(by: self.disposeBag)
+    self.initViewModel()
+    self.mockBookmarkButtonPressed(at: 100)
     self.startScheduler()
 
-    XCTAssertEqual(observer.events, [next(100, SearchCardAlert.bookmarkNameInput)])
+    XCTAssertEqual(self.showAlertObserver.events, [
+      Recorded.next(100, SearchCardAlert.bookmarkNameInput)
+    ])
   }
 
   func test_enteringName_createsBookmark() {
-    self.storageManager._bookmarks       = []
-    self.storageManager._searchCardState = SearchCardState(page: .tram, selectedLines: self.testLines)
-    self.viewModel = SearchCardViewModel()
+    let lines = self.testData
+    let state = SearchCardState(page: .tram, selectedLines: lines)
+    let bookmark = Bookmark(name: "Test", lines: lines)
 
-    let bookmark = Bookmark(name: "Test", lines: self.testLines)
-    self.simulateBookmarkAlertNameEnteredEvents(next(100, bookmark.name))
+    self.storageManager.mockSearchCardState(state)
+    self.initViewModel()
+    self.mockBookmarkAlertNameEntered(at: 100, bookmark.name)
     self.startScheduler()
 
-    XCTAssertEqual(self.storageManager._bookmarks, [bookmark])
-    XCTAssertOperationCount(self.storageManager, getBookmarks: 1, saveBookmarks: 1)
+    self.storageManager.assertBookmarks([bookmark])
+    self.storageManager.assertBookmarkOperationCount(get: 1, save: 1)
   }
 }

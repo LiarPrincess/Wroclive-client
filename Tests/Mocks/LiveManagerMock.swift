@@ -48,19 +48,19 @@ class LiveManagerMock: RxMock, LiveManagerType {
 
   // MARK: - Asserts
 
-  func assertOperationCount(vehicles:  Int = 0,
-                            file:      StaticString = #file,
-                            line:      UInt         = #line) {
+  func assertOperationCount(vehicles: Int,
+                            file:     StaticString = #file,
+                            line:     UInt         = #line) {
     XCTAssertEqual(self.vehiclesCallCount, vehicles, file: file, line: line)
   }
 
-  func assertOperationCount(startTracking:  Int = 0,
-                            resumeTracking: Int = 0,
-                            pauseTracking:  Int = 0,
-                            file:           StaticString = #file,
-                            line:           UInt         = #line) {
-    XCTAssertEqual(self.startTrackingCallCount, startTracking,  file: file, line: line)
-    XCTAssertEqual(self.resumeUpdatesCallCount, resumeTracking, file: file, line: line)
-    XCTAssertEqual(self.pauseUpdatesCallCount,  pauseTracking,  file: file, line: line)
+  func assertTrackingOperationCount(start:  Int,
+                                    resume: Int,
+                                    pause:  Int,
+                                    file:   StaticString = #file,
+                                    line:   UInt         = #line) {
+    XCTAssertEqual(self.startTrackingCallCount, start,  file: file, line: line)
+    XCTAssertEqual(self.resumeUpdatesCallCount, resume, file: file, line: line)
+    XCTAssertEqual(self.pauseUpdatesCallCount,  pause,  file: file, line: line)
   }
 }

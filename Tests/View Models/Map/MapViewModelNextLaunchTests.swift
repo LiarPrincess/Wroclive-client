@@ -56,7 +56,7 @@ class MapViewModelNextLaunchTests: MapViewModelTestsBase {
   func test_launch_withAutorization_locationError_centersOnDefault() {
     self.mockAuthorization(at: 0, .authorizedWhenInUse)
     self.mockViewDidAppear(at: 100)
-    self.mockUserLocation(at: 100, Single.error(UserLocationError.generalError).delay(50, scheduler: self.scheduler))
+    self.mockUserLocation(at: 100, Single.error(UserLocationError.generalError))
 
     self.startScheduler()
 
