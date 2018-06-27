@@ -4,7 +4,7 @@
 
 import RxSwift
 
-protocol LiveManagerType {
+protocol LiveManagerType: ManagerType {
 
   /// Tracking results
   var vehicles: Observable<Event<[Vehicle]>> { get }

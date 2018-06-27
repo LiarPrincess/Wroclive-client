@@ -17,9 +17,13 @@
 		9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */; };
 		9010D5B5201FA04500563BDB /* ScrollViewDismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */; };
 		9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */; };
-		9016FD0A208B48820043524D /* SchedulerManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD09208B48820043524D /* SchedulerManagerType.swift */; };
-		9016FD0C208B48EC0043524D /* SchedulerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD0B208B48EC0043524D /* SchedulerManager.swift */; };
-		9016FD0E208B4D6A0043524D /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD0D208B4D6A0043524D /* AppEnvironment.swift */; };
+		9016C73F20E431E90039A604 /* ManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016C73E20E431E90039A604 /* ManagerType.swift */; };
+		9016C74220E432BD0039A604 /* Environment.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9016C74120E432BD0039A604 /* Environment.stencil */; };
+		9016C74720E43CD70039A604 /* Environment.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016C74420E43CD70039A604 /* Environment.generated.swift */; };
+		9016C74820E43CD70039A604 /* AppEnvironment.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016C74520E43CD70039A604 /* AppEnvironment.generated.swift */; };
+		9016C74920E43CD70039A604 /* AppEnvironment.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9016C74620E43CD70039A604 /* AppEnvironment.stencil */; };
+		9016FD0A208B48820043524D /* SchedulersManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD09208B48820043524D /* SchedulersManagerType.swift */; };
+		9016FD0C208B48EC0043524D /* SchedulersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD0B208B48EC0043524D /* SchedulersManager.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksCard.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */; };
 		9017C35C1EE339FD00063377 /* BookmarksCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3431EE339FD00063377 /* BookmarksCardLayout.swift */; };
@@ -78,7 +82,6 @@
 		9023312E1EDF37F500FA8F43 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EA1EDF37F500FA8F43 /* Line.swift */; };
 		9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EB1EDF37F500FA8F43 /* LineSubtype.swift */; };
 		902331301EDF37F500FA8F43 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EC1EDF37F500FA8F43 /* LineType.swift */; };
-		9024C6111F9667E600025503 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024C6101F9667E600025503 /* Environment.swift */; };
 		90374B4B20D876C600315F80 /* BookmarksCardViewModelBookmarksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4920D8766F00315F80 /* BookmarksCardViewModelBookmarksTests.swift */; };
 		90374B4F20D877F200315F80 /* BookmarksCardViewModelVisibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4D20D8777600315F80 /* BookmarksCardViewModelVisibilityTests.swift */; };
 		90374B5220D8786100315F80 /* BookmarksCardViewModelEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5020D8785C00315F80 /* BookmarksCardViewModelEditTests.swift */; };
@@ -255,9 +258,13 @@
 		9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
 		9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewDismissGestureHandler.swift; sourceTree = "<group>"; };
 		9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandlerType.swift; sourceTree = "<group>"; };
-		9016FD09208B48820043524D /* SchedulerManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerManagerType.swift; sourceTree = "<group>"; };
-		9016FD0B208B48EC0043524D /* SchedulerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerManager.swift; sourceTree = "<group>"; };
-		9016FD0D208B4D6A0043524D /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		9016C73E20E431E90039A604 /* ManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerType.swift; sourceTree = "<group>"; };
+		9016C74120E432BD0039A604 /* Environment.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = Environment.stencil; sourceTree = "<group>"; };
+		9016C74420E43CD70039A604 /* Environment.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.generated.swift; sourceTree = "<group>"; };
+		9016C74520E43CD70039A604 /* AppEnvironment.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.generated.swift; sourceTree = "<group>"; };
+		9016C74620E43CD70039A604 /* AppEnvironment.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppEnvironment.stencil; sourceTree = "<group>"; };
+		9016FD09208B48820043524D /* SchedulersManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulersManagerType.swift; sourceTree = "<group>"; };
+		9016FD0B208B48EC0043524D /* SchedulersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulersManager.swift; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCard.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardConstants.swift; sourceTree = "<group>"; };
 		9017C3431EE339FD00063377 /* BookmarksCardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardLayout.swift; sourceTree = "<group>"; };
@@ -317,7 +324,6 @@
 		902330EA1EDF37F500FA8F43 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		902330EB1EDF37F500FA8F43 /* LineSubtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSubtype.swift; sourceTree = "<group>"; };
 		902330EC1EDF37F500FA8F43 /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
-		9024C6101F9667E600025503 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Wroclive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wroclive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		902FC75B1FB79254002E09FE /* LinePositionMaskGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePositionMaskGenerator.swift; sourceTree = "<group>"; };
 		90374B4920D8766F00315F80 /* BookmarksCardViewModelBookmarksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelBookmarksTests.swift; sourceTree = "<group>"; };
@@ -518,6 +524,17 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
+		9016C74020E432480039A604 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				9016C74520E43CD70039A604 /* AppEnvironment.generated.swift */,
+				9016C74620E43CD70039A604 /* AppEnvironment.stencil */,
+				9016C74420E43CD70039A604 /* Environment.generated.swift */,
+				9016C74120E432BD0039A604 /* Environment.stencil */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		9017C33D1EE339FD00063377 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -715,8 +732,8 @@
 				90AF2BD31EE9DE00006E61D6 /* ThemeManager.swift */,
 				9050705A2087EB4B007DDA80 /* StorageManagerType.swift */,
 				9050705E2087EE66007DDA80 /* StorageManager.swift */,
-				9016FD09208B48820043524D /* SchedulerManagerType.swift */,
-				9016FD0B208B48EC0043524D /* SchedulerManager.swift */,
+				9016FD09208B48820043524D /* SchedulersManagerType.swift */,
+				9016FD0B208B48EC0043524D /* SchedulersManager.swift */,
 				905D71A81FE1C5BD006D1DB6 /* ApiManagerType.swift */,
 				905D71A41FE1C5BD006D1DB6 /* ApiManager.swift */,
 				90546BED1F6AF23100E8E75F /* LiveManagerType.swift */,
@@ -726,8 +743,7 @@
 				906C40562014C55000E32571 /* DebugManagerType.swift */,
 				906C40582014C55700E32571 /* DebugManager.swift */,
 				9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */,
-				9024C6101F9667E600025503 /* Environment.swift */,
-				9016FD0D208B4D6A0043524D /* AppEnvironment.swift */,
+				9016C73E20E431E90039A604 /* ManagerType.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1026,6 +1042,7 @@
 				902330E41EDF37F500FA8F43 /* App */,
 				902330E81EDF37F500FA8F43 /* Models */,
 				902330ED1EDF37F500FA8F43 /* Modules */,
+				9016C74020E432480039A604 /* Generated */,
 				9021F3871F12C95D000A6949 /* Extensions */,
 				900B976A1FE1BB4D00AC7C35 /* Helpers */,
 				9017C33D1EE339FD00063377 /* View controllers */,
@@ -1163,8 +1180,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9016C74920E43CD70039A604 /* AppEnvironment.stencil in Resources */,
 				903F6F961F7D822B00FCC56B /* Launch Screen.storyboard in Resources */,
 				9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */,
+				9016C74220E432BD0039A604 /* Environment.stencil in Resources */,
 				90ED50FD1F3BADC500C782D5 /* Localizable.strings in Resources */,
 				908346FA1F521E1500654FF6 /* FontAwesome.otf in Resources */,
 				90ED51061F3BAFF800C782D5 /* InfoPlist.strings in Resources */,
@@ -1371,7 +1390,7 @@
 				906A7B511FFEC252004EC8A4 /* Observer+Next.swift in Sources */,
 				906C405E2014CD1B00E32571 /* VehicleAnnotationUpdater.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */,
-				9016FD0A208B48820043524D /* SchedulerManagerType.swift in Sources */,
+				9016FD0A208B48820043524D /* SchedulersManagerType.swift in Sources */,
 				90AACC8D200BA01A0064EDFD /* LineSelectorSectionCreator.swift in Sources */,
 				90AACC9B200BE4110064EDFD /* LineSelectorPage+Rx.swift in Sources */,
 				9096CDCD1F40EF2200FEF20A /* SettingsCard.swift in Sources */,
@@ -1403,6 +1422,7 @@
 				906C40632016786E00E32571 /* SearchCardAlert.swift in Sources */,
 				909B9FDC1FEBC3E2007CB59D /* BookmarksCellConstants.swift in Sources */,
 				90D3A3EF1FEC148C00FB7485 /* NSAttributedString+TextAttributes.swift in Sources */,
+				9016C74720E43CD70039A604 /* Environment.generated.swift in Sources */,
 				9050705F2087EE66007DDA80 /* StorageManager.swift in Sources */,
 				90915B171FFAFD5A009FE942 /* RxSectionTypeArray.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManager.swift in Sources */,
@@ -1412,7 +1432,6 @@
 				90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */,
 				90546BEE1F6AF23100E8E75F /* LiveManagerType.swift in Sources */,
 				901A80A320129DCD0013CCD9 /* SettingsSectionHeaderViewConstants.swift in Sources */,
-				9016FD0E208B4D6A0043524D /* AppEnvironment.swift in Sources */,
 				901A808E200E9EF00013CCD9 /* SettingsCardViewModel.swift in Sources */,
 				908346F61F5202AE00654FF6 /* String+IndicesOf.swift in Sources */,
 				9021F3931F12C95D000A6949 /* Array+Grouped.swift in Sources */,
@@ -1447,6 +1466,7 @@
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				901FEAD91FE1EC8900C36A71 /* TextColor.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
+				9016C73F20E431E90039A604 /* ManagerType.swift in Sources */,
 				901ECDD01FF5A003004765AA /* SearchCardViewModel.swift in Sources */,
 				901A8090200E9F580013CCD9 /* SettingsSectionType.swift in Sources */,
 				906C40572014C55000E32571 /* DebugManagerType.swift in Sources */,
@@ -1461,7 +1481,7 @@
 				9050705B2087EB4B007DDA80 /* StorageManagerType.swift in Sources */,
 				905D718F1FE1C444006D1DB6 /* UserLocationManagerType.swift in Sources */,
 				901ECDBD1FF587B7004765AA /* TextStyle.swift in Sources */,
-				9016FD0C208B48EC0043524D /* SchedulerManager.swift in Sources */,
+				9016FD0C208B48EC0043524D /* SchedulersManager.swift in Sources */,
 				9042EDBF1FF2D71500F5D01D /* LineSelectorCellConstants.swift in Sources */,
 				900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */,
 				900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */,
@@ -1494,12 +1514,12 @@
 				9021F41F1F12CACB000A6949 /* SearchCardState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
-				9024C6111F9667E600025503 /* Environment.swift in Sources */,
 				9021F43F1F12D698000A6949 /* LineSelectorCellViewModel.swift in Sources */,
 				90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */,
 				908FB19E1F48B3CA00121584 /* ReusableCell+UICollectionView.swift in Sources */,
 				9045C2E31F9BDB3F002F35C3 /* Assets.swift in Sources */,
 				90D3A4091FEFE6D400FB7485 /* RxSectionType.swift in Sources */,
+				9016C74820E43CD70039A604 /* AppEnvironment.generated.swift in Sources */,
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,

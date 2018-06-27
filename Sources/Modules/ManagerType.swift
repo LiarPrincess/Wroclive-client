@@ -2,10 +2,5 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import UIKit
-import RxSwift
-
-protocol SchedulerManagerType {
-  var main:      SchedulerType { get }
-  var mainAsync: SchedulerType { get }
-}
+/// Marker protocol for Sourcery
+protocol ManagerType { }

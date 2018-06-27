@@ -3,14 +3,9 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import MapKit
-import Foundation
+import RxSwift
 
-protocol ThemeManagerType: ManagerType {
-
-  var textFont: Font { get }
-  var iconFont: Font { get }
-  var colors:   ColorScheme { get }
-
-  func recalculateFontSizes()
+class SchedulersManager: SchedulersManagerType {
+  var main:      SchedulerType { return MainScheduler.instance }
+  var mainAsync: SchedulerType { return MainScheduler.asyncInstance }
 }

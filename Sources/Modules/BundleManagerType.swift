@@ -2,7 +2,7 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-protocol BundleManagerType {
+protocol BundleManagerType: ManagerType {
 
   /// App name (e.g. Wroclive)
   var name: String { get }

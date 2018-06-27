@@ -1,0 +1,46 @@
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file,
+// You can obtain one at http://mozilla.org/MPL/2.0/.
+
+enum AppEnvironment {
+  {% for type in types.implementing.ManagerType|protocol %}
+  static var {{ type.name|replace:"ManagerType",""|lowerFirstLetter }}: {{ type.name }} { return current.{{ type.name|replace:"ManagerType",""|lowerFirstLetter }} }
+  {% endfor %}
+  static var variables: EnvironmentVariables { return current.variables }
+
+  private static var stack: [Environment] = []
+
+  static var current: Environment {
+    precondition(stack.any, "Attempting to use empty environment stack.")
+    return stack.last!
+  }
+
+  static func pushDefault() {
+    push(
+    {% for type in types.implementing.ManagerType|protocol %}
+      {{ type.name|replace:"ManagerType",""|lowerFirstLetter }}: {{ type.name|replace:"Type","" }}(),
+    {% endfor %}
+      variables: EnvironmentVariables())
+  }
+
+  static func push(
+  {% for type in types.implementing.ManagerType|protocol %}
+    {{ type.name|replace:"ManagerType",""|lowerFirstLetter }}: {{ type.name }} = current.{{ type.name|replace:"ManagerType",""|lowerFirstLetter }},
+  {% endfor %}
+    variables: EnvironmentVariables) {
+
+    push(Environment(
+    {% for type in types.implementing.ManagerType|protocol %}
+      {{ type.name|replace:"ManagerType",""|lowerFirstLetter }}: {{ type.name|replace:"ManagerType",""|lowerFirstLetter }},
+    {% endfor %}
+      variables: variables))
+  }
+
+  static func push(_ environment: Environment) {
+    stack.append(environment)
+  }
+
+  static func pop() {
+    _ = stack.popLast()
+  }
+}

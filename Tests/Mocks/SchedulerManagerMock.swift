@@ -6,7 +6,7 @@ import XCTest
 import RxSwift
 @testable import Wroclive
 
-class SchedulerManagerMock: SchedulerManagerType {
+class SchedulersManagerMock: SchedulersManagerType {
   var main:      SchedulerType
   var mainAsync: SchedulerType
 

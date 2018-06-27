@@ -6,7 +6,7 @@ import UIKit
 import MapKit
 import RxSwift
 
-protocol UserLocationManagerType {
+protocol UserLocationManagerType: ManagerType {
 
   /// Returns user location
   var currentLocation: Single<CLLocationCoordinate2D> { get }

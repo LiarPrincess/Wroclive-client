@@ -15,7 +15,7 @@ class TestCase: XCTestCase {
 
   var apiManager:          ApiManagerMock!
   var storageManager:      StorageManagerMock!
-  var schedulerManager:    SchedulerManagerMock!
+  var schedulersManager:   SchedulersManagerMock!
   var liveManager:         LiveManagerMock!
   var userLocationManager: UserLocationManagerMock!
 
@@ -29,20 +29,20 @@ class TestCase: XCTestCase {
 
     self.apiManager          = ApiManagerMock(self.scheduler)
     self.storageManager      = StorageManagerMock()
-    self.schedulerManager    = SchedulerManagerMock(main: self.scheduler, mainAsync: self.scheduler)
+    self.schedulersManager   = SchedulersManagerMock(main: self.scheduler, mainAsync: self.scheduler)
     self.liveManager         = LiveManagerMock(self.scheduler)
     self.userLocationManager = UserLocationManagerMock(self.scheduler)
 
-    AppEnvironment.push(bundle:        BundleManager(),
+    AppEnvironment.push(api:           self.apiManager,
+                        bundle:        BundleManager(),
+                        debug:         DebugManager(),
                         device:        DeviceManager(),
-                        theme:         ThemeManager(),
-                        storage:       self.storageManager,
-                        variables:     EnvironmentVariables(),
-                        schedulers:    self.schedulerManager,
-                        api:           self.apiManager,
                         live:          self.liveManager,
+                        schedulers:    self.schedulersManager,
+                        storage:       self.storageManager,
+                        theme:         ThemeManager(),
                         userLocation:  self.userLocationManager,
-                        debug:         DebugManager())
+                        variables:     EnvironmentVariables())
   }
 
   override func tearDown() {
