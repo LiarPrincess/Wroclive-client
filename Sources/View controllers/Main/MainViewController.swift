@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
 
     viewModel.startTracking
       .drive(onNext: { [weak viewController] lines in
-        AppEnvironment.current.live.startTracking(lines)
+        AppEnvironment.live.startTracking(lines)
         viewController?.dismiss(animated: true, completion: nil)
       })
       .disposed(by: viewModel.disposeBag)
@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
 
     viewModel.startTracking
       .drive(onNext: { [weak viewController] bookmark in
-        AppEnvironment.current.live.startTracking(bookmark.lines)
+        AppEnvironment.live.startTracking(bookmark.lines)
         viewController?.dismiss(animated: true, completion: nil)
       })
       .disposed(by: viewModel.disposeBag)

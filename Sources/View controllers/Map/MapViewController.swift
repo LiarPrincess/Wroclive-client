@@ -56,7 +56,7 @@ class MapViewController: UIViewController {
     // alert
     self.viewModel.showAlert
       .filter { $0 == .requestLocationAuthorization }
-      .drive(onNext: { _ in AppEnvironment.current.userLocation.requestWhenInUseAuthorization() })
+      .drive(onNext: { _ in AppEnvironment.userLocation.requestWhenInUseAuthorization() })
       .disposed(by: self.disposeBag)
 
     self.viewModel.showAlert.asObservable()

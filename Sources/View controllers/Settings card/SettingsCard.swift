@@ -19,7 +19,7 @@ class SettingsCard: CardPanel {
   private let disposeBag = DisposeBag()
 
   lazy var headerView: UIVisualEffectView = {
-    let blur = UIBlurEffect(style: AppEnvironment.current.theme.colors.blurStyle)
+    let blur = UIBlurEffect(style: AppEnvironment.theme.colors.blurStyle)
     return UIVisualEffectView(effect: blur)
   }()
 
@@ -129,11 +129,11 @@ class SettingsCard: CardPanel {
   // MARK: - Buttons
 
   func rateApp() {
-    UIApplication.shared.open(AppEnvironment.current.variables.appStore.writeReviewUrl)
+    UIApplication.shared.open(AppEnvironment.variables.appStore.writeReviewUrl)
   }
 
   func showShareActivity() {
-    let url   = AppEnvironment.current.variables.appStore.shareUrl
+    let url   = AppEnvironment.variables.appStore.shareUrl
     let text  = String(format: Localizable.Share.message, url.absoluteString)
     let image = Assets.shareImage
     let items = [text, image] as [Any]
@@ -145,7 +145,7 @@ class SettingsCard: CardPanel {
   }
 
   func showAboutPage() {
-    let safariViewController = SFSafariViewController(url: AppEnvironment.current.variables.websiteUrl)
+    let safariViewController = SFSafariViewController(url: AppEnvironment.variables.websiteUrl)
     safariViewController.modalPresentationStyle = .overFullScreen
     self.present(safariViewController, animated: true, completion: nil)
   }

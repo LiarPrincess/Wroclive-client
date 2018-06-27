@@ -30,8 +30,8 @@ class MapViewModel {
     let _viewDidAppear = PublishSubject<Void>()
     self.viewDidAppear = _viewDidAppear.asObserver()
 
-    let authorizations   = AppEnvironment.current.userLocation.authorization.share()
-    let vehicleResponses = AppEnvironment.current.live.vehicles.share()
+    let authorizations   = AppEnvironment.userLocation.authorization.share()
+    let vehicleResponses = AppEnvironment.live.vehicles.share()
 
     self.mapCenter = {
       let initialAuthorization = _viewDidAppear.withLatestFrom(authorizations)
@@ -44,7 +44,7 @@ class MapViewModel {
       return Observable.merge(initialAuthorization, authorizationChangedFromNonDetermined)
         .filter { $0 == .authorizedAlways || $0 == .authorizedWhenInUse }
         .flatMapLatest { _ in
-          AppEnvironment.current.userLocation.currentLocation.catchError { _ in .never() }
+          AppEnvironment.userLocation.currentLocation.catchError { _ in .never() }
         }
         .startWith(Defaults.location)
         .asDriver(onErrorDriveWith: .never())
@@ -56,8 +56,8 @@ class MapViewModel {
 
     self.showAlert = {
       let requestAuthorizationAlert: Observable<MapViewAlert> = {
-        let delay          = AppEnvironment.current.variables.timings.locationAuthorizationPromptDelay
-        let delayScheduler = AppEnvironment.current.schedulers.main
+        let delay          = AppEnvironment.variables.timings.locationAuthorizationPromptDelay
+        let delayScheduler = AppEnvironment.schedulers.main
 
         let delayedViewDidAppear = _viewDidAppear.delay(delay, scheduler: delayScheduler)
         let trackingModeChanged  = _didChangeTrackingMode.map { _ in () }

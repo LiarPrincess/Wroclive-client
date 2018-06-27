@@ -47,13 +47,13 @@ private func createTrackingObservable(lines: [Line]) -> Observable<Event<[Vehicl
 
   let initialTick   = Observable<Void>.just(())
   let trackingTimer: Observable<Void> = {
-    let interval  = AppEnvironment.current.variables.timings.vehicleUpdateInterval
-    let scheduler = AppEnvironment.current.schedulers.main
+    let interval  = AppEnvironment.variables.timings.vehicleUpdateInterval
+    let scheduler = AppEnvironment.schedulers.main
     return Observable<Int>.interval(interval, scheduler: scheduler).map { _ in () }
   }()
 
   return initialTick
     .concat(trackingTimer)
-    .flatMapLatest { _ in AppEnvironment.current.api.vehicleLocations(for: lines) }
+    .flatMapLatest { _ in AppEnvironment.api.vehicleLocations(for: lines) }
     .materialize()
 }

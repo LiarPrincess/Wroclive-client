@@ -20,7 +20,7 @@ struct FontAwesomeFont: Font {
 
   mutating func recalculateSizes() {
     let name           = "FontAwesome"
-    let baseSize       = AppEnvironment.current.device.preferredFontSize
+    let baseSize       = AppEnvironment.device.preferredFontSize
     let fontDescriptor = UIFontDescriptor(name: name, size: baseSize)
 
     self.headline    = UIFont(descriptor: fontDescriptor, size: baseSize + 18.0)

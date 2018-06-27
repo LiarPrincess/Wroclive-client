@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func applyColorScheme() {
-    let tintColor = AppEnvironment.current.theme.colors.tint
-    let barStyle  = AppEnvironment.current.theme.colors.barStyle
+    let tintColor = AppEnvironment.theme.colors.tint
+    let barStyle  = AppEnvironment.theme.colors.barStyle
 
     UIApplication.shared.delegate?.window??.tintColor = tintColor
 
@@ -42,11 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Activity
 
   func applicationDidBecomeActive(_ application: UIApplication) {
-    AppEnvironment.current.theme.recalculateFontSizes()
-    AppEnvironment.current.live.resumeUpdates()
+    AppEnvironment.theme.recalculateFontSizes()
+    AppEnvironment.live.resumeUpdates()
   }
 
   func applicationWillResignActive(_ application: UIApplication) {
-    AppEnvironment.current.live.pauseUpdates()
+    AppEnvironment.live.pauseUpdates()
   }
 }

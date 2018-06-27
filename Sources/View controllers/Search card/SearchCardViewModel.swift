@@ -75,7 +75,7 @@ class SearchCardViewModel {
     let _viewDidDisappear = PublishSubject<Void>()
     self.viewDidDisappear = _viewDidDisappear.asObserver()
 
-    let state = AppEnvironment.current.storage.searchCardState
+    let state = AppEnvironment.storage.searchCardState
 
     // page
     self.page = Observable.merge(_didSelectPage, _didTransitionToPage)
@@ -85,7 +85,7 @@ class SearchCardViewModel {
     // lines
     let lineResponses = Observable.merge(_viewDidAppear, _didPressAlertTryAgainButton)
       .flatMapLatest { _ in
-        AppEnvironment.current.api.availableLines
+        AppEnvironment.api.availableLines
           .map(noLinesToError)
           // basically materialize:
           .map { lines in Event.next(lines) }
@@ -131,14 +131,14 @@ class SearchCardViewModel {
   private func initBindings(_ didEnterBookmarkName: Observable<String>, _ viewDidDisappear: Observable<Void>) {
     didEnterBookmarkName
       .withLatestFrom(self.selectedLines) { Bookmark(name: $0, lines: $1) }
-      .bind { AppEnvironment.current.storage.addBookmark($0) }
+      .bind { AppEnvironment.storage.addBookmark($0) }
       .disposed(by: self.disposeBag)
 
     viewDidDisappear
       .withLatestFrom(self.page) { $1 }
       .withLatestFrom(self.selectedLines) { (page: $0, selectedLines: $1) }
       .map  { SearchCardState(page: $0.page, selectedLines: $0.selectedLines) }
-      .bind { AppEnvironment.current.storage.saveSearchCardState($0) }
+      .bind { AppEnvironment.storage.saveSearchCardState($0) }
       .disposed(by: self.disposeBag)
   }
 }

@@ -16,8 +16,8 @@ class ApiManager: ApiManagerType {
   private lazy var session: SessionManager = {
     // 'Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)'
     let userAgent: String = {
-      let device = AppEnvironment.current.device
-      let bundle = AppEnvironment.current.bundle
+      let device = AppEnvironment.device
+      let bundle = AppEnvironment.bundle
 
       let deviceInfo = "\(device.model) \(device.systemName) \(device.systemVersion)"
       return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"

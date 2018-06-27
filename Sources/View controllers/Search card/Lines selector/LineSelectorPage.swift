@@ -95,7 +95,7 @@ class LineSelectorPage: UIViewController {
 
     self.collectionView.registerCell(LineSelectorCell.self)
     self.collectionView.registerSupplementary(LineSelectorHeaderView.self, ofKind: .header)
-    self.collectionView.backgroundColor         = AppEnvironment.current.theme.colors.background
+    self.collectionView.backgroundColor         = AppEnvironment.theme.colors.background
     self.collectionView.allowsSelection         = true
     self.collectionView.allowsMultipleSelection = true
     self.collectionView.alwaysBounceVertical    = true

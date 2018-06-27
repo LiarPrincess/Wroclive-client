@@ -16,7 +16,7 @@ struct TextAttributes {
   private var lineSpacing:      CGFloat
   private var paragraphSpacing: CGFloat
 
-  private var theme: ThemeManagerType { return AppEnvironment.current.theme }
+  private var theme: ThemeManagerType { return AppEnvironment.theme }
 
   // MARK: - Init
 

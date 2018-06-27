@@ -19,7 +19,7 @@ enum AppEnvironment {
 
   private static var stack: [Environment] = []
 
-  static var current: Environment {
+  private static var current: Environment {
     precondition(stack.any, "Attempting to use empty environment stack.")
     return stack.last!
   }
