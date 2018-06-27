@@ -74,7 +74,7 @@ class MapViewModel {
       let apiErrorAlert = vehicleResponses
         .errors()
         .map(toApiError)
-        .map { MapViewAlert.apiError(error: $0) }
+        .map { MapViewAlert.apiError($0) }
 
       return Observable.merge(requestAuthorizationAlert, deniedAuthorizationAlert, apiErrorAlert)
         .asDriver(onErrorDriveWith: .never())

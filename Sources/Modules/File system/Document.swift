@@ -8,8 +8,8 @@ enum Document {
 }
 
 enum DocumentData {
-  case bookmarks(value: [Bookmark])
-  case searchCardState(value: SearchCardState)
+  case bookmarks([Bookmark])
+  case searchCardState(SearchCardState)
 
   var document: Document {
     switch self {
@@ -20,8 +20,8 @@ enum DocumentData {
 
   var data: Any {
     switch self {
-    case let .bookmarks(value: value):       return value
-    case let .searchCardState(value: value): return value
+    case let .bookmarks(value):       return value
+    case let .searchCardState(value): return value
     }
   }
 }

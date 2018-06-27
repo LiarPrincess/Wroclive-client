@@ -41,9 +41,9 @@ class MapViewModelVehiclesTests: MapViewModelTestsBase {
     ])
 
     XCTAssertEqual(self.showAlertObserver.events, [
-      Recorded.next(300, .apiError(error: ApiError.generalError)),
-      Recorded.next(400, .apiError(error: ApiError.invalidResponse)),
-      Recorded.next(600, .apiError(error: ApiError.noInternet))
+      Recorded.next(300, .apiError(ApiError.generalError)),
+      Recorded.next(400, .apiError(ApiError.invalidResponse)),
+      Recorded.next(600, .apiError(ApiError.noInternet))
     ])
 
     self.liveManager.assertOperationCount(vehicles: 1)

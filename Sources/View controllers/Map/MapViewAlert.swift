@@ -6,5 +6,5 @@ enum MapViewAlert: Equatable {
   case requestLocationAuthorization
   case deniedLocationAuthorization
   case globallyDeniedLocationAuthorization
-  case apiError(error: ApiError)
+  case apiError(ApiError)
 }

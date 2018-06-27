@@ -26,12 +26,12 @@ class StorageManager: StorageManagerType {
 
   func saveBookmarks(_ bookmarks: [Bookmark]) {
     self._bookmarks = bookmarks
-    self.writeDocument(.bookmarks(value: bookmarks))
+    self.writeDocument(.bookmarks(bookmarks))
   }
 
   func saveSearchCardState(_ state: SearchCardState) {
     self._searchCardState = state
-    self.writeDocument(.searchCardState(value: state))
+    self.writeDocument(.searchCardState(state))
   }
 
   // MARK: - Document manager helpers
