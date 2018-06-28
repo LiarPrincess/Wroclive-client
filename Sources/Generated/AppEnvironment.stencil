@@ -1,10 +1,15 @@
+// sourcery:file:AppEnvironment.swift
+
 // This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+{% macro getName type %}{{ type.name|replace:"Manager",""|lowerFirstLetter }}{% endmacro %}
+{% macro getProtocol type %}{{ type.name }}Type{% endmacro %}
+
 enum AppEnvironment {
-  {% for type in types.implementing.ManagerType|protocol %}
-  static var {{ type.name|replace:"ManagerType",""|lowerFirstLetter }}: {{ type.name }} { return current.{{ type.name|replace:"ManagerType",""|lowerFirstLetter }} }
+  {% for manager in types.all|annotated:"manager" %}
+  static var {% call getName manager %}: {% call getProtocol manager %} { return current.{% call getName manager %} }
   {% endfor %}
   static var variables: EnvironmentVariables { return current.variables }
 
@@ -17,21 +22,21 @@ enum AppEnvironment {
 
   static func pushDefault() {
     push(
-    {% for type in types.implementing.ManagerType|protocol %}
-      {{ type.name|replace:"ManagerType",""|lowerFirstLetter }}: {{ type.name|replace:"Type","" }}(),
+    {% for manager in types.all|annotated:"manager" %}
+      {% call getName manager %}: {{ manager.name }}(),
     {% endfor %}
       variables: EnvironmentVariables())
   }
 
   static func push(
-  {% for type in types.implementing.ManagerType|protocol %}
-    {{ type.name|replace:"ManagerType",""|lowerFirstLetter }}: {{ type.name }} = current.{{ type.name|replace:"ManagerType",""|lowerFirstLetter }},
+  {% for manager in types.all|annotated:"manager" %}
+    {% call getName manager %}: {% call getProtocol manager %} = current.{% call getName manager %},
   {% endfor %}
     variables: EnvironmentVariables) {
 
     push(Environment(
-    {% for type in types.implementing.ManagerType|protocol %}
-      {{ type.name|replace:"ManagerType",""|lowerFirstLetter }}: {{ type.name|replace:"ManagerType",""|lowerFirstLetter }},
+    {% for manager in types.all|annotated:"manager" %}
+      {% call getName manager %}: {% call getName manager %},
     {% endfor %}
       variables: variables))
   }
@@ -44,3 +49,5 @@ enum AppEnvironment {
     _ = stack.popLast()
   }
 }
+
+// sourcery:end

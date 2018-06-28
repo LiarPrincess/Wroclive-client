@@ -4,7 +4,7 @@
 
 import UIKit
 
-protocol DeviceManagerType: ManagerType {
+protocol DeviceManagerType {
 
   // MARK: - Device
 

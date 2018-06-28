@@ -5,7 +5,7 @@
 import Foundation
 import RxSwift
 
-protocol ApiManagerType: ManagerType {
+protocol ApiManagerType {
 
   /// Get all currently available lines
   var availableLines: Single<[Line]> { get }

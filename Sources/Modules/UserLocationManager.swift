@@ -7,6 +7,7 @@ import MapKit
 import RxSwift
 import RxCoreLocation
 
+// sourcery: manager
 class UserLocationManager: NSObject, UserLocationManagerType {
 
   // MARK: - Properties

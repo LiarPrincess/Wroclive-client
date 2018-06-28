@@ -17,10 +17,7 @@
 		9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */; };
 		9010D5B5201FA04500563BDB /* ScrollViewDismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */; };
 		9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */; };
-		9016C73F20E431E90039A604 /* ManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016C73E20E431E90039A604 /* ManagerType.swift */; };
 		9016C74220E432BD0039A604 /* Environment.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9016C74120E432BD0039A604 /* Environment.stencil */; };
-		9016C74720E43CD70039A604 /* Environment.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016C74420E43CD70039A604 /* Environment.generated.swift */; };
-		9016C74820E43CD70039A604 /* AppEnvironment.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016C74520E43CD70039A604 /* AppEnvironment.generated.swift */; };
 		9016C74920E43CD70039A604 /* AppEnvironment.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9016C74620E43CD70039A604 /* AppEnvironment.stencil */; };
 		9016FD0A208B48820043524D /* SchedulersManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD09208B48820043524D /* SchedulersManagerType.swift */; };
 		9016FD0C208B48EC0043524D /* SchedulersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD0B208B48EC0043524D /* SchedulersManager.swift */; };
@@ -174,6 +171,8 @@
 		90C4B13A203213D600920706 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4B139203213D600920706 /* MapViewModel.swift */; };
 		90C4B13D2032152A00920706 /* MapViewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C4B13C2032152A00920706 /* MapViewAlert.swift */; };
 		90C5B58F20E15BB2007D72A2 /* CLAuthorizationStatus+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F8A520DFA68500793E4C /* CLAuthorizationStatus+String.swift */; };
+		90D078A420E554BC005FA3DF /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D078A220E554BB005FA3DF /* AppEnvironment.swift */; };
+		90D078A520E554BC005FA3DF /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D078A320E554BC005FA3DF /* Environment.swift */; };
 		90D3A3EA1FEC108D00FB7485 /* BookmarksPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3E91FEC108D00FB7485 /* BookmarksPlaceholderView.swift */; };
 		90D3A3ED1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3EC1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift */; };
 		90D3A3EF1FEC148C00FB7485 /* NSAttributedString+TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3EE1FEC148C00FB7485 /* NSAttributedString+TextAttributes.swift */; };
@@ -258,10 +257,7 @@
 		9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
 		9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewDismissGestureHandler.swift; sourceTree = "<group>"; };
 		9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandlerType.swift; sourceTree = "<group>"; };
-		9016C73E20E431E90039A604 /* ManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerType.swift; sourceTree = "<group>"; };
 		9016C74120E432BD0039A604 /* Environment.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = Environment.stencil; sourceTree = "<group>"; };
-		9016C74420E43CD70039A604 /* Environment.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.generated.swift; sourceTree = "<group>"; };
-		9016C74520E43CD70039A604 /* AppEnvironment.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.generated.swift; sourceTree = "<group>"; };
 		9016C74620E43CD70039A604 /* AppEnvironment.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppEnvironment.stencil; sourceTree = "<group>"; };
 		9016FD09208B48820043524D /* SchedulersManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulersManagerType.swift; sourceTree = "<group>"; };
 		9016FD0B208B48EC0043524D /* SchedulersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulersManager.swift; sourceTree = "<group>"; };
@@ -416,6 +412,8 @@
 		90B304381FB50A3700F5F20C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		90C4B139203213D600920706 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		90C4B13C2032152A00920706 /* MapViewAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewAlert.swift; sourceTree = "<group>"; };
+		90D078A220E554BB005FA3DF /* AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		90D078A320E554BC005FA3DF /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCellViewModelTests.swift; sourceTree = "<group>"; };
 		90D3A3E31FEBEE1A00FB7485 /* Pods_Wroclive_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Wroclive_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D3A3E91FEC108D00FB7485 /* BookmarksPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksPlaceholderView.swift; sourceTree = "<group>"; };
@@ -527,10 +525,10 @@
 		9016C74020E432480039A604 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				9016C74520E43CD70039A604 /* AppEnvironment.generated.swift */,
-				9016C74620E43CD70039A604 /* AppEnvironment.stencil */,
-				9016C74420E43CD70039A604 /* Environment.generated.swift */,
 				9016C74120E432BD0039A604 /* Environment.stencil */,
+				90D078A320E554BC005FA3DF /* Environment.swift */,
+				9016C74620E43CD70039A604 /* AppEnvironment.stencil */,
+				90D078A220E554BB005FA3DF /* AppEnvironment.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -743,7 +741,6 @@
 				906C40562014C55000E32571 /* DebugManagerType.swift */,
 				906C40582014C55700E32571 /* DebugManager.swift */,
 				9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */,
-				9016C73E20E431E90039A604 /* ManagerType.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1417,12 +1414,12 @@
 				906A7B5520025750004EC8A4 /* Observable+Unwrap.swift in Sources */,
 				908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksCardConstants.swift in Sources */,
+				90D078A420E554BC005FA3DF /* AppEnvironment.swift in Sources */,
 				901A80A9201382240013CCD9 /* SettingsTextCell.swift in Sources */,
 				90C4B13D2032152A00920706 /* MapViewAlert.swift in Sources */,
 				906C40632016786E00E32571 /* SearchCardAlert.swift in Sources */,
 				909B9FDC1FEBC3E2007CB59D /* BookmarksCellConstants.swift in Sources */,
 				90D3A3EF1FEC148C00FB7485 /* NSAttributedString+TextAttributes.swift in Sources */,
-				9016C74720E43CD70039A604 /* Environment.generated.swift in Sources */,
 				9050705F2087EE66007DDA80 /* StorageManager.swift in Sources */,
 				90915B171FFAFD5A009FE942 /* RxSectionTypeArray.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* ThemeManager.swift in Sources */,
@@ -1466,7 +1463,6 @@
 				9017C3671EE339FD00063377 /* MainViewController.swift in Sources */,
 				901FEAD91FE1EC8900C36A71 /* TextColor.swift in Sources */,
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
-				9016C73F20E431E90039A604 /* ManagerType.swift in Sources */,
 				901ECDD01FF5A003004765AA /* SearchCardViewModel.swift in Sources */,
 				901A8090200E9F580013CCD9 /* SettingsSectionType.swift in Sources */,
 				906C40572014C55000E32571 /* DebugManagerType.swift in Sources */,
@@ -1519,12 +1515,12 @@
 				908FB19E1F48B3CA00121584 /* ReusableCell+UICollectionView.swift in Sources */,
 				9045C2E31F9BDB3F002F35C3 /* Assets.swift in Sources */,
 				90D3A4091FEFE6D400FB7485 /* RxSectionType.swift in Sources */,
-				9016C74820E43CD70039A604 /* AppEnvironment.generated.swift in Sources */,
 				9017C3681EE339FD00063377 /* MainViewControllerConstants.swift in Sources */,
 				9017C3691EE339FD00063377 /* MainViewControllerLayout.swift in Sources */,
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
 				9021F3981F12C95D000A6949 /* UIView+RoundCorners.swift in Sources */,
 				9021F4381F12D698000A6949 /* LineSelectorCell.swift in Sources */,
+				90D078A520E554BC005FA3DF /* Environment.swift in Sources */,
 				901A80AB2013897A0013CCD9 /* SettingsTextCellConstants.swift in Sources */,
 				901ECDCE1FF58D74004765AA /* SearchPlaceholderViewConstants.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarksCell.swift in Sources */,

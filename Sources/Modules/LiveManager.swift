@@ -5,6 +5,7 @@
 import Foundation
 import RxSwift
 
+// sourcery: manager
 class LiveManager: LiveManagerType {
 
   private var trackedLines       = [Line]()

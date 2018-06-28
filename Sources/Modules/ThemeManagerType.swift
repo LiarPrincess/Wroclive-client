@@ -6,7 +6,8 @@ import UIKit
 import MapKit
 import Foundation
 
-protocol ThemeManagerType: ManagerType {
+// sourcery: manager
+protocol ThemeManagerType {
 
   var textFont: Font { get }
   var iconFont: Font { get }

@@ -4,6 +4,7 @@
 
 import UIKit
 
+// sourcery: manager
 class DeviceManager: DeviceManagerType {
 
   // MARK: - Device

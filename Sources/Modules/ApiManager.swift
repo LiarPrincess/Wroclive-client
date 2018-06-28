@@ -9,6 +9,7 @@ import RxSwift
 import RxAlamofire
 import Reachability
 
+// sourcery: manager
 class ApiManager: ApiManagerType {
 
   private lazy var reachability: Reachability? = Reachability()

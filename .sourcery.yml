@@ -1,0 +1,6 @@
+sources:
+  - Sources/
+templates:
+  - Sources/Generated/
+output:
+  Sources/Generated/

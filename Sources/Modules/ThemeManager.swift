@@ -6,6 +6,7 @@ import UIKit
 import Foundation
 
 // source: https://medium.com/@abhimuralidharan/maintaining-a-colour-theme-manager-on-ios-swift-178b8a6a92
+// sourcery: manager
 class ThemeManager: ThemeManagerType {
 
   // MARK: - Properties

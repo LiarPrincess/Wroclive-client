@@ -5,6 +5,7 @@
 import Foundation
 import RxSwift
 
+// sourcery: manager
 class DebugManager: DebugManagerType {
 
   #if DEBUG
