@@ -1,0 +1,8 @@
+input_dir: Sources/
+output_dir: Sources/Generated/
+strings:
+  paths: App/Base.lproj/Localizable.strings
+  templatePath: Sources/Generated/Localizable.stencil
+  output: Localizable.swift
+  params:
+    enumName: Localizable

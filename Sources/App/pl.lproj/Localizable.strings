@@ -8,75 +8,75 @@
 
 /* Bookmarks */
 
-"Bookmarks_Title"     = "Zakładki";
-"Bookmarks_Edit_Done" = "Gotowe";
-"Bookmarks_Edit_Edit" = "Edycja";
+"Bookmarks.Title"     = "Zakładki";
+"Bookmarks.Edit.Done" = "Gotowe";
+"Bookmarks.Edit.Edit" = "Edycja";
 
-"Bookmarks_Placeholder_Title"   = "Brak zakładek";
-"Bookmarks_Placeholder_Content" = "By dodać zakładkę użyj <star> podczas wyboru linii.";
+"Bookmarks.Placeholder.Title"   = "Brak zakładek";
+"Bookmarks.Placeholder.Content" = "By dodać zakładkę użyj <star> podczas wyboru linii.";
 
 /* Search */
 
-"Search_Title"   = "Linie";
-"Search_Search"  = "Szukaj";
-"Search_Loading" = "Wczytywanie…";
+"Search.Title"   = "Linie";
+"Search.Search"  = "Szukaj";
+"Search.Loading" = "Wczytywanie…";
 
-"Search_Pages_Tram" = "Tramwaje";
-"Search_Pages_Bus"  = "Autobusy";
+"Search.Pages.Tram" = "Tramwaje";
+"Search.Pages.Bus"  = "Autobusy";
 
-"Search_Sections_Express"   = "Pośpieszne";
-"Search_Sections_Limited"   = "Zastępcze";
-"Search_Sections_Night"     = "Nocne";
-"Search_Sections_PeakHour"  = "Szczytowe";
-"Search_Sections_Regular"   = "Normalne";
-"Search_Sections_Suburban"  = "Podmiejskie";
-"Search_Sections_Temporary" = "Tymczasowe";
-"Search_Sections_Zone"      = "Strefowe";
+"Search.Sections.Express"   = "Pośpieszne";
+"Search.Sections.Limited"   = "Zastępcze";
+"Search.Sections.Night"     = "Nocne";
+"Search.Sections.PeakHour"  = "Szczytowe";
+"Search.Sections.Regular"   = "Normalne";
+"Search.Sections.Suburban"  = "Podmiejskie";
+"Search.Sections.Temporary" = "Tymczasowe";
+"Search.Sections.Zone"      = "Strefowe";
 
 /* Settings */
 
-"Settings_Title"  = "Ustawienia";
-"Settings_Footer" = "Dane uzyskano dzięki uprzejmości MPK Wrocław";
+"Settings.Title"  = "Ustawienia";
+"Settings.Footer" = "Dane uzyskano dzięki uprzejmości MPK Wrocław";
 
-"Settings_Table_General_Header" = "Ogólne";
-"Settings_Table_General_Share"  = "Udostępnij";
-"Settings_Table_General_Rate"   = "Oceń";
-"Settings_Table_General_About"  = "O nas";
+"Settings.Table.General.Header" = "Ogólne";
+"Settings.Table.General.Share"  = "Udostępnij";
+"Settings.Table.General.Rate"   = "Oceń";
+"Settings.Table.General.About"  = "O nas";
 
 /* App */
 
-"Share_Message" = "Wroclive - Komunikacja miejska na żywo! %@";
+"Share.Message" = "Wroclive - Komunikacja miejska na żywo! %@";
 
 /* Alerts */
 
-"Alert_Bookmark_NameInput_Cancel"      = "Anuluj";
-"Alert_Bookmark_NameInput_Message"     = "Wprowadź nazwę nowej zakładki.";
-"Alert_Bookmark_NameInput_Placeholder" = "Nazwa";
-"Alert_Bookmark_NameInput_Save"        = "Zachowaj";
-"Alert_Bookmark_NameInput_Title"       = "Nowa zakładka";
+"Alert.Bookmark.NameInput.Cancel"      = "Anuluj";
+"Alert.Bookmark.NameInput.Message"     = "Wprowadź nazwę nowej zakładki.";
+"Alert.Bookmark.NameInput.Placeholder" = "Nazwa";
+"Alert.Bookmark.NameInput.Save"        = "Zachowaj";
+"Alert.Bookmark.NameInput.Title"       = "Nowa zakładka";
 
-"Alert_Bookmark_NoLinesSelected_Message" = "Zanim dodasz zakładkę musisz zaznaczyć przynajmniej 1 linię.";
-"Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
-"Alert_Bookmark_NoLinesSelected_Title"   = "Nie wybrano żadnych linii";
+"Alert.Bookmark.NoLinesSelected.Message" = "Zanim dodasz zakładkę musisz zaznaczyć przynajmniej 1 linię.";
+"Alert.Bookmark.NoLinesSelected.Ok"      = "OK";
+"Alert.Bookmark.NoLinesSelected.Title"   = "Nie wybrano żadnych linii";
 
-"Alert_Location_Denied_Message"  = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
-"Alert_Location_Denied_Ok"       = "OK";
-"Alert_Location_Denied_Settings" = "Ustawienia";
-"Alert_Location_Denied_Title"    = "Usługi lokalizacji wyłączone";
+"Alert.Location.Denied.Message"  = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
+"Alert.Location.Denied.Ok"       = "OK";
+"Alert.Location.Denied.Settings" = "Ustawienia";
+"Alert.Location.Denied.Title"    = "Usługi lokalizacji wyłączone";
 
-"Alert_Location_GloballyDenied_Message" = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
-"Alert_Location_GloballyDenied_Ok"      = "OK";
-"Alert_Location_GloballyDenied_Title"   = "Usługi lokalizacji wyłączone";
+"Alert.Location.GloballyDenied.Message" = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
+"Alert.Location.GloballyDenied.Ok"      = "OK";
+"Alert.Location.GloballyDenied.Title"   = "Usługi lokalizacji wyłączone";
 
-"Alert_InvalidCity_Message" = "Wroclive działa najlepiej we Wrocławiu.\nPokazać?";
-"Alert_InvalidCity_No"      = "Nie";
-"Alert_InvalidCity_Title"   = "Pora na przygodę!";
-"Alert_InvalidCity_Yes"     = "Tak";
+"Alert.InvalidCity.Message" = "Wroclive działa najlepiej we Wrocławiu.\nPokazać?";
+"Alert.InvalidCity.No"      = "Nie";
+"Alert.InvalidCity.Title"   = "Pora na przygodę!";
+"Alert.InvalidCity.Yes"     = "Tak";
 
-"Alert_Network_ConnectionError_Message"  = "Błąd połączenia z serwerem.";
-"Alert_Network_ConnectionError_Title"    = "Nie można pobrać danych";
-"Alert_Network_ConnectionError_TryAgain" = "Spróbuj ponownie";
+"Alert.Network.ConnectionError.Message"  = "Błąd połączenia z serwerem.";
+"Alert.Network.ConnectionError.Title"    = "Nie można pobrać danych";
+"Alert.Network.ConnectionError.TryAgain" = "Spróbuj ponownie";
 
-"Alert_Network_NoInternet_Message"  = "Sprawdź swoje połączenie z internetem.";
-"Alert_Network_NoInternet_Title"    = "Nie można pobrać danych";
-"Alert_Network_NoInternet_TryAgain" = "Spróbuj ponownie";
+"Alert.Network.NoInternet.Message"  = "Sprawdź swoje połączenie z internetem.";
+"Alert.Network.NoInternet.Title"    = "Nie można pobrać danych";
+"Alert.Network.NoInternet.TryAgain" = "Spróbuj ponownie";

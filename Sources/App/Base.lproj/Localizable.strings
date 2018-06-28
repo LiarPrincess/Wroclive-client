@@ -8,75 +8,75 @@
 
 /* Bookmarks */
 
-"Bookmarks_Title"     = "Bookmarks";
-"Bookmarks_Edit_Done" = "Done";
-"Bookmarks_Edit_Edit" = "Edit";
+"Bookmarks.Title"     = "Bookmarks";
+"Bookmarks.Edit.Done" = "Done";
+"Bookmarks.Edit.Edit" = "Edit";
 
-"Bookmarks_Placeholder_Title"   = "You have not saved any bookmarks";
-"Bookmarks_Placeholder_Content" = "To add bookmark press <star> when selecting lines.";
+"Bookmarks.Placeholder.Title"   = "You have not saved any bookmarks";
+"Bookmarks.Placeholder.Content" = "To add bookmark press <star> when selecting lines.";
 
 /* Search */
 
-"Search_Title"   = "Lines";
-"Search_Search"  = "Search";
-"Search_Loading" = "Loading…";
+"Search.Title"   = "Lines";
+"Search.Search"  = "Search";
+"Search.Loading" = "Loading…";
 
-"Search_Pages_Tram" = "Trams";
-"Search_Pages_Bus"  = "Buses";
+"Search.Pages.Tram" = "Trams";
+"Search.Pages.Bus"  = "Buses";
 
-"Search_Sections_Express"   = "Express";
-"Search_Sections_Limited"   = "Limited";
-"Search_Sections_Night"     = "Night";
-"Search_Sections_PeakHour"  = "Peak-hour";
-"Search_Sections_Regular"   = "Regular";
-"Search_Sections_Suburban"  = "Suburban";
-"Search_Sections_Temporary" = "Temporary";
-"Search_Sections_Zone"      = "Zone";
+"Search.Sections.Express"   = "Express";
+"Search.Sections.Limited"   = "Limited";
+"Search.Sections.Night"     = "Night";
+"Search.Sections.PeakHour"  = "Peak-hour";
+"Search.Sections.Regular"   = "Regular";
+"Search.Sections.Suburban"  = "Suburban";
+"Search.Sections.Temporary" = "Temporary";
+"Search.Sections.Zone"      = "Zone";
 
 /* Settings */
 
-"Settings_Title"  = "Settings";
-"Settings_Footer" = "Data provided by MPK Wrocław";
+"Settings.Title"  = "Settings";
+"Settings.Footer" = "Data provided by MPK Wrocław";
 
-"Settings_Table_General_Header" = "General";
-"Settings_Table_General_Share"  = "Share";
-"Settings_Table_General_Rate"   = "Rate app";
-"Settings_Table_General_About"  = "About";
+"Settings.Table.General.Header" = "General";
+"Settings.Table.General.Share"  = "Share";
+"Settings.Table.General.Rate"   = "Rate app";
+"Settings.Table.General.About"  = "About";
 
 /* App */
 
-"Share_Message" = "Wroclive - Real time public transport! %@";
+"Share.Message" = "Wroclive - Real time public transport! %@";
 
 /* Alerts */
 
-"Alert_Bookmark_NameInput_Cancel"      = "Cancel";
-"Alert_Bookmark_NameInput_Message"     = "Enter name for this bookmark.";
-"Alert_Bookmark_NameInput_Placeholder" = "Name";
-"Alert_Bookmark_NameInput_Save"        = "Save";
-"Alert_Bookmark_NameInput_Title"       = "New bookmark";
+"Alert.Bookmark.NameInput.Cancel"      = "Cancel";
+"Alert.Bookmark.NameInput.Message"     = "Enter name for this bookmark.";
+"Alert.Bookmark.NameInput.Placeholder" = "Name";
+"Alert.Bookmark.NameInput.Save"        = "Save";
+"Alert.Bookmark.NameInput.Title"       = "New bookmark";
 
-"Alert_Bookmark_NoLinesSelected_Message" = "Please select some lines before trying to create bookmark.";
-"Alert_Bookmark_NoLinesSelected_Ok"      = "OK";
-"Alert_Bookmark_NoLinesSelected_Title"   = "No lines selected";
+"Alert.Bookmark.NoLinesSelected.Message" = "Please select some lines before trying to create bookmark.";
+"Alert.Bookmark.NoLinesSelected.Ok"      = "OK";
+"Alert.Bookmark.NoLinesSelected.Title"   = "No lines selected";
 
-"Alert_Location_Denied_Message"  = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
-"Alert_Location_Denied_Ok"       = "OK";
-"Alert_Location_Denied_Settings" = "Settings";
-"Alert_Location_Denied_Title"    = "Location Services Off";
+"Alert.Location.Denied.Message"  = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
+"Alert.Location.Denied.Ok"       = "OK";
+"Alert.Location.Denied.Settings" = "Settings";
+"Alert.Location.Denied.Title"    = "Location Services Off";
 
-"Alert_Location_GloballyDenied_Message" = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
-"Alert_Location_GloballyDenied_Ok"      = "OK";
-"Alert_Location_GloballyDenied_Title"   = "Location Services Off";
+"Alert.Location.GloballyDenied.Message" = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
+"Alert.Location.GloballyDenied.Ok"      = "OK";
+"Alert.Location.GloballyDenied.Title"   = "Location Services Off";
 
-"Alert_InvalidCity_Message" = "Wroclive works best in Wrocław.\nWould you like to visit?";
-"Alert_InvalidCity_No"      = "No";
-"Alert_InvalidCity_Title"   = "Adventure time!";
-"Alert_InvalidCity_Yes"     = "Yes";
+"Alert.InvalidCity.Message" = "Wroclive works best in Wrocław.\nWould you like to visit?";
+"Alert.InvalidCity.No"      = "No";
+"Alert.InvalidCity.Title"   = "Adventure time!";
+"Alert.InvalidCity.Yes"     = "Yes";
 
-"Alert_Network_ConnectionError_Message"  = "Could not connect to server.";
-"Alert_Network_ConnectionError_Title"    = "Unable to retrieve data";
-"Alert_Network_ConnectionError_TryAgain" = "Try again";
+"Alert.Network.ConnectionError.Message"  = "Could not connect to server.";
+"Alert.Network.ConnectionError.Title"    = "Unable to retrieve data";
+"Alert.Network.ConnectionError.TryAgain" = "Try again";
 
-"Alert_Network_NoInternet_Message"  = "Please check your internet connection.";
-"Alert_Network_NoInternet_Title"    = "Unable to retrieve data";
-"Alert_Network_NoInternet_TryAgain" = "Try again";
+"Alert.Network.NoInternet.Message"  = "Please check your internet connection.";
+"Alert.Network.NoInternet.Title"    = "Unable to retrieve data";
+"Alert.Network.NoInternet.TryAgain" = "Try again";
