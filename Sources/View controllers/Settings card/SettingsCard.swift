@@ -135,7 +135,7 @@ class SettingsCard: CardPanel {
   func showShareActivity() {
     let url   = AppEnvironment.variables.appStore.shareUrl
     let text  = Localizable.Share.message(url.absoluteString)
-    let image = Assets.shareImage
+    let image = Assets.shareImage.image
     let items = [text, image] as [Any]
 
     let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
