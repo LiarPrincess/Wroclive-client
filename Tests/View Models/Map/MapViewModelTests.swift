@@ -13,7 +13,11 @@ import RxTest
 
 private typealias Defaults = MapViewControllerConstants.Defaults
 
-class MapViewModelTestsBase: TestCase {
+class MapViewModelTests: TestCase {
+
+  var locationAuthorizationPromptDelay: Int {
+    return Int(AppEnvironment.variables.timings.locationAuthorizationPromptDelay)
+  }
 
   var viewModel: MapViewModel!
 

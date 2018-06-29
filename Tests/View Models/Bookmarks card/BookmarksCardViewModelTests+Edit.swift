@@ -11,7 +11,7 @@ import RxTest
 private typealias TextStyles   = BookmarksCardConstants.TextStyles.Edit
 private typealias Localization = Localizable.Bookmarks.Edit
 
-class BookmarksCardViewModelEditTests: BookmarksCardViewModelTestsBase {
+extension BookmarksCardViewModelTests {
 
   func test_editButton_changesIsEditing() {
     self.viewModel = BookmarksCardViewModel()

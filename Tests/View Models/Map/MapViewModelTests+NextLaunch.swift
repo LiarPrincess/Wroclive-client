@@ -11,7 +11,7 @@ import RxTest
 
 private typealias Defaults = MapViewControllerConstants.Defaults
 
-class MapViewModelNextLaunchTests: MapViewModelTestsBase {
+extension MapViewModelTests {
 
   /**
    Prerequisites:

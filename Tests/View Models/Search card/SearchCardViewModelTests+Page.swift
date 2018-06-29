@@ -8,7 +8,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-class SearchCardViewModelPageTests: SearchCardViewModelTestsBase {
+extension SearchCardViewModelTests {
 
   func test_opening_startsWithPage_fromSavedState() {
     let state = SearchCardState(page: .tram, selectedLines: [])

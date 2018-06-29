@@ -8,7 +8,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-class BookmarksCardViewModelVisibilityTests: BookmarksCardViewModelTestsBase {
+extension BookmarksCardViewModelTests {
 
   func test_withoutBookmarks_showsPlaceholder() {
     self.storageManager._bookmarks = []
@@ -33,7 +33,7 @@ class BookmarksCardViewModelVisibilityTests: BookmarksCardViewModelTestsBase {
     XCTAssertEqual(tableViewObserver.events, expectedTableViewEvents)
   }
 
-  func test_withAnyBookmarks_showsTableView() {
+  func test_withBookmarks_showsTableView() {
     self.storageManager._bookmarks = self.testData
     self.viewModel = BookmarksCardViewModel()
 
@@ -56,7 +56,7 @@ class BookmarksCardViewModelVisibilityTests: BookmarksCardViewModelTestsBase {
     XCTAssertEqual(tableViewObserver.events, expectedTableViewEvents)
   }
 
-  func test_afterAllBookmarksDeleted_showsPlaceholder() {
+  func test_deletingBookmarks_showsPlaceholder() {
     self.storageManager._bookmarks = self.testData
     self.viewModel = BookmarksCardViewModel()
 

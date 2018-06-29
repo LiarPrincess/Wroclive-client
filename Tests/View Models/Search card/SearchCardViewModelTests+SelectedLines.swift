@@ -8,7 +8,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-class SearchCardViewModelLineSelectionTests: SearchCardViewModelTestsBase {
+extension SearchCardViewModelTests {
 
   func test_startsWithSelectedLines_fromManager() {
     let lines = self.testData

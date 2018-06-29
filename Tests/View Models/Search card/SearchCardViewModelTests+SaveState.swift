@@ -8,7 +8,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-class SearchCardViewModelSaveStateTests: SearchCardViewModelTestsBase {
+extension SearchCardViewModelTests {
 
   func test_didDisappear_savesState() {
     let initialLines = self.testData

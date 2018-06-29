@@ -11,11 +11,7 @@ import RxTest
 
 private typealias Defaults = MapViewControllerConstants.Defaults
 
-class MapViewModelFirstLaunchTests: MapViewModelTestsBase {
-
-  private var locationAuthorizationPromptDelay: Int {
-    return Int(AppEnvironment.current.variables.timings.locationAuthorizationPromptDelay)
-  }
+extension MapViewModelTests {
 
   func test_lauching_centersOnDefaultLocation() {
     self.startScheduler()

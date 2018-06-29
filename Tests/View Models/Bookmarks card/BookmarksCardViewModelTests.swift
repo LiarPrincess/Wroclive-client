@@ -10,7 +10,7 @@ import RxTest
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-class BookmarksCardViewModelTestsBase: TestCase {
+class BookmarksCardViewModelTests: TestCase {
 
   var viewModel: BookmarksCardViewModel!
 

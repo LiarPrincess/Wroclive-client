@@ -8,7 +8,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-class SearchCardViewModelLinesTests: SearchCardViewModelTestsBase {
+extension SearchCardViewModelTests {
 
   /**
    Steps:

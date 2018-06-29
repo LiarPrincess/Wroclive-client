@@ -8,7 +8,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-class BookmarksCardViewModelBookmarksTests: BookmarksCardViewModelTestsBase {
+extension BookmarksCardViewModelTests {
 
   func test_startsWithBookmarks_fromManager() {
     let bookmarks = self.testData

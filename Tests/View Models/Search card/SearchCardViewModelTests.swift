@@ -12,7 +12,7 @@ import RxTest
 
 private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
-class SearchCardViewModelTestsBase: TestCase {
+class SearchCardViewModelTests: TestCase {
 
   var viewModel: SearchCardViewModel!
 

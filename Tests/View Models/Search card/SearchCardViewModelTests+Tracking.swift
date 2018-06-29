@@ -8,7 +8,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-class SearchCardViewModelTrackingTests: SearchCardViewModelTestsBase {
+extension SearchCardViewModelTests {
 
   func test_search_startsTracking() {
     let lines = self.testData

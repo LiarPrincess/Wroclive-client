@@ -8,7 +8,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-class BookmarksCardViewModelSelectionTests: BookmarksCardViewModelTestsBase {
+extension BookmarksCardViewModelTests {
 
   func test_selectingItem_startsTracking() {
     let bookmarks = self.testData

@@ -8,7 +8,7 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-class SearchCardViewModelBookmarksTests: SearchCardViewModelTestsBase {
+extension SearchCardViewModelTests {
 
   func test_bookmarkButton_withoutSelectedLines_showsNoLineSelectedAlert() {
     let state = SearchCardState(page: .tram, selectedLines: [])
