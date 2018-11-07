@@ -9,13 +9,9 @@ import MapKit
 // source: https://medium.com/@abhimuralidharan/maintaining-a-colour-theme-manager-on-ios-swift-178b8a6a92
 enum Theme {
 
-  // MARK: - Properties
-
   static fileprivate(set) var textFont: Font        = SystemFont()
   static fileprivate(set) var iconFont: Font        = FontAwesomeFont()
   static fileprivate(set) var colors:   ColorScheme = ColorScheme()
-
-  // MARK: - Fonts
 
   static func recalculateFontSizes() {
     Theme.textFont.recalculateSizes()

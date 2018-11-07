@@ -40,7 +40,6 @@ class TestCase: XCTestCase {
                         live:          self.liveManager,
                         schedulers:    self.schedulersManager,
                         storage:       self.storageManager,
-                        theme:         ThemeManager(),
                         userLocation:  self.userLocationManager,
                         variables:     EnvironmentVariables())
   }

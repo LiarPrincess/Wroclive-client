@@ -521,7 +521,6 @@
 				9021F3F91F12C9EF000A6949 /* Card panel */,
 				908FB1951F48B3CA00121584 /* Layout guide */,
 				908FB1971F48B3CA00121584 /* Reusable cell */,
-				901FEAD11FE1EC8900C36A71 /* Text attributes */,
 				90C4B133202E331A00920706 /* Rx data sources */,
 			);
 			path = Helpers;
@@ -555,7 +554,9 @@
 			isa = PBXGroup;
 			children = (
 				905D71B11FE1C6A8006D1DB6 /* Theme */,
+				901FEAD11FE1EC8900C36A71 /* Text attributes */,
 				90AF2BD31EE9DE00006E61D6 /* Theme.swift */,
+				901ECDBE1FF587F1004765AA /* TextAttributes.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -637,8 +638,10 @@
 		901FEAD11FE1EC8900C36A71 /* Text attributes */ = {
 			isa = PBXGroup;
 			children = (
-				90374B4620D86DF400315F80 /* Enumerations */,
-				901ECDBE1FF587F1004765AA /* TextAttributes.swift */,
+				901FEAD31FE1EC8900C36A71 /* TextColor.swift */,
+				901ECDB81FF5875F004765AA /* FontType.swift */,
+				901ECDBC1FF587B6004765AA /* TextStyle.swift */,
+				901ECDB61FF586F5004765AA /* TextAlignment.swift */,
 			);
 			path = "Text attributes";
 			sourceTree = "<group>";
@@ -802,17 +805,6 @@
 				902FC75B1FB79254002E09FE /* LinePositionMaskGenerator.swift */,
 			);
 			path = "Asset generators";
-			sourceTree = "<group>";
-		};
-		90374B4620D86DF400315F80 /* Enumerations */ = {
-			isa = PBXGroup;
-			children = (
-				901FEAD31FE1EC8900C36A71 /* TextColor.swift */,
-				901ECDB81FF5875F004765AA /* FontType.swift */,
-				901ECDBC1FF587B6004765AA /* TextStyle.swift */,
-				901ECDB61FF586F5004765AA /* TextAlignment.swift */,
-			);
-			path = Enumerations;
 			sourceTree = "<group>";
 		};
 		90374B4720D871C900315F80 /* View Models */ = {
