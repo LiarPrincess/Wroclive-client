@@ -12,15 +12,15 @@ class MainViewModel {
 
   // MARK: - Inputs
 
-  let didPressSearchButton:        AnyObserver<Void>
-  let didPressBookmarkButton:      AnyObserver<Void>
-  let didPressConfigurationButton: AnyObserver<Void>
+  let didPressSearchButton:   AnyObserver<Void>
+  let didPressBookmarkButton: AnyObserver<Void>
+  let didPressSettingsButton: AnyObserver<Void>
 
   // MARK: - Outputs
 
-  let openSearchCard: Driver<Void>
+  let openSearchCard:    Driver<Void>
   let openBookmarksCard: Driver<Void>
-  let openConfigurationCard: Driver<Void>
+  let openSettingsCard:  Driver<Void>
 
   init() {
     let _didPressSearchButton = PublishSubject<Void>()
@@ -31,8 +31,8 @@ class MainViewModel {
     self.didPressBookmarkButton = _didPressBookmarkButton.asObserver()
     self.openBookmarksCard = _didPressBookmarkButton.asDriver(onErrorDriveWith: .never())
 
-    let _didPressConfigurationButton = PublishSubject<Void>()
-    self.didPressConfigurationButton = _didPressConfigurationButton.asObserver()
-    self.openConfigurationCard = _didPressConfigurationButton.asDriver(onErrorDriveWith: .never())
+    let _didPressSettingsButton = PublishSubject<Void>()
+    self.didPressSettingsButton = _didPressSettingsButton.asObserver()
+    self.openSettingsCard = _didPressSettingsButton.asDriver(onErrorDriveWith: .never())
   }
 }

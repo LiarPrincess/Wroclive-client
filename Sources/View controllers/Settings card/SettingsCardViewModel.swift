@@ -13,6 +13,7 @@ class SettingsCardViewModel {
   // MARK: - Inputs
 
   let didSelectItem: AnyObserver<IndexPath>
+  let disposeBag = DisposeBag()
 
   // MARK: - Outputs
 

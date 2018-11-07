@@ -57,6 +57,6 @@ class MainViewController: UIViewController {
 
   @objc
   func configurationButtonPressed() {
-    self.viewModel.didPressConfigurationButton.onNext()
+    self.viewModel.didPressSettingsButton.onNext()
   }
 }

@@ -40,7 +40,6 @@ class SettingsCard: CardPanel {
     super.init(nibName: nil, bundle: nil)
 
     self.initTableViewBindings()
-    self.initCellButtonsBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -60,20 +59,6 @@ class SettingsCard: CardPanel {
     self.tableView.rx.itemSelected
       .do(onNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) })
       .bind(to: self.viewModel.didSelectItem)
-      .disposed(by: self.disposeBag)
-  }
-
-  private func initCellButtonsBindings() {
-    self.viewModel.showShareControl
-      .drive(onNext: { [unowned self] _ in self.showShareActivity() })
-      .disposed(by: self.disposeBag)
-
-    self.viewModel.showRateControl
-      .drive(onNext: { [unowned self] _ in self.rateApp() })
-      .disposed(by: self.disposeBag)
-
-    self.viewModel.showAboutPage
-      .drive(onNext: { [unowned self] _ in self.showAboutPage() })
       .disposed(by: self.disposeBag)
   }
 
@@ -124,30 +109,6 @@ class SettingsCard: CardPanel {
       let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
       self.tableView.setContentOffset(newOffset, animated: false)
     }
-  }
-
-  // MARK: - Buttons
-
-  func rateApp() {
-    UIApplication.shared.open(AppEnvironment.variables.appStore.writeReviewUrl)
-  }
-
-  func showShareActivity() {
-    let url   = AppEnvironment.variables.appStore.shareUrl
-    let text  = Localizable.Share.message(url.absoluteString)
-    let image = Assets.shareImage.image
-    let items = [text, image] as [Any]
-
-    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-    activityViewController.excludedActivityTypes  = [.assignToContact, .saveToCameraRoll, .addToReadingList, .postToFlickr, .postToVimeo, .openInIBooks, .print]
-    activityViewController.modalPresentationStyle = .overCurrentContext
-    self.present(activityViewController, animated: true, completion: nil)
-  }
-
-  func showAboutPage() {
-    let safariViewController = SFSafariViewController(url: AppEnvironment.variables.websiteUrl)
-    safariViewController.modalPresentationStyle = .overFullScreen
-    self.present(safariViewController, animated: true, completion: nil)
   }
 }
 

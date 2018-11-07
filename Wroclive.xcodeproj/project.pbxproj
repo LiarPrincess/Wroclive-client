@@ -15,6 +15,9 @@
 		900CBE912192E2B30028C58F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE902192E2B30028C58F /* Coordinator.swift */; };
 		900CBE932192E2EB0028C58F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE922192E2EB0028C58F /* AppCoordinator.swift */; };
 		900CBE952192E4DC0028C58F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE942192E4DC0028C58F /* MainViewModel.swift */; };
+		900CBE972193291F0028C58F /* SettingsCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE962193291F0028C58F /* SettingsCardCoordinator.swift */; };
+		900CBE99219362B70028C58F /* BookmarksCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE98219362B70028C58F /* BookmarksCardCoordinator.swift */; };
+		900CBE9B21937E2D0028C58F /* SearchCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE9A21937E2D0028C58F /* SearchCardCoordinator.swift */; };
 		900CEC021FC4D5D7001C6B04 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC011FC4D5D7001C6B04 /* Document.swift */; };
 		900CEC041FC4E3F1001C6B04 /* Array+Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC031FC4E3F1001C6B04 /* Array+Any.swift */; };
 		9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */; };
@@ -260,6 +263,9 @@
 		900CBE902192E2B30028C58F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		900CBE922192E2EB0028C58F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		900CBE942192E4DC0028C58F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		900CBE962193291F0028C58F /* SettingsCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardCoordinator.swift; sourceTree = "<group>"; };
+		900CBE98219362B70028C58F /* BookmarksCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardCoordinator.swift; sourceTree = "<group>"; };
+		900CBE9A21937E2D0028C58F /* SearchCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardCoordinator.swift; sourceTree = "<group>"; };
 		900CEC011FC4D5D7001C6B04 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		900CEC031FC4E3F1001C6B04 /* Array+Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Any.swift"; sourceTree = "<group>"; };
 		9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
@@ -537,6 +543,9 @@
 			children = (
 				900CBE902192E2B30028C58F /* Coordinator.swift */,
 				900CBE922192E2EB0028C58F /* AppCoordinator.swift */,
+				900CBE962193291F0028C58F /* SettingsCardCoordinator.swift */,
+				900CBE98219362B70028C58F /* BookmarksCardCoordinator.swift */,
+				900CBE9A21937E2D0028C58F /* SearchCardCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1439,6 +1448,7 @@
 				907F26811F7460E4000C272B /* CLLocation+Init.swift in Sources */,
 				906A7B5520025750004EC8A4 /* Observable+Unwrap.swift in Sources */,
 				908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */,
+				900CBE99219362B70028C58F /* BookmarksCardCoordinator.swift in Sources */,
 				9017C35B1EE339FD00063377 /* BookmarksCardConstants.swift in Sources */,
 				90D078A420E554BC005FA3DF /* AppEnvironment.swift in Sources */,
 				901A80A9201382240013CCD9 /* SettingsTextCell.swift in Sources */,
@@ -1539,6 +1549,7 @@
 				9079DCD61F6C545600C6ABCD /* EnvironmentVariables.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchCardState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
+				900CBE9B21937E2D0028C58F /* SearchCardCoordinator.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */,
 				9021F43F1F12D698000A6949 /* LineSelectorCellViewModel.swift in Sources */,
 				90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */,
@@ -1549,6 +1560,7 @@
 				9021F41A1F12C9EF000A6949 /* CardPanelPresenter.swift in Sources */,
 				9021F3981F12C95D000A6949 /* UIView+RoundCorners.swift in Sources */,
 				9021F4381F12D698000A6949 /* LineSelectorCell.swift in Sources */,
+				900CBE972193291F0028C58F /* SettingsCardCoordinator.swift in Sources */,
 				90D078A520E554BC005FA3DF /* Environment.swift in Sources */,
 				901A80AB2013897A0013CCD9 /* SettingsTextCellConstants.swift in Sources */,
 				901ECDCE1FF58D74004765AA /* SearchPlaceholderViewConstants.swift in Sources */,
