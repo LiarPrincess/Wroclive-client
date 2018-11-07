@@ -16,8 +16,6 @@ struct TextAttributes {
   private var lineSpacing:      CGFloat
   private var paragraphSpacing: CGFloat
 
-  private var theme: ThemeManagerType { return AppEnvironment.theme }
-
   // MARK: - Init
 
   init(
@@ -80,13 +78,13 @@ struct TextAttributes {
 
   private func colorValue() -> UIColor {
     switch self.color {
-    case .background:            return self.theme.colors.background
-    case .accentLight:           return self.theme.colors.accentLight
-    case .accentDark:            return self.theme.colors.accentDark
-    case .text:                  return self.theme.colors.text
-    case .tint:                  return self.theme.colors.tint
-    case .bus:                   return self.theme.colors.bus
-    case .tram:                  return self.theme.colors.tram
+    case .background:  return Theme.colors.background
+    case .accentLight: return Theme.colors.accentLight
+    case .accentDark:  return Theme.colors.accentDark
+    case .text:        return Theme.colors.text
+    case .tint:        return Theme.colors.tint
+    case .bus:         return Theme.colors.bus
+    case .tram:        return Theme.colors.tram
     }
   }
 
@@ -112,8 +110,8 @@ struct TextAttributes {
 
   private func fontFamilyValue() -> Font {
     switch self.font {
-    case .text: return self.theme.textFont
-    case .icon: return self.theme.iconFont
+    case .text: return Theme.textFont
+    case .icon: return Theme.iconFont
     }
   }
 

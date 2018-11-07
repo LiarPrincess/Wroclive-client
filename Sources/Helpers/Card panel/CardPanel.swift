@@ -41,7 +41,7 @@ class CardPanel: UIViewController {
     }
 
     self.chevronView.state = .down
-    self.chevronView.color = AppEnvironment.theme.colors.accentLight
+    self.chevronView.color = Theme.colors.accentLight
     self.chevronView.animationDuration = 0.1
 
     self.chevronViewContainer.addSubview(self.chevronView)

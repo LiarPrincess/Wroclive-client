@@ -15,7 +15,6 @@ enum AppEnvironment {
   static var live: LiveManagerType { return current.live }
   static var schedulers: SchedulersManagerType { return current.schedulers }
   static var storage: StorageManagerType { return current.storage }
-  static var theme: ThemeManagerType { return current.theme }
   static var userLocation: UserLocationManagerType { return current.userLocation }
   static var variables: EnvironmentVariables { return current.variables }
 
@@ -35,7 +34,6 @@ enum AppEnvironment {
       live: LiveManager(),
       schedulers: SchedulersManager(),
       storage: StorageManager(),
-      theme: ThemeManager(),
       userLocation: UserLocationManager(),
       variables: EnvironmentVariables())
   }
@@ -48,7 +46,6 @@ enum AppEnvironment {
     live: LiveManagerType = current.live,
     schedulers: SchedulersManagerType = current.schedulers,
     storage: StorageManagerType = current.storage,
-    theme: ThemeManagerType = current.theme,
     userLocation: UserLocationManagerType = current.userLocation,
     variables: EnvironmentVariables) {
 
@@ -60,7 +57,6 @@ enum AppEnvironment {
       live: live,
       schedulers: schedulers,
       storage: storage,
-      theme: theme,
       userLocation: userLocation,
       variables: variables))
   }

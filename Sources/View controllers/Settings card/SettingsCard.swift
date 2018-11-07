@@ -19,7 +19,7 @@ class SettingsCard: CardPanel {
   private let disposeBag = DisposeBag()
 
   lazy var headerView: UIVisualEffectView = {
-    let blur = UIBlurEffect(style: AppEnvironment.theme.colors.blurStyle)
+    let blur = UIBlurEffect(style: Theme.colors.blurStyle)
     return UIVisualEffectView(effect: blur)
   }()
 

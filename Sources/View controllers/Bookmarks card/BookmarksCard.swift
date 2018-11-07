@@ -14,7 +14,7 @@ class BookmarksCard: CardPanel {
   // MARK: - Properties
 
   var headerView: UIVisualEffectView = {
-    let blur = UIBlurEffect(style: AppEnvironment.theme.colors.blurStyle)
+    let blur = UIBlurEffect(style: Theme.colors.blurStyle)
     return UIVisualEffectView(effect: blur)
   }()
 

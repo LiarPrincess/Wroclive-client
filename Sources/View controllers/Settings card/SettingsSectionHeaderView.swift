@@ -30,7 +30,7 @@ class SettingsSectionHeaderView: UITableViewHeaderFooterView {
   }
 
   private func initLayout() {
-    self.contentView.backgroundColor = AppEnvironment.theme.colors.background
+    self.contentView.backgroundColor = Theme.colors.background
 
     self.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in

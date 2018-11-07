@@ -15,7 +15,6 @@ struct Environment {
   let live: LiveManagerType
   let schedulers: SchedulersManagerType
   let storage: StorageManagerType
-  let theme: ThemeManagerType
   let userLocation: UserLocationManagerType
   let variables: EnvironmentVariables
 }
