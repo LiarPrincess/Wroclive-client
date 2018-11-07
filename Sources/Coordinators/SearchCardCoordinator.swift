@@ -6,12 +6,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SearchCardCoordinator: CoordinatorType {
+class SearchCardCoordinator: CardCoordinator {
 
-  private var card:                   SearchCard?
-  private var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var card:                   SearchCard?
+  var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
-  private let parent: UIViewController
+  let parent: UIViewController
 
   init(_ parent: UIViewController) {
     self.parent = parent
@@ -28,10 +28,6 @@ class SearchCardCoordinator: CoordinatorType {
       })
       .disposed(by: viewModel.disposeBag)
 
-    self.cardTransitionDelegate = CardPanelTransitionDelegate(for: self.card!)
-    self.card!.modalPresentationStyle = .custom
-    self.card!.transitioningDelegate  = self.cardTransitionDelegate!
-
-    self.parent.present(self.card!, animated: true, completion: nil)
+    self.presentCard(animated: true)
   }
 }

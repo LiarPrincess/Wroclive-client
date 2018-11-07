@@ -7,12 +7,12 @@ import RxSwift
 import RxCocoa
 import SafariServices
 
-class SettingsCardCoordinator: CoordinatorType {
+class SettingsCardCoordinator: CardCoordinator {
 
-  private var card:                   SettingsCard?
-  private var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var card:                   SettingsCard?
+  var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
-  private let parent: UIViewController
+  let parent: UIViewController
 
   init(_ parent: UIViewController) {
     self.parent = parent
@@ -34,11 +34,7 @@ class SettingsCardCoordinator: CoordinatorType {
       .drive(onNext: { [unowned self] in self.showAboutPage() })
       .disposed(by: viewModel.disposeBag)
 
-    self.cardTransitionDelegate = CardPanelTransitionDelegate(for: self.card!)
-    self.card!.modalPresentationStyle = .custom
-    self.card!.transitioningDelegate  = self.cardTransitionDelegate!
-
-    self.parent.present(self.card!, animated: true, completion: nil)
+    self.presentCard(animated: true)
   }
 
   func rateApp() {

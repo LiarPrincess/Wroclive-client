@@ -18,6 +18,7 @@
 		900CBE972193291F0028C58F /* SettingsCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE962193291F0028C58F /* SettingsCardCoordinator.swift */; };
 		900CBE99219362B70028C58F /* BookmarksCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE98219362B70028C58F /* BookmarksCardCoordinator.swift */; };
 		900CBE9B21937E2D0028C58F /* SearchCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE9A21937E2D0028C58F /* SearchCardCoordinator.swift */; };
+		900CBE9D219388F30028C58F /* CardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE9C219388F30028C58F /* CardCoordinator.swift */; };
 		900CEC021FC4D5D7001C6B04 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC011FC4D5D7001C6B04 /* Document.swift */; };
 		900CEC041FC4E3F1001C6B04 /* Array+Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC031FC4E3F1001C6B04 /* Array+Any.swift */; };
 		9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */; };
@@ -266,6 +267,7 @@
 		900CBE962193291F0028C58F /* SettingsCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCardCoordinator.swift; sourceTree = "<group>"; };
 		900CBE98219362B70028C58F /* BookmarksCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardCoordinator.swift; sourceTree = "<group>"; };
 		900CBE9A21937E2D0028C58F /* SearchCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardCoordinator.swift; sourceTree = "<group>"; };
+		900CBE9C219388F30028C58F /* CardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCoordinator.swift; sourceTree = "<group>"; };
 		900CEC011FC4D5D7001C6B04 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		900CEC031FC4E3F1001C6B04 /* Array+Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Any.swift"; sourceTree = "<group>"; };
 		9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
@@ -542,10 +544,11 @@
 			isa = PBXGroup;
 			children = (
 				900CBE902192E2B30028C58F /* Coordinator.swift */,
+				900CBE9C219388F30028C58F /* CardCoordinator.swift */,
 				900CBE922192E2EB0028C58F /* AppCoordinator.swift */,
-				900CBE962193291F0028C58F /* SettingsCardCoordinator.swift */,
-				900CBE98219362B70028C58F /* BookmarksCardCoordinator.swift */,
 				900CBE9A21937E2D0028C58F /* SearchCardCoordinator.swift */,
+				900CBE98219362B70028C58F /* BookmarksCardCoordinator.swift */,
+				900CBE962193291F0028C58F /* SettingsCardCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1564,6 +1567,7 @@
 				90D078A520E554BC005FA3DF /* Environment.swift in Sources */,
 				901A80AB2013897A0013CCD9 /* SettingsTextCellConstants.swift in Sources */,
 				901ECDCE1FF58D74004765AA /* SearchPlaceholderViewConstants.swift in Sources */,
+				900CBE9D219388F30028C58F /* CardCoordinator.swift in Sources */,
 				9017C36F1EE33AA300063377 /* BookmarksCell.swift in Sources */,
 				906C40522013F6AC00E32571 /* UIApplication+TopViewController.swift in Sources */,
 				9017C3651EE339FD00063377 /* SearchCardConstants.swift in Sources */,

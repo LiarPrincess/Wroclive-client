@@ -6,12 +6,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class BookmarksCardCoordinator: CoordinatorType {
+class BookmarksCardCoordinator: CardCoordinator {
 
-  private var card:                   BookmarksCard?
-  private var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  var card:                   BookmarksCard?
+  var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
-  private let parent: UIViewController
+  let parent: UIViewController
 
   init(_ parent: UIViewController) {
     self.parent = parent
@@ -28,10 +28,6 @@ class BookmarksCardCoordinator: CoordinatorType {
       })
       .disposed(by: viewModel.disposeBag)
 
-    self.cardTransitionDelegate = CardPanelTransitionDelegate(for: self.card!)
-    self.card!.modalPresentationStyle = .custom
-    self.card!.transitioningDelegate  = self.cardTransitionDelegate!
-
-    self.parent.present(self.card!, animated: true, completion: nil)
+    self.presentCard(animated: true)
   }
 }

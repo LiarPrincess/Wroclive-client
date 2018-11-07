@@ -6,12 +6,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class AppCoordinator: CoordinatorType {
+class AppCoordinator: Coordinator {
 
   private let window: UIWindow
   private var mainViewController: MainViewController?
 
-  private var childCoordinator: CoordinatorType?
+  private var childCoordinator: Coordinator?
 
   init(_ window: UIWindow) {
     self.window = window
@@ -37,7 +37,7 @@ class AppCoordinator: CoordinatorType {
     self.window.makeKeyAndVisible()
   }
 
-  private func open(_ coordinatorInit: (UIViewController) -> CoordinatorType) {
+  private func open(_ coordinatorInit: (UIViewController) -> Coordinator) {
     guard let mainViewController = self.mainViewController
       else { fatalError("AppCoordinator has to be started first") }
 
