@@ -6,6 +6,7 @@ import UIKit
 import MapKit
 import SnapKit
 import RxSwift
+import RxCocoa
 
 private typealias Constants = MainViewControllerConstants
 
@@ -21,13 +22,18 @@ class MainViewController: UIViewController {
   let bookmarksButton     = UIBarButtonItem()
   let configurationButton = UIBarButtonItem()
 
-  var card:                   UIViewController?
-  var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  private let viewModel: MainViewModel
+  private let disposeBag = DisposeBag()
 
   // MARK: - Init
 
-  convenience init() {
-    self.init(nibName: nil, bundle: nil)
+  init(_ viewModel: MainViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - Overriden
@@ -37,62 +43,20 @@ class MainViewController: UIViewController {
     self.initLayout()
   }
 
-  // MARK: - Actions
+  // MARK: - Actions (for some reason UIBarButtonItem.rx.tap fails, so we can't bind)
 
   @objc
   func searchButtonPressed() {
-    let viewModel      = SearchCardViewModel()
-    let viewController = SearchCard(viewModel)
-
-    viewModel.startTracking
-      .drive(onNext: { [weak viewController] lines in
-        AppEnvironment.live.startTracking(lines)
-        viewController?.dismiss(animated: true, completion: nil)
-      })
-      .disposed(by: viewModel.disposeBag)
-
-    self.openCard(viewController, animated: true)
+    self.viewModel.didPressSearchButton.onNext()
   }
 
   @objc
   func bookmarksButtonPressed() {
-    let viewModel      = BookmarksCardViewModel()
-    let viewController = BookmarksCard(viewModel)
-
-    viewModel.startTracking
-      .drive(onNext: { [weak viewController] bookmark in
-        AppEnvironment.live.startTracking(bookmark.lines)
-        viewController?.dismiss(animated: true, completion: nil)
-      })
-      .disposed(by: viewModel.disposeBag)
-
-    self.openCard(viewController, animated: true)
+    self.viewModel.didPressBookmarkButton.onNext()
   }
 
   @objc
   func configurationButtonPressed() {
-    let viewModel      = SettingsCardViewModel()
-    let viewController = SettingsCard(viewModel)
-    self.openCard(viewController, animated: true)
-  }
-
-  // MARK: - Open card
-
-  private func openCard(_ cardPanel: CardPanel, animated: Bool) {
-    if let currentCard = self.card {
-      currentCard.dismiss(animated: true) { [unowned self] in
-        self.card = nil
-        self.cardTransitionDelegate = nil
-        self.openCardInner(cardPanel, animated: animated)
-      }
-    }
-    else { self.openCardInner(cardPanel, animated: animated) }
-  }
-
-  private func openCardInner(_ cardPanel: CardPanel, animated: Bool) {
-    self.cardTransitionDelegate = CardPanelTransitionDelegate(for: cardPanel)
-    cardPanel.modalPresentationStyle = .custom
-    cardPanel.transitioningDelegate  = self.cardTransitionDelegate!
-    self.present(cardPanel, animated: animated, completion: nil)
+    self.viewModel.didPressConfigurationButton.onNext()
   }
 }

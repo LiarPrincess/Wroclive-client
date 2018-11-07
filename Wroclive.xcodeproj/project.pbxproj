@@ -12,6 +12,9 @@
 		900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976B1FE1BD4500AC7C35 /* LocationAlerts.swift */; };
 		900B976E1FE1BE1F00AC7C35 /* BookmarkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976D1FE1BE1F00AC7C35 /* BookmarkAlerts.swift */; };
 		900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976F1FE1BED200AC7C35 /* NetworkAlerts.swift */; };
+		900CBE912192E2B30028C58F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE902192E2B30028C58F /* Coordinator.swift */; };
+		900CBE932192E2EB0028C58F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE922192E2EB0028C58F /* AppCoordinator.swift */; };
+		900CBE952192E4DC0028C58F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE942192E4DC0028C58F /* MainViewModel.swift */; };
 		900CEC021FC4D5D7001C6B04 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC011FC4D5D7001C6B04 /* Document.swift */; };
 		900CEC041FC4E3F1001C6B04 /* Array+Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC031FC4E3F1001C6B04 /* Array+Any.swift */; };
 		9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */; };
@@ -254,6 +257,9 @@
 		900B976B1FE1BD4500AC7C35 /* LocationAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAlerts.swift; sourceTree = "<group>"; };
 		900B976D1FE1BE1F00AC7C35 /* BookmarkAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAlerts.swift; sourceTree = "<group>"; };
 		900B976F1FE1BED200AC7C35 /* NetworkAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAlerts.swift; sourceTree = "<group>"; };
+		900CBE902192E2B30028C58F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		900CBE922192E2EB0028C58F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		900CBE942192E4DC0028C58F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		900CEC011FC4D5D7001C6B04 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		900CEC031FC4E3F1001C6B04 /* Array+Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Any.swift"; sourceTree = "<group>"; };
 		9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
@@ -524,6 +530,15 @@
 				90AACC88200ACA890064EDFD /* AlertCreator.swift */,
 			);
 			path = Alerts;
+			sourceTree = "<group>";
+		};
+		900CBE8F2192E28D0028C58F /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				900CBE902192E2B30028C58F /* Coordinator.swift */,
+				900CBE922192E2EB0028C58F /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		9016C74020E432480039A604 /* Generated */ = {
@@ -879,6 +894,7 @@
 				9017C3511EE339FD00063377 /* MainViewController.swift */,
 				9017C3531EE339FD00063377 /* MainViewControllerLayout.swift */,
 				9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */,
+				900CBE942192E4DC0028C58F /* MainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1045,6 +1061,7 @@
 				902330E41EDF37F500FA8F43 /* App */,
 				902330E81EDF37F500FA8F43 /* Models */,
 				902330ED1EDF37F500FA8F43 /* Modules */,
+				900CBE8F2192E28D0028C58F /* Coordinators */,
 				9016C74020E432480039A604 /* Generated */,
 				9021F3871F12C95D000A6949 /* Extensions */,
 				900B976A1FE1BB4D00AC7C35 /* Helpers */,
@@ -1486,8 +1503,10 @@
 				90546BF01F6AF25800E8E75F /* LiveManager.swift in Sources */,
 				9050705B2087EB4B007DDA80 /* StorageManagerType.swift in Sources */,
 				905D718F1FE1C444006D1DB6 /* UserLocationManagerType.swift in Sources */,
+				900CBE912192E2B30028C58F /* Coordinator.swift in Sources */,
 				901ECDBD1FF587B7004765AA /* TextStyle.swift in Sources */,
 				9016FD0C208B48EC0043524D /* SchedulersManager.swift in Sources */,
+				900CBE932192E2EB0028C58F /* AppCoordinator.swift in Sources */,
 				9042EDBF1FF2D71500F5D01D /* LineSelectorCellConstants.swift in Sources */,
 				900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */,
 				900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */,
@@ -1506,6 +1525,7 @@
 				90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */,
 				9021F41C1F12C9EF000A6949 /* CardPanelPresentationTransition.swift in Sources */,
 				905D71901FE1C444006D1DB6 /* UserLocationError.swift in Sources */,
+				900CBE952192E4DC0028C58F /* MainViewModel.swift in Sources */,
 				9021F4071F12C9EF000A6949 /* ChevronViewState.swift in Sources */,
 				90D3A40E1FEFE89C00FB7485 /* RxSectionModel.swift in Sources */,
 				90C5B58F20E15BB2007D72A2 /* CLAuthorizationStatus+String.swift in Sources */,

@@ -8,7 +8,8 @@ import MapKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  let window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+  var window:      UIWindow?
+  var coordinator: AppCoordinator?
 
   // MARK: - Launch
 
@@ -16,8 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     AppEnvironment.pushDefault()
     self.applyColorScheme()
 
-    self.window!.rootViewController = MainViewController()
-    self.window!.makeKeyAndVisible()
+    self.window = UIWindow(frame: UIScreen.main.bounds)
+    self.coordinator = AppCoordinator(self.window!)
+
+    self.coordinator!.start()
 
     return true
   }

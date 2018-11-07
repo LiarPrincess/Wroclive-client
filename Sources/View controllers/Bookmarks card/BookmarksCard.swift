@@ -13,12 +13,9 @@ class BookmarksCard: CardPanel {
 
   // MARK: - Properties
 
-  private let viewModel: BookmarksCardViewModel
-  private let disposeBag = DisposeBag()
-
   var headerView: UIVisualEffectView = {
-    let headerViewBlur = UIBlurEffect(style: AppEnvironment.theme.colors.blurStyle)
-    return UIVisualEffectView(effect: headerViewBlur)
+    let blur = UIBlurEffect(style: AppEnvironment.theme.colors.blurStyle)
+    return UIVisualEffectView(effect: blur)
   }()
 
   let titleLabel      = UILabel()
@@ -27,6 +24,9 @@ class BookmarksCard: CardPanel {
 
   let tableView           = UITableView()
   let tableViewDataSource = BookmarksCard.createDataSource()
+
+  private let viewModel: BookmarksCardViewModel
+  private let disposeBag = DisposeBag()
 
   // MARK: - Card panel
 
@@ -52,12 +52,12 @@ class BookmarksCard: CardPanel {
 
   private func initTableViewBindings() {
     self.tableView.rx.setDelegate(self)
-      .disposed(by: disposeBag)
+      .disposed(by: self.disposeBag)
 
     self.viewModel.bookmarks
       .map { [BookmarksSection(model: .empty, items: $0)] }
       .drive(self.tableView.rx.items(dataSource: self.tableViewDataSource))
-      .disposed(by: disposeBag)
+      .disposed(by: self.disposeBag)
 
     self.tableView.rx.itemSelected
       .map { $0.row }
