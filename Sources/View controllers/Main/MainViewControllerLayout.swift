@@ -10,6 +10,24 @@ private typealias Layout = MainViewControllerConstants.Layout
 
 extension MainViewController {
 
+  var bottomSafeAnchor: NSLayoutYAxisAnchor {
+    if #available(iOS 11.0, *) { return self.view.safeAreaLayoutGuide.bottomAnchor }
+    else {
+      // the same as 'self.bottomLayoutGuide' since we don't have parent
+      return self.view.bottomAnchor
+    }
+  }
+
+  var leftSafeAnchor: NSLayoutXAxisAnchor {
+    if #available(iOS 11.0, *) { return self.view.safeAreaLayoutGuide.leftAnchor }
+    else { return self.view.leftAnchor }
+  }
+
+  var rightSafeAnchor: NSLayoutXAxisAnchor {
+    if #available(iOS 11.0, *) { return self.view.safeAreaLayoutGuide.rightAnchor }
+    else { return self.view.rightAnchor }
+  }
+
   func initLayout() {
     self.initMapView()
     self.initToolbarView()
@@ -18,10 +36,13 @@ extension MainViewController {
   private func initMapView() {
     self.addChildViewController(self.mapViewController)
 
-    self.view.addSubview(self.mapViewController.view)
-    self.mapViewController.view.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
+    let mapView = self.mapViewController.view!
+    self.view.addSubview(mapView, constraints: [
+      mapView.topAnchor.constraint(equalTo: self.view.topAnchor), // so we are under status bar and toolbar
+      mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+      mapView.leftAnchor.constraint(equalTo: self.leftSafeAnchor),
+      mapView.rightAnchor.constraint(equalTo: self.rightSafeAnchor)
+    ])
 
     self.mapViewController.didMove(toParentViewController: self)
   }
@@ -48,15 +69,11 @@ extension MainViewController {
 
     self.toolbar.setItems(self.layoutToolbarItems(), animated: false)
 
-    self.view.addSubview(self.toolbar)
-    self.toolbar.snp.makeConstraints { make in
-      make.left.right.equalToSuperview()
-
-      if #available(iOS 11.0, *) {
-        make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-      }
-      else { make.bottom.equalToSuperview() }
-    }
+    self.view.addSubview(self.toolbar, constraints: [
+      self.toolbar.leftAnchor.constraint(equalTo: self.leftSafeAnchor),
+      self.toolbar.rightAnchor.constraint(equalTo: self.rightSafeAnchor),
+      self.toolbar.bottomAnchor.constraint(equalTo: self.bottomSafeAnchor)
+    ])
   }
 
   private func layoutToolbarItems() -> [UIBarButtonItem] {

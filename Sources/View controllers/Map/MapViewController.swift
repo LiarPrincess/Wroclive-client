@@ -27,7 +27,6 @@ class MapViewController: UIViewController {
 
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nil, bundle: nil)
-    self.insetViewToShowMapLegalInfo()
     self.initBindings()
   }
 
@@ -74,6 +73,14 @@ class MapViewController: UIViewController {
 
   // MARK: - Overriden
 
+  private var _bottomLayoutGuide: UILayoutSupport = LayoutGuide(length: 0.0)
+
+  @available(iOS, introduced: 7.0, deprecated: 11.0, message: "Use view.safeAreaLayoutGuide.bottomAnchor instead of bottomLayoutGuide.topAnchor")
+  override var bottomLayoutGuide: UILayoutSupport {
+    get { return self._bottomLayoutGuide }
+    set { self._bottomLayoutGuide = newValue }
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -91,21 +98,6 @@ class MapViewController: UIViewController {
     self.view.addSubview(self.mapView)
     self.mapView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
-    }
-  }
-
-  // MARK: - Map legal info
-
-  // iOS 10
-  override var bottomLayoutGuide: UILayoutSupport {
-    return LayoutGuide(length: 44.0)
-  }
-
-  // iOS 11
-  private func insetViewToShowMapLegalInfo() {
-    if #available(iOS 11, *) {
-      let insets = self.additionalSafeAreaInsets
-      self.additionalSafeAreaInsets.bottom = max(insets.bottom, self.bottomLayoutGuide.length)
     }
   }
 
