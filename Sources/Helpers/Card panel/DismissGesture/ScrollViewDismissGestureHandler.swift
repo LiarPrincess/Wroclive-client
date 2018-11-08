@@ -77,9 +77,6 @@ class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
   private func calculateOffset(_ scrollView: UIScrollView) -> CGFloat {
     let base = scrollView.contentOffset.y + scrollView.contentInset.top
-    if #available(iOS 11, *) {
-      return base + scrollView.safeAreaInsets.top
-    }
-    else { return base }
+    return base + scrollView.safeAreaInsets.top
   }
 }

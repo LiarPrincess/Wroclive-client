@@ -147,7 +147,6 @@
 		908346F61F5202AE00654FF6 /* String+IndicesOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F51F5202AE00654FF6 /* String+IndicesOf.swift */; };
 		908346F81F5213F900654FF6 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */; };
 		908346FA1F521E1500654FF6 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 908346F91F521DFF00654FF6 /* FontAwesome.otf */; };
-		908FB19B1F48B3CA00121584 /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1961F48B3CA00121584 /* LayoutGuide.swift */; };
 		908FB19C1F48B3CA00121584 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1981F48B3CA00121584 /* ReusableCell.swift */; };
 		908FB19D1F48B3CA00121584 /* ReusableCell+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1991F48B3CA00121584 /* ReusableCell+UITableView.swift */; };
 		908FB19E1F48B3CA00121584 /* ReusableCell+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB19A1F48B3CA00121584 /* ReusableCell+UICollectionView.swift */; };
@@ -397,7 +396,6 @@
 		908346F51F5202AE00654FF6 /* String+IndicesOf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+IndicesOf.swift"; sourceTree = "<group>"; };
 		908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
 		908346F91F521DFF00654FF6 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Sources/App/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
-		908FB1961F48B3CA00121584 /* LayoutGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutGuide.swift; sourceTree = "<group>"; };
 		908FB1981F48B3CA00121584 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		908FB1991F48B3CA00121584 /* ReusableCell+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+UITableView.swift"; sourceTree = "<group>"; };
 		908FB19A1F48B3CA00121584 /* ReusableCell+UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+UICollectionView.swift"; sourceTree = "<group>"; };
@@ -521,7 +519,6 @@
 			children = (
 				900CAE8A1F482E750044C8A6 /* Alerts */,
 				9021F3F91F12C9EF000A6949 /* Card panel */,
-				908FB1951F48B3CA00121584 /* Layout guide */,
 				908FB1971F48B3CA00121584 /* Reusable cell */,
 				90C4B133202E331A00920706 /* Rx data sources */,
 			);
@@ -928,14 +925,6 @@
 				907DC6EC1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift */,
 			);
 			path = "Line type selector";
-			sourceTree = "<group>";
-		};
-		908FB1951F48B3CA00121584 /* Layout guide */ = {
-			isa = PBXGroup;
-			children = (
-				908FB1961F48B3CA00121584 /* LayoutGuide.swift */,
-			);
-			path = "Layout guide";
 			sourceTree = "<group>";
 		};
 		908FB1971F48B3CA00121584 /* Reusable cell */ = {
@@ -1495,7 +1484,6 @@
 				90D3A3F11FEC239100FB7485 /* BookmarksCardViewModel.swift in Sources */,
 				9022EF2020E048BC00FFA42D /* Observable+MaterializedElements.swift in Sources */,
 				9042EDCF1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift in Sources */,
-				908FB19B1F48B3CA00121584 /* LayoutGuide.swift in Sources */,
 				906C40592014C55700E32571 /* DebugManager.swift in Sources */,
 				90F9F89C20DEFB1800793E4C /* main.swift in Sources */,
 				9017C36B1EE339FD00063377 /* MapViewControllerConstants.swift in Sources */,

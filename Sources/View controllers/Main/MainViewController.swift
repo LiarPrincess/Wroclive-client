@@ -50,18 +50,10 @@ class MainViewController: UIViewController {
 
   private func addMapViewSafeAreaInsetsSoLegalInfoIsVisible() {
     let toolbarHeight = self.toolbar.bounds.height
+    let currentInset  = self.mapViewController.additionalSafeAreaInsets.bottom
 
-    if #available(iOS 11, *) {
-      let currentInset = self.mapViewController.additionalSafeAreaInsets.bottom
-      if currentInset < toolbarHeight {
-        self.mapViewController.additionalSafeAreaInsets.bottom = toolbarHeight
-      }
-    }
-    else {
-      let layoutGuide = self.mapViewController.bottomLayoutGuide
-      if layoutGuide.length < toolbarHeight {
-        self.mapViewController.bottomLayoutGuide = LayoutGuide(length: toolbarHeight)
-      }
+    if currentInset < toolbarHeight {
+      self.mapViewController.additionalSafeAreaInsets.bottom = toolbarHeight
     }
   }
 

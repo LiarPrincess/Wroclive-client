@@ -73,14 +73,6 @@ class MapViewController: UIViewController {
 
   // MARK: - Overriden
 
-  private var _bottomLayoutGuide: UILayoutSupport = LayoutGuide(length: 0.0)
-
-  @available(iOS, introduced: 7.0, deprecated: 11.0, message: "Use view.safeAreaLayoutGuide.bottomAnchor instead of bottomLayoutGuide.topAnchor")
-  override var bottomLayoutGuide: UILayoutSupport {
-    get { return self._bottomLayoutGuide }
-    set { self._bottomLayoutGuide = newValue }
-  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
