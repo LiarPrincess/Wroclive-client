@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import SnapKit
 
 private typealias Layout     = BookmarksCellConstants.Layout
 private typealias TextStyles = BookmarksCellConstants.TextStyles
@@ -19,7 +18,7 @@ class BookmarksCell: UITableViewCell {
   private let nameLabel  = UILabel()
   private let linesLabel = UILabel()
 
-  // disable alpha, so we dont end up with transparent cells when reordering
+  // disable alpha, so we don't end up with transparent cells when reordering
   override var alpha: CGFloat {
     get { return 1.0 }
     set { }
@@ -41,20 +40,18 @@ class BookmarksCell: UITableViewCell {
     self.nameLabel.numberOfLines  = 0
     self.linesLabel.numberOfLines = 0
 
-    self.contentView.addSubview(self.nameLabel)
-    self.nameLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.topInset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
-    }
+    self.contentView.addSubview(self.nameLabel, constraints: [
+      self.nameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Layout.topInset),
+      self.nameLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Layout.leftInset),
+      self.nameLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Layout.rightInset)
+    ])
 
-    self.contentView.addSubview(self.linesLabel)
-    self.linesLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.nameLabel.snp.bottom).offset(Layout.LinesLabel.topMargin)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
-      make.bottom.equalToSuperview().offset(-Layout.bottomInset)
-    }
+    self.contentView.addSubview(self.linesLabel, constraints: [
+      self.linesLabel.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: Layout.LinesLabel.topMargin),
+      self.linesLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Layout.bottomInset),
+      self.linesLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Layout.leftInset),
+      self.linesLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Layout.rightInset)
+    ])
   }
 
   // MARK: - Overriden

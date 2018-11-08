@@ -3,30 +3,11 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import SnapKit
 import MapKit
 
 private typealias Layout = MainViewControllerConstants.Layout
 
 extension MainViewController {
-
-  var bottomSafeAnchor: NSLayoutYAxisAnchor {
-    if #available(iOS 11.0, *) { return self.view.safeAreaLayoutGuide.bottomAnchor }
-    else {
-      // the same as 'self.bottomLayoutGuide' since we don't have parent
-      return self.view.bottomAnchor
-    }
-  }
-
-  var leftSafeAnchor: NSLayoutXAxisAnchor {
-    if #available(iOS 11.0, *) { return self.view.safeAreaLayoutGuide.leftAnchor }
-    else { return self.view.leftAnchor }
-  }
-
-  var rightSafeAnchor: NSLayoutXAxisAnchor {
-    if #available(iOS 11.0, *) { return self.view.safeAreaLayoutGuide.rightAnchor }
-    else { return self.view.rightAnchor }
-  }
 
   func initLayout() {
     self.initMapView()
@@ -39,9 +20,9 @@ extension MainViewController {
     let mapView = self.mapViewController.view!
     self.view.addSubview(mapView, constraints: [
       mapView.topAnchor.constraint(equalTo: self.view.topAnchor), // so we are under status bar and toolbar
-      mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-      mapView.leftAnchor.constraint(equalTo: self.leftSafeAnchor),
-      mapView.rightAnchor.constraint(equalTo: self.rightSafeAnchor)
+      mapView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+      mapView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
+      mapView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
     ])
 
     self.mapViewController.didMove(toParentViewController: self)
@@ -70,9 +51,9 @@ extension MainViewController {
     self.toolbar.setItems(self.layoutToolbarItems(), animated: false)
 
     self.view.addSubview(self.toolbar, constraints: [
-      self.toolbar.leftAnchor.constraint(equalTo: self.leftSafeAnchor),
-      self.toolbar.rightAnchor.constraint(equalTo: self.rightSafeAnchor),
-      self.toolbar.bottomAnchor.constraint(equalTo: self.bottomSafeAnchor)
+      self.toolbar.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
+      self.toolbar.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
+      self.toolbar.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
     ])
   }
 
