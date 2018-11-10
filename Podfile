@@ -3,8 +3,6 @@ use_frameworks!
 platform :ios, "10.2"
 
 target 'Wroclive' do
-  pod 'SnapKit', '~> 4.0'
-
   pod 'Alamofire',                         '~> 4.5'
   pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
   pod 'ReachabilitySwift',                 '~> 4.1'

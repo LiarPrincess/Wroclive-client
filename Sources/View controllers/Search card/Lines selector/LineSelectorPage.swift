@@ -100,10 +100,7 @@ class LineSelectorPage: UIViewController {
     self.collectionView.allowsMultipleSelection = true
     self.collectionView.alwaysBounceVertical    = true
 
-    self.view.addSubview(self.collectionView)
-    self.collectionView.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
+    self.view.addSubview(self.collectionView, constraints: makeEdgesEqualToSuperview())
   }
 
   override func viewDidLayoutSubviews() {

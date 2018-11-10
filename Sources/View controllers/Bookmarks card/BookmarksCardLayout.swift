@@ -12,9 +12,13 @@ extension BookmarksCard {
 
   func initLayout() {
     self.view.backgroundColor = Theme.colors.background
+
     self.initHeader()
     self.initTableView()
     self.initPlaceholder()
+
+    self.view.bringSubview(toFront: self.headerView)
+    self.view.sendSubview(toBack: self.placeholderView)
   }
 
   // MARK: - Private
@@ -43,7 +47,7 @@ extension BookmarksCard {
     self.editButton.accessibilityIdentifier = "BookmarksViewController.edit"
 
     self.headerView.contentView.addSubview(self.editButton, constraints: [
-      make(\UIView.firstBaselineAnchor, equalTo: self.titleLabel.firstBaselineAnchor),
+      make(\UIView.lastBaselineAnchor, equalTo: self.titleLabel.lastBaselineAnchor),
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
@@ -60,18 +64,11 @@ extension BookmarksCard {
     // remove empty cells below (http://swiftandpainless.com/table-view-footer-in-plain-table-view/)
     self.tableView.tableFooterView = UIView(frame: .zero)
 
-    self.view.addSubview(self.tableView, constraints: [
-      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
-      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
-    ])
-
-    self.view.sendSubview(toBack: self.tableView)
+    self.view.addSubview(self.tableView, constraints: makeEdgesEqualToSuperview())
   }
 
   private func initPlaceholder() {
-    // we cant use 'self.bookmarksTable.backgroundView' as this would result in incorrect left <-> right constraints
+    // we can't use 'self.bookmarksTable.backgroundView' as this would result in incorrect left <-> right constraints
     self.view.addSubview(self.placeholderView, constraints: [
       make(\UIView.centerYAnchor, equalToSuperview: \UIView.centerYAnchor),
       make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.Placeholder.leftInset),

@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import SnapKit
 
 private typealias Layout       = SettingsCardConstants.Layout
 private typealias TextStyles   = SettingsCardConstants.TextStyles
@@ -13,8 +12,11 @@ extension SettingsCard {
 
   func initLayout() {
     self.view.backgroundColor = Theme.colors.background
+
     self.initHeader()
     self.initTableView()
+
+    self.view.bringSubview(toFront: self.headerView)
   }
 
   // MARK: - Private
@@ -23,22 +25,22 @@ extension SettingsCard {
     self.headerView.contentView.addBorder(at: .bottom)
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.insertSubview(self.headerView, belowSubview: self.chevronViewContainer)
-    self.headerView.snp.makeConstraints { make in
-      make.left.top.right.equalToSuperview()
-    }
+    self.view.addSubview(self.headerView, constraints: [
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+    ])
 
     self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
-    self.headerView.contentView.addSubview(self.titleLabel)
-    self.titleLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.chevronView.snp.bottom).offset(Layout.Header.topInset)
-      make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
-    }
+    self.headerView.contentView.addSubview(self.titleLabel, constraints: [
+      make(\UIView.topAnchor, equalTo: self.chevronView.bottomAnchor, constant: Layout.Header.topInset),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.Header.bottomInset),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.rightInset)
+    ])
   }
 
   private func initTableView() {
@@ -52,9 +54,6 @@ extension SettingsCard {
 
     self.tableView.tableFooterView = SettingsCardFooterView()
 
-    self.view.insertSubview(self.tableView, belowSubview: self.headerView)
-    self.tableView.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
+    self.view.addSubview(self.tableView, constraints: makeEdgesEqualToSuperview())
   }
 }

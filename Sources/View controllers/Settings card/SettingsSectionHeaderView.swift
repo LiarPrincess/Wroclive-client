@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import SnapKit
 
 private typealias Layout = SettingsSectionHeaderViewConstants.Layout
 
@@ -32,12 +31,11 @@ class SettingsSectionHeaderView: UITableViewHeaderFooterView {
   private func initLayout() {
     self.contentView.backgroundColor = Theme.colors.background
 
-    self.contentView.addSubview(self.titleLabel)
-    self.titleLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.topInset)
-      make.bottom.equalToSuperview().offset(-Layout.bottomInset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
-    }
+    self.contentView.addSubview(self.titleLabel, constraints: [
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor, constant: Layout.topInset),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.bottomInset),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.rightInset)
+    ])
   }
 }

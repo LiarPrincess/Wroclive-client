@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import SnapKit
 
 private typealias Layout = LineSelectorHeaderViewConstants.Layout
 
@@ -35,11 +34,11 @@ class LineSelectorHeaderView: UICollectionReusableView {
     self.textLabel.numberOfLines = 0
     self.textLabel.isUserInteractionEnabled = false
 
-    self.addSubview(self.textLabel)
-    self.textLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.topInset)
-      make.left.right.equalToSuperview()
-    }
+    self.addSubview(self.textLabel, constraints: [
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor, constant: Layout.topInset),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+    ])
   }
 
   // MARK: - Methods

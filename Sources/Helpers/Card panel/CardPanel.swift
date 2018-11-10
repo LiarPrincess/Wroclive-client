@@ -35,25 +35,23 @@ class CardPanel: UIViewController {
   }
 
   private func addChevronView() {
-    self.view.addSubview(self.chevronViewContainer)
-    self.chevronViewContainer.snp.makeConstraints { make in
-      make.top.left.right.equalToSuperview()
-    }
+    self.view.addSubview(self.chevronViewContainer, constraints: [
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+    ])
 
     self.chevronView.state = .down
     self.chevronView.color = Theme.colors.accentLight
     self.chevronView.animationDuration = 0.1
 
-    self.chevronViewContainer.addSubview(self.chevronView)
-    self.chevronView.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(8.0)
-      make.bottom.equalToSuperview()
-      make.centerX.equalToSuperview()
-
-      let chevronViewSize = ChevronView.nominalSize
-      make.width.equalTo(chevronViewSize.width)
-      make.height.equalTo(chevronViewSize.height)
-    }
+    self.chevronViewContainer.addSubview(self.chevronView, constraints: [
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor, constant: 8.0),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
+      make(\UIView.centerXAnchor, equalToSuperview: \UIView.centerXAnchor),
+      make(\UIView.widthAnchor, equalToConstant: ChevronView.nominalSize.width),
+      make(\UIView.heightAnchor, equalToConstant: ChevronView.nominalSize.height)
+    ])
   }
 
   // MARK: - Presentation

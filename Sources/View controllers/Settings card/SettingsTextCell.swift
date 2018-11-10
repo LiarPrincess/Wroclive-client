@@ -34,13 +34,12 @@ class SettingsTextCell: UITableViewCell {
 
     self.bottomBorder.backgroundColor = Theme.colors.accentLight
 
-    self.addSubview(self.bottomBorder)
-    self.bottomBorder.snp.makeConstraints { make in
-      make.left.equalToSuperview().offset(Layout.BottomBorder.leftInset)
-      make.right.equalToSuperview()
-      make.bottom.equalToSuperview()
-      make.height.equalTo(1.0 / AppEnvironment.device.screenScale)
-    }
+    self.addSubview(self.bottomBorder, constraints: [
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
+      make(\UIView.heightAnchor, equalToConstant: 1.0 / AppEnvironment.device.screenScale),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.BottomBorder.leftInset),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+    ])
   }
 
   // MARK: - Overriden

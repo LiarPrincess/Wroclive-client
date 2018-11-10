@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import SnapKit
 
 private typealias Layout = LineSelectorCellConstants.Layout
 
@@ -42,10 +41,7 @@ class LineSelectorCell: UICollectionViewCell {
     self.textLabel.numberOfLines = 1
     self.textLabel.isUserInteractionEnabled = false
 
-    self.contentView.addSubview(self.textLabel)
-    self.textLabel.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
+    self.contentView.addSubview(self.textLabel, constraints: makeEdgesEqualToSuperview())
   }
 
   // MARK: - Methods

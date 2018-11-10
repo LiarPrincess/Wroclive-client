@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import SnapKit
 
 private typealias Layout       = SearchCardConstants.Layout
 private typealias TextStyles   = SearchCardConstants.TextStyles
@@ -13,9 +12,13 @@ extension SearchCard {
 
   func initLayout() {
     self.view.backgroundColor = Theme.colors.background
+
     self.initHeader()
     self.initLinesSelector()
     self.initPlaceholder()
+
+    self.view.bringSubview(toFront: self.headerView)
+    self.view.sendSubview(toBack: self.placeholderView)
   }
 
   // MARK: - Private
@@ -25,20 +28,20 @@ extension SearchCard {
     self.headerView.contentView.addBorder(at: .bottom)
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.insertSubview(self.headerView, belowSubview: self.chevronViewContainer)
-    self.headerView.snp.makeConstraints { make in
-      make.left.top.right.equalToSuperview()
-    }
+    self.view.addSubview(self.headerView, constraints: [
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+    ])
 
     self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
-    self.headerView.contentView.addSubview(self.titleLabel)
-    self.titleLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.chevronView.snp.bottom).offset(Layout.Header.Title.topOffset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-    }
+    self.headerView.contentView.addSubview(self.titleLabel, constraints: [
+      make(\UIView.topAnchor, equalTo: self.chevronView.bottomAnchor, constant: Layout.Header.Title.topOffset),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset)
+    ])
 
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.Bookmark.size)
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
@@ -46,57 +49,51 @@ extension SearchCard {
     self.bookmarkButton.tintColor         = Theme.colors.tint
     self.bookmarkButton.contentEdgeInsets = Layout.Header.Bookmark.insets
 
-    self.headerView.contentView.addSubview(self.bookmarkButton)
-    self.bookmarkButton.snp.makeConstraints { make in
-      make.lastBaseline.equalTo(self.titleLabel.snp.lastBaseline)
-      make.left.equalTo(self.titleLabel.snp.right)
-    }
+    self.headerView.contentView.addSubview(self.bookmarkButton, constraints: [
+      make(\UIView.lastBaselineAnchor, equalTo: self.titleLabel.lastBaselineAnchor),
+      make(\UIView.leftAnchor, equalTo: self.titleLabel.rightAnchor)
+    ])
 
     let searchTitle = NSAttributedString(string: Localization.search, attributes: TextStyles.search)
     self.searchButton.setAttributedTitle(searchTitle, for: .normal)
     self.searchButton.contentEdgeInsets = Layout.Header.Search.insets
 
-    self.headerView.contentView.addSubview(self.searchButton)
-    self.searchButton.snp.makeConstraints { make in
-      make.lastBaseline.equalTo(self.titleLabel.snp.lastBaseline)
-      make.right.equalToSuperview()
-    }
+    self.headerView.contentView.addSubview(self.searchButton, constraints: [
+      make(\UIView.lastBaselineAnchor, equalTo: self.titleLabel.lastBaselineAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+    ])
 
-    self.headerView.contentView.addSubview(self.lineTypeSelector)
-    self.lineTypeSelector.snp.makeConstraints { make in
-      make.top.equalTo(self.titleLabel.snp.bottom).offset(Layout.Header.LineType.topOffset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
-      make.bottom.equalToSuperview().offset(-Layout.Header.LineType.bottomOffset)
-      make.height.equalTo(LineTypeSelectorConstants.Layout.nominalHeight)
-    }
+    self.headerView.contentView.addSubview(self.lineTypeSelector, constraints: [
+      make(\UIView.topAnchor, equalTo: self.titleLabel.bottomAnchor, constant: Layout.Header.LineType.topOffset),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.Header.LineType.bottomOffset),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.rightInset),
+      make(\UIView.heightAnchor, equalToConstant: LineTypeSelectorConstants.Layout.nominalHeight)
+    ])
+
+    self.view.bringSubview(toFront: self.chevronViewContainer)
   }
 
   private func initLinesSelector() {
     self.addChildViewController(self.lineSelector)
-
-    self.view.insertSubview(self.lineSelector.view, belowSubview: self.headerView)
-    self.lineSelector.view.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
-
+    self.view.addSubview(self.lineSelector.view, constraints: makeEdgesEqualToSuperview())
     self.lineSelector.didMove(toParentViewController: self)
   }
 
   private func initPlaceholder() {
     let container = UIView()
 
-    self.view.insertSubview(container, belowSubview: self.lineSelector.view)
-    container.snp.makeConstraints { make in
-      make.top.equalTo(self.headerView.contentView.snp.bottom)
-      make.left.right.bottom.equalToSuperview()
-    }
+    self.view.addSubview(container, constraints: [
+      make(\UIView.topAnchor, equalTo: self.headerView.contentView.bottomAnchor),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+    ])
 
-    container.addSubview(self.placeholderView)
-    self.placeholderView.snp.makeConstraints { make in
-      make.bottom.equalTo(container.snp.centerY)
-      make.left.equalToSuperview().offset(Layout.Placeholder.leftInset)
-      make.right.equalToSuperview().offset(-Layout.Placeholder.rightInset)
-    }
+    container.addSubview(self.placeholderView, constraints: [
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.centerYAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.Placeholder.leftInset),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.Placeholder.rightInset)
+    ])
   }
 }

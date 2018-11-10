@@ -4,8 +4,8 @@
 
 import UIKit
 import MapKit
-import SnapKit
 import RxSwift
+import RxCocoa
 
 private typealias Pin      = MapViewControllerConstants.Pin
 private typealias Defaults = MapViewControllerConstants.Defaults
@@ -87,10 +87,7 @@ class MapViewController: UIViewController {
 
     self.mapView.delegate = self
 
-    self.view.addSubview(self.mapView)
-    self.mapView.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
+    self.view.addSubview(self.mapView, constraints: makeEdgesEqualToSuperview())
   }
 
   // MARK: - Map
