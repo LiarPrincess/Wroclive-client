@@ -25,7 +25,7 @@ extension SearchCard {
 
   // swiftlint:disable:next function_body_length
   private func initHeader() {
-    self.headerView.contentView.addBorder(at: .bottom)
+    self.headerView.contentView.addBottomBorder()
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
     self.view.addSubview(self.headerView, constraints: [
