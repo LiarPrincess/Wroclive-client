@@ -24,9 +24,9 @@ extension BookmarksCard {
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
     self.view.addSubview(self.headerView, constraints: [
-      self.headerView.topAnchor.constraint(equalTo: self.view.topAnchor),
-      self.headerView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
-      self.headerView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
     self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
@@ -34,17 +34,17 @@ extension BookmarksCard {
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel, constraints: [
-      self.titleLabel.topAnchor.constraint(equalTo: self.chevronView.bottomAnchor, constant: Layout.Header.Title.topOffset),
-      self.titleLabel.bottomAnchor.constraint(equalTo: self.headerView.bottomAnchor, constant: -Layout.Header.Title.bottomOffset),
-      self.titleLabel.leftAnchor.constraint(equalTo: self.headerView.leftAnchor, constant: Layout.leftInset)
+      make(\UIView.topAnchor, equalTo: self.chevronView.bottomAnchor, constant: Layout.Header.Title.topOffset),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.Header.Title.bottomOffset),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset)
     ])
 
     self.editButton.contentEdgeInsets       = Layout.Header.Edit.insets
     self.editButton.accessibilityIdentifier = "BookmarksViewController.edit"
 
     self.headerView.contentView.addSubview(self.editButton, constraints: [
-      self.editButton.firstBaselineAnchor.constraint(equalTo: self.titleLabel.firstBaselineAnchor),
-      self.editButton.rightAnchor.constraint(equalTo: self.headerView.rightAnchor)
+      make(\UIView.firstBaselineAnchor, equalTo: self.titleLabel.firstBaselineAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
     self.view.bringSubview(toFront: self.chevronViewContainer)
@@ -61,10 +61,10 @@ extension BookmarksCard {
     self.tableView.tableFooterView = UIView(frame: .zero)
 
     self.view.addSubview(self.tableView, constraints: [
-      self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-      self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-      self.tableView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
-      self.tableView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
     self.view.sendSubview(toBack: self.tableView)
@@ -73,9 +73,9 @@ extension BookmarksCard {
   private func initPlaceholder() {
     // we cant use 'self.bookmarksTable.backgroundView' as this would result in incorrect left <-> right constraints
     self.view.addSubview(self.placeholderView, constraints: [
-      self.placeholderView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-      self.placeholderView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: Layout.Placeholder.leftInset),
-      self.placeholderView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: -Layout.Placeholder.rightInset)
+      make(\UIView.centerYAnchor, equalToSuperview: \UIView.centerYAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.Placeholder.leftInset),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.Placeholder.rightInset)
     ])
   }
 }

@@ -29,9 +29,9 @@ class BookmarksPlaceholderView: UIView {
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
     self.addSubview(self.titleLabel, constraints: [
-      self.titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-      self.titleLabel.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
-      self.titleLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor)
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
     self.contentLabel.attributedText = self.createContentText()
@@ -39,10 +39,10 @@ class BookmarksPlaceholderView: UIView {
     self.contentLabel.lineBreakMode  = .byWordWrapping
 
     self.addSubview(self.contentLabel, constraints: [
-      self.contentLabel.topAnchor.constraint(equalTo: self.titleLabel.safeAreaLayoutGuide.bottomAnchor, constant: Layout.Content.topMargin),
-      self.contentLabel.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-      self.contentLabel.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor),
-      self.contentLabel.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor)
+      make(\UIView.topAnchor, equalTo: self.titleLabel.bottomAnchor, constant: Layout.Content.topMargin),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
   }
 

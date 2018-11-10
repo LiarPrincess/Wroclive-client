@@ -41,16 +41,16 @@ class BookmarksCell: UITableViewCell {
     self.linesLabel.numberOfLines = 0
 
     self.contentView.addSubview(self.nameLabel, constraints: [
-      self.nameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Layout.topInset),
-      self.nameLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Layout.leftInset),
-      self.nameLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Layout.rightInset)
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor, constant: Layout.topInset),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.rightInset)
     ])
 
     self.contentView.addSubview(self.linesLabel, constraints: [
-      self.linesLabel.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: Layout.LinesLabel.topMargin),
-      self.linesLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Layout.bottomInset),
-      self.linesLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Layout.leftInset),
-      self.linesLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Layout.rightInset)
+      make(\UIView.topAnchor, equalTo: self.nameLabel.bottomAnchor, constant: Layout.LinesLabel.topMargin),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.bottomInset),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.rightInset)
     ])
   }
 

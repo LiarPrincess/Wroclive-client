@@ -19,10 +19,11 @@ extension MainViewController {
 
     let mapView = self.mapViewController.view!
     self.view.addSubview(mapView, constraints: [
-      mapView.topAnchor.constraint(equalTo: self.view.topAnchor), // so we are under status bar and toolbar
-      mapView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-      mapView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
-      mapView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
+      // ignore safeAreaLayoutGuide, so we are under status bar and toolbar
+      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
     self.mapViewController.didMove(toParentViewController: self)
@@ -51,9 +52,9 @@ extension MainViewController {
     self.toolbar.setItems(self.layoutToolbarItems(), animated: false)
 
     self.view.addSubview(self.toolbar, constraints: [
-      self.toolbar.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
-      self.toolbar.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor),
-      self.toolbar.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+      make(\UIView.bottomAnchor, equalTo: self.view!.safeAreaLayoutGuide.bottomAnchor),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
   }
 
@@ -61,9 +62,9 @@ extension MainViewController {
     let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
     let result: [UIBarButtonItem] = [
-      self.userTrackingButton,  space,
-      self.searchButton,        space,
-      self.bookmarksButton,     space,
+      self.userTrackingButton, space,
+      self.searchButton,       space,
+      self.bookmarksButton,    space,
       self.configurationButton
     ]
     return result
