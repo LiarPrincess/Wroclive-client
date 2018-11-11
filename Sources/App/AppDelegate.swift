@@ -3,11 +3,13 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import ReSwift
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window:      UIWindow?
   var coordinator: AppCoordinator?
+  var store:       Store<AppState>?
 
   // MARK: - Launch
 
@@ -16,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Theme.setupAppearance()
 
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    self.coordinator = AppCoordinator(self.window!)
+    self.store  = Store<AppState>(reducer: mainReducer, state: nil)
+    self.coordinator = AppCoordinator(self.window!, self.store!)
 
     self.coordinator!.start()
-
     return true
   }
 

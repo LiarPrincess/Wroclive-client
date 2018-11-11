@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import ReSwift
 import RxSwift
 import RxCocoa
 
@@ -11,7 +12,7 @@ private typealias Localization = Localizable.Bookmarks
 
 class BookmarksCardViewModel {
 
-  let disposeBag = DisposeBag()
+  private let disposeBag = DisposeBag()
 
   // MARK: - Inputs
 
@@ -31,11 +32,12 @@ class BookmarksCardViewModel {
   let isEditing:      Driver<Bool>
   let editButtonText: Driver<NSAttributedString>
 
-  let startTracking: Driver<Bookmark>
+  let close: Driver<Void>
 
   // MARK: - Init
 
-  init() {
+  // swiftlint:disable:next function_body_length
+  init(_ store: Store<AppState>) {
     let _didSelectItem = PublishSubject<Int>()
     self.didSelectItem = _didSelectItem.asObserver()
 
@@ -49,14 +51,9 @@ class BookmarksCardViewModel {
     self.didPressEditButton = _didPressEditButton.asObserver()
 
     // bookmarks
-    self.bookmarks = {
-      let moveOperation   = _didMoveItem.map   { Operation.move(from: $0.from, to: $0.to) }
-      let removeOperation = _didDeleteItem.map { Operation.remove(index: $0) }
-
-      return Observable.merge(moveOperation, removeOperation)
-        .reducing(AppEnvironment.storage.bookmarks, apply: apply)
-        .asDriver(onErrorJustReturn: [])
-    }()
+    self.bookmarks = store.rx.state
+      .map { $0.userData.bookmarks }
+      .asDriver(onErrorDriveWith: .never())
 
     self.isTableViewVisible   = self.bookmarks.map { $0.any }
     self.isPlaceholderVisible = self.bookmarks.map { $0.isEmpty }
@@ -68,18 +65,23 @@ class BookmarksCardViewModel {
 
     self.editButtonText = isEditing.map(createEditButtonLabel)
 
-    // selected bookmark
-    self.startTracking = _didSelectItem
-      .withLatestFrom(self.bookmarks) { index, bookmarks in bookmarks[index] }
+    // close
+    self.close = _didSelectItem
+      .map { _ in () }
       .asDriver(onErrorDriveWith: .never())
 
-    self.initBindings()
-  }
+    // bindings
+    _didSelectItem.asObservable()
+      .withLatestFrom(self.bookmarks) { index, bookmarks in bookmarks[index] }
+      .bind { bookmark in store.dispatch(FutureActions.startTracking(bookmark.lines)) }
+      .disposed(by: self.disposeBag)
 
-  private func initBindings() {
-    self.bookmarks
-      .skip(1) // skip initial binding
-      .drive(onNext: { AppEnvironment.storage.saveBookmarks($0) })
+    _didMoveItem.asObservable()
+      .bind { move in store.dispatch(BookmarksAction.move(from: move.from, to: move.to)) }
+      .disposed(by: self.disposeBag)
+
+    _didDeleteItem.asObservable()
+      .bind { index in store.dispatch(BookmarksAction.remove(at: index)) }
       .disposed(by: self.disposeBag)
   }
 }
@@ -91,21 +93,4 @@ private func createEditButtonLabel(isEditing: Bool) -> NSAttributedString {
   case true:  return NSAttributedString(string: Localization.Edit.done, attributes: TextStyles.Edit.done)
   case false: return NSAttributedString(string: Localization.Edit.edit, attributes: TextStyles.Edit.edit)
   }
-}
-
-private enum Operation {
-  case move(from: Int, to: Int)
-  case remove(index: Int)
-}
-
-private func apply(_ bookmarks: [Bookmark], _ operation: Operation) -> [Bookmark] {
-  var copy = bookmarks
-  switch operation {
-  case let .move(from, to):
-    let bookmark = copy.remove(at: from)
-    copy.insert(bookmark, at: to)
-  case let .remove(index):
-    copy.remove(at: index)
-  }
-  return copy
 }

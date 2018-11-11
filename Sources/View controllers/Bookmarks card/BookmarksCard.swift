@@ -42,6 +42,7 @@ class BookmarksCard: CardPanel {
     self.initTableViewBindings()
     self.initVisibilityBindings()
     self.initEditBindings()
+    self.initCloseBindings()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -100,6 +101,12 @@ class BookmarksCard: CardPanel {
 
     self.viewModel.editButtonText
       .drive(self.editButton.rx.attributedTitle())
+      .disposed(by: self.disposeBag)
+  }
+
+  private func initCloseBindings() {
+    self.viewModel.close
+      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
       .disposed(by: self.disposeBag)
   }
 

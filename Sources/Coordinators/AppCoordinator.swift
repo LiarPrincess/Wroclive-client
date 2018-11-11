@@ -3,18 +3,21 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import ReSwift
 import RxSwift
 import RxCocoa
 
 class AppCoordinator: Coordinator {
 
-  private let window: UIWindow
+  let window: UIWindow
+  let store:  Store<AppState>
+
   private var mainViewController: MainViewController?
+  private var childCoordinator:   Coordinator?
 
-  private var childCoordinator: Coordinator?
-
-  init(_ window: UIWindow) {
+  init(_ window: UIWindow, _ store: Store<AppState>) {
     self.window = window
+    self.store  = store
   }
 
   func start() {
@@ -26,7 +29,7 @@ class AppCoordinator: Coordinator {
       .disposed(by: viewModel.disposeBag)
 
     viewModel.openBookmarksCard
-      .drive(onNext: { [unowned self] in self.open(BookmarksCardCoordinator.init) })
+      .drive(onNext: { [unowned self] in self.openBookmarksCard() })
       .disposed(by: viewModel.disposeBag)
 
     viewModel.openSettingsCard
@@ -35,6 +38,14 @@ class AppCoordinator: Coordinator {
 
     self.window.rootViewController = self.mainViewController
     self.window.makeKeyAndVisible()
+  }
+
+  private func openBookmarksCard() {
+    guard let mainViewController = self.mainViewController
+      else { fatalError("AppCoordinator has to be started first") }
+
+    self.childCoordinator = BookmarksCardCoordinator(mainViewController, self.store)
+    self.childCoordinator!.start()
   }
 
   private func open(_ coordinatorInit: (UIViewController) -> Coordinator) {

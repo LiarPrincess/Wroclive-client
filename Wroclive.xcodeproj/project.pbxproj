@@ -140,7 +140,7 @@
 		906C406C2018FFC200E32571 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406B2018FFC200E32571 /* ApiError.swift */; };
 		906C4070201915D900E32571 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406F201915D900E32571 /* Endpoint.swift */; };
 		9079DCD61F6C545600C6ABCD /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */; };
-		907D917D1E63A7CC00502CBD /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907DC6E91FF2B740001C5DD6 /* LineTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC6E71FF2B73F001C5DD6 /* LineTypeSelector.swift */; };
 		907DC6ED1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC6EC1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift */; };
 		907F26811F7460E4000C272B /* CLLocation+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907F26801F7460E4000C272B /* CLLocation+Init.swift */; };
@@ -198,6 +198,9 @@
 		90EB296520477ED2006C591E /* CLLocationCoordinate2D+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB296420477ED2006C591E /* CLLocationCoordinate2D+Distance.swift */; };
 		90ED50FD1F3BADC500C782D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90ED50FF1F3BADC500C782D5 /* Localizable.strings */; };
 		90ED51061F3BAFF800C782D5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90ED51081F3BAFF800C782D5 /* InfoPlist.strings */; };
+		90EFA63A21979F660025819C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EFA63921979F660025819C /* AppState.swift */; };
+		90EFA63D21979FF40025819C /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EFA63C21979FF40025819C /* UserData.swift */; };
+		90EFA6442197ABDC0025819C /* ReSwift+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EFA6432197ABDC0025819C /* ReSwift+Rx.swift */; };
 		90F9F89020DDBE8400793E4C /* VehicleAnnotationUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C405F2014E77B00E32571 /* VehicleAnnotationUpdaterTests.swift */; };
 		90F9F89120DDBE8700793E4C /* MapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90203F872034D23A00CC5148 /* MapViewModelTests.swift */; };
 		90F9F89320DE7E3700793E4C /* MapViewModelTests+FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F89220DE7E3700793E4C /* MapViewModelTests+FirstLaunch.swift */; };
@@ -239,7 +242,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				907D917D1E63A7CC00502CBD /* BuildFile in Embed Frameworks */,
+				907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +457,9 @@
 		90ED51031F3BAE6800C782D5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		90ED51071F3BAFF800C782D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		90ED51091F3BAFF900C782D5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		90EFA63921979F660025819C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		90EFA63C21979FF40025819C /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		90EFA6432197ABDC0025819C /* ReSwift+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReSwift+Rx.swift"; sourceTree = "<group>"; };
 		90F9F89220DE7E3700793E4C /* MapViewModelTests+FirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewModelTests+FirstLaunch.swift"; sourceTree = "<group>"; };
 		90F9F89920DEAA3D00793E4C /* Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assertions.swift; sourceTree = "<group>"; };
 		90F9F89B20DEFB1800793E4C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -664,6 +670,7 @@
 				90EB296420477ED2006C591E /* CLLocationCoordinate2D+Distance.swift */,
 				90F9F8A520DFA68500793E4C /* CLAuthorizationStatus+String.swift */,
 				9021F3891F12C95D000A6949 /* CGFloat+Rad.swift */,
+				90EFA6432197ABDC0025819C /* ReSwift+Rx.swift */,
 				90D3A3FF1FEDB58800FB7485 /* RxUIView+IsVisible.swift */,
 				90915B181FFB005C009FE942 /* Observable+Reducing.swift */,
 				906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */,
@@ -1000,6 +1007,15 @@
 			path = "UI Tests";
 			sourceTree = "<group>";
 		};
+		90EFA63821979F260025819C /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				90EFA63921979F660025819C /* AppState.swift */,
+				90EFA63C21979FF40025819C /* UserData.swift */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
 		90F9F88F20DDBB6A00793E4C /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -1063,6 +1079,7 @@
 				902330ED1EDF37F500FA8F43 /* Modules */,
 				900CBE9E21938C310028C58F /* Theme */,
 				900CBE8F2192E28D0028C58F /* Coordinators */,
+				90EFA63821979F260025819C /* Redux */,
 				9016C74020E432480039A604 /* Generated */,
 				9021F3871F12C95D000A6949 /* Extensions */,
 				900B976A1FE1BB4D00AC7C35 /* Helpers */,
@@ -1250,6 +1267,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive-Wroclive-Tests/Pods-Wroclive-Wroclive-Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
+				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -1263,6 +1281,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -1286,6 +1305,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Wroclive/Pods-Wroclive-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
+				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -1298,6 +1318,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -1413,12 +1434,14 @@
 				90F9F8A120DEFF9800793E4C /* TestAppDelegate.swift in Sources */,
 				906A7B511FFEC252004EC8A4 /* Observer+Next.swift in Sources */,
 				906C405E2014CD1B00E32571 /* VehicleAnnotationUpdater.swift in Sources */,
+				90EFA63A21979F660025819C /* AppState.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */,
 				9016FD0A208B48820043524D /* SchedulersManagerType.swift in Sources */,
 				90AACC8D200BA01A0064EDFD /* LineSelectorSectionCreator.swift in Sources */,
 				90AACC9B200BE4110064EDFD /* LineSelectorPage+Rx.swift in Sources */,
 				9096CDCD1F40EF2200FEF20A /* SettingsCard.swift in Sources */,
 				90915B081FF97191009FE942 /* LineTypeSelector+Rx.swift in Sources */,
+				90EFA63D21979FF40025819C /* UserData.swift in Sources */,
 				905D718E1FE1C444006D1DB6 /* UserLocationManager.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksCardLayout.swift in Sources */,
 				901ECDBF1FF587F1004765AA /* TextAttributes.swift in Sources */,
@@ -1428,6 +1451,7 @@
 				9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */,
 				905070622087EF53007DDA80 /* FileSystem.swift in Sources */,
 				901ECDB91FF5875F004765AA /* FontType.swift in Sources */,
+				90EFA6442197ABDC0025819C /* ReSwift+Rx.swift in Sources */,
 				901ECDB71FF586F5004765AA /* TextAlignment.swift in Sources */,
 				9042EDDB1FF3ECC700F5D01D /* RxCollectionViewDataSource.swift in Sources */,
 				907DC6ED1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift in Sources */,
