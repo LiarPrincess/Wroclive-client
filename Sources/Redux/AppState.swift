@@ -9,8 +9,6 @@ struct AppState: StateType {
 }
 
 func mainReducer(action: Action, state: AppState?) -> AppState {
-  print(String(describing: type(of: action)) + "." + String(describing: action))
-
   return AppState(
     userData: userDataReducer(action: action, state: state?.userData)
   )

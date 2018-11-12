@@ -4,6 +4,9 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import Foundation
+import os.log
+
 {% macro getName type %}{{ type.name|replace:"Manager",""|lowerFirstLetter }}{% endmacro %}
 {% macro getProtocol type %}{{ type.name }}Type{% endmacro %}
 
@@ -15,7 +18,7 @@ enum AppEnvironment {
 
   private static var stack: [Environment] = []
 
-  private static var current: Environment {
+  static var current: Environment {
     precondition(stack.any, "Attempting to use empty environment stack.")
     return stack.last!
   }
@@ -25,20 +28,26 @@ enum AppEnvironment {
     {% for manager in types.all|annotated:"manager" %}
       {% call getName manager %}: {{ manager.name }}(),
     {% endfor %}
-      variables: EnvironmentVariables())
+      variables: EnvironmentVariables(),
+      log: OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "main")
+    )
   }
 
   static func push(
   {% for manager in types.all|annotated:"manager" %}
     {% call getName manager %}: {% call getProtocol manager %} = current.{% call getName manager %},
   {% endfor %}
-    variables: EnvironmentVariables) {
+    variables: EnvironmentVariables,
+    log: OSLog) {
 
-    push(Environment(
-    {% for manager in types.all|annotated:"manager" %}
-      {% call getName manager %}: {% call getName manager %},
-    {% endfor %}
-      variables: variables))
+    push(
+      Environment(
+      {% for manager in types.all|annotated:"manager" %}
+        {% call getName manager %}: {% call getName manager %},
+      {% endfor %}
+        variables: variables,
+        log: log
+    ))
   }
 
   static func push(_ environment: Environment) {

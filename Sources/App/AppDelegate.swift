@@ -17,12 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     AppEnvironment.pushDefault()
     Theme.setupAppearance()
 
+    let middlewares = self.createMiddlewares(AppEnvironment.current)
+
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    self.store  = Store<AppState>(reducer: mainReducer, state: nil)
+    self.store  = Store<AppState>(reducer: mainReducer, state: nil, middleware: middlewares)
     self.coordinator = AppCoordinator(self.window!, self.store!)
 
     self.coordinator!.start()
     return true
+  }
+
+  private func createMiddlewares(_ environment: Environment) -> [Middleware<AppState>] {
+    let logging = createLoggingMiddleware(log: environment.log)
+    return [logging]
   }
 
   // MARK: - Activity

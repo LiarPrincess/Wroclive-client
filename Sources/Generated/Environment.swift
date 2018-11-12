@@ -7,6 +7,9 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
+import Foundation
+import os.log
+
 struct Environment {
   let api: ApiManagerType
   let bundle: BundleManagerType
@@ -17,4 +20,5 @@ struct Environment {
   let storage: StorageManagerType
   let userLocation: UserLocationManagerType
   let variables: EnvironmentVariables
+  let log: OSLog
 }

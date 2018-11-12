@@ -130,6 +130,7 @@
 		905D71AF1FE1C5BD006D1DB6 /* ApiManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A81FE1C5BD006D1DB6 /* ApiManagerType.swift */; };
 		905D71B61FE1C6A8006D1DB6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
+		906679552199B5E000050CFA /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906679542199B5E000050CFA /* LoggingMiddleware.swift */; };
 		906A7B511FFEC252004EC8A4 /* Observer+Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B501FFEC252004EC8A4 /* Observer+Next.swift */; };
 		906A7B5520025750004EC8A4 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */; };
 		906C40522013F6AC00E32571 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */; };
@@ -381,6 +382,7 @@
 		905D71A81FE1C5BD006D1DB6 /* ApiManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManagerType.swift; sourceTree = "<group>"; };
 		905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		906679542199B5E000050CFA /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
 		906A7B501FFEC252004EC8A4 /* Observer+Next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observer+Next.swift"; sourceTree = "<group>"; };
 		906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
@@ -914,6 +916,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		906679532199B5C800050CFA /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				906679542199B5E000050CFA /* LoggingMiddleware.swift */,
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
 		906C40712019213B00E32571 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
@@ -1010,6 +1020,7 @@
 		90EFA63821979F260025819C /* Redux */ = {
 			isa = PBXGroup;
 			children = (
+				906679532199B5C800050CFA /* Middleware */,
 				90EFA63921979F660025819C /* AppState.swift */,
 				90EFA63C21979FF40025819C /* UserData.swift */,
 			);
@@ -1491,6 +1502,7 @@
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManager.swift in Sources */,
 				901A808C200E97430013CCD9 /* SettingsCardFooterConstants.swift in Sources */,
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
+				906679552199B5E000050CFA /* LoggingMiddleware.swift in Sources */,
 				90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */,
 				9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */,
 				9021F43B1F12D698000A6949 /* LineSelectorPage.swift in Sources */,

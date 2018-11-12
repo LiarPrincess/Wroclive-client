@@ -6,6 +6,9 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import Foundation
+import os.log
+
 
 enum AppEnvironment {
   static var api: ApiManagerType { return current.api }
@@ -20,7 +23,7 @@ enum AppEnvironment {
 
   private static var stack: [Environment] = []
 
-  private static var current: Environment {
+  static var current: Environment {
     precondition(stack.any, "Attempting to use empty environment stack.")
     return stack.last!
   }
@@ -35,7 +38,9 @@ enum AppEnvironment {
       schedulers: SchedulersManager(),
       storage: StorageManager(),
       userLocation: UserLocationManager(),
-      variables: EnvironmentVariables())
+      variables: EnvironmentVariables(),
+      log: OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "main")
+    )
   }
 
   static func push(
@@ -47,18 +52,22 @@ enum AppEnvironment {
     schedulers: SchedulersManagerType = current.schedulers,
     storage: StorageManagerType = current.storage,
     userLocation: UserLocationManagerType = current.userLocation,
-    variables: EnvironmentVariables) {
+    variables: EnvironmentVariables,
+    log: OSLog) {
 
-    push(Environment(
-      api: api,
-      bundle: bundle,
-      debug: debug,
-      device: device,
-      live: live,
-      schedulers: schedulers,
-      storage: storage,
-      userLocation: userLocation,
-      variables: variables))
+    push(
+      Environment(
+        api: api,
+        bundle: bundle,
+        debug: debug,
+        device: device,
+        live: live,
+        schedulers: schedulers,
+        storage: storage,
+        userLocation: userLocation,
+        variables: variables,
+        log: log
+    ))
   }
 
   static func push(_ environment: Environment) {

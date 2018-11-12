@@ -7,11 +7,15 @@
 {% macro getName type %}{{ type.name|replace:"Manager",""|lowerFirstLetter }}{% endmacro %}
 {% macro getProtocol type %}{{ type.name }}Type{% endmacro %}
 
+import Foundation
+import os.log
+
 struct Environment {
   {% for manager in types.all|annotated:"manager" %}
   let {% call getName manager %}: {% call getProtocol manager %}
   {% endfor %}
   let variables: EnvironmentVariables
+  let log: OSLog
 }
 
 // sourcery:end
