@@ -2,11 +2,16 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-struct Vehicle {
+struct Vehicle: CustomDebugStringConvertible {
   let id:   String
   let line: Line
 
   let latitude:  Double
   let longitude: Double
   let angle:     Double
+
+  var debugDescription: String {
+    let location = "Location(\(self.latitude), \(self.longitude), \(self.angle))"
+    return "Vehicle(\(self.id), \(self.line) @ \(location))"
+  }
 }

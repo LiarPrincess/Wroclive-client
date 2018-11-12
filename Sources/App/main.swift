@@ -7,5 +7,5 @@ import UIKit
 private let isTesting = NSClassFromString("XCTestCase") != nil
 private let appDelegate: AnyClass = isTesting ? TestAppDelegate.self : AppDelegate.self
 
-private let pointer = UnsafeMutableRawPointer(CommandLine.unsafeArgv).bindMemory(to: UnsafeMutablePointer<Int8>.self, capacity: Int(CommandLine.argc))
-UIApplicationMain(CommandLine.argc, pointer, NSStringFromClass(UIApplication.self), NSStringFromClass(appDelegate))
+private let argv = UnsafeMutableRawPointer(CommandLine.unsafeArgv).bindMemory(to: UnsafeMutablePointer<Int8>.self, capacity: Int(CommandLine.argc))
+_ = UIApplicationMain(CommandLine.argc, argv, NSStringFromClass(UIApplication.self), NSStringFromClass(appDelegate))
