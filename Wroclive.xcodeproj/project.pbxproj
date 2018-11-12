@@ -133,6 +133,7 @@
 		906679552199B5E000050CFA /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906679542199B5E000050CFA /* LoggingMiddleware.swift */; };
 		9066795B2199E31A00050CFA /* ApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066795A2199E31A00050CFA /* ApiData.swift */; };
 		9066795D2199EA6500050CFA /* ApiMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066795C2199EA6500050CFA /* ApiMiddleware.swift */; };
+		9066795F2199FE0F00050CFA /* PersistencyMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066795E2199FE0F00050CFA /* PersistencyMiddleware.swift */; };
 		906A7B511FFEC252004EC8A4 /* Observer+Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B501FFEC252004EC8A4 /* Observer+Next.swift */; };
 		906A7B5520025750004EC8A4 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */; };
 		906C40522013F6AC00E32571 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */; };
@@ -387,6 +388,7 @@
 		906679542199B5E000050CFA /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
 		9066795A2199E31A00050CFA /* ApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiData.swift; sourceTree = "<group>"; };
 		9066795C2199EA6500050CFA /* ApiMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMiddleware.swift; sourceTree = "<group>"; };
+		9066795E2199FE0F00050CFA /* PersistencyMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyMiddleware.swift; sourceTree = "<group>"; };
 		906A7B501FFEC252004EC8A4 /* Observer+Next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observer+Next.swift"; sourceTree = "<group>"; };
 		906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
@@ -925,6 +927,7 @@
 			children = (
 				9066795C2199EA6500050CFA /* ApiMiddleware.swift */,
 				906679542199B5E000050CFA /* LoggingMiddleware.swift */,
+				9066795E2199FE0F00050CFA /* PersistencyMiddleware.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -1493,6 +1496,7 @@
 				90915B171FFAFD5A009FE942 /* RxSectionTypeArray.swift in Sources */,
 				90AF2BD41EE9DE00006E61D6 /* Theme.swift in Sources */,
 				9017C3641EE339FD00063377 /* SearchCard.swift in Sources */,
+				9066795F2199FE0F00050CFA /* PersistencyMiddleware.swift in Sources */,
 				905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
 				90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */,

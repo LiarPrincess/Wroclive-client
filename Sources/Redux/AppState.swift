@@ -9,6 +9,23 @@ struct AppState: StateType {
   var apiData:  ApiDataState
 }
 
+func loadState(from storage: StorageManagerType) -> AppState {
+  return AppState(
+    userData: UserDataState(
+      bookmarks: storage.loadBookmarks(),
+      searchCardState: storage.loadSearchCardState()
+    ),
+    apiData: ApiDataState()
+  )
+}
+
+func createMiddlewares(_ environment: Environment) -> [Middleware<AppState>] {
+  let logging = createLoggingMiddleware(log: environment.log)
+  let api = createApiMiddleware(api: environment.api)
+  let persistency = createPersistencyMiddleware(storage: environment.storage, log: environment.log)
+  return [logging, api, persistency]
+}
+
 func mainReducer(action: Action, state: AppState?) -> AppState {
   return AppState(
     userData: userDataReducer(action: action, state: state?.userData),

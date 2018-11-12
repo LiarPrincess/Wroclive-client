@@ -19,6 +19,7 @@ func createApiMiddleware(api: ApiManagerType) -> Middleware<AppState> {
 }
 
 // TODO: [ApiMiddleware] map no lines to error
+// TODO: [ApiMiddleware] error after 3 failures
 private func updateLines(_ api: ApiManagerType, _ dispatch: @escaping DispatchFunction) {
   dispatch(ApiResponseAction.setLines(.inProgress))
 

@@ -12,7 +12,7 @@ enum ApiResponseState<Data> {
 }
 
 struct ApiDataState {
-  var lines: ApiResponseState<[Line]>
+  var lines: ApiResponseState<[Line]> = .none
 }
 
 /// This type of api action is intended for ApiMiddleware

@@ -11,18 +11,18 @@ class StorageManager: StorageManagerType {
 
   // MARK: - StorageManagerType
 
-  var bookmarks: [Bookmark] {
+  func loadBookmarks() -> [Bookmark]? {
     if self._bookmarks == nil {
       self._bookmarks = self.readDocument(.bookmarks) as? [Bookmark]
     }
-    return self._bookmarks ?? []
+    return self._bookmarks
   }
 
-  var searchCardState: SearchCardState {
+  func loadSearchCardState() -> SearchCardState? {
     if self._searchCardState == nil {
       self._searchCardState = self.readDocument(.searchCardState) as? SearchCardState
     }
-    return self._searchCardState ?? SearchCardState(page: .tram, selectedLines: [])
+    return self._searchCardState
   }
 
   func saveBookmarks(_ bookmarks: [Bookmark]) {

@@ -7,6 +7,11 @@ import ReSwift
 struct UserDataState {
   var bookmarks: [Bookmark]
   var searchCardState: SearchCardState
+
+  init(bookmarks: [Bookmark]? = nil, searchCardState: SearchCardState? = nil) {
+    self.bookmarks = bookmarks ?? []
+    self.searchCardState = searchCardState ?? SearchCardState(page: .tram, selectedLines: [])
+  }
 }
 
 enum BookmarksAction: Action {
@@ -22,14 +27,15 @@ enum SearchCardStateActions: Action {
 }
 
 func userDataReducer(action: Action, state: UserDataState?) -> UserDataState {
+  let state = state ?? UserDataState()
   return UserDataState(
-    bookmarks: bookmarksReducer(action: action, state: state?.bookmarks),
-    searchCardState: searchCardStateReducer(action: action, state: state?.searchCardState)
+    bookmarks: bookmarksReducer(action: action, state: state.bookmarks),
+    searchCardState: searchCardStateReducer(action: action, state: state.searchCardState)
   )
 }
 
-private func bookmarksReducer(action: Action, state: [Bookmark]?) -> [Bookmark] {
-  var state = state ?? dummyBookmarks()
+private func bookmarksReducer(action: Action, state: [Bookmark]) -> [Bookmark] {
+  var state = state
 
   switch action {
   case let BookmarksAction.add(name, lines):
@@ -49,9 +55,7 @@ private func bookmarksReducer(action: Action, state: [Bookmark]?) -> [Bookmark] 
   return state
 }
 
-private func searchCardStateReducer(action: Action, state: SearchCardState?) -> SearchCardState {
-  let state = state ?? SearchCardState(page: .tram, selectedLines: [])
-
+private func searchCardStateReducer(action: Action, state: SearchCardState) -> SearchCardState {
   switch action {
   case let SearchCardStateActions.selectPage(page):
     return SearchCardState(page: page, selectedLines: state.selectedLines)
@@ -67,22 +71,4 @@ private func searchCardStateReducer(action: Action, state: SearchCardState?) -> 
   default:
     return state
   }
-}
-
-private func dummyBookmarks() -> [Bookmark] {
-  let line0 = Line(name:  "1", type: .tram, subtype: .regular)
-  let line1 = Line(name:  "4", type: .tram, subtype: .regular)
-  let line2 = Line(name: "20", type: .tram, subtype: .regular)
-  let line3 = Line(name:  "A", type:  .bus, subtype: .regular)
-  let line4 = Line(name:  "D", type:  .bus, subtype: .regular)
-
-  let bookmark0 = Bookmark(name: "Test 0", lines: [line0, line1, line2, line3, line4])
-  let bookmark1 = Bookmark(name: "Test 1", lines: [line0, line2, line4])
-  let bookmark2 = Bookmark(name: "Test 2", lines: [line0, line2, line3])
-
-  return [
-    bookmark0, bookmark1, bookmark2,
-    bookmark0, bookmark1, bookmark2,
-    bookmark0, bookmark1, bookmark2
-  ]
 }
