@@ -73,15 +73,15 @@ class BookmarksCardViewModel {
     // bindings
     _didSelectItem.asObservable()
       .withLatestFrom(self.bookmarks) { index, bookmarks in bookmarks[index] }
-      .bind { bookmark in store.dispatch(FutureActions.startTracking(bookmark.lines)) }
+      .bind { store.dispatch(FutureActions.startTracking($0.lines)) }
       .disposed(by: self.disposeBag)
 
     _didMoveItem.asObservable()
-      .bind { move in store.dispatch(BookmarksAction.move(from: move.from, to: move.to)) }
+      .bind { store.dispatch(BookmarksAction.move(from: $0.from, to: $0.to)) }
       .disposed(by: self.disposeBag)
 
     _didDeleteItem.asObservable()
-      .bind { index in store.dispatch(BookmarksAction.remove(at: index)) }
+      .bind { store.dispatch(BookmarksAction.remove(at: $0)) }
       .disposed(by: self.disposeBag)
   }
 }

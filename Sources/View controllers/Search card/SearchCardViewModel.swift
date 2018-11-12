@@ -3,12 +3,13 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import ReSwift
 import RxSwift
 import RxCocoa
 
 class SearchCardViewModel {
 
-  let disposeBag = DisposeBag()
+  private let disposeBag = DisposeBag()
 
   // MARK: - Inputs
 
@@ -24,8 +25,7 @@ class SearchCardViewModel {
   let didPressAlertTryAgainButton: AnyObserver<Void>
   let didEnterBookmarkName:        AnyObserver<String>
 
-  let viewDidAppear:    AnyObserver<Void>
-  let viewDidDisappear: AnyObserver<Void>
+  let viewDidAppear: AnyObserver<Void>
 
   // MARK: - Output
 
@@ -39,12 +39,12 @@ class SearchCardViewModel {
 
   let showAlert: Driver<SearchCardAlert>
 
-  let startTracking: Driver<[Line]>
+  let close: Driver<Void>
 
   // MARK: - Init
 
   // swiftlint:disable:next function_body_length
-  init() {
+  init(_ store: Store<AppState>) {
     let _didSelectPage = PublishSubject<LineType>()
     self.didSelectPage = _didSelectPage.asObserver()
 
@@ -72,14 +72,9 @@ class SearchCardViewModel {
     let _viewDidAppear = PublishSubject<Void>()
     self.viewDidAppear = _viewDidAppear.asObserver()
 
-    let _viewDidDisappear = PublishSubject<Void>()
-    self.viewDidDisappear = _viewDidDisappear.asObserver()
-
-    let state = AppEnvironment.storage.searchCardState
-
     // page
-    self.page = Observable.merge(_didSelectPage, _didTransitionToPage)
-      .startWith(state.page)
+    self.page = store.rx.state
+      .map { $0.userData.searchCardState.page }
       .asDriver(onErrorDriveWith: .never())
 
     // lines
@@ -97,14 +92,9 @@ class SearchCardViewModel {
       .startWith([])
       .asDriver(onErrorDriveWith: .never())
 
-    self.selectedLines = {
-      let selectOperation   = _didSelectLine.map   { Operation.append(line: $0) }
-      let deselectOperation = _didDeselectLine.map { Operation.remove(line: $0) }
-
-      return Observable.merge(selectOperation, deselectOperation)
-        .reducing(state.selectedLines, apply: apply)
-        .asDriver(onErrorDriveWith: .never())
-    }()
+    self.selectedLines = store.rx.state
+      .map { $0.userData.searchCardState.selectedLines }
+      .asDriver(onErrorDriveWith: .never())
 
     self.isLineSelectorVisible = self.lines.map { $0.any }
     self.isPlaceholderVisible  = self.lines.map { $0.isEmpty }
@@ -120,25 +110,32 @@ class SearchCardViewModel {
     self.showAlert = Observable.merge(showApiErrorAlert, showBookmarkAlert)
       .asDriver(onErrorDriveWith: .never())
 
-    // tracking
-    self.startTracking = _didPressSearchButton
-      .withLatestFrom(self.selectedLines)
-      .asDriver(onErrorJustReturn: [])
+    // close
+    self.close = _didPressSearchButton
+      .map { _ in () }
+      .asDriver(onErrorDriveWith: .never())
 
-    self.initBindings(_didEnterBookmarkName, _viewDidDisappear)
-  }
-
-  private func initBindings(_ didEnterBookmarkName: Observable<String>, _ viewDidDisappear: Observable<Void>) {
-    didEnterBookmarkName
-      .withLatestFrom(self.selectedLines) { Bookmark(name: $0, lines: $1) }
-      .bind { AppEnvironment.storage.addBookmark($0) }
+    // bindings
+    Observable.merge(_didSelectPage, _didTransitionToPage)
+      .bind { store.dispatch(SearchCardStateActions.selectPage($0)) }
       .disposed(by: self.disposeBag)
 
-    viewDidDisappear
-      .withLatestFrom(self.page) { $1 }
-      .withLatestFrom(self.selectedLines) { (page: $0, selectedLines: $1) }
-      .map  { SearchCardState(page: $0.page, selectedLines: $0.selectedLines) }
-      .bind { AppEnvironment.storage.saveSearchCardState($0) }
+    _didSelectLine
+      .bind { store.dispatch(SearchCardStateActions.selectLine($0)) }
+      .disposed(by: self.disposeBag)
+
+    _didDeselectLine
+      .bind { store.dispatch(SearchCardStateActions.deselectLine($0)) }
+      .disposed(by: self.disposeBag)
+
+    _didPressSearchButton
+      .withLatestFrom(self.selectedLines)
+      .bind { store.dispatch(FutureActions.startTracking($0)) }
+      .disposed(by: self.disposeBag)
+
+    _didEnterBookmarkName
+      .withLatestFrom(self.selectedLines) { (name: $0, lines: $1) }
+      .bind { store.dispatch(BookmarksAction.add(name: $0.name, lines: $0.lines)) }
       .disposed(by: self.disposeBag)
   }
 }
@@ -160,21 +157,5 @@ private func toBookmarkAlert(_ selectedLines: [Line]) -> SearchCardAlert {
   switch selectedLines.any {
   case true:  return .bookmarkNameInput
   case false: return .bookmarkNoLineSelected
-  }
-}
-
-private enum Operation {
-  case append(line: Line)
-  case remove(line: Line)
-}
-
-private func apply(_ lines: [Line], _ operation: Operation) -> [Line] {
-  switch operation {
-  case let .append(line):
-    var copy = lines
-    copy.append(line)
-    return copy
-  case let .remove(line):
-    return lines.filter { $0 != line }
   }
 }

@@ -9,6 +9,20 @@ typealias ConstraintMaker = (UIView, UIView) -> NSLayoutConstraint
 extension UIView {
   func addSubview(_ view: UIView, constraints: [ConstraintMaker]) {
     self.addSubview(view)
+    self.addContraints(view, constraints: constraints)
+  }
+
+  func insertSubview(_ view: UIView, aboveSubview siblingSubview: UIView, constraints: [ConstraintMaker]) {
+    self.insertSubview(view, aboveSubview: siblingSubview)
+    self.addContraints(view, constraints: constraints)
+  }
+
+  func insertSubview(_ view: UIView, belowSubview siblingSubview: UIView, constraints: [ConstraintMaker]) {
+    self.insertSubview(view, belowSubview: siblingSubview)
+    self.addContraints(view, constraints: constraints)
+  }
+
+  private func addContraints(_ view: UIView, constraints: [ConstraintMaker]) {
     view.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate(constraints.map { maker in maker(view, self) })
   }

@@ -16,9 +16,6 @@ extension SearchCard {
     self.initHeader()
     self.initLinesSelector()
     self.initPlaceholder()
-
-    self.view.bringSubview(toFront: self.headerView)
-    self.view.sendSubview(toBack: self.placeholderView)
   }
 
   // MARK: - Private
@@ -28,7 +25,7 @@ extension SearchCard {
     self.headerView.contentView.addBottomBorder()
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.addSubview(self.headerView, constraints: [
+    self.view.insertSubview(self.headerView, belowSubview: self.chevronViewContainer, constraints: [
       make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
       make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
@@ -76,14 +73,14 @@ extension SearchCard {
 
   private func initLinesSelector() {
     self.addChildViewController(self.lineSelector)
-    self.view.addSubview(self.lineSelector.view, constraints: makeEdgesEqualToSuperview())
+    self.view.insertSubview(self.lineSelector.view, belowSubview: self.headerView, constraints: makeEdgesEqualToSuperview())
     self.lineSelector.didMove(toParentViewController: self)
   }
 
   private func initPlaceholder() {
     let container = UIView()
 
-    self.view.addSubview(container, constraints: [
+    self.view.insertSubview(container, belowSubview: self.lineSelector.view, constraints: [
       make(\UIView.topAnchor, equalTo: self.headerView.contentView.bottomAnchor),
       make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
       make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),

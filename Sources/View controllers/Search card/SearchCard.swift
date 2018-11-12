@@ -127,9 +127,8 @@ class SearchCard: CardPanel {
       .bind { [weak self] _ in self?.viewModel.viewDidAppear.onNext() }
       .disposed(by: self.disposeBag)
 
-    self.rx.methodInvoked(#selector(SearchCard.viewDidDisappear(_:)))
-      .map { _ in () }
-      .bind(to: self.viewModel.viewDidDisappear)
+    self.viewModel.close
+      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
       .disposed(by: self.disposeBag)
   }
 

@@ -16,9 +16,6 @@ extension BookmarksCard {
     self.initHeader()
     self.initTableView()
     self.initPlaceholder()
-
-    self.view.bringSubview(toFront: self.headerView)
-    self.view.sendSubview(toBack: self.placeholderView)
   }
 
   // MARK: - Private
@@ -27,7 +24,7 @@ extension BookmarksCard {
     self.headerView.contentView.addBottomBorder()
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.addSubview(self.headerView, constraints: [
+    self.view.insertSubview(self.headerView, belowSubview: self.chevronViewContainer, constraints: [
       make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
       make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
@@ -50,8 +47,6 @@ extension BookmarksCard {
       make(\UIView.lastBaselineAnchor, equalTo: self.titleLabel.lastBaselineAnchor),
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
-
-    self.view.bringSubview(toFront: self.chevronViewContainer)
   }
 
   private func initTableView() {
@@ -64,12 +59,13 @@ extension BookmarksCard {
     // remove empty cells below (http://swiftandpainless.com/table-view-footer-in-plain-table-view/)
     self.tableView.tableFooterView = UIView(frame: .zero)
 
-    self.view.addSubview(self.tableView, constraints: makeEdgesEqualToSuperview())
+    self.view.insertSubview(self.tableView, belowSubview: self.headerView, constraints: makeEdgesEqualToSuperview())
   }
 
   private func initPlaceholder() {
     // we can't use 'self.bookmarksTable.backgroundView' as this would result in incorrect left <-> right constraints
-    self.view.addSubview(self.placeholderView, constraints: [
+
+    self.view.insertSubview(self.placeholderView, belowSubview: self.tableView, constraints: [
       make(\UIView.centerYAnchor, equalToSuperview: \UIView.centerYAnchor),
       make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.Placeholder.leftInset),
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.Placeholder.rightInset)

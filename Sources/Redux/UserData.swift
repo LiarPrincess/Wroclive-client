@@ -6,6 +6,7 @@ import ReSwift
 
 struct UserDataState {
   var bookmarks: [Bookmark]
+  var searchCardState: SearchCardState
 }
 
 enum BookmarksAction: Action {
@@ -14,9 +15,16 @@ enum BookmarksAction: Action {
   case move(from: Int, to: Int)
 }
 
+enum SearchCardStateActions: Action {
+  case selectPage(LineType)
+  case selectLine(Line)
+  case deselectLine(Line)
+}
+
 func userDataReducer(action: Action, state: UserDataState?) -> UserDataState {
   return UserDataState(
-    bookmarks: bookmarksReducer(action: action, state: state?.bookmarks)
+    bookmarks: bookmarksReducer(action: action, state: state?.bookmarks),
+    searchCardState: searchCardStateReducer(action: action, state: state?.searchCardState)
   )
 }
 
@@ -24,18 +32,41 @@ private func bookmarksReducer(action: Action, state: [Bookmark]?) -> [Bookmark] 
   var state = state ?? dummyBookmarks()
 
   switch action {
-  case BookmarksAction.add:
-    print("BookmarksAction.add is not yet implemented!")
+  case let BookmarksAction.add(name, lines):
+    state.append(Bookmark(name: name, lines: lines))
+
   case let BookmarksAction.remove(index) where state.indices.contains(index):
     state.remove(at: index)
+
   case let BookmarksAction.move(from, to) where state.indices.contains(from) && state.indices.contains(to):
     let bookmark = state.remove(at: from)
     state.insert(bookmark, at: to)
+
   default:
     break
   }
 
   return state
+}
+
+private func searchCardStateReducer(action: Action, state: SearchCardState?) -> SearchCardState {
+  let state = state ?? SearchCardState(page: .tram, selectedLines: [])
+
+  switch action {
+  case let SearchCardStateActions.selectPage(page):
+    return SearchCardState(page: page, selectedLines: state.selectedLines)
+
+  case let SearchCardStateActions.selectLine(line) where !state.selectedLines.contains(line):
+    var lines = state.selectedLines
+    lines.append(line)
+    return SearchCardState(page: state.page, selectedLines: lines)
+
+  case let SearchCardStateActions.deselectLine(line):
+    let lines = state.selectedLines.filter { $0 != line }
+    return SearchCardState(page: state.page, selectedLines: lines)
+  default:
+    return state
+  }
 }
 
 private func dummyBookmarks() -> [Bookmark] {

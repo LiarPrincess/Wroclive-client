@@ -25,7 +25,7 @@ class AppCoordinator: Coordinator {
     self.mainViewController = MainViewController(viewModel)
 
     viewModel.openSearchCard
-      .drive(onNext: { [unowned self] in self.open(SearchCardCoordinator.init) })
+      .drive(onNext: { [unowned self] in self.openSearchCard() })
       .disposed(by: viewModel.disposeBag)
 
     viewModel.openBookmarksCard
@@ -33,11 +33,19 @@ class AppCoordinator: Coordinator {
       .disposed(by: viewModel.disposeBag)
 
     viewModel.openSettingsCard
-      .drive(onNext: { [unowned self] in self.open(SettingsCardCoordinator.init) })
+      .drive(onNext: { [unowned self] in self.openSettingsCard() })
       .disposed(by: viewModel.disposeBag)
 
     self.window.rootViewController = self.mainViewController
     self.window.makeKeyAndVisible()
+  }
+
+  private func openSearchCard() {
+    guard let mainViewController = self.mainViewController
+      else { fatalError("AppCoordinator has to be started first") }
+
+    self.childCoordinator = SearchCardCoordinator(mainViewController, self.store)
+    self.childCoordinator!.start()
   }
 
   private func openBookmarksCard() {
@@ -48,11 +56,11 @@ class AppCoordinator: Coordinator {
     self.childCoordinator!.start()
   }
 
-  private func open(_ coordinatorInit: (UIViewController) -> Coordinator) {
+  private func openSettingsCard() {
     guard let mainViewController = self.mainViewController
       else { fatalError("AppCoordinator has to be started first") }
 
-    self.childCoordinator = coordinatorInit(mainViewController)
+    self.childCoordinator = SettingsCardCoordinator(mainViewController)
     self.childCoordinator!.start()
   }
 }

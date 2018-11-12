@@ -15,8 +15,6 @@ extension SettingsCard {
 
     self.initHeader()
     self.initTableView()
-
-    self.view.bringSubview(toFront: self.headerView)
   }
 
   // MARK: - Private
@@ -25,7 +23,7 @@ extension SettingsCard {
     self.headerView.contentView.addBottomBorder()
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.addSubview(self.headerView, constraints: [
+    self.view.insertSubview(self.headerView, belowSubview: self.chevronViewContainer, constraints: [
       make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
       make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
@@ -54,6 +52,6 @@ extension SettingsCard {
 
     self.tableView.tableFooterView = SettingsCardFooterView()
 
-    self.view.addSubview(self.tableView, constraints: makeEdgesEqualToSuperview())
+    self.view.insertSubview(self.tableView, belowSubview: self.headerView, constraints: makeEdgesEqualToSuperview())
   }
 }

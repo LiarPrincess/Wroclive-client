@@ -3,31 +3,26 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import ReSwift
 import RxSwift
 import RxCocoa
 
 class SearchCardCoordinator: CardCoordinator {
 
+  let parent: UIViewController
+  let store:  Store<AppState>
+
   var card:                   SearchCard?
   var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
 
-  let parent: UIViewController
-
-  init(_ parent: UIViewController) {
+  init(_ parent: UIViewController, _ store: Store<AppState>) {
     self.parent = parent
+    self.store  = store
   }
 
   func start() {
-    let viewModel = SearchCardViewModel()
+    let viewModel = SearchCardViewModel(self.store)
     self.card     = SearchCard(viewModel)
-
-    viewModel.startTracking
-      .drive(onNext: { [weak self] lines in
-        AppEnvironment.live.startTracking(lines)
-        self?.card?.dismiss(animated: true, completion: nil)
-      })
-      .disposed(by: viewModel.disposeBag)
-
     self.presentCard(animated: true)
   }
 }
