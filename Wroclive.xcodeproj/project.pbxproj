@@ -131,6 +131,8 @@
 		905D71B61FE1C6A8006D1DB6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
 		906679552199B5E000050CFA /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906679542199B5E000050CFA /* LoggingMiddleware.swift */; };
+		9066795B2199E31A00050CFA /* ApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066795A2199E31A00050CFA /* ApiData.swift */; };
+		9066795D2199EA6500050CFA /* ApiMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066795C2199EA6500050CFA /* ApiMiddleware.swift */; };
 		906A7B511FFEC252004EC8A4 /* Observer+Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B501FFEC252004EC8A4 /* Observer+Next.swift */; };
 		906A7B5520025750004EC8A4 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */; };
 		906C40522013F6AC00E32571 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */; };
@@ -383,6 +385,8 @@
 		905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		906679542199B5E000050CFA /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
+		9066795A2199E31A00050CFA /* ApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiData.swift; sourceTree = "<group>"; };
+		9066795C2199EA6500050CFA /* ApiMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMiddleware.swift; sourceTree = "<group>"; };
 		906A7B501FFEC252004EC8A4 /* Observer+Next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observer+Next.swift"; sourceTree = "<group>"; };
 		906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
@@ -919,6 +923,7 @@
 		906679532199B5C800050CFA /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
+				9066795C2199EA6500050CFA /* ApiMiddleware.swift */,
 				906679542199B5E000050CFA /* LoggingMiddleware.swift */,
 			);
 			path = Middleware;
@@ -1023,6 +1028,7 @@
 				906679532199B5C800050CFA /* Middleware */,
 				90EFA63921979F660025819C /* AppState.swift */,
 				90EFA63C21979FF40025819C /* UserData.swift */,
+				9066795A2199E31A00050CFA /* ApiData.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -1507,7 +1513,9 @@
 				9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */,
 				9021F43B1F12D698000A6949 /* LineSelectorPage.swift in Sources */,
 				905D71AF1FE1C5BD006D1DB6 /* ApiManagerType.swift in Sources */,
+				9066795D2199EA6500050CFA /* ApiMiddleware.swift in Sources */,
 				90B261211FF501510076EC69 /* LineSelectorSection.swift in Sources */,
+				9066795B2199E31A00050CFA /* ApiData.swift in Sources */,
 				90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */,
 				90C4B13A203213D600920706 /* MapViewModel.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,

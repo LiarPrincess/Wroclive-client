@@ -15,7 +15,7 @@ func createLoggingMiddleware(log: OSLog) -> Middleware<AppState> {
                String(describing: action)
         )
 
-        return next(action)
+        next(action)
       }
     }
   }

@@ -29,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   private func createMiddlewares(_ environment: Environment) -> [Middleware<AppState>] {
     let logging = createLoggingMiddleware(log: environment.log)
-    return [logging]
+    let api = createApiMiddleware(api: environment.api)
+    return [logging, api]
   }
 
   // MARK: - Activity

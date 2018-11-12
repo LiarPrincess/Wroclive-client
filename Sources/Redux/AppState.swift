@@ -6,11 +6,13 @@ import ReSwift
 
 struct AppState: StateType {
   var userData: UserDataState
+  var apiData:  ApiDataState
 }
 
 func mainReducer(action: Action, state: AppState?) -> AppState {
   return AppState(
-    userData: userDataReducer(action: action, state: state?.userData)
+    userData: userDataReducer(action: action, state: state?.userData),
+    apiData:  apiDataReducer(action: action, state: state?.apiData)
   )
 }
 
