@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import ReSwift
 import RxSwift
 import RxCocoa
 
@@ -18,11 +19,15 @@ class MainViewModel {
 
   // MARK: - Outputs
 
+  let mapViewModel: MapViewModel
+
   let openSearchCard:    Driver<Void>
   let openBookmarksCard: Driver<Void>
   let openSettingsCard:  Driver<Void>
 
-  init() {
+  init(_ store: Store<AppState>) {
+    self.mapViewModel = MapViewModel(store)
+
     let _didPressSearchButton = PublishSubject<Void>()
     self.didPressSearchButton = _didPressSearchButton.asObserver()
     self.openSearchCard = _didPressSearchButton.asDriver(onErrorDriveWith: .never())

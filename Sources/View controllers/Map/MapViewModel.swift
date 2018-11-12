@@ -4,6 +4,7 @@
 
 import UIKit
 import MapKit
+import ReSwift
 import RxSwift
 import RxCocoa
 
@@ -18,20 +19,21 @@ class MapViewModel {
 
   // MARK: - Output
 
-  let mapCenter: Driver<CLLocationCoordinate2D>
-  let vehicles:  Driver<[Vehicle]>
+  let mapCenter:        Driver<CLLocationCoordinate2D>
+  let vehicleLocations: Driver<[Vehicle]>
+
   let showAlert: Driver<MapViewAlert>
 
   // swiftlint:disable:next function_body_length
-  init() {
+  init(_ store: Store<AppState>) {
     let _didChangeTrackingMode = PublishSubject<MKUserTrackingMode>()
     self.didChangeTrackingMode = _didChangeTrackingMode.asObserver()
 
     let _viewDidAppear = PublishSubject<Void>()
     self.viewDidAppear = _viewDidAppear.asObserver()
 
-    let authorizations   = AppEnvironment.userLocation.authorization.share()
-    let vehicleResponses = AppEnvironment.live.vehicles.share()
+    // map center
+    let authorizations = AppEnvironment.userLocation.authorization.share()
 
     self.mapCenter = {
       let initialAuthorization = _viewDidAppear.withLatestFrom(authorizations)
@@ -50,9 +52,12 @@ class MapViewModel {
         .asDriver(onErrorDriveWith: .never())
     }()
 
-    self.vehicles = vehicleResponses
-      .elements()
+    // vehicles
+    let vehicleResponse = store.rx.state
+      .map { $0.apiData.vehicleLocations }
       .asDriver(onErrorDriveWith: .never())
+
+    self.vehicleLocations = vehicleResponse.data()
 
     self.showAlert = {
       let requestAuthorizationAlert: Observable<MapViewAlert> = {
@@ -71,10 +76,10 @@ class MapViewModel {
         .withLatestFrom(authorizations)
         .flatMapLatest(toDeniedAuthorizationAlert)
 
-      let apiErrorAlert = vehicleResponses
+      let apiErrorAlert = vehicleResponse
         .errors()
-        .map(toApiError)
-        .map { MapViewAlert.apiError($0) }
+        .map { MapViewAlert.apiError($0 as? ApiError ?? .generalError) }
+        .asObservable()
 
       return Observable.merge(requestAuthorizationAlert, deniedAuthorizationAlert, apiErrorAlert)
         .asDriver(onErrorDriveWith: .never())
@@ -84,10 +89,7 @@ class MapViewModel {
 
 // MARK: - Helpers
 
-private func toApiError(_ error: Error) -> ApiError {
-  return error as? ApiError ?? .generalError
-}
-
+// TODO: merge toRequestAuthorizationAlert & toDeniedAuthorizationAlert
 private func toRequestAuthorizationAlert(_ authorization: CLAuthorizationStatus) -> Observable<MapViewAlert> {
   switch authorization {
   case .notDetermined: return .just(.requestLocationAuthorization)

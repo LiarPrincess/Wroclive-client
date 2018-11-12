@@ -16,16 +16,13 @@ class MapViewController: UIViewController {
 
   let mapView = MKMapView()
 
-  let viewModel  = MapViewModel()
-  let disposeBag = DisposeBag()
+  private let viewModel: MapViewModel
+  private let disposeBag = DisposeBag()
 
   // MARK: - Init
 
-  convenience init() {
-    self.init(nibName: nil, bundle: nil)
-  }
-
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+  init(_ viewModel: MapViewModel) {
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
     self.initBindings()
   }
@@ -48,7 +45,7 @@ class MapViewController: UIViewController {
       .disposed(by: self.disposeBag)
 
     // annotations
-    self.viewModel.vehicles
+    self.viewModel.vehicleLocations
       .drive(onNext: { [unowned self] in self.updateVehicleLocations($0) })
       .disposed(by: self.disposeBag)
 

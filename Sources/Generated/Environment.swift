@@ -15,7 +15,6 @@ struct Environment {
   let bundle: BundleManagerType
   let debug: DebugManagerType
   let device: DeviceManagerType
-  let live: LiveManagerType
   let schedulers: SchedulersManagerType
   let storage: StorageManagerType
   let userLocation: UserLocationManagerType

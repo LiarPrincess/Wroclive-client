@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
 
   // MARK: - Properties
 
-  let mapViewController = MapViewController()
+  let mapViewController: MapViewController
 
   let toolbar = UIToolbar()
   let userTrackingButton  = MKUserTrackingBarButtonItem()
@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
 
   init(_ viewModel: MainViewModel) {
     self.viewModel = viewModel
+    self.mapViewController = MapViewController(viewModel.mapViewModel)
     super.init(nibName: nil, bundle: nil)
   }
 

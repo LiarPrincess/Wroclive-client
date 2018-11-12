@@ -82,28 +82,32 @@ class SearchCardViewModel {
       .map { $0.apiData.lines }
       .asDriver(onErrorDriveWith: .never())
 
-    self.lines = _linesResponse
-      .flatMapLatest(toLines)
-      .asDriver(onErrorDriveWith: .never())
+    self.lines = _linesResponse.data()
 
     self.selectedLines = store.rx.state
       .map { $0.userData.searchCardState.selectedLines }
       .asDriver(onErrorDriveWith: .never())
 
     self.isLineSelectorVisible = _linesResponse
-      .map(toLineSelectorVisibility)
-      .unwrap()
-      .asDriver(onErrorDriveWith: .never())
+      .flatMapLatest { response in
+        switch response {
+        case .data: return Driver.just(true)
+        case .none, .inProgress: return Driver.just(false)
+        case .error: return Driver.never() // on error just don't change visibility
+        }
+      }
 
     self.isPlaceholderVisible = self.isLineSelectorVisible.map { !$0 }
 
     // alerts
+
     let showApiErrorAlert = _linesResponse
-      .flatMapLatest(toApiErrorAlert)
+      .errors()
+      .map { SearchCardAlert.apiError($0 as? ApiError ?? .generalError) }
 
     let showBookmarkAlert = _didPressBookmarkButton
       .withLatestFrom(self.selectedLines)
-      .map(toBookmarkAlert)
+      .map { $0.any ? SearchCardAlert.bookmarkNameInput : SearchCardAlert.bookmarkNoLineSelected }
       .asDriver(onErrorDriveWith: .never())
 
     self.showAlert = Driver.merge(showApiErrorAlert, showBookmarkAlert)
@@ -115,20 +119,20 @@ class SearchCardViewModel {
 
     // bindings
     Observable.merge(_didSelectPage, _didTransitionToPage)
-      .bind { store.dispatch(SearchCardStateActions.selectPage($0)) }
+      .bind { store.dispatch(SearchCardStateAction.selectPage($0)) }
       .disposed(by: self.disposeBag)
 
     _didSelectLine
-      .bind { store.dispatch(SearchCardStateActions.selectLine($0)) }
+      .bind { store.dispatch(SearchCardStateAction.selectLine($0)) }
       .disposed(by: self.disposeBag)
 
     _didDeselectLine
-      .bind { store.dispatch(SearchCardStateActions.deselectLine($0)) }
+      .bind { store.dispatch(SearchCardStateAction.deselectLine($0)) }
       .disposed(by: self.disposeBag)
 
     _didPressSearchButton
       .withLatestFrom(self.selectedLines)
-      .bind { store.dispatch(FutureActions.startTracking($0)) }
+      .bind { store.dispatch(TrackedLinesAction.startTracking($0)) }
       .disposed(by: self.disposeBag)
 
     _didEnterBookmarkName
@@ -141,40 +145,5 @@ class SearchCardViewModel {
     Observable.merge(updateLinesBeforeOpeningCard, _didPressAlertTryAgainButton)
       .bind { store.dispatch(ApiAction.updateLines) }
       .disposed(by: self.disposeBag)
-  }
-}
-
-private func toLines(_ response: ApiResponseState<[Line]>) -> Driver<[Line]> {
-    switch response {
-    case let .data(lines): return .just(lines)
-    case .none,
-         .inProgress,
-         .error: return .never()
-    }
-}
-
-private func toLineSelectorVisibility(_ response: ApiResponseState<[Line]>) -> Bool? {
-  switch response {
-  case .data: return true
-  case .none, .inProgress: return false
-  case .error: return nil // on error just don't change visibility
-  }
-}
-
-private func toApiErrorAlert(_ response: ApiResponseState<[Line]>) -> Driver<SearchCardAlert> {
-  switch response {
-  case let .error(error):
-    let apiError = error as? ApiError ?? .generalError
-    return .just(.apiError(apiError))
-  case .none,
-       .inProgress,
-       .data: return .never()
-  }
-}
-
-private func toBookmarkAlert(_ selectedLines: [Line]) -> SearchCardAlert {
-  switch selectedLines.any {
-  case true:  return .bookmarkNameInput
-  case false: return .bookmarkNoLineSelected
   }
 }

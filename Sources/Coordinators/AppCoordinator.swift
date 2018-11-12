@@ -21,7 +21,7 @@ class AppCoordinator: Coordinator {
   }
 
   func start() {
-    let viewModel = MainViewModel()
+    let viewModel = MainViewModel(self.store)
     self.mainViewController = MainViewController(viewModel)
 
     viewModel.openSearchCard

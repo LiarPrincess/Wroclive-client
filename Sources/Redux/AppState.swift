@@ -32,7 +32,3 @@ func mainReducer(action: Action, state: AppState?) -> AppState {
     apiData:  apiDataReducer(action: action, state: state?.apiData)
   )
 }
-
-enum FutureActions: Action {
-  case startTracking([Line])
-}

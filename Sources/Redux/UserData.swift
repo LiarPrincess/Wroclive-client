@@ -5,12 +5,16 @@
 import ReSwift
 
 struct UserDataState {
-  var bookmarks: [Bookmark]
+  var bookmarks:       [Bookmark]
   var searchCardState: SearchCardState
+  var trackedLines:    [Line]
 
-  init(bookmarks: [Bookmark]? = nil, searchCardState: SearchCardState? = nil) {
+  init(bookmarks:       [Bookmark]? = nil,
+       searchCardState: SearchCardState? = nil,
+       trackedLines:    [Line]? = nil) {
     self.bookmarks = bookmarks ?? []
     self.searchCardState = searchCardState ?? SearchCardState(page: .tram, selectedLines: [])
+    self.trackedLines = trackedLines ?? []
   }
 }
 
@@ -20,17 +24,22 @@ enum BookmarksAction: Action {
   case move(from: Int, to: Int)
 }
 
-enum SearchCardStateActions: Action {
+enum SearchCardStateAction: Action {
   case selectPage(LineType)
   case selectLine(Line)
   case deselectLine(Line)
+}
+
+enum TrackedLinesAction: Action {
+  case startTracking([Line])
 }
 
 func userDataReducer(action: Action, state: UserDataState?) -> UserDataState {
   let state = state ?? UserDataState()
   return UserDataState(
     bookmarks: bookmarksReducer(action: action, state: state.bookmarks),
-    searchCardState: searchCardStateReducer(action: action, state: state.searchCardState)
+    searchCardState: searchCardStateReducer(action: action, state: state.searchCardState),
+    trackedLines: trackedLinesReducer(action: action, state: state.trackedLines)
   )
 }
 
@@ -57,18 +66,26 @@ private func bookmarksReducer(action: Action, state: [Bookmark]) -> [Bookmark] {
 
 private func searchCardStateReducer(action: Action, state: SearchCardState) -> SearchCardState {
   switch action {
-  case let SearchCardStateActions.selectPage(page):
+  case let SearchCardStateAction.selectPage(page):
     return SearchCardState(page: page, selectedLines: state.selectedLines)
 
-  case let SearchCardStateActions.selectLine(line) where !state.selectedLines.contains(line):
+  case let SearchCardStateAction.selectLine(line) where !state.selectedLines.contains(line):
     var lines = state.selectedLines
     lines.append(line)
     return SearchCardState(page: state.page, selectedLines: lines)
 
-  case let SearchCardStateActions.deselectLine(line):
+  case let SearchCardStateAction.deselectLine(line):
     let lines = state.selectedLines.filter { $0 != line }
     return SearchCardState(page: state.page, selectedLines: lines)
+
   default:
     return state
   }
+}
+
+private func trackedLinesReducer(action: Action, state: [Line]) -> [Line] {
+  if case let TrackedLinesAction.startTracking(lines) = action {
+    return lines
+  }
+  return state
 }

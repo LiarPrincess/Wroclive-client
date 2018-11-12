@@ -80,7 +80,7 @@
 		9021F43F1F12D698000A6949 /* LineSelectorCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4351F12D698000A6949 /* LineSelectorCellViewModel.swift */; };
 		9021F4401F12D698000A6949 /* LineSelectorHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4361F12D698000A6949 /* LineSelectorHeaderViewModel.swift */; };
 		9021F4431F12D6C5000A6949 /* LineSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4421F12D6C5000A6949 /* LineSelector.swift */; };
-		9022EF2020E048BC00FFA42D /* Observable+MaterializedElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022EF1F20E048BC00FFA42D /* Observable+MaterializedElements.swift */; };
+		9022EF2020E048BC00FFA42D /* Observable+ApiResponseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9022EF1F20E048BC00FFA42D /* Observable+ApiResponseState.swift */; };
 		9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330E51EDF37F500FA8F43 /* AppDelegate.swift */; };
 		9023312B1EDF37F500FA8F43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902330E61EDF37F500FA8F43 /* Assets.xcassets */; };
 		9023312E1EDF37F500FA8F43 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330EA1EDF37F500FA8F43 /* Line.swift */; };
@@ -336,7 +336,7 @@
 		9021F4351F12D698000A6949 /* LineSelectorCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorCellViewModel.swift; sourceTree = "<group>"; };
 		9021F4361F12D698000A6949 /* LineSelectorHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorHeaderViewModel.swift; sourceTree = "<group>"; };
 		9021F4421F12D6C5000A6949 /* LineSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelector.swift; sourceTree = "<group>"; };
-		9022EF1F20E048BC00FFA42D /* Observable+MaterializedElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+MaterializedElements.swift"; sourceTree = "<group>"; };
+		9022EF1F20E048BC00FFA42D /* Observable+ApiResponseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+ApiResponseState.swift"; sourceTree = "<group>"; };
 		902330E51EDF37F500FA8F43 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		902330E61EDF37F500FA8F43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/App/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		902330EA1EDF37F500FA8F43 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -682,7 +682,7 @@
 				90D3A3FF1FEDB58800FB7485 /* RxUIView+IsVisible.swift */,
 				90915B181FFB005C009FE942 /* Observable+Reducing.swift */,
 				906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */,
-				9022EF1F20E048BC00FFA42D /* Observable+MaterializedElements.swift */,
+				9022EF1F20E048BC00FFA42D /* Observable+ApiResponseState.swift */,
 				906A7B501FFEC252004EC8A4 /* Observer+Next.swift */,
 			);
 			path = Extensions;
@@ -1530,7 +1530,7 @@
 				90D078AB20E57DA2005FA3DF /* Localizable.swift in Sources */,
 				9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */,
 				90D3A3F11FEC239100FB7485 /* BookmarksCardViewModel.swift in Sources */,
-				9022EF2020E048BC00FFA42D /* Observable+MaterializedElements.swift in Sources */,
+				9022EF2020E048BC00FFA42D /* Observable+ApiResponseState.swift in Sources */,
 				9042EDCF1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift in Sources */,
 				906C40592014C55700E32571 /* DebugManager.swift in Sources */,
 				90F9F89C20DEFB1800793E4C /* main.swift in Sources */,

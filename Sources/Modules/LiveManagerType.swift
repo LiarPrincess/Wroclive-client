@@ -4,17 +4,17 @@
 
 import RxSwift
 
-protocol LiveManagerType {
-
-  /// Tracking results
-  var vehicles: Observable<Event<[Vehicle]>> { get }
-
-  /// Start tracking new set of lines
-  func startTracking(_ lines: [Line])
-
-  /// Resume updates
-  func resumeUpdates()
-
-  /// Pause updates, so that new values will not be send
-  func pauseUpdates()
-}
+//protocol LiveManagerType {
+//
+//  /// Tracking results
+//  var vehicles: Observable<Event<[Vehicle]>> { get }
+//
+//  /// Start tracking new set of lines
+//  func startTracking(_ lines: [Line])
+//
+//  /// Resume updates
+//  func resumeUpdates()
+//
+//  /// Pause updates, so that new values will not be send
+//  func pauseUpdates()
+//}

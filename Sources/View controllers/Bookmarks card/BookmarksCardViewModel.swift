@@ -73,7 +73,7 @@ class BookmarksCardViewModel {
     // bindings
     _didSelectItem.asObservable()
       .withLatestFrom(self.bookmarks) { index, bookmarks in bookmarks[index] }
-      .bind { store.dispatch(FutureActions.startTracking($0.lines)) }
+      .bind { store.dispatch(TrackedLinesAction.startTracking($0.lines)) }
       .disposed(by: self.disposeBag)
 
     _didMoveItem.asObservable()

@@ -15,7 +15,6 @@ enum AppEnvironment {
   static var bundle: BundleManagerType { return current.bundle }
   static var debug: DebugManagerType { return current.debug }
   static var device: DeviceManagerType { return current.device }
-  static var live: LiveManagerType { return current.live }
   static var schedulers: SchedulersManagerType { return current.schedulers }
   static var storage: StorageManagerType { return current.storage }
   static var userLocation: UserLocationManagerType { return current.userLocation }
@@ -34,7 +33,6 @@ enum AppEnvironment {
       bundle: BundleManager(),
       debug: DebugManager(),
       device: DeviceManager(),
-      live: LiveManager(),
       schedulers: SchedulersManager(),
       storage: StorageManager(),
       userLocation: UserLocationManager(),
@@ -48,7 +46,6 @@ enum AppEnvironment {
     bundle: BundleManagerType = current.bundle,
     debug: DebugManagerType = current.debug,
     device: DeviceManagerType = current.device,
-    live: LiveManagerType = current.live,
     schedulers: SchedulersManagerType = current.schedulers,
     storage: StorageManagerType = current.storage,
     userLocation: UserLocationManagerType = current.userLocation,
@@ -61,7 +58,6 @@ enum AppEnvironment {
         bundle: bundle,
         debug: debug,
         device: device,
-        live: live,
         schedulers: schedulers,
         storage: storage,
         userLocation: userLocation,
