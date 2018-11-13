@@ -28,8 +28,7 @@ enum AppEnvironment {
     {% for manager in types.all|annotated:"manager" %}
       {% call getName manager %}: {{ manager.name }}(),
     {% endfor %}
-      variables: EnvironmentVariables(),
-      log: OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "main")
+      variables: EnvironmentVariables()
     )
   }
 
@@ -37,16 +36,14 @@ enum AppEnvironment {
   {% for manager in types.all|annotated:"manager" %}
     {% call getName manager %}: {% call getProtocol manager %} = current.{% call getName manager %},
   {% endfor %}
-    variables: EnvironmentVariables,
-    log: OSLog) {
+    variables: EnvironmentVariables) {
 
     push(
       Environment(
       {% for manager in types.all|annotated:"manager" %}
         {% call getName manager %}: {% call getName manager %},
       {% endfor %}
-        variables: variables,
-        log: log
+        variables: variables
     ))
   }
 

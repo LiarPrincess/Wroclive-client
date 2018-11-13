@@ -40,8 +40,7 @@ class UpdateScheduler: StoreSubscriber {
     let initialTick = Observable<Void>.just(())
     let intervalTimer: Observable<Void> = {
       let interval = AppEnvironment.variables.timings.vehicleUpdateInterval
-      let scheduler = AppEnvironment.schedulers.main
-      return Observable<Int>.interval(interval, scheduler: scheduler).map { _ in () }
+      return Observable<Int>.interval(interval, scheduler: self.scheduler.main).map { _ in () }
     }()
 
     self.timer = initialTick.concat(intervalTimer)
@@ -65,7 +64,6 @@ class UpdateScheduler: StoreSubscriber {
 
   func newState(state: AppState) {
     let newTrackedLines = state.userData.trackedLines
-
     if newTrackedLines != self.trackedLines {
       os_log("Changing tracked lines", log: self.log, type: .info)
       self.trackedLines = newTrackedLines

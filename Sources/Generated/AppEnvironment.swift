@@ -36,8 +36,7 @@ enum AppEnvironment {
       schedulers: SchedulersManager(),
       storage: StorageManager(),
       userLocation: UserLocationManager(),
-      variables: EnvironmentVariables(),
-      log: OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "main")
+      variables: EnvironmentVariables()
     )
   }
 
@@ -49,8 +48,7 @@ enum AppEnvironment {
     schedulers: SchedulersManagerType = current.schedulers,
     storage: StorageManagerType = current.storage,
     userLocation: UserLocationManagerType = current.userLocation,
-    variables: EnvironmentVariables,
-    log: OSLog) {
+    variables: EnvironmentVariables) {
 
     push(
       Environment(
@@ -61,8 +59,7 @@ enum AppEnvironment {
         schedulers: schedulers,
         storage: storage,
         userLocation: userLocation,
-        variables: variables,
-        log: log
+        variables: variables
     ))
   }
 

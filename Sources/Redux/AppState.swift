@@ -20,9 +20,9 @@ func loadState(from storage: StorageManagerType) -> AppState {
 }
 
 func createMiddlewares(_ environment: Environment) -> [Middleware<AppState>] {
-  let logging = createLoggingMiddleware(log: environment.log)
+  let logging = createLoggingMiddleware(bundle: environment.bundle)
   let api = createApiMiddleware(api: environment.api)
-  let persistency = createPersistencyMiddleware(storage: environment.storage, log: environment.log)
+  let persistency = createPersistencyMiddleware(bundle: environment.bundle, storage: environment.storage)
   return [logging, api, persistency]
 }
 

@@ -19,5 +19,4 @@ struct Environment {
   let storage: StorageManagerType
   let userLocation: UserLocationManagerType
   let variables: EnvironmentVariables
-  let log: OSLog
 }
