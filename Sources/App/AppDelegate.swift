@@ -7,9 +7,13 @@ import ReSwift
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  var window:      UIWindow?
-  var coordinator: AppCoordinator?
-  var store:       Store<AppState>?
+  var window: UIWindow?
+
+  // swiftlint:disable implicitly_unwrapped_optional
+  var store:           Store<AppState>!
+  var coordinator:     AppCoordinator!
+  var updateScheduler: UpdateScheduler!
+  // swiftlint:enable implicitly_unwrapped_optional
 
   // MARK: - Launch
 
@@ -23,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     self.window = UIWindow(frame: UIScreen.main.bounds)
     self.store  = Store<AppState>(reducer: mainReducer, state: state, middleware: middlewares)
-    self.coordinator = AppCoordinator(self.window!, self.store!)
+    self.coordinator = AppCoordinator(self.window!, self.store)
+    self.updateScheduler = UpdateScheduler(self.store, environment.bundle, environment.schedulers)
 
     self.coordinator!.start()
     return true
@@ -33,10 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationDidBecomeActive(_ application: UIApplication) {
     Theme.recalculateFontSizes()
-//    AppEnvironment.live.resumeUpdates()
+    self.updateScheduler.start()
   }
 
   func applicationWillResignActive(_ application: UIApplication) {
-//    AppEnvironment.live.pauseUpdates()
+    self.updateScheduler.pause()
   }
 }

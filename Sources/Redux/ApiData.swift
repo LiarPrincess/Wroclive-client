@@ -4,17 +4,30 @@
 
 import ReSwift
 
-enum ApiResponseState<Data> {
+// MARK: - State
+
+enum ApiResponseState<Data>: CustomDebugStringConvertible {
   case none
   case inProgress
   case data(Data)
   case error(Error)
+
+  var debugDescription: String {
+    switch self {
+    case .none: return "none"
+    case .inProgress: return "inProgress"
+    case .data: return "data"
+    case .error: return "error"
+    }
+  }
 }
 
 struct ApiDataState {
   var lines: ApiResponseState<[Line]> = .none
   var vehicleLocations: ApiResponseState<[Vehicle]> = .none
 }
+
+// MARK: - Actions
 
 /// This type of api action is intended for ApiMiddleware
 enum ApiAction: Action {
@@ -27,6 +40,8 @@ enum ApiResponseAction: Action {
   case setLines(ApiResponseState<[Line]>)
   case setVehicleLocations(ApiResponseState<[Vehicle]>)
 }
+
+// MARK: - Reducers
 
 func apiDataReducer(action: Action, state: ApiDataState?) -> ApiDataState {
   return ApiDataState(

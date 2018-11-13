@@ -134,6 +134,7 @@
 		9066795B2199E31A00050CFA /* ApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066795A2199E31A00050CFA /* ApiData.swift */; };
 		9066795D2199EA6500050CFA /* ApiMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066795C2199EA6500050CFA /* ApiMiddleware.swift */; };
 		9066795F2199FE0F00050CFA /* PersistencyMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066795E2199FE0F00050CFA /* PersistencyMiddleware.swift */; };
+		90667962219B679100050CFA /* UpdateScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90667961219B679100050CFA /* UpdateScheduler.swift */; };
 		906A7B511FFEC252004EC8A4 /* Observer+Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B501FFEC252004EC8A4 /* Observer+Next.swift */; };
 		906A7B5520025750004EC8A4 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */; };
 		906C40522013F6AC00E32571 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */; };
@@ -389,6 +390,7 @@
 		9066795A2199E31A00050CFA /* ApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiData.swift; sourceTree = "<group>"; };
 		9066795C2199EA6500050CFA /* ApiMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMiddleware.swift; sourceTree = "<group>"; };
 		9066795E2199FE0F00050CFA /* PersistencyMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyMiddleware.swift; sourceTree = "<group>"; };
+		90667961219B679100050CFA /* UpdateScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateScheduler.swift; sourceTree = "<group>"; };
 		906A7B501FFEC252004EC8A4 /* Observer+Next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observer+Next.swift"; sourceTree = "<group>"; };
 		906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
@@ -932,6 +934,14 @@
 			path = Middleware;
 			sourceTree = "<group>";
 		};
+		90667960219B677C00050CFA /* Action creators */ = {
+			isa = PBXGroup;
+			children = (
+				90667961219B679100050CFA /* UpdateScheduler.swift */,
+			);
+			path = "Action creators";
+			sourceTree = "<group>";
+		};
 		906C40712019213B00E32571 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,6 +1038,7 @@
 		90EFA63821979F260025819C /* Redux */ = {
 			isa = PBXGroup;
 			children = (
+				90667960219B677C00050CFA /* Action creators */,
 				906679532199B5C800050CFA /* Middleware */,
 				90EFA63921979F660025819C /* AppState.swift */,
 				90EFA63C21979FF40025819C /* UserData.swift */,
@@ -1500,6 +1511,7 @@
 				905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
 				90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */,
+				90667962219B679100050CFA /* UpdateScheduler.swift in Sources */,
 				90546BEE1F6AF23100E8E75F /* LiveManagerType.swift in Sources */,
 				901A80A320129DCD0013CCD9 /* SettingsSectionHeaderViewConstants.swift in Sources */,
 				901A808E200E9EF00013CCD9 /* SettingsCardViewModel.swift in Sources */,
