@@ -112,8 +112,6 @@
 		9050954320D709A3005E2BF8 /* BookmarksCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTests.swift */; };
 		9050954520D725DC005E2BF8 /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */; };
 		90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90538DD1201CADCF0000BBBE /* CardPanel.swift */; };
-		90546BEE1F6AF23100E8E75F /* LiveManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BED1F6AF23100E8E75F /* LiveManagerType.swift */; };
-		90546BF01F6AF25800E8E75F /* LiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90546BEF1F6AF25800E8E75F /* LiveManager.swift */; };
 		9055C8E61F462F2F00D1EBDA /* SettingsCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E51F462F2F00D1EBDA /* SettingsCardLayout.swift */; };
 		9055C8E81F462F5C00D1EBDA /* SettingsCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055C8E71F462F5C00D1EBDA /* SettingsCardConstants.swift */; };
 		9056F6561F5229A500F7EF48 /* FontAwesomeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */; };
@@ -368,8 +366,6 @@
 		9050705E2087EE66007DDA80 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		905070612087EF53007DDA80 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		90538DD1201CADCF0000BBBE /* CardPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPanel.swift; sourceTree = "<group>"; };
-		90546BED1F6AF23100E8E75F /* LiveManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveManagerType.swift; sourceTree = "<group>"; };
-		90546BEF1F6AF25800E8E75F /* LiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveManager.swift; sourceTree = "<group>"; };
 		9055C8E51F462F2F00D1EBDA /* SettingsCardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardLayout.swift; sourceTree = "<group>"; };
 		9055C8E71F462F5C00D1EBDA /* SettingsCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardConstants.swift; sourceTree = "<group>"; };
 		9056F6531F5229A500F7EF48 /* FontAwesomeFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesomeFont.swift; sourceTree = "<group>"; };
@@ -791,8 +787,6 @@
 				9016FD0B208B48EC0043524D /* SchedulersManager.swift */,
 				905D71A81FE1C5BD006D1DB6 /* ApiManagerType.swift */,
 				905D71A41FE1C5BD006D1DB6 /* ApiManager.swift */,
-				90546BED1F6AF23100E8E75F /* LiveManagerType.swift */,
-				90546BEF1F6AF25800E8E75F /* LiveManager.swift */,
 				905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */,
 				905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */,
 				906C40562014C55000E32571 /* DebugManagerType.swift */,
@@ -1512,7 +1506,6 @@
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
 				90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */,
 				90667962219B679100050CFA /* UpdateScheduler.swift in Sources */,
-				90546BEE1F6AF23100E8E75F /* LiveManagerType.swift in Sources */,
 				901A80A320129DCD0013CCD9 /* SettingsSectionHeaderViewConstants.swift in Sources */,
 				901A808E200E9EF00013CCD9 /* SettingsCardViewModel.swift in Sources */,
 				908346F61F5202AE00654FF6 /* String+IndicesOf.swift in Sources */,
@@ -1561,7 +1554,6 @@
 				901A808A200E96EE0013CCD9 /* SettingsCardFooterView.swift in Sources */,
 				9010D5B5201FA04500563BDB /* ScrollViewDismissGestureHandler.swift in Sources */,
 				9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */,
-				90546BF01F6AF25800E8E75F /* LiveManager.swift in Sources */,
 				9050705B2087EB4B007DDA80 /* StorageManagerType.swift in Sources */,
 				905D718F1FE1C444006D1DB6 /* UserLocationManagerType.swift in Sources */,
 				900CBE912192E2B30028C58F /* Coordinator.swift in Sources */,

@@ -10,7 +10,17 @@ import RxCocoa
 
 private typealias Defaults = MapViewControllerConstants.Defaults
 
+protocol MapViewModelEnvironment {
+  var schedulers: SchedulersManagerType { get }
+  var userLocation: UserLocationManagerType { get }
+  var variables: EnvironmentVariables { get }
+}
+
+extension Environment: MapViewModelEnvironment { }
+
 class MapViewModel {
+
+  private let disposeBag = DisposeBag()
 
   // MARK: - Input
 
@@ -25,7 +35,7 @@ class MapViewModel {
   let showAlert: Driver<MapViewAlert>
 
   // swiftlint:disable:next function_body_length
-  init(_ store: Store<AppState>) {
+  init(_ store: Store<AppState>, _ environment: MapViewModelEnvironment) {
     let _didChangeTrackingMode = PublishSubject<MKUserTrackingMode>()
     self.didChangeTrackingMode = _didChangeTrackingMode.asObserver()
 
@@ -33,21 +43,19 @@ class MapViewModel {
     self.viewDidAppear = _viewDidAppear.asObserver()
 
     // map center
-    let authorizations = AppEnvironment.userLocation.authorization.share()
+    let authorization = environment.userLocation.authorization.share()
 
     self.mapCenter = {
-      let initialAuthorization = _viewDidAppear.withLatestFrom(authorizations)
+      let initialAuthorization = _viewDidAppear.withLatestFrom(authorization)
 
       let authorizationChangedFromNonDetermined = Observable
-        .zip(authorizations, authorizations.skip(1)) { (previous: $0, current: $1) }
+        .zip(authorization, authorization.skip(1)) { (previous: $0, current: $1) }
         .filter { $0.previous == .notDetermined }
         .map { $0.current }
 
       return Observable.merge(initialAuthorization, authorizationChangedFromNonDetermined)
         .filter { $0 == .authorizedAlways || $0 == .authorizedWhenInUse }
-        .flatMapLatest { _ in
-          AppEnvironment.userLocation.currentLocation.catchError { _ in .never() }
-        }
+        .flatMapLatest { _ in environment.userLocation.getCurrent().catchError { _ in .never() } }
         .startWith(Defaults.location)
         .asDriver(onErrorDriveWith: .never())
     }()
@@ -59,21 +67,10 @@ class MapViewModel {
 
     self.vehicleLocations = vehicleResponse.data()
 
+    // alerts
     self.showAlert = {
-      let requestAuthorizationAlert: Observable<MapViewAlert> = {
-        let delay          = AppEnvironment.variables.timings.locationAuthorizationPromptDelay
-        let delayScheduler = AppEnvironment.schedulers.main
-
-        let delayedViewDidAppear = _viewDidAppear.delay(delay, scheduler: delayScheduler)
-        let trackingModeChanged  = _didChangeTrackingMode.map { _ in () }
-
-        return Observable.merge(delayedViewDidAppear, trackingModeChanged)
-          .withLatestFrom(authorizations)
-          .flatMapLatest(toRequestAuthorizationAlert)
-      }()
-
       let deniedAuthorizationAlert = _didChangeTrackingMode
-        .withLatestFrom(authorizations)
+        .withLatestFrom(authorization)
         .flatMapLatest(toDeniedAuthorizationAlert)
 
       let apiErrorAlert = vehicleResponse
@@ -81,24 +78,31 @@ class MapViewModel {
         .map { MapViewAlert.apiError($0 as? ApiError ?? .generalError) }
         .asObservable()
 
-      return Observable.merge(requestAuthorizationAlert, deniedAuthorizationAlert, apiErrorAlert)
+      return Observable.merge(deniedAuthorizationAlert, apiErrorAlert)
         .asDriver(onErrorDriveWith: .never())
     }()
+
+    // bindings
+    let requestAuthorization: Observable<Void> = {
+      let delay          = environment.variables.timings.locationAuthorizationPromptDelay
+      let delayScheduler = environment.schedulers.main
+
+      let delayedViewDidAppear = _viewDidAppear.delay(delay, scheduler: delayScheduler)
+      let trackingModeChanged  = _didChangeTrackingMode.map { _ in () }
+
+      return Observable.merge(delayedViewDidAppear, trackingModeChanged)
+        .withLatestFrom(authorization)
+        .filter { $0 == .notDetermined }
+        .map { _ in () }
+    }()
+
+    requestAuthorization
+      .bind(onNext: { _ in environment.userLocation.requestWhenInUseAuthorization() })
+      .disposed(by: self.disposeBag)
   }
 }
 
 // MARK: - Helpers
-
-// TODO: merge toRequestAuthorizationAlert & toDeniedAuthorizationAlert
-private func toRequestAuthorizationAlert(_ authorization: CLAuthorizationStatus) -> Observable<MapViewAlert> {
-  switch authorization {
-  case .notDetermined: return .just(.requestLocationAuthorization)
-  case .denied,
-       .restricted,
-       .authorizedAlways,
-       .authorizedWhenInUse: return .never()
-  }
-}
 
 private func toDeniedAuthorizationAlert(_ authorization: CLAuthorizationStatus) -> Observable<MapViewAlert> {
   switch authorization {

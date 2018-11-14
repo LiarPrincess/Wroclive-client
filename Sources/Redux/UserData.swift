@@ -4,6 +4,8 @@
 
 import ReSwift
 
+// MARK: - State
+
 struct UserDataState {
   var bookmarks:       [Bookmark]
   var searchCardState: SearchCardState
@@ -17,6 +19,8 @@ struct UserDataState {
     self.trackedLines = trackedLines ?? []
   }
 }
+
+// MARK: - Actions
 
 enum BookmarksAction: Action {
   case add(name: String, lines: [Line])
@@ -33,6 +37,8 @@ enum SearchCardStateAction: Action {
 enum TrackedLinesAction: Action {
   case startTracking([Line])
 }
+
+// MARK: - Reducers
 
 func userDataReducer(action: Action, state: UserDataState?) -> UserDataState {
   let state = state ?? UserDataState()
@@ -84,8 +90,10 @@ private func searchCardStateReducer(action: Action, state: SearchCardState) -> S
 }
 
 private func trackedLinesReducer(action: Action, state: [Line]) -> [Line] {
-  if case let TrackedLinesAction.startTracking(lines) = action {
+  switch action {
+  case let TrackedLinesAction.startTracking(lines):
     return lines
+  default:
+    return state
   }
-  return state
 }

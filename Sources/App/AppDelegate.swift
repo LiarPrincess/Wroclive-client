@@ -5,15 +5,14 @@
 import UIKit
 import ReSwift
 
+// swiftlint:disable implicitly_unwrapped_optional
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  // swiftlint:disable implicitly_unwrapped_optional
-  var store:           Store<AppState>!
-  var coordinator:     AppCoordinator!
-  var updateScheduler: UpdateScheduler!
-  // swiftlint:enable implicitly_unwrapped_optional
+  private var store:           Store<AppState>!
+  private var coordinator:     AppCoordinator!
+  private var updateScheduler: UpdateScheduler!
 
   // MARK: - Launch
 
@@ -42,6 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func applicationWillResignActive(_ application: UIApplication) {
-    self.updateScheduler.pause()
+    self.updateScheduler.stop()
   }
 }

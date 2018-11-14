@@ -9,7 +9,7 @@ import RxSwift
 protocol UserLocationManagerType {
 
   /// Returns user location
-  var currentLocation: Single<CLLocationCoordinate2D> { get }
+  func getCurrent() -> Single<CLLocationCoordinate2D>
 
   /// Current authorization status
   var authorization: Observable<CLAuthorizationStatus> { get }

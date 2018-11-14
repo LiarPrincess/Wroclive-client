@@ -21,7 +21,7 @@ class UpdateScheduler: StoreSubscriber {
   init(_ store: Store<AppState>, _ bundle: BundleManagerType, _ scheduler: SchedulersManagerType) {
     self.store = store
     self.scheduler = scheduler
-    self.log = OSLog(subsystem: bundle.identifier, category: "scheduler")
+    self.log = OSLog(subsystem: bundle.identifier, category: "update-scheduler")
 
     store.subscribe(self)
   }
@@ -51,7 +51,7 @@ class UpdateScheduler: StoreSubscriber {
       })
   }
 
-  func pause() {
+  func stop() {
     os_log("Stop", log: self.log, type: .info)
     self.clearTimer()
   }

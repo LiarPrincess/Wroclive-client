@@ -22,7 +22,7 @@ class UserLocationManager: NSObject, UserLocationManagerType {
 
   // MARK: - UserLocationManagerType
 
-  var currentLocation: Single<CLLocationCoordinate2D> {
+  func getCurrent() -> Single<CLLocationCoordinate2D> {
     return self.locationManager.rx.location
       .map { location in
         switch location {
@@ -42,8 +42,7 @@ class UserLocationManager: NSObject, UserLocationManagerType {
   }
 
   var authorization: Observable<CLAuthorizationStatus> {
-    return self.locationManager.rx.didChangeAuthorization
-      .map { $0.status }
+    return self.locationManager.rx.didChangeAuthorization.map { $0.status }
   }
 
   func requestWhenInUseAuthorization() {
