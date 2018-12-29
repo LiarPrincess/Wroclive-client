@@ -13,6 +13,11 @@ lane :screenshot do
   # frameit
 end
 
+desc "Regenerate all of the generated files (./Sources/Generated directory)"
+lane :generate_code do
+  sh "./scripts/generate-code.sh"
+end
+
 # desc "Submit a new Beta Build to Apple TestFlight"
 # desc "This will also make sure the profile is up to date"
 # lane :beta do

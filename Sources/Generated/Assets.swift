@@ -4,6 +4,10 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length
+// swiftlint:disable vertical_whitespace
+
 
 #if os(OSX)
   import AppKit.NSImage
@@ -14,9 +18,6 @@
   typealias AssetColorTypeAlias = UIColor
   typealias Image = UIImage
 #endif
-
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
 
 @available(*, deprecated, renamed: "ImageAsset")
 typealias AssetsType = ImageAsset

@@ -9,3 +9,25 @@ enum TextStyle {
   case bodyBold
   case caption
 }
+
+enum FontType {
+  case text
+  case icon
+}
+
+enum TextColor {
+  case background
+  case accentLight
+  case accentDark
+  case text
+  case tint
+  case bus
+  case tram
+}
+
+enum TextAlignment {
+  case left
+  case right
+  case center
+  case natural
+}

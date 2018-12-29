@@ -1,0 +1,7 @@
+sources:
+  - Sources/
+templates:
+  - Sources/Generated/Environment.stencil
+  - Sources/Generated/AppEnvironment.stencil
+output:
+  Sources/Generated/

@@ -4,6 +4,10 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length
+// swiftlint:disable vertical_whitespace
+
 {% if catalogs %}
 {% set colorAlias %}{{param.colorAliasName|default:"AssetColorTypeAlias"}}{% endset %}
 {% set imageAlias %}{{param.imageAliasName|default:"Image"}}{% endset %}
@@ -17,9 +21,6 @@
   typealias {{colorAlias}} = UIColor
   typealias {{imageAlias}} = UIImage
 #endif
-
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
 
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 {% set imageType %}{{param.imageTypeName|default:"ImageAsset"}}{% endset %}

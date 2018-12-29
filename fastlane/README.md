@@ -15,16 +15,16 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-### translate
-```
-fastlane translate
-```
-Regenerate Localizable.swift file
 ### screenshot
 ```
 fastlane screenshot
 ```
 Creates new app screenshots
+### generate_code
+```
+fastlane generate_code
+```
+Regenerate all of the generated files (./Sources/Generated directory)
 
 ----
 

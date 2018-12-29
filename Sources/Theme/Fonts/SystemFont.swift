@@ -4,7 +4,7 @@
 
 import UIKit
 
-struct FontAwesomeFont: Font {
+struct SystemFont: FontPreset {
   private(set) var headline    = UIFont()
   private(set) var subheadline = UIFont()
   private(set) var body        = UIFont()
@@ -19,14 +19,12 @@ struct FontAwesomeFont: Font {
   }
 
   mutating func recalculateSizes() {
-    let name           = "FontAwesome"
-    let baseSize       = AppEnvironment.device.preferredFontSize
-    let fontDescriptor = UIFontDescriptor(name: name, size: baseSize)
+    let baseSize = AppEnvironment.device.preferredFontSize
 
-    self.headline    = UIFont(descriptor: fontDescriptor, size: baseSize + 18.0)
-    self.subheadline = UIFont(descriptor: fontDescriptor, size: baseSize +  6.0)
-    self.body        = UIFont(descriptor: fontDescriptor, size: baseSize +  1.0)
-    self.bodyBold    = UIFont(descriptor: fontDescriptor, size: baseSize +  1.0)
-    self.caption     = UIFont(descriptor: fontDescriptor, size: baseSize -  1.0)
+    self.headline    = UIFont.systemFont(ofSize: baseSize + 14.0, weight: UIFont.Weight.bold)
+    self.subheadline = UIFont.systemFont(ofSize: baseSize +  5.0, weight: UIFont.Weight.bold)
+    self.body        = UIFont.systemFont(ofSize: baseSize,        weight: UIFont.Weight.regular)
+    self.bodyBold    = UIFont.systemFont(ofSize: baseSize,        weight: UIFont.Weight.bold)
+    self.caption     = UIFont.systemFont(ofSize: baseSize -  2.0, weight: UIFont.Weight.regular)
   }
 }

@@ -13,7 +13,11 @@ class AppCoordinator: Coordinator {
   let store:  Store<AppState>
 
   private var mainViewController: MainViewController?
-  private var childCoordinator:   Coordinator?
+
+  // We will temporary leak (meaning: retain when no longer needed) last coordinator,
+  // but it is not that much of a memory and it is way easier to handle in code.
+  // Leak ends (it is dealocated) when user starts new childCoordinator.
+  private var childCoordinator: Coordinator?
 
   init(_ window: UIWindow, _ store: Store<AppState>) {
     self.window = window

@@ -4,10 +4,12 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import Foundation
-
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
+// swiftlint:disable vertical_whitespace
+
+import Foundation
+
 
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 enum Localizable {

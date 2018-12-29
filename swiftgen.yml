@@ -2,16 +2,27 @@ input_dir: Sources/
 output_dir: Sources/Generated/
 
 strings:
-  paths: App/Base.lproj/Localizable.strings
-  templatePath: Sources/Generated/Localizable.stencil
-  output: Localizable.swift
-  params:
-    enumName: Localizable
+  inputs: App/Base.lproj/Localizable.strings
+  outputs:
+    - templatePath: Sources/Generated/Localizable.stencil
+      output: Localizable.swift
+      params:
+        enumName: Localizable
 
 xcassets:
-  paths: App/Assets.xcassets
-  templatePath: Sources/Generated/Assets.stencil
-  output: Assets.swift
-  params:
-    enumName: Assets
-    noAllValues: true
+  inputs: App/Assets.xcassets
+  outputs:
+    - templatePath: Sources/Generated/Assets.stencil
+      output: Assets.swift
+      params:
+        enumName: Assets
+        noAllValues: true
+
+fonts:
+  inputs: App
+  outputs:
+    - templatePath: Sources/Generated/Fonts.stencil
+      output: Fonts.swift
+      params:
+        enumName: Fonts
+        noAllValues: true

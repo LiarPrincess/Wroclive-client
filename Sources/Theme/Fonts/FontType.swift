@@ -4,7 +4,7 @@
 
 import UIKit
 
-protocol Font {
+protocol FontPreset {
   var headline:    UIFont { get }
   var subheadline: UIFont { get }
   var body:        UIFont { get }

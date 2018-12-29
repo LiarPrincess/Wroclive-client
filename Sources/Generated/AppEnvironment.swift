@@ -1,10 +1,13 @@
-// Generated using Sourcery 0.13.1 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 0.15.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
-
 
 // This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
+
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length
+// swiftlint:disable vertical_whitespace
 
 import Foundation
 import os.log

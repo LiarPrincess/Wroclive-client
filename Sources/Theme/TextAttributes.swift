@@ -89,26 +89,26 @@ struct TextAttributes {
   }
 
   private func fontValue() -> UIFont {
-    let font = self.fontFamilyValue()
+    let preset = self.fontPresetValue()
     switch self.style {
-    case .headline:    return font.headline
-    case .subheadline: return font.subheadline
-    case .body:        return font.body
-    case .bodyBold:    return font.bodyBold
-    case .caption:     return font.caption
+    case .headline:    return preset.headline
+    case .subheadline: return preset.subheadline
+    case .body:        return preset.body
+    case .bodyBold:    return preset.bodyBold
+    case .caption:     return preset.caption
     }
   }
 
   private func trackingValue() -> CGFloat {
-    let font = self.fontFamilyValue()
+    let preset = self.fontPresetValue()
     switch self.style {
-    case .headline:                  return font.headlineTracking
-    case .subheadline:               return font.subheadlineTracking
+    case .headline:                  return preset.headlineTracking
+    case .subheadline:               return preset.subheadlineTracking
     case .body, .bodyBold, .caption: return 0.0
     }
   }
 
-  private func fontFamilyValue() -> Font {
+  private func fontPresetValue() -> FontPreset {
     switch self.font {
     case .text: return Theme.textFont
     case .icon: return Theme.iconFont
