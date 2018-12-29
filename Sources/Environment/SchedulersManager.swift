@@ -5,7 +5,7 @@
 import UIKit
 import RxSwift
 
-protocol SchedulersManagerType {
-  var main:      SchedulerType { get }
-  var mainAsync: SchedulerType { get }
+// sourcery: manager
+class SchedulersManager: SchedulersManagerType {
+  var main: SchedulerType { return MainScheduler.instance }
 }

@@ -778,7 +778,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		902330ED1EDF37F500FA8F43 /* Modules */ = {
+		902330ED1EDF37F500FA8F43 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
 				905070602087EF28007DDA80 /* File system */,
@@ -798,7 +798,7 @@
 				906C40582014C55700E32571 /* DebugManager.swift */,
 				9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */,
 			);
-			path = Modules;
+			path = Environment;
 			sourceTree = "<group>";
 		};
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
@@ -1126,7 +1126,7 @@
 			children = (
 				902330E41EDF37F500FA8F43 /* App */,
 				902330E81EDF37F500FA8F43 /* Models */,
-				902330ED1EDF37F500FA8F43 /* Modules */,
+				902330ED1EDF37F500FA8F43 /* Environment */,
 				900CBE9E21938C310028C58F /* Theme */,
 				900CBE8F2192E28D0028C58F /* Coordinators */,
 				90EFA63821979F260025819C /* Redux */,

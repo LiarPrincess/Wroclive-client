@@ -39,7 +39,7 @@ class UpdateScheduler: StoreSubscriber {
 
     let initialTick = Observable<Void>.just(())
     let intervalTimer: Observable<Void> = {
-      let interval = AppEnvironment.variables.timings.vehicleUpdateInterval
+      let interval = AppEnvironment.variables.time.vehicleUpdateInterval
       return Observable<Int>.interval(interval, scheduler: self.scheduler.main).map { _ in () }
     }()
 

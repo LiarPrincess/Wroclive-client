@@ -84,7 +84,7 @@ class MapViewModel {
 
     // bindings
     let requestAuthorization: Observable<Void> = {
-      let delay          = environment.variables.timings.locationAuthorizationPromptDelay
+      let delay          = environment.variables.time.locationAuthorizationPromptDelay
       let delayScheduler = environment.schedulers.main
 
       let delayedViewDidAppear = _viewDidAppear.delay(delay, scheduler: delayScheduler)

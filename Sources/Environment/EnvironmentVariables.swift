@@ -8,9 +8,9 @@ import RxSwift
 struct EnvironmentVariables {
 
   let websiteUrl = URL(string: "https://www.overcast.fm")!
-  let endpoints  = Endpoints()
-  let appStore   = AppStore()
-  let timings    = Timings()
+  let endpoints = Endpoints()
+  let appStore  = AppStore()
+  let time      = Time()
 
   struct Endpoints {
     private let server = "127.0.0.1:3000"// "139.59.154.250"
@@ -24,7 +24,7 @@ struct EnvironmentVariables {
     var shareUrl:       URL { return URL(string: "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8")! }
   }
 
-  struct Timings {
+  struct Time {
     let locationAuthorizationPromptDelay: TimeInterval = 2.0
     let vehicleUpdateInterval:            TimeInterval = 5.0
   }
