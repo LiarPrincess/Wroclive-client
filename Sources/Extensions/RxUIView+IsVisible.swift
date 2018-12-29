@@ -9,8 +9,8 @@ import RxCocoa
 extension Reactive where Base: UIView {
   /// Bindable sink for opposite of `hidden` property.
   public var isVisible: Binder<Bool> {
-    return Binder(self.base) { view, isVisible in
-      view.isHidden = !isVisible
+    return Binder(self.base) { view, value in
+      view.isHidden = !value
     }
   }
 }

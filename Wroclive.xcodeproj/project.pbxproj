@@ -21,7 +21,7 @@
 		900CBE9D219388F30028C58F /* CardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE9C219388F30028C58F /* CardCoordinator.swift */; };
 		900CBEA0219394FB0028C58F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE9F219394FB0028C58F /* UIView+Constraints.swift */; };
 		900CEC021FC4D5D7001C6B04 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC011FC4D5D7001C6B04 /* Document.swift */; };
-		900CEC041FC4E3F1001C6B04 /* Array+Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC031FC4E3F1001C6B04 /* Array+Any.swift */; };
+		900CEC041FC4E3F1001C6B04 /* Collection+Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC031FC4E3F1001C6B04 /* Collection+Any.swift */; };
 		9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */; };
 		9010D5B5201FA04500563BDB /* ScrollViewDismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */; };
 		9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */; };
@@ -61,7 +61,7 @@
 		901FEAD91FE1EC8900C36A71 /* TextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FEAD31FE1EC8900C36A71 /* TextColor.swift */; };
 		90203F8C203785EF00CC5148 /* UserLocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90203F8A2037855300CC5148 /* UserLocationManagerMock.swift */; };
 		9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3891F12C95D000A6949 /* CGFloat+Rad.swift */; };
-		9021F3931F12C95D000A6949 /* Array+Grouped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38B1F12C95D000A6949 /* Array+Grouped.swift */; };
+		9021F3931F12C95D000A6949 /* Collection+Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38B1F12C95D000A6949 /* Collection+Group.swift */; };
 		9021F3951F12C95D000A6949 /* UICollectionView+ContentWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38E1F12C95D000A6949 /* UICollectionView+ContentWidth.swift */; };
 		9021F3961F12C95D000A6949 /* UISegmentedControl+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38F1F12C95D000A6949 /* UISegmentedControl+Font.swift */; };
 		9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3901F12C95D000A6949 /* UIView+AddBorder.swift */; };
@@ -192,6 +192,8 @@
 		90D3A4031FEEF78400FB7485 /* RxTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A4021FEEF78400FB7485 /* RxTableViewDataSource.swift */; };
 		90D3A4091FEFE6D400FB7485 /* RxSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A4081FEFE6D400FB7485 /* RxSectionType.swift */; };
 		90D3A40E1FEFE89C00FB7485 /* RxSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A40D1FEFE89C00FB7485 /* RxSectionModel.swift */; };
+		90D8DE6021D5AD60002B33D1 /* Collection+AnyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8DE5E21D5AD1D002B33D1 /* Collection+AnyTests.swift */; };
+		90D8DE6421D5B375002B33D1 /* Collection+GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */; };
 		90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
 		90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */; };
 		90E8A6BF1F4CB08400CE5AE9 /* BundleManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6BE1F4CB08400CE5AE9 /* BundleManagerType.swift */; };
@@ -275,7 +277,7 @@
 		900CBE9C219388F30028C58F /* CardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCoordinator.swift; sourceTree = "<group>"; };
 		900CBE9F219394FB0028C58F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		900CEC011FC4D5D7001C6B04 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		900CEC031FC4E3F1001C6B04 /* Array+Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Any.swift"; sourceTree = "<group>"; };
+		900CEC031FC4E3F1001C6B04 /* Collection+Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Any.swift"; sourceTree = "<group>"; };
 		9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
 		9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewDismissGestureHandler.swift; sourceTree = "<group>"; };
 		9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandlerType.swift; sourceTree = "<group>"; };
@@ -316,7 +318,7 @@
 		90203F872034D23A00CC5148 /* MapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTests.swift; sourceTree = "<group>"; };
 		90203F8A2037855300CC5148 /* UserLocationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManagerMock.swift; sourceTree = "<group>"; };
 		9021F3891F12C95D000A6949 /* CGFloat+Rad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Rad.swift"; sourceTree = "<group>"; };
-		9021F38B1F12C95D000A6949 /* Array+Grouped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Grouped.swift"; sourceTree = "<group>"; };
+		9021F38B1F12C95D000A6949 /* Collection+Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Group.swift"; sourceTree = "<group>"; };
 		9021F38E1F12C95D000A6949 /* UICollectionView+ContentWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ContentWidth.swift"; sourceTree = "<group>"; };
 		9021F38F1F12C95D000A6949 /* UISegmentedControl+Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Font.swift"; sourceTree = "<group>"; };
 		9021F3901F12C95D000A6949 /* UIView+AddBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorder.swift"; sourceTree = "<group>"; };
@@ -450,6 +452,8 @@
 		90D3A4021FEEF78400FB7485 /* RxTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewDataSource.swift; sourceTree = "<group>"; };
 		90D3A4081FEFE6D400FB7485 /* RxSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionType.swift; sourceTree = "<group>"; };
 		90D3A40D1FEFE89C00FB7485 /* RxSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionModel.swift; sourceTree = "<group>"; };
+		90D8DE5E21D5AD1D002B33D1 /* Collection+AnyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+AnyTests.swift"; sourceTree = "<group>"; };
+		90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+GroupTests.swift"; sourceTree = "<group>"; };
 		90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertNotCalled.swift; sourceTree = "<group>"; };
 		90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenshots.swift; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
@@ -660,8 +664,9 @@
 		9021F3871F12C95D000A6949 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				900CEC031FC4E3F1001C6B04 /* Array+Any.swift */,
-				9021F38B1F12C95D000A6949 /* Array+Grouped.swift */,
+				90D8DE5D21D5ACFD002B33D1 /* Tests */,
+				900CEC031FC4E3F1001C6B04 /* Collection+Any.swift */,
+				9021F38B1F12C95D000A6949 /* Collection+Group.swift */,
 				901A809B20127F700013CCD9 /* String+Empty.swift */,
 				908346F51F5202AE00654FF6 /* String+IndicesOf.swift */,
 				908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */,
@@ -1014,6 +1019,15 @@
 				90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		90D8DE5D21D5ACFD002B33D1 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				90D8DE5E21D5AD1D002B33D1 /* Collection+AnyTests.swift */,
+				90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		90D95A491FB4E9FD000A1A8C /* UI Tests */ = {
@@ -1424,6 +1438,7 @@
 				90F9F8A820DFA7FC00793E4C /* MapViewModelTests+NextLaunch.swift in Sources */,
 				90425D331FF11EFB00F1800E /* StorageManagerMock.swift in Sources */,
 				90374B5E20D87FA600315F80 /* LineSelectorSectionCreatorTests.swift in Sources */,
+				90D8DE6021D5AD60002B33D1 /* Collection+AnyTests.swift in Sources */,
 				90374B6B20D98F2700315F80 /* SchedulerManagerMock.swift in Sources */,
 				90F9F89120DDBE8700793E4C /* MapViewModelTests.swift in Sources */,
 				90374B5220D8786100315F80 /* BookmarksCardViewModelTests+Edit.swift in Sources */,
@@ -1437,6 +1452,7 @@
 				90374B6720D9857B00315F80 /* SearchCardViewModelTests+SaveState.swift in Sources */,
 				90374B6120D9747A00315F80 /* SearchCardViewModelTests+Page.swift in Sources */,
 				90374B4B20D876C600315F80 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
+				90D8DE6421D5B375002B33D1 /* Collection+GroupTests.swift in Sources */,
 				90203F8C203785EF00CC5148 /* UserLocationManagerMock.swift in Sources */,
 				9050954320D709A3005E2BF8 /* BookmarksCardViewModelTests.swift in Sources */,
 				90374B6920D9883700315F80 /* SearchCardViewModelTests+Lines.swift in Sources */,
@@ -1509,7 +1525,7 @@
 				901A80A320129DCD0013CCD9 /* SettingsSectionHeaderViewConstants.swift in Sources */,
 				901A808E200E9EF00013CCD9 /* SettingsCardViewModel.swift in Sources */,
 				908346F61F5202AE00654FF6 /* String+IndicesOf.swift in Sources */,
-				9021F3931F12C95D000A6949 /* Array+Grouped.swift in Sources */,
+				9021F3931F12C95D000A6949 /* Collection+Group.swift in Sources */,
 				907DC6E91FF2B740001C5DD6 /* LineTypeSelector.swift in Sources */,
 				901A809C20127F700013CCD9 /* String+Empty.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectorHeaderView.swift in Sources */,
@@ -1565,7 +1581,7 @@
 				900B97701FE1BED200AC7C35 /* NetworkAlerts.swift in Sources */,
 				906C4070201915D900E32571 /* Endpoint.swift in Sources */,
 				9056F6571F5229A500F7EF48 /* Font.swift in Sources */,
-				900CEC041FC4E3F1001C6B04 /* Array+Any.swift in Sources */,
+				900CEC041FC4E3F1001C6B04 /* Collection+Any.swift in Sources */,
 				9017C36A1EE339FD00063377 /* MapViewController.swift in Sources */,
 				90B1DAA11F2BD92500FAE18A /* Bookmark.swift in Sources */,
 				90915B191FFB005C009FE942 /* Observable+Reducing.swift in Sources */,
@@ -1675,6 +1691,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -1699,7 +1716,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.wroclive-tests";
@@ -1722,6 +1739,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -1743,7 +1761,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.wroclive-tests";
@@ -1870,6 +1888,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E552C9694FA2B36860027B3 /* Pods-Wroclive-Screenshots.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1899,7 +1918,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "UI Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.wroclive-screenshots";
@@ -1917,6 +1936,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 12F3CD8E67447A91DA7A4E65 /* Pods-Wroclive-Screenshots.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1943,7 +1963,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "UI Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.wroclive-screenshots";

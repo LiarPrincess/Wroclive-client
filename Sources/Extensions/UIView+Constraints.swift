@@ -60,9 +60,9 @@ func make<Anchor, Axis>(_ viewAnchorPath: KeyPath<UIView, Anchor>,
 
 func makeEdgesEqualToSuperview() -> [ConstraintMaker] {
   return [
-    make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
+    make(\UIView.topAnchor,    equalToSuperview: \UIView.topAnchor),
     make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-    make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
-    make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+    make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor),
+    make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor)
   ]
 }
