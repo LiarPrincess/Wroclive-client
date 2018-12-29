@@ -5,11 +5,11 @@
 import Foundation
 import RxSwift
 
-protocol ApiManagerType {
+protocol ApiType {
 
-  /// Get all currently available lines
-  var availableLines: Single<[Line]> { get }
+  /// Get all currently available mpk lines
+  func getAvailableLines() -> Single<[Line]>
 
   /// Get current vehicle locations for selected lines
-  func vehicleLocations(for lines: [Line]) -> Single<[Vehicle]>
+  func getVehicleLocations(for lines: [Line]) -> Single<[Vehicle]>
 }

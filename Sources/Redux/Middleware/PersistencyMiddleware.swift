@@ -6,19 +6,16 @@ import Foundation
 import os.log
 import ReSwift
 
-func createPersistencyMiddleware(bundle: BundleManagerType, storage: StorageManagerType) -> Middleware<AppState> {
-  return { dispatch, getState in
-    return { next in
-      return { action in
-        let before = getState()
-        next(action)
-        let after = getState()
+func createPersistencyMiddleware(_ bundle: BundleManagerType,
+                                 _ storage: StorageManagerType) -> Middleware<AppState> {
+  return createSingleMiddleware { _, getState, next, action in
+    let before = getState()
+    next(action)
+    let after = getState()
 
-        let log = OSLog(subsystem: bundle.identifier, category: "storage")
-        saveBookmarksIfNeeded(before, after, to: storage, with: log)
-        saveSearchCardStateIfNeeded(before, after, to: storage, with: log)
-      }
-    }
+    let log = OSLog(subsystem: bundle.identifier, category: "storage")
+    saveBookmarksIfNeeded(before, after, to: storage, with: log)
+    saveSearchCardStateIfNeeded(before, after, to: storage, with: log)
   }
 }
 

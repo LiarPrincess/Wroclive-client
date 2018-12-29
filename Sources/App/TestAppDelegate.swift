@@ -5,5 +5,5 @@
 import UIKit
 
 class TestAppDelegate: NSObject {
-  @objc var window: UIWindow?
+  var window: UIWindow?
 }

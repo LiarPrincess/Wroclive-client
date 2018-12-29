@@ -14,10 +14,10 @@ import Foundation
 import os.log
 
 struct Environment {
-  let api: ApiManagerType
   let bundle: BundleManagerType
   let debug: DebugManagerType
   let device: DeviceManagerType
+  let network: NetworkManagerType
   let schedulers: SchedulersManagerType
   let storage: StorageManagerType
   let userLocation: UserLocationManagerType

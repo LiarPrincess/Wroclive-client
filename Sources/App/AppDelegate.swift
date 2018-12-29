@@ -6,6 +6,7 @@ import UIKit
 import ReSwift
 
 // swiftlint:disable implicitly_unwrapped_optional
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
@@ -17,20 +18,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Launch
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    AppEnvironment.pushDefault()
+    let environment = self.createDefaultEnvironment()
+    AppEnvironment.push(environment)
+
     Theme.setupAppearance()
 
-    let environment = AppEnvironment.current
     let state = loadState(from: environment.storage)
     let middlewares = createMiddlewares(environment)
+    self.store  = Store<AppState>(reducer: mainReducer, state: state, middleware: middlewares)
 
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    self.store  = Store<AppState>(reducer: mainReducer, state: state, middleware: middlewares)
     self.coordinator = AppCoordinator(self.window!, self.store)
+
     self.updateScheduler = UpdateScheduler(self.store, environment.bundle, environment.schedulers)
 
     self.coordinator!.start()
     return true
+  }
+
+  private func createDefaultEnvironment() -> Environment {
+    return Environment(
+      bundle: BundleManager(),
+      debug: DebugManager(),
+      device: DeviceManager(),
+      network: NetworkManager(),
+      schedulers: SchedulersManager(),
+      storage: StorageManager(),
+      userLocation: UserLocationManager(),
+      variables: EnvironmentVariables()
+    )
   }
 
   // MARK: - Activity

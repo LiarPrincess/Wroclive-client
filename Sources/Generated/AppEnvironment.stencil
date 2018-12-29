@@ -26,15 +26,6 @@ enum AppEnvironment {
     return stack.last!
   }
 
-  static func pushDefault() {
-    push(
-    {% for manager in types.all|annotated:"manager" %}
-      {% call getName manager %}: {{ manager.name }}(),
-    {% endfor %}
-      variables: EnvironmentVariables()
-    )
-  }
-
   static func push(
   {% for manager in types.all|annotated:"manager" %}
     {% call getName manager %}: {% call getProtocol manager %} = current.{% call getName manager %},

@@ -4,61 +4,59 @@
 
 import Foundation
 import Alamofire
-import AlamofireNetworkActivityIndicator
 import RxSwift
 import RxAlamofire
 import Reachability
 
-// sourcery: manager
-class ApiManager: ApiManagerType {
+class Api: ApiType {
+  private let bundle:  BundleManagerType
+  private let device:  DeviceManagerType
+  private let network: NetworkManagerType
 
   private lazy var reachability: Reachability? = Reachability()
 
-  private lazy var session: SessionManager = {
-    // 'Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)'
-    let userAgent: String = {
-      let device = AppEnvironment.device
-      let bundle = AppEnvironment.bundle
-
-      let deviceInfo = "\(device.model) \(device.systemName) \(device.systemVersion)"
-      return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
-    }()
-
-    let configuration = URLSessionConfiguration.default
-    configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
-    configuration.httpAdditionalHeaders!["User-Agent"] = userAgent
-
-    return SessionManager(configuration: configuration)
-  }()
-
-  init() {
-    NetworkActivityIndicatorManager.shared.isEnabled = true
+  init(_ bundle: BundleManagerType, _ device: DeviceManagerType, _ network: NetworkManagerType) {
+    self.bundle  = bundle
+    self.device  = device
+    self.network = network
   }
 
   // MARK: - ApiManager
 
-  var availableLines: Single<[Line]> {
+  func getAvailableLines() -> Single<[Line]> {
     let endpoint = AvailableLinesEndpoint()
     return self.sendRequest(endpoint, ())
   }
 
-  func vehicleLocations(for lines: [Line]) -> Single<[Vehicle]> {
+  func getVehicleLocations(for lines: [Line]) -> Single<[Vehicle]> {
     let endpoint = VehicleLocationsEndpoint()
     return self.sendRequest(endpoint, lines)
   }
 
   private func sendRequest<E: Endpoint>(_ endpoint: E, _ data: E.ParameterData) -> Single<E.ResponseData> {
-    return self.session.rx
-      .request(endpoint.method,
-               endpoint.url,
+    return self.network
+      .request(url:    endpoint.url,
+               method: endpoint.method,
                parameters: endpoint.encodeParameters(data),
                encoding:   endpoint.parameterEncoding,
-               headers:    endpoint.headers)
+               headers:    self.withUserAgent(endpoint.headers))
       .validate()
       .data()
       .map { try endpoint.decodeResponse($0) }
       .catchError { throw self.toApiError($0) }
       .asSingle()
+  }
+
+  private func withUserAgent(_ headers: HTTPHeaders?) -> HTTPHeaders {
+    // 'Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)'
+    let userAgent: String = {
+      let deviceInfo = "\(self.device.model) \(self.device.systemName) \(self.device.systemVersion)"
+      return "\(self.bundle.name)/\(self.bundle.version) (\(self.bundle.identifier); \(deviceInfo))"
+    }()
+
+    var result = headers ?? [:]
+    result["User-Agent"] = userAgent
+    return result
   }
 
   private func toApiError(_ error: Error) -> ApiError {

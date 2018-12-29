@@ -1,7 +1,5 @@
 PODS:
-  - Alamofire (4.7.3)
-  - AlamofireNetworkActivityIndicator (2.3.0):
-    - Alamofire (~> 4.7)
+  - Alamofire (4.8.0)
   - ReachabilitySwift (4.3.0)
   - ReSwift (4.0.1)
   - RxAlamofire (4.3.0):
@@ -26,7 +24,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
-  - AlamofireNetworkActivityIndicator (~> 2.2)
   - ReachabilitySwift (~> 4.1)
   - ReSwift (~> 4.0)
   - RxAlamofire (~> 4.0)
@@ -39,7 +36,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - AlamofireNetworkActivityIndicator
     - ReachabilitySwift
     - ReSwift
     - RxAlamofire
@@ -51,8 +47,7 @@ SPEC REPOS:
     - SimulatorStatusMagic
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  AlamofireNetworkActivityIndicator: 18346ff6d770d9513d0ac6f2d99706f40f93dbaa
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
   RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
@@ -63,6 +58,6 @@ SPEC CHECKSUMS:
   RxTest: 19d03286bdc0a3aaea5d61d4cde31fdf4bb8a5ba
   SimulatorStatusMagic: 0c0e711acef6e70dd8a0710962347635a9cdef24
 
-PODFILE CHECKSUM: 0001ed52ac4f53847ebfba604c7f5fe6e3c2da1a
+PODFILE CHECKSUM: 1e3d15b332bb75c72c8432b229f3404a7f2f2411
 
 COCOAPODS: 1.5.2

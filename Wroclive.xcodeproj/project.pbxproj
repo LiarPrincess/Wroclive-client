@@ -119,9 +119,8 @@
 		905D718F1FE1C444006D1DB6 /* UserLocationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */; };
 		905D71901FE1C444006D1DB6 /* UserLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718D1FE1C443006D1DB6 /* UserLocationError.swift */; };
 		905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */; };
-		905D71AC1FE1C5BD006D1DB6 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A41FE1C5BD006D1DB6 /* ApiManager.swift */; };
+		905D71AC1FE1C5BD006D1DB6 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A41FE1C5BD006D1DB6 /* Api.swift */; };
 		905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */; };
-		905D71AF1FE1C5BD006D1DB6 /* ApiManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A81FE1C5BD006D1DB6 /* ApiManagerType.swift */; };
 		905D71B61FE1C6A8006D1DB6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
 		906679552199B5E000050CFA /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906679542199B5E000050CFA /* LoggingMiddleware.swift */; };
@@ -166,6 +165,11 @@
 		90A5E02721D7C30C00B39DBA /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02521D7C30C00B39DBA /* Fonts.swift */; };
 		90A5E02821D7C30C00B39DBA /* Fonts.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 90A5E02621D7C30C00B39DBA /* Fonts.stencil */; };
 		90A5E02A21D7C5F800B39DBA /* TextAttributeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02921D7C5F800B39DBA /* TextAttributeEnums.swift */; };
+		90A5E02C21D7CFAD00B39DBA /* NetworkManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02B21D7CFAD00B39DBA /* NetworkManagerType.swift */; };
+		90A5E02E21D7CFC400B39DBA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02D21D7CFC400B39DBA /* NetworkManager.swift */; };
+		90A5E03021D7D5A400B39DBA /* ApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02F21D7D5A400B39DBA /* ApiType.swift */; };
+		90A5E03221D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E03121D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift */; };
+		90A5E03421D7E3BD00B39DBA /* createSingleMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E03321D7E3BD00B39DBA /* createSingleMiddleware.swift */; };
 		90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A913771F376E390095B873 /* VehicleAnnotationView.swift */; };
 		90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */; };
 		90AACC89200ACA890064EDFD /* AlertCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AACC88200ACA890064EDFD /* AlertCreator.swift */; };
@@ -375,9 +379,8 @@
 		905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManagerType.swift; sourceTree = "<group>"; };
 		905D718D1FE1C443006D1DB6 /* UserLocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationError.swift; sourceTree = "<group>"; };
 		905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationsEndpoint.swift; sourceTree = "<group>"; };
-		905D71A41FE1C5BD006D1DB6 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		905D71A41FE1C5BD006D1DB6 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableLinesEndpoint.swift; sourceTree = "<group>"; };
-		905D71A81FE1C5BD006D1DB6 /* ApiManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManagerType.swift; sourceTree = "<group>"; };
 		905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		906679542199B5E000050CFA /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
@@ -423,6 +426,11 @@
 		90A5E02521D7C30C00B39DBA /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		90A5E02621D7C30C00B39DBA /* Fonts.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fonts.stencil; sourceTree = "<group>"; };
 		90A5E02921D7C5F800B39DBA /* TextAttributeEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeEnums.swift; sourceTree = "<group>"; };
+		90A5E02B21D7CFAD00B39DBA /* NetworkManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerType.swift; sourceTree = "<group>"; };
+		90A5E02D21D7CFC400B39DBA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		90A5E02F21D7D5A400B39DBA /* ApiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiType.swift; sourceTree = "<group>"; };
+		90A5E03121D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorMiddleware.swift; sourceTree = "<group>"; };
+		90A5E03321D7E3BD00B39DBA /* createSingleMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createSingleMiddleware.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90AACC88200ACA890064EDFD /* AlertCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCreator.swift; sourceTree = "<group>"; };
 		90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreator.swift; sourceTree = "<group>"; };
@@ -774,7 +782,6 @@
 			isa = PBXGroup;
 			children = (
 				905070602087EF28007DDA80 /* File system */,
-				906C40712019213B00E32571 /* Endpoints */,
 				90E8A6BE1F4CB08400CE5AE9 /* BundleManagerType.swift */,
 				90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */,
 				90E8A6C51F4CD43300CE5AE9 /* DeviceManagerType.swift */,
@@ -783,8 +790,8 @@
 				9050705E2087EE66007DDA80 /* StorageManager.swift */,
 				9016FD09208B48820043524D /* SchedulersManagerType.swift */,
 				9016FD0B208B48EC0043524D /* SchedulersManager.swift */,
-				905D71A81FE1C5BD006D1DB6 /* ApiManagerType.swift */,
-				905D71A41FE1C5BD006D1DB6 /* ApiManager.swift */,
+				90A5E02B21D7CFAD00B39DBA /* NetworkManagerType.swift */,
+				90A5E02D21D7CFC400B39DBA /* NetworkManager.swift */,
 				905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */,
 				905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */,
 				906C40562014C55000E32571 /* DebugManagerType.swift */,
@@ -921,6 +928,8 @@
 				9066795C2199EA6500050CFA /* ApiMiddleware.swift */,
 				906679542199B5E000050CFA /* LoggingMiddleware.swift */,
 				9066795E2199FE0F00050CFA /* PersistencyMiddleware.swift */,
+				90A5E03121D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift */,
+				90A5E03321D7E3BD00B39DBA /* createSingleMiddleware.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -996,6 +1005,9 @@
 		90A5E01A21D796F700B39DBA /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				906C40712019213B00E32571 /* Endpoints */,
+				90A5E02F21D7D5A400B39DBA /* ApiType.swift */,
+				905D71A41FE1C5BD006D1DB6 /* Api.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -1481,8 +1493,10 @@
 				90AACC9B200BE4110064EDFD /* LineSelectorPage+Rx.swift in Sources */,
 				9096CDCD1F40EF2200FEF20A /* SettingsCard.swift in Sources */,
 				90915B081FF97191009FE942 /* LineTypeSelector+Rx.swift in Sources */,
+				90A5E03221D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift in Sources */,
 				90EFA63D21979FF40025819C /* UserData.swift in Sources */,
 				905D718E1FE1C444006D1DB6 /* UserLocationManager.swift in Sources */,
+				90A5E02C21D7CFAD00B39DBA /* NetworkManagerType.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksCardLayout.swift in Sources */,
 				901ECDBF1FF587F1004765AA /* TextAttributes.swift in Sources */,
 				901ECDCC1FF58D5C004765AA /* SearchPlaceholderView.swift in Sources */,
@@ -1516,6 +1530,7 @@
 				9017C3641EE339FD00063377 /* SearchCard.swift in Sources */,
 				9066795F2199FE0F00050CFA /* PersistencyMiddleware.swift in Sources */,
 				905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */,
+				90A5E02E21D7CFC400B39DBA /* NetworkManager.swift in Sources */,
 				9021F4061F12C9EF000A6949 /* ChevronView.swift in Sources */,
 				90538DD2201CADCF0000BBBE /* CardPanel.swift in Sources */,
 				90667962219B679100050CFA /* UpdateScheduler.swift in Sources */,
@@ -1535,7 +1550,6 @@
 				90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */,
 				9021F4181F12C9EF000A6949 /* CardPanelTransitionDelegate.swift in Sources */,
 				9021F43B1F12D698000A6949 /* LineSelectorPage.swift in Sources */,
-				905D71AF1FE1C5BD006D1DB6 /* ApiManagerType.swift in Sources */,
 				9066795D2199EA6500050CFA /* ApiMiddleware.swift in Sources */,
 				90B261211FF501510076EC69 /* LineSelectorSection.swift in Sources */,
 				9066795B2199E31A00050CFA /* ApiData.swift in Sources */,
@@ -1596,15 +1610,17 @@
 				90C5B58F20E15BB2007D72A2 /* CLAuthorizationStatus+String.swift in Sources */,
 				9017C3661EE339FD00063377 /* SearchCardLayout.swift in Sources */,
 				908FB19D1F48B3CA00121584 /* ReusableCell+UITableView.swift in Sources */,
+				90A5E03021D7D5A400B39DBA /* ApiType.swift in Sources */,
 				9055C8E81F462F5C00D1EBDA /* SettingsCardConstants.swift in Sources */,
 				90D3A3ED1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift in Sources */,
 				900B976E1FE1BE1F00AC7C35 /* BookmarkAlerts.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
-				905D71AC1FE1C5BD006D1DB6 /* ApiManager.swift in Sources */,
+				905D71AC1FE1C5BD006D1DB6 /* Api.swift in Sources */,
 				9079DCD61F6C545600C6ABCD /* EnvironmentVariables.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchCardState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				900CBE9B21937E2D0028C58F /* SearchCardCoordinator.swift in Sources */,
+				90A5E03421D7E3BD00B39DBA /* createSingleMiddleware.swift in Sources */,
 				9056F6561F5229A500F7EF48 /* FontAwesome.swift in Sources */,
 				9021F43F1F12D698000A6949 /* LineSelectorCellViewModel.swift in Sources */,
 				90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */,

@@ -4,6 +4,7 @@
 
 import UIKit
 
+// when we are testing we don't need to launch whole app, it is a tiny bit faster this way
 private let isTesting = NSClassFromString("XCTestCase") != nil
 private let appDelegate: AnyClass = isTesting ? TestAppDelegate.self : AppDelegate.self
 

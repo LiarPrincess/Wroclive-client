@@ -20,10 +20,12 @@ func loadState(from storage: StorageManagerType) -> AppState {
 }
 
 func createMiddlewares(_ environment: Environment) -> [Middleware<AppState>] {
-  let logging = createLoggingMiddleware(bundle: environment.bundle)
-  let api = createApiMiddleware(api: environment.api)
-  let persistency = createPersistencyMiddleware(bundle: environment.bundle, storage: environment.storage)
-  return [logging, api, persistency]
+  return [ // order is important!
+    createLoggingMiddleware(environment.bundle),
+    createApiMiddleware(environment.bundle, environment.device, environment.network),
+    createPersistencyMiddleware(environment.bundle, environment.storage),
+    createNetworkActivityIndicatorMiddleware(environment.network)
+  ]
 }
 
 func mainReducer(action: Action, state: AppState?) -> AppState {

@@ -5,26 +5,23 @@
 import Foundation
 import ReSwift
 
-func createApiMiddleware(api: ApiManagerType) -> Middleware<AppState> {
-  return { dispatch, getState in
-    return { next in
-      return { action in
-        guard let state = getState()
-          else { return }
+func createApiMiddleware(_ bundle: BundleManagerType,
+                         _ device: DeviceManagerType,
+                         _ network: NetworkManagerType) -> Middleware<AppState> {
+  let api = Api(bundle, device, network)
+  return createSingleMiddleware { dispatch, getState, next, action in
+    guard let state = getState()
+      else { return }
 
-        switch action {
-        case ApiAction.updateLines: updateLines(api, dispatch)
-        case ApiAction.updateVehicleLocations: updateVehicleLocations(state, api, dispatch)
-        default: next(action)
-        }
-      }
+    switch action {
+    case ApiAction.updateLines: updateLines(api, dispatch)
+    case ApiAction.updateVehicleLocations: updateVehicleLocations(state, api, dispatch)
+    default: next(action)
     }
   }
 }
 
-// TODO: [ApiMiddleware] map no lines to error
-// TODO: [ApiMiddleware] error after 3 failures
-private func updateLines(_ api: ApiManagerType, _ dispatch: @escaping DispatchFunction) {
+private func updateLines(_ api: ApiType, _ dispatch: @escaping DispatchFunction) {
   dispatch(ApiResponseAction.setLines(.inProgress))
 
   let deadlineTime = DispatchTime.now() + .seconds(1)
@@ -34,7 +31,7 @@ private func updateLines(_ api: ApiManagerType, _ dispatch: @escaping DispatchFu
   }
 }
 
-private func updateVehicleLocations(_ state: AppState,_ api: ApiManagerType, _ dispatch: @escaping DispatchFunction) {
+private func updateVehicleLocations(_ state: AppState,_ api: ApiType, _ dispatch: @escaping DispatchFunction) {
   let trackedLines = state.userData.trackedLines
 
   guard trackedLines.any else {
