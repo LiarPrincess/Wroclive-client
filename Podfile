@@ -1,6 +1,6 @@
 use_frameworks!
 
-platform :ios, "10.2"
+platform :ios, "11.0"
 
 target 'Wroclive' do
   pod 'ReSwift', '~> 4.0'

@@ -9,49 +9,49 @@ import RxCocoa
 import RxTest
 @testable import Wroclive
 
-// swiftlint:disable implicitly_unwrapped_optional
+// swiftlint:disableA implicitly_unwrapped_optional
 
-class TestCase: XCTestCase {
+//class TestCase: XCTestCase {
 
-  var apiManager:          ApiManagerMock!
-  var storageManager:      StorageManagerMock!
-  var schedulersManager:   SchedulersManagerMock!
-  var liveManager:         LiveManagerMock!
-  var userLocationManager: UserLocationManagerMock!
-
-  var scheduler:  TestScheduler!
-  var disposeBag: DisposeBag!
-
-  override func setUp() {
-    super.setUp()
-    self.scheduler  = TestScheduler(initialClock: 0)
-    self.disposeBag = DisposeBag()
-
-    self.apiManager          = ApiManagerMock(self.scheduler)
-    self.storageManager      = StorageManagerMock()
-    self.schedulersManager   = SchedulersManagerMock(main: self.scheduler, mainAsync: self.scheduler)
-    self.liveManager         = LiveManagerMock(self.scheduler)
-    self.userLocationManager = UserLocationManagerMock(self.scheduler)
-
-    AppEnvironment.push(api:           self.apiManager,
-                        bundle:        BundleManager(),
-                        debug:         DebugManager(),
-                        device:        DeviceManager(),
-                        live:          self.liveManager,
-                        schedulers:    self.schedulersManager,
-                        storage:       self.storageManager,
-                        userLocation:  self.userLocationManager,
-                        variables:     EnvironmentVariables())
-  }
-
-  override func tearDown() {
-    super.tearDown()
-    self.scheduler = nil
-    self.disposeBag = nil
-    AppEnvironment.pop()
-  }
-
-  func startScheduler() {
-    self.scheduler.start()
-  }
-}
+//  var apiManager:          ApiManagerMock!
+//  var storageManager:      StorageManagerMock!
+//  var schedulersManager:   SchedulersManagerMock!
+//  var liveManager:         LiveManagerMock!
+//  var userLocationManager: UserLocationManagerMock!
+//
+//  var scheduler:  TestScheduler!
+//  var disposeBag: DisposeBag!
+//
+//  override func setUp() {
+//    super.setUp()
+//    self.scheduler  = TestScheduler(initialClock: 0)
+//    self.disposeBag = DisposeBag()
+//
+//    self.apiManager          = ApiManagerMock(self.scheduler)
+//    self.storageManager      = StorageManagerMock()
+//    self.schedulersManager   = SchedulersManagerMock(main: self.scheduler, mainAsync: self.scheduler)
+//    self.liveManager         = LiveManagerMock(self.scheduler)
+//    self.userLocationManager = UserLocationManagerMock(self.scheduler)
+//
+//    AppEnvironment.push(api:           self.apiManager,
+//                        bundle:        BundleManager(),
+//                        debug:         DebugManager(),
+//                        device:        DeviceManager(),
+//                        live:          self.liveManager,
+//                        schedulers:    self.schedulersManager,
+//                        storage:       self.storageManager,
+//                        userLocation:  self.userLocationManager,
+//                        variables:     EnvironmentVariables())
+//  }
+//
+//  override func tearDown() {
+//    super.tearDown()
+//    self.scheduler = nil
+//    self.disposeBag = nil
+//    AppEnvironment.pop()
+//  }
+//
+//  func startScheduler() {
+//    self.scheduler.start()
+//  }
+//}
