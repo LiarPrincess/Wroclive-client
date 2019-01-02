@@ -7,7 +7,7 @@ import os.log
 import ReSwift
 import RxSwift
 
-class UpdateScheduler: StoreSubscriber {
+class MapUpdateScheduler: StoreSubscriber {
 
   private let store: Store<AppState>
   private var trackedLines: [Line] = []
@@ -16,7 +16,7 @@ class UpdateScheduler: StoreSubscriber {
   private var timerDisposable: Disposable?
 
   private lazy var log: OSLog = {
-    return OSLog(subsystem: AppEnvironment.bundle.identifier, category: "update-scheduler")
+    OSLog(subsystem: AppEnvironment.bundle.identifier, category: "update-scheduler")
   }()
 
   init(_ store: Store<AppState>) {

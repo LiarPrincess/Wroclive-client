@@ -9,4 +9,6 @@ struct SearchCardState: Codable, Equatable, CustomDebugStringConvertible {
   var debugDescription: String {
     return "SearchCardState(\(self.page), \(self.selectedLines))"
   }
+
+  static let `default`: SearchCardState = SearchCardState(page: .tram, selectedLines: [])
 }

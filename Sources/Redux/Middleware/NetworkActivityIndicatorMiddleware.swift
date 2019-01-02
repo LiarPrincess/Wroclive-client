@@ -7,12 +7,12 @@ import ReSwift
 
 func createNetworkActivityIndicatorMiddleware() -> Middleware<AppState> {
   return createSingleMiddleware { _, getState, next, action in
+    next(action)
+
     if let state = getState() {
       let hasPending = hasPendingRequests(state)
       AppEnvironment.network.setNetworkActivityIndicatorVisibility(hasPending)
     }
-
-    next(action)
   }
 }
 

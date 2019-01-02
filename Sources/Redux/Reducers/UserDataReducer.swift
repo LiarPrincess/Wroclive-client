@@ -2,55 +2,19 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import Foundation
 import ReSwift
 
-// MARK: - State
-
-struct UserDataState {
-  var bookmarks:       [Bookmark]
-  var searchCardState: SearchCardState
-  var trackedLines:    [Line]
-
-  init(bookmarks:       [Bookmark]? = nil,
-       searchCardState: SearchCardState? = nil,
-       trackedLines:    [Line]? = nil) {
-    self.bookmarks = bookmarks ?? []
-    self.searchCardState = searchCardState ?? SearchCardState(page: .tram, selectedLines: [])
-    self.trackedLines = trackedLines ?? []
-  }
-}
-
-// MARK: - Actions
-
-enum BookmarksAction: Action {
-  case add(name: String, lines: [Line])
-  case remove(at: Int)
-  case move(from: Int, to: Int)
-}
-
-enum SearchCardStateAction: Action {
-  case selectPage(LineType)
-  case selectLine(Line)
-  case deselectLine(Line)
-}
-
-enum TrackedLinesAction: Action {
-  case startTracking([Line])
-}
-
-// MARK: - Reducers
-
 func userDataReducer(action: Action, state: UserDataState?) -> UserDataState {
-  let state = state ?? UserDataState()
   return UserDataState(
-    bookmarks: bookmarksReducer(action: action, state: state.bookmarks),
-    searchCardState: searchCardStateReducer(action: action, state: state.searchCardState),
-    trackedLines: trackedLinesReducer(action: action, state: state.trackedLines)
+    bookmarks: bookmarksReducer(action: action, state: state?.bookmarks),
+    searchCardState: searchCardStateReducer(action: action, state: state?.searchCardState),
+    trackedLines: trackedLinesReducer(action: action, state: state?.trackedLines)
   )
 }
 
-private func bookmarksReducer(action: Action, state: [Bookmark]) -> [Bookmark] {
-  var state = state
+private func bookmarksReducer(action: Action, state: [Bookmark]?) -> [Bookmark] {
+  var state = state ?? []
 
   switch action {
   case let BookmarksAction.add(name, lines):
@@ -70,7 +34,9 @@ private func bookmarksReducer(action: Action, state: [Bookmark]) -> [Bookmark] {
   return state
 }
 
-private func searchCardStateReducer(action: Action, state: SearchCardState) -> SearchCardState {
+private func searchCardStateReducer(action: Action, state: SearchCardState?) -> SearchCardState {
+  let state = state ?? .default
+
   switch action {
   case let SearchCardStateAction.selectPage(page):
     return SearchCardState(page: page, selectedLines: state.selectedLines)
@@ -89,11 +55,11 @@ private func searchCardStateReducer(action: Action, state: SearchCardState) -> S
   }
 }
 
-private func trackedLinesReducer(action: Action, state: [Line]) -> [Line] {
+private func trackedLinesReducer(action: Action, state: [Line]?) -> [Line] {
   switch action {
   case let TrackedLinesAction.startTracking(lines):
     return lines
   default:
-    return state
+    return state ?? []
   }
 }

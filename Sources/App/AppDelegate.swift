@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   private var store:           Store<AppState>!
   private var coordinator:     AppCoordinator!
-  private var updateScheduler: UpdateScheduler!
+  private var updateScheduler: MapUpdateScheduler!
 
   // MARK: - Launch
 
@@ -23,14 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     Theme.setupAppearance()
 
-    let state = loadState()
+    let state = AppState.load(from: AppEnvironment.storage)
     let middlewares = createMiddlewares()
-    self.store  = Store<AppState>(reducer: mainReducer, state: state, middleware: middlewares)
+    self.store = Store<AppState>(reducer: appReducer, state: state, middleware: middlewares)
 
     self.window = UIWindow(frame: UIScreen.main.bounds)
     self.coordinator = AppCoordinator(self.window!, self.store)
 
-    self.updateScheduler = UpdateScheduler(self.store)
+    self.updateScheduler = MapUpdateScheduler(self.store)
 
     self.coordinator!.start()
     return true

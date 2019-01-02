@@ -2,36 +2,48 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import Foundation
 import ReSwift
 
 struct AppState: StateType {
   var userData: UserDataState
   var apiData:  ApiDataState
+
+  static func load(from storage: StorageManagerType) -> AppState {
+    return AppState(
+      userData: UserDataState(
+        bookmarks: storage.loadBookmarks() ?? [],
+        searchCardState: storage.loadSearchCardState() ?? .default,
+        trackedLines: []
+      ),
+      apiData: ApiDataState()
+    )
+  }
 }
 
-func loadState() -> AppState {
-  let storage = AppEnvironment.storage
-  return AppState(
-    userData: UserDataState(
-      bookmarks: storage.loadBookmarks(),
-      searchCardState: storage.loadSearchCardState()
-    ),
-    apiData: ApiDataState()
-  )
+struct UserDataState {
+  var bookmarks:       [Bookmark]
+  var searchCardState: SearchCardState
+  var trackedLines:    [Line]
 }
 
-func createMiddlewares() -> [Middleware<AppState>] {
-  return [ // order is important!
-    createLoggingMiddleware(),
-    createApiMiddleware(),
-    createPersistencyMiddleware(),
-    createNetworkActivityIndicatorMiddleware()
-  ]
+struct ApiDataState {
+  var lines: ApiResponseState<[Line]> = .none
+  var vehicleLocations: ApiResponseState<[Vehicle]> = .none
 }
 
-func mainReducer(action: Action, state: AppState?) -> AppState {
-  return AppState(
-    userData: userDataReducer(action: action, state: state?.userData),
-    apiData:  apiDataReducer(action: action, state: state?.apiData)
-  )
+enum ApiResponseState<Data>: CustomDebugStringConvertible {
+  case none
+  case inProgress
+  case data(Data)
+  case error(Error)
+
+  var debugDescription: String {
+    switch self {
+    case .none: return "none"
+    case .inProgress: return "inProgress"
+    case .data: return "data"
+    case .error: return "error"
+    }
+  }
 }
