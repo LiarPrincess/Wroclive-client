@@ -1007,21 +1007,13 @@
 		90C4B133202E331A00920706 /* Rx data sources */ = {
 			isa = PBXGroup;
 			children = (
-				90D3A40A1FEFE84000FB7485 /* Sections */,
+				90D3A4081FEFE6D400FB7485 /* RxSectionType.swift */,
+				90D3A40D1FEFE89C00FB7485 /* RxSectionModel.swift */,
+				90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */,
 				90D3A4021FEEF78400FB7485 /* RxTableViewDataSource.swift */,
 				9042EDDA1FF3ECC700F5D01D /* RxCollectionViewDataSource.swift */,
 			);
 			path = "Rx data sources";
-			sourceTree = "<group>";
-		};
-		90D3A40A1FEFE84000FB7485 /* Sections */ = {
-			isa = PBXGroup;
-			children = (
-				90D3A4081FEFE6D400FB7485 /* RxSectionType.swift */,
-				90D3A40D1FEFE89C00FB7485 /* RxSectionModel.swift */,
-				90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */,
-			);
-			path = Sections;
 			sourceTree = "<group>";
 		};
 		90D8DE5D21D5ACFD002B33D1 /* Tests */ = {

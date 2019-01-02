@@ -11,17 +11,6 @@ enum RxSectionOperation {
 
 extension Array where Element: RxSectionType {
 
-  // MARK: - Content
-
-  var hasItems: Bool {
-    let firstNonEmptySection = self.first { $0.items.any }
-    return firstNonEmptySection != nil
-  }
-
-  var items: [Element.Item] {
-    return self.flatMap { $0.items }
-  }
-
   // MARK: - Subscript
 
   subscript(index: IndexPath) -> Element.Item {
