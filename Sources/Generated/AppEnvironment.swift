@@ -21,7 +21,7 @@ enum AppEnvironment {
   static var schedulers: SchedulersManagerType { return current.schedulers }
   static var storage: StorageManagerType { return current.storage }
   static var userLocation: UserLocationManagerType { return current.userLocation }
-  static var variables: EnvironmentVariables { return current.variables }
+  static var configuration: Configuration { return current.configuration }
 
   private static var stack: [Environment] = []
 
@@ -38,7 +38,7 @@ enum AppEnvironment {
     schedulers: SchedulersManagerType = current.schedulers,
     storage: StorageManagerType = current.storage,
     userLocation: UserLocationManagerType = current.userLocation,
-    variables: EnvironmentVariables) {
+    configuration: Configuration = current.configuration) {
 
     push(
       Environment(
@@ -49,7 +49,7 @@ enum AppEnvironment {
         schedulers: schedulers,
         storage: storage,
         userLocation: userLocation,
-        variables: variables
+        configuration: configuration
     ))
   }
 

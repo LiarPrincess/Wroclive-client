@@ -6,9 +6,9 @@ import Foundation
 import os.log
 import ReSwift
 
-func createLoggingMiddleware(_ bundle: BundleManagerType) -> Middleware<AppState> {
+func createLoggingMiddleware() -> Middleware<AppState> {
   return createSingleMiddleware { _, _, next, action in
-    let log = OSLog(subsystem: bundle.identifier, category: "redux")
+    let log = OSLog(subsystem: AppEnvironment.bundle.identifier, category: "redux")
     os_log("%{public}@.%{public}@", log: log, type: .info,
            String(describing: type(of: action)),
            String(describing: action)

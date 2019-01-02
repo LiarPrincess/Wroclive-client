@@ -9,7 +9,8 @@ struct AppState: StateType {
   var apiData:  ApiDataState
 }
 
-func loadState(from storage: StorageManagerType) -> AppState {
+func loadState() -> AppState {
+  let storage = AppEnvironment.storage
   return AppState(
     userData: UserDataState(
       bookmarks: storage.loadBookmarks(),
@@ -19,12 +20,12 @@ func loadState(from storage: StorageManagerType) -> AppState {
   )
 }
 
-func createMiddlewares(_ environment: Environment) -> [Middleware<AppState>] {
+func createMiddlewares() -> [Middleware<AppState>] {
   return [ // order is important!
-    createLoggingMiddleware(environment.bundle),
-    createApiMiddleware(environment.bundle, environment.device, environment.network),
-    createPersistencyMiddleware(environment.bundle, environment.storage),
-    createNetworkActivityIndicatorMiddleware(environment.network)
+    createLoggingMiddleware(),
+    createApiMiddleware(),
+    createPersistencyMiddleware(),
+    createNetworkActivityIndicatorMiddleware()
   ]
 }
 

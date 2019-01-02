@@ -6,7 +6,7 @@ import Foundation
 import Alamofire
 
 class VehicleLocationsEndpoint: Endpoint {
-  let url:               URLConvertible    = AppEnvironment.variables.endpoints.locations
+  var url:               URLConvertible { return AppEnvironment.configuration.endpoints.vehicleLocations }
   let method:            HTTPMethod        = .post
   let parameterEncoding: ParameterEncoding = JSONEncoding.default
   let headers:           HTTPHeaders?      = ["Accept": "application/json"]

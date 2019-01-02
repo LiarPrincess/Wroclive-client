@@ -23,14 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     Theme.setupAppearance()
 
-    let state = loadState(from: environment.storage)
-    let middlewares = createMiddlewares(environment)
+    let state = loadState()
+    let middlewares = createMiddlewares()
     self.store  = Store<AppState>(reducer: mainReducer, state: state, middleware: middlewares)
 
     self.window = UIWindow(frame: UIScreen.main.bounds)
     self.coordinator = AppCoordinator(self.window!, self.store)
 
-    self.updateScheduler = UpdateScheduler(self.store, environment.bundle, environment.schedulers)
+    self.updateScheduler = UpdateScheduler(self.store)
 
     self.coordinator!.start()
     return true
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       schedulers: SchedulersManager(),
       storage: StorageManager(),
       userLocation: UserLocationManager(),
-      variables: EnvironmentVariables()
+      configuration: Configuration()
     )
   }
 

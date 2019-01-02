@@ -17,7 +17,7 @@ struct Environment {
   {% for manager in types.all|annotated:"manager" %}
   let {% call getName manager %}: {% call getProtocol manager %}
   {% endfor %}
-  let variables: EnvironmentVariables
+  let configuration: Configuration
 }
 
 // sourcery:end

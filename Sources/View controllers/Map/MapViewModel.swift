@@ -10,14 +10,6 @@ import RxCocoa
 
 private typealias Defaults = MapViewControllerConstants.Defaults
 
-protocol MapViewModelEnvironment {
-  var schedulers: SchedulersManagerType { get }
-  var userLocation: UserLocationManagerType { get }
-  var variables: EnvironmentVariables { get }
-}
-
-extension Environment: MapViewModelEnvironment { }
-
 class MapViewModel {
 
   private let disposeBag = DisposeBag()
@@ -35,7 +27,7 @@ class MapViewModel {
   let showAlert: Driver<MapViewAlert>
 
   // swiftlint:disable:next function_body_length
-  init(_ store: Store<AppState>, _ environment: MapViewModelEnvironment) {
+  init(_ store: Store<AppState>) {
     let _didChangeTrackingMode = PublishSubject<MKUserTrackingMode>()
     self.didChangeTrackingMode = _didChangeTrackingMode.asObserver()
 
@@ -43,7 +35,7 @@ class MapViewModel {
     self.viewDidAppear = _viewDidAppear.asObserver()
 
     // map center
-    let authorization = environment.userLocation.authorization.share()
+    let authorization = AppEnvironment.userLocation.authorization.share()
 
     self.mapCenter = {
       let initialAuthorization = _viewDidAppear.withLatestFrom(authorization)
@@ -55,7 +47,7 @@ class MapViewModel {
 
       return Observable.merge(initialAuthorization, authorizationChangedFromNonDetermined)
         .filter { $0 == .authorizedAlways || $0 == .authorizedWhenInUse }
-        .flatMapLatest { _ in environment.userLocation.getCurrent().catchError { _ in .never() } }
+        .flatMapLatest { _ in AppEnvironment.userLocation.getCurrent().catchError { _ in .never() } }
         .startWith(Defaults.location)
         .asDriver(onErrorDriveWith: .never())
     }()
@@ -84,8 +76,8 @@ class MapViewModel {
 
     // bindings
     let requestAuthorization: Observable<Void> = {
-      let delay          = environment.variables.time.locationAuthorizationPromptDelay
-      let delayScheduler = environment.schedulers.main
+      let delay          = AppEnvironment.configuration.time.locationAuthorizationPromptDelay
+      let delayScheduler = AppEnvironment.schedulers.main
 
       let delayedViewDidAppear = _viewDidAppear.delay(delay, scheduler: delayScheduler)
       let trackingModeChanged  = _didChangeTrackingMode.map { _ in () }
@@ -97,7 +89,7 @@ class MapViewModel {
     }()
 
     requestAuthorization
-      .bind(onNext: { _ in environment.userLocation.requestWhenInUseAuthorization() })
+      .bind(onNext: { _ in AppEnvironment.userLocation.requestWhenInUseAuthorization() })
       .disposed(by: self.disposeBag)
   }
 }

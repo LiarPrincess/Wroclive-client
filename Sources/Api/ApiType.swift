@@ -8,7 +8,7 @@ import RxSwift
 protocol ApiType {
 
   /// Get all currently available mpk lines
-  func getAvailableLines() -> Single<[Line]>
+  func getLines() -> Single<[Line]>
 
   /// Get current vehicle locations for selected lines
   func getVehicleLocations(for lines: [Line]) -> Single<[Vehicle]>

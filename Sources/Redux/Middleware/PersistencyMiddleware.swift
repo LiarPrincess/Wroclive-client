@@ -6,14 +6,14 @@ import Foundation
 import os.log
 import ReSwift
 
-func createPersistencyMiddleware(_ bundle: BundleManagerType,
-                                 _ storage: StorageManagerType) -> Middleware<AppState> {
+func createPersistencyMiddleware() -> Middleware<AppState> {
   return createSingleMiddleware { _, getState, next, action in
     let before = getState()
     next(action)
     let after = getState()
 
-    let log = OSLog(subsystem: bundle.identifier, category: "storage")
+    let log = OSLog(subsystem: AppEnvironment.bundle.identifier, category: "storage")
+    let storage = AppEnvironment.storage
     saveBookmarksIfNeeded(before, after, to: storage, with: log)
     saveSearchCardStateIfNeeded(before, after, to: storage, with: log)
   }
@@ -26,7 +26,7 @@ private func saveBookmarksIfNeeded(_ stateBefore: AppState?, _ stateAfter: AppSt
 
   if before != after {
     os_log("Saving bookmarks", log: log, type: .info)
-    storage.saveBookmarks(after)
+    AppEnvironment.storage.saveBookmarks(after)
   }
 }
 
@@ -37,6 +37,6 @@ private func saveSearchCardStateIfNeeded(_ stateBefore: AppState?, _ stateAfter:
 
   if before != after {
     os_log("Saving search card state", log: log, type: .info)
-    storage.saveSearchCardState(after)
+    AppEnvironment.storage.saveSearchCardState(after)
   }
 }

@@ -38,14 +38,14 @@ class SettingsCardCoordinator: CardCoordinator {
   }
 
   func rateApp() {
-    UIApplication.shared.open(AppEnvironment.variables.appStore.writeReviewUrl)
+    UIApplication.shared.open(AppEnvironment.configuration.appStore.writeReviewUrl)
   }
 
   func showShareActivity() {
     guard let card = self.card
       else { fatalError("SettingsCardCoordinator has to be started first") }
 
-    let url   = AppEnvironment.variables.appStore.shareUrl
+    let url   = AppEnvironment.configuration.appStore.shareUrl
     let text  = Localizable.Share.message(url.absoluteString)
     let image = Assets.shareImage.image
     let items = [text, image] as [Any]
@@ -60,7 +60,7 @@ class SettingsCardCoordinator: CardCoordinator {
     guard let card = self.card
       else { fatalError("SettingsCardCoordinator has to be started first") }
 
-    let safariViewController = SFSafariViewController(url: AppEnvironment.variables.websiteUrl)
+    let safariViewController = SFSafariViewController(url: AppEnvironment.configuration.websiteUrl)
     safariViewController.modalPresentationStyle = .overFullScreen
     card.present(safariViewController, animated: true, completion: nil)
   }

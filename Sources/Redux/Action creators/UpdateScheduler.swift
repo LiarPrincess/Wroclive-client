@@ -9,20 +9,18 @@ import RxSwift
 
 class UpdateScheduler: StoreSubscriber {
 
-  private let log: OSLog
   private let store: Store<AppState>
-  private let scheduler: SchedulersManagerType
+  private var trackedLines: [Line] = []
 
   private var timer:           Observable<Void>?
   private var timerDisposable: Disposable?
 
-  private var trackedLines: [Line] = []
+  private lazy var log: OSLog = {
+    return OSLog(subsystem: AppEnvironment.bundle.identifier, category: "update-scheduler")
+  }()
 
-  init(_ store: Store<AppState>, _ bundle: BundleManagerType, _ scheduler: SchedulersManagerType) {
+  init(_ store: Store<AppState>) {
     self.store = store
-    self.scheduler = scheduler
-    self.log = OSLog(subsystem: bundle.identifier, category: "update-scheduler")
-
     store.subscribe(self)
   }
 
@@ -39,8 +37,8 @@ class UpdateScheduler: StoreSubscriber {
 
     let initialTick = Observable<Void>.just(())
     let intervalTimer: Observable<Void> = {
-      let interval = AppEnvironment.variables.time.vehicleUpdateInterval
-      return Observable<Int>.interval(interval, scheduler: self.scheduler.main).map { _ in () }
+      let interval = AppEnvironment.configuration.time.vehicleUpdateInterval
+      return Observable<Int>.interval(interval, scheduler: AppEnvironment.schedulers.main).map { _ in () }
     }()
 
     self.timer = initialTick.concat(intervalTimer)

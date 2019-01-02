@@ -21,5 +21,5 @@ struct Environment {
   let schedulers: SchedulersManagerType
   let storage: StorageManagerType
   let userLocation: UserLocationManagerType
-  let variables: EnvironmentVariables
+  let configuration: Configuration
 }

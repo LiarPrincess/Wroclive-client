@@ -5,14 +5,12 @@
 import Foundation
 import ReSwift
 
-func createApiMiddleware(_ bundle: BundleManagerType,
-                         _ device: DeviceManagerType,
-                         _ network: NetworkManagerType) -> Middleware<AppState> {
-  let api = Api(bundle, device, network)
+func createApiMiddleware() -> Middleware<AppState> {
   return createSingleMiddleware { dispatch, getState, next, action in
     guard let state = getState()
       else { return }
 
+    let api = Api()
     switch action {
     case ApiAction.updateLines: updateLines(api, dispatch)
     case ApiAction.updateVehicleLocations: updateVehicleLocations(state, api, dispatch)

@@ -25,7 +25,7 @@ class AppCoordinator: Coordinator {
   }
 
   func start() {
-    let mapViewModel = MapViewModel(self.store, AppEnvironment.current)
+    let mapViewModel = MapViewModel(self.store)
     let viewModel = MainViewModel(self.store, mapViewModel)
     self.mainViewController = MainViewController(viewModel)
 

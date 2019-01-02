@@ -5,8 +5,8 @@
 import Foundation
 import Alamofire
 
-class AvailableLinesEndpoint: Endpoint {
-  let url:               URLConvertible    = AppEnvironment.variables.endpoints.lines
+class LinesEndpoint: Endpoint {
+  var url:               URLConvertible { return AppEnvironment.configuration.endpoints.lines }
   let method:            HTTPMethod        = .get
   let parameterEncoding: ParameterEncoding = JSONEncoding.default
   let headers:           HTTPHeaders?      = ["Accept": "application/json"]

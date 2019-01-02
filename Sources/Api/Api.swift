@@ -9,22 +9,12 @@ import RxAlamofire
 import Reachability
 
 class Api: ApiType {
-  private let bundle:  BundleManagerType
-  private let device:  DeviceManagerType
-  private let network: NetworkManagerType
-
   private lazy var reachability: Reachability? = Reachability()
-
-  init(_ bundle: BundleManagerType, _ device: DeviceManagerType, _ network: NetworkManagerType) {
-    self.bundle  = bundle
-    self.device  = device
-    self.network = network
-  }
 
   // MARK: - ApiManager
 
-  func getAvailableLines() -> Single<[Line]> {
-    let endpoint = AvailableLinesEndpoint()
+  func getLines() -> Single<[Line]> {
+    let endpoint = LinesEndpoint()
     return self.sendRequest(endpoint, ())
   }
 
@@ -34,7 +24,7 @@ class Api: ApiType {
   }
 
   private func sendRequest<E: Endpoint>(_ endpoint: E, _ data: E.ParameterData) -> Single<E.ResponseData> {
-    return self.network
+    return AppEnvironment.network
       .request(url:    endpoint.url,
                method: endpoint.method,
                parameters: endpoint.encodeParameters(data),
@@ -50,8 +40,11 @@ class Api: ApiType {
   private func withUserAgent(_ headers: HTTPHeaders?) -> HTTPHeaders {
     // 'Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)'
     let userAgent: String = {
-      let deviceInfo = "\(self.device.model) \(self.device.systemName) \(self.device.systemVersion)"
-      return "\(self.bundle.name)/\(self.bundle.version) (\(self.bundle.identifier); \(deviceInfo))"
+      let device = AppEnvironment.device
+      let bundle = AppEnvironment.bundle
+
+      let deviceInfo = "\(device.model) \(device.systemName) \(device.systemVersion)"
+      return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
     }()
 
     var result = headers ?? [:]

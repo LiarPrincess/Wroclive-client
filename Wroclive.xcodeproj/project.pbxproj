@@ -120,7 +120,7 @@
 		905D71901FE1C444006D1DB6 /* UserLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718D1FE1C443006D1DB6 /* UserLocationError.swift */; };
 		905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */; };
 		905D71AC1FE1C5BD006D1DB6 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A41FE1C5BD006D1DB6 /* Api.swift */; };
-		905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */; };
+		905D71AE1FE1C5BD006D1DB6 /* LinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A71FE1C5BD006D1DB6 /* LinesEndpoint.swift */; };
 		905D71B61FE1C6A8006D1DB6 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */; };
 		90665CBE1F430D7B00D8CFBC /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90665CBD1F430D7B00D8CFBC /* Vehicle.swift */; };
 		906679552199B5E000050CFA /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906679542199B5E000050CFA /* LoggingMiddleware.swift */; };
@@ -137,7 +137,7 @@
 		906C40632016786E00E32571 /* SearchCardAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40622016786E00E32571 /* SearchCardAlert.swift */; };
 		906C406C2018FFC200E32571 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406B2018FFC200E32571 /* ApiError.swift */; };
 		906C4070201915D900E32571 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406F201915D900E32571 /* Endpoint.swift */; };
-		9079DCD61F6C545600C6ABCD /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */; };
+		9079DCD61F6C545600C6ABCD /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* Configuration.swift */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		907DC6E91FF2B740001C5DD6 /* LineTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC6E71FF2B73F001C5DD6 /* LineTypeSelector.swift */; };
 		907DC6ED1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC6EC1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift */; };
@@ -380,7 +380,7 @@
 		905D718D1FE1C443006D1DB6 /* UserLocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationError.swift; sourceTree = "<group>"; };
 		905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationsEndpoint.swift; sourceTree = "<group>"; };
 		905D71A41FE1C5BD006D1DB6 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
-		905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailableLinesEndpoint.swift; sourceTree = "<group>"; };
+		905D71A71FE1C5BD006D1DB6 /* LinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesEndpoint.swift; sourceTree = "<group>"; };
 		905D71B21FE1C6A8006D1DB6 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		90665CBD1F430D7B00D8CFBC /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		906679542199B5E000050CFA /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
@@ -398,7 +398,7 @@
 		906C40622016786E00E32571 /* SearchCardAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardAlert.swift; sourceTree = "<group>"; };
 		906C406B2018FFC200E32571 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		906C406F201915D900E32571 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
+		9079DCD51F6C545600C6ABCD /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		907DC6E71FF2B73F001C5DD6 /* LineTypeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelector.swift; sourceTree = "<group>"; };
 		907DC6EC1FF2B892001C5DD6 /* LineTypeSelectorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTypeSelectorConstants.swift; sourceTree = "<group>"; };
 		907ECF171F3BB41900DB27DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -796,7 +796,7 @@
 				905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */,
 				906C40562014C55000E32571 /* DebugManagerType.swift */,
 				906C40582014C55700E32571 /* DebugManager.swift */,
-				9079DCD51F6C545600C6ABCD /* EnvironmentVariables.swift */,
+				9079DCD51F6C545600C6ABCD /* Configuration.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -946,7 +946,7 @@
 			isa = PBXGroup;
 			children = (
 				906C406F201915D900E32571 /* Endpoint.swift */,
-				905D71A71FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift */,
+				905D71A71FE1C5BD006D1DB6 /* LinesEndpoint.swift */,
 				905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */,
 			);
 			path = Endpoints;
@@ -1576,7 +1576,7 @@
 				906C40572014C55000E32571 /* DebugManagerType.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				90E8A6C11F4CB81400CE5AE9 /* BundleManager.swift in Sources */,
-				905D71AE1FE1C5BD006D1DB6 /* AvailableLinesEndpoint.swift in Sources */,
+				905D71AE1FE1C5BD006D1DB6 /* LinesEndpoint.swift in Sources */,
 				903920351F1AB70E00250162 /* LinesArray.swift in Sources */,
 				901A808A200E96EE0013CCD9 /* SettingsCardFooterView.swift in Sources */,
 				9010D5B5201FA04500563BDB /* ScrollViewDismissGestureHandler.swift in Sources */,
@@ -1616,7 +1616,7 @@
 				900B976E1FE1BE1F00AC7C35 /* BookmarkAlerts.swift in Sources */,
 				9023312E1EDF37F500FA8F43 /* Line.swift in Sources */,
 				905D71AC1FE1C5BD006D1DB6 /* Api.swift in Sources */,
-				9079DCD61F6C545600C6ABCD /* EnvironmentVariables.swift in Sources */,
+				9079DCD61F6C545600C6ABCD /* Configuration.swift in Sources */,
 				9021F41F1F12CACB000A6949 /* SearchCardState.swift in Sources */,
 				9021F3921F12C95D000A6949 /* CGFloat+Rad.swift in Sources */,
 				900CBE9B21937E2D0028C58F /* SearchCardCoordinator.swift in Sources */,
