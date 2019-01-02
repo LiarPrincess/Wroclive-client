@@ -63,8 +63,8 @@ disabled_rules:
   - strict_fileprivate
 
 included:
-  - Sources
-  - Tests
+  - Wroclive
+  - WrocliveTests
 
-excluded:
-- Tests/UI Tests/SnapshotHelper.swift
+# excluded:
+# - Tests/UI Tests/SnapshotHelper.swift
