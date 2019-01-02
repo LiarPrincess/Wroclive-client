@@ -10,13 +10,13 @@
 // swiftlint:disable vertical_whitespace
 
 import Foundation
-import os.log
 
 
 enum AppEnvironment {
   static var bundle: BundleManagerType { return current.bundle }
   static var debug: DebugManagerType { return current.debug }
   static var device: DeviceManagerType { return current.device }
+  static var log: LogManagerType { return current.log }
   static var network: NetworkManagerType { return current.network }
   static var schedulers: SchedulersManagerType { return current.schedulers }
   static var storage: StorageManagerType { return current.storage }
@@ -34,6 +34,7 @@ enum AppEnvironment {
     bundle: BundleManagerType = current.bundle,
     debug: DebugManagerType = current.debug,
     device: DeviceManagerType = current.device,
+    log: LogManagerType = current.log,
     network: NetworkManagerType = current.network,
     schedulers: SchedulersManagerType = current.schedulers,
     storage: StorageManagerType = current.storage,
@@ -45,6 +46,7 @@ enum AppEnvironment {
         bundle: bundle,
         debug: debug,
         device: device,
+        log: log,
         network: network,
         schedulers: schedulers,
         storage: storage,

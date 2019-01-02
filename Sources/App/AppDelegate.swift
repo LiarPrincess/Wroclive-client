@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       bundle: BundleManager(),
       debug: DebugManager(),
       device: DeviceManager(),
+      log: LogManager(),
       network: NetworkManager(),
       schedulers: SchedulersManager(),
       storage: StorageManager(),

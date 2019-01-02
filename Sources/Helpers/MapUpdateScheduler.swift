@@ -15,9 +15,7 @@ class MapUpdateScheduler: StoreSubscriber {
   private var timer:           Observable<Void>?
   private var timerDisposable: Disposable?
 
-  private lazy var log: OSLog = {
-    OSLog(subsystem: AppEnvironment.bundle.identifier, category: "update-scheduler")
-  }()
+  private var log: OSLog { return AppEnvironment.log.mapUpdate }
 
   init(_ store: Store<AppState>) {
     self.store = store
