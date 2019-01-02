@@ -7,6 +7,19 @@ import Alamofire
 import RxSwift
 import RxAlamofire
 
+protocol NetworkManagerType {
+
+  /// Get data from the network
+  func request(url: URLConvertible,
+               method: HTTPMethod,
+               parameters: Parameters?,
+               encoding: ParameterEncoding,
+               headers: HTTPHeaders?) -> Observable<DataRequest>
+
+  /// Show/hide network activity indicator (little circle in the upper left corner)
+  func setNetworkActivityIndicatorVisibility(_ isVisible: Bool)
+}
+
 // sourcery: manager
 class NetworkManager: NetworkManagerType {
 

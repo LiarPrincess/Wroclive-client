@@ -5,6 +5,19 @@
 import Foundation
 import RxSwift
 
+protocol DebugManagerType {
+
+  #if DEBUG
+
+  /// Clear NSURLSession cache
+  func clearNetworkCache()
+
+  /// Print Rx resource count every 1s
+  func printRxResources()
+
+  #endif
+}
+
 // sourcery: manager
 class DebugManager: DebugManagerType {
 

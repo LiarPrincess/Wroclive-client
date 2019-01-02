@@ -27,7 +27,6 @@
 		9010D5B72020FE6300563BDB /* DismissGestureHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */; };
 		9016C74220E432BD0039A604 /* Environment.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9016C74120E432BD0039A604 /* Environment.stencil */; };
 		9016C74920E43CD70039A604 /* AppEnvironment.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9016C74620E43CD70039A604 /* AppEnvironment.stencil */; };
-		9016FD0A208B48820043524D /* SchedulersManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD09208B48820043524D /* SchedulersManagerType.swift */; };
 		9016FD0C208B48EC0043524D /* SchedulersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9016FD0B208B48EC0043524D /* SchedulersManager.swift */; };
 		9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3411EE339FD00063377 /* BookmarksCard.swift */; };
 		9017C35B1EE339FD00063377 /* BookmarksCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */; };
@@ -102,7 +101,6 @@
 		9042EDBF1FF2D71500F5D01D /* LineSelectorCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDBE1FF2D71500F5D01D /* LineSelectorCellConstants.swift */; };
 		9042EDCF1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDCE1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift */; };
 		9042EDDB1FF3ECC700F5D01D /* RxCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDDA1FF3ECC700F5D01D /* RxCollectionViewDataSource.swift */; };
-		9050705B2087EB4B007DDA80 /* StorageManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050705A2087EB4B007DDA80 /* StorageManagerType.swift */; };
 		9050705F2087EE66007DDA80 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050705E2087EE66007DDA80 /* StorageManager.swift */; };
 		905070622087EF53007DDA80 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905070612087EF53007DDA80 /* FileSystem.swift */; };
 		9050954320D709A3005E2BF8 /* BookmarksCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTests.swift */; };
@@ -116,7 +114,6 @@
 		905A3B721F9533BE003D668F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6A1F9532F0003D668F /* UIKit.framework */; };
 		905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6E1F953301003D668F /* MapKit.framework */; };
 		905D718E1FE1C444006D1DB6 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */; };
-		905D718F1FE1C444006D1DB6 /* UserLocationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */; };
 		905D71901FE1C444006D1DB6 /* UserLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D718D1FE1C443006D1DB6 /* UserLocationError.swift */; };
 		905D71AA1FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */; };
 		905D71AC1FE1C5BD006D1DB6 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A41FE1C5BD006D1DB6 /* Api.swift */; };
@@ -131,7 +128,6 @@
 		906A7B511FFEC252004EC8A4 /* Observer+Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B501FFEC252004EC8A4 /* Observer+Next.swift */; };
 		906A7B5520025750004EC8A4 /* Observable+Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */; };
 		906C40522013F6AC00E32571 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */; };
-		906C40572014C55000E32571 /* DebugManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40562014C55000E32571 /* DebugManagerType.swift */; };
 		906C40592014C55700E32571 /* DebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40582014C55700E32571 /* DebugManager.swift */; };
 		906C405E2014CD1B00E32571 /* VehicleAnnotationUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C405D2014CD1B00E32571 /* VehicleAnnotationUpdater.swift */; };
 		906C40632016786E00E32571 /* SearchCardAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40622016786E00E32571 /* SearchCardAlert.swift */; };
@@ -165,7 +161,6 @@
 		90A5E02721D7C30C00B39DBA /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02521D7C30C00B39DBA /* Fonts.swift */; };
 		90A5E02821D7C30C00B39DBA /* Fonts.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 90A5E02621D7C30C00B39DBA /* Fonts.stencil */; };
 		90A5E02A21D7C5F800B39DBA /* TextAttributeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02921D7C5F800B39DBA /* TextAttributeEnums.swift */; };
-		90A5E02C21D7CFAD00B39DBA /* NetworkManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02B21D7CFAD00B39DBA /* NetworkManagerType.swift */; };
 		90A5E02E21D7CFC400B39DBA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02D21D7CFC400B39DBA /* NetworkManager.swift */; };
 		90A5E03021D7D5A400B39DBA /* ApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02F21D7D5A400B39DBA /* ApiType.swift */; };
 		90A5E03221D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E03121D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift */; };
@@ -200,9 +195,7 @@
 		90D8DE6421D5B375002B33D1 /* Collection+GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */; };
 		90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
 		90E3ADDB1F4F5BF000C3ED24 /* StyleKit+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */; };
-		90E8A6BF1F4CB08400CE5AE9 /* BundleManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6BE1F4CB08400CE5AE9 /* BundleManagerType.swift */; };
 		90E8A6C11F4CB81400CE5AE9 /* BundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */; };
-		90E8A6C61F4CD43300CE5AE9 /* DeviceManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6C51F4CD43300CE5AE9 /* DeviceManagerType.swift */; };
 		90E8A6C81F4CD49800CE5AE9 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8A6C71F4CD49800CE5AE9 /* DeviceManager.swift */; };
 		90EB296520477ED2006C591E /* CLLocationCoordinate2D+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EB296420477ED2006C591E /* CLLocationCoordinate2D+Distance.swift */; };
 		90ED50FD1F3BADC500C782D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90ED50FF1F3BADC500C782D5 /* Localizable.strings */; };
@@ -287,7 +280,6 @@
 		9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandlerType.swift; sourceTree = "<group>"; };
 		9016C74120E432BD0039A604 /* Environment.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = Environment.stencil; sourceTree = "<group>"; };
 		9016C74620E43CD70039A604 /* AppEnvironment.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppEnvironment.stencil; sourceTree = "<group>"; };
-		9016FD09208B48820043524D /* SchedulersManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulersManagerType.swift; sourceTree = "<group>"; };
 		9016FD0B208B48EC0043524D /* SchedulersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulersManager.swift; sourceTree = "<group>"; };
 		9017C3411EE339FD00063377 /* BookmarksCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCard.swift; sourceTree = "<group>"; };
 		9017C3421EE339FD00063377 /* BookmarksCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardConstants.swift; sourceTree = "<group>"; };
@@ -364,7 +356,6 @@
 		9042EDCE1FF3BF3A00F5D01D /* LineSelectorHeaderViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorHeaderViewConstants.swift; sourceTree = "<group>"; };
 		9042EDD01FF3C27000F5D01D /* LineSelectorHeaderViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorHeaderViewModelTests.swift; sourceTree = "<group>"; };
 		9042EDDA1FF3ECC700F5D01D /* RxCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCollectionViewDataSource.swift; sourceTree = "<group>"; };
-		9050705A2087EB4B007DDA80 /* StorageManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerType.swift; sourceTree = "<group>"; };
 		9050705E2087EE66007DDA80 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		905070612087EF53007DDA80 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		90538DD1201CADCF0000BBBE /* CardPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPanel.swift; sourceTree = "<group>"; };
@@ -376,7 +367,6 @@
 		905A3B6A1F9532F0003D668F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		905A3B6E1F953301003D668F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
-		905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManagerType.swift; sourceTree = "<group>"; };
 		905D718D1FE1C443006D1DB6 /* UserLocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationError.swift; sourceTree = "<group>"; };
 		905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationsEndpoint.swift; sourceTree = "<group>"; };
 		905D71A41FE1C5BD006D1DB6 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
@@ -391,7 +381,6 @@
 		906A7B501FFEC252004EC8A4 /* Observer+Next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observer+Next.swift"; sourceTree = "<group>"; };
 		906A7B5220025750004EC8A4 /* Observable+Unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Unwrap.swift"; sourceTree = "<group>"; };
 		906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
-		906C40562014C55000E32571 /* DebugManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugManagerType.swift; sourceTree = "<group>"; };
 		906C40582014C55700E32571 /* DebugManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugManager.swift; sourceTree = "<group>"; };
 		906C405D2014CD1B00E32571 /* VehicleAnnotationUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationUpdater.swift; sourceTree = "<group>"; };
 		906C405F2014E77B00E32571 /* VehicleAnnotationUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationUpdaterTests.swift; sourceTree = "<group>"; };
@@ -426,7 +415,6 @@
 		90A5E02521D7C30C00B39DBA /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		90A5E02621D7C30C00B39DBA /* Fonts.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fonts.stencil; sourceTree = "<group>"; };
 		90A5E02921D7C5F800B39DBA /* TextAttributeEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeEnums.swift; sourceTree = "<group>"; };
-		90A5E02B21D7CFAD00B39DBA /* NetworkManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerType.swift; sourceTree = "<group>"; };
 		90A5E02D21D7CFC400B39DBA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		90A5E02F21D7D5A400B39DBA /* ApiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiType.swift; sourceTree = "<group>"; };
 		90A5E03121D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorMiddleware.swift; sourceTree = "<group>"; };
@@ -466,9 +454,7 @@
 		90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenshots.swift; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
 		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "Sources/App/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
-		90E8A6BE1F4CB08400CE5AE9 /* BundleManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManagerType.swift; sourceTree = "<group>"; };
 		90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
-		90E8A6C51F4CD43300CE5AE9 /* DeviceManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManagerType.swift; sourceTree = "<group>"; };
 		90E8A6C71F4CD49800CE5AE9 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		90EB296420477ED2006C591E /* CLLocationCoordinate2D+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Distance.swift"; sourceTree = "<group>"; };
 		90ED51001F3BADCA00C782D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -782,19 +768,12 @@
 			isa = PBXGroup;
 			children = (
 				905070602087EF28007DDA80 /* File system */,
-				90E8A6BE1F4CB08400CE5AE9 /* BundleManagerType.swift */,
 				90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */,
-				90E8A6C51F4CD43300CE5AE9 /* DeviceManagerType.swift */,
 				90E8A6C71F4CD49800CE5AE9 /* DeviceManager.swift */,
-				9050705A2087EB4B007DDA80 /* StorageManagerType.swift */,
 				9050705E2087EE66007DDA80 /* StorageManager.swift */,
-				9016FD09208B48820043524D /* SchedulersManagerType.swift */,
 				9016FD0B208B48EC0043524D /* SchedulersManager.swift */,
-				90A5E02B21D7CFAD00B39DBA /* NetworkManagerType.swift */,
 				90A5E02D21D7CFC400B39DBA /* NetworkManager.swift */,
-				905D718C1FE1C443006D1DB6 /* UserLocationManagerType.swift */,
 				905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */,
-				906C40562014C55000E32571 /* DebugManagerType.swift */,
 				906C40582014C55700E32571 /* DebugManager.swift */,
 				9079DCD51F6C545600C6ABCD /* Configuration.swift */,
 			);
@@ -1488,7 +1467,6 @@
 				906C405E2014CD1B00E32571 /* VehicleAnnotationUpdater.swift in Sources */,
 				90EFA63A21979F660025819C /* AppState.swift in Sources */,
 				9017C35A1EE339FD00063377 /* BookmarksCard.swift in Sources */,
-				9016FD0A208B48820043524D /* SchedulersManagerType.swift in Sources */,
 				90AACC8D200BA01A0064EDFD /* LineSelectorSectionCreator.swift in Sources */,
 				90AACC9B200BE4110064EDFD /* LineSelectorPage+Rx.swift in Sources */,
 				9096CDCD1F40EF2200FEF20A /* SettingsCard.swift in Sources */,
@@ -1496,7 +1474,6 @@
 				90A5E03221D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift in Sources */,
 				90EFA63D21979FF40025819C /* UserData.swift in Sources */,
 				905D718E1FE1C444006D1DB6 /* UserLocationManager.swift in Sources */,
-				90A5E02C21D7CFAD00B39DBA /* NetworkManagerType.swift in Sources */,
 				9017C35C1EE339FD00063377 /* BookmarksCardLayout.swift in Sources */,
 				901ECDBF1FF587F1004765AA /* TextAttributes.swift in Sources */,
 				901ECDCC1FF58D5C004765AA /* SearchPlaceholderView.swift in Sources */,
@@ -1542,7 +1519,6 @@
 				907DC6E91FF2B740001C5DD6 /* LineTypeSelector.swift in Sources */,
 				901A809C20127F700013CCD9 /* String+Empty.swift in Sources */,
 				9021F4391F12D698000A6949 /* LineSelectorHeaderView.swift in Sources */,
-				90E8A6C61F4CD43300CE5AE9 /* DeviceManagerType.swift in Sources */,
 				90E8A6C81F4CD49800CE5AE9 /* DeviceManager.swift in Sources */,
 				901A808C200E97430013CCD9 /* SettingsCardFooterConstants.swift in Sources */,
 				9021F3971F12C95D000A6949 /* UIView+AddBorder.swift in Sources */,
@@ -1556,7 +1532,6 @@
 				90E3ADDA1F4F5BF000C3ED24 /* StyleKit.swift in Sources */,
 				90C4B13A203213D600920706 /* MapViewModel.swift in Sources */,
 				902331301EDF37F500FA8F43 /* LineType.swift in Sources */,
-				90E8A6BF1F4CB08400CE5AE9 /* BundleManagerType.swift in Sources */,
 				906C406C2018FFC200E32571 /* ApiError.swift in Sources */,
 				900CBEA0219394FB0028C58F /* UIView+Constraints.swift in Sources */,
 				90A913781F376E390095B873 /* VehicleAnnotationView.swift in Sources */,
@@ -1573,7 +1548,6 @@
 				9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */,
 				901ECDD01FF5A003004765AA /* SearchCardViewModel.swift in Sources */,
 				901A8090200E9F580013CCD9 /* SettingsSectionType.swift in Sources */,
-				906C40572014C55000E32571 /* DebugManagerType.swift in Sources */,
 				9023312F1EDF37F500FA8F43 /* LineSubtype.swift in Sources */,
 				90E8A6C11F4CB81400CE5AE9 /* BundleManager.swift in Sources */,
 				905D71AE1FE1C5BD006D1DB6 /* LinesEndpoint.swift in Sources */,
@@ -1581,8 +1555,6 @@
 				901A808A200E96EE0013CCD9 /* SettingsCardFooterView.swift in Sources */,
 				9010D5B5201FA04500563BDB /* ScrollViewDismissGestureHandler.swift in Sources */,
 				9010D5B3201FA01E00563BDB /* DismissGestureHandler.swift in Sources */,
-				9050705B2087EB4B007DDA80 /* StorageManagerType.swift in Sources */,
-				905D718F1FE1C444006D1DB6 /* UserLocationManagerType.swift in Sources */,
 				900CBE912192E2B30028C58F /* Coordinator.swift in Sources */,
 				9016FD0C208B48EC0043524D /* SchedulersManager.swift in Sources */,
 				900CBE932192E2EB0028C58F /* AppCoordinator.swift in Sources */,

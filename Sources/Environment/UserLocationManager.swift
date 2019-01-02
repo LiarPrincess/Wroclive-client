@@ -7,6 +7,18 @@ import MapKit
 import RxSwift
 import RxCoreLocation
 
+protocol UserLocationManagerType {
+
+  /// Returns user location
+  func getCurrent() -> Single<CLLocationCoordinate2D>
+
+  /// Current authorization status
+  var authorization: Observable<CLAuthorizationStatus> { get }
+
+  /// Request when in use authorization
+  func requestWhenInUseAuthorization()
+}
+
 // sourcery: manager
 class UserLocationManager: NSObject, UserLocationManagerType {
 
