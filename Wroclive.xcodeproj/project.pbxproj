@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2CA53A00574F6624D5CB7A39 /* Pods_Wroclive_Screenshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */; };
 		3ABC029B80A2D9E17BE2B18D /* Pods_Wroclive_Wroclive_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0C0629C43753F478CB3162 /* Pods_Wroclive_Wroclive_Tests.framework */; };
 		900B976C1FE1BD4500AC7C35 /* LocationAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976B1FE1BD4500AC7C35 /* LocationAlerts.swift */; };
 		900B976E1FE1BE1F00AC7C35 /* BookmarkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B976D1FE1BE1F00AC7C35 /* BookmarkAlerts.swift */; };
@@ -149,9 +148,6 @@
 		908FB19D1F48B3CA00121584 /* ReusableCell+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB1991F48B3CA00121584 /* ReusableCell+UITableView.swift */; };
 		908FB19E1F48B3CA00121584 /* ReusableCell+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FB19A1F48B3CA00121584 /* ReusableCell+UICollectionView.swift */; };
 		908FE5B720BC77D80001E9B0 /* BookmarksCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908FE5B620BC77D80001E9B0 /* BookmarksCellViewModel.swift */; };
-		909074B11FB89AED00C8DD51 /* BookmarkScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074AF1FB89ACB00C8DD51 /* BookmarkScreenshots.swift */; };
-		909074B71FB8AF1700C8DD51 /* SearchScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074B61FB8AF1700C8DD51 /* SearchScreenshots.swift */; };
-		909074BA1FB8BD8500C8DD51 /* MapScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074B81FB8BD8100C8DD51 /* MapScreenshots.swift */; };
 		90915B081FF97191009FE942 /* LineTypeSelector+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B071FF97191009FE942 /* LineTypeSelector+Rx.swift */; };
 		90915B171FFAFD5A009FE942 /* RxSectionTypeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */; };
 		90915B191FFB005C009FE942 /* Observable+Reducing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B181FFB005C009FE942 /* Observable+Reducing.swift */; };
@@ -159,8 +155,6 @@
 		90915B201FFC17A7009FE942 /* ApiManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B1E1FFC178E009FE942 /* ApiManagerMock.swift */; };
 		9096CDCD1F40EF2200FEF20A /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9096CDCC1F40EF2200FEF20A /* SettingsCard.swift */; };
 		909B9FDC1FEBC3E2007CB59D /* BookmarksCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B9FDB1FEBC3E2007CB59D /* BookmarksCellConstants.swift */; };
-		909B9FDD1FEBD0AE007CB59D /* Screenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909074A91FB8566100C8DD51 /* Screenshots.swift */; };
-		909B9FDE1FEBD0C2007CB59D /* AssertNotCalled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */; };
 		90A5E02321D7C1FC00B39DBA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 90A5E02021D7C1FB00B39DBA /* README.md */; };
 		90A5E02721D7C30C00B39DBA /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02521D7C30C00B39DBA /* Fonts.swift */; };
 		90A5E02821D7C30C00B39DBA /* Fonts.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 90A5E02621D7C30C00B39DBA /* Fonts.stencil */; };
@@ -219,20 +213,11 @@
 		90F9F8AC20DFC68800793E4C /* MapViewModelTests+TrackingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F8AB20DFC68800793E4C /* MapViewModelTests+TrackingMode.swift */; };
 		90F9F8AF20E002B500793E4C /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9F8AE20E002B500793E4C /* TestCase.swift */; };
 		90FAF0711F35D9440040E0AE /* VehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */; };
-		90FB9DC51FB64DD700DEA125 /* TutorialScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */; };
-		90FB9DC61FB64DDA00DEA125 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B304381FB50A3700F5F20C /* SnapshotHelper.swift */; };
 		E09BFC9A407B45CC68C9A94F /* Pods_Wroclive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7457A7B86C6B076B5865A45F /* Pods_Wroclive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		9009BD451FB63C7B009FB075 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 902812871E59DD8500F26027;
-			remoteInfo = Radar;
-		};
-		90FB9DC01FB64DC700DEA125 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -340,7 +325,6 @@
 		902330EB1EDF37F500FA8F43 /* LineSubtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSubtype.swift; sourceTree = "<group>"; };
 		902330EC1EDF37F500FA8F43 /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
 		902812881E59DD8500F26027 /* Wroclive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wroclive.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		902FC75B1FB79254002E09FE /* LinePositionMaskGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePositionMaskGenerator.swift; sourceTree = "<group>"; };
 		9030ADC421DD4DA700AFCF78 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		9030ADC721DD4DD900AFCF78 /* appReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appReducer.swift; sourceTree = "<group>"; };
 		9030ADC921DD4E3300AFCF78 /* createMiddlewares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createMiddlewares.swift; sourceTree = "<group>"; };
@@ -407,10 +391,6 @@
 		908FB1991F48B3CA00121584 /* ReusableCell+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+UITableView.swift"; sourceTree = "<group>"; };
 		908FB19A1F48B3CA00121584 /* ReusableCell+UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+UICollectionView.swift"; sourceTree = "<group>"; };
 		908FE5B620BC77D80001E9B0 /* BookmarksCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCellViewModel.swift; sourceTree = "<group>"; };
-		909074A91FB8566100C8DD51 /* Screenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshots.swift; sourceTree = "<group>"; };
-		909074AF1FB89ACB00C8DD51 /* BookmarkScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkScreenshots.swift; sourceTree = "<group>"; };
-		909074B61FB8AF1700C8DD51 /* SearchScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenshots.swift; sourceTree = "<group>"; };
-		909074B81FB8BD8100C8DD51 /* MapScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenshots.swift; sourceTree = "<group>"; };
 		90915B071FF97191009FE942 /* LineTypeSelector+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineTypeSelector+Rx.swift"; sourceTree = "<group>"; };
 		90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelTests.swift; sourceTree = "<group>"; };
 		90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionTypeArray.swift; sourceTree = "<group>"; };
@@ -436,7 +416,6 @@
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90B2611D1FF501100076EC69 /* LineSelector+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineSelector+Rx.swift"; sourceTree = "<group>"; };
 		90B261201FF501510076EC69 /* LineSelectorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSection.swift; sourceTree = "<group>"; };
-		90B304381FB50A3700F5F20C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		90C4B139203213D600920706 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		90C4B13C2032152A00920706 /* MapViewAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewAlert.swift; sourceTree = "<group>"; };
 		90D078A220E554BB005FA3DF /* AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
@@ -458,8 +437,6 @@
 		90D3A40D1FEFE89C00FB7485 /* RxSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionModel.swift; sourceTree = "<group>"; };
 		90D8DE5E21D5AD1D002B33D1 /* Collection+AnyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+AnyTests.swift"; sourceTree = "<group>"; };
 		90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+GroupTests.swift"; sourceTree = "<group>"; };
-		90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssertNotCalled.swift; sourceTree = "<group>"; };
-		90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenshots.swift; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
 		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "Sources/App/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
 		90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
@@ -483,8 +460,6 @@
 		90F9F8AB20DFC68800793E4C /* MapViewModelTests+TrackingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewModelTests+TrackingMode.swift"; sourceTree = "<group>"; };
 		90F9F8AE20E002B500793E4C /* TestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		90FAF0701F35D9440040E0AE /* VehicleAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
-		90FB9DBB1FB64DC700DEA125 /* Wroclive-Screenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wroclive-Screenshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		90FB9DBF1FB64DC700DEA125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD0C0629C43753F478CB3162 /* Pods_Wroclive_Wroclive_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive_Wroclive_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E363964B5AE9910F453510B7 /* Pods-Wroclive-Wroclive-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Wroclive-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Wroclive-Tests/Pods-Wroclive-Wroclive-Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -505,14 +480,6 @@
 				905A3B721F9533BE003D668F /* UIKit.framework in Frameworks */,
 				905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */,
 				E09BFC9A407B45CC68C9A94F /* Pods_Wroclive.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		90FB9DB81FB64DC700DEA125 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2CA53A00574F6624D5CB7A39 /* Pods_Wroclive_Screenshots.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,14 +771,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		902FC75A1FB7923B002E09FE /* Asset generators */ = {
-			isa = PBXGroup;
-			children = (
-				902FC75B1FB79254002E09FE /* LinePositionMaskGenerator.swift */,
-			);
-			path = "Asset generators";
-			sourceTree = "<group>";
-		};
 		9030ADC621DD4DB200AFCF78 /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
@@ -964,17 +923,6 @@
 			path = "Reusable cell";
 			sourceTree = "<group>";
 		};
-		909074AB1FB85BD800C8DD51 /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				90D95A3B1FB4E8F0000A1A8C /* TutorialScreenshots.swift */,
-				909074AF1FB89ACB00C8DD51 /* BookmarkScreenshots.swift */,
-				909074B61FB8AF1700C8DD51 /* SearchScreenshots.swift */,
-				909074B81FB8BD8100C8DD51 /* MapScreenshots.swift */,
-			);
-			path = Screenshots;
-			sourceTree = "<group>";
-		};
 		9096CDCB1F40EF0C00FEF20A /* Settings card */ = {
 			isa = PBXGroup;
 			children = (
@@ -1023,19 +971,6 @@
 				90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		90D95A491FB4E9FD000A1A8C /* UI Tests */ = {
-			isa = PBXGroup;
-			children = (
-				909074AB1FB85BD800C8DD51 /* Screenshots */,
-				902FC75A1FB7923B002E09FE /* Asset generators */,
-				909074A91FB8566100C8DD51 /* Screenshots.swift */,
-				90D8E41D1FB4D29D00006140 /* AssertNotCalled.swift */,
-				90B304381FB50A3700F5F20C /* SnapshotHelper.swift */,
-				90FB9DBF1FB64DC700DEA125 /* Info.plist */,
-			);
-			path = "UI Tests";
 			sourceTree = "<group>";
 		};
 		90EFA63821979F260025819C /* Redux */ = {
@@ -1087,7 +1022,6 @@
 			children = (
 				902812881E59DD8500F26027 /* Wroclive.app */,
 				9009BD401FB63C7B009FB075 /* Wroclive-Tests.xctest */,
-				90FB9DBB1FB64DC700DEA125 /* Wroclive-Screenshots.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -1097,7 +1031,6 @@
 			children = (
 				OBJ_7 /* Sources */,
 				OBJ_41 /* Tests */,
-				90D95A491FB4E9FD000A1A8C /* UI Tests */,
 				4A3B2CBD6F0B3CF6ADE0EBAE /* Pods */,
 				902812FE1E59DE4800F26027 /* Frameworks */,
 				OBJ_42 /* Products */,
@@ -1166,25 +1099,6 @@
 			productReference = 902812881E59DD8500F26027 /* Wroclive.app */;
 			productType = "com.apple.product-type.application";
 		};
-		90FB9DBA1FB64DC700DEA125 /* Wroclive-Screenshots */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 90FB9DC41FB64DC700DEA125 /* Build configuration list for PBXNativeTarget "Wroclive-Screenshots" */;
-			buildPhases = (
-				CF3124EAA581D01DADDEA5F2 /* [CP] Check Pods Manifest.lock */,
-				90FB9DB71FB64DC700DEA125 /* Sources */,
-				90FB9DB81FB64DC700DEA125 /* Frameworks */,
-				90FB9DB91FB64DC700DEA125 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				90FB9DC11FB64DC700DEA125 /* PBXTargetDependency */,
-			);
-			name = "Wroclive-Screenshots";
-			productName = "Wroclive-Screenshots";
-			productReference = 90FB9DBB1FB64DC700DEA125 /* Wroclive-Screenshots.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1212,12 +1126,6 @@
 							};
 						};
 					};
-					90FB9DBA1FB64DC700DEA125 = {
-						CreatedOnToolsVersion = 9.1;
-						DevelopmentTeam = AEAQ6C3MPC;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 902812871E59DD8500F26027;
-					};
 				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Wroclive" */;
@@ -1235,7 +1143,6 @@
 			targets = (
 				902812871E59DD8500F26027 /* Wroclive */,
 				9009BD3F1FB63C7B009FB075 /* Wroclive-Tests */,
-				90FB9DBA1FB64DC700DEA125 /* Wroclive-Screenshots */,
 			);
 		};
 /* End PBXProject section */
@@ -1263,13 +1170,6 @@
 				908346FA1F521E1500654FF6 /* FontAwesome.otf in Resources */,
 				90A5E02321D7C1FC00B39DBA /* README.md in Resources */,
 				90ED51061F3BAFF800C782D5 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		90FB9DB91FB64DC700DEA125 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1390,24 +1290,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Wroclive-Wroclive-Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CF3124EAA581D01DADDEA5F2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Wroclive-Screenshots-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1622,20 +1504,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		90FB9DB71FB64DC700DEA125 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				909074BA1FB8BD8500C8DD51 /* MapScreenshots.swift in Sources */,
-				909B9FDD1FEBD0AE007CB59D /* Screenshots.swift in Sources */,
-				909B9FDE1FEBD0C2007CB59D /* AssertNotCalled.swift in Sources */,
-				90FB9DC51FB64DD700DEA125 /* TutorialScreenshots.swift in Sources */,
-				909074B71FB8AF1700C8DD51 /* SearchScreenshots.swift in Sources */,
-				90FB9DC61FB64DDA00DEA125 /* SnapshotHelper.swift in Sources */,
-				909074B11FB89AED00C8DD51 /* BookmarkScreenshots.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1643,11 +1511,6 @@
 			isa = PBXTargetDependency;
 			target = 902812871E59DD8500F26027 /* Wroclive */;
 			targetProxy = 9009BD451FB63C7B009FB075 /* PBXContainerItemProxy */;
-		};
-		90FB9DC11FB64DC700DEA125 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 902812871E59DD8500F26027 /* Wroclive */;
-			targetProxy = 90FB9DC01FB64DC700DEA125 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1876,99 +1739,6 @@
 			};
 			name = Release;
 		};
-		90FB9DC21FB64DC700DEA125 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E552C9694FA2B36860027B3 /* Pods-Wroclive-Screenshots.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AEAQ6C3MPC;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "UI Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.wroclive-screenshots";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "";
-				TEST_TARGET_NAME = Wroclive;
-			};
-			name = Debug;
-		};
-		90FB9DC31FB64DC700DEA125 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12F3CD8E67447A91DA7A4E65 /* Pods-Wroclive-Screenshots.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = AEAQ6C3MPC;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = "UI Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nopoint.wroclive-screenshots";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "";
-				TEST_TARGET_NAME = Wroclive;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2003,7 +1773,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DXcode";
@@ -2050,7 +1820,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2081,15 +1851,6 @@
 			buildConfigurations = (
 				902812981E59DD8500F26027 /* Debug */,
 				902812991E59DD8500F26027 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		90FB9DC41FB64DC700DEA125 /* Build configuration list for PBXNativeTarget "Wroclive-Screenshots" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				90FB9DC21FB64DC700DEA125 /* Debug */,
-				90FB9DC31FB64DC700DEA125 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

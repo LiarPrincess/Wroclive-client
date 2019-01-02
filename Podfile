@@ -20,9 +20,6 @@ target 'Wroclive' do
   end
 end
 
-target 'Wroclive-Screenshots' do
-end
-
 post_install do |installer|
   installer.pods_project.targets.each do |target|
      if target.name == 'RxSwift'
