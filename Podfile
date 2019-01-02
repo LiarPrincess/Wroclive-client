@@ -15,7 +15,7 @@ target 'Wroclive' do
 
   pod 'SimulatorStatusMagic', '~> 2.0', :configurations => ['Debug']
 
-  target 'Wroclive-Tests' do
+  target 'WrocliveTests' do
     pod 'RxTest', '~> 4.0'
   end
 end

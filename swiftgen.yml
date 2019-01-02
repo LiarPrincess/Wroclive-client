@@ -1,10 +1,10 @@
-input_dir: Sources/
-output_dir: Sources/Generated/
+input_dir: Wroclive/
+output_dir: Wroclive/Generated/
 
 strings:
   inputs: App/Base.lproj/Localizable.strings
   outputs:
-    - templatePath: Sources/Generated/Localizable.stencil
+    - templatePath: Wroclive/Generated/Localizable.stencil
       output: Localizable.swift
       params:
         enumName: Localizable
@@ -12,7 +12,7 @@ strings:
 xcassets:
   inputs: App/Assets.xcassets
   outputs:
-    - templatePath: Sources/Generated/Assets.stencil
+    - templatePath: Wroclive/Generated/Assets.stencil
       output: Assets.swift
       params:
         enumName: Assets
@@ -21,7 +21,7 @@ xcassets:
 fonts:
   inputs: App
   outputs:
-    - templatePath: Sources/Generated/Fonts.stencil
+    - templatePath: Wroclive/Generated/Fonts.stencil
       output: Fonts.swift
       params:
         enumName: Fonts

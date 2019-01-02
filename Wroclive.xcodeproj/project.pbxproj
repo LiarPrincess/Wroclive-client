@@ -241,15 +241,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0E552C9694FA2B36860027B3 /* Pods-Wroclive-Screenshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Screenshots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Screenshots/Pods-Wroclive-Screenshots.debug.xcconfig"; sourceTree = "<group>"; };
-		12F3CD8E67447A91DA7A4E65 /* Pods-Wroclive-Screenshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Screenshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Screenshots/Pods-Wroclive-Screenshots.release.xcconfig"; sourceTree = "<group>"; };
 		25E0D00666EF79DC6A2DF946 /* Pods-Wroclive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive/Pods-Wroclive.release.xcconfig"; sourceTree = "<group>"; };
 		5EAC0BE67BAC1EB5A1223BFF /* Pods-Wroclive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive/Pods-Wroclive.debug.xcconfig"; sourceTree = "<group>"; };
 		7457A7B86C6B076B5865A45F /* Pods_Wroclive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7500F7A00FA0C7231B7408B0 /* Pods_Wroclive_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wroclive_Screenshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D3E3CDED638C75A673E4C48 /* Pods-Wroclive-Wroclive-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wroclive-Wroclive-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wroclive-Wroclive-Tests/Pods-Wroclive-Wroclive-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9009BD401FB63C7B009FB075 /* Wroclive-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wroclive-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9009BD401FB63C7B009FB075 /* WrocliveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WrocliveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9009BD441FB63C7B009FB075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		900B976B1FE1BD4500AC7C35 /* LocationAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAlerts.swift; sourceTree = "<group>"; };
 		900B976D1FE1BE1F00AC7C35 /* BookmarkAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkAlerts.swift; sourceTree = "<group>"; };
@@ -320,7 +317,7 @@
 		9021F4421F12D6C5000A6949 /* LineSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelector.swift; sourceTree = "<group>"; };
 		9022EF1F20E048BC00FFA42D /* Observable+ApiResponseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+ApiResponseState.swift"; sourceTree = "<group>"; };
 		902330E51EDF37F500FA8F43 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		902330E61EDF37F500FA8F43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/App/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		902330E61EDF37F500FA8F43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		902330EA1EDF37F500FA8F43 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		902330EB1EDF37F500FA8F43 /* LineSubtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSubtype.swift; sourceTree = "<group>"; };
 		902330EC1EDF37F500FA8F43 /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
@@ -386,7 +383,7 @@
 		907F26801F7460E4000C272B /* CLLocation+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Init.swift"; sourceTree = "<group>"; };
 		908346F51F5202AE00654FF6 /* String+IndicesOf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+IndicesOf.swift"; sourceTree = "<group>"; };
 		908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
-		908346F91F521DFF00654FF6 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Sources/App/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
+		908346F91F521DFF00654FF6 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = Wroclive/App/FontAwesome.otf; sourceTree = SOURCE_ROOT; };
 		908FB1981F48B3CA00121584 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		908FB1991F48B3CA00121584 /* ReusableCell+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+UITableView.swift"; sourceTree = "<group>"; };
 		908FB19A1F48B3CA00121584 /* ReusableCell+UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+UICollectionView.swift"; sourceTree = "<group>"; };
@@ -437,8 +434,8 @@
 		90D3A40D1FEFE89C00FB7485 /* RxSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionModel.swift; sourceTree = "<group>"; };
 		90D8DE5E21D5AD1D002B33D1 /* Collection+AnyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+AnyTests.swift"; sourceTree = "<group>"; };
 		90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+GroupTests.swift"; sourceTree = "<group>"; };
-		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleKit.swift; path = Sources/App/StyleKit.swift; sourceTree = SOURCE_ROOT; };
-		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "Sources/App/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
+		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
+		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "Wroclive/App/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
 		90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
 		90E8A6C71F4CD49800CE5AE9 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		90EB296420477ED2006C591E /* CLLocationCoordinate2D+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Distance.swift"; sourceTree = "<group>"; };
@@ -491,8 +488,6 @@
 			children = (
 				5EAC0BE67BAC1EB5A1223BFF /* Pods-Wroclive.debug.xcconfig */,
 				25E0D00666EF79DC6A2DF946 /* Pods-Wroclive.release.xcconfig */,
-				0E552C9694FA2B36860027B3 /* Pods-Wroclive-Screenshots.debug.xcconfig */,
-				12F3CD8E67447A91DA7A4E65 /* Pods-Wroclive-Screenshots.release.xcconfig */,
 				7D3E3CDED638C75A673E4C48 /* Pods-Wroclive-Wroclive-Tests.debug.xcconfig */,
 				E363964B5AE9910F453510B7 /* Pods-Wroclive-Wroclive-Tests.release.xcconfig */,
 			);
@@ -760,12 +755,11 @@
 		902812FE1E59DE4800F26027 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				90D3A3E31FEBEE1A00FB7485 /* Pods_Wroclive_Tests.framework */,
 				905A3B6A1F9532F0003D668F /* UIKit.framework */,
 				905A3B6E1F953301003D668F /* MapKit.framework */,
 				7457A7B86C6B076B5865A45F /* Pods_Wroclive.framework */,
-				7CA278FD6D470D98979543B7 /* Pods_Wroclive_Screenshots.framework */,
 				7500F7A00FA0C7231B7408B0 /* Pods_Wroclive_Tests.framework */,
+				90D3A3E31FEBEE1A00FB7485 /* Pods_Wroclive_Tests.framework */,
 				AD0C0629C43753F478CB3162 /* Pods_Wroclive_Wroclive_Tests.framework */,
 			);
 			name = Frameworks;
@@ -1005,7 +999,7 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		OBJ_41 /* Tests */ = {
+		OBJ_41 /* WrocliveTests */ = {
 			isa = PBXGroup;
 			children = (
 				90F9F89820DEAA2E00793E4C /* Helpers */,
@@ -1014,14 +1008,14 @@
 				90F9F8AE20E002B500793E4C /* TestCase.swift */,
 				9009BD441FB63C7B009FB075 /* Info.plist */,
 			);
-			path = Tests;
+			path = WrocliveTests;
 			sourceTree = "<group>";
 		};
 		OBJ_42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				902812881E59DD8500F26027 /* Wroclive.app */,
-				9009BD401FB63C7B009FB075 /* Wroclive-Tests.xctest */,
+				9009BD401FB63C7B009FB075 /* WrocliveTests.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -1029,15 +1023,15 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				OBJ_7 /* Sources */,
-				OBJ_41 /* Tests */,
+				OBJ_7 /* Wroclive */,
+				OBJ_41 /* WrocliveTests */,
 				4A3B2CBD6F0B3CF6ADE0EBAE /* Pods */,
 				902812FE1E59DE4800F26027 /* Frameworks */,
 				OBJ_42 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		OBJ_7 /* Sources */ = {
+		OBJ_7 /* Wroclive */ = {
 			isa = PBXGroup;
 			children = (
 				902330E41EDF37F500FA8F43 /* App */,
@@ -1052,15 +1046,15 @@
 				900B976A1FE1BB4D00AC7C35 /* Helpers */,
 				9017C33D1EE339FD00063377 /* View controllers */,
 			);
-			path = Sources;
+			path = Wroclive;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9009BD3F1FB63C7B009FB075 /* Wroclive-Tests */ = {
+		9009BD3F1FB63C7B009FB075 /* WrocliveTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9009BD471FB63C7B009FB075 /* Build configuration list for PBXNativeTarget "Wroclive-Tests" */;
+			buildConfigurationList = 9009BD471FB63C7B009FB075 /* Build configuration list for PBXNativeTarget "WrocliveTests" */;
 			buildPhases = (
 				B756BAC8EF382E30A67B0ADF /* [CP] Check Pods Manifest.lock */,
 				9009BD3C1FB63C7B009FB075 /* Sources */,
@@ -1073,9 +1067,9 @@
 			dependencies = (
 				9009BD461FB63C7B009FB075 /* PBXTargetDependency */,
 			);
-			name = "Wroclive-Tests";
+			name = WrocliveTests;
 			productName = "Wroclive-Tests";
-			productReference = 9009BD401FB63C7B009FB075 /* Wroclive-Tests.xctest */;
+			productReference = 9009BD401FB63C7B009FB075 /* WrocliveTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		902812871E59DD8500F26027 /* Wroclive */ = {
@@ -1142,7 +1136,7 @@
 			projectRoot = "";
 			targets = (
 				902812871E59DD8500F26027 /* Wroclive */,
-				9009BD3F1FB63C7B009FB075 /* Wroclive-Tests */,
+				9009BD3F1FB63C7B009FB075 /* WrocliveTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1837,7 +1831,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9009BD471FB63C7B009FB075 /* Build configuration list for PBXNativeTarget "Wroclive-Tests" */ = {
+		9009BD471FB63C7B009FB075 /* Build configuration list for PBXNativeTarget "WrocliveTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9009BD481FB63C7B009FB075 /* Debug */,
