@@ -64,7 +64,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
       log: LogManager(),
       network: NetworkManager(),
       schedulers: SchedulersManager(),
-      storage: StorageManager(),
+      storage: CachedStorageManager(using: StorageManager()),
       userLocation: UserLocationManager(),
       configuration: Configuration()
     )

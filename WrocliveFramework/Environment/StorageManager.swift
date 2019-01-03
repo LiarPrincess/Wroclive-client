@@ -20,15 +20,15 @@ public protocol StorageManagerType {
 }
 
 /// Add cache layer to another `StorageManagerType`
-public final class CachedStorageManager {
+public final class CachedStorageManager: StorageManagerType {
 
   private let inner: StorageManagerType
 
   private var bookmarks:       [Bookmark]?
   private var searchCardState: SearchCardState?
 
-  public init(fallback: StorageManagerType) {
-    self.inner = fallback
+  public init(using inner: StorageManagerType) {
+    self.inner = inner
   }
 
   public func getSavedBookmarks() -> [Bookmark]? {
