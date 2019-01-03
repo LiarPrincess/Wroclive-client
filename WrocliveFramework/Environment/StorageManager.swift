@@ -6,61 +6,121 @@ import Foundation
 
 public protocol StorageManagerType {
 
-  /// Get saved bookmarks
-  func loadBookmarks() -> [Bookmark]?
+  /// Get saved bookmarks from a file
+  func getSavedBookmarks() -> [Bookmark]?
 
-  /// Get saved search card state or default if no state were saved
-  func loadSearchCardState() -> SearchCardState?
+  /// Get saved search card state from a file
+  func getSavedSearchCardState() -> SearchCardState?
 
-  /// Replace saved bookmarks with @bookmarks
+  /// Write bookmarks to file
   func saveBookmarks(_ bookmarks: [Bookmark])
 
-  /// Replace saved search card state with @state
+  /// Write saved search card state to file
   func saveSearchCardState(_ state: SearchCardState)
 }
 
-// sourcery: manager
-public final class StorageManager: StorageManagerType {
+/// Add cache layer to another `StorageManagerType`
+public final class CachedStorageManager {
 
-  private var _bookmarks:       [Bookmark]?
-  private var _searchCardState: SearchCardState?
-  private let _fileSystem     = FileSystem()
+  private let inner: StorageManagerType
 
-  public init() { }
+  private var bookmarks:       [Bookmark]?
+  private var searchCardState: SearchCardState?
 
-  // MARK: - StorageManagerType
-
-  public func loadBookmarks() -> [Bookmark]? {
-    if self._bookmarks == nil {
-      self._bookmarks = self.readDocument(.bookmarks) as? [Bookmark]
-    }
-    return self._bookmarks
+  public init(fallback: StorageManagerType) {
+    self.inner = fallback
   }
 
-  public func loadSearchCardState() -> SearchCardState? {
-    if self._searchCardState == nil {
-      self._searchCardState = self.readDocument(.searchCardState) as? SearchCardState
+  public func getSavedBookmarks() -> [Bookmark]? {
+    if self.bookmarks == nil {
+      self.bookmarks = self.inner.getSavedBookmarks()
     }
-    return self._searchCardState
+    return self.bookmarks
+  }
+
+  public func getSavedSearchCardState() -> SearchCardState? {
+    if self.searchCardState == nil {
+      self.searchCardState = self.inner.getSavedSearchCardState()
+    }
+    return self.searchCardState
   }
 
   public func saveBookmarks(_ bookmarks: [Bookmark]) {
-    self._bookmarks = bookmarks
-    self.writeDocument(.bookmarks(bookmarks))
+    self.bookmarks = bookmarks
+    self.inner.saveBookmarks(bookmarks)
   }
 
   public func saveSearchCardState(_ state: SearchCardState) {
-    self._searchCardState = state
-    self.writeDocument(.searchCardState(state))
+    self.searchCardState = state
+    self.inner.saveSearchCardState(state)
+  }
+}
+
+public final class StorageManager: StorageManagerType {
+
+  private var bookmarksFile: URL {
+    let documentsDir = self.fileSystem.documentsDirectory
+    return documentsDir.appendingPathComponent("bookmarks")
   }
 
-  // MARK: - Document manager helpers
-
-  private func readDocument(_ document: Document) -> Any? {
-    return self._fileSystem.read(document)
+  private var searchCardStateFile: URL {
+    let documentsDir = self.fileSystem.documentsDirectory
+    return documentsDir.appendingPathComponent("searchCardState")
   }
 
-  private func writeDocument(_ document: DocumentData) {
-    self._fileSystem.write(document)
+  private let fileSystem: FileSystemType
+
+  public init(fileSystem: FileSystemType = FileSystem()) {
+    self.fileSystem = fileSystem
+  }
+
+  // MARK: - StorageManagerType
+
+  public func getSavedBookmarks() -> [Bookmark]? {
+    do {
+      let decoder = self.createDecoder()
+      let data = try self.fileSystem.read(self.bookmarksFile)
+      return try decoder.decode([Bookmark].self, from: data)
+    }
+    catch { return nil }
+  }
+
+  public func getSavedSearchCardState() -> SearchCardState? {
+    do {
+      let decoder = self.createDecoder()
+      let data = try self.fileSystem.read(self.searchCardStateFile)
+      return try decoder.decode(SearchCardState.self, from: data)
+    }
+    catch { return nil }
+  }
+
+  public func saveBookmarks(_ bookmarks: [Bookmark]) {
+    do {
+      let encoder = self.createEncoder()
+      let data = try encoder.encode(bookmarks)
+      try self.fileSystem.write(data, to: self.bookmarksFile)
+    }
+    catch { }
+  }
+
+  public func saveSearchCardState(_ state: SearchCardState) {
+    do {
+      let encoder = self.createEncoder()
+      let data = try encoder.encode(state)
+      try self.fileSystem.write(data, to: self.searchCardStateFile)
+    }
+    catch { }
+  }
+
+  // MARK: - Helpers
+
+  private func createDecoder() -> PropertyListDecoder {
+    return PropertyListDecoder()
+  }
+
+  private func createEncoder() -> PropertyListEncoder {
+    let encoder = PropertyListEncoder()
+    encoder.outputFormat = .xml
+    return encoder
   }
 }

@@ -12,8 +12,8 @@ public struct AppState: StateType {
   public static func load(from storage: StorageManagerType) -> AppState {
     return AppState(
       userData: UserDataState(
-        bookmarks: storage.loadBookmarks() ?? [],
-        searchCardState: storage.loadSearchCardState() ?? .default,
+        bookmarks: storage.getSavedBookmarks() ?? [],
+        searchCardState: storage.getSavedSearchCardState() ?? .default,
         trackedLines: []
       ),
       apiData: ApiDataState()
