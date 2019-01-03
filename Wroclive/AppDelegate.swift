@@ -21,6 +21,9 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Launch
 
   public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+    // This is easily the most important line in the whole app.
+    // Every call that interacts with native frameworks has to go through AppEnvironment.
     let environment = self.createDefaultEnvironment()
     AppEnvironment.push(environment)
 
@@ -43,7 +46,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     self.store = Store<AppState>(reducer: appReducer, state: state, middleware: middlewares)
 
     os_log("Creating app coordinator", log: AppEnvironment.log.app, type: .info)
-    self.window = UIWindow(frame: UIScreen.main.bounds)
+    self.window = UIWindow(frame: AppEnvironment.device.screenBounds)
     self.coordinator = AppCoordinator(self.window!, self.store)
     self.coordinator!.start()
 

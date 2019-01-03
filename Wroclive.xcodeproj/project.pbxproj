@@ -196,7 +196,7 @@
 		90374B6920D9883700315F80 /* SearchCardViewModelTests+Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B6820D9883700315F80 /* SearchCardViewModelTests+Lines.swift */; };
 		90374B6B20D98F2700315F80 /* SchedulerManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B6A20D98F2700315F80 /* SchedulerManagerMock.swift */; };
 		90374B6E20D9A04700315F80 /* SearchCardViewModelTests+Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B6C20D9A03800315F80 /* SearchCardViewModelTests+Tracking.swift */; };
-		903F6F961F7D822B00FCC56B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */; };
+		903F6F961F7D822B00FCC56B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 903F6F951F7D822B00FCC56B /* LaunchScreen.storyboard */; };
 		90425D331FF11EFB00F1800E /* StorageManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90425D311FF11EF400F1800E /* StorageManagerMock.swift */; };
 		9050954320D709A3005E2BF8 /* BookmarksCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTests.swift */; };
 		9050954520D725DC005E2BF8 /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */; };
@@ -359,7 +359,7 @@
 		90374B6A20D98F2700315F80 /* SchedulerManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerManagerMock.swift; sourceTree = "<group>"; };
 		90374B6C20D9A03800315F80 /* SearchCardViewModelTests+Tracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Tracking.swift"; sourceTree = "<group>"; };
 		903920341F1AB70E00250162 /* LinesArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesArray.swift; sourceTree = "<group>"; };
-		903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		903F6F951F7D822B00FCC56B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90425D311FF11EF400F1800E /* StorageManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerMock.swift; sourceTree = "<group>"; };
 		9042EDBE1FF2D71500F5D01D /* LineSelectorCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorCellConstants.swift; sourceTree = "<group>"; };
 		9042EDC11FF2E7D500F5D01D /* LineSelectorCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorCellViewModelTests.swift; sourceTree = "<group>"; };
@@ -599,7 +599,6 @@
 				9017C3441EE339FD00063377 /* Search card */,
 				9096CDCB1F40EF0C00FEF20A /* Settings card */,
 				9061355A1F84246A006634C7 /* Main */,
-				903F6F951F7D822B00FCC56B /* Launch Screen.storyboard */,
 			);
 			path = "View controllers";
 			sourceTree = "<group>";
@@ -1085,6 +1084,7 @@
 			children = (
 				902330E61EDF37F500FA8F43 /* Icon.xcassets */,
 				902330E51EDF37F500FA8F43 /* AppDelegate.swift */,
+				903F6F951F7D822B00FCC56B /* LaunchScreen.storyboard */,
 				907ECF171F3BB41900DB27DB /* Info.plist */,
 				90ED51081F3BAFF800C782D5 /* InfoPlist.strings */,
 			);
@@ -1232,7 +1232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				903F6F961F7D822B00FCC56B /* Launch Screen.storyboard in Resources */,
+				903F6F961F7D822B00FCC56B /* LaunchScreen.storyboard in Resources */,
 				9023312B1EDF37F500FA8F43 /* Icon.xcassets in Resources */,
 				90ED51061F3BAFF800C782D5 /* InfoPlist.strings in Resources */,
 			);
@@ -1756,7 +1756,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1818,7 +1818,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
