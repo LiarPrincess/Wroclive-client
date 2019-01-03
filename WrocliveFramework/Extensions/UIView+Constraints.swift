@@ -29,7 +29,7 @@ extension UIView {
 }
 
 public func make(_ viewAnchorPath: KeyPath<UIView, NSLayoutDimension>,
-          equalToConstant constant: CGFloat = 0) -> ConstraintMaker {
+                 equalToConstant constant: CGFloat = 0) -> ConstraintMaker {
 
   return { (view: UIView, _: UIView) in
     let viewAnchor = view[keyPath: viewAnchorPath]
@@ -38,8 +38,8 @@ public func make(_ viewAnchorPath: KeyPath<UIView, NSLayoutDimension>,
 }
 
 public func make<Anchor, Axis>(_ viewAnchorPath: KeyPath<UIView, Anchor>,
-                        equalToSuperview superviewAnchorPath: KeyPath<UIView, Anchor>,
-                        constant: CGFloat = 0) -> ConstraintMaker where Anchor: NSLayoutAnchor<Axis> {
+                               equalToSuperview superviewAnchorPath: KeyPath<UIView, Anchor>,
+                               constant: CGFloat = 0) -> ConstraintMaker where Anchor: NSLayoutAnchor<Axis> {
 
   return { (view: UIView, superview: UIView) in
     let viewAnchor = view[keyPath: viewAnchorPath]
@@ -49,8 +49,8 @@ public func make<Anchor, Axis>(_ viewAnchorPath: KeyPath<UIView, Anchor>,
 }
 
 public func make<Anchor, Axis>(_ viewAnchorPath: KeyPath<UIView, Anchor>,
-                        equalTo targetAnchor: Anchor,
-                        constant: CGFloat = 0) -> ConstraintMaker where Anchor: NSLayoutAnchor<Axis> {
+                               equalTo targetAnchor: Anchor,
+                               constant: CGFloat = 0) -> ConstraintMaker where Anchor: NSLayoutAnchor<Axis> {
 
   return { (view: UIView, _: UIView) in
     let viewAnchor = view[keyPath: viewAnchorPath]

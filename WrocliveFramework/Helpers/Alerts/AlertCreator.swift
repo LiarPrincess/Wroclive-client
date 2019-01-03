@@ -14,9 +14,9 @@ public struct AlertButton<Value> {
 public final class AlertCreator {
 
   public static func createAlert<Result>(title:     String,
-                                  message:   String,
-                                  buttons:   [AlertButton<Result>],
-                                  animated:  Bool = true) -> Observable<Result> {
+                                         message:   String,
+                                         buttons:   [AlertButton<Result>],
+                                         animated:  Bool = true) -> Observable<Result> {
     return .create { observer in
       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
@@ -33,11 +33,11 @@ public final class AlertCreator {
   }
 
   public static func createTextInputAlert(title:       String,
-                                   message:     String,
-                                   placeholder: String,
-                                   confirm:     AlertButton<Void>,
-                                   cancel:      AlertButton<Void>,
-                                   animated:    Bool = true) -> Observable<String?> {
+                                          message:     String,
+                                          placeholder: String,
+                                          confirm:     AlertButton<Void>,
+                                          cancel:      AlertButton<Void>,
+                                          animated:    Bool = true) -> Observable<String?> {
     return .create { observer in
       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 

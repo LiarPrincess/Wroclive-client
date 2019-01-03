@@ -26,10 +26,10 @@ public final class NetworkManager: NetworkManagerType {
   public init() { }
 
   public func request(url: URLConvertible,
-               method: HTTPMethod,
-               parameters: Parameters?,
-               encoding: ParameterEncoding,
-               headers: HTTPHeaders?) -> Observable<DataRequest> {
+                      method: HTTPMethod,
+                      parameters: Parameters?,
+                      encoding: ParameterEncoding,
+                      headers: HTTPHeaders?) -> Observable<DataRequest> {
     return SessionManager.default.rx.request(method, url, parameters: parameters, encoding: encoding, headers: headers)
   }
 
