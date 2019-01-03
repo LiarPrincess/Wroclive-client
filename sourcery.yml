@@ -1,7 +1,7 @@
 sources:
-  - Wroclive/
+  - WrocliveFramework/
 templates:
-  - Wroclive/Generated/Environment.stencil
-  - Wroclive/Generated/AppEnvironment.stencil
+  - WrocliveFramework/Generated/Environment.stencil
+  - WrocliveFramework/Generated/AppEnvironment.stencil
 output:
-  Wroclive/Generated/
+  WrocliveFramework/Generated/

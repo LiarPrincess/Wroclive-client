@@ -1,0 +1,34 @@
+// sourcery:file:Environment.swift
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file,
+// You can obtain one at http://mozilla.org/MPL/2.0/.
+
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length
+// swiftlint:disable vertical_whitespace
+
+{% macro getName type %}{{ type.name|replace:"Manager",""|lowerFirstLetter }}{% endmacro %}
+{% macro getProtocol type %}{{ type.name }}Type{% endmacro %}
+
+import Foundation
+
+public struct Environment {
+  {% for manager in types.all|annotated:"manager" %}
+  public let {% call getName manager %}: {% call getProtocol manager %}
+  {% endfor %}
+  public let configuration: Configuration
+
+  public init(
+  {% for manager in types.all|annotated:"manager" %}
+    {% call getName manager %}: {% call getProtocol manager %},
+  {% endfor %}
+    configuration: Configuration) {
+
+  {% for manager in types.all|annotated:"manager" %}
+    self.{% call getName manager %} = {% call getName manager %}
+  {% endfor %}
+    self.configuration = configuration
+  }
+}
+
+// sourcery:end
