@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		040EAE11D50FB32C3689C1F1 /* Pods_WrocliveFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E285F7BE66C9CC683559B7 /* Pods_WrocliveFramework.framework */; };
 		6C11A8FA3F02CD2EF1A385AA /* Pods_WrocliveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA5345266DC570022149A08 /* Pods_WrocliveTests.framework */; };
+		9007E9D021E3EFFD0005B6D2 /* Actions+CustomStringConvertible.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 9007E9CF21E3EFFD0005B6D2 /* Actions+CustomStringConvertible.stencil */; };
 		90203F8C203785EF00CC5148 /* UserLocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90203F8A2037855300CC5148 /* UserLocationManagerMock.swift */; };
 		9023312A1EDF37F500FA8F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902330E51EDF37F500FA8F43 /* AppDelegate.swift */; };
 		9023312B1EDF37F500FA8F43 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902330E61EDF37F500FA8F43 /* Icon.xcassets */; };
@@ -211,8 +212,9 @@
 		905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6E1F953301003D668F /* MapKit.framework */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */; };
-		90D87A8721E2A71100A5796C /* ReduxTestCase+actions.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D87A8521E2A71100A5796C /* ReduxTestCase+actions.generated.swift */; };
-		90D87A8821E2A71100A5796C /* ReduxTestCase+actions.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 90D87A8621E2A71100A5796C /* ReduxTestCase+actions.stencil */; };
+		90B96BBB21E3FD30006A63E8 /* ReduxTestCase+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B96BB921E3FD2F006A63E8 /* ReduxTestCase+Actions.swift */; };
+		90B96BBC21E3FD30006A63E8 /* ReduxTestCase+Actions.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 90B96BBA21E3FD30006A63E8 /* ReduxTestCase+Actions.stencil */; };
+		90B96BBE21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B96BBD21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift */; };
 		90D8DE6021D5AD60002B33D1 /* Collection+AnyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8DE5E21D5AD1D002B33D1 /* Collection+AnyTests.swift */; };
 		90D8DE6421D5B375002B33D1 /* Collection+GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */; };
 		90ED51061F3BAFF800C782D5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90ED51081F3BAFF800C782D5 /* InfoPlist.strings */; };
@@ -266,6 +268,7 @@
 		633E535DE695E9A15E4FAF58 /* Pods-WrocliveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WrocliveTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WrocliveTests/Pods-WrocliveTests.debug.xcconfig"; sourceTree = "<group>"; };
 		68E285F7BE66C9CC683559B7 /* Pods_WrocliveFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WrocliveFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CB48BBE711883045A4FC05 /* Pods-WrocliveFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WrocliveFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WrocliveFramework/Pods-WrocliveFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		9007E9CF21E3EFFD0005B6D2 /* Actions+CustomStringConvertible.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Actions+CustomStringConvertible.stencil"; sourceTree = "<group>"; };
 		9009BD401FB63C7B009FB075 /* WrocliveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WrocliveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9009BD441FB63C7B009FB075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		900B976B1FE1BD4500AC7C35 /* LocationAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAlerts.swift; sourceTree = "<group>"; };
@@ -444,6 +447,9 @@
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90B2611D1FF501100076EC69 /* LineSelector+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineSelector+Rx.swift"; sourceTree = "<group>"; };
 		90B261201FF501510076EC69 /* LineSelectorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSection.swift; sourceTree = "<group>"; };
+		90B96BB921E3FD2F006A63E8 /* ReduxTestCase+Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReduxTestCase+Actions.swift"; sourceTree = "<group>"; };
+		90B96BBA21E3FD30006A63E8 /* ReduxTestCase+Actions.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ReduxTestCase+Actions.stencil"; sourceTree = "<group>"; };
+		90B96BBD21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Actions+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		90C4B139203213D600920706 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		90C4B13C2032152A00920706 /* MapViewAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewAlert.swift; sourceTree = "<group>"; };
 		90D078A220E554BB005FA3DF /* AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
@@ -462,8 +468,6 @@
 		90D3A4021FEEF78400FB7485 /* RxTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTableViewDataSource.swift; sourceTree = "<group>"; };
 		90D3A4081FEFE6D400FB7485 /* RxSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionType.swift; sourceTree = "<group>"; };
 		90D3A40D1FEFE89C00FB7485 /* RxSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionModel.swift; sourceTree = "<group>"; };
-		90D87A8521E2A71100A5796C /* ReduxTestCase+actions.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReduxTestCase+actions.generated.swift"; sourceTree = "<group>"; };
-		90D87A8621E2A71100A5796C /* ReduxTestCase+actions.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ReduxTestCase+actions.stencil"; sourceTree = "<group>"; };
 		90D8DE5E21D5AD1D002B33D1 /* Collection+AnyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+AnyTests.swift"; sourceTree = "<group>"; };
 		90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+GroupTests.swift"; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -596,6 +600,8 @@
 				90D078A320E554BC005FA3DF /* Environment.swift */,
 				9016C74620E43CD70039A604 /* AppEnvironment.stencil */,
 				90D078A220E554BB005FA3DF /* AppEnvironment.swift */,
+				9007E9CF21E3EFFD0005B6D2 /* Actions+CustomStringConvertible.stencil */,
+				90B96BBD21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift */,
 				90A5E02021D7C1FB00B39DBA /* README.md */,
 			);
 			path = Generated;
@@ -750,8 +756,8 @@
 		9024AB7321E28CA200E15A68 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				90D87A8521E2A71100A5796C /* ReduxTestCase+actions.generated.swift */,
-				90D87A8621E2A71100A5796C /* ReduxTestCase+actions.stencil */,
+				90B96BBA21E3FD30006A63E8 /* ReduxTestCase+Actions.stencil */,
+				90B96BB921E3FD2F006A63E8 /* ReduxTestCase+Actions.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -1231,7 +1237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90D87A8821E2A71100A5796C /* ReduxTestCase+actions.stencil in Resources */,
+				90B96BBC21E3FD30006A63E8 /* ReduxTestCase+Actions.stencil in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1251,6 +1257,7 @@
 			files = (
 				9030AE4021DD850B00AFCF78 /* README.md in Resources */,
 				9030AE3921DD850500AFCF78 /* Environment.stencil in Resources */,
+				9007E9D021E3EFFD0005B6D2 /* Actions+CustomStringConvertible.stencil in Resources */,
 				9030AE3A21DD850500AFCF78 /* AppEnvironment.stencil in Resources */,
 				9030AE9821DD8D6200AFCF78 /* FontAwesome.otf in Resources */,
 				9030AE3621DD850500AFCF78 /* Assets.stencil in Resources */,
@@ -1436,7 +1443,6 @@
 				90374B5C20D87FA600315F80 /* LineSelectorCellViewModelTests.swift in Sources */,
 				90374B5520D878D000315F80 /* BookmarksCardViewModelTests+Selection.swift in Sources */,
 				90374B6120D9747A00315F80 /* SearchCardViewModelTests+Page.swift in Sources */,
-				90D87A8721E2A71100A5796C /* ReduxTestCase+actions.generated.swift in Sources */,
 				90374B4B20D876C600315F80 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
 				90D8DE6421D5B375002B33D1 /* Collection+GroupTests.swift in Sources */,
 				9030AEB421DE9A5200AFCF78 /* NetworkManagerMock.swift in Sources */,
@@ -1446,6 +1452,7 @@
 				90F9F8AC20DFC68800793E4C /* MapViewModelTests+TrackingMode.swift in Sources */,
 				9030AEA621DE8D5100AFCF78 /* ReduxTestCase.swift in Sources */,
 				9030AEB221DE93CD00AFCF78 /* DeviceManagerMock.swift in Sources */,
+				90B96BBB21E3FD30006A63E8 /* ReduxTestCase+Actions.swift in Sources */,
 				90F9F89020DDBE8400793E4C /* VehicleAnnotationUpdaterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1514,6 +1521,7 @@
 				9030AE5621DD869C00AFCF78 /* CardPanelDismissTransition.swift in Sources */,
 				9030AE1F21DD830400AFCF78 /* TextAttributes.swift in Sources */,
 				9030AE2521DD840000AFCF78 /* appReducer.swift in Sources */,
+				90B96BBE21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift in Sources */,
 				9030AE0E21DD76F500AFCF78 /* Observer+Next.swift in Sources */,
 				9030AE0121DD76F500AFCF78 /* UISegmentedControl+Font.swift in Sources */,
 				9030AE8321DD8CDC00AFCF78 /* SearchCardConstants.swift in Sources */,

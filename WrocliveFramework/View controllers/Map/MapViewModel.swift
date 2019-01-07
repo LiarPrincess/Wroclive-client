@@ -67,7 +67,7 @@ public final class MapViewModel {
 
       let apiErrorAlert = vehicleResponse
         .errors()
-        .map { MapViewAlert.apiError($0 as? ApiError ?? .generalError) }
+        .map(MapViewAlert.apiError)
         .asObservable()
 
       return Observable.merge(deniedAuthorizationAlert, apiErrorAlert)

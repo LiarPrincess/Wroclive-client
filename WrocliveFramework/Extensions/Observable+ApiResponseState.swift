@@ -16,8 +16,8 @@ extension ObservableType {
     }
   }
 
-  public func errors<Data>() -> Observable<Error> where Self.E == ApiResponseState<Data> {
-    return self.flatMapLatest { response -> Observable<Error> in
+  public func errors<Data>() -> Observable<ApiError> where Self.E == ApiResponseState<Data> {
+    return self.flatMapLatest { response -> Observable<ApiError> in
       switch response {
       case let .error(error): return Observable.just(error)
       case .none, .inProgress, .data: return Observable.never()
@@ -36,8 +36,8 @@ extension Driver {
     }
   }
 
-  public func errors<Data>() -> Driver<Error> where E == ApiResponseState<Data> {
-    return self.flatMapLatest { response -> Driver<Error> in
+  public func errors<Data>() -> Driver<ApiError> where E == ApiResponseState<Data> {
+    return self.flatMapLatest { response -> Driver<ApiError> in
       switch response {
       case let .error(error): return Driver.just(error)
       case .none, .inProgress, .data: return Driver.never()

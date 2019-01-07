@@ -1,3 +1,4 @@
+// sourcery:file:ReduxTestCase+Actions.swift
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 // swiftlint:disable vertical_whitespace
@@ -8,7 +9,7 @@ import WrocliveFramework
 
 extension ReduxTestCase {
 
-  {% for type in types.enums %}
+  {% for type in types.enums|annotated:"action" %}
   // MARK: {{ type.name }}
 
   {% for case in type.cases %}
@@ -44,3 +45,5 @@ extension ReduxTestCase {
   {% endfor %}
   {% endfor %}
 }
+
+// sourcery:end

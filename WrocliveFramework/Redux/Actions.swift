@@ -5,28 +5,33 @@
 import Foundation
 import ReSwift
 
+// sourcery: action
 public enum BookmarksAction: Action {
   case add(name: String, lines: [Line])
   case remove(at: Int)
   case move(from: Int, to: Int)
 }
 
+// sourcery: action
 public enum SearchCardStateAction: Action {
   case selectPage(LineType)
   case selectLine(Line)
   case deselectLine(Line)
 }
 
+// sourcery: action
 public enum TrackedLinesAction: Action {
   case startTracking([Line])
 }
 
+// sourcery: action
 /// This type of api action is intended for ApiMiddleware
 public enum ApiAction: Action {
   case updateLines
   case updateVehicleLocations
 }
 
+// sourcery: action
 /// This type of api action is dispatched by ApiMiddleware
 public enum ApiResponseAction: Action {
   case setLines(ApiResponseState<[Line]>)

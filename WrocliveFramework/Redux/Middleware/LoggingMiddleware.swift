@@ -8,11 +8,7 @@ import ReSwift
 
 public func createLoggingMiddleware() -> Middleware<AppState> {
   return createSingleMiddleware { _, _, next, action in
-    os_log("%{public}@.%{public}@", log: AppEnvironment.log.redux, type: .info,
-           String(describing: type(of: action)),
-           String(describing: action)
-    )
-
+    os_log("%{public}@", log: AppEnvironment.log.redux, type: .info, String(describing: action))
     next(action)
   }
 }

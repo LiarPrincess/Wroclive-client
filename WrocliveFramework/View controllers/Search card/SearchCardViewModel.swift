@@ -102,7 +102,7 @@ public final class SearchCardViewModel {
 
     let showApiErrorAlert = _linesResponse
       .errors()
-      .map { SearchCardAlert.apiError($0 as? ApiError ?? .generalError) }
+      .map(SearchCardAlert.apiError)
 
     let responseWithoutLinesAlert = _linesResponse.data()
       .flatMapLatest { lines -> Driver<SearchCardAlert> in

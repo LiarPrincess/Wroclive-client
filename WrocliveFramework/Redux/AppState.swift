@@ -32,18 +32,9 @@ public struct ApiDataState {
   public var vehicleLocations: ApiResponseState<[Vehicle]> = .none
 }
 
-public enum ApiResponseState<Data>: CustomStringConvertible {
+public enum ApiResponseState<Data> {
   case none
   case inProgress
   case data(Data)
-  case error(Error)
-
-  public var description: String {
-    switch self {
-    case .none: return "none"
-    case .inProgress: return "inProgress"
-    case .data: return "data"
-    case .error: return "error"
-    }
-  }
+  case error(ApiError)
 }
