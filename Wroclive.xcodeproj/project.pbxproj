@@ -76,7 +76,6 @@
 		9030AE2921DD840500AFCF78 /* NetworkActivityIndicatorMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E03121D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift */; };
 		9030AE2A21DD840500AFCF78 /* createMiddlewares.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030ADC921DD4E3300AFCF78 /* createMiddlewares.swift */; };
 		9030AE2B21DD840500AFCF78 /* createSingleMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E03321D7E3BD00B39DBA /* createSingleMiddleware.swift */; };
-		9030AE2C21DD847500AFCF78 /* ApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E02F21D7D5A400B39DBA /* ApiType.swift */; };
 		9030AE2D21DD847500AFCF78 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A41FE1C5BD006D1DB6 /* Api.swift */; };
 		9030AE2E21DD847B00AFCF78 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406F201915D900E32571 /* Endpoint.swift */; };
 		9030AE2F21DD847B00AFCF78 /* LinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A71FE1C5BD006D1DB6 /* LinesEndpoint.swift */; };
@@ -435,7 +434,6 @@
 		90A5E02621D7C30C00B39DBA /* Fonts.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fonts.stencil; sourceTree = "<group>"; };
 		90A5E02921D7C5F800B39DBA /* TextAttributeEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeEnums.swift; sourceTree = "<group>"; };
 		90A5E02D21D7CFC400B39DBA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		90A5E02F21D7D5A400B39DBA /* ApiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiType.swift; sourceTree = "<group>"; };
 		90A5E03121D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorMiddleware.swift; sourceTree = "<group>"; };
 		90A5E03321D7E3BD00B39DBA /* createSingleMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createSingleMiddleware.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
@@ -793,9 +791,9 @@
 				902330E81EDF37F500FA8F43 /* Models */,
 				90EFA63821979F260025819C /* Redux */,
 				902330ED1EDF37F500FA8F43 /* Environment */,
+				90A5E01A21D796F700B39DBA /* Api */,
 				900CBE9E21938C310028C58F /* Theme */,
 				9016C74020E432480039A604 /* Generated */,
-				90A5E01A21D796F700B39DBA /* Api */,
 				9030ADF821DD76D500AFCF78 /* Extensions */,
 				900B976A1FE1BB4D00AC7C35 /* Helpers */,
 				900CBE8F2192E28D0028C58F /* Coordinators */,
@@ -927,16 +925,6 @@
 			path = Middleware;
 			sourceTree = "<group>";
 		};
-		906C40712019213B00E32571 /* Endpoints */ = {
-			isa = PBXGroup;
-			children = (
-				906C406F201915D900E32571 /* Endpoint.swift */,
-				905D71A71FE1C5BD006D1DB6 /* LinesEndpoint.swift */,
-				905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */,
-			);
-			path = Endpoints;
-			sourceTree = "<group>";
-		};
 		907DC6E61FF2B73F001C5DD6 /* Line type selector */ = {
 			isa = PBXGroup;
 			children = (
@@ -995,8 +983,9 @@
 		90A5E01A21D796F700B39DBA /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				906C40712019213B00E32571 /* Endpoints */,
-				90A5E02F21D7D5A400B39DBA /* ApiType.swift */,
+				906C406F201915D900E32571 /* Endpoint.swift */,
+				905D71A71FE1C5BD006D1DB6 /* LinesEndpoint.swift */,
+				905D71A21FE1C5BD006D1DB6 /* VehicleLocationsEndpoint.swift */,
 				905D71A41FE1C5BD006D1DB6 /* Api.swift */,
 			);
 			path = Api;
@@ -1556,7 +1545,6 @@
 				9030ADFA21DD76F500AFCF78 /* Collection+Group.swift in Sources */,
 				9030AE0321DD76F500AFCF78 /* UIView+Constraints.swift in Sources */,
 				9030AE5C21DD88D900AFCF78 /* SearchCardCoordinator.swift in Sources */,
-				9030AE2C21DD847500AFCF78 /* ApiType.swift in Sources */,
 				9030AE1A21DD82FE00AFCF78 /* FontPreset.swift in Sources */,
 				9030AE0821DD76F500AFCF78 /* CGFloat+Rad.swift in Sources */,
 				9030AE2B21DD840500AFCF78 /* createSingleMiddleware.swift in Sources */,

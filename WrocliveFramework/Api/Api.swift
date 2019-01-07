@@ -8,6 +8,15 @@ import RxSwift
 import RxAlamofire
 import Reachability
 
+public protocol ApiType {
+
+  /// Get all currently available mpk lines
+  func getLines() -> Single<[Line]>
+
+  /// Get current vehicle locations for selected lines
+  func getVehicleLocations(for lines: [Line]) -> Single<[Vehicle]>
+}
+
 public final class Api: ApiType {
   private lazy var reachability: Reachability? = Reachability()
 
@@ -25,11 +34,11 @@ public final class Api: ApiType {
 
   private func sendRequest<E: Endpoint>(_ endpoint: E, _ data: E.ParameterData) -> Single<E.ResponseData> {
     return AppEnvironment.network
-      .request(url:    endpoint.url,
-               method: endpoint.method,
+      .request(url:        endpoint.url,
+               method:     endpoint.method,
                parameters: endpoint.encodeParameters(data),
                encoding:   endpoint.parameterEncoding,
-               headers:    self.withUserAgent(endpoint.headers))
+               headers:    self.overrideUserAgent(on: endpoint.headers))
       .validate()
       .data()
       .map { try endpoint.decodeResponse($0) }
@@ -37,7 +46,7 @@ public final class Api: ApiType {
       .asSingle()
   }
 
-  private func withUserAgent(_ headers: HTTPHeaders?) -> HTTPHeaders {
+  private func overrideUserAgent(on headers: HTTPHeaders?) -> HTTPHeaders {
     // 'Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)'
     let userAgent: String = {
       let device = AppEnvironment.device

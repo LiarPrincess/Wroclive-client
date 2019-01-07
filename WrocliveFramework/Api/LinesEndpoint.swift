@@ -5,7 +5,7 @@
 import Foundation
 import Alamofire
 
-public final class LinesEndpoint: Endpoint {
+public final class LinesEndpoint: JSONEndpoint {
   public var url:               URLConvertible { return AppEnvironment.configuration.endpoints.lines }
   public let method:            HTTPMethod        = .get
   public let parameterEncoding: ParameterEncoding = JSONEncoding.default

@@ -5,6 +5,8 @@
 import Foundation
 import Alamofire
 
+// MARK: - Endpoint
+
 public protocol Endpoint {
   var url:               URLConvertible    { get }
   var method:            HTTPMethod        { get }
@@ -18,9 +20,12 @@ public protocol Endpoint {
   func decodeResponse(_ data: Data) throws -> ResponseData
 }
 
-extension Endpoint {
-  // Just an commonly used method
-  internal func parseJSON<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
+// MARK: - JSONEndpoint
+
+public protocol JSONEndpoint: Endpoint { }
+
+extension JSONEndpoint {
+  public func parseJSON<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
     do {
       let decoder = JSONDecoder()
       return try decoder.decode(T.self, from: data)

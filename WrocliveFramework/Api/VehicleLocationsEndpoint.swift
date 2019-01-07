@@ -5,7 +5,7 @@
 import Foundation
 import Alamofire
 
-public final class VehicleLocationsEndpoint: Endpoint {
+public final class VehicleLocationsEndpoint: JSONEndpoint {
   public var url:               URLConvertible { return AppEnvironment.configuration.endpoints.vehicleLocations }
   public let method:            HTTPMethod        = .post
   public let parameterEncoding: ParameterEncoding = JSONEncoding.default
