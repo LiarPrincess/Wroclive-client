@@ -15,12 +15,12 @@ extension BookmarksCardViewModelTests {
     self.viewModel = BookmarksCardViewModel(self.store)
 
     let placeholderObserver = self.scheduler.createObserver(Bool.self)
-    viewModel.isPlaceholderVisible
+    self.viewModel.isPlaceholderVisible
       .drive(placeholderObserver)
       .disposed(by: self.disposeBag)
 
     let tableViewObserver = self.scheduler.createObserver(Bool.self)
-    viewModel.isTableViewVisible
+    self.viewModel.isTableViewVisible
       .drive(tableViewObserver)
       .disposed(by: self.disposeBag)
 
@@ -38,12 +38,12 @@ extension BookmarksCardViewModelTests {
     self.viewModel = BookmarksCardViewModel(self.store)
 
     let placeholderObserver = self.scheduler.createObserver(Bool.self)
-    viewModel.isPlaceholderVisible
+    self.viewModel.isPlaceholderVisible
       .drive(placeholderObserver)
       .disposed(by: self.disposeBag)
 
     let tableViewObserver = self.scheduler.createObserver(Bool.self)
-    viewModel.isTableViewVisible
+    self.viewModel.isTableViewVisible
       .drive(tableViewObserver)
       .disposed(by: self.disposeBag)
 
@@ -64,12 +64,12 @@ extension BookmarksCardViewModelTests {
     self.scheduler.scheduleAt(200) { self.setBookmarks([]) }
 
     let placeholderObserver = self.scheduler.createObserver(Bool.self)
-    viewModel.isPlaceholderVisible
+    self.viewModel.isPlaceholderVisible
       .drive(placeholderObserver)
       .disposed(by: self.disposeBag)
 
     let tableViewObserver = self.scheduler.createObserver(Bool.self)
-    viewModel.isTableViewVisible
+    self.viewModel.isTableViewVisible
       .drive(tableViewObserver)
       .disposed(by: self.disposeBag)
 

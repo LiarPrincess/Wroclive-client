@@ -25,7 +25,7 @@ public final class SearchCardViewModel {
   public let didPressAlertTryAgainButton: AnyObserver<Void>
   public let didEnterBookmarkName:        AnyObserver<String>
 
-  public let viewDidAppear: AnyObserver<Void>
+  public let viewDidLoad: AnyObserver<Void>
 
   // MARK: - Output
 
@@ -69,12 +69,13 @@ public final class SearchCardViewModel {
     let _didEnterBookmarkName = PublishSubject<String>()
     self.didEnterBookmarkName = _didEnterBookmarkName.asObserver()
 
-    let _viewDidAppear = PublishSubject<Void>()
-    self.viewDidAppear = _viewDidAppear.asObserver()
+    let _viewDidLoad = PublishSubject<Void>()
+    self.viewDidLoad = _viewDidLoad.asObserver()
 
     // page
     self.page = store.rx.state
       .map { $0.userData.searchCardState.page }
+      .distinctUntilChanged()
       .asDriver(onErrorDriveWith: .never())
 
     // lines
@@ -83,19 +84,17 @@ public final class SearchCardViewModel {
       .asDriver(onErrorDriveWith: .never())
 
     self.lines = _linesResponse.data()
+      .startWith([])
+      .distinctUntilChanged()
 
     self.selectedLines = store.rx.state
       .map { $0.userData.searchCardState.selectedLines }
+      .distinctUntilChanged()
       .asDriver(onErrorDriveWith: .never())
 
-    self.isLineSelectorVisible = _linesResponse
-      .flatMapLatest { response in
-        switch response {
-        case .data: return Driver.just(true)
-        case .none, .inProgress: return Driver.just(false)
-        case .error: return Driver.never() // on error just don't change visibility
-        }
-      }
+    self.isLineSelectorVisible = self.lines
+      .map { $0.any }
+      .distinctUntilChanged()
 
     self.isPlaceholderVisible = self.isLineSelectorVisible.map { !$0 }
 
@@ -105,12 +104,21 @@ public final class SearchCardViewModel {
       .errors()
       .map { SearchCardAlert.apiError($0 as? ApiError ?? .generalError) }
 
+    let responseWithoutLinesAlert = _linesResponse.data()
+      .flatMapLatest { lines -> Driver<SearchCardAlert> in
+        switch lines.any {
+        case true: return .never()
+        case false: return .just(SearchCardAlert.apiError(.generalError))
+        }
+      }
+
     let showBookmarkAlert = _didPressBookmarkButton
       .withLatestFrom(self.selectedLines)
       .map { $0.any ? SearchCardAlert.bookmarkNameInput : SearchCardAlert.bookmarkNoLineSelected }
       .asDriver(onErrorDriveWith: .never())
 
-    self.showAlert = Driver.merge(showApiErrorAlert, showBookmarkAlert)
+    self.showAlert = Driver.merge(showApiErrorAlert, responseWithoutLinesAlert, showBookmarkAlert)
+      .distinctUntilChanged()
 
     // close
     self.close = _didPressSearchButton
@@ -140,9 +148,7 @@ public final class SearchCardViewModel {
       .bind { store.dispatch(BookmarksAction.add(name: $0.name, lines: $0.lines)) }
       .disposed(by: self.disposeBag)
 
-    // update lines as soon as we open search card
-    let updateLinesBeforeOpeningCard = Observable.just(())
-    Observable.merge(updateLinesBeforeOpeningCard, _didPressAlertTryAgainButton)
+    Observable.merge(_viewDidLoad.asObservable(), _didPressAlertTryAgainButton)
       .bind { store.dispatch(ApiAction.updateLines) }
       .disposed(by: self.disposeBag)
   }

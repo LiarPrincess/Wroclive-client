@@ -12,21 +12,24 @@ extension BookmarksCardViewModelTests {
 
   func test_takesBookmarks_fromStore() {
     let initalBookmarks = self.testData
-    let chagedBookmarks = [initalBookmarks[0], initalBookmarks[2]]
+    let changedBookmarks = [initalBookmarks[0], initalBookmarks[2]]
 
     self.setBookmarks(initalBookmarks)
+    self.scheduler.scheduleAt(100) { self.setBookmarks(changedBookmarks) }
+
     self.viewModel = BookmarksCardViewModel(self.store)
 
-    self.scheduler.scheduleAt(100) { self.setBookmarks(chagedBookmarks) }
-
     let observer = self.scheduler.createObserver([Bookmark].self)
-    viewModel.bookmarks
+    self.viewModel.bookmarks
       .drive(observer)
       .disposed(by: self.disposeBag)
     self.startScheduler()
 
-    let expectedEvents = [next(0, initalBookmarks), next(100, chagedBookmarks)]
-    XCTAssertEqual(observer.events, expectedEvents)
+    XCTAssertEqual(observer.events, [
+      Recorded.next(0, initalBookmarks),
+      Recorded.next(100, changedBookmarks)
+    ])
+
     XCTAssertEqual(self.storageMock.getBookmarksCount, 0) // we should get them from store
     XCTAssertEqual(self.storageMock.saveBookmarksCount, 0)
   }
@@ -40,24 +43,20 @@ extension BookmarksCardViewModelTests {
     self.simulateMoveEvents(event0, event1)
 
     let observer = self.scheduler.createObserver([Bookmark].self)
-    viewModel.bookmarks
+    self.viewModel.bookmarks
       .drive(observer)
       .disposed(by: self.disposeBag)
     self.startScheduler()
 
     XCTAssertEqual(self.dispatchedActions.count, 2)
 
-    if case let BookmarksAction.move(from: from, to: to) = self.dispatchedActions[0] {
-      XCTAssertEqual(from, 0)
-      XCTAssertEqual(to, 2)
-    }
-    else { XCTAssert(false, "Invalid action type") }
+    let move0 = self.getBookmarksMoveAction(at: 0)
+    XCTAssertEqual(move0?.0, 0)
+    XCTAssertEqual(move0?.1, 2)
 
-    if case let BookmarksAction.move(from: from, to: to) = self.dispatchedActions[1] {
-      XCTAssertEqual(from, 1)
-      XCTAssertEqual(to, 0)
-    }
-    else { XCTAssert(false, "Invalid action type") }
+    let move1 = self.getBookmarksMoveAction(at: 1)
+    XCTAssertEqual(move1?.0, 1)
+    XCTAssertEqual(move1?.1, 0)
 
     XCTAssertEqual(self.storageMock.getBookmarksCount, 0)
     XCTAssertEqual(self.storageMock.saveBookmarksCount, 0)
@@ -72,22 +71,14 @@ extension BookmarksCardViewModelTests {
     self.simulateDeleteEvents(event0, event1)
 
     let observer = self.scheduler.createObserver([Bookmark].self)
-    viewModel.bookmarks
+    self.viewModel.bookmarks
       .drive(observer)
       .disposed(by: self.disposeBag)
     self.startScheduler()
 
     XCTAssertEqual(self.dispatchedActions.count, 2)
-
-    if case let BookmarksAction.remove(at: index) = self.dispatchedActions[0] {
-      XCTAssertEqual(index, 0)
-    }
-    else { XCTAssert(false, "Invalid action type") }
-
-    if case let BookmarksAction.remove(at: index) = self.dispatchedActions[1] {
-      XCTAssertEqual(index, 2)
-    }
-    else { XCTAssert(false, "Invalid action type") }
+    XCTAssertEqual(self.getBookmarksRemoveAction(at: 0), 0)
+    XCTAssertEqual(self.getBookmarksRemoveAction(at: 1), 2)
 
     XCTAssertEqual(self.storageMock.getBookmarksCount, 0)
     XCTAssertEqual(self.storageMock.saveBookmarksCount, 0)

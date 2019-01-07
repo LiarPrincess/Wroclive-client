@@ -19,11 +19,8 @@ extension BookmarksCardViewModelTests {
     self.simulateSelectionEvents(event)
     self.startScheduler()
 
+    let expectedLines = self.testData[bookmarkIndex].lines
     XCTAssertEqual(self.dispatchedActions.count, 1)
-
-    if case let TrackedLinesAction.startTracking(lines) = self.dispatchedActions[0] {
-      XCTAssertEqual(lines, self.testData[bookmarkIndex].lines)
-    }
-    else { XCTAssert(false, "Invalid action type") }
+    XCTAssertEqual(self.getTrackedLinesStartTrackingAction(at: 0), expectedLines)
   }
 }

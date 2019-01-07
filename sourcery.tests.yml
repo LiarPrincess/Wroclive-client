@@ -1,0 +1,6 @@
+sources:
+  - WrocliveFramework/Redux/Actions.swift
+templates:
+  - WrocliveTests/Generated/ReduxTestCase+actions.stencil
+output:
+  WrocliveTests/Generated/

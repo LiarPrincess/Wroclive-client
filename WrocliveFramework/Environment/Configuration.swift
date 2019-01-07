@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import Foundation
-import RxSwift
 
 public struct Configuration {
   public let websiteUrl = URL(string: "https://www.overcast.fm")!

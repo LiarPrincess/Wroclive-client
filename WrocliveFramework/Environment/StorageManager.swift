@@ -56,6 +56,7 @@ public final class CachedStorageManager: StorageManagerType {
   }
 }
 
+// sourcery: manager
 public final class StorageManager: StorageManagerType {
 
   private var bookmarksFile: URL {

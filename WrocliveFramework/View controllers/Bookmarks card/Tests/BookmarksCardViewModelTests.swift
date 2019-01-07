@@ -30,9 +30,9 @@ class BookmarksCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Enviro
 
   override func tearDown() {
     super.tearDown()
-    self.tearDownRedux()
-    self.tearDownRx()
     self.tearDownEnvironment()
+    self.tearDownRx()
+    self.tearDownRedux()
   }
 
   // MARK: - Test data
