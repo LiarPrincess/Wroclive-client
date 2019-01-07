@@ -81,7 +81,7 @@ public final class LineSelector: UIPageViewController {
 
   /// Set current page without invoking Rx observers
   public func setPage(_ lineType: LineType, animated: Bool) {
-    typealias Direction = UIPageViewControllerNavigationDirection
+    typealias Direction = UIPageViewController.NavigationDirection
 
     let isTram    = lineType == .tram
     let page      = isTram ? self.tramPage     : self.busPage

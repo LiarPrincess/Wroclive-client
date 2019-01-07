@@ -71,7 +71,7 @@ public final class LineSelectorPage: UIViewController {
       },
       configureSupplementaryView: { dataSource, collectionView, kind, indexPath -> UICollectionReusableView in
         switch kind {
-        case UICollectionElementKindSectionHeader:
+        case UICollectionView.elementKindSectionHeader:
           let view = collectionView.dequeueSupplementary(ofType: LineSelectorHeaderView.self, kind: .header, for: indexPath)
           view.update(from: LineSelectorHeaderViewModel(dataSource[indexPath.section]))
           return view

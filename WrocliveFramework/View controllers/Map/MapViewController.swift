@@ -94,7 +94,7 @@ public final class MapViewController: UIViewController {
     let distance      = currentCenter.distance(from: center)
 
     if distance > 10.0 { // meters
-      let region = MKCoordinateRegionMakeWithDistance(center, 2 * radius, 2 * radius)
+      let region = MKCoordinateRegion(center: center, latitudinalMeters: 2 * radius, longitudinalMeters: 2 * radius)
       self.mapView.setRegion(region, animated: animated)
     }
   }

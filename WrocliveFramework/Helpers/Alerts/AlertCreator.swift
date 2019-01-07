@@ -7,7 +7,7 @@ import RxSwift
 
 public struct AlertButton<Value> {
   let title:  String
-  let style:  UIAlertActionStyle
+  let style:  UIAlertAction.Style
   let result: Value
 }
 

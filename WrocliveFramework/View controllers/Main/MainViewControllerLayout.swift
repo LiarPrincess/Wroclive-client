@@ -15,7 +15,7 @@ public extension MainViewController {
   }
 
   private func initMapView() {
-    self.addChildViewController(self.mapViewController)
+    self.addChild(self.mapViewController)
 
     let mapView = self.mapViewController.view!
     self.view.addSubview(mapView, constraints: [
@@ -26,7 +26,7 @@ public extension MainViewController {
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
-    self.mapViewController.didMove(toParentViewController: self)
+    self.mapViewController.didMove(toParent: self)
   }
 
   private func initToolbarView() {

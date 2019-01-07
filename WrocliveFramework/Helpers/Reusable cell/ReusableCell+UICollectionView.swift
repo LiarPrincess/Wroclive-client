@@ -27,8 +27,8 @@ public enum SuplementaryViewKind {
 
   fileprivate var key: String {
     switch self {
-    case .header: return UICollectionElementKindSectionHeader
-    case .footer: return UICollectionElementKindSectionFooter
+    case .header: return UICollectionView.elementKindSectionHeader
+    case .footer: return UICollectionView.elementKindSectionFooter
     }
   }
 }

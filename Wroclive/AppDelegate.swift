@@ -20,7 +20,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // MARK: - Launch
 
-  public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
     // This is easily the most important line in the whole app.
     // Every call that interacts with native frameworks has to go through AppEnvironment.

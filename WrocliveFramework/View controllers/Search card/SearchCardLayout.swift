@@ -68,13 +68,13 @@ public extension SearchCard {
       make(\UIView.heightAnchor, equalToConstant: LineTypeSelectorConstants.Layout.nominalHeight)
     ])
 
-    self.view.bringSubview(toFront: self.chevronViewContainer)
+    self.view.bringSubviewToFront(self.chevronViewContainer)
   }
 
   private func initLinesSelector() {
-    self.addChildViewController(self.lineSelector)
+    self.addChild(self.lineSelector)
     self.view.insertSubview(self.lineSelector.view, belowSubview: self.headerView, constraints: makeEdgesEqualToSuperview())
-    self.lineSelector.didMove(toParentViewController: self)
+    self.lineSelector.didMove(toParent: self)
   }
 
   private func initPlaceholder() {

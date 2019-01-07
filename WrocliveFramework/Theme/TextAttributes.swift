@@ -67,12 +67,12 @@ public struct TextAttributes {
 
   // MARK: - Value
 
-  public var value: [NSAttributedStringKey:Any] {
+  public var value: [NSAttributedString.Key:Any] {
     return [
-      NSAttributedStringKey.foregroundColor: self.colorValue(),
-      NSAttributedStringKey.font:            self.fontValue(),
-      NSAttributedStringKey.kern:            self.trackingValue(),
-      NSAttributedStringKey.paragraphStyle:  self.paragraphStyleValue()
+      NSAttributedString.Key.foregroundColor: self.colorValue(),
+      NSAttributedString.Key.font:            self.fontValue(),
+      NSAttributedString.Key.kern:            self.trackingValue(),
+      NSAttributedString.Key.paragraphStyle:  self.paragraphStyleValue()
     ]
   }
 

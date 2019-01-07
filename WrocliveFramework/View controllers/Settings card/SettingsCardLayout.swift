@@ -47,7 +47,7 @@ public extension SettingsCard {
 
     self.tableView.separatorStyle     = .none
     self.tableView.backgroundColor    = Theme.colors.background
-    self.tableView.rowHeight          = UITableViewAutomaticDimension
+    self.tableView.rowHeight          = UITableView.automaticDimension
     self.tableView.estimatedRowHeight = Layout.TableView.estimatedCellHeight
 
     self.tableView.tableFooterView = SettingsCardFooterView()

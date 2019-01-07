@@ -26,7 +26,7 @@ public final class BookmarksCell: UITableViewCell {
 
   // MARK: - Init
 
-  public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+  public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     self.initLayout()
   }
@@ -56,7 +56,7 @@ public final class BookmarksCell: UITableViewCell {
 
   // MARK: - Overriden
 
-  public override func willTransition(to state: UITableViewCellStateMask) {
+  public override func willTransition(to state: UITableViewCell.StateMask) {
     super.willTransition(to: state)
     self.disallowIndentWhileEditing()
   }

@@ -13,7 +13,7 @@ public final class SearchPlaceholderView: UIView {
   // MARK: - Properties
 
   private let label   = UILabel()
-  private let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+  private let spinner = UIActivityIndicatorView(style: .gray)
 
   public override var isHidden: Bool {
     didSet { self.updateAnimationState() }
