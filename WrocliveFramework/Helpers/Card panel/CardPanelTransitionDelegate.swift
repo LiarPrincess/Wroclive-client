@@ -12,34 +12,26 @@ private typealias AnimationDurations = CardPanelConstants.AnimationDurations
 
 public final class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
-  // MARK: - Properties
+  private let height: CGFloat
 
-  private weak var cardPanel: CardPanel! // swiftlint:disable:this implicitly_unwrapped_optional
-
-  // MARK: - Init
-
-  public init(for cardPanel: CardPanel) {
-    self.cardPanel = cardPanel
+  public init(height: CGFloat) {
+    self.height = height
     super.init()
   }
-
-  // MARK: - Transition
 
   public func animationController(forPresented presented: UIViewController,
                                   presenting:             UIViewController,
                                   source:                 UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    return CardPanelPresentationTransition(self.cardPanel.presentationDuration)
+    return CardPanelPresentationTransition(AnimationDurations.present)
   }
 
   public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    return CardPanelDismissTransition(self.cardPanel.dismissalDuration)
+    return CardPanelDismissTransition(AnimationDurations.dismiss)
   }
-
-  // MARK: - Presentation
 
   public func presentationController(forPresented presented: UIViewController,
                                      presenting:             UIViewController?,
                                      source:                 UIViewController) -> UIPresentationController? {
-    return CardPanelPresenter(forPresented: presented, presenting: self.cardPanel)
+    return CardPanelPresenter(forPresented: presented, presenting: presenting, height: self.height)
   }
 }

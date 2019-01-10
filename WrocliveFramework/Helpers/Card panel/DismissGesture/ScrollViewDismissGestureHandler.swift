@@ -4,20 +4,22 @@
 
 import UIKit
 
+private typealias Constants = CardPanelConstants.DismissGesture
+
 public final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
   // MARK: - Properties
 
-  public var scrollView: UIScrollView { return self.cardPanel.scrollView! }
+  private let scrollView: UIScrollView
 
-  /// Why?
-  /// If deceleration would force us to lower card, then gesture part would be already finished
+  // Why? If deceleration would force us to lower card, then gesture part would be already finished
   private var observation: NSKeyValueObservation?
 
   // MARK: - Init
 
-  public override init(for cardPanel: CardPanel) {
-    super.init(for: cardPanel)
+  public init(for presentedViewController: UIViewController, scrollView: UIScrollView) {
+    self.scrollView = scrollView
+    super.init(for: presentedViewController)
 
     self.observation = self.scrollView.observe(\.contentOffset, options: [.initial]) { [weak self] _, _ in
       self?.scrollViewDidScroll()
@@ -34,48 +36,44 @@ public final class ScrollViewDismissGestureHandler: DismissGestureHandler {
     switch gesture.state {
     case .began:
       self.resetGestureStartingPosition(gesture)
+      self.notifyInteractiveDismissalWillBegin()
 
     case .changed:
-      let offset     = self.calculateOffset(scrollView)
-      let isAboveTop = offset <= 0
+      let offset = self.calculateScrollViewOffset(scrollView)
+      let isScrollViewAboveTop = offset <= 0
 
-      if isAboveTop {
-        let translation = gesture.translation(in: self.cardView)
+      if isScrollViewAboveTop {
+        let translation = gesture.translation(in: self.presentedView)
         self.updateCardTranslation(movement: translation.y)
         self.dismissIfBelowThreshold(movement: translation.y)
-        self.dismissalGestureWillBegin()
+
+        let percent = translation.y / Constants.dismissThreshold
+        self.notifyInteractiveDismissalProgress(percent: percent)
       }
       else { self.resetGestureStartingPosition(gesture) }
 
+    // ended means that user lifted their finger without dismissing
     case .ended:
       self.moveCardToInitialPosition(animated: true)
-      self.cardPanel.dismissalGestureDidEnd()
+      self.notifyInteractiveDismissalDidEnd(completed: false)
+
+    // cancelled means that gesture was interrupted in the middle (for example by dismiss)
+    case .cancelled:
+      self.notifyInteractiveDismissalDidEnd(completed: true)
 
     default: break
     }
   }
 
   private func scrollViewDidScroll() {
-    let offset     = self.calculateOffset(scrollView)
+    let offset     = self.calculateScrollViewOffset(scrollView)
     let isAboveTop = offset <= 0
 
-    if isAboveTop {
-      if self.scrollView.isDecelerating {
-        self.moveCardInsteadOfScrollView(offset)
-      }
-      else { self.scrollView.bounces = false }
-    }
-    else { self.scrollView.bounces = true }
+    let isScrollingDisabled = isAboveTop && !self.scrollView.isDecelerating
+    self.scrollView.bounces = !isScrollingDisabled
   }
 
-  private func moveCardInsteadOfScrollView(_ offset: CGFloat) {
-    self.cardView.transform = CGAffineTransform(translationX: 0, y: -offset)
-    for subview in self.scrollView.subviews {
-      subview.transform = CGAffineTransform(translationX: 0, y: offset)
-    }
-  }
-
-  private func calculateOffset(_ scrollView: UIScrollView) -> CGFloat {
+  private func calculateScrollViewOffset(_ scrollView: UIScrollView) -> CGFloat {
     let base = scrollView.contentOffset.y + scrollView.contentInset.top
     return base + scrollView.safeAreaInsets.top
   }

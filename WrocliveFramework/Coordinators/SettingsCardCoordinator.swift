@@ -9,10 +9,10 @@ import SafariServices
 
 public final class SettingsCardCoordinator: CardCoordinator {
 
+  public let parent: UIViewController
+
   public var card:                   SettingsCard?
   public var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
-
-  public let parent: UIViewController
 
   public init(_ parent: UIViewController) {
     self.parent = parent
@@ -20,7 +20,8 @@ public final class SettingsCardCoordinator: CardCoordinator {
 
   public func start() {
     let viewModel = SettingsCardViewModel()
-    self.card     = SettingsCard(viewModel)
+    let card      = SettingsCard(viewModel)
+    let height    = 0.75 * AppEnvironment.device.screenBounds.height
 
     viewModel.showRateControl
       .drive(onNext: { [unowned self] in self.rateApp() })
@@ -34,7 +35,7 @@ public final class SettingsCardCoordinator: CardCoordinator {
       .drive(onNext: { [unowned self] in self.showAboutPage() })
       .disposed(by: viewModel.disposeBag)
 
-    self.presentCard(animated: true)
+    self.presentCard(card, withHeight: height, animated: true)
   }
 
   public func rateApp() {

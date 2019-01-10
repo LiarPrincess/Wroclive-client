@@ -9,8 +9,6 @@ public enum SearchCardConstants {
     public static let leftInset:   CGFloat = 16.0
     public static let rightInset:  CGFloat = leftInset
 
-    public static var height: CGFloat { return 0.9 * AppEnvironment.device.screenBounds.height }
-
     public enum Header {
       public enum Title {
         public static let topOffset: CGFloat = 8.0

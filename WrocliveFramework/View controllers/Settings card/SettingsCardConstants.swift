@@ -9,8 +9,6 @@ public enum SettingsCardConstants {
     public static let leftInset:  CGFloat = 16.0
     public static let rightInset: CGFloat = leftInset
 
-    public static var height: CGFloat { return 0.75 * AppEnvironment.device.screenBounds.height }
-
     public enum Header {
       public static let topInset:    CGFloat = 8.0
       public static let bottomInset: CGFloat = 8.0

@@ -33,9 +33,8 @@ public final class CardPanelPresentationTransition: NSObject, UIViewControllerAn
 
     presentedViewController.view.frame = offScreenFrame
 
-    let duration = self.transitionDuration(using: transitionContext)
     UIView.animate(
-      withDuration: duration,
+      withDuration: self.transitionDuration(using: transitionContext),
       delay:        0.0,
       options:      .curveEaseOut,
       animations:   { presentedViewController.view.frame = onScreenFrame },

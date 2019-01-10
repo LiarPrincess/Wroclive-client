@@ -11,7 +11,7 @@ private typealias Layout       = SettingsCardConstants.Layout
 private typealias TextStyles   = SettingsCardConstants.TextStyles
 private typealias Localization = Localizable.Settings
 
-public final class SettingsCard: CardPanel {
+public final class SettingsCard: UIViewController, CustomCardPanelPresentable {
 
   // MARK: - Properties
 
@@ -30,8 +30,7 @@ public final class SettingsCard: CardPanel {
 
   // MARK: - Card panel
 
-  public override var height:     CGFloat       { return Layout.height  }
-  public override var scrollView: UIScrollView? { return self.tableView }
+  public var scrollView: UIScrollView? { return self.tableView }
 
   // MARK: - Init
 

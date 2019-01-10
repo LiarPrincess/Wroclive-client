@@ -5,9 +5,9 @@
 import UIKit
 
 public protocol CardCoordinator: class, Coordinator {
-  associatedtype Card: CardPanel
+  associatedtype Card: UIViewController
 
-  var card:                   Card? { get }
+  var card:                   Card? { get set }
   var cardTransitionDelegate: UIViewControllerTransitioningDelegate? { get set }
 
   var parent: UIViewController { get }
@@ -15,13 +15,12 @@ public protocol CardCoordinator: class, Coordinator {
 
 public extension CardCoordinator {
 
-  func presentCard(animated: Bool) {
-    guard let card = self.card
-      else { fatalError("CardCoordinator.card was not set before calling presentCard") }
+  func presentCard(_ card: Card, withHeight height: CGFloat, animated: Bool) {
+    self.cardTransitionDelegate = CardPanelTransitionDelegate(height: height)
 
-    self.cardTransitionDelegate = CardPanelTransitionDelegate(for: card)
-    card.modalPresentationStyle = .custom
-    card.transitioningDelegate  = self.cardTransitionDelegate!
+    self.card = card
+    self.card!.modalPresentationStyle = .custom
+    self.card!.transitioningDelegate  = self.cardTransitionDelegate!
 
     self.parent.present(card, animated: animated, completion: nil)
   }

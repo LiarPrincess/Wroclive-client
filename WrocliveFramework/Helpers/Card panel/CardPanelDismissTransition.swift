@@ -30,11 +30,10 @@ public final class CardPanelDismissTransition: NSObject, UIViewControllerAnimate
 
     // animation
 
-    let duration = self.transitionDuration(using: transitionContext)
     let options: UIView.AnimationOptions = transitionContext.isInteractive ? .curveLinear : .curveEaseOut
 
     UIView.animate(
-      withDuration: duration,
+      withDuration: self.transitionDuration(using: transitionContext),
       delay:        0.0,
       options:      options,
       animations:   { presentedViewController.view.frame = offScreenFrame },

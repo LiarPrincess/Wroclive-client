@@ -9,7 +9,7 @@ import RxCocoa
 private typealias Layout       = SearchCardConstants.Layout
 private typealias Localization = Localizable.Search
 
-public final class SearchCard: CardPanel {
+public final class SearchCard: UIViewController, CustomCardPanelPresentable {
 
   // MARK: - Properties
 
@@ -31,8 +31,7 @@ public final class SearchCard: CardPanel {
 
   // MARK: - Card panel
 
-  public override var height:     CGFloat       { return Layout.height  }
-  public override var scrollView: UIScrollView? { return self.lineSelector.scrollView }
+  public var scrollView: UIScrollView? { return self.lineSelector.scrollView }
 
   // MARK: - Init
 

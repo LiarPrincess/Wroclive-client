@@ -23,9 +23,9 @@ public extension SettingsCard {
     self.headerView.contentView.addBottomBorder()
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.insertSubview(self.headerView, belowSubview: self.chevronViewContainer, constraints: [
-      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+    self.view.addSubview(self.headerView, constraints: [
+      make(\UIView.topAnchor,   equalToSuperview: \UIView.topAnchor),
+      make(\UIView.leftAnchor,  equalToSuperview: \UIView.leftAnchor),
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
@@ -34,10 +34,10 @@ public extension SettingsCard {
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel, constraints: [
-      make(\UIView.topAnchor, equalTo: self.chevronView.bottomAnchor, constant: Layout.Header.topInset),
+      make(\UIView.topAnchor,    equalToSuperview: \UIView.topAnchor,    constant: Layout.Header.topInset),
       make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.Header.bottomInset),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.rightInset)
+      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor,   constant: Layout.leftInset),
+      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor,  constant: -Layout.rightInset)
     ])
   }
 

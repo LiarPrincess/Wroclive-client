@@ -9,7 +9,11 @@ import RxCocoa
 private typealias Layout = BookmarksCardConstants.Layout
 public typealias BookmarksSection = RxSectionModel<String, Bookmark>
 
-public final class BookmarksCard: CardPanel {
+public final class BookmarksCard: UIViewController, CustomCardPanelPresentable {
+
+  public func interactiveDismissalWillBegin() { Swift.print("\(#function)") }
+  public func interactiveDismissalProgress(percent: CGFloat) { Swift.print("\(#function): \(percent)") }
+  public func interactiveDismissalDidEnd(completed: Bool) { Swift.print("\(#function): \(completed)") }
 
   // MARK: - Properties
 
@@ -30,8 +34,7 @@ public final class BookmarksCard: CardPanel {
 
   // MARK: - Card panel
 
-  public override var height:     CGFloat       { return Layout.height }
-  public override var scrollView: UIScrollView? { return self.tableView }
+  public var scrollView: UIScrollView? { return self.tableView }
 
   // MARK: - Init
 

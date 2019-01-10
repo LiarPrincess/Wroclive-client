@@ -10,13 +10,17 @@ public class DismissGestureHandler: DismissGestureHandlerType {
 
   // MARK: - Properties
 
-  public weak var cardPanel: CardPanel! // swiftlint:disable:this implicitly_unwrapped_optional
-  public var      cardView:  UIView { return cardPanel.view }
+  public weak var presentedViewController: UIViewController! // swiftlint:disable:this implicitly_unwrapped_optional
+  public var      presentedView:  UIView { return presentedViewController.view }
+
+  public var cardPanel: CustomCardPanelPresentable? {
+    return self.presentedViewController as? CustomCardPanelPresentable
+  }
 
   // MARK: - Init
 
-  public init(for cardPanel: CardPanel) {
-    self.cardPanel = cardPanel
+  public init(for presentedViewController: UIViewController) {
+    self.presentedViewController = presentedViewController
   }
 
   // MARK: - Handle gesture
@@ -25,23 +29,31 @@ public class DismissGestureHandler: DismissGestureHandlerType {
     switch gesture.state {
     case .began:
       self.resetGestureStartingPosition(gesture)
+      self.notifyInteractiveDismissalWillBegin()
 
     case .changed:
-      let translation = gesture.translation(in: self.cardView)
+      let translation = gesture.translation(in: self.presentedView)
       self.updateCardTranslation(movement: translation.y)
       self.dismissIfBelowThreshold(movement: translation.y)
-      self.dismissalGestureWillBegin()
 
+      let percent = translation.y / Constants.dismissThreshold
+      self.notifyInteractiveDismissalProgress(percent: percent)
+
+    // ended means that user lifted their finger without dismissing
     case .ended:
       self.moveCardToInitialPosition(animated: true)
-      self.dismissalGestureDidEnd()
+      self.notifyInteractiveDismissalDidEnd(completed: false)
+
+    // cancelled means that gesture was interrupted in the middle (for example by dismiss)
+    case .cancelled:
+      self.notifyInteractiveDismissalDidEnd(completed: true)
 
     default: break
     }
   }
 
   public func resetGestureStartingPosition(_ gesture: UIPanGestureRecognizer) {
-    gesture.setTranslation(.zero, in: self.cardView)
+    gesture.setTranslation(.zero, in: self.presentedView)
   }
 
   public func updateCardTranslation(movement translation: CGFloat) {
@@ -49,7 +61,7 @@ public class DismissGestureHandler: DismissGestureHandlerType {
 
     if !isAboveStartingPosition {
       let modalTranslation    = self.easeOut(movement: translation)
-      self.cardView.transform = CGAffineTransform(translationX: 0, y: modalTranslation)
+      self.presentedView.transform = CGAffineTransform(translationX: 0, y: modalTranslation)
     }
   }
 
@@ -65,13 +77,13 @@ public class DismissGestureHandler: DismissGestureHandlerType {
 
   public func dismissIfBelowThreshold(movement translation: CGFloat) {
     if translation >= Constants.dismissThreshold {
-      self.cardPanel.dismiss(animated: true, completion: nil)
+      self.presentedViewController.dismiss(animated: true, completion: nil)
     }
   }
 
   public func moveCardToInitialPosition(animated: Bool) {
     func inner() {
-      self.cardView.transform = .identity
+      self.presentedView.transform = .identity
     }
 
     if animated { UIView.animate(withDuration: 0.25, animations: inner) }
@@ -80,16 +92,21 @@ public class DismissGestureHandler: DismissGestureHandlerType {
 
   // MARK: - Card panel events
 
+  // in case of scroll view we don't really know if touch was first or not
   private var hasStartedDismiss: Bool = false
 
-  public func dismissalGestureWillBegin() {
+  public func notifyInteractiveDismissalWillBegin() {
     if !self.hasStartedDismiss {
-      self.cardPanel.dismissalGestureWillBegin()
+      self.cardPanel?.interactiveDismissalWillBegin()
       self.hasStartedDismiss = true
     }
   }
 
-  public func dismissalGestureDidEnd() {
-    self.cardPanel.dismissalGestureDidEnd()
+  public func notifyInteractiveDismissalProgress(percent: CGFloat) {
+    self.cardPanel?.interactiveDismissalProgress(percent: percent)
+  }
+
+  public func notifyInteractiveDismissalDidEnd(completed: Bool) {
+    self.cardPanel?.interactiveDismissalDidEnd(completed: completed)
   }
 }

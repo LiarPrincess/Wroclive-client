@@ -104,12 +104,11 @@
 		9030AE4B21DD868D00AFCF78 /* RxSectionTypeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B161FFAFD5A009FE942 /* RxSectionTypeArray.swift */; };
 		9030AE4C21DD868D00AFCF78 /* RxTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A4021FEEF78400FB7485 /* RxTableViewDataSource.swift */; };
 		9030AE4D21DD868D00AFCF78 /* RxCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042EDDA1FF3ECC700F5D01D /* RxCollectionViewDataSource.swift */; };
-		9030AE4E21DD869C00AFCF78 /* ChevronViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3E21F12C9EF000A6949 /* ChevronViewState.swift */; };
 		9030AE4F21DD869C00AFCF78 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3E11F12C9EF000A6949 /* ChevronView.swift */; };
 		9030AE5021DD869C00AFCF78 /* DismissGestureHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B62020FE6300563BDB /* DismissGestureHandlerType.swift */; };
 		9030AE5121DD869C00AFCF78 /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */; };
 		9030AE5221DD869C00AFCF78 /* ScrollViewDismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */; };
-		9030AE5321DD869C00AFCF78 /* CardPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90538DD1201CADCF0000BBBE /* CardPanel.swift */; };
+		9030AE5321DD869C00AFCF78 /* CustomCardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90538DD1201CADCF0000BBBE /* CustomCardPanelPresentable.swift */; };
 		9030AE5421DD869C00AFCF78 /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F3FC1F12C9EF000A6949 /* CardPanelTransitionDelegate.swift */; };
 		9030AE5521DD869C00AFCF78 /* CardPanelPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4031F12C9EF000A6949 /* CardPanelPresentationTransition.swift */; };
 		9030AE5621DD869C00AFCF78 /* CardPanelDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F4021F12C9EF000A6949 /* CardPanelDismissTransition.swift */; };
@@ -209,8 +208,9 @@
 		9050954520D725DC005E2BF8 /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915B0C1FFA6FF0009FE942 /* SearchCardViewModelTests.swift */; };
 		905A3B721F9533BE003D668F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6A1F9532F0003D668F /* UIKit.framework */; };
 		905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6E1F953301003D668F /* MapKit.framework */; };
-		907D917D1E63A7CC00502CBD /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */; };
+		90AC422921E7DD6700B5298A /* ChevronViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AC422821E7DD6700B5298A /* ChevronViewState.swift */; };
 		90B96BBB21E3FD30006A63E8 /* ReduxTestCase+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B96BB921E3FD2F006A63E8 /* ReduxTestCase+Actions.swift */; };
 		90B96BBC21E3FD30006A63E8 /* ReduxTestCase+Actions.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 90B96BBA21E3FD30006A63E8 /* ReduxTestCase+Actions.stencil */; };
 		90B96BBE21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B96BBD21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift */; };
@@ -252,7 +252,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9030ADEB21DD73DF00AFCF78 /* WrocliveFramework.framework in Embed Frameworks */,
-				907D917D1E63A7CC00502CBD /* BuildFile in Embed Frameworks */,
+				907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,7 +324,6 @@
 		9021F3901F12C95D000A6949 /* UIView+AddBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AddBorder.swift"; sourceTree = "<group>"; };
 		9021F3911F12C95D000A6949 /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
 		9021F3E11F12C9EF000A6949 /* ChevronView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
-		9021F3E21F12C9EF000A6949 /* ChevronViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronViewState.swift; sourceTree = "<group>"; };
 		9021F3FA1F12C9EF000A6949 /* CardPanelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelConstants.swift; sourceTree = "<group>"; };
 		9021F3FC1F12C9EF000A6949 /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
 		9021F4001F12C9EF000A6949 /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
@@ -382,7 +381,7 @@
 		9042EDDA1FF3ECC700F5D01D /* RxCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		9050705E2087EE66007DDA80 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		905070612087EF53007DDA80 /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
-		90538DD1201CADCF0000BBBE /* CardPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPanel.swift; sourceTree = "<group>"; };
+		90538DD1201CADCF0000BBBE /* CustomCardPanelPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCardPanelPresentable.swift; sourceTree = "<group>"; };
 		9055C8E51F462F2F00D1EBDA /* SettingsCardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardLayout.swift; sourceTree = "<group>"; };
 		9055C8E71F462F5C00D1EBDA /* SettingsCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardConstants.swift; sourceTree = "<group>"; };
 		9056F6531F5229A500F7EF48 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
@@ -441,6 +440,7 @@
 		90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreator.swift; sourceTree = "<group>"; };
 		90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreatorTests.swift; sourceTree = "<group>"; };
 		90AACC9A200BE4110064EDFD /* LineSelectorPage+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineSelectorPage+Rx.swift"; sourceTree = "<group>"; };
+		90AC422821E7DD6700B5298A /* ChevronViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronViewState.swift; sourceTree = "<group>"; };
 		90AF2BD31EE9DE00006E61D6 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90B2611D1FF501100076EC69 /* LineSelector+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineSelector+Rx.swift"; sourceTree = "<group>"; };
@@ -665,15 +665,6 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		9021F3E01F12C9EF000A6949 /* Chevron view */ = {
-			isa = PBXGroup;
-			children = (
-				9021F3E21F12C9EF000A6949 /* ChevronViewState.swift */,
-				9021F3E11F12C9EF000A6949 /* ChevronView.swift */,
-			);
-			path = "Chevron view";
-			sourceTree = "<group>";
-		};
 		9021F3E31F12C9EF000A6949 /* Lines selector */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,9 +687,9 @@
 		9021F3F91F12C9EF000A6949 /* Card panel */ = {
 			isa = PBXGroup;
 			children = (
-				9021F3E01F12C9EF000A6949 /* Chevron view */,
+				90AC422721E7DD2100B5298A /* Chevron view */,
 				9021F3FF1F12C9EF000A6949 /* DismissGesture */,
-				90538DD1201CADCF0000BBBE /* CardPanel.swift */,
+				90538DD1201CADCF0000BBBE /* CustomCardPanelPresentable.swift */,
 				9021F3FC1F12C9EF000A6949 /* CardPanelTransitionDelegate.swift */,
 				9021F4031F12C9EF000A6949 /* CardPanelPresentationTransition.swift */,
 				9021F4021F12C9EF000A6949 /* CardPanelDismissTransition.swift */,
@@ -989,6 +980,15 @@
 				905D71A41FE1C5BD006D1DB6 /* Api.swift */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		90AC422721E7DD2100B5298A /* Chevron view */ = {
+			isa = PBXGroup;
+			children = (
+				90AC422821E7DD6700B5298A /* ChevronViewState.swift */,
+				9021F3E11F12C9EF000A6949 /* ChevronView.swift */,
+			);
+			path = "Chevron view";
 			sourceTree = "<group>";
 		};
 		90C4B133202E331A00920706 /* Rx data sources */ = {
@@ -1475,6 +1475,7 @@
 				9030AE2021DD830400AFCF78 /* TextAttributeEnums.swift in Sources */,
 				9030AE4721DD868D00AFCF78 /* ReusableCell+UITableView.swift in Sources */,
 				9030AE2421DD840000AFCF78 /* ApiDataReducer.swift in Sources */,
+				90AC422921E7DD6700B5298A /* ChevronViewState.swift in Sources */,
 				9030AE6821DD89B300AFCF78 /* BookmarksCellConstants.swift in Sources */,
 				9030AE6321DD892700AFCF78 /* MapViewModel.swift in Sources */,
 				9030AE1D21DD830400AFCF78 /* Theme.swift in Sources */,
@@ -1498,7 +1499,6 @@
 				9030AE8D21DD8CE700AFCF78 /* SettingsCard.swift in Sources */,
 				9030AE6721DD89B300AFCF78 /* BookmarksCellViewModel.swift in Sources */,
 				9030AE2221DD83FA00AFCF78 /* Actions.swift in Sources */,
-				9030AE4E21DD869C00AFCF78 /* ChevronViewState.swift in Sources */,
 				9030AE1721DD80DC00AFCF78 /* Configuration.swift in Sources */,
 				9030AE6A21DD89B300AFCF78 /* BookmarksPlaceholderConstants.swift in Sources */,
 				9030AE5021DD869C00AFCF78 /* DismissGestureHandlerType.swift in Sources */,
@@ -1583,7 +1583,7 @@
 				9030AE8721DD8CE700AFCF78 /* SettingsTextCell.swift in Sources */,
 				9030AE1021DD80DC00AFCF78 /* DeviceManager.swift in Sources */,
 				9030AE4C21DD868D00AFCF78 /* RxTableViewDataSource.swift in Sources */,
-				9030AE5321DD869C00AFCF78 /* CardPanel.swift in Sources */,
+				9030AE5321DD869C00AFCF78 /* CustomCardPanelPresentable.swift in Sources */,
 				9030AE8F21DD8CE700AFCF78 /* SettingsCardViewModel.swift in Sources */,
 				9030AE8021DD8CDC00AFCF78 /* SearchCard.swift in Sources */,
 				9030AE3121DD84F500AFCF78 /* Assets.swift in Sources */,

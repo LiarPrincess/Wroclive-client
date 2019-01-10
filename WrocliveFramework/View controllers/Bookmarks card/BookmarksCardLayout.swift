@@ -24,9 +24,9 @@ public extension BookmarksCard {
     self.headerView.contentView.addBottomBorder()
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.insertSubview(self.headerView, belowSubview: self.chevronViewContainer, constraints: [
-      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+    self.view.addSubview(self.headerView, constraints: [
+      make(\UIView.topAnchor,   equalToSuperview: \UIView.topAnchor),
+      make(\UIView.leftAnchor,  equalToSuperview: \UIView.leftAnchor),
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
@@ -35,9 +35,9 @@ public extension BookmarksCard {
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel, constraints: [
-      make(\UIView.topAnchor, equalTo: self.chevronView.bottomAnchor, constant: Layout.Header.Title.topOffset),
+      make(\UIView.topAnchor,    equalToSuperview: \UIView.topAnchor,    constant: Layout.Header.Title.topOffset),
       make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.Header.Title.bottomOffset),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset)
+      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor,   constant: Layout.leftInset)
     ])
 
     self.editButton.contentEdgeInsets       = Layout.Header.Edit.insets
@@ -67,8 +67,8 @@ public extension BookmarksCard {
 
     self.view.insertSubview(self.placeholderView, belowSubview: self.tableView, constraints: [
       make(\UIView.centerYAnchor, equalToSuperview: \UIView.centerYAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.Placeholder.leftInset),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.Placeholder.rightInset)
+      make(\UIView.leftAnchor,    equalToSuperview: \UIView.leftAnchor,  constant: Layout.Placeholder.leftInset),
+      make(\UIView.rightAnchor,   equalToSuperview: \UIView.rightAnchor, constant: -Layout.Placeholder.rightInset)
     ])
   }
 }

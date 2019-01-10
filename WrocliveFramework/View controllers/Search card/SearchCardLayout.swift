@@ -25,9 +25,9 @@ public extension SearchCard {
     self.headerView.contentView.addBottomBorder()
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.insertSubview(self.headerView, belowSubview: self.chevronViewContainer, constraints: [
-      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
+    self.view.addSubview(self.headerView, constraints: [
+      make(\UIView.topAnchor,   equalToSuperview: \UIView.topAnchor),
+      make(\UIView.leftAnchor,  equalToSuperview: \UIView.leftAnchor),
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
@@ -36,7 +36,7 @@ public extension SearchCard {
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel, constraints: [
-      make(\UIView.topAnchor, equalTo: self.chevronView.bottomAnchor, constant: Layout.Header.Title.topOffset),
+      make(\UIView.topAnchor,  equalToSuperview: \UIView.topAnchor,  constant: Layout.Header.Title.topOffset),
       make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset)
     ])
 
@@ -61,14 +61,12 @@ public extension SearchCard {
     ])
 
     self.headerView.contentView.addSubview(self.lineTypeSelector, constraints: [
-      make(\UIView.topAnchor, equalTo: self.titleLabel.bottomAnchor, constant: Layout.Header.LineType.topOffset),
+      make(\UIView.topAnchor,    equalTo: self.titleLabel.bottomAnchor,  constant: Layout.Header.LineType.topOffset),
       make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.Header.LineType.bottomOffset),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.rightInset),
+      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor,   constant: Layout.leftInset),
+      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor,  constant: -Layout.rightInset),
       make(\UIView.heightAnchor, equalToConstant: LineTypeSelectorConstants.Layout.nominalHeight)
     ])
-
-    self.view.bringSubviewToFront(self.chevronViewContainer)
   }
 
   private func initLinesSelector() {
@@ -81,16 +79,16 @@ public extension SearchCard {
     let container = UIView()
 
     self.view.insertSubview(container, belowSubview: self.lineSelector.view, constraints: [
-      make(\UIView.topAnchor, equalTo: self.headerView.contentView.bottomAnchor),
+      make(\UIView.topAnchor,    equalTo: self.headerView.contentView.bottomAnchor),
       make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor)
     ])
 
     container.addSubview(self.placeholderView, constraints: [
       make(\UIView.bottomAnchor, equalToSuperview: \UIView.centerYAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.Placeholder.leftInset),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.Placeholder.rightInset)
+      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor,  constant: Layout.Placeholder.leftInset),
+      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor, constant: -Layout.Placeholder.rightInset)
     ])
   }
 }

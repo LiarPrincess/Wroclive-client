@@ -83,7 +83,6 @@ public final class ChevronView : UIView {
     }
   }
 
-  // @compile-profiled
   private func calculateFrames() -> (left: CGRect, right: CGRect) {
     let centerX = self.bounds.width / 2.0
     let originY = (self.bounds.height - self.width) / 2.0
