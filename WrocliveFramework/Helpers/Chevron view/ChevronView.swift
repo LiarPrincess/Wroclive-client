@@ -4,6 +4,12 @@
 
 import UIKit
 
+public enum ChevronViewState: Int {
+  case up   =  1
+  case flat =  0
+  case down = -1
+}
+
 public final class ChevronView : UIView {
 
   // MARK: - Properties
@@ -11,13 +17,19 @@ public final class ChevronView : UIView {
   private let leftView  = UIView()
   private let rightView = UIView()
 
-  private var _state = ChevronViewState.flat
+  private var _angle: CGFloat = 0.0
 
-  public var state: ChevronViewState {
-    get { return self._state }
+  /// Current angle between chevron arms in degrees
+  public var angle: CGFloat {
+    get { return self._angle }
     set {
-      self._state = newValue
-      self.updateTransformations(animated: false)
+      let newAngle = self.clamp(newValue, min: -ChevronView.maxAngle, max: ChevronView.maxAngle)
+      let angleDiff = (newAngle - angle).magnitude
+
+      if angleDiff > 0.2 {
+        self._angle = newAngle
+        self.updateTransformations()
+      }
     }
   }
 
@@ -28,18 +40,14 @@ public final class ChevronView : UIView {
     }
   }
 
-  public var width: CGFloat = 5.0 {
-    didSet { self.setNeedsLayout() }
-  }
+  /// Width of an single arm
+  public static let width: CGFloat = 5.0
 
-  public var angle: CGFloat = 15.0 {
-    didSet { self.setNeedsLayout() }
-  }
-
-  public var animationDuration: TimeInterval = 1.0
+  /// Maximum angle between arms
+  public static let maxAngle: CGFloat = 15.0
 
   /// Proposed size to match Apple 'look and feel'
-  public static var nominalSize: CGSize { return CGSize(width: 42, height: 15) }
+  public static var nominalSize: CGSize = CGSize(width: 42, height: 15)
 
   // MARK: - Init
 
@@ -75,24 +83,23 @@ public final class ChevronView : UIView {
     self.leftView.center  = CGPoint(x: leftFrame.midX,  y: leftFrame.midY)
     self.rightView.center = CGPoint(x: rightFrame.midX, y: leftFrame.midY)
 
-    self.leftView.layer.cornerRadius  = self.width / 2.0
-    self.rightView.layer.cornerRadius = self.width / 2.0
+    self.leftView.layer.cornerRadius  = ChevronView.width / 2.0
+    self.rightView.layer.cornerRadius = ChevronView.width / 2.0
 
-    if self._state != .flat {
-      self.updateTransformations(animated: false)
-    }
+    self.updateTransformations()
   }
 
   private func calculateFrames() -> (left: CGRect, right: CGRect) {
     let centerX = self.bounds.width / 2.0
-    let originY = (self.bounds.height - self.width) / 2.0
+    let originY = (self.bounds.height - ChevronView.width) / 2.0
 
-    let templateFrame = CGRect(x: 0.0, y: originY, width: centerX, height: self.width)
+    let templateFrame = CGRect(x: 0.0, y: originY, width: centerX, height: ChevronView.width)
 
     // move frames closer together to compensate for rotations
-    let dx: CGFloat = centerX * (1.0 - cos(self.angle.rad)) / 2.0
+    // otherwise we would end up with gap between arms
+    let dx: CGFloat = centerX * (1.0 - cos(ChevronView.maxAngle.rad)) / 2.0
 
-    let leftOffset:  CGFloat = self.width / 2.0 + dx - 1.0
+    let leftOffset:  CGFloat = ChevronView.width / 2.0 + dx - 1.0
     let rightOffset: CGFloat = centerX - leftOffset
 
     let leftFrame  = templateFrame.offsetBy(dx:  leftOffset, dy: 0.0)
@@ -102,30 +109,21 @@ public final class ChevronView : UIView {
 
   // MARK: - Methods
 
-  public func setState(_ state: ChevronViewState, animated: Bool) {
-    guard self._state != state else {
-      return
-    }
-
-    // update backing field instead of property to avoid self.setNeedsLayout
-    self._state = state
-    self.updateTransformations(animated: animated)
+  public func setState(_ state: ChevronViewState) {
+    self.angle = ChevronView.maxAngle * CGFloat(state.rawValue)
   }
 
-  private func updateTransformations(animated: Bool) {
-    let rotateViews = { [weak self] in
-      if let strongSelf = self {
-        let rotationAngle = strongSelf.angle.rad * CGFloat(strongSelf.state.rawValue)
-        strongSelf.leftView.transform  = CGAffineTransform(rotationAngle: -rotationAngle)
-        strongSelf.rightView.transform = CGAffineTransform(rotationAngle:  rotationAngle)
-      }
-    }
+  // MARK: - Helpers
 
-    if animated {
-      UIView.animate(withDuration: self.animationDuration, animations: rotateViews)
-    }
-    else {
-      UIView.performWithoutAnimation(rotateViews)
+  private func clamp(_ x: CGFloat, min: CGFloat, max: CGFloat) -> CGFloat {
+    return CGFloat.maximum(CGFloat.minimum(x, max), min)
+  }
+
+  private func updateTransformations() {
+    UIView.performWithoutAnimation { [weak self] in
+      guard let strongSelf = self else { return }
+      strongSelf.leftView.transform  = CGAffineTransform(rotationAngle: -strongSelf.angle.rad)
+      strongSelf.rightView.transform = CGAffineTransform(rotationAngle:  strongSelf.angle.rad)
     }
   }
 }

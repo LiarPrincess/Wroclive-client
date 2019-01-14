@@ -31,13 +31,15 @@ public extension SearchCard {
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
+    self.addChevronView(in: self.headerView.contentView)
+
     self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel, constraints: [
-      make(\UIView.topAnchor,  equalToSuperview: \UIView.topAnchor,  constant: Layout.Header.Title.topOffset),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset)
+      make(\UIView.topAnchor,  equalTo: self.chevronView.bottomAnchor, constant: Layout.Header.Title.topOffset),
+      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor,   constant: Layout.leftInset)
     ])
 
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.Bookmark.size)

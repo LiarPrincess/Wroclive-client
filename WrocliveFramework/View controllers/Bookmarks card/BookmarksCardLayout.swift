@@ -30,12 +30,14 @@ public extension BookmarksCard {
       make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
     ])
 
+    self.addChevronView(in: self.headerView.contentView)
+
     self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel, constraints: [
-      make(\UIView.topAnchor,    equalToSuperview: \UIView.topAnchor,    constant: Layout.Header.Title.topOffset),
+      make(\UIView.topAnchor, equalTo: self.chevronView.bottomAnchor, constant: Layout.Header.Title.topOffset),
       make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.Header.Title.bottomOffset),
       make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor,   constant: Layout.leftInset)
     ])

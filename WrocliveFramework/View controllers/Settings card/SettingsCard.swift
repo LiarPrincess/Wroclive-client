@@ -11,7 +11,7 @@ private typealias Layout       = SettingsCardConstants.Layout
 private typealias TextStyles   = SettingsCardConstants.TextStyles
 private typealias Localization = Localizable.Settings
 
-public final class SettingsCard: UIViewController, CustomCardPanelPresentable {
+public final class SettingsCard: UIViewController, CustomCardPanelPresentable, ChevronViewOwner {
 
   // MARK: - Properties
 
@@ -23,7 +23,8 @@ public final class SettingsCard: UIViewController, CustomCardPanelPresentable {
     return UIVisualEffectView(effect: blur)
   }()
 
-  public let titleLabel = UILabel()
+  public let chevronView = ChevronView()
+  public let titleLabel  = UILabel()
 
   public let tableView            = UITableView(frame: .zero, style: .grouped)
   public let tableViewDataSource  = SettingsCard.createDataSource()
@@ -108,6 +109,16 @@ public final class SettingsCard: UIViewController, CustomCardPanelPresentable {
       let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
       self.tableView.setContentOffset(newOffset, animated: false)
     }
+  }
+
+  // MARK: - CustomCardPanelPresentable
+
+  public func interactiveDismissalProgress(percent: CGFloat) {
+    self.updateChevronViewDuringInteractiveDismissal(percent: percent)
+  }
+
+  public func interactiveDismissalDidEnd(completed: Bool) {
+    self.updateChevronViewAfterInteractiveDismissal()
   }
 }
 

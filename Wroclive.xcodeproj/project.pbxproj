@@ -210,7 +210,7 @@
 		905A3B731F9533C4003D668F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 905A3B6E1F953301003D668F /* MapKit.framework */; };
 		907D917D1E63A7CC00502CBD /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		90AACC85200ABB080064EDFD /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */; };
-		90AC422921E7DD6700B5298A /* ChevronViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AC422821E7DD6700B5298A /* ChevronViewState.swift */; };
+		90AC422D21E80C6F00B5298A /* ChevronViewOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AC422C21E80C6F00B5298A /* ChevronViewOwner.swift */; };
 		90B96BBB21E3FD30006A63E8 /* ReduxTestCase+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B96BB921E3FD2F006A63E8 /* ReduxTestCase+Actions.swift */; };
 		90B96BBC21E3FD30006A63E8 /* ReduxTestCase+Actions.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 90B96BBA21E3FD30006A63E8 /* ReduxTestCase+Actions.stencil */; };
 		90B96BBE21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B96BBD21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift */; };
@@ -440,7 +440,7 @@
 		90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreator.swift; sourceTree = "<group>"; };
 		90AACC8E200BA6E30064EDFD /* LineSelectorSectionCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreatorTests.swift; sourceTree = "<group>"; };
 		90AACC9A200BE4110064EDFD /* LineSelectorPage+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineSelectorPage+Rx.swift"; sourceTree = "<group>"; };
-		90AC422821E7DD6700B5298A /* ChevronViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronViewState.swift; sourceTree = "<group>"; };
+		90AC422C21E80C6F00B5298A /* ChevronViewOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronViewOwner.swift; sourceTree = "<group>"; };
 		90AF2BD31EE9DE00006E61D6 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		90B1DAA01F2BD92500FAE18A /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		90B2611D1FF501100076EC69 /* LineSelector+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineSelector+Rx.swift"; sourceTree = "<group>"; };
@@ -541,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				900CAE8A1F482E750044C8A6 /* Alerts */,
+				90AC422721E7DD2100B5298A /* Chevron view */,
 				9021F3F91F12C9EF000A6949 /* Card panel */,
 				908FB1971F48B3CA00121584 /* Reusable cell */,
 				90C4B133202E331A00920706 /* Rx data sources */,
@@ -687,7 +688,6 @@
 		9021F3F91F12C9EF000A6949 /* Card panel */ = {
 			isa = PBXGroup;
 			children = (
-				90AC422721E7DD2100B5298A /* Chevron view */,
 				9021F3FF1F12C9EF000A6949 /* DismissGesture */,
 				90538DD1201CADCF0000BBBE /* CustomCardPanelPresentable.swift */,
 				9021F3FC1F12C9EF000A6949 /* CardPanelTransitionDelegate.swift */,
@@ -985,8 +985,8 @@
 		90AC422721E7DD2100B5298A /* Chevron view */ = {
 			isa = PBXGroup;
 			children = (
-				90AC422821E7DD6700B5298A /* ChevronViewState.swift */,
 				9021F3E11F12C9EF000A6949 /* ChevronView.swift */,
+				90AC422C21E80C6F00B5298A /* ChevronViewOwner.swift */,
 			);
 			path = "Chevron view";
 			sourceTree = "<group>";
@@ -1465,6 +1465,7 @@
 				9030AE2A21DD840500AFCF78 /* createMiddlewares.swift in Sources */,
 				9030AE0D21DD76F500AFCF78 /* Observable+ApiResponseState.swift in Sources */,
 				9030AE8821DD8CE700AFCF78 /* SettingsTextCellConstants.swift in Sources */,
+				90AC422D21E80C6F00B5298A /* ChevronViewOwner.swift in Sources */,
 				9030AE7621DD8CDC00AFCF78 /* LineSelectorHeaderViewModel.swift in Sources */,
 				9030AE1E21DD830400AFCF78 /* ColorScheme.swift in Sources */,
 				9030AE6421DD892700AFCF78 /* MapViewControllerConstants.swift in Sources */,
@@ -1475,7 +1476,6 @@
 				9030AE2021DD830400AFCF78 /* TextAttributeEnums.swift in Sources */,
 				9030AE4721DD868D00AFCF78 /* ReusableCell+UITableView.swift in Sources */,
 				9030AE2421DD840000AFCF78 /* ApiDataReducer.swift in Sources */,
-				90AC422921E7DD6700B5298A /* ChevronViewState.swift in Sources */,
 				9030AE6821DD89B300AFCF78 /* BookmarksCellConstants.swift in Sources */,
 				9030AE6321DD892700AFCF78 /* MapViewModel.swift in Sources */,
 				9030AE1D21DD830400AFCF78 /* Theme.swift in Sources */,

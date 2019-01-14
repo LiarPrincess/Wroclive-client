@@ -9,11 +9,7 @@ import RxCocoa
 private typealias Layout = BookmarksCardConstants.Layout
 public typealias BookmarksSection = RxSectionModel<String, Bookmark>
 
-public final class BookmarksCard: UIViewController, CustomCardPanelPresentable {
-
-  public func interactiveDismissalWillBegin() { Swift.print("\(#function)") }
-  public func interactiveDismissalProgress(percent: CGFloat) { Swift.print("\(#function): \(percent)") }
-  public func interactiveDismissalDidEnd(completed: Bool) { Swift.print("\(#function): \(completed)") }
+public final class BookmarksCard: UIViewController, CustomCardPanelPresentable, ChevronViewOwner {
 
   // MARK: - Properties
 
@@ -22,6 +18,7 @@ public final class BookmarksCard: UIViewController, CustomCardPanelPresentable {
     return UIVisualEffectView(effect: blur)
   }()
 
+  public let chevronView     = ChevronView()
   public let titleLabel      = UILabel()
   public let editButton      = UIButton()
   public let placeholderView = BookmarksPlaceholderView()
@@ -167,6 +164,16 @@ public final class BookmarksCard: UIViewController, CustomCardPanelPresentable {
     if hasSwipeToDeleteOpen {
       self.tableView.setEditing(false, animated: false)
     }
+  }
+
+  // MARK: - CustomCardPanelPresentable
+
+  public func interactiveDismissalProgress(percent: CGFloat) {
+    self.updateChevronViewDuringInteractiveDismissal(percent: percent)
+  }
+
+  public func interactiveDismissalDidEnd(completed: Bool) {
+    self.updateChevronViewAfterInteractiveDismissal()
   }
 }
 
