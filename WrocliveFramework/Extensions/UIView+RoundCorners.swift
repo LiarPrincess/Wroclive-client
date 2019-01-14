@@ -9,10 +9,6 @@ extension UIView {
     self.roundCorners([UIRectCorner.topLeft, UIRectCorner.topRight], radius: radius)
   }
 
-  public func roundBottomCorners(radius: CGFloat) {
-    self.roundCorners([UIRectCorner.bottomLeft, UIRectCorner.bottomRight], radius: radius)
-  }
-
   public func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
     let cornerRadii = CGSize(width: radius, height: radius)
     let maskPath    = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)

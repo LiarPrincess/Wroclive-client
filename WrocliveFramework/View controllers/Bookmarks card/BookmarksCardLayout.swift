@@ -12,6 +12,7 @@ public extension BookmarksCard {
 
   public func initLayout() {
     self.view.backgroundColor = Theme.colors.background
+    self.view.roundTopCorners(radius: CardPanelConstants.Layout.topCornerRadius)
 
     self.initHeader()
     self.initTableView()
