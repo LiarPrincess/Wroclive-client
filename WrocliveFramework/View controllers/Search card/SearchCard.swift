@@ -27,8 +27,8 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable, Che
   public let searchButton    = UIButton()
   public let placeholderView = SearchPlaceholderView()
 
-  public let lineTypeSelector = LineTypeSelector()
-  public let lineSelector     = LineSelector()
+  public lazy var lineTypeSelector = LineTypeSelector(self.viewModel.lineTypeSelectorViewModel)
+  public let lineSelector = LineSelector()
 
   // MARK: - Card panel
 
@@ -55,17 +55,12 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable, Che
   // MARK: - Bindings
 
   private func initPageBindings() {
-    self.lineTypeSelector.rx.selectedValueChanged
-      .bind(to: self.viewModel.didSelectPage)
-      .disposed(by: self.disposeBag)
-
     self.lineSelector.rx.pageDidTransition
       .bind(to: self.viewModel.didTransitionToPage)
       .disposed(by: self.disposeBag)
 
     self.viewModel.page
       .drive(onNext: { [weak self] newValue in
-        self?.lineTypeSelector.selectedValue = newValue
         self?.lineSelector.setPage(newValue, animated: true)
       })
       .disposed(by: self.disposeBag)

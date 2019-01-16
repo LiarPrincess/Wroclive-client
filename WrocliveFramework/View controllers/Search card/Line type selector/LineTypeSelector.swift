@@ -3,53 +3,48 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-private typealias TextStyles   = LineTypeSelectorConstants.TextStyles
-private typealias Localization = Localizable.Search
+private typealias TextStyles = LineTypeSelectorConstants.TextStyles
 
-public final class LineTypeSelector: UISegmentedControl {
+public final class LineTypeSelector: UIViewController {
 
   // MARK: - Properties
 
-  public var selectedValue: LineType {
-    get { return valueAt(self.selectedSegmentIndex) }
-    set { self.selectedSegmentIndex = indexOf(newValue) }
-  }
+  private let viewModel: LineTypeSelectorViewModel
+  private let disposeBag = DisposeBag()
+
+  private let segmentedControl = UISegmentedControl(frame: .zero)
 
   // MARK: - Init
 
-  public init() {
-    super.init(frame: .zero)
+  public init(_ viewModel: LineTypeSelectorViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
 
-    self.setTitleTextAttributes(TextStyles.title.value, for: .normal)
-    self.insertSegment(withTitle: Localization.Pages.tram, at: Indices.tram, animated: false)
-    self.insertSegment(withTitle: Localization.Pages.bus,  at: Indices.bus,  animated: false)
-    self.selectedValue = .tram
+    self.segmentedControl.setTitleTextAttributes(TextStyles.title.value, for: .normal)
+    for (index, page) in self.viewModel.pages.enumerated() {
+      self.segmentedControl.insertSegment(withTitle: page, at: index, animated: false)
+    }
+
+    self.segmentedControl.rx.selectedSegmentIndex
+      .bind(to: self.viewModel.didSelectIndex)
+      .disposed(by: self.disposeBag)
+
+    self.viewModel.selectedIndex
+      .drive(self.segmentedControl.rx.selectedSegmentIndex)
+      .disposed(by: self.disposeBag)
   }
 
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-}
 
-// MARK: - Indices
+  // MARK: - Overriden
 
-private struct Indices {
-  static let tram = 0
-  static let bus  = 1
-}
-
-private func indexOf(_ lineType: LineType) -> Int {
-  switch lineType {
-  case .tram: return Indices.tram
-  case .bus:  return Indices.bus
-  }
-}
-
-private func valueAt(_ index: Int) -> LineType {
-  switch index {
-  case Indices.tram: return .tram
-  case Indices.bus:  return .bus
-  default: fatalError("Invalid index selected")
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+    self.view.addSubview(self.segmentedControl, constraints: makeEdgesEqualToSuperview())
   }
 }

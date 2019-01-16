@@ -29,6 +29,8 @@ public final class SearchCardViewModel {
 
   // MARK: - Output
 
+  public let lineTypeSelectorViewModel: LineTypeSelectorViewModel
+
   public let page: Driver<LineType>
 
   public let lines:         Driver<[Line]>
@@ -45,6 +47,8 @@ public final class SearchCardViewModel {
 
   // swiftlint:disable:next function_body_length
   public init(_ store: Store<AppState>) {
+    self.lineTypeSelectorViewModel = LineTypeSelectorViewModel(store)
+
     let _didSelectPage = PublishSubject<LineType>()
     self.didSelectPage = _didSelectPage.asObserver()
 
