@@ -23,9 +23,6 @@ class SearchCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Environme
 
   var viewModel: SearchCardViewModel!
 
-  var pageObserver:                  TestableObserver<LineType>!
-  var linesObserver:                 TestableObserver<[Line]>!
-  var selectedLinesObserver:         TestableObserver<[Line]>!
   var isLineSelectorVisibleObserver: TestableObserver<Bool>!
   var isPlaceholderVisibleObserver:  TestableObserver<Bool>!
   var showAlertObserver:             TestableObserver<SearchCardAlert>!
@@ -47,15 +44,6 @@ class SearchCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Environme
 
   func initViewModel() {
     self.viewModel = SearchCardViewModel(self.store)
-
-    self.pageObserver = self.scheduler.createObserver(LineType.self)
-    self.viewModel.page.drive(self.pageObserver).disposed(by: self.disposeBag)
-
-    self.linesObserver = self.scheduler.createObserver([Line].self)
-    self.viewModel.lines.drive(self.linesObserver).disposed(by: self.disposeBag)
-
-    self.selectedLinesObserver = self.scheduler.createObserver([Line].self)
-    self.viewModel.selectedLines.drive(self.selectedLinesObserver).disposed(by: self.disposeBag)
 
     self.isLineSelectorVisibleObserver = self.scheduler.createObserver(Bool.self)
     self.viewModel.isLineSelectorVisible.drive(self.isLineSelectorVisibleObserver).disposed(by: self.disposeBag)
@@ -93,18 +81,6 @@ class SearchCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Environme
 
   // MARK: - Events
 
-  func mockPageSelected(at time: TestTime, _ value: LineType) {
-    self.scheduler.scheduleAt(time) { [unowned self] in
-      self.viewModel.didSelectPage.onNext(value)
-    }
-  }
-
-  func mockPageTransition(at time: TestTime, _ value: LineType) {
-    self.scheduler.scheduleAt(time) { [unowned self] in
-      self.viewModel.didTransitionToPage.onNext(value)
-    }
-  }
-
   func mockLineResponse(at time: TestTime, _ response: LineResponse) {
     self.scheduler.scheduleAt(time) { [unowned self] in
       self.setLineResponse(response)
@@ -114,18 +90,6 @@ class SearchCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Environme
   func mockTryAgainButtonPressed(at time: TestTime) {
     self.scheduler.scheduleAt(time) { [unowned self] in
       self.viewModel.didPressAlertTryAgainButton.onNext()
-    }
-  }
-
-  func mockSelectedLine(at time: TestTime, _ value: Line) {
-    self.scheduler.scheduleAt(time) { [unowned self] in
-      self.viewModel.didSelectLine.onNext(value)
-    }
-  }
-
-  func mockDeselectedLine(at time: TestTime, _ value: Line) {
-    self.scheduler.scheduleAt(time) { [unowned self] in
-      self.viewModel.didDeselectLine.onNext(value)
     }
   }
 

@@ -20,10 +20,8 @@ public enum LineSelectorSectionCreator {
     switch lineSubtype {
     case .express:   return 0
     case .regular:   return 1
-
     case .night:     return 2
     case .suburban:  return 3
-
     case .peakHour:  return 4
     case .zone:      return 5
     case .limited:   return 6

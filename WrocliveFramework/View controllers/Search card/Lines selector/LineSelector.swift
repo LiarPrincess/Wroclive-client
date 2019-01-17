@@ -10,31 +10,12 @@ public final class LineSelector: UIPageViewController {
 
   // MARK: - Properties
 
-  private let tramPage = LineSelectorPage()
-  private let busPage  = LineSelectorPage()
+  private let viewModel: LineSelectorViewModel
+  private let disposeBag = DisposeBag()
+
+  private let tramPage: LineSelectorPage
+  private let busPage:  LineSelectorPage
   private lazy var pages = [self.tramPage, self.busPage]
-
-  private var currentPage: LineType {
-    let page = self.viewControllers?.first
-    if page === self.tramPage { return .tram }
-    if page === self.busPage  { return .bus  }
-    fatalError("Invalid page selected")
-  }
-
-  private let _pageDidTransition = PublishSubject<LineType>()
-  public lazy var pageDidTransition: Observable<LineType> = self._pageDidTransition.asObservable()
-
-  public lazy var lineSelected: Observable<Line> = {
-    let tramSelected = self.tramPage.rx.lineSelected.asObservable()
-    let busSelected  = self.busPage .rx.lineSelected.asObservable()
-    return Observable.merge(tramSelected, busSelected)
-  }()
-
-  public lazy var lineDeselected: Observable<Line> = {
-    let tramDeselected = self.tramPage.rx.lineDeselected.asObservable()
-    let busDeselected  = self.busPage .rx.lineDeselected.asObservable()
-    return Observable.merge(tramDeselected, busDeselected)
-  }()
 
   public var contentInset: UIEdgeInsets {
     get { return self.tramPage.contentInset }
@@ -53,9 +34,19 @@ public final class LineSelector: UIPageViewController {
     }
   }
 
+  private var currentPage: LineType {
+    let page = self.viewControllers?.first
+    if page === self.tramPage { return .tram }
+    if page === self.busPage  { return .bus  }
+    fatalError("Invalid page selected")
+  }
+
   // MARK: - Init
 
-  public init() {
+  public init(_ viewModel: LineSelectorViewModel) {
+    self.viewModel = viewModel
+    self.tramPage = LineSelectorPage(viewModel.tramPageViewModel)
+    self.busPage  = LineSelectorPage(viewModel.busPageViewModel)
     super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
 
     // load views so we can select/deselect cells right away
@@ -65,6 +56,7 @@ public final class LineSelector: UIPageViewController {
     self.dataSource = self
 
     self.initLayout()
+    self.initBindings()
   }
 
   public required init?(coder: NSCoder) {
@@ -77,10 +69,17 @@ public final class LineSelector: UIPageViewController {
     self.setViewControllers([firstPage], direction: .forward, animated: false, completion: nil)
   }
 
+  private func initBindings() {
+    self.viewModel.page
+      .drive(onNext: { [unowned self] in self.setPage($0, animated: true) })
+      .disposed(by: self.disposeBag)
+
+    // we use 'UIPageViewControllerDelegate' instead of raw binding for input
+  }
+
   // MARK: - Setters
 
-  /// Set current page without invoking Rx observers
-  public func setPage(_ lineType: LineType, animated: Bool) {
+  private func setPage(_ lineType: LineType, animated: Bool) {
     typealias Direction = UIPageViewController.NavigationDirection
 
     let isTram    = lineType == .tram
@@ -92,18 +91,14 @@ public final class LineSelector: UIPageViewController {
       self.setViewControllers([page], direction: direction, animated: animated, completion: nil)
     }
   }
-
-  /// Set lines without invoking Rx observers
-  public func setLines(_ lines: [Line], selected selectedLines: [Line]) {
-    self.tramPage.setLines(lines.filter(.tram), selected: selectedLines.filter(.tram))
-    self.busPage .setLines(lines.filter(.bus),  selected: selectedLines.filter(.bus))
-  }
 }
 
 // MARK: UIPageViewControllerDataSource
 
 extension LineSelector: UIPageViewControllerDataSource {
-  public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+  public func pageViewController(_ pageViewController: UIPageViewController,
+                                 viewControllerBefore viewController: UIViewController) -> UIViewController? {
+
     guard let index = self.index(of: viewController)
       else { return nil }
 
@@ -111,7 +106,9 @@ extension LineSelector: UIPageViewControllerDataSource {
     return previousIndex >= 0 ? self.pages[previousIndex] : nil
   }
 
-  public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+  public func pageViewController(_ pageViewController: UIPageViewController,
+                                 viewControllerAfter viewController: UIViewController) -> UIViewController? {
+
     guard let index = self.index(of: viewController)
       else { return nil }
 
@@ -133,7 +130,7 @@ extension LineSelector: UIPageViewControllerDelegate {
                                  previousViewControllers:       [UIViewController],
                                  transitionCompleted completed: Bool) {
     if completed {
-      self._pageDidTransition.onNext(self.currentPage)
+      self.viewModel.didTransitionToPage.onNext(self.currentPage)
     }
   }
 }

@@ -28,7 +28,7 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable, Che
   public let placeholderView = SearchPlaceholderView()
 
   public lazy var lineTypeSelector = LineTypeSelector(self.viewModel.lineTypeSelectorViewModel)
-  public let lineSelector = LineSelector()
+  public lazy var lineSelector     = LineSelector(self.viewModel.lineSelectorViewModel)
 
   // MARK: - Card panel
 
@@ -40,8 +40,6 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable, Che
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
 
-    self.initPageBindings()
-    self.initLineBindings()
     self.initVisibilityBindings()
     self.initButtonBindings()
     self.initAlertBindings()
@@ -53,33 +51,6 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable, Che
   }
 
   // MARK: - Bindings
-
-  private func initPageBindings() {
-    self.lineSelector.rx.pageDidTransition
-      .bind(to: self.viewModel.didTransitionToPage)
-      .disposed(by: self.disposeBag)
-
-    self.viewModel.page
-      .drive(onNext: { [weak self] newValue in
-        self?.lineSelector.setPage(newValue, animated: true)
-      })
-      .disposed(by: self.disposeBag)
-  }
-
-  private func initLineBindings() {
-    self.lineSelector.rx.lineSelected
-      .bind(to: self.viewModel.didSelectLine)
-      .disposed(by: self.disposeBag)
-
-    self.lineSelector.rx.lineDeselected
-      .bind(to: self.viewModel.didDeselectLine)
-      .disposed(by: self.disposeBag)
-
-    self.viewModel.lines
-      .withLatestFrom(self.viewModel.selectedLines) { (lines: $0, selectedLines: $1) }
-      .drive(onNext: { [weak self] in self?.lineSelector.setLines($0.lines, selected: $0.selectedLines) })
-      .disposed(by: self.disposeBag)
-  }
 
   private func initVisibilityBindings() {
     self.viewModel.isLineSelectorVisible

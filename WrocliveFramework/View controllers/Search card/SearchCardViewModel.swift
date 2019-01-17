@@ -13,12 +13,6 @@ public final class SearchCardViewModel {
 
   // MARK: - Inputs
 
-  public let didSelectPage:       AnyObserver<LineType>
-  public let didTransitionToPage: AnyObserver<LineType>
-
-  public let didSelectLine:   AnyObserver<Line>
-  public let didDeselectLine: AnyObserver<Line>
-
   public let didPressBookmarkButton: AnyObserver<Void>
   public let didPressSearchButton:   AnyObserver<Void>
 
@@ -30,11 +24,7 @@ public final class SearchCardViewModel {
   // MARK: - Output
 
   public let lineTypeSelectorViewModel: LineTypeSelectorViewModel
-
-  public let page: Driver<LineType>
-
-  public let lines:         Driver<[Line]>
-  public let selectedLines: Driver<[Line]>
+  public let lineSelectorViewModel:     LineSelectorViewModel
 
   public let isLineSelectorVisible: Driver<Bool>
   public let isPlaceholderVisible:  Driver<Bool>
@@ -48,18 +38,7 @@ public final class SearchCardViewModel {
   // swiftlint:disable:next function_body_length
   public init(_ store: Store<AppState>) {
     self.lineTypeSelectorViewModel = LineTypeSelectorViewModel(store)
-
-    let _didSelectPage = PublishSubject<LineType>()
-    self.didSelectPage = _didSelectPage.asObserver()
-
-    let _didTransitionToPage = PublishSubject<LineType>()
-    self.didTransitionToPage = _didTransitionToPage.asObserver()
-
-    let _didSelectLine = PublishSubject<Line>()
-    self.didSelectLine = _didSelectLine.asObserver()
-
-    let _didDeselectLine = PublishSubject<Line>()
-    self.didDeselectLine = _didDeselectLine.asObserver()
+    self.lineSelectorViewModel     = LineSelectorViewModel(store)
 
     let _didPressBookmarkButton = PublishSubject<Void>()
     self.didPressBookmarkButton = _didPressBookmarkButton.asObserver()
@@ -76,39 +55,30 @@ public final class SearchCardViewModel {
     let _viewDidLoad = PublishSubject<Void>()
     self.viewDidLoad = _viewDidLoad.asObserver()
 
-    // page
-    self.page = store.rx.state
-      .map { $0.userData.searchCardState.page }
-      .distinctUntilChanged()
-      .asDriver(onErrorDriveWith: .never())
+    let selectedLines = store.rx.state
+      .map { $0.userData.searchCardState.selectedLines }
 
-    // lines
-    let _linesResponse = store.rx.state
+    // visibility
+    let linesResponse = store.rx.state
       .map { $0.apiData.lines }
       .asDriver(onErrorDriveWith: .never())
 
-    self.lines = _linesResponse.data()
-      .startWith([])
-      .distinctUntilChanged()
-
-    self.selectedLines = store.rx.state
-      .map { $0.userData.searchCardState.selectedLines }
+    self.isLineSelectorVisible = _viewDidLoad.asObservable()
+      .flatMapFirst { _ in linesResponse }
+      .data()
+      .map { $0.any }
+      .startWith(false)
       .distinctUntilChanged()
       .asDriver(onErrorDriveWith: .never())
-
-    self.isLineSelectorVisible = self.lines
-      .map { $0.any }
-      .distinctUntilChanged()
 
     self.isPlaceholderVisible = self.isLineSelectorVisible.map { !$0 }
 
     // alerts
-
-    let showApiErrorAlert = _linesResponse
+    let showApiErrorAlert = linesResponse
       .errors()
       .map(SearchCardAlert.apiError)
 
-    let responseWithoutLinesAlert = _linesResponse.data()
+    let responseWithoutLinesAlert = linesResponse.data()
       .flatMapLatest { lines -> Driver<SearchCardAlert> in
         switch lines.any {
         case true: return .never()
@@ -117,7 +87,7 @@ public final class SearchCardViewModel {
       }
 
     let showBookmarkAlert = _didPressBookmarkButton
-      .withLatestFrom(self.selectedLines)
+      .withLatestFrom(selectedLines)
       .map { $0.any ? SearchCardAlert.bookmarkNameInput : SearchCardAlert.bookmarkNoLineSelected }
       .asDriver(onErrorDriveWith: .never())
 
@@ -130,25 +100,13 @@ public final class SearchCardViewModel {
       .asDriver(onErrorDriveWith: .never())
 
     // bindings
-    Observable.merge(_didSelectPage, _didTransitionToPage)
-      .bind { store.dispatch(SearchCardStateAction.selectPage($0)) }
-      .disposed(by: self.disposeBag)
-
-    _didSelectLine
-      .bind { store.dispatch(SearchCardStateAction.selectLine($0)) }
-      .disposed(by: self.disposeBag)
-
-    _didDeselectLine
-      .bind { store.dispatch(SearchCardStateAction.deselectLine($0)) }
-      .disposed(by: self.disposeBag)
-
     _didPressSearchButton
-      .withLatestFrom(self.selectedLines)
+      .withLatestFrom(selectedLines)
       .bind { store.dispatch(TrackedLinesAction.startTracking($0)) }
       .disposed(by: self.disposeBag)
 
     _didEnterBookmarkName
-      .withLatestFrom(self.selectedLines) { (name: $0, lines: $1) }
+      .withLatestFrom(selectedLines) { (name: $0, lines: $1) }
       .bind { store.dispatch(BookmarksAction.add(name: $0.name, lines: $0.lines)) }
       .disposed(by: self.disposeBag)
 

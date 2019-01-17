@@ -15,14 +15,8 @@ public final class LineSelectorPage: UIViewController {
 
   // MARK: - Properties
 
-  private let sections   = PublishSubject<[LineSelectorSection]>()
+  private let viewModel: LineSelectorPageViewModel
   private let disposeBag = DisposeBag()
-
-  public lazy var lineSelected = self.collectionView.rx.itemSelected
-    .flatMap { [weak self] in Observable.from(optional: self?.collectionViewDataSource[$0]) }
-
-  public lazy var lineDeselected = self.collectionView.rx.itemDeselected
-    .flatMap { [weak self] in Observable.from(optional: self?.collectionViewDataSource[$0]) }
 
   private lazy var collectionView           = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewLayout)
   private lazy var collectionViewLayout     = UICollectionViewFlowLayout()
@@ -42,7 +36,8 @@ public final class LineSelectorPage: UIViewController {
 
   // MARK: - Init
 
-  public init() {
+  public init(_ viewModel: LineSelectorPageViewModel) {
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
     self.initBindings()
   }
@@ -51,13 +46,46 @@ public final class LineSelectorPage: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
+  // MARK: - Bindings
+
   private func initBindings() {
     self.collectionView.rx.setDelegate(self)
       .disposed(by: disposeBag)
 
-    self.sections.asObservable()
+    self.viewModel.sections.asObservable()
       .bind(to: self.collectionView.rx.items(dataSource: self.collectionViewDataSource))
       .disposed(by: disposeBag)
+
+    let setIndicesAgainAfterChangingSections = self.viewModel.sections
+      .withLatestFrom(self.viewModel.selectedIndices)
+
+    Driver.merge(setIndicesAgainAfterChangingSections, self.viewModel.selectedIndices)
+      .drive(onNext: { [unowned self] in self.selectIndices($0) })
+      .disposed(by: disposeBag)
+
+    self.collectionView.rx.itemSelected
+      .bind(to: self.viewModel.didSelectIndex)
+      .disposed(by: self.disposeBag)
+
+    self.collectionView.rx.itemDeselected
+      .bind(to: self.viewModel.didDeselectIndex)
+      .disposed(by: self.disposeBag)
+  }
+
+  private func selectIndices(_ indicesToSelect: [IndexPath]) {
+    let selectedIndices = self.collectionView.indexPathsForSelectedItems ?? []
+
+    // change to sets, so we get ~O(1) lookups
+    let selectedIndicesSet = Set(selectedIndices)
+    let indicesToSelectSet = Set(indicesToSelect)
+
+    selectedIndices
+      .filter  { !indicesToSelectSet.contains($0) }
+      .forEach { self.collectionView.deselectItem(at: $0, animated: false) }
+
+    indicesToSelect
+      .filter  { !selectedIndicesSet.contains($0) }
+      .forEach { self.collectionView.selectItem(at: $0, animated: false, scrollPosition: []) }
   }
 
   // MARK: - Data source
@@ -124,29 +152,6 @@ public final class LineSelectorPage: UIViewController {
     let cellWidth          = (totalWidth - (numSectionsThatFit - 1) * margin) / numSectionsThatFit
 
     return CGSize(width: cellWidth, height: cellWidth)
-  }
-
-  // MARK: - Setters
-
-  public func setLines(_ lines: [Line], selected selectedLines: [Line]) {
-    let sections = LineSelectorSectionCreator.create(lines)
-    self.sections.onNext(sections)
-
-    let selectedIndices = self.collectionView.indexPathsForSelectedItems ?? []
-
-    for (sectionIndex, section) in sections.enumerated() {
-      for (lineIndex, line) in section.items.enumerated() {
-        let indexPath = IndexPath(row: lineIndex, section: sectionIndex)
-
-        let isSelected   = selectedIndices.contains(indexPath)
-        let shouldSelect = selectedLines.contains(line)
-
-        if isSelected != shouldSelect {
-          if shouldSelect { self.collectionView.selectItem  (at: indexPath, animated: false, scrollPosition: []) }
-          else            { self.collectionView.deselectItem(at: indexPath, animated: false) }
-        }
-      }
-    } /* for end */
   }
 }
 
