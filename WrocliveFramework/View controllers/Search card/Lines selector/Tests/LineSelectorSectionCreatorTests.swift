@@ -3,28 +3,9 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import XCTest
-import RxSwift
-import RxTest
 @testable import WrocliveFramework
 
-// swiftlint:disable implicitly_unwrapped_optional
-
-class LineSelectorSectionCreatorTests: XCTestCase, RxTestCase, EnvironmentTestCase {
-
-  var scheduler:  TestScheduler!
-  var disposeBag: DisposeBag!
-
-  override func setUp() {
-    super.setUp()
-    self.setUpRx()
-    self.setUpEnvironment()
-  }
-
-  override func tearDown() {
-    super.tearDown()
-    self.tearDownEnvironment()
-    self.tearDownRx()
-  }
+class LineSelectorSectionCreatorTests: XCTestCase {
 
   func test_withoutLines_returnsNoSections() {
     let lines = [Line]()

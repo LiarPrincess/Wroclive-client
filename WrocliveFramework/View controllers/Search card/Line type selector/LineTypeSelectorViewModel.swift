@@ -3,13 +3,12 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import ReSwift
 import RxSwift
 import RxCocoa
 
 private typealias Localization = Localizable.Search
 
-private let availableLineTypes: [LineType] = [.tram, .bus]
+private let lineTypePages: [LineType] = [.tram, .bus]
 
 public final class LineTypeSelectorViewModel {
 
@@ -21,27 +20,28 @@ public final class LineTypeSelectorViewModel {
 
   // MARK: - Output
 
-  public lazy var pages: [String] = availableLineTypes.map(toPageName)
+  public lazy var pages: [String] = lineTypePages.map(toPageName)
 
   public let selectedIndex: Driver<Int>
 
   // MARK: - Init
 
-  public init(_ store: Store<AppState>) {
+  public init(pageProp:     Observable<LineType>,
+              onPageChange: @escaping (LineType) -> ()) {
+
     let _didSelectIndex = PublishSubject<Int>()
     self.didSelectIndex = _didSelectIndex.asObserver()
 
-    self.selectedIndex = store.rx.state
-      .map { $0.userData.searchCardState.page }
-      .map { availableLineTypes.firstIndex(of: $0) }
+    self.selectedIndex = pageProp
+      .map { lineTypePages.firstIndex(of: $0) }
       .unwrap()
       .distinctUntilChanged()
       .asDriver(onErrorDriveWith: .never())
 
     _didSelectIndex.asObservable()
-      .filter { $0 >= 0 && $0 < availableLineTypes.count }
-      .map    { availableLineTypes[$0] }
-      .bind   { store.dispatch(SearchCardStateAction.selectPage($0)) }
+      .filter { $0 >= 0 && $0 < lineTypePages.count }
+      .map    { lineTypePages[$0] }
+      .bind(onNext: onPageChange)
       .disposed(by: self.disposeBag)
   }
 }

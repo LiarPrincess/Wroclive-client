@@ -6,51 +6,56 @@ import XCTest
 import RxSwift
 import RxCocoa
 import RxTest
-import ReSwift
 @testable import WrocliveFramework
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-class LineSelectorViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, EnvironmentTestCase {
+class LineSelectorViewModelTests: XCTestCase, RxTestCase {
 
-  var store: Store<AppState>!
-  var dispatchedActions: [Action]!
+  var viewModel: LineSelectorViewModel!
+
+  var pageProp: PublishSubject<LineType>!
+  var onPageTransitionArgs: [LineType]!
+
+  var pageObserver: TestableObserver<LineType>!
 
   var scheduler: TestScheduler!
   var disposeBag: DisposeBag!
 
-  var viewModel: LineSelectorViewModel!
-
-  var pageObserver: TestableObserver<LineType>!
-
   override func setUp() {
     super.setUp()
-    self.setUpRedux()
     self.setUpRx()
-    self.setUpEnvironment()
-  }
 
-  override func tearDown() {
-    super.tearDown()
-    self.tearDownEnvironment()
-    self.tearDownRx()
-    self.tearDownRedux()
-  }
+    self.pageProp = PublishSubject<LineType>()
+    self.onPageTransitionArgs = []
 
-  func initViewModel() {
-    self.viewModel = LineSelectorViewModel(self.store)
+    self.viewModel = LineSelectorViewModel(
+      pageProp:          self.pageProp.asObservable(),
+      linesProp:         .empty(),
+      selectedLinesProp: .empty(),
+      onPageTransition:  { [unowned self] in self.onPageTransitionArgs.append($0) },
+      onLineSelected:    { _ in () },
+      onLineDeselected:  { _ in () }
+    )
 
     self.pageObserver = self.scheduler.createObserver(LineType.self)
     self.viewModel.page.drive(self.pageObserver).disposed(by: self.disposeBag)
   }
 
-  // MARK: - Data
-
-  func setState(_ state: LineType) {
-    self.setState { $0.userData.searchCardState = SearchCardState(page: state, selectedLines: []) }
+  override func tearDown() {
+    super.tearDown()
+    self.tearDownRx()
   }
 
-  func mockPageTransition(at time: TestTime, _ value: LineType) {
+  // MARK: - Data
+
+  private func setPageProp(at time: TestTime, _ value: LineType) {
+    self.scheduler.scheduleAt(time) { [unowned self] in
+      self.pageProp.asObserver().onNext(value)
+    }
+  }
+
+  private func didTransitionToPage(at time: TestTime, _ value: LineType) {
     self.scheduler.scheduleAt(time) { [unowned self] in
       self.viewModel.didTransitionToPage.onNext(value)
     }
@@ -58,48 +63,36 @@ class LineSelectorViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Environ
 
   // MARK: - Tests
 
-  func test_takesPage_fromStore() {
-    let page0 = LineType.tram
-    let page1 = LineType.bus
-    let page2 = LineType.bus // we should skip this one, as it is the same as previous
-    let page3 = LineType.tram
+  func test_takesPage_fromProps() {
+    self.setPageProp(at: 0,   .tram)
+    self.setPageProp(at: 100, .bus)
+    self.setPageProp(at: 200, .bus) // we should skip this one, as it is the same as previous
+    self.setPageProp(at: 300, .tram)
 
-    self.setState(page0)
-    self.scheduler.scheduleAt(100) { [unowned self] in self.setState(page1) }
-    self.scheduler.scheduleAt(200) { [unowned self] in self.setState(page2) }
-    self.scheduler.scheduleAt(300) { [unowned self] in self.setState(page3) }
-
-    self.initViewModel()
     self.startScheduler()
 
-    XCTAssertEqual(self.pageObserver.events, [
-      Recorded.next(0,   LineType.tram),
-      Recorded.next(100, LineType.bus),
-      Recorded.next(300, LineType.tram)
-    ])
+    let events = self.pageObserver.events
 
-    XCTAssertEqual(self.storageMock.getSearchCardStateCount, 0) // we should get them from store
-    XCTAssertEqual(self.storageMock.saveSearchCardStateCount, 0)
+    if XCTIfEqual(events.count, 3) {
+      XCTAssertEqual(events[0], Recorded.next(0,   LineType.tram))
+      XCTAssertEqual(events[1], Recorded.next(100, LineType.bus))
+      XCTAssertEqual(events[2], Recorded.next(300, LineType.tram))
+    }
   }
 
-  func test_changingPage_dispatchesSelectPageAction() {
-    self.setState(LineType.tram)
-
-    self.initViewModel()
-    self.mockPageTransition(at: 100, .tram)
-    self.mockPageTransition(at: 200, .bus)
-    self.mockPageTransition(at: 300, .bus)
-    self.mockPageTransition(at: 400, .tram)
+  func test_changingPage_invokesOnPageTransition() {
+    self.didTransitionToPage(at:   0, LineType.tram)
+    self.didTransitionToPage(at: 100, LineType.bus)
+    self.didTransitionToPage(at: 200, LineType.bus)
+    self.didTransitionToPage(at: 300, LineType.tram)
 
     self.startScheduler()
 
-    XCTAssertEqual(self.dispatchedActions.count, 4)
-    XCTAssertEqual(self.getSearchCardStateSelectPageAction(at: 0), LineType.tram)
-    XCTAssertEqual(self.getSearchCardStateSelectPageAction(at: 1), LineType.bus)
-    XCTAssertEqual(self.getSearchCardStateSelectPageAction(at: 2), LineType.bus)
-    XCTAssertEqual(self.getSearchCardStateSelectPageAction(at: 3), LineType.tram)
-
-    XCTAssertEqual(self.storageMock.getSearchCardStateCount, 0) // we should get them from store
-    XCTAssertEqual(self.storageMock.saveSearchCardStateCount, 0)
+    if XCTIfEqual(self.onPageTransitionArgs.count, 4) {
+      XCTAssertEqual(self.onPageTransitionArgs[0], .tram)
+      XCTAssertEqual(self.onPageTransitionArgs[1], .bus)
+      XCTAssertEqual(self.onPageTransitionArgs[2], .bus)
+      XCTAssertEqual(self.onPageTransitionArgs[3], .tram)
+    }
   }
 }

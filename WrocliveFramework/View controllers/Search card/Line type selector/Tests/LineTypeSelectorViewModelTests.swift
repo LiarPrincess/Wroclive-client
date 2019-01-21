@@ -6,42 +6,41 @@ import XCTest
 import RxSwift
 import RxCocoa
 import RxTest
-import ReSwift
 @testable import WrocliveFramework
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-class LineTypeSelectorViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, EnvironmentTestCase {
+class LineTypeSelectorViewModelTests: XCTestCase, RxTestCase {
 
-  var store: Store<AppState>!
-  var dispatchedActions: [Action]!
+  var viewModel: LineTypeSelectorViewModel!
+
+  var pageProp: PublishSubject<LineType>!
+  var onPageChangeArgs: [LineType]!
+
+  var selectedIndexObserver: TestableObserver<Int>!
 
   var scheduler: TestScheduler!
   var disposeBag: DisposeBag!
 
-  var viewModel: LineTypeSelectorViewModel!
-
-  var selectedIndexObserver: TestableObserver<Int>!
-
   override func setUp() {
     super.setUp()
-    self.setUpRedux()
     self.setUpRx()
-    self.setUpEnvironment()
+
+    self.pageProp = PublishSubject<LineType>()
+    self.onPageChangeArgs = []
+
+    self.viewModel = LineTypeSelectorViewModel(
+      pageProp: self.pageProp.asObservable(),
+      onPageChange: { [unowned self] in self.onPageChangeArgs.append($0) }
+    )
+
+    self.selectedIndexObserver = self.scheduler.createObserver(Int.self)
+    self.viewModel.selectedIndex.drive(self.selectedIndexObserver).disposed(by: self.disposeBag)
   }
 
   override func tearDown() {
     super.tearDown()
-    self.tearDownEnvironment()
     self.tearDownRx()
-    self.tearDownRedux()
-  }
-
-  func initViewModel() {
-    self.viewModel = LineTypeSelectorViewModel(self.store)
-
-    self.selectedIndexObserver = self.scheduler.createObserver(Int.self)
-    self.viewModel.selectedIndex.drive(self.selectedIndexObserver).disposed(by: self.disposeBag)
   }
 
   // MARK: - Data
@@ -49,60 +48,59 @@ class LineTypeSelectorViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Env
   private let tramIndex = 0
   private let busIndex  = 1
 
-  func setState(_ state: LineType) {
-    self.setState { $0.userData.searchCardState = SearchCardState(page: state, selectedLines: []) }
+  private func setPageProp(at time: TestTime, _ value: LineType) {
+    self.scheduler.scheduleAt(time) { [unowned self] in
+      self.pageProp.asObserver().onNext(value)
+    }
+  }
+
+  private func didSelectIndex(at time: TestTime, _ value: Int) {
+    self.scheduler.scheduleAt(time) { [unowned self] in
+      self.viewModel.didSelectIndex.onNext(value)
+    }
   }
 
   // MARK: - Tests
 
-  func test_takesPageIndexState_fromStore() {
-    let page0 = LineType.tram
-    let page1 = LineType.bus
-    let page2 = LineType.bus // we should skip this one, as it is the same as previous
-    let page3 = LineType.tram
+  func test_showsTramsAndBuses() {
+    typealias Localization = Localizable.Search
 
-    self.setState(page0)
-    self.scheduler.scheduleAt(100) { [unowned self] in self.setState(page1) }
-    self.scheduler.scheduleAt(200) { [unowned self] in self.setState(page2) }
-    self.scheduler.scheduleAt(300) { [unowned self] in self.setState(page3) }
+    let pages = self.viewModel.pages
 
-    self.initViewModel()
-    self.startScheduler()
-
-    XCTAssertEqual(self.selectedIndexObserver.events, [
-      Recorded.next(0,   tramIndex),
-      Recorded.next(100, busIndex),
-      Recorded.next(300, tramIndex)
-    ])
-
-    XCTAssertEqual(self.storageMock.getSearchCardStateCount, 0) // we should get them from store
-    XCTAssertEqual(self.storageMock.saveSearchCardStateCount, 0)
+    guard pages.count == 2 else { XCTAssert(false); return }
+    XCTAssertEqual(pages[tramIndex], Localization.Pages.tram)
+    XCTAssertEqual(pages[busIndex],  Localization.Pages.bus)
   }
 
-  func test_changingPageIndex_dispatchesSelectPageAction() {
-    self.setState(LineType.tram)
-
-    self.initViewModel()
-    self.mockPageSelected(at: 100, tramIndex)
-    self.mockPageSelected(at: 200, busIndex)
-    self.mockPageSelected(at: 300, busIndex)
-    self.mockPageSelected(at: 400, tramIndex)
+  func test_takesPages_fromProps() {
+    self.setPageProp(at: 0,   .tram)
+    self.setPageProp(at: 100, .bus)
+    self.setPageProp(at: 200, .bus) // we should skip this one, as it is the same as previous
+    self.setPageProp(at: 300, .tram)
 
     self.startScheduler()
 
-    XCTAssertEqual(self.dispatchedActions.count, 4)
-    XCTAssertEqual(self.getSearchCardStateSelectPageAction(at: 0), LineType.tram)
-    XCTAssertEqual(self.getSearchCardStateSelectPageAction(at: 1), LineType.bus)
-    XCTAssertEqual(self.getSearchCardStateSelectPageAction(at: 2), LineType.bus)
-    XCTAssertEqual(self.getSearchCardStateSelectPageAction(at: 3), LineType.tram)
-
-    XCTAssertEqual(self.storageMock.getSearchCardStateCount, 0) // we should get them from store
-    XCTAssertEqual(self.storageMock.saveSearchCardStateCount, 0)
+    let events = self.selectedIndexObserver.events
+    guard events.count == 3 else { XCTAssert(false); return }
+    XCTAssertEqual(events[0], Recorded.next(0,   tramIndex))
+    XCTAssertEqual(events[1], Recorded.next(100, busIndex))
+    XCTAssertEqual(events[2], Recorded.next(300, tramIndex))
   }
 
-  func mockPageSelected(at time: TestTime, _ value: Int) {
-    self.scheduler.scheduleAt(time) { [unowned self] in
-      self.viewModel.didSelectIndex.onNext(value)
-    }
+  func test_changingPageIndex_invokesOnPageChange() {
+    self.didSelectIndex(at:   0, tramIndex)
+    self.didSelectIndex(at: 100, busIndex)
+    self.didSelectIndex(at: 200, -1) // out of bounds
+    self.didSelectIndex(at: 300, busIndex)
+    self.didSelectIndex(at: 400, 2) // out of bounds
+    self.didSelectIndex(at: 500, tramIndex)
+
+    self.startScheduler()
+
+    guard self.onPageChangeArgs.count == 4 else { XCTAssert(false); return }
+    XCTAssertEqual(self.onPageChangeArgs[0], .tram)
+    XCTAssertEqual(self.onPageChangeArgs[1], .bus)
+    XCTAssertEqual(self.onPageChangeArgs[2], .bus)
+    XCTAssertEqual(self.onPageChangeArgs[3], .tram)
   }
 }

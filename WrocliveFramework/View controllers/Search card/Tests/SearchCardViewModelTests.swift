@@ -15,14 +15,15 @@ private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
 class SearchCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, EnvironmentTestCase {
 
+  var viewModel: SearchCardViewModel!
+
   var store: Store<AppState>!
   var dispatchedActions: [Action]!
 
   var scheduler: TestScheduler!
   var disposeBag: DisposeBag!
 
-  var viewModel: SearchCardViewModel!
-
+  var linesObserver:                 TestableObserver<[Line]>!
   var isLineSelectorVisibleObserver: TestableObserver<Bool>!
   var isPlaceholderVisibleObserver:  TestableObserver<Bool>!
   var showAlertObserver:             TestableObserver<SearchCardAlert>!
@@ -33,17 +34,21 @@ class SearchCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Environme
     self.setUpRedux()
     self.setUpRx()
     self.setUpEnvironment()
-  }
 
-  override func tearDown() {
-    super.tearDown()
-    self.tearDownEnvironment()
-    self.tearDownRx()
-    self.tearDownRedux()
-  }
+    self.viewModel = SearchCardViewModel(store: self.store)
 
-  func initViewModel() {
-    self.viewModel = SearchCardViewModel(self.store)
+    typealias Sections = [RxSectionModel<LineSelectorSectionData, Line>]
+    let tramSections = self.viewModel.lineSelectorViewModel.busPageViewModel.sections
+    let busSections  = self.viewModel.lineSelectorViewModel.tramPageViewModel.sections
+
+    self.self.linesObserver = self.scheduler.createObserver([Line].self)
+    Driver.zip(tramSections, busSections)
+      .map { (lhs: Sections, rhs: Sections) -> [Line] in
+        let lhsLines = lhs.flatMap { $0.items }
+        let rhsLines = rhs.flatMap { $0.items }
+        return lhsLines + rhsLines
+      }
+      .drive(self.linesObserver).disposed(by: self.disposeBag)
 
     self.isLineSelectorVisibleObserver = self.scheduler.createObserver(Bool.self)
     self.viewModel.isLineSelectorVisible.drive(self.isLineSelectorVisibleObserver).disposed(by: self.disposeBag)
@@ -58,6 +63,13 @@ class SearchCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Environme
     self.viewModel.close.drive(self.closeObserver).disposed(by: self.disposeBag)
   }
 
+  override func tearDown() {
+    super.tearDown()
+    self.tearDownEnvironment()
+    self.tearDownRx()
+    self.tearDownRedux()
+  }
+
   // MARK: - Data
 
   lazy var testLines: [Line] = {
@@ -69,51 +81,49 @@ class SearchCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Environme
     return [line0, line1, line2, line3, line4]
   }()
 
-  func setState(_ state: SearchCardState) {
-    self.setState { $0.userData.searchCardState = state }
-  }
+  // MARK: - Events
 
   typealias LineResponse = ApiResponseState<[Line]>
 
-  func setLineResponse(_ response: LineResponse) {
-    self.setState { $0.apiData.lines = response }
-  }
-
-  // MARK: - Events
-
-  func mockLineResponse(at time: TestTime, _ response: LineResponse) {
+  func setState(at time: TestTime, _ state: SearchCardState) {
     self.scheduler.scheduleAt(time) { [unowned self] in
-      self.setLineResponse(response)
+      self.setState { $0.userData.searchCardState = state }
     }
   }
 
-  func mockTryAgainButtonPressed(at time: TestTime) {
+  func setLineResponseState(at time: TestTime, _ response: LineResponse) {
     self.scheduler.scheduleAt(time) { [unowned self] in
-      self.viewModel.didPressAlertTryAgainButton.onNext()
+      self.setState { $0.apiData.lines = response }
     }
   }
 
-  func mockBookmarkButtonPressed(at time: TestTime) {
+  func didPressBookmarkButton(at time: TestTime) {
     self.scheduler.scheduleAt(time) { [unowned self] in
       self.viewModel.didPressBookmarkButton.onNext()
     }
   }
 
-  func mockBookmarkAlertNameEntered(at time: TestTime, _ value: String) {
-    self.scheduler.scheduleAt(time) { [unowned self] in
-      self.viewModel.didEnterBookmarkName.onNext(value)
-    }
-  }
-
-  func mockSearchButtonPressed(at time: TestTime) {
+  func didPressSearchButton(at time: TestTime) {
     self.scheduler.scheduleAt(time) { [unowned self] in
       self.viewModel.didPressSearchButton.onNext()
     }
   }
 
-  func mockViewDidLoad(at time: TestTime) {
+  func didPressAlertTryAgainButton(at time: TestTime) {
     self.scheduler.scheduleAt(time) { [unowned self] in
-      self.viewModel.viewDidLoad.onNext()
+      self.viewModel.didPressAlertTryAgainButton.onNext()
+    }
+  }
+
+  func didEnterBookmarkName(at time: TestTime, _ value: String) {
+    self.scheduler.scheduleAt(time) { [unowned self] in
+      self.viewModel.didEnterBookmarkName.onNext(value)
+    }
+  }
+
+  func viewWillAppear(at time: TestTime) {
+    self.scheduler.scheduleAt(time) { [unowned self] in
+      self.viewModel.viewWillAppear.onNext()
     }
   }
 }

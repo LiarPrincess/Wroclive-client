@@ -56,10 +56,7 @@ public final class LineSelectorPage: UIViewController {
       .bind(to: self.collectionView.rx.items(dataSource: self.collectionViewDataSource))
       .disposed(by: disposeBag)
 
-    let setIndicesAgainAfterChangingSections = self.viewModel.sections
-      .withLatestFrom(self.viewModel.selectedIndices)
-
-    Driver.merge(setIndicesAgainAfterChangingSections, self.viewModel.selectedIndices)
+    self.viewModel.selectedIndices
       .drive(onNext: { [unowned self] in self.selectIndices($0) })
       .disposed(by: disposeBag)
 
@@ -104,7 +101,7 @@ public final class LineSelectorPage: UIViewController {
           view.update(from: LineSelectorHeaderViewModel(dataSource[indexPath.section]))
           return view
         default:
-          fatalError("Unexpected element kind")
+          fatalError("[LineSelectorPage] Unexpected supplementary view: \(kind)")
         }
       }
     )
@@ -158,7 +155,10 @@ public final class LineSelectorPage: UIViewController {
 // MARK: - CollectionViewDelegateFlowLayout
 
 extension LineSelectorPage: UICollectionViewDelegateFlowLayout {
-  public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+  public func collectionView(_ collectionView: UICollectionView,
+                             layout collectionViewLayout: UICollectionViewLayout,
+                             referenceSizeForHeaderInSection section: Int) -> CGSize {
+
     let header = self.collectionViewDataSource[section].model
 
     let width  = self.collectionView.contentWidth

@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import ReSwift
 import RxSwift
 import RxCocoa
 
@@ -24,54 +23,51 @@ public final class LineSelectorPageViewModel {
   // MARK: - Init
 
   // swiftlint:disable:next function_body_length
-  public init(_ store: Store<AppState>, for lineType: LineType) {
+  public init(linesProp:         Observable<[Line]>,
+              selectedLinesProp: Observable<[Line]>,
+              onLineSelected:    @escaping (Line) -> (),
+              onLineDeselected:  @escaping (Line) -> ()) {
+
     let _didSelectIndex = PublishSubject<IndexPath>()
     self.didSelectIndex = _didSelectIndex.asObserver()
 
     let _didDeselectIndex = PublishSubject<IndexPath>()
     self.didDeselectIndex = _didDeselectIndex.asObserver()
 
-    self.sections = store.rx.state
-      .map { $0.apiData.lines }
-      .map { lineResponse -> [Line] in
-        switch lineResponse {
-        case let .data(lines): return lines
-        default: return []
-        }
-      }
-      .map { $0.filter(lineType) }
-      .map { LineSelectorSectionCreator.create($0) }
+    self.sections = linesProp
+      .map(LineSelectorSectionCreator.create)
       .startWith([])
       .distinctUntilChanged()
       .asDriver(onErrorDriveWith: .never())
 
-    self.selectedIndices = store.rx.state
-      .map { $0.userData.searchCardState.selectedLines }
-      .map { $0.filter(lineType) }
-      .withLatestFrom(self.sections) { (lines: $0, sections: $1) }
-      .map { findIndices(of: $0.lines, in: $0.sections) }
-      .startWith([])
+    // because of how UICollectionView works we need re-post selectedIndices every time lines change
+    // do not use .distinctUntilChanged(), if the lines changed then probably `selectedLines` have not
+    let indicesAfterLinesChanged = self.sections.asObservable()
+      .withLatestFrom(selectedLinesProp) { findLineIndices(of: $1, in: $0) }
+
+    let indicesAfterSelectedLinesChanged = selectedLinesProp
+      .withLatestFrom(self.sections) { findLineIndices(of: $0, in: $1) }
       .distinctUntilChanged()
+
+    self.selectedIndices = Observable.merge(indicesAfterLinesChanged, indicesAfterSelectedLinesChanged)
+      .startWith([])
       .asDriver(onErrorDriveWith: .never())
 
     _didSelectIndex
-      .withLatestFrom(self.sections) { (index: $0, sections: $1) }
-      .map { getLine(at: $0.index, from: $0.sections) }
+      .withLatestFrom(self.sections, resultSelector: getLineAtIndex)
       .unwrap()
-      .bind { store.dispatch(SearchCardStateAction.selectLine($0)) }
+      .bind(onNext: onLineSelected)
       .disposed(by: self.disposeBag)
 
     _didDeselectIndex
-      .withLatestFrom(self.sections) { (index: $0, sections: $1) }
-      .map { getLine(at: $0.index, from: $0.sections) }
+      .withLatestFrom(self.sections, resultSelector: getLineAtIndex)
       .unwrap()
-      .bind { store.dispatch(SearchCardStateAction.deselectLine($0)) }
+      .bind(onNext: onLineDeselected)
       .disposed(by: self.disposeBag)
   }
 }
 
-private func findIndices(of lines: [Line], in sections: [LineSelectorSection]) -> [IndexPath] {
-  // fast path for common case
+private func findLineIndices(of lines: [Line], in sections: [LineSelectorSection]) -> [IndexPath] {
   guard lines.any else { return [] }
 
   var indexMap = [Line:IndexPath]()
@@ -84,7 +80,7 @@ private func findIndices(of lines: [Line], in sections: [LineSelectorSection]) -
   return lines.compactMap { indexMap[$0] }
 }
 
-private func getLine(at index: IndexPath, from sections: [LineSelectorSection]) -> Line? {
+private func getLineAtIndex(at index: IndexPath, from sections: [LineSelectorSection]) -> Line? {
   guard index.section >= 0
      && index.section < sections.count
     else { return nil }

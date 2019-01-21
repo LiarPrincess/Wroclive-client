@@ -3,7 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import ReSwift
 import RxSwift
 import RxCocoa
 
@@ -17,27 +16,63 @@ public final class LineSelectorViewModel {
 
   // MARK: - Output
 
-  let tramPageViewModel: LineSelectorPageViewModel
-  let busPageViewModel:  LineSelectorPageViewModel
+  public let tramPageViewModel: LineSelectorPageViewModel
+  public let busPageViewModel:  LineSelectorPageViewModel
 
   public let page: Driver<LineType>
 
   // MARK: - Init
 
-  public init(_ store: Store<AppState>) {
-    self.tramPageViewModel = LineSelectorPageViewModel(store, for: .tram)
-    self.busPageViewModel  = LineSelectorPageViewModel(store, for: .bus)
+  public init(pageProp:          Observable<LineType>,
+              linesProp:         Observable<[Line]>,
+              selectedLinesProp: Observable<[Line]>,
+              onPageTransition:  @escaping (LineType) -> (),
+              onLineSelected:    @escaping (Line) -> (),
+              onLineDeselected:  @escaping (Line) -> ()) {
 
     let _didTransitionToPage = PublishSubject<LineType>()
     self.didTransitionToPage = _didTransitionToPage.asObserver()
 
-    self.page = store.rx.state
-      .map { $0.userData.searchCardState.page }
+    self.tramPageViewModel = createPageViewModel(
+      type: .tram,
+      linesProp:         linesProp,
+      selectedLinesProp: selectedLinesProp,
+      onLineSelected:    onLineSelected,
+      onLineDeselected:  onLineDeselected
+    )
+
+    self.busPageViewModel = createPageViewModel(
+      type: .bus,
+      linesProp:         linesProp,
+      selectedLinesProp: selectedLinesProp,
+      onLineSelected:    onLineSelected,
+      onLineDeselected:  onLineDeselected
+    )
+
+    self.page = pageProp
       .distinctUntilChanged()
       .asDriver(onErrorDriveWith: .never())
 
     _didTransitionToPage.asObservable()
-      .bind { store.dispatch(SearchCardStateAction.selectPage($0)) }
+      .bind(onNext: onPageTransition)
       .disposed(by: self.disposeBag)
   }
+}
+
+private func createPageViewModel(type lineType: LineType,
+                                 linesProp:         Observable<[Line]>,
+                                 selectedLinesProp: Observable<[Line]>,
+                                 onLineSelected:    @escaping (Line) -> (),
+                                 onLineDeselected:  @escaping (Line) -> ()) -> LineSelectorPageViewModel {
+
+  return LineSelectorPageViewModel(
+    linesProp:         linesProp.map(only(lineType)),
+    selectedLinesProp: selectedLinesProp.map(only(lineType)),
+    onLineSelected:    onLineSelected,
+    onLineDeselected:  onLineDeselected
+  )
+}
+
+private func only(_ lineType: LineType) -> ([Line]) -> [Line] {
+  return { $0.filter(lineType) }
 }

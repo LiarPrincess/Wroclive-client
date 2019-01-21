@@ -217,6 +217,7 @@
 		90B96BBE21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B96BBD21E3FE34006A63E8 /* Actions+CustomStringConvertible.swift */; };
 		90D8DE6021D5AD60002B33D1 /* Collection+AnyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8DE5E21D5AD1D002B33D1 /* Collection+AnyTests.swift */; };
 		90D8DE6421D5B375002B33D1 /* Collection+GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */; };
+		90E23C9021F5013700AFF9CF /* XCTIfEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E23C8F21F5013700AFF9CF /* XCTIfEqual.swift */; };
 		90ED51061F3BAFF800C782D5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90ED51081F3BAFF800C782D5 /* InfoPlist.strings */; };
 		90F9F89020DDBE8400793E4C /* VehicleAnnotationUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C405F2014E77B00E32571 /* VehicleAnnotationUpdaterTests.swift */; };
 		90F9F89120DDBE8700793E4C /* MapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90203F872034D23A00CC5148 /* MapViewModelTests.swift */; };
@@ -470,6 +471,7 @@
 		90D3A40D1FEFE89C00FB7485 /* RxSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSectionModel.swift; sourceTree = "<group>"; };
 		90D8DE5E21D5AD1D002B33D1 /* Collection+AnyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+AnyTests.swift"; sourceTree = "<group>"; };
 		90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+GroupTests.swift"; sourceTree = "<group>"; };
+		90E23C8F21F5013700AFF9CF /* XCTIfEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTIfEqual.swift; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "WrocliveFramework/Assets/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
 		90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
@@ -1059,6 +1061,7 @@
 			isa = PBXGroup;
 			children = (
 				90F9F89920DEAA3D00793E4C /* Assertions.swift */,
+				90E23C8F21F5013700AFF9CF /* XCTIfEqual.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1442,6 +1445,7 @@
 				90374B5220D8786100315F80 /* BookmarksCardViewModelTests+Edit.swift in Sources */,
 				9050954520D725DC005E2BF8 /* SearchCardViewModelTests.swift in Sources */,
 				90374B4F20D877F200315F80 /* BookmarksCardViewModelTests+Visibility.swift in Sources */,
+				90E23C9021F5013700AFF9CF /* XCTIfEqual.swift in Sources */,
 				90374B6E20D9A04700315F80 /* SearchCardViewModelTests+Tracking.swift in Sources */,
 				90374B6520D9780600315F80 /* SearchCardViewModelTests+Bookmarks.swift in Sources */,
 				9030AEB021DE936200AFCF78 /* BundleManagerMock.swift in Sources */,

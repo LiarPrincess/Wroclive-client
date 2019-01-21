@@ -7,7 +7,7 @@ public enum LineSelectorSectionCreator {
   public static func create(_ lines: [Line]) -> [LineSelectorSection] {
     return lines
       .group(by: { $0.subtype })
-      .map { createSection(subtype: $0, lines: $1) }
+      .map(createSection)
       .sorted { getOrder(subtype: $0.model.lineSubtype) < getOrder(subtype: $1.model.lineSubtype) }
   }
 

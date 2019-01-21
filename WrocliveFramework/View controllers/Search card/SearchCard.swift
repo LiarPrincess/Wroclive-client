@@ -88,13 +88,13 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable, Che
   private func initViewControlerLifecycleBindings() {
     // modal view controllers can send multiple messages when user cancels gesture
     // also simple binding would propagate also .onCompleted events
-    self.rx.methodInvoked(#selector(SearchCard.viewDidLoad))
+    self.rx.methodInvoked(#selector(SearchCard.viewWillAppear(_:)))
       .take(1)
-      .bind { [weak self] _ in self?.viewModel.viewDidLoad.onNext() }
+      .bind { [unowned self] _ in self.viewModel.viewWillAppear.onNext() }
       .disposed(by: self.disposeBag)
 
     self.viewModel.close
-      .drive(onNext: { [weak self] in self?.dismiss(animated: true, completion: nil) })
+      .drive(onNext: { [unowned self] in self.dismiss(animated: true, completion: nil) })
       .disposed(by: self.disposeBag)
   }
 

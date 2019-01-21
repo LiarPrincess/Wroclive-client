@@ -11,35 +11,27 @@ import RxTest
 extension SearchCardViewModelTests {
 
   func test_bookmarkButton_withoutSelectedLines_showsNoLineSelectedAlert() {
-    self.setState(SearchCardState(page: .tram, selectedLines: []))
-
-    self.initViewModel()
-    self.mockBookmarkButtonPressed(at: 100)
+    self.setState(at: 0, SearchCardState(page: .tram, selectedLines: []))
+    self.didPressBookmarkButton(at: 100)
     self.startScheduler()
 
-    XCTAssertEqual(self.showAlertObserver.events, [
-      Recorded.next(100, SearchCardAlert.bookmarkNoLineSelected)
-    ])
+    let events = self.showAlertObserver.events
+    XCTAssertEqual(events, [.next(100, SearchCardAlert.bookmarkNoLineSelected)])
   }
 
   func test_bookmarkButton_withSelectedLines_showsNameAlert() {
-    self.setState(SearchCardState(page: .tram, selectedLines: self.testLines))
-
-    self.initViewModel()
-    self.mockBookmarkButtonPressed(at: 100)
+    self.setState(at: 0, SearchCardState(page: .tram, selectedLines: self.testLines))
+    self.didPressBookmarkButton(at: 100)
     self.startScheduler()
 
-    XCTAssertEqual(self.showAlertObserver.events, [
-      Recorded.next(100, SearchCardAlert.bookmarkNameInput)
-    ])
+    let events = self.showAlertObserver.events
+    XCTAssertEqual(events, [.next(100, SearchCardAlert.bookmarkNameInput)])
   }
 
   func test_enteringName_dispatchesAddBookmarkAction() {
     let bookmark = Bookmark(name: "Test", lines: self.testLines)
-    self.setState(SearchCardState(page: .tram, selectedLines: bookmark.lines))
-
-    self.initViewModel()
-    self.mockBookmarkAlertNameEntered(at: 100, bookmark.name)
+    self.setState(at: 0, SearchCardState(page: .tram, selectedLines: bookmark.lines))
+    self.didEnterBookmarkName(at: 100, bookmark.name)
     self.startScheduler()
 
     XCTAssertEqual(self.dispatchedActions.count, 1)
