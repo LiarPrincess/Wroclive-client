@@ -541,6 +541,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		90070CE021F65941004C4F9E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				907DC6E61FF2B73F001C5DD6 /* Line type selector */,
+				9021F3E31F12C9EF000A6949 /* Lines selector */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		900B976A1FE1BB4D00AC7C35 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,8 +652,6 @@
 			isa = PBXGroup;
 			children = (
 				907E023D21DEB4F1007E5732 /* Tests */,
-				907DC6E61FF2B73F001C5DD6 /* Line type selector */,
-				9021F3E31F12C9EF000A6949 /* Lines selector */,
 				901ECDCB1FF58D5C004765AA /* SearchPlaceholderView.swift */,
 				901ECDCD1FF58D74004765AA /* SearchPlaceholderViewConstants.swift */,
 				9017C34E1EE339FD00063377 /* SearchCard.swift */,
@@ -793,6 +800,7 @@
 				9030ADF821DD76D500AFCF78 /* Extensions */,
 				900B976A1FE1BB4D00AC7C35 /* Helpers */,
 				900CBE8F2192E28D0028C58F /* Coordinators */,
+				90070CE021F65941004C4F9E /* Components */,
 				9017C33D1EE339FD00063377 /* View controllers */,
 				9030ADE521DD73DF00AFCF78 /* WrocliveFramework.h */,
 				9030ADE621DD73DF00AFCF78 /* Info.plist */,
