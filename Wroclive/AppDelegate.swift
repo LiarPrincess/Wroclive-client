@@ -24,8 +24,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // This is easily the most important line in the whole app.
     // Every call that interacts with native frameworks has to go through AppEnvironment.
-    let environment = self.createDefaultEnvironment()
-    AppEnvironment.push(environment)
+    AppEnvironment.push(.default)
 
     /// 'Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)'
     let appInfo: String = {
@@ -54,20 +53,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     self.updateScheduler = MapUpdateScheduler(self.store)
 
     return true
-  }
-
-  private func createDefaultEnvironment() -> Environment {
-    return Environment(
-      bundle: BundleManager(),
-      debug: DebugManager(),
-      device: DeviceManager(),
-      log: LogManager(),
-      network: NetworkManager(),
-      schedulers: SchedulersManager(),
-      storage: CachedStorageManager(using: StorageManager()),
-      userLocation: UserLocationManager(),
-      configuration: Configuration()
-    )
   }
 
   // MARK: - Activity

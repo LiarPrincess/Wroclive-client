@@ -43,11 +43,8 @@ class SearchCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Environme
 
     self.self.linesObserver = self.scheduler.createObserver([Line].self)
     Driver.zip(tramSections, busSections)
-      .map { (lhs: Sections, rhs: Sections) -> [Line] in
-        let lhsLines = lhs.flatMap { $0.items }
-        let rhsLines = rhs.flatMap { $0.items }
-        return lhsLines + rhsLines
-      }
+      .map { $0 + $1 }
+      .map { $0.flatMap { $0.items } }
       .drive(self.linesObserver).disposed(by: self.disposeBag)
 
     self.isLineSelectorVisibleObserver = self.scheduler.createObserver(Bool.self)

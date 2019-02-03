@@ -12,7 +12,7 @@
 
 import Foundation
 
-public struct Environment {
+public class Environment {
   {% for manager in types.all|annotated:"manager" %}
   public let {% call getName manager %}: {% call getProtocol manager %}
   {% endfor %}

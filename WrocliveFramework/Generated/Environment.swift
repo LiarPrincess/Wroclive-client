@@ -12,7 +12,7 @@
 
 import Foundation
 
-public struct Environment {
+public class Environment {
   public let bundle: BundleManagerType
   public let debug: DebugManagerType
   public let device: DeviceManagerType

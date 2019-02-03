@@ -25,8 +25,8 @@ public final class MainViewModel {
   public let openBookmarksCard: Driver<Void>
   public let openSettingsCard:  Driver<Void>
 
-  public init(_ store: Store<AppState>, _ mapViewModel: MapViewModel) {
-    self.mapViewModel = mapViewModel
+  public init(_ store: Store<AppState>) {
+    self.mapViewModel = MapViewModel(store)
 
     let _didPressSearchButton = PublishSubject<Void>()
     self.didPressSearchButton = _didPressSearchButton.asObserver()

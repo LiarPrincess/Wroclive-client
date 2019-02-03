@@ -25,8 +25,7 @@ public final class AppCoordinator: Coordinator {
   }
 
   public func start() {
-    let mapViewModel = MapViewModel(self.store)
-    let viewModel = MainViewModel(self.store, mapViewModel)
+    let viewModel = MainViewModel(self.store)
     self.mainViewController = MainViewController(viewModel)
 
     viewModel.openSearchCard

@@ -36,7 +36,7 @@ public final class SearchCardViewModel {
   // MARK: - Init
 
   // swiftlint:disable:next function_body_length
-  public init(store: Store<AppState>) {
+  public init(_ store: Store<AppState>) {
     let _didPressBookmarkButton = PublishSubject<Void>()
     self.didPressBookmarkButton = _didPressBookmarkButton.asObserver()
 

@@ -76,7 +76,6 @@
 		9030AE2821DD840500AFCF78 /* PersistencyMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066795E2199FE0F00050CFA /* PersistencyMiddleware.swift */; };
 		9030AE2921DD840500AFCF78 /* NetworkActivityIndicatorMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E03121D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift */; };
 		9030AE2A21DD840500AFCF78 /* createMiddlewares.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030ADC921DD4E3300AFCF78 /* createMiddlewares.swift */; };
-		9030AE2B21DD840500AFCF78 /* createSingleMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5E03321D7E3BD00B39DBA /* createSingleMiddleware.swift */; };
 		9030AE2D21DD847500AFCF78 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A41FE1C5BD006D1DB6 /* Api.swift */; };
 		9030AE2E21DD847B00AFCF78 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C406F201915D900E32571 /* Endpoint.swift */; };
 		9030AE2F21DD847B00AFCF78 /* LinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905D71A71FE1C5BD006D1DB6 /* LinesEndpoint.swift */; };
@@ -187,6 +186,7 @@
 		9030AEB621DEA0FD00AFCF78 /* LogManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030AEB521DEA0FD00AFCF78 /* LogManagerMock.swift */; };
 		9030AEB821DEA1B000AFCF78 /* DebugManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030AEB721DEA1B000AFCF78 /* DebugManagerMock.swift */; };
 		9030AEBA21DEA1FF00AFCF78 /* EnvironmentTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030AEB921DEA1FF00AFCF78 /* EnvironmentTestCase.swift */; };
+		90334BBD22079A9600DB1596 /* Environment+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90334BBC22079A9600DB1596 /* Environment+Default.swift */; };
 		90374B4B20D876C600315F80 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4920D8766F00315F80 /* BookmarksCardViewModelTests+Bookmarks.swift */; };
 		90374B4F20D877F200315F80 /* BookmarksCardViewModelTests+Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4D20D8777600315F80 /* BookmarksCardViewModelTests+Visibility.swift */; };
 		90374B5220D8786100315F80 /* BookmarksCardViewModelTests+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5020D8785C00315F80 /* BookmarksCardViewModelTests+Edit.swift */; };
@@ -364,6 +364,8 @@
 		9030AEB521DEA0FD00AFCF78 /* LogManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManagerMock.swift; sourceTree = "<group>"; };
 		9030AEB721DEA1B000AFCF78 /* DebugManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugManagerMock.swift; sourceTree = "<group>"; };
 		9030AEB921DEA1FF00AFCF78 /* EnvironmentTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTestCase.swift; sourceTree = "<group>"; };
+		90334BBB220794F600DB1596 /* MainViewController.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MainViewController.playground; path = "View controllers/MainViewController.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		90334BBC22079A9600DB1596 /* Environment+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Default.swift"; sourceTree = "<group>"; };
 		90374B4920D8766F00315F80 /* BookmarksCardViewModelTests+Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Bookmarks.swift"; sourceTree = "<group>"; };
 		90374B4D20D8777600315F80 /* BookmarksCardViewModelTests+Visibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Visibility.swift"; sourceTree = "<group>"; };
 		90374B5020D8785C00315F80 /* BookmarksCardViewModelTests+Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Edit.swift"; sourceTree = "<group>"; };
@@ -439,7 +441,6 @@
 		90A5E02921D7C5F800B39DBA /* TextAttributeEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeEnums.swift; sourceTree = "<group>"; };
 		90A5E02D21D7CFC400B39DBA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		90A5E03121D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorMiddleware.swift; sourceTree = "<group>"; };
-		90A5E03321D7E3BD00B39DBA /* createSingleMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createSingleMiddleware.swift; sourceTree = "<group>"; };
 		90A913771F376E390095B873 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
 		90AACC88200ACA890064EDFD /* AlertCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCreator.swift; sourceTree = "<group>"; };
 		90AACC8C200BA01A0064EDFD /* LineSelectorSectionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreator.swift; sourceTree = "<group>"; };
@@ -750,6 +751,7 @@
 				9030ADCB21DD556500AFCF78 /* LogManager.swift */,
 				906C40582014C55700E32571 /* DebugManager.swift */,
 				9079DCD51F6C545600C6ABCD /* Configuration.swift */,
+				90334BBC22079A9600DB1596 /* Environment+Default.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -863,6 +865,14 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		90334BB92207941E00DB1596 /* Playgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				90334BBB220794F600DB1596 /* MainViewController.playground */,
+			);
+			path = Playgrounds;
+			sourceTree = "<group>";
+		};
 		90374B4720D871C900315F80 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,7 +942,6 @@
 				9066795E2199FE0F00050CFA /* PersistencyMiddleware.swift */,
 				90A5E03121D7DE4000B39DBA /* NetworkActivityIndicatorMiddleware.swift */,
 				9030ADC921DD4E3300AFCF78 /* createMiddlewares.swift */,
-				90A5E03321D7E3BD00B39DBA /* createSingleMiddleware.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -1105,6 +1114,7 @@
 				OBJ_7 /* Wroclive */,
 				9030ADE421DD73DF00AFCF78 /* WrocliveFramework */,
 				OBJ_41 /* WrocliveTests */,
+				90334BB92207941E00DB1596 /* Playgrounds */,
 				4A3B2CBD6F0B3CF6ADE0EBAE /* Pods */,
 				902812FE1E59DE4800F26027 /* Frameworks */,
 				OBJ_42 /* Products */,
@@ -1576,7 +1586,7 @@
 				9030AE5C21DD88D900AFCF78 /* SearchCardCoordinator.swift in Sources */,
 				9030AE1A21DD82FE00AFCF78 /* FontPreset.swift in Sources */,
 				9030AE0821DD76F500AFCF78 /* CGFloat+Rad.swift in Sources */,
-				9030AE2B21DD840500AFCF78 /* createSingleMiddleware.swift in Sources */,
+				90334BBD22079A9600DB1596 /* Environment+Default.swift in Sources */,
 				9030AE5B21DD88D900AFCF78 /* AppCoordinator.swift in Sources */,
 				9030AE8521DD8CE700AFCF78 /* SettingsCellType.swift in Sources */,
 				9030AE4121DD867B00AFCF78 /* MapUpdateScheduler.swift in Sources */,
@@ -1776,11 +1786,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D7D952203A5546CF57E17DD /* Pods-Wroclive.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_CODE_COVERAGE = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -1806,7 +1815,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1828,8 +1837,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_COMPILATION_MODE = singlefile;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -1838,11 +1845,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0FF0C2E05EE40A62927A9D53 /* Pods-Wroclive.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -1866,7 +1872,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1881,7 +1887,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nopoint.wroclive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
