@@ -545,6 +545,7 @@
 		90070CE021F65941004C4F9E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				90AC422721E7DD2100B5298A /* Chevron view */,
 				907DC6E61FF2B73F001C5DD6 /* Line type selector */,
 				9021F3E31F12C9EF000A6949 /* Lines selector */,
 			);
@@ -555,7 +556,6 @@
 			isa = PBXGroup;
 			children = (
 				900CAE8A1F482E750044C8A6 /* Alerts */,
-				90AC422721E7DD2100B5298A /* Chevron view */,
 				9021F3F91F12C9EF000A6949 /* Card panel */,
 				908FB1971F48B3CA00121584 /* Reusable cell */,
 				90C4B133202E331A00920706 /* Rx data sources */,
