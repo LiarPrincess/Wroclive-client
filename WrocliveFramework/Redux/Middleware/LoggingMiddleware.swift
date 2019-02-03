@@ -6,9 +6,15 @@ import Foundation
 import os.log
 import ReSwift
 
+// swiftlint:disable implicit_return
+
 public func createLoggingMiddleware() -> Middleware<AppState> {
-  return createSingleMiddleware { _, _, next, action in
-    os_log("%{public}@", log: AppEnvironment.log.redux, type: .info, String(describing: action))
-    next(action)
+  return { dispatch, getState in
+    return { next in
+      return { action in
+        os_log("%{public}@", log: AppEnvironment.log.redux, type: .info, String(describing: action))
+        next(action)
+      }
+    }
   }
 }

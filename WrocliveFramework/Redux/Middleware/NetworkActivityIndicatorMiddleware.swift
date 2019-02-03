@@ -5,13 +5,21 @@
 import Foundation
 import ReSwift
 
-public func createNetworkActivityIndicatorMiddleware() -> Middleware<AppState> {
-  return createSingleMiddleware { _, getState, next, action in
-    next(action)
+// swiftlint:disable implicit_return
 
-    if let state = getState() {
-      let hasPending = hasPendingRequests(state)
-      AppEnvironment.network.setNetworkActivityIndicatorVisibility(hasPending)
+public func createNetworkActivityIndicatorMiddleware() -> Middleware<AppState> {
+  return { dispatch, getState in
+    return { next in
+      return { action in
+
+        // dispatch action and only later check if we have pending request
+        next(action)
+
+        if let state = getState() {
+          let hasPending = hasPendingRequests(state)
+          AppEnvironment.network.setNetworkActivityIndicatorVisibility(hasPending)
+        }
+      }
     }
   }
 }

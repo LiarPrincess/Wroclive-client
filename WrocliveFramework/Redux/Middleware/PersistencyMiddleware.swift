@@ -6,14 +6,21 @@ import Foundation
 import os.log
 import ReSwift
 
-public func createPersistencyMiddleware() -> Middleware<AppState> {
-  return createSingleMiddleware { _, getState, next, action in
-    let before = getState()
-    next(action)
-    let after = getState()
+// swiftlint:disable implicit_return
 
-    saveBookmarksIfNeeded(before, after)
-    saveSearchCardStateIfNeeded(before, after)
+public func createPersistencyMiddleware() -> Middleware<AppState> {
+  return { dispatch, getState in
+    return { next in
+      return { action in
+
+        let before = getState()
+        next(action)
+        let after = getState()
+
+        saveBookmarksIfNeeded(before, after)
+        saveSearchCardStateIfNeeded(before, after)
+      }
+    }
   }
 }
 

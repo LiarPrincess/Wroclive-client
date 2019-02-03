@@ -5,16 +5,22 @@
 import Foundation
 import ReSwift
 
-public func createApiMiddleware() -> Middleware<AppState> {
-  let api = Api()
-  return createSingleMiddleware { dispatch, getState, next, action in
-    guard let state = getState()
-      else { return }
+// swiftlint:disable implicit_return
 
-    switch action {
-    case ApiAction.updateLines: updateLines(api, dispatch)
-    case ApiAction.updateVehicleLocations: updateVehicleLocations(state, api, dispatch)
-    default: next(action)
+public func createApiMiddleware(_ api: ApiType) -> Middleware<AppState> {
+  return { dispatch, getState in
+    return { next in
+      return { action in
+
+        guard let state = getState()
+          else { return }
+
+        switch action {
+        case ApiAction.updateLines: updateLines(api, dispatch)
+        case ApiAction.updateVehicleLocations: updateVehicleLocations(state, api, dispatch)
+        default: next(action)
+        }
+      }
     }
   }
 }
