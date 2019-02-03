@@ -57,7 +57,6 @@
 		9030AE1521DD80DC00AFCF78 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030ADCB21DD556500AFCF78 /* LogManager.swift */; };
 		9030AE1621DD80DC00AFCF78 /* DebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40582014C55700E32571 /* DebugManager.swift */; };
 		9030AE1721DD80DC00AFCF78 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9079DCD51F6C545600C6ABCD /* Configuration.swift */; };
-		9030AE1821DD80E300AFCF78 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CEC011FC4D5D7001C6B04 /* Document.swift */; };
 		9030AE1921DD80E300AFCF78 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905070612087EF53007DDA80 /* FileSystem.swift */; };
 		9030AE1A21DD82FE00AFCF78 /* FontPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6541F5229A500F7EF48 /* FontPreset.swift */; };
 		9030AE1B21DD82FE00AFCF78 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9056F6551F5229A500F7EF48 /* SystemFont.swift */; };
@@ -187,6 +186,7 @@
 		9030AEB821DEA1B000AFCF78 /* DebugManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030AEB721DEA1B000AFCF78 /* DebugManagerMock.swift */; };
 		9030AEBA21DEA1FF00AFCF78 /* EnvironmentTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9030AEB921DEA1FF00AFCF78 /* EnvironmentTestCase.swift */; };
 		90334BBD22079A9600DB1596 /* Environment+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90334BBC22079A9600DB1596 /* Environment+Default.swift */; };
+		90334BBF2207A5BB00DB1596 /* CachedStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90334BBE2207A5BB00DB1596 /* CachedStorageManager.swift */; };
 		90374B4B20D876C600315F80 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4920D8766F00315F80 /* BookmarksCardViewModelTests+Bookmarks.swift */; };
 		90374B4F20D877F200315F80 /* BookmarksCardViewModelTests+Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B4D20D8777600315F80 /* BookmarksCardViewModelTests+Visibility.swift */; };
 		90374B5220D8786100315F80 /* BookmarksCardViewModelTests+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90374B5020D8785C00315F80 /* BookmarksCardViewModelTests+Edit.swift */; };
@@ -283,7 +283,6 @@
 		900CBE9A21937E2D0028C58F /* SearchCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardCoordinator.swift; sourceTree = "<group>"; };
 		900CBE9C219388F30028C58F /* CardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCoordinator.swift; sourceTree = "<group>"; };
 		900CBE9F219394FB0028C58F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
-		900CEC011FC4D5D7001C6B04 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		900CEC031FC4E3F1001C6B04 /* Collection+Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Any.swift"; sourceTree = "<group>"; };
 		9010D5B2201FA01E00563BDB /* DismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
 		9010D5B4201FA04500563BDB /* ScrollViewDismissGestureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewDismissGestureHandler.swift; sourceTree = "<group>"; };
@@ -366,6 +365,7 @@
 		9030AEB921DEA1FF00AFCF78 /* EnvironmentTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTestCase.swift; sourceTree = "<group>"; };
 		90334BBB220794F600DB1596 /* MainViewController.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MainViewController.playground; path = "View controllers/MainViewController.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		90334BBC22079A9600DB1596 /* Environment+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Default.swift"; sourceTree = "<group>"; };
+		90334BBE2207A5BB00DB1596 /* CachedStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedStorageManager.swift; sourceTree = "<group>"; };
 		90374B4920D8766F00315F80 /* BookmarksCardViewModelTests+Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Bookmarks.swift"; sourceTree = "<group>"; };
 		90374B4D20D8777600315F80 /* BookmarksCardViewModelTests+Visibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Visibility.swift"; sourceTree = "<group>"; };
 		90374B5020D8785C00315F80 /* BookmarksCardViewModelTests+Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Edit.swift"; sourceTree = "<group>"; };
@@ -745,6 +745,7 @@
 				90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */,
 				90E8A6C71F4CD49800CE5AE9 /* DeviceManager.swift */,
 				9050705E2087EE66007DDA80 /* StorageManager.swift */,
+				90334BBE2207A5BB00DB1596 /* CachedStorageManager.swift */,
 				9016FD0B208B48EC0043524D /* SchedulersManager.swift */,
 				90A5E02D21D7CFC400B39DBA /* NetworkManager.swift */,
 				905D718B1FE1C443006D1DB6 /* UserLocationManager.swift */,
@@ -899,7 +900,6 @@
 		905070602087EF28007DDA80 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				900CEC011FC4D5D7001C6B04 /* Document.swift */,
 				905070612087EF53007DDA80 /* FileSystem.swift */,
 			);
 			path = Storage;
@@ -1544,7 +1544,6 @@
 				9030AE5021DD869C00AFCF78 /* DismissGestureHandlerType.swift in Sources */,
 				9030AE2321DD840000AFCF78 /* UserDataReducer.swift in Sources */,
 				9030AE0921DD76F500AFCF78 /* ReSwift+Rx.swift in Sources */,
-				9030AE1821DD80E300AFCF78 /* Document.swift in Sources */,
 				9030AE4221DD868D00AFCF78 /* LocationAlerts.swift in Sources */,
 				905BA30421EFE7FE0028AED4 /* LineSelectorViewModel.swift in Sources */,
 				9030AE5621DD869C00AFCF78 /* CardPanelDismissTransition.swift in Sources */,
@@ -1613,6 +1612,7 @@
 				9030AE5221DD869C00AFCF78 /* ScrollViewDismissGestureHandler.swift in Sources */,
 				9030AE0721DD76F500AFCF78 /* CLAuthorizationStatus+String.swift in Sources */,
 				9030AE6C21DD89B300AFCF78 /* BookmarksCardLayout.swift in Sources */,
+				90334BBF2207A5BB00DB1596 /* CachedStorageManager.swift in Sources */,
 				9030AE4A21DD868D00AFCF78 /* RxSectionModel.swift in Sources */,
 				9030AE9021DD8CE700AFCF78 /* SettingsCardConstants.swift in Sources */,
 				9030AE6121DD892700AFCF78 /* VehicleAnnotationUpdater.swift in Sources */,
