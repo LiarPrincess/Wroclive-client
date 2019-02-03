@@ -40,7 +40,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     Theme.setupAppearance()
 
     os_log("Initializing redux store", log: AppEnvironment.log.app, type: .info)
-    let state = AppState.load(from: AppEnvironment.storage)
+    let state = loadPreviousState()
     let middlewares = createMiddlewares()
     self.store = Store<AppState>(reducer: appReducer, state: state, middleware: middlewares)
 

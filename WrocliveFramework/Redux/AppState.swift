@@ -8,17 +8,6 @@ import ReSwift
 public struct AppState: StateType {
   public var userData: UserDataState
   public var apiData:  ApiDataState
-
-  public static func load(from storage: StorageManagerType) -> AppState {
-    return AppState(
-      userData: UserDataState(
-        bookmarks: storage.getSavedBookmarks() ?? [],
-        searchCardState: storage.getSavedSearchCardState() ?? .default,
-        trackedLines: []
-      ),
-      apiData: ApiDataState()
-    )
-  }
 }
 
 public struct UserDataState {
@@ -37,4 +26,15 @@ public enum ApiResponseState<Data> {
   case inProgress
   case data(Data)
   case error(ApiError)
+}
+
+public func loadPreviousState() -> AppState {
+  return AppState(
+    userData: UserDataState(
+      bookmarks: AppEnvironment.storage.getSavedBookmarks() ?? [],
+      searchCardState: AppEnvironment.storage.getSavedSearchCardState() ?? .default,
+      trackedLines: []
+    ),
+    apiData: ApiDataState()
+  )
 }
