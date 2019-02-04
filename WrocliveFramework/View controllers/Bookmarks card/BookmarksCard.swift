@@ -29,10 +29,6 @@ public final class BookmarksCard: UIViewController, CustomCardPanelPresentable, 
   private let viewModel: BookmarksCardViewModel
   private let disposeBag = DisposeBag()
 
-  // MARK: - Card panel
-
-  public var scrollView: UIScrollView? { return self.tableView }
-
   // MARK: - Init
 
   public init(_ viewModel: BookmarksCardViewModel) {
@@ -167,6 +163,10 @@ public final class BookmarksCard: UIViewController, CustomCardPanelPresentable, 
   }
 
   // MARK: - CustomCardPanelPresentable
+
+  public var scrollView: UIScrollView? {
+    return self.tableView
+  }
 
   public func interactiveDismissalProgress(percent: CGFloat) {
     self.updateChevronViewDuringInteractiveDismissal(percent: percent)

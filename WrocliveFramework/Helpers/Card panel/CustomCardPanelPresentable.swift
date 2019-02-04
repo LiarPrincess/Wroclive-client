@@ -5,6 +5,8 @@
 import UIKit
 
 public protocol CustomCardPanelPresentable: class {
+
+  /// Scroll view that can be used to dismiss card.
   var scrollView: UIScrollView? { get }
 
   func interactiveDismissalWillBegin()

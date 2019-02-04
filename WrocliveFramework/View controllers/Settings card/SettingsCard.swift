@@ -29,10 +29,6 @@ public final class SettingsCard: UIViewController, CustomCardPanelPresentable, C
   public let tableView            = UITableView(frame: .zero, style: .grouped)
   public let tableViewDataSource  = SettingsCard.createDataSource()
 
-  // MARK: - Card panel
-
-  public var scrollView: UIScrollView? { return self.tableView }
-
   // MARK: - Init
 
   public init(_ viewModel: SettingsCardViewModel) {
@@ -112,6 +108,10 @@ public final class SettingsCard: UIViewController, CustomCardPanelPresentable, C
   }
 
   // MARK: - CustomCardPanelPresentable
+
+  public var scrollView: UIScrollView? {
+    return self.tableView
+  }
 
   public func interactiveDismissalProgress(percent: CGFloat) {
     self.updateChevronViewDuringInteractiveDismissal(percent: percent)

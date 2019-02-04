@@ -30,10 +30,6 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable, Che
   public lazy var lineTypeSelector = LineTypeSelector(self.viewModel.lineTypeSelectorViewModel)
   public lazy var lineSelector     = LineSelector(self.viewModel.lineSelectorViewModel)
 
-  // MARK: - Card panel
-
-  public var scrollView: UIScrollView? { return self.lineSelector.scrollView }
-
   // MARK: - Init
 
   public init(_ viewModel: SearchCardViewModel) {
@@ -126,6 +122,10 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable, Che
   }
 
   // MARK: - CustomCardPanelPresentable
+
+  public var scrollView: UIScrollView? {
+    return self.lineSelector.scrollView
+  }
 
   public func interactiveDismissalProgress(percent: CGFloat) {
     self.updateChevronViewDuringInteractiveDismissal(percent: percent)

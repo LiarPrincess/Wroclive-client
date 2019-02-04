@@ -64,6 +64,7 @@ public final class CardPanelPresenter : UIPresentationController, UIGestureRecog
   // Add dismiss gesture recognizer
   public override func presentationTransitionDidEnd(_ completed: Bool) {
     super.presentationTransitionDidEnd(completed)
+    guard completed else { return }
 
     self.dismissGesture = UIPanGestureRecognizer(target: self, action: #selector(handleDismissGesture))
     self.dismissGesture!.maximumNumberOfTouches = 1

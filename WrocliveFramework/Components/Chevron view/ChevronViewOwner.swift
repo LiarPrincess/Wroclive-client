@@ -24,7 +24,9 @@ extension ChevronViewOwner where Self: UIViewController {
 
   func updateChevronViewDuringInteractiveDismissal(percent: CGFloat) {
     // we assume that before we start chevron is in '.down' position
-    self.chevronView.angle = -ChevronView.maxAngle * (1.0 - percent)
+    let makeChevronFlatAt = CGFloat(0.75)
+    let chevronPercent = CGFloat.minimum(percent, makeChevronFlatAt)
+    self.chevronView.angle = -ChevronView.maxAngle * (makeChevronFlatAt - chevronPercent)
   }
 
   func updateChevronViewAfterInteractiveDismissal() {
