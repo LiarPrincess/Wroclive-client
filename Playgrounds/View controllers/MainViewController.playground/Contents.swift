@@ -6,9 +6,8 @@ import PlaygroundSupport
 AppEnvironment.push(.default)
 Theme.setupAppearance()
 
-let state = AppState.load(from: AppEnvironment.storage)
-let middlewares = createMiddlewares()
-let store = Store<AppState>(reducer: appReducer, state: state, middleware: middlewares)
+let state = loadPreviousState()
+let store = Store<AppState>(reducer: appReducer, state: state, middleware: [])
 
 let viewModel = MainViewModel(store)
 let viewController = MainViewController(viewModel)

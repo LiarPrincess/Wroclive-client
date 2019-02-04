@@ -13,11 +13,13 @@ public enum LineSelectorCellConstants {
   }
 
   public enum TextStyles {
-    private static var base: TextAttributes {
-      return TextAttributes(style: .body, alignment: .center)
+    public static var selected: TextAttributes {
+      // We need to use bold, otherwise text would look too thin on bright background
+      return TextAttributes(style: .bodyBold, color: .background, alignment: .center)
     }
 
-    public static var selected:    TextAttributes { return base.withColor(.background) }
-    public static var notSelected: TextAttributes { return base.withColor(.text) }
+    public static var notSelected: TextAttributes {
+      return TextAttributes(style: .body, color: .text, alignment: .center)
+    }
   }
 }

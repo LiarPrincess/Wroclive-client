@@ -10,35 +10,35 @@ public extension StyleKit {
 
   public static func drawSearchTemplateImage(size: CGSize) -> UIImage {
     return StyleKit.drawTemplateImage(size: size) {
-      let frame = CGRect(origin: CGPoint(), size: size)
+      let frame = CGRect(origin: .zero, size: size)
       StyleKit.drawSearch(frame: frame, resizing: resizingBehavior)
     }
   }
 
   public static func drawStarTemplateImage(size: CGSize) -> UIImage {
     return StyleKit.drawTemplateImage(size: size) {
-      let frame = CGRect(origin: CGPoint(), size: size)
+      let frame = CGRect(origin: .zero, size: size)
       StyleKit.drawStar(frame: frame, resizing: resizingBehavior)
     }
   }
 
   public static func drawStarFilledTemplateImage(size: CGSize) -> UIImage {
     return StyleKit.drawTemplateImage(size: size) {
-      let frame = CGRect(origin: CGPoint(), size: size)
+      let frame = CGRect(origin: .zero, size: size)
       StyleKit.drawStarFilled(frame: frame, resizing: resizingBehavior)
     }
   }
 
   public static func drawCogwheelTemplateImage(size: CGSize) -> UIImage {
     return StyleKit.drawTemplateImage(size: size) {
-      let frame = CGRect(origin: CGPoint(), size: size)
+      let frame = CGRect(origin: .zero, size: size)
       StyleKit.drawCogwheel(frame: frame, resizing: resizingBehavior)
     }
   }
 
   public static func drawCloseTemplateImage(size: CGSize) -> UIImage {
     return StyleKit.drawTemplateImage(size: size) {
-      let frame = CGRect(origin: CGPoint(), size: size)
+      let frame = CGRect(origin: .zero, size: size)
       StyleKit.drawClose(frame: frame, resizing: resizingBehavior)
     }
   }
