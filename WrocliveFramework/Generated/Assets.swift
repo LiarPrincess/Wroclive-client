@@ -51,6 +51,10 @@ struct ColorAsset {
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 enum Assets {
   static let shareImage = ImageAsset(name: "ShareImage")
+  static let vecAlarm = ImageAsset(name: "vec-alarm")
+  static let vecCog = ImageAsset(name: "vec-cog")
+  static let vecHeart = ImageAsset(name: "vec-heart")
+  static let vecMagnifier = ImageAsset(name: "vec-magnifier")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

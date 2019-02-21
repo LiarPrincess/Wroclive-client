@@ -6,7 +6,7 @@ import UIKit
 
 extension UIView {
   public func roundTopCorners(radius: CGFloat) {
-    self.roundCorners([UIRectCorner.topLeft, UIRectCorner.topRight], radius: radius)
+    self.roundCorners([.topLeft, .topRight], radius: radius)
   }
 
   public func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {

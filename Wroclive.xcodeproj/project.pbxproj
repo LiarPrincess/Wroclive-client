@@ -171,7 +171,6 @@
 		9030AE9321DD8CEB00AFCF78 /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017C3521EE339FD00063377 /* MainViewControllerConstants.swift */; };
 		9030AE9421DD8CEB00AFCF78 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CBE942192E4DC0028C58F /* MainViewModel.swift */; };
 		9030AE9621DD8D5B00AFCF78 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */; };
-		9030AE9721DD8D5F00AFCF78 /* StyleKit+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */; };
 		9030AE9821DD8D6200AFCF78 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 908346F91F521DFF00654FF6 /* FontAwesome.otf */; };
 		9030AE9A21DD8DB000AFCF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9030AE9921DD8DAF00AFCF78 /* UIKit.framework */; };
 		9030AE9C21DD8DB700AFCF78 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9030AE9B21DD8DB700AFCF78 /* MapKit.framework */; };
@@ -474,7 +473,6 @@
 		90D8DE6121D5B129002B33D1 /* Collection+GroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+GroupTests.swift"; sourceTree = "<group>"; };
 		90E23C8F21F5013700AFF9CF /* XCTIfEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTIfEqual.swift; sourceTree = "<group>"; };
 		90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
-		90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StyleKit+UIImage.swift"; path = "WrocliveFramework/Assets/StyleKit+UIImage.swift"; sourceTree = SOURCE_ROOT; };
 		90E8A6C01F4CB81400CE5AE9 /* BundleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
 		90E8A6C71F4CD49800CE5AE9 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		90EB296420477ED2006C591E /* CLLocationCoordinate2D+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Distance.swift"; sourceTree = "<group>"; };
@@ -847,7 +845,6 @@
 				9030AE9E21DE808900AFCF78 /* Assets.xcassets */,
 				90ED50FF1F3BADC500C782D5 /* Localizable.strings */,
 				90E3ADD81F4F5BF000C3ED24 /* StyleKit.swift */,
-				90E3ADD91F4F5BF000C3ED24 /* StyleKit+UIImage.swift */,
 				908346F91F521DFF00654FF6 /* FontAwesome.otf */,
 			);
 			path = Assets;
@@ -1528,7 +1525,6 @@
 				9030AE4521DD868D00AFCF78 /* AlertCreator.swift in Sources */,
 				9030AE0F21DD80DC00AFCF78 /* BundleManager.swift in Sources */,
 				9030AE6621DD89B300AFCF78 /* BookmarksCell.swift in Sources */,
-				9030AE9721DD8D5F00AFCF78 /* StyleKit+UIImage.swift in Sources */,
 				9030AE4621DD868D00AFCF78 /* ReusableCell.swift in Sources */,
 				9030AE5F21DD892700AFCF78 /* VehicleAnnotation.swift in Sources */,
 				9030AE2D21DD847500AFCF78 /* Api.swift in Sources */,

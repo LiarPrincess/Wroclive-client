@@ -15,11 +15,15 @@ public final class MainViewController: UIViewController {
 
   public let mapViewController: MapViewController
 
-  public let toolbar = UIToolbar()
+  public lazy var toolbar: UIVisualEffectView = {
+    let blur = UIBlurEffect(style: Theme.colors.blurStyle)
+    return UIVisualEffectView(effect: blur)
+  }()
+
   public let userTrackingButton  = MKUserTrackingBarButtonItem()
-  public let searchButton        = UIBarButtonItem()
-  public let bookmarksButton     = UIBarButtonItem()
-  public let configurationButton = UIBarButtonItem()
+  public let searchButton        = UIButton(type: .custom)
+  public let bookmarksButton     = UIButton(type: .custom)
+  public let configurationButton = UIButton(type: .custom)
 
   private let viewModel: MainViewModel
   private let disposeBag = DisposeBag()
@@ -57,7 +61,7 @@ public final class MainViewController: UIViewController {
     }
   }
 
-  // MARK: - Actions (for some reason UIBarButtonItem.rx.tap fails, so we can't bind)
+  // MARK: - Actions
 
   @objc
   public func searchButtonPressed() {

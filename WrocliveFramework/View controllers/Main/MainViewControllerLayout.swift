@@ -20,53 +20,71 @@ public extension MainViewController {
     let mapView = self.mapViewController.view!
     self.view.addSubview(mapView, constraints: [
       // ignore safeAreaLayoutGuide, so we are under status bar and toolbar
-      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
+      make(\UIView.topAnchor,    equalToSuperview: \UIView.topAnchor),
       make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor)
     ])
 
     self.mapViewController.didMove(toParent: self)
   }
 
   private func initToolbarView() {
-    self.toolbar.accessibilityIdentifier = "MainViewController.toolbar"
-
     self.userTrackingButton.mapView = self.mapViewController.mapView
+    self.addButtonSizeConstraints(self.userTrackingButton.customView!)
 
-    self.searchButton.image  = StyleKit.drawSearchTemplateImage(size: Layout.toolbarImageSize)
-    self.searchButton.target = self
-    self.searchButton.action = #selector(searchButtonPressed)
-    self.searchButton.accessibilityIdentifier = "MainViewController.search"
+    self.customizeButton(self.searchButton, image: Assets.vecMagnifier)
+    self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
 
-    self.bookmarksButton.image  = StyleKit.drawStarTemplateImage(size: Layout.toolbarImageSize)
-    self.bookmarksButton.target = self
-    self.bookmarksButton.action = #selector(bookmarksButtonPressed)
-    self.bookmarksButton.accessibilityIdentifier = "MainViewController.bookmarks"
+    self.customizeButton(self.bookmarksButton, image: Assets.vecHeart)
+    self.bookmarksButton.addTarget(self, action: #selector(bookmarksButtonPressed), for: .touchUpInside)
 
-    self.configurationButton.image  = StyleKit.drawCogwheelTemplateImage(size: Layout.toolbarImageSize)
-    self.configurationButton.target = self
-    self.configurationButton.action = #selector(configurationButtonPressed)
-    self.configurationButton.accessibilityIdentifier = "MainViewController.configuration"
+    self.customizeButton(self.configurationButton, image: Assets.vecCog)
+    self.configurationButton.addTarget(self, action: #selector(configurationButtonPressed), for: .touchUpInside)
 
-    self.toolbar.setItems(self.layoutToolbarItems(), animated: false)
-
+    self.toolbar.contentView.addTopBorder()
     self.view.addSubview(self.toolbar, constraints: [
-      make(\UIView.bottomAnchor, equalTo: self.view!.safeAreaLayoutGuide.bottomAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+      make(\UIView.bottomAnchor, equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor)
+    ])
+
+    let stackView = self.createToolbarStackView()
+    toolbar.contentView.addSubview(stackView, constraints: [
+      make(\UIView.topAnchor,    equalToSuperview: \UIView.topAnchor),
+      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
+      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor,  constant:  8.0),
+      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor, constant: -8.0)
     ])
   }
 
-  private func layoutToolbarItems() -> [UIBarButtonItem] {
-    let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+  private func customizeButton(_ button: UIButton, image asset: ImageAsset) {
+    let inset = CGFloat(10.0)
+    button.setImage(asset.image, for: .normal)
+    button.imageEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    button.contentVerticalAlignment   = .fill
+    button.contentHorizontalAlignment = .fill
 
-    let result: [UIBarButtonItem] = [
-      self.userTrackingButton, space,
-      self.searchButton,       space,
-      self.bookmarksButton,    space,
+    self.addButtonSizeConstraints(button)
+  }
+
+  private func addButtonSizeConstraints(_ view: UIView) {
+    NSLayoutConstraint.activate([
+      view.widthAnchor .constraint(equalToConstant: 44.0),
+      view.heightAnchor.constraint(equalToConstant: 44.0)
+    ])
+  }
+
+  private func createToolbarStackView() -> UIStackView {
+    let stackView = UIStackView(arrangedSubviews: [
+      self.userTrackingButton.customView!,
+      self.searchButton,
+      self.bookmarksButton,
       self.configurationButton
-    ]
-    return result
+    ])
+    stackView.axis = .horizontal
+    stackView.distribution = .equalCentering
+
+    return stackView
   }
 }

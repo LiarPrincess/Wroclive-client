@@ -78,7 +78,7 @@ public final class MapViewController: UIViewController {
     self.mapView.showsBuildings    = true
     self.mapView.showsCompass      = true
     self.mapView.showsUserLocation = true
-    self.mapView.isRotateEnabled   = false
+    self.mapView.isRotateEnabled   = true
     self.mapView.isPitchEnabled    = false
     self.mapView.mapType           = .standard
 

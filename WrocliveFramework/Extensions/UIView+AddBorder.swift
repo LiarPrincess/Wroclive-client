@@ -5,15 +5,31 @@
 import UIKit
 
 extension UIView {
+
+  private var width: CGFloat { return CGFloat(1.0) / AppEnvironment.device.screenScale }
+  private var color: UIColor { return Theme.colors.accentLight }
+
+  public func addTopBorder() {
+    let view = UIView()
+    view.backgroundColor = color
+
+    self.addSubview(view, constraints: [
+      make(\UIView.topAnchor,    equalToSuperview: \UIView.topAnchor),
+      make(\UIView.heightAnchor, equalToConstant:  width),
+      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor)
+    ])
+  }
+
   public func addBottomBorder() {
     let view = UIView()
-    view.backgroundColor = Theme.colors.accentLight
+    view.backgroundColor = color
 
     self.addSubview(view, constraints: [
       make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.heightAnchor, equalToConstant: CGFloat(1.0) / AppEnvironment.device.screenScale),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
+      make(\UIView.heightAnchor, equalToConstant:  width),
+      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor),
+      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor)
     ])
   }
 }
