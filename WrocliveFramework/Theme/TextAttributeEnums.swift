@@ -3,11 +3,11 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public enum TextStyle {
+  case largeTitle
   case headline
-  case subheadline
   case body
   case bodyBold
-  case caption
+  case footnote
 }
 
 public enum FontType {

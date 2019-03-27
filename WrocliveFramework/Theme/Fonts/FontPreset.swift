@@ -5,14 +5,11 @@
 import UIKit
 
 public protocol FontPreset {
+  var largeTitle:  UIFont { get }
   var headline:    UIFont { get }
-  var subheadline: UIFont { get }
   var body:        UIFont { get }
   var bodyBold:    UIFont { get }
-  var caption:     UIFont { get }
-
-  var headlineTracking:    CGFloat { get }
-  var subheadlineTracking: CGFloat { get }
+  var footnote:    UIFont { get }
 
   mutating func recalculateSizes()
 }

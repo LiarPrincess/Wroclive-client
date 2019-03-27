@@ -27,6 +27,7 @@ public final class BookmarksPlaceholderView: UIView {
     self.titleLabel.attributedText = self.createTitleText()
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
+    self.titleLabel.adjustsFontForContentSizeCategory = true
 
     self.addSubview(self.titleLabel, constraints: [
       make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
@@ -37,6 +38,7 @@ public final class BookmarksPlaceholderView: UIView {
     self.contentLabel.attributedText = self.createContentText()
     self.contentLabel.numberOfLines  = 0
     self.contentLabel.lineBreakMode  = .byWordWrapping
+    self.contentLabel.adjustsFontForContentSizeCategory = true
 
     self.addSubview(self.contentLabel, constraints: [
       make(\UIView.topAnchor, equalTo: self.titleLabel.bottomAnchor, constant: Layout.Content.topMargin),

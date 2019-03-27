@@ -12,7 +12,7 @@ public enum LineSelectorHeaderViewConstants {
 
   public enum TextStyles {
     public static var header: TextAttributes {
-      return TextAttributes(style: .subheadline, alignment: .center)
+      return TextAttributes(style: .headline, alignment: .center)
     }
   }
 }

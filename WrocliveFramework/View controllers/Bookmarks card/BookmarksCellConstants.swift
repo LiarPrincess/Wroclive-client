@@ -23,7 +23,7 @@ public enum BookmarksCellConstants {
 
   public enum TextStyles {
     public static var name: TextAttributes {
-      return TextAttributes(style: .subheadline, alignment: .center)
+      return TextAttributes(style: .headline, alignment: .center)
     }
 
     public static var lines: TextAttributes {

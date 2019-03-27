@@ -5,27 +5,28 @@
 import UIKit
 
 public struct FontAwesome: FontPreset {
-  public private(set) var headline    = UIFont()
-  public private(set) var subheadline = UIFont()
-  public private(set) var body        = UIFont()
-  public private(set) var bodyBold    = UIFont()
-  public private(set) var caption     = UIFont()
-
-  public var headlineTracking:    CGFloat { return 0.50 }
-  public var subheadlineTracking: CGFloat { return 0.25 }
+  public private(set) var largeTitle = UIFont()
+  public private(set) var headline   = UIFont()
+  public private(set) var body       = UIFont()
+  public private(set) var bodyBold   = UIFont()
+  public private(set) var footnote   = UIFont()
 
   public init() {
     self.recalculateSizes()
   }
 
   public mutating func recalculateSizes() {
-    let font     = Fonts.FontAwesome.regular
-    let baseSize = AppEnvironment.device.preferredFontSize
+    // we use 'title1', because '.largeTitle' will not scale
+    let largeMetrics    = UIFontMetrics(forTextStyle: .title1)
+    let headlineMetrics = UIFontMetrics(forTextStyle: .headline)
+    let bodyMetrics     = UIFontMetrics(forTextStyle: .body)
+    let footnoteMetrics = UIFontMetrics(forTextStyle: .footnote)
 
-    self.headline    = UIFont(font: font, size: baseSize + 18.0)
-    self.subheadline = UIFont(font: font, size: baseSize +  6.0)
-    self.body        = UIFont(font: font, size: baseSize +  1.0)
-    self.bodyBold    = UIFont(font: font, size: baseSize +  1.0)
-    self.caption     = UIFont(font: font, size: baseSize -  1.0)
+    let font = Fonts.FontAwesome.regular
+    self.largeTitle = largeMetrics   .scaledFont(for: UIFont(font: font, size: 34.0))
+    self.headline   = headlineMetrics.scaledFont(for: UIFont(font: font, size: 19.0))
+    self.body       = bodyMetrics    .scaledFont(for: UIFont(font: font, size: 18.0))
+    self.bodyBold   = bodyMetrics    .scaledFont(for: UIFont(font: font, size: 18.0))
+    self.footnote   = footnoteMetrics.scaledFont(for: UIFont(font: font, size: 15.0))
   }
 }

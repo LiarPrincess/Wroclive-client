@@ -14,6 +14,59 @@ import UIKit
 
 public enum StyleKit {
 
+  public static func drawStarTemplateImage(size: CGSize) -> UIImage {
+    return StyleKit.drawTemplateImage(size: size) {
+      let frame = CGRect(origin: .zero, size: size)
+      StyleKit.drawStar(frame: frame, resizing: resizingBehavior)
+    }
+  }
+
+  private static var resizingBehavior: ResizingBehavior { return .aspectFit }
+
+  private static func drawTemplateImage(size: CGSize, draw: () -> Void) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(size, false, 0)
+
+    draw()
+
+    let image = UIGraphicsGetImageFromCurrentImageContext()!.withRenderingMode(.alwaysTemplate)
+    UIGraphicsEndImageContext()
+
+    return image
+  }
+
+  public static func drawStar(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60),
+                              resizing: ResizingBehavior = .aspectFit) {
+
+    //// General Declarations
+    let context = UIGraphicsGetCurrentContext()!
+
+    //// Resize to Target Frame
+    context.saveGState()
+    let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 60, height: 60), target: targetFrame)
+    context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+    context.scaleBy(x: resizedFrame.width / 60, y: resizedFrame.height / 60)
+
+    //// Shape Drawing
+    let shapePath = UIBezierPath()
+    shapePath.move(to: CGPoint(x: 30, y: 1.25))
+    shapePath.addLine(to: CGPoint(x: 39.19, y: 19.71))
+    shapePath.addLine(to: CGPoint(x: 58.74, y: 23.19))
+    shapePath.addLine(to: CGPoint(x: 44.87, y: 38.07))
+    shapePath.addLine(to: CGPoint(x: 47.77, y: 58.68))
+    shapePath.addLine(to: CGPoint(x: 30, y: 49.42))
+    shapePath.addLine(to: CGPoint(x: 12.24, y: 58.68))
+    shapePath.addLine(to: CGPoint(x: 15.13, y: 38.07))
+    shapePath.addLine(to: CGPoint(x: 1.26, y: 23.19))
+    shapePath.addLine(to: CGPoint(x: 20.81, y: 19.71))
+    shapePath.close()
+    UIColor.black.setStroke()
+    shapePath.lineWidth = 2.5
+    shapePath.lineJoinStyle = .round
+    shapePath.stroke()
+
+    context.restoreGState()
+  }
+
   public static func drawVehiclePin(frame targetFrame: CGRect,
                                     color: UIColor,
                                     resizing: ResizingBehavior = .aspectFit) {

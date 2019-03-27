@@ -13,7 +13,7 @@ public enum SettingsCardFooterConstants {
 
   public enum TextStyles {
     public static var text: TextAttributes {
-      return TextAttributes(style: .caption, alignment: .center, lineSpacing: Layout.lineSpacing)
+      return TextAttributes(style: .footnote, alignment: .center, lineSpacing: Layout.lineSpacing)
     }
   }
 }

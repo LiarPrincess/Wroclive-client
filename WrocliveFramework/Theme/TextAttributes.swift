@@ -71,7 +71,6 @@ public struct TextAttributes {
     return [
       NSAttributedString.Key.foregroundColor: self.colorValue(),
       NSAttributedString.Key.font:            self.fontValue(),
-      NSAttributedString.Key.kern:            self.trackingValue(),
       NSAttributedString.Key.paragraphStyle:  self.paragraphStyleValue()
     ]
   }
@@ -91,20 +90,11 @@ public struct TextAttributes {
   private func fontValue() -> UIFont {
     let preset = self.fontPresetValue()
     switch self.style {
-    case .headline:    return preset.headline
-    case .subheadline: return preset.subheadline
-    case .body:        return preset.body
-    case .bodyBold:    return preset.bodyBold
-    case .caption:     return preset.caption
-    }
-  }
-
-  private func trackingValue() -> CGFloat {
-    let preset = self.fontPresetValue()
-    switch self.style {
-    case .headline:                  return preset.headlineTracking
-    case .subheadline:               return preset.subheadlineTracking
-    case .body, .bodyBold, .caption: return 0.0
+    case .largeTitle: return preset.largeTitle
+    case .headline:   return preset.headline
+    case .body:       return preset.body
+    case .bodyBold:   return preset.bodyBold
+    case .footnote:   return preset.footnote
     }
   }
 

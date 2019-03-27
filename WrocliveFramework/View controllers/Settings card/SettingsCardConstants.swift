@@ -20,8 +20,8 @@ public enum SettingsCardConstants {
   }
 
   public enum TextStyles {
-    public static var cardTitle:    TextAttributes { return TextAttributes(style: .headline)    }
-    public static var sectionTitle: TextAttributes { return TextAttributes(style: .subheadline) }
-    public static var cellText:     TextAttributes { return TextAttributes(style: .body)        }
+    public static var cardTitle:    TextAttributes { return TextAttributes(style: .largeTitle) }
+    public static var sectionTitle: TextAttributes { return TextAttributes(style: .headline) }
+    public static var cellText:     TextAttributes { return TextAttributes(style: .body) }
   }
 }

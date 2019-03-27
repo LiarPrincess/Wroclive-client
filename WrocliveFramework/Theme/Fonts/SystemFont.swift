@@ -5,26 +5,27 @@
 import UIKit
 
 public struct SystemFont: FontPreset {
-  public private(set) var headline    = UIFont()
-  public private(set) var subheadline = UIFont()
-  public private(set) var body        = UIFont()
-  public private(set) var bodyBold    = UIFont()
-  public private(set) var caption     = UIFont()
-
-  public var headlineTracking:    CGFloat { return 0.50 }
-  public var subheadlineTracking: CGFloat { return 0.25 }
+  public private(set) var largeTitle = UIFont()
+  public private(set) var headline   = UIFont()
+  public private(set) var body       = UIFont()
+  public private(set) var bodyBold   = UIFont()
+  public private(set) var footnote   = UIFont()
 
   public init() {
     self.recalculateSizes()
   }
 
   public mutating func recalculateSizes() {
-    let baseSize = AppEnvironment.device.preferredFontSize
+    // we use 'title1', because '.largeTitle' will not scale
+    let largeMetrics    = UIFontMetrics(forTextStyle: .title1)
+    let headlineMetrics = UIFontMetrics(forTextStyle: .headline)
+    let bodyMetrics     = UIFontMetrics(forTextStyle: .body)
+    let footnoteMetrics = UIFontMetrics(forTextStyle: .footnote)
 
-    self.headline    = UIFont.systemFont(ofSize: baseSize + 14.0, weight: UIFont.Weight.bold)
-    self.subheadline = UIFont.systemFont(ofSize: baseSize +  5.0, weight: UIFont.Weight.bold)
-    self.body        = UIFont.systemFont(ofSize: baseSize,        weight: UIFont.Weight.regular)
-    self.bodyBold    = UIFont.systemFont(ofSize: baseSize,        weight: UIFont.Weight.bold)
-    self.caption     = UIFont.systemFont(ofSize: baseSize -  2.0, weight: UIFont.Weight.regular)
+    self.largeTitle = largeMetrics   .scaledFont(for: .systemFont(ofSize: 34.0, weight: .bold))
+    self.headline   = headlineMetrics.scaledFont(for: .systemFont(ofSize: 18.0, weight: .bold))
+    self.body       = bodyMetrics    .scaledFont(for: .systemFont(ofSize: 17.0))
+    self.bodyBold   = bodyMetrics    .scaledFont(for: .systemFont(ofSize: 17.0, weight: .bold))
+    self.footnote   = footnoteMetrics.scaledFont(for: .systemFont(ofSize: 14.0))
   }
 }

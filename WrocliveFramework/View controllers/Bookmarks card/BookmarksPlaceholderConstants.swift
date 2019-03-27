@@ -14,7 +14,7 @@ public enum BookmarksPlaceholderViewConstants {
 
   public enum TextStyles {
     public static var title: TextAttributes {
-      return TextAttributes(style: .subheadline, alignment: .center)
+      return TextAttributes(style: .headline, alignment: .center)
     }
 
     public enum Content {

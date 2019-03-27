@@ -41,7 +41,7 @@ public enum SearchCardConstants {
 
   public enum TextStyles {
     public static var cardTitle: TextAttributes {
-      return TextAttributes(style: .headline)
+      return TextAttributes(style: .largeTitle)
     }
 
     public static var search: TextAttributes {

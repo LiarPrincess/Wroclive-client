@@ -31,7 +31,7 @@ public enum BookmarksCardConstants {
   }
 
   public enum TextStyles {
-    public static var cardTitle: TextAttributes { return TextAttributes(style: .headline) }
+    public static var cardTitle: TextAttributes { return TextAttributes(style: .largeTitle) }
 
     public enum Edit {
       public static var edit: TextAttributes { return TextAttributes(style: .body,     color: .tint) }
