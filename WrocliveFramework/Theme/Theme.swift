@@ -13,11 +13,6 @@ public enum Theme {
   public fileprivate(set) static var iconFont: FontPreset  = FontAwesome()
   public fileprivate(set) static var colors:   ColorScheme = ColorScheme()
 
-  public static func recalculateFontSizes() {
-    Theme.textFont.recalculateSizes()
-    Theme.iconFont.recalculateSizes()
-  }
-
   public static func setupAppearance() {
     let tintColor = Theme.colors.tint
     let barStyle  = Theme.colors.barStyle

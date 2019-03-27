@@ -59,7 +59,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   public func applicationDidBecomeActive(_ application: UIApplication) {
     os_log("applicationDidBecomeActive(_:)", log: AppEnvironment.log.app, type: .info)
-    Theme.recalculateFontSizes()
     self.updateScheduler.start()
   }
 

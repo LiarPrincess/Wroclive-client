@@ -5,17 +5,13 @@
 import UIKit
 
 public struct SystemFont: FontPreset {
-  public private(set) var largeTitle = UIFont()
-  public private(set) var headline   = UIFont()
-  public private(set) var body       = UIFont()
-  public private(set) var bodyBold   = UIFont()
-  public private(set) var footnote   = UIFont()
+  public let largeTitle: UIFont
+  public let headline:   UIFont
+  public let body:       UIFont
+  public let bodyBold:   UIFont
+  public let footnote:   UIFont
 
   public init() {
-    self.recalculateSizes()
-  }
-
-  public mutating func recalculateSizes() {
     // we use 'title1', because '.largeTitle' will not scale
     let largeMetrics    = UIFontMetrics(forTextStyle: .title1)
     let headlineMetrics = UIFontMetrics(forTextStyle: .headline)

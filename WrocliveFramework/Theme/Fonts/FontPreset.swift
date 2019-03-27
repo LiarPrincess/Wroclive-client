@@ -10,6 +10,4 @@ public protocol FontPreset {
   var body:        UIFont { get }
   var bodyBold:    UIFont { get }
   var footnote:    UIFont { get }
-
-  mutating func recalculateSizes()
 }
