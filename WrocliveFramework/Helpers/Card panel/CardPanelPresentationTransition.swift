@@ -4,8 +4,6 @@
 
 import UIKit
 
-private typealias AnimationDurations = CardPanelConstants.AnimationDurations
-
 public final class CardPanelPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
   private let duration: TimeInterval
@@ -38,7 +36,7 @@ public final class CardPanelPresentationTransition: NSObject, UIViewControllerAn
       delay:        0.0,
       options:      .curveEaseOut,
       animations:   { presentedViewController.view.frame = onScreenFrame },
-      completion:   { _ in transitionContext.completeTransition(!transitionContext.transitionWasCancelled) }
+      completion:   { transitionContext.completeTransition($0) }
     )
   }
 }

@@ -6,7 +6,7 @@ import UIKit
 
 private typealias Layout = CardPanelConstants.Layout
 
-public final class CardPanelPresenter : UIPresentationController, UIGestureRecognizerDelegate {
+public final class CardPanelPresenter: UIPresentationController, UIGestureRecognizerDelegate {
 
   // MARK: - Properties
 
