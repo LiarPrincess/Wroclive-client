@@ -33,13 +33,13 @@ public extension MainViewController {
     self.userTrackingButton.mapView = self.mapViewController.mapView
     self.addButtonSizeConstraints(self.userTrackingButton.customView!)
 
-    self.customizeButton(self.searchButton, image: Assets.vecMagnifier)
+    self.customizeButton(self.searchButton, image: Assets.tabbarSearch)
     self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
 
-    self.customizeButton(self.bookmarksButton, image: Assets.vecHeart)
+    self.customizeButton(self.bookmarksButton, image: Assets.tabbarBookmarks)
     self.bookmarksButton.addTarget(self, action: #selector(bookmarksButtonPressed), for: .touchUpInside)
 
-    self.customizeButton(self.configurationButton, image: Assets.vecCog)
+    self.customizeButton(self.configurationButton, image: Assets.tabbarSettings)
     self.configurationButton.addTarget(self, action: #selector(configurationButtonPressed), for: .touchUpInside)
 
     self.toolbar.contentView.addTopBorder()
