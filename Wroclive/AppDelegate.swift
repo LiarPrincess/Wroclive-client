@@ -20,22 +20,27 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // MARK: - Launch
 
+  /// Example: Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)
+  private var appInfo: String {
+    let device = AppEnvironment.device
+    let bundle = AppEnvironment.bundle
+    let deviceInfo = "\(device.model) \(device.systemName) \(device.systemVersion)"
+    return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
+  }
+
   public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
     // This is easily the most important line in the whole app.
     // Every call that interacts with native frameworks has to go through AppEnvironment.
     AppEnvironment.push(.default)
 
-    /// 'Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)'
-    let appInfo: String = {
-      let device = AppEnvironment.device
-      let bundle = AppEnvironment.bundle
-      let deviceInfo = "\(device.model) \(device.systemName) \(device.systemVersion)"
-      return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
-    }()
-
     os_log("application(_:didFinishLaunchingWithOptions:)", log: AppEnvironment.log.app, type: .info)
-    os_log("Starting: %{public}@", log: AppEnvironment.log.app, type: .info, String(describing: appInfo))
+    os_log("Starting: %{public}@", log: AppEnvironment.log.app, type: .info, String(describing: self.appInfo))
+
+    #if targetEnvironment(simulator)
+    let documentDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+    os_log("Simulator documents directory: %{public}@", log: AppEnvironment.log.app, type: .info, documentDir ?? "??")
+    #endif
 
     Theme.setupAppearance()
 
