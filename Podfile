@@ -8,6 +8,7 @@ end
 
 target 'WrocliveFramework' do
   pod 'ReSwift', '~> 4.0'
+  pod 'SnapKit', '~> 4.0'
 
   pod 'Alamofire',         '~> 4.8'
   pod 'ReachabilitySwift', '~> 4.3'

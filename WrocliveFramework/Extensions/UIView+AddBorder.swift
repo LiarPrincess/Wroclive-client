@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import SnapKit
 
 extension UIView {
 
@@ -13,23 +14,21 @@ extension UIView {
     let view = UIView()
     view.backgroundColor = color
 
-    self.addSubview(view, constraints: [
-      make(\UIView.topAnchor,    equalToSuperview: \UIView.topAnchor),
-      make(\UIView.heightAnchor, equalToConstant:  width),
-      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor)
-    ])
+    self.addSubview(view)
+    view.snp.makeConstraints { make in
+      make.height.equalTo(width)
+      make.top.left.right.equalToSuperview()
+    }
   }
 
   public func addBottomBorder() {
     let view = UIView()
     view.backgroundColor = color
 
-    self.addSubview(view, constraints: [
-      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.heightAnchor, equalToConstant:  width),
-      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor)
-    ])
+    self.addSubview(view)
+    view.snp.makeConstraints { make in
+      make.height.equalTo(width)
+      make.bottom.left.right.equalToSuperview()
+    }
   }
 }

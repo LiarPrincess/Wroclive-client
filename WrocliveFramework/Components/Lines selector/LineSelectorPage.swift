@@ -5,6 +5,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 private typealias HeaderLayout     = LineSelectorHeaderViewConstants.Layout
 private typealias HeaderTextStyles = LineSelectorHeaderViewConstants.TextStyles
@@ -125,7 +126,8 @@ public final class LineSelectorPage: UIViewController {
     self.collectionView.allowsMultipleSelection = true
     self.collectionView.alwaysBounceVertical    = true
 
-    self.view.addSubview(self.collectionView, constraints: makeEdgesEqualToSuperview())
+    self.view.addSubview(self.collectionView)
+    self.collectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 
   public override func viewDidLayoutSubviews() {

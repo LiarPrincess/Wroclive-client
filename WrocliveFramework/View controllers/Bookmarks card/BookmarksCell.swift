@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import SnapKit
 
 private typealias Layout     = BookmarksCellConstants.Layout
 private typealias TextStyles = BookmarksCellConstants.TextStyles
@@ -40,18 +41,20 @@ public final class BookmarksCell: UITableViewCell {
     self.nameLabel.numberOfLines  = 0
     self.linesLabel.numberOfLines = 0
 
-    self.contentView.addSubview(self.nameLabel, constraints: [
-      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor, constant: Layout.topInset),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.rightInset)
-    ])
+    self.contentView.addSubview(self.nameLabel)
+    self.nameLabel.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(Layout.topInset)
+      make.left.equalToSuperview().offset(Layout.leftInset)
+      make.right.equalToSuperview().offset(-Layout.rightInset)
+    }
 
-    self.contentView.addSubview(self.linesLabel, constraints: [
-      make(\UIView.topAnchor, equalTo: self.nameLabel.bottomAnchor, constant: Layout.LinesLabel.topMargin),
-      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.bottomInset),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.leftInset),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor, constant: -Layout.rightInset)
-    ])
+    self.contentView.addSubview(self.linesLabel)
+    self.linesLabel.snp.makeConstraints { make in
+      make.top.equalTo(self.nameLabel.snp.bottom).offset(Layout.LinesLabel.topMargin)
+      make.bottom.equalToSuperview().offset(-Layout.bottomInset)
+      make.left.equalToSuperview().offset(Layout.leftInset)
+      make.right.equalToSuperview().offset(-Layout.rightInset)
+    }
   }
 
   // MARK: - Overriden

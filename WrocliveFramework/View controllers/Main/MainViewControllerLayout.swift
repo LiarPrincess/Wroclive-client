@@ -4,6 +4,7 @@
 
 import UIKit
 import MapKit
+import SnapKit
 
 private typealias Layout = MainViewControllerConstants.Layout
 
@@ -18,13 +19,10 @@ public extension MainViewController {
     self.addChild(self.mapViewController)
 
     let mapView = self.mapViewController.view!
-    self.view.addSubview(mapView, constraints: [
-      // ignore safeAreaLayoutGuide, so we are under status bar and toolbar
-      make(\UIView.topAnchor,    equalToSuperview: \UIView.topAnchor),
-      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor)
-    ])
+
+    // ignore safeAreaLayoutGuide, so we are under status bar and toolbar
+    self.view.addSubview(mapView)
+    mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
 
     self.mapViewController.didMove(toParent: self)
   }
@@ -43,19 +41,20 @@ public extension MainViewController {
     self.configurationButton.addTarget(self, action: #selector(configurationButtonPressed), for: .touchUpInside)
 
     self.toolbar.contentView.addTopBorder()
-    self.view.addSubview(self.toolbar, constraints: [
-      make(\UIView.bottomAnchor, equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor)
-    ])
+
+    self.view.addSubview(self.toolbar)
+    self.toolbar.snp.makeConstraints { make in
+      make.left.right.equalToSuperview()
+      make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+    }
 
     let stackView = self.createToolbarStackView()
-    toolbar.contentView.addSubview(stackView, constraints: [
-      make(\UIView.topAnchor,    equalToSuperview: \UIView.topAnchor),
-      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor,  constant:  8.0),
-      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor, constant: -8.0)
-    ])
+    toolbar.contentView.addSubview(stackView)
+    stackView.snp.makeConstraints { make in
+      make.top.bottom.equalToSuperview()
+      make.left.equalToSuperview().offset(8.0)
+      make.right.equalToSuperview().offset(-8.0)
+    }
   }
 
   private func customizeButton(_ button: UIButton, image asset: ImageAsset) {

@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import SnapKit
 
 private typealias Layout       = SettingsCardFooterConstants.Layout
 private typealias TextStyles   = SettingsCardFooterConstants.TextStyles
@@ -29,12 +30,11 @@ public final class SettingsCardFooterView: UIView {
     self.label.attributedText = text
     self.label.numberOfLines  = 0
 
-    self.addSubview(self.label, constraints: [
-      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor, constant: Layout.topOffset),
-      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
-    ])
+    self.addSubview(self.label)
+    self.label.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(Layout.topOffset)
+      make.bottom.left.right.equalToSuperview()
+    }
   }
 
   public required init?(coder aDecoder: NSCoder) {

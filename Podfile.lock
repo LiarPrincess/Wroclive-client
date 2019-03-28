@@ -20,17 +20,19 @@ PODS:
     - RxAtomic (~> 4.4)
     - RxSwift (~> 4.0)
   - SimulatorStatusMagic (2.4.1)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
-  - Alamofire
-  - ReachabilitySwift
-  - ReSwift
-  - RxAlamofire
-  - RxCocoa
-  - RxCoreLocation
-  - RxSwift
-  - RxTest
-  - SimulatorStatusMagic
+  - Alamofire (~> 4.8)
+  - ReachabilitySwift (~> 4.3)
+  - ReSwift (~> 4.0)
+  - RxAlamofire (~> 4.3)
+  - RxCocoa (~> 4.3)
+  - RxCoreLocation (~> 1.3)
+  - RxSwift (~> 4.3)
+  - RxTest (~> 4.4)
+  - SimulatorStatusMagic (~> 2.4)
+  - SnapKit (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -44,6 +46,7 @@ SPEC REPOS:
     - RxSwift
     - RxTest
     - SimulatorStatusMagic
+    - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
@@ -56,7 +59,8 @@ SPEC CHECKSUMS:
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   RxTest: 19d03286bdc0a3aaea5d61d4cde31fdf4bb8a5ba
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: f09f150acd255f1d3cdec9c834f5bb5cecbcbed3
+PODFILE CHECKSUM: 5758e7db1fe49fea4a37536ee7d54202f6a75074
 
 COCOAPODS: 1.5.3

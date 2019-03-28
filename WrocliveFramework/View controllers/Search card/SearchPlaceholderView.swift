@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import SnapKit
 
 private typealias Layout       = SearchPlaceholderViewConstants.Layout
 private typealias TextStyles   = SearchPlaceholderViewConstants.TextStyles
@@ -28,21 +29,21 @@ public final class SearchPlaceholderView: UIView {
   public override init(frame: CGRect) {
     super.init(frame: frame)
 
-    self.addSubview(self.spinner, constraints: [
-      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
-      make(\UIView.centerXAnchor, equalToSuperview: \UIView.centerXAnchor)
-    ])
+    self.addSubview(self.spinner)
+    self.spinner.snp.makeConstraints { make in
+      make.top.centerX.equalToSuperview()
+      make.centerX.equalToSuperview()
+    }
 
     self.label.attributedText = NSAttributedString(string: Localization.loading, attributes: TextStyles.label)
     self.label.numberOfLines  = 0
     self.label.lineBreakMode  = .byWordWrapping
 
-    self.addSubview(self.label, constraints: [
-      make(\UIView.topAnchor, equalTo: self.spinner.bottomAnchor, constant: Layout.verticalSpacing),
-      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
-    ])
+    self.addSubview(self.label)
+    self.label.snp.makeConstraints { make in
+      make.top.equalTo(self.spinner.snp.bottom).offset(Layout.verticalSpacing)
+      make.bottom.left.right.equalToSuperview()
+    }
   }
 
   public required init?(coder aDecoder: NSCoder) {

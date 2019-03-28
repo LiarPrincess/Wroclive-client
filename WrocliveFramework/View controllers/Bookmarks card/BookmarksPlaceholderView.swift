@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import SnapKit
 
 private typealias Layout       = BookmarksPlaceholderViewConstants.Layout
 private typealias TextStyles   = BookmarksPlaceholderViewConstants.TextStyles
@@ -29,23 +30,21 @@ public final class BookmarksPlaceholderView: UIView {
     self.titleLabel.lineBreakMode  = .byWordWrapping
     self.titleLabel.adjustsFontForContentSizeCategory = true
 
-    self.addSubview(self.titleLabel, constraints: [
-      make(\UIView.topAnchor, equalToSuperview: \UIView.topAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
-    ])
+    self.addSubview(self.titleLabel)
+    self.titleLabel.snp.makeConstraints { make in
+      make.top.left.right.equalToSuperview()
+    }
 
     self.contentLabel.attributedText = self.createContentText()
     self.contentLabel.numberOfLines  = 0
     self.contentLabel.lineBreakMode  = .byWordWrapping
     self.contentLabel.adjustsFontForContentSizeCategory = true
 
-    self.addSubview(self.contentLabel, constraints: [
-      make(\UIView.topAnchor, equalTo: self.titleLabel.bottomAnchor, constant: Layout.Content.topMargin),
-      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
-    ])
+    self.addSubview(self.contentLabel)
+    self.contentLabel.snp.makeConstraints { make in
+      make.top.equalTo(self.titleLabel.snp.bottom).offset(Layout.Content.topMargin)
+      make.bottom.left.right.equalToSuperview()
+    }
   }
 
   public required init?(coder aDecoder: NSCoder) {

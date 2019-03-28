@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import SnapKit
 
 private typealias Layout = SettingsTextCellConstants.Layout
 
@@ -34,12 +35,13 @@ public final class SettingsTextCell: UITableViewCell {
 
     self.bottomBorder.backgroundColor = Theme.colors.accentLight
 
-    self.addSubview(self.bottomBorder, constraints: [
-      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor),
-      make(\UIView.heightAnchor, equalToConstant: 1.0 / AppEnvironment.device.screenScale),
-      make(\UIView.leftAnchor, equalToSuperview: \UIView.leftAnchor, constant: Layout.BottomBorder.leftInset),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
-    ])
+    self.addSubview(self.bottomBorder)
+    self.bottomBorder.snp.makeConstraints { make in
+      make.bottom.equalToSuperview()
+      make.height.equalTo(1.0 / AppEnvironment.device.screenScale)
+      make.left.equalToSuperview().offset(Layout.BottomBorder.leftInset)
+      make.right.equalToSuperview()
+    }
   }
 
   // MARK: - Overriden

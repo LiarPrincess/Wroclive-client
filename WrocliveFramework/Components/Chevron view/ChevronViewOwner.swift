@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import SnapKit
 
 protocol ChevronViewOwner {
   var chevronView: ChevronView { get }
@@ -14,12 +15,13 @@ extension ChevronViewOwner where Self: UIViewController {
     self.chevronView.setState(.down)
     self.chevronView.color = Theme.colors.accentLight
 
-    container.addSubview(self.chevronView, constraints: [
-      make(\UIView.topAnchor,     equalToSuperview: \UIView.topAnchor, constant: 8.0),
-      make(\UIView.centerXAnchor, equalToSuperview: \UIView.centerXAnchor),
-      make(\UIView.widthAnchor,   equalToConstant:  ChevronView.nominalSize.width),
-      make(\UIView.heightAnchor,  equalToConstant:  ChevronView.nominalSize.height)
-    ])
+    container.addSubview(self.chevronView)
+    self.chevronView.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(8.0)
+      make.centerX.equalToSuperview()
+      make.width.equalTo(ChevronView.nominalSize.width)
+      make.height.equalTo(ChevronView.nominalSize.height)
+    }
   }
 
   func updateChevronViewDuringInteractiveDismissal(percent: CGFloat) {

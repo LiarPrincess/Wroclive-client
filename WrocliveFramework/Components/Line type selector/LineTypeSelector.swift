@@ -5,6 +5,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 private typealias TextStyles = LineTypeSelectorConstants.TextStyles
 
@@ -45,6 +46,7 @@ public final class LineTypeSelector: UIViewController {
 
   public override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.addSubview(self.segmentedControl, constraints: makeEdgesEqualToSuperview())
+    self.view.addSubview(self.segmentedControl)
+    self.segmentedControl.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 }

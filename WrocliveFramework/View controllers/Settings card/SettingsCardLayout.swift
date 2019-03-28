@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import SnapKit
 
 private typealias Layout       = SettingsCardConstants.Layout
 private typealias TextStyles   = SettingsCardConstants.TextStyles
@@ -24,11 +25,10 @@ public extension SettingsCard {
     self.headerView.contentView.addBottomBorder()
     self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
 
-    self.view.addSubview(self.headerView, constraints: [
-      make(\UIView.topAnchor,   equalToSuperview: \UIView.topAnchor),
-      make(\UIView.leftAnchor,  equalToSuperview: \UIView.leftAnchor),
-      make(\UIView.rightAnchor, equalToSuperview: \UIView.rightAnchor)
-    ])
+    self.view.addSubview(self.headerView)
+    self.headerView.snp.makeConstraints { make in
+      make.top.left.right.equalToSuperview()
+    }
 
     self.addChevronView(in: self.headerView.contentView)
 
@@ -36,12 +36,13 @@ public extension SettingsCard {
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
-    self.headerView.contentView.addSubview(self.titleLabel, constraints: [
-      make(\UIView.topAnchor,    equalTo: self.chevronView.bottomAnchor, constant: Layout.Header.topInset),
-      make(\UIView.bottomAnchor, equalToSuperview: \UIView.bottomAnchor, constant: -Layout.Header.bottomInset),
-      make(\UIView.leftAnchor,   equalToSuperview: \UIView.leftAnchor,   constant: Layout.leftInset),
-      make(\UIView.rightAnchor,  equalToSuperview: \UIView.rightAnchor,  constant: -Layout.rightInset)
-    ])
+    self.headerView.contentView.addSubview(self.titleLabel)
+    self.titleLabel.snp.makeConstraints { make in
+      make.top.equalTo(self.chevronView.snp.bottom).offset(Layout.Header.topInset)
+      make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
+      make.left.equalToSuperview().offset(Layout.leftInset)
+      make.right.equalToSuperview().offset(-Layout.rightInset)
+    }
   }
 
   private func initTableView() {
@@ -55,6 +56,7 @@ public extension SettingsCard {
 
     self.tableView.tableFooterView = SettingsCardFooterView()
 
-    self.view.insertSubview(self.tableView, belowSubview: self.headerView, constraints: makeEdgesEqualToSuperview())
+    self.view.insertSubview(self.tableView, belowSubview: self.headerView)
+    self.tableView.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 }
