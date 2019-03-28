@@ -5,14 +5,14 @@
 import RxSwift
 import RxCocoa
 
-extension ObservableType {
-  public func unwrap<T>() -> Observable<T> where E == T? {
+public extension ObservableType {
+  func unwrap<T>() -> Observable<T> where E == T? {
     return self.flatMap { Observable.from(optional: $0) }
   }
 }
 
-extension Driver {
-  public func unwrap<T>() -> Driver<T> where E == T? {
+public extension Driver {
+  func unwrap<T>() -> Driver<T> where E == T? {
     return self.flatMap { Driver.from(optional: $0) }
   }
 }

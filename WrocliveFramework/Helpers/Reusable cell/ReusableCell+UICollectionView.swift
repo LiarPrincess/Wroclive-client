@@ -4,23 +4,6 @@
 
 import UIKit
 
-// MARK: - Cells
-
-public extension UICollectionView {
-  public func registerCell<Cell: AnyObject>(_ : Cell.Type) where Cell: ReusableCell {
-    self.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
-  }
-
-  public func dequeueCell<Cell: AnyObject>(ofType: Cell.Type, forIndexPath indexPath: IndexPath) -> Cell where Cell: ReusableCell {
-    guard let cell = self.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath) as? Cell
-      else { fatalError("Could not dequeue cell of specified type.") }
-
-    return cell
-  }
-}
-
-// MARK: - Suplementary views
-
 public enum SuplementaryViewKind {
   case header
   case footer
@@ -34,11 +17,23 @@ public enum SuplementaryViewKind {
 }
 
 public extension UICollectionView {
-  public func registerSupplementary<Cell: AnyObject>(_ : Cell.Type, ofKind elementKind: SuplementaryViewKind) where Cell: ReusableCell {
+
+  func registerCell<Cell: AnyObject>(_ : Cell.Type) where Cell: ReusableCell {
+    self.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
+  }
+
+  func dequeueCell<Cell: AnyObject>(ofType: Cell.Type, forIndexPath indexPath: IndexPath) -> Cell where Cell: ReusableCell {
+    guard let cell = self.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath) as? Cell
+      else { fatalError("Could not dequeue cell of specified type.") }
+
+    return cell
+  }
+
+  func registerSupplementary<Cell: AnyObject>(_ : Cell.Type, ofKind elementKind: SuplementaryViewKind) where Cell: ReusableCell {
     self.register(Cell.self, forSupplementaryViewOfKind: elementKind.key, withReuseIdentifier: Cell.identifier)
   }
 
-  public func dequeueSupplementary<Cell: AnyObject>(ofType: Cell.Type, kind elementKind: SuplementaryViewKind, for indexPath: IndexPath) -> Cell where Cell: ReusableCell {
+  func dequeueSupplementary<Cell: AnyObject>(ofType: Cell.Type, kind elementKind: SuplementaryViewKind, for indexPath: IndexPath) -> Cell where Cell: ReusableCell {
     guard let cell = self.dequeueReusableSupplementaryView(ofKind: elementKind.key, withReuseIdentifier: Cell.identifier, for: indexPath) as? Cell
       else { fatalError("Could not dequeue supplementary view of specified type.") }
 

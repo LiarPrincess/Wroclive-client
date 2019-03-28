@@ -4,6 +4,12 @@
 
 import UIKit
 
+public extension NSAttributedString {
+  convenience init(string: String, attributes: TextAttributes) {
+    self.init(string: string, attributes: attributes.value)
+  }
+}
+
 public struct TextAttributes {
 
   // MARK: - Properties

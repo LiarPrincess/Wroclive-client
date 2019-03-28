@@ -4,8 +4,8 @@
 
 // This has to be on Collection, because Sequence does not
 // guarantee multi-traversal or nondestructive access!
-extension Collection {
-  public func group<T: Hashable>(by f: (Element) -> T) -> [T: [Element]] {
+public extension Collection {
+  func group<T: Hashable>(by f: (Element) -> T) -> [T: [Element]] {
     var result: [T:[Element]] = [:]
     for element in self {
       let key = f(element)

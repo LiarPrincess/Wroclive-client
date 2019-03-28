@@ -4,8 +4,8 @@
 
 import UIKit
 
-extension UICollectionView {
-  public var contentWidth: CGFloat {
+public extension UICollectionView {
+  var contentWidth: CGFloat {
     return self.bounds.width - self.contentInset.left - self.contentInset.right
   }
 }

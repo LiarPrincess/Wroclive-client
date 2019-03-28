@@ -4,8 +4,8 @@
 
 import RxSwift
 
-extension ObserverType where E == Void {
-  public func onNext() {
+public extension ObserverType where E == Void {
+  func onNext() {
     self.onNext(())
   }
 }

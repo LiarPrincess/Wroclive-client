@@ -5,12 +5,12 @@
 import UIKit
 import SnapKit
 
-extension UIView {
+public extension UIView {
 
   private var width: CGFloat { return CGFloat(1.0) / AppEnvironment.device.screenScale }
   private var color: UIColor { return Theme.colors.accentLight }
 
-  public func addTopBorder() {
+  func addTopBorder() {
     let view = UIView()
     view.backgroundColor = color
 
@@ -21,7 +21,7 @@ extension UIView {
     }
   }
 
-  public func addBottomBorder() {
+  func addBottomBorder() {
     let view = UIView()
     view.backgroundColor = color
 

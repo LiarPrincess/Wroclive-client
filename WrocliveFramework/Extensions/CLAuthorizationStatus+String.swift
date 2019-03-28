@@ -4,8 +4,9 @@
 
 import MapKit
 
-extension CLAuthorizationStatus: CustomStringConvertible {
-  public var description: String {
+// We cannot add 'CustomStringConvertible' as we dont own 'CLAuthorizationStatus'
+public extension CLAuthorizationStatus {
+  var string: String {
     switch self {
     case .denied: return "denied"
     case .restricted: return "restricted"

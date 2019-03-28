@@ -4,6 +4,6 @@
 
 import CoreGraphics
 
-extension CGFloat {
-  public var rad: CGFloat { return self * CGFloat.pi / 180.0 }
+public extension CGFloat {
+  var rad: CGFloat { return self * CGFloat.pi / 180.0 }
 }

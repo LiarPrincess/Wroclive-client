@@ -35,7 +35,7 @@ class SearchCardViewModelTests: XCTestCase, ReduxTestCase, RxTestCase, Environme
     self.setUpRx()
     self.setUpEnvironment()
 
-    self.viewModel = SearchCardViewModel(store: self.store)
+    self.viewModel = SearchCardViewModel(self.store)
 
     typealias Sections = [RxSectionModel<LineSelectorSectionData, Line>]
     let tramSections = self.viewModel.lineSelectorViewModel.busPageViewModel.sections

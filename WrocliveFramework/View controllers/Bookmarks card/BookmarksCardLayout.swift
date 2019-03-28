@@ -9,9 +9,9 @@ private typealias Layout       = BookmarksCardConstants.Layout
 private typealias TextStyles   = BookmarksCardConstants.TextStyles
 private typealias Localization = Localizable.Bookmarks
 
-public extension BookmarksCard {
+internal extension BookmarksCard {
 
-  public func initLayout() {
+  func initLayout() {
     self.view.backgroundColor = Theme.colors.background
     self.view.roundTopCorners(radius: CardPanelConstants.Layout.topCornerRadius)
 

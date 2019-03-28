@@ -15,9 +15,9 @@ public struct TextReplacement {
   }
 }
 
-extension NSAttributedString {
+public extension NSAttributedString {
 
-  public func withReplacements(_ replacements: [TextReplacement]) -> NSAttributedString {
+  func withReplacements(_ replacements: [TextReplacement]) -> NSAttributedString {
     let result = NSMutableAttributedString(attributedString: self)
     for (position, replacement) in self.findReplacementPositions(replacements) {
       result.replaceCharacters(in: position, with: replacement.value)

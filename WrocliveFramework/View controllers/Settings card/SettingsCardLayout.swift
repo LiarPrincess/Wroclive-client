@@ -9,9 +9,9 @@ private typealias Layout       = SettingsCardConstants.Layout
 private typealias TextStyles   = SettingsCardConstants.TextStyles
 private typealias Localization = Localizable.Settings
 
-public extension SettingsCard {
+internal extension SettingsCard {
 
-  public func initLayout() {
+  func initLayout() {
     self.view.backgroundColor = Theme.colors.background
     self.view.roundTopCorners(radius: CardPanelConstants.Layout.topCornerRadius)
 

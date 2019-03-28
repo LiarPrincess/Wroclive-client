@@ -4,29 +4,24 @@
 
 import UIKit
 
-// MARK: - Cells
-
 public extension UITableView {
-  public func registerCell<Cell: AnyObject>(_ : Cell.Type) where Cell: ReusableCell {
+
+  func registerCell<Cell: AnyObject>(_ : Cell.Type) where Cell: ReusableCell {
     self.register(Cell.self, forCellReuseIdentifier: Cell.identifier)
   }
 
-  public func dequeueCell<Cell: AnyObject>(ofType: Cell.Type, forIndexPath indexPath: IndexPath) -> Cell where Cell: ReusableCell {
+  func dequeueCell<Cell: AnyObject>(ofType: Cell.Type, forIndexPath indexPath: IndexPath) -> Cell where Cell: ReusableCell {
     guard let cell = self.dequeueReusableCell(withIdentifier: Cell.identifier, for: indexPath) as? Cell
       else { fatalError("Could not dequeue cell of specified type.") }
 
     return cell
   }
-}
 
-// MARK: - Suplementary views
-
-public extension UITableView {
-  public func registerSupplementary<Cell: AnyObject>(_ : Cell.Type) where Cell: ReusableCell {
+  func registerSupplementary<Cell: AnyObject>(_ : Cell.Type) where Cell: ReusableCell {
     self.register(Cell.self, forHeaderFooterViewReuseIdentifier: Cell.identifier)
   }
 
-  public func dequeueSupplementary<Cell: AnyObject>(ofType: Cell.Type) -> Cell where Cell: ReusableCell {
+  func dequeueSupplementary<Cell: AnyObject>(ofType: Cell.Type) -> Cell where Cell: ReusableCell {
     guard let cell = self.dequeueReusableHeaderFooterView(withIdentifier: Cell.identifier) as? Cell
       else { fatalError("Could not dequeue supplementary view of specified type.") }
 

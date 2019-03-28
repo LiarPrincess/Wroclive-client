@@ -8,9 +8,9 @@ import SnapKit
 
 private typealias Layout = MainViewControllerConstants.Layout
 
-public extension MainViewController {
+internal extension MainViewController {
 
-  public func initLayout() {
+  func initLayout() {
     self.initMapView()
     self.initToolbarView()
   }

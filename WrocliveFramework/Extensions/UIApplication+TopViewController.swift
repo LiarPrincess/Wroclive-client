@@ -4,8 +4,8 @@
 
 import UIKit
 
-extension UIApplication {
-  public static var topViewController: UIViewController {
+public extension UIApplication {
+  static var topViewController: UIViewController {
     guard var result = UIApplication.shared.keyWindow?.rootViewController
       else { fatalError("Could not find top view controller.") }
 

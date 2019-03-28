@@ -4,6 +4,6 @@
 
 // This has to be on Collection, because Sequence does not
 // guarantee multi-traversal or nondestructive access!
-extension Collection {
-  public var any: Bool { return !self.isEmpty }
+public extension Collection {
+  var any: Bool { return !self.isEmpty }
 }

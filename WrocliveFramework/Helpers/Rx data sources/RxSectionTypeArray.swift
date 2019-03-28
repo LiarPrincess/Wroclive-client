@@ -9,17 +9,17 @@ public enum RxSectionOperation {
   case move(from: IndexPath, to: IndexPath)
 }
 
-public extension Array where Element: RxSectionType {
+internal extension Array where Element: RxSectionType {
 
   // MARK: - Subscript
 
-  public subscript(index: IndexPath) -> Element.Item {
+  subscript(index: IndexPath) -> Element.Item {
     return self[index.section].items[index.item]
   }
 
   // MARK: - Operations
 
-  public func apply(_ operation: RxSectionOperation) -> [Element] {
+  func apply(_ operation: RxSectionOperation) -> [Element] {
     var copy = self
     switch operation {
     case let .remove(index):  copy.remove(at: index)
@@ -28,7 +28,7 @@ public extension Array where Element: RxSectionType {
     return copy
   }
 
-  public mutating func move(from fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
+  mutating func move(from fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
     let fromSection = self[fromIndexPath.section]
 
     var fromItems = fromSection.items
@@ -42,7 +42,7 @@ public extension Array where Element: RxSectionType {
     self[toIndexPath.section] = Element(model: toSection.model, items: toItems)
   }
 
-  public mutating func remove(at indexPath: IndexPath) {
+  mutating func remove(at indexPath: IndexPath) {
     let section = self[indexPath.section]
     var items   = section.items
     items.remove(at: indexPath.row)

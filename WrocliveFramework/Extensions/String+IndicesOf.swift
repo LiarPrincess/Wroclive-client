@@ -4,8 +4,8 @@
 
 import Foundation
 
-extension String {
-  public func indices(of substrings: [String]) -> [NSRange] {
+public extension String {
+  func indices(of substrings: [String]) -> [NSRange] {
     let nsSelf = NSString(string: self)
 
     // swiftlint:disable force_try

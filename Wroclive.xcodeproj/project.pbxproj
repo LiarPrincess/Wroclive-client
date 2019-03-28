@@ -31,7 +31,6 @@
 		9030ADFB21DD76F500AFCF78 /* String+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901A809B20127F700013CCD9 /* String+Empty.swift */; };
 		9030ADFC21DD76F500AFCF78 /* String+IndicesOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F51F5202AE00654FF6 /* String+IndicesOf.swift */; };
 		9030ADFD21DD76F500AFCF78 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */; };
-		9030ADFE21DD76F500AFCF78 /* NSAttributedString+TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3A3EE1FEC148C00FB7485 /* NSAttributedString+TextAttributes.swift */; };
 		9030ADFF21DD76F500AFCF78 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */; };
 		9030AE0021DD76F500AFCF78 /* UICollectionView+ContentWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38E1F12C95D000A6949 /* UICollectionView+ContentWidth.swift */; };
 		9030AE0121DD76F500AFCF78 /* UISegmentedControl+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9021F38F1F12C95D000A6949 /* UISegmentedControl+Font.swift */; };
@@ -228,14 +227,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9009BD451FB63C7B009FB075 /* PBXContainerItemProxy */ = {
+		9030ADE821DD73DF00AFCF78 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 902812871E59DD8500F26027;
-			remoteInfo = Radar;
+			remoteGlobalIDString = 9030ADE221DD73DF00AFCF78;
+			remoteInfo = WrocliveFramework;
 		};
-		9030ADE821DD73DF00AFCF78 /* PBXContainerItemProxy */ = {
+		90DEA473224CC7A6008CF877 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -460,7 +459,6 @@
 		90D3A3DF1FEBD34700FB7485 /* BookmarksCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCellViewModelTests.swift; sourceTree = "<group>"; };
 		90D3A3E91FEC108D00FB7485 /* BookmarksPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksPlaceholderView.swift; sourceTree = "<group>"; };
 		90D3A3EC1FEC10B300FB7485 /* BookmarksPlaceholderConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksPlaceholderConstants.swift; sourceTree = "<group>"; };
-		90D3A3EE1FEC148C00FB7485 /* NSAttributedString+TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+TextAttributes.swift"; sourceTree = "<group>"; };
 		90D3A3F01FEC239100FB7485 /* BookmarksCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModel.swift; sourceTree = "<group>"; };
 		90D3A3F21FEC24D400FB7485 /* BookmarksCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelTests.swift; sourceTree = "<group>"; };
 		90D3A3FF1FEDB58800FB7485 /* RxUIView+IsVisible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxUIView+IsVisible.swift"; sourceTree = "<group>"; };
@@ -816,7 +814,6 @@
 				901A809B20127F700013CCD9 /* String+Empty.swift */,
 				908346F51F5202AE00654FF6 /* String+IndicesOf.swift */,
 				908346F71F5213F900654FF6 /* NSAttributedString+Replacements.swift */,
-				90D3A3EE1FEC148C00FB7485 /* NSAttributedString+TextAttributes.swift */,
 				906C40512013F6AC00E32571 /* UIApplication+TopViewController.swift */,
 				9021F38E1F12C95D000A6949 /* UICollectionView+ContentWidth.swift */,
 				9021F38F1F12C95D000A6949 /* UISegmentedControl+Font.swift */,
@@ -1154,7 +1151,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9009BD461FB63C7B009FB075 /* PBXTargetDependency */,
+				90DEA474224CC7A6008CF877 /* PBXTargetDependency */,
 			);
 			name = WrocliveTests;
 			productName = "Wroclive-Tests";
@@ -1630,7 +1627,6 @@
 				9030AE2121DD83FA00AFCF78 /* AppState.swift in Sources */,
 				9030AE0021DD76F500AFCF78 /* UICollectionView+ContentWidth.swift in Sources */,
 				9030AE9221DD8CEB00AFCF78 /* MainViewControllerLayout.swift in Sources */,
-				9030ADFE21DD76F500AFCF78 /* NSAttributedString+TextAttributes.swift in Sources */,
 				9030ADEF21DD742A00AFCF78 /* Line.swift in Sources */,
 				9030AE4B21DD868D00AFCF78 /* RxSectionTypeArray.swift in Sources */,
 				9030AE4421DD868D00AFCF78 /* NetworkAlerts.swift in Sources */,
@@ -1656,15 +1652,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9009BD461FB63C7B009FB075 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 902812871E59DD8500F26027 /* Wroclive */;
-			targetProxy = 9009BD451FB63C7B009FB075 /* PBXContainerItemProxy */;
-		};
 		9030ADE921DD73DF00AFCF78 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9030ADE221DD73DF00AFCF78 /* WrocliveFramework */;
 			targetProxy = 9030ADE821DD73DF00AFCF78 /* PBXContainerItemProxy */;
+		};
+		90DEA474224CC7A6008CF877 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9030ADE221DD73DF00AFCF78 /* WrocliveFramework */;
+			targetProxy = 90DEA473224CC7A6008CF877 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

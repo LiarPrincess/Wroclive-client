@@ -10,9 +10,9 @@ import RxSwift
 
 extension ReSwift.Store: ReactiveCompatible { }
 
-extension Reactive where Base: ReSwift.StoreType {
+public extension Reactive where Base: ReSwift.StoreType {
 
-  public var state: Observable<Base.State> {
+  var state: Observable<Base.State> {
     return Observable.create { observer in
       let storeSubscriber = RxStoreSubscriber<Base.State>(observer: observer)
 

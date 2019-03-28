@@ -4,8 +4,8 @@
 
 import RxSwift
 
-extension ObservableType {
-  public func reducing<A>(_ seed: A, apply: @escaping (A, Self.E) throws -> A) -> Observable<A> {
+public extension ObservableType {
+  func reducing<A>(_ seed: A, apply: @escaping (A, Self.E) throws -> A) -> Observable<A> {
     return self
       .scan(seed, accumulator: apply)
       .startWith(seed)

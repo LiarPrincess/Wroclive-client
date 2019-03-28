@@ -3,7 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public extension Environment {
-  public static var `default`: Environment {
+  static var `default`: Environment {
     return Environment(
       bundle: BundleManager(),
       debug: DebugManager(),

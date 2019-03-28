@@ -9,9 +9,9 @@ private typealias Layout       = SearchCardConstants.Layout
 private typealias TextStyles   = SearchCardConstants.TextStyles
 private typealias Localization = Localizable.Search
 
-public extension SearchCard {
+internal extension SearchCard {
 
-  public func initLayout() {
+  func initLayout() {
     self.view.backgroundColor = Theme.colors.background
     self.view.roundTopCorners(radius: CardPanelConstants.Layout.topCornerRadius)
 
