@@ -16,12 +16,18 @@ public protocol CardCoordinator: class, Coordinator {
 public extension CardCoordinator {
 
   func presentCard(_ card: Card, withHeight height: CGFloat, animated: Bool) {
-    self.cardTransitionDelegate = CardPanelTransitionDelegate(height: height)
+    guard self.card == nil else {
+      fatalError("Card was already presented!")
+    }
 
     self.card = card
-    self.card!.modalPresentationStyle = .custom
-    self.card!.transitioningDelegate  = self.cardTransitionDelegate!
+    self.cardTransitionDelegate = CardPanelTransitionDelegate(height: height)
 
-    self.parent.present(card, animated: animated, completion: nil)
+    let container = CardPanelContainer()
+    container.setContent(card)
+    container.modalPresentationStyle = .custom
+    container.transitioningDelegate  = self.cardTransitionDelegate!
+
+    self.parent.present(container, animated: animated, completion: nil)
   }
 }

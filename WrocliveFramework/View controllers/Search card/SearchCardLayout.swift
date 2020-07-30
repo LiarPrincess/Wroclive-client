@@ -13,8 +13,6 @@ internal extension SearchCard {
 
   func initLayout() {
     self.view.backgroundColor = Theme.colors.background
-    self.view.roundTopCorners(radius: CardPanelConstants.Layout.topCornerRadius)
-
     self.initHeader()
     self.initLinesSelector()
     self.initPlaceholder()
@@ -32,15 +30,13 @@ internal extension SearchCard {
       make.top.left.right.equalToSuperview()
     }
 
-    self.addChevronView(in: self.headerView.contentView)
-
     self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.chevronView.snp.bottom).offset(Layout.Header.Title.topOffset)
+      make.top.equalToSuperview().offset(Layout.Header.Title.topOffset)
       make.left.equalToSuperview().offset(Layout.leftInset)
     }
 

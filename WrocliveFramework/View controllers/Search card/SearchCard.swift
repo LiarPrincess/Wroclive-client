@@ -9,7 +9,7 @@ import RxCocoa
 private typealias Layout       = SearchCardConstants.Layout
 private typealias Localization = Localizable.Search
 
-public final class SearchCard: UIViewController, CustomCardPanelPresentable, ChevronViewOwner {
+public final class SearchCard: UIViewController, CustomCardPanelPresentable {
 
   // MARK: - Properties
 
@@ -21,7 +21,6 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable, Che
     return UIVisualEffectView(effect: headerViewBlur)
   }()
 
-  public let chevronView     = ChevronView()
   public let titleLabel      = UILabel()
   public let bookmarkButton  = UIButton()
   public let searchButton    = UIButton()
@@ -125,14 +124,6 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable, Che
 
   public var scrollView: UIScrollView? {
     return self.lineSelector.scrollView
-  }
-
-  public func interactiveDismissalProgress(percent: CGFloat) {
-    self.updateChevronViewDuringInteractiveDismissal(percent: percent)
-  }
-
-  public func interactiveDismissalDidEnd(completed: Bool) {
-    self.updateChevronViewAfterInteractiveDismissal()
   }
 }
 

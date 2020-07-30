@@ -13,8 +13,6 @@ internal extension SettingsCard {
 
   func initLayout() {
     self.view.backgroundColor = Theme.colors.background
-    self.view.roundTopCorners(radius: CardPanelConstants.Layout.topCornerRadius)
-
     self.initHeader()
     self.initTableView()
   }
@@ -30,15 +28,13 @@ internal extension SettingsCard {
       make.top.left.right.equalToSuperview()
     }
 
-    self.addChevronView(in: self.headerView.contentView)
-
     self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.chevronView.snp.bottom).offset(Layout.Header.topInset)
+      make.top.equalToSuperview().offset(Layout.Header.topInset)
       make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)

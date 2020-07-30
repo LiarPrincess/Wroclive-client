@@ -9,7 +9,7 @@ import RxCocoa
 private typealias Layout = BookmarksCardConstants.Layout
 public typealias BookmarksSection = RxSectionModel<String, Bookmark>
 
-public final class BookmarksCard: UIViewController, CustomCardPanelPresentable, ChevronViewOwner {
+public final class BookmarksCard: UIViewController, CustomCardPanelPresentable {
 
   // MARK: - Properties
 
@@ -18,7 +18,6 @@ public final class BookmarksCard: UIViewController, CustomCardPanelPresentable, 
     return UIVisualEffectView(effect: blur)
   }()
 
-  public let chevronView     = ChevronView()
   public let titleLabel      = UILabel()
   public let editButton      = UIButton()
   public let placeholderView = BookmarksPlaceholderView()
@@ -166,14 +165,6 @@ public final class BookmarksCard: UIViewController, CustomCardPanelPresentable, 
 
   public var scrollView: UIScrollView? {
     return self.tableView
-  }
-
-  public func interactiveDismissalProgress(percent: CGFloat) {
-    self.updateChevronViewDuringInteractiveDismissal(percent: percent)
-  }
-
-  public func interactiveDismissalDidEnd(completed: Bool) {
-    self.updateChevronViewAfterInteractiveDismissal()
   }
 }
 

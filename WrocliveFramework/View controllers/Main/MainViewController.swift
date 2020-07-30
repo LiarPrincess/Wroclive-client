@@ -49,10 +49,10 @@ public final class MainViewController: UIViewController {
 
   public override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    self.addMapViewSafeAreaInsetsSoLegalInfoIsVisible()
+    self.updateMapViewSafeAreaInsetsSoLegalInfoIsVisible()
   }
 
-  private func addMapViewSafeAreaInsetsSoLegalInfoIsVisible() {
+  private func updateMapViewSafeAreaInsetsSoLegalInfoIsVisible() {
     let toolbarHeight = self.toolbar.bounds.height
     let currentInset  = self.mapViewController.additionalSafeAreaInsets.bottom
 
