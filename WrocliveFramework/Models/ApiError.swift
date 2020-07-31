@@ -3,6 +3,8 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public enum ApiError: Error, Equatable, CustomStringConvertible {
+
+  // TODO: Rename 'noInternet' -> xxx?
   case noInternet
   case invalidResponse
   case generalError

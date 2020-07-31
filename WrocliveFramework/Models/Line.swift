@@ -2,12 +2,69 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+// MARK: - Line
+
 public struct Line: Codable, Equatable, Hashable, CustomStringConvertible {
-  public let name:    String
-  public let type:    LineType
+  public let name: String
+  public let type: LineType
   public let subtype: LineSubtype
 
   public var description: String {
     return "Line(\(self.name), \(self.type), \(self.subtype))"
+  }
+}
+
+// MARK: - Type
+
+public enum LineType: Int, Codable, Equatable, Hashable, CustomStringConvertible {
+  case tram
+  case bus
+
+  public var description: String {
+    switch self {
+    case .tram: return "tram"
+    case .bus: return "bus"
+    }
+  }
+}
+
+// MARK: - Subtype
+
+public enum LineSubtype: Int, Codable, Equatable, Hashable, CustomStringConvertible {
+  case regular
+  case express
+  case peakHour
+  case suburban
+  case zone
+  case limited
+  case temporary
+  case night
+
+  public var description: String {
+    switch self {
+    case .regular: return "regular"
+    case .express: return "express"
+    case .peakHour: return "peakHour"
+    case .suburban: return "suburban"
+    case .zone: return "zone"
+    case .limited: return "limited"
+    case .temporary: return "temporary"
+    case .night: return "night"
+    }
+  }
+}
+
+// MARK: - Array
+
+extension Array where Element == Line {
+
+  public func filter(_ type: LineType) -> [Line] {
+    return self.filter { $0.type == type }
+  }
+
+  public mutating func sortByLocalizedName() {
+    self.sort { lhs, rhs in
+      lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
+    }
   }
 }

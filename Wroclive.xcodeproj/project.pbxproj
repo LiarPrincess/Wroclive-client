@@ -17,6 +17,12 @@
 		900EA0EB24D46AC80054C03F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0EA24D46AC80054C03F /* Alamofire */; };
 		900EA0EE24D46AD50054C03F /* AlamofireNetworkActivityIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0ED24D46AD50054C03F /* AlamofireNetworkActivityIndicator */; };
 		900EA0F124D46AE30054C03F /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0F024D46AE30054C03F /* Reachability */; };
+		900EA0FC24D46C110054C03F /* UserLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F324D46C110054C03F /* UserLocationError.swift */; };
+		900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F424D46C110054C03F /* SearchCardState.swift */; };
+		900EA0FE24D46C110054C03F /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F524D46C110054C03F /* ApiError.swift */; };
+		900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F624D46C110054C03F /* Vehicle.swift */; };
+		900EA10224D46C110054C03F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F924D46C110054C03F /* Bookmark.swift */; };
+		900EA10324D46C110054C03F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0FA24D46C110054C03F /* Line.swift */; };
 		9052380B24D459E500E4F8A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052380A24D459E500E4F8A7 /* AppDelegate.swift */; };
 		9052382E24D45A3100E4F8A7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9052382D24D45A3100E4F8A7 /* MapKit.framework */; };
 		9052383024D45A3600E4F8A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9052382F24D45A3600E4F8A7 /* UIKit.framework */; };
@@ -62,6 +68,12 @@
 		900EA0CF24D469D90054C03F /* WrocliveFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WrocliveFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		900EA0DC24D46A340054C03F /* WrocliveFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrocliveFramework.h; sourceTree = "<group>"; };
 		900EA0DD24D46A340054C03F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		900EA0F324D46C110054C03F /* UserLocationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationError.swift; sourceTree = "<group>"; };
+		900EA0F424D46C110054C03F /* SearchCardState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardState.swift; sourceTree = "<group>"; };
+		900EA0F524D46C110054C03F /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		900EA0F624D46C110054C03F /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		900EA0F924D46C110054C03F /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		900EA0FA24D46C110054C03F /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		9052380724D459E500E4F8A7 /* Wroclive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wroclive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9052380A24D459E500E4F8A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9052381D24D459EB00E4F8A7 /* WrocliveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WrocliveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,10 +121,24 @@
 		900EA0D024D469D90054C03F /* WrocliveFramework */ = {
 			isa = PBXGroup;
 			children = (
+				900EA0F224D46C110054C03F /* Models */,
 				900EA0DD24D46A340054C03F /* Info.plist */,
 				900EA0DC24D46A340054C03F /* WrocliveFramework.h */,
 			);
 			path = WrocliveFramework;
+			sourceTree = "<group>";
+		};
+		900EA0F224D46C110054C03F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				900EA0F524D46C110054C03F /* ApiError.swift */,
+				900EA0F324D46C110054C03F /* UserLocationError.swift */,
+				900EA0F424D46C110054C03F /* SearchCardState.swift */,
+				900EA0F624D46C110054C03F /* Vehicle.swift */,
+				900EA0F924D46C110054C03F /* Bookmark.swift */,
+				900EA0FA24D46C110054C03F /* Line.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		905237FE24D459E500E4F8A7 = {
@@ -325,6 +351,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */,
+				900EA0FC24D46C110054C03F /* UserLocationError.swift in Sources */,
+				900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */,
+				900EA0FE24D46C110054C03F /* ApiError.swift in Sources */,
+				900EA10324D46C110054C03F /* Line.swift in Sources */,
+				900EA10224D46C110054C03F /* Bookmark.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +578,7 @@
 		9052382724D459EB00E4F8A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -567,6 +600,7 @@
 		9052382824D459EB00E4F8A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";

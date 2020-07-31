@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public struct Vehicle: CustomStringConvertible {
+
   public let id:   String
   public let line: Line
 
