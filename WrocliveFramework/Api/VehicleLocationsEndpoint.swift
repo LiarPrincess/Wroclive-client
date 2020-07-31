@@ -5,17 +5,22 @@
 import Foundation
 import Alamofire
 
-public final class VehicleLocationsEndpoint: JSONEndpoint {
-  public var url:               URLConvertible { return AppEnvironment.configuration.endpoints.vehicleLocations }
-  public let method:            HTTPMethod        = .post
-  public let parameterEncoding: ParameterEncoding = JSONEncoding.default
-  public let headers:           HTTPHeaders?      = ["Accept": "application/json"]
+internal struct VehicleLocationsEndpoint: Endpoint {
 
   public typealias ParameterData = [Line]
   public typealias ResponseData  = [Vehicle]
 
+  public var url:               URLConvertible
+  public let method:            HTTPMethod        = .post
+  public let parameterEncoding: ParameterEncoding = JSONEncoding.default
+  public let headers:           HTTPHeaders?      = ["Accept": "application/json"]
+
+  internal init(configuration: Configuration) {
+    self.url = configuration.endpoints.vehicleLocations
+  }
+
   public func encodeParameters(_ data: [Line]) -> Parameters? {
-    var parameters      = Parameters()
+    var parameters = Parameters()
     parameters["lines"] = data.map(encodeLine)
     return parameters
   }
@@ -46,35 +51,39 @@ private func encodeLineType(_ type: LineType) -> String {
 
 private struct ResponseModel: Decodable {
   let timestamp: String
-  let data:      [LineLocationModel]
-
-  struct LineLocationModel: Decodable {
-    let line:     LineModel
-    let vehicles: [VehicleModel]
-  }
-
-  struct LineModel: Decodable {
-    let name:    String
-    let type:    String
-    let subtype: String
-  }
-
-  struct VehicleModel: Decodable {
-    let id:    String
-    let lat:   Double
-    let lng:   Double
-    let angle: Double
-  }
+  let data: [LineLocationModel]
 }
 
-private func parseVehicleLocations(_ model: ResponseModel.LineLocationModel) throws -> [Vehicle] {
+private struct LineLocationModel: Decodable {
+  let line:     LineModel
+  let vehicles: [VehicleModel]
+}
+
+private struct LineModel: Decodable {
+  let name:    String
+  let type:    String
+  let subtype: String
+}
+
+private struct VehicleModel: Decodable {
+  let id:    String
+  let lat:   Double
+  let lng:   Double
+  let angle: Double
+}
+
+private func parseVehicleLocations(_ model: LineLocationModel) throws -> [Vehicle] {
   let line = try parseLine(model.line)
   return model.vehicles.map {
-    Vehicle(id: $0.id, line: line, latitude: $0.lat, longitude: $0.lng, angle: $0.angle)
+    Vehicle(id: $0.id,
+            line: line,
+            latitude: $0.lat,
+            longitude: $0.lng,
+            angle: $0.angle)
   }
 }
 
-private func parseLine(_ model: ResponseModel.LineModel) throws -> Line {
+private func parseLine(_ model: LineModel) throws -> Line {
   guard let type    = parseLineType(model.type),
         let subtype = parseLineSubtype(model.subtype)
     else { throw ApiError.invalidResponse }
@@ -86,7 +95,7 @@ private func parseLineType(_ type: String) -> LineType? {
   switch type.uppercased() {
   case "TRAM": return .tram
   case "BUS" : return .bus
-  default:     return nil
+  default: return nil
   }
 }
 
@@ -100,6 +109,6 @@ private func parseLineSubtype(_ subtype: String) -> LineSubtype? {
   case "LIMITED":   return .limited
   case "TEMPORARY": return .temporary
   case "NIGHT":     return .night
-  default:          return nil
+  default: return nil
   }
 }

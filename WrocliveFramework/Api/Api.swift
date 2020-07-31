@@ -4,72 +4,95 @@
 
 import Foundation
 import Alamofire
-import RxSwift
-import RxAlamofire
-import Reachability
+import PromiseKit
+
+// MARK: - Api type
 
 public protocol ApiType {
 
   /// Get all currently available mpk lines
-  func getLines() -> Single<[Line]>
+  func getLines() -> Promise<[Line]>
 
   /// Get current vehicle locations for selected lines
-  func getVehicleLocations(for lines: [Line]) -> Single<[Vehicle]>
+  func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]>
 }
 
+// MARK: - Api
+
 public final class Api: ApiType {
-  private lazy var reachability: Reachability? = Reachability()
 
-  // MARK: - ApiManager
+  private let network: NetworkType
+  private let userAgent: String
+  private let linesEndpoint: LinesEndpoint
+  private let vehicleLocationsEndpoint: VehicleLocationsEndpoint
 
-  public func getLines() -> Single<[Line]> {
-    let endpoint = LinesEndpoint()
-    return self.sendRequest(endpoint, ())
+  public init(bundle: BundleManagerType,
+              device: DeviceManagerType,
+              configuration: Configuration,
+              network: NetworkType) {
+    self.network = network
+    self.userAgent = Self.createUserAgent(bundle: bundle, device: device)
+    self.linesEndpoint = LinesEndpoint(configuration: configuration)
+    self.vehicleLocationsEndpoint = VehicleLocationsEndpoint(configuration: configuration)
   }
 
-  public func getVehicleLocations(for lines: [Line]) -> Single<[Vehicle]> {
-    let endpoint = VehicleLocationsEndpoint()
-    return self.sendRequest(endpoint, lines)
+  /// `Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)`
+  private static func createUserAgent(bundle: BundleManagerType,
+                                      device: DeviceManagerType) -> String {
+    let deviceInfo = "\(device.model) \(device.systemName) \(device.systemVersion)"
+    return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
   }
 
-  private func sendRequest<E: Endpoint>(_ endpoint: E, _ data: E.ParameterData) -> Single<E.ResponseData> {
-    return AppEnvironment.network
+  // MARK: - Endpoints
+
+  public func getLines() -> Promise<[Line]> {
+    let endpoint = self.linesEndpoint
+    return self.sendRequest(endpoint: endpoint, data: ())
+  }
+
+  public func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
+    let endpoint = self.vehicleLocationsEndpoint
+    return self.sendRequest(endpoint: endpoint, data: lines)
+  }
+
+  // MARK: - Helpers
+
+  private func sendRequest<E: Endpoint>(
+    endpoint: E,
+    data: E.ParameterData
+  ) -> Promise<E.ResponseData> {
+    var headers = endpoint.headers ?? [:]
+    headers["User-Agent"] = self.userAgent
+
+    let parameters = endpoint.encodeParameters(data)
+
+    return self.network
       .request(url:        endpoint.url,
                method:     endpoint.method,
-               parameters: endpoint.encodeParameters(data),
+               parameters: parameters,
                encoding:   endpoint.parameterEncoding,
-               headers:    self.overrideUserAgent(on: endpoint.headers))
-      .validate()
-      .data()
+               headers:    headers)
       .map { try endpoint.decodeResponse($0) }
-      .catchError { throw self.toApiError($0) }
-      .asSingle()
+      .recover { error -> Promise<E.ResponseData> in
+        throw self.toApiError(error: error)
+      }
   }
 
-  private func overrideUserAgent(on headers: HTTPHeaders?) -> HTTPHeaders {
-    // 'Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)'
-    let userAgent: String = {
-      let device = AppEnvironment.device
-      let bundle = AppEnvironment.bundle
-
-      let deviceInfo = "\(device.model) \(device.systemName) \(device.systemVersion)"
-      return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
-    }()
-
-    var result = headers ?? [:]
-    result["User-Agent"] = userAgent
-    return result
-  }
-
-  private func toApiError(_ error: Error) -> ApiError {
+  private func toApiError(error: Error) -> ApiError {
     switch error {
-    case ApiError.invalidResponse: return ApiError.invalidResponse
+    case ApiError.invalidResponse:
+      return ApiError.invalidResponse
+
     default:
-      // If reachability failed then assume that cellular connection is available
-      let connection = self.reachability?.connection ?? Reachability.Connection.cellular
-      switch connection {
-      case .none: return .noInternet
-      default:    return .generalError
+      let status = self.network.getReachabilityStatus()
+
+      switch status {
+      case .unavailable:
+        return .reachabilityError
+      case .wifi,
+           .cellular,
+           .unknown:
+        return .otherError(error)
       }
     }
   }

@@ -5,20 +5,25 @@
 import Foundation
 import Alamofire
 
-public final class LinesEndpoint: JSONEndpoint {
-  public var url:               URLConvertible { return AppEnvironment.configuration.endpoints.lines }
-  public let method:            HTTPMethod        = .get
-  public let parameterEncoding: ParameterEncoding = JSONEncoding.default
-  public let headers:           HTTPHeaders?      = ["Accept": "application/json"]
+internal struct LinesEndpoint: Endpoint {
 
-  public typealias ParameterData = Void
-  public typealias ResponseData  = [Line]
+  internal typealias ParameterData = Void
+  internal typealias ResponseData  = [Line]
 
-  public func encodeParameters(_ data: Void) -> Parameters? {
+  internal let url:               URLConvertible
+  internal let method:            HTTPMethod        = .get
+  internal let parameterEncoding: ParameterEncoding = JSONEncoding.default
+  internal let headers:           HTTPHeaders?      = ["Accept": "application/json"]
+
+  internal init(configuration: Configuration) {
+    self.url = configuration.endpoints.lines
+  }
+
+  internal func encodeParameters(_ data: Void) -> Parameters? {
     return nil
   }
 
-  public func decodeResponse(_ data: Data) throws -> ResponseData {
+  internal func decodeResponse(_ data: Data) throws -> ResponseData {
     let model = try self.parseJSON(ResponseModel.self, from: data)
     return try model.data.map(parseLine)
   }
@@ -28,16 +33,16 @@ public final class LinesEndpoint: JSONEndpoint {
 
 private struct ResponseModel: Decodable {
   let timestamp: String
-  let data:      [LineModel]
-
-  struct LineModel: Decodable {
-    let name:    String
-    let type:    String
-    let subtype: String
-  }
+  let data: [LineModel]
 }
 
-private func parseLine(_ model: ResponseModel.LineModel) throws -> Line {
+private struct LineModel: Decodable {
+  let name:    String
+  let type:    String
+  let subtype: String
+}
+
+private func parseLine(_ model: LineModel) throws -> Line {
   guard let type    = parseLineType(model.type),
         let subtype = parseLineSubtype(model.subtype)
     else { throw ApiError.invalidResponse }
@@ -49,7 +54,7 @@ private func parseLineType(_ type: String) -> LineType? {
   switch type.uppercased() {
   case "TRAM": return .tram
   case "BUS" : return .bus
-  default:     return nil
+  default: return nil
   }
 }
 
@@ -63,6 +68,6 @@ private func parseLineSubtype(_ subtype: String) -> LineSubtype? {
   case "LIMITED":   return .limited
   case "TEMPORARY": return .temporary
   case "NIGHT":     return .night
-  default:          return nil
+  default: return nil
   }
 }
