@@ -36,6 +36,20 @@
 		9058938024D4880D0046EFA5 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058937E24D4880D0046EFA5 /* DeviceManager.swift */; };
 		9058938124D4880D0046EFA5 /* BundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058937F24D4880D0046EFA5 /* BundleManager.swift */; };
 		9058938324D4954E0046EFA5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938224D4954E0046EFA5 /* Configuration.swift */; };
+		9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938524D4A7460046EFA5 /* ColorScheme.swift */; };
+		9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938624D4A7460046EFA5 /* TextAttributes.swift */; };
+		9058938F24D4A7460046EFA5 /* TextAttributeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938724D4A7460046EFA5 /* TextAttributeEnums.swift */; };
+		9058939024D4A7460046EFA5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938824D4A7460046EFA5 /* Theme.swift */; };
+		9058939124D4A7460046EFA5 /* FontPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938A24D4A7460046EFA5 /* FontPreset.swift */; };
+		9058939224D4A7460046EFA5 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938B24D4A7460046EFA5 /* SystemFont.swift */; };
+		9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938C24D4A7460046EFA5 /* FontAwesome.swift */; };
+		9058939B24D4A8600046EFA5 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9058939524D4A8600046EFA5 /* FontAwesome.otf */; };
+		9058939C24D4A8600046EFA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9058939624D4A8600046EFA5 /* Assets.xcassets */; };
+		9058939D24D4A8600046EFA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9058939724D4A8600046EFA5 /* Localizable.strings */; };
+		9058939E24D4A8600046EFA5 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058939924D4A8600046EFA5 /* StyleKit.swift */; };
+		905893AD24D4A8AC0046EFA5 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893A024D4A8AC0046EFA5 /* Assets.swift */; };
+		905893B424D4A8AC0046EFA5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893A724D4A8AC0046EFA5 /* Fonts.swift */; };
+		905893B824D4A8AC0046EFA5 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893AB24D4A8AC0046EFA5 /* Localizable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +113,21 @@
 		9058937E24D4880D0046EFA5 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		9058937F24D4880D0046EFA5 /* BundleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
 		9058938224D4954E0046EFA5 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		9058938524D4A7460046EFA5 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		9058938624D4A7460046EFA5 /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
+		9058938724D4A7460046EFA5 /* TextAttributeEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributeEnums.swift; sourceTree = "<group>"; };
+		9058938824D4A7460046EFA5 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		9058938A24D4A7460046EFA5 /* FontPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontPreset.swift; sourceTree = "<group>"; };
+		9058938B24D4A7460046EFA5 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
+		9058938C24D4A7460046EFA5 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
+		9058939524D4A8600046EFA5 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		9058939624D4A8600046EFA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9058939824D4A8600046EFA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9058939924D4A8600046EFA5 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
+		9058939A24D4A8600046EFA5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		905893A024D4A8AC0046EFA5 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		905893A724D4A8AC0046EFA5 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		905893AB24D4A8AC0046EFA5 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +166,9 @@
 		900EA0D024D469D90054C03F /* WrocliveFramework */ = {
 			isa = PBXGroup;
 			children = (
+				9058939F24D4A8AC0046EFA5 /* Generated */,
+				9058939424D4A8600046EFA5 /* Assets */,
+				9058938424D4A7460046EFA5 /* Theme */,
 				900EA11824D484680054C03F /* Environment */,
 				900EA10524D46F140054C03F /* Api */,
 				900EA0F224D46C110054C03F /* Models */,
@@ -230,6 +262,49 @@
 				9052382D24D45A3100E4F8A7 /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9058938424D4A7460046EFA5 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				9058938924D4A7460046EFA5 /* Fonts */,
+				9058938524D4A7460046EFA5 /* ColorScheme.swift */,
+				9058938624D4A7460046EFA5 /* TextAttributes.swift */,
+				9058938724D4A7460046EFA5 /* TextAttributeEnums.swift */,
+				9058938824D4A7460046EFA5 /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		9058938924D4A7460046EFA5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9058938A24D4A7460046EFA5 /* FontPreset.swift */,
+				9058938B24D4A7460046EFA5 /* SystemFont.swift */,
+				9058938C24D4A7460046EFA5 /* FontAwesome.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		9058939424D4A8600046EFA5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9058939524D4A8600046EFA5 /* FontAwesome.otf */,
+				9058939624D4A8600046EFA5 /* Assets.xcassets */,
+				9058939724D4A8600046EFA5 /* Localizable.strings */,
+				9058939924D4A8600046EFA5 /* StyleKit.swift */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		9058939F24D4A8AC0046EFA5 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				905893A024D4A8AC0046EFA5 /* Assets.swift */,
+				905893A724D4A8AC0046EFA5 /* Fonts.swift */,
+				905893AB24D4A8AC0046EFA5 /* Localizable.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +438,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9058939C24D4A8600046EFA5 /* Assets.xcassets in Resources */,
+				9058939D24D4A8600046EFA5 /* Localizable.strings in Resources */,
+				9058939B24D4A8600046EFA5 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,9 +468,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9058938F24D4A7460046EFA5 /* TextAttributeEnums.swift in Sources */,
+				9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */,
+				905893B424D4A8AC0046EFA5 /* Fonts.swift in Sources */,
+				905893AD24D4A8AC0046EFA5 /* Assets.swift in Sources */,
 				900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */,
 				900EA0FC24D46C110054C03F /* UserLocationError.swift in Sources */,
+				9058939E24D4A8600046EFA5 /* StyleKit.swift in Sources */,
+				905893B824D4A8AC0046EFA5 /* Localizable.swift in Sources */,
 				900EA11124D473E70054C03F /* Network.swift in Sources */,
+				9058939124D4A7460046EFA5 /* FontPreset.swift in Sources */,
 				9058938124D4880D0046EFA5 /* BundleManager.swift in Sources */,
 				900EA10B24D46F140054C03F /* LinesEndpoint.swift in Sources */,
 				900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */,
@@ -401,10 +486,14 @@
 				9058938024D4880D0046EFA5 /* DeviceManager.swift in Sources */,
 				900EA0FE24D46C110054C03F /* ApiError.swift in Sources */,
 				900EA10324D46C110054C03F /* Line.swift in Sources */,
+				9058939024D4A7460046EFA5 /* Theme.swift in Sources */,
 				900EA11724D484530054C03F /* AppEnvironmentProxy.swift in Sources */,
 				900EA10C24D46F140054C03F /* VehicleLocationsEndpoint.swift in Sources */,
+				9058939224D4A7460046EFA5 /* SystemFont.swift in Sources */,
 				900EA10A24D46F140054C03F /* Api.swift in Sources */,
 				900EA10224D46C110054C03F /* Bookmark.swift in Sources */,
+				9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */,
+				9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +535,15 @@
 				900EA0C724D467490054C03F /* Base */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9058939724D4A8600046EFA5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9058939824D4A8600046EFA5 /* Base */,
+				9058939A24D4A8600046EFA5 /* pl */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -22,8 +22,8 @@ public enum Theme {
     UIWindow.appearance().tintColor = tintColor
     UIView.appearance().tintColor   = tintColor
 
-    // Make user location pin blue
-    MKAnnotationView.appearance().tintColor = UIColor(red: 0.0, green: 0.5, blue: 1.0, alpha: 1.0)
+    let blueUserLocationPin = UIColor(red: 0.0, green: 0.5, blue: 1.0, alpha: 1.0)
+    MKAnnotationView.appearance().tintColor = blueUserLocationPin
 
     UIToolbar.appearance().barStyle       = barStyle
     UINavigationBar.appearance().barStyle = barStyle
