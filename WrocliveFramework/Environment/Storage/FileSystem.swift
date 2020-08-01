@@ -10,26 +10,28 @@ public protocol FileSystemType {
   var documentsDirectory: URL { get }
 
   // Read file from disc
-  func read(_ url: URL) throws -> Data
+  func read(url: URL) throws -> Data
 
   // Write file to disc
-  func write(_ data: Data, to url: URL) throws
+  func write(url: URL, data: Data) throws
 }
 
-public final class FileSystem: FileSystemType {
+public struct FileSystem: FileSystemType {
 
   public var documentsDirectory: URL {
-    return FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    let fm = FileManager()
+    let documents = fm.urls(for: .documentDirectory, in: .userDomainMask)
+    return documents.first!
   }
 
   public init() { }
 
-  public func read(_ url: URL) throws -> Data {
+  public func read(url: URL) throws -> Data {
     precondition(url.isFileURL)
     return try Data(contentsOf: url)
   }
 
-  public func write(_ data: Data, to url: URL) throws {
+  public func write(url: URL, data: Data) throws {
     precondition(url.isFileURL)
     try data.write(to: url, options: .atomicWrite)
   }

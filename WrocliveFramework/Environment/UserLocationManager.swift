@@ -4,59 +4,77 @@
 
 import UIKit
 import MapKit
-import RxSwift
-import RxCoreLocation
+import PromiseKit
+
+// MARK: - Error
+
+public enum UserLocationError: Error, Equatable, CustomStringConvertible {
+
+  case permissionNotDetermined
+  case permissionDenied
+  case otherError
+
+  public var description: String {
+    switch self {
+    case .permissionNotDetermined: return "Permission not determined"
+    case .permissionDenied: return "Permission denied"
+    case .otherError: return "Other error"
+    }
+  }
+}
+
+// MARK: - Manager type
 
 public protocol UserLocationManagerType {
 
-  /// Returns user location
-  func getCurrent() -> Single<CLLocationCoordinate2D>
+  /// Returns current user location.
+  func getCurrent() -> Promise<CLLocationCoordinate2D>
 
-  /// Current authorization status
-  var authorization: Observable<CLAuthorizationStatus> { get }
+  /// Current authorization status.
+  func getAuthorizationStatus() -> CLAuthorizationStatus
 
-  /// Request when in use authorization
+  /// Request when in use authorization.
   func requestWhenInUseAuthorization()
 }
 
-// sourcery: manager
-public final class UserLocationManager: NSObject, UserLocationManagerType {
+// MARK: - Manager
 
-  // MARK: - Properties
+public struct UserLocationManager: UserLocationManagerType {
 
-  private lazy var locationManager: CLLocationManager = {
-    let manager             = CLLocationManager()
+  private var locationManager: CLLocationManager = {
+    let manager = CLLocationManager()
     manager.distanceFilter  = 5.0
     manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
     manager.pausesLocationUpdatesAutomatically = true
     return manager
   }()
 
-  public override init() { }
-
-  // MARK: - UserLocationManagerType
-
-  public func getCurrent() -> Single<CLLocationCoordinate2D> {
-    return self.locationManager.rx.location
-      .map { location in
-        switch location {
-        case .none:
-          let authorization = CLLocationManager.authorizationStatus()
-          switch authorization {
-          case .authorizedAlways,
-               .authorizedWhenInUse: throw UserLocationError.generalError
-          case .notDetermined: throw UserLocationError.permissionNotDetermined
-          case .restricted,
-               .denied: throw UserLocationError.permissionDenied
-          }
-        case let .some(location): return location.coordinate
-        }
+  public func getCurrent() -> Promise<CLLocationCoordinate2D> {
+    return Promise<CLLocationCoordinate2D> { seal in
+      if let location = self.locationManager.location {
+        seal.fulfill(location.coordinate)
+        return
       }
-      .asSingle()
+
+      let authorization = self.getAuthorizationStatus()
+      switch authorization {
+      case .authorizedAlways,
+           .authorizedWhenInUse:
+        throw UserLocationError.otherError
+      case .notDetermined:
+        throw UserLocationError.permissionNotDetermined
+      case .restricted,
+           .denied:
+        throw UserLocationError.permissionDenied
+      @unknown default:
+        throw UserLocationError.otherError
+      }
+    }
   }
 
-  public var authorization: Observable<CLAuthorizationStatus> {
-    return self.locationManager.rx.didChangeAuthorization.map { $0.status }
+  public func getAuthorizationStatus() -> CLAuthorizationStatus {
+    let result = CLLocationManager.authorizationStatus()
+    return result
   }
 
   public func requestWhenInUseAuthorization() {

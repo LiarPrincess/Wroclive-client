@@ -4,6 +4,8 @@
 
 import Foundation
 
+// MARK: - Manager type
+
 public protocol StorageManagerType {
 
   /// Get saved bookmarks from a file
@@ -19,31 +21,27 @@ public protocol StorageManagerType {
   func saveSearchCardState(_ state: SearchCardState)
 }
 
-// sourcery: manager
-public final class StorageManager: StorageManagerType {
+// MARK: - Manager
 
-  private var bookmarksFile: URL {
-    let documentsDir = self.fileSystem.documentsDirectory
-    return documentsDir.appendingPathComponent("bookmarks")
-  }
+// TODO: Handle errors somehow?
+public struct StorageManager: StorageManagerType {
 
-  private var searchCardStateFile: URL {
-    let documentsDir = self.fileSystem.documentsDirectory
-    return documentsDir.appendingPathComponent("searchCardState")
-  }
-
+  private let bookmarksFile: URL
+  private let searchCardStateFile: URL
   private let fileSystem: FileSystemType
 
-  public init(fileSystem: FileSystemType = FileSystem()) {
+  public init(fileSystem: FileSystemType) {
     self.fileSystem = fileSystem
-  }
 
-  // MARK: - StorageManagerType
+    let documents = self.fileSystem.documentsDirectory
+    self.bookmarksFile = documents.appendingPathComponent("bookmarks")
+    self.searchCardStateFile = documents.appendingPathComponent("searchCardState")
+  }
 
   public func getSavedBookmarks() -> [Bookmark]? {
     do {
       let decoder = self.createDecoder()
-      let data = try self.fileSystem.read(self.bookmarksFile)
+      let data = try self.fileSystem.read(url: self.bookmarksFile)
       return try decoder.decode([Bookmark].self, from: data)
     }
     catch { return nil }
@@ -52,7 +50,7 @@ public final class StorageManager: StorageManagerType {
   public func getSavedSearchCardState() -> SearchCardState? {
     do {
       let decoder = self.createDecoder()
-      let data = try self.fileSystem.read(self.searchCardStateFile)
+      let data = try self.fileSystem.read(url: self.searchCardStateFile)
       return try decoder.decode(SearchCardState.self, from: data)
     }
     catch { return nil }
@@ -62,7 +60,7 @@ public final class StorageManager: StorageManagerType {
     do {
       let encoder = self.createEncoder()
       let data = try encoder.encode(bookmarks)
-      try self.fileSystem.write(data, to: self.bookmarksFile)
+      try self.fileSystem.write(url: self.bookmarksFile, data: data)
     }
     catch { }
   }
@@ -71,20 +69,16 @@ public final class StorageManager: StorageManagerType {
     do {
       let encoder = self.createEncoder()
       let data = try encoder.encode(state)
-      try self.fileSystem.write(data, to: self.searchCardStateFile)
+      try self.fileSystem.write(url: self.searchCardStateFile, data: data)
     }
     catch { }
   }
 
-  // MARK: - Helpers
-
-  private func createDecoder() -> PropertyListDecoder {
-    return PropertyListDecoder()
+  private func createDecoder() -> JSONDecoder {
+    return JSONDecoder()
   }
 
-  private func createEncoder() -> PropertyListEncoder {
-    let encoder = PropertyListEncoder()
-    encoder.outputFormat = .xml
-    return encoder
+  private func createEncoder() -> JSONEncoder {
+    return JSONEncoder()
   }
 }

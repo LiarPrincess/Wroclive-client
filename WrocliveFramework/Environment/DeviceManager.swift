@@ -20,7 +20,7 @@ public protocol DeviceManagerType {
   // MARK: - Screen
 
   /// Point to pixel ratio
-  var screenScale:  CGFloat { get }
+  var screenScale: CGFloat { get }
 
   /// Screen resolution
   var screenBounds: CGRect  { get }
@@ -30,25 +30,36 @@ public protocol DeviceManagerType {
   var preferredFontSize: CGFloat { get }
 }
 
-// sourcery: manager
-public final class DeviceManager: DeviceManagerType {
+public struct DeviceManager: DeviceManagerType {
 
-  private var device: UIDevice { return UIDevice.current }
-  private var screen: UIScreen { return UIScreen.main }
+  public let model: String
+  public let systemName: String
+  public let systemVersion: String
 
-  public init() { }
+  public let screenScale: CGFloat
+  public let screenBounds: CGRect
 
-  // MARK: - Device
+  public init(model: String,
+              systemName: String,
+              systemVersion: String,
+              screenScale: CGFloat,
+              screenBounds: CGRect) {
+    self.model = model
+    self.systemName = systemName
+    self.systemVersion = systemVersion
+    self.screenScale = screenScale
+    self.screenBounds = screenBounds
+  }
 
-  public var model:         String { return self.device.model }
-  public var systemName:    String { return self.device.systemName }
-  public var systemVersion: String { return self.device.systemVersion }
+  public init(device: UIDevice, screen: UIScreen) {
+    self.model = device.model
+    self.systemName = device.systemName
+    self.systemVersion = device.systemVersion
+    self.screenScale = screen.scale
+    self.screenBounds = screen.bounds
+  }
 
-  // MARK: - Screen
-
-  public var screenScale:  CGFloat { return screen.scale }
-  public var screenBounds: CGRect  { return screen.bounds }
-
+  // TODO: DeviceManager.preferredFontSize
   public var preferredFontSize: CGFloat  {
     return UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).pointSize
   }

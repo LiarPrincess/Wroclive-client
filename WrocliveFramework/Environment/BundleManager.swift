@@ -16,16 +16,25 @@ public protocol BundleManagerType {
   var identifier: String { get }
 }
 
-// sourcery: manager
-public final class BundleManager: BundleManagerType {
+public struct BundleManager: BundleManagerType {
 
-  public var name:       String { return self.bundleInformation(key: kCFBundleExecutableKey as String) ?? "Unknown" }
-  public var version:    String { return self.bundleInformation(key: "CFBundleShortVersionString")     ?? "0" }
-  public var identifier: String { return self.bundleInformation(key: kCFBundleIdentifierKey as String) ?? "Unknown" }
+  public let name: String
+  public let version: String
+  public let identifier: String
 
-  public init() { }
+  public init(name: String, version: String, identifier: String) {
+    self.name = name
+    self.version = version
+    self.identifier = identifier
+  }
 
-  private func bundleInformation(key: String) -> String? {
-    return Bundle.main.infoDictionary?[key] as? String
+  public init(bundle: Bundle) {
+    func get(key: String) -> String? {
+      return bundle.infoDictionary?[key] as? String
+    }
+
+    self.name = get(key: kCFBundleExecutableKey as String) ?? "Unknown"
+    self.version = get(key: "CFBundleShortVersionString") ?? "0"
+    self.identifier = get(key: kCFBundleIdentifierKey as String) ?? "Unknown"
   }
 }

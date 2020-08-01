@@ -7,7 +7,7 @@ public final class CachedStorageManager: StorageManagerType {
 
   private let inner: StorageManagerType
 
-  private var bookmarks:       [Bookmark]?
+  private var bookmarks: [Bookmark]?
   private var searchCardState: SearchCardState?
 
   public init(using inner: StorageManagerType) {
@@ -18,6 +18,7 @@ public final class CachedStorageManager: StorageManagerType {
     if self.bookmarks == nil {
       self.bookmarks = self.inner.getSavedBookmarks()
     }
+
     return self.bookmarks
   }
 
@@ -25,6 +26,7 @@ public final class CachedStorageManager: StorageManagerType {
     if self.searchCardState == nil {
       self.searchCardState = self.inner.getSavedSearchCardState()
     }
+
     return self.searchCardState
   }
 

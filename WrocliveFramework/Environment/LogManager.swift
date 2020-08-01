@@ -12,18 +12,21 @@ public protocol LogManagerType {
   var storage:   OSLog { get }
 }
 
-// sourcery: manager
-// We cannot use `os_log` inside manager as this would capture incorrect data
-public final class LogManager: LogManagerType {
+public struct LogManager: LogManagerType {
 
-  public lazy var app:       OSLog = { self.createLog(category: "app") }()
-  public lazy var redux:     OSLog = { self.createLog(category: "redux") }()
-  public lazy var mapUpdate: OSLog = { self.createLog(category: "map-update") }()
-  public lazy var storage:   OSLog = { self.createLog(category: "storage") }()
+  public let app: OSLog
+  public let redux: OSLog
+  public let mapUpdate: OSLog
+  public let storage: OSLog
 
-  public init() { }
+  public init(bundle: BundleManagerType) {
+    func createLog(category: String) -> OSLog {
+      return OSLog(subsystem: bundle.identifier, category: category)
+    }
 
-  private func createLog(category: String) -> OSLog {
-    return OSLog(subsystem: AppEnvironment.bundle.identifier, category: category)
+    self.app = createLog(category: "app")
+    self.redux = createLog(category: "redux")
+    self.mapUpdate = createLog(category: "map-update")
+    self.storage = createLog(category: "storage")
   }
 }

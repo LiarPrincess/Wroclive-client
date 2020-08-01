@@ -5,37 +5,47 @@
 import Foundation
 
 public struct Configuration {
-  public let websiteUrl = URL(string: "https://www.overcast.fm")!
-  public let appStore   = AppStoreConfiguration(appId: "888422857")
-  public let endpoints  = EndpointConfiguration(base: "http://127.0.0.1:3000") // "139.59.154.250"
-  public let time       = TimingConfiguration()
 
-  public init() { }
-}
+  public let websiteUrl: URL
+  public let appStore:   AppStore
+  public let endpoints:  Endpoints
+  public let timing:     Timing
 
-public struct AppStoreConfiguration {
-  private let appId: String
-
-  public var writeReviewUrl: URL { return URL(string: "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8")! }
-  public var shareUrl:       URL { return URL(string: "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8")! }
-
-  public init(appId: String) {
-    self.appId = appId
+  public struct AppStore {
+    public let shareUrl: URL
+    public let writeReviewUrl: URL
   }
-}
 
-public struct EndpointConfiguration {
-  private let base: String
-
-  public var lines: String { return base + "/lines" }
-  public var vehicleLocations: String { return base + "/locations" }
-
-  public init(base: String) {
-    self.base = base
+  public struct Endpoints {
+    public let lines: String
+    public let vehicleLocations: String
   }
-}
 
-public struct TimingConfiguration {
-  public let locationAuthorizationPromptDelay: TimeInterval = 2.0
-  public let vehicleUpdateInterval:            TimeInterval = 5.0
+  public struct Timing {
+    public let vehicleUpdateInterval: TimeInterval
+    public let locationAuthorizationPromptDelay: TimeInterval
+  }
+
+  public init() {
+    self.websiteUrl = URL(string: "https://www.overcast.fm")!
+
+    let appId = "888422857"
+    let share = "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8" // TODO: overcast
+    let writeReview = "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8"
+    self.appStore = AppStore(
+      shareUrl: URL(string: share)!,
+      writeReviewUrl: URL(string: writeReview)!
+    )
+
+    self.timing = Timing(
+      vehicleUpdateInterval: 5.0,
+      locationAuthorizationPromptDelay: 2.0
+    )
+
+    let baseUrl = "http://127.0.0.1:3000" // "139.59.154.250"
+    self.endpoints = Endpoints(
+      lines: baseUrl + "/lines",
+      vehicleLocations: baseUrl + "/locations"
+    )
+  }
 }
