@@ -21,6 +21,31 @@ public protocol ApiType {
 
 public final class Api: ApiType {
 
+  // MARK: - Error
+
+  public enum Error: Swift.Error, CustomStringConvertible {
+
+    /// Recieved response is invalid
+    case invalidResponse
+    /// No internet connnection?
+    case reachabilityError
+    /// Other unknown errror
+    case otherError(Swift.Error)
+
+    public var description: String {
+      switch self {
+      case .invalidResponse:
+        return "Invalid response"
+      case .reachabilityError:
+        return "Reachability error"
+      case .otherError(let e):
+        return "Other error: \(e)"
+      }
+    }
+  }
+
+  // MARK: - Properties + init
+
   private let network: NetworkType
   private let userAgent: String
   private let linesEndpoint: LinesEndpoint
@@ -78,10 +103,10 @@ public final class Api: ApiType {
       }
   }
 
-  private func toApiError(error: Error) -> ApiError {
+  private func toApiError(error: Swift.Error) -> Error {
     switch error {
-    case ApiError.invalidResponse:
-      return ApiError.invalidResponse
+    case Error.invalidResponse:
+      return .invalidResponse
 
     default:
       let status = self.network.getReachabilityStatus()
