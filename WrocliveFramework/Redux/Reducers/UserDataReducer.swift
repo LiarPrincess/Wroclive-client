@@ -5,11 +5,12 @@
 import Foundation
 import ReSwift
 
-public func userDataReducer(action: Action, state: UserDataState?) -> UserDataState {
-  return UserDataState(
+public func userDataReducer(action: Action,
+                            state: AppState.UserData?) -> AppState.UserData {
+  return AppState.UserData(
     bookmarks: bookmarksReducer(action: action, state: state?.bookmarks),
-    searchCardState: searchCardStateReducer(action: action, state: state?.searchCardState),
-    trackedLines: trackedLinesReducer(action: action, state: state?.trackedLines)
+    trackedLines: trackedLinesReducer(action: action, state: state?.trackedLines),
+    searchCardState: searchCardStateReducer(action: action, state: state?.searchCardState)
   )
 }
 
@@ -23,7 +24,9 @@ private func bookmarksReducer(action: Action, state: [Bookmark]?) -> [Bookmark] 
   case let BookmarksAction.remove(index) where state.indices.contains(index):
     state.remove(at: index)
 
-  case let BookmarksAction.move(from, to) where state.indices.contains(from) && state.indices.contains(to):
+  case let BookmarksAction.move(from, to)
+    where state.indices.contains(from) && state.indices.contains(to):
+
     let bookmark = state.remove(at: from)
     state.insert(bookmark, at: to)
 
@@ -34,7 +37,8 @@ private func bookmarksReducer(action: Action, state: [Bookmark]?) -> [Bookmark] 
   return state
 }
 
-private func searchCardStateReducer(action: Action, state: SearchCardState?) -> SearchCardState {
+private func searchCardStateReducer(action: Action,
+                                    state: SearchCardState?) -> SearchCardState {
   let state = state ?? .default
 
   switch action {

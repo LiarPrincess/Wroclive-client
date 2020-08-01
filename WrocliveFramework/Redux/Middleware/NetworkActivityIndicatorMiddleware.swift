@@ -7,7 +7,7 @@ import ReSwift
 
 // swiftlint:disable implicit_return
 
-public func createNetworkActivityIndicatorMiddleware() -> Middleware<AppState> {
+public func createNetworkActivityIndicatorMiddleware(env: Environment) -> Middleware<AppState> {
   return { dispatch, getState in
     return { next in
       return { action in
@@ -17,7 +17,7 @@ public func createNetworkActivityIndicatorMiddleware() -> Middleware<AppState> {
 
         if let state = getState() {
           let hasPending = hasPendingRequests(state)
-          AppEnvironment.network.setNetworkActivityIndicatorVisibility(hasPending)
+          env.api.setNetworkActivityIndicatorVisibility(isVisible: hasPending)
         }
       }
     }

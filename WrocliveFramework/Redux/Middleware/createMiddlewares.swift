@@ -5,12 +5,11 @@
 import Foundation
 import ReSwift
 
-public func createMiddlewares() -> [Middleware<AppState>] {
-  let api = Api()
+public func createMiddlewares(env: Environment) -> [Middleware<AppState>] {
   return [ // order is important!
-    createLoggingMiddleware(),
-    createApiMiddleware(api),
-    createPersistencyMiddleware(),
-    createNetworkActivityIndicatorMiddleware()
+    createLoggingMiddleware(env: env),
+    createApiMiddleware(env: env),
+    createPersistencyMiddleware(env: env),
+    createNetworkActivityIndicatorMiddleware(env: env)
   ]
 }

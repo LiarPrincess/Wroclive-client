@@ -5,35 +5,80 @@
 import Foundation
 import ReSwift
 
-// sourcery: action
-public enum BookmarksAction: Action {
+// When writing 'CustomStringConvertible' remember to avoid printing sensitive
+// user data (for example location)!
+
+public enum BookmarksAction: Action, CustomStringConvertible {
   case add(name: String, lines: [Line])
   case remove(at: Int)
   case move(from: Int, to: Int)
+
+  public var description: String {
+    switch self {
+    case .add: return "BookmarksAction.add"
+    case .remove: return "BookmarksAction.remove"
+    case .move: return "BookmarksAction.move"
+    }
+  }
 }
 
-// sourcery: action
 public enum SearchCardStateAction: Action {
   case selectPage(LineType)
   case selectLine(Line)
   case deselectLine(Line)
+
+  public var description: String {
+    switch self {
+    case .selectPage: return "SearchCardStateAction.selectPage"
+    case .selectLine: return "SearchCardStateAction.selectLine"
+    case .deselectLine: return "SearchCardStateAction.deselectLine"
+    }
+  }
 }
 
-// sourcery: action
-public enum TrackedLinesAction: Action {
+public enum TrackedLinesAction: Action, CustomStringConvertible {
   case startTracking([Line])
+
+  public var description: String {
+    switch self {
+    case .startTracking: return "TrackedLinesAction.startTracking"
+    }
+  }
 }
 
-// sourcery: action
 /// This type of api action is intended for ApiMiddleware
-public enum ApiAction: Action {
+public enum ApiAction: Action, CustomStringConvertible {
   case updateLines
   case updateVehicleLocations
+
+  public var description: String {
+    switch self {
+    case .updateLines: return "ApiAction.updateLines"
+    case .updateVehicleLocations: return "ApiAction.updateVehicleLocations"
+    }
+  }
 }
 
-// sourcery: action
 /// This type of api action is dispatched by ApiMiddleware
-public enum ApiResponseAction: Action {
-  case setLines(ApiResponseState<[Line]>)
-  case setVehicleLocations(ApiResponseState<[Vehicle]>)
+public enum ApiResponseAction: Action, CustomStringConvertible {
+  case setLines(AppState.ApiResponseState<[Line]>)
+  case setVehicleLocations(AppState.ApiResponseState<[Vehicle]>)
+
+  public var description: String {
+    switch self {
+    case let .setLines(response):
+      return "ApiResponseAction.setLines(\(describe(response)))"
+    case let .setVehicleLocations(response):
+      return "ApiResponseAction.setVehicleLocations(\(describe(response)))"
+    }
+  }
+}
+
+private func describe<Data>(_ resonse: AppState.ApiResponseState<Data>) -> String {
+  switch resonse {
+  case .none:       return ".none"
+  case .inProgress: return ".inProgress"
+  case .data:       return ".data"
+  case let .error(error): return ".error(\(String(describing: error)))"
+  }
 }

@@ -17,7 +17,6 @@
 		900EA0EB24D46AC80054C03F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0EA24D46AC80054C03F /* Alamofire */; };
 		900EA0F124D46AE30054C03F /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0F024D46AE30054C03F /* Reachability */; };
 		900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F424D46C110054C03F /* SearchCardState.swift */; };
-		900EA0FE24D46C110054C03F /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F524D46C110054C03F /* ApiError.swift */; };
 		900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F624D46C110054C03F /* Vehicle.swift */; };
 		900EA10224D46C110054C03F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F924D46C110054C03F /* Bookmark.swift */; };
 		900EA10324D46C110054C03F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0FA24D46C110054C03F /* Line.swift */; };
@@ -27,6 +26,16 @@
 		900EA10D24D46F140054C03F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA10924D46F140054C03F /* Endpoint.swift */; };
 		900EA11124D473E70054C03F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA11024D473E70054C03F /* Network.swift */; };
 		9047995924D56BCA00111F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995824D56BCA00111F2C /* Environment.swift */; };
+		9047996724D575C500111F2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995B24D575C500111F2C /* AppState.swift */; };
+		9047996824D575C500111F2C /* createMiddlewares.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995D24D575C500111F2C /* createMiddlewares.swift */; };
+		9047996924D575C500111F2C /* PersistencyMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995E24D575C500111F2C /* PersistencyMiddleware.swift */; };
+		9047996A24D575C500111F2C /* ApiMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995F24D575C500111F2C /* ApiMiddleware.swift */; };
+		9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996024D575C500111F2C /* LoggingMiddleware.swift */; };
+		9047996C24D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996124D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift */; };
+		9047996D24D575C500111F2C /* appReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996324D575C500111F2C /* appReducer.swift */; };
+		9047996E24D575C500111F2C /* UserDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996424D575C500111F2C /* UserDataReducer.swift */; };
+		9047996F24D575C500111F2C /* ApiDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996524D575C500111F2C /* ApiDataReducer.swift */; };
+		9047997024D575C500111F2C /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996624D575C500111F2C /* Actions.swift */; };
 		9052380B24D459E500E4F8A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052380A24D459E500E4F8A7 /* AppDelegate.swift */; };
 		9052382E24D45A3100E4F8A7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9052382D24D45A3100E4F8A7 /* MapKit.framework */; };
 		9052383024D45A3600E4F8A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9052382F24D45A3600E4F8A7 /* UIKit.framework */; };
@@ -55,6 +64,7 @@
 		905893D024D4A95D0046EFA5 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893C424D4A95D0046EFA5 /* FileSystem.swift */; };
 		905893D224D4A95D0046EFA5 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893C624D4A95D0046EFA5 /* LogManager.swift */; };
 		905893D324D4A95D0046EFA5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893C724D4A95D0046EFA5 /* Configuration.swift */; };
+		90A5FA9124D588DB00EC24D6 /* Collection+Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A5FA7B24D588DA00EC24D6 /* Collection+Any.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +106,6 @@
 		900EA0DC24D46A340054C03F /* WrocliveFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrocliveFramework.h; sourceTree = "<group>"; };
 		900EA0DD24D46A340054C03F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		900EA0F424D46C110054C03F /* SearchCardState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardState.swift; sourceTree = "<group>"; };
-		900EA0F524D46C110054C03F /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		900EA0F624D46C110054C03F /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		900EA0F924D46C110054C03F /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		900EA0FA24D46C110054C03F /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
@@ -106,6 +115,16 @@
 		900EA10924D46F140054C03F /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		900EA11024D473E70054C03F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9047995824D56BCA00111F2C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		9047995B24D575C500111F2C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		9047995D24D575C500111F2C /* createMiddlewares.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createMiddlewares.swift; sourceTree = "<group>"; };
+		9047995E24D575C500111F2C /* PersistencyMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyMiddleware.swift; sourceTree = "<group>"; };
+		9047995F24D575C500111F2C /* ApiMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiMiddleware.swift; sourceTree = "<group>"; };
+		9047996024D575C500111F2C /* LoggingMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
+		9047996124D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorMiddleware.swift; sourceTree = "<group>"; };
+		9047996324D575C500111F2C /* appReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = appReducer.swift; sourceTree = "<group>"; };
+		9047996424D575C500111F2C /* UserDataReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataReducer.swift; sourceTree = "<group>"; };
+		9047996524D575C500111F2C /* ApiDataReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiDataReducer.swift; sourceTree = "<group>"; };
+		9047996624D575C500111F2C /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		9052380724D459E500E4F8A7 /* Wroclive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wroclive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9052380A24D459E500E4F8A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9052381D24D459EB00E4F8A7 /* WrocliveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WrocliveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +157,7 @@
 		905893C424D4A95D0046EFA5 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		905893C624D4A95D0046EFA5 /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		905893C724D4A95D0046EFA5 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		90A5FA7B24D588DA00EC24D6 /* Collection+Any.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Any.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,12 +196,14 @@
 		900EA0D024D469D90054C03F /* WrocliveFramework */ = {
 			isa = PBXGroup;
 			children = (
+				90A5FA6A24D588DA00EC24D6 /* Extensions */,
 				900EA10524D46F140054C03F /* Api */,
 				9058939424D4A8600046EFA5 /* Assets */,
 				905893BA24D4A95D0046EFA5 /* Environment */,
 				9058939F24D4A8AC0046EFA5 /* Generated */,
-				9058938424D4A7460046EFA5 /* Theme */,
 				900EA0F224D46C110054C03F /* Models */,
+				9047995A24D575C500111F2C /* Redux */,
+				9058938424D4A7460046EFA5 /* Theme */,
 				900EA0DD24D46A340054C03F /* Info.plist */,
 				900EA0DC24D46A340054C03F /* WrocliveFramework.h */,
 			);
@@ -203,13 +225,45 @@
 			isa = PBXGroup;
 			children = (
 				900EA10624D46F140054C03F /* Api.swift */,
-				900EA0F524D46C110054C03F /* ApiError.swift */,
 				900EA10724D46F140054C03F /* LinesEndpoint.swift */,
 				900EA10824D46F140054C03F /* VehicleLocationsEndpoint.swift */,
 				900EA10924D46F140054C03F /* Endpoint.swift */,
 				900EA11024D473E70054C03F /* Network.swift */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		9047995A24D575C500111F2C /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				9047996224D575C500111F2C /* Reducers */,
+				9047995C24D575C500111F2C /* Middleware */,
+				9047995B24D575C500111F2C /* AppState.swift */,
+				9047996624D575C500111F2C /* Actions.swift */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
+		9047995C24D575C500111F2C /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				9047995D24D575C500111F2C /* createMiddlewares.swift */,
+				9047995E24D575C500111F2C /* PersistencyMiddleware.swift */,
+				9047995F24D575C500111F2C /* ApiMiddleware.swift */,
+				9047996024D575C500111F2C /* LoggingMiddleware.swift */,
+				9047996124D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift */,
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
+		9047996224D575C500111F2C /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				9047996324D575C500111F2C /* appReducer.swift */,
+				9047996424D575C500111F2C /* UserDataReducer.swift */,
+				9047996524D575C500111F2C /* ApiDataReducer.swift */,
+			);
+			path = Reducers;
 			sourceTree = "<group>";
 		};
 		905237FE24D459E500E4F8A7 = {
@@ -328,6 +382,14 @@
 				905893C224D4A95D0046EFA5 /* CachedStorageManager.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		90A5FA6A24D588DA00EC24D6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				90A5FA7B24D588DA00EC24D6 /* Collection+Any.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9047996824D575C500111F2C /* createMiddlewares.swift in Sources */,
 				9058938F24D4A7460046EFA5 /* TextAttributeEnums.swift in Sources */,
 				9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */,
 				905893B424D4A8AC0046EFA5 /* Fonts.swift in Sources */,
@@ -501,25 +564,34 @@
 				9058939E24D4A8600046EFA5 /* StyleKit.swift in Sources */,
 				905893CC24D4A95D0046EFA5 /* DebugManager.swift in Sources */,
 				905893B824D4A8AC0046EFA5 /* Localizable.swift in Sources */,
+				9047996C24D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift in Sources */,
 				900EA11124D473E70054C03F /* Network.swift in Sources */,
+				9047996724D575C500111F2C /* AppState.swift in Sources */,
 				9058939124D4A7460046EFA5 /* FontPreset.swift in Sources */,
 				900EA10B24D46F140054C03F /* LinesEndpoint.swift in Sources */,
+				90A5FA9124D588DB00EC24D6 /* Collection+Any.swift in Sources */,
+				9047996D24D575C500111F2C /* appReducer.swift in Sources */,
+				9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */,
+				9047996A24D575C500111F2C /* ApiMiddleware.swift in Sources */,
+				9047996924D575C500111F2C /* PersistencyMiddleware.swift in Sources */,
 				900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */,
 				905893D224D4A95D0046EFA5 /* LogManager.swift in Sources */,
 				905893CA24D4A95D0046EFA5 /* UserLocationManager.swift in Sources */,
 				905893CF24D4A95D0046EFA5 /* CachedStorageManager.swift in Sources */,
+				9047996E24D575C500111F2C /* UserDataReducer.swift in Sources */,
 				905893D324D4A95D0046EFA5 /* Configuration.swift in Sources */,
 				900EA10D24D46F140054C03F /* Endpoint.swift in Sources */,
 				9047995924D56BCA00111F2C /* Environment.swift in Sources */,
 				905893D024D4A95D0046EFA5 /* FileSystem.swift in Sources */,
-				900EA0FE24D46C110054C03F /* ApiError.swift in Sources */,
 				900EA10324D46C110054C03F /* Line.swift in Sources */,
+				9047997024D575C500111F2C /* Actions.swift in Sources */,
 				9058939024D4A7460046EFA5 /* Theme.swift in Sources */,
 				905893CE24D4A95D0046EFA5 /* DeviceManager.swift in Sources */,
 				900EA10C24D46F140054C03F /* VehicleLocationsEndpoint.swift in Sources */,
 				9058939224D4A7460046EFA5 /* SystemFont.swift in Sources */,
 				900EA10A24D46F140054C03F /* Api.swift in Sources */,
 				900EA10224D46C110054C03F /* Bookmark.swift in Sources */,
+				9047996F24D575C500111F2C /* ApiDataReducer.swift in Sources */,
 				9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */,
 				9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */,
 			);

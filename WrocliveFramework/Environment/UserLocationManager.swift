@@ -6,6 +6,23 @@ import UIKit
 import MapKit
 import PromiseKit
 
+// MARK: - Error
+
+public enum UserLocationError: Swift.Error, Equatable, CustomStringConvertible {
+
+  case permissionNotDetermined
+  case permissionDenied
+  case otherError
+
+  public var description: String {
+    switch self {
+    case .permissionNotDetermined: return "Permission not determined"
+    case .permissionDenied: return "Permission denied"
+    case .otherError: return "Other error"
+    }
+  }
+}
+
 // MARK: - Manager type
 
 public protocol UserLocationManagerType {
@@ -23,21 +40,6 @@ public protocol UserLocationManagerType {
 // MARK: - Manager
 
 public struct UserLocationManager: UserLocationManagerType {
-
-  public enum Error: Swift.Error, Equatable, CustomStringConvertible {
-
-    case permissionNotDetermined
-    case permissionDenied
-    case otherError
-
-    public var description: String {
-      switch self {
-      case .permissionNotDetermined: return "Permission not determined"
-      case .permissionDenied: return "Permission denied"
-      case .otherError: return "Other error"
-      }
-    }
-  }
 
   private var locationManager: CLLocationManager = {
     let manager = CLLocationManager()
@@ -58,14 +60,14 @@ public struct UserLocationManager: UserLocationManagerType {
       switch authorization {
       case .authorizedAlways,
            .authorizedWhenInUse:
-        throw Error.otherError
+        throw UserLocationError.otherError
       case .notDetermined:
-        throw Error.permissionNotDetermined
+        throw UserLocationError.permissionNotDetermined
       case .restricted,
            .denied:
-        throw Error.permissionDenied
+        throw UserLocationError.permissionDenied
       @unknown default:
-        throw Error.otherError
+        throw UserLocationError.otherError
       }
     }
   }

@@ -8,7 +8,7 @@ import ReSwift
 
 // swiftlint:disable implicit_return
 
-public func createPersistencyMiddleware() -> Middleware<AppState> {
+public func createPersistencyMiddleware(env: Environment) -> Middleware<AppState> {
   return { dispatch, getState in
     return { next in
       return { action in
@@ -17,31 +17,39 @@ public func createPersistencyMiddleware() -> Middleware<AppState> {
         next(action)
         let after = getState()
 
-        saveBookmarksIfNeeded(before, after)
-        saveSearchCardStateIfNeeded(before, after)
+        saveBookmarksIfNeeded(env: env, before: before, after: after)
+        saveSearchCardStateIfNeeded(env: env, before: before, after: after)
       }
     }
   }
 }
 
-private func saveBookmarksIfNeeded(_ stateBefore: AppState?, _ stateAfter: AppState?) {
+private func saveBookmarksIfNeeded(
+  env: Environment,
+  before stateBefore: AppState?,
+  after stateAfter: AppState?
+) {
   guard let before = stateBefore?.userData.bookmarks,
         let after  = stateAfter?.userData.bookmarks
     else { return }
 
   if before != after {
-    os_log("Saving bookmarks", log: AppEnvironment.log.storage, type: .info)
-    AppEnvironment.storage.saveBookmarks(after)
+    os_log("Saving bookmarks", log: env.log.storage, type: .info)
+    env.storage.saveBookmarks(after)
   }
 }
 
-private func saveSearchCardStateIfNeeded(_ stateBefore: AppState?, _ stateAfter: AppState?) {
+private func saveSearchCardStateIfNeeded(
+  env: Environment,
+  before stateBefore: AppState?,
+  after stateAfter: AppState?
+) {
   guard let before = stateBefore?.userData.searchCardState,
         let after  = stateAfter?.userData.searchCardState
     else { return }
 
   if before != after {
-    os_log("Saving search card state", log: AppEnvironment.log.storage, type: .info)
-    AppEnvironment.storage.saveSearchCardState(after)
+    os_log("Saving search card state", log: env.log.storage, type: .info)
+    env.storage.saveSearchCardState(after)
   }
 }

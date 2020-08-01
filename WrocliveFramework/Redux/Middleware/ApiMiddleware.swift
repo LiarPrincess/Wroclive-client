@@ -7,7 +7,7 @@ import ReSwift
 
 // swiftlint:disable implicit_return
 
-public func createApiMiddleware(_ api: ApiType) -> Middleware<AppState> {
+public func createApiMiddleware(env: Environment) -> Middleware<AppState> {
   return { dispatch, getState in
     return { next in
       return { action in
@@ -16,8 +16,10 @@ public func createApiMiddleware(_ api: ApiType) -> Middleware<AppState> {
           else { return }
 
         switch action {
-        case ApiAction.updateLines: updateLines(api, dispatch)
-        case ApiAction.updateVehicleLocations: updateVehicleLocations(state, api, dispatch)
+        case ApiAction.updateLines:
+          requestLines(env: env, dispatch: dispatch)
+        case ApiAction.updateVehicleLocations:
+          requestVehicleLocations(env: env, state: state, dispatch: dispatch)
         default: next(action)
         }
       }
@@ -25,17 +27,24 @@ public func createApiMiddleware(_ api: ApiType) -> Middleware<AppState> {
   }
 }
 
-private func updateLines(_ api: ApiType, _ dispatch: @escaping DispatchFunction) {
+private func requestLines(
+  env: Environment,
+  dispatch: @escaping DispatchFunction
+) {
   dispatch(ApiResponseAction.setLines(.inProgress))
 
-  let deadlineTime = DispatchTime.now() + .seconds(1)
-  DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+  let delay = DispatchTime.now() + .seconds(1)
+  DispatchQueue.main.asyncAfter(deadline: delay) {
     let data = dummyLines()
     dispatch(ApiResponseAction.setLines(.data(data)))
   }
 }
 
-private func updateVehicleLocations(_ state: AppState,_ api: ApiType, _ dispatch: @escaping DispatchFunction) {
+private func requestVehicleLocations(
+  env: Environment,
+  state: AppState,
+  dispatch: @escaping DispatchFunction
+) {
   let trackedLines = state.userData.trackedLines
 
   guard trackedLines.any else {
@@ -45,10 +54,10 @@ private func updateVehicleLocations(_ state: AppState,_ api: ApiType, _ dispatch
 
   dispatch(ApiResponseAction.setVehicleLocations(.inProgress))
 
-  let deadlineTime = DispatchTime.now() + .seconds(1)
-  DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
-    if case let ApiResponseState.data(vehicles) = state.apiData.vehicleLocations, vehicles.any {
-      let newVehicles = vehicles.map { Vehicle(id: $0.id, line: $0.line, latitude: $0.latitude, longitude: $0.longitude, angle: $0.angle + 30.0) }
+  let delay = DispatchTime.now() + .seconds(1)
+  DispatchQueue.main.asyncAfter(deadline: delay) {
+    if case let .data(vehicles) = state.apiData.vehicleLocations, vehicles.any {
+      let newVehicles = vehicles.map { rotate(vehicle: $0, degrees: 30) }
       dispatch(ApiResponseAction.setVehicleLocations(.data(newVehicles)))
       return
     }
@@ -56,6 +65,14 @@ private func updateVehicleLocations(_ state: AppState,_ api: ApiType, _ dispatch
     let data = dummyVehicles()
     dispatch(ApiResponseAction.setVehicleLocations(.data(data)))
   }
+}
+
+private func rotate(vehicle: Vehicle, degrees: Double) -> Vehicle {
+  return Vehicle(id: vehicle.id,
+                 line: vehicle.line,
+                 latitude: vehicle.latitude,
+                 longitude: vehicle.longitude,
+                 angle: vehicle.angle + degrees)
 }
 
 // swiftlint:disable:next function_body_length

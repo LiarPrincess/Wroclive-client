@@ -6,35 +6,43 @@ import Foundation
 import ReSwift
 
 public struct AppState: StateType {
-  public var userData: UserDataState
-  public var apiData:  ApiDataState
-}
 
-public struct UserDataState {
-  public var bookmarks:       [Bookmark]
-  public var searchCardState: SearchCardState
-  public var trackedLines:    [Line]
-}
+  public var userData: UserData
+  public var apiData:  ApiData
 
-public struct ApiDataState {
-  public var lines: ApiResponseState<[Line]> = .none
-  public var vehicleLocations: ApiResponseState<[Vehicle]> = .none
-}
+  public struct UserData {
+    public var bookmarks: [Bookmark]
+    public var trackedLines: [Line]
+    public var searchCardState: SearchCardState
+  }
 
-public enum ApiResponseState<Data> {
-  case none
-  case inProgress
-  case data(Data)
-  case error(ApiError)
-}
+  public struct ApiData {
+    public var lines: ApiResponseState<[Line]>
+    public var vehicleLocations: ApiResponseState<[Vehicle]>
+  }
 
-public func loadPreviousState() -> AppState {
-  return AppState(
-    userData: UserDataState(
-      bookmarks: AppEnvironment.storage.getSavedBookmarks() ?? [],
-      searchCardState: AppEnvironment.storage.getSavedSearchCardState() ?? .default,
-      trackedLines: []
-    ),
-    apiData: ApiDataState()
-  )
+  public enum ApiResponseState<Data> {
+    case none
+    case inProgress
+    case data(Data)
+    case error(ApiError)
+  }
+
+  public func load(
+    from storage: StorageManagerType,
+    defaultBookmarks: [Bookmark],
+    defaultSavedSearchCardState: SearchCardState
+  ) -> AppState {
+    return AppState(
+      userData: UserData(
+        bookmarks: storage.getSavedBookmarks() ?? defaultBookmarks,
+        trackedLines: [],
+        searchCardState: storage.getSavedSearchCardState() ?? defaultSavedSearchCardState
+      ),
+      apiData: ApiData(
+        lines: .none,
+        vehicleLocations: .none
+      )
+    )
+  }
 }

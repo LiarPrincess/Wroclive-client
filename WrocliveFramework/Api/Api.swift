@@ -6,6 +6,29 @@ import Foundation
 import Alamofire
 import PromiseKit
 
+// MARK: - Error
+
+public enum ApiError: Error, CustomStringConvertible {
+
+  /// Recieved response is invalid
+  case invalidResponse
+  /// No internet connnection?
+  case reachabilityError
+  /// Other unknown errror
+  case otherError(Error)
+
+  public var description: String {
+    switch self {
+    case .invalidResponse:
+      return "Invalid response"
+    case .reachabilityError:
+      return "Reachability error"
+    case .otherError(let e):
+      return "Other error: \(e)"
+    }
+  }
+}
+
 // MARK: - Api type
 
 public protocol ApiType {
@@ -15,36 +38,14 @@ public protocol ApiType {
 
   /// Get current vehicle locations for selected lines
   func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]>
+
+  /// Show/hide network activity indicator (little circle in the upper left corner).
+  func setNetworkActivityIndicatorVisibility(isVisible: Bool)
 }
 
 // MARK: - Api
 
 public final class Api: ApiType {
-
-  // MARK: - Error
-
-  public enum Error: Swift.Error, CustomStringConvertible {
-
-    /// Recieved response is invalid
-    case invalidResponse
-    /// No internet connnection?
-    case reachabilityError
-    /// Other unknown errror
-    case otherError(Swift.Error)
-
-    public var description: String {
-      switch self {
-      case .invalidResponse:
-        return "Invalid response"
-      case .reachabilityError:
-        return "Reachability error"
-      case .otherError(let e):
-        return "Other error: \(e)"
-      }
-    }
-  }
-
-  // MARK: - Properties + init
 
   private let network: NetworkType
   private let userAgent: String
@@ -80,6 +81,10 @@ public final class Api: ApiType {
     return self.sendRequest(endpoint: endpoint, data: lines)
   }
 
+  public func setNetworkActivityIndicatorVisibility(isVisible: Bool) {
+    self.network.setNetworkActivityIndicatorVisibility(isVisible: isVisible)
+  }
+
   // MARK: - Helpers
 
   private func sendRequest<E: Endpoint>(
@@ -103,9 +108,9 @@ public final class Api: ApiType {
       }
   }
 
-  private func toApiError(error: Swift.Error) -> Error {
+  private func toApiError(error: Error) -> ApiError {
     switch error {
-    case Error.invalidResponse:
+    case ApiError.invalidResponse:
       return .invalidResponse
 
     default:

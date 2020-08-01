@@ -47,7 +47,7 @@ public protocol NetworkType {
   func getReachabilityStatus() -> ReachabilityStatus
 
   /// Show/hide network activity indicator (little circle in the upper left corner).
-  func setNetworkActivityIndicatorVisibility(_ isVisible: Bool)
+  func setNetworkActivityIndicatorVisibility(isVisible: Bool)
 }
 
 public final class Network: NetworkType {
@@ -105,7 +105,7 @@ public final class Network: NetworkType {
     }
   }
 
-  public func setNetworkActivityIndicatorVisibility(_ isVisible: Bool) {
+  public func setNetworkActivityIndicatorVisibility(isVisible: Bool) {
     if #available(iOS 13.0, *) {
       // Network activity indicator is depreciated in iOS 13.
     } else {

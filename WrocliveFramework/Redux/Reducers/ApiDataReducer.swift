@@ -5,14 +5,18 @@
 import Foundation
 import ReSwift
 
-public func apiDataReducer(action: Action, state: ApiDataState?) -> ApiDataState {
-  return ApiDataState(
+public func apiDataReducer(action: Action,
+                           state: AppState.ApiData?) -> AppState.ApiData {
+  return AppState.ApiData(
     lines: linesReducer(action: action, state: state?.lines),
     vehicleLocations: vehicleLocationsReducer(action: action, state: state?.vehicleLocations)
   )
 }
 
-private func linesReducer(action: Action, state: ApiResponseState<[Line]>?) -> ApiResponseState<[Line]> {
+private func linesReducer(
+  action: Action,
+  state: AppState.ApiResponseState<[Line]>?
+) -> AppState.ApiResponseState<[Line]> {
   if case let ApiResponseAction.setLines(response) = action {
     return response
   }
@@ -20,7 +24,10 @@ private func linesReducer(action: Action, state: ApiResponseState<[Line]>?) -> A
   return state ?? .none
 }
 
-private func vehicleLocationsReducer(action: Action, state: ApiResponseState<[Vehicle]>?) -> ApiResponseState<[Vehicle]> {
+private func vehicleLocationsReducer(
+  action: Action,
+  state: AppState.ApiResponseState<[Vehicle]>?
+) -> AppState.ApiResponseState<[Vehicle]> {
   if case let ApiResponseAction.setVehicleLocations(response) = action {
     return response
   }
