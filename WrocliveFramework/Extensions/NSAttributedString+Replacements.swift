@@ -15,11 +15,11 @@ public struct TextReplacement {
   }
 }
 
-public extension NSAttributedString {
+extension NSAttributedString {
 
-  func withReplacements(_ replacements: [TextReplacement]) -> NSAttributedString {
+  public func withReplacements(_ replacements: [TextReplacement]) -> NSAttributedString {
     let result = NSMutableAttributedString(attributedString: self)
-    for (position, replacement) in self.findReplacementPositions(replacements) {
+    for (position, replacement) in self.find(replacements) {
       result.replaceCharacters(in: position, with: replacement.value)
     }
 
@@ -28,7 +28,7 @@ public extension NSAttributedString {
 
   private typealias ReplacementPosition = (position: NSRange, replacement: TextReplacement)
 
-  private func findReplacementPositions(_ replacements: [TextReplacement]) -> [ReplacementPosition] {
+  private func find(_ replacements: [TextReplacement]) -> [ReplacementPosition] {
     let nsString = NSString(string: self.string)
     let replacedTexts = replacements.map { $0.text }
 
