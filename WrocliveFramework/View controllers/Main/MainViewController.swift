@@ -4,8 +4,6 @@
 
 import UIKit
 import MapKit
-import RxSwift
-import RxCocoa
 
 private typealias Constants = MainViewControllerConstants
 
@@ -65,16 +63,16 @@ public final class MainViewController: UIViewController {
 
   @objc
   public func searchButtonPressed() {
-    self.viewModel.didPressSearchButton.onNext()
+    self.viewModel.didPressSearchButton()
   }
 
   @objc
   public func bookmarksButtonPressed() {
-    self.viewModel.didPressBookmarkButton.onNext()
+    self.viewModel.didPressBookmarkButton()
   }
 
   @objc
-  public func configurationButtonPressed() {
-    self.viewModel.didPressSettingsButton.onNext()
+  public func settingsButtonPressed() {
+    self.viewModel.didPressSettingsButton()
   }
 }

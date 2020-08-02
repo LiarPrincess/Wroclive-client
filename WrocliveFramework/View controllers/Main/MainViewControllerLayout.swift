@@ -20,7 +20,7 @@ internal extension MainViewController {
 
     let mapView = self.mapViewController.view!
 
-    // ignore safeAreaLayoutGuide, so we are under status bar and toolbar
+    // Ignore safeAreaLayoutGuide, so we are under status bar and toolbar
     self.view.addSubview(mapView)
     mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
 
@@ -32,13 +32,19 @@ internal extension MainViewController {
     self.addButtonSizeConstraints(self.userTrackingButton.customView!)
 
     self.customizeButton(self.searchButton, image: Assets.tabbarSearch)
-    self.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
+    self.searchButton.addTarget(self,
+                                action: #selector(searchButtonPressed),
+                                for: .touchUpInside)
 
     self.customizeButton(self.bookmarksButton, image: Assets.tabbarBookmarks)
-    self.bookmarksButton.addTarget(self, action: #selector(bookmarksButtonPressed), for: .touchUpInside)
+    self.bookmarksButton.addTarget(self,
+                                   action: #selector(bookmarksButtonPressed),
+                                   for: .touchUpInside)
 
     self.customizeButton(self.configurationButton, image: Assets.tabbarSettings)
-    self.configurationButton.addTarget(self, action: #selector(configurationButtonPressed), for: .touchUpInside)
+    self.configurationButton.addTarget(self,
+                                       action: #selector(settingsButtonPressed),
+                                       for: .touchUpInside)
 
     self.toolbar.contentView.addTopBorder()
 
@@ -48,8 +54,16 @@ internal extension MainViewController {
       make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
     }
 
-    let stackView = self.createToolbarStackView()
-    toolbar.contentView.addSubview(stackView)
+    let stackView = UIStackView(arrangedSubviews: [
+      self.userTrackingButton.customView!,
+      self.searchButton,
+      self.bookmarksButton,
+      self.configurationButton
+    ])
+    stackView.axis = .horizontal
+    stackView.distribution = .equalCentering
+
+    self.toolbar.contentView.addSubview(stackView)
     stackView.snp.makeConstraints { make in
       make.top.bottom.equalToSuperview()
       make.left.equalToSuperview().offset(8.0)
@@ -57,10 +71,14 @@ internal extension MainViewController {
     }
   }
 
+  // TODO: Move those contants to separate enum
   private func customizeButton(_ button: UIButton, image asset: ImageAsset) {
     let inset = CGFloat(10.0)
     button.setImage(asset.image, for: .normal)
-    button.imageEdgeInsets = UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    button.imageEdgeInsets = UIEdgeInsets(top: inset,
+                                          left: inset,
+                                          bottom: inset,
+                                          right: inset)
     button.contentVerticalAlignment   = .fill
     button.contentHorizontalAlignment = .fill
 
@@ -72,18 +90,5 @@ internal extension MainViewController {
       view.widthAnchor .constraint(equalToConstant: 44.0),
       view.heightAnchor.constraint(equalToConstant: 44.0)
     ])
-  }
-
-  private func createToolbarStackView() -> UIStackView {
-    let stackView = UIStackView(arrangedSubviews: [
-      self.userTrackingButton.customView!,
-      self.searchButton,
-      self.bookmarksButton,
-      self.configurationButton
-    ])
-    stackView.axis = .horizontal
-    stackView.distribution = .equalCentering
-
-    return stackView
   }
 }

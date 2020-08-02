@@ -47,6 +47,10 @@
 		9013FAC724D721410006D1B9 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC424D721410006D1B9 /* Fonts.swift */; };
 		9013FAC824D721410006D1B9 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC524D721410006D1B9 /* Localizable.swift */; };
 		9013FAC924D721410006D1B9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC624D721410006D1B9 /* Assets.swift */; };
+		9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAFF24D721A90006D1B9 /* MainViewController.swift */; };
+		9013FB3124D721A90006D1B9 /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB0024D721A90006D1B9 /* MainViewControllerConstants.swift */; };
+		9013FB3224D721A90006D1B9 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB0124D721A90006D1B9 /* MainViewModel.swift */; };
+		9013FB3324D721A90006D1B9 /* MainViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB0224D721A90006D1B9 /* MainViewControllerLayout.swift */; };
 		9047995924D56BCA00111F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995824D56BCA00111F2C /* Environment.swift */; };
 		9047996724D575C500111F2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995B24D575C500111F2C /* AppState.swift */; };
 		9047996824D575C500111F2C /* createMiddlewares.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995D24D575C500111F2C /* createMiddlewares.swift */; };
@@ -161,6 +165,10 @@
 		9013FAC424D721410006D1B9 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		9013FAC524D721410006D1B9 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		9013FAC624D721410006D1B9 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		9013FAFF24D721A90006D1B9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9013FB0024D721A90006D1B9 /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
+		9013FB0124D721A90006D1B9 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		9013FB0224D721A90006D1B9 /* MainViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerLayout.swift; sourceTree = "<group>"; };
 		9047995824D56BCA00111F2C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9047995B24D575C500111F2C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		9047995D24D575C500111F2C /* createMiddlewares.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createMiddlewares.swift; sourceTree = "<group>"; };
@@ -255,6 +263,7 @@
 				900EA0F224D46C110054C03F /* Models */,
 				9047995A24D575C500111F2C /* Redux */,
 				9058938424D4A7460046EFA5 /* Theme */,
+				9013FACA24D721A90006D1B9 /* View controllers */,
 				900EA0DD24D46A340054C03F /* Info.plist */,
 				900EA0DC24D46A340054C03F /* WrocliveFramework.h */,
 			);
@@ -340,6 +349,25 @@
 				9013FAAB24D6B1880006D1B9 /* LocationAlerts.swift */,
 			);
 			path = Alerts;
+			sourceTree = "<group>";
+		};
+		9013FACA24D721A90006D1B9 /* View controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9013FAFE24D721A90006D1B9 /* Main */,
+			);
+			path = "View controllers";
+			sourceTree = "<group>";
+		};
+		9013FAFE24D721A90006D1B9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9013FAFF24D721A90006D1B9 /* MainViewController.swift */,
+				9013FB0224D721A90006D1B9 /* MainViewControllerLayout.swift */,
+				9013FB0024D721A90006D1B9 /* MainViewControllerConstants.swift */,
+				9013FB0124D721A90006D1B9 /* MainViewModel.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		9047995A24D575C500111F2C /* Redux */ = {
@@ -708,9 +736,11 @@
 				9047996924D575C500111F2C /* PersistencyMiddleware.swift in Sources */,
 				900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */,
 				905893D224D4A95D0046EFA5 /* LogManager.swift in Sources */,
+				9013FB3124D721A90006D1B9 /* MainViewControllerConstants.swift in Sources */,
 				9013FAC024D6B1890006D1B9 /* NetworkAlerts.swift in Sources */,
 				905893CA24D4A95D0046EFA5 /* UserLocationManager.swift in Sources */,
 				9013FABF24D6B1890006D1B9 /* MapUpdateScheduler.swift in Sources */,
+				9013FB3224D721A90006D1B9 /* MainViewModel.swift in Sources */,
 				90CDCFD424D60CF100595D89 /* CollectionExtensions.swift in Sources */,
 				90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */,
 				905893CF24D4A95D0046EFA5 /* CachedStorageManager.swift in Sources */,
@@ -720,6 +750,7 @@
 				9013FAAE24D6B1880006D1B9 /* ReusableCell.swift in Sources */,
 				9013FAAC24D6B1880006D1B9 /* ReusableCell+UICollectionView.swift in Sources */,
 				9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */,
+				9013FB3324D721A90006D1B9 /* MainViewControllerLayout.swift in Sources */,
 				9013FAC824D721410006D1B9 /* Localizable.swift in Sources */,
 				900EA10D24D46F140054C03F /* Endpoint.swift in Sources */,
 				9047995924D56BCA00111F2C /* Environment.swift in Sources */,
@@ -729,6 +760,7 @@
 				900EA10324D46C110054C03F /* Line.swift in Sources */,
 				9047997024D575C500111F2C /* Actions.swift in Sources */,
 				9058939024D4A7460046EFA5 /* Theme.swift in Sources */,
+				9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */,
 				9013FAC224D6B1890006D1B9 /* BookmarkAlerts.swift in Sources */,
 				905893CE24D4A95D0046EFA5 /* DeviceManager.swift in Sources */,
 				900EA10C24D46F140054C03F /* VehicleLocationsEndpoint.swift in Sources */,
