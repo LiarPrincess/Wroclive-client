@@ -1,8 +1,0 @@
-sources:
-  - WrocliveFramework/
-templates:
-  - WrocliveFramework/Generated/Environment.stencil
-  - WrocliveFramework/Generated/AppEnvironment.stencil
-  - WrocliveFramework/Generated/Actions+CustomStringConvertible.stencil
-output:
-  WrocliveFramework/Generated/

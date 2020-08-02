@@ -1,6 +1,0 @@
-sources:
-  - WrocliveFramework/
-templates:
-  - WrocliveTests/Generated/ReduxTestCase+Actions.stencil
-output:
-  WrocliveTests/Generated/

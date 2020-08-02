@@ -44,6 +44,9 @@
 		9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA924D6B1880006D1B9 /* AlertCreator.swift */; };
 		9013FAC224D6B1890006D1B9 /* BookmarkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAAA24D6B1880006D1B9 /* BookmarkAlerts.swift */; };
 		9013FAC324D6B1890006D1B9 /* LocationAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAAB24D6B1880006D1B9 /* LocationAlerts.swift */; };
+		9013FAC724D721410006D1B9 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC424D721410006D1B9 /* Fonts.swift */; };
+		9013FAC824D721410006D1B9 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC524D721410006D1B9 /* Localizable.swift */; };
+		9013FAC924D721410006D1B9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC624D721410006D1B9 /* Assets.swift */; };
 		9047995924D56BCA00111F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995824D56BCA00111F2C /* Environment.swift */; };
 		9047996724D575C500111F2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995B24D575C500111F2C /* AppState.swift */; };
 		9047996824D575C500111F2C /* createMiddlewares.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995D24D575C500111F2C /* createMiddlewares.swift */; };
@@ -71,9 +74,6 @@
 		9058939C24D4A8600046EFA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9058939624D4A8600046EFA5 /* Assets.xcassets */; };
 		9058939D24D4A8600046EFA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9058939724D4A8600046EFA5 /* Localizable.strings */; };
 		9058939E24D4A8600046EFA5 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058939924D4A8600046EFA5 /* StyleKit.swift */; };
-		905893AD24D4A8AC0046EFA5 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893A024D4A8AC0046EFA5 /* Assets.swift */; };
-		905893B424D4A8AC0046EFA5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893A724D4A8AC0046EFA5 /* Fonts.swift */; };
-		905893B824D4A8AC0046EFA5 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893AB24D4A8AC0046EFA5 /* Localizable.swift */; };
 		905893C924D4A95D0046EFA5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893BC24D4A95D0046EFA5 /* StorageManager.swift */; };
 		905893CA24D4A95D0046EFA5 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893BD24D4A95D0046EFA5 /* UserLocationManager.swift */; };
 		905893CC24D4A95D0046EFA5 /* DebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893BF24D4A95D0046EFA5 /* DebugManager.swift */; };
@@ -158,6 +158,9 @@
 		9013FAA924D6B1880006D1B9 /* AlertCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertCreator.swift; sourceTree = "<group>"; };
 		9013FAAA24D6B1880006D1B9 /* BookmarkAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkAlerts.swift; sourceTree = "<group>"; };
 		9013FAAB24D6B1880006D1B9 /* LocationAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAlerts.swift; sourceTree = "<group>"; };
+		9013FAC424D721410006D1B9 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		9013FAC524D721410006D1B9 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		9013FAC624D721410006D1B9 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		9047995824D56BCA00111F2C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9047995B24D575C500111F2C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		9047995D24D575C500111F2C /* createMiddlewares.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createMiddlewares.swift; sourceTree = "<group>"; };
@@ -189,9 +192,6 @@
 		9058939824D4A8600046EFA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9058939924D4A8600046EFA5 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		9058939A24D4A8600046EFA5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		905893A024D4A8AC0046EFA5 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
-		905893A724D4A8AC0046EFA5 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		905893AB24D4A8AC0046EFA5 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		905893BC24D4A95D0046EFA5 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		905893BD24D4A95D0046EFA5 /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		905893BF24D4A95D0046EFA5 /* DebugManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugManager.swift; sourceTree = "<group>"; };
@@ -461,9 +461,9 @@
 		9058939F24D4A8AC0046EFA5 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				905893A024D4A8AC0046EFA5 /* Assets.swift */,
-				905893A724D4A8AC0046EFA5 /* Fonts.swift */,
-				905893AB24D4A8AC0046EFA5 /* Localizable.swift */,
+				9013FAC624D721410006D1B9 /* Assets.swift */,
+				9013FAC424D721410006D1B9 /* Fonts.swift */,
+				9013FAC524D721410006D1B9 /* Localizable.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -680,17 +680,14 @@
 				9058938F24D4A7460046EFA5 /* TextAttributeEnums.swift in Sources */,
 				9013FAAD24D6B1880006D1B9 /* ReusableCell+UITableView.swift in Sources */,
 				9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */,
-				905893B424D4A8AC0046EFA5 /* Fonts.swift in Sources */,
 				905893CD24D4A95D0046EFA5 /* BundleManager.swift in Sources */,
 				905893C924D4A95D0046EFA5 /* StorageManager.swift in Sources */,
-				905893AD24D4A8AC0046EFA5 /* Assets.swift in Sources */,
 				9013FABA24D6B1890006D1B9 /* DismissGestureHandlerType.swift in Sources */,
 				900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */,
 				9013FAB824D6B1890006D1B9 /* CardPanelContainer.swift in Sources */,
 				9013FAB424D6B1890006D1B9 /* ChevronView.swift in Sources */,
 				9058939E24D4A8600046EFA5 /* StyleKit.swift in Sources */,
 				905893CC24D4A95D0046EFA5 /* DebugManager.swift in Sources */,
-				905893B824D4A8AC0046EFA5 /* Localizable.swift in Sources */,
 				9013FABC24D6B1890006D1B9 /* ScrollViewDismissGestureHandler.swift in Sources */,
 				90CDCFD624D60D7F00595D89 /* UIExtensions.swift in Sources */,
 				9047996C24D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift in Sources */,
@@ -703,7 +700,9 @@
 				9013FABE24D6B1890006D1B9 /* CardPanelConstants.swift in Sources */,
 				90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */,
 				9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */,
+				9013FAC724D721410006D1B9 /* Fonts.swift in Sources */,
 				9047996D24D575C500111F2C /* appReducer.swift in Sources */,
+				9013FAC924D721410006D1B9 /* Assets.swift in Sources */,
 				9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */,
 				9047996A24D575C500111F2C /* ApiMiddleware.swift in Sources */,
 				9047996924D575C500111F2C /* PersistencyMiddleware.swift in Sources */,
@@ -721,6 +720,7 @@
 				9013FAAE24D6B1880006D1B9 /* ReusableCell.swift in Sources */,
 				9013FAAC24D6B1880006D1B9 /* ReusableCell+UICollectionView.swift in Sources */,
 				9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */,
+				9013FAC824D721410006D1B9 /* Localizable.swift in Sources */,
 				900EA10D24D46F140054C03F /* Endpoint.swift in Sources */,
 				9047995924D56BCA00111F2C /* Environment.swift in Sources */,
 				9013FAB524D6B1890006D1B9 /* CardPanelPresentationTransition.swift in Sources */,
