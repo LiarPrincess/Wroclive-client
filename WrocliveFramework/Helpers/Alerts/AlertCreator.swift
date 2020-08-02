@@ -3,64 +3,79 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
+import PromiseKit
 
-public struct AlertButton<Value> {
-  let title:  String
-  let style:  UIAlertAction.Style
-  let result: Value
-}
-
+// This has to be class because we will be using '@objc'.
 public final class AlertCreator {
 
-  public static func createAlert<Result>(title:     String,
-                                         message:   String,
-                                         buttons:   [AlertButton<Result>],
-                                         animated:  Bool = true) -> Observable<Result> {
-    return .create { observer in
-      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+  public struct Button<Value> {
+    let title:  String
+    let style:  UIAlertAction.Style
+    let result: Value
+  }
+
+  public static func create<Result>(title: String,
+                                    message: String,
+                                    buttons: [Button<Result>],
+                                    animated: Bool = true) -> Promise<Result> {
+    return Promise<Result> { seal in
+      let alert = UIAlertController(title: title,
+                                    message: message,
+                                    preferredStyle: .alert)
 
       for button in buttons {
         alert.addAction(UIAlertAction(title: button.title, style: button.style) { _ in
-          observer.onNext(button.result)
-          observer.onCompleted()
+          seal.fulfill(button.result)
         })
       }
 
-      present(alert, animated: animated)
-      return Disposables.create { dismiss(alert, animated: animated) }
+      Self.present(alert, animated: animated)
+      // TODO: return Disposables.create { dismiss(alert, animated: animated) }
     }
   }
 
-  public static func createTextInputAlert(title:       String,
-                                          message:     String,
-                                          placeholder: String,
-                                          confirm:     AlertButton<Void>,
-                                          cancel:      AlertButton<Void>,
-                                          animated:    Bool = true) -> Observable<String?> {
-    return .create { observer in
-      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+  public struct TextInputButton {
+    let title: String
+    let style: UIAlertAction.Style
+  }
+
+  public static func createWithTextInput(title: String,
+                                         message: String,
+                                         placeholder: String,
+                                         confirm: TextInputButton,
+                                         cancel: TextInputButton,
+                                         animated: Bool = true) -> Promise<String?> {
+    return Promise<String?> { seal in
+      let alert = UIAlertController(title: title,
+                                    message: message,
+                                    preferredStyle: .alert)
 
       alert.addTextField { textField in
-        textField.placeholder            = placeholder
+        textField.placeholder = placeholder
         textField.autocapitalizationType = .sentences
-        textField.addTarget(AlertCreator.self, action: #selector(AlertCreator.enableConfirmIfTextNotEmpty(_:)), for: .editingChanged)
+        textField.addTarget(
+          AlertCreator.self,
+          action: #selector(AlertCreator.enableConfirmIfTextNotEmpty(_:)),
+          for: .editingChanged
+        )
       }
 
-      alert.addAction(UIAlertAction(title: cancel.title, style: cancel.style) { _ in
-        observer.onNext(nil)
-        observer.onCompleted()
+      alert.addAction(UIAlertAction(title: cancel.title,
+                                    style: cancel.style) { _ in
+        seal.fulfill(nil)
       })
 
-      let confirmAction = UIAlertAction(title: confirm.title, style: confirm.style) { [weak alert] _ in
-        observer.onNext(alert?.textFields?.first?.text)
-        observer.onCompleted()
+      // This has to be weak reference, otherwise we would create cycle
+      let confirmAction = UIAlertAction(title: confirm.title,
+                                        style: confirm.style) { [weak alert] _ in
+        let text = alert?.textFields?.first?.text
+        seal.fulfill(text)
       }
       confirmAction.isEnabled = false
       alert.addAction(confirmAction)
 
       present(alert, animated: animated)
-      return Disposables.create { dismiss(alert, animated: animated) }
+      // TODO: return Disposables.create { dismiss(alert, animated: animated) }
     }
   }
 
@@ -68,7 +83,7 @@ public final class AlertCreator {
   private static func enableConfirmIfTextNotEmpty(_ sender: UITextField) {
     let isTextEmpty = sender.text?.isEmpty ?? false
 
-    if let alertController = parentAlertController(of: sender) {
+    if let alertController = Self.parentAlertController(of: sender) {
       let confirmAction = alertController.actions[1] // fml
       confirmAction.isEnabled = !isTextEmpty
     }

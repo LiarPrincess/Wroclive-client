@@ -3,30 +3,32 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
+import PromiseKit
 
 public enum LocationAlerts {
 
   /// Prompt for authorization change in settings
-  public static func showDeniedLocationAuthorizationAlert() -> Observable<Void> {
-    typealias Localization = Localizable.Alert.Location.Denied
-    return AlertCreator.createAlert(
-      title:   Localization.title,
-      message: Localization.message,
+  public static func showDeniedLocationAuthorizationAlert() -> Promise<Void> {
+    typealias L = Localizable.Alert.Location.Denied
+    return AlertCreator.create(
+      title:   L.title,
+      message: L.message,
       buttons: [
-        AlertButton(title: Localization.settings, style: .default, result: ()),
-        AlertButton(title: Localization.ok,       style: .default, result: ())
+        AlertCreator.Button(title: L.settings, style: .default, result: ()),
+        AlertCreator.Button(title: L.ok,       style: .default, result: ())
       ]
     )
   }
 
   /// Notify that it is not possible to show user location
-  public static func showGloballyDeniedLocationAuthorizationAlert() -> Observable<Void> {
-    typealias Localization = Localizable.Alert.Location.GloballyDenied
-    return AlertCreator.createAlert(
-      title:   Localization.title,
-      message: Localization.message,
-      buttons: [AlertButton(title: Localization.ok, style: .default, result: ())]
+  public static func showGloballyDeniedLocationAuthorizationAlert() -> Promise<Void> {
+    typealias L = Localizable.Alert.Location.GloballyDenied
+    return AlertCreator.create(
+      title:   L.title,
+      message: L.message,
+      buttons: [
+        AlertCreator.Button(title: L.ok, style: .default, result: ())
+      ]
     )
   }
 }

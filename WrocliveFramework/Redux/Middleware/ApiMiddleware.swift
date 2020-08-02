@@ -20,7 +20,8 @@ public func createApiMiddleware(env: Environment) -> Middleware<AppState> {
           requestLines(env: env, dispatch: dispatch)
         case ApiAction.updateVehicleLocations:
           requestVehicleLocations(env: env, state: state, dispatch: dispatch)
-        default: next(action)
+        default:
+          next(action)
         }
       }
     }

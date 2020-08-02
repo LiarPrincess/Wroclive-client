@@ -3,27 +3,32 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
+import PromiseKit
 
 public enum NetworkAlerts {
 
+  // TODO: Rename to 'Reachability'
   /// Check network settings and try again
-  public static func showNoInternetAlert() -> Observable<Void> {
-    typealias Localization = Localizable.Alert.Network.NoInternet
-    return AlertCreator.createAlert(
-      title:   Localization.title,
-      message: Localization.message,
-      buttons: [AlertButton(title: Localization.tryAgain, style: .default, result: ())]
+  public static func showNoInternetAlert() -> Promise<Void> {
+    typealias L = Localizable.Alert.Network.NoInternet
+    return AlertCreator.create(
+      title:   L.title,
+      message: L.message,
+      buttons: [
+        AlertCreator.Button(title: L.tryAgain, style: .default, result: ())
+      ]
     )
   }
 
   /// 'Check connection' alert and try again
-  public static func showConnectionErrorAlert() -> Observable<Void> {
-    typealias Localization = Localizable.Alert.Network.ConnectionError
-    return AlertCreator.createAlert(
-      title:   Localization.title,
-      message: Localization.message,
-      buttons: [AlertButton(title: Localization.tryAgain, style: .default, result: ())]
+  public static func showConnectionErrorAlert() -> Promise<Void> {
+    typealias L = Localizable.Alert.Network.ConnectionError
+    return AlertCreator.create(
+      title:   L.title,
+      message: L.message,
+      buttons: [
+        AlertCreator.Button(title: L.tryAgain, style: .default, result: ())
+      ]
     )
   }
 }

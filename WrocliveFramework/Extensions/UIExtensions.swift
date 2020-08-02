@@ -20,9 +20,7 @@ extension CGFloat {
 
 extension UIApplication {
 
-  // TODO: UIApplication+topViewController
-  @available(*, deprecated, message: "Do we need this?")
-  static var topViewController: UIViewController {
+  public static var topViewController: UIViewController {
     guard var result = UIApplication.shared.keyWindow?.rootViewController
       else { fatalError("Could not find top view controller.") }
 

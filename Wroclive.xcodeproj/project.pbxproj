@@ -25,6 +25,25 @@
 		900EA10C24D46F140054C03F /* VehicleLocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA10824D46F140054C03F /* VehicleLocationsEndpoint.swift */; };
 		900EA10D24D46F140054C03F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA10924D46F140054C03F /* Endpoint.swift */; };
 		900EA11124D473E70054C03F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA11024D473E70054C03F /* Network.swift */; };
+		9013FAAC24D6B1880006D1B9 /* ReusableCell+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9024D6B1880006D1B9 /* ReusableCell+UICollectionView.swift */; };
+		9013FAAD24D6B1880006D1B9 /* ReusableCell+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9124D6B1880006D1B9 /* ReusableCell+UITableView.swift */; };
+		9013FAAE24D6B1880006D1B9 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9224D6B1880006D1B9 /* ReusableCell.swift */; };
+		9013FAB424D6B1890006D1B9 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9A24D6B1880006D1B9 /* ChevronView.swift */; };
+		9013FAB524D6B1890006D1B9 /* CardPanelPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9B24D6B1880006D1B9 /* CardPanelPresentationTransition.swift */; };
+		9013FAB624D6B1890006D1B9 /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9C24D6B1880006D1B9 /* CardPanelPresenter.swift */; };
+		9013FAB724D6B1890006D1B9 /* CustomCardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9D24D6B1880006D1B9 /* CustomCardPanelPresentable.swift */; };
+		9013FAB824D6B1890006D1B9 /* CardPanelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9E24D6B1880006D1B9 /* CardPanelContainer.swift */; };
+		9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */; };
+		9013FABA24D6B1890006D1B9 /* DismissGestureHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA124D6B1880006D1B9 /* DismissGestureHandlerType.swift */; };
+		9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */; };
+		9013FABC24D6B1890006D1B9 /* ScrollViewDismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA324D6B1880006D1B9 /* ScrollViewDismissGestureHandler.swift */; };
+		9013FABD24D6B1890006D1B9 /* CardPanelDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */; };
+		9013FABE24D6B1890006D1B9 /* CardPanelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA524D6B1880006D1B9 /* CardPanelConstants.swift */; };
+		9013FABF24D6B1890006D1B9 /* MapUpdateScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */; };
+		9013FAC024D6B1890006D1B9 /* NetworkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA824D6B1880006D1B9 /* NetworkAlerts.swift */; };
+		9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA924D6B1880006D1B9 /* AlertCreator.swift */; };
+		9013FAC224D6B1890006D1B9 /* BookmarkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAAA24D6B1880006D1B9 /* BookmarkAlerts.swift */; };
+		9013FAC324D6B1890006D1B9 /* LocationAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAAB24D6B1880006D1B9 /* LocationAlerts.swift */; };
 		9047995924D56BCA00111F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995824D56BCA00111F2C /* Environment.swift */; };
 		9047996724D575C500111F2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995B24D575C500111F2C /* AppState.swift */; };
 		9047996824D575C500111F2C /* createMiddlewares.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995D24D575C500111F2C /* createMiddlewares.swift */; };
@@ -120,6 +139,25 @@
 		900EA10824D46F140054C03F /* VehicleLocationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationsEndpoint.swift; sourceTree = "<group>"; };
 		900EA10924D46F140054C03F /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		900EA11024D473E70054C03F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		9013FA9024D6B1880006D1B9 /* ReusableCell+UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+UICollectionView.swift"; sourceTree = "<group>"; };
+		9013FA9124D6B1880006D1B9 /* ReusableCell+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+UITableView.swift"; sourceTree = "<group>"; };
+		9013FA9224D6B1880006D1B9 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
+		9013FA9A24D6B1880006D1B9 /* ChevronView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
+		9013FA9B24D6B1880006D1B9 /* CardPanelPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentationTransition.swift; sourceTree = "<group>"; };
+		9013FA9C24D6B1880006D1B9 /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
+		9013FA9D24D6B1880006D1B9 /* CustomCardPanelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCardPanelPresentable.swift; sourceTree = "<group>"; };
+		9013FA9E24D6B1880006D1B9 /* CardPanelContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelContainer.swift; sourceTree = "<group>"; };
+		9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
+		9013FAA124D6B1880006D1B9 /* DismissGestureHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissGestureHandlerType.swift; sourceTree = "<group>"; };
+		9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
+		9013FAA324D6B1880006D1B9 /* ScrollViewDismissGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewDismissGestureHandler.swift; sourceTree = "<group>"; };
+		9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelDismissTransition.swift; sourceTree = "<group>"; };
+		9013FAA524D6B1880006D1B9 /* CardPanelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelConstants.swift; sourceTree = "<group>"; };
+		9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUpdateScheduler.swift; sourceTree = "<group>"; };
+		9013FAA824D6B1880006D1B9 /* NetworkAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAlerts.swift; sourceTree = "<group>"; };
+		9013FAA924D6B1880006D1B9 /* AlertCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertCreator.swift; sourceTree = "<group>"; };
+		9013FAAA24D6B1880006D1B9 /* BookmarkAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkAlerts.swift; sourceTree = "<group>"; };
+		9013FAAB24D6B1880006D1B9 /* LocationAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAlerts.swift; sourceTree = "<group>"; };
 		9047995824D56BCA00111F2C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9047995B24D575C500111F2C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		9047995D24D575C500111F2C /* createMiddlewares.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createMiddlewares.swift; sourceTree = "<group>"; };
@@ -208,11 +246,12 @@
 		900EA0D024D469D90054C03F /* WrocliveFramework */ = {
 			isa = PBXGroup;
 			children = (
-				90A5FA6A24D588DA00EC24D6 /* Extensions */,
 				900EA10524D46F140054C03F /* Api */,
 				9058939424D4A8600046EFA5 /* Assets */,
 				905893BA24D4A95D0046EFA5 /* Environment */,
+				90A5FA6A24D588DA00EC24D6 /* Extensions */,
 				9058939F24D4A8AC0046EFA5 /* Generated */,
+				9013FA8E24D6B1880006D1B9 /* Helpers */,
 				900EA0F224D46C110054C03F /* Models */,
 				9047995A24D575C500111F2C /* Redux */,
 				9058938424D4A7460046EFA5 /* Theme */,
@@ -243,6 +282,64 @@
 				900EA11024D473E70054C03F /* Network.swift */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		9013FA8E24D6B1880006D1B9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9013FAA724D6B1880006D1B9 /* Alerts */,
+				9013FA9924D6B1880006D1B9 /* Card panel */,
+				9013FA8F24D6B1880006D1B9 /* Reusable cell */,
+				9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9013FA8F24D6B1880006D1B9 /* Reusable cell */ = {
+			isa = PBXGroup;
+			children = (
+				9013FA9024D6B1880006D1B9 /* ReusableCell+UICollectionView.swift */,
+				9013FA9124D6B1880006D1B9 /* ReusableCell+UITableView.swift */,
+				9013FA9224D6B1880006D1B9 /* ReusableCell.swift */,
+			);
+			path = "Reusable cell";
+			sourceTree = "<group>";
+		};
+		9013FA9924D6B1880006D1B9 /* Card panel */ = {
+			isa = PBXGroup;
+			children = (
+				9013FA9A24D6B1880006D1B9 /* ChevronView.swift */,
+				9013FA9B24D6B1880006D1B9 /* CardPanelPresentationTransition.swift */,
+				9013FA9C24D6B1880006D1B9 /* CardPanelPresenter.swift */,
+				9013FA9D24D6B1880006D1B9 /* CustomCardPanelPresentable.swift */,
+				9013FA9E24D6B1880006D1B9 /* CardPanelContainer.swift */,
+				9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */,
+				9013FAA024D6B1880006D1B9 /* DismissGesture */,
+				9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */,
+				9013FAA524D6B1880006D1B9 /* CardPanelConstants.swift */,
+			);
+			path = "Card panel";
+			sourceTree = "<group>";
+		};
+		9013FAA024D6B1880006D1B9 /* DismissGesture */ = {
+			isa = PBXGroup;
+			children = (
+				9013FAA124D6B1880006D1B9 /* DismissGestureHandlerType.swift */,
+				9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */,
+				9013FAA324D6B1880006D1B9 /* ScrollViewDismissGestureHandler.swift */,
+			);
+			path = DismissGesture;
+			sourceTree = "<group>";
+		};
+		9013FAA724D6B1880006D1B9 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				9013FAA924D6B1880006D1B9 /* AlertCreator.swift */,
+				9013FAA824D6B1880006D1B9 /* NetworkAlerts.swift */,
+				9013FAAA24D6B1880006D1B9 /* BookmarkAlerts.swift */,
+				9013FAAB24D6B1880006D1B9 /* LocationAlerts.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		9047995A24D575C500111F2C /* Redux */ = {
@@ -403,8 +500,8 @@
 				90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */,
 				90CDCFD124D60BEF00595D89 /* StringExtensions.swift */,
 				90CDCFD324D60CF100595D89 /* CollectionExtensions.swift */,
-				90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */,
 				90CDCFD524D60D7F00595D89 /* UIExtensions.swift */,
+				90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -581,47 +678,66 @@
 			files = (
 				9047996824D575C500111F2C /* createMiddlewares.swift in Sources */,
 				9058938F24D4A7460046EFA5 /* TextAttributeEnums.swift in Sources */,
+				9013FAAD24D6B1880006D1B9 /* ReusableCell+UITableView.swift in Sources */,
 				9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */,
 				905893B424D4A8AC0046EFA5 /* Fonts.swift in Sources */,
 				905893CD24D4A95D0046EFA5 /* BundleManager.swift in Sources */,
 				905893C924D4A95D0046EFA5 /* StorageManager.swift in Sources */,
 				905893AD24D4A8AC0046EFA5 /* Assets.swift in Sources */,
+				9013FABA24D6B1890006D1B9 /* DismissGestureHandlerType.swift in Sources */,
 				900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */,
+				9013FAB824D6B1890006D1B9 /* CardPanelContainer.swift in Sources */,
+				9013FAB424D6B1890006D1B9 /* ChevronView.swift in Sources */,
 				9058939E24D4A8600046EFA5 /* StyleKit.swift in Sources */,
 				905893CC24D4A95D0046EFA5 /* DebugManager.swift in Sources */,
 				905893B824D4A8AC0046EFA5 /* Localizable.swift in Sources */,
+				9013FABC24D6B1890006D1B9 /* ScrollViewDismissGestureHandler.swift in Sources */,
 				90CDCFD624D60D7F00595D89 /* UIExtensions.swift in Sources */,
 				9047996C24D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift in Sources */,
 				900EA11124D473E70054C03F /* Network.swift in Sources */,
 				90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */,
 				9047996724D575C500111F2C /* AppState.swift in Sources */,
 				9058939124D4A7460046EFA5 /* FontPreset.swift in Sources */,
+				9013FAB624D6B1890006D1B9 /* CardPanelPresenter.swift in Sources */,
 				900EA10B24D46F140054C03F /* LinesEndpoint.swift in Sources */,
+				9013FABE24D6B1890006D1B9 /* CardPanelConstants.swift in Sources */,
 				90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */,
+				9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */,
 				9047996D24D575C500111F2C /* appReducer.swift in Sources */,
 				9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */,
 				9047996A24D575C500111F2C /* ApiMiddleware.swift in Sources */,
 				9047996924D575C500111F2C /* PersistencyMiddleware.swift in Sources */,
 				900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */,
 				905893D224D4A95D0046EFA5 /* LogManager.swift in Sources */,
+				9013FAC024D6B1890006D1B9 /* NetworkAlerts.swift in Sources */,
 				905893CA24D4A95D0046EFA5 /* UserLocationManager.swift in Sources */,
+				9013FABF24D6B1890006D1B9 /* MapUpdateScheduler.swift in Sources */,
 				90CDCFD424D60CF100595D89 /* CollectionExtensions.swift in Sources */,
 				90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */,
 				905893CF24D4A95D0046EFA5 /* CachedStorageManager.swift in Sources */,
+				9013FAB724D6B1890006D1B9 /* CustomCardPanelPresentable.swift in Sources */,
 				9047996E24D575C500111F2C /* UserDataReducer.swift in Sources */,
 				905893D324D4A95D0046EFA5 /* Configuration.swift in Sources */,
+				9013FAAE24D6B1880006D1B9 /* ReusableCell.swift in Sources */,
+				9013FAAC24D6B1880006D1B9 /* ReusableCell+UICollectionView.swift in Sources */,
+				9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */,
 				900EA10D24D46F140054C03F /* Endpoint.swift in Sources */,
 				9047995924D56BCA00111F2C /* Environment.swift in Sources */,
+				9013FAB524D6B1890006D1B9 /* CardPanelPresentationTransition.swift in Sources */,
+				9013FAC324D6B1890006D1B9 /* LocationAlerts.swift in Sources */,
 				905893D024D4A95D0046EFA5 /* FileSystem.swift in Sources */,
 				900EA10324D46C110054C03F /* Line.swift in Sources */,
 				9047997024D575C500111F2C /* Actions.swift in Sources */,
 				9058939024D4A7460046EFA5 /* Theme.swift in Sources */,
+				9013FAC224D6B1890006D1B9 /* BookmarkAlerts.swift in Sources */,
 				905893CE24D4A95D0046EFA5 /* DeviceManager.swift in Sources */,
 				900EA10C24D46F140054C03F /* VehicleLocationsEndpoint.swift in Sources */,
 				9058939224D4A7460046EFA5 /* SystemFont.swift in Sources */,
 				900EA10A24D46F140054C03F /* Api.swift in Sources */,
 				900EA10224D46C110054C03F /* Bookmark.swift in Sources */,
+				9013FABD24D6B1890006D1B9 /* CardPanelDismissTransition.swift in Sources */,
 				9047996F24D575C500111F2C /* ApiDataReducer.swift in Sources */,
+				9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */,
 				9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */,
 				9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */,
 			);

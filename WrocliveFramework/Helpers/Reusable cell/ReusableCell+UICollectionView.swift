@@ -4,38 +4,61 @@
 
 import UIKit
 
-public enum SuplementaryViewKind {
-  case header
-  case footer
-
-  fileprivate var key: String {
-    switch self {
-    case .header: return UICollectionView.elementKindSectionHeader
-    case .footer: return UICollectionView.elementKindSectionFooter
-    }
-  }
-}
-
 public extension UICollectionView {
 
-  func registerCell<Cell: AnyObject>(_ : Cell.Type) where Cell: ReusableCell {
+  public enum SuplementaryViewKind {
+    case header
+    case footer
+
+    fileprivate var key: String {
+      switch self {
+      case .header: return UICollectionView.elementKindSectionHeader
+      case .footer: return UICollectionView.elementKindSectionFooter
+      }
+    }
+  }
+
+  func registerCell<Cell: AnyObject>(_: Cell.Type) where Cell: ReusableCell {
     self.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
   }
 
-  func dequeueCell<Cell: AnyObject>(ofType: Cell.Type, forIndexPath indexPath: IndexPath) -> Cell where Cell: ReusableCell {
-    guard let cell = self.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath) as? Cell
-      else { fatalError("Could not dequeue cell of specified type.") }
+  func dequeueCell<Cell: AnyObject>(
+    ofType: Cell.Type,
+    forIndexPath indexPath: IndexPath
+  ) -> Cell where Cell: ReusableCell {
+    let id = Cell.identifier
+    let genericCell = self.dequeueReusableCell(withReuseIdentifier: id,
+                                               for: indexPath)
+
+    guard let cell = genericCell as? Cell else {
+      fatalError("Could not dequeue cell of specified type.")
+    }
 
     return cell
   }
 
-  func registerSupplementary<Cell: AnyObject>(_ : Cell.Type, ofKind elementKind: SuplementaryViewKind) where Cell: ReusableCell {
-    self.register(Cell.self, forSupplementaryViewOfKind: elementKind.key, withReuseIdentifier: Cell.identifier)
+  func registerSupplementary<Cell: AnyObject>(
+    _ : Cell.Type,
+    kind: SuplementaryViewKind
+  ) where Cell: ReusableCell {
+    self.register(Cell.self,
+                  forSupplementaryViewOfKind: kind.key,
+                  withReuseIdentifier: Cell.identifier)
   }
 
-  func dequeueSupplementary<Cell: AnyObject>(ofType: Cell.Type, kind elementKind: SuplementaryViewKind, for indexPath: IndexPath) -> Cell where Cell: ReusableCell {
-    guard let cell = self.dequeueReusableSupplementaryView(ofKind: elementKind.key, withReuseIdentifier: Cell.identifier, for: indexPath) as? Cell
-      else { fatalError("Could not dequeue supplementary view of specified type.") }
+  func dequeueSupplementary<Cell: AnyObject>(
+    ofType: Cell.Type,
+    kind: SuplementaryViewKind,
+    for indexPath: IndexPath
+  ) -> Cell where Cell: ReusableCell {
+    let id = Cell.identifier
+    let genericCell = self.dequeueReusableSupplementaryView(ofKind: kind.key,
+                                                            withReuseIdentifier: id,
+                                                            for: indexPath)
+
+    guard let cell = genericCell as? Cell else {
+      fatalError("Could not dequeue supplementary view of specified type.")
+    }
 
     return cell
   }

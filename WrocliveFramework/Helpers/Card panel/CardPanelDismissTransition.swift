@@ -4,7 +4,9 @@
 
 import UIKit
 
-public final class CardPanelDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
+public final class CardPanelDismissTransition:
+  NSObject, UIViewControllerAnimatedTransitioning
+{
 
   private let duration: TimeInterval
 
@@ -12,11 +14,15 @@ public final class CardPanelDismissTransition: NSObject, UIViewControllerAnimate
     self.duration = duration
   }
 
-  public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+  public func transitionDuration(
+    using transitionContext: UIViewControllerContextTransitioning?
+  ) -> TimeInterval {
     return self.duration
   }
 
-  public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+  public func animateTransition(
+    using transitionContext: UIViewControllerContextTransitioning
+  ) {
     guard let presentedViewController = transitionContext.viewController(forKey: .from)
       else { return }
 
@@ -28,7 +34,9 @@ public final class CardPanelDismissTransition: NSObject, UIViewControllerAnimate
 
     // animation
 
-    let options: UIView.AnimationOptions = transitionContext.isInteractive ? .curveLinear : .curveEaseOut
+    let options: UIView.AnimationOptions = transitionContext.isInteractive ?
+      .curveLinear :
+      .curveEaseOut
 
     UIView.animate(
       withDuration: self.transitionDuration(using: transitionContext),

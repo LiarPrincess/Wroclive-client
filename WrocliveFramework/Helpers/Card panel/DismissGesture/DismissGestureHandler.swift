@@ -10,7 +10,8 @@ public class DismissGestureHandler: DismissGestureHandlerType {
 
   // MARK: - Properties
 
-  public weak var presentedViewController: UIViewController! // swiftlint:disable:this implicitly_unwrapped_optional
+  // swiftlint:disable:next implicitly_unwrapped_optional
+  public weak var presentedViewController: UIViewController!
   public var      presentedView:  UIView { return presentedViewController.view }
 
   public var cardPanel: CustomCardPanelPresentable? {
@@ -39,12 +40,13 @@ public class DismissGestureHandler: DismissGestureHandlerType {
       let percent = translation.y / Constants.dismissThreshold
       self.notifyInteractiveDismissalProgress(percent: percent)
 
-    // ended means that user lifted their finger without dismissing
+    // Ended means that user lifted their finger without dismissing
     case .ended:
       self.moveCardToInitialPosition(animated: true)
       self.notifyInteractiveDismissalDidEnd(completed: false)
 
-    // cancelled means that gesture was interrupted in the middle (for example by dismiss)
+    // Cancelled means that gesture was interrupted in the middle
+    // (for example by dismiss)
     case .cancelled:
       self.notifyInteractiveDismissalDidEnd(completed: true)
 
@@ -61,7 +63,10 @@ public class DismissGestureHandler: DismissGestureHandlerType {
 
     if !isAboveStartingPosition {
       let modalTranslation    = self.easeOut(movement: translation)
-      self.presentedView.transform = CGAffineTransform(translationX: 0, y: modalTranslation)
+      self.presentedView.transform = CGAffineTransform(
+        translationX: 0,
+        y: modalTranslation
+      )
     }
   }
 

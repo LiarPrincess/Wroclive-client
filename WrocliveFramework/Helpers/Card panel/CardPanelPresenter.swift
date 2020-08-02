@@ -6,7 +6,9 @@ import UIKit
 
 private typealias Layout = CardPanelConstants.Layout
 
-public final class CardPanelPresenter: UIPresentationController, UIGestureRecognizerDelegate {
+public final class CardPanelPresenter:
+  UIPresentationController, UIGestureRecognizerDelegate
+{
 
   // MARK: - Properties
 
@@ -14,7 +16,7 @@ public final class CardPanelPresenter: UIPresentationController, UIGestureRecogn
 
   private var dimmingView: UIView?
 
-  private var dismissGesture:        UIPanGestureRecognizer?
+  private var dismissGesture: UIPanGestureRecognizer?
   private var dismissGestureHandler: DismissGestureHandlerType?
 
   private var cardPanel: CustomCardPanelPresentable? {
@@ -23,7 +25,9 @@ public final class CardPanelPresenter: UIPresentationController, UIGestureRecogn
 
   // MARK: - Init
 
-  public init(forPresented presented: UIViewController, presenting: UIViewController?, height: CGFloat) {
+  public init(forPresented presented: UIViewController,
+              presenting: UIViewController?,
+              height: CGFloat) {
     self.height = height
     super.init(presentedViewController: presented, presenting: presenting)
   }
@@ -56,7 +60,9 @@ public final class CardPanelPresenter: UIPresentationController, UIGestureRecogn
     containerView.addSubview(self.dimmingView!)
 
     coordinator.animate(
-      alongsideTransition: { [unowned self] _ in self.dimmingView!.alpha = Layout.DimmingView.alpha },
+      alongsideTransition: { [unowned self] _ in
+        self.dimmingView!.alpha = Layout.DimmingView.alpha
+      },
       completion: nil
     )
   }
@@ -66,7 +72,10 @@ public final class CardPanelPresenter: UIPresentationController, UIGestureRecogn
     super.presentationTransitionDidEnd(completed)
     guard completed else { return }
 
-    self.dismissGesture = UIPanGestureRecognizer(target: self, action: #selector(handleDismissGesture))
+    self.dismissGesture = UIPanGestureRecognizer(
+      target: self,
+      action: #selector(handleDismissGesture)
+    )
     self.dismissGesture!.maximumNumberOfTouches = 1
     self.dismissGesture!.cancelsTouchesInView   = false
     self.dismissGesture!.delegate               = self
@@ -110,7 +119,8 @@ public final class CardPanelPresenter: UIPresentationController, UIGestureRecogn
       let scrollView = self.cardPanel?.scrollView
       self.dismissGestureHandler = scrollView == nil ?
             DismissGestureHandler(for: self.presentedViewController) :
-            ScrollViewDismissGestureHandler(for: self.presentedViewController, scrollView: scrollView!)
+            ScrollViewDismissGestureHandler(for: self.presentedViewController,
+                                            scrollView: scrollView!)
     }
 
     self.dismissGestureHandler?.handleGesture(gesture)
@@ -118,14 +128,18 @@ public final class CardPanelPresenter: UIPresentationController, UIGestureRecogn
 
   // MARK: - UIGestureRecognizerDelegate
 
-  public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+  public func gestureRecognizerShouldBegin(
+    _ gestureRecognizer: UIGestureRecognizer
+  ) -> Bool {
     // if we are editing table view then we don't want gesture recognizer
     return self.isDismissGesture(gestureRecognizer)
         && !self.isReorderingTableViewCells()
   }
 
-  public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                                shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+  public func gestureRecognizer(
+    _ gestureRecognizer: UIGestureRecognizer,
+    shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+  ) -> Bool {
 
     // we allow simultaneous recognition with scroll view and nothing else
     return self.isDismissGesture(gestureRecognizer)

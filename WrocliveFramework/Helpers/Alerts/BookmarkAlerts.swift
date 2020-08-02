@@ -3,29 +3,31 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
+import PromiseKit
 
 public enum BookmarkAlerts {
 
   /// Bookmark cannot be created as no line was selected
-  public static func showNoLinesSelectedAlert() -> Observable<Void> {
-    typealias Localization = Localizable.Alert.Bookmark.NoLinesSelected
-    return AlertCreator.createAlert(
-      title:   Localization.title,
-      message: Localization.message,
-      buttons: [AlertButton(title: Localization.ok, style: .default, result: ())]
+  public static func showNoLinesSelectedAlert() -> Promise<Void> {
+    typealias L = Localizable.Alert.Bookmark.NoLinesSelected
+    return AlertCreator.create(
+      title:   L.title,
+      message: L.message,
+      buttons: [
+        AlertCreator.Button(title: L.ok, style: .default, result: ())
+      ]
     )
   }
 
   /// Prompt for bookmark name
-  public static func showNameInputAlert() -> Observable<String?> {
-    typealias Localization = Localizable.Alert.Bookmark.NameInput
-    return AlertCreator.createTextInputAlert(
-      title:       Localization.title,
-      message:     Localization.message,
-      placeholder: Localization.placeholder,
-      confirm:     AlertButton(title: Localization.save,   style: .default, result: ()),
-      cancel:      AlertButton(title: Localization.cancel, style: .cancel,  result: ())
+  public static func showNameInputAlert() -> Promise<String?> {
+    typealias L = Localizable.Alert.Bookmark.NameInput
+    return AlertCreator.createWithTextInput(
+      title:       L.title,
+      message:     L.message,
+      placeholder: L.placeholder,
+      confirm:     AlertCreator.TextInputButton(title: L.save,   style: .default),
+      cancel:      AlertCreator.TextInputButton(title: L.cancel, style: .cancel)
     )
   }
 }

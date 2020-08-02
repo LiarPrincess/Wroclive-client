@@ -44,8 +44,9 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
     self.view.backgroundColor = Theme.colors.background
     self.view.roundTopCorners(radius: CardPanelConstants.Layout.topCornerRadius)
 
+    let highPriority = UILayoutPriority(rawValue: 900)
     self.view.addSubview(self.chevronViewContainer)
-    self.chevronViewContainer.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
+    self.chevronViewContainer.setContentHuggingPriority(highPriority, for: .vertical)
     self.chevronViewContainer.snp.makeConstraints { make in
       make.top.left.right.equalToSuperview()
     }

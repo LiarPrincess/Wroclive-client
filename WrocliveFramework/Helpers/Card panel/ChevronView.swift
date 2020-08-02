@@ -23,8 +23,8 @@ public final class ChevronView : UIView {
   public var angle: CGFloat {
     get { return self._angle }
     set {
-      let newAngle = self.clamp(newValue, min: -ChevronView.maxAngle, max: ChevronView.maxAngle)
-      let angleDiff = (newAngle - angle).magnitude
+      let newAngle = self.clamp(newValue, min: -Self.maxAngle, max: Self.maxAngle)
+      let angleDiff = abs(newAngle - angle)
 
       if angleDiff > 0.2 {
         self._angle = newAngle
@@ -93,10 +93,13 @@ public final class ChevronView : UIView {
     let centerX = self.bounds.width / 2.0
     let originY = (self.bounds.height - ChevronView.width) / 2.0
 
-    let templateFrame = CGRect(x: 0.0, y: originY, width: centerX, height: ChevronView.width)
+    let templateFrame = CGRect(x: 0.0,
+                               y: originY,
+                               width: centerX,
+                               height: ChevronView.width)
 
-    // move frames closer together to compensate for rotations
-    // otherwise we would end up with gap between arms
+    // Move frames closer together to compensate for rotations
+    // otherwise we would end up with gap between arms.
     let dx: CGFloat = centerX * (1.0 - cos(ChevronView.maxAngle.rad)) / 2.0
 
     let leftOffset:  CGFloat = ChevronView.width / 2.0 + dx - 1.0
@@ -122,8 +125,9 @@ public final class ChevronView : UIView {
   private func updateTransformations() {
     UIView.performWithoutAnimation { [weak self] in
       guard let strongSelf = self else { return }
-      strongSelf.leftView.transform  = CGAffineTransform(rotationAngle: -strongSelf.angle.rad)
-      strongSelf.rightView.transform = CGAffineTransform(rotationAngle:  strongSelf.angle.rad)
+      let angleRad = strongSelf.angle.rad
+      strongSelf.leftView.transform  = CGAffineTransform(rotationAngle: -angleRad)
+      strongSelf.rightView.transform = CGAffineTransform(rotationAngle:  angleRad)
     }
   }
 }

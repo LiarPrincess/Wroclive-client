@@ -10,7 +10,9 @@ import UIKit
 
 private typealias AnimationDurations = CardPanelConstants.AnimationDurations
 
-public final class CardPanelTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
+public final class CardPanelTransitionDelegate:
+  NSObject, UIViewControllerTransitioningDelegate
+{
 
   private let height: CGFloat
 
@@ -19,19 +21,27 @@ public final class CardPanelTransitionDelegate: NSObject, UIViewControllerTransi
     super.init()
   }
 
-  public func animationController(forPresented presented: UIViewController,
-                                  presenting:             UIViewController,
-                                  source:                 UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  public func animationController(
+    forPresented presented: UIViewController,
+    presenting:             UIViewController,
+    source:                 UIViewController
+  ) -> UIViewControllerAnimatedTransitioning? {
     return CardPanelPresentationTransition(AnimationDurations.present)
   }
 
-  public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  public func animationController(
+    forDismissed dismissed: UIViewController
+  ) -> UIViewControllerAnimatedTransitioning? {
     return CardPanelDismissTransition(AnimationDurations.dismiss)
   }
 
-  public func presentationController(forPresented presented: UIViewController,
-                                     presenting:             UIViewController?,
-                                     source:                 UIViewController) -> UIPresentationController? {
-    return CardPanelPresenter(forPresented: presented, presenting: presenting, height: self.height)
+  public func presentationController(
+    forPresented presented: UIViewController,
+    presenting:             UIViewController?,
+    source:                 UIViewController
+  ) -> UIPresentationController? {
+    return CardPanelPresenter(forPresented: presented,
+                              presenting: presenting,
+                              height: self.height)
   }
 }

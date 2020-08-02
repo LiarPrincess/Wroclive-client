@@ -5,20 +5,23 @@
 import Foundation
 import os.log
 import ReSwift
-import RxSwift
+import PromiseKit
 
 public final class MapUpdateScheduler: StoreSubscriber {
 
   private let store: Store<AppState>
+  private let environment: Environment
+
+  private var timer: Timer?
   private var trackedLines: [Line] = []
 
-  private var timer:           Observable<Void>?
-  private var timerDisposable: Disposable?
+  private var log: OSLog {
+    return self.environment.log.mapUpdate
+  }
 
-  private var log: OSLog { return AppEnvironment.log.mapUpdate }
-
-  public init(_ store: Store<AppState>) {
+  public init(store: Store<AppState>, environment: Environment) {
     self.store = store
+    self.environment = environment
     store.subscribe(self)
   }
 
@@ -26,25 +29,31 @@ public final class MapUpdateScheduler: StoreSubscriber {
     os_log("Start", log: self.log, type: .info)
     self.clearTimer()
 
-    // if we don't have any lines then just send single update to reset map
+    // If we don't have any lines then just send single update to reset map
     guard self.trackedLines.any else {
       os_log("Tick (empty)!", log: self.log, type: .info)
       self.store.dispatch(ApiAction.updateVehicleLocations)
       return
     }
 
-    let initialTick = Observable<Void>.just(())
-    let intervalTimer: Observable<Void> = {
-      let interval = AppEnvironment.configuration.time.vehicleUpdateInterval
-      return Observable<Int>.interval(interval, scheduler: AppEnvironment.schedulers.main).map { _ in () }
-    }()
+    let interval = self.environment.configuration.timing.vehicleUpdateInterval
+    self.timer = Timer.scheduledTimer(timeInterval: interval,
+                                      target: self,
+                                      selector: #selector(timerFired),
+                                      userInfo: nil,
+                                      repeats: true)
+    self.timer?.tolerance = interval * 0.1
 
-    self.timer = initialTick.concat(intervalTimer)
-    self.timerDisposable = self.timer!
-      .bind(onNext: { _ in
-        os_log("Tick!", log: self.log, type: .info)
-        self.store.dispatch(ApiAction.updateVehicleLocations)
-      })
+    // Manually perform first tick
+    self.timer?.fire()
+  }
+
+  @objc
+  internal func timerFired(timer: Timer) {
+    guard timer.isValid else { return }
+
+    os_log("Tick!", log: self.log, type: .info)
+    self.store.dispatch(ApiAction.updateVehicleLocations)
   }
 
   public func stop() {
@@ -53,8 +62,7 @@ public final class MapUpdateScheduler: StoreSubscriber {
   }
 
   private func clearTimer() {
-    self.timerDisposable?.dispose()
-    self.timerDisposable = nil
+    self.timer?.invalidate()
     self.timer = nil
   }
 

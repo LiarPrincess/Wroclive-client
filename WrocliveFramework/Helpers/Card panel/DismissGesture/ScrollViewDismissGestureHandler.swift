@@ -12,16 +12,19 @@ public final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
   private let scrollView: UIScrollView
 
-  // Why? If deceleration would force us to lower card, then gesture part would be already finished
+  // Why? If deceleration would force us to lower card, then gesture part would
+  // be already finished
   private var observation: NSKeyValueObservation?
 
   // MARK: - Init
 
-  public init(for presentedViewController: UIViewController, scrollView: UIScrollView) {
+  public init(for presentedViewController: UIViewController,
+              scrollView: UIScrollView) {
     self.scrollView = scrollView
     super.init(for: presentedViewController)
 
-    self.observation = self.scrollView.observe(\.contentOffset, options: [.initial]) { [weak self] _, _ in
+    self.observation = self.scrollView.observe(\.contentOffset,
+                                               options: [.initial]) { [weak self] _, _ in
       self?.scrollViewDidScroll()
     }
   }
@@ -52,12 +55,13 @@ public final class ScrollViewDismissGestureHandler: DismissGestureHandler {
       }
       else { self.resetGestureStartingPosition(gesture) }
 
-    // ended means that user lifted their finger without dismissing
+    // Ended means that user lifted their finger without dismissing
     case .ended:
       self.moveCardToInitialPosition(animated: true)
       self.notifyInteractiveDismissalDidEnd(completed: false)
 
-    // cancelled means that gesture was interrupted in the middle (for example by dismiss)
+    // Cancelled means that gesture was interrupted in the middle
+    // (for example by dismiss)
     case .cancelled:
       self.notifyInteractiveDismissalDidEnd(completed: true)
 
