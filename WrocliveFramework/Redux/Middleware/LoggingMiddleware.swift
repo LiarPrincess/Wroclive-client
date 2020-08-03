@@ -8,12 +8,16 @@ import ReSwift
 
 // swiftlint:disable implicit_return
 
-public func createLoggingMiddleware(env: Environment) -> Middleware<AppState> {
-  return { dispatch, getState in
-    return { next in
-      return { action in
-        os_log("%{public}@", log: env.log.redux, type: .info, String(describing: action))
-        next(action)
+extension Middlewares {
+
+  internal static func logging(environment: Environment) -> Middleware<AppState> {
+    return { dispatch, getState in
+      return { next in
+        return { action in
+          let log = environment.log.redux
+          os_log("%{public}@", log: log, type: .info, String(describing: action))
+          next(action)
+        }
       }
     }
   }

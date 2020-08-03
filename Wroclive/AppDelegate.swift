@@ -53,10 +53,11 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     let state = AppState.load(from: self.environment,
                               bookmarksIfNotSaved: [],
                               searchCardStateIfNotSaved: .default)
-    let middlewares = createMiddlewares(environment: self.environment)
+
+    let middleware = AppState.createMiddleware(environment: self.environment)
     self.store = Store<AppState>(reducer: AppState.reducer(action:state:),
                                  state: state,
-                                 middleware: middlewares)
+                                 middleware: middleware)
 
     Theme.setupAppearance()
 

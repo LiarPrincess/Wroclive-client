@@ -54,7 +54,7 @@ public final class MapUpdateScheduler: StoreSubscriber {
     guard timer.isValid else { return }
 
     os_log("Tick!", log: self.log, type: .info)
-    self.store.dispatch(ApiMiddlewareActions.updateVehicleLocations)
+    self.store.dispatch(ApiMiddlewareActions.requestVehicleLocations)
   }
 
   public func stop() {

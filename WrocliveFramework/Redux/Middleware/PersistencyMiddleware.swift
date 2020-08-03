@@ -8,24 +8,31 @@ import ReSwift
 
 // swiftlint:disable implicit_return
 
-public func createPersistencyMiddleware(env: Environment) -> Middleware<AppState> {
-  return { dispatch, getState in
-    return { next in
-      return { action in
+extension Middlewares {
 
-        let before = getState()
-        next(action)
-        let after = getState()
+  internal static func persistency(environment: Environment) -> Middleware<AppState> {
+    return { dispatch, getState in
+      return { next in
+        return { action in
 
-        saveBookmarksIfNeeded(env: env, before: before, after: after)
-        saveSearchCardStateIfNeeded(env: env, before: before, after: after)
+          let before = getState()
+          next(action)
+          let after = getState()
+
+          saveBookmarksIfNeeded(environment: environment,
+                                before: before,
+                                after: after)
+          saveSearchCardStateIfNeeded(environment: environment,
+                                      before: before,
+                                      after: after)
+        }
       }
     }
   }
 }
 
 private func saveBookmarksIfNeeded(
-  env: Environment,
+  environment: Environment,
   before stateBefore: AppState?,
   after stateAfter: AppState?
 ) {
@@ -34,13 +41,13 @@ private func saveBookmarksIfNeeded(
     else { return }
 
   if before != after {
-    os_log("Saving bookmarks", log: env.log.redux, type: .info)
-    env.storage.saveBookmarks(after)
+    os_log("Saving bookmarks", log: environment.log.redux, type: .info)
+    environment.storage.saveBookmarks(after)
   }
 }
 
 private func saveSearchCardStateIfNeeded(
-  env: Environment,
+  environment: Environment,
   before stateBefore: AppState?,
   after stateAfter: AppState?
 ) {
@@ -49,7 +56,7 @@ private func saveSearchCardStateIfNeeded(
     else { return }
 
   if before != after {
-    os_log("Saving search card state", log: env.log.redux, type: .info)
-    env.storage.saveSearchCardState(after)
+    os_log("Saving search card state", log: environment.log.redux, type: .info)
+    environment.storage.saveSearchCardState(after)
   }
 }

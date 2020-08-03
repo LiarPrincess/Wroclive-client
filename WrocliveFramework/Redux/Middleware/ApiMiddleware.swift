@@ -7,21 +7,27 @@ import ReSwift
 
 // swiftlint:disable implicit_return
 
-public func createApiMiddleware(env: Environment) -> Middleware<AppState> {
-  return { dispatch, getState in
-    return { next in
-      return { action in
+extension Middlewares {
 
-        guard let state = getState()
-          else { return }
+  internal static func api(environment: Environment) -> Middleware<AppState> {
+    return { dispatch, getState in
+      return { next in
+        return { action in
 
-        switch action {
-        case ApiMiddlewareActions.updateLines:
-          requestLines(env: env, dispatch: dispatch)
-        case ApiMiddlewareActions.updateVehicleLocations:
-          requestVehicleLocations(env: env, state: state, dispatch: dispatch)
-        default:
-          next(action)
+          guard let state = getState()
+            else { return }
+
+          switch action {
+          case ApiMiddlewareActions.requestLines:
+            requestLines(environment: environment,
+                         dispatch: dispatch)
+          case ApiMiddlewareActions.requestVehicleLocations:
+            requestVehicleLocations(environment: environment,
+                                    state: state,
+                                    dispatch: dispatch)
+          default:
+            next(action)
+          }
         }
       }
     }
@@ -29,7 +35,7 @@ public func createApiMiddleware(env: Environment) -> Middleware<AppState> {
 }
 
 private func requestLines(
-  env: Environment,
+  environment: Environment,
   dispatch: @escaping DispatchFunction
 ) {
   dispatch(ApiAction.setLines(.inProgress))
@@ -42,7 +48,7 @@ private func requestLines(
 }
 
 private func requestVehicleLocations(
-  env: Environment,
+  environment: Environment,
   state: AppState,
   dispatch: @escaping DispatchFunction
 ) {

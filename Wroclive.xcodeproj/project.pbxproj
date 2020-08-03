@@ -58,7 +58,7 @@
 		9013FB4124D72C790006D1B9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB3A24D72C790006D1B9 /* MapViewModel.swift */; };
 		9047995924D56BCA00111F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995824D56BCA00111F2C /* Environment.swift */; };
 		9047996724D575C500111F2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995B24D575C500111F2C /* AppState.swift */; };
-		9047996824D575C500111F2C /* createMiddlewares.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995D24D575C500111F2C /* createMiddlewares.swift */; };
+		9047996824D575C500111F2C /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995D24D575C500111F2C /* Middleware.swift */; };
 		9047996924D575C500111F2C /* PersistencyMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995E24D575C500111F2C /* PersistencyMiddleware.swift */; };
 		9047996A24D575C500111F2C /* ApiMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995F24D575C500111F2C /* ApiMiddleware.swift */; };
 		9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996024D575C500111F2C /* LoggingMiddleware.swift */; };
@@ -183,7 +183,7 @@
 		9013FB3A24D72C790006D1B9 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		9047995824D56BCA00111F2C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9047995B24D575C500111F2C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		9047995D24D575C500111F2C /* createMiddlewares.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createMiddlewares.swift; sourceTree = "<group>"; };
+		9047995D24D575C500111F2C /* Middleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		9047995E24D575C500111F2C /* PersistencyMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyMiddleware.swift; sourceTree = "<group>"; };
 		9047995F24D575C500111F2C /* ApiMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiMiddleware.swift; sourceTree = "<group>"; };
 		9047996024D575C500111F2C /* LoggingMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 		9047995C24D575C500111F2C /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
-				9047995D24D575C500111F2C /* createMiddlewares.swift */,
+				9047995D24D575C500111F2C /* Middleware.swift */,
 				9047995E24D575C500111F2C /* PersistencyMiddleware.swift */,
 				9047995F24D575C500111F2C /* ApiMiddleware.swift */,
 				9047996024D575C500111F2C /* LoggingMiddleware.swift */,
@@ -741,7 +741,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9047996824D575C500111F2C /* createMiddlewares.swift in Sources */,
+				9047996824D575C500111F2C /* Middleware.swift in Sources */,
 				9058938F24D4A7460046EFA5 /* TextAttributeEnums.swift in Sources */,
 				9013FAAD24D6B1880006D1B9 /* ReusableCell+UITableView.swift in Sources */,
 				9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */,
