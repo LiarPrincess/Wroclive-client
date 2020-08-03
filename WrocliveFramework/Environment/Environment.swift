@@ -26,7 +26,7 @@ public class Environment {
     self.configuration = Configuration()
 
     let fs = FileSystem()
-    let storageInner = StorageManager(fileSystem: fs)
+    let storageInner = StorageManager(fileSystem: fs, log: self.log)
     self.storage = CachedStorageManager(using: storageInner)
 
     let network = Network()

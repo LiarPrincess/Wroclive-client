@@ -50,17 +50,18 @@ public struct AppState: StateType {
     }
   }
 
-  public func load(
-    from storage: StorageManagerType,
-    defaultBookmarks: [Bookmark],
-    defaultSavedSearchCardState: SearchCardState
+  public static func load(
+    from environment: Environment,
+    bookmarksIfNotSaved: [Bookmark],
+    searchCardStateIfNotSaved: SearchCardState
   ) -> AppState {
+    let storage = environment.storage
     return AppState(
       userData: UserData(
         userLocationAuthorization: .notDetermined, // TODO: Program this
-        bookmarks: storage.getSavedBookmarks() ?? defaultBookmarks,
+        bookmarks: storage.getSavedBookmarks()  ?? bookmarksIfNotSaved,
         trackedLines: [],
-        searchCardState: storage.getSavedSearchCardState() ?? defaultSavedSearchCardState
+        searchCardState: storage.getSavedSearchCardState() ?? searchCardStateIfNotSaved
       ),
       apiData: ApiData(
         lines: .none,

@@ -4,13 +4,12 @@
 
 import UIKit
 import ReSwift
-import RxSwift
-import RxCocoa
 
 public final class AppCoordinator: Coordinator {
 
   public let window: UIWindow
   public let store:  Store<AppState>
+  public let environment: Environment
 
   private var mainViewController: MainViewController?
 
@@ -19,31 +18,24 @@ public final class AppCoordinator: Coordinator {
   // Leak ends (it is dealocated) when user starts new childCoordinator.
   private var childCoordinator: Coordinator?
 
-  public init(_ window: UIWindow, _ store: Store<AppState>) {
+  public init(window: UIWindow, store: Store<AppState>, environment: Environment) {
+    self.store = store
     self.window = window
-    self.store  = store
+    self.environment = environment
   }
 
   public func start() {
-    let viewModel = MainViewModel(self.store)
-    self.mainViewController = MainViewController(viewModel)
+    let viewModel = MainViewModel(store: self.store,
+                                  environment: self.environment)
 
-    viewModel.openSearchCard
-      .drive(onNext: { [unowned self] in self.openSearchCard() })
-      .disposed(by: viewModel.disposeBag)
-
-    viewModel.openBookmarksCard
-      .drive(onNext: { [unowned self] in self.openBookmarksCard() })
-      .disposed(by: viewModel.disposeBag)
-
-    viewModel.openSettingsCard
-      .drive(onNext: { [unowned self] in self.openSettingsCard() })
-      .disposed(by: viewModel.disposeBag)
+    self.mainViewController = MainViewController(viewModel: viewModel,
+                                                 environment: self.environment)
 
     self.window.rootViewController = self.mainViewController
     self.window.makeKeyAndVisible()
   }
 
+/*
   private func openSearchCard() {
     guard let mainViewController = self.mainViewController
       else { fatalError("AppCoordinator has to be started first") }
@@ -67,4 +59,5 @@ public final class AppCoordinator: Coordinator {
     self.childCoordinator = SettingsCardCoordinator(mainViewController)
     self.childCoordinator!.start()
   }
+*/
 }

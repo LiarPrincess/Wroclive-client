@@ -14,6 +14,10 @@ public final class CachedStorageManager: StorageManagerType {
     self.inner = inner
   }
 
+  public var documentsDirectory: URL {
+    return self.inner.documentsDirectory
+  }
+
   public func getSavedBookmarks() -> [Bookmark]? {
     if self.bookmarks == nil {
       self.bookmarks = self.inner.getSavedBookmarks()

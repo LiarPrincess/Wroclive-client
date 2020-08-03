@@ -45,6 +45,7 @@ public protocol ApiType {
 
 // MARK: - Api
 
+// TODO: Add OSLog to api
 public final class Api: ApiType {
 
   private let network: NetworkType
