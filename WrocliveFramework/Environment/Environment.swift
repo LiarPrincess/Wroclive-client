@@ -13,7 +13,14 @@ public class Environment {
   public let userLocation: UserLocationManagerType
   public let configuration: Configuration
 
-  public init() {
+  public enum ApiMode {
+    case production
+    #if DEBUG
+    case debugOffline
+    #endif
+  }
+
+  public init(apiMode: ApiMode) {
     let bundle = Bundle.main
     let device = UIDevice.current
     let screen = UIScreen.main
@@ -29,11 +36,16 @@ public class Environment {
     let storageInner = StorageManager(fileSystem: fs, log: self.log)
     self.storage = CachedStorageManager(using: storageInner)
 
-    let network = Network()
-    self.api = Api(bundle: self.bundle,
-                   device: self.device,
-                   configuration: self.configuration,
-                   network: network,
-                   log: self.log)
+    switch apiMode {
+    case .production:
+      let network = Network()
+      self.api = Api(bundle: self.bundle,
+                     device: self.device,
+                     configuration: self.configuration,
+                     network: network,
+                     log: self.log)
+    case .debugOffline:
+      self.api = OfflineApi(log: self.log)
+    }
   }
 }

@@ -39,7 +39,9 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   ) -> Bool {
     // This is easily the most important line in the whole app.
     // Every call that interacts with native frameworks has to go through Environment.
-    self.environment = Environment()
+    // And don't worry, 'debug' modes will fail to compile in release builds.
+//    self.environment = Environment(apiMode: .production)
+    self.environment = Environment(apiMode: .debugOffline)
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
@@ -53,7 +55,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     let state = AppState.load(from: self.environment,
                               bookmarksIfNotSaved: [],
                               searchCardStateIfNotSaved: .default)
-
     let middleware = AppState.createMiddleware(environment: self.environment)
     self.store = Store<AppState>(reducer: AppState.reducer(action:state:),
                                  state: state,
