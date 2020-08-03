@@ -33,6 +33,7 @@ public class Environment {
     self.api = Api(bundle: self.bundle,
                    device: self.device,
                    configuration: self.configuration,
-                   network: network)
+                   network: network,
+                   log: self.log)
   }
 }

@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import Foundation
+import os.log
 import Alamofire
 import PromiseKit
 
@@ -48,16 +49,23 @@ public protocol ApiType {
 // TODO: Add OSLog to api
 public final class Api: ApiType {
 
-  private let network: NetworkType
   private let userAgent: String
   private let linesEndpoint: LinesEndpoint
   private let vehicleLocationsEndpoint: VehicleLocationsEndpoint
+  private let network: NetworkType
+  private let logManager: LogManagerType
+
+  private var log: OSLog {
+    return self.logManager.api
+  }
 
   public init(bundle: BundleManagerType,
               device: DeviceManagerType,
               configuration: Configuration,
-              network: NetworkType) {
+              network: NetworkType,
+              log: LogManagerType) {
     self.network = network
+    self.logManager = log
     self.userAgent = Self.createUserAgent(bundle: bundle, device: device)
     self.linesEndpoint = LinesEndpoint(configuration: configuration)
     self.vehicleLocationsEndpoint = VehicleLocationsEndpoint(configuration: configuration)
@@ -73,11 +81,13 @@ public final class Api: ApiType {
   // MARK: - Endpoints
 
   public func getLines() -> Promise<[Line]> {
+    os_log("Sending 'getLines' request", log: self.log, type: .info)
     let endpoint = self.linesEndpoint
     return self.sendRequest(endpoint: endpoint, data: ())
   }
 
   public func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
+    os_log("Sending 'getVehicleLocations' request", log: self.log, type: .info)
     let endpoint = self.vehicleLocationsEndpoint
     return self.sendRequest(endpoint: endpoint, data: lines)
   }
