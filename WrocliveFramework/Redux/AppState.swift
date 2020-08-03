@@ -25,21 +25,24 @@ public struct AppState: StateType {
     case data(Data)
     case error(ApiError)
 
+    public var isInProgress: Bool {
+      switch self {
+      case .inProgress: return true
+      case .none, .data, .error: return false
+      }
+    }
+
     public func getData() -> Data? {
       switch self {
-      case .data(let d):
-        return d
-      case .none, .inProgress, .error:
-        return nil
+      case .data(let d): return d
+      case .none, .inProgress, .error: return nil
       }
     }
 
     public func getError() -> ApiError? {
       switch self {
-      case .error(let e):
-        return e
-      case .none, .inProgress, .data:
-        return nil
+      case .error(let e): return e
+      case .none, .inProgress, .data: return nil
       }
     }
   }

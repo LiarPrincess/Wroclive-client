@@ -19,44 +19,44 @@ extension Middlewares {
           next(action)
           let after = getState()
 
-          saveBookmarksIfNeeded(environment: environment,
-                                before: before,
-                                after: after)
-          saveSearchCardStateIfNeeded(environment: environment,
-                                      before: before,
-                                      after: after)
+          Self.saveBookmarksIfNeeded(environment: environment,
+                                     before: before,
+                                     after: after)
+          Self.saveSearchCardStateIfNeeded(environment: environment,
+                                           before: before,
+                                           after: after)
         }
       }
     }
   }
-}
 
-private func saveBookmarksIfNeeded(
-  environment: Environment,
-  before stateBefore: AppState?,
-  after stateAfter: AppState?
-) {
-  guard let before = stateBefore?.bookmarks,
-        let after  = stateAfter?.bookmarks
-    else { return }
+  private static func saveBookmarksIfNeeded(
+    environment: Environment,
+    before stateBefore: AppState?,
+    after stateAfter: AppState?
+  ) {
+    guard let before = stateBefore?.bookmarks,
+      let after  = stateAfter?.bookmarks
+      else { return }
 
-  if before != after {
-    os_log("Saving bookmarks", log: environment.log.redux, type: .info)
-    environment.storage.saveBookmarks(after)
+    if before != after {
+      os_log("Saving bookmarks", log: environment.log.redux, type: .info)
+      environment.storage.saveBookmarks(after)
+    }
   }
-}
 
-private func saveSearchCardStateIfNeeded(
-  environment: Environment,
-  before stateBefore: AppState?,
-  after stateAfter: AppState?
-) {
-  guard let before = stateBefore?.searchCardState,
-        let after  = stateAfter?.searchCardState
-    else { return }
+  private static func saveSearchCardStateIfNeeded(
+    environment: Environment,
+    before stateBefore: AppState?,
+    after stateAfter: AppState?
+  ) {
+    guard let before = stateBefore?.searchCardState,
+      let after  = stateAfter?.searchCardState
+      else { return }
 
-  if before != after {
-    os_log("Saving search card state", log: environment.log.redux, type: .info)
-    environment.storage.saveSearchCardState(after)
+    if before != after {
+      os_log("Saving search card state", log: environment.log.redux, type: .info)
+      environment.storage.saveSearchCardState(after)
+    }
   }
 }

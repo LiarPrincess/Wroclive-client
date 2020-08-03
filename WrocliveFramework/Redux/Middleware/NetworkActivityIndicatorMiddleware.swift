@@ -21,23 +21,13 @@ extension Middlewares {
           next(action)
 
           if let state = getState() {
-            let hasPending = hasPendingRequests(state)
+            let isLine = state.getLinesResponse.isInProgress
+            let isVehicle = state.getVehicleLocationsResponse.isInProgress
+            let hasPending = isLine || isVehicle
             environment.api.setNetworkActivityIndicatorVisibility(isVisible: hasPending)
           }
         }
       }
     }
   }
-}
-
-private func hasPendingRequests(_ state: AppState) -> Bool {
-  if case .inProgress = state.getLinesResponse {
-    return true
-  }
-
-  if case .inProgress = state.getVehicleLocationsResponse {
-    return true
-  }
-
-  return false
 }
