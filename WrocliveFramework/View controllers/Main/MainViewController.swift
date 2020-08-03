@@ -23,14 +23,15 @@ public final class MainViewController: UIViewController {
   public let bookmarksButton     = UIButton(type: .custom)
   public let configurationButton = UIButton(type: .custom)
 
-  private let viewModel: MainViewModel
-  private let disposeBag = DisposeBag()
+  internal let viewModel: MainViewModel
+  internal let environment: Environment
 
   // MARK: - Init
 
-  public init(_ viewModel: MainViewModel) {
+  public init(viewModel: MainViewModel, environment: Environment) {
     self.viewModel = viewModel
-    self.mapViewController = MapViewController(viewModel.mapViewModel)
+    self.environment = environment
+    self.mapViewController = MapViewController(viewModel: viewModel.mapViewModel)
     super.init(nibName: nil, bundle: nil)
   }
 

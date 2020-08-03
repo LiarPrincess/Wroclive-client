@@ -46,7 +46,8 @@ internal extension MainViewController {
                                        action: #selector(settingsButtonPressed),
                                        for: .touchUpInside)
 
-    self.toolbar.contentView.addTopBorder()
+    let device = self.environment.device
+    self.toolbar.contentView.addTopBorder(device: device)
 
     self.view.addSubview(self.toolbar)
     self.toolbar.snp.makeConstraints { make in

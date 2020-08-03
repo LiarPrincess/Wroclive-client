@@ -51,6 +51,11 @@
 		9013FB3124D721A90006D1B9 /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB0024D721A90006D1B9 /* MainViewControllerConstants.swift */; };
 		9013FB3224D721A90006D1B9 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB0124D721A90006D1B9 /* MainViewModel.swift */; };
 		9013FB3324D721A90006D1B9 /* MainViewControllerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB0224D721A90006D1B9 /* MainViewControllerLayout.swift */; };
+		9013FB3C24D72C790006D1B9 /* VehicleAnnotationDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB3524D72C790006D1B9 /* VehicleAnnotationDiff.swift */; };
+		9013FB3D24D72C790006D1B9 /* VehicleAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB3624D72C790006D1B9 /* VehicleAnnotationView.swift */; };
+		9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB3824D72C790006D1B9 /* VehicleAnnotation.swift */; };
+		9013FB4024D72C790006D1B9 /* MapViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB3924D72C790006D1B9 /* MapViewControllerConstants.swift */; };
+		9013FB4124D72C790006D1B9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB3A24D72C790006D1B9 /* MapViewModel.swift */; };
 		9047995924D56BCA00111F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995824D56BCA00111F2C /* Environment.swift */; };
 		9047996724D575C500111F2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995B24D575C500111F2C /* AppState.swift */; };
 		9047996824D575C500111F2C /* createMiddlewares.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995D24D575C500111F2C /* createMiddlewares.swift */; };
@@ -94,6 +99,7 @@
 		90CDCFD624D60D7F00595D89 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFD524D60D7F00595D89 /* UIExtensions.swift */; };
 		90CDCFD724D60FDF00595D89 /* Collection+GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFA624D60A0D00595D89 /* Collection+GroupTests.swift */; };
 		90CDCFD824D60FE200595D89 /* Collection+AnyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFA724D60A0D00595D89 /* Collection+AnyTests.swift */; };
+		90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39E924D8570900ADE4B9 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +175,11 @@
 		9013FB0024D721A90006D1B9 /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
 		9013FB0124D721A90006D1B9 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		9013FB0224D721A90006D1B9 /* MainViewControllerLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerLayout.swift; sourceTree = "<group>"; };
+		9013FB3524D72C790006D1B9 /* VehicleAnnotationDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationDiff.swift; sourceTree = "<group>"; };
+		9013FB3624D72C790006D1B9 /* VehicleAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotationView.swift; sourceTree = "<group>"; };
+		9013FB3824D72C790006D1B9 /* VehicleAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
+		9013FB3924D72C790006D1B9 /* MapViewControllerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerConstants.swift; sourceTree = "<group>"; };
+		9013FB3A24D72C790006D1B9 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		9047995824D56BCA00111F2C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9047995B24D575C500111F2C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		9047995D24D575C500111F2C /* createMiddlewares.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createMiddlewares.swift; sourceTree = "<group>"; };
@@ -216,6 +227,7 @@
 		90CDCFD124D60BEF00595D89 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		90CDCFD324D60CF100595D89 /* CollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
 		90CDCFD524D60D7F00595D89 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		90DE39E924D8570900ADE4B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +366,7 @@
 		9013FACA24D721A90006D1B9 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9013FB3424D72C790006D1B9 /* Map */,
 				9013FAFE24D721A90006D1B9 /* Main */,
 			);
 			path = "View controllers";
@@ -368,6 +381,19 @@
 				9013FB0124D721A90006D1B9 /* MainViewModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		9013FB3424D72C790006D1B9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				90DE39E924D8570900ADE4B9 /* MapViewController.swift */,
+				9013FB3A24D72C790006D1B9 /* MapViewModel.swift */,
+				9013FB3924D72C790006D1B9 /* MapViewControllerConstants.swift */,
+				9013FB3524D72C790006D1B9 /* VehicleAnnotationDiff.swift */,
+				9013FB3624D72C790006D1B9 /* VehicleAnnotationView.swift */,
+				9013FB3824D72C790006D1B9 /* VehicleAnnotation.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		9047995A24D575C500111F2C /* Redux */ = {
@@ -723,12 +749,15 @@
 				90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */,
 				9047996724D575C500111F2C /* AppState.swift in Sources */,
 				9058939124D4A7460046EFA5 /* FontPreset.swift in Sources */,
+				9013FB4124D72C790006D1B9 /* MapViewModel.swift in Sources */,
 				9013FAB624D6B1890006D1B9 /* CardPanelPresenter.swift in Sources */,
 				900EA10B24D46F140054C03F /* LinesEndpoint.swift in Sources */,
 				9013FABE24D6B1890006D1B9 /* CardPanelConstants.swift in Sources */,
 				90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */,
 				9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */,
 				9013FAC724D721410006D1B9 /* Fonts.swift in Sources */,
+				9013FB3C24D72C790006D1B9 /* VehicleAnnotationDiff.swift in Sources */,
+				90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */,
 				9047996D24D575C500111F2C /* appReducer.swift in Sources */,
 				9013FAC924D721410006D1B9 /* Assets.swift in Sources */,
 				9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */,
@@ -739,6 +768,7 @@
 				9013FB3124D721A90006D1B9 /* MainViewControllerConstants.swift in Sources */,
 				9013FAC024D6B1890006D1B9 /* NetworkAlerts.swift in Sources */,
 				905893CA24D4A95D0046EFA5 /* UserLocationManager.swift in Sources */,
+				9013FB3D24D72C790006D1B9 /* VehicleAnnotationView.swift in Sources */,
 				9013FABF24D6B1890006D1B9 /* MapUpdateScheduler.swift in Sources */,
 				9013FB3224D721A90006D1B9 /* MainViewModel.swift in Sources */,
 				90CDCFD424D60CF100595D89 /* CollectionExtensions.swift in Sources */,
@@ -752,6 +782,7 @@
 				9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */,
 				9013FB3324D721A90006D1B9 /* MainViewControllerLayout.swift in Sources */,
 				9013FAC824D721410006D1B9 /* Localizable.swift in Sources */,
+				9013FB4024D72C790006D1B9 /* MapViewControllerConstants.swift in Sources */,
 				900EA10D24D46F140054C03F /* Endpoint.swift in Sources */,
 				9047995924D56BCA00111F2C /* Environment.swift in Sources */,
 				9013FAB524D6B1890006D1B9 /* CardPanelPresentationTransition.swift in Sources */,
@@ -770,6 +801,7 @@
 				9013FABD24D6B1890006D1B9 /* CardPanelDismissTransition.swift in Sources */,
 				9047996F24D575C500111F2C /* ApiDataReducer.swift in Sources */,
 				9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */,
+				9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */,
 				9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */,
 				9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */,
 			);

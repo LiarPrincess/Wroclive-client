@@ -11,6 +11,7 @@ public struct AppState: StateType {
   public var apiData:  ApiData
 
   public struct UserData {
+    public var userLocationAuthorization: UserLocationAuthorization
     public var bookmarks: [Bookmark]
     public var trackedLines: [Line]
     public var searchCardState: SearchCardState
@@ -22,10 +23,31 @@ public struct AppState: StateType {
   }
 
   public enum ApiResponseState<Data> {
+    /// No response recieved (yet).
+    /// Default state, just after starting the app.
     case none
+    /// Request was send, no response (yet).
     case inProgress
     case data(Data)
     case error(ApiError)
+
+    public func getData() -> Data? {
+      switch self {
+      case .data(let d):
+        return d
+      case .none, .inProgress, .error:
+        return nil
+      }
+    }
+
+    public func getError() -> ApiError? {
+      switch self {
+      case .error(let e):
+        return e
+      case .none, .inProgress, .data:
+        return nil
+      }
+    }
   }
 
   public func load(
@@ -35,6 +57,7 @@ public struct AppState: StateType {
   ) -> AppState {
     return AppState(
       userData: UserData(
+        userLocationAuthorization: .notDetermined, // TODO: Program this
         bookmarks: storage.getSavedBookmarks() ?? defaultBookmarks,
         trackedLines: [],
         searchCardState: storage.getSavedSearchCardState() ?? defaultSavedSearchCardState

@@ -10,28 +10,25 @@ public final class MainViewModel {
 
   public let mapViewModel: MapViewModel
 
-  public init(store: Store<AppState>) {
-    self.mapViewModel = MapViewModel(store)
-
-//    let _didPressSearchButton = PublishSubject<Void>()
-//    self.didPressSearchButton = _didPressSearchButton.asObserver()
-//    self.openSearchCard = _didPressSearchButton.asDriver(onErrorDriveWith: .never())
-//
-//    let _didPressBookmarkButton = PublishSubject<Void>()
-//    self.didPressBookmarkButton = _didPressBookmarkButton.asObserver()
-//    self.openBookmarksCard = _didPressBookmarkButton.asDriver(onErrorDriveWith: .never())
-//
-//    let _didPressSettingsButton = PublishSubject<Void>()
-//    self.didPressSettingsButton = _didPressSettingsButton.asObserver()
-//    self.openSettingsCard = _didPressSettingsButton.asDriver(onErrorDriveWith: .never())
+  public init(store: Store<AppState>, environment: Environment) {
+    self.mapViewModel = MapViewModel(store: store, environment: environment)
   }
 
   public func didPressSearchButton() {
+//    let _didPressSearchButton = PublishSubject<Void>()
+//    self.didPressSearchButton = _didPressSearchButton.asObserver()
+//    self.openSearchCard = _didPressSearchButton.asDriver(onErrorDriveWith: .never())
   }
 
   public func didPressBookmarkButton() {
+//    let _didPressBookmarkButton = PublishSubject<Void>()
+//    self.didPressBookmarkButton = _didPressBookmarkButton.asObserver()
+//    self.openBookmarksCard = _didPressBookmarkButton.asDriver(onErrorDriveWith: .never())
   }
 
   public func didPressSettingsButton() {
+//    let _didPressSettingsButton = PublishSubject<Void>()
+//    self.didPressSettingsButton = _didPressSettingsButton.asObserver()
+//    self.openSettingsCard = _didPressSettingsButton.asDriver(onErrorDriveWith: .never())
   }
 }

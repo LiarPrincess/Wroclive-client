@@ -2,7 +2,7 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-public struct Vehicle: CustomStringConvertible {
+public struct Vehicle: CustomStringConvertible, Equatable {
 
   public let id:   String
   public let line: Line

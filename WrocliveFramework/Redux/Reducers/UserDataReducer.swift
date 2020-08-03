@@ -8,6 +8,7 @@ import ReSwift
 public func userDataReducer(action: Action,
                             state: AppState.UserData?) -> AppState.UserData {
   return AppState.UserData(
+    userLocationAuthorization: .notDetermined,
     bookmarks: bookmarksReducer(action: action, state: state?.bookmarks),
     trackedLines: trackedLinesReducer(action: action, state: state?.trackedLines),
     searchCardState: searchCardStateReducer(action: action, state: state?.searchCardState)

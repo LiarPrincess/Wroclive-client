@@ -6,7 +6,42 @@ import UIKit
 import MapKit
 import PromiseKit
 
-// MARK: - Error
+// MARK: - Helper types
+
+public enum UserLocationAuthorization {
+  /// User has not yet made a choice with regards to this application
+  case notDetermined
+  /// This application is not authorized to use location services.
+  /// Due to active restrictions on location services, the user cannot change
+  /// this status, and may not have personally denied authorization
+  case restricted
+  /// User has explicitly denied authorization for this application,
+  /// or location services are disabled in Settings.
+  case denied
+  /// User has authorized this application to use location services.
+  ///
+  /// This case merges `authorizedAlways` and `authorizedWhenInUse`.
+  case authorized
+
+  public var isNotDetermined: Bool {
+    switch self {
+    case .notDetermined:
+      return true
+    case .authorized, .restricted, .denied:
+      return false
+    }
+  }
+
+  public var isAuthorized: Bool {
+    switch self {
+    case .authorized:
+      return true
+    case .notDetermined, .restricted, .denied:
+      return false
+    }
+  }
+}
+
 
 public enum UserLocationError: Swift.Error, Equatable, CustomStringConvertible {
 
@@ -31,7 +66,7 @@ public protocol UserLocationManagerType {
   func getCurrent() -> Promise<CLLocationCoordinate2D>
 
   /// Current authorization status.
-  func getAuthorizationStatus() -> CLAuthorizationStatus
+  func getAuthorizationStatus() -> UserLocationAuthorization
 
   /// Request when in use authorization.
   func requestWhenInUseAuthorization()
@@ -58,23 +93,35 @@ public struct UserLocationManager: UserLocationManagerType {
 
       let authorization = self.getAuthorizationStatus()
       switch authorization {
-      case .authorizedAlways,
-           .authorizedWhenInUse:
+      case .authorized:
         throw UserLocationError.otherError
       case .notDetermined:
         throw UserLocationError.permissionNotDetermined
       case .restricted,
            .denied:
         throw UserLocationError.permissionDenied
-      @unknown default:
-        throw UserLocationError.otherError
       }
     }
   }
 
-  public func getAuthorizationStatus() -> CLAuthorizationStatus {
+  // TODO: Remove this and use AppState?
+  public func getAuthorizationStatus() -> UserLocationAuthorization {
     let result = CLLocationManager.authorizationStatus()
-    return result
+
+    switch result {
+    case .notDetermined:
+      return .notDetermined
+    case .denied:
+      return .denied
+    case .authorizedAlways,
+         .authorizedWhenInUse:
+      return .authorized
+    case .restricted:
+      return .restricted
+    @unknown default:
+      // Not sure what to do, we will just assume best case.
+      return .authorized
+    }
   }
 
   public func requestWhenInUseAuthorization() {

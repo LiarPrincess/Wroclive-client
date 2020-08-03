@@ -5,103 +5,155 @@
 import UIKit
 import MapKit
 import ReSwift
-import RxSwift
-import RxCocoa
+import PromiseKit
 
 private typealias Defaults = MapViewControllerConstants.Defaults
 
-public final class MapViewModel {
+public protocol MapViewType: AnyObject {
+  func setCenter(location: CLLocationCoordinate2D)
+  // TODO: VM should calculate updates
+  func updateVehicleLocations(vehicles: [Vehicle])
 
-  private let disposeBag = DisposeBag()
+  func showDeniedLocationAuthorizationAlert()
+  func showGloballyDeniedLocationAuthorizationAlert()
+  func showApiErrorAlert(error: ApiError)
+}
+
+public final class MapViewModel: StoreSubscriber {
+
+  private let store: Store<AppState>
+  private let environment: Environment
+
+  private var previousState: AppState?
+  private weak var view: MapViewType?
+
+  public init(store: Store<AppState>, environment: Environment) {
+    self.store = store
+    self.environment = environment
+    store.subscribe(self)
+  }
+
+  public func setView(view: MapViewType) {
+    self.view = view
+  }
 
   // MARK: - Input
 
-  public let didChangeTrackingMode: AnyObserver<MKUserTrackingMode>
-  public let viewDidAppear:         AnyObserver<Void>
-
-  // MARK: - Output
-
-  public let mapCenter:        Driver<CLLocationCoordinate2D>
-  public let vehicleLocations: Driver<[Vehicle]>
-
-  public let showAlert: Driver<MapViewAlert>
-
-  // swiftlint:disable:next function_body_length
-  public init(_ store: Store<AppState>) {
-    let _didChangeTrackingMode = PublishSubject<MKUserTrackingMode>()
-    self.didChangeTrackingMode = _didChangeTrackingMode.asObserver()
-
-    let _viewDidAppear = PublishSubject<Void>()
-    self.viewDidAppear = _viewDidAppear.asObserver()
-
-    // map center
-    let authorization = AppEnvironment.userLocation.authorization.share()
-
-    self.mapCenter = {
-      let initialAuthorization = _viewDidAppear.withLatestFrom(authorization)
-
-      let authorizationChangedFromNonDetermined = Observable
-        .zip(authorization, authorization.skip(1)) { (previous: $0, current: $1) }
-        .filter { $0.previous == .notDetermined }
-        .map { $0.current }
-
-      return Observable.merge(initialAuthorization, authorizationChangedFromNonDetermined)
-        .filter { $0 == .authorizedAlways || $0 == .authorizedWhenInUse }
-        .flatMapLatest { _ in AppEnvironment.userLocation.getCurrent().catchError { _ in .never() } }
-        .startWith(Defaults.location)
-        .asDriver(onErrorDriveWith: .never())
-    }()
-
-    // vehicles
-    let vehicleResponse = store.rx.state
-      .map { $0.apiData.vehicleLocations }
-      .asDriver(onErrorDriveWith: .never())
-
-    self.vehicleLocations = vehicleResponse.data()
-
-    // alerts
-    self.showAlert = {
-      let deniedAuthorizationAlert = _didChangeTrackingMode
-        .withLatestFrom(authorization)
-        .flatMapLatest(toDeniedAuthorizationAlert)
-
-      let apiErrorAlert = vehicleResponse
-        .errors()
-        .map(MapViewAlert.apiError)
-        .asObservable()
-
-      return Observable.merge(deniedAuthorizationAlert, apiErrorAlert)
-        .asDriver(onErrorDriveWith: .never())
-    }()
-
-    // bindings
-    let requestAuthorization: Observable<Void> = {
-      let delay          = AppEnvironment.configuration.time.locationAuthorizationPromptDelay
-      let delayScheduler = AppEnvironment.schedulers.main
-
-      let delayedViewDidAppear = _viewDidAppear.delay(delay, scheduler: delayScheduler)
-      let trackingModeChanged  = _didChangeTrackingMode.map { _ in () }
-
-      return Observable.merge(delayedViewDidAppear, trackingModeChanged)
-        .withLatestFrom(authorization)
-        .filter { $0 == .notDetermined }
-        .map { _ in () }
-    }()
-
-    requestAuthorization
-      .bind(onNext: { _ in AppEnvironment.userLocation.requestWhenInUseAuthorization() })
-      .disposed(by: self.disposeBag)
+  public func viewDidAppear() {
+    self.askForUserLocationAuthorizationIfNotDetermined(withDelay: true)
   }
-}
 
-// MARK: - Helpers
+  public func didChangeTrackingMode(to trackingMode: MKUserTrackingMode) {
+    self.askForUserLocationAuthorizationIfNotDetermined(withDelay: false)
+    self.showDeniedAuthorizationAlertIfNeeded()
+  }
 
-private func toDeniedAuthorizationAlert(_ authorization: CLAuthorizationStatus) -> Observable<MapViewAlert> {
-  switch authorization {
-  case .denied: return .just(.deniedLocationAuthorization)
-  case .restricted: return .just(.globallyDeniedLocationAuthorization)
-  case .notDetermined,
-       .authorizedAlways,
-       .authorizedWhenInUse: return .never()
+  private func askForUserLocationAuthorizationIfNotDetermined(withDelay: Bool) {
+    let authorization = self.environment.userLocation.getAuthorizationStatus()
+    guard authorization.isNotDetermined else {
+      return
+    }
+
+    let configDelay = self.environment.configuration.timing.locationAuthorizationPromptDelay
+    let delay = withDelay ? configDelay : TimeInterval.zero
+
+    // TODO: Is this really map responsibility?
+    PromiseKit.after(seconds: delay).done { [weak self] _ in
+      self?.environment.userLocation.requestWhenInUseAuthorization()
+    }
+  }
+
+  private func showDeniedAuthorizationAlertIfNeeded() {
+    let authorization = self.environment.userLocation.getAuthorizationStatus()
+
+    switch authorization {
+    case .denied:
+      self.view?.showDeniedLocationAuthorizationAlert()
+    case .restricted:
+      self.view?.showGloballyDeniedLocationAuthorizationAlert()
+    case .notDetermined,
+         .authorized:
+      break
+    }
+  }
+
+  // MARK: - Store subscriber
+
+  public func newState(state: AppState) {
+    defer { self.previousState = state }
+
+    self.centerMapIfNeeded(newState: state)
+    self.handleVehicleLocationChangeIfNeeded(newState: state)
+  }
+
+  // Center map:
+  // - starting app (old is 'nil')
+  //   - if we are 'authorized' -> center on user location
+  //   - if we are not 'authorized' -> center on default location
+  // - user just authorized app (old is 'notDetermined', new is 'authorized')
+  //   -> center on user location
+  private func centerMapIfNeeded(newState: AppState) {
+    func centerOnUserLocation() {
+      _ = self.environment.userLocation.getCurrent().done { [weak self] location in
+        self?.view?.setCenter(location: location)
+      }
+    }
+
+    let new = newState.userData.userLocationAuthorization
+
+    guard let previousState = self.previousState else {
+      switch new {
+      case .authorized:
+        centerOnUserLocation()
+      case .notDetermined, .denied, .restricted:
+        self.view?.setCenter(location: Defaults.location)
+      }
+
+      return
+    }
+
+    let old = previousState.userData.userLocationAuthorization
+
+    if old.isNotDetermined && new.isAuthorized {
+      centerOnUserLocation()
+    }
+  }
+
+  // On vehicle response:
+  // - if data -> update map
+  // - if error -> show alert
+  private func handleVehicleLocationChangeIfNeeded(newState: AppState) {
+    let new = newState.apiData.vehicleLocations
+    let old = self.previousState?.apiData.vehicleLocations
+
+    switch new {
+    case .none,
+         .inProgress:
+      break // Leave map exactly as it is.
+
+    case .data(let vehicles):
+      let oldVehicles = old?.getData()
+      if vehicles != oldVehicles {
+        self.view?.updateVehicleLocations(vehicles: vehicles)
+      }
+
+    case .error(let newError):
+      // If previously we did not have an error -> just show new error
+      guard let oldError = old?.getError() else {
+        self.view?.showApiErrorAlert(error: newError)
+        return
+      }
+
+      // Otherwise we have to check if error changed
+      switch (oldError, newError) {
+        case (.invalidResponse, .invalidResponse),
+             (.reachabilityError, .reachabilityError),
+             (.otherError, .otherError):
+        break
+
+      default:
+        self.view?.showApiErrorAlert(error: newError)
+      }
+    }
   }
 }

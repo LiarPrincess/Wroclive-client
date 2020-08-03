@@ -15,8 +15,8 @@ public final class VehicleAnnotationView: MKAnnotationView {
 
   // MARK: - Init
 
-  public init(_ vehicleAnnotation: VehicleAnnotation, reuseIdentifier: String?) {
-    super.init(annotation: vehicleAnnotation, reuseIdentifier: reuseIdentifier)
+  public init(annotation: VehicleAnnotation, reuseIdentifier: String?) {
+    super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
     self.frame          = CGRect(origin: .zero, size: Constants.imageSize)
     self.isDraggable    = false
     self.canShowCallout = false
@@ -48,7 +48,9 @@ public final class VehicleAnnotationView: MKAnnotationView {
 
     let color = self.imageColor(for: annotation)
     let hasColorChanged = self.pinView.tintColor != color
-    let hasAngleChanged = abs(self.pinView.angle - annotation.angle) > Constants.minAngleChangeToRedraw
+
+    let angleDiff = abs(self.pinView.angle - annotation.angle)
+    let hasAngleChanged = angleDiff > Constants.minAngleChangeToRedraw
 
     if hasColorChanged || hasAngleChanged {
       self.pinView.tintColor = color
@@ -69,12 +71,18 @@ public final class VehicleAnnotationView: MKAnnotationView {
   public func updateLabel() {
     guard let annotation = self.annotation as? VehicleAnnotation else { return }
 
-    let textAttributes = TextAttributes(style: .body, color: .background, alignment: .center)
-    self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name, attributes: textAttributes)
+    let textAttributes = TextAttributes(style: .body,
+                                        color: .background,
+                                        alignment: .center)
+    self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name,
+                                                      attributes: textAttributes)
 
     let imageSize  = Constants.imageSize
     let labelSize  = self.pinLabel.intrinsicContentSize
-    let labelOrgin = CGPoint(x: (imageSize.width - labelSize.width) / 2.0, y: (imageSize.height - labelSize.height) / 2.0)
+    let labelOrgin = CGPoint(
+      x: (imageSize.width - labelSize.width) / 2.0,
+      y: (imageSize.height - labelSize.height) / 2.0
+    )
     self.pinLabel.frame = CGRect(origin: labelOrgin, size: labelSize)
   }
 
