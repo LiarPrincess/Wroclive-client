@@ -58,7 +58,7 @@ public struct AppState: StateType {
     let storage = environment.storage
     return AppState(
       userData: UserData(
-        userLocationAuthorization: .notDetermined, // TODO: Program this
+        userLocationAuthorization: UserLocationManager.getAuthorizationStatus(),
         bookmarks: storage.getSavedBookmarks()  ?? bookmarksIfNotSaved,
         trackedLines: [],
         searchCardState: storage.getSavedSearchCardState() ?? searchCardStateIfNotSaved

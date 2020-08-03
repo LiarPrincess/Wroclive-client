@@ -102,6 +102,7 @@
 		90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39E924D8570900ADE4B9 /* MapViewController.swift */; };
 		90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */; };
 		90DE39F724D8685400ADE4B9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39F124D8685400ADE4B9 /* Coordinator.swift */; };
+		90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,6 +233,7 @@
 		90DE39E924D8570900ADE4B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		90DE39F124D8685400ADE4B9 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationAuthorization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -531,11 +533,11 @@
 			isa = PBXGroup;
 			children = (
 				905893C324D4A95D0046EFA5 /* Storage */,
+				90DE39F824D8786700ADE4B9 /* User location */,
 				905893C024D4A95D0046EFA5 /* BundleManager.swift */,
 				905893BF24D4A95D0046EFA5 /* DebugManager.swift */,
 				905893C124D4A95D0046EFA5 /* DeviceManager.swift */,
 				905893C624D4A95D0046EFA5 /* LogManager.swift */,
-				905893BD24D4A95D0046EFA5 /* UserLocationManager.swift */,
 				905893C724D4A95D0046EFA5 /* Configuration.swift */,
 				9047995824D56BCA00111F2C /* Environment.swift */,
 			);
@@ -581,6 +583,15 @@
 				90DE39F124D8685400ADE4B9 /* Coordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		90DE39F824D8786700ADE4B9 /* User location */ = {
+			isa = PBXGroup;
+			children = (
+				905893BD24D4A95D0046EFA5 /* UserLocationManager.swift */,
+				90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */,
+			);
+			path = "User location";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -758,6 +769,7 @@
 				905893CC24D4A95D0046EFA5 /* DebugManager.swift in Sources */,
 				9013FABC24D6B1890006D1B9 /* ScrollViewDismissGestureHandler.swift in Sources */,
 				90CDCFD624D60D7F00595D89 /* UIExtensions.swift in Sources */,
+				90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */,
 				9047996C24D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift in Sources */,
 				900EA11124D473E70054C03F /* Network.swift in Sources */,
 				90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */,

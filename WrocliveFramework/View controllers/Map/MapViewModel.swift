@@ -27,6 +27,10 @@ public final class MapViewModel: StoreSubscriber {
   private var previousState: AppState?
   private weak var view: MapViewType?
 
+  private var userLocationAuthorization: UserLocationAuthorization {
+    return self.store.state.userData.userLocationAuthorization
+  }
+
   public init(store: Store<AppState>, environment: Environment) {
     self.store = store
     self.environment = environment
@@ -49,7 +53,7 @@ public final class MapViewModel: StoreSubscriber {
   }
 
   private func askForUserLocationAuthorizationIfNotDetermined(withDelay: Bool) {
-    let authorization = self.environment.userLocation.getAuthorizationStatus()
+    let authorization = self.userLocationAuthorization
     guard authorization.isNotDetermined else {
       return
     }
@@ -57,16 +61,14 @@ public final class MapViewModel: StoreSubscriber {
     let configDelay = self.environment.configuration.timing.locationAuthorizationPromptDelay
     let delay = withDelay ? configDelay : TimeInterval.zero
 
-    // TODO: Is this really map responsibility?
+    // TODO: Is this really map responsibility? Move it to store (with action)?
     PromiseKit.after(seconds: delay).done { [weak self] _ in
       self?.environment.userLocation.requestWhenInUseAuthorization()
     }
   }
 
   private func showDeniedAuthorizationAlertIfNeeded() {
-    let authorization = self.environment.userLocation.getAuthorizationStatus()
-
-    switch authorization {
+    switch self.userLocationAuthorization {
     case .denied:
       self.view?.showDeniedLocationAuthorizationAlert()
     case .restricted:

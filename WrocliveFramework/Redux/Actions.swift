@@ -8,6 +8,16 @@ import ReSwift
 // When writing 'CustomStringConvertible' remember to avoid printing sensitive
 // user data (for example location)!
 
+public enum UserLocationAuthorizationAction: Action, CustomStringConvertible {
+  case set(UserLocationAuthorization)
+
+  public var description: String {
+    switch self {
+    case .set: return "UserLocationAuthorizationAction.set"
+    }
+  }
+}
+
 public enum BookmarksAction: Action, CustomStringConvertible {
   case add(name: String, lines: [Line])
   case remove(at: Int)
@@ -45,6 +55,8 @@ public enum TrackedLinesAction: Action, CustomStringConvertible {
     }
   }
 }
+
+// TODO: Rename 'MiddlewareAcrions'
 
 /// This type of api action is intended for ApiMiddleware
 public enum ApiAction: Action, CustomStringConvertible {

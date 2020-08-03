@@ -15,6 +15,18 @@ public func userDataReducer(action: Action,
   )
 }
 
+private func userLocationAuthorizationReducer(
+  action: Action,
+  state: UserLocationAuthorization?
+) -> UserLocationAuthorization {
+  switch action {
+  case let UserLocationAuthorizationAction.set(s):
+    return s
+  default:
+    return state ?? UserLocationManager.getAuthorizationStatus()
+  }
+}
+
 private func bookmarksReducer(action: Action, state: [Bookmark]?) -> [Bookmark] {
   var state = state ?? []
 
