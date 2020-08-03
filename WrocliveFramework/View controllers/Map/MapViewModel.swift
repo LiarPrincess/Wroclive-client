@@ -10,7 +10,7 @@ import PromiseKit
 private typealias Defaults = MapViewControllerConstants.Defaults
 
 public protocol MapViewType: AnyObject {
-  func setCenter(location: CLLocationCoordinate2D)
+  func setCenter(location: CLLocationCoordinate2D, animated: Bool)
   // TODO: VM should calculate updates
   func updateVehicleLocations(vehicles: [Vehicle])
 
@@ -24,7 +24,8 @@ public final class MapViewModel: StoreSubscriber {
   private let store: Store<AppState>
   private let environment: Environment
 
-  private var previousState: AppState?
+  /// State that is currently being shown.
+  private var currentState: AppState?
   private weak var view: MapViewType?
 
   private var userLocationAuthorization: UserLocationAuthorization {
@@ -39,6 +40,12 @@ public final class MapViewModel: StoreSubscriber {
 
   public func setView(view: MapViewType) {
     self.view = view
+
+    // We will resend current state as new to force refresh of all views
+    if let state = self.currentState {
+      self.currentState = nil
+      self.newState(state: state)
+    }
   }
 
   // MARK: - Input
@@ -82,33 +89,27 @@ public final class MapViewModel: StoreSubscriber {
   // MARK: - Store subscriber
 
   public func newState(state: AppState) {
-    defer { self.previousState = state }
+    defer { self.currentState = state }
 
     self.centerMapIfNeeded(newState: state)
     self.handleVehicleLocationChangeIfNeeded(newState: state)
   }
 
   // Center map:
-  // - starting app (old is 'nil')
+  // - starting app (old is 'nil'), nothing to animate
   //   - if we are 'authorized' -> center on user location
   //   - if we are not 'authorized' -> center on default location
   // - user just authorized app (old is 'notDetermined', new is 'authorized')
   //   -> center on user location
   private func centerMapIfNeeded(newState: AppState) {
-    func centerOnUserLocation() {
-      _ = self.environment.userLocation.getCurrent().done { [weak self] location in
-        self?.view?.setCenter(location: location)
-      }
-    }
-
     let new = newState.userData.userLocationAuthorization
 
-    guard let previousState = self.previousState else {
-      switch new {
-      case .authorized:
-        centerOnUserLocation()
-      case .notDetermined, .denied, .restricted:
-        self.view?.setCenter(location: Defaults.location)
+    guard let previousState = self.currentState else {
+      switch new.isAuthorized {
+      case true:
+        self.centerMapOnUserLocation(animated: false)
+      case false:
+        self.centerMapOnDefaultLocation(animated: false)
       }
 
       return
@@ -117,8 +118,18 @@ public final class MapViewModel: StoreSubscriber {
     let old = previousState.userData.userLocationAuthorization
 
     if old.isNotDetermined && new.isAuthorized {
-      centerOnUserLocation()
+      self.centerMapOnUserLocation(animated: true)
     }
+  }
+
+  private func centerMapOnUserLocation(animated: Bool) {
+    _ = self.environment.userLocation.getCurrent().done { [weak self] location in
+      self?.view?.setCenter(location: location, animated: animated)
+    }
+  }
+
+  private func centerMapOnDefaultLocation(animated: Bool) {
+    self.view?.setCenter(location: Defaults.location, animated: animated)
   }
 
   // On vehicle response:
@@ -126,7 +137,7 @@ public final class MapViewModel: StoreSubscriber {
   // - if error -> show alert
   private func handleVehicleLocationChangeIfNeeded(newState: AppState) {
     let new = newState.apiData.vehicleLocations
-    let old = self.previousState?.apiData.vehicleLocations
+    let old = self.currentState?.apiData.vehicleLocations
 
     switch new {
     case .none,

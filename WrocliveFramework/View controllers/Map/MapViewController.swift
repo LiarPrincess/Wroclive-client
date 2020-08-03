@@ -9,7 +9,9 @@ import SnapKit
 private typealias Pin = MapViewControllerConstants.Pin
 private typealias Defaults = MapViewControllerConstants.Defaults
 
-public final class MapViewController: UIViewController, MKMapViewDelegate, MapViewType {
+public final class MapViewController:
+  UIViewController, MKMapViewDelegate, MapViewType
+{
 
   // MARK: - Properties
 
@@ -51,10 +53,10 @@ public final class MapViewController: UIViewController, MKMapViewDelegate, MapVi
 
   // MARK: - Map
 
-  public func setCenter(location: CLLocationCoordinate2D) {
+  public func setCenter(location: CLLocationCoordinate2D, animated: Bool) {
     self.setCenter(location: location,
                    radius: Defaults.zoom,
-                   animated: true)
+                   animated: animated)
   }
 
   public func setCenter(location: CLLocationCoordinate2D,
