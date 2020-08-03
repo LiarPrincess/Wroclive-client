@@ -7,20 +7,14 @@ import ReSwift
 
 public struct AppState: StateType {
 
-  public var userData: UserData
-  public var apiData:  ApiData
+  public var userLocationAuthorization: UserLocationAuthorization
 
-  public struct UserData {
-    public var userLocationAuthorization: UserLocationAuthorization
-    public var bookmarks: [Bookmark]
-    public var trackedLines: [Line]
-    public var searchCardState: SearchCardState
-  }
+  public var bookmarks: [Bookmark]
+  public var trackedLines: [Line]
+  public var searchCardState: SearchCardState
 
-  public struct ApiData {
-    public var lines: ApiResponseState<[Line]>
-    public var vehicleLocations: ApiResponseState<[Vehicle]>
-  }
+  public var getLinesResponse: ApiResponseState<[Line]>
+  public var getVehicleLocationsResponse: ApiResponseState<[Vehicle]>
 
   public enum ApiResponseState<Data> {
     /// No response recieved (yet).
@@ -57,16 +51,12 @@ public struct AppState: StateType {
   ) -> AppState {
     let storage = environment.storage
     return AppState(
-      userData: UserData(
-        userLocationAuthorization: UserLocationManager.getAuthorizationStatus(),
-        bookmarks: storage.getSavedBookmarks()  ?? bookmarksIfNotSaved,
-        trackedLines: [],
-        searchCardState: storage.getSavedSearchCardState() ?? searchCardStateIfNotSaved
-      ),
-      apiData: ApiData(
-        lines: .none,
-        vehicleLocations: .none
-      )
+      userLocationAuthorization: UserLocationManager.getAuthorizationStatus(),
+      bookmarks: storage.getSavedBookmarks()  ?? bookmarksIfNotSaved,
+      trackedLines: [],
+      searchCardState: storage.getSavedSearchCardState() ?? searchCardStateIfNotSaved,
+      getLinesResponse: .none,
+      getVehicleLocationsResponse: .none
     )
   }
 }

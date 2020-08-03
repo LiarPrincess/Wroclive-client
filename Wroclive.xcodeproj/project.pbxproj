@@ -63,9 +63,6 @@
 		9047996A24D575C500111F2C /* ApiMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995F24D575C500111F2C /* ApiMiddleware.swift */; };
 		9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996024D575C500111F2C /* LoggingMiddleware.swift */; };
 		9047996C24D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996124D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift */; };
-		9047996D24D575C500111F2C /* appReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996324D575C500111F2C /* appReducer.swift */; };
-		9047996E24D575C500111F2C /* UserDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996424D575C500111F2C /* UserDataReducer.swift */; };
-		9047996F24D575C500111F2C /* ApiDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996524D575C500111F2C /* ApiDataReducer.swift */; };
 		9047997024D575C500111F2C /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047996624D575C500111F2C /* Actions.swift */; };
 		9052380B24D459E500E4F8A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052380A24D459E500E4F8A7 /* AppDelegate.swift */; };
 		9052382E24D45A3100E4F8A7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9052382D24D45A3100E4F8A7 /* MapKit.framework */; };
@@ -92,6 +89,7 @@
 		905893D024D4A95D0046EFA5 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893C424D4A95D0046EFA5 /* FileSystem.swift */; };
 		905893D224D4A95D0046EFA5 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893C624D4A95D0046EFA5 /* LogManager.swift */; };
 		905893D324D4A95D0046EFA5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893C724D4A95D0046EFA5 /* Configuration.swift */; };
+		907FD0B724D898BC00B6896C /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B624D898BC00B6896C /* Reducer.swift */; };
 		90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */; };
 		90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */; };
 		90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFD124D60BEF00595D89 /* StringExtensions.swift */; };
@@ -190,9 +188,6 @@
 		9047995F24D575C500111F2C /* ApiMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiMiddleware.swift; sourceTree = "<group>"; };
 		9047996024D575C500111F2C /* LoggingMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
 		9047996124D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityIndicatorMiddleware.swift; sourceTree = "<group>"; };
-		9047996324D575C500111F2C /* appReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = appReducer.swift; sourceTree = "<group>"; };
-		9047996424D575C500111F2C /* UserDataReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataReducer.swift; sourceTree = "<group>"; };
-		9047996524D575C500111F2C /* ApiDataReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiDataReducer.swift; sourceTree = "<group>"; };
 		9047996624D575C500111F2C /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		9052380724D459E500E4F8A7 /* Wroclive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wroclive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9052380A24D459E500E4F8A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +218,7 @@
 		905893C424D4A95D0046EFA5 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		905893C624D4A95D0046EFA5 /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		905893C724D4A95D0046EFA5 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		907FD0B624D898BC00B6896C /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		90CDCFA624D60A0D00595D89 /* Collection+GroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+GroupTests.swift"; sourceTree = "<group>"; };
 		90CDCFA724D60A0D00595D89 /* Collection+AnyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+AnyTests.swift"; sourceTree = "<group>"; };
 		90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
@@ -406,9 +402,9 @@
 		9047995A24D575C500111F2C /* Redux */ = {
 			isa = PBXGroup;
 			children = (
-				9047996224D575C500111F2C /* Reducers */,
 				9047995C24D575C500111F2C /* Middleware */,
 				9047995B24D575C500111F2C /* AppState.swift */,
+				907FD0B624D898BC00B6896C /* Reducer.swift */,
 				9047996624D575C500111F2C /* Actions.swift */,
 			);
 			path = Redux;
@@ -424,16 +420,6 @@
 				9047996124D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift */,
 			);
 			path = Middleware;
-			sourceTree = "<group>";
-		};
-		9047996224D575C500111F2C /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-				9047996324D575C500111F2C /* appReducer.swift */,
-				9047996424D575C500111F2C /* UserDataReducer.swift */,
-				9047996524D575C500111F2C /* ApiDataReducer.swift */,
-			);
-			path = Reducers;
 			sourceTree = "<group>";
 		};
 		905237FE24D459E500E4F8A7 = {
@@ -785,7 +771,6 @@
 				9013FB3C24D72C790006D1B9 /* VehicleAnnotationDiff.swift in Sources */,
 				90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */,
 				90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */,
-				9047996D24D575C500111F2C /* appReducer.swift in Sources */,
 				9013FAC924D721410006D1B9 /* Assets.swift in Sources */,
 				90DE39F724D8685400ADE4B9 /* Coordinator.swift in Sources */,
 				9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */,
@@ -803,7 +788,6 @@
 				90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */,
 				905893CF24D4A95D0046EFA5 /* CachedStorageManager.swift in Sources */,
 				9013FAB724D6B1890006D1B9 /* CustomCardPanelPresentable.swift in Sources */,
-				9047996E24D575C500111F2C /* UserDataReducer.swift in Sources */,
 				905893D324D4A95D0046EFA5 /* Configuration.swift in Sources */,
 				9013FAAE24D6B1880006D1B9 /* ReusableCell.swift in Sources */,
 				9013FAAC24D6B1880006D1B9 /* ReusableCell+UICollectionView.swift in Sources */,
@@ -817,6 +801,7 @@
 				9013FAC324D6B1890006D1B9 /* LocationAlerts.swift in Sources */,
 				905893D024D4A95D0046EFA5 /* FileSystem.swift in Sources */,
 				900EA10324D46C110054C03F /* Line.swift in Sources */,
+				907FD0B724D898BC00B6896C /* Reducer.swift in Sources */,
 				9047997024D575C500111F2C /* Actions.swift in Sources */,
 				9058939024D4A7460046EFA5 /* Theme.swift in Sources */,
 				9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */,
@@ -827,7 +812,6 @@
 				900EA10A24D46F140054C03F /* Api.swift in Sources */,
 				900EA10224D46C110054C03F /* Bookmark.swift in Sources */,
 				9013FABD24D6B1890006D1B9 /* CardPanelDismissTransition.swift in Sources */,
-				9047996F24D575C500111F2C /* ApiDataReducer.swift in Sources */,
 				9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */,
 				9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */,
 				9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */,

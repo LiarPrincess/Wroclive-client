@@ -25,11 +25,11 @@ public func createNetworkActivityIndicatorMiddleware(env: Environment) -> Middle
 }
 
 private func hasPendingRequests(_ state: AppState) -> Bool {
-  if case .inProgress = state.apiData.lines {
+  if case .inProgress = state.getLinesResponse {
     return true
   }
 
-  if case .inProgress = state.apiData.vehicleLocations {
+  if case .inProgress = state.getVehicleLocationsResponse {
     return true
   }
 

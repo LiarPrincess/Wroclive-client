@@ -29,12 +29,12 @@ private func saveBookmarksIfNeeded(
   before stateBefore: AppState?,
   after stateAfter: AppState?
 ) {
-  guard let before = stateBefore?.userData.bookmarks,
-        let after  = stateAfter?.userData.bookmarks
+  guard let before = stateBefore?.bookmarks,
+        let after  = stateAfter?.bookmarks
     else { return }
 
   if before != after {
-    os_log("Saving bookmarks", log: env.log.storage, type: .info)
+    os_log("Saving bookmarks", log: env.log.redux, type: .info)
     env.storage.saveBookmarks(after)
   }
 }
@@ -44,12 +44,12 @@ private func saveSearchCardStateIfNeeded(
   before stateBefore: AppState?,
   after stateAfter: AppState?
 ) {
-  guard let before = stateBefore?.userData.searchCardState,
-        let after  = stateAfter?.userData.searchCardState
+  guard let before = stateBefore?.searchCardState,
+        let after  = stateAfter?.searchCardState
     else { return }
 
   if before != after {
-    os_log("Saving search card state", log: env.log.storage, type: .info)
+    os_log("Saving search card state", log: env.log.redux, type: .info)
     env.storage.saveSearchCardState(after)
   }
 }

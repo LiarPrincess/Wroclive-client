@@ -1,19 +1,33 @@
-// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
-// If a copy of the MPL was not distributed with this file,
-// You can obtain one at http://mozilla.org/MPL/2.0/.
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import Foundation
 import ReSwift
 
-public func userDataReducer(action: Action,
-                            state: AppState.UserData?) -> AppState.UserData {
-  return AppState.UserData(
-    userLocationAuthorization: .notDetermined,
-    bookmarks: bookmarksReducer(action: action, state: state?.bookmarks),
-    trackedLines: trackedLinesReducer(action: action, state: state?.trackedLines),
-    searchCardState: searchCardStateReducer(action: action, state: state?.searchCardState)
-  )
+extension AppState {
+
+  public static func reducer(action: Action, state: AppState?) -> AppState {
+    return AppState(
+      userLocationAuthorization:
+        userLocationAuthorizationReducer(action: action, state: state?.userLocationAuthorization),
+
+      bookmarks:
+        bookmarksReducer(action: action, state: state?.bookmarks),
+      trackedLines:
+        trackedLinesReducer(action: action, state: state?.trackedLines),
+      searchCardState:
+        searchCardStateReducer(action: action, state: state?.searchCardState),
+
+      getLinesResponse:
+        getLinesResponseReducer(action: action, state: state?.getLinesResponse),
+      getVehicleLocationsResponse:
+        getVehicleLocationsResponseReducer(action: action, state: state?.getVehicleLocationsResponse)
+    )
+  }
 }
+
+// MARK: - User location authorization
 
 private func userLocationAuthorizationReducer(
   action: Action,
@@ -26,6 +40,8 @@ private func userLocationAuthorizationReducer(
     return state ?? UserLocationManager.getAuthorizationStatus()
   }
 }
+
+// MARK: - User data
 
 private func bookmarksReducer(action: Action, state: [Bookmark]?) -> [Bookmark] {
   var state = state ?? []
@@ -79,4 +95,28 @@ private func trackedLinesReducer(action: Action, state: [Line]?) -> [Line] {
   default:
     return state ?? []
   }
+}
+
+// MARK: - Responses
+
+private func getLinesResponseReducer(
+  action: Action,
+  state: AppState.ApiResponseState<[Line]>?
+) -> AppState.ApiResponseState<[Line]> {
+  if case let ApiResponseAction.setLines(response) = action {
+    return response
+  }
+
+  return state ?? .none
+}
+
+private func getVehicleLocationsResponseReducer(
+  action: Action,
+  state: AppState.ApiResponseState<[Vehicle]>?
+) -> AppState.ApiResponseState<[Vehicle]> {
+  if case let ApiResponseAction.setVehicleLocations(response) = action {
+    return response
+  }
+
+  return state ?? .none
 }

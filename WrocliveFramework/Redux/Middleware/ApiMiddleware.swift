@@ -46,7 +46,7 @@ private func requestVehicleLocations(
   state: AppState,
   dispatch: @escaping DispatchFunction
 ) {
-  let trackedLines = state.userData.trackedLines
+  let trackedLines = state.trackedLines
 
   guard trackedLines.any else {
     dispatch(ApiResponseAction.setVehicleLocations(.data([])))
@@ -57,7 +57,7 @@ private func requestVehicleLocations(
 
   let delay = DispatchTime.now() + .seconds(1)
   DispatchQueue.main.asyncAfter(deadline: delay) {
-    if case let .data(vehicles) = state.apiData.vehicleLocations, vehicles.any {
+    if case let .data(vehicles) = state.getVehicleLocationsResponse, vehicles.any {
       let newVehicles = vehicles.map { rotate(vehicle: $0, degrees: 30) }
       dispatch(ApiResponseAction.setVehicleLocations(.data(newVehicles)))
       return
