@@ -103,7 +103,7 @@ private func getLinesResponseReducer(
   action: Action,
   state: AppState.ApiResponseState<[Line]>?
 ) -> AppState.ApiResponseState<[Line]> {
-  if case let ApiResponseAction.setLines(response) = action {
+  if case let ApiAction.setLines(response) = action {
     return response
   }
 
@@ -114,7 +114,7 @@ private func getVehicleLocationsResponseReducer(
   action: Action,
   state: AppState.ApiResponseState<[Vehicle]>?
 ) -> AppState.ApiResponseState<[Vehicle]> {
-  if case let ApiResponseAction.setVehicleLocations(response) = action {
+  if case let ApiAction.setVehicleLocations(response) = action {
     return response
   }
 

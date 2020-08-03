@@ -16,9 +16,9 @@ public func createApiMiddleware(env: Environment) -> Middleware<AppState> {
           else { return }
 
         switch action {
-        case ApiAction.updateLines:
+        case ApiMiddlewareActions.updateLines:
           requestLines(env: env, dispatch: dispatch)
-        case ApiAction.updateVehicleLocations:
+        case ApiMiddlewareActions.updateVehicleLocations:
           requestVehicleLocations(env: env, state: state, dispatch: dispatch)
         default:
           next(action)
@@ -32,12 +32,12 @@ private func requestLines(
   env: Environment,
   dispatch: @escaping DispatchFunction
 ) {
-  dispatch(ApiResponseAction.setLines(.inProgress))
+  dispatch(ApiAction.setLines(.inProgress))
 
   let delay = DispatchTime.now() + .seconds(1)
   DispatchQueue.main.asyncAfter(deadline: delay) {
     let data = dummyLines()
-    dispatch(ApiResponseAction.setLines(.data(data)))
+    dispatch(ApiAction.setLines(.data(data)))
   }
 }
 
@@ -49,22 +49,22 @@ private func requestVehicleLocations(
   let trackedLines = state.trackedLines
 
   guard trackedLines.any else {
-    dispatch(ApiResponseAction.setVehicleLocations(.data([])))
+    dispatch(ApiAction.setVehicleLocations(.data([])))
     return
   }
 
-  dispatch(ApiResponseAction.setVehicleLocations(.inProgress))
+  dispatch(ApiAction.setVehicleLocations(.inProgress))
 
   let delay = DispatchTime.now() + .seconds(1)
   DispatchQueue.main.asyncAfter(deadline: delay) {
     if case let .data(vehicles) = state.getVehicleLocationsResponse, vehicles.any {
       let newVehicles = vehicles.map { rotate(vehicle: $0, degrees: 30) }
-      dispatch(ApiResponseAction.setVehicleLocations(.data(newVehicles)))
+      dispatch(ApiAction.setVehicleLocations(.data(newVehicles)))
       return
     }
 
     let data = dummyVehicles()
-    dispatch(ApiResponseAction.setVehicleLocations(.data(data)))
+    dispatch(ApiAction.setVehicleLocations(.data(data)))
   }
 }
 

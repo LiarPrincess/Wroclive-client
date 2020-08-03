@@ -8,6 +8,8 @@ import ReSwift
 // When writing 'CustomStringConvertible' remember to avoid printing sensitive
 // user data (for example location)!
 
+// MARK: - User location authorization
+
 public enum UserLocationAuthorizationAction: Action, CustomStringConvertible {
   case set(UserLocationAuthorization)
 
@@ -17,6 +19,8 @@ public enum UserLocationAuthorizationAction: Action, CustomStringConvertible {
     }
   }
 }
+
+// MARK: - User data
 
 public enum BookmarksAction: Action, CustomStringConvertible {
   case add(name: String, lines: [Line])
@@ -56,32 +60,32 @@ public enum TrackedLinesAction: Action, CustomStringConvertible {
   }
 }
 
-// TODO: Rename 'MiddlewareAcrions'
+// MARK: - Api response
 
 /// This type of api action is intended for ApiMiddleware
-public enum ApiAction: Action, CustomStringConvertible {
-  case updateLines
-  case updateVehicleLocations
+public enum ApiMiddlewareActions: Action, CustomStringConvertible {
+  case requestLines
+  case requestVehicleLocations
 
   public var description: String {
     switch self {
-    case .updateLines: return "ApiAction.updateLines"
-    case .updateVehicleLocations: return "ApiAction.updateVehicleLocations"
+    case .requestLines: return "ApiMiddlewareActions.updateLines"
+    case .requestVehicleLocations: return "ApiMiddlewareActions.updateVehicleLocations"
     }
   }
 }
 
 /// This type of api action is dispatched by ApiMiddleware
-public enum ApiResponseAction: Action, CustomStringConvertible {
+public enum ApiAction: Action, CustomStringConvertible {
   case setLines(AppState.ApiResponseState<[Line]>)
   case setVehicleLocations(AppState.ApiResponseState<[Vehicle]>)
 
   public var description: String {
     switch self {
     case let .setLines(response):
-      return "ApiResponseAction.setLines(\(describe(response)))"
+      return "ApiAction.setLines(\(describe(response)))"
     case let .setVehicleLocations(response):
-      return "ApiResponseAction.setVehicleLocations(\(describe(response)))"
+      return "ApiAction.setVehicleLocations(\(describe(response)))"
     }
   }
 }

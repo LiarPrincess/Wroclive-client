@@ -33,7 +33,7 @@ public final class MapUpdateScheduler: StoreSubscriber {
     guard self.trackedLines.any else {
       os_log("Tick (empty)!", log: self.log, type: .info)
       os_log("Stoping updates as there are no lines to track", log: self.log, type: .info)
-      self.store.dispatch(ApiAction.updateVehicleLocations)
+      self.store.dispatch(ApiAction.setVehicleLocations(.data([])))
       return
     }
 
@@ -54,7 +54,7 @@ public final class MapUpdateScheduler: StoreSubscriber {
     guard timer.isValid else { return }
 
     os_log("Tick!", log: self.log, type: .info)
-    self.store.dispatch(ApiAction.updateVehicleLocations)
+    self.store.dispatch(ApiMiddlewareActions.updateVehicleLocations)
   }
 
   public func stop() {
