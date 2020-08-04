@@ -47,6 +47,8 @@ public final class MapViewModel: StoreSubscriber {
     }
 
     switch authorization {
+    case .authorized:
+      break
     case .notDetermined:
       let action = UserLocationAuthorizationAction.requestWhenInUseAuthorization
       self.store.dispatch(action)
@@ -54,8 +56,6 @@ public final class MapViewModel: StoreSubscriber {
       self.view?.showDeniedLocationAuthorizationAlert()
     case .restricted:
       self.view?.showGloballyDeniedLocationAuthorizationAlert()
-    case .authorized:
-      break
     }
   }
 

@@ -19,6 +19,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   private var environment: Environment!
   private var coordinator: AppCoordinator!
   private var updateScheduler: MapUpdateScheduler!
+  private var storeUpdater: DispatchStoreUpdatesFromAppleFrameworks!
 
   private var log: OSLog {
     return self.environment.log.app
@@ -61,6 +62,12 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     self.store = Store<AppState>(reducer: reducer,
                                  state: state,
                                  middleware: middleware)
+
+    self.storeUpdater = DispatchStoreUpdatesFromAppleFrameworks(
+      store: self.store,
+      environment: self.environment
+    )
+    self.storeUpdater.start()
 
     Theme.setupAppearance()
 

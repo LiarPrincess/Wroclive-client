@@ -59,16 +59,6 @@ public class UserLocationManager:
     return manager
   }()
 
-  private var store: Store<AppState>?
-
-  public func setStore(store: Store<AppState>) {
-    self.store = store
-
-    // We need to inform store about current authorization status.
-    let authorization = Self.getAuthorizationStatus()
-    self.dispatchSetUserLocationAuthorizationAction(authorization: authorization)
-  }
-
   public func getCurrent() -> Promise<CLLocationCoordinate2D> {
     return Promise<CLLocationCoordinate2D> { seal in
       if let location = self.locationManager.location {
@@ -102,23 +92,9 @@ public class UserLocationManager:
 
   public func locationManager(_ manager: CLLocationManager,
                               didChangeAuthorization status: CLAuthorizationStatus) {
-    let authorization = UserLocationAuthorization(status: status)
-    self.dispatchSetUserLocationAuthorizationAction(authorization: authorization)
-  }
-
-  // MARK: - Helpers
-
-  private func dispatchSetUserLocationAuthorizationAction(
-    authorization: UserLocationAuthorization
-  ) {
-    self.store?.dispatch(UserLocationAuthorizationAction.set(authorization))
-  }
-
-  /// DO NOT USE! Use state from Redux store instead.
-  ///
-  /// (Unless in some very special cases.)
-  public static func getAuthorizationStatus() -> UserLocationAuthorization {
-    let status = CLLocationManager.authorizationStatus()
-    return UserLocationAuthorization(status: status)
+    NotificationCenter.default.post(
+      name: .didChangeUserlocationAuthorization,
+      object: nil
+    )
   }
 }

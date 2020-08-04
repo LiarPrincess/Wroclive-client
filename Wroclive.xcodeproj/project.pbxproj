@@ -92,6 +92,7 @@
 		907FD0B724D898BC00B6896C /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B624D898BC00B6896C /* Reducer.swift */; };
 		907FD0B924D8A2DC00B6896C /* OfflineApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B824D8A2DC00B6896C /* OfflineApi.swift */; };
 		907FD0BB24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0BA24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift */; };
+		907FD0BD24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */; };
 		90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */; };
 		90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */; };
 		90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFD124D60BEF00595D89 /* StringExtensions.swift */; };
@@ -223,6 +224,7 @@
 		907FD0B624D898BC00B6896C /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		907FD0B824D8A2DC00B6896C /* OfflineApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineApi.swift; sourceTree = "<group>"; };
 		907FD0BA24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationAuthorizationMiddleware.swift; sourceTree = "<group>"; };
+		907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchStoreUpdatesFromAppleFrameworks.swift; sourceTree = "<group>"; };
 		90CDCFA624D60A0D00595D89 /* Collection+GroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+GroupTests.swift"; sourceTree = "<group>"; };
 		90CDCFA724D60A0D00595D89 /* Collection+AnyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+AnyTests.swift"; sourceTree = "<group>"; };
 		90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				9013FA9924D6B1880006D1B9 /* Card panel */,
 				9013FA8F24D6B1880006D1B9 /* Reusable cell */,
 				9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */,
+				907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				9013FAC924D721410006D1B9 /* Assets.swift in Sources */,
 				90DE39F724D8685400ADE4B9 /* Coordinator.swift in Sources */,
 				9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */,
+				907FD0BD24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift in Sources */,
 				9047996A24D575C500111F2C /* ApiMiddleware.swift in Sources */,
 				9047996924D575C500111F2C /* PersistencyMiddleware.swift in Sources */,
 				900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */,
