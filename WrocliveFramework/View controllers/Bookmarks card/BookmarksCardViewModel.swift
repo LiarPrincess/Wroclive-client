@@ -40,6 +40,9 @@ public final class BookmarksCardViewModel: StoreSubscriber {
     assert(self.view == nil, "View was already assigned")
     self.view = view
     self.store.subscribe(self)
+
+    // Refresh 'Edit' button
+    self.setIsEditing(value: self.isEditing)
   }
 
   // MARK: - Input

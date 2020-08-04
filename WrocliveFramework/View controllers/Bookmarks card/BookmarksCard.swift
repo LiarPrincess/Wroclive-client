@@ -60,13 +60,17 @@ public final class BookmarksCard:
     let headerHeight = self.headerView.bounds.height
 
     if currentInset.top < headerHeight {
-      let newInset = UIEdgeInsets(top: headerHeight, left: currentInset.left, bottom: currentInset.bottom, right: currentInset.right)
-      self.tableView.contentInset          = newInset
+      let newInset = UIEdgeInsets(top: headerHeight,
+                                  left: currentInset.left,
+                                  bottom: currentInset.bottom,
+                                  right: currentInset.right)
+      self.tableView.contentInset = newInset
       self.tableView.scrollIndicatorInsets = newInset
 
-      // scroll up to preserve current scroll position
+      // Scroll up to preserve current scroll position
       let currentOffset = self.tableView.contentOffset
-      let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
+      let newOffset = CGPoint(x: currentOffset.x,
+                              y: currentOffset.y + currentInset.top - headerHeight)
       self.tableView.setContentOffset(newOffset, animated: false)
     }
   }
@@ -167,10 +171,13 @@ public final class BookmarksCard:
   public func tableView(_ tableView: UITableView,
                         commit editingStyle: UITableViewCell.EditingStyle,
                         forRowAt indexPath: IndexPath) {
+    let index = indexPath.row
+
     switch editingStyle {
     case .delete:
+      self.bookmarks.remove(at: index)
       self.tableView.deleteRows(at: [indexPath], with: .automatic)
-      self.viewModel.didDeleteItem(index: indexPath.row)
+      self.viewModel.didDeleteItem(index: index)
     case .insert,
          .none:
       break
