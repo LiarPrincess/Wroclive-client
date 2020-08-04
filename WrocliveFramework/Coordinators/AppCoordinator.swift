@@ -5,7 +5,7 @@
 import UIKit
 import ReSwift
 
-public final class AppCoordinator: Coordinator {
+public final class AppCoordinator: Coordinator, MainViewModelDelegate {
 
   public let window: UIWindow
   public let store:  Store<AppState>
@@ -26,7 +26,8 @@ public final class AppCoordinator: Coordinator {
 
   public func start() {
     let viewModel = MainViewModel(store: self.store,
-                                  environment: self.environment)
+                                  environment: self.environment,
+                                  delegate: self)
 
     self.mainViewController = MainViewController(viewModel: viewModel,
                                                  environment: self.environment)
@@ -35,29 +36,30 @@ public final class AppCoordinator: Coordinator {
     self.window.makeKeyAndVisible()
   }
 
-/*
-  private func openSearchCard() {
-    guard let mainViewController = self.mainViewController
-      else { fatalError("AppCoordinator has to be started first") }
-
-    self.childCoordinator = SearchCardCoordinator(mainViewController, self.store)
-    self.childCoordinator!.start()
+  public func openSearchCard() {
+    print(#function)
+//    guard let mainViewController = self.mainViewController
+//      else { fatalError("AppCoordinator has to be started first") }
+//
+//    self.childCoordinator = SearchCardCoordinator(mainViewController, self.store)
+//    self.childCoordinator!.start()
   }
 
-  private func openBookmarksCard() {
-    guard let mainViewController = self.mainViewController
-      else { fatalError("AppCoordinator has to be started first") }
-
-    self.childCoordinator = BookmarksCardCoordinator(mainViewController, self.store)
-    self.childCoordinator!.start()
+  public func openBookmarksCard() {
+    print(#function)
+//    guard let mainViewController = self.mainViewController
+//      else { fatalError("AppCoordinator has to be started first") }
+//
+//    self.childCoordinator = BookmarksCardCoordinator(mainViewController, self.store)
+//    self.childCoordinator!.start()
   }
 
-  private func openSettingsCard() {
-    guard let mainViewController = self.mainViewController
-      else { fatalError("AppCoordinator has to be started first") }
-
-    self.childCoordinator = SettingsCardCoordinator(mainViewController)
-    self.childCoordinator!.start()
+  public func openSettingsCard() {
+    print(#function)
+//    guard let mainViewController = self.mainViewController
+//      else { fatalError("AppCoordinator has to be started first") }
+//
+//    self.childCoordinator = SettingsCardCoordinator(mainViewController)
+//    self.childCoordinator!.start()
   }
-*/
 }

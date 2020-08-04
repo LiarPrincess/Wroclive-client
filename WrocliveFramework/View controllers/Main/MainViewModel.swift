@@ -5,30 +5,33 @@
 import UIKit
 import ReSwift
 
-// TODO: Finish
+public protocol MainViewModelDelegate: AnyObject {
+  func openSearchCard()
+  func openBookmarksCard()
+  func openSettingsCard()
+}
+
 public final class MainViewModel {
 
   public let mapViewModel: MapViewModel
+  private weak var delegate: MainViewModelDelegate?
 
-  public init(store: Store<AppState>, environment: Environment) {
+  public init(store: Store<AppState>,
+              environment: Environment,
+              delegate: MainViewModelDelegate?) {
     self.mapViewModel = MapViewModel(store: store, environment: environment)
+    self.delegate = delegate
   }
 
   public func didPressSearchButton() {
-//    let _didPressSearchButton = PublishSubject<Void>()
-//    self.didPressSearchButton = _didPressSearchButton.asObserver()
-//    self.openSearchCard = _didPressSearchButton.asDriver(onErrorDriveWith: .never())
+    self.delegate?.openSearchCard()
   }
 
   public func didPressBookmarkButton() {
-//    let _didPressBookmarkButton = PublishSubject<Void>()
-//    self.didPressBookmarkButton = _didPressBookmarkButton.asObserver()
-//    self.openBookmarksCard = _didPressBookmarkButton.asDriver(onErrorDriveWith: .never())
+    self.delegate?.openBookmarksCard()
   }
 
   public func didPressSettingsButton() {
-//    let _didPressSettingsButton = PublishSubject<Void>()
-//    self.didPressSettingsButton = _didPressSettingsButton.asObserver()
-//    self.openSettingsCard = _didPressSettingsButton.asDriver(onErrorDriveWith: .never())
+    self.delegate?.openSettingsCard()
   }
 }
