@@ -117,6 +117,7 @@
 		90CE742924D9BB9000419166 /* BookmarksCardViewModelTests+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741024D9BB7800419166 /* BookmarksCardViewModelTests+Selection.swift */; };
 		90CE742B24D9D6E000419166 /* BookmarksCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */; };
 		90CE742D24D9D6E600419166 /* CardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742C24D9D6E600419166 /* CardCoordinator.swift */; };
+		90CE742F24D9DA3F00419166 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742E24D9DA3F00419166 /* DummyData.swift */; };
 		90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39E924D8570900ADE4B9 /* MapViewController.swift */; };
 		90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */; };
 		90DE39F724D8685400ADE4B9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39F124D8685400ADE4B9 /* Coordinator.swift */; };
@@ -266,6 +267,7 @@
 		90CE741424D9BB7800419166 /* BookmarksCellConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCellConstants.swift; sourceTree = "<group>"; };
 		90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardCoordinator.swift; sourceTree = "<group>"; };
 		90CE742C24D9D6E600419166 /* CardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCoordinator.swift; sourceTree = "<group>"; };
+		90CE742E24D9DA3F00419166 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		90DE39E924D8570900ADE4B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		90DE39F124D8685400ADE4B9 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				9013FA8F24D6B1880006D1B9 /* Reusable cell */,
 				9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */,
 				907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */,
+				90CE742E24D9DA3F00419166 /* DummyData.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -865,6 +868,7 @@
 				900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */,
 				905893D224D4A95D0046EFA5 /* LogManager.swift in Sources */,
 				9013FB3124D721A90006D1B9 /* MainViewControllerConstants.swift in Sources */,
+				90CE742F24D9DA3F00419166 /* DummyData.swift in Sources */,
 				9013FAC024D6B1890006D1B9 /* NetworkAlerts.swift in Sources */,
 				905893CA24D4A95D0046EFA5 /* UserLocationManager.swift in Sources */,
 				9013FB3D24D72C790006D1B9 /* VehicleAnnotationView.swift in Sources */,
