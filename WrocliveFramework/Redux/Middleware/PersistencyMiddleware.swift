@@ -14,7 +14,6 @@ extension Middlewares {
     return { dispatch, getState in
       return { next in
         return { action in
-
           let before = getState()
           next(action)
           let after = getState()

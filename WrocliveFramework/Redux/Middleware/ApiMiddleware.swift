@@ -13,9 +13,9 @@ extension Middlewares {
     return { dispatch, getState in
       return { next in
         return { action in
-
-          guard let state = getState()
-            else { return }
+          guard let state = getState() else {
+            return
+          }
 
           switch action {
           case ApiMiddlewareActions.requestLines:

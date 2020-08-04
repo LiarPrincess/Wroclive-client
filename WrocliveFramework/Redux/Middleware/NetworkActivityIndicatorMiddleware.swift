@@ -12,11 +12,9 @@ extension Middlewares {
   internal static func networkActivityIndicator(
     environment: Environment
   ) -> Middleware<AppState> {
-
     return { dispatch, getState in
       return { next in
         return { action in
-
           // dispatch action and only later check if we have pending request
           next(action)
 

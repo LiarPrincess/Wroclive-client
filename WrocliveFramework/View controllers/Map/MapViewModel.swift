@@ -24,64 +24,37 @@ public final class MapViewModel: StoreSubscriber {
   private let store: Store<AppState>
   private let environment: Environment
 
-  /// State that is currently being shown.
+  /// State that is currently being presented.
   private var currentState: AppState?
   private weak var view: MapViewType?
-
-  private var userLocationAuthorization: UserLocationAuthorization {
-    return self.store.state.userData.userLocationAuthorization
-  }
 
   public init(store: Store<AppState>, environment: Environment) {
     self.store = store
     self.environment = environment
-    store.subscribe(self)
   }
 
   public func setView(view: MapViewType) {
+    assert(self.view == nil, "View was already assigned")
     self.view = view
-
-    // We will resend current state as new to force refresh of all views
-    if let state = self.currentState {
-      self.currentState = nil
-      self.newState(state: state)
-    }
+    self.store.subscribe(self)
   }
 
   // MARK: - Input
 
-  public func viewDidAppear() {
-    self.askForUserLocationAuthorizationIfNotDetermined(withDelay: true)
-  }
-
   public func didChangeTrackingMode(to trackingMode: MKUserTrackingMode) {
-    self.askForUserLocationAuthorizationIfNotDetermined(withDelay: false)
-    self.showDeniedAuthorizationAlertIfNeeded()
-  }
-
-  private func askForUserLocationAuthorizationIfNotDetermined(withDelay: Bool) {
-    let authorization = self.userLocationAuthorization
-    guard authorization.isNotDetermined else {
+    guard let authorization = self.currentState?.userLocationAuthorization else {
       return
     }
 
-    let configDelay = self.environment.configuration.timing.locationAuthorizationPromptDelay
-    let delay = withDelay ? configDelay : TimeInterval.zero
-
-    // TODO: Is this really map responsibility? Move it to store (with action)?
-    PromiseKit.after(seconds: delay).done { [weak self] _ in
-      self?.environment.userLocation.requestWhenInUseAuthorization()
-    }
-  }
-
-  private func showDeniedAuthorizationAlertIfNeeded() {
-    switch self.userLocationAuthorization {
+    switch authorization {
+    case .notDetermined:
+      let action = UserLocationAuthorizationAction.requestWhenInUseAuthorization
+      self.store.dispatch(action)
     case .denied:
       self.view?.showDeniedLocationAuthorizationAlert()
     case .restricted:
       self.view?.showGloballyDeniedLocationAuthorizationAlert()
-    case .notDetermined,
-         .authorized:
+    case .authorized:
       break
     }
   }
@@ -102,7 +75,7 @@ public final class MapViewModel: StoreSubscriber {
   // - user just authorized app (old is 'notDetermined', new is 'authorized')
   //   -> center on user location
   private func centerMapIfNeeded(newState: AppState) {
-    let new = newState.userData.userLocationAuthorization
+    let new = newState.userLocationAuthorization
 
     guard let previousState = self.currentState else {
       switch new.isAuthorized {
@@ -115,7 +88,7 @@ public final class MapViewModel: StoreSubscriber {
       return
     }
 
-    let old = previousState.userData.userLocationAuthorization
+    let old = previousState.userLocationAuthorization
 
     if old.isNotDetermined && new.isAuthorized {
       self.centerMapOnUserLocation(animated: true)
@@ -136,8 +109,8 @@ public final class MapViewModel: StoreSubscriber {
   // - if data -> update map
   // - if error -> show alert
   private func handleVehicleLocationChangeIfNeeded(newState: AppState) {
-    let new = newState.apiData.vehicleLocations
-    let old = self.currentState?.apiData.vehicleLocations
+    let new = newState.getVehicleLocationsResponse
+    let old = self.currentState?.getVehicleLocationsResponse
 
     switch new {
     case .none,

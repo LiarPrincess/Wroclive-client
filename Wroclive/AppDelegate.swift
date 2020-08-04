@@ -5,6 +5,7 @@
 import UIKit
 import os.log
 import ReSwift
+import PromiseKit
 import WrocliveFramework
 
 // swiftlint:disable implicitly_unwrapped_optional
@@ -81,6 +82,20 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   public func applicationDidBecomeActive(_ application: UIApplication) {
     os_log("applicationDidBecomeActive(_:)", log: self.log, type: .info)
     self.updateScheduler.start()
+    self.askForUserLocationAuthorizationIfNotDetermined()
+  }
+
+  private func askForUserLocationAuthorizationIfNotDetermined() {
+    let delay = self.environment.configuration.timing.locationAuthorizationPromptDelay
+
+    after(seconds: delay).done { _ in
+      let authorization = self.store.state.userLocationAuthorization
+      if authorization.isNotDetermined {
+        os_log("Asking for user location authorization", log: self.log, type: .info)
+        let action = UserLocationAuthorizationAction.requestWhenInUseAuthorization
+        self.store.dispatch(action)
+      }
+    }
   }
 
   public func applicationWillResignActive(_ application: UIApplication) {
