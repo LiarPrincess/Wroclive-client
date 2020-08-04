@@ -53,8 +53,10 @@ public struct AppState: StateType {
     searchCardStateIfNotSaved: SearchCardState
   ) -> AppState {
     let storage = environment.storage
+    let userLocation = environment.userLocation
+
     return AppState(
-      userLocationAuthorization: UserLocationManager.getAuthorizationStatus(),
+      userLocationAuthorization: userLocation.getAuthorizationStatus(),
       bookmarks: storage.getSavedBookmarks()  ?? bookmarksIfNotSaved,
       trackedLines: [],
       searchCardState: storage.getSavedSearchCardState() ?? searchCardStateIfNotSaved,

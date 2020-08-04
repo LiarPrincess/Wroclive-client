@@ -57,7 +57,8 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
                               bookmarksIfNotSaved: [],
                               searchCardStateIfNotSaved: .default)
     let middleware = AppState.createMiddleware(environment: self.environment)
-    self.store = Store<AppState>(reducer: AppState.reducer(action:state:),
+    let reducer = AppState.createReducer(environment: self.environment)
+    self.store = Store<AppState>(reducer: reducer,
                                  state: state,
                                  middleware: middleware)
 

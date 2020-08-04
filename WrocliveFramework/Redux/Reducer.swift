@@ -7,23 +7,40 @@ import ReSwift
 
 extension AppState {
 
-  public static func reducer(action: Action, state: AppState?) -> AppState {
-    return AppState(
-      userLocationAuthorization:
-        userLocationAuthorizationReducer(action: action, state: state?.userLocationAuthorization),
+  public typealias ReducerType = (Action, AppState?) -> AppState
 
-      bookmarks:
-        bookmarksReducer(action: action, state: state?.bookmarks),
-      trackedLines:
-        trackedLinesReducer(action: action, state: state?.trackedLines),
-      searchCardState:
-        searchCardStateReducer(action: action, state: state?.searchCardState),
+  public static func createReducer(environment: Environment) -> ReducerType {
+    return { (action: Action, state: AppState?) -> AppState in
+      return AppState(
+        userLocationAuthorization: userLocationAuthorizationReducer(
+          action: action,
+          state: state?.userLocationAuthorization,
+          environment: environment
+        ),
 
-      getLinesResponse:
-        getLinesResponseReducer(action: action, state: state?.getLinesResponse),
-      getVehicleLocationsResponse:
-        getVehicleLocationsResponseReducer(action: action, state: state?.getVehicleLocationsResponse)
-    )
+        bookmarks: bookmarksReducer(
+          action: action,
+          state: state?.bookmarks
+        ),
+        trackedLines: trackedLinesReducer(
+          action: action,
+          state: state?.trackedLines
+        ),
+        searchCardState: searchCardStateReducer(
+          action: action,
+          state: state?.searchCardState
+        ),
+
+        getLinesResponse: getLinesResponseReducer(
+          action: action,
+          state: state?.getLinesResponse
+        ),
+        getVehicleLocationsResponse:  getVehicleLocationsResponseReducer(
+          action: action,
+          state: state?.getVehicleLocationsResponse
+        )
+      )
+    }
   }
 }
 
@@ -31,13 +48,19 @@ extension AppState {
 
 private func userLocationAuthorizationReducer(
   action: Action,
-  state: UserLocationAuthorization?
+  state: UserLocationAuthorization?,
+  environment: Environment
 ) -> UserLocationAuthorization {
   switch action {
-  case let UserLocationAuthorizationAction.set(s):
-    return s
+  case let UserLocationAuthorizationAction.set(newState):
+    return newState
   default:
-    return state ?? UserLocationManager.getAuthorizationStatus()
+    if let oldState = state {
+      return oldState
+    }
+
+    let result = environment.userLocation.getAuthorizationStatus()
+    return result
   }
 }
 

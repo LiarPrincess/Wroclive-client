@@ -7,7 +7,13 @@ import MapKit
 import ReSwift
 import PromiseKit
 
-// MARK: - Error
+// MARK: - Helper types
+
+extension Notification.Name {
+
+  public static let didChangeUserlocationAuthorization =
+    Notification.Name("didChangeUserlocationAuthorization")
+}
 
 public enum UserLocationError: Swift.Error, Equatable, CustomStringConvertible {
 
@@ -30,6 +36,9 @@ public protocol UserLocationManagerType {
 
   /// Returns current user location.
   func getCurrent() -> Promise<CLLocationCoordinate2D>
+
+  /// Current authorization status.
+  func getAuthorizationStatus() -> UserLocationAuthorization
 
   /// Request when in use authorization.
   func requestWhenInUseAuthorization()
@@ -67,7 +76,7 @@ public class UserLocationManager:
         return
       }
 
-      let authorization = Self.getAuthorizationStatus()
+      let authorization = self.getAuthorizationStatus()
       switch authorization {
       case .authorized:
         throw UserLocationError.otherError
@@ -78,6 +87,11 @@ public class UserLocationManager:
         throw UserLocationError.permissionDenied
       }
     }
+  }
+
+  public func getAuthorizationStatus() -> UserLocationAuthorization {
+    let status = CLLocationManager.authorizationStatus()
+    return UserLocationAuthorization(status: status)
   }
 
   public func requestWhenInUseAuthorization() {
