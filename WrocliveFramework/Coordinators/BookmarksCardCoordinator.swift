@@ -4,26 +4,30 @@
 
 import UIKit
 import ReSwift
-import RxSwift
-import RxCocoa
+
+// swiftlint:disable weak_delegate
 
 public final class BookmarksCardCoordinator: CardCoordinator {
 
   public let parent: UIViewController
-  public let store:  Store<AppState>
+  public let store: Store<AppState>
+  public let environment: Environment
 
-  public var card:                   BookmarksCard?
-  public var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  public var card: BookmarksCard?
+  public var cardTransitionDelegate: UIViewControllerTransitioningDelegate?
 
-  public init(_ parent: UIViewController, _ store: Store<AppState>) {
+  public init(parent: UIViewController,
+              store: Store<AppState>,
+              environment: Environment) {
     self.parent = parent
-    self.store  = store
+    self.store = store
+    self.environment = environment
   }
 
   public func start() {
-    let viewModel = BookmarksCardViewModel(self.store)
-    let card      = BookmarksCard(viewModel)
-    let height    = 0.75 * AppEnvironment.device.screenBounds.height
+    let viewModel = BookmarksCardViewModel(store: self.store)
+    let card      = BookmarksCard(viewModel: viewModel, environment: self.environment)
+    let height    = 0.75 * self.environment.device.screenBounds.height
     self.presentCard(card, withHeight: height, animated: true)
   }
 }

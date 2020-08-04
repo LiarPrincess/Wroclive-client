@@ -110,14 +110,15 @@ public final class MapViewController:
       return nil
 
     case let vehicleAnnotation as VehicleAnnotation:
-      let identifier = "VehicleAnnotationView"
+      let id = "VehicleAnnotationView"
 
-      if let dequeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? VehicleAnnotationView {
+      let genericView = self.mapView.dequeueReusableAnnotationView(withIdentifier: id)
+      if let dequeuedView = genericView as? VehicleAnnotationView {
         dequeuedView.setVehicleAnnotation(vehicleAnnotation)
         return dequeuedView
       }
 
-      return VehicleAnnotationView(annotation: vehicleAnnotation, reuseIdentifier: identifier)
+      return VehicleAnnotationView(annotation: vehicleAnnotation, reuseIdentifier: id)
 
     default:
       return nil

@@ -4,93 +4,104 @@
 
 import UIKit
 import ReSwift
-import RxSwift
-import RxCocoa
+import PromiseKit
 
-private typealias TextStyles   = BookmarksCardConstants.TextStyles
+private typealias TextStyles = BookmarksCardConstants.TextStyles
 private typealias Localization = Localizable.Bookmarks
 
-public final class BookmarksCardViewModel {
+public protocol BookmarksCardViewType: AnyObject {
 
-  private let disposeBag = DisposeBag()
+  func setBookmarks(value: [Bookmark])
 
-  // MARK: - Inputs
+  func setIsTableViewVisible(value: Bool)
+  func setIsPlaceholderVisible(value: Bool)
 
-  public let didSelectItem: AnyObserver<Int>
-  public let didMoveItem:   AnyObserver<(from: Int, to: Int)>
-  public let didDeleteItem: AnyObserver<Int>
+  func setIsEditing(value: Bool, animated: Bool)
+  func setEditButtonText(value: NSAttributedString)
 
-  public let didPressEditButton: AnyObserver<Void>
-
-  // MARK: - Outputs
-
-  public let bookmarks: Driver<[Bookmark]>
-
-  public let isTableViewVisible:   Driver<Bool>
-  public let isPlaceholderVisible: Driver<Bool>
-
-  public let isEditing:      Driver<Bool>
-  public let editButtonText: Driver<NSAttributedString>
-
-  public let close: Driver<Void>
-
-  // MARK: - Init
-
-  // swiftlint:disable:next function_body_length
-  public init(_ store: Store<AppState>) {
-    let _didSelectItem = PublishSubject<Int>()
-    self.didSelectItem = _didSelectItem.asObserver()
-
-    let _didMoveItem = PublishSubject<(from: Int, to: Int)>()
-    self.didMoveItem = _didMoveItem.asObserver()
-
-    let _didDeleteItem = PublishSubject<Int>()
-    self.didDeleteItem = _didDeleteItem.asObserver()
-
-    let _didPressEditButton = PublishSubject<Void>()
-    self.didPressEditButton = _didPressEditButton.asObserver()
-
-    // bookmarks
-    self.bookmarks = store.rx.state
-      .map { $0.userData.bookmarks }
-      .asDriver(onErrorDriveWith: .never())
-
-    self.isTableViewVisible   = self.bookmarks.map { $0.any }
-    self.isPlaceholderVisible = self.bookmarks.map { $0.isEmpty }
-
-    // edit
-    self.isEditing = _didPressEditButton
-      .reducing(false) { current, _ in !current }
-      .asDriver(onErrorDriveWith: .never())
-
-    self.editButtonText = isEditing.map(createEditButtonLabel)
-
-    // close
-    self.close = _didSelectItem
-      .map { _ in () }
-      .asDriver(onErrorDriveWith: .never())
-
-    // bindings
-    _didSelectItem.asObservable()
-      .withLatestFrom(self.bookmarks) { index, bookmarks in bookmarks[index] }
-      .bind { store.dispatch(TrackedLinesAction.startTracking($0.lines)) }
-      .disposed(by: self.disposeBag)
-
-    _didMoveItem.asObservable()
-      .bind { store.dispatch(BookmarksAction.move(from: $0.from, to: $0.to)) }
-      .disposed(by: self.disposeBag)
-
-    _didDeleteItem.asObservable()
-      .bind { store.dispatch(BookmarksAction.remove(at: $0)) }
-      .disposed(by: self.disposeBag)
-  }
+  func close(animated: Bool)
 }
 
-// MARK: - Helpers
+public final class BookmarksCardViewModel: StoreSubscriber {
 
-private func createEditButtonLabel(isEditing: Bool) -> NSAttributedString {
-  switch isEditing {
-  case true:  return NSAttributedString(string: Localization.Edit.done, attributes: TextStyles.Edit.done)
-  case false: return NSAttributedString(string: Localization.Edit.edit, attributes: TextStyles.Edit.edit)
+  private let store: Store<AppState>
+
+  /// State that is currently being presented.
+  private var currentState: AppState?
+  /// Are we currently editing the bookmark list?
+  private var isEditing = false
+  private weak var view: BookmarksCardViewType?
+
+  public init(store: Store<AppState>) {
+    self.store = store
+  }
+
+  public func setView(view: BookmarksCardViewType) {
+    assert(self.view == nil, "View was already assigned")
+    self.view = view
+    self.store.subscribe(self)
+  }
+
+  // MARK: - Input
+
+  public func didSelectItem(index: Int) {
+    guard let state = self.currentState else {
+      return
+    }
+
+    let bookmarks = state.bookmarks
+    guard bookmarks.indices.contains(index) else {
+      return
+    }
+
+    let bookmark = bookmarks[index]
+    self.store.dispatch(TrackedLinesAction.startTracking(bookmark.lines))
+
+    self.view?.close(animated: true)
+  }
+
+  public func didMoveItem(fromIndex: Int, toIndex: Int) {
+    self.store.dispatch(BookmarksAction.move(from: fromIndex, to: toIndex))
+  }
+
+  public func didDeleteItem(index: Int) {
+    self.store.dispatch(BookmarksAction.remove(at: index))
+  }
+
+  public func didPressEditButton() {
+    self.setIsEditing(value: !self.isEditing)
+  }
+
+  private func setIsEditing(value: Bool) {
+    let editButtonText = value ?
+      NSAttributedString(string: Localization.Edit.done, attributes: TextStyles.Edit.done) :
+      NSAttributedString(string: Localization.Edit.edit, attributes: TextStyles.Edit.edit)
+
+    self.isEditing = value
+    self.view?.setIsEditing(value: value, animated: true)
+    self.view?.setEditButtonText(value: editButtonText)
+  }
+
+  // MARK: - Store subscriber
+
+  public func newState(state: AppState) {
+    defer { self.currentState = state }
+
+    self.updateBookmarkListIfNeeded(newState: state)
+  }
+
+  private func updateBookmarkListIfNeeded(newState: AppState) {
+    let new = newState.bookmarks
+    let old = self.currentState?.bookmarks
+
+    guard new != old else {
+      return
+    }
+
+    self.view?.setBookmarks(value: new)
+
+    let isTableVisible = new.any
+    self.view?.setIsTableViewVisible(value: isTableVisible)
+    self.view?.setIsPlaceholderVisible(value: !isTableVisible)
   }
 }

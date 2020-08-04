@@ -8,7 +8,7 @@ import ReSwift
 public final class AppCoordinator: Coordinator, MainViewModelDelegate {
 
   public let window: UIWindow
-  public let store:  Store<AppState>
+  public let store: Store<AppState>
   public let environment: Environment
 
   private var mainViewController: MainViewController?
@@ -37,28 +37,32 @@ public final class AppCoordinator: Coordinator, MainViewModelDelegate {
   }
 
   public func openSearchCard() {
+//    guard let mainViewController = self.mainViewController else {
+//      fatalError("AppCoordinator has to be started first")
+//    }
+
     print(#function)
-//    guard let mainViewController = self.mainViewController
-//      else { fatalError("AppCoordinator has to be started first") }
-//
 //    self.childCoordinator = SearchCardCoordinator(mainViewController, self.store)
 //    self.childCoordinator!.start()
   }
 
   public func openBookmarksCard() {
-    print(#function)
-//    guard let mainViewController = self.mainViewController
-//      else { fatalError("AppCoordinator has to be started first") }
-//
-//    self.childCoordinator = BookmarksCardCoordinator(mainViewController, self.store)
-//    self.childCoordinator!.start()
+    guard let mainViewController = self.mainViewController else {
+      fatalError("AppCoordinator has to be started first")
+    }
+
+    self.childCoordinator = BookmarksCardCoordinator(parent: mainViewController,
+                                                     store: self.store,
+                                                     environment: self.environment)
+    self.childCoordinator?.start()
   }
 
   public func openSettingsCard() {
+//    guard let mainViewController = self.mainViewController else {
+//      fatalError("AppCoordinator has to be started first")
+//    }
+
     print(#function)
-//    guard let mainViewController = self.mainViewController
-//      else { fatalError("AppCoordinator has to be started first") }
-//
 //    self.childCoordinator = SettingsCardCoordinator(mainViewController)
 //    self.childCoordinator!.start()
   }

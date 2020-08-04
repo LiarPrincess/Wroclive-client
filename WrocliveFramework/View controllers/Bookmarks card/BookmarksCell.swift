@@ -19,7 +19,7 @@ public final class BookmarksCell: UITableViewCell {
   private let nameLabel  = UILabel()
   private let linesLabel = UILabel()
 
-  // disable alpha, so we don't end up with transparent cells when reordering
+  // Disable alpha, so we don't end up with transparent cells when reordering
   public override var alpha: CGFloat {
     get { return 1.0 }
     set { }
@@ -78,7 +78,8 @@ public final class BookmarksCell: UITableViewCell {
   }
 
   private func updateLabelPreferredWidths() {
-    // hack: we need to calculate from cell not content view as content view will shrink on edit
+    // HACK: We need to calculate from cell not content view as content view
+    // will shrink on edit.
     let labelWidth = self.bounds.width - Layout.leftInset - Layout.rightInset
     self.nameLabel.preferredMaxLayoutWidth  = labelWidth
     self.linesLabel.preferredMaxLayoutWidth = labelWidth

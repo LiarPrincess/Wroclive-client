@@ -58,6 +58,16 @@ extension UICollectionView {
   }
 }
 
+// MARK: - UIView
+
+extension UIView {
+
+  public func setContentHuggingPriority(_ priority: Float,
+                                        for axis: NSLayoutConstraint.Axis) {
+    self.setContentHuggingPriority(UILayoutPriority(priority), for: axis)
+  }
+}
+
 // MARK: - UIView + Round corners
 
 extension UIView {

@@ -7,7 +7,7 @@ import UIKit
 public protocol CardCoordinator: class, Coordinator {
   associatedtype Card: UIViewController
 
-  var card:                   Card? { get set }
+  var card: Card? { get set }
   var cardTransitionDelegate: UIViewControllerTransitioningDelegate? { get set }
 
   var parent: UIViewController { get }

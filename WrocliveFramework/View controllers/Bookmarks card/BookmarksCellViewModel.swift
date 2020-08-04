@@ -8,34 +8,37 @@ private typealias Layout     = BookmarksCellConstants.Layout
 private typealias TextStyles = BookmarksCellConstants.TextStyles
 
 public struct BookmarkCellViewModel {
-  public let name:  NSAttributedString
+  public let name: NSAttributedString
   public let lines: NSAttributedString
 
-  public init(_ bookmark: Bookmark) {
-    self.name  = NSAttributedString(string: bookmark.name,              attributes: TextStyles.name)
-    self.lines = NSAttributedString(string: createLinesLabel(bookmark), attributes: TextStyles.lines)
+  public init(bookmark: Bookmark) {
+    let linesText = createLinesLabel(bookmark)
+    self.name = NSAttributedString(string: bookmark.name, attributes: TextStyles.name)
+    self.lines = NSAttributedString(string: linesText, attributes: TextStyles.lines)
   }
 }
 
 private func createLinesLabel(_ bookmark: Bookmark) -> String {
-  let tramLines = bookmark.lines.filter(.tram)
-  let busLines  = bookmark.lines.filter(.bus)
+  var tramLines = bookmark.lines.filter(.tram)
+  var busLines = bookmark.lines.filter(.bus)
+
+  tramLines.sortByLocalizedName()
+  busLines.sortByLocalizedName()
 
   let hasTramLines = tramLines.any
-  let hasBusLines  = busLines.any
+  let hasBusLines = busLines.any
   let hasTramAndBusLines = hasTramLines && hasBusLines
 
   var result = ""
-  if hasTramLines       { result += concatNames(tramLines) }
+  if hasTramLines       { result += concatNames(lines: tramLines) }
   if hasTramAndBusLines { result += "\n" }
-  if hasBusLines        { result += concatNames(busLines) }
+  if hasBusLines        { result += concatNames(lines: busLines) }
 
   return result
 }
 
-private func concatNames(_ lines: [Line]) -> String {
+private func concatNames(lines: [Line]) -> String {
   return lines
-    .sortedByName()
     .map { (line: Line) in line.name }
     .joined(separator: Layout.LinesLabel.horizontalSpacing)
 }

@@ -62,7 +62,10 @@ public final class BookmarksPlaceholderView: UIView {
     let textAttributes = TextStyles.Content.text
     let iconAttributes = TextStyles.Content.icon
 
-    let starReplacement = TextReplacement("<star>", NSAttributedString(string: "\u{f006}", attributes: iconAttributes))
+    let starReplacement = TextReplacement(
+      "<star>",
+      NSAttributedString(string: "\u{f006}", attributes: iconAttributes)
+    )
 
     return NSAttributedString(string: content, attributes: textAttributes)
       .withReplacements([starReplacement])

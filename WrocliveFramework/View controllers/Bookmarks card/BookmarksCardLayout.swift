@@ -18,18 +18,18 @@ internal extension BookmarksCard {
     self.initPlaceholder()
   }
 
-  // MARK: - Private
-
   private func initHeader() {
-    self.headerView.contentView.addBottomBorder()
-    self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
+    let device = self.environment.device
+    self.headerView.contentView.addBottomBorder(device: device)
+    self.headerView.setContentHuggingPriority(900, for: .vertical)
 
     self.view.addSubview(self.headerView)
     self.headerView.snp.makeConstraints { make in
       make.top.left.right.equalToSuperview()
     }
 
-    self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
+    self.titleLabel.attributedText = NSAttributedString(string: Localization.title,
+                                                        attributes: TextStyles.cardTitle)
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
     self.titleLabel.adjustsFontForContentSizeCategory = true
@@ -42,6 +42,9 @@ internal extension BookmarksCard {
     }
 
     self.editButton.contentEdgeInsets = Layout.Header.Edit.insets
+    self.editButton.addTarget(self,
+                              action: #selector(editButtonPressed),
+                              for: .touchUpInside)
 
     self.headerView.contentView.addSubview(self.editButton)
     self.editButton.snp.makeConstraints { make in
@@ -57,7 +60,8 @@ internal extension BookmarksCard {
     self.tableView.rowHeight          = UITableView.automaticDimension
     self.tableView.estimatedRowHeight = Layout.TableView.estimatedCellHeight
 
-    // remove empty cells below (http://swiftandpainless.com/table-view-footer-in-plain-table-view/)
+    // Remove empty cells below, see:
+    // http://swiftandpainless.com/table-view-footer-in-plain-table-view/
     self.tableView.tableFooterView = UIView(frame: .zero)
 
     self.view.insertSubview(self.tableView, belowSubview: self.headerView)
@@ -65,7 +69,8 @@ internal extension BookmarksCard {
   }
 
   private func initPlaceholder() {
-    // we can't use 'self.bookmarksTable.backgroundView' as this would result in incorrect left <-> right constraints
+    // We can't use 'self.bookmarksTable.backgroundView' as this would result
+    // in incorrect left <-> right constraints
 
     self.view.insertSubview(self.placeholderView, belowSubview: self.tableView)
     self.placeholderView.snp.makeConstraints { make in
