@@ -169,6 +169,11 @@ public final class BookmarksCard:
   }
 
   public func tableView(_ tableView: UITableView,
+                        editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    return .delete
+  }
+
+  public func tableView(_ tableView: UITableView,
                         commit editingStyle: UITableViewCell.EditingStyle,
                         forRowAt indexPath: IndexPath) {
     let index = indexPath.row

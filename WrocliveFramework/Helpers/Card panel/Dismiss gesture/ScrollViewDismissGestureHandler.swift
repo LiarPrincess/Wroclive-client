@@ -6,7 +6,7 @@ import UIKit
 
 private typealias Constants = CardPanelConstants.DismissGesture
 
-public final class ScrollViewDismissGestureHandler: DismissGestureHandler {
+internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
   // MARK: - Properties
 
@@ -18,13 +18,15 @@ public final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
   // MARK: - Init
 
-  public init(for presentedViewController: UIViewController,
-              scrollView: UIScrollView) {
+  internal init(for presentedViewController: UIViewController,
+                scrollView: UIScrollView) {
     self.scrollView = scrollView
     super.init(for: presentedViewController)
 
-    self.observation = self.scrollView.observe(\.contentOffset,
-                                               options: [.initial]) { [weak self] _, _ in
+    self.observation = self.scrollView.observe(
+      \.contentOffset,
+      options: [.initial]
+    ) { [weak self] _, _ in
       self?.scrollViewDidScroll()
     }
   }
@@ -35,7 +37,7 @@ public final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
   // MARK: - Handle gesture
 
-  public override func handleGesture(_ gesture: UIPanGestureRecognizer) {
+  internal override func handleGesture(_ gesture: UIPanGestureRecognizer) {
     switch gesture.state {
     case .began:
       self.resetGestureStartingPosition(gesture)
@@ -52,8 +54,9 @@ public final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
         let percent = translation.y / Constants.dismissThreshold
         self.notifyInteractiveDismissalProgress(percent: percent)
+      } else {
+        self.resetGestureStartingPosition(gesture)
       }
-      else { self.resetGestureStartingPosition(gesture) }
 
     // Ended means that user lifted their finger without dismissing
     case .ended:
@@ -70,7 +73,7 @@ public final class ScrollViewDismissGestureHandler: DismissGestureHandler {
   }
 
   private func scrollViewDidScroll() {
-    let offset     = self.calculateScrollViewOffset(scrollView)
+    let offset = self.calculateScrollViewOffset(scrollView)
     let isAboveTop = offset <= 0
 
     let isScrollingDisabled = isAboveTop && !self.scrollView.isDecelerating

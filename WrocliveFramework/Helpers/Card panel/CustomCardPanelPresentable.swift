@@ -28,7 +28,9 @@ extension UINavigationController: CustomCardPanelPresentable {
     return self.topViewController as? CustomCardPanelPresentable
   }
 
-  public var scrollView: UIScrollView? { return self.card?.scrollView }
+  public var scrollView: UIScrollView? {
+    return self.card?.scrollView
+  }
 
   public func interactiveDismissalWillBegin() {
     self.card?.interactiveDismissalWillBegin()

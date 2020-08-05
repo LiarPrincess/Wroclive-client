@@ -9,8 +9,10 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
 
   // MARK: - Properties
 
+  /// Animated arrow at the top of the card.
   public let chevronView = ChevronView()
 
+  /// Top container that has `chevronView` in the middle.
   private var chevronViewContainer: UIVisualEffectView = {
     let blur = UIBlurEffect(style: Theme.colors.blurStyle)
     return UIVisualEffectView(effect: blur)
@@ -105,7 +107,7 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
   }
 
   private func updateChevronViewDuringInteractiveDismissal(percent: CGFloat) {
-    // we assume that before we start chevron is in '.down' position
+    // We assume that before we start chevron is in '.down' position
     let makeChevronFlatAt = CGFloat(0.75)
     let chevronPercent = CGFloat.minimum(percent, makeChevronFlatAt)
     self.chevronView.angle = -ChevronView.maxAngle * (makeChevronFlatAt - chevronPercent)

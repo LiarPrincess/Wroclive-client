@@ -377,27 +377,24 @@
 		9013FA9924D6B1880006D1B9 /* Card panel */ = {
 			isa = PBXGroup;
 			children = (
+				9013FAA024D6B1880006D1B9 /* Dismiss gesture */,
+				90CE743024DAC10700419166 /* Transition delegate */,
 				9013FA9A24D6B1880006D1B9 /* ChevronView.swift */,
-				9013FA9B24D6B1880006D1B9 /* CardPanelPresentationTransition.swift */,
-				9013FA9C24D6B1880006D1B9 /* CardPanelPresenter.swift */,
-				9013FA9D24D6B1880006D1B9 /* CustomCardPanelPresentable.swift */,
 				9013FA9E24D6B1880006D1B9 /* CardPanelContainer.swift */,
-				9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */,
-				9013FAA024D6B1880006D1B9 /* DismissGesture */,
-				9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */,
 				9013FAA524D6B1880006D1B9 /* CardPanelConstants.swift */,
+				9013FA9D24D6B1880006D1B9 /* CustomCardPanelPresentable.swift */,
 			);
 			path = "Card panel";
 			sourceTree = "<group>";
 		};
-		9013FAA024D6B1880006D1B9 /* DismissGesture */ = {
+		9013FAA024D6B1880006D1B9 /* Dismiss gesture */ = {
 			isa = PBXGroup;
 			children = (
 				9013FAA124D6B1880006D1B9 /* DismissGestureHandlerType.swift */,
 				9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */,
 				9013FAA324D6B1880006D1B9 /* ScrollViewDismissGestureHandler.swift */,
 			);
-			path = DismissGesture;
+			path = "Dismiss gesture";
 			sourceTree = "<group>";
 		};
 		9013FAA724D6B1880006D1B9 /* Alerts */ = {
@@ -637,6 +634,17 @@
 				90CE741024D9BB7800419166 /* BookmarksCardViewModelTests+Selection.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		90CE743024DAC10700419166 /* Transition delegate */ = {
+			isa = PBXGroup;
+			children = (
+				9013FA9C24D6B1880006D1B9 /* CardPanelPresenter.swift */,
+				9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */,
+				9013FA9B24D6B1880006D1B9 /* CardPanelPresentationTransition.swift */,
+				9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */,
+			);
+			path = "Transition delegate";
 			sourceTree = "<group>";
 		};
 		90DE39EB24D8685400ADE4B9 /* Coordinators */ = {

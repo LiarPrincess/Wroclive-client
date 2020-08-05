@@ -4,45 +4,44 @@
 
 import UIKit
 
-public final class CardPanelDismissTransition:
+internal final class CardPanelPresentationTransition:
   NSObject, UIViewControllerAnimatedTransitioning
 {
 
   private let duration: TimeInterval
 
-  public init(_ duration: TimeInterval) {
+  internal init(_ duration: TimeInterval) {
     self.duration = duration
   }
 
-  public func transitionDuration(
+  internal func transitionDuration(
     using transitionContext: UIViewControllerContextTransitioning?
   ) -> TimeInterval {
     return self.duration
   }
 
-  public func animateTransition(
+  internal func animateTransition(
     using transitionContext: UIViewControllerContextTransitioning
   ) {
-    guard let presentedViewController = transitionContext.viewController(forKey: .from)
+    guard let presentedViewController = transitionContext.viewController(forKey: .to)
       else { return }
 
     let containerView = transitionContext.containerView
+    containerView.addSubview(presentedViewController.view)
 
-    let onScreenFrame  = transitionContext.initialFrame(for: presentedViewController)
+    let onScreenFrame  = transitionContext.finalFrame(for: presentedViewController)
     var offScreenFrame = onScreenFrame
     offScreenFrame.origin.y = containerView.bounds.height
 
     // animation
 
-    let options: UIView.AnimationOptions = transitionContext.isInteractive ?
-      .curveLinear :
-      .curveEaseOut
+    presentedViewController.view.frame = offScreenFrame
 
     UIView.animate(
       withDuration: self.transitionDuration(using: transitionContext),
       delay:        0.0,
-      options:      options,
-      animations:   { presentedViewController.view.frame = offScreenFrame },
+      options:      .curveEaseOut,
+      animations:   { presentedViewController.view.frame = onScreenFrame },
       completion:   { transitionContext.completeTransition($0) }
     )
   }

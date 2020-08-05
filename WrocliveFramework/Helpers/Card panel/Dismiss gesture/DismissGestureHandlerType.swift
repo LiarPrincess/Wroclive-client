@@ -4,6 +4,6 @@
 
 import UIKit
 
-public protocol DismissGestureHandlerType {
+internal protocol DismissGestureHandlerType: AnyObject {
   func handleGesture(_ gesture: UIPanGestureRecognizer)
 }

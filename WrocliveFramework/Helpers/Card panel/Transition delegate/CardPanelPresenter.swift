@@ -6,7 +6,7 @@ import UIKit
 
 private typealias Layout = CardPanelConstants.Layout
 
-public final class CardPanelPresenter:
+internal final class CardPanelPresenter:
   UIPresentationController, UIGestureRecognizerDelegate
 {
 
@@ -25,7 +25,7 @@ public final class CardPanelPresenter:
 
   // MARK: - Init
 
-  public init(forPresented presented: UIViewController,
+  internal init(forPresented presented: UIViewController,
               presenting: UIViewController?,
               height: CGFloat) {
     self.height = height
@@ -34,20 +34,21 @@ public final class CardPanelPresenter:
 
   // MARK: - Frame
 
-  public override var frameOfPresentedViewInContainerView: CGRect {
-    guard let containerView = self.containerView
-      else { return .zero }
+  internal override var frameOfPresentedViewInContainerView: CGRect {
+    guard let containerView = self.containerView else {
+      return .zero
+    }
 
-    return CGRect(x:      0.0,
-                  y:      containerView.bounds.height - self.height,
-                  width:  containerView.bounds.width,
+    return CGRect(x: 0.0,
+                  y: containerView.bounds.height - self.height,
+                  width: containerView.bounds.width,
                   height: self.height)
   }
 
   // MARK: - Present
 
   // Prepare dimming view
-  public override func presentationTransitionWillBegin() {
+  internal override func presentationTransitionWillBegin() {
     super.presentationTransitionWillBegin()
 
     guard let containerView = self.containerView,
@@ -68,7 +69,7 @@ public final class CardPanelPresenter:
   }
 
   // Add dismiss gesture recognizer
-  public override func presentationTransitionDidEnd(_ completed: Bool) {
+  internal override func presentationTransitionDidEnd(_ completed: Bool) {
     super.presentationTransitionDidEnd(completed)
     guard completed else { return }
 
@@ -86,7 +87,7 @@ public final class CardPanelPresenter:
   // MARK: - Dismiss
 
   // Hide dimming view
-  public override func dismissalTransitionWillBegin() {
+  internal override func dismissalTransitionWillBegin() {
     super.dismissalTransitionWillBegin()
 
     guard let coordinator = presentingViewController.transitionCoordinator
@@ -99,7 +100,7 @@ public final class CardPanelPresenter:
   }
 
   // Remove dimming view
-  public override func dismissalTransitionDidEnd(_ completed: Bool) {
+  internal override func dismissalTransitionDidEnd(_ completed: Bool) {
     super.dismissalTransitionDidEnd(completed)
 
     if completed {
@@ -123,44 +124,39 @@ public final class CardPanelPresenter:
                                             scrollView: scrollView!)
     }
 
-    self.dismissGestureHandler?.handleGesture(gesture)
+    // If we are reordering cells then reorder has bigger priority than dismiss.
+    // Please note that we do not know if we are reordeing, untill AFTER
+    // the gesture has already started (so not in 'gesture.state == .began' case).
+    if !self.isReorderingTableViewCells() {
+      self.dismissGestureHandler?.handleGesture(gesture)
+    }
+  }
+
+  private func isReorderingTableViewCells() -> Bool {
+    guard let tableView = self.cardPanel?.scrollView as? UITableView else {
+      return false
+    }
+
+    return tableView.isEditing && tableView.hasUncommittedUpdates
   }
 
   // MARK: - UIGestureRecognizerDelegate
 
-  public func gestureRecognizerShouldBegin(
+  internal func gestureRecognizerShouldBegin(
     _ gestureRecognizer: UIGestureRecognizer
   ) -> Bool {
-    // if we are editing table view then we don't want gesture recognizer
     return self.isDismissGesture(gestureRecognizer)
-        && !self.isReorderingTableViewCells()
   }
 
-  public func gestureRecognizer(
+  internal func gestureRecognizer(
     _ gestureRecognizer: UIGestureRecognizer,
     shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
   ) -> Bool {
-
-    // we allow simultaneous recognition with scroll view and nothing else
     return self.isDismissGesture(gestureRecognizer)
-        && self.isScrollViewPanGesture(otherGestureRecognizer)
   }
 
   private func isDismissGesture(_ gesture: UIGestureRecognizer) -> Bool {
     return self.dismissGesture != nil
         && self.dismissGesture!.isEqual(gesture)
-  }
-
-  private func isReorderingTableViewCells() -> Bool {
-    let tableView = self.cardPanel?.scrollView as? UITableView
-    return tableView != nil
-        && tableView!.isEditing
-        && tableView!.hasUncommittedUpdates
-  }
-
-  private func isScrollViewPanGesture(_ gesture: UIGestureRecognizer) -> Bool {
-    let scrollViewPanGesture = self.cardPanel?.scrollView?.panGestureRecognizer
-    return scrollViewPanGesture != nil
-        && scrollViewPanGesture!.isEqual(gesture)
   }
 }

@@ -7,23 +7,23 @@ import UIKit
 public enum CardPanelConstants {
 
   public enum Layout {
-    public static let topCornerRadius: CGFloat = 12.0
+    public static let topCornerRadius = CGFloat(12.0)
 
     public enum DimmingView {
-      public static let color: UIColor = .black
-      public static let alpha: CGFloat = 0.4
+      public static let color = UIColor.black
+      public static let alpha = CGFloat(0.4)
     }
   }
 
   public enum AnimationDurations {
-    public static let present: TimeInterval = 0.3
-    public static let dismiss: TimeInterval = 0.3
+    public static let present = TimeInterval(0.3)
+    public static let dismiss = TimeInterval(0.3)
   }
 
   public enum DismissGesture {
-    public static let elasticThreshold: CGFloat = 120
-    public static let dismissThreshold: CGFloat = 240
+    public static let elasticThreshold = CGFloat(120)
+    public static let dismissThreshold = CGFloat(240)
 
-    public static let translationFactor: CGFloat = 0.5
+    public static let translationFactor = CGFloat(0.5)
   }
 }
