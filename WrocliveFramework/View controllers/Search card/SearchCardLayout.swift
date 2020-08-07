@@ -70,17 +70,14 @@ internal extension SearchCard {
       make.right.equalToSuperview()
     }
 
-    self.addChild(self.lineTypeSelector)
-    self.headerView.contentView.addSubview(self.lineTypeSelector.view)
-    self.lineTypeSelector.view.snp.makeConstraints { make in
+    self.headerView.contentView.addSubview(self.lineTypeSelector)
+    self.lineTypeSelector.snp.makeConstraints { make in
       make.top.equalTo(self.titleLabel.snp.bottom).offset(Layout.Header.LineType.topOffset)
       make.bottom.equalToSuperview().offset(-Layout.Header.LineType.bottomOffset)
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)
-      make.height.equalTo(LineTypeSelectorConstants.Layout.nominalHeight)
+      make.height.equalTo(LineTypeSegmentedControlConstants.Layout.nominalHeight)
     }
-
-    self.lineTypeSelector.didMove(toParent: self)
   }
 
   private func initLinesSelector() {

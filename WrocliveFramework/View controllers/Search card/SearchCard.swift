@@ -23,12 +23,8 @@ public final class SearchCard:
   public let searchButton    = UIButton()
   public let placeholderView = SearchPlaceholderView()
 
-  internal lazy var lineSelector = LineSelector(
-    viewModel: self.viewModel.lineSelectorViewModel
-  )
-  internal lazy var lineTypeSelector = LineTypeSelector(
-    viewModel: self.viewModel.lineTypeSelectorViewModel
-  )
+  internal var lineSelector: LineSelector
+  internal var lineTypeSelector: LineTypeSegmentedControl
 
   internal let viewModel: SearchCardViewModel
   internal let environment: Environment
@@ -38,6 +34,15 @@ public final class SearchCard:
   public init(viewModel: SearchCardViewModel, environment: Environment) {
     self.viewModel = viewModel
     self.environment = environment
+
+    self.lineTypeSelector = LineTypeSegmentedControl(
+      onPageSelected: { viewModel.viewDidSelectPage(page: $0) }
+    )
+
+    self.lineSelector = LineSelector(
+      viewModel: self.viewModel.lineSelectorViewModel
+    )
+
     super.init(nibName: nil, bundle: nil)
     viewModel.setView(view: self)
   }
@@ -79,7 +84,7 @@ public final class SearchCard:
     }
   }
 
-  // MARK: -  Line selector visibility
+  // MARK: -  Subview visibility
 
   public func setIsLineSelectorVisible(value: Bool) {
     let isHidden = !value
@@ -89,6 +94,12 @@ public final class SearchCard:
   public func setIsPlaceholderVisible(value: Bool) {
     let isHidden = !value
     self.placeholderView.isHidden = isHidden
+  }
+
+  // MARK: - Page
+
+  public func setPage(page: LineType) {
+    self.lineTypeSelector.setPage(page: page)
   }
 
   // MARK: - Search

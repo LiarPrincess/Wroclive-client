@@ -4,7 +4,8 @@
 
 import UIKit
 
-internal enum LineTypeSelectorConstants {
+internal enum LineTypeSegmentedControlConstants {
+
   internal enum Layout {
     /// Proposed height
     internal static let nominalHeight = CGFloat(30.0)

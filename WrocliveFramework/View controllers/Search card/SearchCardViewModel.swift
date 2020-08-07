@@ -6,6 +6,9 @@ import UIKit
 import ReSwift
 
 public protocol SearchCardViewType: AnyObject {
+
+  func setPage(page: LineType)
+
   func setIsLineSelectorVisible(value: Bool)
   func setIsPlaceholderVisible(value: Bool)
 
@@ -26,7 +29,6 @@ public final class SearchCardViewModel: StoreSubscriber {
   private var currentState: AppState?
   private weak var view: SearchCardViewType?
 
-  internal let lineTypeSelectorViewModel: LineTypeSelectorViewModel
   internal let lineSelectorViewModel: LineSelectorViewModel
 
   private var selectedLines: [Line]? {
@@ -36,10 +38,6 @@ public final class SearchCardViewModel: StoreSubscriber {
   public init(store: Store<AppState>, environment: Environment) {
     self.store = store
     self.environment = environment
-
-    self.lineTypeSelectorViewModel = LineTypeSelectorViewModel(
-      onPageSelected: { store.dispatch(SearchCardStateAction.selectPage($0)) }
-    )
 
     self.lineSelectorViewModel = LineSelectorViewModel(
       onPageTransition: { store.dispatch(SearchCardStateAction.selectPage($0)) },
@@ -84,6 +82,10 @@ public final class SearchCardViewModel: StoreSubscriber {
     self.requestLinesFromApi()
   }
 
+  public func viewDidSelectPage(page: LineType) {
+    self.store.dispatch(SearchCardStateAction.selectPage(page))
+  }
+
   // MARK: - Delegates
 
   internal func lineTypeSelectorViewModel(didSelectPage page: LineType) {
@@ -116,8 +118,9 @@ public final class SearchCardViewModel: StoreSubscriber {
     let old = self.currentState?.searchCardState.page
 
     if new != old {
+      // TODO: this thingie
       self.lineSelectorViewModel.setPage(page: new)
-      self.lineTypeSelectorViewModel.setPage(page: new)
+      self.view?.setPage(page: new)
     }
   }
 
