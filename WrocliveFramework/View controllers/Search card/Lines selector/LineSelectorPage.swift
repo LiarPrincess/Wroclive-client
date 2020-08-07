@@ -3,8 +3,6 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
-import RxCocoa
 import SnapKit
 
 private typealias HeaderLayout     = LineSelectorHeaderViewConstants.Layout
@@ -12,125 +10,75 @@ private typealias HeaderTextStyles = LineSelectorHeaderViewConstants.TextStyles
 private typealias CellLayout       = LineSelectorCellConstants.Layout
 private typealias Localization     = Localizable.Search
 
-public final class LineSelectorPage: UIViewController {
+internal final class LineSelectorPage:
+  UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,
+  UICollectionViewDelegateFlowLayout, LineSelectorPageType
+{
 
   // MARK: - Properties
 
+  private var sections = [LineSelectorSection]()
   private let viewModel: LineSelectorPageViewModel
-  private let disposeBag = DisposeBag()
 
-  private lazy var collectionView           = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewLayout)
-  private lazy var collectionViewLayout     = UICollectionViewFlowLayout()
-  private lazy var collectionViewDataSource = LineSelectorPage.createDataSource()
+  private lazy var collectionViewLayout = UICollectionViewFlowLayout()
+  private lazy var collectionView = UICollectionView(
+    frame: .zero,
+    collectionViewLayout: self.collectionViewLayout
+  )
 
-  public var scrollView: UIScrollView { return self.collectionView }
-
-  public var contentInset: UIEdgeInsets {
+  internal var contentInset: UIEdgeInsets {
     get { return self.collectionView.contentInset }
     set { self.collectionView.contentInset = newValue }
   }
 
-  public var scrollIndicatorInsets: UIEdgeInsets {
+  internal var scrollIndicatorInsets: UIEdgeInsets {
     get { return self.collectionView.scrollIndicatorInsets }
     set { self.collectionView.scrollIndicatorInsets = newValue }
   }
 
-  // MARK: - Init
-
-  public init(_ viewModel: LineSelectorPageViewModel) {
-    self.viewModel = viewModel
-    super.init(nibName: nil, bundle: nil)
-    self.initBindings()
+  internal var scrollView: UIScrollView {
+    return self.collectionView
   }
 
-  public required init?(coder aDecoder: NSCoder) {
+  // MARK: - Init
+
+  internal init(viewModel: LineSelectorPageViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+    viewModel.setView(view: self)
+  }
+
+  internal required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Bindings
+  // MARK: - View did load
 
-  private func initBindings() {
-    self.collectionView.rx.setDelegate(self)
-      .disposed(by: disposeBag)
-
-    self.viewModel.sections.asObservable()
-      .bind(to: self.collectionView.rx.items(dataSource: self.collectionViewDataSource))
-      .disposed(by: disposeBag)
-
-    self.viewModel.selectedIndices
-      .drive(onNext: { [unowned self] in self.selectIndices($0) })
-      .disposed(by: disposeBag)
-
-    self.collectionView.rx.itemSelected
-      .bind(to: self.viewModel.didSelectIndex)
-      .disposed(by: self.disposeBag)
-
-    self.collectionView.rx.itemDeselected
-      .bind(to: self.viewModel.didDeselectIndex)
-      .disposed(by: self.disposeBag)
-  }
-
-  private func selectIndices(_ indicesToSelect: [IndexPath]) {
-    let selectedIndices = self.collectionView.indexPathsForSelectedItems ?? []
-
-    // change to sets, so we get ~O(1) lookups
-    let selectedIndicesSet = Set(selectedIndices)
-    let indicesToSelectSet = Set(indicesToSelect)
-
-    selectedIndices
-      .filter  { !indicesToSelectSet.contains($0) }
-      .forEach { self.collectionView.deselectItem(at: $0, animated: false) }
-
-    indicesToSelect
-      .filter  { !selectedIndicesSet.contains($0) }
-      .forEach { self.collectionView.selectItem(at: $0, animated: false, scrollPosition: []) }
-  }
-
-  // MARK: - Data source
-
-  private static func createDataSource() -> RxCollectionViewDataSource<LineSelectorSection> {
-    return RxCollectionViewDataSource(
-      configureCell: { _, collectionView, indexPath, model -> UICollectionViewCell in
-        let cell = collectionView.dequeueCell(ofType: LineSelectorCell.self, forIndexPath: indexPath)
-        cell.update(from: LineSelectorCellViewModel(model))
-        return cell
-      },
-      configureSupplementaryView: { dataSource, collectionView, kind, indexPath -> UICollectionReusableView in
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-          let view = collectionView.dequeueSupplementary(ofType: LineSelectorHeaderView.self, kind: .header, for: indexPath)
-          view.update(from: LineSelectorHeaderViewModel(dataSource[indexPath.section]))
-          return view
-        default:
-          fatalError("[LineSelectorPage] Unexpected supplementary view: \(kind)")
-        }
-      }
-    )
-  }
-
-  // MARK: - Overriden
-
-  public override func viewDidLoad() {
+  internal override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
   }
 
   private func initLayout() {
-    self.collectionViewLayout.minimumLineSpacing      = CellLayout.margin
+    self.collectionViewLayout.minimumLineSpacing = CellLayout.margin
     self.collectionViewLayout.minimumInteritemSpacing = CellLayout.margin
 
     self.collectionView.registerCell(LineSelectorCell.self)
-    self.collectionView.registerSupplementary(LineSelectorHeaderView.self, ofKind: .header)
+    self.collectionView.registerSupplementary(LineSelectorHeaderView.self, kind: .header)
     self.collectionView.backgroundColor         = Theme.colors.background
     self.collectionView.allowsSelection         = true
     self.collectionView.allowsMultipleSelection = true
     self.collectionView.alwaysBounceVertical    = true
+    self.collectionView.delegate = self
+    self.collectionView.dataSource = self
 
     self.view.addSubview(self.collectionView)
     self.collectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 
-  public override func viewDidLayoutSubviews() {
+  // MARK: - View did layout subviews
+
+  internal override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     self.collectionViewLayout.itemSize = self.calculateItemSize()
   }
@@ -143,31 +91,109 @@ public final class LineSelectorPage: UIViewController {
     // solve for n:         n = (totalWidth + margin) / (cellWidth + margin)
     // solve for cellWidth: cellWidth = (totalWidth - (n-1) * margin) / n
 
-    let totalWidth   = self.collectionView.contentWidth
-    let margin       = CellLayout.margin
+    let totalWidth = self.collectionView.contentWidth
+    let margin = CellLayout.margin
     let minCellWidth = CellLayout.minSize
 
-    let numSectionsThatFit = floor((totalWidth + margin) / (minCellWidth + margin))
-    let cellWidth          = (totalWidth - (numSectionsThatFit - 1) * margin) / numSectionsThatFit
+    let cellCount = floor((totalWidth + margin) / (minCellWidth + margin))
+    let cellWidth = (totalWidth - (cellCount - 1) * margin) / cellCount
 
     return CGSize(width: cellWidth, height: cellWidth)
   }
-}
 
-// MARK: - CollectionViewDelegateFlowLayout
+  // MARK: - LineSelectorPageType
 
-extension LineSelectorPage: UICollectionViewDelegateFlowLayout {
-  public func collectionView(_ collectionView: UICollectionView,
-                             layout collectionViewLayout: UICollectionViewLayout,
-                             referenceSizeForHeaderInSection section: Int) -> CGSize {
+  internal func setSections(sections: [LineSelectorSection]) {
+    if self.sections != sections {
+      self.sections = sections
+      self.collectionView.reloadData()
+    }
+  }
 
-    let header = self.collectionViewDataSource[section].model
+  internal func setSelectedIndices(indices newIndices: [IndexPath],
+                                   animated: Bool) {
+    let oldIndices = self.collectionView.indexPathsForSelectedItems ?? []
 
+    let newIndicesSet = Set(newIndices)
+    for index in oldIndices where !newIndicesSet.contains(index) {
+      self.collectionView.deselectItem(at: index,
+                                       animated: animated)
+    }
+
+    let oldIndicesSet = Set(oldIndices)
+    for index in newIndices where !oldIndicesSet.contains(index) {
+      self.collectionView.selectItem(at: index,
+                                     animated: animated,
+                                     scrollPosition: [])
+    }
+  }
+
+  // MARK: - UICollectionView
+
+  internal func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return self.sections.count
+  }
+
+  internal func collectionView(_ collectionView: UICollectionView,
+                               numberOfItemsInSection section: Int) -> Int {
+    let section = self.sections[section]
+    return section.lines.count
+  }
+
+  internal func collectionView(_ collectionView: UICollectionView,
+                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let section = self.sections[indexPath.section]
+    let line = section.lines[indexPath.item]
+
+    let cell = self.collectionView.dequeueCell(ofType: LineSelectorCell.self,
+                                               forIndexPath: indexPath)
+
+    cell.update(from: LineSelectorCellViewModel(line))
+    return cell
+  }
+
+  internal func collectionView(_ collectionView: UICollectionView,
+                               viewForSupplementaryElementOfKind kind: String,
+                               at indexPath: IndexPath) -> UICollectionReusableView {
+    switch kind {
+    case UICollectionView.elementKindSectionHeader:
+      let section = self.sections[indexPath.section]
+      let view = collectionView.dequeueSupplementary(ofType: LineSelectorHeaderView.self,
+                                                     kind: .header,
+                                                     for: indexPath)
+
+      view.update(from: LineSelectorHeaderViewModel(section: section))
+      return view
+
+    default:
+      fatalError("[LineSelectorPage] Unexpected supplementary view: \(kind)")
+    }
+  }
+
+  internal func collectionView(_ collectionView: UICollectionView,
+                               didSelectItemAt indexPath: IndexPath) {
+    self.viewModel.viewDidSelectIndex(index: indexPath)
+  }
+
+  internal func collectionView(_ collectionView: UICollectionView,
+                               didDeselectItemAt indexPath: IndexPath) {
+    self.viewModel.viewDidDeselectIndex(index: indexPath)
+  }
+
+  // MARK: - CollectionViewDelegateFlowLayout
+
+  internal func collectionView(_ collectionView: UICollectionView,
+                               layout collectionViewLayout: UICollectionViewLayout,
+                               referenceSizeForHeaderInSection section: Int) -> CGSize {
     let width  = self.collectionView.contentWidth
     let bounds = CGSize(width: width, height: .greatestFiniteMagnitude)
 
-    let text     = NSAttributedString(string: header.lineSubtypeTranslation, attributes: HeaderTextStyles.header)
-    let textSize = text.boundingRect(with: bounds, options: .usesLineFragmentOrigin, context: nil)
+    let section = self.sections[section]
+    let text = NSAttributedString(string: section.lineSubtypeTranslation,
+                                  attributes: HeaderTextStyles.header)
+    let textSize = text.boundingRect(with: bounds,
+                                     options: .usesLineFragmentOrigin,
+                                     context: nil)
 
     let height = textSize.height + HeaderLayout.topInset + HeaderLayout.bottomInset + 1.0
     return CGSize(width: width, height: height)

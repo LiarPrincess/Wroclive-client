@@ -3,15 +3,16 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
-import RxCocoa
 
-public final class LineSelector: UIPageViewController {
+public final class LineSelector:
+  UIPageViewController,
+  UIPageViewControllerDataSource, UIPageViewControllerDelegate,
+  LineSelectorViewType
+{
 
   // MARK: - Properties
 
   private let viewModel: LineSelectorViewModel
-  private let disposeBag = DisposeBag()
 
   private let tramPage: LineSelectorPage
   private let busPage:  LineSelectorPage
@@ -43,94 +44,98 @@ public final class LineSelector: UIPageViewController {
 
   // MARK: - Init
 
-  public init(_ viewModel: LineSelectorViewModel) {
+  public init(viewModel: LineSelectorViewModel) {
     self.viewModel = viewModel
-    self.tramPage = LineSelectorPage(viewModel.tramPageViewModel)
-    self.busPage  = LineSelectorPage(viewModel.busPageViewModel)
-    super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    self.tramPage = LineSelectorPage(viewModel: viewModel.tramPageViewModel)
+    self.busPage = LineSelectorPage(viewModel: viewModel.busPageViewModel)
+    super.init(transitionStyle: .scroll,
+               navigationOrientation: .horizontal,
+               options: nil)
 
-    // load views so we can select/deselect cells right away
+    viewModel.setView(view: self)
+
+    // Load views so we can select/deselect cells right away
     self.pages.forEach { _ = $0.view }
 
-    self.delegate   = self
+    self.delegate = self
     self.dataSource = self
 
-    self.initLayout()
-    self.initBindings()
+    // Show 1st page as default
+    let firstPage = self.pages[0]
+    self.setViewControllers([firstPage],
+                            direction: .forward,
+                            animated: false,
+                            completion: nil)
   }
 
   public required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  private func initLayout() {
-    // show 1st page as default
-    let firstPage = self.pages[0]
-    self.setViewControllers([firstPage], direction: .forward, animated: false, completion: nil)
-  }
+  // MARK: - LineSelectorViewType
 
-  private func initBindings() {
-    self.viewModel.page
-      .drive(onNext: { [unowned self] in self.setPage($0, animated: true) })
-      .disposed(by: self.disposeBag)
-
-    // we use 'UIPageViewControllerDelegate' instead of raw binding for input
-  }
-
-  // MARK: - Setters
-
-  private func setPage(_ lineType: LineType, animated: Bool) {
+  public func setPage(page: LineType, animated: Bool) {
     typealias Direction = UIPageViewController.NavigationDirection
 
-    let isTram    = lineType == .tram
-    let page      = isTram ? self.tramPage     : self.busPage
-    let direction = isTram ? Direction.reverse : Direction.forward
+    let pageView: LineSelectorPage
+    let direction: UIPageViewController.NavigationDirection
+
+    switch page {
+    case .tram:
+      pageView = self.tramPage
+      direction = .reverse
+    case .bus:
+      pageView = self.busPage
+      direction = .forward
+    }
 
     let selectedPage = self.viewControllers?.first
-    if selectedPage !== page {
-      self.setViewControllers([page], direction: direction, animated: animated, completion: nil)
+    if selectedPage !== pageView {
+      self.setViewControllers([pageView],
+                              direction: direction,
+                              animated: animated,
+                              completion: nil)
     }
   }
-}
 
-// MARK: UIPageViewControllerDataSource
+  // MARK: UIPageViewControllerDataSource
 
-extension LineSelector: UIPageViewControllerDataSource {
-  public func pageViewController(_ pageViewController: UIPageViewController,
-                                 viewControllerBefore viewController: UIViewController) -> UIViewController? {
-
-    guard let index = self.index(of: viewController)
-      else { return nil }
+  public func pageViewController(
+    _ pageViewController: UIPageViewController,
+    viewControllerBefore viewController: UIViewController
+  ) -> UIViewController? {
+    guard let index = self.index(of: viewController) else {
+      return nil
+    }
 
     let previousIndex = index - 1
     return previousIndex >= 0 ? self.pages[previousIndex] : nil
   }
 
-  public func pageViewController(_ pageViewController: UIPageViewController,
-                                 viewControllerAfter viewController: UIViewController) -> UIViewController? {
-
-    guard let index = self.index(of: viewController)
-      else { return nil }
+  public func pageViewController(
+    _ pageViewController: UIPageViewController,
+    viewControllerAfter viewController: UIViewController
+  ) -> UIViewController? {
+    guard let index = self.index(of: viewController) else {
+      return nil
+    }
 
     let nextIndex = index + 1
     return nextIndex < self.pages.count ? self.pages[nextIndex] : nil
   }
 
   private func index(of viewController: UIViewController) -> Int? {
-    return self.pages.index { $0 === viewController }
+    return self.pages.firstIndex { $0 === viewController }
   }
-}
 
-// MARK: - UIPageViewControllerDelegate
-
-extension LineSelector: UIPageViewControllerDelegate {
+  // MARK: - UIPageViewControllerDelegate
 
   public func pageViewController(_ pageViewController:          UIPageViewController,
                                  didFinishAnimating finished:   Bool,
                                  previousViewControllers:       [UIViewController],
                                  transitionCompleted completed: Bool) {
     if completed {
-      self.viewModel.didTransitionToPage.onNext(self.currentPage)
+      self.viewModel.viewDidTransitionToPage(page: self.currentPage)
     }
   }
 }

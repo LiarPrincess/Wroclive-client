@@ -3,93 +3,102 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
-import RxCocoa
 
-public final class LineSelectorPageViewModel {
+internal protocol LineSelectorPageType: AnyObject {
+  func setSections(sections: [LineSelectorSection])
+  func setSelectedIndices(indices: [IndexPath], animated: Bool)
+}
 
-  private let disposeBag = DisposeBag()
+internal final class LineSelectorPageViewModel {
 
-  // MARK: - Inputs
+  private var sections = [LineSelectorSection]()
+  private var selectedLines = [Line]()
 
-  public let didSelectIndex:   AnyObserver<IndexPath>
-  public let didDeselectIndex: AnyObserver<IndexPath>
+  private let onLineSelected: (Line) -> ()
+  private let onLineDeselected: (Line) -> ()
 
-  // MARK: - Output
-
-  public let sections:        Driver<[LineSelectorSection]>
-  public let selectedIndices: Driver<[IndexPath]>
+  private weak var view: LineSelectorPageType?
 
   // MARK: - Init
 
-  // swiftlint:disable:next function_body_length
-  public init(linesProp:         Observable<[Line]>,
-              selectedLinesProp: Observable<[Line]>,
-              onLineSelected:    @escaping (Line) -> (),
-              onLineDeselected:  @escaping (Line) -> ()) {
-
-    let _didSelectIndex = PublishSubject<IndexPath>()
-    self.didSelectIndex = _didSelectIndex.asObserver()
-
-    let _didDeselectIndex = PublishSubject<IndexPath>()
-    self.didDeselectIndex = _didDeselectIndex.asObserver()
-
-    self.sections = linesProp
-      .map(LineSelectorSectionCreator.create)
-      .startWith([])
-      .distinctUntilChanged()
-      .asDriver(onErrorDriveWith: .never())
-
-    // because of how UICollectionView works we need re-post selectedIndices every time lines change
-    // do not use .distinctUntilChanged(), if the lines changed then probably `selectedLines` have not
-    let indicesAfterLinesChanged = self.sections.asObservable()
-      .withLatestFrom(selectedLinesProp) { findLineIndices(of: $1, in: $0) }
-
-    let indicesAfterSelectedLinesChanged = selectedLinesProp
-      .withLatestFrom(self.sections) { findLineIndices(of: $0, in: $1) }
-      .distinctUntilChanged()
-
-    self.selectedIndices = Observable.merge(indicesAfterLinesChanged, indicesAfterSelectedLinesChanged)
-      .startWith([])
-      .asDriver(onErrorDriveWith: .never())
-
-    _didSelectIndex
-      .withLatestFrom(self.sections, resultSelector: getLineAtIndex)
-      .unwrap()
-      .bind(onNext: onLineSelected)
-      .disposed(by: self.disposeBag)
-
-    _didDeselectIndex
-      .withLatestFrom(self.sections, resultSelector: getLineAtIndex)
-      .unwrap()
-      .bind(onNext: onLineDeselected)
-      .disposed(by: self.disposeBag)
+  internal init(onLineSelected: @escaping (Line) -> (),
+                onLineDeselected: @escaping (Line) -> ()) {
+    self.onLineSelected = onLineSelected
+    self.onLineDeselected = onLineDeselected
   }
-}
 
-private func findLineIndices(of lines: [Line], in sections: [LineSelectorSection]) -> [IndexPath] {
-  guard lines.any else { return [] }
+  internal func setView(view: LineSelectorPageType) {
+    assert(self.view == nil, "View was already assigned")
+    self.view = view
 
-  var indexMap = [Line:IndexPath]()
-  for (sectionIndex, section) in sections.enumerated() {
-    for (lineIndex, line) in section.items.enumerated() {
-      indexMap[line] = IndexPath(item: lineIndex, section: sectionIndex)
+    let selectedIndices = self.getIndices(of: self.selectedLines)
+    self.view?.setSections(sections: self.sections)
+    self.view?.setSelectedIndices(indices: selectedIndices, animated: true)
+  }
+
+  // MARK: - Input
+
+  internal func setLines(lines: [Line]) {
+    self.sections = LineSelectorSection.create(from: lines)
+    self.view?.setSections(sections: sections)
+
+    // Indices may have changed and also because of how 'UICollectionView' works
+    // we need re-post 'selectedIndices' every time 'lines' change.
+    let selectedIndices = self.getIndices(of: self.selectedLines)
+    self.view?.setSelectedIndices(indices: selectedIndices, animated: true)
+  }
+
+  internal func setSelectedLines(lines: [Line]) {
+    self.selectedLines = lines
+
+    let selectedIndices = self.getIndices(of: self.selectedLines)
+    self.view?.setSelectedIndices(indices: selectedIndices, animated: true)
+  }
+
+  internal func viewDidSelectIndex(index: IndexPath) {
+    guard let line = getLine(at: index) else {
+      return
     }
+
+    self.onLineSelected(line)
   }
 
-  return lines.compactMap { indexMap[$0] }
-}
+  internal func viewDidDeselectIndex(index: IndexPath) {
+    guard let line = getLine(at: index) else {
+      return
+    }
 
-private func getLineAtIndex(at index: IndexPath, from sections: [LineSelectorSection]) -> Line? {
-  guard index.section >= 0
-     && index.section < sections.count
-    else { return nil }
+    self.onLineDeselected(line)
+  }
 
-  let items = sections[index.section].items
+  // MARK: - Helpers
 
-  guard index.item >= 0
-     && index.item < items.count
-    else { return nil }
+  private func getIndices(of lines: [Line]) -> [IndexPath] {
+    guard lines.any else {
+      return []
+    }
 
-  return items[index.item]
+    var indexMap = [Line:IndexPath]()
+    for (sectionIndex, section) in self.sections.enumerated() {
+      for (lineIndex, line) in section.lines.enumerated() {
+        indexMap[line] = IndexPath(item: lineIndex, section: sectionIndex)
+      }
+    }
+
+    return lines.compactMap { indexMap[$0] }
+  }
+
+  private func getLine(at index: IndexPath) -> Line? {
+    guard self.sections.indices.contains(index.section) else {
+        return nil
+    }
+
+    let items = self.sections[index.section].lines
+
+    guard items.indices.contains(index.item) else {
+        return nil
+    }
+
+    return items[index.item]
+  }
 }

@@ -7,8 +7,8 @@ import Foundation
 private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
 public final class LineSelectorCellViewModel {
-  private      var line: Line
-  private(set) var text: NSAttributedString
+  private let line: Line
+  internal private(set) var text: NSAttributedString
 
   public init(_ line: Line) {
     self.line = line

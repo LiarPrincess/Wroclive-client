@@ -2,31 +2,61 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-private typealias Localization = Localizable.Search.Sections
+public struct LineSelectorSection: Equatable {
 
-public typealias LineSelectorSection = RxSectionModel<LineSelectorSectionData, Line>
-
-public struct LineSelectorSectionData: Equatable {
   public let lineSubtype: LineSubtype
+  public let lines: [Line]
 
   public var lineSubtypeTranslation: String {
+    typealias L = Localizable.Search.Sections
+
     switch self.lineSubtype {
-    case .regular:   return Localization.regular
-    case .express:   return Localization.express
-    case .peakHour:  return Localization.peakHour
-    case .suburban:  return Localization.suburban
-    case .zone:      return Localization.zone
-    case .limited:   return Localization.limited
-    case .temporary: return Localization.temporary
-    case .night:     return Localization.night
+    case .regular:   return L.regular
+    case .express:   return L.express
+    case .peakHour:  return L.peakHour
+    case .suburban:  return L.suburban
+    case .zone:      return L.zone
+    case .limited:   return L.limited
+    case .temporary: return L.temporary
+    case .night:     return L.night
     }
   }
 
-  public init(for lineSubtype: LineSubtype) {
+  public init(for lineSubtype: LineSubtype, lines: [Line]) {
+    assert(lines.allSatisfy { $0.subtype == lineSubtype })
+
     self.lineSubtype = lineSubtype
+    self.lines = lines
   }
 
-  public static func == (lhs: LineSelectorSectionData, rhs: LineSelectorSectionData) -> Bool {
-    return lhs.lineSubtype == rhs.lineSubtype
+  internal static func create(from lines: [Line]) -> [LineSelectorSection] {
+    let linesBySubtype = lines.group { $0.subtype }
+
+    var result = [LineSelectorSection]()
+    for (subtype, var lines) in linesBySubtype {
+      lines.sortByLocalizedName()
+      result.append(LineSelectorSection(for: subtype, lines: lines))
+    }
+
+    result.sort { lhs, rhs in
+      let lhsOrder = Self.getOrder(subtype: lhs.lineSubtype)
+      let rhsOrder = Self.getOrder(subtype: rhs.lineSubtype)
+      return lhsOrder < rhsOrder
+    }
+
+    return result
+  }
+
+  private static func getOrder(subtype lineSubtype: LineSubtype) -> Int {
+    switch lineSubtype {
+    case .express:   return 0
+    case .regular:   return 1
+    case .night:     return 2
+    case .suburban:  return 3
+    case .peakHour:  return 4
+    case .zone:      return 5
+    case .limited:   return 6
+    case .temporary: return 7
+    }
   }
 }

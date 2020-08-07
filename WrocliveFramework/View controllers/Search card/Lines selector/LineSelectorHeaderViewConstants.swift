@@ -6,8 +6,8 @@ import UIKit
 
 public enum LineSelectorHeaderViewConstants {
   public enum Layout {
-    public static let topInset:    CGFloat = 16.0
-    public static let bottomInset: CGFloat =  8.0
+    public static let topInset = CGFloat(16.0)
+    public static let bottomInset = CGFloat(8.0)
   }
 
   public enum TextStyles {

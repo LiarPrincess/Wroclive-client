@@ -36,7 +36,7 @@ public final class LineSelectorCell: UICollectionViewCell {
 
   private func initLayout() {
     self.selectedBackgroundView = UIView()
-    self.selectedBackgroundView?.backgroundColor    = Theme.colors.tint
+    self.selectedBackgroundView?.backgroundColor = Theme.colors.tint
     self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
 
     self.textLabel.numberOfLines = 1
@@ -49,7 +49,8 @@ public final class LineSelectorCell: UICollectionViewCell {
   // MARK: - Methods
 
   public func update(from viewModel: LineSelectorCellViewModel) {
-    // note that self.isSelected for new cell is set BEFORE tableView(_:cellForRowAt:) is called
+    // Note that 'self.isSelected' for new cell is set BEFORE
+    // 'tableView(_:cellForRowAt:)' is called
     self.viewModel = viewModel
     self.updateTextLabel()
   }

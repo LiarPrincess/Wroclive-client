@@ -7,10 +7,12 @@ import Foundation
 private typealias TextStyles = LineSelectorHeaderViewConstants.TextStyles
 
 public final class LineSelectorHeaderViewModel {
+
   public let text: NSAttributedString
 
-  public init(_ section: LineSelectorSection) {
-    let translation = section.model.lineSubtypeTranslation
-    self.text = NSAttributedString(string: translation, attributes: TextStyles.header)
+  public init(section: LineSelectorSection) {
+    let translation = section.lineSubtypeTranslation
+    self.text = NSAttributedString(string: translation,
+                                   attributes: TextStyles.header)
   }
 }

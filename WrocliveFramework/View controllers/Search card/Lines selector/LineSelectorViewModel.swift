@@ -3,76 +3,78 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
-import RxCocoa
+
+public protocol LineSelectorViewType: AnyObject {
+  func setPage(page: LineType, animated: Bool)
+}
 
 public final class LineSelectorViewModel {
 
-  private let disposeBag = DisposeBag()
+  private var page = LineType.bus
+  private let onPageTransition: (LineType) -> ()
 
-  // MARK: - Inputs
+  internal let busPageViewModel: LineSelectorPageViewModel
+  internal let tramPageViewModel: LineSelectorPageViewModel
 
-  public let didTransitionToPage: AnyObserver<LineType>
+  private weak var view: LineSelectorViewType?
 
-  // MARK: - Output
+  public init(onPageTransition: @escaping (LineType) -> (),
+              onLineSelected: @escaping (Line) -> (),
+              onLineDeselected: @escaping (Line) -> ()) {
+    self.onPageTransition = onPageTransition
 
-  public let tramPageViewModel: LineSelectorPageViewModel
-  public let busPageViewModel:  LineSelectorPageViewModel
-
-  public let page: Driver<LineType>
-
-  // MARK: - Init
-
-  public init(pageProp:          Observable<LineType>,
-              linesProp:         Observable<[Line]>,
-              selectedLinesProp: Observable<[Line]>,
-              onPageTransition:  @escaping (LineType) -> (),
-              onLineSelected:    @escaping (Line) -> (),
-              onLineDeselected:  @escaping (Line) -> ()) {
-
-    let _didTransitionToPage = PublishSubject<LineType>()
-    self.didTransitionToPage = _didTransitionToPage.asObserver()
-
-    self.tramPageViewModel = createPageViewModel(
-      type: .tram,
-      linesProp:         linesProp,
-      selectedLinesProp: selectedLinesProp,
-      onLineSelected:    onLineSelected,
-      onLineDeselected:  onLineDeselected
+    self.tramPageViewModel = LineSelectorPageViewModel(
+      onLineSelected: onLineSelected,
+      onLineDeselected: onLineDeselected
     )
 
-    self.busPageViewModel = createPageViewModel(
-      type: .bus,
-      linesProp:         linesProp,
-      selectedLinesProp: selectedLinesProp,
-      onLineSelected:    onLineSelected,
-      onLineDeselected:  onLineDeselected
+    self.busPageViewModel = LineSelectorPageViewModel(
+      onLineSelected: onLineSelected,
+      onLineDeselected: onLineDeselected
     )
-
-    self.page = pageProp
-      .distinctUntilChanged()
-      .asDriver(onErrorDriveWith: .never())
-
-    _didTransitionToPage.asObservable()
-      .bind(onNext: onPageTransition)
-      .disposed(by: self.disposeBag)
   }
-}
 
-private func createPageViewModel(type lineType: LineType,
-                                 linesProp:         Observable<[Line]>,
-                                 selectedLinesProp: Observable<[Line]>,
-                                 onLineSelected:    @escaping (Line) -> (),
-                                 onLineDeselected:  @escaping (Line) -> ()) -> LineSelectorPageViewModel {
+  public func setView(view: LineSelectorViewType) {
+    assert(self.view == nil, "View was already assigned")
+    self.view = view
+    self.view?.setPage(page: self.page, animated: false)
+  }
 
-  return LineSelectorPageViewModel(
-    linesProp:         linesProp.map(only(lineType)),
-    selectedLinesProp: selectedLinesProp.map(only(lineType)),
-    onLineSelected:    onLineSelected,
-    onLineDeselected:  onLineDeselected
-  )
-}
+  // MARK: - Input
 
-private func only(_ lineType: LineType) -> ([Line]) -> [Line] {
-  return { $0.filter(lineType) }
+  public func viewDidTransitionToPage(page: LineType) {
+    self.onPageTransition(page)
+  }
+
+  // MARK: - Set
+
+  public func setPage(page: LineType) {
+    self.view?.setPage(page: page, animated: true)
+  }
+
+  public func setLines(lines: [Line]) {
+    let (busses, trams) = self.splitByLineType(lines: lines)
+    self.busPageViewModel.setLines(lines: busses)
+    self.tramPageViewModel.setLines(lines: trams)
+  }
+
+  public func setSelectedLines(lines: [Line]) {
+    let (busses, trams) = self.splitByLineType(lines: lines)
+    self.busPageViewModel.setSelectedLines(lines: busses)
+    self.tramPageViewModel.setSelectedLines(lines: trams)
+  }
+
+  private func splitByLineType(lines: [Line]) -> (busses: [Line], trams: [Line]) {
+    var trams = [Line]()
+    var busses = [Line]()
+
+    for line in lines {
+      switch line.type {
+      case .tram: trams.append(line)
+      case .bus: busses.append(line)
+      }
+    }
+
+    return (busses, trams)
+  }
 }
