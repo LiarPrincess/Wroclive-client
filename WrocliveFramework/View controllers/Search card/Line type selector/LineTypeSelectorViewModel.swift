@@ -3,54 +3,60 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
-import RxCocoa
 
-private typealias Localization = Localizable.Search
-
-private let lineTypePages: [LineType] = [.tram, .bus]
-
-public final class LineTypeSelectorViewModel {
-
-  private let disposeBag = DisposeBag()
-
-  // MARK: - Inputs
-
-  public let didSelectIndex: AnyObserver<Int>
-
-  // MARK: - Output
-
-  public lazy var pages: [String] = lineTypePages.map(toPageName)
-
-  public let selectedIndex: Driver<Int>
-
-  // MARK: - Init
-
-  public init(pageProp:     Observable<LineType>,
-              onPageChange: @escaping (LineType) -> ()) {
-
-    let _didSelectIndex = PublishSubject<Int>()
-    self.didSelectIndex = _didSelectIndex.asObserver()
-
-    self.selectedIndex = pageProp
-      .map { lineTypePages.firstIndex(of: $0) }
-      .unwrap()
-      .distinctUntilChanged()
-      .asDriver(onErrorDriveWith: .never())
-
-    _didSelectIndex.asObservable()
-      .filter { $0 >= 0 && $0 < lineTypePages.count }
-      .map    { lineTypePages[$0] }
-      .bind(onNext: onPageChange)
-      .disposed(by: self.disposeBag)
-  }
+internal protocol LineTypeSelectorViewModelDelegate: AnyObject {
+  func lineTypeSelectorViewModel(didSelectPage page: LineType)
 }
 
-// MARK: - Indices
+internal protocol LineTypeSelectorViewType: AnyObject {
+  func setPage(index: Int)
+}
 
-private func toPageName(_ lineType: LineType) -> String {
-  switch lineType {
-  case .tram: return Localization.Pages.tram
-  case .bus:  return Localization.Pages.bus
+internal final class LineTypeSelectorViewModel {
+
+  private var selectedIndex = 0
+  private let pages = [LineType.tram, LineType.bus]
+  internal private(set) lazy var pageNames = self.pages.map(Self.toPageName)
+
+  private weak var view: LineTypeSelectorViewType?
+  private weak var delegate: LineTypeSelectorViewModelDelegate?
+
+  internal init(delegate: LineTypeSelectorViewModelDelegate) {
+    self.delegate = delegate
+  }
+
+  public func setView(view: LineTypeSelectorViewType) {
+    assert(self.view == nil, "View was already assigned")
+    self.view = view
+
+    // Set initial selected index
+    self.view?.setPage(index: self.selectedIndex)
+  }
+
+  // MARK: - Input
+
+  internal func setPage(page: LineType) {
+    guard let index = self.pages.firstIndex(of: page) else {
+      fatalError("Unknown line type: \(page)")
+    }
+
+    self.selectedIndex = index
+    self.view?.setPage(index: index)
+  }
+
+  internal func viewDidSelect(index: Int) {
+    let page = self.pages[index]
+    self.delegate?.lineTypeSelectorViewModel(didSelectPage: page)
+  }
+
+  // MARK: - Helpers
+
+  private static func toPageName(_ lineType: LineType) -> String {
+    typealias L = Localizable.Search
+
+    switch lineType {
+    case .tram: return L.Pages.tram
+    case .bus:  return L.Pages.bus
+    }
   }
 }

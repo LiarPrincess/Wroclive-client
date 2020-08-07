@@ -4,14 +4,14 @@
 
 import UIKit
 
-public enum LineTypeSelectorConstants {
-  public enum Layout {
+internal enum LineTypeSelectorConstants {
+  internal enum Layout {
     /// Proposed height
-    public static let nominalHeight: CGFloat = 30.0
+    internal static let nominalHeight = CGFloat(30.0)
   }
 
-  public enum TextStyles {
-    public static var title: TextAttributes {
+  internal enum TextStyles {
+    internal static var title: TextAttributes {
       return TextAttributes(style: .body, color: .tint)
     }
   }
