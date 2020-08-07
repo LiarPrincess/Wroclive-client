@@ -3,18 +3,15 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 private typealias Layout       = SearchCardConstants.Layout
 private typealias Localization = Localizable.Search
 
-public final class SearchCard: UIViewController, CustomCardPanelPresentable {
+public final class SearchCard:
+  UIViewController, SearchCardViewType, CustomCardPanelPresentable
+{
 
   // MARK: - Properties
-
-  private let viewModel: SearchCardViewModel
-  private let disposeBag = DisposeBag()
 
   public var headerView: UIVisualEffectView = {
     let headerViewBlur = UIBlurEffect(style: Theme.colors.blurStyle)
@@ -26,71 +23,27 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable {
   public let searchButton    = UIButton()
   public let placeholderView = SearchPlaceholderView()
 
-  public lazy var lineTypeSelector = LineTypeSelector(self.viewModel.lineTypeSelectorViewModel)
-  public lazy var lineSelector     = LineSelector(self.viewModel.lineSelectorViewModel)
+  internal lazy var lineSelector = LineSelector(
+    viewModel: self.viewModel.lineSelectorViewModel
+  )
+  internal lazy var lineTypeSelector = LineTypeSelector(
+    viewModel: self.viewModel.lineTypeSelectorViewModel
+  )
+
+  internal let viewModel: SearchCardViewModel
+  internal let environment: Environment
 
   // MARK: - Init
 
-  public init(_ viewModel: SearchCardViewModel) {
+  public init(viewModel: SearchCardViewModel, environment: Environment) {
     self.viewModel = viewModel
+    self.environment = environment
     super.init(nibName: nil, bundle: nil)
-
-    self.initVisibilityBindings()
-    self.initButtonBindings()
-    self.initAlertBindings()
-    self.initViewControlerLifecycleBindings()
+    viewModel.setView(view: self)
   }
 
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-
-  // MARK: - Bindings
-
-  private func initVisibilityBindings() {
-    self.viewModel.isLineSelectorVisible
-      .drive(self.lineSelector.view.rx.isVisible)
-      .disposed(by: self.disposeBag)
-
-    self.viewModel.isPlaceholderVisible
-      .drive(self.placeholderView.rx.isVisible)
-      .disposed(by: self.disposeBag)
-  }
-
-  private func initButtonBindings() {
-    self.bookmarkButton.rx.tap
-      .bind(to: self.viewModel.didPressBookmarkButton)
-      .disposed(by: self.disposeBag)
-
-    self.searchButton.rx.tap
-      .bind(to: self.viewModel.didPressSearchButton)
-      .disposed(by: self.disposeBag)
-  }
-
-  private func initAlertBindings() {
-    self.viewModel.showAlert.asObservable()
-      .flatMapLatest(createBookmarkNameAlert)
-      .unwrap()
-      .bind(to: self.viewModel.didEnterBookmarkName)
-      .disposed(by: self.disposeBag)
-
-    self.viewModel.showAlert.asObservable()
-      .flatMapLatest(createAlert)
-      .subscribe()
-      .disposed(by: self.disposeBag)
-  }
-
-  private func initViewControlerLifecycleBindings() {
-    // modal view controllers can send multiple messages when user cancels gesture
-    // also simple binding would propagate also .onCompleted events
-    self.rx.methodInvoked(#selector(SearchCard.viewWillAppear(_:)))
-      .take(1)
-      .bind { [unowned self] _ in self.viewModel.viewWillAppear.onNext() }
-      .disposed(by: self.disposeBag)
-
-    self.viewModel.close
-      .drive(onNext: { [unowned self] in self.dismiss(animated: true, completion: nil) })
-      .disposed(by: self.disposeBag)
   }
 
   // MARK: - Overriden
@@ -115,36 +68,79 @@ public final class SearchCard: UIViewController, CustomCardPanelPresentable {
       let rightInset  = Layout.rightInset
       let bottomInset = Layout.LineSelector.bottomInset
 
-      self.lineSelector.contentInset          = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-      self.lineSelector.scrollIndicatorInsets = UIEdgeInsets(top: topInset, left: 0.0,       bottom: 0.0,         right: 0.0)
+      self.lineSelector.contentInset = UIEdgeInsets(top: topInset,
+                                                    left: leftInset,
+                                                    bottom: bottomInset,
+                                                    right: rightInset)
+      self.lineSelector.scrollIndicatorInsets = UIEdgeInsets(top: topInset,
+                                                             left: 0.0,
+                                                             bottom: 0.0,
+                                                             right: 0.0)
     }
+  }
+
+  // MARK: -  Line selector visibility
+
+  public func setIsLineSelectorVisible(value: Bool) {
+    let isHidden = !value
+    self.lineSelector.view.isHidden = isHidden
+  }
+
+  public func setIsPlaceholderVisible(value: Bool) {
+    let isHidden = !value
+    self.placeholderView.isHidden = isHidden
+  }
+
+  // MARK: - Search
+
+  @objc
+  internal func didPressSearchButton() {
+    self.viewModel.didPressSearchButton()
+  }
+
+  // MARK: - Bookmark
+
+  @objc
+  internal func didPressBookmarkButton() {
+    self.viewModel.didPressBookmarkButton()
+  }
+
+  public func showBookmarkNameInputAlert() {
+    _ = BookmarkAlerts.showNameInputAlert()
+      .done { [weak self] nameOrNone in
+        guard let name = nameOrNone else {
+          return
+        }
+
+        self?.viewModel.didEnterBookmarkName(value: name)
+      }
+  }
+
+  public func showBookmarkNoLineSelectedAlert() {
+    _ = BookmarkAlerts.showNoLinesSelectedAlert()
+  }
+
+  // MARK: - Api alert
+
+  public func showApiErrorAlert(error: ApiError) {
+    switch error {
+    case .reachabilityError:
+      _ = NetworkAlerts.showNoInternetAlert()
+    case .invalidResponse,
+         .otherError:
+      _ = NetworkAlerts.showConnectionErrorAlert()
+    }
+  }
+
+  // MARK: - Close
+
+  public func close(animated: Bool) {
+    self.dismiss(animated: animated, completion: nil)
   }
 
   // MARK: - CustomCardPanelPresentable
 
   public var scrollView: UIScrollView? {
     return self.lineSelector.scrollView
-  }
-}
-
-// MARK: - Helpers
-
-private func createBookmarkNameAlert(_ alert: SearchCardAlert) -> Observable<String?> {
-  switch alert {
-  case .bookmarkNameInput: return BookmarkAlerts.showNameInputAlert()
-  default: return .never()
-  }
-}
-
-private func createAlert(_ alert: SearchCardAlert) -> Observable<Void> {
-  switch alert {
-  case .bookmarkNoLineSelected: return BookmarkAlerts.showNoLinesSelectedAlert()
-  case let .apiError(error):
-    switch error {
-    case .noInternet:      return NetworkAlerts.showNoInternetAlert()
-    case .invalidResponse,
-         .generalError:    return NetworkAlerts.showConnectionErrorAlert()
-    }
-  default: return .never()
   }
 }

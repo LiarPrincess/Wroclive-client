@@ -22,15 +22,17 @@ internal extension SearchCard {
 
   // swiftlint:disable:next function_body_length
   private func initHeader() {
-    self.headerView.contentView.addBottomBorder()
-    self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
+    let device = self.environment.device
+    self.headerView.contentView.addBottomBorder(device: device)
+    self.headerView.setContentHuggingPriority(900, for: .vertical)
 
     self.view.addSubview(self.headerView)
     self.headerView.snp.makeConstraints { make in
       make.top.left.right.equalToSuperview()
     }
 
-    self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
+    self.titleLabel.attributedText = NSAttributedString(string: Localization.title,
+                                                        attributes: TextStyles.cardTitle)
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
@@ -42,9 +44,11 @@ internal extension SearchCard {
 
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.Bookmark.size)
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
-
     self.bookmarkButton.tintColor         = Theme.colors.tint
     self.bookmarkButton.contentEdgeInsets = Layout.Header.Bookmark.insets
+    self.bookmarkButton.addTarget(self,
+                                  action: #selector(didPressBookmarkButton),
+                                  for: .touchUpInside)
 
     self.headerView.contentView.addSubview(self.bookmarkButton)
     self.bookmarkButton.snp.makeConstraints { make in
@@ -52,9 +56,13 @@ internal extension SearchCard {
       make.left.equalTo(self.titleLabel.snp.right)
     }
 
-    let searchTitle = NSAttributedString(string: Localization.search, attributes: TextStyles.search)
+    let searchTitle = NSAttributedString(string: Localization.search,
+                                         attributes: TextStyles.search)
     self.searchButton.setAttributedTitle(searchTitle, for: .normal)
     self.searchButton.contentEdgeInsets = Layout.Header.Search.insets
+    self.searchButton.addTarget(self,
+                                action: #selector(didPressSearchButton),
+                                for: .touchUpInside)
 
     self.headerView.contentView.addSubview(self.searchButton)
     self.searchButton.snp.makeConstraints { make in

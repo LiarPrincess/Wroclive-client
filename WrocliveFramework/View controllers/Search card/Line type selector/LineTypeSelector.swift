@@ -9,12 +9,8 @@ private typealias TextStyles = LineTypeSelectorConstants.TextStyles
 
 internal final class LineTypeSelector: UIViewController, LineTypeSelectorViewType {
 
-  // MARK: - Properties
-
   private let viewModel: LineTypeSelectorViewModel
   private let segmentedControl = UISegmentedControl(frame: .zero)
-
-  // MARK: - Init
 
   internal init(viewModel: LineTypeSelectorViewModel) {
     self.viewModel = viewModel

@@ -6,7 +6,7 @@ import UIKit
 
 public enum SearchPlaceholderViewConstants {
   public enum Layout {
-    public static let verticalSpacing: CGFloat = 8.0
+    public static let verticalSpacing = CGFloat(8.0)
   }
 
   public enum TextStyles {

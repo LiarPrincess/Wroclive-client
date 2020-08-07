@@ -4,26 +4,33 @@
 
 import UIKit
 import ReSwift
-import RxSwift
-import RxCocoa
+
+// swiftlint:disable weak_delegate
 
 public final class SearchCardCoordinator: CardCoordinator {
 
   public let parent: UIViewController
   public let store:  Store<AppState>
+  public let environment: Environment
 
-  public var card:                   SearchCard?
-  public var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  public var card: SearchCard?
+  public var cardTransitionDelegate: UIViewControllerTransitioningDelegate?
 
-  public init(_ parent: UIViewController, _ store: Store<AppState>) {
+  public init(parent: UIViewController,
+              store: Store<AppState>,
+              environment: Environment) {
     self.parent = parent
-    self.store  = store
+    self.store = store
+    self.environment = environment
   }
 
   public func start() {
-    let viewModel = SearchCardViewModel(self.store)
-    let card      = SearchCard(viewModel)
-    let height    = 0.9 * AppEnvironment.device.screenBounds.height
+    let viewModel = SearchCardViewModel(store: self.store,
+                                        environment: self.environment)
+    let card = SearchCard(viewModel: viewModel,
+                          environment: self.environment)
+
+    let height = 0.9 * self.environment.device.screenBounds.height
     self.presentCard(card, withHeight: height, animated: true)
   }
 }

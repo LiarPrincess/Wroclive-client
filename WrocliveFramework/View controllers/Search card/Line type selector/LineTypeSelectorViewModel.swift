@@ -4,10 +4,6 @@
 
 import UIKit
 
-internal protocol LineTypeSelectorViewModelDelegate: AnyObject {
-  func lineTypeSelectorViewModel(didSelectPage page: LineType)
-}
-
 internal protocol LineTypeSelectorViewType: AnyObject {
   func setPage(index: Int)
 }
@@ -18,11 +14,12 @@ internal final class LineTypeSelectorViewModel {
   private let pages = [LineType.tram, LineType.bus]
   internal private(set) lazy var pageNames = self.pages.map(Self.toPageName)
 
-  private weak var view: LineTypeSelectorViewType?
-  private weak var delegate: LineTypeSelectorViewModelDelegate?
+  private let onPageSelected: (LineType) -> ()
 
-  internal init(delegate: LineTypeSelectorViewModelDelegate) {
-    self.delegate = delegate
+  private weak var view: LineTypeSelectorViewType?
+
+  internal init(onPageSelected: @escaping (LineType) -> ()) {
+    self.onPageSelected = onPageSelected
   }
 
   public func setView(view: LineTypeSelectorViewType) {
@@ -46,7 +43,7 @@ internal final class LineTypeSelectorViewModel {
 
   internal func viewDidSelect(index: Int) {
     let page = self.pages[index]
-    self.delegate?.lineTypeSelectorViewModel(didSelectPage: page)
+    self.onPageSelected(page)
   }
 
   // MARK: - Helpers

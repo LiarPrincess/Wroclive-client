@@ -4,145 +4,184 @@
 
 import UIKit
 import ReSwift
-import RxSwift
-import RxCocoa
 
-public final class SearchCardViewModel {
+public protocol SearchCardViewType: AnyObject {
+  func setIsLineSelectorVisible(value: Bool)
+  func setIsPlaceholderVisible(value: Bool)
 
-  private let disposeBag = DisposeBag()
+  // TODO: Bookmark flow is awkard, move to separate struct
+  func showBookmarkNameInputAlert()
+  func showBookmarkNoLineSelectedAlert()
+  func showApiErrorAlert(error: ApiError)
 
-  // MARK: - Inputs
+  func close(animated: Bool)
+}
 
-  public let didPressBookmarkButton: AnyObserver<Void>
-  public let didPressSearchButton:   AnyObserver<Void>
+public final class SearchCardViewModel: StoreSubscriber {
 
-  public let didPressAlertTryAgainButton: AnyObserver<Void>
-  public let didEnterBookmarkName:        AnyObserver<String>
+  private let store: Store<AppState>
+  private let environment: Environment
 
-  public let viewWillAppear: AnyObserver<Void>
+  /// State that is currently being presented.
+  private var currentState: AppState?
+  private weak var view: SearchCardViewType?
 
-  // MARK: - Output
+  internal let lineTypeSelectorViewModel: LineTypeSelectorViewModel
+  internal let lineSelectorViewModel: LineSelectorViewModel
 
-  public let lineSelectorViewModel:     LineSelectorViewModel
-  public let lineTypeSelectorViewModel: LineTypeSelectorViewModel
+  private var selectedLines: [Line]? {
+    return self.currentState?.searchCardState.selectedLines
+  }
 
-  public let isLineSelectorVisible: Driver<Bool>
-  public let isPlaceholderVisible:  Driver<Bool>
+  public init(store: Store<AppState>, environment: Environment) {
+    self.store = store
+    self.environment = environment
 
-  public let showAlert: Driver<SearchCardAlert>
-
-  public let close: Driver<Void>
-
-  // MARK: - Init
-
-  // swiftlint:disable:next function_body_length
-  public init(_ store: Store<AppState>) {
-    let _didPressBookmarkButton = PublishSubject<Void>()
-    self.didPressBookmarkButton = _didPressBookmarkButton.asObserver()
-
-    let _didPressSearchButton = PublishSubject<Void>()
-    self.didPressSearchButton = _didPressSearchButton.asObserver()
-
-    let _didPressAlertTryAgainButton = PublishSubject<Void>()
-    self.didPressAlertTryAgainButton = _didPressAlertTryAgainButton.asObserver()
-
-    let _didEnterBookmarkName = PublishSubject<String>()
-    self.didEnterBookmarkName = _didEnterBookmarkName.asObserver()
-
-    let _viewWillAppear = PublishSubject<Void>()
-    self.viewWillAppear = _viewWillAppear.asObserver()
-
-    // common
-    let page = store.rx.state
-      .map { $0.userData.searchCardState.page }
-
-    let linesResponse = store.rx.state
-      .skipUntil(_viewWillAppear.asObservable()) // so that we don't see value from previous state
-      .map { $0.apiData.lines }
-      .share()
-
-    let selectedLines = store.rx.state
-      .map { $0.userData.searchCardState.selectedLines }
-
-    // components
     self.lineTypeSelectorViewModel = LineTypeSelectorViewModel(
-      pageProp:     page,
-      onPageChange: dispatchSelectPageAction(store)
+      onPageSelected: { store.dispatch(SearchCardStateAction.selectPage($0)) }
     )
 
     self.lineSelectorViewModel = LineSelectorViewModel(
-      pageProp:          page,
-      linesProp:         linesResponse.data(),
-      selectedLinesProp: selectedLines,
-      onPageTransition:  dispatchSelectPageAction(store),
-      onLineSelected:    dispatchSelectLineAction(store),
-      onLineDeselected:  dispatchDeselectLineAction(store)
+      onPageTransition: { store.dispatch(SearchCardStateAction.selectPage($0)) },
+      onLineSelected: { store.dispatch(SearchCardStateAction.selectLine($0)) },
+      onLineDeselected: { store.dispatch(SearchCardStateAction.deselectLine($0)) }
     )
+  }
 
-    // visibility
-    self.isLineSelectorVisible = linesResponse
-      .data()
-      .map { $0.any }
-      .startWith(false)
-      .distinctUntilChanged()
-      .asDriver(onErrorDriveWith: .never())
+  public func setView(view: SearchCardViewType) {
+    assert(self.view == nil, "View was already assigned")
+    self.view = view
+    self.store.subscribe(self)
+  }
 
-    self.isPlaceholderVisible = self.isLineSelectorVisible.map { !$0 }
+  // MARK: - Input
 
-    // alerts
-    let apiErrorAlert = linesResponse
-      .errors()
-      .map(SearchCardAlert.apiError)
+  public func didPressBookmarkButton() {
+    guard let selectedLines = self.selectedLines else {
+      return
+    }
 
-    let responseWithoutLinesAlert = linesResponse
-      .data()
-      .flatMapLatest { lines -> Driver<SearchCardAlert> in
-        switch lines.any {
-        case true: return .never()
-        case false: return .just(SearchCardAlert.apiError(.generalError))
+    if selectedLines.any {
+      self.view?.showBookmarkNameInputAlert()
+    } else {
+      self.view?.showBookmarkNoLineSelectedAlert()
+    }
+  }
+
+  public func didEnterBookmarkName(value: String) {
+    let selectedLines = self.selectedLines ?? []
+    self.store.dispatch(BookmarksAction.add(name: value, lines: selectedLines))
+  }
+
+  public func didPressSearchButton() {
+    let selectedLines = self.selectedLines ?? []
+    self.store.dispatch(TrackedLinesAction.startTracking(selectedLines))
+
+    self.view?.close(animated: true)
+  }
+
+  public func didPressAlertTryAgainButton() {
+    self.requestLinesFromApi()
+  }
+
+  // MARK: - Delegates
+
+  internal func lineTypeSelectorViewModel(didSelectPage page: LineType) {
+    self.store.dispatch(SearchCardStateAction.selectPage(page))
+  }
+
+  internal func lineSelectorViewModel(didSelectPage page: LineType) {
+    self.store.dispatch(SearchCardStateAction.selectPage(page))
+  }
+
+  internal func lineSelectorViewModel(didSelectLine line: Line) {
+    self.store.dispatch(SearchCardStateAction.selectLine(line))
+  }
+
+  internal func lineSelectorViewModel(didDeselectLine line: Line) {
+    self.store.dispatch(SearchCardStateAction.deselectLine(line))
+  }
+
+  // MARK: - Store subscriber
+
+  public func newState(state: AppState) {
+    defer { self.currentState = state }
+
+    self.updatePageIfNeeded(newState: state)
+    self.handleLineRequestChange(newState: state)
+  }
+
+  private func updatePageIfNeeded(newState: AppState) {
+    let new = newState.searchCardState.page
+    let old = self.currentState?.searchCardState.page
+
+    if new != old {
+      self.lineSelectorViewModel.setPage(page: new)
+      self.lineTypeSelectorViewModel.setPage(page: new)
+    }
+  }
+
+  private func handleSelectedLinesChange(newState: AppState) {
+    let new = newState.searchCardState.selectedLines
+    let old = self.currentState?.searchCardState.selectedLines
+
+    if new != old {
+      self.lineSelectorViewModel.setSelectedLines(lines: new)
+    }
+  }
+
+  private func handleLineRequestChange(newState: AppState) {
+    let new = newState.getLinesResponse
+    let old = self.currentState?.getLinesResponse
+
+    switch new {
+    case .data(let newLines):
+      let oldLines = old?.getData()
+      if newLines != oldLines {
+        if newLines.isEmpty {
+          self.view?.showApiErrorAlert(error: .invalidResponse)
+        } else {
+          self.lineSelectorViewModel.setLines(lines: newLines)
+          self.setIsLineSelectorVisible(value: true)
         }
       }
 
-    let bookmarkAlert = _didPressBookmarkButton
-      .withLatestFrom(selectedLines)
-      .map { $0.any ? SearchCardAlert.bookmarkNameInput : SearchCardAlert.bookmarkNoLineSelected }
+    case .error(let newError):
+      // If previously we did not have an error -> just show new error
+      guard let oldError = old?.getError() else {
+        self.view?.showApiErrorAlert(error: newError)
+        return
+      }
 
-    self.showAlert = Observable.merge(apiErrorAlert, responseWithoutLinesAlert, bookmarkAlert)
-      .distinctUntilChanged()
-      .asDriver(onErrorDriveWith: .never())
+      // Otherwise we have to check if error changed
+      switch (oldError, newError) {
+        case (.invalidResponse, .invalidResponse),
+             (.reachabilityError, .reachabilityError),
+             (.otherError, .otherError):
+        break
+      default:
+        self.view?.showApiErrorAlert(error: newError)
+      }
 
-    // close
-    self.close = _didPressSearchButton
-      .map { _ in () }
-      .asDriver(onErrorDriveWith: .never())
+    case .inProgress:
+      // Leave it as it is
+      break
 
-    // bindings
-    _didPressSearchButton
-      .withLatestFrom(selectedLines)
-      .bind { store.dispatch(TrackedLinesAction.startTracking($0)) }
-      .disposed(by: self.disposeBag)
-
-    _didEnterBookmarkName
-      .withLatestFrom(selectedLines) { (name: $0, lines: $1) }
-      .bind { store.dispatch(BookmarksAction.add(name: $0.name, lines: $0.lines)) }
-      .disposed(by: self.disposeBag)
-
-    Observable.merge(_viewWillAppear.asObservable(), _didPressAlertTryAgainButton)
-      .bind { store.dispatch(ApiAction.updateLines) }
-      .disposed(by: self.disposeBag)
+    case .none:
+      let isTheSameAsPrevious = old?.isNone ?? true
+      if !isTheSameAsPrevious {
+        self.requestLinesFromApi()
+        self.setIsLineSelectorVisible(value: false)
+      }
+    }
   }
-}
 
-// MARK: - Dispatch
+  private func requestLinesFromApi() {
+    self.store.dispatch(ApiMiddlewareActions.requestLines)
+  }
 
-private func dispatchSelectPageAction(_ store: Store<AppState>) -> (LineType) -> () {
-  return { store.dispatch(SearchCardStateAction.selectPage($0)) }
-}
-
-private func dispatchSelectLineAction(_ store: Store<AppState>) -> (Line) -> () {
-  return { store.dispatch(SearchCardStateAction.selectLine($0)) }
-}
-
-private func dispatchDeselectLineAction(_ store: Store<AppState>) -> (Line) -> () {
-  return { store.dispatch(SearchCardStateAction.deselectLine($0)) }
+  private func setIsLineSelectorVisible(value: Bool) {
+    self.view?.setIsLineSelectorVisible(value: value)
+    self.view?.setIsPlaceholderVisible(value: !value)
+  }
 }

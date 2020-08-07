@@ -26,8 +26,9 @@ public final class BookmarksCardCoordinator: CardCoordinator {
 
   public func start() {
     let viewModel = BookmarksCardViewModel(store: self.store)
-    let card      = BookmarksCard(viewModel: viewModel, environment: self.environment)
-    let height    = 0.75 * self.environment.device.screenBounds.height
+    let card = BookmarksCard(viewModel: viewModel, environment: self.environment)
+
+    let height = 0.75 * self.environment.device.screenBounds.height
     self.presentCard(card, withHeight: height, animated: true)
   }
 }

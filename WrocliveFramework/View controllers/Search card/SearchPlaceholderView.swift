@@ -35,7 +35,8 @@ public final class SearchPlaceholderView: UIView {
       make.centerX.equalToSuperview()
     }
 
-    self.label.attributedText = NSAttributedString(string: Localization.loading, attributes: TextStyles.label)
+    self.label.attributedText = NSAttributedString(string: Localization.loading,
+                                                   attributes: TextStyles.label)
     self.label.numberOfLines  = 0
     self.label.lineBreakMode  = .byWordWrapping
 
@@ -53,7 +54,10 @@ public final class SearchPlaceholderView: UIView {
   // MARK: - Private - Animation state
 
   private func updateAnimationState() {
-    if self.isHidden { self.spinner.stopAnimating()  }
-    else             { self.spinner.startAnimating() }
+    if self.isHidden {
+      self.spinner.stopAnimating()
+    } else {
+      self.spinner.startAnimating()
+    }
   }
 }

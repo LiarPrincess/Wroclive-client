@@ -25,6 +25,13 @@ public struct AppState: StateType {
     case data(Data)
     case error(ApiError)
 
+    public var isNone: Bool {
+      switch self {
+      case .none: return true
+      case .inProgress, .data, .error: return false
+      }
+    }
+
     public var isInProgress: Bool {
       switch self {
       case .inProgress: return true

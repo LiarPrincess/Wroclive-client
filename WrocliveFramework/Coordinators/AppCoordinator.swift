@@ -37,13 +37,14 @@ public final class AppCoordinator: Coordinator, MainViewModelDelegate {
   }
 
   public func openSearchCard() {
-//    guard let mainViewController = self.mainViewController else {
-//      fatalError("AppCoordinator has to be started first")
-//    }
+    guard let mainViewController = self.mainViewController else {
+      fatalError("AppCoordinator has to be started first")
+    }
 
-    print(#function)
-//    self.childCoordinator = SearchCardCoordinator(mainViewController, self.store)
-//    self.childCoordinator!.start()
+    self.childCoordinator = SearchCardCoordinator(parent: mainViewController,
+                                                  store: self.store,
+                                                  environment: self.environment)
+    self.childCoordinator!.start()
   }
 
   public func openBookmarksCard() {
