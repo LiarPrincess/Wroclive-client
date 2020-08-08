@@ -95,7 +95,6 @@
 		9076BD4A24DDB5D100467075 /* SearchCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD3F24DDB5D000467075 /* SearchCardLayout.swift */; };
 		9076BD4B24DDB5D100467075 /* SearchCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4024DDB5D100467075 /* SearchCardConstants.swift */; };
 		9076BD5024DDB5D100467075 /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4624DDB5D100467075 /* SearchPlaceholderView.swift */; };
-		9076BD5124DDB5D100467075 /* SearchPlaceholderViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4724DDB5D100467075 /* SearchPlaceholderViewConstants.swift */; };
 		9076BD5224DDB5D100467075 /* SearchCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */; };
 		9076BD5324DDB5D100467075 /* SearchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4924DDB5D100467075 /* SearchCard.swift */; };
 		9076BD5424DDB5D800467075 /* SearchCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4224DDB5D100467075 /* SearchCardViewModelTests+Bookmarks.swift */; };
@@ -272,7 +271,6 @@
 		9076BD4424DDB5D100467075 /* SearchCardViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelTests.swift; sourceTree = "<group>"; };
 		9076BD4524DDB5D100467075 /* SearchCardViewModelTests+Lines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Lines.swift"; sourceTree = "<group>"; };
 		9076BD4624DDB5D100467075 /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
-		9076BD4724DDB5D100467075 /* SearchPlaceholderViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderViewConstants.swift; sourceTree = "<group>"; };
 		9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewModel.swift; sourceTree = "<group>"; };
 		9076BD4924DDB5D100467075 /* SearchCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCard.swift; sourceTree = "<group>"; };
 		9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTypeSegmentedControl.swift; sourceTree = "<group>"; };
@@ -712,7 +710,6 @@
 				9076BD4024DDB5D100467075 /* SearchCardConstants.swift */,
 				9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */,
 				9076BD4624DDB5D100467075 /* SearchPlaceholderView.swift */,
-				9076BD4724DDB5D100467075 /* SearchPlaceholderViewConstants.swift */,
 				9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */,
 				90093B4F24DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift */,
 			);
@@ -937,7 +934,6 @@
 				905893CD24D4A95D0046EFA5 /* BundleManager.swift in Sources */,
 				905893C924D4A95D0046EFA5 /* StorageManager.swift in Sources */,
 				9013FABA24D6B1890006D1B9 /* DismissGestureHandlerType.swift in Sources */,
-				9076BD5124DDB5D100467075 /* SearchPlaceholderViewConstants.swift in Sources */,
 				900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */,
 				90CE742124D9BB7800419166 /* BookmarksCard.swift in Sources */,
 				9013FAB824D6B1890006D1B9 /* CardPanelContainer.swift in Sources */,

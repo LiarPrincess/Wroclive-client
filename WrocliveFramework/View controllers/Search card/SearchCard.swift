@@ -4,7 +4,7 @@
 
 import UIKit
 
-private typealias Layout       = SearchCardConstants.Layout
+private typealias Constants = SearchCardConstants
 private typealias Localization = Localizable.Search
 
 public final class SearchCard:
@@ -18,9 +18,9 @@ public final class SearchCard:
     return UIVisualEffectView(effect: headerViewBlur)
   }()
 
-  public let titleLabel      = UILabel()
-  public let bookmarkButton  = UIButton()
-  public let searchButton    = UIButton()
+  public let titleLabel = UILabel()
+  public let bookmarkButton = UIButton()
+  public let searchButton = UIButton()
   public let placeholderView = SearchPlaceholderView()
 
   internal var lineSelector: LineSelector
@@ -69,9 +69,9 @@ public final class SearchCard:
 
     if currentInset.top < headerHeight {
       let topInset    = headerHeight
-      let leftInset   = Layout.leftInset
-      let rightInset  = Layout.rightInset
-      let bottomInset = Layout.LineSelector.bottomInset
+      let leftInset   = Constants.leftInset
+      let rightInset  = Constants.rightInset
+      let bottomInset = Constants.LineSelector.bottomInset
 
       self.lineSelector.contentInset = UIEdgeInsets(top: topInset,
                                                     left: leftInset,

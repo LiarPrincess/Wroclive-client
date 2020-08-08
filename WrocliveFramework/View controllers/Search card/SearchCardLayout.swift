@@ -5,8 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout       = SearchCardConstants.Layout
-private typealias TextStyles   = SearchCardConstants.TextStyles
+private typealias Constants = SearchCardConstants
 private typealias Localization = Localizable.Search
 
 internal extension SearchCard {
@@ -18,7 +17,7 @@ internal extension SearchCard {
     self.initPlaceholder()
   }
 
-  // MARK: - Private
+  // MARK: - Header
 
   // swiftlint:disable:next function_body_length
   private func initHeader() {
@@ -31,21 +30,23 @@ internal extension SearchCard {
       make.top.left.right.equalToSuperview()
     }
 
-    self.titleLabel.attributedText = NSAttributedString(string: Localization.title,
-                                                        attributes: TextStyles.cardTitle)
+    self.titleLabel.attributedText = NSAttributedString(
+      string: Localization.title,
+      attributes: Constants.Header.Title.attributes
+    )
     self.titleLabel.numberOfLines  = 0
     self.titleLabel.lineBreakMode  = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.Header.Title.topOffset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
+      make.top.equalToSuperview().offset(Constants.Header.Title.topOffset)
+      make.left.equalToSuperview().offset(Constants.leftInset)
     }
 
-    let bookmarkImage = StyleKit.drawStarTemplateImage(size: Layout.Header.Bookmark.size)
+    let bookmarkImage = StyleKit.drawStarTemplateImage(size: Constants.Header.Bookmark.size)
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
-    self.bookmarkButton.tintColor         = Theme.colors.tint
-    self.bookmarkButton.contentEdgeInsets = Layout.Header.Bookmark.insets
+    self.bookmarkButton.tintColor = Theme.colors.tint
+    self.bookmarkButton.contentEdgeInsets = Constants.Header.Bookmark.insets
     self.bookmarkButton.addTarget(self,
                                   action: #selector(didPressBookmarkButton),
                                   for: .touchUpInside)
@@ -56,10 +57,12 @@ internal extension SearchCard {
       make.left.equalTo(self.titleLabel.snp.right)
     }
 
-    let searchTitle = NSAttributedString(string: Localization.search,
-                                         attributes: TextStyles.search)
+    let searchTitle = NSAttributedString(
+      string: Localization.search,
+      attributes: Constants.Header.Search.attributes
+    )
     self.searchButton.setAttributedTitle(searchTitle, for: .normal)
-    self.searchButton.contentEdgeInsets = Layout.Header.Search.insets
+    self.searchButton.contentEdgeInsets = Constants.Header.Search.insets
     self.searchButton.addTarget(self,
                                 action: #selector(didPressSearchButton),
                                 for: .touchUpInside)
@@ -72,13 +75,15 @@ internal extension SearchCard {
 
     self.headerView.contentView.addSubview(self.lineTypeSelector)
     self.lineTypeSelector.snp.makeConstraints { make in
-      make.top.equalTo(self.titleLabel.snp.bottom).offset(Layout.Header.LineType.topOffset)
-      make.bottom.equalToSuperview().offset(-Layout.Header.LineType.bottomOffset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
+      make.top.equalTo(self.titleLabel.snp.bottom).offset(Constants.Header.LineType.topOffset)
+      make.bottom.equalToSuperview().offset(-Constants.Header.LineType.bottomOffset)
+      make.left.equalToSuperview().offset(Constants.leftInset)
+      make.right.equalToSuperview().offset(-Constants.rightInset)
       make.height.equalTo(LineTypeSegmentedControlConstants.nominalHeight)
     }
   }
+
+  // MARK: - Lines selector
 
   private func initLinesSelector() {
     self.addChild(self.lineSelector)
@@ -87,6 +92,8 @@ internal extension SearchCard {
 
     self.lineSelector.didMove(toParent: self)
   }
+
+  // MARK: - Placeholder
 
   private func initPlaceholder() {
     let container = UIView()
@@ -100,8 +107,8 @@ internal extension SearchCard {
     container.addSubview(self.placeholderView)
     self.placeholderView.snp.makeConstraints { make in
       make.bottom.equalTo(container.snp.centerY)
-      make.left.equalToSuperview().offset(Layout.Placeholder.leftInset)
-      make.right.equalToSuperview().offset(-Layout.Placeholder.rightInset)
+      make.left.equalToSuperview().offset(Constants.Placeholder.leftInset)
+      make.right.equalToSuperview().offset(-Constants.Placeholder.rightInset)
     }
   }
 }

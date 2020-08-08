@@ -5,15 +5,14 @@
 import UIKit
 import SnapKit
 
-private typealias Layout       = SearchPlaceholderViewConstants.Layout
-private typealias TextStyles   = SearchPlaceholderViewConstants.TextStyles
+private typealias Constants = SearchCardConstants.Placeholder
 private typealias Localization = Localizable.Search
 
 public final class SearchPlaceholderView: UIView {
 
   // MARK: - Properties
 
-  private let label   = UILabel()
+  private let label = UILabel()
   private let spinner = UIActivityIndicatorView(style: .gray)
 
   public override var isHidden: Bool {
@@ -35,14 +34,16 @@ public final class SearchPlaceholderView: UIView {
       make.centerX.equalToSuperview()
     }
 
-    self.label.attributedText = NSAttributedString(string: Localization.loading,
-                                                   attributes: TextStyles.label)
-    self.label.numberOfLines  = 0
-    self.label.lineBreakMode  = .byWordWrapping
+    self.label.attributedText = NSAttributedString(
+      string: Localization.loading,
+      attributes: Constants.labelAttributes
+    )
+    self.label.numberOfLines = 0
+    self.label.lineBreakMode = .byWordWrapping
 
     self.addSubview(self.label)
     self.label.snp.makeConstraints { make in
-      make.top.equalTo(self.spinner.snp.bottom).offset(Layout.verticalSpacing)
+      make.top.equalTo(self.spinner.snp.bottom).offset(Constants.verticalSpacing)
       make.bottom.left.right.equalToSuperview()
     }
   }
@@ -51,7 +52,7 @@ public final class SearchPlaceholderView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Private - Animation state
+  // MARK: - Animation state
 
   private func updateAnimationState() {
     if self.isHidden {
