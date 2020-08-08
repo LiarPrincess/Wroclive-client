@@ -5,14 +5,19 @@
 import UIKit
 
 internal protocol LineSelectorPageType: AnyObject {
-  func setSections(sections: [LineSelectorSection])
-  func setSelectedIndices(indices: [IndexPath], animated: Bool)
+  func refresh()
 }
 
 internal final class LineSelectorPageViewModel {
 
-  private var sections = [LineSelectorSection]()
-  private var selectedLines = [Line]()
+  internal var sections: [LineSelectorSection] {
+     didSet { self.needsViewRefresh = true }
+   }
+
+  private var selectedLines: [Line]
+  internal var selectedLineIndices: [IndexPath] {
+     didSet { self.needsViewRefresh = true }
+   }
 
   private let onLineSelected: (Line) -> ()
   private let onLineDeselected: (Line) -> ()
@@ -23,52 +28,87 @@ internal final class LineSelectorPageViewModel {
 
   internal init(onLineSelected: @escaping (Line) -> (),
                 onLineDeselected: @escaping (Line) -> ()) {
+    self.sections = []
+    self.selectedLines = []
+    self.selectedLineIndices = []
     self.onLineSelected = onLineSelected
     self.onLineDeselected = onLineDeselected
   }
 
+  // MARK: - View
+
+  private var needsViewRefresh = false
+
   internal func setView(view: LineSelectorPageType) {
     assert(self.view == nil, "View was already assigned")
     self.view = view
+    self.refreshView()
+  }
 
-    let selectedIndices = self.getIndices(of: self.selectedLines)
-    self.view?.setSections(sections: self.sections)
-    self.view?.setSelectedIndices(indices: selectedIndices, animated: true)
+  private func refreshView() {
+    self.view?.refresh()
+    self.needsViewRefresh = false
   }
 
   // MARK: - Input
 
   internal func setLines(lines: [Line]) {
-    self.sections = LineSelectorSection.create(from: lines)
-    self.view?.setSections(sections: sections)
+    // We need to also re-post selected indices as they may have changed
+    // (and also because of how 'UICollectionView' works).
+    self.sections = Self.createSections(from: lines)
+    self.selectedLineIndices = self.getIndices(of: self.selectedLines)
+    self.refreshView()
+  }
 
-    // Indices may have changed and also because of how 'UICollectionView' works
-    // we need re-post 'selectedIndices' every time 'lines' change.
-    let selectedIndices = self.getIndices(of: self.selectedLines)
-    self.view?.setSelectedIndices(indices: selectedIndices, animated: true)
+  internal static func createSections(from lines: [Line]) -> [LineSelectorSection] {
+     let linesBySubtype = lines.group { $0.subtype }
+
+     var result = [LineSelectorSection]()
+     for (subtype, var lines) in linesBySubtype {
+       lines.sortByLocalizedName()
+       result.append(LineSelectorSection(for: subtype, lines: lines))
+     }
+
+     result.sort { lhs, rhs in
+       let lhsOrder = Self.getSectionOrder(subtype: lhs.lineSubtype)
+       let rhsOrder = Self.getSectionOrder(subtype: rhs.lineSubtype)
+       return lhsOrder < rhsOrder
+     }
+
+     return result
+   }
+
+  private static func getSectionOrder(subtype: LineSubtype) -> Int {
+    switch subtype {
+    case .express:   return 0
+    case .regular:   return 1
+    case .night:     return 2
+    case .suburban:  return 3
+    case .peakHour:  return 4
+    case .zone:      return 5
+    case .limited:   return 6
+    case .temporary: return 7
+    }
   }
 
   internal func setSelectedLines(lines: [Line]) {
     self.selectedLines = lines
-
-    let selectedIndices = self.getIndices(of: self.selectedLines)
-    self.view?.setSelectedIndices(indices: selectedIndices, animated: true)
+    self.selectedLineIndices = self.getIndices(of: self.selectedLines)
+    self.refreshView()
   }
 
-  internal func viewDidSelectIndex(index: IndexPath) {
-    guard let line = getLine(at: index) else {
-      return
-    }
+  // MARK: - View input
 
-    self.onLineSelected(line)
+  internal func viewDidSelectIndex(index: IndexPath) {
+    if let line = getLine(at: index) {
+      self.onLineSelected(line)
+    }
   }
 
   internal func viewDidDeselectIndex(index: IndexPath) {
-    guard let line = getLine(at: index) else {
-      return
+    if let line = getLine(at: index) {
+      self.onLineDeselected(line)
     }
-
-    self.onLineDeselected(line)
   }
 
   // MARK: - Helpers
@@ -90,13 +130,13 @@ internal final class LineSelectorPageViewModel {
 
   private func getLine(at index: IndexPath) -> Line? {
     guard self.sections.indices.contains(index.section) else {
-        return nil
+      return nil
     }
 
     let items = self.sections[index.section].lines
 
     guard items.indices.contains(index.item) else {
-        return nil
+      return nil
     }
 
     return items[index.item]

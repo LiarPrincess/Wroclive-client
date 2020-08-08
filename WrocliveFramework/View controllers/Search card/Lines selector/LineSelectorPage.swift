@@ -105,6 +105,14 @@ internal final class LineSelectorPage:
 
   // MARK: - LineSelectorPageType
 
+  internal func refresh() {
+    let sections = self.viewModel.sections
+    self.setSections(sections: sections)
+
+    let selectedLineIndices = self.viewModel.selectedLineIndices
+    self.setSelectedIndices(indices: selectedLineIndices, animated: true)
+  }
+
   internal func setSections(sections: [LineSelectorSection]) {
     if self.sections != sections {
       self.sections = sections
