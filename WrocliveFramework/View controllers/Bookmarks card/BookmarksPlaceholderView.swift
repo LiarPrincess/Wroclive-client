@@ -5,8 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout       = BookmarksPlaceholderViewConstants.Layout
-private typealias TextStyles   = BookmarksPlaceholderViewConstants.TextStyles
+private typealias Constants = BookmarksCardConstants.Placeholder
 private typealias Localization = Localizable.Bookmarks.Placeholder
 
 public final class BookmarksPlaceholderView: UIView {
@@ -42,7 +41,7 @@ public final class BookmarksPlaceholderView: UIView {
 
     self.addSubview(self.contentLabel)
     self.contentLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.titleLabel.snp.bottom).offset(Layout.Content.topMargin)
+      make.top.equalTo(self.titleLabel.snp.bottom).offset(Constants.topMargin)
       make.bottom.left.right.equalToSuperview()
     }
   }
@@ -54,13 +53,15 @@ public final class BookmarksPlaceholderView: UIView {
   // MARK: - Private
 
   private func createTitleText() -> NSAttributedString {
-    return NSAttributedString(string: Localization.title, attributes: TextStyles.title)
+    let string = Localization.title
+    let attributes = Constants.Title.attributes
+    return NSAttributedString(string: string, attributes: attributes)
   }
 
   private func createContentText() -> NSAttributedString {
     let content = Localization.content
-    let textAttributes = TextStyles.Content.text
-    let iconAttributes = TextStyles.Content.icon
+    let textAttributes = Constants.Content.textAttributes
+    let iconAttributes = Constants.Content.iconAttributes
 
     let starReplacement = TextReplacement(
       "<star>",

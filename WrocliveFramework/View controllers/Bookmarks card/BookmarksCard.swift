@@ -4,7 +4,7 @@
 
 import UIKit
 
-private typealias Layout = BookmarksCardConstants.Layout
+private typealias Constants = BookmarksCardConstants
 
 public final class BookmarksCard:
   UIViewController, UITableViewDataSource, UITableViewDelegate,
@@ -149,7 +149,7 @@ public final class BookmarksCard:
     let cell = self.tableView.dequeueCell(ofType: BookmarksCell.self,
                                           forIndexPath: indexPath)
 
-    cell.update(from: BookmarkCellViewModel(bookmark: bookmark))
+    cell.update(bookmark: bookmark)
     return cell
   }
 

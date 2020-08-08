@@ -6,7 +6,7 @@ import UIKit
 import ReSwift
 import PromiseKit
 
-private typealias TextStyles = BookmarksCardConstants.TextStyles
+private typealias Constants = BookmarksCardConstants
 private typealias Localization = Localizable.Bookmarks
 
 public protocol BookmarksCardViewType: AnyObject {
@@ -76,9 +76,12 @@ public final class BookmarksCardViewModel: StoreSubscriber {
   }
 
   private func setIsEditing(value: Bool) {
+    typealias L = Localization.Edit
+    typealias Text = Constants.Header.Edit
+
     let editButtonText = value ?
-      NSAttributedString(string: Localization.Edit.done, attributes: TextStyles.Edit.done) :
-      NSAttributedString(string: Localization.Edit.edit, attributes: TextStyles.Edit.edit)
+      NSAttributedString(string: L.done, attributes: Text.doneAttributes) :
+      NSAttributedString(string: L.edit, attributes: Text.editAttributes)
 
     self.isEditing = value
     self.view?.setIsEditing(value: value, animated: true)

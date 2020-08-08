@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout = BookmarksCellConstants.Layout
+private typealias Constants = BookmarksCardConstants.Cell
 private typealias TextStyles = BookmarksCellConstants.TextStyles
 
 // https://stackoverflow.com/a/25967370 - preferredMaxLayoutWidth
@@ -16,7 +16,7 @@ public final class BookmarksCell: UITableViewCell {
 
   // MARK: - Properties
 
-  private let nameLabel  = UILabel()
+  private let nameLabel = UILabel()
   private let linesLabel = UILabel()
 
   // Disable alpha, so we don't end up with transparent cells when reordering
@@ -43,17 +43,17 @@ public final class BookmarksCell: UITableViewCell {
 
     self.contentView.addSubview(self.nameLabel)
     self.nameLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.topInset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
+      make.top.equalToSuperview().offset(Constants.topInset)
+      make.left.equalToSuperview().offset(Constants.leftInset)
+      make.right.equalToSuperview().offset(-Constants.rightInset)
     }
 
     self.contentView.addSubview(self.linesLabel)
     self.linesLabel.snp.makeConstraints { make in
-      make.top.equalTo(self.nameLabel.snp.bottom).offset(Layout.LinesLabel.topMargin)
-      make.bottom.equalToSuperview().offset(-Layout.bottomInset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
+      make.top.equalTo(self.nameLabel.snp.bottom).offset(Constants.Lines.topMargin)
+      make.bottom.equalToSuperview().offset(-Constants.bottomInset)
+      make.left.equalToSuperview().offset(Constants.leftInset)
+      make.right.equalToSuperview().offset(-Constants.rightInset)
     }
   }
 
@@ -80,7 +80,7 @@ public final class BookmarksCell: UITableViewCell {
   private func updateLabelPreferredWidths() {
     // HACK: We need to calculate from cell not content view as content view
     // will shrink on edit.
-    let labelWidth = self.bounds.width - Layout.leftInset - Layout.rightInset
+    let labelWidth = self.bounds.width - Constants.leftInset - Constants.rightInset
     self.nameLabel.preferredMaxLayoutWidth  = labelWidth
     self.linesLabel.preferredMaxLayoutWidth = labelWidth
   }
@@ -96,7 +96,9 @@ public final class BookmarksCell: UITableViewCell {
   }
 
   internal static func createNameText(bookmark: Bookmark) -> NSAttributedString {
-    return NSAttributedString(string: bookmark.name, attributes: TextStyles.name)
+    let string = bookmark.name
+    let attributes = Constants.Name.attributes
+    return NSAttributedString(string: string, attributes: attributes)
   }
 
   internal static func createLinesText(bookmark: Bookmark) -> NSAttributedString {
@@ -115,14 +117,15 @@ public final class BookmarksCell: UITableViewCell {
     if hasTramAndBusLines { string += "\n" }
     if hasBusLines        { string += concat(lines: busLines) }
 
-    return NSAttributedString(string: string, attributes: TextStyles.lines)
+    let attributes = Constants.Lines.attributes
+    return NSAttributedString(string: string, attributes: attributes)
   }
 
   private static func concat(lines: [Line]) -> String {
     var result = ""
     for (index, line) in lines.enumerated() {
       if index != 0 {
-        let separator = Layout.LinesLabel.horizontalSpacing
+        let separator = Constants.Lines.horizontalSpacing
         result.append(separator)
       }
 

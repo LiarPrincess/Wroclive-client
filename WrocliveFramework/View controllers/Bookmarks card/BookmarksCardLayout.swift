@@ -5,8 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout       = BookmarksCardConstants.Layout
-private typealias TextStyles   = BookmarksCardConstants.TextStyles
+private typealias Constants = BookmarksCardConstants
 private typealias Localization = Localizable.Bookmarks
 
 internal extension BookmarksCard {
@@ -28,20 +27,22 @@ internal extension BookmarksCard {
       make.top.left.right.equalToSuperview()
     }
 
-    self.titleLabel.attributedText = NSAttributedString(string: Localization.title,
-                                                        attributes: TextStyles.cardTitle)
-    self.titleLabel.numberOfLines  = 0
-    self.titleLabel.lineBreakMode  = .byWordWrapping
+    self.titleLabel.attributedText = NSAttributedString(
+      string: Localization.title,
+      attributes: Constants.Header.Title.attributes
+    )
+    self.titleLabel.numberOfLines = 0
+    self.titleLabel.lineBreakMode = .byWordWrapping
     self.titleLabel.adjustsFontForContentSizeCategory = true
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.Header.Title.topOffset)
-      make.bottom.equalToSuperview().offset(-Layout.Header.Title.bottomOffset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
+      make.top.equalToSuperview().offset(Constants.Header.Title.topOffset)
+      make.bottom.equalToSuperview().offset(-Constants.Header.Title.bottomOffset)
+      make.left.equalToSuperview().offset(Constants.leftInset)
     }
 
-    self.editButton.contentEdgeInsets = Layout.Header.Edit.insets
+    self.editButton.contentEdgeInsets = Constants.Header.Edit.insets
     self.editButton.addTarget(self,
                               action: #selector(editButtonPressed),
                               for: .touchUpInside)
@@ -58,7 +59,7 @@ internal extension BookmarksCard {
     self.tableView.separatorInset     = .zero
     self.tableView.backgroundColor    = Theme.colors.background
     self.tableView.rowHeight          = UITableView.automaticDimension
-    self.tableView.estimatedRowHeight = Layout.TableView.estimatedCellHeight
+    self.tableView.estimatedRowHeight = Constants.TableView.estimatedCellHeight
 
     // Remove empty cells below, see:
     // http://swiftandpainless.com/table-view-footer-in-plain-table-view/
@@ -75,8 +76,8 @@ internal extension BookmarksCard {
     self.view.insertSubview(self.placeholderView, belowSubview: self.tableView)
     self.placeholderView.snp.makeConstraints { make in
       make.centerY.equalToSuperview()
-      make.left.equalToSuperview().offset(Layout.Placeholder.leftInset)
-      make.right.equalToSuperview().offset(-Layout.Placeholder.rightInset)
+      make.left.equalToSuperview().offset(Constants.Placeholder.leftInset)
+      make.right.equalToSuperview().offset(-Constants.Placeholder.rightInset)
     }
   }
 }
