@@ -4,21 +4,22 @@
 
 import UIKit
 
-public enum LineSelectorCellConstants {
-  public enum Layout {
-    public static let margin:  CGFloat =  2.0
-    public static let minSize: CGFloat = 50.0
+internal enum LineSelectorCellConstants {
 
-    public static let cornerRadius: CGFloat = 8.0
+  internal enum Layout {
+    internal static let margin:  CGFloat =  2.0
+    internal static let minSize: CGFloat = 50.0
+
+    internal static let cornerRadius: CGFloat = 8.0
   }
 
-  public enum TextStyles {
-    public static var selected: TextAttributes {
+  internal enum TextStyles {
+    internal static var selected: TextAttributes {
       // We need to use bold, otherwise text would look too thin on bright background
       return TextAttributes(style: .bodyBold, color: .background, alignment: .center)
     }
 
-    public static var notSelected: TextAttributes {
+    internal static var notSelected: TextAttributes {
       return TextAttributes(style: .body, color: .text, alignment: .center)
     }
   }

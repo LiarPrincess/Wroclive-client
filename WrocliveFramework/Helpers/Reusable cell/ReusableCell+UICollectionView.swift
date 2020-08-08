@@ -4,7 +4,7 @@
 
 import UIKit
 
-public extension UICollectionView {
+extension UICollectionView {
 
   public enum SuplementaryViewKind {
     case header
@@ -18,11 +18,11 @@ public extension UICollectionView {
     }
   }
 
-  func registerCell<Cell: AnyObject>(_: Cell.Type) where Cell: ReusableCell {
+  public func registerCell<Cell: AnyObject>(_: Cell.Type) where Cell: ReusableCell {
     self.register(Cell.self, forCellWithReuseIdentifier: Cell.identifier)
   }
 
-  func dequeueCell<Cell: AnyObject>(
+  public func dequeueCell<Cell: AnyObject>(
     ofType: Cell.Type,
     forIndexPath indexPath: IndexPath
   ) -> Cell where Cell: ReusableCell {
@@ -37,7 +37,7 @@ public extension UICollectionView {
     return cell
   }
 
-  func registerSupplementary<Cell: AnyObject>(
+  public func registerSupplementary<Cell: AnyObject>(
     _ : Cell.Type,
     kind: SuplementaryViewKind
   ) where Cell: ReusableCell {
@@ -46,15 +46,17 @@ public extension UICollectionView {
                   withReuseIdentifier: Cell.identifier)
   }
 
-  func dequeueSupplementary<Cell: AnyObject>(
+  public func dequeueSupplementary<Cell: AnyObject>(
     ofType: Cell.Type,
     kind: SuplementaryViewKind,
     for indexPath: IndexPath
   ) -> Cell where Cell: ReusableCell {
     let id = Cell.identifier
-    let genericCell = self.dequeueReusableSupplementaryView(ofKind: kind.key,
-                                                            withReuseIdentifier: id,
-                                                            for: indexPath)
+    let genericCell = self.dequeueReusableSupplementaryView(
+      ofKind: kind.key,
+      withReuseIdentifier: id,
+      for: indexPath
+    )
 
     guard let cell = genericCell as? Cell else {
       fatalError("Could not dequeue supplementary view of specified type.")

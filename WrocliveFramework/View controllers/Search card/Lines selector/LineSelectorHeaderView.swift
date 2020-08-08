@@ -6,37 +6,38 @@ import UIKit
 import SnapKit
 
 private typealias Layout = LineSelectorHeaderViewConstants.Layout
+private typealias TextStyles = LineSelectorHeaderViewConstants.TextStyles
 
-public final class LineSelectorHeaderView: UICollectionReusableView {
+internal final class LineSelectorHeaderView: UICollectionReusableView {
 
   // MARK: - Properties
 
-  private let textLabel = UILabel()
+  private let label = UILabel()
 
-  public override var alpha: CGFloat {
+  internal override var alpha: CGFloat {
     get { return 1.0 }
     set { }
   }
 
   // MARK: - Init
 
-  public override init(frame: CGRect) {
+  internal override init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
   }
 
-  public required init?(coder aDecoder: NSCoder) {
+  internal required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
   private func initLayout() {
     self.backgroundColor = Theme.colors.background
 
-    self.textLabel.numberOfLines = 0
-    self.textLabel.isUserInteractionEnabled = false
+    self.label.numberOfLines = 0
+    self.label.isUserInteractionEnabled = false
 
-    self.addSubview(self.textLabel)
-    self.textLabel.snp.makeConstraints { make in
+    self.addSubview(self.label)
+    self.label.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Layout.topInset)
       make.left.right.equalToSuperview()
     }
@@ -44,7 +45,13 @@ public final class LineSelectorHeaderView: UICollectionReusableView {
 
   // MARK: - Methods
 
-  public func update(from viewModel: LineSelectorHeaderViewModel) {
-    self.textLabel.attributedText = viewModel.text
+  internal func update(section: LineSelectorSection) {
+    let text = Self.createText(section: section)
+    self.label.attributedText = text
+  }
+
+  internal static func createText(section: LineSelectorSection) -> NSAttributedString {
+    let string = section.lineSubtypeTranslation
+    return NSAttributedString(string: string, attributes: TextStyles.header)
   }
 }

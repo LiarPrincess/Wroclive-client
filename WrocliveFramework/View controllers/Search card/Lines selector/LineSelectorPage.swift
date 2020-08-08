@@ -145,10 +145,12 @@ internal final class LineSelectorPage:
     let section = self.sections[indexPath.section]
     let line = section.lines[indexPath.item]
 
-    let cell = self.collectionView.dequeueCell(ofType: LineSelectorCell.self,
-                                               forIndexPath: indexPath)
+    let cell = self.collectionView.dequeueCell(
+      ofType: LineSelectorCell.self,
+      forIndexPath: indexPath
+    )
 
-    cell.update(from: LineSelectorCellViewModel(line))
+    cell.update(line: line)
     return cell
   }
 
@@ -158,11 +160,14 @@ internal final class LineSelectorPage:
     switch kind {
     case UICollectionView.elementKindSectionHeader:
       let section = self.sections[indexPath.section]
-      let view = collectionView.dequeueSupplementary(ofType: LineSelectorHeaderView.self,
-                                                     kind: .header,
-                                                     for: indexPath)
 
-      view.update(from: LineSelectorHeaderViewModel(section: section))
+      let view = collectionView.dequeueSupplementary(
+        ofType: LineSelectorHeaderView.self,
+        kind: .header,
+        for: indexPath
+      )
+
+      view.update(section: section)
       return view
 
     default:

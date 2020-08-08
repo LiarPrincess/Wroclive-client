@@ -4,14 +4,14 @@
 
 import UIKit
 
-public extension UITableView {
+extension UITableView {
 
-  func registerCell<Cell: AnyObject>(_ : Cell.Type) where Cell: ReusableCell {
+  public func registerCell<Cell: AnyObject>(_ : Cell.Type) where Cell: ReusableCell {
     let id = Cell.identifier
     self.register(Cell.self, forCellReuseIdentifier: id)
   }
 
-  func dequeueCell<Cell: AnyObject>(
+  public func dequeueCell<Cell: AnyObject>(
     ofType: Cell.Type,
     forIndexPath indexPath: IndexPath
   ) -> Cell where Cell: ReusableCell {
@@ -25,13 +25,13 @@ public extension UITableView {
     return cell
   }
 
-  func registerSupplementary<Cell: AnyObject>(
+  public func registerSupplementary<Cell: AnyObject>(
     _ : Cell.Type
   ) where Cell: ReusableCell {
     self.register(Cell.self, forHeaderFooterViewReuseIdentifier: Cell.identifier)
   }
 
-  func dequeueSupplementary<Cell: AnyObject>(
+  public func dequeueSupplementary<Cell: AnyObject>(
     ofType: Cell.Type
   ) -> Cell where Cell: ReusableCell {
     let id = Cell.identifier

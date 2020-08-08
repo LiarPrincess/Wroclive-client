@@ -6,31 +6,32 @@ import UIKit
 import SnapKit
 
 private typealias Layout = LineSelectorCellConstants.Layout
+private typealias TextStyles = LineSelectorCellConstants.TextStyles
 
-public final class LineSelectorCell: UICollectionViewCell {
+internal final class LineSelectorCell: UICollectionViewCell {
 
   // MARK: - Properties
 
-  private let textLabel = UILabel()
-  private var viewModel: LineSelectorCellViewModel?
+  private var line: Line?
+  private let label = UILabel()
 
-  public override var alpha: CGFloat {
+  internal override var alpha: CGFloat {
     get { return 1.0 }
     set { }
   }
 
-  public override var isSelected: Bool {
+  internal override var isSelected: Bool {
     didSet { self.updateTextLabel() }
   }
 
   // MARK: - Init
 
-  public override init(frame: CGRect) {
+  internal override init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
   }
 
-  public required init?(coder aDecoder: NSCoder) {
+  internal required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
@@ -39,24 +40,34 @@ public final class LineSelectorCell: UICollectionViewCell {
     self.selectedBackgroundView?.backgroundColor = Theme.colors.tint
     self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
 
-    self.textLabel.numberOfLines = 1
-    self.textLabel.isUserInteractionEnabled = false
+    self.label.numberOfLines = 1
+    self.label.isUserInteractionEnabled = false
 
-    self.contentView.addSubview(self.textLabel)
-    self.textLabel.snp.makeConstraints { $0.edges.equalToSuperview() }
+    self.contentView.addSubview(self.label)
+    self.label.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 
   // MARK: - Methods
 
-  public func update(from viewModel: LineSelectorCellViewModel) {
+  internal func update(line: Line) {
     // Note that 'self.isSelected' for new cell is set BEFORE
     // 'tableView(_:cellForRowAt:)' is called
-    self.viewModel = viewModel
     self.updateTextLabel()
   }
 
   private func updateTextLabel() {
-    self.viewModel?.updateText(isCellSelected: self.isSelected)
-    self.textLabel.attributedText = self.viewModel?.text
+    guard let line = self.line else {
+      return
+    }
+
+    let text = Self.createText(line: line, isSelected: self.isSelected)
+    self.label.attributedText = text
+  }
+
+  internal static func createText(line: Line,
+                                  isSelected: Bool) -> NSAttributedString {
+    let string = line.name.uppercased()
+    let attributes = isSelected ? TextStyles.selected : TextStyles.notSelected
+    return NSAttributedString(string: string, attributes: attributes)
   }
 }

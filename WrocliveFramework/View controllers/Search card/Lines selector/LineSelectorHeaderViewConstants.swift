@@ -4,14 +4,15 @@
 
 import UIKit
 
-public enum LineSelectorHeaderViewConstants {
-  public enum Layout {
-    public static let topInset = CGFloat(16.0)
-    public static let bottomInset = CGFloat(8.0)
+internal enum LineSelectorHeaderViewConstants {
+
+  internal enum Layout {
+    internal static let topInset = CGFloat(16.0)
+    internal static let bottomInset = CGFloat(8.0)
   }
 
-  public enum TextStyles {
-    public static var header: TextAttributes {
+  internal enum TextStyles {
+    internal static var header: TextAttributes {
       return TextAttributes(style: .headline, alignment: .center)
     }
   }
