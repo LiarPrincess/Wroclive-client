@@ -80,7 +80,7 @@ public final class MapViewController:
     return self.mapView.annotations.compactMap { $0 as? VehicleAnnotation }
   }
 
-  public func updateVehicleLocations(vehicles: [Vehicle]) {
+  public func showVehicles(vehicles: [Vehicle]) {
     let diff = VehicleAnnotationDiff.calculate(annotations: self.vehicleAnnotations,
                                                vehicles: vehicles)
 

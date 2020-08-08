@@ -11,8 +11,7 @@ private typealias Defaults = MapViewControllerConstants.Defaults
 
 public protocol MapViewType: AnyObject {
   func setCenter(location: CLLocationCoordinate2D, animated: Bool)
-  // TODO: VM should calculate updates
-  func updateVehicleLocations(vehicles: [Vehicle])
+  func showVehicles(vehicles: [Vehicle])
 
   func showDeniedLocationAuthorizationAlert()
   func showGloballyDeniedLocationAuthorizationAlert()
@@ -65,7 +64,7 @@ public final class MapViewModel: StoreSubscriber {
     defer { self.currentState = state }
 
     self.centerMapIfNeeded(newState: state)
-    self.handleVehicleLocationChangeIfNeeded(newState: state)
+    self.updateVehicleLocationsIfNeeded(newState: state)
   }
 
   // Center map:
@@ -108,7 +107,7 @@ public final class MapViewModel: StoreSubscriber {
   // On vehicle response:
   // - if data -> update map
   // - if error -> show alert
-  private func handleVehicleLocationChangeIfNeeded(newState: AppState) {
+  private func updateVehicleLocationsIfNeeded(newState: AppState) {
     let new = newState.getVehicleLocationsResponse
     let old = self.currentState?.getVehicleLocationsResponse
 
@@ -120,7 +119,7 @@ public final class MapViewModel: StoreSubscriber {
     case .data(let vehicles):
       let oldVehicles = old?.getData()
       if vehicles != oldVehicles {
-        self.view?.updateVehicleLocations(vehicles: vehicles)
+        self.view?.showVehicles(vehicles: vehicles)
       }
 
     case .error(let newError):
@@ -136,7 +135,6 @@ public final class MapViewModel: StoreSubscriber {
              (.reachabilityError, .reachabilityError),
              (.otherError, .otherError):
         break
-
       default:
         self.view?.showApiErrorAlert(error: newError)
       }
