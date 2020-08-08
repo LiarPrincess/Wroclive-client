@@ -2,8 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-private typealias Layout = SearchCardConstants.Layout
-private typealias TextStyles = LineTypeSegmentedControlConstants.TextStyles
+private typealias Constants = LineTypeSegmentedControlConstants
 private typealias Localization = Localizable.Search
 
 internal final class LineTypeSegmentedControl: UIView {
@@ -11,13 +10,15 @@ internal final class LineTypeSegmentedControl: UIView {
   private let pages = [LineType.tram, LineType.bus]
   private let segmentedControl = UISegmentedControl(frame: .zero)
 
+  // MARK: - Init
+
   private let onPageSelected: (LineType) -> ()
 
   internal init(onPageSelected: @escaping (LineType) -> ()) {
     self.onPageSelected = onPageSelected
     super.init(frame: .zero)
 
-    let titleAttributes = TextStyles.title.value
+    let titleAttributes = Constants.Title.attributes.value
     self.segmentedControl.setTitleTextAttributes(titleAttributes, for: .normal)
 
     for (index, page) in self.pages.enumerated() {
@@ -45,6 +46,8 @@ internal final class LineTypeSegmentedControl: UIView {
   internal required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
+  // MARK: - Methods
 
   @objc
   private func selectedIndexChanged(_ sender: UISegmentedControl) {

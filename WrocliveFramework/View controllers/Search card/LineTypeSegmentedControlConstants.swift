@@ -6,13 +6,11 @@ import UIKit
 
 internal enum LineTypeSegmentedControlConstants {
 
-  internal enum Layout {
-    /// Proposed height
-    internal static let nominalHeight = CGFloat(30.0)
-  }
+  /// Proposed height
+  internal static let nominalHeight = CGFloat(30.0)
 
-  internal enum TextStyles {
-    internal static var title: TextAttributes {
+  internal enum Title {
+    internal static var attributes: TextAttributes {
       return TextAttributes(style: .body, color: .tint)
     }
   }

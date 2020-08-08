@@ -76,7 +76,7 @@ internal extension SearchCard {
       make.bottom.equalToSuperview().offset(-Layout.Header.LineType.bottomOffset)
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)
-      make.height.equalTo(LineTypeSegmentedControlConstants.Layout.nominalHeight)
+      make.height.equalTo(LineTypeSegmentedControlConstants.nominalHeight)
     }
   }
 

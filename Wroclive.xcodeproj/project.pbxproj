@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90093B4E24DEB4E100D95645 /* LineSelectorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90093B4D24DEB4E100D95645 /* LineSelectorConstants.swift */; };
+		90093B5024DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90093B4F24DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift */; };
 		900EA0C424D467040054C03F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 900EA0C624D467040054C03F /* InfoPlist.strings */; };
 		900EA0D624D469D90054C03F /* WrocliveFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900EA0CF24D469D90054C03F /* WrocliveFramework.framework */; };
 		900EA0D724D469D90054C03F /* WrocliveFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 900EA0CF24D469D90054C03F /* WrocliveFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -117,10 +118,8 @@
 		90CE741624D9BB7800419166 /* BookmarksCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740624D9BB7800419166 /* BookmarksCardViewModel.swift */; };
 		90CE741724D9BB7800419166 /* BookmarksPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740724D9BB7800419166 /* BookmarksPlaceholderView.swift */; };
 		90CE741824D9BB7800419166 /* BookmarksCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740824D9BB7800419166 /* BookmarksCardConstants.swift */; };
-		90CE741924D9BB7800419166 /* BookmarksPlaceholderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740924D9BB7800419166 /* BookmarksPlaceholderConstants.swift */; };
 		90CE742124D9BB7800419166 /* BookmarksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741224D9BB7800419166 /* BookmarksCard.swift */; };
 		90CE742224D9BB7800419166 /* BookmarksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741324D9BB7800419166 /* BookmarksCell.swift */; };
-		90CE742324D9BB7800419166 /* BookmarksCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741424D9BB7800419166 /* BookmarksCellConstants.swift */; };
 		90CE742424D9BB9000419166 /* BookmarksCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740B24D9BB7800419166 /* BookmarksCardViewModelTests.swift */; };
 		90CE742524D9BB9000419166 /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740C24D9BB7800419166 /* BookmarksCellViewModelTests.swift */; };
 		90CE742624D9BB9000419166 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740D24D9BB7800419166 /* BookmarksCardViewModelTests+Bookmarks.swift */; };
@@ -130,7 +129,6 @@
 		90CE742B24D9D6E000419166 /* BookmarksCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */; };
 		90CE742D24D9D6E600419166 /* CardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742C24D9D6E600419166 /* CardCoordinator.swift */; };
 		90CE742F24D9DA3F00419166 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742E24D9DA3F00419166 /* DummyData.swift */; };
-		90CE746324DB0A4F00419166 /* LineTypeSegmentedControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE744B24DB0A4F00419166 /* LineTypeSegmentedControlConstants.swift */; };
 		90D57AFB24DC490100A0EF53 /* LineSelectorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AE924DC490000A0EF53 /* LineSelectorPage.swift */; };
 		90D57AFD24DC490100A0EF53 /* LineSelectorPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AEB24DC490000A0EF53 /* LineSelectorPageViewModel.swift */; };
 		90D57B0324DC490100A0EF53 /* LineSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF224DC490000A0EF53 /* LineSelector.swift */; };
@@ -182,6 +180,7 @@
 
 /* Begin PBXFileReference section */
 		90093B4D24DEB4E100D95645 /* LineSelectorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorConstants.swift; sourceTree = "<group>"; };
+		90093B4F24DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSegmentedControlConstants.swift; sourceTree = "<group>"; };
 		900EA0C524D467040054C03F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		900EA0C724D467490054C03F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		900EA0C824D467E30054C03F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -292,7 +291,6 @@
 		90CE740624D9BB7800419166 /* BookmarksCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModel.swift; sourceTree = "<group>"; };
 		90CE740724D9BB7800419166 /* BookmarksPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksPlaceholderView.swift; sourceTree = "<group>"; };
 		90CE740824D9BB7800419166 /* BookmarksCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardConstants.swift; sourceTree = "<group>"; };
-		90CE740924D9BB7800419166 /* BookmarksPlaceholderConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksPlaceholderConstants.swift; sourceTree = "<group>"; };
 		90CE740B24D9BB7800419166 /* BookmarksCardViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelTests.swift; sourceTree = "<group>"; };
 		90CE740C24D9BB7800419166 /* BookmarksCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCellViewModelTests.swift; sourceTree = "<group>"; };
 		90CE740D24D9BB7800419166 /* BookmarksCardViewModelTests+Bookmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Bookmarks.swift"; sourceTree = "<group>"; };
@@ -301,11 +299,9 @@
 		90CE741024D9BB7800419166 /* BookmarksCardViewModelTests+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Selection.swift"; sourceTree = "<group>"; };
 		90CE741224D9BB7800419166 /* BookmarksCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCard.swift; sourceTree = "<group>"; };
 		90CE741324D9BB7800419166 /* BookmarksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCell.swift; sourceTree = "<group>"; };
-		90CE741424D9BB7800419166 /* BookmarksCellConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCellConstants.swift; sourceTree = "<group>"; };
 		90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardCoordinator.swift; sourceTree = "<group>"; };
 		90CE742C24D9D6E600419166 /* CardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCoordinator.swift; sourceTree = "<group>"; };
 		90CE742E24D9DA3F00419166 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
-		90CE744B24DB0A4F00419166 /* LineTypeSegmentedControlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSegmentedControlConstants.swift; sourceTree = "<group>"; };
 		90D57AE924DC490000A0EF53 /* LineSelectorPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorPage.swift; sourceTree = "<group>"; };
 		90D57AEB24DC490000A0EF53 /* LineSelectorPageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorPageViewModel.swift; sourceTree = "<group>"; };
 		90D57AED24DC490000A0EF53 /* LineSelectorSectionCreatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreatorTests.swift; sourceTree = "<group>"; };
@@ -677,9 +673,7 @@
 				90CE740624D9BB7800419166 /* BookmarksCardViewModel.swift */,
 				90CE740824D9BB7800419166 /* BookmarksCardConstants.swift */,
 				90CE740724D9BB7800419166 /* BookmarksPlaceholderView.swift */,
-				90CE740924D9BB7800419166 /* BookmarksPlaceholderConstants.swift */,
 				90CE741324D9BB7800419166 /* BookmarksCell.swift */,
-				90CE741424D9BB7800419166 /* BookmarksCellConstants.swift */,
 			);
 			path = "Bookmarks card";
 			sourceTree = "<group>";
@@ -720,7 +714,7 @@
 				9076BD4624DDB5D100467075 /* SearchPlaceholderView.swift */,
 				9076BD4724DDB5D100467075 /* SearchPlaceholderViewConstants.swift */,
 				9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */,
-				90CE744B24DB0A4F00419166 /* LineTypeSegmentedControlConstants.swift */,
+				90093B4F24DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift */,
 			);
 			path = "Search card";
 			sourceTree = "<group>";
@@ -940,7 +934,6 @@
 				9013FAAD24D6B1880006D1B9 /* ReusableCell+UITableView.swift in Sources */,
 				9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */,
 				9076BD4B24DDB5D100467075 /* SearchCardConstants.swift in Sources */,
-				90CE741924D9BB7800419166 /* BookmarksPlaceholderConstants.swift in Sources */,
 				905893CD24D4A95D0046EFA5 /* BundleManager.swift in Sources */,
 				905893C924D4A95D0046EFA5 /* StorageManager.swift in Sources */,
 				9013FABA24D6B1890006D1B9 /* DismissGestureHandlerType.swift in Sources */,
@@ -972,7 +965,6 @@
 				90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */,
 				90D57AFB24DC490100A0EF53 /* LineSelectorPage.swift in Sources */,
 				9076BD5324DDB5D100467075 /* SearchCard.swift in Sources */,
-				90CE742324D9BB7800419166 /* BookmarksCellConstants.swift in Sources */,
 				9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */,
 				90CE741524D9BB7800419166 /* BookmarksCardLayout.swift in Sources */,
 				9013FAC724D721410006D1B9 /* Fonts.swift in Sources */,
@@ -1022,7 +1014,6 @@
 				907FD0B724D898BC00B6896C /* Reducer.swift in Sources */,
 				9076BD5024DDB5D100467075 /* SearchPlaceholderView.swift in Sources */,
 				9047997024D575C500111F2C /* Actions.swift in Sources */,
-				90CE746324DB0A4F00419166 /* LineTypeSegmentedControlConstants.swift in Sources */,
 				9058939024D4A7460046EFA5 /* Theme.swift in Sources */,
 				9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */,
 				9013FAC224D6B1890006D1B9 /* BookmarkAlerts.swift in Sources */,
@@ -1040,6 +1031,7 @@
 				9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */,
 				9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */,
 				9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */,
+				90093B5024DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift in Sources */,
 				907FD0BB24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
