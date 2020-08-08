@@ -5,22 +5,26 @@
 import UIKit
 
 public protocol LineSelectorViewType: AnyObject {
-  func setPage(page: LineType, animated: Bool)
+  func refresh()
 }
 
 public final class LineSelectorViewModel {
 
-  private var page = LineType.bus
-  private let onPageTransition: (LineType) -> ()
+  internal private(set) var page: LineType
 
   internal let busPageViewModel: LineSelectorPageViewModel
   internal let tramPageViewModel: LineSelectorPageViewModel
 
+  private let onPageTransition: (LineType) -> ()
   private weak var view: LineSelectorViewType?
 
-  public init(onPageTransition: @escaping (LineType) -> (),
+  // MARK: - Init
+
+  public init(initialPage page: LineType,
+              onPageTransition: @escaping (LineType) -> (),
               onLineSelected: @escaping (Line) -> (),
               onLineDeselected: @escaping (Line) -> ()) {
+    self.page = page
     self.onPageTransition = onPageTransition
 
     self.tramPageViewModel = LineSelectorPageViewModel(
@@ -34,37 +38,70 @@ public final class LineSelectorViewModel {
     )
   }
 
+  // MARK: - View
+
   public func setView(view: LineSelectorViewType) {
     assert(self.view == nil, "View was already assigned")
     self.view = view
-    self.view?.setPage(page: self.page, animated: false)
+    self.refreshView()
   }
 
-  // MARK: - Input
+  private func refreshView() {
+    self.view?.refresh()
+  }
+
+  // MARK: - Selected lines
+
+  public struct SelectedLines {
+    public let busses: [Line]
+    public let trams: [Line]
+
+    public var isAnyLineSelected: Bool {
+      return self.busses.any || self.trams.any
+    }
+
+    public func merge() -> [Line] {
+      return self.busses + self.trams
+    }
+  }
+
+  public var selectedLines: SelectedLines {
+    return SelectedLines(
+      busses: self.busPageViewModel.selectedLines,
+      trams: self.tramPageViewModel.selectedLines
+    )
+  }
+
+  // MARK: - View input
 
   public func viewDidTransitionToPage(page: LineType) {
     self.onPageTransition(page)
   }
 
-  // MARK: - Set
+  // MARK: - Methods
 
   public func setPage(page: LineType) {
-    self.view?.setPage(page: page, animated: true)
+    if page == self.page {
+      return
+    }
+
+    self.page = page
+    self.refreshView()
   }
 
   public func setLines(lines: [Line]) {
-    let (busses, trams) = self.splitByLineType(lines: lines)
+    let (busses, trams) = self.groupByLineType(lines: lines)
     self.busPageViewModel.setLines(lines: busses)
     self.tramPageViewModel.setLines(lines: trams)
   }
 
   public func setSelectedLines(lines: [Line]) {
-    let (busses, trams) = self.splitByLineType(lines: lines)
+    let (busses, trams) = self.groupByLineType(lines: lines)
     self.busPageViewModel.setSelectedLines(lines: busses)
     self.tramPageViewModel.setSelectedLines(lines: trams)
   }
 
-  private func splitByLineType(lines: [Line]) -> (busses: [Line], trams: [Line]) {
+  private func groupByLineType(lines: [Line]) -> (busses: [Line], trams: [Line]) {
     var trams = [Line]()
     var busses = [Line]()
 

@@ -7,10 +7,7 @@ import ReSwift
 
 public protocol SearchCardViewType: AnyObject {
 
-  func setPage(page: LineType)
-
-  func setIsLineSelectorVisible(value: Bool)
-  func setIsPlaceholderVisible(value: Bool)
+  func refresh()
 
   // TODO: Bookmark flow is awkard, move to separate struct
   func showBookmarkNameInputAlert()
@@ -22,63 +19,80 @@ public protocol SearchCardViewType: AnyObject {
 
 public final class SearchCardViewModel: StoreSubscriber {
 
-  private let store: Store<AppState>
-  private let environment: Environment
+  internal private(set) var page: LineType
+  internal private(set) var isLineSelectorVisible: Bool
+  internal private(set) var isPlaceholderVisible: Bool
 
-  /// State that is currently being presented.
-  private var currentState: AppState?
-  private weak var view: SearchCardViewType?
+  /// Previous response, so we know how to react to new state.
+  private var getLinesResponse: AppState.ApiResponseState<[Line]>?
 
   internal let lineSelectorViewModel: LineSelectorViewModel
 
-  private var selectedLines: [Line]? {
-    return self.currentState?.searchCardState.selectedLines
+  private let store: Store<AppState>
+  private let environment: Environment
+  private weak var view: SearchCardViewType?
+
+  internal var selectedLines: LineSelectorViewModel.SelectedLines {
+    return self.lineSelectorViewModel.selectedLines
   }
+
+  // MARK: - Init
 
   public init(store: Store<AppState>, environment: Environment) {
     self.store = store
     self.environment = environment
 
+    let state = store.state.searchCardState
+    self.page = state.page
+    self.isLineSelectorVisible = false
+    self.isPlaceholderVisible = true
+
     self.lineSelectorViewModel = LineSelectorViewModel(
+      initialPage: self.page,
       onPageTransition: { store.dispatch(SearchCardStateAction.selectPage($0)) },
       onLineSelected: { store.dispatch(SearchCardStateAction.selectLine($0)) },
       onLineDeselected: { store.dispatch(SearchCardStateAction.deselectLine($0)) }
     )
+
+    self.store.subscribe(self)
   }
+
+  // MARK: - View
 
   public func setView(view: SearchCardViewType) {
     assert(self.view == nil, "View was already assigned")
     self.view = view
-    self.store.subscribe(self)
+    self.refreshView()
   }
 
-  // MARK: - Input
+  private func refreshView() {
+    self.view?.refresh()
+  }
 
-  public func didPressBookmarkButton() {
-    guard let selectedLines = self.selectedLines else {
-      return
-    }
+  // MARK: - View input
 
-    if selectedLines.any {
+  public func viewDidPressBookmarkButton() {
+    let selectedLines = self.selectedLines
+
+    if selectedLines.isAnyLineSelected {
       self.view?.showBookmarkNameInputAlert()
     } else {
       self.view?.showBookmarkNoLineSelectedAlert()
     }
   }
 
-  public func didEnterBookmarkName(value: String) {
-    let selectedLines = self.selectedLines ?? []
-    self.store.dispatch(BookmarksAction.add(name: value, lines: selectedLines))
+  public func viewDidEnterBookmarkName(value: String) {
+    let lines = self.selectedLines.merge()
+    self.store.dispatch(BookmarksAction.add(name: value, lines: lines))
   }
 
-  public func didPressSearchButton() {
-    let selectedLines = self.selectedLines ?? []
-    self.store.dispatch(TrackedLinesAction.startTracking(selectedLines))
-
+  public func viewDidPressSearchButton() {
+    let lines = self.selectedLines.merge()
+    self.store.dispatch(TrackedLinesAction.startTracking(lines))
     self.view?.close(animated: true)
   }
 
-  public func didPressAlertTryAgainButton() {
+  public func viewDidPressAlertTryAgainButton() {
     self.requestLinesFromApi()
   }
 
@@ -86,56 +100,34 @@ public final class SearchCardViewModel: StoreSubscriber {
     self.store.dispatch(SearchCardStateAction.selectPage(page))
   }
 
-  // MARK: - Delegates
-
-  internal func lineTypeSelectorViewModel(didSelectPage page: LineType) {
-    self.store.dispatch(SearchCardStateAction.selectPage(page))
-  }
-
-  internal func lineSelectorViewModel(didSelectPage page: LineType) {
-    self.store.dispatch(SearchCardStateAction.selectPage(page))
-  }
-
-  internal func lineSelectorViewModel(didSelectLine line: Line) {
-    self.store.dispatch(SearchCardStateAction.selectLine(line))
-  }
-
-  internal func lineSelectorViewModel(didDeselectLine line: Line) {
-    self.store.dispatch(SearchCardStateAction.deselectLine(line))
-  }
-
   // MARK: - Store subscriber
 
   public func newState(state: AppState) {
-    defer { self.currentState = state }
-
     self.updatePageIfNeeded(newState: state)
     self.handleLineRequestChange(newState: state)
+    self.handleSelectedLinesChange(newState: state)
+    self.refreshView()
   }
 
   private func updatePageIfNeeded(newState: AppState) {
     let new = newState.searchCardState.page
-    let old = self.currentState?.searchCardState.page
+    let old = self.page
 
     if new != old {
-      // TODO: this thingie
+      self.page = new
       self.lineSelectorViewModel.setPage(page: new)
-      self.view?.setPage(page: new)
     }
   }
 
   private func handleSelectedLinesChange(newState: AppState) {
     let new = newState.searchCardState.selectedLines
-    let old = self.currentState?.searchCardState.selectedLines
-
-    if new != old {
-      self.lineSelectorViewModel.setSelectedLines(lines: new)
-    }
+    self.lineSelectorViewModel.setSelectedLines(lines: new)
   }
 
   private func handleLineRequestChange(newState: AppState) {
     let new = newState.getLinesResponse
-    let old = self.currentState?.getLinesResponse
+    let old = self.getLinesResponse
+    defer { self.getLinesResponse = new }
 
     switch new {
     case .data(let newLines):
@@ -184,7 +176,7 @@ public final class SearchCardViewModel: StoreSubscriber {
   }
 
   private func setIsLineSelectorVisible(value: Bool) {
-    self.view?.setIsLineSelectorVisible(value: value)
-    self.view?.setIsPlaceholderVisible(value: !value)
+    self.isLineSelectorVisible = value
+    self.isPlaceholderVisible = !value
   }
 }

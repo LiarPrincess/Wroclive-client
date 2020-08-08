@@ -10,14 +10,10 @@ internal protocol LineSelectorPageType: AnyObject {
 
 internal final class LineSelectorPageViewModel {
 
-  internal var sections: [LineSelectorSection] {
-     didSet { self.needsViewRefresh = true }
-   }
+  internal private(set) var sections: [LineSelectorSection]
 
-  private var selectedLines: [Line]
-  internal var selectedLineIndices: [IndexPath] {
-     didSet { self.needsViewRefresh = true }
-   }
+  internal private(set) var selectedLines: [Line]
+  internal private(set) var selectedLineIndices: [IndexPath]
 
   private let onLineSelected: (Line) -> ()
   private let onLineDeselected: (Line) -> ()
@@ -37,8 +33,6 @@ internal final class LineSelectorPageViewModel {
 
   // MARK: - View
 
-  private var needsViewRefresh = false
-
   internal func setView(view: LineSelectorPageType) {
     assert(self.view == nil, "View was already assigned")
     self.view = view
@@ -47,12 +41,29 @@ internal final class LineSelectorPageViewModel {
 
   private func refreshView() {
     self.view?.refresh()
-    self.needsViewRefresh = false
   }
 
-  // MARK: - Input
+  // MARK: - View input
+
+  internal func viewDidSelectIndex(index: IndexPath) {
+    if let line = getLine(at: index) {
+      self.onLineSelected(line)
+    }
+  }
+
+  internal func viewDidDeselectIndex(index: IndexPath) {
+    if let line = getLine(at: index) {
+      self.onLineDeselected(line)
+    }
+  }
+
+  // MARK: - Method
 
   internal func setLines(lines: [Line]) {
+    if lines == self.selectedLines {
+      return
+    }
+
     // We need to also re-post selected indices as they may have changed
     // (and also because of how 'UICollectionView' works).
     self.sections = Self.createSections(from: lines)
@@ -92,23 +103,13 @@ internal final class LineSelectorPageViewModel {
   }
 
   internal func setSelectedLines(lines: [Line]) {
+    if lines == self.selectedLines {
+      return
+    }
+
     self.selectedLines = lines
     self.selectedLineIndices = self.getIndices(of: self.selectedLines)
     self.refreshView()
-  }
-
-  // MARK: - View input
-
-  internal func viewDidSelectIndex(index: IndexPath) {
-    if let line = getLine(at: index) {
-      self.onLineSelected(line)
-    }
-  }
-
-  internal func viewDidDeselectIndex(index: IndexPath) {
-    if let line = getLine(at: index) {
-      self.onLineDeselected(line)
-    }
   }
 
   // MARK: - Helpers

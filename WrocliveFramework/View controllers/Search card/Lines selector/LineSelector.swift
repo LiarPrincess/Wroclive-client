@@ -74,6 +74,11 @@ public final class LineSelector:
 
   // MARK: - LineSelectorViewType
 
+  public func refresh() {
+    let page = self.viewModel.page
+    self.setPage(page: page, animated: true)
+  }
+
   public func setPage(page: LineType, animated: Bool) {
     typealias Direction = UIPageViewController.NavigationDirection
 

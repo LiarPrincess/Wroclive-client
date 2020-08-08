@@ -83,38 +83,32 @@ public final class SearchCard:
                                                              right: 0.0)
     }
   }
+  // MARK: - SearchCardViewType
 
-  // MARK: -  Subview visibility
-
-  public func setIsLineSelectorVisible(value: Bool) {
-    let isHidden = !value
-    self.lineSelector.view.isHidden = isHidden
-  }
-
-  public func setIsPlaceholderVisible(value: Bool) {
-    let isHidden = !value
-    self.placeholderView.isHidden = isHidden
-  }
-
-  // MARK: - Page
-
-  public func setPage(page: LineType) {
+  public func refresh() {
+    let page = self.viewModel.page
     self.lineTypeSelector.setPage(page: page)
+
+    let isLineSelectorVisible = self.viewModel.isLineSelectorVisible
+    self.lineSelector.view.isHidden = !isLineSelectorVisible
+
+    let isPlaceholderVisible = self.viewModel.isPlaceholderVisible
+    self.placeholderView.isHidden = !isPlaceholderVisible
   }
 
-  // MARK: - Search
+  // MARK: - Actions
 
   @objc
   internal func didPressSearchButton() {
-    self.viewModel.didPressSearchButton()
+    self.viewModel.viewDidPressSearchButton()
   }
-
-  // MARK: - Bookmark
 
   @objc
   internal func didPressBookmarkButton() {
-    self.viewModel.didPressBookmarkButton()
+    self.viewModel.viewDidPressBookmarkButton()
   }
+
+  // MARK: - Alerts
 
   public func showBookmarkNameInputAlert() {
     _ = BookmarkAlerts.showNameInputAlert()
@@ -123,15 +117,13 @@ public final class SearchCard:
           return
         }
 
-        self?.viewModel.didEnterBookmarkName(value: name)
+        self?.viewModel.viewDidEnterBookmarkName(value: name)
       }
   }
 
   public func showBookmarkNoLineSelectedAlert() {
     _ = BookmarkAlerts.showNoLinesSelectedAlert()
   }
-
-  // MARK: - Api alert
 
   public func showApiErrorAlert(error: ApiError) {
     switch error {

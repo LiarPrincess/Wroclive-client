@@ -16,29 +16,13 @@ public protocol BookmarksCardViewType: AnyObject {
 
 public final class BookmarksCardViewModel: StoreSubscriber {
 
-  internal private(set) var bookmarks: [Bookmark] {
-    didSet { self.needsViewRefresh = true }
-  }
-
-  internal private(set) var isTableViewVisible: Bool {
-    didSet { self.needsViewRefresh = true }
-  }
-
-  internal private(set) var isPlaceholderVisible: Bool {
-    didSet { self.needsViewRefresh = true }
-  }
-
-  internal private(set) var isEditing: Bool {
-    didSet { self.needsViewRefresh = true }
-  }
-
-  internal private(set) var editButtonText: NSAttributedString {
-     didSet { self.needsViewRefresh = true }
-   }
+  internal private(set) var bookmarks: [Bookmark]
+  internal private(set) var isTableViewVisible: Bool
+  internal private(set) var isPlaceholderVisible: Bool
+  internal private(set) var isEditing: Bool
+  internal private(set) var editButtonText: NSAttributedString
 
   private let store: Store<AppState>
-  /// State that is currently being presented.
-  private var currentState: AppState?
   private weak var view: BookmarksCardViewType?
 
   public init(store: Store<AppState>) {
@@ -48,12 +32,11 @@ public final class BookmarksCardViewModel: StoreSubscriber {
     self.isPlaceholderVisible = true
     self.isEditing = false
     self.editButtonText = Self.createEditButtonText(isEditing: false)
+
     self.store.subscribe(self)
   }
 
   // MARK: - View
-
-  private var needsViewRefresh = false
 
   public func setView(view: BookmarksCardViewType) {
     assert(self.view == nil, "View was already assigned")
@@ -63,22 +46,16 @@ public final class BookmarksCardViewModel: StoreSubscriber {
 
   private func refreshView() {
     self.view?.refresh()
-    self.needsViewRefresh = false
   }
 
   // MARK: - Input
 
   public func viewDidSelectItem(index: Int) {
-    guard let state = self.currentState else {
+    guard self.bookmarks.indices.contains(index) else {
       return
     }
 
-    let bookmarks = state.bookmarks
-    guard bookmarks.indices.contains(index) else {
-      return
-    }
-
-    let bookmark = bookmarks[index]
+    let bookmark = self.bookmarks[index]
     self.store.dispatch(TrackedLinesAction.startTracking(bookmark.lines))
 
     self.view?.close(animated: true)
@@ -111,15 +88,13 @@ public final class BookmarksCardViewModel: StoreSubscriber {
   // MARK: - Store subscriber
 
   public func newState(state: AppState) {
-    defer { self.currentState = state }
-
     self.updateBookmarkListIfNeeded(newState: state)
     self.refreshView()
   }
 
   private func updateBookmarkListIfNeeded(newState: AppState) {
     let new = newState.bookmarks
-    let old = self.currentState?.bookmarks
+    let old = self.bookmarks
 
     guard new != old else {
       return
