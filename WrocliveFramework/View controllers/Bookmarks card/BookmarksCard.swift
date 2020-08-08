@@ -10,7 +10,6 @@ public final class BookmarksCard:
   UIViewController, UITableViewDataSource, UITableViewDelegate,
   BookmarksCardViewType, CustomCardPanelPresentable
 {
-
   // MARK: - Properties
 
   public var headerView: UIVisualEffectView = {
@@ -75,45 +74,38 @@ public final class BookmarksCard:
     }
   }
 
-  // MARK: - Bookmarks
+  // MARK: - View model
 
-  public func setBookmarks(value: [Bookmark]) {
-    if value != self.bookmarks {
-      self.bookmarks = value
+  public func refresh() {
+    let newBookmarks = self.viewModel.bookmarks
+    if newBookmarks != self.bookmarks {
+      self.bookmarks = newBookmarks
       self.tableView.reloadData()
     }
-  }
 
-  public func setIsTableViewVisible(value: Bool) {
-    let isHidden = !value
-    self.tableView.isHidden = isHidden
-    self.editButton.isHidden = isHidden
-  }
+    let isTableViewVisible = self.viewModel.isTableViewVisible
+    self.tableView.isHidden = !isTableViewVisible
+    self.editButton.isHidden = !isTableViewVisible
 
-  public func setIsPlaceholderVisible(value: Bool) {
-    let isHidden = !value
-    self.placeholderView.isHidden = isHidden
-  }
+    let isPlaceholderVisible = self.viewModel.isPlaceholderVisible
+    self.placeholderView.isHidden = !isPlaceholderVisible
 
-  // MARK: - Edit button
+    let isEditing = self.viewModel.isEditing
+    if self.isEditing != isEditing {
+      self.setEditing(isEditing, animated: true)
+    }
 
-  @objc
-  public func editButtonPressed() {
-    self.viewModel.didPressEditButton()
-  }
-
-  public func setIsEditing(value: Bool, animated: Bool) {
-    self.setEditing(value, animated: animated)
-  }
-
-  public func setEditButtonText(value: NSAttributedString) {
-    self.editButton.setAttributedTitle(value, for: .normal)
+    let editButtonText = self.viewModel.editButtonText
+    self.editButton.setAttributedTitle(editButtonText, for: .normal)
   }
 
   public override func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
 
-    if editing { self.closeSwipeToDelete() }
+    if editing {
+      self.closeSwipeToDelete()
+    }
+
     self.tableView.setEditing(editing, animated: true)
   }
 
@@ -124,10 +116,13 @@ public final class BookmarksCard:
     }
   }
 
-  // MARK: - Close
-
   public func close(animated: Bool) {
     self.dismiss(animated: animated, completion: nil)
+  }
+
+  @objc
+  public func editButtonPressed() {
+    self.viewModel.viewDidPressEditButton()
   }
 
   // MARK: - CustomCardPanelPresentable
@@ -155,7 +150,7 @@ public final class BookmarksCard:
 
   public func tableView(_ tableView: UITableView,
                         didSelectRowAt indexPath: IndexPath) {
-    self.viewModel.didSelectItem(index: indexPath.row)
+    self.viewModel.viewDidSelectItem(index: indexPath.row)
   }
 
   public func tableView(_ tableView: UITableView,
@@ -182,7 +177,7 @@ public final class BookmarksCard:
     case .delete:
       self.bookmarks.remove(at: index)
       self.tableView.deleteRows(at: [indexPath], with: .automatic)
-      self.viewModel.didDeleteItem(index: index)
+      self.viewModel.viewDidDeleteItem(index: index)
     case .insert,
          .none:
       break
@@ -199,6 +194,6 @@ public final class BookmarksCard:
 
     let bookmark = self.bookmarks.remove(at: fromIndex)
     self.bookmarks.insert(bookmark, at: toIndex)
-    self.viewModel.didMoveItem(fromIndex: fromIndex, toIndex: toIndex)
+    self.viewModel.viewDidMoveItem(fromIndex: fromIndex, toIndex: toIndex)
   }
 }

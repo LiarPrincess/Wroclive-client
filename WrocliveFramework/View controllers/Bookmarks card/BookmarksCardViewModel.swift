@@ -10,44 +10,65 @@ private typealias Constants = BookmarksCardConstants
 private typealias Localization = Localizable.Bookmarks
 
 public protocol BookmarksCardViewType: AnyObject {
-
-  func setBookmarks(value: [Bookmark])
-
-  func setIsTableViewVisible(value: Bool)
-  func setIsPlaceholderVisible(value: Bool)
-
-  func setIsEditing(value: Bool, animated: Bool)
-  func setEditButtonText(value: NSAttributedString)
-
+  func refresh()
   func close(animated: Bool)
 }
 
 public final class BookmarksCardViewModel: StoreSubscriber {
 
-  private let store: Store<AppState>
+  internal private(set) var bookmarks: [Bookmark] {
+    didSet { self.needsViewRefresh = true }
+  }
 
+  internal private(set) var isTableViewVisible: Bool {
+    didSet { self.needsViewRefresh = true }
+  }
+
+  internal private(set) var isPlaceholderVisible: Bool {
+    didSet { self.needsViewRefresh = true }
+  }
+
+  internal private(set) var isEditing: Bool {
+    didSet { self.needsViewRefresh = true }
+  }
+
+  internal private(set) var editButtonText: NSAttributedString {
+     didSet { self.needsViewRefresh = true }
+   }
+
+  private let store: Store<AppState>
   /// State that is currently being presented.
   private var currentState: AppState?
-  /// Are we currently editing the bookmark list?
-  private var isEditing = false
   private weak var view: BookmarksCardViewType?
 
   public init(store: Store<AppState>) {
     self.store = store
+    self.bookmarks = []
+    self.isTableViewVisible = false
+    self.isPlaceholderVisible = true
+    self.isEditing = false
+    self.editButtonText = Self.createEditButtonText(isEditing: false)
+    self.store.subscribe(self)
   }
+
+  // MARK: - View
+
+  private var needsViewRefresh = false
 
   public func setView(view: BookmarksCardViewType) {
     assert(self.view == nil, "View was already assigned")
     self.view = view
-    self.store.subscribe(self)
+    self.refreshView()
+  }
 
-    // Refresh 'Edit' button
-    self.setIsEditing(value: self.isEditing)
+  private func refreshView() {
+    self.view?.refresh()
+    self.needsViewRefresh = false
   }
 
   // MARK: - Input
 
-  public func didSelectItem(index: Int) {
+  public func viewDidSelectItem(index: Int) {
     guard let state = self.currentState else {
       return
     }
@@ -63,29 +84,28 @@ public final class BookmarksCardViewModel: StoreSubscriber {
     self.view?.close(animated: true)
   }
 
-  public func didMoveItem(fromIndex: Int, toIndex: Int) {
+  public func viewDidMoveItem(fromIndex: Int, toIndex: Int) {
     self.store.dispatch(BookmarksAction.move(from: fromIndex, to: toIndex))
   }
 
-  public func didDeleteItem(index: Int) {
+  public func viewDidDeleteItem(index: Int) {
     self.store.dispatch(BookmarksAction.remove(at: index))
   }
 
-  public func didPressEditButton() {
-    self.setIsEditing(value: !self.isEditing)
+  public func viewDidPressEditButton() {
+    let newValue = !self.isEditing
+    self.isEditing = newValue
+    self.editButtonText = Self.createEditButtonText(isEditing: newValue)
+    self.refreshView()
   }
 
-  private func setIsEditing(value: Bool) {
+  private static func createEditButtonText(isEditing: Bool) -> NSAttributedString {
     typealias L = Localization.Edit
     typealias Text = Constants.Header.Edit
 
-    let editButtonText = value ?
+    return isEditing ?
       NSAttributedString(string: L.done, attributes: Text.doneAttributes) :
       NSAttributedString(string: L.edit, attributes: Text.editAttributes)
-
-    self.isEditing = value
-    self.view?.setIsEditing(value: value, animated: true)
-    self.view?.setEditButtonText(value: editButtonText)
   }
 
   // MARK: - Store subscriber
@@ -94,6 +114,7 @@ public final class BookmarksCardViewModel: StoreSubscriber {
     defer { self.currentState = state }
 
     self.updateBookmarkListIfNeeded(newState: state)
+    self.refreshView()
   }
 
   private func updateBookmarkListIfNeeded(newState: AppState) {
@@ -104,10 +125,9 @@ public final class BookmarksCardViewModel: StoreSubscriber {
       return
     }
 
-    self.view?.setBookmarks(value: new)
-
     let isTableVisible = new.any
-    self.view?.setIsTableViewVisible(value: isTableVisible)
-    self.view?.setIsPlaceholderVisible(value: !isTableVisible)
+    self.bookmarks = new
+    self.isTableViewVisible = isTableVisible
+    self.isPlaceholderVisible = !isTableVisible
   }
 }
