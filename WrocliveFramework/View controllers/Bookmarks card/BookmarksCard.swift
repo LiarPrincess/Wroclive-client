@@ -24,8 +24,8 @@ public final class BookmarksCard:
   public let tableView = UITableView()
 
   /// Bookmarks data source
-  private var bookmarks = [Bookmark]()
-  private let viewModel: BookmarksCardViewModel
+  internal var bookmarks = [Bookmark]()
+  internal let viewModel: BookmarksCardViewModel
   internal let environment: Environment
 
   // MARK: - Init

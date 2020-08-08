@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout     = BookmarksCellConstants.Layout
+private typealias Layout = BookmarksCellConstants.Layout
 private typealias TextStyles = BookmarksCellConstants.TextStyles
 
 // https://stackoverflow.com/a/25967370 - preferredMaxLayoutWidth
@@ -87,8 +87,48 @@ public final class BookmarksCell: UITableViewCell {
 
   // MARK: - Methods
 
-  public func update(from viewModel: BookmarkCellViewModel) {
-    self.nameLabel.attributedText  = viewModel.name
-    self.linesLabel.attributedText = viewModel.lines
+  public func update(bookmark: Bookmark) {
+    let name = Self.createNameText(bookmark: bookmark)
+    let lines = Self.createLinesText(bookmark: bookmark)
+
+    self.nameLabel.attributedText  = name
+    self.linesLabel.attributedText = lines
+  }
+
+  internal static func createNameText(bookmark: Bookmark) -> NSAttributedString {
+    return NSAttributedString(string: bookmark.name, attributes: TextStyles.name)
+  }
+
+  internal static func createLinesText(bookmark: Bookmark) -> NSAttributedString {
+    var tramLines = bookmark.lines.filter(.tram)
+    var busLines = bookmark.lines.filter(.bus)
+
+    tramLines.sortByLocalizedName()
+    busLines.sortByLocalizedName()
+
+    let hasTramLines = tramLines.any
+    let hasBusLines = busLines.any
+    let hasTramAndBusLines = hasTramLines && hasBusLines
+
+    var string = ""
+    if hasTramLines       { string += concat(lines: tramLines) }
+    if hasTramAndBusLines { string += "\n" }
+    if hasBusLines        { string += concat(lines: busLines) }
+
+    return NSAttributedString(string: string, attributes: TextStyles.lines)
+  }
+
+  private static func concat(lines: [Line]) -> String {
+    var result = ""
+    for (index, line) in lines.enumerated() {
+      if index != 0 {
+        let separator = Layout.LinesLabel.horizontalSpacing
+        result.append(separator)
+      }
+
+      result.append(line.name)
+    }
+
+    return result
   }
 }

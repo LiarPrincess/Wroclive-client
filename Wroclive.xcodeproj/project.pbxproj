@@ -118,7 +118,6 @@
 		90CE741724D9BB7800419166 /* BookmarksPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740724D9BB7800419166 /* BookmarksPlaceholderView.swift */; };
 		90CE741824D9BB7800419166 /* BookmarksCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740824D9BB7800419166 /* BookmarksCardConstants.swift */; };
 		90CE741924D9BB7800419166 /* BookmarksPlaceholderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740924D9BB7800419166 /* BookmarksPlaceholderConstants.swift */; };
-		90CE742024D9BB7800419166 /* BookmarksCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741124D9BB7800419166 /* BookmarksCellViewModel.swift */; };
 		90CE742124D9BB7800419166 /* BookmarksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741224D9BB7800419166 /* BookmarksCard.swift */; };
 		90CE742224D9BB7800419166 /* BookmarksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741324D9BB7800419166 /* BookmarksCell.swift */; };
 		90CE742324D9BB7800419166 /* BookmarksCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741424D9BB7800419166 /* BookmarksCellConstants.swift */; };
@@ -300,7 +299,6 @@
 		90CE740E24D9BB7800419166 /* BookmarksCardViewModelTests+Edit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Edit.swift"; sourceTree = "<group>"; };
 		90CE740F24D9BB7800419166 /* BookmarksCardViewModelTests+Visibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Visibility.swift"; sourceTree = "<group>"; };
 		90CE741024D9BB7800419166 /* BookmarksCardViewModelTests+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Selection.swift"; sourceTree = "<group>"; };
-		90CE741124D9BB7800419166 /* BookmarksCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCellViewModel.swift; sourceTree = "<group>"; };
 		90CE741224D9BB7800419166 /* BookmarksCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCard.swift; sourceTree = "<group>"; };
 		90CE741324D9BB7800419166 /* BookmarksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCell.swift; sourceTree = "<group>"; };
 		90CE741424D9BB7800419166 /* BookmarksCellConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCellConstants.swift; sourceTree = "<group>"; };
@@ -681,7 +679,6 @@
 				90CE740724D9BB7800419166 /* BookmarksPlaceholderView.swift */,
 				90CE740924D9BB7800419166 /* BookmarksPlaceholderConstants.swift */,
 				90CE741324D9BB7800419166 /* BookmarksCell.swift */,
-				90CE741124D9BB7800419166 /* BookmarksCellViewModel.swift */,
 				90CE741424D9BB7800419166 /* BookmarksCellConstants.swift */,
 			);
 			path = "Bookmarks card";
@@ -945,7 +942,6 @@
 				9076BD4B24DDB5D100467075 /* SearchCardConstants.swift in Sources */,
 				90CE741924D9BB7800419166 /* BookmarksPlaceholderConstants.swift in Sources */,
 				905893CD24D4A95D0046EFA5 /* BundleManager.swift in Sources */,
-				90CE742024D9BB7800419166 /* BookmarksCellViewModel.swift in Sources */,
 				905893C924D4A95D0046EFA5 /* StorageManager.swift in Sources */,
 				9013FABA24D6B1890006D1B9 /* DismissGestureHandlerType.swift in Sources */,
 				9076BD5124DDB5D100467075 /* SearchPlaceholderViewConstants.swift in Sources */,
