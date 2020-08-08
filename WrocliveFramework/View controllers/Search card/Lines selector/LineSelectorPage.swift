@@ -5,10 +5,9 @@
 import UIKit
 import SnapKit
 
-private typealias HeaderLayout     = LineSelectorConstants.Header.Layout
-private typealias HeaderTextStyles = LineSelectorConstants.Header.TextStyles
-private typealias CellLayout       = LineSelectorConstants.Cell.Layout
-private typealias Localization     = Localizable.Search
+private typealias HeaderConstants = LineSelectorConstants.Header
+private typealias CellConstants = LineSelectorConstants.Cell
+private typealias Localization = Localizable.Search
 
 internal final class LineSelectorPage:
   UIViewController,
@@ -62,8 +61,8 @@ internal final class LineSelectorPage:
   }
 
   private func initLayout() {
-    self.collectionViewLayout.minimumLineSpacing = CellLayout.margin
-    self.collectionViewLayout.minimumInteritemSpacing = CellLayout.margin
+    self.collectionViewLayout.minimumLineSpacing = CellConstants.margin
+    self.collectionViewLayout.minimumInteritemSpacing = CellConstants.margin
 
     self.collectionView.registerCell(LineSelectorCell.self)
     self.collectionView.registerSupplementary(LineSelectorHeaderView.self, kind: .header)
@@ -94,8 +93,8 @@ internal final class LineSelectorPage:
     // solve for cellWidth: cellWidth = (totalWidth - (n-1) * margin) / n
 
     let totalWidth = self.collectionView.contentWidth
-    let margin = CellLayout.margin
-    let minCellWidth = CellLayout.minSize
+    let margin = CellConstants.margin
+    let minCellWidth = CellConstants.minSize
 
     let cellCount = floor((totalWidth + margin) / (minCellWidth + margin))
     let cellWidth = (totalWidth - (cellCount - 1) * margin) / cellCount
@@ -205,12 +204,16 @@ internal final class LineSelectorPage:
 
     let section = self.sections[section]
     let text = NSAttributedString(string: section.name,
-                                  attributes: HeaderTextStyles.header)
+                                  attributes: HeaderConstants.textAttributes)
     let textSize = text.boundingRect(with: bounds,
                                      options: .usesLineFragmentOrigin,
                                      context: nil)
 
-    let height = textSize.height + HeaderLayout.topInset + HeaderLayout.bottomInset + 1.0
+    let height = textSize.height
+      + HeaderConstants.topInset
+      + HeaderConstants.bottomInset
+      + 1.0
+
     return CGSize(width: width, height: height)
   }
 }

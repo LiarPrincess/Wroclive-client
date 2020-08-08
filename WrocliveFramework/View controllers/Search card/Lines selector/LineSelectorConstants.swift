@@ -5,39 +5,31 @@
 internal enum LineSelectorConstants {
 
   internal enum Cell {
-    internal enum Layout {
-      internal static let margin = CGFloat(2.0)
-      internal static let minSize = CGFloat(50.0)
+    internal static let margin = CGFloat(2.0)
+    internal static let minSize = CGFloat(50.0)
 
-      internal static let cornerRadius = CGFloat(8.0)
+    internal static let cornerRadius = CGFloat(8.0)
+
+    internal static var selectedTextAttributes: TextAttributes {
+      // We need to use bold, otherwise text would look too thin on bright background
+      return TextAttributes(style: .bodyBold,
+                            color: .background,
+                            alignment: .center)
     }
 
-    internal enum TextStyles {
-      internal static var selected: TextAttributes {
-        // We need to use bold, otherwise text would look too thin on bright background
-        return TextAttributes(style: .bodyBold,
-                              color: .background,
-                              alignment: .center)
-      }
-
-      internal static var notSelected: TextAttributes {
-        return TextAttributes(style: .body,
-                              color: .text,
-                              alignment: .center)
-      }
+    internal static var notSelectedTextAttributes: TextAttributes {
+      return TextAttributes(style: .body,
+                            color: .text,
+                            alignment: .center)
     }
   }
 
   internal enum Header {
-    internal enum Layout {
-      internal static let topInset = CGFloat(16.0)
-      internal static let bottomInset = CGFloat(8.0)
-    }
+    internal static let topInset = CGFloat(16.0)
+    internal static let bottomInset = CGFloat(8.0)
 
-    internal enum TextStyles {
-      internal static var header: TextAttributes {
-        return TextAttributes(style: .headline, alignment: .center)
-      }
+    internal static var textAttributes: TextAttributes {
+      return TextAttributes(style: .headline, alignment: .center)
     }
   }
 }

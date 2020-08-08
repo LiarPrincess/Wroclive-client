@@ -5,8 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout = LineSelectorConstants.Cell.Layout
-private typealias TextStyles = LineSelectorConstants.Cell.TextStyles
+private typealias Constants = LineSelectorConstants.Cell
 
 internal final class LineSelectorCell: UICollectionViewCell {
 
@@ -38,7 +37,7 @@ internal final class LineSelectorCell: UICollectionViewCell {
   private func initLayout() {
     self.selectedBackgroundView = UIView()
     self.selectedBackgroundView?.backgroundColor = Theme.colors.tint
-    self.selectedBackgroundView?.layer.cornerRadius = Layout.cornerRadius
+    self.selectedBackgroundView?.layer.cornerRadius = Constants.cornerRadius
 
     self.label.numberOfLines = 1
     self.label.isUserInteractionEnabled = false
@@ -67,7 +66,10 @@ internal final class LineSelectorCell: UICollectionViewCell {
   internal static func createText(line: Line,
                                   isSelected: Bool) -> NSAttributedString {
     let string = line.name.uppercased()
-    let attributes = isSelected ? TextStyles.selected : TextStyles.notSelected
+    let attributes = isSelected ?
+      Constants.selectedTextAttributes :
+      Constants.notSelectedTextAttributes
+
     return NSAttributedString(string: string, attributes: attributes)
   }
 }

@@ -5,8 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout = LineSelectorConstants.Header.Layout
-private typealias TextStyles = LineSelectorConstants.Header.TextStyles
+private typealias Constants = LineSelectorConstants.Header
 
 internal final class LineSelectorHeaderView: UICollectionReusableView {
 
@@ -38,7 +37,7 @@ internal final class LineSelectorHeaderView: UICollectionReusableView {
 
     self.addSubview(self.label)
     self.label.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.topInset)
+      make.top.equalToSuperview().offset(Constants.topInset)
       make.left.right.equalToSuperview()
     }
   }
@@ -52,6 +51,6 @@ internal final class LineSelectorHeaderView: UICollectionReusableView {
 
   internal static func createText(section: LineSelectorSection) -> NSAttributedString {
     let string = section.name
-    return NSAttributedString(string: string, attributes: TextStyles.header)
+    return NSAttributedString(string: string, attributes: Constants.textAttributes)
   }
 }
