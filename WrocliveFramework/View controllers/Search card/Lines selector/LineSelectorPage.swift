@@ -5,14 +5,16 @@
 import UIKit
 import SnapKit
 
-private typealias HeaderLayout     = LineSelectorHeaderViewConstants.Layout
-private typealias HeaderTextStyles = LineSelectorHeaderViewConstants.TextStyles
-private typealias CellLayout       = LineSelectorCellConstants.Layout
+private typealias HeaderLayout     = LineSelectorConstants.Header.Layout
+private typealias HeaderTextStyles = LineSelectorConstants.Header.TextStyles
+private typealias CellLayout       = LineSelectorConstants.Cell.Layout
 private typealias Localization     = Localizable.Search
 
 internal final class LineSelectorPage:
-  UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,
-  UICollectionViewDelegateFlowLayout, LineSelectorPageType
+  UIViewController,
+  UICollectionViewDelegate, UICollectionViewDataSource,
+  UICollectionViewDelegateFlowLayout,
+  LineSelectorPageType
 {
 
   // MARK: - Properties
@@ -52,7 +54,7 @@ internal final class LineSelectorPage:
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - View did load
+  // MARK: - ViewDidLoad
 
   internal override func viewDidLoad() {
     super.viewDidLoad()
@@ -76,7 +78,7 @@ internal final class LineSelectorPage:
     self.collectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 
-  // MARK: - View did layout subviews
+  // MARK: - ViewDidLayoutSubviews
 
   internal override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
@@ -194,7 +196,7 @@ internal final class LineSelectorPage:
     let bounds = CGSize(width: width, height: .greatestFiniteMagnitude)
 
     let section = self.sections[section]
-    let text = NSAttributedString(string: section.lineSubtypeTranslation,
+    let text = NSAttributedString(string: section.name,
                                   attributes: HeaderTextStyles.header)
     let textSize = text.boundingRect(with: bounds,
                                      options: .usesLineFragmentOrigin,

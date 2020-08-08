@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90093B4E24DEB4E100D95645 /* LineSelectorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90093B4D24DEB4E100D95645 /* LineSelectorConstants.swift */; };
 		900EA0C424D467040054C03F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 900EA0C624D467040054C03F /* InfoPlist.strings */; };
 		900EA0D624D469D90054C03F /* WrocliveFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900EA0CF24D469D90054C03F /* WrocliveFramework.framework */; };
 		900EA0D724D469D90054C03F /* WrocliveFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 900EA0CF24D469D90054C03F /* WrocliveFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -100,6 +101,7 @@
 		9076BD5524DDB5D800467075 /* SearchCardViewModelTests+Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4324DDB5D100467075 /* SearchCardViewModelTests+Tracking.swift */; };
 		9076BD5624DDB5D800467075 /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4424DDB5D100467075 /* SearchCardViewModelTests.swift */; };
 		9076BD5724DDB5D800467075 /* SearchCardViewModelTests+Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4524DDB5D100467075 /* SearchCardViewModelTests+Lines.swift */; };
+		9076BD5924DDD26C00467075 /* LineTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */; };
 		907FD0B724D898BC00B6896C /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B624D898BC00B6896C /* Reducer.swift */; };
 		907FD0B924D8A2DC00B6896C /* OfflineApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B824D8A2DC00B6896C /* OfflineApi.swift */; };
 		907FD0BB24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0BA24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift */; };
@@ -129,21 +131,14 @@
 		90CE742B24D9D6E000419166 /* BookmarksCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */; };
 		90CE742D24D9D6E600419166 /* CardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742C24D9D6E600419166 /* CardCoordinator.swift */; };
 		90CE742F24D9DA3F00419166 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742E24D9DA3F00419166 /* DummyData.swift */; };
-		90CE746324DB0A4F00419166 /* LineTypeSelectorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE744B24DB0A4F00419166 /* LineTypeSelectorConstants.swift */; };
-		90CE746424DB0A4F00419166 /* LineTypeSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE744C24DB0A4F00419166 /* LineTypeSelectorViewModel.swift */; };
-		90CE746624DB0A4F00419166 /* LineTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE744F24DB0A4F00419166 /* LineTypeSelector.swift */; };
-		90CE749324DB0D0D00419166 /* LineTypeSelectorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE749124DB0D0700419166 /* LineTypeSelectorViewModelTests.swift */; };
-		90D57AFA24DC490100A0EF53 /* LineSelectorCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AE824DC490000A0EF53 /* LineSelectorCellConstants.swift */; };
+		90CE746324DB0A4F00419166 /* LineTypeSegmentedControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE744B24DB0A4F00419166 /* LineTypeSegmentedControlConstants.swift */; };
 		90D57AFB24DC490100A0EF53 /* LineSelectorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AE924DC490000A0EF53 /* LineSelectorPage.swift */; };
 		90D57AFD24DC490100A0EF53 /* LineSelectorPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AEB24DC490000A0EF53 /* LineSelectorPageViewModel.swift */; };
 		90D57B0324DC490100A0EF53 /* LineSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF224DC490000A0EF53 /* LineSelector.swift */; };
-		90D57B0424DC490100A0EF53 /* LineSelectorCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF324DC490000A0EF53 /* LineSelectorCellViewModel.swift */; };
-		90D57B0524DC490100A0EF53 /* LineSelectorHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF424DC490000A0EF53 /* LineSelectorHeaderViewModel.swift */; };
 		90D57B0624DC490100A0EF53 /* LineSelectorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF524DC490000A0EF53 /* LineSelectorHeaderView.swift */; };
 		90D57B0724DC490100A0EF53 /* LineSelectorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF624DC490000A0EF53 /* LineSelectorSection.swift */; };
 		90D57B0824DC490100A0EF53 /* LineSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF724DC490000A0EF53 /* LineSelectorViewModel.swift */; };
 		90D57B0924DC490100A0EF53 /* LineSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF824DC490000A0EF53 /* LineSelectorCell.swift */; };
-		90D57B0A24DC490100A0EF53 /* LineSelectorHeaderViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF924DC490000A0EF53 /* LineSelectorHeaderViewConstants.swift */; };
 		90D57B0B24DC5D3A00A0EF53 /* LineSelectorSectionCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AED24DC490000A0EF53 /* LineSelectorSectionCreatorTests.swift */; };
 		90D57B0C24DC5D3A00A0EF53 /* LineSelectorPageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AEE24DC490000A0EF53 /* LineSelectorPageViewModelTests.swift */; };
 		90D57B0D24DC5D3A00A0EF53 /* LineSelectorCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AEF24DC490000A0EF53 /* LineSelectorCellViewModelTests.swift */; };
@@ -187,6 +182,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		90093B4D24DEB4E100D95645 /* LineSelectorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorConstants.swift; sourceTree = "<group>"; };
 		900EA0C524D467040054C03F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		900EA0C724D467490054C03F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		900EA0C824D467E30054C03F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -281,6 +277,7 @@
 		9076BD4724DDB5D100467075 /* SearchPlaceholderViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderViewConstants.swift; sourceTree = "<group>"; };
 		9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewModel.swift; sourceTree = "<group>"; };
 		9076BD4924DDB5D100467075 /* SearchCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCard.swift; sourceTree = "<group>"; };
+		9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTypeSegmentedControl.swift; sourceTree = "<group>"; };
 		907FD0B624D898BC00B6896C /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		907FD0B824D8A2DC00B6896C /* OfflineApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineApi.swift; sourceTree = "<group>"; };
 		907FD0BA24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationAuthorizationMiddleware.swift; sourceTree = "<group>"; };
@@ -310,11 +307,7 @@
 		90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardCoordinator.swift; sourceTree = "<group>"; };
 		90CE742C24D9D6E600419166 /* CardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCoordinator.swift; sourceTree = "<group>"; };
 		90CE742E24D9DA3F00419166 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
-		90CE744B24DB0A4F00419166 /* LineTypeSelectorConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelectorConstants.swift; sourceTree = "<group>"; };
-		90CE744C24DB0A4F00419166 /* LineTypeSelectorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelectorViewModel.swift; sourceTree = "<group>"; };
-		90CE744F24DB0A4F00419166 /* LineTypeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelector.swift; sourceTree = "<group>"; };
-		90CE749124DB0D0700419166 /* LineTypeSelectorViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSelectorViewModelTests.swift; sourceTree = "<group>"; };
-		90D57AE824DC490000A0EF53 /* LineSelectorCellConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorCellConstants.swift; sourceTree = "<group>"; };
+		90CE744B24DB0A4F00419166 /* LineTypeSegmentedControlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSegmentedControlConstants.swift; sourceTree = "<group>"; };
 		90D57AE924DC490000A0EF53 /* LineSelectorPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorPage.swift; sourceTree = "<group>"; };
 		90D57AEB24DC490000A0EF53 /* LineSelectorPageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorPageViewModel.swift; sourceTree = "<group>"; };
 		90D57AED24DC490000A0EF53 /* LineSelectorSectionCreatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorSectionCreatorTests.swift; sourceTree = "<group>"; };
@@ -323,13 +316,10 @@
 		90D57AF024DC490000A0EF53 /* LineSelectorHeaderViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorHeaderViewModelTests.swift; sourceTree = "<group>"; };
 		90D57AF124DC490000A0EF53 /* LineSelectorViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorViewModelTests.swift; sourceTree = "<group>"; };
 		90D57AF224DC490000A0EF53 /* LineSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelector.swift; sourceTree = "<group>"; };
-		90D57AF324DC490000A0EF53 /* LineSelectorCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorCellViewModel.swift; sourceTree = "<group>"; };
-		90D57AF424DC490000A0EF53 /* LineSelectorHeaderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorHeaderViewModel.swift; sourceTree = "<group>"; };
 		90D57AF524DC490000A0EF53 /* LineSelectorHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorHeaderView.swift; sourceTree = "<group>"; };
 		90D57AF624DC490000A0EF53 /* LineSelectorSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorSection.swift; sourceTree = "<group>"; };
 		90D57AF724DC490000A0EF53 /* LineSelectorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorViewModel.swift; sourceTree = "<group>"; };
 		90D57AF824DC490000A0EF53 /* LineSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorCell.swift; sourceTree = "<group>"; };
-		90D57AF924DC490000A0EF53 /* LineSelectorHeaderViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorHeaderViewConstants.swift; sourceTree = "<group>"; };
 		90DE39E924D8570900ADE4B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		90DE39F124D8685400ADE4B9 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -721,22 +711,10 @@
 			path = "Transition delegate";
 			sourceTree = "<group>";
 		};
-		90CE744A24DB0A4F00419166 /* Line type selector */ = {
-			isa = PBXGroup;
-			children = (
-				90CE749024DB0D0700419166 /* Tests */,
-				90CE744F24DB0A4F00419166 /* LineTypeSelector.swift */,
-				90CE744B24DB0A4F00419166 /* LineTypeSelectorConstants.swift */,
-				90CE744C24DB0A4F00419166 /* LineTypeSelectorViewModel.swift */,
-			);
-			path = "Line type selector";
-			sourceTree = "<group>";
-		};
 		90CE747824DB0CAE00419166 /* Search card */ = {
 			isa = PBXGroup;
 			children = (
 				9076BD4124DDB5D100467075 /* Tests */,
-				90CE744A24DB0A4F00419166 /* Line type selector */,
 				90D57AE724DC490000A0EF53 /* Lines selector */,
 				9076BD4924DDB5D100467075 /* SearchCard.swift */,
 				9076BD3F24DDB5D000467075 /* SearchCardLayout.swift */,
@@ -744,16 +722,10 @@
 				9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */,
 				9076BD4624DDB5D100467075 /* SearchPlaceholderView.swift */,
 				9076BD4724DDB5D100467075 /* SearchPlaceholderViewConstants.swift */,
+				9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */,
+				90CE744B24DB0A4F00419166 /* LineTypeSegmentedControlConstants.swift */,
 			);
 			path = "Search card";
-			sourceTree = "<group>";
-		};
-		90CE749024DB0D0700419166 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				90CE749124DB0D0700419166 /* LineTypeSelectorViewModelTests.swift */,
-			);
-			path = Tests;
 			sourceTree = "<group>";
 		};
 		90D57AE724DC490000A0EF53 /* Lines selector */ = {
@@ -762,14 +734,11 @@
 				90D57AEC24DC490000A0EF53 /* Tests */,
 				90D57AF224DC490000A0EF53 /* LineSelector.swift */,
 				90D57AF724DC490000A0EF53 /* LineSelectorViewModel.swift */,
+				90093B4D24DEB4E100D95645 /* LineSelectorConstants.swift */,
 				90D57AE924DC490000A0EF53 /* LineSelectorPage.swift */,
 				90D57AEB24DC490000A0EF53 /* LineSelectorPageViewModel.swift */,
 				90D57AF824DC490000A0EF53 /* LineSelectorCell.swift */,
-				90D57AE824DC490000A0EF53 /* LineSelectorCellConstants.swift */,
-				90D57AF324DC490000A0EF53 /* LineSelectorCellViewModel.swift */,
 				90D57AF524DC490000A0EF53 /* LineSelectorHeaderView.swift */,
-				90D57AF424DC490000A0EF53 /* LineSelectorHeaderViewModel.swift */,
-				90D57AF924DC490000A0EF53 /* LineSelectorHeaderViewConstants.swift */,
 				90D57AF624DC490000A0EF53 /* LineSelectorSection.swift */,
 			);
 			path = "Lines selector";
@@ -984,7 +953,6 @@
 				90CE742124D9BB7800419166 /* BookmarksCard.swift in Sources */,
 				9013FAB824D6B1890006D1B9 /* CardPanelContainer.swift in Sources */,
 				9013FAB424D6B1890006D1B9 /* ChevronView.swift in Sources */,
-				90CE746624DB0A4F00419166 /* LineTypeSelector.swift in Sources */,
 				9058939E24D4A8600046EFA5 /* StyleKit.swift in Sources */,
 				905893CC24D4A95D0046EFA5 /* DebugManager.swift in Sources */,
 				9013FABC24D6B1890006D1B9 /* ScrollViewDismissGestureHandler.swift in Sources */,
@@ -998,7 +966,6 @@
 				9076BD3E24DDB57A00467075 /* SearchCardCoordinator.swift in Sources */,
 				90CE741724D9BB7800419166 /* BookmarksPlaceholderView.swift in Sources */,
 				90CE742B24D9D6E000419166 /* BookmarksCardCoordinator.swift in Sources */,
-				90D57AFA24DC490100A0EF53 /* LineSelectorCellConstants.swift in Sources */,
 				9013FB4124D72C790006D1B9 /* MapViewModel.swift in Sources */,
 				90D57B0324DC490100A0EF53 /* LineSelector.swift in Sources */,
 				90CE742224D9BB7800419166 /* BookmarksCell.swift in Sources */,
@@ -1007,13 +974,13 @@
 				900EA10B24D46F140054C03F /* LinesEndpoint.swift in Sources */,
 				9013FABE24D6B1890006D1B9 /* CardPanelConstants.swift in Sources */,
 				90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */,
-				90D57B0424DC490100A0EF53 /* LineSelectorCellViewModel.swift in Sources */,
 				90D57AFB24DC490100A0EF53 /* LineSelectorPage.swift in Sources */,
 				9076BD5324DDB5D100467075 /* SearchCard.swift in Sources */,
 				90CE742324D9BB7800419166 /* BookmarksCellConstants.swift in Sources */,
 				9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */,
 				90CE741524D9BB7800419166 /* BookmarksCardLayout.swift in Sources */,
 				9013FAC724D721410006D1B9 /* Fonts.swift in Sources */,
+				90093B4E24DEB4E100D95645 /* LineSelectorConstants.swift in Sources */,
 				9013FB3C24D72C790006D1B9 /* VehicleAnnotationDiff.swift in Sources */,
 				90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */,
 				90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */,
@@ -1021,12 +988,11 @@
 				90DE39F724D8685400ADE4B9 /* Coordinator.swift in Sources */,
 				9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */,
 				907FD0BD24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift in Sources */,
+				9076BD5924DDD26C00467075 /* LineTypeSegmentedControl.swift in Sources */,
 				9047996A24D575C500111F2C /* ApiMiddleware.swift in Sources */,
 				9047996924D575C500111F2C /* PersistencyMiddleware.swift in Sources */,
 				9076BD4A24DDB5D100467075 /* SearchCardLayout.swift in Sources */,
-				90D57B0524DC490100A0EF53 /* LineSelectorHeaderViewModel.swift in Sources */,
 				900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */,
-				90CE746424DB0A4F00419166 /* LineTypeSelectorViewModel.swift in Sources */,
 				905893D224D4A95D0046EFA5 /* LogManager.swift in Sources */,
 				90D57B0824DC490100A0EF53 /* LineSelectorViewModel.swift in Sources */,
 				9013FB3124D721A90006D1B9 /* MainViewControllerConstants.swift in Sources */,
@@ -1056,12 +1022,11 @@
 				9013FAB524D6B1890006D1B9 /* CardPanelPresentationTransition.swift in Sources */,
 				9013FAC324D6B1890006D1B9 /* LocationAlerts.swift in Sources */,
 				905893D024D4A95D0046EFA5 /* FileSystem.swift in Sources */,
-				90D57B0A24DC490100A0EF53 /* LineSelectorHeaderViewConstants.swift in Sources */,
 				900EA10324D46C110054C03F /* Line.swift in Sources */,
 				907FD0B724D898BC00B6896C /* Reducer.swift in Sources */,
 				9076BD5024DDB5D100467075 /* SearchPlaceholderView.swift in Sources */,
 				9047997024D575C500111F2C /* Actions.swift in Sources */,
-				90CE746324DB0A4F00419166 /* LineTypeSelectorConstants.swift in Sources */,
+				90CE746324DB0A4F00419166 /* LineTypeSegmentedControlConstants.swift in Sources */,
 				9058939024D4A7460046EFA5 /* Theme.swift in Sources */,
 				9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */,
 				9013FAC224D6B1890006D1B9 /* BookmarkAlerts.swift in Sources */,
@@ -1099,7 +1064,6 @@
 				90D57B0C24DC5D3A00A0EF53 /* LineSelectorPageViewModelTests.swift in Sources */,
 				90CE742924D9BB9000419166 /* BookmarksCardViewModelTests+Selection.swift in Sources */,
 				90D57B0D24DC5D3A00A0EF53 /* LineSelectorCellViewModelTests.swift in Sources */,
-				90CE749324DB0D0D00419166 /* LineTypeSelectorViewModelTests.swift in Sources */,
 				90CE742524D9BB9000419166 /* BookmarksCellViewModelTests.swift in Sources */,
 				90CE742624D9BB9000419166 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
 				90CE742824D9BB9000419166 /* BookmarksCardViewModelTests+Visibility.swift in Sources */,

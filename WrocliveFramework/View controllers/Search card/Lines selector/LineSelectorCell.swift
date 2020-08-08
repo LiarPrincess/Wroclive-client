@@ -5,8 +5,8 @@
 import UIKit
 import SnapKit
 
-private typealias Layout = LineSelectorCellConstants.Layout
-private typealias TextStyles = LineSelectorCellConstants.TextStyles
+private typealias Layout = LineSelectorConstants.Cell.Layout
+private typealias TextStyles = LineSelectorConstants.Cell.TextStyles
 
 internal final class LineSelectorCell: UICollectionViewCell {
 

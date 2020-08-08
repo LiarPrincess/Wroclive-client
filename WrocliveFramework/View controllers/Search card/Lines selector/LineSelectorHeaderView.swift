@@ -5,8 +5,8 @@
 import UIKit
 import SnapKit
 
-private typealias Layout = LineSelectorHeaderViewConstants.Layout
-private typealias TextStyles = LineSelectorHeaderViewConstants.TextStyles
+private typealias Layout = LineSelectorConstants.Header.Layout
+private typealias TextStyles = LineSelectorConstants.Header.TextStyles
 
 internal final class LineSelectorHeaderView: UICollectionReusableView {
 
@@ -51,7 +51,7 @@ internal final class LineSelectorHeaderView: UICollectionReusableView {
   }
 
   internal static func createText(section: LineSelectorSection) -> NSAttributedString {
-    let string = section.lineSubtypeTranslation
+    let string = section.name
     return NSAttributedString(string: string, attributes: TextStyles.header)
   }
 }

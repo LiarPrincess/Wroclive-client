@@ -7,7 +7,7 @@ public struct LineSelectorSection: Equatable {
   public let lineSubtype: LineSubtype
   public let lines: [Line]
 
-  public var lineSubtypeTranslation: String {
+  public var name: String {
     typealias L = Localizable.Search.Sections
 
     switch self.lineSubtype {
@@ -28,6 +28,8 @@ public struct LineSelectorSection: Equatable {
     self.lineSubtype = lineSubtype
     self.lines = lines
   }
+
+  // MARK: - Create
 
   internal static func create(from lines: [Line]) -> [LineSelectorSection] {
     let linesBySubtype = lines.group { $0.subtype }
