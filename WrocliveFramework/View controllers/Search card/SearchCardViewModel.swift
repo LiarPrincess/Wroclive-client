@@ -103,20 +103,16 @@ public final class SearchCardViewModel: StoreSubscriber {
   // MARK: - Store subscriber
 
   public func newState(state: AppState) {
-    self.updatePageIfNeeded(newState: state)
+    self.updatePage(newState: state)
     self.handleLineRequestChange(newState: state)
     self.handleSelectedLinesChange(newState: state)
     self.refreshView()
   }
 
-  private func updatePageIfNeeded(newState: AppState) {
-    let new = newState.searchCardState.page
-    let old = self.page
-
-    if new != old {
-      self.page = new
-      self.lineSelectorViewModel.setPage(page: new)
-    }
+  private func updatePage(newState: AppState) {
+    let page = newState.searchCardState.page
+    self.page = page
+    self.lineSelectorViewModel.setPage(page: page)
   }
 
   private func handleSelectedLinesChange(newState: AppState) {
@@ -163,7 +159,7 @@ public final class SearchCardViewModel: StoreSubscriber {
       break
 
     case .none:
-      let isTheSameAsPrevious = old?.isNone ?? true
+      let isTheSameAsPrevious = old?.isNone ?? false
       if !isTheSameAsPrevious {
         self.requestLinesFromApi()
         self.setIsLineSelectorVisible(value: false)

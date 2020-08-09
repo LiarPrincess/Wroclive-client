@@ -77,6 +77,12 @@ internal final class LineSelectorPage:
     self.collectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 
+  // MARK: - ViewWillAppear
+
+  internal override func viewWillAppear(_ animated: Bool) {
+    self.refresh()
+  }
+
   // MARK: - ViewDidLayoutSubviews
 
   internal override func viewDidLayoutSubviews() {

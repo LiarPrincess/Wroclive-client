@@ -51,6 +51,7 @@ internal final class LineSelectorCell: UICollectionViewCell {
   internal func update(line: Line) {
     // Note that 'self.isSelected' for new cell is set BEFORE
     // 'tableView(_:cellForRowAt:)' is called
+    self.line = line
     self.updateTextLabel()
   }
 

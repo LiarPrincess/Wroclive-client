@@ -52,20 +52,11 @@ public final class LineSelector:
                navigationOrientation: .horizontal,
                options: nil)
 
-    viewModel.setView(view: self)
-
-    // Load views so we can select/deselect cells right away
-    self.pages.forEach { _ = $0.view }
-
     self.delegate = self
     self.dataSource = self
 
-    // Show 1st page as default
-    let firstPage = self.pages[0]
-    self.setViewControllers([firstPage],
-                            direction: .forward,
-                            animated: false,
-                            completion: nil)
+    // This has to be last in 'init', because at this point we need both views loaded
+    viewModel.setView(view: self)
   }
 
   public required init?(coder: NSCoder) {
