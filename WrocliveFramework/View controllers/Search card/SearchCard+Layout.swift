@@ -5,7 +5,6 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = SearchCardConstants
 private typealias Localization = Localizable.Search
 
 internal extension SearchCard {

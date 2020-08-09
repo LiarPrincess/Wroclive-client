@@ -5,7 +5,6 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = BookmarksCardConstants
 private typealias Localization = Localizable.Bookmarks
 
 internal extension BookmarksCard {
