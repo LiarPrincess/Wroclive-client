@@ -4,8 +4,6 @@
 
 import UIKit
 
-private typealias Constants = BookmarksCardConstants
-
 public final class BookmarksCard:
   UIViewController, UITableViewDataSource, UITableViewDelegate,
   BookmarksCardViewType, CustomCardPanelPresentable

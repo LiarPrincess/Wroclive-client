@@ -5,8 +5,8 @@
 import UIKit
 import SnapKit
 
-private typealias HeaderConstants = LineSelectorConstants.Header
-private typealias CellConstants = LineSelectorConstants.Cell
+private typealias HeaderConstants = LineSelector.Constants.Header
+private typealias CellConstants = LineSelector.Constants.Cell
 private typealias Localization = Localizable.Search
 
 internal final class LineSelectorPage:

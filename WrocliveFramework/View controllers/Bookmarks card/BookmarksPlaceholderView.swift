@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = BookmarksCardConstants.Placeholder
+private typealias Constants = BookmarksCard.Constants.Placeholder
 private typealias Localization = Localizable.Bookmarks.Placeholder
 
 public final class BookmarksPlaceholderView: UIView {

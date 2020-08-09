@@ -6,7 +6,7 @@ import UIKit
 import MapKit
 import Foundation
 
-private typealias Constants = MapViewControllerConstants.Pin
+private typealias Constants = MapViewController.Constants.Pin
 
 public final class VehicleAnnotationView: MKAnnotationView {
 

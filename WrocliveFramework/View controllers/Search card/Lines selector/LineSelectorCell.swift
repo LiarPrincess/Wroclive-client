@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = LineSelectorConstants.Cell
+private typealias Constants = LineSelector.Constants.Cell
 
 internal final class LineSelectorCell: UICollectionViewCell {
 

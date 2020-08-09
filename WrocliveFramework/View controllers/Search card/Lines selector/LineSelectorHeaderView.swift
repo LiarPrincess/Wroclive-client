@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = LineSelectorConstants.Header
+private typealias Constants = LineSelector.Constants.Header
 
 internal final class LineSelectorHeaderView: UICollectionReusableView {
 

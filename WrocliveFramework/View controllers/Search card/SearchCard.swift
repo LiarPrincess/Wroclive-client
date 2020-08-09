@@ -4,7 +4,6 @@
 
 import UIKit
 
-private typealias Constants = SearchCardConstants
 private typealias Localization = Localizable.Search
 
 public final class SearchCard:

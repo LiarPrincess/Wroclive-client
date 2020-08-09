@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = SearchCardConstants.Placeholder
+private typealias Constants = SearchCard.Constants.Placeholder
 private typealias Localization = Localizable.Search
 
 public final class SearchPlaceholderView: UIView {

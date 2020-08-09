@@ -6,7 +6,7 @@ import UIKit
 import ReSwift
 import PromiseKit
 
-private typealias Constants = BookmarksCardConstants
+private typealias Constants = BookmarksCard.Constants
 private typealias Localization = Localizable.Bookmarks
 
 public protocol BookmarksCardViewType: AnyObject {

@@ -7,7 +7,7 @@ import MapKit
 import ReSwift
 import PromiseKit
 
-private typealias Defaults = MapViewControllerConstants.Defaults
+private typealias Defaults = MapViewController.Constants.Defaults
 
 public protocol MapViewType: AnyObject {
   func setCenter(location: CLLocationCoordinate2D, animated: Bool)

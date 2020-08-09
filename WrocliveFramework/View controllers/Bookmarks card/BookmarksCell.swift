@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = BookmarksCardConstants.Cell
+private typealias Constants = BookmarksCard.Constants.Cell
 
 // https://stackoverflow.com/a/25967370 - preferredMaxLayoutWidth
 // https://stackoverflow.com/a/18746930 - auto layout for UITableView
