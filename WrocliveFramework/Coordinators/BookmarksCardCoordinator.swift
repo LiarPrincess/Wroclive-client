@@ -4,6 +4,7 @@
 
 import UIKit
 import ReSwift
+import PromiseKit
 
 // swiftlint:disable weak_delegate
 
@@ -24,11 +25,10 @@ public final class BookmarksCardCoordinator: CardCoordinator {
     self.environment = environment
   }
 
-  public func start() {
+  public func start() -> Guarantee<Void> {
     let viewModel = BookmarksCardViewModel(store: self.store)
     let card = BookmarksCard(viewModel: viewModel, environment: self.environment)
-
     let height = 0.75 * self.environment.device.screenBounds.height
-    self.presentCard(card, withHeight: height, animated: true)
+    return self.presentCard(card, withHeight: height, animated: true)
   }
 }

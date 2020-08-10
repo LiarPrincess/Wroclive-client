@@ -4,13 +4,14 @@
 
 import UIKit
 import ReSwift
+import PromiseKit
 
 // swiftlint:disable weak_delegate
 
 public final class SearchCardCoordinator: CardCoordinator {
 
   public let parent: UIViewController
-  public let store:  Store<AppState>
+  public let store: Store<AppState>
   public let environment: Environment
 
   public var card: SearchCard?
@@ -24,13 +25,18 @@ public final class SearchCardCoordinator: CardCoordinator {
     self.environment = environment
   }
 
-  public func start() {
-    let viewModel = SearchCardViewModel(store: self.store,
-                                        environment: self.environment)
-    let card = SearchCard(viewModel: viewModel,
-                          environment: self.environment)
-
+  public func start() -> Guarantee<Void> {
+    let viewModel = SearchCardViewModel(store: self.store,environment: self.environment)
+    let card = SearchCard(viewModel: viewModel, environment: self.environment)
     let height = 0.9 * self.environment.device.screenBounds.height
-    self.presentCard(card, withHeight: height, animated: true)
+
+    let environment = self.environment
+    return self.presentCard(card, withHeight: height, animated: true)
+      .done { _ in
+        let page = viewModel.page
+        let lines = viewModel.selectedLines.merge()
+        let state = SearchCardState(page: page, selectedLines: lines)
+        environment.storage.saveSearchCardState(state)
+      }
   }
 }

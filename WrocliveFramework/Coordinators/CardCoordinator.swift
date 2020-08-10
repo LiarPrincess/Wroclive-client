@@ -3,8 +3,9 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import PromiseKit
 
-public protocol CardCoordinator: class, Coordinator {
+public protocol CardCoordinator: class {
   associatedtype Card: UIViewController
 
   var card: Card? { get set }
@@ -15,7 +16,9 @@ public protocol CardCoordinator: class, Coordinator {
 
 public extension CardCoordinator {
 
-  func presentCard(_ card: Card, withHeight height: CGFloat, animated: Bool) {
+  func presentCard(_ card: Card,
+                   withHeight height: CGFloat,
+                   animated: Bool) -> Guarantee<Void> {
     guard self.card == nil else {
       fatalError("Card was already presented!")
     }
@@ -23,11 +26,12 @@ public extension CardCoordinator {
     self.card = card
     self.cardTransitionDelegate = CardPanelTransitionDelegate(height: height)
 
-    let container = CardPanelContainer()
-    container.setContent(card)
-    container.modalPresentationStyle = .custom
-    container.transitioningDelegate  = self.cardTransitionDelegate!
-
-    self.parent.present(container, animated: animated, completion: nil)
+    return Guarantee<Void> { resolve in
+      let container = CardPanelContainer(onViewDidDisappear: { resolve(()) })
+      container.setContent(card)
+      container.modalPresentationStyle = .custom
+      container.transitioningDelegate = self.cardTransitionDelegate!
+      self.parent.present(container, animated: animated, completion: nil)
+    }
   }
 }

@@ -25,9 +25,12 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
     return self.child as? CustomCardPanelPresentable
   }
 
+  private let onViewDidDisappear: () -> ()
+
   // MARK: - Init
 
-  public init() {
+  public init(onViewDidDisappear: @escaping () -> ()) {
+    self.onViewDidDisappear = onViewDidDisappear
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -35,7 +38,7 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Override
+  // MARK: - ViewDidLoad
 
   public override func viewDidLoad() {
     super.viewDidLoad()
@@ -69,6 +72,13 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
       make.top.equalTo(self.chevronViewContainer.snp.bottom)
       make.left.right.bottom.equalToSuperview()
     }
+  }
+
+  // MARK: - ViewDidDisappear
+
+  public override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    self.onViewDidDisappear()
   }
 
   // MARK: - Methods

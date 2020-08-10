@@ -142,7 +142,6 @@
 		90D57B0F24DC5D3A00A0EF53 /* LineSelectorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF124DC490000A0EF53 /* LineSelectorViewModelTests.swift */; };
 		90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39E924D8570900ADE4B9 /* MapViewController.swift */; };
 		90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */; };
-		90DE39F724D8685400ADE4B9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39F124D8685400ADE4B9 /* Coordinator.swift */; };
 		90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */; };
 /* End PBXBuildFile section */
 
@@ -314,7 +313,6 @@
 		90D57AF824DC490000A0EF53 /* LineSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorCell.swift; sourceTree = "<group>"; };
 		90DE39E924D8570900ADE4B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		90DE39F124D8685400ADE4B9 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationAuthorization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -751,7 +749,6 @@
 				90CE742C24D9D6E600419166 /* CardCoordinator.swift */,
 				90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */,
 				90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */,
-				90DE39F124D8685400ADE4B9 /* Coordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -969,7 +966,6 @@
 				90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */,
 				90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */,
 				9013FAC924D721410006D1B9 /* Assets.swift in Sources */,
-				90DE39F724D8685400ADE4B9 /* Coordinator.swift in Sources */,
 				9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */,
 				907FD0BD24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift in Sources */,
 				9076BD5924DDD26C00467075 /* LineTypeSegmentedControl.swift in Sources */,
