@@ -42,10 +42,7 @@
 		9013FABD24D6B1890006D1B9 /* CardPanelDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */; };
 		9013FABE24D6B1890006D1B9 /* CardPanelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA524D6B1880006D1B9 /* CardPanelConstants.swift */; };
 		9013FABF24D6B1890006D1B9 /* MapUpdateScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */; };
-		9013FAC024D6B1890006D1B9 /* NetworkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA824D6B1880006D1B9 /* NetworkAlerts.swift */; };
 		9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA924D6B1880006D1B9 /* AlertCreator.swift */; };
-		9013FAC224D6B1890006D1B9 /* BookmarkAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAAA24D6B1880006D1B9 /* BookmarkAlerts.swift */; };
-		9013FAC324D6B1890006D1B9 /* LocationAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAAB24D6B1880006D1B9 /* LocationAlerts.swift */; };
 		9013FAC724D721410006D1B9 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC424D721410006D1B9 /* Fonts.swift */; };
 		9013FAC824D721410006D1B9 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC524D721410006D1B9 /* Localizable.swift */; };
 		9013FAC924D721410006D1B9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC624D721410006D1B9 /* Assets.swift */; };
@@ -210,10 +207,7 @@
 		9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelDismissTransition.swift; sourceTree = "<group>"; };
 		9013FAA524D6B1880006D1B9 /* CardPanelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelConstants.swift; sourceTree = "<group>"; };
 		9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUpdateScheduler.swift; sourceTree = "<group>"; };
-		9013FAA824D6B1880006D1B9 /* NetworkAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAlerts.swift; sourceTree = "<group>"; };
 		9013FAA924D6B1880006D1B9 /* AlertCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertCreator.swift; sourceTree = "<group>"; };
-		9013FAAA24D6B1880006D1B9 /* BookmarkAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkAlerts.swift; sourceTree = "<group>"; };
-		9013FAAB24D6B1880006D1B9 /* LocationAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAlerts.swift; sourceTree = "<group>"; };
 		9013FAC424D721410006D1B9 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		9013FAC524D721410006D1B9 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		9013FAC624D721410006D1B9 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -398,9 +392,9 @@
 		9013FA8E24D6B1880006D1B9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				9013FAA724D6B1880006D1B9 /* Alerts */,
 				9013FA9924D6B1880006D1B9 /* Card panel */,
 				9013FA8F24D6B1880006D1B9 /* Reusable cell */,
+				9013FAA924D6B1880006D1B9 /* AlertCreator.swift */,
 				9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */,
 				907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */,
 				90CE742E24D9DA3F00419166 /* DummyData.swift */,
@@ -439,17 +433,6 @@
 				9013FAA324D6B1880006D1B9 /* ScrollViewDismissGestureHandler.swift */,
 			);
 			path = "Dismiss gesture";
-			sourceTree = "<group>";
-		};
-		9013FAA724D6B1880006D1B9 /* Alerts */ = {
-			isa = PBXGroup;
-			children = (
-				9013FAA924D6B1880006D1B9 /* AlertCreator.swift */,
-				9013FAA824D6B1880006D1B9 /* NetworkAlerts.swift */,
-				9013FAAA24D6B1880006D1B9 /* BookmarkAlerts.swift */,
-				9013FAAB24D6B1880006D1B9 /* LocationAlerts.swift */,
-			);
-			path = Alerts;
 			sourceTree = "<group>";
 		};
 		9013FACA24D721A90006D1B9 /* View controllers */ = {
@@ -980,7 +963,6 @@
 				90D57B0824DC490100A0EF53 /* LineSelectorViewModel.swift in Sources */,
 				9013FB3124D721A90006D1B9 /* MainViewControllerConstants.swift in Sources */,
 				90CE742F24D9DA3F00419166 /* DummyData.swift in Sources */,
-				9013FAC024D6B1890006D1B9 /* NetworkAlerts.swift in Sources */,
 				905893CA24D4A95D0046EFA5 /* UserLocationManager.swift in Sources */,
 				9013FB3D24D72C790006D1B9 /* VehicleAnnotationView.swift in Sources */,
 				90D57B0624DC490100A0EF53 /* LineSelectorHeaderView.swift in Sources */,
@@ -1004,7 +986,6 @@
 				900EA10D24D46F140054C03F /* Endpoint.swift in Sources */,
 				9047995924D56BCA00111F2C /* Environment.swift in Sources */,
 				9013FAB524D6B1890006D1B9 /* CardPanelPresentationTransition.swift in Sources */,
-				9013FAC324D6B1890006D1B9 /* LocationAlerts.swift in Sources */,
 				905893D024D4A95D0046EFA5 /* FileSystem.swift in Sources */,
 				900EA10324D46C110054C03F /* Line.swift in Sources */,
 				907FD0B724D898BC00B6896C /* Reducer.swift in Sources */,
@@ -1012,7 +993,6 @@
 				9047997024D575C500111F2C /* Actions.swift in Sources */,
 				9058939024D4A7460046EFA5 /* Theme.swift in Sources */,
 				9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */,
-				9013FAC224D6B1890006D1B9 /* BookmarkAlerts.swift in Sources */,
 				905893CE24D4A95D0046EFA5 /* DeviceManager.swift in Sources */,
 				900EA10C24D46F140054C03F /* VehicleLocationsEndpoint.swift in Sources */,
 				9058939224D4A7460046EFA5 /* SystemFont.swift in Sources */,

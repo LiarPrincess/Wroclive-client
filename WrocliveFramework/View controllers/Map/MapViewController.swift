@@ -134,20 +134,20 @@ public final class MapViewController:
   // MARK: - Alerts
 
   public func showDeniedLocationAuthorizationAlert() {
-    _ = LocationAlerts.showDeniedLocationAuthorizationAlert()
+    _ = AlertCreator.showDeniedLocationAuthorizationAlert()
   }
 
   public func showGloballyDeniedLocationAuthorizationAlert() {
-    _ = LocationAlerts.showGloballyDeniedLocationAuthorizationAlert()
+    _ = AlertCreator.showGloballyDeniedLocationAuthorizationAlert()
   }
 
   public func showApiErrorAlert(error: ApiError) {
     switch error {
     case .reachabilityError:
-      _ = NetworkAlerts.showNoInternetAlert()
+      _ = AlertCreator.showReachabilityAlert()
     case .invalidResponse,
          .otherError:
-      _ = NetworkAlerts.showConnectionErrorAlert()
+      _ = AlertCreator.showConnectionErrorAlert()
     }
   }
 }

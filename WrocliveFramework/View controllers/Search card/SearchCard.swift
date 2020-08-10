@@ -120,27 +120,40 @@ public final class SearchCard:
   // MARK: - Alerts
 
   public func showBookmarkNameInputAlert() {
-    _ = BookmarkAlerts.showNameInputAlert()
-      .done { [weak self] nameOrNone in
-        guard let name = nameOrNone else {
-          return
-        }
-
-        self?.viewModel.viewDidEnterBookmarkName(value: name)
+    typealias L = Localizable.Alert.Bookmark.NameInput
+    _ = AlertCreator.showTextInput(
+      title:       L.title,
+      message:     L.message,
+      placeholder: L.placeholder,
+      confirm:     AlertCreator.TextInputButton(title: L.save,   style: .default),
+      cancel:      AlertCreator.TextInputButton(title: L.cancel, style: .cancel)
+    ).done { [weak self] maybeName in
+      guard let name = maybeName else {
+        return
       }
+
+      self?.viewModel.viewDidEnterBookmarkName(value: name)
+    }
   }
 
   public func showBookmarkNoLineSelectedAlert() {
-    _ = BookmarkAlerts.showNoLinesSelectedAlert()
+    typealias L = Localizable.Alert.Bookmark.NoLinesSelected
+    _ = AlertCreator.show(
+      title:   L.title,
+      message: L.message,
+      buttons: [
+        AlertCreator.Button(title: L.ok, style: .default, result: ())
+      ]
+    )
   }
 
   public func showApiErrorAlert(error: ApiError) {
     switch error {
     case .reachabilityError:
-      _ = NetworkAlerts.showNoInternetAlert()
+      _ = AlertCreator.showReachabilityAlert()
     case .invalidResponse,
          .otherError:
-      _ = NetworkAlerts.showConnectionErrorAlert()
+      _ = AlertCreator.showConnectionErrorAlert()
     }
   }
 

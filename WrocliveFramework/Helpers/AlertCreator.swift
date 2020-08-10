@@ -8,16 +8,20 @@ import PromiseKit
 // This has to be class because we will be using '@objc'.
 public final class AlertCreator {
 
+  private init() {}
+
+  // MARK: - Create
+
   public struct Button<Value> {
     let title:  String
     let style:  UIAlertAction.Style
     let result: Value
   }
 
-  public static func create<Result>(title: String,
-                                    message: String,
-                                    buttons: [Button<Result>],
-                                    animated: Bool = true) -> Promise<Result> {
+  public static func show<Result>(title: String,
+                                  message: String,
+                                  buttons: [Button<Result>],
+                                  animated: Bool = true) -> Promise<Result> {
     return Promise<Result> { seal in
       let alert = UIAlertController(title: title,
                                     message: message,
@@ -34,17 +38,19 @@ public final class AlertCreator {
     }
   }
 
+  // MARK: - Create text input
+
   public struct TextInputButton {
     let title: String
     let style: UIAlertAction.Style
   }
 
-  public static func createWithTextInput(title: String,
-                                         message: String,
-                                         placeholder: String,
-                                         confirm: TextInputButton,
-                                         cancel: TextInputButton,
-                                         animated: Bool = true) -> Promise<String?> {
+  public static func showTextInput(title: String,
+                                   message: String,
+                                   placeholder: String,
+                                   confirm: TextInputButton,
+                                   cancel: TextInputButton,
+                                   animated: Bool = true) -> Promise<String?> {
     return Promise<String?> { seal in
       let alert = UIAlertController(title: title,
                                     message: message,
@@ -112,5 +118,58 @@ public final class AlertCreator {
 
   private static func dismiss(_ alertController: UIAlertController, animated: Bool) {
     alertController.dismiss(animated: animated, completion: nil)
+  }
+
+  // MARK: - Network
+
+  /// Check network settings and try again
+  public static func showReachabilityAlert() -> Promise<Void> {
+    typealias L = Localizable.Alert.Network.NoInternet
+    return AlertCreator.show(
+      title:   L.title,
+      message: L.message,
+      buttons: [
+        AlertCreator.Button(title: L.tryAgain, style: .default, result: ())
+      ]
+    )
+  }
+
+  /// 'Check connection' alert and try again
+  public static func showConnectionErrorAlert() -> Promise<Void> {
+    typealias L = Localizable.Alert.Network.ConnectionError
+    return AlertCreator.show(
+      title:   L.title,
+      message: L.message,
+      buttons: [
+        AlertCreator.Button(title: L.tryAgain, style: .default, result: ())
+      ]
+    )
+  }
+
+  // MARK: - User location authorization
+
+  /// Prompt for authorization change in settings
+  public static func showDeniedLocationAuthorizationAlert() -> Promise<Void> {
+    typealias L = Localizable.Alert.Location.Denied
+    return AlertCreator.show(
+      title:   L.title,
+      message: L.message,
+      buttons: [
+        AlertCreator.Button(title: L.settings, style: .default, result: ()),
+        AlertCreator.Button(title: L.ok,       style: .default, result: ())
+      ]
+    )
+  }
+
+  /// Notify that it is not possible to show user location
+  public static func showGloballyDeniedLocationAuthorizationAlert() -> Promise<Void> {
+    typealias L = Localizable.Alert.Location.GloballyDenied
+    return AlertCreator.show(
+      title:   L.title,
+      message: L.message,
+      buttons: [
+        AlertCreator.Button(title: L.ok, style: .default, result: ())
+      ]
+    )
   }
 }
