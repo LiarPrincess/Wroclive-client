@@ -18,44 +18,14 @@ extension Middlewares {
           next(action)
           let after = getState()
 
-          Self.saveBookmarksIfNeeded(environment: environment,
-                                     before: before,
-                                     after: after)
-          Self.saveSearchCardStateIfNeeded(environment: environment,
-                                           before: before,
-                                           after: after)
+          if let after = after?.bookmarks, after != before?.bookmarks {
+            os_log("Saving bookmarks", log: environment.log.redux, type: .info)
+            environment.storage.saveBookmarks(after)
+          }
+
+          // Add new entries here
         }
       }
-    }
-  }
-
-  private static func saveBookmarksIfNeeded(
-    environment: Environment,
-    before stateBefore: AppState?,
-    after stateAfter: AppState?
-  ) {
-    guard let before = stateBefore?.bookmarks,
-      let after  = stateAfter?.bookmarks
-      else { return }
-
-    if before != after {
-      os_log("Saving bookmarks", log: environment.log.redux, type: .info)
-      environment.storage.saveBookmarks(after)
-    }
-  }
-
-  private static func saveSearchCardStateIfNeeded(
-    environment: Environment,
-    before stateBefore: AppState?,
-    after stateAfter: AppState?
-  ) {
-    guard let before = stateBefore?.searchCardState,
-      let after  = stateAfter?.searchCardState
-      else { return }
-
-    if before != after {
-      os_log("Saving search card state", log: environment.log.redux, type: .info)
-      environment.storage.saveSearchCardState(after)
     }
   }
 }

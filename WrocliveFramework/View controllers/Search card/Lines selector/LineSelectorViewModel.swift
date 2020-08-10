@@ -21,21 +21,11 @@ public final class LineSelectorViewModel {
   // MARK: - Init
 
   public init(initialPage page: LineType,
-              onPageTransition: @escaping (LineType) -> (),
-              onLineSelected: @escaping (Line) -> (),
-              onLineDeselected: @escaping (Line) -> ()) {
+              onPageTransition: @escaping (LineType) -> ()) {
     self.page = page
     self.onPageTransition = onPageTransition
-
-    self.tramPageViewModel = LineSelectorPageViewModel(
-      onLineSelected: onLineSelected,
-      onLineDeselected: onLineDeselected
-    )
-
-    self.busPageViewModel = LineSelectorPageViewModel(
-      onLineSelected: onLineSelected,
-      onLineDeselected: onLineDeselected
-    )
+    self.tramPageViewModel = LineSelectorPageViewModel()
+    self.busPageViewModel = LineSelectorPageViewModel()
   }
 
   // MARK: - View

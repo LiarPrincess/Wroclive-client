@@ -40,20 +40,6 @@ public enum BookmarksAction: Action, CustomStringConvertible {
   }
 }
 
-public enum SearchCardStateAction: Action {
-  case selectPage(LineType)
-  case selectLine(Line)
-  case deselectLine(Line)
-
-  public var description: String {
-    switch self {
-    case .selectPage: return "SearchCardStateAction.selectPage"
-    case .selectLine: return "SearchCardStateAction.selectLine"
-    case .deselectLine: return "SearchCardStateAction.deselectLine"
-    }
-  }
-}
-
 public enum TrackedLinesAction: Action, CustomStringConvertible {
   case startTracking([Line])
 

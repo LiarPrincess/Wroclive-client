@@ -26,10 +26,6 @@ extension AppState {
           action: action,
           state: state?.trackedLines
         ),
-        searchCardState: searchCardStateReducer(
-          action: action,
-          state: state?.searchCardState
-        ),
 
         getLinesResponse: getLinesResponseReducer(
           action: action,
@@ -87,28 +83,6 @@ private func bookmarksReducer(action: Action, state: [Bookmark]?) -> [Bookmark] 
   }
 
   return state
-}
-
-private func searchCardStateReducer(action: Action,
-                                    state: SearchCardState?) -> SearchCardState {
-  let state = state ?? .default
-
-  switch action {
-  case let SearchCardStateAction.selectPage(page):
-    return SearchCardState(page: page, selectedLines: state.selectedLines)
-
-  case let SearchCardStateAction.selectLine(line) where !state.selectedLines.contains(line):
-    var lines = state.selectedLines
-    lines.append(line)
-    return SearchCardState(page: state.page, selectedLines: lines)
-
-  case let SearchCardStateAction.deselectLine(line):
-    let lines = state.selectedLines.filter { $0 != line }
-    return SearchCardState(page: state.page, selectedLines: lines)
-
-  default:
-    return state
-  }
 }
 
 private func trackedLinesReducer(action: Action, state: [Line]?) -> [Line] {

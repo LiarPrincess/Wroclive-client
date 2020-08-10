@@ -22,11 +22,13 @@ public final class SearchCardViewModel: StoreSubscriber {
   internal private(set) var page: LineType
   internal private(set) var isLineSelectorVisible: Bool
   internal private(set) var isPlaceholderVisible: Bool
+  internal private(set) lazy var lineSelectorViewModel = LineSelectorViewModel(
+    initialPage: self.page,
+    onPageTransition: { [weak self] page in self?.setPage(page: page) }
+  )
 
   /// Previous response, so we know how to react to new state.
   private var getLinesResponse: AppState.ApiResponseState<[Line]>?
-
-  internal let lineSelectorViewModel: LineSelectorViewModel
 
   private let store: Store<AppState>
   private let environment: Environment
@@ -42,19 +44,23 @@ public final class SearchCardViewModel: StoreSubscriber {
     self.store = store
     self.environment = environment
 
-    let state = store.state.searchCardState
+    let storage = self.environment.storage
+    let state = storage.getSavedSearchCardState() ?? SearchCardState.default
+
     self.page = state.page
     self.isLineSelectorVisible = false
     self.isPlaceholderVisible = true
 
-    self.lineSelectorViewModel = LineSelectorViewModel(
-      initialPage: self.page,
-      onPageTransition: { store.dispatch(SearchCardStateAction.selectPage($0)) },
-      onLineSelected: { store.dispatch(SearchCardStateAction.selectLine($0)) },
-      onLineDeselected: { store.dispatch(SearchCardStateAction.deselectLine($0)) }
-    )
+    // This will have side-effect of calling the lazy init!
+    self.lineSelectorViewModel.setSelectedLines(lines: state.selectedLines)
 
     self.store.subscribe(self)
+  }
+
+  private func setPage(page: LineType) {
+    self.page = page
+    self.lineSelectorViewModel.setPage(page: page)
+    self.refreshView()
   }
 
   // MARK: - View
@@ -97,27 +103,14 @@ public final class SearchCardViewModel: StoreSubscriber {
   }
 
   public func viewDidSelectPage(page: LineType) {
-    self.store.dispatch(SearchCardStateAction.selectPage(page))
+    self.setPage(page: page)
   }
 
   // MARK: - Store subscriber
 
   public func newState(state: AppState) {
-    self.updatePage(newState: state)
     self.handleLineRequestChange(newState: state)
-    self.handleSelectedLinesChange(newState: state)
     self.refreshView()
-  }
-
-  private func updatePage(newState: AppState) {
-    let page = newState.searchCardState.page
-    self.page = page
-    self.lineSelectorViewModel.setPage(page: page)
-  }
-
-  private func handleSelectedLinesChange(newState: AppState) {
-    let new = newState.searchCardState.selectedLines
-    self.lineSelectorViewModel.setSelectedLines(lines: new)
   }
 
   private func handleLineRequestChange(newState: AppState) {

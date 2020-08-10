@@ -15,20 +15,14 @@ internal final class LineSelectorPageViewModel {
   internal private(set) var selectedLines: [Line]
   internal private(set) var selectedLineIndices: [IndexPath]
 
-  private let onLineSelected: (Line) -> ()
-  private let onLineDeselected: (Line) -> ()
-
   private weak var view: LineSelectorPageType?
 
   // MARK: - Init
 
-  internal init(onLineSelected: @escaping (Line) -> (),
-                onLineDeselected: @escaping (Line) -> ()) {
+  internal init() {
     self.sections = []
     self.selectedLines = []
     self.selectedLineIndices = []
-    self.onLineSelected = onLineSelected
-    self.onLineDeselected = onLineDeselected
   }
 
   // MARK: - View
@@ -46,18 +40,35 @@ internal final class LineSelectorPageViewModel {
   // MARK: - View input
 
   internal func viewDidSelectIndex(index: IndexPath) {
-    if let line = getLine(at: index) {
-      self.onLineSelected(line)
+    guard let line = getLine(at: index) else {
+      return
     }
+
+    // No duplicates
+    if self.selectedLines.contains(line) {
+      return
+    }
+
+    self.selectedLines.append(line)
+    self.updateIndicesAfterChangingSelectedLines()
+    self.refreshView()
   }
 
   internal func viewDidDeselectIndex(index: IndexPath) {
-    if let line = getLine(at: index) {
-      self.onLineDeselected(line)
+    guard let line = getLine(at: index) else {
+      return
     }
+
+    guard let index = self.selectedLines.firstIndex(of: line) else {
+      return
+    }
+
+    self.selectedLines.remove(at: index)
+    self.updateIndicesAfterChangingSelectedLines()
+    self.refreshView()
   }
 
-  // MARK: - Method
+  // MARK: - Methods
 
   internal func setLines(lines: [Line]) {
     if lines == self.selectedLines {
@@ -108,8 +119,12 @@ internal final class LineSelectorPageViewModel {
     }
 
     self.selectedLines = lines
-    self.selectedLineIndices = self.getIndices(of: self.selectedLines)
+    self.updateIndicesAfterChangingSelectedLines()
     self.refreshView()
+  }
+
+  private func updateIndicesAfterChangingSelectedLines() {
+    self.selectedLineIndices = self.getIndices(of: self.selectedLines)
   }
 
   // MARK: - Helpers

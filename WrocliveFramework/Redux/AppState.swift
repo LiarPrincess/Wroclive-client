@@ -11,7 +11,6 @@ public struct AppState: StateType {
 
   public var bookmarks: [Bookmark]
   public var trackedLines: [Line]
-  public var searchCardState: SearchCardState
 
   public var getLinesResponse: ApiResponseState<[Line]>
   public var getVehicleLocationsResponse: ApiResponseState<[Vehicle]>
@@ -56,8 +55,7 @@ public struct AppState: StateType {
 
   public static func load(
     from environment: Environment,
-    bookmarksIfNotSaved: [Bookmark],
-    searchCardStateIfNotSaved: SearchCardState
+    bookmarksIfNotSaved: [Bookmark]
   ) -> AppState {
     let storage = environment.storage
     let userLocation = environment.userLocation
@@ -66,7 +64,6 @@ public struct AppState: StateType {
       userLocationAuthorization: userLocation.getAuthorizationStatus(),
       bookmarks: storage.getSavedBookmarks()  ?? bookmarksIfNotSaved,
       trackedLines: [],
-      searchCardState: storage.getSavedSearchCardState() ?? searchCardStateIfNotSaved,
       getLinesResponse: .none,
       getVehicleLocationsResponse: .none
     )

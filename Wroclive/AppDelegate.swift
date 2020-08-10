@@ -55,8 +55,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     os_log("Initializing redux store", log: self.log, type: .info)
     let state = AppState.load(from: self.environment,
-                              bookmarksIfNotSaved: [],
-                              searchCardStateIfNotSaved: .default)
+                              bookmarksIfNotSaved: [])
     let middleware = AppState.createMiddleware(environment: self.environment)
     let reducer = AppState.createReducer(environment: self.environment)
     self.store = Store<AppState>(reducer: reducer,
