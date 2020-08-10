@@ -27,6 +27,8 @@ public final class SearchCardViewModel: StoreSubscriber {
     onPageTransition: { [weak self] page in self?.setPage(page: page) }
   )
 
+  private let initialState: SearchCardState
+
   /// Previous response, so we know how to react to new state.
   private var getLinesResponse: AppState.ApiResponseState<[Line]>?
 
@@ -45,14 +47,15 @@ public final class SearchCardViewModel: StoreSubscriber {
     self.environment = environment
 
     let storage = self.environment.storage
-    let state = storage.readSearchCardState() ?? SearchCardState.default
+    self.initialState = storage.readSearchCardState() ?? SearchCardState.default
 
-    self.page = state.page
+    self.page = self.initialState.page
     self.isLineSelectorVisible = false
     self.isPlaceholderVisible = true
 
-    // This will have side-effect of calling the lazy init!
-    self.lineSelectorViewModel.setSelectedLines(lines: state.selectedLines)
+    // This will have side-effect of calling the lazy init! (we do want that)
+    let selectedLines = self.initialState.selectedLines
+    self.lineSelectorViewModel.setSelectedLines(lines: selectedLines)
 
     self.store.subscribe(self)
   }
@@ -104,6 +107,16 @@ public final class SearchCardViewModel: StoreSubscriber {
 
   public func viewDidSelectPage(page: LineType) {
     self.setPage(page: page)
+  }
+
+  public func viewDidDisappear() {
+    let page = self.page
+    let lines = self.selectedLines.merge()
+    let state = SearchCardState(page: page, selectedLines: lines)
+
+    if state != self.initialState {
+      self.environment.storage.writeSearchCardState(state)
+    }
   }
 
   // MARK: - Store subscriber

@@ -10,6 +10,7 @@ public struct StorageManager: StorageManagerType {
   private let bookmarksFile: URL
   private let trackedLinesFile: URL
   private let searchCardStateFile: URL
+
   private let fileSystem: FileSystemType
   private let logManager: LogManagerType
 
@@ -27,7 +28,7 @@ public struct StorageManager: StorageManagerType {
     let documents = self.fileSystem.documentsDirectory
     self.bookmarksFile = documents.appendingPathComponent("bookmarks.json")
     self.trackedLinesFile = documents.appendingPathComponent("tracked_lines.json")
-    self.searchCardStateFile = documents.appendingPathComponent("searchCardState.json")
+    self.searchCardStateFile = documents.appendingPathComponent("search_card_state.json")
   }
 
   public var documentsDirectory: URL {

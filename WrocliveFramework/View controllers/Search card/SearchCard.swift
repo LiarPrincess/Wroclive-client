@@ -50,12 +50,14 @@ public final class SearchCard:
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Overriden
+  // MARK: - ViewDidLoad
 
   public override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
   }
+
+  // MARK: - ViewDidLayoutSubviews
 
   public override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
@@ -82,6 +84,14 @@ public final class SearchCard:
                                                              right: 0.0)
     }
   }
+
+  // MARK: - ViewDidDisappear
+
+  public override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    self.viewModel.viewDidDisappear()
+  }
+
   // MARK: - SearchCardViewType
 
   public func refresh() {

@@ -29,14 +29,6 @@ public final class SearchCardCoordinator: CardCoordinator {
     let viewModel = SearchCardViewModel(store: self.store,environment: self.environment)
     let card = SearchCard(viewModel: viewModel, environment: self.environment)
     let height = 0.9 * self.environment.device.screenBounds.height
-
-    let environment = self.environment
     return self.presentCard(card, withHeight: height, animated: true)
-      .done { _ in
-        let page = viewModel.page
-        let lines = viewModel.selectedLines.merge()
-        let state = SearchCardState(page: page, selectedLines: lines)
-        environment.storage.writeSearchCardState(state)
-      }
   }
 }
