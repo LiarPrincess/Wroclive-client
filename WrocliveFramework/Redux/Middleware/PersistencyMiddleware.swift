@@ -23,7 +23,10 @@ extension Middlewares {
             environment.storage.writeBookmarks(after)
           }
 
-          // Add new entries here
+          if let after = after?.trackedLines, after != before?.trackedLines {
+            os_log("Saving tracked lines", log: environment.log.redux, type: .info)
+            environment.storage.writeTrackedLines(after)
+          }
         }
       }
     }

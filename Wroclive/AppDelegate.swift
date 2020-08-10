@@ -42,8 +42,11 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     // This is easily the most important line in the whole app.
     // Every call that interacts with native frameworks has to go through Environment.
     // And don't worry, 'debug' modes will fail to compile in release builds.
-//    self.environment = Environment(apiMode: .production)
+    #if DEBUG
     self.environment = Environment(apiMode: .debugOffline)
+    #else
+    self.environment = Environment(apiMode: .production)
+    #endif
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
@@ -55,6 +58,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     os_log("Initializing redux store", log: self.log, type: .info)
     let state = AppState.load(from: self.environment,
+                              trackedLinesIfNotSaved: [],
                               bookmarksIfNotSaved: [])
     let middleware = AppState.createMiddleware(environment: self.environment)
     let reducer = AppState.createReducer(environment: self.environment)

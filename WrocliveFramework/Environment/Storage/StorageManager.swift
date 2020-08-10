@@ -48,7 +48,7 @@ public struct StorageManager: StorageManagerType {
     return self.read(SearchCardState.self, from: self.searchCardStateFile)
   }
 
-  private enum ReadingProgress {
+  private enum ReadingState {
     case beforeRead
     case beforeDecode
   }
@@ -57,22 +57,22 @@ public struct StorageManager: StorageManagerType {
     let filename = url.lastPathComponent
     os_log("Reading '%{public}@'", log: self.log, type: .info, filename)
 
-    var state = ReadingProgress.beforeRead
+    var state = ReadingState.beforeRead
     do {
       let data = try self.fileSystem.read(url: url)
-      os_log("  File found", log: self.log, type: .info)
+      os_log("File found", log: self.log, type: .info)
 
       state = .beforeDecode
       let result = try self.decoder.decode(T.self, from: data)
-      os_log("  File was successfully decoded", log: self.log, type: .info)
+      os_log("File was successfully decoded", log: self.log, type: .info)
 
       return result
     } catch {
       switch state {
       case .beforeRead:
-        os_log("  File does not exist", log: self.log, type: .info)
+        os_log("File does not exist", log: self.log, type: .info)
       case .beforeDecode:
-        os_log("  File has invalid content", log: self.log, type: .error)
+        os_log("File has invalid content", log: self.log, type: .error)
       }
 
       return nil
