@@ -71,6 +71,7 @@
 		9052383024D45A3600E4F8A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9052382F24D45A3600E4F8A7 /* UIKit.framework */; };
 		9052383224D45E9A00E4F8A7 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9052383124D45E9A00E4F8A7 /* Icon.xcassets */; };
 		9052383A24D4645300E4F8A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9052383924D4645300E4F8A7 /* LaunchScreen.storyboard */; };
+		90584F4B24E1952F008B7F74 /* StorageManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90584F4A24E1952F008B7F74 /* StorageManagerType.swift */; };
 		9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938524D4A7460046EFA5 /* ColorScheme.swift */; };
 		9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938624D4A7460046EFA5 /* TextAttributes.swift */; };
 		9058938F24D4A7460046EFA5 /* TextAttributeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938724D4A7460046EFA5 /* TextAttributeEnums.swift */; };
@@ -241,6 +242,7 @@
 		9052382F24D45A3600E4F8A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9052383124D45E9A00E4F8A7 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
 		9052383924D4645300E4F8A7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		90584F4A24E1952F008B7F74 /* StorageManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerType.swift; sourceTree = "<group>"; };
 		9058938524D4A7460046EFA5 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		9058938624D4A7460046EFA5 /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		9058938724D4A7460046EFA5 /* TextAttributeEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributeEnums.swift; sourceTree = "<group>"; };
@@ -623,6 +625,7 @@
 				905893C424D4A95D0046EFA5 /* FileSystem.swift */,
 				905893BC24D4A95D0046EFA5 /* StorageManager.swift */,
 				905893C224D4A95D0046EFA5 /* CachedStorageManager.swift */,
+				90584F4A24E1952F008B7F74 /* StorageManagerType.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -990,6 +993,7 @@
 				90D57B0724DC490100A0EF53 /* LineSelectorSection.swift in Sources */,
 				905893D324D4A95D0046EFA5 /* Configuration.swift in Sources */,
 				9013FAAE24D6B1880006D1B9 /* ReusableCell.swift in Sources */,
+				90584F4B24E1952F008B7F74 /* StorageManagerType.swift in Sources */,
 				9013FAAC24D6B1880006D1B9 /* ReusableCell+UICollectionView.swift in Sources */,
 				9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */,
 				9013FB3324D721A90006D1B9 /* MainViewControllerLayout.swift in Sources */,

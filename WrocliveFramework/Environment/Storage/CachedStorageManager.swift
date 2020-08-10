@@ -8,6 +8,7 @@ public final class CachedStorageManager: StorageManagerType {
   private let inner: StorageManagerType
 
   private var bookmarks: [Bookmark]?
+  private var trackedLines: [Line]?
   private var searchCardState: SearchCardState?
 
   public init(using inner: StorageManagerType) {
@@ -18,29 +19,46 @@ public final class CachedStorageManager: StorageManagerType {
     return self.inner.documentsDirectory
   }
 
-  public func getSavedBookmarks() -> [Bookmark]? {
+  // MARK: - Read
+
+  public func readBookmarks() -> [Bookmark]? {
     if self.bookmarks == nil {
-      self.bookmarks = self.inner.getSavedBookmarks()
+      self.bookmarks = self.inner.readBookmarks()
     }
 
     return self.bookmarks
   }
 
-  public func getSavedSearchCardState() -> SearchCardState? {
+  public func readTrackedLines() -> [Line]? {
+    if self.trackedLines == nil {
+      self.trackedLines = self.inner.readTrackedLines()
+    }
+
+    return self.trackedLines
+  }
+
+  public func readSearchCardState() -> SearchCardState? {
     if self.searchCardState == nil {
-      self.searchCardState = self.inner.getSavedSearchCardState()
+      self.searchCardState = self.inner.readSearchCardState()
     }
 
     return self.searchCardState
   }
 
-  public func saveBookmarks(_ bookmarks: [Bookmark]) {
+  // MARK: - Write
+
+  public func writeBookmarks(_ bookmarks: [Bookmark]) {
     self.bookmarks = bookmarks
-    self.inner.saveBookmarks(bookmarks)
+    self.inner.writeBookmarks(bookmarks)
   }
 
-  public func saveSearchCardState(_ state: SearchCardState) {
+  public func writeTrackedLines(_ lines: [Line]) {
+    self.trackedLines = lines
+    self.inner.writeTrackedLines(lines)
+  }
+
+  public func writeSearchCardState(_ state: SearchCardState) {
     self.searchCardState = state
-    self.inner.saveSearchCardState(state)
+    self.inner.writeSearchCardState(state)
   }
 }

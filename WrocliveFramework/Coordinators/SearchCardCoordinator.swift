@@ -36,7 +36,7 @@ public final class SearchCardCoordinator: CardCoordinator {
         let page = viewModel.page
         let lines = viewModel.selectedLines.merge()
         let state = SearchCardState(page: page, selectedLines: lines)
-        environment.storage.saveSearchCardState(state)
+        environment.storage.writeSearchCardState(state)
       }
   }
 }

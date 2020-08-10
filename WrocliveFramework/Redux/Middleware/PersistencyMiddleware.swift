@@ -20,7 +20,7 @@ extension Middlewares {
 
           if let after = after?.bookmarks, after != before?.bookmarks {
             os_log("Saving bookmarks", log: environment.log.redux, type: .info)
-            environment.storage.saveBookmarks(after)
+            environment.storage.writeBookmarks(after)
           }
 
           // Add new entries here

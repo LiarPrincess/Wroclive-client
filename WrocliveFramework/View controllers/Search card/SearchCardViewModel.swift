@@ -45,7 +45,7 @@ public final class SearchCardViewModel: StoreSubscriber {
     self.environment = environment
 
     let storage = self.environment.storage
-    let state = storage.getSavedSearchCardState() ?? SearchCardState.default
+    let state = storage.readSearchCardState() ?? SearchCardState.default
 
     self.page = state.page
     self.isLineSelectorVisible = false

@@ -5,35 +5,16 @@
 import Foundation
 import os.log
 
-// MARK: - Manager type
-
-public protocol StorageManagerType {
-
-  /// Place where all data will be saved
-  var documentsDirectory: URL { get }
-
-  /// Get saved bookmarks from a file
-  func getSavedBookmarks() -> [Bookmark]?
-
-  /// Get saved search card state from a file
-  func getSavedSearchCardState() -> SearchCardState?
-
-  /// Write bookmarks to file
-  func saveBookmarks(_ bookmarks: [Bookmark])
-
-  /// Write saved search card state to file
-  func saveSearchCardState(_ state: SearchCardState)
-}
-
-// MARK: - Manager
-
-// TODO: Handle errors somehow?
 public struct StorageManager: StorageManagerType {
 
   private let bookmarksFile: URL
+  private let trackedLinesFile: URL
   private let searchCardStateFile: URL
   private let fileSystem: FileSystemType
   private let logManager: LogManagerType
+
+  private let decoder = JSONDecoder()
+  private let encoder = JSONEncoder()
 
   private var log: OSLog {
     return self.logManager.storage
@@ -44,12 +25,27 @@ public struct StorageManager: StorageManagerType {
     self.fileSystem = fileSystem
 
     let documents = self.fileSystem.documentsDirectory
-    self.bookmarksFile = documents.appendingPathComponent("bookmarks")
-    self.searchCardStateFile = documents.appendingPathComponent("searchCardState")
+    self.bookmarksFile = documents.appendingPathComponent("bookmarks.json")
+    self.trackedLinesFile = documents.appendingPathComponent("tracked_lines.json")
+    self.searchCardStateFile = documents.appendingPathComponent("searchCardState.json")
   }
 
   public var documentsDirectory: URL {
     return self.fileSystem.documentsDirectory
+  }
+
+  // MARK: - Read
+
+  public func readBookmarks() -> [Bookmark]? {
+    return self.read([Bookmark].self, from: self.bookmarksFile)
+  }
+
+  public func readTrackedLines() -> [Line]? {
+    return self.read([Line].self, from: self.trackedLinesFile)
+  }
+
+  public func readSearchCardState() -> SearchCardState? {
+    return self.read(SearchCardState.self, from: self.searchCardStateFile)
   }
 
   private enum ReadingProgress {
@@ -57,86 +53,56 @@ public struct StorageManager: StorageManagerType {
     case beforeDecode
   }
 
-  public func getSavedBookmarks() -> [Bookmark]? {
-    var state = ReadingProgress.beforeRead
+  private func read<T: Decodable>(_ type: T.Type, from url: URL) -> T? {
+    let filename = url.lastPathComponent
+    os_log("Reading '%{public}@'", log: self.log, type: .info, filename)
 
+    var state = ReadingProgress.beforeRead
     do {
-      let data = try self.fileSystem.read(url: self.bookmarksFile)
-      os_log("Found existing bookmarks file", log: self.log, type: .info)
+      let data = try self.fileSystem.read(url: url)
+      os_log("  File found", log: self.log, type: .info)
 
       state = .beforeDecode
-      let decoder = self.createDecoder()
-      let result = try decoder.decode([Bookmark].self, from: data)
-      os_log("Succesfully read bookmarks file", log: self.log, type: .info)
+      let result = try self.decoder.decode(T.self, from: data)
+      os_log("  File was successfully decoded", log: self.log, type: .info)
 
       return result
     } catch {
       switch state {
       case .beforeRead:
-        os_log("Bookmark file does not exit", log: self.log, type: .info)
+        os_log("  File does not exist", log: self.log, type: .info)
       case .beforeDecode:
-        os_log("Bookmark file has invalid content", log: self.log, type: .error)
+        os_log("  File has invalid content", log: self.log, type: .error)
       }
 
       return nil
     }
   }
 
-  public func getSavedSearchCardState() -> SearchCardState? {
-    var state = ReadingProgress.beforeRead
+  // MARK: - Write
 
-    do {
-      let data = try self.fileSystem.read(url: self.searchCardStateFile)
-      os_log("Found existing search card state file", log: self.log, type: .info)
-
-      state = .beforeDecode
-      let decoder = self.createDecoder()
-      let result = try decoder.decode(SearchCardState.self, from: data)
-      os_log("Succesfully read search card state file", log: self.log, type: .info)
-
-      return result
-    } catch {
-      switch state {
-      case .beforeRead:
-        os_log("Search card state file does not exit", log: self.log, type: .info)
-      case .beforeDecode:
-        os_log("Search card state file has invalid content", log: self.log, type: .error)
-      }
-
-      return nil
-    }
+  public func writeBookmarks(_ bookmarks: [Bookmark]) {
+    self.write(bookmarks, to: self.bookmarksFile)
   }
 
-  public func saveBookmarks(_ bookmarks: [Bookmark]) {
-    do {
-      let encoder = self.createEncoder()
-      let data = try encoder.encode(bookmarks)
-      try self.fileSystem.write(url: self.bookmarksFile, data: data)
-      os_log("Succesfully saved bookmarks", log: self.log, type: .info)
-    } catch {
-      os_log("Failed to save bookmarks", log: self.log, type: .error)
-    }
+  public func writeTrackedLines(_ lines: [Line]) {
+    self.write(lines, to: self.trackedLinesFile)
   }
 
-  public func saveSearchCardState(_ state: SearchCardState) {
+  public func writeSearchCardState(_ state: SearchCardState) {
+    self.write(state, to: self.searchCardStateFile)
+  }
+
+  private func write<T: Encodable>(_ value: T, to url: URL) {
+    let filename = url.lastPathComponent
+
     do {
-      let encoder = self.createEncoder()
-      let data = try encoder.encode(state)
-      try self.fileSystem.write(url: self.searchCardStateFile, data: data)
-      os_log("Succesfully saved search card state", log: self.log, type: .info)
+      let data = try self.encoder.encode(value)
+      try self.fileSystem.write(url: url, data: data)
+      os_log("Succesfully written '%{public}@'", log: self.log, type: .info, filename)
     }
     catch {
-      os_log("Failed to save search card state", log: self.log, type: .error)
+      os_log("Failed to write '%{public}@'", log: self.log, type: .error, filename)
     }
-  }
-
-  // MARK: - Decoder, encoder
-
-  private func createDecoder() -> JSONDecoder {
-    return JSONDecoder()
-  }
-
-  private func createEncoder() -> JSONEncoder {
-    return JSONEncoder()
   }
 }
