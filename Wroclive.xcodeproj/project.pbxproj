@@ -95,10 +95,6 @@
 		9076BD5024DDB5D100467075 /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4624DDB5D100467075 /* SearchPlaceholderView.swift */; };
 		9076BD5224DDB5D100467075 /* SearchCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */; };
 		9076BD5324DDB5D100467075 /* SearchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4924DDB5D100467075 /* SearchCard.swift */; };
-		9076BD5424DDB5D800467075 /* SearchCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4224DDB5D100467075 /* SearchCardViewModelTests+Bookmarks.swift */; };
-		9076BD5524DDB5D800467075 /* SearchCardViewModelTests+Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4324DDB5D100467075 /* SearchCardViewModelTests+Tracking.swift */; };
-		9076BD5624DDB5D800467075 /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4424DDB5D100467075 /* SearchCardViewModelTests.swift */; };
-		9076BD5724DDB5D800467075 /* SearchCardViewModelTests+Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4524DDB5D100467075 /* SearchCardViewModelTests+Lines.swift */; };
 		9076BD5924DDD26C00467075 /* LineTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */; };
 		907FD0B724D898BC00B6896C /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B624D898BC00B6896C /* Reducer.swift */; };
 		907FD0B924D8A2DC00B6896C /* OfflineApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B824D8A2DC00B6896C /* OfflineApi.swift */; };
@@ -109,20 +105,12 @@
 		90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFD124D60BEF00595D89 /* StringExtensions.swift */; };
 		90CDCFD424D60CF100595D89 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFD324D60CF100595D89 /* CollectionExtensions.swift */; };
 		90CDCFD624D60D7F00595D89 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFD524D60D7F00595D89 /* UIExtensions.swift */; };
-		90CDCFD724D60FDF00595D89 /* Collection+GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFA624D60A0D00595D89 /* Collection+GroupTests.swift */; };
-		90CDCFD824D60FE200595D89 /* Collection+AnyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFA724D60A0D00595D89 /* Collection+AnyTests.swift */; };
 		90CE741524D9BB7800419166 /* BookmarksCard+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740524D9BB7800419166 /* BookmarksCard+Layout.swift */; };
 		90CE741624D9BB7800419166 /* BookmarksCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740624D9BB7800419166 /* BookmarksCardViewModel.swift */; };
 		90CE741724D9BB7800419166 /* BookmarksPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740724D9BB7800419166 /* BookmarksPlaceholderView.swift */; };
 		90CE741824D9BB7800419166 /* BookmarksCard+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740824D9BB7800419166 /* BookmarksCard+Constants.swift */; };
 		90CE742124D9BB7800419166 /* BookmarksCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741224D9BB7800419166 /* BookmarksCard.swift */; };
 		90CE742224D9BB7800419166 /* BookmarksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741324D9BB7800419166 /* BookmarksCell.swift */; };
-		90CE742424D9BB9000419166 /* BookmarksCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740B24D9BB7800419166 /* BookmarksCardViewModelTests.swift */; };
-		90CE742524D9BB9000419166 /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740C24D9BB7800419166 /* BookmarksCellViewModelTests.swift */; };
-		90CE742624D9BB9000419166 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740D24D9BB7800419166 /* BookmarksCardViewModelTests+Bookmarks.swift */; };
-		90CE742724D9BB9000419166 /* BookmarksCardViewModelTests+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740E24D9BB7800419166 /* BookmarksCardViewModelTests+Edit.swift */; };
-		90CE742824D9BB9000419166 /* BookmarksCardViewModelTests+Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE740F24D9BB7800419166 /* BookmarksCardViewModelTests+Visibility.swift */; };
-		90CE742924D9BB9000419166 /* BookmarksCardViewModelTests+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE741024D9BB7800419166 /* BookmarksCardViewModelTests+Selection.swift */; };
 		90CE742B24D9D6E000419166 /* BookmarksCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */; };
 		90CE742D24D9D6E600419166 /* CardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742C24D9D6E600419166 /* CardCoordinator.swift */; };
 		90CE742F24D9DA3F00419166 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE742E24D9DA3F00419166 /* DummyData.swift */; };
@@ -133,11 +121,6 @@
 		90D57B0724DC490100A0EF53 /* LineSelectorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF624DC490000A0EF53 /* LineSelectorSection.swift */; };
 		90D57B0824DC490100A0EF53 /* LineSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF724DC490000A0EF53 /* LineSelectorViewModel.swift */; };
 		90D57B0924DC490100A0EF53 /* LineSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF824DC490000A0EF53 /* LineSelectorCell.swift */; };
-		90D57B0B24DC5D3A00A0EF53 /* LineSelectorSectionCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AED24DC490000A0EF53 /* LineSelectorSectionCreatorTests.swift */; };
-		90D57B0C24DC5D3A00A0EF53 /* LineSelectorPageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AEE24DC490000A0EF53 /* LineSelectorPageViewModelTests.swift */; };
-		90D57B0D24DC5D3A00A0EF53 /* LineSelectorCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AEF24DC490000A0EF53 /* LineSelectorCellViewModelTests.swift */; };
-		90D57B0E24DC5D3A00A0EF53 /* LineSelectorHeaderViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF024DC490000A0EF53 /* LineSelectorHeaderViewModelTests.swift */; };
-		90D57B0F24DC5D3A00A0EF53 /* LineSelectorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF124DC490000A0EF53 /* LineSelectorViewModelTests.swift */; };
 		90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39E924D8570900ADE4B9 /* MapViewController.swift */; };
 		90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */; };
 		90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */; };
@@ -150,6 +133,8 @@
 		90F38E4E24E19ECE000D4192 /* SettingsCard+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E4224E19ECE000D4192 /* SettingsCard+Constants.swift */; };
 		90F38E5224E1A3AE000D4192 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E5124E1A3AE000D4192 /* SettingsSection.swift */; };
 		90F72F0E24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */; };
+		90F72F1224E3157D00D20EB2 /* Collection+GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F1024E3157C00D20EB2 /* Collection+GroupTests.swift */; };
+		90F72F1324E3157D00D20EB2 /* Collection+AnyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F1124E3157C00D20EB2 /* Collection+AnyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,12 +145,12 @@
 			remoteGlobalIDString = 900EA0CE24D469D90054C03F;
 			remoteInfo = WrocliveFramework;
 		};
-		9052381E24D459EB00E4F8A7 /* PBXContainerItemProxy */ = {
+		90F72F1424E315D100D20EB2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 905237FF24D459E500E4F8A7 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9052380624D459E500E4F8A7;
-			remoteInfo = Wroclive;
+			remoteGlobalIDString = 900EA0CE24D469D90054C03F;
+			remoteInfo = WrocliveFramework;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -328,6 +313,8 @@
 		90F38E4224E19ECE000D4192 /* SettingsCard+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsCard+Constants.swift"; sourceTree = "<group>"; };
 		90F38E5124E1A3AE000D4192 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardCoordinator.swift; sourceTree = "<group>"; };
+		90F72F1024E3157C00D20EB2 /* Collection+GroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+GroupTests.swift"; sourceTree = "<group>"; };
+		90F72F1124E3157C00D20EB2 /* Collection+AnyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+AnyTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -549,6 +536,7 @@
 		9052382024D459EB00E4F8A7 /* WrocliveTests */ = {
 			isa = PBXGroup;
 			children = (
+				90F72F0F24E3157C00D20EB2 /* Extensions */,
 				9052382324D459EB00E4F8A7 /* Info.plist */,
 			);
 			path = WrocliveTests;
@@ -783,6 +771,15 @@
 			path = "Settings card";
 			sourceTree = "<group>";
 		};
+		90F72F0F24E3157C00D20EB2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				90F72F1024E3157C00D20EB2 /* Collection+GroupTests.swift */,
+				90F72F1124E3157C00D20EB2 /* Collection+AnyTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -852,7 +849,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				9052381F24D459EB00E4F8A7 /* PBXTargetDependency */,
+				90F72F1524E315D100D20EB2 /* PBXTargetDependency */,
 			);
 			name = WrocliveTests;
 			productName = WrocliveTests;
@@ -877,7 +874,6 @@
 					};
 					9052381C24D459EB00E4F8A7 = {
 						CreatedOnToolsVersion = 11.5;
-						TestTargetID = 9052380624D459E500E4F8A7;
 					};
 				};
 			};
@@ -1068,23 +1064,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90CE742724D9BB9000419166 /* BookmarksCardViewModelTests+Edit.swift in Sources */,
-				90D57B0C24DC5D3A00A0EF53 /* LineSelectorPageViewModelTests.swift in Sources */,
-				90CE742924D9BB9000419166 /* BookmarksCardViewModelTests+Selection.swift in Sources */,
-				90D57B0D24DC5D3A00A0EF53 /* LineSelectorCellViewModelTests.swift in Sources */,
-				90CE742524D9BB9000419166 /* BookmarksCellViewModelTests.swift in Sources */,
-				90CE742624D9BB9000419166 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
-				90CE742824D9BB9000419166 /* BookmarksCardViewModelTests+Visibility.swift in Sources */,
-				9076BD5724DDB5D800467075 /* SearchCardViewModelTests+Lines.swift in Sources */,
-				9076BD5624DDB5D800467075 /* SearchCardViewModelTests.swift in Sources */,
-				90D57B0E24DC5D3A00A0EF53 /* LineSelectorHeaderViewModelTests.swift in Sources */,
-				90CDCFD824D60FE200595D89 /* Collection+AnyTests.swift in Sources */,
-				90CDCFD724D60FDF00595D89 /* Collection+GroupTests.swift in Sources */,
-				90CE742424D9BB9000419166 /* BookmarksCardViewModelTests.swift in Sources */,
-				90D57B0F24DC5D3A00A0EF53 /* LineSelectorViewModelTests.swift in Sources */,
-				9076BD5424DDB5D800467075 /* SearchCardViewModelTests+Bookmarks.swift in Sources */,
-				90D57B0B24DC5D3A00A0EF53 /* LineSelectorSectionCreatorTests.swift in Sources */,
-				9076BD5524DDB5D800467075 /* SearchCardViewModelTests+Tracking.swift in Sources */,
+				90F72F1224E3157D00D20EB2 /* Collection+GroupTests.swift in Sources */,
+				90F72F1324E3157D00D20EB2 /* Collection+AnyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,10 +1077,11 @@
 			target = 900EA0CE24D469D90054C03F /* WrocliveFramework */;
 			targetProxy = 900EA0D424D469D90054C03F /* PBXContainerItemProxy */;
 		};
-		9052381F24D459EB00E4F8A7 /* PBXTargetDependency */ = {
+		90F72F1524E315D100D20EB2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9052380624D459E500E4F8A7 /* Wroclive */;
-			targetProxy = 9052381E24D459EB00E4F8A7 /* PBXContainerItemProxy */;
+			platformFilter = ios;
+			target = 900EA0CE24D469D90054C03F /* WrocliveFramework */;
+			targetProxy = 90F72F1424E315D100D20EB2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1347,7 +1329,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AEAQ6C3MPC;
 				INFOPLIST_FILE = WrocliveTests/Info.plist;
@@ -1361,7 +1342,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wroclive.app/Wroclive";
 			};
 			name = Debug;
 		};
@@ -1369,7 +1349,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AEAQ6C3MPC;
 				INFOPLIST_FILE = WrocliveTests/Info.plist;
@@ -1383,7 +1362,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wroclive.app/Wroclive";
 			};
 			name = Release;
 		};
