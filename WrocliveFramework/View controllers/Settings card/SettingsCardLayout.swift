@@ -20,17 +20,19 @@ internal extension SettingsCard {
   // MARK: - Private
 
   private func initHeader() {
-    self.headerView.contentView.addBottomBorder()
-    self.headerView.setContentHuggingPriority(UILayoutPriority(rawValue: 900), for: .vertical)
+    let device = self.environment.device
+    self.headerView.contentView.addBottomBorder(device: device)
+    self.headerView.setContentHuggingPriority(900, for: .vertical)
 
     self.view.addSubview(self.headerView)
     self.headerView.snp.makeConstraints { make in
       make.top.left.right.equalToSuperview()
     }
 
-    self.titleLabel.attributedText = NSAttributedString(string: Localization.title, attributes: TextStyles.cardTitle)
-    self.titleLabel.numberOfLines  = 0
-    self.titleLabel.lineBreakMode  = .byWordWrapping
+    self.titleLabel.attributedText = NSAttributedString(string: Localization.title,
+                                                        attributes: TextStyles.cardTitle)
+    self.titleLabel.numberOfLines = 0
+    self.titleLabel.lineBreakMode = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
@@ -49,8 +51,11 @@ internal extension SettingsCard {
     self.tableView.backgroundColor    = Theme.colors.background
     self.tableView.rowHeight          = UITableView.automaticDimension
     self.tableView.estimatedRowHeight = Layout.TableView.estimatedCellHeight
+    self.tableView.delegate = self
+    self.tableView.dataSource = self
 
-    self.tableView.tableFooterView = SettingsCardFooterView()
+    let device = self.environment.device
+    self.tableView.tableFooterView = SettingsCardFooterView(device: device)
 
     self.view.insertSubview(self.tableView, belowSubview: self.headerView)
     self.tableView.snp.makeConstraints { $0.edges.equalToSuperview() }

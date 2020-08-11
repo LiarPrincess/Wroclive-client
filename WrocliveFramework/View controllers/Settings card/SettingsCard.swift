@@ -3,20 +3,17 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
-import RxCocoa
 import SafariServices
 
 private typealias Layout       = SettingsCardConstants.Layout
 private typealias TextStyles   = SettingsCardConstants.TextStyles
 private typealias Localization = Localizable.Settings
 
-public final class SettingsCard: UIViewController, CustomCardPanelPresentable {
-
+public final class SettingsCard:
+  UIViewController, UITableViewDataSource, UITableViewDelegate,
+  CustomCardPanelPresentable
+{
   // MARK: - Properties
-
-  private let viewModel: SettingsCardViewModel
-  private let disposeBag = DisposeBag()
 
   public lazy var headerView: UIVisualEffectView = {
     let blur = UIBlurEffect(style: Theme.colors.blurStyle)
@@ -24,66 +21,31 @@ public final class SettingsCard: UIViewController, CustomCardPanelPresentable {
   }()
 
   public let titleLabel = UILabel()
+  public let tableView = UITableView(frame: .zero, style: .grouped)
 
-  public let tableView            = UITableView(frame: .zero, style: .grouped)
-  public let tableViewDataSource  = SettingsCard.createDataSource()
+  internal let viewModel: SettingsCardViewModel
+  internal let environment: Environment
 
   // MARK: - Init
 
-  public init(_ viewModel: SettingsCardViewModel) {
+  public init(viewModel: SettingsCardViewModel, environment: Environment) {
     self.viewModel = viewModel
+    self.environment = environment
     super.init(nibName: nil, bundle: nil)
-
-    self.initTableViewBindings()
   }
 
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Bindings
-
-  private func initTableViewBindings() {
-    self.tableView.rx.setDelegate(self)
-      .disposed(by: disposeBag)
-
-    self.viewModel.items
-      .drive(self.tableView.rx.items(dataSource: self.tableViewDataSource))
-      .disposed(by: disposeBag)
-
-    self.tableView.rx.itemSelected
-      .do(onNext: { [weak self] in self?.tableView.deselectRow(at: $0, animated: true) })
-      .bind(to: self.viewModel.didSelectItem)
-      .disposed(by: self.disposeBag)
-  }
-
-  // MARK: - Data source
-
-  private static func createDataSource() -> RxTableViewDataSource<SettingsSection> {
-    return RxTableViewDataSource(
-      configureCell: { dataSource, tableView, indexPath, model -> UITableViewCell in
-        switch model {
-        case .share, .rate, .about:
-          let lastItemIndex = dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
-
-          let cell = tableView.dequeueCell(ofType: SettingsTextCell.self, forIndexPath: indexPath)
-          cell.textLabel?.attributedText = NSAttributedString(string: model.text, attributes: TextStyles.cellText)
-          cell.accessoryType             = .disclosureIndicator
-          cell.isBottomBorderVisible     = indexPath.item != lastItemIndex
-          return cell
-        }
-      },
-      canEditRowAtIndexPath: { _, _ in false },
-      canMoveRowAtIndexPath: { _, _ in false }
-    )
-  }
-
-  // MARK: - Override
+  // MARK: - ViewDidLoad
 
   public override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
   }
+
+  // MARK: - ViewDidLayoutSubviews
 
   public override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
@@ -95,13 +57,17 @@ public final class SettingsCard: UIViewController, CustomCardPanelPresentable {
     let headerHeight = self.headerView.bounds.height
 
     if currentInset.top < headerHeight {
-      let newInset = UIEdgeInsets(top: headerHeight, left: currentInset.left, bottom: currentInset.bottom, right: currentInset.right)
-      self.tableView.contentInset          = newInset
+      let newInset = UIEdgeInsets(top: headerHeight,
+                                  left: currentInset.left,
+                                  bottom: currentInset.bottom,
+                                  right: currentInset.right)
+      self.tableView.contentInset = newInset
       self.tableView.scrollIndicatorInsets = newInset
 
-      // scroll up to preserve current scroll position
+      // Scroll up to preserve current scroll position
       let currentOffset = self.tableView.contentOffset
-      let newOffset     = CGPoint(x: currentOffset.x, y: currentOffset.y + currentInset.top - headerHeight)
+      let newOffset = CGPoint(x: currentOffset.x,
+                              y: currentOffset.y + currentInset.top - headerHeight)
       self.tableView.setContentOffset(newOffset, animated: false)
     }
   }
@@ -111,34 +77,70 @@ public final class SettingsCard: UIViewController, CustomCardPanelPresentable {
   public var scrollView: UIScrollView? {
     return self.tableView
   }
-}
 
-// MARK: - UITableViewDelegate
+  // MARK: - UITableView - cells
 
-extension SettingsCard: UITableViewDelegate {
+  public func numberOfSections(in tableView: UITableView) -> Int {
+    return self.viewModel.sections.count
+  }
 
-  public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  public func tableView(_ tableView: UITableView,
+                        numberOfRowsInSection section: Int) -> Int {
+    let section = self.viewModel.sections[section]
+    return section.cells.count
+  }
+
+  public func tableView(_ tableView: UITableView,
+                        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let (section, cellKind) = self.viewModel.getCell(at: indexPath) else {
+      fatalError("No settings cell at: \(indexPath)")
+    }
+
+    let cell = self.tableView.dequeueCell(ofType: SettingsTextCell.self,
+                                          forIndexPath: indexPath)
+
+    let isLastCellInSection = indexPath.row == section.cells.count - 1
+    cell.update(kind: cellKind,
+                isLastCellInSection: isLastCellInSection,
+                device: self.environment.device)
+    return cell
+  }
+
+  // MARK: - UITableView - Header
+
+  public func tableView(_ tableView: UITableView,
+                        heightForHeaderInSection sectionIndex: Int) -> CGFloat {
     typealias HeaderLayout = SettingsSectionHeaderViewConstants.Layout
 
-    let width  = tableView.bounds.width - HeaderLayout.leftInset - HeaderLayout.rightInset
+    guard let section = self.viewModel.getSection(at: sectionIndex) else {
+      fatalError("No settings section at index: \(sectionIndex)")
+    }
+
+    let width = tableView.bounds.width - HeaderLayout.leftInset - HeaderLayout.rightInset
     let bounds = CGSize(width: width, height: .greatestFiniteMagnitude)
 
-    let sectionType = self.tableViewDataSource[section].model
-    let text        = NSAttributedString(string: sectionType.text, attributes: TextStyles.sectionTitle)
-    let textSize    = text.boundingRect(with: bounds, options: .usesLineFragmentOrigin, context: nil)
+    let text = NSAttributedString(string: section.kind.text,
+                                  attributes: TextStyles.sectionTitle)
+    let textSize = text.boundingRect(with: bounds,
+                                     options: .usesLineFragmentOrigin,
+                                     context: nil)
 
     return textSize.height + HeaderLayout.topInset + HeaderLayout.bottomInset + 1.0
   }
 
-  public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+  public func tableView(_ tableView: UITableView,
+                        heightForFooterInSection section: Int) -> CGFloat {
     return 1
   }
 
-  public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let sectionType = self.tableViewDataSource[section].model
+  public func tableView(_ tableView: UITableView,
+                        viewForHeaderInSection sectionIndex: Int) -> UIView? {
+    guard let section = self.viewModel.getSection(at: sectionIndex) else {
+      fatalError("No settings section at index: \(sectionIndex)")
+    }
 
     let view = tableView.dequeueSupplementary(ofType: SettingsSectionHeaderView.self)
-    view.titleLabel.attributedText = NSAttributedString(string: sectionType.text, attributes: TextStyles.sectionTitle)
+    view.update(section: section)
     return view
   }
 }

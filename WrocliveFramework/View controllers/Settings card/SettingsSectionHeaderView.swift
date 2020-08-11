@@ -6,12 +6,13 @@ import UIKit
 import SnapKit
 
 private typealias Layout = SettingsSectionHeaderViewConstants.Layout
+private typealias TextStyles   = SettingsCardConstants.TextStyles
 
 public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
   // MARK: - Properties
 
-  public let titleLabel = UILabel()
+  private let titleLabel = UILabel()
 
   public override var alpha: CGFloat {
     get { return 1.0 }
@@ -39,5 +40,12 @@ public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
       make.left.equalToSuperview().offset(Layout.leftInset)
       make.right.equalToSuperview().offset(-Layout.rightInset)
     }
+  }
+
+  public func update(section: SettingsSection) {
+    self.titleLabel.attributedText = NSAttributedString(
+      string: section.kind.text,
+      attributes: TextStyles.sectionTitle
+    )
   }
 }

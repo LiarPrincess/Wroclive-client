@@ -6,13 +6,16 @@ import UIKit
 import SnapKit
 
 private typealias Layout = SettingsTextCellConstants.Layout
+private typealias TextStyles = SettingsCardConstants.TextStyles
 
+/// Cell that contains only text.
 public final class SettingsTextCell: UITableViewCell {
 
   // MARK: - Properties
 
-  public var isBottomBorderVisible: Bool = true
   private let bottomBorder = UIView()
+  private var isBottomBorderVisible = true
+  private var hasAddedBottomBorderHeightConstraints = false
 
   public override var alpha: CGFloat {
     get { return 1.0 }
@@ -38,7 +41,6 @@ public final class SettingsTextCell: UITableViewCell {
     self.addSubview(self.bottomBorder)
     self.bottomBorder.snp.makeConstraints { make in
       make.bottom.equalToSuperview()
-      make.height.equalTo(1.0 / AppEnvironment.device.screenScale)
       make.left.equalToSuperview().offset(Layout.BottomBorder.leftInset)
       make.right.equalToSuperview()
     }
@@ -49,5 +51,28 @@ public final class SettingsTextCell: UITableViewCell {
   public override func layoutSubviews() {
     super.layoutSubviews()
     self.bottomBorder.isHidden = !self.isBottomBorderVisible
+  }
+
+  // MARK: - Update
+
+  public func update(kind: SettingsSection.CellKind,
+                     isLastCellInSection: Bool,
+                     device: DeviceManagerType) {
+    // 'accessoryType' may depend on 'kind'
+    self.accessoryType = .disclosureIndicator
+
+    self.textLabel?.attributedText = NSAttributedString(
+      string: kind.text,
+      attributes: TextStyles.cellText
+    )
+
+    self.isBottomBorderVisible = !isLastCellInSection
+    if self.isBottomBorderVisible && !self.hasAddedBottomBorderHeightConstraints {
+      self.bottomBorder.snp.makeConstraints { make in
+        make.height.equalTo(1.0 / device.screenScale)
+      }
+
+      self.hasAddedBottomBorderHeightConstraints = true
+    }
   }
 }

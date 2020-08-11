@@ -17,15 +17,21 @@ public final class SettingsCardFooterView: UIView {
 
   // MARK: - Init
 
-  public convenience init() {
-    self.init(frame: .zero)
-  }
+  public init(device: DeviceManagerType) {
+    let text = NSAttributedString(string: Localization.footer,
+                                  attributes: TextStyles.text)
 
-  public override init(frame: CGRect) {
-    let text       = NSAttributedString(string: Localization.footer, attributes: TextStyles.text)
-    let textHeight = SettingsCardFooterView.calculateMinHeight(text)
+    let textHeight: CGFloat = {
+      let textRect = CGSize(width: device.screenBounds.width,
+                            height: CGFloat.infinity)
+      let textSize = text.boundingRect(with: textRect,
+                                       options: .usesLineFragmentOrigin,
+                                       context: nil)
+      return textSize.height + Layout.topOffset + Layout.bottomOffset
+    }()
 
-    super.init(frame: CGRect(x: 0.0, y: 0.0, width: 1.0, height: textHeight))
+    let frame = CGRect(x: 0.0, y: 0.0, width: 1.0, height: textHeight)
+    super.init(frame: frame)
 
     self.label.attributedText = text
     self.label.numberOfLines  = 0
@@ -39,11 +45,5 @@ public final class SettingsCardFooterView: UIView {
 
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-
-  private static func calculateMinHeight(_ text: NSAttributedString) -> CGFloat {
-    let textRect = CGSize(width: AppEnvironment.device.screenBounds.width, height: CGFloat.infinity)
-    let textSize = text.boundingRect(with: textRect, options: .usesLineFragmentOrigin, context: nil)
-    return textSize.height + Layout.topOffset + Layout.bottomOffset
   }
 }
