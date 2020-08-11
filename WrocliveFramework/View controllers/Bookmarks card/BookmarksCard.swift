@@ -20,7 +20,7 @@ public final class BookmarksCard:
   public let placeholderView = BookmarksPlaceholderView()
   public let tableView = UITableView()
 
-  /// Bookmarks data source
+  /// `self.tableView` data source
   internal var bookmarks = [Bookmark]()
   internal let viewModel: BookmarksCardViewModel
   internal let environment: Environment
@@ -43,8 +43,6 @@ public final class BookmarksCard:
   public override func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
-    self.tableView.delegate = self
-    self.tableView.dataSource = self
   }
 
   public override func viewDidLayoutSubviews() {

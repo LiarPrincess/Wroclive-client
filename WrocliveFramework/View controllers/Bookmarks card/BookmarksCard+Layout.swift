@@ -59,6 +59,8 @@ internal extension BookmarksCard {
     self.tableView.backgroundColor    = Theme.colors.background
     self.tableView.rowHeight          = UITableView.automaticDimension
     self.tableView.estimatedRowHeight = Constants.TableView.estimatedCellHeight
+    self.tableView.delegate = self
+    self.tableView.dataSource = self
 
     // Remove empty cells below, see:
     // http://swiftandpainless.com/table-view-footer-in-plain-table-view/

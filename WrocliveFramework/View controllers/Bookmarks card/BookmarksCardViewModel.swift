@@ -48,7 +48,7 @@ public final class BookmarksCardViewModel: StoreSubscriber {
     self.view?.refresh()
   }
 
-  // MARK: - Input
+  // MARK: - View input
 
   public func viewDidSelectItem(index: Int) {
     guard self.bookmarks.indices.contains(index) else {
