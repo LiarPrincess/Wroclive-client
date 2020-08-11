@@ -135,6 +135,16 @@
 		90F72F0E24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */; };
 		90F72F1224E3157D00D20EB2 /* Collection+GroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F1024E3157C00D20EB2 /* Collection+GroupTests.swift */; };
 		90F72F1324E3157D00D20EB2 /* Collection+AnyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F1124E3157C00D20EB2 /* Collection+AnyTests.swift */; };
+		90F72F1F24E316BE00D20EB2 /* DeviceManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F1724E316BE00D20EB2 /* DeviceManagerMock.swift */; };
+		90F72F2124E316BE00D20EB2 /* DebugManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F1924E316BE00D20EB2 /* DebugManagerMock.swift */; };
+		90F72F2424E316BE00D20EB2 /* StorageManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F1C24E316BE00D20EB2 /* StorageManagerMock.swift */; };
+		90F72F2524E316BE00D20EB2 /* UserLocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F1D24E316BE00D20EB2 /* UserLocationManagerMock.swift */; };
+		90F72F2624E316BE00D20EB2 /* BundleManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F1E24E316BE00D20EB2 /* BundleManagerMock.swift */; };
+		90F72F2924E318D100D20EB2 /* UserLocationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F2824E318D100D20EB2 /* UserLocationManagerType.swift */; };
+		90F72F2E24E31A8600D20EB2 /* ApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F2D24E31A8600D20EB2 /* ApiType.swift */; };
+		90F72F3024E31AA400D20EB2 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F2F24E31AA400D20EB2 /* ApiError.swift */; };
+		90F72F3124E31B6B00D20EB2 /* ApiManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F2A24E31A4700D20EB2 /* ApiManagerMock.swift */; };
+		90F72F3324E31CC900D20EB2 /* UserLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3224E31CC900D20EB2 /* UserLocationError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -315,6 +325,16 @@
 		90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardCoordinator.swift; sourceTree = "<group>"; };
 		90F72F1024E3157C00D20EB2 /* Collection+GroupTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+GroupTests.swift"; sourceTree = "<group>"; };
 		90F72F1124E3157C00D20EB2 /* Collection+AnyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+AnyTests.swift"; sourceTree = "<group>"; };
+		90F72F1724E316BE00D20EB2 /* DeviceManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManagerMock.swift; sourceTree = "<group>"; };
+		90F72F1924E316BE00D20EB2 /* DebugManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugManagerMock.swift; sourceTree = "<group>"; };
+		90F72F1C24E316BE00D20EB2 /* StorageManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManagerMock.swift; sourceTree = "<group>"; };
+		90F72F1D24E316BE00D20EB2 /* UserLocationManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManagerMock.swift; sourceTree = "<group>"; };
+		90F72F1E24E316BE00D20EB2 /* BundleManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleManagerMock.swift; sourceTree = "<group>"; };
+		90F72F2824E318D100D20EB2 /* UserLocationManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManagerType.swift; sourceTree = "<group>"; };
+		90F72F2A24E31A4700D20EB2 /* ApiManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManagerMock.swift; sourceTree = "<group>"; };
+		90F72F2D24E31A8600D20EB2 /* ApiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiType.swift; sourceTree = "<group>"; };
+		90F72F2F24E31AA400D20EB2 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		90F72F3224E31CC900D20EB2 /* UserLocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,11 +405,13 @@
 			isa = PBXGroup;
 			children = (
 				900EA10624D46F140054C03F /* Api.swift */,
+				90F72F2D24E31A8600D20EB2 /* ApiType.swift */,
+				90F72F2F24E31AA400D20EB2 /* ApiError.swift */,
+				907FD0B824D8A2DC00B6896C /* OfflineApi.swift */,
 				900EA10724D46F140054C03F /* LinesEndpoint.swift */,
 				900EA10824D46F140054C03F /* VehicleLocationsEndpoint.swift */,
 				900EA10924D46F140054C03F /* Endpoint.swift */,
 				900EA11024D473E70054C03F /* Network.swift */,
-				907FD0B824D8A2DC00B6896C /* OfflineApi.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -536,6 +558,8 @@
 		9052382024D459EB00E4F8A7 /* WrocliveTests */ = {
 			isa = PBXGroup;
 			children = (
+				90F72F2C24E31A6400D20EB2 /* Mock - Api */,
+				90F72F1624E316BE00D20EB2 /* Mock - Environment */,
 				90F72F0F24E3157C00D20EB2 /* Extensions */,
 				9052382324D459EB00E4F8A7 /* Info.plist */,
 			);
@@ -752,6 +776,8 @@
 			children = (
 				905893BD24D4A95D0046EFA5 /* UserLocationManager.swift */,
 				90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */,
+				90F72F2824E318D100D20EB2 /* UserLocationManagerType.swift */,
+				90F72F3224E31CC900D20EB2 /* UserLocationError.swift */,
 			);
 			path = "User location";
 			sourceTree = "<group>";
@@ -778,6 +804,26 @@
 				90F72F1124E3157C00D20EB2 /* Collection+AnyTests.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		90F72F1624E316BE00D20EB2 /* Mock - Environment */ = {
+			isa = PBXGroup;
+			children = (
+				90F72F1E24E316BE00D20EB2 /* BundleManagerMock.swift */,
+				90F72F1924E316BE00D20EB2 /* DebugManagerMock.swift */,
+				90F72F1724E316BE00D20EB2 /* DeviceManagerMock.swift */,
+				90F72F1C24E316BE00D20EB2 /* StorageManagerMock.swift */,
+				90F72F1D24E316BE00D20EB2 /* UserLocationManagerMock.swift */,
+			);
+			path = "Mock - Environment";
+			sourceTree = "<group>";
+		};
+		90F72F2C24E31A6400D20EB2 /* Mock - Api */ = {
+			isa = PBXGroup;
+			children = (
+				90F72F2A24E31A4700D20EB2 /* ApiManagerMock.swift */,
+			);
+			path = "Mock - Api";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -987,6 +1033,7 @@
 				90093B4E24DEB4E100D95645 /* LineSelector+Constants.swift in Sources */,
 				9013FB3C24D72C790006D1B9 /* VehicleAnnotationDiff.swift in Sources */,
 				90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */,
+				90F72F3324E31CC900D20EB2 /* UserLocationError.swift in Sources */,
 				90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */,
 				9013FAC924D721410006D1B9 /* Assets.swift in Sources */,
 				9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */,
@@ -1007,11 +1054,13 @@
 				9013FABF24D6B1890006D1B9 /* MapUpdateScheduler.swift in Sources */,
 				9013FB3224D721A90006D1B9 /* MainViewModel.swift in Sources */,
 				90F38E4524E19ECE000D4192 /* SettingsCardViewModel.swift in Sources */,
+				90F72F2E24E31A8600D20EB2 /* ApiType.swift in Sources */,
 				90CDCFD424D60CF100595D89 /* CollectionExtensions.swift in Sources */,
 				90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */,
 				905893CF24D4A95D0046EFA5 /* CachedStorageManager.swift in Sources */,
 				9013FAB724D6B1890006D1B9 /* CustomCardPanelPresentable.swift in Sources */,
 				90D57B0724DC490100A0EF53 /* LineSelectorSection.swift in Sources */,
+				90F72F3024E31AA400D20EB2 /* ApiError.swift in Sources */,
 				905893D324D4A95D0046EFA5 /* Configuration.swift in Sources */,
 				9013FAAE24D6B1880006D1B9 /* ReusableCell.swift in Sources */,
 				90584F4B24E1952F008B7F74 /* StorageManagerType.swift in Sources */,
@@ -1039,6 +1088,7 @@
 				90CE741824D9BB7800419166 /* BookmarksCard+Constants.swift in Sources */,
 				90CE742D24D9D6E600419166 /* CardCoordinator.swift in Sources */,
 				90D57B0924DC490100A0EF53 /* LineSelectorCell.swift in Sources */,
+				90F72F2924E318D100D20EB2 /* UserLocationManagerType.swift in Sources */,
 				90D57AFD24DC490100A0EF53 /* LineSelectorPageViewModel.swift in Sources */,
 				900EA10A24D46F140054C03F /* Api.swift in Sources */,
 				900EA10224D46C110054C03F /* Bookmark.swift in Sources */,
@@ -1065,7 +1115,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				90F72F1224E3157D00D20EB2 /* Collection+GroupTests.swift in Sources */,
+				90F72F2124E316BE00D20EB2 /* DebugManagerMock.swift in Sources */,
+				90F72F2524E316BE00D20EB2 /* UserLocationManagerMock.swift in Sources */,
+				90F72F1F24E316BE00D20EB2 /* DeviceManagerMock.swift in Sources */,
+				90F72F2424E316BE00D20EB2 /* StorageManagerMock.swift in Sources */,
 				90F72F1324E3157D00D20EB2 /* Collection+AnyTests.swift in Sources */,
+				90F72F3124E31B6B00D20EB2 /* ApiManagerMock.swift in Sources */,
+				90F72F2624E316BE00D20EB2 /* BundleManagerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

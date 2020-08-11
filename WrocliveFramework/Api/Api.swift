@@ -7,45 +7,6 @@ import os.log
 import Alamofire
 import PromiseKit
 
-// MARK: - Error
-
-public enum ApiError: Error, CustomStringConvertible {
-
-  /// Recieved response is invalid
-  case invalidResponse
-  /// No internet connnection?
-  case reachabilityError
-  /// Other unknown errror
-  case otherError(Error)
-
-  public var description: String {
-    switch self {
-    case .invalidResponse:
-      return "Invalid response"
-    case .reachabilityError:
-      return "Reachability error"
-    case .otherError(let e):
-      return "Other error: \(e)"
-    }
-  }
-}
-
-// MARK: - Api type
-
-public protocol ApiType {
-
-  /// Get all currently available mpk lines
-  func getLines() -> Promise<[Line]>
-
-  /// Get current vehicle locations for selected lines
-  func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]>
-
-  /// Show/hide network activity indicator (little circle in the upper left corner).
-  func setNetworkActivityIndicatorVisibility(isVisible: Bool)
-}
-
-// MARK: - Api
-
 // TODO: Add OSLog to api
 public final class Api: ApiType {
 
@@ -58,6 +19,8 @@ public final class Api: ApiType {
   private var log: OSLog {
     return self.logManager.api
   }
+
+  // MARK: - Init
 
   public init(bundle: BundleManagerType,
               device: DeviceManagerType,

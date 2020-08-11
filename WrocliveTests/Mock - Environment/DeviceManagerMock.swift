@@ -6,11 +6,11 @@ import Foundation
 @testable import WrocliveFramework
 
 class DeviceManagerMock: DeviceManagerType {
-  var model: String = "DEVICE_MODEL"
-  var systemName: String = "DEVICE_SYSTEM_NAME"
-  var systemVersion: String = "DEVICE_SYSTEM_VERSION"
+  var model = "DEVICE_MODEL"
+  var systemName = "DEVICE_SYSTEM_NAME"
+  var systemVersion = "DEVICE_SYSTEM_VERSION"
 
-  var screenScale: CGFloat = CGFloat(2)
-  var screenBounds: CGRect = CGRect(x: 0, y: 0, width: 640, height: 1_136)
-  var preferredFontSize: CGFloat = CGFloat(17)
+  var screenScale = CGFloat(2)
+  var screenBounds = CGRect(x: 0, y: 0, width: 640, height: 1_136)
+  var preferredFontSize = CGFloat(17)
 }

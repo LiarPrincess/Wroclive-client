@@ -2,49 +2,14 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import UIKit
 import MapKit
-import ReSwift
 import PromiseKit
-
-// MARK: - Helper types
 
 extension Notification.Name {
 
   public static let didChangeUserlocationAuthorization =
     Notification.Name("didChangeUserlocationAuthorization")
 }
-
-public enum UserLocationError: Swift.Error, Equatable, CustomStringConvertible {
-
-  case permissionNotDetermined
-  case permissionDenied
-  case otherError
-
-  public var description: String {
-    switch self {
-    case .permissionNotDetermined: return "Permission not determined"
-    case .permissionDenied: return "Permission denied"
-    case .otherError: return "Other error"
-    }
-  }
-}
-
-// MARK: - Manager type
-
-public protocol UserLocationManagerType {
-
-  /// Returns current user location.
-  func getCurrent() -> Promise<CLLocationCoordinate2D>
-
-  /// Current authorization status.
-  func getAuthorizationStatus() -> UserLocationAuthorization
-
-  /// Request when in use authorization.
-  func requestWhenInUseAuthorization()
-}
-
-// MARK: - Manager
 
 public class UserLocationManager:
   NSObject, UserLocationManagerType, CLLocationManagerDelegate

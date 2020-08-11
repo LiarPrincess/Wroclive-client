@@ -22,12 +22,6 @@ public struct BundleManager: BundleManagerType {
   public let version: String
   public let identifier: String
 
-  public init(name: String, version: String, identifier: String) {
-    self.name = name
-    self.version = version
-    self.identifier = identifier
-  }
-
   public init(bundle: Bundle) {
     func get(key: String) -> String? {
       return bundle.infoDictionary?[key] as? String

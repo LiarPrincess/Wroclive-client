@@ -2,13 +2,12 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import RxSwift
+import Foundation
 @testable import WrocliveFramework
 
-class SchedulersManagerMock: SchedulersManagerType {
-  var main: SchedulerType
+class DebugManagerMock: DebugManagerType {
 
-  init(main: SchedulerType) {
-    self.main = main
+  func clearNetworkCache() {
+    fatalError("DebugManagerMock.clearNetworkCache should not be called during tests")
   }
 }

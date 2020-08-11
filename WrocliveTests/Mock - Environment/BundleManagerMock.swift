@@ -5,13 +5,8 @@
 import Foundation
 @testable import WrocliveFramework
 
-class DebugManagerMock: DebugManagerType {
-
-  func clearNetworkCache() {
-    fatalError("DebugManagerMock.clearNetworkCache is not implmented")
-  }
-
-  func printRxResources() {
-    fatalError("DebugManagerMock.printRxResources is not implmented")
-  }
+class BundleManagerMock: BundleManagerType {
+  var name = "BUNDLE_NAME"
+  var version = "BUNDLE_VERSION"
+  var identifier = "BUNDLE_IDENTIFIER"
 }

@@ -39,18 +39,6 @@ public struct DeviceManager: DeviceManagerType {
   public let screenScale: CGFloat
   public let screenBounds: CGRect
 
-  public init(model: String,
-              systemName: String,
-              systemVersion: String,
-              screenScale: CGFloat,
-              screenBounds: CGRect) {
-    self.model = model
-    self.systemName = systemName
-    self.systemVersion = systemVersion
-    self.screenScale = screenScale
-    self.screenBounds = screenBounds
-  }
-
   public init(device: UIDevice, screen: UIScreen) {
     self.model = device.model
     self.systemName = device.systemName
@@ -59,7 +47,7 @@ public struct DeviceManager: DeviceManagerType {
     self.screenBounds = screen.bounds
   }
 
-  // TODO: DeviceManager.preferredFontSize
+  // TODO: DeviceManager.preferredFontSize (+Theme?)
   public var preferredFontSize: CGFloat  {
     return UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).pointSize
   }
