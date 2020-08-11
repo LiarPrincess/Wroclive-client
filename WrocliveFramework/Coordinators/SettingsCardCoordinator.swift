@@ -9,7 +9,9 @@ import SafariServices
 
 // swiftlint:disable weak_delegate
 
-public final class SettingsCardCoordinator: CardCoordinator {
+public final class SettingsCardCoordinator:
+  CardCoordinator, SettingsCardViewModelDelegate
+{
 
   public var card: SettingsCard?
   public let parent: UIViewController
@@ -27,12 +29,7 @@ public final class SettingsCardCoordinator: CardCoordinator {
   }
 
   public func start() -> Guarantee<Void> {
-    let viewModel = SettingsCardViewModel(
-      onSharePressed: { [weak self] in self?.showShareActivity() },
-      onRatePressed: { [weak self] in self?.rateApp() },
-      onAboutPressed: { [weak self] in self?.showAboutPage() }
-    )
-
+    let viewModel = SettingsCardViewModel(delegate: self)
     let card = SettingsCard(viewModel: viewModel, environment: self.environment)
     let height = 0.75 * self.environment.device.screenBounds.height
 

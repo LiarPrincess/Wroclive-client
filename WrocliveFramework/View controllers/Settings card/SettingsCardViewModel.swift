@@ -4,6 +4,12 @@
 
 import UIKit
 
+public protocol SettingsCardViewModelDelegate: AnyObject {
+  func rateApp()
+  func showAboutPage()
+  func showShareActivity()
+}
+
 public final class SettingsCardViewModel {
 
   public let sections = [
@@ -13,19 +19,12 @@ public final class SettingsCardViewModel {
     )
   ]
 
-  public typealias OnButtonPressed = () -> ()
-  private let onSharePressed: OnButtonPressed
-  private let onRatePressed: OnButtonPressed
-  private let onAboutPressed: OnButtonPressed
+  private weak var delegate: SettingsCardViewModelDelegate?
 
   // MARK: - Init
 
-  public init(onSharePressed: @escaping OnButtonPressed,
-              onRatePressed: @escaping OnButtonPressed,
-              onAboutPressed: @escaping OnButtonPressed) {
-    self.onSharePressed = onSharePressed
-    self.onRatePressed = onRatePressed
-    self.onAboutPressed = onAboutPressed
+  public init(delegate: SettingsCardViewModelDelegate) {
+    self.delegate = delegate
   }
 
   // MARK: - View inputs
@@ -36,9 +35,9 @@ public final class SettingsCardViewModel {
     }
 
     switch cell {
-    case .share: self.onSharePressed()
-    case .rate:  self.onRatePressed()
-    case .about: self.onAboutPressed()
+    case .share: self.delegate?.showShareActivity()
+    case .rate:  self.delegate?.rateApp()
+    case .about: self.delegate?.showAboutPage()
     }
   }
 
