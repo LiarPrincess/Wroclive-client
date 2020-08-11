@@ -10,12 +10,12 @@ import PromiseKit
 
 public final class BookmarksCardCoordinator: CardCoordinator {
 
+  public var card: BookmarksCard?
   public let parent: UIViewController
+  public var cardTransitionDelegate: UIViewControllerTransitioningDelegate?
+
   public let store: Store<AppState>
   public let environment: Environment
-
-  public var card: BookmarksCard?
-  public var cardTransitionDelegate: UIViewControllerTransitioningDelegate?
 
   public init(parent: UIViewController,
               store: Store<AppState>,
@@ -29,6 +29,8 @@ public final class BookmarksCardCoordinator: CardCoordinator {
     let viewModel = BookmarksCardViewModel(store: self.store)
     let card = BookmarksCard(viewModel: viewModel, environment: self.environment)
     let height = 0.75 * self.environment.device.screenBounds.height
-    return self.presentCard(card, withHeight: height, animated: true)
+
+    self.card = card
+    return self.present(card: card, withHeight: height, animated: true)
   }
 }

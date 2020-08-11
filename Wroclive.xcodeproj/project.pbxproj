@@ -152,6 +152,7 @@
 		90F38E4D24E19ECE000D4192 /* SettingsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E4124E19ECE000D4192 /* SettingsSectionHeaderView.swift */; };
 		90F38E4E24E19ECE000D4192 /* SettingsCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E4224E19ECE000D4192 /* SettingsCardConstants.swift */; };
 		90F38E5224E1A3AE000D4192 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E5124E1A3AE000D4192 /* SettingsSection.swift */; };
+		90F72F0E24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -332,6 +333,7 @@
 		90F38E4124E19ECE000D4192 /* SettingsSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionHeaderView.swift; sourceTree = "<group>"; };
 		90F38E4224E19ECE000D4192 /* SettingsCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardConstants.swift; sourceTree = "<group>"; };
 		90F38E5124E1A3AE000D4192 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -754,9 +756,10 @@
 		90DE39EB24D8685400ADE4B9 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */,
+				90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */,
 				9076BD3D24DDB57A00467075 /* SearchCardCoordinator.swift */,
 				90CE742C24D9D6E600419166 /* CardCoordinator.swift */,
-				90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */,
 				90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -1005,6 +1008,7 @@
 				9076BD5924DDD26C00467075 /* LineTypeSegmentedControl.swift in Sources */,
 				9047996A24D575C500111F2C /* ApiMiddleware.swift in Sources */,
 				9047996924D575C500111F2C /* PersistencyMiddleware.swift in Sources */,
+				90F72F0E24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift in Sources */,
 				9076BD4A24DDB5D100467075 /* SearchCard+Layout.swift in Sources */,
 				900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */,
 				905893D224D4A95D0046EFA5 /* LogManager.swift in Sources */,

@@ -12,6 +12,7 @@ public final class AppCoordinator: MainViewModelDelegate {
   public let environment: Environment
 
   private var mainViewController: MainViewController?
+  private var childCoordinator: CardCoordinator?
 
   public init(window: UIWindow, store: Store<AppState>, environment: Environment) {
     self.store = store
@@ -39,7 +40,7 @@ public final class AppCoordinator: MainViewModelDelegate {
     let coordinator = SearchCardCoordinator(parent: mainViewController,
                                             store: self.store,
                                             environment: self.environment)
-    _ = coordinator.start()
+    self.showCard(coordinator: coordinator)
   }
 
   public func openBookmarksCard() {
@@ -50,16 +51,26 @@ public final class AppCoordinator: MainViewModelDelegate {
     let coordinator = BookmarksCardCoordinator(parent: mainViewController,
                                                store: self.store,
                                                environment: self.environment)
-    _ = coordinator.start()
+    self.showCard(coordinator: coordinator)
   }
 
   public func openSettingsCard() {
-//    guard let mainViewController = self.mainViewController else {
-//      fatalError("AppCoordinator has to be started first")
-//    }
+    guard let mainViewController = self.mainViewController else {
+      fatalError("AppCoordinator has to be started first")
+    }
 
-    print(#function)
-//    self.childCoordinator = SettingsCardCoordinator(mainViewController)
-//    self.childCoordinator!.start()
+    let coordinator = SettingsCardCoordinator(parent: mainViewController,
+                                              store: self.store,
+                                              environment: self.environment)
+    self.showCard(coordinator: coordinator)
+  }
+
+  private func showCard<C: CardCoordinator>(coordinator: C) {
+    assert(self.childCoordinator == nil)
+
+    self.childCoordinator = coordinator
+    coordinator.start().done { [weak self] in
+      self?.childCoordinator = nil
+    }
   }
 }

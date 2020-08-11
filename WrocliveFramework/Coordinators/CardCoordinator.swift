@@ -5,25 +5,21 @@
 import UIKit
 import PromiseKit
 
-public protocol CardCoordinator: class {
-  associatedtype Card: UIViewController
-
-  var card: Card? { get set }
+internal protocol CardCoordinator: class {
+  var parent: UIViewController { get }
   var cardTransitionDelegate: UIViewControllerTransitioningDelegate? { get set }
 
-  var parent: UIViewController { get }
+  /// Call this to open card.
+  func start() -> Guarantee<Void>
 }
 
-public extension CardCoordinator {
+extension CardCoordinator {
 
-  func presentCard(_ card: Card,
-                   withHeight height: CGFloat,
-                   animated: Bool) -> Guarantee<Void> {
-    guard self.card == nil else {
-      fatalError("Card was already presented!")
-    }
-
-    self.card = card
+  /// Helper!
+  /// Should be called only inside `CardCoordinator` implementation!
+  internal func present(card: UIViewController,
+                        withHeight height: CGFloat,
+                        animated: Bool) -> Guarantee<Void> {
     self.cardTransitionDelegate = CardPanelTransitionDelegate(height: height)
 
     return Guarantee<Void> { resolve in

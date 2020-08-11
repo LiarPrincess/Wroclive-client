@@ -3,65 +3,84 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
-import RxSwift
-import RxCocoa
+import ReSwift
+import PromiseKit
 import SafariServices
+
+// swiftlint:disable weak_delegate
 
 public final class SettingsCardCoordinator: CardCoordinator {
 
+  public var card: SettingsCard?
   public let parent: UIViewController
+  public var cardTransitionDelegate: UIViewControllerTransitioningDelegate?
 
-  public var card:                   SettingsCard?
-  public var cardTransitionDelegate: UIViewControllerTransitioningDelegate? // swiftlint:disable:this weak_delegate
+  public let store: Store<AppState>
+  public let environment: Environment
 
-  public init(_ parent: UIViewController) {
+  public init(parent: UIViewController,
+              store: Store<AppState>,
+              environment: Environment) {
     self.parent = parent
+    self.store = store
+    self.environment = environment
   }
 
-  public func start() {
-    let viewModel = SettingsCardViewModel()
-    let card      = SettingsCard(viewModel)
-    let height    = 0.75 * AppEnvironment.device.screenBounds.height
+  public func start() -> Guarantee<Void> {
+    let viewModel = SettingsCardViewModel(
+      onSharePressed: { [weak self] in self?.showShareActivity() },
+      onRatePressed: { [weak self] in self?.rateApp() },
+      onAboutPressed: { [weak self] in self?.showAboutPage() }
+    )
 
-    viewModel.showRateControl
-      .drive(onNext: { [unowned self] in self.rateApp() })
-      .disposed(by: viewModel.disposeBag)
+    let card = SettingsCard(viewModel: viewModel, environment: self.environment)
+    let height = 0.75 * self.environment.device.screenBounds.height
 
-    viewModel.showShareControl
-      .drive(onNext: { [unowned self] in self.showShareActivity() })
-      .disposed(by: viewModel.disposeBag)
-
-    viewModel.showAboutPage
-      .drive(onNext: { [unowned self] in self.showAboutPage() })
-      .disposed(by: viewModel.disposeBag)
-
-    self.presentCard(card, withHeight: height, animated: true)
+    self.card = card
+    return self.present(card: card, withHeight: height, animated: true)
   }
 
   public func rateApp() {
-    UIApplication.shared.open(AppEnvironment.configuration.appStore.writeReviewUrl)
+    let url = self.environment.configuration.appStore.writeReviewUrl
+    UIApplication.shared.open(url)
   }
 
   public func showShareActivity() {
-    guard let card = self.card
-      else { fatalError("SettingsCardCoordinator has to be started first") }
+    guard let card = self.card else {
+      fatalError("SettingsCardCoordinator has to be started first")
+    }
 
-    let url   = AppEnvironment.configuration.appStore.shareUrl
-    let text  = Localizable.Share.message(url.absoluteString)
+    let url = self.environment.configuration.appStore.shareUrl
+    let text = Localizable.Share.message(url.absoluteString)
     let image = Assets.shareImage.image
     let items = [text, image] as [Any]
 
-    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-    activityViewController.excludedActivityTypes  = [.assignToContact, .saveToCameraRoll, .addToReadingList, .postToFlickr, .postToVimeo, .openInIBooks, .print]
+    let activityViewController = UIActivityViewController(
+      activityItems: items,
+      applicationActivities: nil
+    )
+
+    activityViewController.excludedActivityTypes = [
+      .assignToContact,
+      .saveToCameraRoll,
+      .addToReadingList,
+      .postToFlickr,
+      .postToVimeo,
+      .openInIBooks,
+      .print
+    ]
+
     activityViewController.modalPresentationStyle = .overCurrentContext
     card.present(activityViewController, animated: true, completion: nil)
   }
 
   public func showAboutPage() {
-    guard let card = self.card
-      else { fatalError("SettingsCardCoordinator has to be started first") }
+    guard let card = self.card else {
+      fatalError("SettingsCardCoordinator has to be started first")
+    }
 
-    let safariViewController = SFSafariViewController(url: AppEnvironment.configuration.websiteUrl)
+    let url = self.environment.configuration.websiteUrl
+    let safariViewController = SFSafariViewController(url: url)
     safariViewController.modalPresentationStyle = .overFullScreen
     card.present(safariViewController, animated: true, completion: nil)
   }

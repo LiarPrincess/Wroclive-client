@@ -30,7 +30,7 @@ public final class SettingsCardViewModel {
 
   // MARK: - View inputs
 
-  public func viewDidSelectItem(index: IndexPath) {
+  public func viewDidSelectRow(at index: IndexPath) {
     guard let (_, cell) = self.getCell(at: index) else {
       return
     }

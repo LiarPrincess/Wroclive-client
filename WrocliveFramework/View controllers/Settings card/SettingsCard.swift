@@ -106,6 +106,13 @@ public final class SettingsCard:
     return cell
   }
 
+  public func tableView(_ tableView: UITableView,
+                        didSelectRowAt indexPath: IndexPath) {
+    // Deselect to simulate 'click', we do not want to actually select this row.
+    self.tableView.deselectRow(at: indexPath, animated: true)
+    self.viewModel.viewDidSelectRow(at: indexPath)
+  }
+
   // MARK: - UITableView - Header
 
   public func tableView(_ tableView: UITableView,
