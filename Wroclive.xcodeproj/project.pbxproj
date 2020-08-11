@@ -144,10 +144,10 @@
 		90F38E4524E19ECE000D4192 /* SettingsCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3924E19ECE000D4192 /* SettingsCardViewModel.swift */; };
 		90F38E4624E19ECE000D4192 /* SettingsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3A24E19ECE000D4192 /* SettingsTextCell.swift */; };
 		90F38E4724E19ECE000D4192 /* SettingsCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3B24E19ECE000D4192 /* SettingsCardFooterView.swift */; };
-		90F38E4924E19ECE000D4192 /* SettingsCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3D24E19ECE000D4192 /* SettingsCardLayout.swift */; };
+		90F38E4924E19ECE000D4192 /* SettingsCard+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3D24E19ECE000D4192 /* SettingsCard+Layout.swift */; };
 		90F38E4C24E19ECE000D4192 /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E4024E19ECE000D4192 /* SettingsCard.swift */; };
 		90F38E4D24E19ECE000D4192 /* SettingsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E4124E19ECE000D4192 /* SettingsSectionHeaderView.swift */; };
-		90F38E4E24E19ECE000D4192 /* SettingsCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E4224E19ECE000D4192 /* SettingsCardConstants.swift */; };
+		90F38E4E24E19ECE000D4192 /* SettingsCard+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E4224E19ECE000D4192 /* SettingsCard+Constants.swift */; };
 		90F38E5224E1A3AE000D4192 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E5124E1A3AE000D4192 /* SettingsSection.swift */; };
 		90F72F0E24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */; };
 /* End PBXBuildFile section */
@@ -322,10 +322,10 @@
 		90F38E3924E19ECE000D4192 /* SettingsCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardViewModel.swift; sourceTree = "<group>"; };
 		90F38E3A24E19ECE000D4192 /* SettingsTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTextCell.swift; sourceTree = "<group>"; };
 		90F38E3B24E19ECE000D4192 /* SettingsCardFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardFooterView.swift; sourceTree = "<group>"; };
-		90F38E3D24E19ECE000D4192 /* SettingsCardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardLayout.swift; sourceTree = "<group>"; };
+		90F38E3D24E19ECE000D4192 /* SettingsCard+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsCard+Layout.swift"; sourceTree = "<group>"; };
 		90F38E4024E19ECE000D4192 /* SettingsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
 		90F38E4124E19ECE000D4192 /* SettingsSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionHeaderView.swift; sourceTree = "<group>"; };
-		90F38E4224E19ECE000D4192 /* SettingsCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardConstants.swift; sourceTree = "<group>"; };
+		90F38E4224E19ECE000D4192 /* SettingsCard+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsCard+Constants.swift"; sourceTree = "<group>"; };
 		90F38E5124E1A3AE000D4192 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -772,8 +772,8 @@
 			isa = PBXGroup;
 			children = (
 				90F38E4024E19ECE000D4192 /* SettingsCard.swift */,
-				90F38E3D24E19ECE000D4192 /* SettingsCardLayout.swift */,
-				90F38E4224E19ECE000D4192 /* SettingsCardConstants.swift */,
+				90F38E3D24E19ECE000D4192 /* SettingsCard+Layout.swift */,
+				90F38E4224E19ECE000D4192 /* SettingsCard+Constants.swift */,
 				90F38E3924E19ECE000D4192 /* SettingsCardViewModel.swift */,
 				90F38E5124E1A3AE000D4192 /* SettingsSection.swift */,
 				90F38E3A24E19ECE000D4192 /* SettingsTextCell.swift */,
@@ -946,12 +946,12 @@
 			files = (
 				90F38E4C24E19ECE000D4192 /* SettingsCard.swift in Sources */,
 				9047996824D575C500111F2C /* Middleware.swift in Sources */,
-				90F38E4E24E19ECE000D4192 /* SettingsCardConstants.swift in Sources */,
+				90F38E4E24E19ECE000D4192 /* SettingsCard+Constants.swift in Sources */,
 				9058938F24D4A7460046EFA5 /* TextAttributeEnums.swift in Sources */,
 				9013FAAD24D6B1880006D1B9 /* ReusableCell+UITableView.swift in Sources */,
 				9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */,
 				9076BD4B24DDB5D100467075 /* SearchCard+Constants.swift in Sources */,
-				90F38E4924E19ECE000D4192 /* SettingsCardLayout.swift in Sources */,
+				90F38E4924E19ECE000D4192 /* SettingsCard+Layout.swift in Sources */,
 				905893CD24D4A95D0046EFA5 /* BundleManager.swift in Sources */,
 				905893C924D4A95D0046EFA5 /* StorageManager.swift in Sources */,
 				9013FABA24D6B1890006D1B9 /* DismissGestureHandlerType.swift in Sources */,

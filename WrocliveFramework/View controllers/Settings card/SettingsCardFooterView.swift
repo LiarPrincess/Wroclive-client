@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = SettingsCardConstants.Footer
+private typealias Constants = SettingsCard.Constants.Footer
 private typealias Localization = Localizable.Settings
 
 public final class SettingsCardFooterView: UIView {

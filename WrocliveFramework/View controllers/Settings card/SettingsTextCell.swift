@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = SettingsCardConstants.Cell
+private typealias Constants = SettingsCard.Constants.Cell
 
 /// Cell that contains only text.
 public final class SettingsTextCell: UITableViewCell {

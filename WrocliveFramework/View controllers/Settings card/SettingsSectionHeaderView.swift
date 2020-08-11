@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = SettingsCardConstants.SectionHeader
+private typealias Constants = SettingsCard.Constants.SectionHeader
 
 public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 

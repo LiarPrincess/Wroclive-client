@@ -5,7 +5,6 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = SettingsCardConstants
 private typealias Localization = Localizable.Settings
 
 internal extension SettingsCard {

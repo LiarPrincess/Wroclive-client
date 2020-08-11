@@ -5,7 +5,6 @@
 import UIKit
 import SafariServices
 
-private typealias Constants = SettingsCardConstants
 private typealias Localization = Localizable.Settings
 
 public final class SettingsCard:
