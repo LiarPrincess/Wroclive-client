@@ -5,8 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout       = SettingsCardConstants.Layout
-private typealias TextStyles   = SettingsCardConstants.TextStyles
+private typealias Constants = SettingsCardConstants
 private typealias Localization = Localizable.Settings
 
 internal extension SettingsCard {
@@ -17,9 +16,11 @@ internal extension SettingsCard {
     self.initTableView()
   }
 
-  // MARK: - Private
+  // MARK: - Header
 
   private func initHeader() {
+    typealias C = Constants.Header
+
     let device = self.environment.device
     self.headerView.contentView.addBottomBorder(device: device)
     self.headerView.setContentHuggingPriority(900, for: .vertical)
@@ -30,18 +31,20 @@ internal extension SettingsCard {
     }
 
     self.titleLabel.attributedText = NSAttributedString(string: Localization.title,
-                                                        attributes: TextStyles.cardTitle)
+                                                        attributes: C.titleAttributes)
     self.titleLabel.numberOfLines = 0
     self.titleLabel.lineBreakMode = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.Header.topInset)
-      make.bottom.equalToSuperview().offset(-Layout.Header.bottomInset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
+      make.top.equalToSuperview().offset(C.topInset)
+      make.bottom.equalToSuperview().offset(-C.bottomInset)
+      make.left.equalToSuperview().offset(Constants.leftInset)
+      make.right.equalToSuperview().offset(-Constants.rightInset)
     }
   }
+
+  // MARK: - Table view
 
   private func initTableView() {
     self.tableView.registerCell(SettingsTextCell.self)
@@ -50,7 +53,7 @@ internal extension SettingsCard {
     self.tableView.separatorStyle     = .none
     self.tableView.backgroundColor    = Theme.colors.background
     self.tableView.rowHeight          = UITableView.automaticDimension
-    self.tableView.estimatedRowHeight = Layout.TableView.estimatedCellHeight
+    self.tableView.estimatedRowHeight = Constants.TableView.estimatedCellHeight
     self.tableView.delegate = self
     self.tableView.dataSource = self
 

@@ -5,8 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout       = SettingsCardFooterConstants.Layout
-private typealias TextStyles   = SettingsCardFooterConstants.TextStyles
+private typealias Constants = SettingsCardConstants.Footer
 private typealias Localization = Localizable.Settings
 
 public final class SettingsCardFooterView: UIView {
@@ -19,7 +18,7 @@ public final class SettingsCardFooterView: UIView {
 
   public init(device: DeviceManagerType) {
     let text = NSAttributedString(string: Localization.footer,
-                                  attributes: TextStyles.text)
+                                  attributes: Constants.textAttributes)
 
     let textHeight: CGFloat = {
       let textRect = CGSize(width: device.screenBounds.width,
@@ -27,7 +26,7 @@ public final class SettingsCardFooterView: UIView {
       let textSize = text.boundingRect(with: textRect,
                                        options: .usesLineFragmentOrigin,
                                        context: nil)
-      return textSize.height + Layout.topOffset + Layout.bottomOffset
+      return textSize.height + Constants.topOffset + Constants.bottomOffset
     }()
 
     let frame = CGRect(x: 0.0, y: 0.0, width: 1.0, height: textHeight)
@@ -38,7 +37,7 @@ public final class SettingsCardFooterView: UIView {
 
     self.addSubview(self.label)
     self.label.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Layout.topOffset)
+      make.top.equalToSuperview().offset(Constants.topOffset)
       make.bottom.left.right.equalToSuperview()
     }
   }

@@ -144,10 +144,7 @@
 		90F38E4524E19ECE000D4192 /* SettingsCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3924E19ECE000D4192 /* SettingsCardViewModel.swift */; };
 		90F38E4624E19ECE000D4192 /* SettingsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3A24E19ECE000D4192 /* SettingsTextCell.swift */; };
 		90F38E4724E19ECE000D4192 /* SettingsCardFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3B24E19ECE000D4192 /* SettingsCardFooterView.swift */; };
-		90F38E4824E19ECE000D4192 /* SettingsCardFooterConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3C24E19ECE000D4192 /* SettingsCardFooterConstants.swift */; };
 		90F38E4924E19ECE000D4192 /* SettingsCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3D24E19ECE000D4192 /* SettingsCardLayout.swift */; };
-		90F38E4A24E19ECE000D4192 /* SettingsSectionHeaderViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3E24E19ECE000D4192 /* SettingsSectionHeaderViewConstants.swift */; };
-		90F38E4B24E19ECE000D4192 /* SettingsTextCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3F24E19ECE000D4192 /* SettingsTextCellConstants.swift */; };
 		90F38E4C24E19ECE000D4192 /* SettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E4024E19ECE000D4192 /* SettingsCard.swift */; };
 		90F38E4D24E19ECE000D4192 /* SettingsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E4124E19ECE000D4192 /* SettingsSectionHeaderView.swift */; };
 		90F38E4E24E19ECE000D4192 /* SettingsCardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E4224E19ECE000D4192 /* SettingsCardConstants.swift */; };
@@ -325,10 +322,7 @@
 		90F38E3924E19ECE000D4192 /* SettingsCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardViewModel.swift; sourceTree = "<group>"; };
 		90F38E3A24E19ECE000D4192 /* SettingsTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTextCell.swift; sourceTree = "<group>"; };
 		90F38E3B24E19ECE000D4192 /* SettingsCardFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardFooterView.swift; sourceTree = "<group>"; };
-		90F38E3C24E19ECE000D4192 /* SettingsCardFooterConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardFooterConstants.swift; sourceTree = "<group>"; };
 		90F38E3D24E19ECE000D4192 /* SettingsCardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardLayout.swift; sourceTree = "<group>"; };
-		90F38E3E24E19ECE000D4192 /* SettingsSectionHeaderViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionHeaderViewConstants.swift; sourceTree = "<group>"; };
-		90F38E3F24E19ECE000D4192 /* SettingsTextCellConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTextCellConstants.swift; sourceTree = "<group>"; };
 		90F38E4024E19ECE000D4192 /* SettingsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCard.swift; sourceTree = "<group>"; };
 		90F38E4124E19ECE000D4192 /* SettingsSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSectionHeaderView.swift; sourceTree = "<group>"; };
 		90F38E4224E19ECE000D4192 /* SettingsCardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardConstants.swift; sourceTree = "<group>"; };
@@ -781,13 +775,10 @@
 				90F38E3D24E19ECE000D4192 /* SettingsCardLayout.swift */,
 				90F38E4224E19ECE000D4192 /* SettingsCardConstants.swift */,
 				90F38E3924E19ECE000D4192 /* SettingsCardViewModel.swift */,
-				90F38E3B24E19ECE000D4192 /* SettingsCardFooterView.swift */,
-				90F38E3C24E19ECE000D4192 /* SettingsCardFooterConstants.swift */,
-				90F38E3A24E19ECE000D4192 /* SettingsTextCell.swift */,
-				90F38E3F24E19ECE000D4192 /* SettingsTextCellConstants.swift */,
-				90F38E4124E19ECE000D4192 /* SettingsSectionHeaderView.swift */,
-				90F38E3E24E19ECE000D4192 /* SettingsSectionHeaderViewConstants.swift */,
 				90F38E5124E1A3AE000D4192 /* SettingsSection.swift */,
+				90F38E3A24E19ECE000D4192 /* SettingsTextCell.swift */,
+				90F38E4124E19ECE000D4192 /* SettingsSectionHeaderView.swift */,
+				90F38E3B24E19ECE000D4192 /* SettingsCardFooterView.swift */,
 			);
 			path = "Settings card";
 			sourceTree = "<group>";
@@ -964,7 +955,6 @@
 				905893CD24D4A95D0046EFA5 /* BundleManager.swift in Sources */,
 				905893C924D4A95D0046EFA5 /* StorageManager.swift in Sources */,
 				9013FABA24D6B1890006D1B9 /* DismissGestureHandlerType.swift in Sources */,
-				90F38E4B24E19ECE000D4192 /* SettingsTextCellConstants.swift in Sources */,
 				900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */,
 				90CE742124D9BB7800419166 /* BookmarksCard.swift in Sources */,
 				9013FAB824D6B1890006D1B9 /* CardPanelContainer.swift in Sources */,
@@ -1033,7 +1023,6 @@
 				9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */,
 				9013FB3324D721A90006D1B9 /* MainViewControllerLayout.swift in Sources */,
 				9076BD5224DDB5D100467075 /* SearchCardViewModel.swift in Sources */,
-				90F38E4824E19ECE000D4192 /* SettingsCardFooterConstants.swift in Sources */,
 				907FD0B924D8A2DC00B6896C /* OfflineApi.swift in Sources */,
 				9013FAC824D721410006D1B9 /* Localizable.swift in Sources */,
 				9013FB4024D72C790006D1B9 /* MapViewController+Constants.swift in Sources */,
@@ -1057,7 +1046,6 @@
 				90D57AFD24DC490100A0EF53 /* LineSelectorPageViewModel.swift in Sources */,
 				900EA10A24D46F140054C03F /* Api.swift in Sources */,
 				900EA10224D46C110054C03F /* Bookmark.swift in Sources */,
-				90F38E4A24E19ECE000D4192 /* SettingsSectionHeaderViewConstants.swift in Sources */,
 				9013FABD24D6B1890006D1B9 /* CardPanelDismissTransition.swift in Sources */,
 				9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */,
 				9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */,

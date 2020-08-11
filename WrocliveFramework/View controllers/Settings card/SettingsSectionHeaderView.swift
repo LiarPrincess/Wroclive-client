@@ -5,8 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout = SettingsSectionHeaderViewConstants.Layout
-private typealias TextStyles   = SettingsCardConstants.TextStyles
+private typealias Constants = SettingsCardConstants.SectionHeader
 
 public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
@@ -38,15 +37,15 @@ public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
       // We do not need:
       // - bottom - we have 'tableView(_:heightForHeaderInSection:)' for this
       // - right - it will automatically resize to required width
-      make.top.equalToSuperview().offset(Layout.topInset)
-      make.left.equalToSuperview().offset(Layout.leftInset)
+      make.top.equalToSuperview().offset(Constants.topInset)
+      make.left.equalToSuperview().offset(Constants.leftInset)
     }
   }
 
   public func update(section: SettingsSection) {
     self.titleLabel.attributedText = NSAttributedString(
       string: section.kind.text,
-      attributes: TextStyles.sectionTitle
+      attributes: Constants.titleAttributes
     )
   }
 }

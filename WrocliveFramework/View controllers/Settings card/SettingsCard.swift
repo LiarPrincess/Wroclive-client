@@ -5,8 +5,7 @@
 import UIKit
 import SafariServices
 
-private typealias Layout       = SettingsCardConstants.Layout
-private typealias TextStyles   = SettingsCardConstants.TextStyles
+private typealias Constants = SettingsCardConstants
 private typealias Localization = Localizable.Settings
 
 public final class SettingsCard:
@@ -117,22 +116,22 @@ public final class SettingsCard:
 
   public func tableView(_ tableView: UITableView,
                         heightForHeaderInSection sectionIndex: Int) -> CGFloat {
-    typealias HeaderLayout = SettingsSectionHeaderViewConstants.Layout
+    typealias C = Constants.SectionHeader
 
     guard let section = self.viewModel.getSection(at: sectionIndex) else {
       fatalError("No settings section at index: \(sectionIndex)")
     }
 
-    let width = tableView.bounds.width - HeaderLayout.leftInset - HeaderLayout.rightInset
+    let width = tableView.bounds.width - C.leftInset - C.rightInset
     let bounds = CGSize(width: width, height: .greatestFiniteMagnitude)
 
     let text = NSAttributedString(string: section.kind.text,
-                                  attributes: TextStyles.sectionTitle)
+                                  attributes: C.titleAttributes)
     let textSize = text.boundingRect(with: bounds,
                                      options: .usesLineFragmentOrigin,
                                      context: nil)
 
-    return textSize.height + HeaderLayout.topInset + HeaderLayout.bottomInset + 1.0
+    return textSize.height + C.topInset + C.bottomInset + 1.0
   }
 
   public func tableView(_ tableView: UITableView,

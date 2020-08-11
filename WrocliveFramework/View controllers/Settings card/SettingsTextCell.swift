@@ -5,8 +5,7 @@
 import UIKit
 import SnapKit
 
-private typealias Layout = SettingsTextCellConstants.Layout
-private typealias TextStyles = SettingsCardConstants.TextStyles
+private typealias Constants = SettingsCardConstants.Cell
 
 /// Cell that contains only text.
 public final class SettingsTextCell: UITableViewCell {
@@ -41,7 +40,7 @@ public final class SettingsTextCell: UITableViewCell {
     self.addSubview(self.bottomBorder)
     self.bottomBorder.snp.makeConstraints { make in
       make.bottom.equalToSuperview()
-      make.left.equalToSuperview().offset(Layout.BottomBorder.leftInset)
+      make.left.equalToSuperview().offset(Constants.BottomBorder.leftInset)
       make.right.equalToSuperview()
     }
   }
@@ -63,7 +62,7 @@ public final class SettingsTextCell: UITableViewCell {
 
     self.textLabel?.attributedText = NSAttributedString(
       string: kind.text,
-      attributes: TextStyles.cellText
+      attributes: Constants.textAttributes
     )
 
     self.isBottomBorderVisible = !isLastCellInSection
