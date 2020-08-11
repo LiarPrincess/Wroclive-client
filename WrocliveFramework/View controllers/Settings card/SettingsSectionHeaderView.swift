@@ -35,10 +35,11 @@ public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
     self.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
+      // We do not need:
+      // - bottom - we have 'tableView(_:heightForHeaderInSection:)' for this
+      // - right - it will automatically resize to required width
       make.top.equalToSuperview().offset(Layout.topInset)
-      make.bottom.equalToSuperview().offset(-Layout.bottomInset)
       make.left.equalToSuperview().offset(Layout.leftInset)
-      make.right.equalToSuperview().offset(-Layout.rightInset)
     }
   }
 
