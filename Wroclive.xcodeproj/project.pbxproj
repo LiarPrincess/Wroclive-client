@@ -145,6 +145,14 @@
 		90F72F3024E31AA400D20EB2 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F2F24E31AA400D20EB2 /* ApiError.swift */; };
 		90F72F3124E31B6B00D20EB2 /* ApiManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F2A24E31A4700D20EB2 /* ApiManagerMock.swift */; };
 		90F72F3324E31CC900D20EB2 /* UserLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3224E31CC900D20EB2 /* UserLocationError.swift */; };
+		90F72F3B24E31D9600D20EB2 /* BookmarksCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3524E31D9600D20EB2 /* BookmarksCardViewModelTests.swift */; };
+		90F72F3C24E31D9600D20EB2 /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3624E31D9600D20EB2 /* BookmarksCellViewModelTests.swift */; };
+		90F72F3D24E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3724E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift */; };
+		90F72F3E24E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3824E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift */; };
+		90F72F3F24E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3924E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift */; };
+		90F72F4024E31D9600D20EB2 /* BookmarksCardViewModelTests+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3A24E31D9600D20EB2 /* BookmarksCardViewModelTests+Selection.swift */; };
+		90F72F4224E3FB8E00D20EB2 /* EnvironmentTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F4124E3FB8D00D20EB2 /* EnvironmentTestCase.swift */; };
+		90F72F4424E4082D00D20EB2 /* ReduxTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F4324E4082D00D20EB2 /* ReduxTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,6 +343,14 @@
 		90F72F2D24E31A8600D20EB2 /* ApiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiType.swift; sourceTree = "<group>"; };
 		90F72F2F24E31AA400D20EB2 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		90F72F3224E31CC900D20EB2 /* UserLocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationError.swift; sourceTree = "<group>"; };
+		90F72F3524E31D9600D20EB2 /* BookmarksCardViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelTests.swift; sourceTree = "<group>"; };
+		90F72F3624E31D9600D20EB2 /* BookmarksCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCellViewModelTests.swift; sourceTree = "<group>"; };
+		90F72F3724E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Bookmarks.swift"; sourceTree = "<group>"; };
+		90F72F3824E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Edit.swift"; sourceTree = "<group>"; };
+		90F72F3924E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Visibility.swift"; sourceTree = "<group>"; };
+		90F72F3A24E31D9600D20EB2 /* BookmarksCardViewModelTests+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Selection.swift"; sourceTree = "<group>"; };
+		90F72F4124E3FB8D00D20EB2 /* EnvironmentTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentTestCase.swift; sourceTree = "<group>"; };
+		90F72F4324E4082D00D20EB2 /* ReduxTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReduxTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,6 +577,9 @@
 				90F72F2C24E31A6400D20EB2 /* Mock - Api */,
 				90F72F1624E316BE00D20EB2 /* Mock - Environment */,
 				90F72F0F24E3157C00D20EB2 /* Extensions */,
+				90F72F3424E31D9600D20EB2 /* Bookmarks card */,
+				90F72F4324E4082D00D20EB2 /* ReduxTestCase.swift */,
+				90F72F4124E3FB8D00D20EB2 /* EnvironmentTestCase.swift */,
 				9052382324D459EB00E4F8A7 /* Info.plist */,
 			);
 			path = WrocliveTests;
@@ -824,6 +843,19 @@
 				90F72F2A24E31A4700D20EB2 /* ApiManagerMock.swift */,
 			);
 			path = "Mock - Api";
+			sourceTree = "<group>";
+		};
+		90F72F3424E31D9600D20EB2 /* Bookmarks card */ = {
+			isa = PBXGroup;
+			children = (
+				90F72F3624E31D9600D20EB2 /* BookmarksCellViewModelTests.swift */,
+				90F72F3524E31D9600D20EB2 /* BookmarksCardViewModelTests.swift */,
+				90F72F3824E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift */,
+				90F72F3724E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift */,
+				90F72F3924E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift */,
+				90F72F3A24E31D9600D20EB2 /* BookmarksCardViewModelTests+Selection.swift */,
+			);
+			path = "Bookmarks card";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1114,14 +1146,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90F72F3E24E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift in Sources */,
+				90F72F3D24E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
+				90F72F4424E4082D00D20EB2 /* ReduxTestCase.swift in Sources */,
+				90F72F3C24E31D9600D20EB2 /* BookmarksCellViewModelTests.swift in Sources */,
 				90F72F1224E3157D00D20EB2 /* Collection+GroupTests.swift in Sources */,
 				90F72F2124E316BE00D20EB2 /* DebugManagerMock.swift in Sources */,
 				90F72F2524E316BE00D20EB2 /* UserLocationManagerMock.swift in Sources */,
 				90F72F1F24E316BE00D20EB2 /* DeviceManagerMock.swift in Sources */,
 				90F72F2424E316BE00D20EB2 /* StorageManagerMock.swift in Sources */,
 				90F72F1324E3157D00D20EB2 /* Collection+AnyTests.swift in Sources */,
+				90F72F3F24E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift in Sources */,
 				90F72F3124E31B6B00D20EB2 /* ApiManagerMock.swift in Sources */,
+				90F72F4024E31D9600D20EB2 /* BookmarksCardViewModelTests+Selection.swift in Sources */,
+				90F72F4224E3FB8E00D20EB2 /* EnvironmentTestCase.swift in Sources */,
 				90F72F2624E316BE00D20EB2 /* BundleManagerMock.swift in Sources */,
+				90F72F3B24E31D9600D20EB2 /* BookmarksCardViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

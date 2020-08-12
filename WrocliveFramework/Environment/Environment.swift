@@ -48,4 +48,22 @@ public class Environment {
       self.api = OfflineApi(log: self.log)
     }
   }
+
+  public init(api: ApiType,
+              bundle: BundleManagerType,
+              debug: DebugManagerType,
+              device: DeviceManagerType,
+              log: LogManagerType,
+              storage: StorageManagerType,
+              userLocation: UserLocationManagerType,
+              configuration: Configuration) {
+    self.api = api
+    self.bundle = bundle
+    self.debug = debug
+    self.device = device
+    self.log = log
+    self.storage = storage
+    self.userLocation = userLocation
+    self.configuration = configuration
+  }
 }
