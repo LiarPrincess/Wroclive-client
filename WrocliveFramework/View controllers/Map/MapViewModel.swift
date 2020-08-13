@@ -35,6 +35,11 @@ public final class MapViewModel: StoreSubscriber {
   public func setView(view: MapViewType) {
     assert(self.view == nil, "View was already assigned")
     self.view = view
+
+    // We have to start map in the center, it may be later overriden with
+    // user location (when we finally retrieve it).
+    self.centerMapOnDefaultLocation(animated: false)
+    
     self.store.subscribe(self)
   }
 
@@ -68,20 +73,18 @@ public final class MapViewModel: StoreSubscriber {
   }
 
   // Center map:
-  // - starting app (old is 'nil'), nothing to animate
+  // 1. Start with default center (set in 'self.setView(view:)')
+  // 2. On first recieved state:
   //   - if we are 'authorized' -> center on user location
-  //   - if we are not 'authorized' -> center on default location
-  // - user just authorized app (old is 'notDetermined', new is 'authorized')
-  //   -> center on user location
+  //   - otherwise -> center on default location - already done in 1
+  // 3. On any other state change:
+  //   - user just authorized app -> center on user location
   private func centerMapIfNeeded(newState: AppState) {
     let new = newState.userLocationAuthorization
 
     guard let previousState = self.currentState else {
-      switch new.isAuthorized {
-      case true:
+      if new.isAuthorized {
         self.centerMapOnUserLocation(animated: false)
-      case false:
-        self.centerMapOnDefaultLocation(animated: false)
       }
 
       return
@@ -95,6 +98,7 @@ public final class MapViewModel: StoreSubscriber {
   }
 
   private func centerMapOnUserLocation(animated: Bool) {
+    // Ignore errors
     _ = self.environment.userLocation.getCurrent().done { [weak self] location in
       self?.view?.setCenter(location: location, animated: animated)
     }

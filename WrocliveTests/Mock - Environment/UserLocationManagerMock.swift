@@ -15,11 +15,11 @@ class UserLocationManagerMock: UserLocationManagerType {
 
   // MARK: - Current
 
-  var current = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+  var current = Promise<CLLocationCoordinate2D>.value(CLLocationCoordinate2D())
 
   func getCurrent() -> Promise<CLLocationCoordinate2D> {
     self.getCurrentCallCount += 1
-    return .value(self.current)
+    return self.current
   }
 
   // MARK: - Authorization

@@ -51,7 +51,7 @@ public final class MapViewController:
     self.mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 
-  // MARK: - Map
+  // MARK: - Center
 
   public func setCenter(location: CLLocationCoordinate2D, animated: Bool) {
     self.setCenter(location: location,

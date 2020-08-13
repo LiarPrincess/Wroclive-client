@@ -18,19 +18,19 @@ extension EnvironmentTestCase {
     return self.environment.api as! ApiMock
   }
 
-  var bundleMock: BundleManagerMock {
+  var bundleManager: BundleManagerMock {
     return self.environment.bundle as! BundleManagerMock
   }
 
-  var deviceMock: DeviceManagerMock {
+  var deviceManager: DeviceManagerMock {
     return self.environment.device as! DeviceManagerMock
   }
 
-  var storageMock: StorageManagerMock {
+  var storageManager: StorageManagerMock {
     return self.environment.storage as! StorageManagerMock
   }
 
-  var userLocationMock: UserLocationManagerMock {
+  var userLocationManager: UserLocationManagerMock {
     return self.environment.userLocation as! UserLocationManagerMock
   }
 
