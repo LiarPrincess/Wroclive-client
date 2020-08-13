@@ -14,7 +14,6 @@ class BookmarksCardViewModelTests:
   var store: Store<AppState>!
   var dispatchedActions: [Action]!
   var environment: Environment!
-  var viewModel: BookmarksCardViewModel!
 
   var refreshCallCount = 0
   var closeCallCount = 0
@@ -58,6 +57,8 @@ class BookmarksCardViewModelTests:
     let bookmark2 = Bookmark(name: "Test 2", lines: [line0, line2, line3])
     return [bookmark0, bookmark1, bookmark2]
   }()
+
+  // MARK: - Set state
 
   func setBookmarks(_ bookmarks: [Bookmark]) {
     self.setState { $0.bookmarks = bookmarks }

@@ -12,24 +12,24 @@ extension BookmarksCardViewModelTests {
     let changedBookmarks = [initalBookmarks[0], initalBookmarks[2]]
 
     self.setBookmarks(initalBookmarks)
-    self.viewModel = self.createViewModel()
-    XCTAssertEqual(self.viewModel.bookmarks, initalBookmarks)
+    let viewModel = self.createViewModel()
+    XCTAssertEqual(viewModel.bookmarks, initalBookmarks)
     XCTAssertEqual(self.refreshCallCount, 0)
 
     self.setBookmarks(changedBookmarks)
-    XCTAssertEqual(self.viewModel.bookmarks, changedBookmarks)
+    XCTAssertEqual(viewModel.bookmarks, changedBookmarks)
     XCTAssertEqual(self.refreshCallCount, 1)
 
     // We should get bookmarks from the store, not storage
-    XCTAssertEqual(self.storageMock.readBookmarksCount, 0)
-    XCTAssertEqual(self.storageMock.writeBookmarksCount, 0)
+    XCTAssertEqual(self.storageManager.readBookmarksCount, 0)
+    XCTAssertEqual(self.storageManager.writeBookmarksCount, 0)
   }
 
   func test_movingItem_dispatchesMoveAction() {
     self.setBookmarks(self.testData)
-    self.viewModel = self.createViewModel()
+    let viewModel = self.createViewModel()
 
-    self.viewModel.viewDidMoveItem(fromIndex: 0, toIndex: 2)
+    viewModel.viewDidMoveItem(fromIndex: 0, toIndex: 2)
     XCTAssertEqual(self.refreshCallCount, 1)
     XCTAssertEqual(self.dispatchedActions.count, 1)
     if let move = self.getMoveBookmarkAction(at: 0) {
@@ -37,7 +37,7 @@ extension BookmarksCardViewModelTests {
       XCTAssertEqual(move.to, 2)
     }
 
-    self.viewModel.viewDidMoveItem(fromIndex: 1, toIndex: 0)
+    viewModel.viewDidMoveItem(fromIndex: 1, toIndex: 0)
     XCTAssertEqual(self.refreshCallCount, 2)
     XCTAssertEqual(self.dispatchedActions.count, 2)
     if let move = self.getMoveBookmarkAction(at: 1) {
@@ -46,22 +46,22 @@ extension BookmarksCardViewModelTests {
     }
 
     // We should get bookmarks from the store, not storage
-    XCTAssertEqual(self.storageMock.readBookmarksCount, 0)
-    XCTAssertEqual(self.storageMock.writeBookmarksCount, 0)
+    XCTAssertEqual(self.storageManager.readBookmarksCount, 0)
+    XCTAssertEqual(self.storageManager.writeBookmarksCount, 0)
   }
 
   func test_deletingItem_dispatchesRemoveAction() {
     self.setBookmarks(self.testData)
-    self.viewModel = self.createViewModel()
+    let viewModel = self.createViewModel()
 
-    self.viewModel.viewDidDeleteItem(index: 0)
+    viewModel.viewDidDeleteItem(index: 0)
     XCTAssertEqual(self.refreshCallCount, 1)
     XCTAssertEqual(self.dispatchedActions.count, 1)
     if let index = self.getRemoveBookmarkAction(at: 0) {
       XCTAssertEqual(index, 0)
     }
 
-    self.viewModel.viewDidDeleteItem(index: 2)
+    viewModel.viewDidDeleteItem(index: 2)
     XCTAssertEqual(self.refreshCallCount, 2)
     XCTAssertEqual(self.dispatchedActions.count, 2)
     if let index = self.getRemoveBookmarkAction(at: 1) {
@@ -69,7 +69,7 @@ extension BookmarksCardViewModelTests {
     }
 
     // We should get bookmarks from the store, not storage
-    XCTAssertEqual(self.storageMock.readBookmarksCount, 0)
-    XCTAssertEqual(self.storageMock.writeBookmarksCount, 0)
+    XCTAssertEqual(self.storageManager.readBookmarksCount, 0)
+    XCTAssertEqual(self.storageManager.writeBookmarksCount, 0)
   }
 }

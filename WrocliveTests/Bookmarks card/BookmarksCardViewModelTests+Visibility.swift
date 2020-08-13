@@ -9,40 +9,40 @@ extension BookmarksCardViewModelTests {
 
   func test_withoutBookmarks_showsPlaceholder() {
     self.setBookmarks([])
-    self.viewModel = self.createViewModel()
+    let viewModel = self.createViewModel()
 
     XCTAssertEqual(self.refreshCallCount, 0)
-    XCTAssertTrue(self.viewModel.isPlaceholderVisible)
-    XCTAssertFalse(self.viewModel.isTableViewVisible)
+    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertFalse(viewModel.isTableViewVisible)
   }
 
   func test_withBookmarks_showsTableView() {
     self.setBookmarks(self.testData)
-    self.viewModel = self.createViewModel()
+    let viewModel = self.createViewModel()
 
     XCTAssertEqual(self.refreshCallCount, 0)
-    XCTAssertFalse(self.viewModel.isPlaceholderVisible)
-    XCTAssertTrue(self.viewModel.isTableViewVisible)
+    XCTAssertFalse(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isTableViewVisible)
   }
 
   func test_deletingBookmarks_showsPlaceholder() {
     self.setBookmarks(self.testData)
-    self.viewModel = self.createViewModel()
+    let viewModel = self.createViewModel()
 
     XCTAssertEqual(self.refreshCallCount, 0)
-    XCTAssertFalse(self.viewModel.isPlaceholderVisible)
-    XCTAssertTrue(self.viewModel.isTableViewVisible)
+    XCTAssertFalse(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isTableViewVisible)
 
     let singleBookmark = [self.testData[1]]
     self.setBookmarks(singleBookmark)
     XCTAssertEqual(self.refreshCallCount, 1)
-    XCTAssertFalse(self.viewModel.isPlaceholderVisible)
-    XCTAssertTrue(self.viewModel.isTableViewVisible)
+    XCTAssertFalse(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isTableViewVisible)
 
     let noBookmarks = [Bookmark]()
     self.setBookmarks(noBookmarks)
     XCTAssertEqual(self.refreshCallCount, 2)
-    XCTAssertTrue(self.viewModel.isPlaceholderVisible)
-    XCTAssertFalse(self.viewModel.isTableViewVisible)
+    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertFalse(viewModel.isTableViewVisible)
   }
 }

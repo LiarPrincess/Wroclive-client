@@ -14,35 +14,35 @@ private let editAttributes = Constants.editAttributes
 extension BookmarksCardViewModelTests {
 
   func test_editButton_changesIsEditing() {
-    self.viewModel = self.createViewModel()
-    XCTAssertFalse(self.viewModel.isEditing)
+    let viewModel = self.createViewModel()
+    XCTAssertFalse(viewModel.isEditing)
     XCTAssertEqual(self.refreshCallCount, 0)
 
-    self.viewModel.viewDidPressEditButton()
-    XCTAssertTrue(self.viewModel.isEditing)
+    viewModel.viewDidPressEditButton()
+    XCTAssertTrue(viewModel.isEditing)
     XCTAssertEqual(self.refreshCallCount, 1)
 
-    self.viewModel.viewDidPressEditButton()
-    XCTAssertFalse(self.viewModel.isEditing)
+    viewModel.viewDidPressEditButton()
+    XCTAssertFalse(viewModel.isEditing)
     XCTAssertEqual(self.refreshCallCount, 2)
   }
 
   func test_editButton_updatesEditButtonText() {
-    self.viewModel = self.createViewModel()
+    let viewModel = self.createViewModel()
     XCTAssertEqual(self.refreshCallCount, 0)
     XCTAssertEqual(
       viewModel.editButtonText,
       NSAttributedString(string: Localization.edit, attributes: editAttributes)
     )
 
-    self.viewModel.viewDidPressEditButton()
+    viewModel.viewDidPressEditButton()
     XCTAssertEqual(self.refreshCallCount, 1)
     XCTAssertEqual(
       viewModel.editButtonText,
       NSAttributedString(string: Localization.done, attributes: doneAttributes)
     )
 
-    self.viewModel.viewDidPressEditButton()
+    viewModel.viewDidPressEditButton()
     XCTAssertEqual(self.refreshCallCount, 2)
     XCTAssertEqual(
       viewModel.editButtonText,

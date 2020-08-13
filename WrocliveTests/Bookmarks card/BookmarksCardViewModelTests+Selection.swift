@@ -9,10 +9,10 @@ extension BookmarksCardViewModelTests {
 
   func test_selectingItem_dispatchesTrackingAction() {
     self.setBookmarks(self.testData)
-    self.viewModel = self.createViewModel()
+    let viewModel = self.createViewModel()
 
     let index = 1
-    self.viewModel.viewDidSelectItem(index: index)
+    viewModel.viewDidSelectItem(index: index)
 
     if let lines = self.getStartTrackingLinesAction(at: 0) {
       let expectedLines = self.testData[index].lines
@@ -22,10 +22,10 @@ extension BookmarksCardViewModelTests {
 
   func test_selectingItem_closesView() {
     self.setBookmarks(self.testData)
-    self.viewModel = self.createViewModel()
+    let viewModel = self.createViewModel()
 
     let index = 1
-    self.viewModel.viewDidSelectItem(index: index)
+    viewModel.viewDidSelectItem(index: index)
     XCTAssertEqual(self.closeCallCount, 1)
   }
 }
