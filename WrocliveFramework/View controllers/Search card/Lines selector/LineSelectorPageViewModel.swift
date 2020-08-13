@@ -44,13 +44,13 @@ internal final class LineSelectorPageViewModel {
       return
     }
 
-    // No duplicates
+    // Avoid duplicates
     if self.selectedLines.contains(line) {
       return
     }
 
     self.selectedLines.append(line)
-    self.updateIndicesAfterChangingSelectedLines()
+    self.updateSelectedLineIndices()
     self.refreshView()
   }
 
@@ -59,58 +59,25 @@ internal final class LineSelectorPageViewModel {
       return
     }
 
-    guard let index = self.selectedLines.firstIndex(of: line) else {
-      return
-    }
-
-    self.selectedLines.remove(at: index)
-    self.updateIndicesAfterChangingSelectedLines()
+    // Use 'filter' instead of index-based-removal, to handle duplicates.
+    // (I don't know why we would have duplicate, but it is better to be safe than sorry)
+    self.selectedLines = self.selectedLines.filter { $0 != line }
+    self.updateSelectedLineIndices()
     self.refreshView()
   }
 
   // MARK: - Methods
 
   internal func setLines(lines: [Line]) {
-    if lines == self.selectedLines {
+    let sections = LineSelectorSection.create(from: lines)
+    if sections == self.sections {
       return
     }
 
-    // We need to also re-post selected indices as they may have changed
-    // (and also because of how 'UICollectionView' works).
-    self.sections = Self.createSections(from: lines)
-    self.selectedLineIndices = self.getIndices(of: self.selectedLines)
+    // We need to also re-calcualte selected indices as they may have changed.
+    self.sections = sections
+    self.updateSelectedLineIndices()
     self.refreshView()
-  }
-
-  internal static func createSections(from lines: [Line]) -> [LineSelectorSection] {
-     let linesBySubtype = lines.group { $0.subtype }
-
-     var result = [LineSelectorSection]()
-     for (subtype, var lines) in linesBySubtype {
-       lines.sortByLocalizedName()
-       result.append(LineSelectorSection(for: subtype, lines: lines))
-     }
-
-     result.sort { lhs, rhs in
-       let lhsOrder = Self.getSectionOrder(subtype: lhs.lineSubtype)
-       let rhsOrder = Self.getSectionOrder(subtype: rhs.lineSubtype)
-       return lhsOrder < rhsOrder
-     }
-
-     return result
-   }
-
-  private static func getSectionOrder(subtype: LineSubtype) -> Int {
-    switch subtype {
-    case .express:   return 0
-    case .regular:   return 1
-    case .night:     return 2
-    case .suburban:  return 3
-    case .peakHour:  return 4
-    case .zone:      return 5
-    case .limited:   return 6
-    case .temporary: return 7
-    }
   }
 
   internal func setSelectedLines(lines: [Line]) {
@@ -119,11 +86,11 @@ internal final class LineSelectorPageViewModel {
     }
 
     self.selectedLines = lines
-    self.updateIndicesAfterChangingSelectedLines()
+    self.updateSelectedLineIndices()
     self.refreshView()
   }
 
-  private func updateIndicesAfterChangingSelectedLines() {
+  private func updateSelectedLineIndices() {
     self.selectedLineIndices = self.getIndices(of: self.selectedLines)
   }
 

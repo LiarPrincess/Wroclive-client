@@ -28,4 +28,35 @@ public struct LineSelectorSection: Equatable {
     self.lineSubtype = lineSubtype
     self.lines = lines
   }
+
+  public static func create(from lines: [Line]) -> [LineSelectorSection] {
+     let linesBySubtype = lines.group { $0.subtype }
+
+     var result = [LineSelectorSection]()
+     for (subtype, var lines) in linesBySubtype {
+       lines.sortByLocalizedName()
+       result.append(LineSelectorSection(for: subtype, lines: lines))
+     }
+
+     result.sort { lhs, rhs in
+       let lhsOrder = Self.getSectionOrder(subtype: lhs.lineSubtype)
+       let rhsOrder = Self.getSectionOrder(subtype: rhs.lineSubtype)
+       return lhsOrder < rhsOrder
+     }
+
+     return result
+   }
+
+  private static func getSectionOrder(subtype: LineSubtype) -> Int {
+    switch subtype {
+    case .express:   return 0
+    case .regular:   return 1
+    case .night:     return 2
+    case .suburban:  return 3
+    case .peakHour:  return 4
+    case .zone:      return 5
+    case .limited:   return 6
+    case .temporary: return 7
+    }
+  }
 }
