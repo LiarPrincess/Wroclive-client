@@ -70,7 +70,7 @@ public final class MapUpdateScheduler: StoreSubscriber {
   public func newState(state: AppState) {
     let newTrackedLines = state.trackedLines
     if newTrackedLines != self.trackedLines {
-      os_log("Changing tracked lines", log: self.log, type: .info)
+      os_log("Setting new tracked lines", log: self.log, type: .info)
       self.trackedLines = newTrackedLines
       self.start()
     }

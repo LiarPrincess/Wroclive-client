@@ -66,12 +66,14 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
                                  state: state,
                                  middleware: middleware)
 
+    os_log("Adding observers for Apple frameworks", log: self.log, type: .info)
     self.storeUpdater = DispatchStoreUpdatesFromAppleFrameworks(
       store: self.store,
       environment: self.environment
     )
     self.storeUpdater.start()
 
+    os_log("Setting up theme", log: self.log, type: .info)
     Theme.setupAppearance()
 
     os_log("Creating app coordinator", log: self.log, type: .info)
