@@ -4,9 +4,10 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
 // swiftlint:disable vertical_whitespace
+// swiftlint:disable deployment_target
+// swiftlint:disable identifier_name
+// swiftlint:disable type_body_length
 
 
 #if os(OSX)
@@ -48,7 +49,6 @@ struct ColorAsset {
   }
 }
 
-// swiftlint:disable identifier_name line_length nesting type_body_length type_name
 enum Assets {
   static let shareImage = ImageAsset(name: "ShareImage")
   static let tabbarBookmarks = ImageAsset(name: "tabbar-bookmarks")
@@ -56,7 +56,6 @@ enum Assets {
   static let tabbarSearch = ImageAsset(name: "tabbar-search")
   static let tabbarSettings = ImageAsset(name: "tabbar-settings")
 }
-// swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 extension Image {
   @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)

@@ -4,9 +4,10 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
 // swiftlint:disable vertical_whitespace
+// swiftlint:disable deployment_target
+// swiftlint:disable identifier_name
+// swiftlint:disable type_body_length
 
 {% if catalogs %}
 {% set colorAlias %}{{param.colorAliasName|default:"AssetColorTypeAlias"}}{% endset %}
@@ -57,7 +58,7 @@ struct {{colorType}} {
 {{sp}}  {% call casesBlock assets sp %}
 {{sp}}  {% if not param.noAllValues %}
 
-{{sp}}  // swiftlint:disable trailing_comma
+{{sp}}
 {{sp}}  static let allColors: [{{colorType}}] = [
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call allValuesBlock assets "color" "" sp2 %}
@@ -66,7 +67,7 @@ struct {{colorType}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call allValuesBlock assets "image" "" sp2 %}
 {{sp}}  ]
-{{sp}}  // swiftlint:enable trailing_comma
+{{sp}}
 {{sp}}  @available(*, deprecated, renamed: "allImages")
 {{sp}}  static let allValues: [{{enumName}}Type] = allImages
 {{sp}}  {% endif %}
@@ -96,7 +97,6 @@ struct {{colorType}} {
 {{sp}}  {% endfor %}
 {% endmacro %}
 
-// swiftlint:disable identifier_name line_length nesting type_body_length type_name
 enum {{enumName}} {
   {% if catalogs.count > 1 %}
   {% for catalog in catalogs %}
@@ -108,7 +108,6 @@ enum {{enumName}} {
   {% call enumBlock catalogs.first.assets "" %}
   {% endif %}
 }
-// swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
 extension {{imageAlias}} {
   @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)

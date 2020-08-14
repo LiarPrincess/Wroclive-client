@@ -4,14 +4,16 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
+// swiftlint:disable nesting
 // swiftlint:disable vertical_whitespace
+// swiftlint:disable explicit_type_interface
+// swiftlint:disable identifier_name
+// swiftlint:disable type_body_length
+// swiftlint:disable line_length
 
 import Foundation
 
 
-// swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 enum Localizable {
 
   enum Alert {
@@ -179,7 +181,6 @@ enum Localizable {
     }
   }
 }
-// swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 
 extension Localizable {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {

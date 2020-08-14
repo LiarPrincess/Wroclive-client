@@ -4,9 +4,12 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
+// swiftlint:disable nesting
 // swiftlint:disable vertical_whitespace
+// swiftlint:disable explicit_type_interface
+// swiftlint:disable identifier_name
+// swiftlint:disable type_body_length
+// swiftlint:disable line_length
 
 {% if tables.count > 0 %}
 import Foundation
@@ -43,7 +46,6 @@ import Foundation
 {{sp}}  {% endfor %}
 {% endmacro %}
 
-// swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 enum {{enumName}} {
   {% if tables.count > 1 %}
@@ -56,7 +58,6 @@ enum {{enumName}} {
   {% call recursiveBlock tables.first.name tables.first.levels "" %}
   {% endif %}
 }
-// swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 
 extension {{enumName}} {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {

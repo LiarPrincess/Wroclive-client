@@ -1,5 +1,10 @@
-// swiftlint:disable all
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
+
+// swiftlint:disable identifier_name
+// swiftlint:disable line_length
+// swiftlint:disable type_body_length
+// swiftlint:disable no_extension_access_modifier
+// swiftlint:disable conditional_returns_on_newline
 
 #if os(OSX)
   import AppKit.NSFont
@@ -9,12 +14,8 @@
   private typealias Font = UIFont
 #endif
 
-// swiftlint:disable superfluous_disable_command
-// swiftlint:disable file_length
-
 // MARK: - Fonts
 
-// swiftlint:disable identifier_name line_length type_body_length
 internal enum Fonts {
   internal enum FontAwesome {
     internal static let regular = FontConvertible(name: "FontAwesome", family: "FontAwesome", path: "FontAwesome.otf")
@@ -25,7 +26,6 @@ internal enum Fonts {
     allCustomFonts.forEach { $0.register() }
   }
 }
-// swiftlint:enable identifier_name line_length type_body_length
 
 // MARK: - Implementation Details
 
@@ -39,7 +39,6 @@ internal struct FontConvertible {
   }
 
   fileprivate func register() {
-    // swiftlint:disable:next conditional_returns_on_newline
     guard let url = url else { return }
     CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
   }
