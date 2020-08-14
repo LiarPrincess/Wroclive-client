@@ -6,8 +6,8 @@ import UIKit
 
 public final class BookmarksCard:
   UIViewController, UITableViewDataSource, UITableViewDelegate,
-  BookmarksCardViewType, CustomCardPanelPresentable
-{
+  BookmarksCardViewType, CustomCardPanelPresentable {
+
   // MARK: - Properties
 
   public var headerView: UIVisualEffectView = {
@@ -34,18 +34,19 @@ public final class BookmarksCard:
     viewModel.setView(view: self)
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - Override
 
-  public override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
   }
 
-  public override func viewDidLayoutSubviews() {
+  override public func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     self.insetTableViewContentBelowHeaderView()
   }
@@ -95,7 +96,7 @@ public final class BookmarksCard:
     self.editButton.setAttributedTitle(editButtonText, for: .normal)
   }
 
-  public override func setEditing(_ editing: Bool, animated: Bool) {
+  override public func setEditing(_ editing: Bool, animated: Bool) {
     super.setEditing(editing, animated: animated)
 
     if editing {

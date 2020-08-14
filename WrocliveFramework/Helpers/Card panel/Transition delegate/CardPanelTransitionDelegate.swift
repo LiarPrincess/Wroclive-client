@@ -11,8 +11,7 @@ import UIKit
 private typealias AnimationDurations = CardPanelConstants.AnimationDurations
 
 public final class CardPanelTransitionDelegate:
-  NSObject, UIViewControllerTransitioningDelegate
-{
+  NSObject, UIViewControllerTransitioningDelegate {
 
   private let height: CGFloat
 

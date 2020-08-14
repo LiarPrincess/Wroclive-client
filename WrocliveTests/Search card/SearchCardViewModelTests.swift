@@ -9,8 +9,8 @@ import ReSwift
 // swiftlint:disable implicitly_unwrapped_optional
 
 class SearchCardViewModelTests:
-  XCTestCase, ReduxTestCase, EnvironmentTestCase, SearchCardViewType
-{
+  XCTestCase, ReduxTestCase, EnvironmentTestCase, SearchCardViewType {
+
   var store: Store<AppState>!
   var dispatchedActions: [Action]!
   var environment: Environment!

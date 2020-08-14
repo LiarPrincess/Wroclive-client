@@ -38,7 +38,7 @@ extension NSAttributedString {
       .compactMap { position, substring in
         replacements
           .first { $0.text.caseInsensitiveCompare(substring) == .orderedSame }
-          .map   { (position, $0) }
+          .map { (position, $0) }
       }
   }
 }

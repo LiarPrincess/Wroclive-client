@@ -4,6 +4,8 @@
 
 import UIKit
 
+// swiftlint:disable nesting
+
 public enum CardPanelConstants {
 
   public enum Layout {

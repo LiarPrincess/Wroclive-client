@@ -77,7 +77,9 @@ public final class BookmarksCardViewModel: StoreSubscriber {
   }
 
   private static func createEditButtonText(isEditing: Bool) -> NSAttributedString {
+    // swiftlint:disable:next nesting type_name
     typealias L = Localization.Edit
+    // swiftlint:disable:next nesting
     typealias Text = Constants.Header.Edit
 
     return isEditing ?

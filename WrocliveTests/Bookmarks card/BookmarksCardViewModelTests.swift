@@ -9,8 +9,8 @@ import ReSwift
 // swiftlint:disable implicitly_unwrapped_optional
 
 class BookmarksCardViewModelTests:
-  XCTestCase, ReduxTestCase, EnvironmentTestCase, BookmarksCardViewType
-{
+  XCTestCase, ReduxTestCase, EnvironmentTestCase, BookmarksCardViewType {
+
   var store: Store<AppState>!
   var dispatchedActions: [Action]!
   var environment: Environment!

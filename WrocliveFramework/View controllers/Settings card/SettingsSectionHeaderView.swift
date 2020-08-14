@@ -13,18 +13,19 @@ public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
   private let titleLabel = UILabel()
 
-  public override var alpha: CGFloat {
+  override public var alpha: CGFloat {
     get { return 1.0 }
-    set { }
+    set { } // swiftlint:disable:this unused_setter_value
   }
 
   // MARK: - Init
 
-  public override init(reuseIdentifier: String?) {
+  override public init(reuseIdentifier: String?) {
     super.init(reuseIdentifier: reuseIdentifier)
     self.initLayout()
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

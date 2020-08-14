@@ -5,6 +5,9 @@
 import Foundation
 import ReSwift
 
+// swiftlint:disable implicit_return
+// swiftlint:disable discouraged_optional_collection
+
 extension AppState {
 
   public typealias ReducerType = (Action, AppState?) -> AppState

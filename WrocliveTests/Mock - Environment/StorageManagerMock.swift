@@ -5,6 +5,8 @@
 import Foundation
 @testable import WrocliveFramework
 
+// swiftlint:disable discouraged_optional_collection
+
 class StorageManagerMock: StorageManagerType {
 
   private(set) var readBookmarksCount = 0

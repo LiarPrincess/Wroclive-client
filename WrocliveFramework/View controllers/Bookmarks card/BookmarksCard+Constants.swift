@@ -4,6 +4,8 @@
 
 import UIKit
 
+// swiftlint:disable nesting
+
 extension BookmarksCard {
 
   public enum Constants {

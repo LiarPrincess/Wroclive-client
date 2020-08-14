@@ -9,8 +9,7 @@ private typealias Localization = Localizable.Settings
 
 public final class SettingsCard:
   UIViewController, UITableViewDataSource, UITableViewDelegate,
-  CustomCardPanelPresentable
-{
+  CustomCardPanelPresentable {
   // MARK: - Properties
 
   public lazy var headerView: UIVisualEffectView = {
@@ -32,20 +31,21 @@ public final class SettingsCard:
     super.init(nibName: nil, bundle: nil)
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - ViewDidLoad
 
-  public override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
   }
 
   // MARK: - ViewDidLayoutSubviews
 
-  public override func viewDidLayoutSubviews() {
+  override public func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     self.insetTableViewContentBelowHeaderView()
   }
@@ -115,6 +115,7 @@ public final class SettingsCard:
 
   public func tableView(_ tableView: UITableView,
                         heightForHeaderInSection sectionIndex: Int) -> CGFloat {
+    // swiftlint:disable:next nesting type_name
     typealias C = Constants.SectionHeader
 
     guard let section = self.viewModel.getSection(at: sectionIndex) else {

@@ -4,6 +4,8 @@
 
 import UIKit
 
+// swiftlint:disable object_literal
+
 public struct ColorScheme {
 
   public let tint = UIColor(hue: 0.00, saturation: 0.85, brightness: 0.95, alpha: 1.0)

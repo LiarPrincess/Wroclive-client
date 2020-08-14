@@ -4,6 +4,8 @@
 
 import UIKit
 
+// swiftlint:disable nesting
+
 extension SettingsCard {
 
   public enum Constants {

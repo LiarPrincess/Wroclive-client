@@ -10,8 +10,7 @@ private typealias Pin = MapViewController.Constants.Pin
 private typealias Defaults = MapViewController.Constants.Defaults
 
 public final class MapViewController:
-  UIViewController, MKMapViewDelegate, MapViewType
-{
+  UIViewController, MKMapViewDelegate, MapViewType {
 
   // MARK: - Properties
 
@@ -27,13 +26,14 @@ public final class MapViewController:
     viewModel.setView(view: self)
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - Overriden
 
-  public override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
 
     self.mapView.showsScale = false

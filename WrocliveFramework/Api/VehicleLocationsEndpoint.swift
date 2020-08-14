@@ -7,25 +7,25 @@ import Alamofire
 
 internal struct VehicleLocationsEndpoint: Endpoint {
 
-  public typealias ParameterData = [Line]
-  public typealias ResponseData  = [Vehicle]
+  internal typealias ParameterData = [Line]
+  internal typealias ResponseData  = [Vehicle]
 
-  public var url:               URLConvertible
-  public let method:            HTTPMethod        = .post
-  public let parameterEncoding: ParameterEncoding = JSONEncoding.default
-  public let headers:           HTTPHeaders?      = ["Accept": "application/json"]
+  internal var url:               URLConvertible
+  internal let method:            HTTPMethod        = .post
+  internal let parameterEncoding: ParameterEncoding = JSONEncoding.default
+  internal let headers:           HTTPHeaders?      = ["Accept": "application/json"]
 
   internal init(configuration: Configuration) {
     self.url = configuration.endpoints.vehicleLocations
   }
 
-  public func encodeParameters(_ data: [Line]) -> Parameters? {
+  internal func encodeParameters(_ data: [Line]) -> Parameters? {
     var parameters = Parameters()
     parameters["lines"] = data.map(encodeLine)
     return parameters
   }
 
-  public func decodeResponse(_ data: Data) throws -> ResponseData {
+  internal func decodeResponse(_ data: Data) throws -> ResponseData {
     let model = try self.parseJSON(ResponseModel.self, from: data)
     return try model.data.flatMap(parseVehicleLocations)
   }

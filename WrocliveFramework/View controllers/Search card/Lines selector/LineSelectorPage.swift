@@ -13,8 +13,7 @@ internal final class LineSelectorPage:
   UIViewController,
   UICollectionViewDelegate, UICollectionViewDataSource,
   UICollectionViewDelegateFlowLayout,
-  LineSelectorPageType
-{
+  LineSelectorPageType {
 
   // MARK: - Properties
 
@@ -49,13 +48,14 @@ internal final class LineSelectorPage:
     viewModel.setView(view: self)
   }
 
+  // swiftlint:disable:next unavailable_function
   internal required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - ViewDidLoad
 
-  internal override func viewDidLoad() {
+  override internal func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
   }
@@ -79,13 +79,14 @@ internal final class LineSelectorPage:
 
   // MARK: - ViewWillAppear
 
-  internal override func viewWillAppear(_ animated: Bool) {
+  override internal func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     self.refresh()
   }
 
   // MARK: - ViewDidLayoutSubviews
 
-  internal override func viewDidLayoutSubviews() {
+  override internal func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     self.collectionViewLayout.itemSize = self.calculateItemSize()
   }

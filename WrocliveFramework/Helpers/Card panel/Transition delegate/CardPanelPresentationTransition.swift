@@ -5,8 +5,7 @@
 import UIKit
 
 internal final class CardPanelPresentationTransition:
-  NSObject, UIViewControllerAnimatedTransitioning
-{
+  NSObject, UIViewControllerAnimatedTransitioning {
 
   private let duration: TimeInterval
 
@@ -39,10 +38,10 @@ internal final class CardPanelPresentationTransition:
 
     UIView.animate(
       withDuration: self.transitionDuration(using: transitionContext),
-      delay:        0.0,
-      options:      .curveEaseOut,
-      animations:   { presentedViewController.view.frame = onScreenFrame },
-      completion:   { transitionContext.completeTransition($0) }
+      delay: 0.0,
+      options: .curveEaseOut,
+      animations: { presentedViewController.view.frame = onScreenFrame },
+      completion: { transitionContext.completeTransition($0) }
     )
   }
 }

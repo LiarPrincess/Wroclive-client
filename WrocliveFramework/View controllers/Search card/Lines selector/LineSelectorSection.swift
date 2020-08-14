@@ -8,6 +8,7 @@ public struct LineSelectorSection: Equatable {
   public let lines: [Line]
 
   public var name: String {
+    // swiftlint:disable:next type_name
     typealias L = Localizable.Search.Sections
 
     switch self.lineSubtype {

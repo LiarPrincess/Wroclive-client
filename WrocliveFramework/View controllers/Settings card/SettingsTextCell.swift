@@ -16,18 +16,19 @@ public final class SettingsTextCell: UITableViewCell {
   private var isBottomBorderVisible = true
   private var hasAddedBottomBorderHeightConstraints = false
 
-  public override var alpha: CGFloat {
+  override public var alpha: CGFloat {
     get { return 1.0 }
-    set { }
+    set { } // swiftlint:disable:this unused_setter_value
   }
 
   // MARK: - Init
 
-  public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+  override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     self.initLayout()
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -47,7 +48,7 @@ public final class SettingsTextCell: UITableViewCell {
 
   // MARK: - Overriden
 
-  public override func layoutSubviews() {
+  override public func layoutSubviews() {
     super.layoutSubviews()
     self.bottomBorder.isHidden = !self.isBottomBorderVisible
   }

@@ -35,18 +35,19 @@ public final class MainViewController: UIViewController {
     super.init(nibName: nil, bundle: nil)
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - Overriden
 
-  public override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
   }
 
-  public override func viewDidLayoutSubviews() {
+  override public func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     self.updateMapViewSafeAreaInsetsSoLegalInfoIsVisible()
   }

@@ -7,7 +7,6 @@ import os.log
 import Alamofire
 import PromiseKit
 
-// TODO: Add OSLog to api
 public final class Api: ApiType {
 
   private let userAgent: String

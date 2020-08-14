@@ -7,6 +7,7 @@ import Foundation
 
 class DebugManagerMock: DebugManagerType {
 
+  // swiftlint:disable:next unavailable_function
   func clearNetworkCache() {
     fatalError("DebugManagerMock.clearNetworkCache should not be called during tests")
   }

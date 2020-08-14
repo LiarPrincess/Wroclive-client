@@ -91,8 +91,11 @@ internal class DismissGestureHandler: DismissGestureHandlerType {
       self.presentedView.transform = .identity
     }
 
-    if animated { UIView.animate(withDuration: 0.25, animations: inner) }
-    else        { inner() }
+    if animated {
+      UIView.animate(withDuration: 0.25, animations: inner)
+    } else {
+      inner()
+    }
   }
 
   // MARK: - Card panel events

@@ -5,7 +5,9 @@
 import UIKit
 import PromiseKit
 
-internal protocol CardCoordinator: class {
+// swiftlint:disable trailing_closure
+
+internal protocol CardCoordinator: AnyObject {
   var parent: UIViewController { get }
   var cardTransitionDelegate: UIViewControllerTransitioningDelegate? { get set }
 
@@ -20,13 +22,14 @@ extension CardCoordinator {
   internal func present(card: UIViewController,
                         withHeight height: CGFloat,
                         animated: Bool) -> Guarantee<Void> {
-    self.cardTransitionDelegate = CardPanelTransitionDelegate(height: height)
+    let transitionDelegate = CardPanelTransitionDelegate(height: height)
+    self.cardTransitionDelegate = transitionDelegate
 
     return Guarantee<Void> { resolve in
       let container = CardPanelContainer(onViewDidDisappear: { resolve(()) })
       container.setContent(card)
       container.modalPresentationStyle = .custom
-      container.transitioningDelegate = self.cardTransitionDelegate!
+      container.transitioningDelegate = transitionDelegate
       self.parent.present(container, animated: animated, completion: nil)
     }
   }

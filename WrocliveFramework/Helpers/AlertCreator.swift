@@ -5,6 +5,9 @@
 import UIKit
 import PromiseKit
 
+// swiftlint:disable nesting
+// swiftlint:disable type_name
+
 // This has to be class because we will be using '@objc'.
 public final class AlertCreator {
 
@@ -96,10 +99,11 @@ public final class AlertCreator {
   }
 
   private static func parentAlertController(of sender: UITextField) -> UIAlertController? {
-    var responder: UIResponder! = sender
+    var responder: UIResponder? = sender
     while responder != nil && !(responder is UIAlertController) {
-      responder = responder.next
+      responder = responder?.next
     }
+
     return responder as? UIAlertController
   }
 

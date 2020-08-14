@@ -12,6 +12,7 @@ private let networkDelay = TimeInterval(1.0)
 
 public final class OfflineApi: ApiType {
 
+  // swiftlint:disable:next discouraged_optional_collection
   private var lastSendVehicles: [Vehicle]?
   private let logManager: LogManagerType
 

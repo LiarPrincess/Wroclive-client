@@ -5,6 +5,8 @@
 import UIKit
 import MapKit
 
+// swiftlint:disable nesting
+
 extension MapViewController {
 
   public enum Constants {

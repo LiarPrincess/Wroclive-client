@@ -2,6 +2,8 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+// swiftlint:disable discouraged_optional_collection
+
 /// Add cache layer to another `StorageManagerType`
 public final class CachedStorageManager: StorageManagerType {
 

@@ -37,7 +37,7 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
   // MARK: - Handle gesture
 
-  internal override func handleGesture(_ gesture: UIPanGestureRecognizer) {
+  override internal func handleGesture(_ gesture: UIPanGestureRecognizer) {
     switch gesture.state {
     case .began:
       self.resetGestureStartingPosition(gesture)

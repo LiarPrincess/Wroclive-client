@@ -15,13 +15,13 @@ public final class LineSelectorViewModel {
   internal let busPageViewModel: LineSelectorPageViewModel
   internal let tramPageViewModel: LineSelectorPageViewModel
 
-  private let onPageTransition: (LineType) -> ()
+  private let onPageTransition: (LineType) -> Void
   private weak var view: LineSelectorViewType?
 
   // MARK: - Init
 
   public init(initialPage page: LineType,
-              onPageTransition: @escaping (LineType) -> ()) {
+              onPageTransition: @escaping (LineType) -> Void) {
     self.page = page
     self.onPageTransition = onPageTransition
     self.tramPageViewModel = LineSelectorPageViewModel()

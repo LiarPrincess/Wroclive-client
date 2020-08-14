@@ -8,7 +8,9 @@ import ReSwift
 import PromiseKit
 import WrocliveFramework
 
+// swiftlint:disable force_unwrapping
 // swiftlint:disable implicitly_unwrapped_optional
+// swiftlint:disable discouraged_optional_collection
 
 @UIApplicationMain
 public final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,6 +37,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
   }
 
+  // swiftlint:disable:next function_body_length
   public func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?

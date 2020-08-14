@@ -9,9 +9,7 @@ import SafariServices
 
 // swiftlint:disable weak_delegate
 
-public final class SettingsCardCoordinator:
-  CardCoordinator, SettingsCardViewModelDelegate
-{
+public final class SettingsCardCoordinator: CardCoordinator, SettingsCardViewModelDelegate {
 
   public var card: SettingsCard?
   public let parent: UIViewController

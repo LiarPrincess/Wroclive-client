@@ -22,6 +22,8 @@ public final class SearchCardViewModel: StoreSubscriber {
   internal private(set) var page: LineType
   internal private(set) var isLineSelectorVisible: Bool
   internal private(set) var isPlaceholderVisible: Bool
+
+  // swiftlint:disable:next trailing_closure
   internal private(set) lazy var lineSelectorViewModel = LineSelectorViewModel(
     initialPage: self.page,
     onPageTransition: { [weak self] page in self?.setPage(page: page) }
@@ -157,12 +159,7 @@ public final class SearchCardViewModel: StoreSubscriber {
       }
 
       // Otherwise we have to check if error changed
-      switch (oldError, newError) {
-        case (.invalidResponse, .invalidResponse),
-             (.reachabilityError, .reachabilityError),
-             (.otherError, .otherError):
-        break
-      default:
+      if !self.isEqual(lhs: oldError, rhs: newError) {
         self.view?.showApiErrorAlert(error: newError)
       }
 
@@ -176,6 +173,17 @@ public final class SearchCardViewModel: StoreSubscriber {
         self.requestLinesFromApi()
         self.setIsLineSelectorVisible(value: false)
       }
+    }
+  }
+
+  private func isEqual(lhs: ApiError, rhs: ApiError) -> Bool {
+    switch (lhs, rhs) {
+    case (.invalidResponse, .invalidResponse),
+         (.reachabilityError, .reachabilityError),
+         (.otherError, .otherError):
+      return true
+    default:
+      return false
     }
   }
 

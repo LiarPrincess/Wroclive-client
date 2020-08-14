@@ -7,8 +7,7 @@ import UIKit
 private typealias Localization = Localizable.Search
 
 public final class SearchCard:
-  UIViewController, SearchCardViewType, CustomCardPanelPresentable
-{
+  UIViewController, SearchCardViewType, CustomCardPanelPresentable {
 
   // MARK: - Properties
 
@@ -34,6 +33,7 @@ public final class SearchCard:
     self.viewModel = viewModel
     self.environment = environment
 
+    // swiftlint:disable:next trailing_closure
     self.lineTypeSelector = LineTypeSegmentedControl(
       onPageSelected: { viewModel.viewDidSelectPage(page: $0) }
     )
@@ -46,20 +46,21 @@ public final class SearchCard:
     viewModel.setView(view: self)
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - ViewDidLoad
 
-  public override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
   }
 
   // MARK: - ViewDidLayoutSubviews
 
-  public override func viewDidLayoutSubviews() {
+  override public func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     self.insetLineSelectorBelowHeaderView()
   }
@@ -87,7 +88,7 @@ public final class SearchCard:
 
   // MARK: - ViewDidDisappear
 
-  public override func viewDidDisappear(_ animated: Bool) {
+  override public func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     self.viewModel.viewDidDisappear()
   }
@@ -120,14 +121,17 @@ public final class SearchCard:
   // MARK: - Alerts
 
   public func showBookmarkNameInputAlert() {
+    // swiftlint:disable:next nesting type_name
     typealias L = Localizable.Alert.Bookmark.NameInput
+
     _ = AlertCreator.showTextInput(
       title:       L.title,
       message:     L.message,
       placeholder: L.placeholder,
       confirm:     AlertCreator.TextInputButton(title: L.save,   style: .default),
       cancel:      AlertCreator.TextInputButton(title: L.cancel, style: .cancel)
-    ).done { [weak self] maybeName in
+    )
+    .done { [weak self] maybeName in
       guard let name = maybeName else {
         return
       }
@@ -137,7 +141,9 @@ public final class SearchCard:
   }
 
   public func showBookmarkNoLineSelectedAlert() {
+    // swiftlint:disable:next nesting type_name
     typealias L = Localizable.Alert.Bookmark.NoLinesSelected
+
     _ = AlertCreator.show(
       title:   L.title,
       message: L.message,

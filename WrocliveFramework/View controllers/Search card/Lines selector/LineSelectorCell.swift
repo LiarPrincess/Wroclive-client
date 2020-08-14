@@ -14,22 +14,23 @@ internal final class LineSelectorCell: UICollectionViewCell {
   private var line: Line?
   private let label = UILabel()
 
-  internal override var alpha: CGFloat {
+  override internal var alpha: CGFloat {
     get { return 1.0 }
-    set { }
+    set { } // swiftlint:disable:this unused_setter_value
   }
 
-  internal override var isSelected: Bool {
+  override internal var isSelected: Bool {
     didSet { self.updateTextLabel() }
   }
 
   // MARK: - Init
 
-  internal override init(frame: CGRect) {
+  override internal init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
   }
 
+  // swiftlint:disable:next unavailable_function
   internal required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

@@ -16,6 +16,7 @@ class LineSelectorViewModelTests: XCTestCase, LineSelectorViewType {
   // MARK: - View model
 
   func createViewModel(initialPage: LineType) -> LineSelectorViewModel {
+    // swiftlint:disable:next trailing_closure
     let result = LineSelectorViewModel(
       initialPage: initialPage,
       onPageTransition: { [weak self] page in self?.onPageTransition(page: page) }
@@ -110,7 +111,6 @@ class LineSelectorViewModelTests: XCTestCase, LineSelectorViewType {
     let tramPage = viewModel.tramPageViewModel
     let tramLines = tramPage.selectedLines
     XCTAssertAll(lines: tramLines, haveType: .tram)
-
   }
 
   private func getLines(from sections: [LineSelectorSection]) -> [Line] {

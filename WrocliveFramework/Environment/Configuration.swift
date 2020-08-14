@@ -4,6 +4,8 @@
 
 import Foundation
 
+// swiftlint:disable force_unwrapping
+
 public struct Configuration {
 
   public let websiteUrl: URL

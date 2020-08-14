@@ -15,7 +15,7 @@ public final class SearchPlaceholderView: UIView {
   private let label = UILabel()
   private let spinner = UIActivityIndicatorView(style: .gray)
 
-  public override var isHidden: Bool {
+  override public var isHidden: Bool {
     didSet { self.updateAnimationState() }
   }
 
@@ -25,7 +25,7 @@ public final class SearchPlaceholderView: UIView {
     self.init(frame: .zero)
   }
 
-  public override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
 
     self.addSubview(self.spinner)
@@ -48,6 +48,7 @@ public final class SearchPlaceholderView: UIView {
     }
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

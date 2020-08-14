@@ -8,9 +8,9 @@ public protocol ReusableCell {
   static var identifier: String { get }
 }
 
-public extension ReusableCell {
+extension ReusableCell {
 
-  static var identifier: String {
+  public static var identifier: String {
     return String(describing: self)
   }
 }

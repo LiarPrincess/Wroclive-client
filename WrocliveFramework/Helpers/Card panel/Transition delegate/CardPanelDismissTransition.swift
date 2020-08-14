@@ -5,8 +5,7 @@
 import UIKit
 
 internal final class CardPanelDismissTransition:
-  NSObject, UIViewControllerAnimatedTransitioning
-{
+  NSObject, UIViewControllerAnimatedTransitioning {
 
   private let duration: TimeInterval
 
@@ -40,10 +39,10 @@ internal final class CardPanelDismissTransition:
 
     UIView.animate(
       withDuration: self.transitionDuration(using: transitionContext),
-      delay:        0.0,
-      options:      options,
-      animations:   { presentedViewController.view.frame = offScreenFrame },
-      completion:   { transitionContext.completeTransition($0) }
+      delay: 0.0,
+      options: options,
+      animations: { presentedViewController.view.frame = offScreenFrame },
+      completion: { transitionContext.completeTransition($0) }
     )
   }
 }

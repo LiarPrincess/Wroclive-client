@@ -7,9 +7,9 @@ import SnapKit
 
 private typealias Localization = Localizable.Search
 
-internal extension SearchCard {
+extension SearchCard {
 
-  func initLayout() {
+  internal func initLayout() {
     self.view.backgroundColor = Theme.colors.background
     self.initHeader()
     self.initLinesSelector()

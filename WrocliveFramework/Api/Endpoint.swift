@@ -6,10 +6,10 @@ import Foundation
 import Alamofire
 
 public protocol Endpoint {
-  var url:               URLConvertible    { get }
-  var method:            HTTPMethod        { get }
+  var url: URLConvertible { get }
+  var method: HTTPMethod { get }
   var parameterEncoding: ParameterEncoding { get }
-  var headers:           HTTPHeaders?      { get }
+  var headers: HTTPHeaders? { get }
 
   associatedtype ParameterData
   func encodeParameters(_ data: ParameterData) -> Parameters?

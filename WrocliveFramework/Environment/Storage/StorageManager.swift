@@ -5,6 +5,8 @@
 import Foundation
 import os.log
 
+// swiftlint:disable discouraged_optional_collection
+
 public struct StorageManager: StorageManagerType {
 
   private let bookmarksFile: URL
@@ -101,8 +103,7 @@ public struct StorageManager: StorageManagerType {
       let data = try self.encoder.encode(value)
       try self.fileSystem.write(url: url, data: data)
       os_log("Succesfully written '%{public}@'", log: self.log, type: .info, filename)
-    }
-    catch {
+    } catch {
       os_log("Failed to write '%{public}@'", log: self.log, type: .error, filename)
     }
   }

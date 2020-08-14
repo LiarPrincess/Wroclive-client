@@ -23,6 +23,7 @@ class LineSelectorSectionTests: XCTestCase {
   internal static let lines = LineSelectorSectionTests.data.lines
   internal static let sections = LineSelectorSectionTests.data.sections
 
+  // swiftlint:disable:next closure_body_length
   private static var data: (lines: [Line], sections: [LineSelectorSection]) = {
     let line0 = Line(name: "0", type: .tram, subtype: .express)
     let line1 = Line(name: "1", type: .tram, subtype: .express)

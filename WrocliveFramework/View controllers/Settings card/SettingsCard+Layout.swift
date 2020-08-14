@@ -7,9 +7,9 @@ import SnapKit
 
 private typealias Localization = Localizable.Settings
 
-internal extension SettingsCard {
+extension SettingsCard {
 
-  func initLayout() {
+  internal func initLayout() {
     self.view.backgroundColor = Theme.colors.background
     self.initHeader()
     self.initTableView()
@@ -18,6 +18,7 @@ internal extension SettingsCard {
   // MARK: - Header
 
   private func initHeader() {
+    // swiftlint:disable:next nesting type_name
     typealias C = Constants.Header
 
     let device = self.environment.device

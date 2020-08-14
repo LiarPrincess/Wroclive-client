@@ -24,9 +24,9 @@ extension UIApplication {
     guard var result = UIApplication.shared.keyWindow?.rootViewController
       else { fatalError("Could not find top view controller.") }
 
-    var child  = result.presentedViewController
+    var child = result.presentedViewController
     while child != nil {
-      result = child!
+      result = child! // swiftlint:disable:this force_unwrapping
       child = result.presentedViewController
     }
 
@@ -43,6 +43,7 @@ extension UISegmentedControl {
   }
 
   public var font: UIFont {
+    // swiftlint:disable:next force_cast
     get { return self.titleTextAttributes(for: .normal)?[self.fontKey] as! UIFont }
     set { self.setTitleTextAttributes([self.fontKey: newValue as Any], for: .normal) }
   }

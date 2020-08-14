@@ -6,6 +6,7 @@ import WrocliveFramework
 @testable import WrocliveFramework
 
 // swiftlint:disable force_cast
+// swiftlint:disable implicitly_unwrapped_optional
 
 /// Test case that uses `Environment`.
 protocol EnvironmentTestCase: AnyObject {

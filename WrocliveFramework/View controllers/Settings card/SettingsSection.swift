@@ -38,5 +38,3 @@ public struct SettingsSection {
     self.cells = cells
   }
 }
-
-

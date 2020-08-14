@@ -8,7 +8,8 @@ import ReSwift
 extension AppState {
 
   public static func createMiddleware(environment: Environment) -> [Middleware<AppState>] {
-    return [ // order is important!
+    // Order is important!
+    return [
       Middlewares.logging(environment: environment),
       Middlewares.api(environment: environment),
       Middlewares.persistency(environment: environment),

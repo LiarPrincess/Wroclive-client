@@ -4,8 +4,6 @@
 
 #if DEBUG
 
-// swiftlint:disable function_body_length
-
 internal enum DummyData {
 
   internal static var lines: [Line] {

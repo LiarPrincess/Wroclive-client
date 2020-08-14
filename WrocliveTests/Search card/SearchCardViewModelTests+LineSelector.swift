@@ -5,6 +5,9 @@
 import XCTest
 @testable import WrocliveFramework
 
+// swiftlint:disable function_body_length
+// swiftlint:disable file_length
+
 private func XCTAssertLines(viewModel: SearchCardViewModel,
                             lines expectedLines: [Line],
                             file: StaticString = #file,

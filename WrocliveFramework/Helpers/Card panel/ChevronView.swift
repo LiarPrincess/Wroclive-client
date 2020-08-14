@@ -47,11 +47,11 @@ public final class ChevronView : UIView {
   public static let maxAngle: CGFloat = 15.0
 
   /// Proposed size to match Apple 'look and feel'
-  public static var nominalSize: CGSize = CGSize(width: 42, height: 15)
+  public static var nominalSize = CGSize(width: 42, height: 15)
 
   // MARK: - Init
 
-  public override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
 
     self.isUserInteractionEnabled = false
@@ -66,13 +66,14 @@ public final class ChevronView : UIView {
     self.rightView.layer.allowsEdgeAntialiasing = true
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: - Overriden
 
-  public override func layoutSubviews() {
+  override public func layoutSubviews() {
     super.layoutSubviews()
 
     let (leftFrame, rightFrame) = self.calculateFrames()

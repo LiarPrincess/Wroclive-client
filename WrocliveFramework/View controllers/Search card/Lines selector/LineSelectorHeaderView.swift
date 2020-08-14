@@ -13,18 +13,19 @@ internal final class LineSelectorHeaderView: UICollectionReusableView {
 
   private let label = UILabel()
 
-  internal override var alpha: CGFloat {
+  override internal var alpha: CGFloat {
     get { return 1.0 }
-    set { }
+    set { } // swiftlint:disable:this unused_setter_value
   }
 
   // MARK: - Init
 
-  internal override init(frame: CGRect) {
+  override internal init(frame: CGRect) {
     super.init(frame: frame)
     self.initLayout()
   }
 
+  // swiftlint:disable:next unavailable_function
   internal required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

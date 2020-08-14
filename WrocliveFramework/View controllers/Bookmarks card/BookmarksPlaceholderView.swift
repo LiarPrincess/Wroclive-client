@@ -21,7 +21,7 @@ public final class BookmarksPlaceholderView: UIView {
     self.init(frame: .zero)
   }
 
-  public override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
 
     self.titleLabel.attributedText = self.createTitleText()
@@ -46,6 +46,7 @@ public final class BookmarksPlaceholderView: UIView {
     }
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

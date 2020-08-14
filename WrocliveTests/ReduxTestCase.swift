@@ -5,6 +5,7 @@
 import ReSwift
 @testable import WrocliveFramework
 
+// swiftlint:disable implicit_return
 // swiftlint:disable implicitly_unwrapped_optional
 
 /// Test case that uses `ReSwift`.
@@ -14,7 +15,7 @@ protocol ReduxTestCase: AnyObject {
 }
 
 private enum TestActions: Action {
-  case setState((inout AppState) -> ())
+  case setState((inout AppState) -> Void)
 }
 
 extension ReduxTestCase {
@@ -45,7 +46,7 @@ extension ReduxTestCase {
 
   private func reducer(action: Action, state: AppState?) -> AppState {
     if case let TestActions.setState(f) = action {
-      var copy = state!
+      var copy = state! // swiftlint:disable:this force_unwrapping
       f(&copy)
       return copy
     }
@@ -69,7 +70,7 @@ extension ReduxTestCase {
 
   // MARK: - Set state
 
-  func setState(_ change: @escaping (inout AppState) -> ()) {
+  func setState(_ change: @escaping (inout AppState) -> Void) {
     self.store.dispatch(TestActions.setState(change))
   }
 
@@ -119,6 +120,7 @@ extension ReduxTestCase {
 
   // MARK: - Tracked lines actions
 
+  // swiftlint:disable:next discouraged_optional_collection
   func getStartTrackingLinesAction(at index: Int) -> [Line]? {
     guard index < self.dispatchedActions.count else { return nil }
     switch self.dispatchedActions[index] {

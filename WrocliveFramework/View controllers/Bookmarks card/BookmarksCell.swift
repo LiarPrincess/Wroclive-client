@@ -19,18 +19,19 @@ public final class BookmarksCell: UITableViewCell {
   private let linesLabel = UILabel()
 
   // Disable alpha, so we don't end up with transparent cells when reordering
-  public override var alpha: CGFloat {
+  override public var alpha: CGFloat {
     get { return 1.0 }
-    set { }
+    set { } // swiftlint:disable:this unused_setter_value
   }
 
   // MARK: - Init
 
-  public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+  override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     self.initLayout()
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -58,12 +59,12 @@ public final class BookmarksCell: UITableViewCell {
 
   // MARK: - Overriden
 
-  public override func willTransition(to state: UITableViewCell.StateMask) {
+  override public func willTransition(to state: UITableViewCell.StateMask) {
     super.willTransition(to: state)
     self.disallowIndentWhileEditing()
   }
 
-  public override func layoutSubviews() {
+  override public func layoutSubviews() {
     self.updateLabelPreferredWidths()
     super.layoutSubviews()
     self.disallowIndentWhileEditing()
@@ -112,9 +113,9 @@ public final class BookmarksCell: UITableViewCell {
     let hasTramAndBusLines = hasTramLines && hasBusLines
 
     var string = ""
-    if hasTramLines       { string += concat(lines: tramLines) }
+    if hasTramLines { string += concat(lines: tramLines) }
     if hasTramAndBusLines { string += "\n" }
-    if hasBusLines        { string += concat(lines: busLines) }
+    if hasBusLines { string += concat(lines: busLines) }
 
     let attributes = Constants.Lines.attributes
     return NSAttributedString(string: string, attributes: attributes)

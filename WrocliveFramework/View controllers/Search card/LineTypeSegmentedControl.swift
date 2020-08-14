@@ -12,9 +12,9 @@ internal final class LineTypeSegmentedControl: UIView {
 
   // MARK: - Init
 
-  private let onPageSelected: (LineType) -> ()
+  private let onPageSelected: (LineType) -> Void
 
-  internal init(onPageSelected: @escaping (LineType) -> ()) {
+  internal init(onPageSelected: @escaping (LineType) -> Void) {
     self.onPageSelected = onPageSelected
     super.init(frame: .zero)
 
@@ -43,6 +43,7 @@ internal final class LineTypeSegmentedControl: UIView {
     }
   }
 
+  // swiftlint:disable:next unavailable_function
   internal required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

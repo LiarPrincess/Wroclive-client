@@ -6,11 +6,14 @@ import UIKit
 import MapKit
 import SnapKit
 
+// swiftlint:disable force_unwrapping
+// ^^^ We have a lot of view things
+
 private typealias Layout = MainViewControllerConstants.Layout
 
-internal extension MainViewController {
+extension MainViewController {
 
-  func initLayout() {
+  internal func initLayout() {
     self.initMapView()
     self.initToolbarView()
   }
@@ -27,6 +30,7 @@ internal extension MainViewController {
     self.mapViewController.didMove(toParent: self)
   }
 
+  // swiftlint:disable:next function_body_length
   private func initToolbarView() {
     self.userTrackingButton.mapView = self.mapViewController.mapView
     self.addButtonSizeConstraints(self.userTrackingButton.customView!)

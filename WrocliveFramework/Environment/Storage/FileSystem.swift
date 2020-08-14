@@ -21,7 +21,7 @@ public struct FileSystem: FileSystemType {
   public var documentsDirectory: URL {
     let fm = FileManager()
     let documents = fm.urls(for: .documentDirectory, in: .userDomainMask)
-    return documents.first!
+    return documents.first! // swiftlint:disable:this force_unwrapping
   }
 
   public init() { }

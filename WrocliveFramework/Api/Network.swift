@@ -76,7 +76,7 @@ public final class Network: NetworkType {
                              interceptor: nil,
                              requestModifier: nil)
 
-    return Promise<Data>() { seal in
+    return Promise<Data> { seal in
       request.responseData { response in
         if let error = response.error {
           seal.reject(error)

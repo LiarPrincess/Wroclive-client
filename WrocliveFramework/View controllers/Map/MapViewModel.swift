@@ -39,7 +39,7 @@ public final class MapViewModel: StoreSubscriber {
     // We have to start map in the center, it may be later overriden with
     // user location (when we finally retrieve it).
     self.centerMapOnDefaultLocation(animated: false)
-    
+
     self.store.subscribe(self)
   }
 
@@ -134,14 +134,20 @@ public final class MapViewModel: StoreSubscriber {
       }
 
       // Otherwise we have to check if error changed
-      switch (oldError, newError) {
-        case (.invalidResponse, .invalidResponse),
-             (.reachabilityError, .reachabilityError),
-             (.otherError, .otherError):
-        break
-      default:
+      if !self.isEqual(lhs: oldError, rhs: newError) {
         self.view?.showApiErrorAlert(error: newError)
       }
+    }
+  }
+
+  private func isEqual(lhs: ApiError, rhs: ApiError) -> Bool {
+    switch (lhs, rhs) {
+    case (.invalidResponse, .invalidResponse),
+         (.reachabilityError, .reachabilityError),
+         (.otherError, .otherError):
+      return true
+    default:
+      return false
     }
   }
 }

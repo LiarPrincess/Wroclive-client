@@ -17,8 +17,8 @@ public struct Line: Codable, Equatable, Hashable, CustomStringConvertible {
 // MARK: - Type
 
 public enum LineType: Int, Codable, Equatable, Hashable, CustomStringConvertible {
-  case tram
-  case bus
+  case tram = 0
+  case bus = 1
 
   public var description: String {
     switch self {
@@ -31,14 +31,14 @@ public enum LineType: Int, Codable, Equatable, Hashable, CustomStringConvertible
 // MARK: - Subtype
 
 public enum LineSubtype: Int, Codable, Equatable, Hashable, CustomStringConvertible {
-  case regular
-  case express
-  case peakHour
-  case suburban
-  case zone
-  case limited
-  case temporary
-  case night
+  case regular = 0
+  case express = 1
+  case peakHour = 2
+  case suburban = 3
+  case zone = 4
+  case limited = 5
+  case temporary = 6
+  case night = 7
 
   public var description: String {
     switch self {

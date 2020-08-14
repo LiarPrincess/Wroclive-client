@@ -7,8 +7,7 @@ import UIKit
 public final class LineSelector:
   UIPageViewController,
   UIPageViewControllerDataSource, UIPageViewControllerDelegate,
-  LineSelectorViewType
-{
+  LineSelectorViewType {
 
   // MARK: - Properties
 
@@ -38,7 +37,7 @@ public final class LineSelector:
   private var currentPage: LineType {
     let page = self.viewControllers?.first
     if page === self.tramPage { return .tram }
-    if page === self.busPage  { return .bus  }
+    if page === self.busPage { return .bus }
     fatalError("Invalid page selected")
   }
 
@@ -59,6 +58,7 @@ public final class LineSelector:
     viewModel.setView(view: self)
   }
 
+  // swiftlint:disable:next unavailable_function
   public required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -71,8 +71,6 @@ public final class LineSelector:
   }
 
   public func setPage(page: LineType, animated: Bool) {
-    typealias Direction = UIPageViewController.NavigationDirection
-
     let pageView: LineSelectorPage
     let direction: UIPageViewController.NavigationDirection
 

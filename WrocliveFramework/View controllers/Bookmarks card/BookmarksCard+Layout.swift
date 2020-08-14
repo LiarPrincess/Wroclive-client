@@ -7,9 +7,9 @@ import SnapKit
 
 private typealias Localization = Localizable.Bookmarks
 
-internal extension BookmarksCard {
+extension BookmarksCard {
 
-  func initLayout() {
+  internal func initLayout() {
     self.view.backgroundColor = Theme.colors.background
     self.initHeader()
     self.initTableView()
