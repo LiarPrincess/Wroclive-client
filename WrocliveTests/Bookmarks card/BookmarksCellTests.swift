@@ -12,7 +12,7 @@ private let nameAttributes = Constants.Name.attributes
 private let linesAttributes = Constants.Lines.attributes
 private let horizontalSpacing = Constants.Lines.horizontalSpacing
 
-class BookmarksCellViewModelTests: XCTestCase, EnvironmentTestCase {
+class BookmarksCellTests: XCTestCase, EnvironmentTestCase {
 
   var environment: Environment!
 

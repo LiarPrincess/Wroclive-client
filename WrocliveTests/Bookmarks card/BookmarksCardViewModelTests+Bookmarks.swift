@@ -30,7 +30,6 @@ extension BookmarksCardViewModelTests {
     let viewModel = self.createViewModel()
 
     viewModel.viewDidMoveItem(fromIndex: 0, toIndex: 2)
-    XCTAssertEqual(self.refreshCallCount, 1)
     XCTAssertEqual(self.dispatchedActions.count, 1)
     if let move = self.getMoveBookmarkAction(at: 0) {
       XCTAssertEqual(move.from, 0)
@@ -38,7 +37,6 @@ extension BookmarksCardViewModelTests {
     }
 
     viewModel.viewDidMoveItem(fromIndex: 1, toIndex: 0)
-    XCTAssertEqual(self.refreshCallCount, 2)
     XCTAssertEqual(self.dispatchedActions.count, 2)
     if let move = self.getMoveBookmarkAction(at: 1) {
       XCTAssertEqual(move.from, 1)
@@ -55,14 +53,12 @@ extension BookmarksCardViewModelTests {
     let viewModel = self.createViewModel()
 
     viewModel.viewDidDeleteItem(index: 0)
-    XCTAssertEqual(self.refreshCallCount, 1)
     XCTAssertEqual(self.dispatchedActions.count, 1)
     if let index = self.getRemoveBookmarkAction(at: 0) {
       XCTAssertEqual(index, 0)
     }
 
     viewModel.viewDidDeleteItem(index: 2)
-    XCTAssertEqual(self.refreshCallCount, 2)
     XCTAssertEqual(self.dispatchedActions.count, 2)
     if let index = self.getRemoveBookmarkAction(at: 1) {
       XCTAssertEqual(index, 2)

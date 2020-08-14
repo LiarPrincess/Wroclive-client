@@ -42,7 +42,13 @@ class MapViewModelTests:
     self.setCenterExpectation = nil
   }
 
-  // MARK: - View model - center
+  // MARK: - View model
+
+  func createViewModel() -> MapViewModel {
+    let result = MapViewModel(store: self.store, environment: self.environment)
+    result.setView(view: self)
+    return result
+  }
 
   func setCenter(location: CLLocationCoordinate2D, animated: Bool) {
     self.center = location
@@ -58,8 +64,6 @@ class MapViewModelTests:
     return expectation
   }
 
-  // MARK: - View model
-
   func showVehicles(vehicles: [Vehicle]) {
     self.vehicles = vehicles
   }
@@ -74,12 +78,6 @@ class MapViewModelTests:
 
   func showApiErrorAlert(error: ApiError) {
     self.isShowingApiErrorAlert = error
-  }
-
-  func createViewModel() -> MapViewModel {
-    let result = MapViewModel(store: self.store, environment: self.environment)
-    result.setView(view: self)
-    return result
   }
 
   // MARK: - Set state

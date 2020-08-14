@@ -8,7 +8,7 @@ import ReSwift
 // swiftlint:disable implicitly_unwrapped_optional
 
 /// Test case that uses `ReSwift`.
-protocol ReduxTestCase: class {
+protocol ReduxTestCase: AnyObject {
   var store: Store<AppState>! { get set }
   var dispatchedActions: [Action]! { get set }
 }
@@ -35,24 +35,42 @@ extension ReduxTestCase {
 
   func setUpRedux(state: AppState) {
     self.dispatchedActions = []
-    self.store = Store<AppState>(reducer: self.reducer, state: state)
+
+    let reducer = self.reducer
+    let middleware = self.allowOnlyTestActions()
+    self.store = Store<AppState>(reducer: reducer,
+                                 state: state,
+                                 middleware: [middleware])
   }
 
-  // MARK: - Set state
-
-  func setState(_ change: @escaping (inout AppState) -> ()) {
-    self.store.dispatch(TestActions.setState(change))
-  }
-
-  func reducer(action: Action, state: AppState?) -> AppState {
+  private func reducer(action: Action, state: AppState?) -> AppState {
     if case let TestActions.setState(f) = action {
       var copy = state!
       f(&copy)
       return copy
     }
 
-    self.dispatchedActions.append(action)
-    return state!
+    fatalError("'allowOnltTestActions' middleware failed for: \(action)")
+  }
+
+  private func allowOnlyTestActions() -> Middleware<AppState> {
+    return { [weak self] dispatch, getState in
+      return { next in
+        return { action in
+          if action is TestActions {
+            next(action)
+          } else {
+            self?.dispatchedActions.append(action)
+          }
+        }
+      }
+    }
+  }
+
+  // MARK: - Set state
+
+  func setState(_ change: @escaping (inout AppState) -> ()) {
+    self.store.dispatch(TestActions.setState(change))
   }
 
   // MARK: - User location authorization actions
@@ -106,6 +124,24 @@ extension ReduxTestCase {
     switch self.dispatchedActions[index] {
     case let TrackedLinesAction.startTracking(lines): return lines
     default: return nil
+    }
+  }
+
+  // MARK: - Api response
+
+  func isRequestLinesAction(at index: Int) -> Bool {
+    guard index < self.dispatchedActions.count else { return false }
+    switch self.dispatchedActions[index] {
+    case ApiMiddlewareActions.requestLines: return true
+    default: return false
+    }
+  }
+
+  func isRequestVehicleLocationsAction(at index: Int) -> Bool {
+    guard index < self.dispatchedActions.count else { return false }
+    switch self.dispatchedActions[index] {
+    case ApiMiddlewareActions.requestVehicleLocations: return true
+    default: return false
     }
   }
 }
