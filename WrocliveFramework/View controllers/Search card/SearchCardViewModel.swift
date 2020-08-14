@@ -144,8 +144,14 @@ public final class SearchCardViewModel: StoreSubscriber {
       }
 
     case .error(let newError):
+      // If old state is 'nil' then cached resonse was error -> try again
+      guard let old = old else {
+        self.requestLinesFromApi()
+        return
+      }
+
       // If previously we did not have an error -> just show new error
-      guard let oldError = old?.getError() else {
+      guard let oldError = old.getError() else {
         self.view?.showApiErrorAlert(error: newError)
         return
       }

@@ -55,6 +55,10 @@
 		9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB3824D72C790006D1B9 /* VehicleAnnotation.swift */; };
 		9013FB4024D72C790006D1B9 /* MapViewController+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB3924D72C790006D1B9 /* MapViewController+Constants.swift */; };
 		9013FB4124D72C790006D1B9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FB3A24D72C790006D1B9 /* MapViewModel.swift */; };
+		9023EBE224E5B30C00F09D27 /* SearchCardViewModelTests+LineSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9023EBDE24E5B30C00F09D27 /* SearchCardViewModelTests+LineSelector.swift */; };
+		9023EBE324E5B30C00F09D27 /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9023EBDF24E5B30C00F09D27 /* SearchCardViewModelTests.swift */; };
+		9023EBE424E5B30C00F09D27 /* SearchCardViewModelTests+Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9023EBE024E5B30C00F09D27 /* SearchCardViewModelTests+Tracking.swift */; };
+		9023EBE524E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9023EBE124E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift */; };
 		9047995924D56BCA00111F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995824D56BCA00111F2C /* Environment.swift */; };
 		9047996724D575C500111F2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995B24D575C500111F2C /* AppState.swift */; };
 		9047996824D575C500111F2C /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995D24D575C500111F2C /* Middleware.swift */; };
@@ -95,6 +99,8 @@
 		905893D024D4A95D0046EFA5 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893C424D4A95D0046EFA5 /* FileSystem.swift */; };
 		905893D224D4A95D0046EFA5 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893C624D4A95D0046EFA5 /* LogManager.swift */; };
 		905893D324D4A95D0046EFA5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905893C724D4A95D0046EFA5 /* Configuration.swift */; };
+		9066DDFD24E72FEB0096F536 /* SearchCardViewModelTests+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066DDFC24E72FEB0096F536 /* SearchCardViewModelTests+Page.swift */; };
+		9066DDFF24E737670096F536 /* SearchCardViewModelTests+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066DDFE24E737670096F536 /* SearchCardViewModelTests+Save.swift */; };
 		9076BD3E24DDB57A00467075 /* SearchCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD3D24DDB57A00467075 /* SearchCardCoordinator.swift */; };
 		9076BD4A24DDB5D100467075 /* SearchCard+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD3F24DDB5D000467075 /* SearchCard+Layout.swift */; };
 		9076BD4B24DDB5D100467075 /* SearchCard+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4024DDB5D100467075 /* SearchCard+Constants.swift */; };
@@ -244,6 +250,10 @@
 		9013FB3824D72C790006D1B9 /* VehicleAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleAnnotation.swift; sourceTree = "<group>"; };
 		9013FB3924D72C790006D1B9 /* MapViewController+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+Constants.swift"; sourceTree = "<group>"; };
 		9013FB3A24D72C790006D1B9 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		9023EBDE24E5B30C00F09D27 /* SearchCardViewModelTests+LineSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+LineSelector.swift"; sourceTree = "<group>"; };
+		9023EBDF24E5B30C00F09D27 /* SearchCardViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelTests.swift; sourceTree = "<group>"; };
+		9023EBE024E5B30C00F09D27 /* SearchCardViewModelTests+Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Tracking.swift"; sourceTree = "<group>"; };
+		9023EBE124E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Bookmarks.swift"; sourceTree = "<group>"; };
 		9047995824D56BCA00111F2C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9047995B24D575C500111F2C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		9047995D24D575C500111F2C /* Middleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
@@ -288,6 +298,8 @@
 		905893C424D4A95D0046EFA5 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		905893C624D4A95D0046EFA5 /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		905893C724D4A95D0046EFA5 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		9066DDFC24E72FEB0096F536 /* SearchCardViewModelTests+Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Page.swift"; sourceTree = "<group>"; };
+		9066DDFE24E737670096F536 /* SearchCardViewModelTests+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Save.swift"; sourceTree = "<group>"; };
 		9076BD3D24DDB57A00467075 /* SearchCardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardCoordinator.swift; sourceTree = "<group>"; };
 		9076BD3F24DDB5D000467075 /* SearchCard+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCard+Layout.swift"; sourceTree = "<group>"; };
 		9076BD4024DDB5D100467075 /* SearchCard+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCard+Constants.swift"; sourceTree = "<group>"; };
@@ -549,6 +561,12 @@
 			isa = PBXGroup;
 			children = (
 				904F1CEC24E556EB00EF77A0 /* Lines selector */,
+				9023EBDF24E5B30C00F09D27 /* SearchCardViewModelTests.swift */,
+				9023EBE024E5B30C00F09D27 /* SearchCardViewModelTests+Tracking.swift */,
+				9023EBE124E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift */,
+				9023EBDE24E5B30C00F09D27 /* SearchCardViewModelTests+LineSelector.swift */,
+				9066DDFC24E72FEB0096F536 /* SearchCardViewModelTests+Page.swift */,
+				9066DDFE24E737670096F536 /* SearchCardViewModelTests+Save.swift */,
 			);
 			path = "Search card";
 			sourceTree = "<group>";
@@ -1140,10 +1158,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9023EBE324E5B30C00F09D27 /* SearchCardViewModelTests.swift in Sources */,
 				904F1CFC24E5590100EF77A0 /* LineSelectorCellTests.swift in Sources */,
+				9023EBE424E5B30C00F09D27 /* SearchCardViewModelTests+Tracking.swift in Sources */,
 				90F72F3E24E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift in Sources */,
 				90F72F3D24E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
 				90F72F4D24E426EB00D20EB2 /* MapViewModelTests+Vehicles.swift in Sources */,
+				9066DDFD24E72FEB0096F536 /* SearchCardViewModelTests+Page.swift in Sources */,
+				9023EBE524E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift in Sources */,
 				90F72F4424E4082D00D20EB2 /* ReduxTestCase.swift in Sources */,
 				904F1D0024E55CA900EF77A0 /* LineSelectorSectionTests.swift in Sources */,
 				90F72F5024E426EB00D20EB2 /* MapViewModelTests+TrackingMode.swift in Sources */,
@@ -1151,6 +1173,8 @@
 				90F72F3C24E31D9600D20EB2 /* BookmarksCellTests.swift in Sources */,
 				90F72F1224E3157D00D20EB2 /* Collection+GroupTests.swift in Sources */,
 				90F72F5124E426EB00D20EB2 /* VehicleAnnotationDiff.swift in Sources */,
+				9066DDFF24E737670096F536 /* SearchCardViewModelTests+Save.swift in Sources */,
+				9023EBE224E5B30C00F09D27 /* SearchCardViewModelTests+LineSelector.swift in Sources */,
 				90F72F2124E316BE00D20EB2 /* DebugManagerMock.swift in Sources */,
 				90F72F4F24E426EB00D20EB2 /* MapViewModelTests+NextLaunch.swift in Sources */,
 				904F1CE624E43C0700EF77A0 /* XCTAsserts.swift in Sources */,

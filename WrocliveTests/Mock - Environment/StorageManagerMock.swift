@@ -50,7 +50,7 @@ class StorageManagerMock: StorageManagerType {
 
   // MARK: - Search card state
 
-  private var searchCardState = SearchCardState(page: .tram, selectedLines: [])
+  var searchCardState = SearchCardState(page: .tram, selectedLines: [])
 
   func readSearchCardState() -> SearchCardState? {
     self.readSearchCardStateCount += 1
