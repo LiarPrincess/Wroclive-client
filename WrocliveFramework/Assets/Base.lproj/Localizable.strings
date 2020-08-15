@@ -18,7 +18,7 @@
 /* Search */
 
 "Search.Title"   = "Lines";
-"Search.Search"  = "Search";
+"Search.Search"  = "Select";
 "Search.Loading" = "Loading…";
 
 "Search.Pages.Tram" = "Trams";

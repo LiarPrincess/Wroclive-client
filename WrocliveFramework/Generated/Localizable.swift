@@ -121,7 +121,7 @@ enum Localizable {
   enum Search {
     /// Loading…
     static let loading = Localizable.tr("Localizable", "Search.Loading")
-    /// Search
+    /// Select
     static let search = Localizable.tr("Localizable", "Search.Search")
     /// Lines
     static let title = Localizable.tr("Localizable", "Search.Title")

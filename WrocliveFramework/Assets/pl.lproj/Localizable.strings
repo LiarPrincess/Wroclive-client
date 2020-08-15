@@ -18,7 +18,7 @@
 /* Search */
 
 "Search.Title"   = "Linie";
-"Search.Search"  = "Szukaj";
+"Search.Search"  = "Wybierz";
 "Search.Loading" = "Wczytywanie…";
 
 "Search.Pages.Tram" = "Tramwaje";
@@ -52,10 +52,10 @@
 "Alert.Bookmark.NameInput.Cancel"      = "Anuluj";
 "Alert.Bookmark.NameInput.Message"     = "Wprowadź nazwę nowej zakładki.";
 "Alert.Bookmark.NameInput.Placeholder" = "Nazwa";
-"Alert.Bookmark.NameInput.Save"        = "Zachowaj";
+"Alert.Bookmark.NameInput.Save"        = "Zapisz";
 "Alert.Bookmark.NameInput.Title"       = "Nowa zakładka";
 
-"Alert.Bookmark.NoLinesSelected.Message" = "Zanim dodasz zakładkę musisz zaznaczyć przynajmniej 1 linię.";
+"Alert.Bookmark.NoLinesSelected.Message" = "Zanim dodasz zakładkę musisz wybrać przynajmniej 1 linię.";
 "Alert.Bookmark.NoLinesSelected.Ok"      = "OK";
 "Alert.Bookmark.NoLinesSelected.Title"   = "Nie wybrano żadnych linii";
 
