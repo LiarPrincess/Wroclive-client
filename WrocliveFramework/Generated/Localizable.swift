@@ -10,11 +10,12 @@
 // swiftlint:disable identifier_name
 // swiftlint:disable type_body_length
 // swiftlint:disable line_length
+// swiftlint:disable trailing_newline
 
 import Foundation
 
 
-enum Localizable {
+public enum Localizable {
 
   enum Alert {
 
@@ -182,11 +183,75 @@ enum Localizable {
   }
 }
 
+// MARK: - Helpers
+
+private final class BundleToken { }
+
 extension Localizable {
+
+  public enum Locale {
+    case base
+    case pl
+
+    private static var plLocale: Foundation.Locale?
+    private static var plBundle: Foundation.Bundle?
+
+    fileprivate var locale: Foundation.Locale {
+      switch self {
+      case .base:
+        return Foundation.Locale.current
+      case .pl:
+        let result = Self.plLocale ?? Foundation.Locale(identifier: "pl")
+        Self.plLocale = result
+        return result
+      }
+    }
+
+    fileprivate var bundle: Bundle {
+      switch self {
+      case .base:
+        return Bundle(for: BundleToken.self)
+      case .pl:
+        let result = Self.plBundle ?? Self.createBundle(language: "pl")
+        Self.plBundle = result
+        return result
+      }
+    }
+
+    private static func createBundle(language: String) -> Bundle {
+      let language = language == "en" ? "Base" : language
+      let frameworkBundle = Bundle(for: BundleToken.self)
+
+      guard let path = frameworkBundle.path(forResource: language, ofType: "lproj") else {
+        fatalError("Unable to find '\(language).lproj'")
+      }
+
+      guard let bundle = Bundle(path: path) else {
+        fatalError("Unable to create bundle for '\(path)'")
+      }
+
+      return bundle
+    }
+  }
+
+  private static var locale = Locale.base
+
+#if DEBUG
+  /// This will only affect UI text! Nothing else!
+  public static func setLocale(_ value: Locale) {
+    Localizable.locale = value
+  }
+#endif
+
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
-    return String(format: format, locale: Locale.current, arguments: args)
+    let bundle = Localizable.locale.bundle
+    let locale = Localizable.locale.locale
+
+    let format = NSLocalizedString(key,
+                                   tableName: table,
+                                   bundle: bundle,
+                                   comment: "")
+    return String(format: format, locale: locale, arguments: args)
   }
 }
 
-private final class BundleToken { }

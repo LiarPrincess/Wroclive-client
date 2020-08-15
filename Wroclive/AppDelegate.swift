@@ -50,6 +50,10 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    #if DEBUG
+    Localizable.setLocale(.pl)
+    #endif
+
     // Those are the most important lines in the whole app.
     // Every call that interacts with native frameworks has to go through Environment.
     // And don't worry, 'debug' modes will fail to compile in release builds.
