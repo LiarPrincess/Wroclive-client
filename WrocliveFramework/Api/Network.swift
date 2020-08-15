@@ -7,27 +7,6 @@ import Alamofire
 import PromiseKit
 import Reachability
 
-public enum ReachabilityStatus {
-
-  case wifi
-  case cellular
-  case unavailable
-  case unknown
-
-  public var description: String {
-    switch self {
-    case .cellular:
-      return "Cellular"
-    case .wifi:
-      return "WiFi"
-    case .unavailable:
-      return "No Connection"
-    case .unknown:
-      return "Unknown"
-    }
-  }
-}
-
 public protocol NetworkType {
 
   /// Send network request.
