@@ -20,7 +20,7 @@ public class Environment {
     #endif
   }
 
-  public init(apiMode: ApiMode) {
+  public init(apiMode: ApiMode, configuration: Configuration) {
     let bundle = Bundle.main
     let device = UIDevice.current
     let screen = UIScreen.main
@@ -30,7 +30,7 @@ public class Environment {
     self.device = DeviceManager(device: device, screen: screen)
     self.log = LogManager(bundle: self.bundle)
     self.userLocation = UserLocationManager()
-    self.configuration = Configuration()
+    self.configuration = configuration
 
     let fs = FileSystem()
     let storageInner = StorageManager(fileSystem: fs, log: self.log)

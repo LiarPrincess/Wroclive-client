@@ -12,6 +12,14 @@ import WrocliveFramework
 // swiftlint:disable implicitly_unwrapped_optional
 // swiftlint:disable discouraged_optional_collection
 
+// TODO: Remove overcast from Configuration.init
+private let apiBase = "http://127.0.0.1:3000" // "139.59.154.250"
+private let websiteUrl = "https://www.overcast.fm"
+
+private let appId = "888422857"
+private let shareUrl = "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8"
+private let reviewUrl = "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8"
+
 @UIApplicationMain
 public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -42,13 +50,18 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    // This is easily the most important line in the whole app.
+    // Those are the most important lines in the whole app.
     // Every call that interacts with native frameworks has to go through Environment.
     // And don't worry, 'debug' modes will fail to compile in release builds.
+    let configuration = Configuration(apiBaseUrl: apiBase,
+                                      websiteUrl: websiteUrl,
+                                      shareUrl: shareUrl,
+                                      writeReviewUrl: reviewUrl)
+
     #if DEBUG
-    self.environment = Environment(apiMode: .debugOffline)
+    self.environment = Environment(apiMode: .debugOffline, configuration: configuration)
     #else
-    self.environment = Environment(apiMode: .production)
+    self.environment = Environment(apiMode: .production, configuration: configuration)
     #endif
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)

@@ -28,15 +28,15 @@ public struct Configuration {
     public let locationAuthorizationPromptDelay: TimeInterval
   }
 
-  public init() {
-    self.websiteUrl = URL(string: "https://www.overcast.fm")!
+  public init(apiBaseUrl: String,
+              websiteUrl: String,
+              shareUrl: String,
+              writeReviewUrl: String) {
+    self.websiteUrl = URL(string: websiteUrl)!
 
-    let appId = "888422857"
-    let share = "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8" // TODO: overcast
-    let writeReview = "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8"
     self.appStore = AppStore(
-      shareUrl: URL(string: share)!,
-      writeReviewUrl: URL(string: writeReview)!
+      shareUrl: URL(string: shareUrl)!,
+      writeReviewUrl: URL(string: writeReviewUrl)!
     )
 
     self.timing = Timing(
@@ -44,10 +44,9 @@ public struct Configuration {
       locationAuthorizationPromptDelay: 2.0
     )
 
-    let baseUrl = "http://127.0.0.1:3000" // "139.59.154.250"
     self.endpoints = Endpoints(
-      lines: baseUrl + "/lines",
-      vehicleLocations: baseUrl + "/locations"
+      lines: apiBaseUrl + "/lines",
+      vehicleLocations: apiBaseUrl + "/locations"
     )
   }
 }
