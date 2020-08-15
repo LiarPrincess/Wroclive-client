@@ -4,17 +4,14 @@
 
 import UIKit
 
-// swiftlint:disable nesting
-
 public enum CardPanelConstants {
 
-  public enum Layout {
-    public static let topCornerRadius = CGFloat(12.0)
+  public static let topCornerRadius = CGFloat(12.0)
+  public static let chevronViewSpace = ChevronView.nominalSize.height
 
-    public enum DimmingView {
-      public static let color = UIColor.black
-      public static let alpha = CGFloat(0.4)
-    }
+  public enum DimmingView {
+    public static let color = UIColor.black
+    public static let alpha = CGFloat(0.4)
   }
 
   public enum AnimationDurations {

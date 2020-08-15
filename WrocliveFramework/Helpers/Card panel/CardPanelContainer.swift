@@ -12,12 +12,6 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
   /// Animated arrow at the top of the card.
   public let chevronView = ChevronView()
 
-  /// Top container that has `chevronView` in the middle.
-  private var chevronViewContainer: UIVisualEffectView = {
-    let blur = UIBlurEffect(style: Theme.colors.blurStyle)
-    return UIVisualEffectView(effect: blur)
-  }()
-
   private var child: UIViewController?
   private let childContainer = UIView()
 
@@ -48,30 +42,24 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
 
   private func initLayout() {
     self.view.backgroundColor = Theme.colors.background
-    self.view.roundTopCorners(radius: CardPanelConstants.Layout.topCornerRadius)
+    self.view.roundTopCorners(radius: CardPanelConstants.topCornerRadius)
 
-    self.view.addSubview(self.chevronViewContainer)
-    self.chevronViewContainer.setContentHuggingPriority(900, for: .vertical)
-    self.chevronViewContainer.snp.makeConstraints { make in
-      make.top.left.right.equalToSuperview()
+    // 'self.childContainer' has to be before 'self.chevronView',
+    // otherwise it would be covered behind it.
+    self.view.addSubview(self.childContainer)
+    self.childContainer.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
     }
 
     self.chevronView.setState(.down)
     self.chevronView.color = Theme.colors.accentLight
 
-    self.chevronViewContainer.contentView.addSubview(self.chevronView)
+    self.view.addSubview(self.chevronView)
     self.chevronView.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(8.0)
-      make.bottom.equalToSuperview()
       make.centerX.equalToSuperview()
       make.width.equalTo(ChevronView.nominalSize.width)
       make.height.equalTo(ChevronView.nominalSize.height)
-    }
-
-    self.view.addSubview(self.childContainer)
-    self.childContainer.snp.makeConstraints { make in
-      make.top.equalTo(self.chevronViewContainer.snp.bottom)
-      make.left.right.bottom.equalToSuperview()
     }
   }
 

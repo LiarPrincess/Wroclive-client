@@ -4,13 +4,13 @@
 
 import UIKit
 
-public enum ChevronViewState: Int {
-  case up = 1
-  case flat = 0
-  case down = -1
-}
-
 public final class ChevronView: UIView {
+
+  public enum State: Int {
+    case up = 1
+    case flat = 0
+    case down = -1
+  }
 
   // MARK: - Properties
 
@@ -113,7 +113,7 @@ public final class ChevronView: UIView {
 
   // MARK: - Methods
 
-  public func setState(_ state: ChevronViewState) {
+  public func setState(_ state: State) {
     self.angle = ChevronView.maxAngle * CGFloat(state.rawValue)
   }
 

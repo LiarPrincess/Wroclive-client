@@ -16,7 +16,7 @@ extension SettingsCard {
     // MARK: - Header
 
     public enum Header {
-      public static let topInset = CGFloat(8.0)
+      public static let topInset = CardPanelConstants.chevronViewSpace + 8.0
       public static let bottomInset = CGFloat(8.0)
 
       public static var titleAttributes: TextAttributes {

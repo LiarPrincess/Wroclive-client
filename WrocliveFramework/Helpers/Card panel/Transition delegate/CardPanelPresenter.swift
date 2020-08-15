@@ -4,8 +4,6 @@
 
 import UIKit
 
-private typealias Layout = CardPanelConstants.Layout
-
 internal final class CardPanelPresenter:
   UIPresentationController, UIGestureRecognizerDelegate {
 
@@ -56,13 +54,13 @@ internal final class CardPanelPresenter:
 
     // swiftlint:disable force_unwrapping
     self.dimmingView = UIView(frame: containerView.frame)
-    self.dimmingView!.backgroundColor = Layout.DimmingView.color
+    self.dimmingView!.backgroundColor = CardPanelConstants.DimmingView.color
     self.dimmingView!.alpha = 0
     containerView.addSubview(self.dimmingView!)
 
     coordinator.animate(
       alongsideTransition: { [unowned self] _ in
-        self.dimmingView!.alpha = Layout.DimmingView.alpha
+        self.dimmingView!.alpha = CardPanelConstants.DimmingView.alpha
       },
       completion: nil
     )

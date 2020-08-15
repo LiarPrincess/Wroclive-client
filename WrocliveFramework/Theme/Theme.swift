@@ -14,7 +14,7 @@ public enum Theme {
 
   public fileprivate(set) static var textFont: FontPreset = SystemFont()
   public fileprivate(set) static var iconFont: FontPreset = FontAwesome()
-  public fileprivate(set) static var colors: ColorScheme = ColorScheme()
+  public fileprivate(set) static var colors = ColorScheme()
 
   public static func setupAppearance() {
     let tintColor = Theme.colors.tint

@@ -17,7 +17,7 @@ extension SearchCard {
 
     public enum Header {
       public enum Title {
-        public static let topOffset = CGFloat(8.0)
+        public static let topOffset = CardPanelConstants.chevronViewSpace + 8.0
 
         public static var attributes: TextAttributes {
           return TextAttributes(style: .largeTitle)
