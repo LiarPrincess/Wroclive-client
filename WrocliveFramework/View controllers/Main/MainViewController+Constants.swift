@@ -4,9 +4,8 @@
 
 import UIKit
 
-public enum MainViewControllerConstants {
-
-  public enum Layout {
+extension MainViewController {
+  public enum Constants {
     public static let toolbarImageSize = CGSize(width: 22.0, height: 22.0)
   }
 }

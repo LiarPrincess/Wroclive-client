@@ -5,8 +5,6 @@
 import UIKit
 import MapKit
 
-private typealias Constants = MainViewControllerConstants
-
 public final class MainViewController: UIViewController {
 
   // MARK: - Properties

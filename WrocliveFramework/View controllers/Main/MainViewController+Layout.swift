@@ -7,9 +7,7 @@ import MapKit
 import SnapKit
 
 // swiftlint:disable force_unwrapping
-// ^^^ We have a lot of view things
-
-private typealias Layout = MainViewControllerConstants.Layout
+// ^^^ We have a lot of view thingies to unwrap
 
 extension MainViewController {
 
@@ -53,10 +51,11 @@ extension MainViewController {
     let device = self.environment.device
     self.toolbar.contentView.addTopBorder(device: device)
 
+    // 'stackView' is responsible for an actual frame on iPhone X+
+    // (it has constraint to safe area).
     self.view.addSubview(self.toolbar)
     self.toolbar.snp.makeConstraints { make in
-      make.left.right.equalToSuperview()
-      make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+      make.left.right.bottom.equalToSuperview()
     }
 
     let stackView = UIStackView(arrangedSubviews: [
@@ -71,6 +70,7 @@ extension MainViewController {
     self.toolbar.contentView.addSubview(stackView)
     stackView.snp.makeConstraints { make in
       make.top.bottom.equalToSuperview()
+      make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
       make.left.equalToSuperview().offset(8.0)
       make.right.equalToSuperview().offset(-8.0)
     }
