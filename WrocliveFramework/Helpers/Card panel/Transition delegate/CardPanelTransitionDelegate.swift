@@ -22,8 +22,8 @@ public final class CardPanelTransitionDelegate:
 
   public func animationController(
     forPresented presented: UIViewController,
-    presenting:             UIViewController,
-    source:                 UIViewController
+    presenting: UIViewController,
+    source: UIViewController
   ) -> UIViewControllerAnimatedTransitioning? {
     return CardPanelPresentationTransition(AnimationDurations.present)
   }
@@ -36,8 +36,8 @@ public final class CardPanelTransitionDelegate:
 
   public func presentationController(
     forPresented presented: UIViewController,
-    presenting:             UIViewController?,
-    source:                 UIViewController
+    presenting: UIViewController?,
+    source: UIViewController
   ) -> UIPresentationController? {
     return CardPanelPresenter(forPresented: presented,
                               presenting: presenting,

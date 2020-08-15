@@ -24,7 +24,7 @@ public struct FileSystem: FileSystemType {
     return documents.first! // swiftlint:disable:this force_unwrapping
   }
 
-  public init() { }
+  public init() {}
 
   public func read(url: URL) throws -> Data {
     precondition(url.isFileURL)

@@ -36,7 +36,7 @@ public final class SettingsCardViewModel {
 
     switch cell {
     case .share: self.delegate?.showShareActivity()
-    case .rate:  self.delegate?.rateApp()
+    case .rate: self.delegate?.rateApp()
     case .about: self.delegate?.showAboutPage()
     }
   }

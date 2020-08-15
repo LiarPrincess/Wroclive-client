@@ -64,9 +64,9 @@ private class IntCollection: Collection {
   typealias Index = Array<Int>.Index
 
   var startIndex: Index { return self.data.startIndex }
-  var endIndex:   Index { return self.data.endIndex }
+  var endIndex: Index { return self.data.endIndex }
 
-  private(set) var subscriptCallCount:  Int = 0
+  private(set) var subscriptCallCount: Int = 0
   private(set) var indexAfterCallCount: Int = 0
 
   subscript(position: Index) -> Int {

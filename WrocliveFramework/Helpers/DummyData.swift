@@ -101,11 +101,11 @@ internal enum DummyData {
   }
 
   internal static var bookmarks: [Bookmark] {
-    let line0 = Line(name:  "1", type: .tram, subtype: .regular)
-    let line1 = Line(name:  "4", type: .tram, subtype: .regular)
+    let line0 = Line(name: "1", type: .tram, subtype: .regular)
+    let line1 = Line(name: "4", type: .tram, subtype: .regular)
     let line2 = Line(name: "20", type: .tram, subtype: .regular)
-    let line3 = Line(name:  "A", type:  .bus, subtype: .express)
-    let line4 = Line(name:  "D", type:  .bus, subtype: .express)
+    let line3 = Line(name: "A", type: .bus, subtype: .express)
+    let line4 = Line(name: "D", type: .bus, subtype: .express)
 
     return [
       Bookmark(name: "All lines", lines: [line0, line1, line2, line3, line4]),
@@ -117,11 +117,11 @@ internal enum DummyData {
   }
 
   internal static var vehicles: [Vehicle] {
-    let line0 = Line(name:  "1", type: .tram, subtype: .regular)
-    let line1 = Line(name:  "4", type: .tram, subtype: .regular)
+    let line0 = Line(name: "1", type: .tram, subtype: .regular)
+    let line1 = Line(name: "4", type: .tram, subtype: .regular)
     let line2 = Line(name: "20", type: .tram, subtype: .regular)
-    let line3 = Line(name:  "A", type:  .bus, subtype: .express)
-    let line4 = Line(name:  "D", type:  .bus, subtype: .express)
+    let line3 = Line(name: "A", type: .bus, subtype: .express)
+    let line4 = Line(name: "D", type: .bus, subtype: .express)
 
     return [
       Vehicle(id: "0", line: line0, latitude: 51.11, longitude: 17.01, angle: 00.0),

@@ -10,15 +10,15 @@ private typealias Constants = MapViewController.Constants.Pin
 
 public final class VehicleAnnotationView: MKAnnotationView {
 
-  private let pinView  = VehiclePinView()
+  private let pinView = VehiclePinView()
   private let pinLabel = UILabel()
 
   // MARK: - Init
 
   public init(annotation: VehicleAnnotation, reuseIdentifier: String?) {
     super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-    self.frame          = CGRect(origin: .zero, size: Constants.imageSize)
-    self.isDraggable    = false
+    self.frame = CGRect(origin: .zero, size: Constants.imageSize)
+    self.isDraggable = false
     self.canShowCallout = false
 
     self.pinView.frame = self.frame
@@ -55,7 +55,7 @@ public final class VehicleAnnotationView: MKAnnotationView {
 
     if hasColorChanged || hasAngleChanged {
       self.pinView.tintColor = color
-      self.pinView.angle     = annotation.angle
+      self.pinView.angle = annotation.angle
       self.pinView.setNeedsDisplay()
     }
   }
@@ -63,7 +63,7 @@ public final class VehicleAnnotationView: MKAnnotationView {
   private func imageColor(for annotation: VehicleAnnotation) -> UIColor {
     switch annotation.line.type {
     case .tram: return Theme.colors.tram
-    case .bus:  return Theme.colors.bus
+    case .bus: return Theme.colors.bus
     }
   }
 
@@ -78,8 +78,8 @@ public final class VehicleAnnotationView: MKAnnotationView {
     self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name,
                                                       attributes: textAttributes)
 
-    let imageSize  = Constants.imageSize
-    let labelSize  = self.pinLabel.intrinsicContentSize
+    let imageSize = Constants.imageSize
+    let labelSize = self.pinLabel.intrinsicContentSize
     let labelOrgin = CGPoint(
       x: (imageSize.width - labelSize.width) / 2.0,
       y: (imageSize.height - labelSize.height) / 2.0
@@ -90,7 +90,7 @@ public final class VehicleAnnotationView: MKAnnotationView {
   private func textColor(for annotation: VehicleAnnotation) -> TextColor {
     switch annotation.line.type {
     case .tram: return .tram
-    case .bus:  return .bus
+    case .bus: return .bus
     }
   }
 }
@@ -106,7 +106,7 @@ private class VehiclePinView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.layer.allowsEdgeAntialiasing = true
-    self.backgroundColor              = UIColor.clear
+    self.backgroundColor = UIColor.clear
   }
 
   // swiftlint:disable:next unavailable_function
@@ -115,7 +115,7 @@ private class VehiclePinView: UIView {
   }
 
   override func draw(_ rect: CGRect) {
-    let color    = self.tintColor ?? UIColor.black
+    let color = self.tintColor ?? UIColor.black
     let resizing = StyleKit.ResizingBehavior.aspectFit
     StyleKit.drawVehiclePin(frame: self.bounds, color: color, resizing: resizing)
   }

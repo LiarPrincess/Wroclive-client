@@ -84,13 +84,13 @@ public enum StyleKit {
     // Constants
     let contextSize: CGFloat = 52.0
 
-    let arrowWidth:  CGFloat = 16.0
-    let arrowHeight: CGFloat =  6.0
-    let arrowGap:    CGFloat =  2.0
+    let arrowWidth: CGFloat = 16.0
+    let arrowHeight: CGFloat = 6.0
+    let arrowGap: CGFloat = 2.0
 
-    let rectBorderWidth:  CGFloat =  2.0
+    let rectBorderWidth: CGFloat = 2.0
     let rectCornerRadius: CGFloat = 10.0
-    let rectSize:         CGFloat = contextSize - 2 * (arrowHeight + arrowGap)
+    let rectSize: CGFloat = contextSize - 2 * (arrowHeight + arrowGap)
 
     let rectFrame = CGRect(x: arrowHeight + arrowGap, y: arrowHeight + arrowGap, width: rectSize, height: rectSize)
 
@@ -103,7 +103,7 @@ public enum StyleKit {
     context.scaleBy(x: resizedFrame.width / contextSize, y: resizedFrame.height / contextSize)
 
     // Rounded rect
-    let rectPath  = UIBezierPath(roundedRect: rectFrame, cornerRadius: rectCornerRadius)
+    let rectPath = UIBezierPath(roundedRect: rectFrame, cornerRadius: rectCornerRadius)
     color.withAlphaComponent(0.75).setFill()
     rectPath.fill()
     color.setStroke()

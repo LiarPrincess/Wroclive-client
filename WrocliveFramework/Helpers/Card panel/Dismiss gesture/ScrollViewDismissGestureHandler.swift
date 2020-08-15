@@ -44,7 +44,7 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
       self.notifyInteractiveDismissalWillBegin()
 
     case .changed:
-      let offset = self.calculateScrollViewOffset(scrollView)
+      let offset = self.calculateScrollViewOffset(self.scrollView)
       let isScrollViewAboveTop = offset <= 0
 
       if isScrollViewAboveTop {
@@ -73,7 +73,7 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
   }
 
   private func scrollViewDidScroll() {
-    let offset = self.calculateScrollViewOffset(scrollView)
+    let offset = self.calculateScrollViewOffset(self.scrollView)
     let isAboveTop = offset <= 0
 
     let isScrollingDisabled = isAboveTop && !self.scrollView.isDecelerating

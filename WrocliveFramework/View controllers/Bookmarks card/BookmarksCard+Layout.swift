@@ -55,9 +55,9 @@ extension BookmarksCard {
 
   private func initTableView() {
     self.tableView.registerCell(BookmarksCell.self)
-    self.tableView.separatorInset     = .zero
-    self.tableView.backgroundColor    = Theme.colors.background
-    self.tableView.rowHeight          = UITableView.automaticDimension
+    self.tableView.separatorInset = .zero
+    self.tableView.backgroundColor = Theme.colors.background
+    self.tableView.rowHeight = UITableView.automaticDimension
     self.tableView.estimatedRowHeight = Constants.TableView.estimatedCellHeight
     self.tableView.delegate = self
     self.tableView.dataSource = self

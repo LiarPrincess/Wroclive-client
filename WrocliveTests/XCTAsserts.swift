@@ -61,7 +61,7 @@ func XCTAssertContains(_ vehicles: [Vehicle],
 }
 
 private func isEqual(_ lhs: Vehicle, _ rhs: Vehicle) -> Bool {
-  return lhs.id   == rhs.id
+  return lhs.id == rhs.id
     && lhs.line == rhs.line
     && lhs.latitude == rhs.latitude
     && lhs.longitude == rhs.longitude
@@ -79,7 +79,7 @@ func XCTAssertContains(_ annotations: [VehicleAnnotation],
 }
 
 private func isEqual(_ lhs: VehicleAnnotation, _ rhs: VehicleAnnotation) -> Bool {
-  return lhs.vehicleId  == rhs.vehicleId
+  return lhs.vehicleId == rhs.vehicleId
     && lhs.line == rhs.line
     && lhs.angle == rhs.angle
     && lhs.coordinate.latitude == rhs.coordinate.latitude

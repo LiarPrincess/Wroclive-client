@@ -9,9 +9,9 @@ import Foundation
 public struct Configuration {
 
   public let websiteUrl: URL
-  public let appStore:   AppStore
-  public let endpoints:  Endpoints
-  public let timing:     Timing
+  public let appStore: AppStore
+  public let endpoints: Endpoints
+  public let timing: Timing
 
   public struct AppStore {
     public let shareUrl: URL

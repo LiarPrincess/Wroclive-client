@@ -59,25 +59,25 @@ extension MapViewModelTests {
   }
 
   private var dummyVehicles1: [Vehicle] {
-    let line = Line(name:  "1", type: .tram, subtype: .regular)
+    let line = Line(name: "1", type: .tram, subtype: .regular)
     return [
-      createVehicle(id: "0", line: line, num: 3.0),
-      createVehicle(id: "1", line: line, num: 6.0),
-      createVehicle(id: "2", line: line, num: 9.0)
+      self.createVehicle(id: "0", line: line, num: 3.0),
+      self.createVehicle(id: "1", line: line, num: 6.0),
+      self.createVehicle(id: "2", line: line, num: 9.0)
     ]
   }
 
   private var dummyVehicles2: [Vehicle] {
-    let line1 = Line(name:  "4", type: .tram, subtype: .regular)
+    let line1 = Line(name: "4", type: .tram, subtype: .regular)
     let line2 = Line(name: "20", type: .tram, subtype: .regular)
 
     return [
-      createVehicle(id: "10", line: line1, num: 12.0),
-      createVehicle(id: "11", line: line1, num: 15.0),
-      createVehicle(id: "12", line: line1, num: 18.0),
-      createVehicle(id: "20", line: line2, num: 21.0),
-      createVehicle(id: "21", line: line2, num: 24.0),
-      createVehicle(id: "22", line: line2, num: 27.0)
+      self.createVehicle(id: "10", line: line1, num: 12.0),
+      self.createVehicle(id: "11", line: line1, num: 15.0),
+      self.createVehicle(id: "12", line: line1, num: 18.0),
+      self.createVehicle(id: "20", line: line2, num: 21.0),
+      self.createVehicle(id: "21", line: line2, num: 24.0),
+      self.createVehicle(id: "22", line: line2, num: 27.0)
     ]
   }
 

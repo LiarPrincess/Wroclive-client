@@ -34,7 +34,7 @@ extension AppState {
           action: action,
           state: state?.getLinesResponse
         ),
-        getVehicleLocationsResponse:  getVehicleLocationsResponseReducer(
+        getVehicleLocationsResponse: getVehicleLocationsResponseReducer(
           action: action,
           state: state?.getVehicleLocationsResponse
         )

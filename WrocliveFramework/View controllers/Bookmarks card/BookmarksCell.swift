@@ -21,7 +21,7 @@ public final class BookmarksCell: UITableViewCell {
   // Disable alpha, so we don't end up with transparent cells when reordering
   override public var alpha: CGFloat {
     get { return 1.0 }
-    set { } // swiftlint:disable:this unused_setter_value
+    set {} // swiftlint:disable:this unused_setter_value
   }
 
   // MARK: - Init
@@ -38,7 +38,7 @@ public final class BookmarksCell: UITableViewCell {
 
   private func initLayout() {
     self.backgroundColor = Theme.colors.background
-    self.nameLabel.numberOfLines  = 0
+    self.nameLabel.numberOfLines = 0
     self.linesLabel.numberOfLines = 0
 
     self.contentView.addSubview(self.nameLabel)
@@ -72,7 +72,7 @@ public final class BookmarksCell: UITableViewCell {
 
   private func disallowIndentWhileEditing() {
     if self.isEditing {
-      self.contentView.frame.origin.x   = self.bounds.minX
+      self.contentView.frame.origin.x = self.bounds.minX
       self.contentView.frame.size.width = self.bounds.maxX
     }
   }
@@ -81,7 +81,7 @@ public final class BookmarksCell: UITableViewCell {
     // HACK: We need to calculate from cell not content view as content view
     // will shrink on edit.
     let labelWidth = self.bounds.width - Constants.leftInset - Constants.rightInset
-    self.nameLabel.preferredMaxLayoutWidth  = labelWidth
+    self.nameLabel.preferredMaxLayoutWidth = labelWidth
     self.linesLabel.preferredMaxLayoutWidth = labelWidth
   }
 
@@ -91,7 +91,7 @@ public final class BookmarksCell: UITableViewCell {
     let name = Self.createNameText(bookmark: bookmark)
     let lines = Self.createLinesText(bookmark: bookmark)
 
-    self.nameLabel.attributedText  = name
+    self.nameLabel.attributedText = name
     self.linesLabel.attributedText = lines
   }
 
@@ -113,9 +113,9 @@ public final class BookmarksCell: UITableViewCell {
     let hasTramAndBusLines = hasTramLines && hasBusLines
 
     var string = ""
-    if hasTramLines { string += concat(lines: tramLines) }
+    if hasTramLines { string += self.concat(lines: tramLines) }
     if hasTramAndBusLines { string += "\n" }
-    if hasBusLines { string += concat(lines: busLines) }
+    if hasBusLines { string += self.concat(lines: busLines) }
 
     let attributes = Constants.Lines.attributes
     return NSAttributedString(string: string, attributes: attributes)

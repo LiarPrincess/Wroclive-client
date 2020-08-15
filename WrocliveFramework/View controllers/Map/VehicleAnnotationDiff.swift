@@ -7,7 +7,7 @@ public struct VehicleAnnotationDiff {
   /// `Annotation` should be updated from given `vehicle`.
   public typealias Update = (annotation: VehicleAnnotation, vehicle: Vehicle)
 
-  public private(set) var added   = [VehicleAnnotation]()
+  public private(set) var added = [VehicleAnnotation]()
   public private(set) var updated = [Update]()
   public private(set) var removed = [VehicleAnnotation]()
 
@@ -66,8 +66,8 @@ private func filterUniqueVehicleIds(
 
 private func groupByVehicleId(
   annotations: [VehicleAnnotation]
-) -> [VehicleId:VehicleAnnotation] {
-  var result = [VehicleId:VehicleAnnotation]()
+) -> [VehicleId: VehicleAnnotation] {
+  var result = [VehicleId: VehicleAnnotation]()
   for annotation in annotations {
     assert(result[annotation.vehicleId] == nil)
     result[annotation.vehicleId] = annotation

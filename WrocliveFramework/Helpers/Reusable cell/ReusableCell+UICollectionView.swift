@@ -38,7 +38,7 @@ extension UICollectionView {
   }
 
   public func registerSupplementary<Cell: AnyObject>(
-    _ : Cell.Type,
+    _: Cell.Type,
     kind: SuplementaryViewKind
   ) where Cell: ReusableCell {
     self.register(Cell.self,

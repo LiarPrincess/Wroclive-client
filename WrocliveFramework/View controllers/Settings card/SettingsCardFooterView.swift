@@ -33,7 +33,7 @@ public final class SettingsCardFooterView: UIView {
     super.init(frame: frame)
 
     self.label.attributedText = text
-    self.label.numberOfLines  = 0
+    self.label.numberOfLines = 0
 
     self.addSubview(self.label)
     self.label.snp.makeConstraints { make in

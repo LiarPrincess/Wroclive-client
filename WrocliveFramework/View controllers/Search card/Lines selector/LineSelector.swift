@@ -14,7 +14,7 @@ public final class LineSelector:
   private let viewModel: LineSelectorViewModel
 
   private let tramPage: LineSelectorPage
-  private let busPage:  LineSelectorPage
+  private let busPage: LineSelectorPage
   private lazy var pages = [self.tramPage, self.busPage]
 
   public var contentInset: UIEdgeInsets {
@@ -30,7 +30,7 @@ public final class LineSelector:
   public var scrollView: UIScrollView {
     switch self.currentPage {
     case .tram: return self.tramPage.scrollView
-    case .bus:  return self.busPage .scrollView
+    case .bus: return self.busPage.scrollView
     }
   }
 
@@ -124,9 +124,9 @@ public final class LineSelector:
 
   // MARK: - UIPageViewControllerDelegate
 
-  public func pageViewController(_ pageViewController:          UIPageViewController,
-                                 didFinishAnimating finished:   Bool,
-                                 previousViewControllers:       [UIViewController],
+  public func pageViewController(_ pageViewController: UIPageViewController,
+                                 didFinishAnimating finished: Bool,
+                                 previousViewControllers: [UIViewController],
                                  transitionCompleted completed: Bool) {
     if completed {
       self.viewModel.viewDidTransitionToPage(page: self.currentPage)

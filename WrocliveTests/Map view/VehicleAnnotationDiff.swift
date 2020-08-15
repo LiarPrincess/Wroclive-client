@@ -77,7 +77,7 @@ final class VehicleAnnotationDiffTests: XCTestCase {
 
     let vehicleCreate = self.createVehicle(id: "annotationCreate", num: 3.0)
     let vehicleUpdate = self.createVehicle(id: "annotationUpdate", num: 5.0)
-    let vehicleReadd  = self.createVehicle(id: "annotationReadd",  num: 5.0)
+    let vehicleReadd = self.createVehicle(id: "annotationReadd", num: 5.0)
     let vehicles = [vehicleCreate, vehicleUpdate, vehicleReadd]
 
     let diff = self.calculateDiff(annotations: annotations, vehicles: vehicles)
@@ -110,7 +110,7 @@ final class VehicleAnnotationDiffTests: XCTestCase {
   }
 
   private func createAnnotation(id: String, num: Double) -> VehicleAnnotation {
-    let vehicle = createVehicle(id: id, num: num)
+    let vehicle = self.createVehicle(id: id, num: num)
     return self.createAnnotation(from: vehicle)
   }
 

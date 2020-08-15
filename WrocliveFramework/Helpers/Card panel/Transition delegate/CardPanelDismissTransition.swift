@@ -27,7 +27,7 @@ internal final class CardPanelDismissTransition:
 
     let containerView = transitionContext.containerView
 
-    let onScreenFrame  = transitionContext.initialFrame(for: presentedViewController)
+    let onScreenFrame = transitionContext.initialFrame(for: presentedViewController)
     var offScreenFrame = onScreenFrame
     offScreenFrame.origin.y = containerView.bounds.height
 

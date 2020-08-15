@@ -4,12 +4,12 @@
 
 public struct Vehicle: CustomStringConvertible, Equatable {
 
-  public let id:   String
+  public let id: String
   public let line: Line
 
-  public let latitude:  Double
+  public let latitude: Double
   public let longitude: Double
-  public let angle:     Double
+  public let angle: Double
 
   public var description: String {
     let location = "Location(\(self.latitude), \(self.longitude), \(self.angle))"

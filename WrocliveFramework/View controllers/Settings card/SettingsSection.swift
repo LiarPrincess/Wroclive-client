@@ -25,7 +25,7 @@ public struct SettingsSection {
       switch self {
       case .about: return Localization.General.about
       case .share: return Localization.General.share
-      case .rate:  return Localization.General.rate
+      case .rate: return Localization.General.rate
       }
     }
   }

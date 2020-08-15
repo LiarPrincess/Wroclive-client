@@ -28,7 +28,7 @@ internal final class CardPanelPresentationTransition:
     let containerView = transitionContext.containerView
     containerView.addSubview(presentedViewController.view)
 
-    let onScreenFrame  = transitionContext.finalFrame(for: presentedViewController)
+    let onScreenFrame = transitionContext.finalFrame(for: presentedViewController)
     var offScreenFrame = onScreenFrame
     offScreenFrame.origin.y = containerView.bounds.height
 

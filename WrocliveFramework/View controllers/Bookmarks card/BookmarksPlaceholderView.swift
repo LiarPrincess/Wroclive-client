@@ -12,7 +12,7 @@ public final class BookmarksPlaceholderView: UIView {
 
   // MARK: - Properties
 
-  private let titleLabel   = UILabel()
+  private let titleLabel = UILabel()
   private let contentLabel = UILabel()
 
   // MARK: - Init
@@ -25,8 +25,8 @@ public final class BookmarksPlaceholderView: UIView {
     super.init(frame: frame)
 
     self.titleLabel.attributedText = self.createTitleText()
-    self.titleLabel.numberOfLines  = 0
-    self.titleLabel.lineBreakMode  = .byWordWrapping
+    self.titleLabel.numberOfLines = 0
+    self.titleLabel.lineBreakMode = .byWordWrapping
     self.titleLabel.adjustsFontForContentSizeCategory = true
 
     self.addSubview(self.titleLabel)
@@ -35,8 +35,8 @@ public final class BookmarksPlaceholderView: UIView {
     }
 
     self.contentLabel.attributedText = self.createContentText()
-    self.contentLabel.numberOfLines  = 0
-    self.contentLabel.lineBreakMode  = .byWordWrapping
+    self.contentLabel.numberOfLines = 0
+    self.contentLabel.lineBreakMode = .byWordWrapping
     self.contentLabel.adjustsFontForContentSizeCategory = true
 
     self.addSubview(self.contentLabel)

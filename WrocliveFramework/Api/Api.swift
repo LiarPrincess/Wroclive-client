@@ -70,11 +70,11 @@ public final class Api: ApiType {
     let parameters = endpoint.encodeParameters(data)
 
     return self.network
-      .request(url:        endpoint.url,
-               method:     endpoint.method,
+      .request(url: endpoint.url,
+               method: endpoint.method,
                parameters: parameters,
-               encoding:   endpoint.parameterEncoding,
-               headers:    headers)
+               encoding: endpoint.parameterEncoding,
+               headers: headers)
       .map { try endpoint.decodeResponse($0) }
       .recover { error -> Promise<E.ResponseData> in
         throw self.toApiError(error: error)

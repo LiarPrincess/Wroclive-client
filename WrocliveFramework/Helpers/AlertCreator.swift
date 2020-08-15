@@ -16,8 +16,8 @@ public final class AlertCreator {
   // MARK: - Create
 
   public struct Button<Value> {
-    let title:  String
-    let style:  UIAlertAction.Style
+    let title: String
+    let style: UIAlertAction.Style
     let result: Value
   }
 
@@ -130,7 +130,7 @@ public final class AlertCreator {
   public static func showReachabilityAlert() -> Promise<Void> {
     typealias L = Localizable.Alert.Network.NoInternet
     return AlertCreator.show(
-      title:   L.title,
+      title: L.title,
       message: L.message,
       buttons: [
         AlertCreator.Button(title: L.tryAgain, style: .default, result: ())
@@ -142,7 +142,7 @@ public final class AlertCreator {
   public static func showConnectionErrorAlert() -> Promise<Void> {
     typealias L = Localizable.Alert.Network.ConnectionError
     return AlertCreator.show(
-      title:   L.title,
+      title: L.title,
       message: L.message,
       buttons: [
         AlertCreator.Button(title: L.tryAgain, style: .default, result: ())
@@ -156,11 +156,11 @@ public final class AlertCreator {
   public static func showDeniedLocationAuthorizationAlert() -> Promise<Void> {
     typealias L = Localizable.Alert.Location.Denied
     return AlertCreator.show(
-      title:   L.title,
+      title: L.title,
       message: L.message,
       buttons: [
         AlertCreator.Button(title: L.settings, style: .default, result: ()),
-        AlertCreator.Button(title: L.ok,       style: .default, result: ())
+        AlertCreator.Button(title: L.ok, style: .default, result: ())
       ]
     )
   }
@@ -169,7 +169,7 @@ public final class AlertCreator {
   public static func showGloballyDeniedLocationAuthorizationAlert() -> Promise<Void> {
     typealias L = Localizable.Alert.Location.GloballyDenied
     return AlertCreator.show(
-      title:   L.title,
+      title: L.title,
       message: L.message,
       buttons: [
         AlertCreator.Button(title: L.ok, style: .default, result: ())

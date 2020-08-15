@@ -17,9 +17,9 @@ public protocol CustomCardPanelPresentable: AnyObject {
 extension CustomCardPanelPresentable {
   public var scrollView: UIScrollView? { return nil }
 
-  public func interactiveDismissalWillBegin() { }
-  public func interactiveDismissalProgress(percent: CGFloat) { }
-  public func interactiveDismissalDidEnd(completed: Bool) { }
+  public func interactiveDismissalWillBegin() {}
+  public func interactiveDismissalProgress(percent: CGFloat) {}
+  public func interactiveDismissalDidEnd(completed: Bool) {}
 }
 
 extension UINavigationController: CustomCardPanelPresentable {

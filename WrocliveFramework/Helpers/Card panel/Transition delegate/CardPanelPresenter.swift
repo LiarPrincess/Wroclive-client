@@ -51,7 +51,7 @@ internal final class CardPanelPresenter:
     super.presentationTransitionWillBegin()
 
     guard let containerView = self.containerView,
-          let coordinator   = self.presentingViewController.transitionCoordinator
+          let coordinator = self.presentingViewController.transitionCoordinator
       else { return }
 
     // swiftlint:disable force_unwrapping
@@ -77,11 +77,11 @@ internal final class CardPanelPresenter:
     // swiftlint:disable force_unwrapping
     self.dismissGesture = UIPanGestureRecognizer(
       target: self,
-      action: #selector(handleDismissGesture)
+      action: #selector(self.handleDismissGesture)
     )
     self.dismissGesture!.maximumNumberOfTouches = 1
-    self.dismissGesture!.cancelsTouchesInView   = false
-    self.dismissGesture!.delegate               = self
+    self.dismissGesture!.cancelsTouchesInView = false
+    self.dismissGesture!.delegate = self
 
     self.presentedView?.addGestureRecognizer(self.dismissGesture!)
     // swiftlint:enable force_unwrapping

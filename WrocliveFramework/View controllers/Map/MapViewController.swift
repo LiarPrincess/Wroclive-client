@@ -63,7 +63,7 @@ public final class MapViewController:
                         radius: CLLocationDistance,
                         animated: Bool) {
     let currentCenter = self.mapView.centerCoordinate
-    let distance      = currentCenter.distance(from: location)
+    let distance = currentCenter.distance(from: location)
 
     // TODO: Move this to constants
     if distance > 10.0 { // meters
@@ -105,7 +105,7 @@ public final class MapViewController:
                       viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     switch annotation {
     case let userLocation as MKUserLocation:
-      userLocation.title    = nil
+      userLocation.title = nil
       userLocation.subtitle = nil
       return nil
 

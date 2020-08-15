@@ -6,6 +6,7 @@ import Foundation
 import ReSwift
 
 // swiftlint:disable implicit_return
+// swiftformat:disable unusedArguments
 
 extension Middlewares {
 

@@ -82,9 +82,9 @@ public enum ApiAction: Action, CustomStringConvertible {
 
 private func describe<Data>(_ resonse: AppState.ApiResponseState<Data>) -> String {
   switch resonse {
-  case .none:       return ".none"
+  case .none: return ".none"
   case .inProgress: return ".inProgress"
-  case .data:       return ".data"
+  case .data: return ".data"
   case let .error(error): return ".error(\(String(describing: error)))"
   }
 }

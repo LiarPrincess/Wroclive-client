@@ -50,9 +50,9 @@ extension SettingsCard {
     self.tableView.registerCell(SettingsTextCell.self)
     self.tableView.registerSupplementary(SettingsSectionHeaderView.self)
 
-    self.tableView.separatorStyle     = .none
-    self.tableView.backgroundColor    = Theme.colors.background
-    self.tableView.rowHeight          = UITableView.automaticDimension
+    self.tableView.separatorStyle = .none
+    self.tableView.backgroundColor = Theme.colors.background
+    self.tableView.rowHeight = UITableView.automaticDimension
     self.tableView.estimatedRowHeight = Constants.TableView.estimatedCellHeight
     self.tableView.delegate = self
     self.tableView.dataSource = self

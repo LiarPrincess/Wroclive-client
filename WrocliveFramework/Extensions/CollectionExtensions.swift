@@ -11,7 +11,7 @@ extension Collection {
   }
 
   public func group<T: Hashable>(by f: (Element) -> T) -> [T: [Element]] {
-    var result: [T:[Element]] = [:]
+    var result: [T: [Element]] = [:]
     for element in self {
       let key = f(element)
       result[key, default: []].append(element)

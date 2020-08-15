@@ -5,9 +5,9 @@
 import UIKit
 
 public protocol FontPreset {
-  var largeTitle:  UIFont { get }
-  var headline:    UIFont { get }
-  var body:        UIFont { get }
-  var bodyBold:    UIFont { get }
-  var footnote:    UIFont { get }
+  var largeTitle: UIFont { get }
+  var headline: UIFont { get }
+  var body: UIFont { get }
+  var bodyBold: UIFont { get }
+  var footnote: UIFont { get }
 }

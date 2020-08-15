@@ -69,11 +69,11 @@ class SearchCardViewModelTests:
   // MARK: - Data
 
   lazy var lines: [Line] = {
-    let line0 = Line(name:  "1", type: .tram, subtype: .regular)
-    let line1 = Line(name:  "4", type: .tram, subtype: .regular)
+    let line0 = Line(name: "1", type: .tram, subtype: .regular)
+    let line1 = Line(name: "4", type: .tram, subtype: .regular)
     let line2 = Line(name: "20", type: .tram, subtype: .regular)
-    let line3 = Line(name:  "A", type:  .bus, subtype: .regular)
-    let line4 = Line(name:  "D", type:  .bus, subtype: .regular)
+    let line3 = Line(name: "A", type: .bus, subtype: .regular)
+    let line4 = Line(name: "D", type: .bus, subtype: .regular)
     return [line0, line1, line2, line3, line4]
   }()
 

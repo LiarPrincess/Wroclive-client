@@ -18,7 +18,7 @@ public struct DebugManager: DebugManagerType {
 
   #if DEBUG
 
-  public init() { }
+  public init() {}
 
   public func clearNetworkCache() {
     URLCache.shared.removeAllCachedResponses()

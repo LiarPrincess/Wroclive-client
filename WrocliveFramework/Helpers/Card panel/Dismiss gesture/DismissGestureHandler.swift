@@ -12,7 +12,7 @@ internal class DismissGestureHandler: DismissGestureHandlerType {
 
   // swiftlint:disable:next implicitly_unwrapped_optional
   internal weak var presentedViewController: UIViewController!
-  internal var      presentedView:  UIView { return presentedViewController.view }
+  internal var presentedView: UIView { return self.presentedViewController.view }
 
   internal var cardPanel: CustomCardPanelPresentable? {
     return self.presentedViewController as? CustomCardPanelPresentable
@@ -62,7 +62,7 @@ internal class DismissGestureHandler: DismissGestureHandlerType {
     let isAboveStartingPosition = translation < 0
 
     if !isAboveStartingPosition {
-      let modalTranslation    = self.easeOut(movement: translation)
+      let modalTranslation = self.easeOut(movement: translation)
       self.presentedView.transform = CGAffineTransform(
         translationX: 0,
         y: modalTranslation

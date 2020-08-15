@@ -18,7 +18,7 @@ public final class SettingsTextCell: UITableViewCell {
 
   override public var alpha: CGFloat {
     get { return 1.0 }
-    set { } // swiftlint:disable:this unused_setter_value
+    set {} // swiftlint:disable:this unused_setter_value
   }
 
   // MARK: - Init

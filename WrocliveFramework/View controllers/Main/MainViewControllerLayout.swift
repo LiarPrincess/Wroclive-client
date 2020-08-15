@@ -84,7 +84,7 @@ extension MainViewController {
                                           left: inset,
                                           bottom: inset,
                                           right: inset)
-    button.contentVerticalAlignment   = .fill
+    button.contentVerticalAlignment = .fill
     button.contentHorizontalAlignment = .fill
 
     self.addButtonSizeConstraints(button)
@@ -92,7 +92,7 @@ extension MainViewController {
 
   private func addButtonSizeConstraints(_ view: UIView) {
     NSLayoutConstraint.activate([
-      view.widthAnchor .constraint(equalToConstant: 44.0),
+      view.widthAnchor.constraint(equalToConstant: 44.0),
       view.heightAnchor.constraint(equalToConstant: 44.0)
     ])
   }

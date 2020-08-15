@@ -33,8 +33,8 @@ extension SearchCard {
       string: Localization.title,
       attributes: Constants.Header.Title.attributes
     )
-    self.titleLabel.numberOfLines  = 0
-    self.titleLabel.lineBreakMode  = .byWordWrapping
+    self.titleLabel.numberOfLines = 0
+    self.titleLabel.lineBreakMode = .byWordWrapping
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in

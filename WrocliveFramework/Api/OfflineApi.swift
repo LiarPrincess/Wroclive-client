@@ -46,7 +46,7 @@ public final class OfflineApi: ApiType {
       .then { _ in Promise.value(vehicles) }
   }
 
-  public func setNetworkActivityIndicatorVisibility(isVisible: Bool) { }
+  public func setNetworkActivityIndicatorVisibility(isVisible: Bool) {}
 }
 
 private func rotate(vehicle: Vehicle, degrees: Double) -> Vehicle {

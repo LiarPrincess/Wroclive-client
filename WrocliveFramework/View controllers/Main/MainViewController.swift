@@ -18,9 +18,9 @@ public final class MainViewController: UIViewController {
     return UIVisualEffectView(effect: blur)
   }()
 
-  public let userTrackingButton  = MKUserTrackingBarButtonItem()
-  public let searchButton        = UIButton(type: .custom)
-  public let bookmarksButton     = UIButton(type: .custom)
+  public let userTrackingButton = MKUserTrackingBarButtonItem()
+  public let searchButton = UIButton(type: .custom)
+  public let bookmarksButton = UIButton(type: .custom)
   public let configurationButton = UIButton(type: .custom)
 
   internal let viewModel: MainViewModel
@@ -54,7 +54,7 @@ public final class MainViewController: UIViewController {
 
   private func updateMapViewSafeAreaInsetsSoLegalInfoIsVisible() {
     let toolbarHeight = self.toolbar.bounds.height
-    let currentInset  = self.mapViewController.additionalSafeAreaInsets.bottom
+    let currentInset = self.mapViewController.additionalSafeAreaInsets.bottom
 
     if currentInset < toolbarHeight {
       self.mapViewController.additionalSafeAreaInsets.bottom = toolbarHeight

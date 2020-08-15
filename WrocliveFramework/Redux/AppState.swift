@@ -63,7 +63,7 @@ public struct AppState: StateType {
 
     return AppState(
       userLocationAuthorization: userLocation.getAuthorizationStatus(),
-      bookmarks: storage.readBookmarks()  ?? bookmarksIfNotSaved,
+      bookmarks: storage.readBookmarks() ?? bookmarksIfNotSaved,
       trackedLines: storage.readTrackedLines() ?? trackedLinesIfNotSaved,
       getLinesResponse: .none,
       getVehicleLocationsResponse: .none

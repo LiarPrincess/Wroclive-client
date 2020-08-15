@@ -19,4 +19,4 @@ extension AppState {
 }
 
 // Namespace to avoid polluting global.
-internal enum Middlewares { }
+internal enum Middlewares {}

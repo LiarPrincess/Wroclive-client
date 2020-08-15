@@ -21,7 +21,7 @@ public final class DispatchStoreUpdatesFromAppleFrameworks: NSObject {
   public func start() {
     NotificationCenter.default.addObserver(
       self,
-      selector: #selector(didChangeUserlocationAuthorization(_:)),
+      selector: #selector(self.didChangeUserlocationAuthorization(_:)),
       name: .didChangeUserlocationAuthorization,
       object: nil
     )

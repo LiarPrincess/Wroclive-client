@@ -6,11 +6,11 @@ import UIKit
 import Foundation
 
 public struct TextReplacement {
-  public let text:  String
+  public let text: String
   public let value: NSAttributedString
 
   public init(_ text: String, _ value: NSAttributedString) {
-    self.text  = text
+    self.text = text
     self.value = value
   }
 }

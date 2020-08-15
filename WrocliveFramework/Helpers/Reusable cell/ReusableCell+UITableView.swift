@@ -6,7 +6,7 @@ import UIKit
 
 extension UITableView {
 
-  public func registerCell<Cell: AnyObject>(_ : Cell.Type) where Cell: ReusableCell {
+  public func registerCell<Cell: AnyObject>(_: Cell.Type) where Cell: ReusableCell {
     let id = Cell.identifier
     self.register(Cell.self, forCellReuseIdentifier: id)
   }
@@ -26,7 +26,7 @@ extension UITableView {
   }
 
   public func registerSupplementary<Cell: AnyObject>(
-    _ : Cell.Type
+    _: Cell.Type
   ) where Cell: ReusableCell {
     self.register(Cell.self, forHeaderFooterViewReuseIdentifier: Cell.identifier)
   }

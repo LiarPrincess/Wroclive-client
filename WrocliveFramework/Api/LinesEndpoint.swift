@@ -8,12 +8,12 @@ import Alamofire
 internal struct LinesEndpoint: Endpoint {
 
   internal typealias ParameterData = Void
-  internal typealias ResponseData  = [Line]
+  internal typealias ResponseData = [Line]
 
-  internal let url:               URLConvertible
-  internal let method:            HTTPMethod        = .get
+  internal let url: URLConvertible
+  internal let method: HTTPMethod = .get
   internal let parameterEncoding: ParameterEncoding = JSONEncoding.default
-  internal let headers:           HTTPHeaders?      = ["Accept": "application/json"]
+  internal let headers: HTTPHeaders? = ["Accept": "application/json"]
 
   internal init(configuration: Configuration) {
     self.url = configuration.endpoints.lines
@@ -37,13 +37,13 @@ private struct ResponseModel: Decodable {
 }
 
 private struct LineModel: Decodable {
-  let name:    String
-  let type:    String
+  let name: String
+  let type: String
   let subtype: String
 }
 
 private func parseLine(_ model: LineModel) throws -> Line {
-  guard let type    = parseLineType(model.type),
+  guard let type = parseLineType(model.type),
         let subtype = parseLineSubtype(model.subtype)
     else { throw ApiError.invalidResponse }
 
@@ -53,21 +53,21 @@ private func parseLine(_ model: LineModel) throws -> Line {
 private func parseLineType(_ type: String) -> LineType? {
   switch type.uppercased() {
   case "TRAM": return .tram
-  case "BUS" : return .bus
+  case "BUS": return .bus
   default: return nil
   }
 }
 
 private func parseLineSubtype(_ subtype: String) -> LineSubtype? {
   switch subtype.uppercased() {
-  case "REGULAR":   return .regular
-  case "EXPRESS":   return .express
-  case "HOUR":      return .peakHour
-  case "SUBURBAN":  return .suburban
-  case "ZONE":      return .zone
-  case "LIMITED":   return .limited
+  case "REGULAR": return .regular
+  case "EXPRESS": return .express
+  case "HOUR": return .peakHour
+  case "SUBURBAN": return .suburban
+  case "ZONE": return .zone
+  case "LIMITED": return .limited
   case "TEMPORARY": return .temporary
-  case "NIGHT":     return .night
+  case "NIGHT": return .night
   default: return nil
   }
 }

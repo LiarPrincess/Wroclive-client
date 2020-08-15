@@ -35,9 +35,9 @@ private class IntCollection: Collection {
   typealias Index = Int
 
   var startIndex: Index { return 0 }
-  var endIndex:   Index { return Int.max }
+  var endIndex: Index { return Int.max }
 
-  private(set) var subscriptCallCount:  Int = 0
+  private(set) var subscriptCallCount: Int = 0
   private(set) var indexAfterCallCount: Int = 0
 
   subscript(position: Index) -> Int {

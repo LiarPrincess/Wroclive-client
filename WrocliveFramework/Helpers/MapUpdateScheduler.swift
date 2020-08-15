@@ -40,7 +40,7 @@ public final class MapUpdateScheduler: StoreSubscriber {
     let interval = self.environment.configuration.timing.vehicleUpdateInterval
     self.timer = Timer.scheduledTimer(timeInterval: interval,
                                       target: self,
-                                      selector: #selector(timerFired),
+                                      selector: #selector(self.timerFired),
                                       userInfo: nil,
                                       repeats: true)
     self.timer?.tolerance = interval * 0.1

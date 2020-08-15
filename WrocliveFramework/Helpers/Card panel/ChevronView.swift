@@ -5,16 +5,16 @@
 import UIKit
 
 public enum ChevronViewState: Int {
-  case up   =  1
-  case flat =  0
+  case up = 1
+  case flat = 0
   case down = -1
 }
 
-public final class ChevronView : UIView {
+public final class ChevronView: UIView {
 
   // MARK: - Properties
 
-  private let leftView  = UIView()
+  private let leftView = UIView()
   private let rightView = UIView()
 
   private var _angle: CGFloat = 0.0
@@ -35,7 +35,7 @@ public final class ChevronView : UIView {
 
   public var color: UIColor = .white {
     didSet {
-      self.leftView.backgroundColor  = self.color
+      self.leftView.backgroundColor = self.color
       self.rightView.backgroundColor = self.color
     }
   }
@@ -58,7 +58,7 @@ public final class ChevronView : UIView {
 
     self.addSubview(self.leftView)
     self.addSubview(self.rightView)
-    self.leftView.backgroundColor  = self.color
+    self.leftView.backgroundColor = self.color
     self.rightView.backgroundColor = self.color
 
     // see: https://stackoverflow.com/a/32579709
@@ -78,13 +78,13 @@ public final class ChevronView : UIView {
 
     let (leftFrame, rightFrame) = self.calculateFrames()
 
-    self.leftView.bounds  = leftFrame
+    self.leftView.bounds = leftFrame
     self.rightView.bounds = rightFrame
 
-    self.leftView.center  = CGPoint(x: leftFrame.midX,  y: leftFrame.midY)
+    self.leftView.center = CGPoint(x: leftFrame.midX, y: leftFrame.midY)
     self.rightView.center = CGPoint(x: rightFrame.midX, y: leftFrame.midY)
 
-    self.leftView.layer.cornerRadius  = ChevronView.width / 2.0
+    self.leftView.layer.cornerRadius = ChevronView.width / 2.0
     self.rightView.layer.cornerRadius = ChevronView.width / 2.0
 
     self.updateTransformations()
@@ -103,10 +103,10 @@ public final class ChevronView : UIView {
     // otherwise we would end up with gap between arms.
     let dx: CGFloat = centerX * (1.0 - cos(ChevronView.maxAngle.rad)) / 2.0
 
-    let leftOffset:  CGFloat = ChevronView.width / 2.0 + dx - 1.0
+    let leftOffset: CGFloat = ChevronView.width / 2.0 + dx - 1.0
     let rightOffset: CGFloat = centerX - leftOffset
 
-    let leftFrame  = templateFrame.offsetBy(dx:  leftOffset, dy: 0.0)
+    let leftFrame = templateFrame.offsetBy(dx: leftOffset, dy: 0.0)
     let rightFrame = templateFrame.offsetBy(dx: rightOffset, dy: 0.0)
     return (leftFrame, rightFrame)
   }
@@ -127,8 +127,8 @@ public final class ChevronView : UIView {
     UIView.performWithoutAnimation { [weak self] in
       guard let strongSelf = self else { return }
       let angleRad = strongSelf.angle.rad
-      strongSelf.leftView.transform  = CGAffineTransform(rotationAngle: -angleRad)
-      strongSelf.rightView.transform = CGAffineTransform(rotationAngle:  angleRad)
+      strongSelf.leftView.transform = CGAffineTransform(rotationAngle: -angleRad)
+      strongSelf.rightView.transform = CGAffineTransform(rotationAngle: angleRad)
     }
   }
 }

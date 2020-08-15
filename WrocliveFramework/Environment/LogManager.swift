@@ -6,11 +6,11 @@ import Foundation
 import os.log
 
 public protocol LogManagerType {
-  var app:       OSLog { get }
-  var redux:     OSLog { get }
+  var app: OSLog { get }
+  var redux: OSLog { get }
   var mapUpdate: OSLog { get }
-  var storage:   OSLog { get }
-  var api:       OSLog { get }
+  var storage: OSLog { get }
+  var api: OSLog { get }
 }
 
 public struct LogManager: LogManagerType {

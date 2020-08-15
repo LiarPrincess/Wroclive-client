@@ -29,7 +29,7 @@ internal final class LineTypeSegmentedControl: UIView {
     }
 
     self.segmentedControl.addTarget(self,
-                                    action: #selector(selectedIndexChanged),
+                                    action: #selector(self.selectedIndexChanged),
                                     for: .valueChanged)
 
     self.addSubview(self.segmentedControl)
@@ -39,7 +39,7 @@ internal final class LineTypeSegmentedControl: UIView {
   private static func toPageName(_ lineType: LineType) -> String {
     switch lineType {
     case .tram: return Localization.Pages.tram
-    case .bus:  return Localization.Pages.bus
+    case .bus: return Localization.Pages.bus
     }
   }
 

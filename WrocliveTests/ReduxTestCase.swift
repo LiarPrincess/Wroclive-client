@@ -54,6 +54,7 @@ extension ReduxTestCase {
     fatalError("'allowOnltTestActions' middleware failed for: \(action)")
   }
 
+  // swiftformat:disable unusedArguments
   private func allowOnlyTestActions() -> Middleware<AppState> {
     return { [weak self] dispatch, getState in
       return { next in
@@ -67,6 +68,8 @@ extension ReduxTestCase {
       }
     }
   }
+
+  // swiftformat:enable unusedArguments
 
   // MARK: - Set state
 

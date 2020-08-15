@@ -101,7 +101,7 @@ internal final class LineSelectorPageViewModel {
       return []
     }
 
-    var indexMap = [Line:IndexPath]()
+    var indexMap = [Line: IndexPath]()
     for (sectionIndex, section) in self.sections.enumerated() {
       for (lineIndex, line) in section.lines.enumerated() {
         indexMap[line] = IndexPath(item: lineIndex, section: sectionIndex)

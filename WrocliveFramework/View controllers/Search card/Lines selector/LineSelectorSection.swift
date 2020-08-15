@@ -12,14 +12,14 @@ public struct LineSelectorSection: Equatable {
     typealias L = Localizable.Search.Sections
 
     switch self.lineSubtype {
-    case .regular:   return L.regular
-    case .express:   return L.express
-    case .peakHour:  return L.peakHour
-    case .suburban:  return L.suburban
-    case .zone:      return L.zone
-    case .limited:   return L.limited
+    case .regular: return L.regular
+    case .express: return L.express
+    case .peakHour: return L.peakHour
+    case .suburban: return L.suburban
+    case .zone: return L.zone
+    case .limited: return L.limited
     case .temporary: return L.temporary
-    case .night:     return L.night
+    case .night: return L.night
     }
   }
 
@@ -50,13 +50,13 @@ public struct LineSelectorSection: Equatable {
 
   private static func getSectionOrder(subtype: LineSubtype) -> Int {
     switch subtype {
-    case .express:   return 0
-    case .regular:   return 1
-    case .night:     return 2
-    case .suburban:  return 3
-    case .peakHour:  return 4
-    case .zone:      return 5
-    case .limited:   return 6
+    case .express: return 0
+    case .regular: return 1
+    case .night: return 2
+    case .suburban: return 3
+    case .peakHour: return 4
+    case .zone: return 5
+    case .limited: return 6
     case .temporary: return 7
     }
   }

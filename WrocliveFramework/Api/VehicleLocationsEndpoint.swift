@@ -8,12 +8,12 @@ import Alamofire
 internal struct VehicleLocationsEndpoint: Endpoint {
 
   internal typealias ParameterData = [Line]
-  internal typealias ResponseData  = [Vehicle]
+  internal typealias ResponseData = [Vehicle]
 
-  internal var url:               URLConvertible
-  internal let method:            HTTPMethod        = .post
+  internal var url: URLConvertible
+  internal let method: HTTPMethod = .post
   internal let parameterEncoding: ParameterEncoding = JSONEncoding.default
-  internal let headers:           HTTPHeaders?      = ["Accept": "application/json"]
+  internal let headers: HTTPHeaders? = ["Accept": "application/json"]
 
   internal init(configuration: Configuration) {
     self.url = configuration.endpoints.vehicleLocations
@@ -33,7 +33,7 @@ internal struct VehicleLocationsEndpoint: Endpoint {
 
 // MARK: - Request
 
-private func encodeLine(_ line: Line) -> [String:Any] {
+private func encodeLine(_ line: Line) -> [String: Any] {
   return [
     "name": line.name,
     "type": encodeLineType(line.type)
@@ -42,7 +42,7 @@ private func encodeLine(_ line: Line) -> [String:Any] {
 
 private func encodeLineType(_ type: LineType) -> String {
   switch type {
-  case .bus:  return "bus"
+  case .bus: return "bus"
   case .tram: return "tram"
   }
 }
@@ -55,20 +55,20 @@ private struct ResponseModel: Decodable {
 }
 
 private struct LineLocationModel: Decodable {
-  let line:     LineModel
+  let line: LineModel
   let vehicles: [VehicleModel]
 }
 
 private struct LineModel: Decodable {
-  let name:    String
-  let type:    String
+  let name: String
+  let type: String
   let subtype: String
 }
 
 private struct VehicleModel: Decodable {
-  let id:    String
-  let lat:   Double
-  let lng:   Double
+  let id: String
+  let lat: Double
+  let lng: Double
   let angle: Double
 }
 
@@ -84,7 +84,7 @@ private func parseVehicleLocations(_ model: LineLocationModel) throws -> [Vehicl
 }
 
 private func parseLine(_ model: LineModel) throws -> Line {
-  guard let type    = parseLineType(model.type),
+  guard let type = parseLineType(model.type),
         let subtype = parseLineSubtype(model.subtype)
     else { throw ApiError.invalidResponse }
 
@@ -94,21 +94,21 @@ private func parseLine(_ model: LineModel) throws -> Line {
 private func parseLineType(_ type: String) -> LineType? {
   switch type.uppercased() {
   case "TRAM": return .tram
-  case "BUS" : return .bus
+  case "BUS": return .bus
   default: return nil
   }
 }
 
 private func parseLineSubtype(_ subtype: String) -> LineSubtype? {
   switch subtype.uppercased() {
-  case "REGULAR":   return .regular
-  case "EXPRESS":   return .express
-  case "HOUR":      return .peakHour
-  case "SUBURBAN":  return .suburban
-  case "ZONE":      return .zone
-  case "LIMITED":   return .limited
+  case "REGULAR": return .regular
+  case "EXPRESS": return .express
+  case "HOUR": return .peakHour
+  case "SUBURBAN": return .suburban
+  case "ZONE": return .zone
+  case "LIMITED": return .limited
   case "TEMPORARY": return .temporary
-  case "NIGHT":     return .night
+  case "NIGHT": return .night
   default: return nil
   }
 }

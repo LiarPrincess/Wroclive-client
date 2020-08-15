@@ -70,9 +70,9 @@ public final class SearchCard:
     let headerHeight = self.headerView.bounds.height
 
     if currentInset.top < headerHeight {
-      let topInset    = headerHeight
-      let leftInset   = Constants.leftInset
-      let rightInset  = Constants.rightInset
+      let topInset = headerHeight
+      let leftInset = Constants.leftInset
+      let rightInset = Constants.rightInset
       let bottomInset = Constants.LineSelector.bottomInset
 
       self.lineSelector.contentInset = UIEdgeInsets(top: topInset,
@@ -125,11 +125,11 @@ public final class SearchCard:
     typealias L = Localizable.Alert.Bookmark.NameInput
 
     _ = AlertCreator.showTextInput(
-      title:       L.title,
-      message:     L.message,
+      title: L.title,
+      message: L.message,
       placeholder: L.placeholder,
-      confirm:     AlertCreator.TextInputButton(title: L.save,   style: .default),
-      cancel:      AlertCreator.TextInputButton(title: L.cancel, style: .cancel)
+      confirm: AlertCreator.TextInputButton(title: L.save, style: .default),
+      cancel: AlertCreator.TextInputButton(title: L.cancel, style: .cancel)
     )
     .done { [weak self] maybeName in
       guard let name = maybeName else {
@@ -145,7 +145,7 @@ public final class SearchCard:
     typealias L = Localizable.Alert.Bookmark.NoLinesSelected
 
     _ = AlertCreator.show(
-      title:   L.title,
+      title: L.title,
       message: L.message,
       buttons: [
         AlertCreator.Button(title: L.ok, style: .default, result: ())

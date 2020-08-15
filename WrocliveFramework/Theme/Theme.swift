@@ -12,23 +12,23 @@ import MapKit
 // https://medium.com/@abhimuralidharan/maintaining-a-colour-theme-manager-on-ios-swift-178b8a6a92
 public enum Theme {
 
-  public fileprivate(set) static var textFont: FontPreset  = SystemFont()
-  public fileprivate(set) static var iconFont: FontPreset  = FontAwesome()
-  public fileprivate(set) static var colors:   ColorScheme = ColorScheme()
+  public fileprivate(set) static var textFont: FontPreset = SystemFont()
+  public fileprivate(set) static var iconFont: FontPreset = FontAwesome()
+  public fileprivate(set) static var colors: ColorScheme = ColorScheme()
 
   public static func setupAppearance() {
     let tintColor = Theme.colors.tint
-    let barStyle  = Theme.colors.barStyle
+    let barStyle = Theme.colors.barStyle
 
     UIApplication.shared.delegate?.window??.tintColor = tintColor
 
     UIWindow.appearance().tintColor = tintColor
-    UIView.appearance().tintColor   = tintColor
+    UIView.appearance().tintColor = tintColor
 
     let blueUserLocationPin = UIColor(red: 0.0, green: 0.5, blue: 1.0, alpha: 1.0)
     MKAnnotationView.appearance().tintColor = blueUserLocationPin
 
-    UIToolbar.appearance().barStyle       = barStyle
+    UIToolbar.appearance().barStyle = barStyle
     UINavigationBar.appearance().barStyle = barStyle
     UINavigationBar.appearance().titleTextAttributes = TextAttributes(style: .bodyBold).value
   }
