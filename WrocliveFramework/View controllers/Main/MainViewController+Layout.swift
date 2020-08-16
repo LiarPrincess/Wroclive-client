@@ -16,6 +16,8 @@ extension MainViewController {
     self.initToolbarView()
   }
 
+  // MARK: - Map
+
   private func initMapView() {
     self.addChild(self.mapViewController)
 
@@ -28,25 +30,31 @@ extension MainViewController {
     self.mapViewController.didMove(toParent: self)
   }
 
-  // swiftlint:disable:next function_body_length
+  // MARK: - Toolbar
+
+  private var buttonSize: CGSize {
+    return Constants.toolbarButtonSize
+  }
+
+  private var buttonImageSize: CGSize {
+    return Constants.toolbarButtonImageSize
+  }
+
   private func initToolbarView() {
     self.userTrackingButton.mapView = self.mapViewController.mapView
-    self.addButtonSizeConstraints(self.userTrackingButton.customView!)
+    self.setSize(view: self.userTrackingButton.customView!, to: self.buttonSize)
 
-    self.customizeButton(self.searchButton, image: Assets.tabbarSearch)
-    self.searchButton.addTarget(self,
-                                action: #selector(searchButtonPressed),
-                                for: .touchUpInside)
+    self.customizeButton(self.searchButton,
+                         imageName: "magnifyingglass",
+                         action: #selector(searchButtonPressed))
 
-    self.customizeButton(self.bookmarksButton, image: Assets.tabbarBookmarks)
-    self.bookmarksButton.addTarget(self,
-                                   action: #selector(bookmarksButtonPressed),
-                                   for: .touchUpInside)
+    self.customizeButton(self.bookmarksButton,
+                         imageName: "heart",
+                         action: #selector(bookmarksButtonPressed))
 
-    self.customizeButton(self.configurationButton, image: Assets.tabbarSettings)
-    self.configurationButton.addTarget(self,
-                                       action: #selector(settingsButtonPressed),
-                                       for: .touchUpInside)
+    self.customizeButton(self.configurationButton,
+                         imageName: "gear",
+                         action: #selector(settingsButtonPressed))
 
     let device = self.environment.device
     self.toolbar.contentView.addTopBorder(device: device)
@@ -74,24 +82,48 @@ extension MainViewController {
     }
   }
 
-  // TODO: Move those contants to separate enum
-  private func customizeButton(_ button: UIButton, image asset: ImageAsset) {
-    let inset = CGFloat(10.0)
-    button.setImage(asset.image, for: .normal)
-    button.imageEdgeInsets = UIEdgeInsets(top: inset,
-                                          left: inset,
-                                          bottom: inset,
-                                          right: inset)
-    button.contentVerticalAlignment = .fill
-    button.contentHorizontalAlignment = .fill
+  // MARK: - Toolbar button
 
-    self.addButtonSizeConstraints(button)
+  private func customizeButton(_ button: UIButton,
+                               imageName: String,
+                               action: Selector) {
+    let image = self.getImage(name: imageName)
+    button.setImage(image, for: .normal)
+    button.addTarget(self, action: action, for: .touchUpInside)
+
+    guard let imageView = button.imageView else {
+      fatalError("Unable to get toolbar button imageView")
+    }
+
+    button.contentVerticalAlignment = .center
+    button.contentHorizontalAlignment = .center
+    self.setSize(view: button, to: self.buttonSize)
+    self.setSize(view: imageView, to: self.buttonImageSize)
   }
 
-  private func addButtonSizeConstraints(_ view: UIView) {
-    NSLayoutConstraint.activate([
-      view.widthAnchor.constraint(equalToConstant: 44.0),
-      view.heightAnchor.constraint(equalToConstant: 44.0)
-    ])
+  private final class BundleToken {}
+
+  private func getImage(name: String) -> UIImage {
+    let bundle = Bundle(for: BundleToken.self)
+
+    if #available(iOS 13.0, *) {
+      let configuration = UIImage.SymbolConfiguration(weight: .light)
+      if let image = UIImage(named: name, in: bundle, with: configuration) {
+        return image
+      }
+    } else {
+      if let image = UIImage(named: name, in: bundle, compatibleWith: nil) {
+        return image
+      }
+    }
+
+    fatalError("Unable to find image with name: '\(name)'")
+  }
+
+  private func setSize(view: UIView, to size: CGSize) {
+    view.snp.makeConstraints { make in
+      make.width.equalTo(size.width)
+      make.height.equalTo(size.height)
+    }
   }
 }
