@@ -14,6 +14,7 @@ extension MainViewController {
   internal func initLayout() {
     self.initMapView()
     self.initToolbarView()
+    self.initToolbarButtons()
   }
 
   // MARK: - Map
@@ -41,21 +42,6 @@ extension MainViewController {
   }
 
   private func initToolbarView() {
-    self.userTrackingButton.mapView = self.mapViewController.mapView
-    self.setSize(view: self.userTrackingButton.customView!, to: self.buttonSize)
-
-    self.customizeButton(self.searchButton,
-                         imageName: "magnifyingglass",
-                         action: #selector(searchButtonPressed))
-
-    self.customizeButton(self.bookmarksButton,
-                         imageName: "heart",
-                         action: #selector(bookmarksButtonPressed))
-
-    self.customizeButton(self.configurationButton,
-                         imageName: "gear",
-                         action: #selector(settingsButtonPressed))
-
     let device = self.environment.device
     self.toolbar.contentView.addTopBorder(device: device)
 
@@ -65,6 +51,25 @@ extension MainViewController {
     self.toolbar.snp.makeConstraints { make in
       make.left.right.bottom.equalToSuperview()
     }
+  }
+
+  // MARK: - Toolbar button
+
+  private func initToolbarButtons() {
+    self.userTrackingButton.mapView = self.mapViewController.mapView
+    self.setSize(view: self.userTrackingButton.customView!, to: self.buttonSize)
+
+    self.customizeButton(self.searchButton,
+                         imageName: "tram.empty",
+                         action: #selector(searchButtonPressed))
+
+    self.customizeButton(self.bookmarksButton,
+                         imageName: "heart",
+                         action: #selector(bookmarksButtonPressed))
+
+    self.customizeButton(self.configurationButton,
+                         imageName: "gearshape",
+                         action: #selector(settingsButtonPressed))
 
     self.toolbarStackView.addArrangedSubview(self.userTrackingButton.customView!)
     self.toolbarStackView.addArrangedSubview(self.searchButton)
@@ -75,14 +80,12 @@ extension MainViewController {
 
     self.toolbar.contentView.addSubview(self.toolbarStackView)
     self.toolbarStackView.snp.makeConstraints { make in
-      make.top.equalToSuperview()
+      make.top.equalToSuperview().offset(Constants.toolbarInset)
       make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-      make.left.equalToSuperview().offset(8.0)
-      make.right.equalToSuperview().offset(-8.0)
+      make.left.equalToSuperview().offset(Constants.toolbarInset)
+      make.right.equalToSuperview().offset(-Constants.toolbarInset)
     }
   }
-
-  // MARK: - Toolbar button
 
   private func customizeButton(_ button: UIButton,
                                imageName: String,

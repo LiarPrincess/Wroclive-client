@@ -40,12 +40,14 @@ public final class MainViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Overriden
+  // MARK: - ViewDidLoad
 
   override public func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
   }
+
+  // MARK: - ViewDidLayoutSubviews
 
   override public func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
@@ -53,7 +55,7 @@ public final class MainViewController: UIViewController {
   }
 
   private func updateMapViewSafeAreaInsetsSoLegalInfoIsVisible() {
-    let toolbarHeight = self.toolbarStackView.bounds.height
+    let toolbarHeight = self.toolbarStackView.bounds.height + Constants.toolbarInset
     let currentInset = self.mapViewController.additionalSafeAreaInsets.bottom
 
     if currentInset < toolbarHeight {
