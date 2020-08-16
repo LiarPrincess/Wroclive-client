@@ -58,18 +58,16 @@ extension MainViewController {
       make.left.right.bottom.equalToSuperview()
     }
 
-    let stackView = UIStackView(arrangedSubviews: [
-      self.userTrackingButton.customView!,
-      self.searchButton,
-      self.bookmarksButton,
-      self.configurationButton
-    ])
-    stackView.axis = .horizontal
-    stackView.distribution = .equalCentering
+    self.toolbarStackView.addArrangedSubview(self.userTrackingButton.customView!)
+    self.toolbarStackView.addArrangedSubview(self.searchButton)
+    self.toolbarStackView.addArrangedSubview(self.bookmarksButton)
+    self.toolbarStackView.addArrangedSubview(self.configurationButton)
+    self.toolbarStackView.axis = .horizontal
+    self.toolbarStackView.distribution = .equalCentering
 
-    self.toolbar.contentView.addSubview(stackView)
-    stackView.snp.makeConstraints { make in
-      make.top.bottom.equalToSuperview()
+    self.toolbar.contentView.addSubview(self.toolbarStackView)
+    self.toolbarStackView.snp.makeConstraints { make in
+      make.top.equalToSuperview()
       make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
       make.left.equalToSuperview().offset(8.0)
       make.right.equalToSuperview().offset(-8.0)
