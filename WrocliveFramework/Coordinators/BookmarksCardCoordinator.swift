@@ -28,7 +28,11 @@ public final class BookmarksCardCoordinator: CardCoordinator {
   public func start() -> Guarantee<Void> {
     let viewModel = BookmarksCardViewModel(store: self.store)
     let card = BookmarksCard(viewModel: viewModel, environment: self.environment)
-    let height = 0.75 * self.environment.device.screenBounds.height
+
+    let height = min(
+      0.75 * self.environment.device.screenBounds.height,
+      CGFloat(450.0)
+    )
 
     self.card = card
     return self.present(card: card, withHeight: height, animated: true)
