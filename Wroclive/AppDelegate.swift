@@ -35,7 +35,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     return self.environment.log.app
   }
 
-  // MARK: - Launch
+  // MARK: - Did finish launching with options
 
   /// Example: Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)
   private var appInfo: String {
@@ -45,56 +45,21 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
   }
 
-  // swiftlint:disable:next function_body_length
   public func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    #if DEBUG
-    Localizable.setLocale(.pl)
-    #endif
-
-    // Those are the most important lines in the whole app.
-    // Every call that interacts with native frameworks has to go through Environment.
-    // And don't worry, 'debug' modes will fail to compile in release builds.
-    let configuration = Configuration(apiBaseUrl: apiBase,
-                                      websiteUrl: websiteUrl,
-                                      shareUrl: shareUrl,
-                                      writeReviewUrl: reviewUrl)
-
-    #if DEBUG
-    self.environment = Environment(apiMode: .debugOffline, configuration: configuration)
-    #else
-    self.environment = Environment(apiMode: .production, configuration: configuration)
-    #endif
+    self.environment = self.createEnvironment()
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
+    self.logSimulatorDocumentsDirectory()
 
-    #if targetEnvironment(simulator)
-    let documentDir = self.environment.storage.documentsDirectory.path
-    os_log("Simulator documents directory: %{public}@", log: self.log, type: .info, documentDir)
-    #endif
+    self.store = self.createStore()
+    self.storeUpdater = self.dispatchStoreUpdatesFromAppleFrameworks()
 
-    os_log("Initializing redux store", log: self.log, type: .info)
-    let state = AppState.load(from: self.environment,
-                              trackedLinesIfNotSaved: [],
-                              bookmarksIfNotSaved: [])
-    let middleware = AppState.createMiddleware(environment: self.environment)
-    let reducer = AppState.createReducer(environment: self.environment)
-    self.store = Store<AppState>(reducer: reducer,
-                                 state: state,
-                                 middleware: middleware)
-
-    os_log("Adding observers for Apple frameworks", log: self.log, type: .info)
-    self.storeUpdater = DispatchStoreUpdatesFromAppleFrameworks(
-      store: self.store,
-      environment: self.environment
-    )
-    self.storeUpdater.start()
-
-    os_log("Setting up theme", log: self.log, type: .info)
-    Theme.setupAppearance()
+    self.overrideLocaleIfPossible(.pl)
+    self.setupTheme()
 
     os_log("Creating app coordinator", log: self.log, type: .info)
     self.window = UIWindow(frame: self.environment.device.screenBounds)
@@ -103,14 +68,115 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
                                       environment: self.environment)
     self.coordinator!.start()
 
-    os_log("Creating map update scheduler", log: self.log, type: .info)
-    self.updateScheduler = MapUpdateScheduler(store: self.store,
-                                              environment: self.environment)
+    self.updateScheduler = self.startMapUpdates()
 
+    os_log("Finished 'application(_:didFinishLaunchingWithOptions:)'", log: self.log, type: .info)
     return true
   }
 
-  // MARK: - Activity
+  // MARK: - Environment
+
+  // Those are the most important lines in the whole app.
+  // Every call that interacts with native frameworks has to go through Environment.
+  // And don't worry, 'debug' modes will fail to compile in release builds.
+  private func createEnvironment() -> Environment {
+    let configuration = Configuration(apiBaseUrl: apiBase,
+                                      websiteUrl: websiteUrl,
+                                      shareUrl: shareUrl,
+                                      writeReviewUrl: reviewUrl)
+
+    #if DEBUG
+    return Environment(apiMode: .debugOffline, configuration: configuration)
+    #else
+    return Environment(apiMode: .production, configuration: configuration)
+    #endif
+  }
+
+  private func logSimulatorDocumentsDirectory() {
+    #if targetEnvironment(simulator)
+    let documentDir = self.environment.storage.documentsDirectory.path
+    os_log(
+      "Simulator documents directory: %{public}@",
+      log: self.log,
+      type: .info, documentDir
+    )
+    #endif
+  }
+
+  // MARK: - Redux
+
+  private func createStore() -> Store<AppState> {
+    os_log("Initializing redux store", log: self.log, type: .info)
+
+    // Don't worry: all 'IfNotSaved' have '@autoclosure'!
+    let state = AppState.load(
+      from: self.environment,
+      trackedLinesIfNotSaved: self.trackAllLinesOnFirstLaunch(),
+      bookmarksIfNotSaved: []
+    )
+
+    let middleware = AppState.createMiddleware(environment: self.environment)
+    let reducer = AppState.createReducer(environment: self.environment)
+
+    return Store<AppState>(
+      reducer: reducer,
+      state: state,
+      middleware: middleware
+    )
+  }
+
+  // When we launch app for the 1st time we want to show all possible vehicles.
+  private func trackAllLinesOnFirstLaunch() -> [Line] {
+    os_log(
+      "It seems that no lines were previously tracked, trying to start tracking all lines",
+      log: self.log,
+      type: .info
+    )
+
+    _ = self.environment.api.getLines().done { lines in
+      assert(self.store != nil, "This should be dispatched via async")
+      self.store.dispatch(TrackedLinesAction.startTracking(lines))
+      // Since we already downloaded all lines, we may as well cache them:
+      self.store.dispatch(ApiAction.setLines(.data(lines)))
+    }
+
+    // For now, since we do not have lines (yet)
+    return []
+  }
+
+  // swiftlint:disable:next line_length
+  private func dispatchStoreUpdatesFromAppleFrameworks() -> DispatchStoreUpdatesFromAppleFrameworks {
+    os_log("Adding observers for Apple frameworks", log: self.log, type: .info)
+    return DispatchStoreUpdatesFromAppleFrameworks(
+      store: self.store,
+      environment: self.environment
+    )
+  }
+
+  // MARK: - UI
+
+  private func overrideLocaleIfPossible(_ value: Localizable.Locale) {
+    #if DEBUG
+    let description = String(describing: value)
+    os_log("Setting locale: %{public}@", log: self.log, type: .info, description)
+    Localizable.setLocale(value)
+    #endif
+  }
+
+  private func setupTheme() {
+    os_log("Setting up theme", log: self.log, type: .info)
+    Theme.setupAppearance()
+  }
+
+  private func startMapUpdates() -> MapUpdateScheduler {
+    os_log("Creating map update scheduler", log: self.log, type: .info)
+    return MapUpdateScheduler(
+      store: self.store,
+      environment: self.environment
+    )
+  }
+
+  // MARK: - Did become active
 
   public func applicationDidBecomeActive(_ application: UIApplication) {
     os_log("applicationDidBecomeActive(_:)", log: self.log, type: .info)
@@ -130,6 +196,8 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
       }
     }
   }
+
+  // MARK: - Will resign active
 
   public func applicationWillResignActive(_ application: UIApplication) {
     os_log("applicationWillResignActive(_:)", log: self.log, type: .info)

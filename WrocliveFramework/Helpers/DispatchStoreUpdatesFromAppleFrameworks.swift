@@ -16,9 +16,8 @@ public final class DispatchStoreUpdatesFromAppleFrameworks: NSObject {
   public init(store: Store<AppState>, environment: Environment) {
     self.store = store
     self.environment = environment
-  }
+    super.init()
 
-  public func start() {
     NotificationCenter.default.addObserver(
       self,
       selector: #selector(self.didChangeUserlocationAuthorization(_:)),
