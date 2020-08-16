@@ -13,7 +13,7 @@
 		900EA0C424D467040054C03F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 900EA0C624D467040054C03F /* InfoPlist.strings */; };
 		900EA0D624D469D90054C03F /* WrocliveFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900EA0CF24D469D90054C03F /* WrocliveFramework.framework */; };
 		900EA0D724D469D90054C03F /* WrocliveFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 900EA0CF24D469D90054C03F /* WrocliveFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		900EA0DE24D46A340054C03F /* WrocliveFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 900EA0DC24D46A340054C03F /* WrocliveFramework.h */; };
+		900EA0DE24D46A340054C03F /* WrocliveFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 900EA0DC24D46A340054C03F /* WrocliveFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		900EA0E224D46A9B0054C03F /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0E124D46A9B0054C03F /* ReSwift */; };
 		900EA0E524D46AAB0054C03F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0E424D46AAB0054C03F /* SnapKit */; };
 		900EA0E824D46AB90054C03F /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0E724D46AB90054C03F /* PromiseKit */; };

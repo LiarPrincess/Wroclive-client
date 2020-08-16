@@ -7,7 +7,7 @@ import UIKit
 public enum CardPanelConstants {
 
   public static let topCornerRadius = CGFloat(12.0)
-  public static let chevronViewSpace = ChevronView.nominalSize.height
+  public static let chevronViewSpace = ChevronView.nominalSize.height + 6.0
 
   public enum DimmingView {
     public static let color = UIColor.black
