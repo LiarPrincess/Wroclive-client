@@ -66,17 +66,33 @@ private final class BundleToken { }
 
 extension {{enumName}} {
 
-  public enum Locale {
+  public enum Locale: CustomStringConvertible {
     case base
+    case en
     case pl
 
+    public var description: String {
+      switch self {
+      case .base: return "base"
+      case .en: return "en"
+      case .pl: return "pl"
+      }
+    }
+
+    private static var enLocale: Foundation.Locale?
     private static var plLocale: Foundation.Locale?
+
+    private static var enBundle: Foundation.Bundle?
     private static var plBundle: Foundation.Bundle?
 
     fileprivate var locale: Foundation.Locale {
       switch self {
       case .base:
         return Foundation.Locale.current
+      case .en:
+        let result = Self.enLocale ?? Foundation.Locale(identifier: "en")
+        Self.enLocale = result
+        return result
       case .pl:
         let result = Self.plLocale ?? Foundation.Locale(identifier: "pl")
         Self.plLocale = result
@@ -88,6 +104,10 @@ extension {{enumName}} {
       switch self {
       case .base:
         return Bundle(for: BundleToken.self)
+      case .en:
+        let result = Self.enBundle ?? Self.createBundle(language: "Base")
+        Self.enBundle = result
+        return result
       case .pl:
         let result = Self.plBundle ?? Self.createBundle(language: "pl")
         Self.plBundle = result
@@ -96,7 +116,6 @@ extension {{enumName}} {
     }
 
     private static func createBundle(language: String) -> Bundle {
-      let language = language == "en" ? "Base" : language
       let frameworkBundle = Bundle(for: BundleToken.self)
 
       guard let path = frameworkBundle.path(forResource: language, ofType: "lproj") else {

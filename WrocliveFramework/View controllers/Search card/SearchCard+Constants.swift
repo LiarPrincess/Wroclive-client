@@ -33,6 +33,7 @@ extension SearchCard {
       }
 
       public enum Search {
+        // We will make this button bigger using insets
         public static let insets = UIEdgeInsets(top: 20.0,
                                                 left: rightInset,
                                                 bottom: 4.0,
