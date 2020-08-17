@@ -38,9 +38,6 @@ public struct ColorScheme {
     }
   }()
 
-  public let barStyle = UIBarStyle.default
-  public let blurStyle = UIBlurEffect.Style.extraLight
-
   public let lightBarStyle = UIBarStyle.default
   public let darkBarStyle = UIBarStyle.black
 

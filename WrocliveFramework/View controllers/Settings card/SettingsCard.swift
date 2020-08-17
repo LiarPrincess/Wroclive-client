@@ -12,11 +12,7 @@ public final class SettingsCard:
   CustomCardPanelPresentable {
   // MARK: - Properties
 
-  public lazy var headerView: UIVisualEffectView = {
-    let blur = UIBlurEffect(style: Theme.colors.blurStyle)
-    return UIVisualEffectView(effect: blur)
-  }()
-
+  public let headerView = ExtraLightVisualEffectView()
   public let titleLabel = UILabel()
   public let tableView = UITableView(frame: .zero, style: .grouped)
 

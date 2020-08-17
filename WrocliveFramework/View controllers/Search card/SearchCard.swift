@@ -11,11 +11,7 @@ public final class SearchCard:
 
   // MARK: - Properties
 
-  public var headerView: UIVisualEffectView = {
-    let headerViewBlur = UIBlurEffect(style: Theme.colors.blurStyle)
-    return UIVisualEffectView(effect: headerViewBlur)
-  }()
-
+  public let headerView = ExtraLightVisualEffectView()
   public let titleLabel = UILabel()
   public let bookmarkButton = UIButton()
   public let searchButton = UIButton()

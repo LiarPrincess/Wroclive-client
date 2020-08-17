@@ -6,8 +6,6 @@ import UIKit
 import Foundation
 import MapKit
 
-// swiftlint:disable object_literal
-
 // Source:
 // https://medium.com/@abhimuralidharan/maintaining-a-colour-theme-manager-on-ios-swift-178b8a6a92
 public enum Theme {

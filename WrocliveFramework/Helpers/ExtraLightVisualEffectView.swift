@@ -8,8 +8,10 @@ import UIKit
 public final class ExtraLightVisualEffectView: UIVisualEffectView {
 
   public init() {
-    let effect = Self.createEffect(type: .light)
-    super.init(effect: effect)
+    super.init(effect: nil)
+
+    // Set initial effect
+    self.traitCollectionDidChange(nil)
   }
 
   // swiftlint:disable:next unavailable_function
