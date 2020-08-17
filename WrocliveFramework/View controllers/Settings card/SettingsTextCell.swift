@@ -68,6 +68,10 @@ public final class SettingsTextCell: UITableViewCell {
       attributes: Constants.textAttributes
     )
 
+    if let imageView = self.imageView {
+      imageView.image = kind.image?.value
+    }
+
     self.isBottomBorderVisible = !isLastCellInSection
     if self.isBottomBorderVisible && !self.hasAddedBottomBorderHeightConstraints {
       self.bottomBorder.snp.makeConstraints { make in

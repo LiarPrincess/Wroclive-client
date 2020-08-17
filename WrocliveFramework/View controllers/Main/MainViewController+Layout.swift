@@ -60,15 +60,15 @@ extension MainViewController {
     self.setSize(view: self.userTrackingButton.customView!, to: self.buttonSize)
 
     self.customizeButton(self.searchButton,
-                         imageName: "tram.empty",
+                         image: .tram,
                          action: #selector(searchButtonPressed))
 
     self.customizeButton(self.bookmarksButton,
-                         imageName: "heart",
+                         image: .heart,
                          action: #selector(bookmarksButtonPressed))
 
     self.customizeButton(self.configurationButton,
-                         imageName: "gearshape",
+                         image: .gear,
                          action: #selector(settingsButtonPressed))
 
     self.toolbarStackView.addArrangedSubview(self.userTrackingButton.customView!)
@@ -88,10 +88,9 @@ extension MainViewController {
   }
 
   private func customizeButton(_ button: UIButton,
-                               imageName: String,
+                               image: ImageEnum,
                                action: Selector) {
-    let image = self.getImage(name: imageName)
-    button.setImage(image, for: .normal)
+    button.setImage(image.value, for: .normal)
     button.addTarget(self, action: action, for: .touchUpInside)
 
     guard let imageView = button.imageView else {
@@ -102,27 +101,6 @@ extension MainViewController {
     button.contentHorizontalAlignment = .center
     self.setSize(view: button, to: self.buttonSize)
     self.setSize(view: imageView, to: self.buttonImageSize)
-  }
-
-  private final class BundleToken {}
-
-  private func getImage(name: String) -> UIImage {
-    let bundle = Bundle(for: BundleToken.self)
-
-    if #available(iOS 13.0, *) {
-      let configuration = UIImage.SymbolConfiguration(weight: .light)
-      if let image = UIImage(named: name, in: bundle, with: configuration) {
-        return image
-      }
-    } else {
-      if let image = UIImage(named: name, in: bundle, compatibleWith: nil) {
-        return image
-      }
-    }
-
-    // TODO: This
-//    fatalError("Unable to find image with name: '\(name)'")
-    return  UIImage(named: "tabbar-bookmarks", in: bundle, compatibleWith: nil)!
   }
 
   private func setSize(view: UIView, to size: CGSize) {

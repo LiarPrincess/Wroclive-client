@@ -28,6 +28,14 @@ public struct SettingsSection {
       case .rate: return Localization.General.rate
       }
     }
+
+    public var image: ImageEnum? {
+      switch self {
+      case .about: return .about
+      case .share: return .share
+      case .rate: return .rate
+      }
+    }
   }
 
   public let kind: Kind
