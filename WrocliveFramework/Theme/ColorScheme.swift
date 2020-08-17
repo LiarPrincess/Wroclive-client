@@ -8,9 +8,9 @@ import UIKit
 
 public struct ColorScheme {
 
-  public let tint = UIColor(hue: 0.00, saturation: 0.85, brightness: 0.95, alpha: 1.0)
-  public let tram = UIColor(hue: 0.60, saturation: 0.65, brightness: 0.80, alpha: 1.0)
-  public let bus = UIColor(hue: 0.00, saturation: 0.85, brightness: 0.80, alpha: 1.0)
+  public let tint = UIColor(red: 0.95, green: 0.14, blue: 0.14, alpha: 1.0)
+  public let tram = UIColor(red: 0.28, green: 0.49, blue: 0.80, alpha: 1.0)
+  public let bus = UIColor(red: 0.80, green: 0.12, blue: 0.12, alpha: 1.0)
 
   public let userLocationPin = UIColor.systemBlue
 
