@@ -113,6 +113,7 @@
 		907FD0B924D8A2DC00B6896C /* OfflineApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B824D8A2DC00B6896C /* OfflineApi.swift */; };
 		907FD0BB24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0BA24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift */; };
 		907FD0BD24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */; };
+		9093AE1724EA92C20094B1CC /* ExtraLightVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */; };
 		90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */; };
 		90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */; };
 		90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFD124D60BEF00595D89 /* StringExtensions.swift */; };
@@ -313,6 +314,7 @@
 		907FD0B824D8A2DC00B6896C /* OfflineApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineApi.swift; sourceTree = "<group>"; };
 		907FD0BA24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationAuthorizationMiddleware.swift; sourceTree = "<group>"; };
 		907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchStoreUpdatesFromAppleFrameworks.swift; sourceTree = "<group>"; };
+		9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLightVisualEffectView.swift; sourceTree = "<group>"; };
 		90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
 		90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitExtensions.swift; sourceTree = "<group>"; };
 		90CDCFD124D60BEF00595D89 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */,
 				907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */,
 				90CE742E24D9DA3F00419166 /* DummyData.swift */,
+				9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1093,6 +1096,7 @@
 				9013FABE24D6B1890006D1B9 /* CardPanelConstants.swift in Sources */,
 				90F38E5224E1A3AE000D4192 /* SettingsSection.swift in Sources */,
 				90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */,
+				9093AE1724EA92C20094B1CC /* ExtraLightVisualEffectView.swift in Sources */,
 				90D57AFB24DC490100A0EF53 /* LineSelectorPage.swift in Sources */,
 				9076BD5324DDB5D100467075 /* SearchCard.swift in Sources */,
 				9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */,

@@ -11,11 +11,7 @@ public final class MainViewController: UIViewController {
 
   public let mapViewController: MapViewController
 
-  public lazy var toolbar: UIVisualEffectView = {
-    let blur = UIBlurEffect(style: Theme.colors.blurStyle)
-    return UIVisualEffectView(effect: blur)
-  }()
-
+  public let toolbar = ExtraLightVisualEffectView()
   public let toolbarStackView = UIStackView()
 
   public let userTrackingButton = MKUserTrackingBarButtonItem()
