@@ -23,37 +23,15 @@ public final class ExtraLightVisualEffectView: UIVisualEffectView {
     super.traitCollectionDidChange(previousTraitCollection)
 
     if #available(iOS 12.0, *) {
-      let newStyle = self.traitCollection.userInterfaceStyle
-      let oldStyle = previousTraitCollection?.userInterfaceStyle
-
-      guard newStyle != oldStyle else {
-        return
+      if self.hasChangedUserInterfaceStyle(previousTraits: previousTraitCollection) {
+        let style = Theme.colors.blurStyle(for: self.userInterfaceStyle)
+        self.effect = UIBlurEffect(style: style)
       }
-
-      switch newStyle {
-      case .light:
-        self.effect = Self.createEffect(type: .light)
-      case .dark:
-        self.effect = Self.createEffect(type: .dark)
-      case .unspecified:
-        break
-      @unknown default:
-        break
+    } else {
+      if self.effect == nil {
+        let style = Theme.colors.blurStyle(mode: .light)
+        self.effect = UIBlurEffect(style: style)
       }
-    }
-  }
-
-  private enum EffectType {
-    case light
-    case dark
-  }
-
-  private static func createEffect(type: EffectType) -> UIBlurEffect {
-    switch type {
-    case .light:
-      return UIBlurEffect(style: Theme.colors.lightBlurStyle)
-    case .dark:
-      return UIBlurEffect(style: Theme.colors.darkBlurStyle)
     }
   }
 }

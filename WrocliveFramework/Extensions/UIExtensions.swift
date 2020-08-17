@@ -69,6 +69,23 @@ extension UIView {
   }
 }
 
+// MARK: - UIView + UserInterfaceStyle
+
+extension UIView {
+
+  @available(iOS 12.0, *)
+  public var userInterfaceStyle: UIUserInterfaceStyle {
+    return self.traitCollection.userInterfaceStyle
+  }
+
+  @available(iOS 12.0, *)
+  public func hasChangedUserInterfaceStyle(previousTraits: UITraitCollection?) -> Bool {
+    let current = self.userInterfaceStyle
+    let old = previousTraits?.userInterfaceStyle
+    return current != old
+  }
+}
+
 // MARK: - UIView + Round corners
 
 extension UIView {

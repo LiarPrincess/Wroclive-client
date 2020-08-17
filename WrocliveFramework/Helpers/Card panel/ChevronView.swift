@@ -33,13 +33,6 @@ public final class ChevronView: UIView {
     }
   }
 
-  public var color: UIColor = .white {
-    didSet {
-      self.leftView.backgroundColor = self.color
-      self.rightView.backgroundColor = self.color
-    }
-  }
-
   /// Width of an single arm
   public static let width: CGFloat = 5.0
 
@@ -58,8 +51,10 @@ public final class ChevronView: UIView {
 
     self.addSubview(self.leftView)
     self.addSubview(self.rightView)
-    self.leftView.backgroundColor = self.color
-    self.rightView.backgroundColor = self.color
+
+    let color = Theme.colors.accent
+    self.leftView.backgroundColor = color
+    self.rightView.backgroundColor = color
 
     // see: https://stackoverflow.com/a/32579709
     self.leftView.layer.allowsEdgeAntialiasing = true
@@ -71,7 +66,7 @@ public final class ChevronView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Overriden
+  // MARK: - LayoutSubviews
 
   override public func layoutSubviews() {
     super.layoutSubviews()

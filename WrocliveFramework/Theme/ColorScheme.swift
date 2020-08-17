@@ -24,7 +24,7 @@ public struct ColorScheme {
 
   public let accent: UIColor = {
     if #available(iOS 13.0, *) {
-      return UIColor.separator
+      return UIColor.opaqueSeparator
     } else {
       return UIColor(white: 0.8, alpha: 1.0)
     }
@@ -38,9 +38,32 @@ public struct ColorScheme {
     }
   }()
 
-  public let lightBarStyle = UIBarStyle.default
-  public let darkBarStyle = UIBarStyle.black
+  public enum Mode {
+    case light
+    case dark
+  }
 
-  public let lightBlurStyle = UIBlurEffect.Style.extraLight
-  public let darkBlurStyle = UIBlurEffect.Style.dark
+  public func barStyle(mode: Mode) -> UIBarStyle {
+    switch mode {
+    case .light: return UIBarStyle.default
+    case .dark: return UIBarStyle.black
+    }
+  }
+
+  @available(iOS 12.0, *)
+  public func blurStyle(for style: UIUserInterfaceStyle) -> UIBlurEffect.Style {
+    switch style {
+    case .light: return self.blurStyle(mode: .light)
+    case .dark: return self.blurStyle(mode: .dark)
+    case .unspecified: return self.blurStyle(mode: .light)
+    @unknown default: return self.blurStyle(mode: .light)
+    }
+  }
+
+  public func blurStyle(mode: Mode) -> UIBlurEffect.Style {
+    switch mode {
+    case .light: return UIBlurEffect.Style.extraLight
+    case .dark: return UIBlurEffect.Style.dark
+    }
+  }
 }
