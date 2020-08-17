@@ -42,6 +42,7 @@ extension BookmarksCard {
     }
 
     self.editButton.contentEdgeInsets = Constants.Header.Edit.insets
+    self.editButton.titleLabel?.adjustsFontForContentSizeCategory = true
     self.editButton.addTarget(self,
                               action: #selector(editButtonPressed),
                               for: .touchUpInside)

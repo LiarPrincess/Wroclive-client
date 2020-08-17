@@ -19,9 +19,7 @@ extension SettingsCard {
       public static let topInset = CardPanelConstants.chevronViewSpace + 8.0
       public static let bottomInset = CGFloat(8.0)
 
-      public static var titleAttributes: TextAttributes {
-        return TextAttributes(style: .largeTitle)
-      }
+      public static let titleAttributes = TextAttributes(style: .largeTitle)
     }
 
     // MARK: - Table view
@@ -35,9 +33,7 @@ extension SettingsCard {
         public static let leftInset = CGFloat(16.0)
       }
 
-      public static var textAttributes: TextAttributes {
-        return TextAttributes(style: .body)
-      }
+      public static let textAttributes = TextAttributes(style: .body)
     }
 
     public enum SectionHeader {
@@ -47,9 +43,7 @@ extension SettingsCard {
       public static let leftInset = CGFloat(16.0)
       public static let rightInset = leftInset
 
-      public static var titleAttributes: TextAttributes {
-        return TextAttributes(style: .headline)
-      }
+      public static let titleAttributes = TextAttributes(style: .headline)
     }
 
     // MARK: - Footer
@@ -59,11 +53,9 @@ extension SettingsCard {
       public static let bottomOffset = CGFloat(20.0)
       public static let lineSpacing = CGFloat(5.0)
 
-      public static var textAttributes: TextAttributes {
-        return TextAttributes(style: .footnote,
-                              alignment: .center,
-                              lineSpacing: lineSpacing)
-      }
+      public static let textAttributes = TextAttributes(style: .footnote,
+                                                        alignment: .center,
+                                                        lineSpacing: lineSpacing)
     }
   }
 }

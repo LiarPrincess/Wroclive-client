@@ -42,6 +42,7 @@ internal final class LineSelectorCell: UICollectionViewCell {
 
     self.label.numberOfLines = 1
     self.label.isUserInteractionEnabled = false
+    self.label.adjustsFontForContentSizeCategory = true
 
     self.contentView.addSubview(self.label)
     self.label.snp.makeConstraints { $0.edges.equalToSuperview() }

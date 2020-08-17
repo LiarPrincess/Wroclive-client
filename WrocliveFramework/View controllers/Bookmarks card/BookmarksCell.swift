@@ -38,8 +38,9 @@ public final class BookmarksCell: UITableViewCell {
 
   private func initLayout() {
     self.backgroundColor = ColorScheme.background
+
     self.nameLabel.numberOfLines = 0
-    self.linesLabel.numberOfLines = 0
+    self.nameLabel.adjustsFontForContentSizeCategory = true
 
     self.contentView.addSubview(self.nameLabel)
     self.nameLabel.snp.makeConstraints { make in
@@ -47,6 +48,9 @@ public final class BookmarksCell: UITableViewCell {
       make.left.equalToSuperview().offset(Constants.leftInset)
       make.right.equalToSuperview().offset(-Constants.rightInset)
     }
+
+    self.linesLabel.numberOfLines = 0
+    self.linesLabel.adjustsFontForContentSizeCategory = true
 
     self.contentView.addSubview(self.linesLabel)
     self.linesLabel.snp.makeConstraints { make in

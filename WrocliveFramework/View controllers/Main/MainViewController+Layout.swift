@@ -120,7 +120,9 @@ extension MainViewController {
       }
     }
 
-    fatalError("Unable to find image with name: '\(name)'")
+    // TODO: This
+//    fatalError("Unable to find image with name: '\(name)'")
+    return  UIImage(named: "tabbar-bookmarks", in: bundle, compatibleWith: nil)!
   }
 
   private func setSize(view: UIView, to size: CGSize) {

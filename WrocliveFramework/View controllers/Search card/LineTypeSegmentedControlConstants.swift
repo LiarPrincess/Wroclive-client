@@ -9,9 +9,5 @@ internal enum LineTypeSegmentedControlConstants {
   /// Proposed height
   internal static let nominalHeight = CGFloat(30.0)
 
-  internal enum Title {
-    internal static var attributes: TextAttributes {
-      return TextAttributes(style: .body, color: .tint)
-    }
-  }
+  internal static let titleAttributes = TextAttributes(style: .body, color: .tint)
 }

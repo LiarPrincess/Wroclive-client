@@ -11,7 +11,7 @@ public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
   // MARK: - Properties
 
-  private let titleLabel = UILabel()
+  private let label = UILabel()
 
   override public var alpha: CGFloat {
     get { return 1.0 }
@@ -33,8 +33,10 @@ public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
   private func initLayout() {
     self.contentView.backgroundColor = ColorScheme.background
 
-    self.contentView.addSubview(self.titleLabel)
-    self.titleLabel.snp.makeConstraints { make in
+    self.label.adjustsFontForContentSizeCategory = true
+
+    self.contentView.addSubview(self.label)
+    self.label.snp.makeConstraints { make in
       // We do not need:
       // - bottom - we have 'tableView(_:heightForHeaderInSection:)' for this
       // - right - it will automatically resize to required width
@@ -44,7 +46,7 @@ public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
   }
 
   public func update(section: SettingsSection) {
-    self.titleLabel.attributedText = NSAttributedString(
+    self.label.attributedText = NSAttributedString(
       string: section.kind.text,
       attributes: Constants.titleAttributes
     )

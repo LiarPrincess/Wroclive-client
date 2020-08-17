@@ -14,27 +14,22 @@ extension LineSelector {
 
       internal static let cornerRadius = CGFloat(8.0)
 
-      internal static var selectedTextAttributes: TextAttributes {
-        // We need to use bold, otherwise text would look too thin on bright background
-        return TextAttributes(style: .bodyBold,
-                              color: .background,
-                              alignment: .center)
-      }
+      // We need to use bold, otherwise text would look too thin on bright background
+      internal static let selectedTextAttributes = TextAttributes(style: .bodyBold,
+                                                                  color: .background,
+                                                                  alignment: .center)
 
-      internal static var notSelectedTextAttributes: TextAttributes {
-        return TextAttributes(style: .body,
-                              color: .text,
-                              alignment: .center)
-      }
+      internal static let notSelectedTextAttributes = TextAttributes(style: .body,
+                                                                     color: .text,
+                                                                     alignment: .center)
     }
 
     internal enum Header {
       internal static let topInset = CGFloat(16.0)
       internal static let bottomInset = CGFloat(8.0)
 
-      internal static var textAttributes: TextAttributes {
-        return TextAttributes(style: .headline, alignment: .center)
-      }
+      internal static let textAttributes = TextAttributes(style: .headline,
+                                                          alignment: .center)
     }
   }
 }

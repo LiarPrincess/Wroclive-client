@@ -20,9 +20,7 @@ extension BookmarksCard {
         public static let topOffset = CardPanelConstants.chevronViewSpace + 8.0
         public static let bottomOffset = CGFloat(8.0)
 
-        public static var attributes: TextAttributes {
-          return TextAttributes(style: .largeTitle)
-        }
+        public static let attributes = TextAttributes(style: .largeTitle)
       }
 
       public enum Edit {
@@ -31,13 +29,8 @@ extension BookmarksCard {
                                                 bottom: 4.0,
                                                 right: Constants.rightInset)
 
-        public static var editAttributes: TextAttributes {
-          return TextAttributes(style: .body, color: .tint)
-        }
-
-        public static var doneAttributes: TextAttributes {
-          return TextAttributes(style: .bodyBold, color: .tint)
-        }
+        public static let editAttributes = TextAttributes(style: .body, color: .tint)
+        public static let doneAttributes = TextAttributes(style: .bodyBold, color: .tint)
       }
     }
 
@@ -55,25 +48,19 @@ extension BookmarksCard {
       public static let rightInset = CGFloat(leftInset)
 
       public enum Name {
-        public static var attributes: TextAttributes {
-          return TextAttributes(style: .headline, alignment: .center)
-        }
+        public static let attributes = TextAttributes(style: .headline,
+                                                      alignment: .center)
       }
 
       public enum Lines {
         public static let topMargin = CGFloat(8.0)
-
         public static let horizontalSpacing = "   "
-        public static let lineSpacing = CGFloat(5.0)
-        public static let paragraphSpacing = CGFloat(5.0)
 
-        public static var attributes: TextAttributes {
-          return TextAttributes(style: .body,
-                                color: .tint,
-                                alignment: .center,
-                                lineSpacing: lineSpacing,
-                                paragraphSpacing: paragraphSpacing)
-        }
+        public static let attributes = TextAttributes(style: .body,
+                                                      color: .tint,
+                                                      alignment: .center,
+                                                      lineSpacing: 5.0,
+                                                      paragraphSpacing: 5.0)
       }
     }
 
@@ -83,29 +70,19 @@ extension BookmarksCard {
       public static let leftInset = CGFloat(35.0)
       public static let rightInset = CGFloat(leftInset)
       public static let topMargin = CGFloat(6.0)
-      public static let lineSpacing = CGFloat(5.0)
 
       public enum Title {
-        public static var attributes: TextAttributes {
-          return TextAttributes(style: .headline, alignment: .center)
-        }
+        public static let attributes = TextAttributes(style: .headline,
+                                                      alignment: .center)
       }
 
       public enum Content {
-        private static var base: TextAttributes {
-          return TextAttributes(style: .body,
-                                color: .text,
-                                alignment: .center,
-                                lineSpacing: lineSpacing)
-        }
+        private static let base = TextAttributes(style: .body,
+                                                 alignment: .center,
+                                                 lineSpacing: 5.0)
 
-        public static var textAttributes: TextAttributes {
-          return Self.base.withFont(.text)
-        }
-
-        public static var iconAttributes: TextAttributes {
-          return Self.base.withFont(.icon)
-        }
+        public static let textAttributes = Self.base.withFont(.text)
+        public static let iconAttributes = Self.base.withFont(.icon)
       }
     }
   }

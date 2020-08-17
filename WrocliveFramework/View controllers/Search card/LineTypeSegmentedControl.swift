@@ -18,7 +18,7 @@ internal final class LineTypeSegmentedControl: UIView {
     self.onPageSelected = onPageSelected
     super.init(frame: .zero)
 
-    let titleAttributes = Constants.Title.attributes.value
+    let titleAttributes = Constants.titleAttributes.value
     self.segmentedControl.setTitleTextAttributes(titleAttributes, for: .normal)
 
     for (index, page) in self.pages.enumerated() {

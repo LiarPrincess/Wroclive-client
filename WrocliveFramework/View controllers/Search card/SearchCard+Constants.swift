@@ -19,9 +19,7 @@ extension SearchCard {
       public enum Title {
         public static let topOffset = CardPanelConstants.chevronViewSpace + 8.0
 
-        public static var attributes: TextAttributes {
-          return TextAttributes(style: .largeTitle)
-        }
+        public static let attributes = TextAttributes(style: .largeTitle)
       }
 
       public enum Bookmark {
@@ -39,9 +37,8 @@ extension SearchCard {
                                                 bottom: 4.0,
                                                 right: rightInset)
 
-        public static var attributes: TextAttributes {
-          return TextAttributes(style: .body, color: .tint)
-        }
+        public static let attributes = TextAttributes(style: .body,
+                                                      color: .tint)
       }
 
       public enum LineType {
@@ -63,9 +60,8 @@ extension SearchCard {
       public static let rightInset = leftInset
       public static let verticalSpacing = CGFloat(8.0)
 
-      public static var labelAttributes: TextAttributes {
-        return TextAttributes(style: .body, alignment: .center)
-      }
+      public static let labelAttributes = TextAttributes(style: .body,
+                                                         alignment: .center)
     }
 
     // MARK: - BookmarksPopup

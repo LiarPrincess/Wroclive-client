@@ -40,6 +40,7 @@ public final class SearchPlaceholderView: UIView {
     )
     self.label.numberOfLines = 0
     self.label.lineBreakMode = .byWordWrapping
+    self.label.adjustsFontForContentSizeCategory = true
 
     self.addSubview(self.label)
     self.label.snp.makeConstraints { make in

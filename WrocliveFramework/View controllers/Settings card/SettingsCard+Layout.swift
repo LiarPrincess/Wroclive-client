@@ -18,9 +18,6 @@ extension SettingsCard {
   // MARK: - Header
 
   private func initHeader() {
-    // swiftlint:disable:next nesting type_name
-    typealias C = Constants.Header
-
     let device = self.environment.device
     self.headerView.contentView.addBottomBorder(device: device)
     self.headerView.setContentHuggingPriority(900, for: .vertical)
@@ -30,15 +27,18 @@ extension SettingsCard {
       make.top.left.right.equalToSuperview()
     }
 
-    self.titleLabel.attributedText = NSAttributedString(string: Localization.title,
-                                                        attributes: C.titleAttributes)
+    self.titleLabel.attributedText = NSAttributedString(
+      string: Localization.title,
+      attributes: Constants.Header.titleAttributes
+    )
     self.titleLabel.numberOfLines = 0
     self.titleLabel.lineBreakMode = .byWordWrapping
+    self.titleLabel.adjustsFontForContentSizeCategory = true
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(C.topInset)
-      make.bottom.equalToSuperview().offset(-C.bottomInset)
+      make.top.equalToSuperview().offset(Constants.Header.topInset)
+      make.bottom.equalToSuperview().offset(-Constants.Header.bottomInset)
       make.left.equalToSuperview().offset(Constants.leftInset)
       make.right.equalToSuperview().offset(-Constants.rightInset)
     }

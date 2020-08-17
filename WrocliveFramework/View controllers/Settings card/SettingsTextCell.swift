@@ -36,6 +36,8 @@ public final class SettingsTextCell: UITableViewCell {
   private func initLayout() {
     self.backgroundColor = ColorScheme.background
 
+    self.textLabel?.adjustsFontForContentSizeCategory = true
+
     self.bottomBorder.backgroundColor = ColorScheme.accent
 
     self.addSubview(self.bottomBorder)

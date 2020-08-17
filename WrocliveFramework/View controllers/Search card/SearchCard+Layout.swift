@@ -35,6 +35,7 @@ extension SearchCard {
     )
     self.titleLabel.numberOfLines = 0
     self.titleLabel.lineBreakMode = .byWordWrapping
+    self.titleLabel.adjustsFontForContentSizeCategory = true
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
@@ -62,6 +63,7 @@ extension SearchCard {
     )
     self.searchButton.setAttributedTitle(searchTitle, for: .normal)
     self.searchButton.contentEdgeInsets = Constants.Header.Search.insets
+    self.searchButton.titleLabel?.adjustsFontForContentSizeCategory = true
     self.searchButton.addTarget(self,
                                 action: #selector(didPressSearchButton),
                                 for: .touchUpInside)

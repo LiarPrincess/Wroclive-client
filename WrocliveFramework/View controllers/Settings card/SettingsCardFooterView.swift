@@ -34,6 +34,7 @@ public final class SettingsCardFooterView: UIView {
 
     self.label.attributedText = text
     self.label.numberOfLines = 0
+    self.label.adjustsFontForContentSizeCategory = true
 
     self.addSubview(self.label)
     self.label.snp.makeConstraints { make in
