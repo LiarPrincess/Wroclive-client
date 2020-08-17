@@ -2,8 +2,9 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import UIKit
 import os.log
+import UIKit
+import MapKit
 import ReSwift
 import PromiseKit
 import WrocliveFramework
@@ -98,7 +99,8 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     os_log(
       "Simulator documents directory: %{public}@",
       log: self.log,
-      type: .info, documentDir
+      type: .info,
+      documentDir
     )
     #endif
   }
@@ -165,7 +167,12 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   private func setupTheme() {
     os_log("Setting up theme", log: self.log, type: .info)
-    Theme.setupAppearance()
+
+    let tintColor = Theme.colors.tint
+    UIWindow.appearance().tintColor = tintColor
+    UIView.appearance().tintColor = tintColor
+
+    MKAnnotationView.appearance().tintColor = Theme.colors.userLocationPin
   }
 
   private func startMapUpdates() -> MapUpdateScheduler {
