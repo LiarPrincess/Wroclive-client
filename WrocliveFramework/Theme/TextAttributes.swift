@@ -14,10 +14,10 @@ public struct TextAttributes {
 
   // MARK: - Properties
 
-  private var style: TextStyle
+  private var style: Style
   private var font: FontType
-  private var color: TextColor
-  private var alignment: TextAlignment
+  private var color: Color
+  private var alignment: Alignment
 
   private var lineSpacing: CGFloat
   private var paragraphSpacing: CGFloat
@@ -25,12 +25,13 @@ public struct TextAttributes {
   // MARK: - Init
 
   public init(
-    style: TextStyle = .body,
+    style: Style = .body,
     font: FontType = .text,
-    color: TextColor = .text,
-    alignment: TextAlignment = .natural,
+    color: Color = .text,
+    alignment: Alignment = .natural,
     lineSpacing: CGFloat = 0.0,
-    paragraphSpacing: CGFloat = 0.0) {
+    paragraphSpacing: CGFloat = 0.0
+  ) {
     self.style = style
     self.font = font
     self.color = color
@@ -41,7 +42,7 @@ public struct TextAttributes {
 
   // MARK: - Mutation
 
-  public func withStyle(_ style: TextStyle) -> TextAttributes {
+  public func withStyle(_ style: Style) -> TextAttributes {
     return self.copy { $0.style = style }
   }
 
@@ -49,11 +50,11 @@ public struct TextAttributes {
     return self.copy { $0.font = font }
   }
 
-  public func withColor(_ color: TextColor) -> TextAttributes {
+  public func withColor(_ color: Color) -> TextAttributes {
     return self.copy { $0.color = color }
   }
 
-  public func withAlignment(_ alignment: TextAlignment) -> TextAttributes {
+  public func withAlignment(_ alignment: Alignment) -> TextAttributes {
     return self.copy { $0.alignment = alignment }
   }
 
@@ -84,11 +85,11 @@ public struct TextAttributes {
   private func colorValue() -> UIColor {
     switch self.color {
     case .background: return ColorScheme.background
-    case .accentLight: return ColorScheme.accent
     case .text: return ColorScheme.text
     case .tint: return ColorScheme.tint
     case .bus: return ColorScheme.bus
     case .tram: return ColorScheme.tram
+    case .white: return UIColor.white
     }
   }
 

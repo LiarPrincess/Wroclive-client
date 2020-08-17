@@ -67,9 +67,12 @@ public enum StyleKit {
     context.restoreGState()
   }
 
-  public static func drawVehiclePin(frame targetFrame: CGRect,
-                                    color: UIColor,
-                                    resizing: ResizingBehavior = .aspectFit) {
+  /// Vehicle on map (without the number/letter!)
+  public static func drawVehicleAnnotation(
+    frame targetFrame: CGRect,
+    color: UIColor,
+    resizing: ResizingBehavior = .aspectFit
+  ) {
     // dimensions (x4):
     // arrow height: 24 |  6
     // arrow width:  64 | 16

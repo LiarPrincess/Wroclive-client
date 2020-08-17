@@ -2,31 +2,34 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-public enum TextStyle {
-  case largeTitle
-  case headline
-  case body
-  case bodyBold
-  case footnote
-}
+extension TextAttributes {
 
-public enum FontType {
-  case text
-  case icon
-}
+  public enum Style {
+    case largeTitle
+    case headline
+    case body
+    case bodyBold
+    case footnote
+  }
 
-public enum TextColor {
-  case background
-  case accentLight
-  case text
-  case tint
-  case bus
-  case tram
-}
+  public enum FontType {
+    case text
+    case icon
+  }
 
-public enum TextAlignment {
-  case left
-  case right
-  case center
-  case natural
+  public enum Color {
+    case background
+    case text
+    case tint
+    case bus
+    case tram
+    case white
+  }
+
+  public enum Alignment {
+    case left
+    case right
+    case center
+    case natural
+  }
 }

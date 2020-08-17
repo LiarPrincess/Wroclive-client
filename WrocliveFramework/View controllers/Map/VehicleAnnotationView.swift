@@ -10,8 +10,8 @@ private typealias Constants = MapViewController.Constants.Pin
 
 public final class VehicleAnnotationView: MKAnnotationView {
 
-  private let pinView = VehiclePinView()
-  private let pinLabel = UILabel()
+  private let label = UILabel()
+  private let roundedRectangle = RoundedRectangleWithArrow()
 
   // MARK: - Init
 
@@ -21,9 +21,9 @@ public final class VehicleAnnotationView: MKAnnotationView {
     self.isDraggable = false
     self.canShowCallout = false
 
-    self.pinView.frame = self.frame
-    self.addSubview(self.pinView)
-    self.addSubview(self.pinLabel)
+    self.roundedRectangle.frame = self.frame
+    self.addSubview(self.roundedRectangle)
+    self.addSubview(self.label)
 
     self.updateImage()
     self.updateLabel()
@@ -45,18 +45,20 @@ public final class VehicleAnnotationView: MKAnnotationView {
   // MARK: Update image
 
   public func updateImage() {
-    guard let annotation = self.annotation as? VehicleAnnotation else { return }
+    guard let annotation = self.annotation as? VehicleAnnotation else {
+      return
+    }
 
     let color = self.imageColor(for: annotation)
-    let hasColorChanged = self.pinView.tintColor != color
+    let hasColorChanged = self.roundedRectangle.tintColor != color
 
-    let angleDiff = abs(self.pinView.angle - annotation.angle)
+    let angleDiff = abs(self.roundedRectangle.angle - annotation.angle)
     let hasAngleChanged = angleDiff > Constants.minAngleChangeToRedraw
 
     if hasColorChanged || hasAngleChanged {
-      self.pinView.tintColor = color
-      self.pinView.angle = annotation.angle
-      self.pinView.setNeedsDisplay()
+      self.roundedRectangle.tintColor = color
+      self.roundedRectangle.angle = annotation.angle
+      self.roundedRectangle.setNeedsDisplay()
     }
   }
 
@@ -69,38 +71,36 @@ public final class VehicleAnnotationView: MKAnnotationView {
 
   // MARK: Update label
 
-  public func updateLabel() {
-    guard let annotation = self.annotation as? VehicleAnnotation else { return }
+  private static let textAttributes = TextAttributes(style: .body,
+                                                     color: .white,
+                                                     alignment: .center)
 
-    let textAttributes = TextAttributes(style: .body,
-                                        color: .background,
-                                        alignment: .center)
-    self.pinLabel.attributedText = NSAttributedString(string: annotation.line.name,
-                                                      attributes: textAttributes)
+  public func updateLabel() {
+    guard let annotation = self.annotation as? VehicleAnnotation else {
+      return
+    }
+
+    self.label.attributedText = NSAttributedString(
+      string: annotation.line.name,
+      attributes: Self.textAttributes
+    )
 
     let imageSize = Constants.imageSize
-    let labelSize = self.pinLabel.intrinsicContentSize
-    let labelOrgin = CGPoint(
-      x: (imageSize.width - labelSize.width) / 2.0,
-      y: (imageSize.height - labelSize.height) / 2.0
-    )
-    self.pinLabel.frame = CGRect(origin: labelOrgin, size: labelSize)
-  }
-
-  private func textColor(for annotation: VehicleAnnotation) -> TextColor {
-    switch annotation.line.type {
-    case .tram: return .tram
-    case .bus: return .bus
-    }
+    let size = self.label.intrinsicContentSize
+    let origin = CGPoint(x: (imageSize.width - size.width) / 2.0,
+                         y: (imageSize.height - size.height) / 2.0)
+    self.label.frame = CGRect(origin: origin, size: size)
   }
 }
 
-// MARK: - VehiclePinView
+// MARK: - RoundedRectangleWithArrow
 
-private class VehiclePinView: UIView {
+private class RoundedRectangleWithArrow: UIView {
 
   var angle: CGFloat = 0.0 {
-    didSet { self.transform = CGAffineTransform(rotationAngle: self.angle.rad) }
+    didSet {
+      self.transform = CGAffineTransform(rotationAngle: self.angle.rad)
+    }
   }
 
   override init(frame: CGRect) {
@@ -117,6 +117,8 @@ private class VehiclePinView: UIView {
   override func draw(_ rect: CGRect) {
     let color = self.tintColor ?? UIColor.black
     let resizing = StyleKit.ResizingBehavior.aspectFit
-    StyleKit.drawVehiclePin(frame: self.bounds, color: color, resizing: resizing)
+    StyleKit.drawVehicleAnnotation(frame: self.bounds,
+                                   color: color,
+                                   resizing: resizing)
   }
 }
