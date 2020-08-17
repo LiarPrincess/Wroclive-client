@@ -80,10 +80,10 @@ extension MainViewController {
 
     self.toolbar.contentView.addSubview(self.toolbarStackView)
     self.toolbarStackView.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(Constants.toolbarInset)
+      make.top.equalToSuperview()
       make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-      make.left.equalToSuperview().offset(Constants.toolbarInset)
-      make.right.equalToSuperview().offset(-Constants.toolbarInset)
+      make.left.equalToSuperview()
+      make.right.equalToSuperview()
     }
   }
 

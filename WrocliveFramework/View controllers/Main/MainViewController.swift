@@ -51,7 +51,7 @@ public final class MainViewController: UIViewController {
   }
 
   private func updateMapViewSafeAreaInsetsSoLegalInfoIsVisible() {
-    let toolbarHeight = self.toolbarStackView.bounds.height + Constants.toolbarInset
+    let toolbarHeight = self.toolbarStackView.bounds.height
     let currentInset = self.mapViewController.additionalSafeAreaInsets.bottom
 
     if currentInset < toolbarHeight {

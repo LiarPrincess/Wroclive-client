@@ -5,10 +5,12 @@
 import UIKit
 
 extension MainViewController {
-  enum Constants {
-    public static let toolbarButtonSize = CGSize(width: 44.0, height: 44.0)
+  public enum Constants {
+    /// This size is responsible for 'tappable' area
+    public static let toolbarButtonSize = CGSize(width: 52.0, height: 52.0)
+    /// This size is responsible for image (duh...)
+    ///
     /// button size (44.0) - 2 * inset (8.0) = 44.0 - 16.0 = 28.0
     public static let toolbarButtonImageSize = CGSize(width: 28.0, height: 28.0)
-    public static let toolbarInset = CGFloat(8.0)
   }
 }
