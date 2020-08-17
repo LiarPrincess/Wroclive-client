@@ -82,8 +82,7 @@
 		90584F4B24E1952F008B7F74 /* StorageManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90584F4A24E1952F008B7F74 /* StorageManagerType.swift */; };
 		9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938524D4A7460046EFA5 /* ColorScheme.swift */; };
 		9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938624D4A7460046EFA5 /* TextAttributes.swift */; };
-		9058938F24D4A7460046EFA5 /* TextAttributeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938724D4A7460046EFA5 /* TextAttributeEnums.swift */; };
-		9058939024D4A7460046EFA5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938824D4A7460046EFA5 /* Theme.swift */; };
+		9058938F24D4A7460046EFA5 /* TextAttributes+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938724D4A7460046EFA5 /* TextAttributes+Enums.swift */; };
 		9058939124D4A7460046EFA5 /* FontPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938A24D4A7460046EFA5 /* FontPreset.swift */; };
 		9058939224D4A7460046EFA5 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938B24D4A7460046EFA5 /* SystemFont.swift */; };
 		9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938C24D4A7460046EFA5 /* FontAwesome.swift */; };
@@ -282,8 +281,7 @@
 		90584F4A24E1952F008B7F74 /* StorageManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerType.swift; sourceTree = "<group>"; };
 		9058938524D4A7460046EFA5 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		9058938624D4A7460046EFA5 /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
-		9058938724D4A7460046EFA5 /* TextAttributeEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributeEnums.swift; sourceTree = "<group>"; };
-		9058938824D4A7460046EFA5 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		9058938724D4A7460046EFA5 /* TextAttributes+Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextAttributes+Enums.swift"; sourceTree = "<group>"; };
 		9058938A24D4A7460046EFA5 /* FontPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontPreset.swift; sourceTree = "<group>"; };
 		9058938B24D4A7460046EFA5 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
 		9058938C24D4A7460046EFA5 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
@@ -651,23 +649,14 @@
 		9058938424D4A7460046EFA5 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				9058938924D4A7460046EFA5 /* Fonts */,
-				9058938524D4A7460046EFA5 /* ColorScheme.swift */,
-				9058938624D4A7460046EFA5 /* TextAttributes.swift */,
-				9058938724D4A7460046EFA5 /* TextAttributeEnums.swift */,
-				9058938824D4A7460046EFA5 /* Theme.swift */,
-			);
-			path = Theme;
-			sourceTree = "<group>";
-		};
-		9058938924D4A7460046EFA5 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
 				9058938A24D4A7460046EFA5 /* FontPreset.swift */,
 				9058938B24D4A7460046EFA5 /* SystemFont.swift */,
 				9058938C24D4A7460046EFA5 /* FontAwesome.swift */,
+				9058938524D4A7460046EFA5 /* ColorScheme.swift */,
+				9058938624D4A7460046EFA5 /* TextAttributes.swift */,
+				9058938724D4A7460046EFA5 /* TextAttributes+Enums.swift */,
 			);
-			path = Fonts;
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		9058939424D4A8600046EFA5 /* Assets */ = {
@@ -1060,7 +1049,7 @@
 				90F38E4C24E19ECE000D4192 /* SettingsCard.swift in Sources */,
 				9047996824D575C500111F2C /* Middleware.swift in Sources */,
 				90F38E4E24E19ECE000D4192 /* SettingsCard+Constants.swift in Sources */,
-				9058938F24D4A7460046EFA5 /* TextAttributeEnums.swift in Sources */,
+				9058938F24D4A7460046EFA5 /* TextAttributes+Enums.swift in Sources */,
 				9013FAAD24D6B1880006D1B9 /* ReusableCell+UITableView.swift in Sources */,
 				9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */,
 				9076BD4B24DDB5D100467075 /* SearchCard+Constants.swift in Sources */,
@@ -1152,7 +1141,6 @@
 				9076BD5024DDB5D100467075 /* SearchPlaceholderView.swift in Sources */,
 				9047997024D575C500111F2C /* Actions.swift in Sources */,
 				90F38E4724E19ECE000D4192 /* SettingsCardFooterView.swift in Sources */,
-				9058939024D4A7460046EFA5 /* Theme.swift in Sources */,
 				9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */,
 				905893CE24D4A95D0046EFA5 /* DeviceManager.swift in Sources */,
 				900EA10C24D46F140054C03F /* VehicleLocationsEndpoint.swift in Sources */,
