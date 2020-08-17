@@ -168,11 +168,11 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   private func setupTheme() {
     os_log("Setting up theme", log: self.log, type: .info)
 
-    let tintColor = Theme.colors.tint
+    let tintColor = ColorScheme.tint
     UIWindow.appearance().tintColor = tintColor
     UIView.appearance().tintColor = tintColor
 
-    MKAnnotationView.appearance().tintColor = Theme.colors.userLocationPin
+    MKAnnotationView.appearance().tintColor = ColorScheme.userLocationPin
   }
 
   private func startMapUpdates() -> MapUpdateScheduler {

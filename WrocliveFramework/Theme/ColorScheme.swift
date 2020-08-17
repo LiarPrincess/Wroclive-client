@@ -6,15 +6,15 @@ import UIKit
 
 // swiftlint:disable object_literal
 
-public struct ColorScheme {
+public enum ColorScheme {
 
-  public let tint = UIColor(red: 0.95, green: 0.14, blue: 0.14, alpha: 1.0)
-  public let tram = UIColor(red: 0.28, green: 0.49, blue: 0.80, alpha: 1.0)
-  public let bus = UIColor(red: 0.80, green: 0.12, blue: 0.12, alpha: 1.0)
+  public static let tint = UIColor(red: 0.95, green: 0.14, blue: 0.14, alpha: 1.0)
+  public static let tram = UIColor(red: 0.28, green: 0.49, blue: 0.80, alpha: 1.0)
+  public static let bus = UIColor(red: 0.80, green: 0.12, blue: 0.12, alpha: 1.0)
 
-  public let userLocationPin = UIColor.systemBlue
+  public static let userLocationPin = UIColor.systemBlue
 
-  public let background: UIColor = {
+  public static let background: UIColor = {
     if #available(iOS 13.0, *) {
       return UIColor.systemBackground
     } else {
@@ -22,7 +22,7 @@ public struct ColorScheme {
     }
   }()
 
-  public let accent: UIColor = {
+  public static let accent: UIColor = {
     if #available(iOS 13.0, *) {
       return UIColor.opaqueSeparator
     } else {
@@ -30,7 +30,7 @@ public struct ColorScheme {
     }
   }()
 
-  public let text: UIColor = {
+  public static let text: UIColor = {
     if #available(iOS 13.0, *) {
       return UIColor.label
     } else {
@@ -43,7 +43,7 @@ public struct ColorScheme {
     case dark
   }
 
-  public func barStyle(mode: Mode) -> UIBarStyle {
+  public static func barStyle(mode: Mode) -> UIBarStyle {
     switch mode {
     case .light: return UIBarStyle.default
     case .dark: return UIBarStyle.black
@@ -51,7 +51,7 @@ public struct ColorScheme {
   }
 
   @available(iOS 12.0, *)
-  public func blurStyle(for style: UIUserInterfaceStyle) -> UIBlurEffect.Style {
+  public static func blurStyle(for style: UIUserInterfaceStyle) -> UIBlurEffect.Style {
     switch style {
     case .light: return self.blurStyle(mode: .light)
     case .dark: return self.blurStyle(mode: .dark)
@@ -60,7 +60,7 @@ public struct ColorScheme {
     }
   }
 
-  public func blurStyle(mode: Mode) -> UIBlurEffect.Style {
+  public static func blurStyle(mode: Mode) -> UIBlurEffect.Style {
     switch mode {
     case .light: return UIBlurEffect.Style.extraLight
     case .dark: return UIBlurEffect.Style.dark

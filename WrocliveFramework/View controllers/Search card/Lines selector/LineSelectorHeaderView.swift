@@ -31,7 +31,7 @@ internal final class LineSelectorHeaderView: UICollectionReusableView {
   }
 
   private func initLayout() {
-    self.backgroundColor = Theme.colors.background
+    self.backgroundColor = ColorScheme.background
 
     self.label.numberOfLines = 0
     self.label.isUserInteractionEnabled = false

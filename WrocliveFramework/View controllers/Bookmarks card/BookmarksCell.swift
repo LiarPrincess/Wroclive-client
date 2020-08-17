@@ -37,7 +37,7 @@ public final class BookmarksCell: UITableViewCell {
   }
 
   private func initLayout() {
-    self.backgroundColor = Theme.colors.background
+    self.backgroundColor = ColorScheme.background
     self.nameLabel.numberOfLines = 0
     self.linesLabel.numberOfLines = 0
 

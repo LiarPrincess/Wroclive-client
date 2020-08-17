@@ -10,7 +10,7 @@ private typealias Localization = Localizable.Bookmarks
 extension BookmarksCard {
 
   internal func initLayout() {
-    self.view.backgroundColor = Theme.colors.background
+    self.view.backgroundColor = ColorScheme.background
     self.initHeader()
     self.initTableView()
     self.initPlaceholder()
@@ -56,7 +56,7 @@ extension BookmarksCard {
   private func initTableView() {
     self.tableView.registerCell(BookmarksCell.self)
     self.tableView.separatorInset = .zero
-    self.tableView.backgroundColor = Theme.colors.background
+    self.tableView.backgroundColor = ColorScheme.background
     self.tableView.rowHeight = UITableView.automaticDimension
     self.tableView.estimatedRowHeight = Constants.TableView.estimatedCellHeight
     self.tableView.delegate = self

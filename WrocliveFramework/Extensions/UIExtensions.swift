@@ -112,7 +112,7 @@ extension UIView {
 extension UIView {
 
   private var borderColor: UIColor {
-    return Theme.colors.accent
+    return ColorScheme.accent
   }
 
   public func addTopBorder(device: DeviceManagerType) {

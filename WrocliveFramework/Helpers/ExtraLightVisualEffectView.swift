@@ -24,12 +24,12 @@ public final class ExtraLightVisualEffectView: UIVisualEffectView {
 
     if #available(iOS 12.0, *) {
       if self.hasChangedUserInterfaceStyle(previousTraits: previousTraitCollection) {
-        let style = Theme.colors.blurStyle(for: self.userInterfaceStyle)
+        let style = ColorScheme.blurStyle(for: self.userInterfaceStyle)
         self.effect = UIBlurEffect(style: style)
       }
     } else {
       if self.effect == nil {
-        let style = Theme.colors.blurStyle(mode: .light)
+        let style = ColorScheme.blurStyle(mode: .light)
         self.effect = UIBlurEffect(style: style)
       }
     }

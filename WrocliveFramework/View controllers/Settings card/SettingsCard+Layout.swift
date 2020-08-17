@@ -10,7 +10,7 @@ private typealias Localization = Localizable.Settings
 extension SettingsCard {
 
   internal func initLayout() {
-    self.view.backgroundColor = Theme.colors.background
+    self.view.backgroundColor = ColorScheme.background
     self.initHeader()
     self.initTableView()
   }
@@ -51,7 +51,7 @@ extension SettingsCard {
     self.tableView.registerSupplementary(SettingsSectionHeaderView.self)
 
     self.tableView.separatorStyle = .none
-    self.tableView.backgroundColor = Theme.colors.background
+    self.tableView.backgroundColor = ColorScheme.background
     self.tableView.rowHeight = UITableView.automaticDimension
     self.tableView.estimatedRowHeight = Constants.TableView.estimatedCellHeight
     self.tableView.delegate = self

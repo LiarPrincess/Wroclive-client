@@ -12,5 +12,4 @@ public enum Theme {
 
   public fileprivate(set) static var textFont: FontPreset = SystemFont()
   public fileprivate(set) static var iconFont: FontPreset = FontAwesome()
-  public fileprivate(set) static var colors = ColorScheme()
 }

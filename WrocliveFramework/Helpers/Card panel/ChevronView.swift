@@ -52,7 +52,7 @@ public final class ChevronView: UIView {
     self.addSubview(self.leftView)
     self.addSubview(self.rightView)
 
-    let color = Theme.colors.accent
+    let color = ColorScheme.accent
     self.leftView.backgroundColor = color
     self.rightView.backgroundColor = color
 

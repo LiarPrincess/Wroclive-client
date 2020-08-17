@@ -66,7 +66,7 @@ internal final class LineSelectorPage:
 
     self.collectionView.registerCell(LineSelectorCell.self)
     self.collectionView.registerSupplementary(LineSelectorHeaderView.self, kind: .header)
-    self.collectionView.backgroundColor = Theme.colors.background
+    self.collectionView.backgroundColor = ColorScheme.background
     self.collectionView.allowsSelection = true
     self.collectionView.allowsMultipleSelection = true
     self.collectionView.alwaysBounceVertical = true

@@ -41,7 +41,7 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
   }
 
   private func initLayout() {
-    self.view.backgroundColor = Theme.colors.background
+    self.view.backgroundColor = ColorScheme.background
     self.view.roundTopCorners(radius: CardPanelConstants.topCornerRadius)
 
     // 'self.childContainer' has to be before 'self.chevronView',

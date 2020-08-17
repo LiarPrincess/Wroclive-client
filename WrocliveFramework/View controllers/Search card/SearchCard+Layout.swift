@@ -10,7 +10,7 @@ private typealias Localization = Localizable.Search
 extension SearchCard {
 
   internal func initLayout() {
-    self.view.backgroundColor = Theme.colors.background
+    self.view.backgroundColor = ColorScheme.background
     self.initHeader()
     self.initLinesSelector()
     self.initPlaceholder()
@@ -44,7 +44,7 @@ extension SearchCard {
 
     let bookmarkImage = StyleKit.drawStarTemplateImage(size: Constants.Header.Bookmark.size)
     self.bookmarkButton.setImage(bookmarkImage, for: .normal)
-    self.bookmarkButton.tintColor = Theme.colors.tint
+    self.bookmarkButton.tintColor = ColorScheme.tint
     self.bookmarkButton.contentEdgeInsets = Constants.Header.Bookmark.insets
     self.bookmarkButton.addTarget(self,
                                   action: #selector(didPressBookmarkButton),
