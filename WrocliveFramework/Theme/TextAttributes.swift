@@ -84,8 +84,7 @@ public struct TextAttributes {
   private func colorValue() -> UIColor {
     switch self.color {
     case .background: return Theme.colors.background
-    case .accentLight: return Theme.colors.accentLight
-    case .accentDark: return Theme.colors.accentDark
+    case .accentLight: return Theme.colors.accent
     case .text: return Theme.colors.text
     case .tint: return Theme.colors.tint
     case .bus: return Theme.colors.bus

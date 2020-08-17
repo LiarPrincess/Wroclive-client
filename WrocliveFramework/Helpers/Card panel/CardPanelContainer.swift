@@ -52,7 +52,7 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
     }
 
     self.chevronView.setState(.down)
-    self.chevronView.color = Theme.colors.accentLight
+    self.chevronView.color = Theme.colors.accent
 
     self.view.addSubview(self.chevronView)
     self.chevronView.snp.makeConstraints { make in

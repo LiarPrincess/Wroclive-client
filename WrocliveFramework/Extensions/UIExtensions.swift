@@ -95,7 +95,7 @@ extension UIView {
 extension UIView {
 
   private var borderColor: UIColor {
-    return Theme.colors.accentLight
+    return Theme.colors.accent
   }
 
   public func addTopBorder(device: DeviceManagerType) {

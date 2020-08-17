@@ -36,7 +36,7 @@ public final class SettingsTextCell: UITableViewCell {
   private func initLayout() {
     self.backgroundColor = Theme.colors.background
 
-    self.bottomBorder.backgroundColor = Theme.colors.accentLight
+    self.bottomBorder.backgroundColor = Theme.colors.accent
 
     self.addSubview(self.bottomBorder)
     self.bottomBorder.snp.makeConstraints { make in

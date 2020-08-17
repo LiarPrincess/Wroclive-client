@@ -18,7 +18,6 @@ public enum FontType {
 public enum TextColor {
   case background
   case accentLight
-  case accentDark
   case text
   case tint
   case bus
