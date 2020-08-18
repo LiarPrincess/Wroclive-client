@@ -29,13 +29,8 @@ extension SearchCard {
       make.top.left.right.equalToSuperview()
     }
 
-    self.titleLabel.attributedText = NSAttributedString(
-      string: Localization.title,
-      attributes: Constants.Header.Title.attributes
-    )
-    self.titleLabel.numberOfLines = 0
-    self.titleLabel.lineBreakMode = .byWordWrapping
-    self.titleLabel.adjustsFontForContentSizeCategory = true
+    self.initTitleLabel(text: Localization.title,
+                        attributes: Constants.Header.Title.attributes)
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
@@ -43,30 +38,21 @@ extension SearchCard {
       make.left.equalToSuperview().offset(Constants.leftInset)
     }
 
-    let bookmarkImage = StyleKit.drawStarTemplateImage(size: Constants.Header.Bookmark.size)
-    self.bookmarkButton.setImage(bookmarkImage, for: .normal)
-    self.bookmarkButton.tintColor = ColorScheme.tint
-    self.bookmarkButton.contentEdgeInsets = Constants.Header.Bookmark.insets
-    self.bookmarkButton.addTarget(self,
-                                  action: #selector(didPressBookmarkButton),
-                                  for: .touchUpInside)
+    self.initBookmarkButton(image: Assets.searchHeart,
+                            color: ColorScheme.tint,
+                            insets: Constants.Header.Bookmark.insets,
+                            action: #selector(didPressBookmarkButton))
 
     self.headerView.contentView.addSubview(self.bookmarkButton)
     self.bookmarkButton.snp.makeConstraints { make in
-      make.lastBaseline.equalTo(self.titleLabel.snp.lastBaseline)
+      make.bottom.equalTo(self.titleLabel.snp.lastBaseline)
       make.left.equalTo(self.titleLabel.snp.right)
     }
 
-    let searchTitle = NSAttributedString(
-      string: Localization.search,
-      attributes: Constants.Header.Search.attributes
-    )
-    self.searchButton.setAttributedTitle(searchTitle, for: .normal)
-    self.searchButton.contentEdgeInsets = Constants.Header.Search.insets
-    self.searchButton.titleLabel?.adjustsFontForContentSizeCategory = true
-    self.searchButton.addTarget(self,
-                                action: #selector(didPressSearchButton),
-                                for: .touchUpInside)
+    self.initSearchLabel(text: Localization.search,
+                         attributes: Constants.Header.Search.attributes,
+                         insets: Constants.Header.Search.insets,
+                         action: #selector(didPressSearchButton))
 
     self.headerView.contentView.addSubview(self.searchButton)
     self.searchButton.snp.makeConstraints { make in
@@ -74,14 +60,43 @@ extension SearchCard {
       make.right.equalToSuperview()
     }
 
+    // 'self.lineTypeSelector' starts here
+
     self.headerView.contentView.addSubview(self.lineTypeSelector)
     self.lineTypeSelector.snp.makeConstraints { make in
       make.top.equalTo(self.titleLabel.snp.bottom).offset(Constants.Header.LineType.topOffset)
       make.bottom.equalToSuperview().offset(-Constants.Header.LineType.bottomOffset)
+      make.height.equalTo(LineTypeSegmentedControl.Constants.nominalHeight)
       make.left.equalToSuperview().offset(Constants.leftInset)
       make.right.equalToSuperview().offset(-Constants.rightInset)
-      make.height.equalTo(LineTypeSegmentedControlConstants.nominalHeight)
     }
+  }
+
+  private func initTitleLabel(text: String,
+                              attributes: TextAttributes) {
+    self.titleLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+    self.titleLabel.adjustsFontForContentSizeCategory = true
+  }
+
+  private func initBookmarkButton(image: ImageAsset,
+                                  color: UIColor,
+                                  insets: UIEdgeInsets,
+                                  action: Selector) {
+    self.bookmarkButton.setImage(image.image, for: .normal)
+    self.bookmarkButton.tintColor = color
+    self.bookmarkButton.contentEdgeInsets = insets
+    self.bookmarkButton.addTarget(self, action: action, for: .touchUpInside)
+  }
+
+  private func initSearchLabel(text: String,
+                               attributes: TextAttributes,
+                               insets: UIEdgeInsets,
+                               action: Selector) {
+    let attributedText = NSAttributedString(string: text, attributes: attributes)
+    self.searchButton.setAttributedTitle(attributedText, for: .normal)
+    self.searchButton.contentEdgeInsets = insets
+    self.searchButton.titleLabel?.adjustsFontForContentSizeCategory = true
+    self.searchButton.addTarget(self, action: action, for: .touchUpInside)
   }
 
   // MARK: - Lines selector

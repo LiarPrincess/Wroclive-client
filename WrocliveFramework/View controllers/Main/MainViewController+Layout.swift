@@ -60,15 +60,15 @@ extension MainViewController {
     self.setSize(view: self.userTrackingButton.customView!, to: self.buttonSize)
 
     self.customizeButton(self.searchButton,
-                         asset: Assets.toolbarTram,
+                         image: Assets.toolbarTram,
                          action: #selector(searchButtonPressed))
 
     self.customizeButton(self.bookmarksButton,
-                         asset: Assets.toolbarHeart,
+                         image: Assets.toolbarHeart,
                          action: #selector(bookmarksButtonPressed))
 
     self.customizeButton(self.configurationButton,
-                         asset: Assets.toolbarGear,
+                         image: Assets.toolbarGear,
                          action: #selector(settingsButtonPressed))
 
     self.toolbarStackView.addArrangedSubview(self.userTrackingButton.customView!)
@@ -88,9 +88,9 @@ extension MainViewController {
   }
 
   private func customizeButton(_ button: UIButton,
-                               asset: ImageAsset,
+                               image: ImageAsset,
                                action: Selector) {
-    button.setImage(asset.image, for: .normal)
+    button.setImage(image.image, for: .normal)
     button.addTarget(self, action: action, for: .touchUpInside)
 
     guard let imageView = button.imageView else {

@@ -28,21 +28,23 @@ public enum ImageEnum {
   public var value: UIImage {
     let bundle = Bundle(for: BundleToken.self)
 
-    func image(named: String) -> UIImage {
-      return UIImage(named: named, in: bundle, compatibleWith: nil)!
-    }
-
-    switch self {
-    case .tram: return image(named: "tabbar-tram")
-    case .heart: return image(named: "tabbar-heart")
-    case .gear: return image(named: "tabbar-gear")
-    default: break
-    }
+//    func image(named: String) -> UIImage {
+//      return UIImage(named: named, in: bundle, compatibleWith: nil)!
+//    }
+//
+//    switch self {
+//    case .tram: return image(named: "tabbar-tram")
+//    case .heart: return image(named: "tabbar-heart")
+//    case .gear: return image(named: "tabbar-gear")
+//    default: break
+//    }
 
     let name = self.imageName
 
     if #available(iOS 13.0, *) {
-      let configuration = UIImage.SymbolConfiguration(weight: .light)
+      let configuration = UIImage.SymbolConfiguration(pointSize: 20.0,
+                                                      weight: .regular,
+                                                      scale: .medium)
       if let image = UIImage(named: name, in: bundle, with: configuration) {
         return image
       }

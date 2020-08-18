@@ -51,6 +51,7 @@ struct ColorAsset {
 
 enum Assets {
   static let shareImage = ImageAsset(name: "ShareImage")
+  static let searchHeart = ImageAsset(name: "search-heart")
   static let tabbarBookmarks = ImageAsset(name: "tabbar-bookmarks")
   static let tabbarNotifications = ImageAsset(name: "tabbar-notifications")
   static let tabbarSearch = ImageAsset(name: "tabbar-search")

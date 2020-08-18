@@ -23,10 +23,10 @@ extension SearchCard {
       }
 
       public enum Bookmark {
-        public static let size = CGSize(width: 23.0, height: 23.0)
+        // We will make this button bigger using insets
         public static let insets = UIEdgeInsets(top: 15.0,
                                                 left: 6.0,
-                                                bottom: 8.0,
+                                                bottom: 0.0,
                                                 right: 16.0)
       }
 
