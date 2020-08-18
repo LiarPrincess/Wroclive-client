@@ -55,6 +55,9 @@ enum Assets {
   static let tabbarNotifications = ImageAsset(name: "tabbar-notifications")
   static let tabbarSearch = ImageAsset(name: "tabbar-search")
   static let tabbarSettings = ImageAsset(name: "tabbar-settings")
+  static let toolbarGear = ImageAsset(name: "toolbar-gear")
+  static let toolbarHeart = ImageAsset(name: "toolbar-heart")
+  static let toolbarTram = ImageAsset(name: "toolbar-tram")
 }
 
 extension Image {
