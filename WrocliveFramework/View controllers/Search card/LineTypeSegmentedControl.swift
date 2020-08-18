@@ -2,10 +2,17 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-private typealias Constants = LineTypeSegmentedControlConstants
 private typealias Localization = Localizable.Search
 
 internal final class LineTypeSegmentedControl: UIView {
+
+  internal enum Constants {
+
+    /// Proposed height
+    internal static let nominalHeight = CGFloat(30.0)
+
+    internal static let titleAttributes = TextAttributes(style: .body, color: .tint)
+  }
 
   private let pages = [LineType.tram, LineType.bus]
   private let segmentedControl = UISegmentedControl(frame: .zero)

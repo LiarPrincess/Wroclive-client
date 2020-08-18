@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		90093B4E24DEB4E100D95645 /* LineSelector+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90093B4D24DEB4E100D95645 /* LineSelector+Constants.swift */; };
-		90093B5024DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90093B4F24DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift */; };
 		900DCC1D24E7FEF7004F000D /* ReachabilityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900DCC1C24E7FEF7004F000D /* ReachabilityStatus.swift */; };
 		900EA0C424D467040054C03F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 900EA0C624D467040054C03F /* InfoPlist.strings */; };
 		900EA0D624D469D90054C03F /* WrocliveFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900EA0CF24D469D90054C03F /* WrocliveFramework.framework */; };
@@ -208,7 +207,6 @@
 
 /* Begin PBXFileReference section */
 		90093B4D24DEB4E100D95645 /* LineSelector+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LineSelector+Constants.swift"; sourceTree = "<group>"; };
-		90093B4F24DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTypeSegmentedControlConstants.swift; sourceTree = "<group>"; };
 		900DCC1C24E7FEF7004F000D /* ReachabilityStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityStatus.swift; sourceTree = "<group>"; };
 		900EA0C524D467040054C03F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		900EA0C724D467490054C03F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -755,7 +753,6 @@
 				9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */,
 				9076BD4624DDB5D100467075 /* SearchPlaceholderView.swift */,
 				9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */,
-				90093B4F24DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift */,
 			);
 			path = "Search card";
 			sourceTree = "<group>";
@@ -1162,7 +1159,6 @@
 				9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */,
 				9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */,
 				9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */,
-				90093B5024DEC65E00D95645 /* LineTypeSegmentedControlConstants.swift in Sources */,
 				907FD0BB24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
