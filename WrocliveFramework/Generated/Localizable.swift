@@ -112,7 +112,7 @@ public enum Localizable {
     }
 
     enum Placeholder {
-      /// To add bookmark press <star> when selecting lines.
+      /// To add bookmark press <heart> when selecting lines.
       static let content = Localizable.tr("Localizable", "Bookmarks.Placeholder.Content")
       /// You have not saved any bookmarks
       static let title = Localizable.tr("Localizable", "Bookmarks.Placeholder.Title")

@@ -85,6 +85,7 @@ extension SearchCard {
     self.bookmarkButton.setImage(image.image, for: .normal)
     self.bookmarkButton.tintColor = color
     self.bookmarkButton.contentEdgeInsets = insets
+    self.bookmarkButton.adjustsImageSizeForAccessibilityContentSizeCategory = true
     self.bookmarkButton.addTarget(self, action: action, for: .touchUpInside)
   }
 

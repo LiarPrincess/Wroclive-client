@@ -13,7 +13,7 @@
 "Bookmarks.Edit.Edit" = "Edit";
 
 "Bookmarks.Placeholder.Title"   = "You have not saved any bookmarks";
-"Bookmarks.Placeholder.Content" = "To add bookmark press <star> when selecting lines.";
+"Bookmarks.Placeholder.Content" = "To add bookmark press <heart> when selecting lines.";
 
 /* Search */
 

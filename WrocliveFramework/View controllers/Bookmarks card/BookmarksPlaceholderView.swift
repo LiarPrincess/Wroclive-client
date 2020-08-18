@@ -60,16 +60,16 @@ public final class BookmarksPlaceholderView: UIView {
   }
 
   private func createContentText() -> NSAttributedString {
-    let content = Localization.content
-    let textAttributes = Constants.Content.textAttributes
-    let iconAttributes = Constants.Content.iconAttributes
+    let heartAttachment = NSTextAttachment()
+    heartAttachment.image = Assets.bookmarksPlaceholderHeart.image
+    heartAttachment.adjustsImageSizeForAccessibilityContentSizeCategory = true
+    let heartAttributedString = NSAttributedString(attachment: heartAttachment)
 
-    let starReplacement = TextReplacement(
-      "<star>",
-      NSAttributedString(string: "\u{f006}", attributes: iconAttributes)
-    )
+    let replacement = TextReplacement("<heart>", heartAttributedString)
 
-    return NSAttributedString(string: content, attributes: textAttributes)
-      .withReplacements([starReplacement])
+    return NSAttributedString(
+      string: Localization.content,
+      attributes: Constants.Content.textAttributes
+    ).withReplacements([replacement])
   }
 }

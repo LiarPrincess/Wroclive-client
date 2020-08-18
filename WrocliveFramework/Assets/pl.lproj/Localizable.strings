@@ -13,7 +13,7 @@
 "Bookmarks.Edit.Edit" = "Edycja";
 
 "Bookmarks.Placeholder.Title"   = "Brak zakładek";
-"Bookmarks.Placeholder.Content" = "By dodać zakładkę użyj <star> podczas wyboru linii.";
+"Bookmarks.Placeholder.Content" = "By dodać zakładkę użyj <heart> podczas wyboru linii.";
 
 /* Search */
 

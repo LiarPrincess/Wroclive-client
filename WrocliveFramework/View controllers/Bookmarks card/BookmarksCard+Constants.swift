@@ -77,12 +77,9 @@ extension BookmarksCard {
       }
 
       public enum Content {
-        private static let base = TextAttributes(style: .body,
-                                                 alignment: .center,
-                                                 lineSpacing: 5.0)
-
-        public static let textAttributes = Self.base.withFont(.text)
-        public static let iconAttributes = Self.base.withFont(.icon)
+        public static let textAttributes = TextAttributes(style: .body,
+                                                          alignment: .center,
+                                                          lineSpacing: 5.0)
       }
     }
   }
