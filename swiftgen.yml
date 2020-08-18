@@ -17,12 +17,3 @@ xcassets:
       params:
         enumName: Assets
         noAllValues: true
-
-fonts:
-  inputs: Assets
-  outputs:
-    - templatePath: WrocliveFramework/Generated/Fonts.stencil
-      output: Fonts.swift
-      params:
-        enumName: Fonts
-        noAllValues: true

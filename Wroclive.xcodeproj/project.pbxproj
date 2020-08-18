@@ -43,7 +43,6 @@
 		9013FABE24D6B1890006D1B9 /* CardPanelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA524D6B1880006D1B9 /* CardPanelConstants.swift */; };
 		9013FABF24D6B1890006D1B9 /* MapUpdateScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */; };
 		9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA924D6B1880006D1B9 /* AlertCreator.swift */; };
-		9013FAC724D721410006D1B9 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC424D721410006D1B9 /* Fonts.swift */; };
 		9013FAC824D721410006D1B9 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC524D721410006D1B9 /* Localizable.swift */; };
 		9013FAC924D721410006D1B9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAC624D721410006D1B9 /* Assets.swift */; };
 		9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAFF24D721A90006D1B9 /* MainViewController.swift */; };
@@ -59,6 +58,7 @@
 		9023EBE324E5B30C00F09D27 /* SearchCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9023EBDF24E5B30C00F09D27 /* SearchCardViewModelTests.swift */; };
 		9023EBE424E5B30C00F09D27 /* SearchCardViewModelTests+Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9023EBE024E5B30C00F09D27 /* SearchCardViewModelTests+Tracking.swift */; };
 		9023EBE524E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9023EBE124E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift */; };
+		90462B7224EC42F300305F3F /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90462B7124EC42F300305F3F /* Fonts.swift */; };
 		9047995924D56BCA00111F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995824D56BCA00111F2C /* Environment.swift */; };
 		9047996724D575C500111F2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995B24D575C500111F2C /* AppState.swift */; };
 		9047996824D575C500111F2C /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995D24D575C500111F2C /* Middleware.swift */; };
@@ -82,10 +82,6 @@
 		9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938524D4A7460046EFA5 /* ColorScheme.swift */; };
 		9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938624D4A7460046EFA5 /* TextAttributes.swift */; };
 		9058938F24D4A7460046EFA5 /* TextAttributes+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938724D4A7460046EFA5 /* TextAttributes+Enums.swift */; };
-		9058939124D4A7460046EFA5 /* FontPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938A24D4A7460046EFA5 /* FontPreset.swift */; };
-		9058939224D4A7460046EFA5 /* SystemFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938B24D4A7460046EFA5 /* SystemFont.swift */; };
-		9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058938C24D4A7460046EFA5 /* FontAwesome.swift */; };
-		9058939B24D4A8600046EFA5 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9058939524D4A8600046EFA5 /* FontAwesome.otf */; };
 		9058939C24D4A8600046EFA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9058939624D4A8600046EFA5 /* Assets.xcassets */; };
 		9058939D24D4A8600046EFA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9058939724D4A8600046EFA5 /* Localizable.strings */; };
 		9058939E24D4A8600046EFA5 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058939924D4A8600046EFA5 /* StyleKit.swift */; };
@@ -107,7 +103,6 @@
 		9076BD5224DDB5D100467075 /* SearchCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */; };
 		9076BD5324DDB5D100467075 /* SearchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4924DDB5D100467075 /* SearchCard.swift */; };
 		9076BD5924DDD26C00467075 /* LineTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */; };
-		907B21CB24EB2E340076DDC2 /* ImageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907B21CA24EB2E340076DDC2 /* ImageEnum.swift */; };
 		907FD0B724D898BC00B6896C /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B624D898BC00B6896C /* Reducer.swift */; };
 		907FD0B924D8A2DC00B6896C /* OfflineApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B824D8A2DC00B6896C /* OfflineApi.swift */; };
 		907FD0BB24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0BA24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift */; };
@@ -239,7 +234,6 @@
 		9013FAA524D6B1880006D1B9 /* CardPanelConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelConstants.swift; sourceTree = "<group>"; };
 		9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUpdateScheduler.swift; sourceTree = "<group>"; };
 		9013FAA924D6B1880006D1B9 /* AlertCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertCreator.swift; sourceTree = "<group>"; };
-		9013FAC424D721410006D1B9 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		9013FAC524D721410006D1B9 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		9013FAC624D721410006D1B9 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		9013FAFF24D721A90006D1B9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +249,7 @@
 		9023EBDF24E5B30C00F09D27 /* SearchCardViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewModelTests.swift; sourceTree = "<group>"; };
 		9023EBE024E5B30C00F09D27 /* SearchCardViewModelTests+Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Tracking.swift"; sourceTree = "<group>"; };
 		9023EBE124E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Bookmarks.swift"; sourceTree = "<group>"; };
+		90462B7124EC42F300305F3F /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		9047995824D56BCA00111F2C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9047995B24D575C500111F2C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		9047995D24D575C500111F2C /* Middleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
@@ -281,10 +276,6 @@
 		9058938524D4A7460046EFA5 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		9058938624D4A7460046EFA5 /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		9058938724D4A7460046EFA5 /* TextAttributes+Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextAttributes+Enums.swift"; sourceTree = "<group>"; };
-		9058938A24D4A7460046EFA5 /* FontPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontPreset.swift; sourceTree = "<group>"; };
-		9058938B24D4A7460046EFA5 /* SystemFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemFont.swift; sourceTree = "<group>"; };
-		9058938C24D4A7460046EFA5 /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
-		9058939524D4A8600046EFA5 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		9058939624D4A8600046EFA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9058939824D4A8600046EFA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9058939924D4A8600046EFA5 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -307,7 +298,6 @@
 		9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewModel.swift; sourceTree = "<group>"; };
 		9076BD4924DDB5D100467075 /* SearchCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCard.swift; sourceTree = "<group>"; };
 		9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTypeSegmentedControl.swift; sourceTree = "<group>"; };
-		907B21CA24EB2E340076DDC2 /* ImageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEnum.swift; sourceTree = "<group>"; };
 		907FD0B624D898BC00B6896C /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		907FD0B824D8A2DC00B6896C /* OfflineApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineApi.swift; sourceTree = "<group>"; };
 		907FD0BA24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationAuthorizationMiddleware.swift; sourceTree = "<group>"; };
@@ -649,9 +639,7 @@
 		9058938424D4A7460046EFA5 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
-				9058938A24D4A7460046EFA5 /* FontPreset.swift */,
-				9058938B24D4A7460046EFA5 /* SystemFont.swift */,
-				9058938C24D4A7460046EFA5 /* FontAwesome.swift */,
+				90462B7124EC42F300305F3F /* Fonts.swift */,
 				9058938524D4A7460046EFA5 /* ColorScheme.swift */,
 				9058938624D4A7460046EFA5 /* TextAttributes.swift */,
 				9058938724D4A7460046EFA5 /* TextAttributes+Enums.swift */,
@@ -662,7 +650,6 @@
 		9058939424D4A8600046EFA5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				9058939524D4A8600046EFA5 /* FontAwesome.otf */,
 				9058939624D4A8600046EFA5 /* Assets.xcassets */,
 				9058939724D4A8600046EFA5 /* Localizable.strings */,
 				9058939924D4A8600046EFA5 /* StyleKit.swift */,
@@ -673,9 +660,7 @@
 		9058939F24D4A8AC0046EFA5 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				907B21CA24EB2E340076DDC2 /* ImageEnum.swift */,
 				9013FAC624D721410006D1B9 /* Assets.swift */,
-				9013FAC424D721410006D1B9 /* Fonts.swift */,
 				9013FAC524D721410006D1B9 /* Localizable.swift */,
 			);
 			path = Generated;
@@ -998,7 +983,6 @@
 			files = (
 				9058939C24D4A8600046EFA5 /* Assets.xcassets in Resources */,
 				9058939D24D4A8600046EFA5 /* Localizable.strings in Resources */,
-				9058939B24D4A8600046EFA5 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,6 +1030,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90462B7224EC42F300305F3F /* Fonts.swift in Sources */,
 				90F38E4C24E19ECE000D4192 /* SettingsCard.swift in Sources */,
 				9047996824D575C500111F2C /* Middleware.swift in Sources */,
 				90F38E4E24E19ECE000D4192 /* SettingsCard+Constants.swift in Sources */,
@@ -1072,7 +1057,6 @@
 				900EA11124D473E70054C03F /* Network.swift in Sources */,
 				90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */,
 				9047996724D575C500111F2C /* AppState.swift in Sources */,
-				9058939124D4A7460046EFA5 /* FontPreset.swift in Sources */,
 				9076BD3E24DDB57A00467075 /* SearchCardCoordinator.swift in Sources */,
 				90CE741724D9BB7800419166 /* BookmarksPlaceholderView.swift in Sources */,
 				90CE742B24D9D6E000419166 /* BookmarksCardCoordinator.swift in Sources */,
@@ -1090,7 +1074,6 @@
 				9076BD5324DDB5D100467075 /* SearchCard.swift in Sources */,
 				9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */,
 				90CE741524D9BB7800419166 /* BookmarksCard+Layout.swift in Sources */,
-				9013FAC724D721410006D1B9 /* Fonts.swift in Sources */,
 				90093B4E24DEB4E100D95645 /* LineSelector+Constants.swift in Sources */,
 				9013FB3C24D72C790006D1B9 /* VehicleAnnotationDiff.swift in Sources */,
 				90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */,
@@ -1144,8 +1127,6 @@
 				9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */,
 				905893CE24D4A95D0046EFA5 /* DeviceManager.swift in Sources */,
 				900EA10C24D46F140054C03F /* VehicleLocationsEndpoint.swift in Sources */,
-				9058939224D4A7460046EFA5 /* SystemFont.swift in Sources */,
-				907B21CB24EB2E340076DDC2 /* ImageEnum.swift in Sources */,
 				90CE741824D9BB7800419166 /* BookmarksCard+Constants.swift in Sources */,
 				90CE742D24D9D6E600419166 /* CardCoordinator.swift in Sources */,
 				90D57B0924DC490100A0EF53 /* LineSelectorCell.swift in Sources */,
@@ -1157,7 +1138,6 @@
 				9013FABD24D6B1890006D1B9 /* CardPanelDismissTransition.swift in Sources */,
 				9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */,
 				9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */,
-				9058939324D4A7460046EFA5 /* FontAwesome.swift in Sources */,
 				9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */,
 				907FD0BB24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift in Sources */,
 			);

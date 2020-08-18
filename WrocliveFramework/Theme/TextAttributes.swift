@@ -104,13 +104,11 @@ public struct TextAttributes {
     }
   }
 
-  private static let textFont: FontPreset = SystemFont()
-  private static let iconFont: FontPreset = FontAwesome()
+  private static let textFont = SystemFont()
 
   private func fontPresetValue() -> FontPreset {
     switch self.font {
     case .text: return Self.textFont
-    case .icon: return Self.iconFont
     }
   }
 

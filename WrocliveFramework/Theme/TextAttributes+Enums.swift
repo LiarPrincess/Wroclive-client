@@ -12,9 +12,10 @@ extension TextAttributes {
     case footnote
   }
 
+  // At some point in time we used 'FontAwesome' for icons,
+  // we will leave this just in case.
   public enum FontType {
     case text
-    case icon
   }
 
   public enum Color {
