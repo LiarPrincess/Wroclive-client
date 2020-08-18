@@ -16,7 +16,7 @@ extension CGFloat {
   }
 }
 
-// MARK: - UIApplication + Top view controller
+// MARK: - UIApplication + topViewController
 
 extension UIApplication {
 
@@ -34,7 +34,7 @@ extension UIApplication {
   }
 }
 
-// MARK: - UISegmentedControl
+// MARK: - UISegmentedControl + font
 
 extension UISegmentedControl {
 
@@ -49,7 +49,7 @@ extension UISegmentedControl {
   }
 }
 
-// MARK: - UICollectionView
+// MARK: - UICollectionView + contentWidth
 
 extension UICollectionView {
 
@@ -59,7 +59,21 @@ extension UICollectionView {
   }
 }
 
-// MARK: - UIView
+// MARK: - UITraitCollection + hasChangedUserInterfaceStyle
+
+extension UITraitCollection {
+
+  @available(iOS 12.0, *)
+  public func hasChangedUserInterfaceStyle(
+    comparedTo traitCollection: UITraitCollection?
+  ) -> Bool {
+    let current = self.userInterfaceStyle
+    let old = traitCollection?.userInterfaceStyle
+    return current != old
+  }
+}
+
+// MARK: - UIView + setContentHuggingPriority
 
 extension UIView {
 
@@ -69,24 +83,7 @@ extension UIView {
   }
 }
 
-// MARK: - UIView + UserInterfaceStyle
-
-extension UIView {
-
-  @available(iOS 12.0, *)
-  public var userInterfaceStyle: UIUserInterfaceStyle {
-    return self.traitCollection.userInterfaceStyle
-  }
-
-  @available(iOS 12.0, *)
-  public func hasChangedUserInterfaceStyle(previousTraits: UITraitCollection?) -> Bool {
-    let current = self.userInterfaceStyle
-    let old = previousTraits?.userInterfaceStyle
-    return current != old
-  }
-}
-
-// MARK: - UIView + Round corners
+// MARK: - UIView + roundCorners
 
 extension UIView {
 
@@ -107,7 +104,7 @@ extension UIView {
   }
 }
 
-// MARK: - UIView + Add border
+// MARK: - UIView + addBorder
 
 extension UIView {
 

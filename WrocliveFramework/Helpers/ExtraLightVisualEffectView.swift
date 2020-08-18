@@ -23,8 +23,9 @@ public final class ExtraLightVisualEffectView: UIVisualEffectView {
     super.traitCollectionDidChange(previousTraitCollection)
 
     if #available(iOS 12.0, *) {
-      if self.hasChangedUserInterfaceStyle(previousTraits: previousTraitCollection) {
-        let style = ColorScheme.blurStyle(for: self.userInterfaceStyle)
+      let current = self.traitCollection
+      if current.hasChangedUserInterfaceStyle(comparedTo: previousTraitCollection) {
+        let style = ColorScheme.blurStyle(for: current.userInterfaceStyle)
         self.effect = UIBlurEffect(style: style)
       }
     } else {
