@@ -29,11 +29,11 @@ public struct SettingsSection {
       }
     }
 
-    public var image: ImageEnum? {
+    public var image: ImageAsset? {
       switch self {
-      case .about: return .about
-      case .share: return .share
-      case .rate: return .rate
+      case .about: return Assets.settingsAbout
+      case .share: return Assets.settingsShare
+      case .rate: return Assets.settingsRate
       }
     }
   }

@@ -69,7 +69,7 @@ public final class SettingsTextCell: UITableViewCell {
     )
 
     if let imageView = self.imageView {
-      imageView.image = kind.image?.value
+      imageView.image = kind.image?.image
     }
 
     self.isBottomBorderVisible = !isLastCellInSection
