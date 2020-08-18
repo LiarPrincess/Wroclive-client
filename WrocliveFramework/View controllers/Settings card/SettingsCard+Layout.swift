@@ -27,13 +27,8 @@ extension SettingsCard {
       make.top.left.right.equalToSuperview()
     }
 
-    self.titleLabel.attributedText = NSAttributedString(
-      string: Localization.title,
-      attributes: Constants.Header.titleAttributes
-    )
-    self.titleLabel.numberOfLines = 0
-    self.titleLabel.lineBreakMode = .byWordWrapping
-    self.titleLabel.adjustsFontForContentSizeCategory = true
+    self.initTitleLabel(text: Localization.title,
+                        attributes: Constants.Header.titleAttributes)
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
@@ -42,6 +37,12 @@ extension SettingsCard {
       make.left.equalToSuperview().offset(Constants.leftInset)
       make.right.equalToSuperview().offset(-Constants.rightInset)
     }
+  }
+
+  private func initTitleLabel(text: String,
+                              attributes: TextAttributes) {
+    self.titleLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+    self.titleLabel.adjustsFontForContentSizeCategory = true
   }
 
   // MARK: - Table view

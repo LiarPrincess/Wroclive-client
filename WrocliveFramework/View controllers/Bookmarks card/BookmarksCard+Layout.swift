@@ -16,6 +16,8 @@ extension BookmarksCard {
     self.initPlaceholder()
   }
 
+  // MARK: - Header
+
   private func initHeader() {
     let device = self.environment.device
     self.headerView.contentView.addBottomBorder(device: device)
@@ -26,13 +28,10 @@ extension BookmarksCard {
       make.top.left.right.equalToSuperview()
     }
 
-    self.titleLabel.attributedText = NSAttributedString(
-      string: Localization.title,
-      attributes: Constants.Header.Title.attributes
-    )
-    self.titleLabel.numberOfLines = 0
-    self.titleLabel.lineBreakMode = .byWordWrapping
-    self.titleLabel.adjustsFontForContentSizeCategory = true
+    self.initTitleLabel(text: Localization.title,
+                        attributes: Constants.Header.Title.attributes,
+                        numberOfLines: 0,
+                        lineBreakMode: .byWordWrapping)
 
     self.headerView.contentView.addSubview(self.titleLabel)
     self.titleLabel.snp.makeConstraints { make in
@@ -41,11 +40,9 @@ extension BookmarksCard {
       make.left.equalToSuperview().offset(Constants.leftInset)
     }
 
-    self.editButton.contentEdgeInsets = Constants.Header.Edit.insets
-    self.editButton.titleLabel?.adjustsFontForContentSizeCategory = true
-    self.editButton.addTarget(self,
-                              action: #selector(editButtonPressed),
-                              for: .touchUpInside)
+    self.initEditButton(text: self.viewModel.editButtonText,
+                        insets: Constants.Header.Edit.insets,
+                        action: #selector(editButtonPressed))
 
     self.headerView.contentView.addSubview(self.editButton)
     self.editButton.snp.makeConstraints { make in
@@ -53,6 +50,27 @@ extension BookmarksCard {
       make.right.equalToSuperview()
     }
   }
+
+  private func initTitleLabel(text: String,
+                              attributes: TextAttributes,
+                              numberOfLines: Int,
+                              lineBreakMode: NSLineBreakMode) {
+    self.titleLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+    self.titleLabel.numberOfLines = 0
+    self.titleLabel.lineBreakMode = .byWordWrapping
+    self.titleLabel.adjustsFontForContentSizeCategory = true
+  }
+
+  private func initEditButton(text: NSAttributedString,
+                              insets: UIEdgeInsets,
+                              action: Selector) {
+    self.editButton.setAttributedTitle(text, for: .normal)
+    self.editButton.contentEdgeInsets = insets
+    self.editButton.titleLabel?.adjustsFontForContentSizeCategory = true
+    self.editButton.addTarget(self, action: action, for: .touchUpInside)
+  }
+
+  // MARK: - Table view
 
   private func initTableView() {
     self.tableView.registerCell(BookmarksCell.self)
