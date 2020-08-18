@@ -14,65 +14,18 @@ import UIKit
 
 public enum StyleKit {
 
-  public static func drawStarTemplateImage(size: CGSize) -> UIImage {
-    return StyleKit.drawTemplateImage(size: size) {
-      let frame = CGRect(origin: .zero, size: size)
-      StyleKit.drawStar(frame: frame, resizing: resizingBehavior)
-    }
-  }
-
-  private static var resizingBehavior: ResizingBehavior { return .aspectFit }
-
-  private static func drawTemplateImage(size: CGSize, draw: () -> Void) -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(size, false, 0)
-
-    draw()
-
-    let image = UIGraphicsGetImageFromCurrentImageContext()!.withRenderingMode(.alwaysTemplate)
-    UIGraphicsEndImageContext()
-
-    return image
-  }
-
-  public static func drawStar(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 60),
-                              resizing: ResizingBehavior = .aspectFit) {
-
-    //// General Declarations
-    let context = UIGraphicsGetCurrentContext()!
-
-    //// Resize to Target Frame
-    context.saveGState()
-    let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 60, height: 60), target: targetFrame)
-    context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-    context.scaleBy(x: resizedFrame.width / 60, y: resizedFrame.height / 60)
-
-    //// Shape Drawing
-    let shapePath = UIBezierPath()
-    shapePath.move(to: CGPoint(x: 30, y: 1.25))
-    shapePath.addLine(to: CGPoint(x: 39.19, y: 19.71))
-    shapePath.addLine(to: CGPoint(x: 58.74, y: 23.19))
-    shapePath.addLine(to: CGPoint(x: 44.87, y: 38.07))
-    shapePath.addLine(to: CGPoint(x: 47.77, y: 58.68))
-    shapePath.addLine(to: CGPoint(x: 30, y: 49.42))
-    shapePath.addLine(to: CGPoint(x: 12.24, y: 58.68))
-    shapePath.addLine(to: CGPoint(x: 15.13, y: 38.07))
-    shapePath.addLine(to: CGPoint(x: 1.26, y: 23.19))
-    shapePath.addLine(to: CGPoint(x: 20.81, y: 19.71))
-    shapePath.close()
-    UIColor.black.setStroke()
-    shapePath.lineWidth = 2.5
-    shapePath.lineJoinStyle = .round
-    shapePath.stroke()
-
-    context.restoreGState()
-  }
-
   /// Vehicle on map (without the number/letter!)
   public static func drawVehicleAnnotation(
     frame targetFrame: CGRect,
     color: UIColor,
     resizing: ResizingBehavior = .aspectFit
   ) {
+    //   /A\    -  Arrow
+    // .-----.  -  Arrow gap (space between arrow and rect)
+    // |     |  \
+    // |     |   | Rect
+    // '-----'  /
+
     // dimensions (x4):
     // arrow height: 24 |  6
     // arrow width:  64 | 16
@@ -85,25 +38,32 @@ public enum StyleKit {
     // corners radius: 40 | 10
 
     // Constants
-    let contextSize: CGFloat = 52.0
+    let contextSize = CGFloat(52.0)
 
-    let arrowWidth: CGFloat = 16.0
-    let arrowHeight: CGFloat = 6.0
-    let arrowGap: CGFloat = 2.0
+    let arrowWidth = CGFloat(16.0)
+    let arrowHeight = CGFloat(6.0)
+    let arrowGap = CGFloat(2.0)
 
-    let rectBorderWidth: CGFloat = 2.0
-    let rectCornerRadius: CGFloat = 10.0
-    let rectSize: CGFloat = contextSize - 2 * (arrowHeight + arrowGap)
+    let rectBorderWidth = CGFloat(2.0)
+    let rectCornerRadius = CGFloat(10.0)
+    let rectSize = contextSize - 2 * (arrowHeight + arrowGap)
 
-    let rectFrame = CGRect(x: arrowHeight + arrowGap, y: arrowHeight + arrowGap, width: rectSize, height: rectSize)
+    let rectFrame = CGRect(x: arrowHeight + arrowGap,
+                           y: arrowHeight + arrowGap,
+                           width: rectSize,
+                           height: rectSize)
 
     // Drawing
     let context = UIGraphicsGetCurrentContext()!
 
     context.saveGState()
-    let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0.0, y: 0.0, width: contextSize, height: contextSize), target: targetFrame)
-    context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-    context.scaleBy(x: resizedFrame.width / contextSize, y: resizedFrame.height / contextSize)
+    let orginalFrame = CGRect(x: 0.0, y: 0.0, width: contextSize, height: contextSize)
+    let resizedFrame = resizing.apply(rect: orginalFrame, target: targetFrame)
+
+    context.translateBy(x: resizedFrame.minX,
+                        y: resizedFrame.minY)
+    context.scaleBy(x: resizedFrame.width / contextSize,
+                    y: resizedFrame.height / contextSize)
 
     // Rounded rect
     let rectPath = UIBezierPath(roundedRect: rectFrame, cornerRadius: rectCornerRadius)
