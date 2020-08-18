@@ -31,9 +31,9 @@ public struct SettingsSection {
 
     public var image: ImageAsset? {
       switch self {
-      case .about: return Assets.settingsAbout
-      case .share: return Assets.settingsShare
-      case .rate: return Assets.settingsRate
+      case .about: return ImageAsset.settingsAbout
+      case .share: return ImageAsset.settingsShare
+      case .rate: return ImageAsset.settingsRate
       }
     }
   }

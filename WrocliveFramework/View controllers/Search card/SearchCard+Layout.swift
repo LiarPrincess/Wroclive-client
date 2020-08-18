@@ -38,7 +38,7 @@ extension SearchCard {
       make.left.equalToSuperview().offset(Constants.leftInset)
     }
 
-    self.initBookmarkButton(image: Assets.searchHeart,
+    self.initBookmarkButton(image: ImageAsset.searchHeart,
                             color: ColorScheme.tint,
                             insets: Constants.Header.Bookmark.insets,
                             action: #selector(didPressBookmarkButton))
@@ -82,7 +82,7 @@ extension SearchCard {
                                   color: UIColor,
                                   insets: UIEdgeInsets,
                                   action: Selector) {
-    self.bookmarkButton.setImage(image.image, for: .normal)
+    self.bookmarkButton.setImage(image.value, for: .normal)
     self.bookmarkButton.tintColor = color
     self.bookmarkButton.contentEdgeInsets = insets
     self.bookmarkButton.adjustsImageSizeForAccessibilityContentSizeCategory = true

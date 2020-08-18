@@ -5,141 +5,88 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 // swiftlint:disable vertical_whitespace
-// swiftlint:disable deployment_target
 // swiftlint:disable identifier_name
 // swiftlint:disable type_body_length
 
 {% if catalogs %}
-{% set colorAlias %}{{param.colorAliasName|default:"AssetColorTypeAlias"}}{% endset %}
-{% set imageAlias %}{{param.imageAliasName|default:"Image"}}{% endset %}
 
 #if os(OSX)
-  import AppKit.NSImage
-  typealias {{colorAlias}} = NSColor
-  typealias {{imageAlias}} = NSImage
+import AppKit.NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
-  import UIKit.UIImage
-  typealias {{colorAlias}} = UIColor
-  typealias {{imageAlias}} = UIImage
+import UIKit.UIImage
 #endif
 
-{% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
-{% set imageType %}{{param.imageTypeName|default:"ImageAsset"}}{% endset %}
-@available(*, deprecated, renamed: "{{imageType}}")
-typealias {{enumName}}Type = {{imageType}}
+private final class BundleToken {}
 
-struct {{imageType}} {
-  fileprivate(set) var name: String
+public struct ImageAsset {
 
-  var image: {{imageAlias}} {
+#if os(OSX)
+  public typealias Value = NSImage
+#elseif os(iOS) || os(tvOS) || os(watchOS)
+  public typealias Value = UIImage
+#endif
+
+  public let name: String
+
+  {% for asset in catalogs.first.assets %}
+  {% if asset.type == "image" %}
+  public static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = ImageAsset(name: "{{asset.value}}")
+  {% endif %}
+  {% endfor %}
+
+  public var value: Value {
     let bundle = Bundle(for: BundleToken.self)
+
     #if os(iOS) || os(tvOS)
-    let image = {{imageAlias}}(named: name, in: bundle, compatibleWith: nil)
+    let image = Value(named: self.name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: NSImage.Name(name))
+    let image = bundle.image(forResource: NSImage.Name(self.name))
     #elseif os(watchOS)
-    let image = {{imageAlias}}(named: name)
+    let image = Value(named: self.name)
     #endif
-    guard let result = image else { fatalError("Unable to load image named \(name).") }
+
+    guard let result = image else {
+      fatalError("Unable to load image named \(self.name).")
+    }
+
     return result
   }
 }
 
-{% set colorType %}{{param.colorTypeName|default:"ColorAsset"}}{% endset %}
-struct {{colorType}} {
-  fileprivate(set) var name: String
+public struct ColorAsset {
 
-  @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  var color: {{colorAlias}} {
-    return {{colorAlias}}(asset: self)
-  }
-}
-{% macro enumBlock assets sp %}
-{{sp}}  {% call casesBlock assets sp %}
-{{sp}}  {% if not param.noAllValues %}
+#if os(OSX)
+  public typealias Value = NSColor
+#elseif os(iOS) || os(tvOS) || os(watchOS)
+  public typealias Value = UIColor
+#endif
 
-{{sp}}
-{{sp}}  static let allColors: [{{colorType}}] = [
-{{sp}}    {% set sp2 %}{{sp}}  {% endset %}
-{{sp}}    {% call allValuesBlock assets "color" "" sp2 %}
-{{sp}}  ]
-{{sp}}  static let allImages: [{{imageType}}] = [
-{{sp}}    {% set sp2 %}{{sp}}  {% endset %}
-{{sp}}    {% call allValuesBlock assets "image" "" sp2 %}
-{{sp}}  ]
-{{sp}}
-{{sp}}  @available(*, deprecated, renamed: "allImages")
-{{sp}}  static let allValues: [{{enumName}}Type] = allImages
-{{sp}}  {% endif %}
-{% endmacro %}
-{% macro casesBlock assets sp %}
-{{sp}}  {% for asset in assets %}
-{{sp}}  {% if asset.type == "color" %}
-{{sp}}  static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{colorType}}(name: "{{asset.value}}")
-{{sp}}  {% elif asset.type == "image" %}
-{{sp}}  static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
-{{sp}}  {% elif asset.items %}
-{{sp}}  enum {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
-{{sp}}    {% set sp2 %}{{sp}}  {% endset %}
-{{sp}}    {% call casesBlock asset.items sp2 %}
-{{sp}}  }
-{{sp}}  {% endif %}
-{{sp}}  {% endfor %}
-{% endmacro %}
-{% macro allValuesBlock assets filter prefix sp %}
-{{sp}}  {% for asset in assets %}
-{{sp}}  {% if asset.type == filter %}
-{{sp}}  {{prefix}}{{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}},
-{{sp}}  {% elif asset.items %}
-{{sp}}  {% set prefix2 %}{{prefix}}{{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}.{% endset %}
-{{sp}}  {% call allValuesBlock asset.items filter prefix2 sp %}
-{{sp}}  {% endif %}
-{{sp}}  {% endfor %}
-{% endmacro %}
+  public let name: String
 
-enum {{enumName}} {
-  {% if catalogs.count > 1 %}
-  {% for catalog in catalogs %}
-  enum {{catalog.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
-    {% call enumBlock catalog.assets "  " %}
-  }
-  {% endfor %}
-  {% else %}
-  {% call enumBlock catalogs.first.assets "" %}
+  {% for asset in catalogs.first.assets %}
+  {% if asset.type == "color" %}
+  public static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = ColorAsset(name: "{{asset.value}}")
   {% endif %}
-}
+  {% endfor %}
 
-extension {{imageAlias}} {
-  @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
-  @available(OSX, deprecated,
-    message: "This initializer is unsafe on macOS, please use the {{imageType}}.image property")
-  convenience init!(asset: {{imageType}}) {
-    #if os(iOS) || os(tvOS)
-    let bundle = Bundle(for: BundleToken.self)
-    self.init(named: asset.name, in: bundle, compatibleWith: nil)
-    #elseif os(OSX)
-    self.init(named: NSImage.Name(asset.name))
-    #elseif os(watchOS)
-    self.init(named: asset.name)
-    #endif
-  }
-}
-
-extension {{colorAlias}} {
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  convenience init!(asset: {{colorType}}) {
+  public var value: Value {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
-    self.init(named: asset.name, in: bundle, compatibleWith: nil)
+    let color = Value(named: self.name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    self.init(named: NSColor.Name(asset.name), bundle: bundle)
+    let color = Value(named: NSColor.Name(self.name), bundle: bundle)
     #elseif os(watchOS)
-    self.init(named: asset.name)
+    let color = Value(named: self.name)
     #endif
+
+    guard let result = color else {
+      fatalError("Unable to load color named \(self.name).")
+    }
+
+    return result
   }
 }
-
-private final class BundleToken {}
 {% else %}
 // No assets found
 {% endif %}

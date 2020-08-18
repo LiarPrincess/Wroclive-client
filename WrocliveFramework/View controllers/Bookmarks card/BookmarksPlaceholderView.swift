@@ -61,7 +61,7 @@ public final class BookmarksPlaceholderView: UIView {
 
   private func createContentText() -> NSAttributedString {
     let heartAttachment = NSTextAttachment()
-    heartAttachment.image = Assets.bookmarksPlaceholderHeart.image
+    heartAttachment.image = ImageAsset.bookmarksPlaceholderHeart.value
     heartAttachment.adjustsImageSizeForAccessibilityContentSizeCategory = true
     let heartAttributedString = NSAttributedString(attachment: heartAttachment)
 
