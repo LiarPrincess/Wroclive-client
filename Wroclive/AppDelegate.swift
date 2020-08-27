@@ -13,8 +13,8 @@ import WrocliveFramework
 // swiftlint:disable implicitly_unwrapped_optional
 // swiftlint:disable discouraged_optional_collection
 
-// TODO: Remove overcast from Configuration.init
-private let apiBase = "http://127.0.0.1:3000" // "139.59.154.250"
+// TODO: Remove Overcast from Configuration.init
+private let apiBase = "https://wroclive.app/api/v1"
 private let websiteUrl = "https://www.overcast.fm"
 
 private let appId = "888422857"
@@ -50,16 +50,22 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    self.environment = self.createEnvironment()
+    self.environment = self.createEnvironment(apiMode: .online)
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
     self.logSimulatorDocumentsDirectory()
 
+    os_log("Initializing redux store", log: self.log, type: .info)
     self.store = self.createStore()
+
+    os_log("Adding observers for Apple frameworks", log: self.log, type: .info)
     self.storeUpdater = self.dispatchStoreUpdatesFromAppleFrameworks()
 
+    // 'os_log' is inside the function
     self.overrideLocaleIfPossible(.pl)
+
+    os_log("Setting up theme", log: self.log, type: .info)
     self.setupTheme()
 
     os_log("Creating app coordinator", log: self.log, type: .info)
@@ -80,17 +86,13 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   // Those are the most important lines in the whole app.
   // Every call that interacts with native frameworks has to go through Environment.
   // And don't worry, 'debug' modes will fail to compile in release builds.
-  private func createEnvironment() -> Environment {
+  private func createEnvironment(apiMode: Environment.ApiMode) -> Environment {
     let configuration = Configuration(apiBaseUrl: apiBase,
                                       websiteUrl: websiteUrl,
                                       shareUrl: shareUrl,
                                       writeReviewUrl: reviewUrl)
 
-    #if DEBUG
-    return Environment(apiMode: .debugOffline, configuration: configuration)
-    #else
-    return Environment(apiMode: .production, configuration: configuration)
-    #endif
+    return Environment(apiMode: apiMode, configuration: configuration)
   }
 
   private func logSimulatorDocumentsDirectory() {
@@ -108,8 +110,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Redux
 
   private func createStore() -> Store<AppState> {
-    os_log("Initializing redux store", log: self.log, type: .info)
-
     // Don't worry: all 'IfNotSaved' have '@autoclosure'!
     let state = AppState.load(
       from: self.environment,
@@ -148,7 +148,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // swiftlint:disable:next line_length
   private func dispatchStoreUpdatesFromAppleFrameworks() -> DispatchStoreUpdatesFromAppleFrameworks {
-    os_log("Adding observers for Apple frameworks", log: self.log, type: .info)
     return DispatchStoreUpdatesFromAppleFrameworks(
       store: self.store,
       environment: self.environment
@@ -166,8 +165,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func setupTheme() {
-    os_log("Setting up theme", log: self.log, type: .info)
-
     let tintColor = ColorScheme.tint
     UIWindow.appearance().tintColor = tintColor
     UIView.appearance().tintColor = tintColor

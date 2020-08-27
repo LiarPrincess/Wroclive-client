@@ -46,7 +46,7 @@ public struct Configuration {
 
     self.endpoints = Endpoints(
       lines: apiBaseUrl + "/lines",
-      vehicleLocations: apiBaseUrl + "/locations"
+      vehicleLocations: apiBaseUrl + "/vehicles"
     )
   }
 }
