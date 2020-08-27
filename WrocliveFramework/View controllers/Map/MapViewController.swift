@@ -36,13 +36,19 @@ public final class MapViewController:
   override public func viewDidLoad() {
     super.viewDidLoad()
 
-    self.mapView.showsScale = false
-    self.mapView.showsTraffic = false
-    self.mapView.showsCompass = true
+    // Generally usefull.
+    self.mapView.showsScale = true
     self.mapView.showsBuildings = true
     self.mapView.showsUserLocation = true
+    // Usefull for arrival estimation.
+    self.mapView.showsTraffic = true
+    // Beeing able to zoom is kind of 'the thing' in this app.
     self.mapView.isPitchEnabled = false
-    self.mapView.isRotateEnabled = true
+    // We have to disable rotation, because that would require us to rotate
+    // annotations (which is hard to implement and can make people dizzy).
+    self.mapView.isRotateEnabled = false
+    // Not needed since we can't rotate.
+    self.mapView.showsCompass = false
     self.mapView.mapType = .standard
 
     self.mapView.delegate = self
