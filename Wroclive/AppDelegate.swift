@@ -77,7 +77,9 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     self.updateScheduler = self.startMapUpdates()
 
-    os_log("Finished 'application(_:didFinishLaunchingWithOptions:)'", log: self.log, type: .info)
+    os_log("Finished 'application(_:didFinishLaunchingWithOptions:)'",
+           log: self.log,
+           type: .info)
     return true
   }
 
@@ -87,9 +89,13 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   // Every call that interacts with native frameworks has to go through Environment.
   // And don't worry, 'debug' modes will fail to compile in release builds.
   private func createEnvironment(apiMode: Environment.ApiMode) -> Environment {
-    let configuration = Configuration(websiteUrl: websiteUrl,
-                                      shareUrl: shareUrl,
-                                      writeReviewUrl: reviewUrl)
+    let configuration = Configuration(
+      websiteUrl: websiteUrl,
+      shareUrl: shareUrl,
+      writeReviewUrl: reviewUrl,
+      vehicleLocationUpdateInterval: 5.0,
+      locationAuthorizationPromptDelay: 2.0
+    )
 
     return Environment(apiMode: apiMode, configuration: configuration)
   }

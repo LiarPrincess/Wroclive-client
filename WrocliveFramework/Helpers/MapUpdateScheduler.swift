@@ -37,7 +37,7 @@ public final class MapUpdateScheduler: StoreSubscriber {
       return
     }
 
-    let interval = self.environment.configuration.timing.vehicleUpdateInterval
+    let interval = self.environment.configuration.timing.vehicleLocationUpdateInterval
     self.timer = Timer.scheduledTimer(timeInterval: interval,
                                       target: self,
                                       selector: #selector(self.timerFired),
