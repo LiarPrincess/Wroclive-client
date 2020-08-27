@@ -66,53 +66,41 @@ private final class BundleToken { }
 
 extension {{enumName}} {
 
-  public enum Locale: CustomStringConvertible {
-    case base
-    case en
-    case pl
+  public struct Locale: CustomStringConvertible {
+    let name: String
+    let locale: Foundation.Locale
+    let bundle: Foundation.Bundle
 
     public var description: String {
-      switch self {
-      case .base: return "base"
-      case .en: return "en"
-      case .pl: return "pl"
-      }
+      return self.name
     }
 
-    private static var enLocale: Foundation.Locale?
-    private static var plLocale: Foundation.Locale?
+    public static let base = Locale(name: "base",
+                                    locale: Foundation.Locale.current,
+                                    bundle: Bundle(for: BundleToken.self))
 
-    private static var enBundle: Foundation.Bundle?
-    private static var plBundle: Foundation.Bundle?
+    public static let en = Locale(name: "en",
+                                  localeIdentifier: "en",
+                                  bundleLanguage: "Base")
 
-    fileprivate var locale: Foundation.Locale {
-      switch self {
-      case .base:
-        return Foundation.Locale.current
-      case .en:
-        let result = Self.enLocale ?? Foundation.Locale(identifier: "en")
-        Self.enLocale = result
-        return result
-      case .pl:
-        let result = Self.plLocale ?? Foundation.Locale(identifier: "pl")
-        Self.plLocale = result
-        return result
-      }
+    public static let pl = Locale(name: "pl",
+                                  localeIdentifier: "pl",
+                                  bundleLanguage: "pl")
+
+    private init(name: String,
+                 locale: Foundation.Locale,
+                 bundle: Foundation.Bundle) {
+      self.name = name
+      self.locale = locale
+      self.bundle = bundle
     }
 
-    fileprivate var bundle: Bundle {
-      switch self {
-      case .base:
-        return Bundle(for: BundleToken.self)
-      case .en:
-        let result = Self.enBundle ?? Self.createBundle(language: "Base")
-        Self.enBundle = result
-        return result
-      case .pl:
-        let result = Self.plBundle ?? Self.createBundle(language: "pl")
-        Self.plBundle = result
-        return result
-      }
+    private init(name: String,
+                 localeIdentifier: String,
+                 bundleLanguage: String) {
+      self.name = name
+      self.locale = Foundation.Locale(identifier: localeIdentifier)
+      self.bundle = Self.createBundle(language: bundleLanguage)
     }
 
     private static func createBundle(language: String) -> Bundle {
@@ -130,24 +118,22 @@ extension {{enumName}} {
     }
   }
 
-  private static var locale = Locale.base
+  private static var currentLocale = Locale.base
 
 #if DEBUG
   /// This will only affect UI text! Nothing else!
   public static func setLocale(_ value: Locale) {
-    Localizable.locale = value
+    Self.currentLocale = value
   }
 #endif
 
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    let bundle = Localizable.locale.bundle
-    let locale = Localizable.locale.locale
-
+    let locale = Self.currentLocale
     let format = NSLocalizedString(key,
                                    tableName: table,
-                                   bundle: bundle,
+                                   bundle: locale.bundle,
                                    comment: "")
-    return String(format: format, locale: locale, arguments: args)
+    return String(format: format, locale: locale.locale, arguments: args)
   }
 }
 
