@@ -11,17 +11,17 @@ internal struct VehicleLocationsEndpoint: Endpoint {
   internal typealias ResponseData = [Vehicle]
 
   internal var url: URLConvertible
-  internal let method: HTTPMethod = .post
-  internal let parameterEncoding: ParameterEncoding = JSONEncoding.default
-  internal let headers: HTTPHeaders? = ["Accept": "application/json"]
+  internal let method = HTTPMethod.get
+  internal let parameterEncoding: ParameterEncoding = URLEncoding.queryString
+  internal let headers = HTTPHeaders(accept: .json, acceptEncoding: .compressed)
 
-  internal init(configuration: Configuration) {
-    self.url = configuration.endpoints.vehicleLocations
+  internal init(baseUrl: String) {
+    self.url = baseUrl.appendingPathComponent("/vehicles")
   }
 
   internal func encodeParameters(_ data: [Line]) -> Parameters? {
     var parameters = Parameters()
-    parameters["lines"] = data.map(encodeLine)
+    parameters["lines"] = encode(lines: data)
     return parameters
   }
 
@@ -33,18 +33,23 @@ internal struct VehicleLocationsEndpoint: Endpoint {
 
 // MARK: - Request
 
-private func encodeLine(_ line: Line) -> [String: Any] {
-  return [
-    "name": line.name,
-    "type": encodeLineType(line.type)
-  ]
-}
+private func encode(lines: [Line]) -> String {
+  // This is basically 'lines.map { $0.name }.joined(separator: ";")',
+  // but a tiny bit more optimized.
 
-private func encodeLineType(_ type: LineType) -> String {
-  switch type {
-  case .bus: return "bus"
-  case .tram: return "tram"
+  var result = ""
+  result.reserveCapacity(lines.count * 3) // 2 for line and 1 for ';'
+
+  for (index, line) in lines.enumerated() {
+    result.append(line.name)
+
+    let isLast = index == lines.count - 1
+    if !isLast {
+      result.append(";")
+    }
   }
+
+  return result
 }
 
 // MARK: - Response

@@ -21,16 +21,18 @@ public final class Api: ApiType {
 
   // MARK: - Init
 
-  public init(bundle: BundleManagerType,
-              device: DeviceManagerType,
-              configuration: Configuration,
+  public init(host: String,
               network: NetworkType,
+              bundle: BundleManagerType,
+              device: DeviceManagerType,
               log: LogManagerType) {
     self.network = network
     self.logManager = log
     self.userAgent = Self.createUserAgent(bundle: bundle, device: device)
-    self.linesEndpoint = LinesEndpoint(configuration: configuration)
-    self.vehicleLocationsEndpoint = VehicleLocationsEndpoint(configuration: configuration)
+
+    let baseUrl = host.appendingPathComponent("/api/v1")
+    self.linesEndpoint = LinesEndpoint(baseUrl: baseUrl)
+    self.vehicleLocationsEndpoint = VehicleLocationsEndpoint(baseUrl: baseUrl)
   }
 
   /// `Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)`
@@ -49,6 +51,11 @@ public final class Api: ApiType {
   }
 
   public func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
+    if lines.isEmpty {
+      os_log("No lines requested in 'getVehicleLocations'", log: self.log, type: .info)
+      return .value([])
+    }
+
     os_log("Sending 'getVehicleLocations' request", log: self.log, type: .info)
     let endpoint = self.vehicleLocationsEndpoint
     return self.sendRequest(endpoint: endpoint, data: lines)
@@ -64,8 +71,8 @@ public final class Api: ApiType {
     endpoint: E,
     data: E.ParameterData
   ) -> Promise<E.ResponseData> {
-    var headers = endpoint.headers ?? [:]
-    headers["User-Agent"] = self.userAgent
+    var headers = endpoint.headers
+    headers["User-Agent"] = headers.value(for: "User-Agent") ?? self.userAgent
 
     let parameters = endpoint.encodeParameters(data)
 

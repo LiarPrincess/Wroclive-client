@@ -10,7 +10,6 @@ public struct Configuration {
 
   public let websiteUrl: URL
   public let appStore: AppStore
-  public let endpoints: Endpoints
   public let timing: Timing
 
   public struct AppStore {
@@ -18,20 +17,16 @@ public struct Configuration {
     public let writeReviewUrl: URL
   }
 
-  public struct Endpoints {
-    public let lines: String
-    public let vehicleLocations: String
-  }
-
   public struct Timing {
-    public let vehicleUpdateInterval: TimeInterval
+    public let vehicleLocationUpdateInterval: TimeInterval
     public let locationAuthorizationPromptDelay: TimeInterval
   }
 
-  public init(apiBaseUrl: String,
-              websiteUrl: String,
+  public init(websiteUrl: String,
               shareUrl: String,
-              writeReviewUrl: String) {
+              writeReviewUrl: String,
+              vehicleLocationUpdateInterval: TimeInterval,
+              locationAuthorizationPromptDelay: TimeInterval) {
     self.websiteUrl = URL(string: websiteUrl)!
 
     self.appStore = AppStore(
@@ -40,13 +35,8 @@ public struct Configuration {
     )
 
     self.timing = Timing(
-      vehicleUpdateInterval: 5.0,
-      locationAuthorizationPromptDelay: 2.0
-    )
-
-    self.endpoints = Endpoints(
-      lines: apiBaseUrl + "/lines",
-      vehicleLocations: apiBaseUrl + "/vehicles"
+      vehicleLocationUpdateInterval: vehicleLocationUpdateInterval,
+      locationAuthorizationPromptDelay: locationAuthorizationPromptDelay
     )
   }
 }

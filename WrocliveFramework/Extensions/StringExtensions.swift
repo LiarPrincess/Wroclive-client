@@ -22,4 +22,21 @@ extension String {
       .matches(in: self, options: [], range: NSRange(location: 0, length: length))
       .map { $0.range }
   }
+
+  internal func appendingPathComponent(_ pathComponent: String) -> String {
+    var result = self
+
+    if !result.hasSuffix("/") {
+      result.append("/")
+    }
+
+    var path = pathComponent
+    if path.hasPrefix("/") {
+      let stripped = path.drop { $0 == "/" }
+      path = String(stripped)
+    }
+
+    result.append(path)
+    return result
+  }
 }

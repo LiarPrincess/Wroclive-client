@@ -11,12 +11,12 @@ internal struct LinesEndpoint: Endpoint {
   internal typealias ResponseData = [Line]
 
   internal let url: URLConvertible
-  internal let method: HTTPMethod = .get
+  internal let method = HTTPMethod.get
   internal let parameterEncoding: ParameterEncoding = JSONEncoding.default
-  internal let headers: HTTPHeaders? = ["Accept": "application/json"]
+  internal let headers = HTTPHeaders(accept: .json, acceptEncoding: .compressed)
 
-  internal init(configuration: Configuration) {
-    self.url = configuration.endpoints.lines
+  internal init(baseUrl: String) {
+    self.url = baseUrl.appendingPathComponent("/lines")
   }
 
   internal func encodeParameters(_ data: Void) -> Parameters? {

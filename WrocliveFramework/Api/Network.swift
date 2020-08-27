@@ -42,11 +42,6 @@ public final class Network: NetworkType {
                       parameters: Parameters?,
                       encoding: ParameterEncoding,
                       headers: HTTPHeaders?) -> Promise<Data> {
-    // TODO: SessionManager.default.rx.request(method, url, parameters: parameters,
-    // encoding: encoding, headers: headers)
-    // TODO: NetworkReachabilityManager.default?.startListening { status in
-    //  print("Reachability Status Changed: \(status)") }
-
     let request = AF.request(url,
                              method: method,
                              parameters: parameters,

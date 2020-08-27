@@ -32,6 +32,11 @@ public final class OfflineApi: ApiType {
   }
 
   public func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
+    if lines.isEmpty {
+      os_log("No lines requested in 'getVehicleLocations'", log: self.log, type: .info)
+      return .value([])
+    }
+
     os_log("[offline] Sending 'getVehicleLocations' request", log: self.log, type: .info)
 
     let vehicles: [Vehicle]

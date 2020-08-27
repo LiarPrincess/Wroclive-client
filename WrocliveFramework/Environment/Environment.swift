@@ -14,7 +14,7 @@ public class Environment {
   public let configuration: Configuration
 
   public enum ApiMode {
-    case online
+    case online(host: String)
     #if DEBUG
     case offline
     #endif
@@ -37,12 +37,12 @@ public class Environment {
     self.storage = CachedStorageManager(using: storageInner)
 
     switch apiMode {
-    case .online:
+    case .online(let host):
       let network = Network()
-      self.api = Api(bundle: self.bundle,
-                     device: self.device,
-                     configuration: self.configuration,
+      self.api = Api(host: host,
                      network: network,
+                     bundle: self.bundle,
+                     device: self.device,
                      log: self.log)
     case .offline:
       self.api = OfflineApi(log: self.log)

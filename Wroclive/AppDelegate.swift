@@ -14,7 +14,7 @@ import WrocliveFramework
 // swiftlint:disable discouraged_optional_collection
 
 // TODO: Remove Overcast from Configuration.init
-private let apiBase = "https://wroclive.app/api/v1"
+private let apiUrl = "https://wroclive.app"
 private let websiteUrl = "https://www.overcast.fm"
 
 private let appId = "888422857"
@@ -50,7 +50,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    self.environment = self.createEnvironment(apiMode: .online)
+    self.environment = self.createEnvironment(apiMode: .online(host: apiUrl))
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
@@ -87,8 +87,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   // Every call that interacts with native frameworks has to go through Environment.
   // And don't worry, 'debug' modes will fail to compile in release builds.
   private func createEnvironment(apiMode: Environment.ApiMode) -> Environment {
-    let configuration = Configuration(apiBaseUrl: apiBase,
-                                      websiteUrl: websiteUrl,
+    let configuration = Configuration(websiteUrl: websiteUrl,
                                       shareUrl: shareUrl,
                                       writeReviewUrl: reviewUrl)
 
