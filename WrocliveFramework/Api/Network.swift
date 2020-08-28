@@ -37,20 +37,41 @@ public final class Network: NetworkType {
     self.reachability = try? Reachability()
   }
 
+  // MARK: - Request
+
   public func request(url: URLConvertible,
                       method: HTTPMethod,
                       parameters: Parameters?,
                       encoding: ParameterEncoding,
                       headers: HTTPHeaders?) -> Promise<Data> {
-    let request = AF.request(url,
-                             method: method,
-                             parameters: parameters,
-                             encoding: encoding,
-                             headers: headers,
-                             interceptor: nil,
-                             requestModifier: nil)
+    // swiftlint:disable:next trailing_closure
+    return self.attempt(
+      maxRetryCount: 3,
+      delayBeforeRetry: .seconds(1),
+      sendRequest: { () in
+        self.sendSingleRequest(
+          url: url,
+          method: method,
+          parameters: parameters,
+          encoding: encoding,
+          headers: headers
+        )
+      }
+    )
+  }
 
+  private func sendSingleRequest(url: URLConvertible,
+                                 method: HTTPMethod,
+                                 parameters: Parameters?,
+                                 encoding: ParameterEncoding,
+                                 headers: HTTPHeaders?) -> Promise<Data> {
     return Promise<Data> { seal in
+      let request = AF.request(url,
+                               method: method,
+                               parameters: parameters,
+                               encoding: encoding,
+                               headers: headers)
+
       request.responseData { response in
         if let error = response.error {
           seal.reject(error)
@@ -62,6 +83,26 @@ public final class Network: NetworkType {
       }
     }
   }
+
+  private func attempt<T>(maxRetryCount: Int,
+                          delayBeforeRetry: DispatchTimeInterval = .seconds(1),
+                          sendRequest: @escaping () -> Promise<T>) -> Promise<T> {
+    var attempts = 0
+    func attempt() -> Promise<T> {
+      attempts += 1
+      return sendRequest().recover { error -> Promise<T> in
+        guard attempts < maxRetryCount else {
+          throw error
+        }
+
+        return after(delayBeforeRetry).then(on: nil, attempt)
+      }
+    }
+
+    return attempt()
+  }
+
+  // MARK: - Reachability status
 
   public func getReachabilityStatus() -> ReachabilityStatus {
     guard let status = self.reachability?.connection else {
@@ -78,6 +119,8 @@ public final class Network: NetworkType {
       return .unavailable
     }
   }
+
+  // MARK: - Network activity indicator
 
   public func setNetworkActivityIndicatorVisibility(isVisible: Bool) {
     if #available(iOS 13.0, *) {
