@@ -87,8 +87,6 @@ public struct TextAttributes {
     case .background: return ColorScheme.background
     case .text: return ColorScheme.text
     case .tint: return ColorScheme.tint
-    case .bus: return ColorScheme.bus
-    case .tram: return ColorScheme.tram
     case .white: return UIColor.white
     }
   }

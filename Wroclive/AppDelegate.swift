@@ -51,6 +51,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     self.environment = self.createEnvironment(apiMode: .online(host: apiUrl))
+//    self.environment = self.createEnvironment(apiMode: .offline)
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)

@@ -63,9 +63,27 @@ public final class VehicleAnnotationView: MKAnnotationView {
   }
 
   private func imageColor(for annotation: VehicleAnnotation) -> UIColor {
-    switch annotation.line.type {
-    case .tram: return ColorScheme.tram
-    case .bus: return ColorScheme.bus
+    let line = annotation.line
+
+    switch line.type {
+    case .tram:
+      return ColorScheme.tram
+    case .bus:
+      switch line.subtype {
+      case .regular:
+        return ColorScheme.busRegular
+      case .express:
+        return ColorScheme.busExpress
+      case .night:
+        return ColorScheme.busNight
+      case .suburban:
+        return ColorScheme.busSuburban
+      case .peakHour,
+           .zone,
+           .limited,
+           .temporary:
+        return ColorScheme.busOther
+      }
     }
   }
 

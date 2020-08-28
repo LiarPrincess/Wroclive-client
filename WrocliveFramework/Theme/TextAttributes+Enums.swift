@@ -22,8 +22,6 @@ extension TextAttributes {
     case background
     case text
     case tint
-    case bus
-    case tram
     case white
   }
 

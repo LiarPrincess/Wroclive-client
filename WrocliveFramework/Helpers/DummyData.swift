@@ -4,6 +4,8 @@
 
 #if DEBUG
 
+import Foundation
+
 internal enum DummyData {
 
   internal static var lines: [Line] {
@@ -117,19 +119,46 @@ internal enum DummyData {
   }
 
   internal static var vehicles: [Vehicle] {
-    let line0 = Line(name: "1", type: .tram, subtype: .regular)
-    let line1 = Line(name: "4", type: .tram, subtype: .regular)
-    let line2 = Line(name: "20", type: .tram, subtype: .regular)
-    let line3 = Line(name: "A", type: .bus, subtype: .express)
-    let line4 = Line(name: "D", type: .bus, subtype: .express)
-
-    return [
-      Vehicle(id: "0", line: line0, latitude: 51.11, longitude: 17.01, angle: 00.0),
-      Vehicle(id: "1", line: line1, latitude: 51.11, longitude: 17.02, angle: 30.0),
-      Vehicle(id: "2", line: line2, latitude: 51.11, longitude: 17.03, angle: 60.0),
-      Vehicle(id: "3", line: line3, latitude: 51.11, longitude: 17.04, angle: 90.0),
-      Vehicle(id: "4", line: line4, latitude: 51.11, longitude: 17.05, angle: 120.0)
+    let lines = [
+      Line(name: "4", type: .tram, subtype: .regular),
+      Line(name: "D", type: .bus, subtype: .express),
+      Line(name: "246", type: .bus, subtype: .night),
+      Line(name: "609", type: .bus, subtype: .suburban),
+      Line(name: "20", type: .tram, subtype: .regular),
+      Line(name: "??", type: .bus, subtype: .temporary),
+      Line(name: "100", type: .bus, subtype: .regular),
+      Line(name: "A", type: .bus, subtype: .express),
+      Line(name: "602", type: .bus, subtype: .suburban),
+      Line(name: "251", type: .bus, subtype: .night),
+      Line(name: "!!", type: .bus, subtype: .temporary),
+      Line(name: "126", type: .bus, subtype: .regular)
     ]
+
+    func createVehicle(index: Int, line: Line) -> Vehicle {
+      let centerLatitude = 51.109_524
+      let centerLongitude = 17.032_564
+      let radius = 0.015
+
+      let angle = 360.0 * Double(index) / Double(lines.count)
+      let latitude = centerLatitude + sin(rad(angle)) * radius
+      let longitude = centerLongitude + cos(rad(angle)) * radius * 1.5
+
+      return Vehicle(
+        id: String(describing: index),
+        line: line,
+        latitude: latitude,
+        longitude: longitude,
+        angle: angle
+      )
+    }
+
+    func rad(_ value: Double) -> Double {
+      return value * Double.pi / 180.0
+    }
+
+    return lines
+      .enumerated()
+      .map(createVehicle(index:line:))
   }
 }
 

@@ -5,12 +5,18 @@
 import UIKit
 
 // swiftlint:disable object_literal
+// swiftlint:disable discouraged_object_literal
 
 public enum ColorScheme {
 
-  public static let tint = UIColor(red: 0.95, green: 0.14, blue: 0.14, alpha: 1.0)
-  public static let tram = UIColor(red: 0.28, green: 0.49, blue: 0.80, alpha: 1.0)
-  public static let bus = UIColor(red: 0.80, green: 0.12, blue: 0.12, alpha: 1.0)
+  public static let tint = #colorLiteral(red: 0.9490196078, green: 0.1411764706, blue: 0.1411764706, alpha: 1)
+
+  public static let tram = #colorLiteral(red: 0.2784313725, green: 0.5019607843, blue: 0.8, alpha: 1)
+  public static let busRegular = #colorLiteral(red: 0.8, green: 0.1215686275, blue: 0.1215686275, alpha: 1)
+  public static let busNight = #colorLiteral(red: 0.6078431373, green: 0.1607843137, blue: 0.7137254902, alpha: 1)
+  public static let busExpress = #colorLiteral(red: 0.968627451, green: 0.7607843137, blue: 0.2431372549, alpha: 1)
+  public static let busSuburban = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+  public static let busOther = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
 
   public static let userLocationPin = UIColor.systemBlue
 
