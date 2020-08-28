@@ -25,7 +25,11 @@ extension HTTPHeaders {
     internal var description: String {
       switch self {
       case .compressed:
-        return "br, gzip, deflate"
+        if #available(iOS 11.0, macOS 10.13, tvOS 11.0, watchOS 4.0, *) {
+          return "br, gzip, deflate"
+        } else {
+          return "gzip, deflate"
+        }
       }
     }
   }
