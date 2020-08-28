@@ -21,8 +21,9 @@ extension CGFloat {
 extension UIApplication {
 
   public static var topViewController: UIViewController {
-    guard var result = UIApplication.shared.keyWindow?.rootViewController
-      else { fatalError("Could not find top view controller.") }
+    guard var result = UIApplication.shared.keyWindow?.rootViewController else {
+      fatalError("Could not get 'keyWindow.rootViewController'.")
+    }
 
     var child = result.presentedViewController
     while child != nil {

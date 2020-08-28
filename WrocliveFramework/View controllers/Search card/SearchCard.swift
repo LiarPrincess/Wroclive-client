@@ -120,19 +120,29 @@ public final class SearchCard:
     // swiftlint:disable:next nesting type_name
     typealias L = Localizable.Alert.Bookmark.NameInput
 
-    _ = AlertCreator.showTextInput(
+    let result = AlertCreator.showTextInput(
       title: L.title,
       message: L.message,
       placeholder: L.placeholder,
       confirm: AlertCreator.TextInputButton(title: L.save, style: .default),
       cancel: AlertCreator.TextInputButton(title: L.cancel, style: .cancel)
     )
-    .done { [weak self] maybeName in
-      guard let name = maybeName else {
-        return
+
+    switch result {
+    case .alert(let promise):
+      _ = promise.done { [weak self] maybeName in
+        guard let name = maybeName else {
+          return
+        }
+
+        self?.viewModel.viewDidEnterBookmarkName(value: name)
       }
 
-      self?.viewModel.viewDidEnterBookmarkName(value: name)
+    case .alreadyShowingDifferentAlert:
+      // How?
+      // If we are showing different alert then it blocks bookmark button.
+      // Anyway, let's ignore it. User will have to tap again.
+      break
     }
   }
 
