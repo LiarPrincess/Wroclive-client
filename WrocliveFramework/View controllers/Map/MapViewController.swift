@@ -68,11 +68,10 @@ public final class MapViewController:
   public func setCenter(location: CLLocationCoordinate2D,
                         radius: CLLocationDistance,
                         animated: Bool) {
-    let currentCenter = self.mapView.centerCoordinate
-    let distance = currentCenter.distance(from: location)
+    let current = self.mapView.centerCoordinate
+    let distance = current.distance(from: location)
 
-    // TODO: Move this to constants
-    if distance > 10.0 { // meters
+    if distance > Constants.minDistanceToUpdateCenter {
       let region = MKCoordinateRegion(center: location,
                                       latitudinalMeters: 2 * radius,
                                       longitudinalMeters: 2 * radius)
@@ -95,12 +94,10 @@ public final class MapViewController:
 
     UIView.animate(withDuration: Pin.animationDuration) {
       for (annotation, vehicle) in diff.updated {
-        annotation.angle = CGFloat(vehicle.angle)
-        annotation.coordinate = CLLocationCoordinate2D(latitude: vehicle.latitude,
-                                                       longitude: vehicle.longitude)
+        annotation.update(from: vehicle)
 
-        let annotationView = self.mapView.view(for: annotation) as? VehicleAnnotationView
-        annotationView?.updateImage()
+        let view = self.mapView.view(for: annotation) as? VehicleAnnotationView
+        view?.updateImage()
       }
     }
   }
@@ -134,7 +131,17 @@ public final class MapViewController:
   public func mapView(_ mapView: MKMapView,
                       didChange mode: MKUserTrackingMode,
                       animated: Bool) {
-    self.viewModel.didChangeTrackingMode(to: mode)
+    // Disable 'followWithHeading' because that would rotate view
+    // and that would require rotating pins (which we do not have).
+    switch mode {
+    case .none,
+         .follow:
+      self.viewModel.didChangeTrackingMode(to: mode)
+    case .followWithHeading:
+      self.mapView.setUserTrackingMode(.none, animated: true)
+    @unknown default:
+      self.viewModel.didChangeTrackingMode(to: mode)
+    }
   }
 
   // MARK: - Alerts

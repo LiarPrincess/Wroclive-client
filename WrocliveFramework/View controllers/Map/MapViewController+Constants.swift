@@ -11,6 +11,9 @@ extension MapViewController {
 
   public enum Constants {
 
+    /// In meters
+    public static let minDistanceToUpdateCenter = CLLocationDistance(10.0)
+
     public enum Pin {
       public static let imageSize = CGSize(width: 50.0, height: 50.0)
       public static let minAngleChangeToRedraw = CGFloat(3.0)
