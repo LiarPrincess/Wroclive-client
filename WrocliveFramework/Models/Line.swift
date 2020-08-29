@@ -16,40 +16,40 @@ public struct Line: Codable, Equatable, Hashable, CustomStringConvertible {
 
 // MARK: - Type
 
-public enum LineType: Int, Codable, Equatable, Hashable, CustomStringConvertible {
-  case tram = 0
-  case bus = 1
+public enum LineType: String, Codable, Equatable, Hashable, CustomStringConvertible {
+  case tram
+  case bus
 
   public var description: String {
     switch self {
-    case .tram: return "tram"
-    case .bus: return "bus"
+    case .tram: return "Tram"
+    case .bus: return "Bus"
     }
   }
 }
 
 // MARK: - Subtype
 
-public enum LineSubtype: Int, Codable, Equatable, Hashable, CustomStringConvertible {
-  case regular = 0
-  case express = 1
-  case peakHour = 2
-  case suburban = 3
-  case zone = 4
-  case limited = 5
-  case temporary = 6
-  case night = 7
+public enum LineSubtype: String, Codable, Equatable, Hashable, CustomStringConvertible {
+  case regular
+  case express
+  case peakHour
+  case suburban
+  case zone
+  case limited
+  case temporary
+  case night
 
   public var description: String {
     switch self {
-    case .regular: return "regular"
-    case .express: return "express"
-    case .peakHour: return "peakHour"
-    case .suburban: return "suburban"
-    case .zone: return "zone"
-    case .limited: return "limited"
-    case .temporary: return "temporary"
-    case .night: return "night"
+    case .regular: return "Regular"
+    case .express: return "Express"
+    case .peakHour: return "Peak-hour"
+    case .suburban: return "Suburban"
+    case .zone: return "Zone"
+    case .limited: return "Limited"
+    case .temporary: return "Temporary"
+    case .night: return "Night"
     }
   }
 }

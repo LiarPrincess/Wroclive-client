@@ -25,7 +25,7 @@ internal struct LinesEndpoint: Endpoint {
 
   internal func decodeResponse(_ data: Data) throws -> ResponseData {
     let model = try self.parseJSON(ResponseModel.self, from: data)
-    let parsed = try model.data.map(parseLine)
+    let parsed = try model.data.map(parseLine(model:))
 
     // Just in case we will check for empty...
     // It should not happen, but you know how it is...
@@ -46,24 +46,25 @@ private struct LineModel: Decodable {
   let subtype: String
 }
 
-private func parseLine(_ model: LineModel) throws -> Line {
-  guard let type = parseLineType(model.type),
-        let subtype = parseLineSubtype(model.subtype)
-    else { throw ApiError.invalidResponse }
+private func parseLine(model: LineModel) throws -> Line {
+  guard let type = parseLineType(model: model.type),
+        let subtype = parseLineSubtype(model: model.subtype) else {
+    throw ApiError.invalidResponse
+  }
 
   return Line(name: model.name, type: type, subtype: subtype)
 }
 
-private func parseLineType(_ type: String) -> LineType? {
-  switch type.uppercased() {
+private func parseLineType(model: String) -> LineType? {
+  switch model.uppercased() {
   case "TRAM": return .tram
   case "BUS": return .bus
   default: return nil
   }
 }
 
-private func parseLineSubtype(_ subtype: String) -> LineSubtype? {
-  switch subtype.uppercased() {
+private func parseLineSubtype(model: String) -> LineSubtype? {
+  switch model.uppercased() {
   case "REGULAR": return .regular
   case "EXPRESS": return .express
   case "HOUR": return .peakHour

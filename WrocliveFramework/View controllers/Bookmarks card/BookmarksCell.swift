@@ -106,8 +106,15 @@ public final class BookmarksCell: UITableViewCell {
   }
 
   internal static func createLinesText(bookmark: Bookmark) -> NSAttributedString {
-    var tramLines = bookmark.lines.filter(.tram)
-    var busLines = bookmark.lines.filter(.bus)
+    var tramLines = [Line]()
+    var busLines = [Line]()
+
+    for line in bookmark.lines {
+      switch line.type {
+      case .tram: tramLines.append(line)
+      case .bus: busLines.append(line)
+      }
+    }
 
     tramLines.sortByLocalizedName()
     busLines.sortByLocalizedName()

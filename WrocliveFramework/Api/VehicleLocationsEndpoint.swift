@@ -78,7 +78,7 @@ private struct VehicleModel: Decodable {
 }
 
 private func parseVehicleLocations(_ model: LineLocationModel) throws -> [Vehicle] {
-  let line = try parseLine(model.line)
+  let line = try parseLine(model: model.line)
   return model.vehicles.map {
     Vehicle(id: $0.id,
             line: line,
@@ -88,24 +88,25 @@ private func parseVehicleLocations(_ model: LineLocationModel) throws -> [Vehicl
   }
 }
 
-private func parseLine(_ model: LineModel) throws -> Line {
-  guard let type = parseLineType(model.type),
-        let subtype = parseLineSubtype(model.subtype)
-    else { throw ApiError.invalidResponse }
+private func parseLine(model: LineModel) throws -> Line {
+  guard let type = parseLineType(model: model.type),
+        let subtype = parseLineSubtype(model: model.subtype) else {
+    throw ApiError.invalidResponse
+  }
 
   return Line(name: model.name, type: type, subtype: subtype)
 }
 
-private func parseLineType(_ type: String) -> LineType? {
-  switch type.uppercased() {
+private func parseLineType(model: String) -> LineType? {
+  switch model.uppercased() {
   case "TRAM": return .tram
   case "BUS": return .bus
   default: return nil
   }
 }
 
-private func parseLineSubtype(_ subtype: String) -> LineSubtype? {
-  switch subtype.uppercased() {
+private func parseLineSubtype(model: String) -> LineSubtype? {
+  switch model.uppercased() {
   case "REGULAR": return .regular
   case "EXPRESS": return .express
   case "HOUR": return .peakHour
