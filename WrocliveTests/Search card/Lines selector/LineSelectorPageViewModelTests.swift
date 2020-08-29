@@ -7,15 +7,18 @@ import XCTest
 
 class LineSelectorPageViewModelTests: XCTestCase, LineSelectorPageType {
 
-  private let lines = LineSelectorSectionTests.lines
-  private let sections = LineSelectorSectionTests.sections
+  internal typealias Page = SearchCardState.Page
+  internal typealias TestData = LineSelectorTestData
 
+  private let lines = TestData.busLines
+  private let sections = TestData.busSections
+
+  /// Select last line in each section
   private lazy var selected: (lines: [Line], indices: [IndexPath]) = {
     var lines = [Line]()
     var indices = [IndexPath]()
 
     for (sectionIndex, section) in self.sections.enumerated() {
-      // Set last line as selected
       guard let line = section.lines.last else { continue }
       lines.append(line)
 
@@ -75,7 +78,7 @@ class LineSelectorPageViewModelTests: XCTestCase, LineSelectorPageType {
     XCTAssertEqual(viewModel.selectedLines, self.selected.lines)
     XCTAssertEqual(viewModel.selectedLineIndices, [])
 
-    viewModel.setLines(lines: self.lines)
+    viewModel.setSections(sections: self.sections)
     XCTAssertEqual(self.refreshCount, 2)
     XCTAssertEqual(viewModel.sections, self.sections)
     XCTAssertEqual(viewModel.selectedLines, self.selected.lines)
@@ -92,7 +95,7 @@ class LineSelectorPageViewModelTests: XCTestCase, LineSelectorPageType {
     XCTAssertEqual(viewModel.selectedLines, [])
     XCTAssertEqual(viewModel.selectedLineIndices, [])
 
-    viewModel.setLines(lines: self.lines)
+    viewModel.setSections(sections: self.sections)
     XCTAssertEqual(self.refreshCount, 1)
     XCTAssertEqual(viewModel.sections, self.sections)
     XCTAssertEqual(viewModel.selectedLines, [])
@@ -107,13 +110,13 @@ class LineSelectorPageViewModelTests: XCTestCase, LineSelectorPageType {
 
   func test_settingLines_toCurrentValue_doesNothing() {
     let viewModel = self.createViewModel()
-    viewModel.setLines(lines: self.lines)
+    viewModel.setSections(sections: self.sections)
     XCTAssertEqual(self.refreshCount, 1)
     XCTAssertEqual(viewModel.sections, self.sections)
     XCTAssertEqual(viewModel.selectedLines, [])
     XCTAssertEqual(viewModel.selectedLineIndices, [])
 
-    viewModel.setLines(lines: self.lines)
+    viewModel.setSections(sections: self.sections)
     XCTAssertEqual(self.refreshCount, 1)
     XCTAssertEqual(viewModel.sections, self.sections)
     XCTAssertEqual(viewModel.selectedLines, [])
@@ -122,7 +125,7 @@ class LineSelectorPageViewModelTests: XCTestCase, LineSelectorPageType {
 
   func test_settingSelectedLines_toCurrentValue_doesNothing() {
     let viewModel = self.createViewModel()
-    viewModel.setLines(lines: self.lines)
+    viewModel.setSections(sections: self.sections)
     viewModel.setSelectedLines(lines: self.selected.lines)
     XCTAssertEqual(self.refreshCount, 2)
     XCTAssertEqual(viewModel.sections, self.sections)
@@ -140,7 +143,7 @@ class LineSelectorPageViewModelTests: XCTestCase, LineSelectorPageType {
 
   func test_lineSelect() {
     let viewModel = self.createViewModel()
-    viewModel.setLines(lines: self.lines)
+    viewModel.setSections(sections: self.sections)
     XCTAssertEqual(self.refreshCount, 1)
     XCTAssertEqual(viewModel.sections, self.sections)
     XCTAssertEqual(viewModel.selectedLines, [])
@@ -159,7 +162,7 @@ class LineSelectorPageViewModelTests: XCTestCase, LineSelectorPageType {
 
   func test_lineSelect_indexOutOfRange() {
     let viewModel = self.createViewModel()
-    viewModel.setLines(lines: self.lines)
+    viewModel.setSections(sections: self.sections)
     XCTAssertEqual(self.refreshCount, 1)
     XCTAssertEqual(viewModel.sections, self.sections)
     XCTAssertEqual(viewModel.selectedLines, [])
@@ -186,7 +189,7 @@ class LineSelectorPageViewModelTests: XCTestCase, LineSelectorPageType {
 
   func test_lineDeselect() {
     let viewModel = self.createViewModel()
-    viewModel.setLines(lines: self.lines)
+    viewModel.setSections(sections: self.sections)
     viewModel.setSelectedLines(lines: self.selected.lines)
     XCTAssertEqual(self.refreshCount, 2)
     XCTAssertEqual(viewModel.sections, self.sections)
@@ -206,7 +209,7 @@ class LineSelectorPageViewModelTests: XCTestCase, LineSelectorPageType {
 
   func test_lineDeselect_indexOutOfRange() {
     let viewModel = self.createViewModel()
-    viewModel.setLines(lines: self.lines)
+    viewModel.setSections(sections: self.sections)
     XCTAssertEqual(self.refreshCount, 1)
     XCTAssertEqual(viewModel.sections, self.sections)
     XCTAssertEqual(viewModel.selectedLines, [])

@@ -7,15 +7,16 @@ import XCTest
 
 class LineSelectorViewModelTests: XCTestCase, LineSelectorViewType {
 
-  private let lines = LineSelectorSectionTests.lines
+  internal typealias Page = SearchCardState.Page
+  internal typealias TestData = LineSelectorTestData
 
   /// Updated when view model calls `view.onPageTransition`.
-  private var onPageTransitionArgument: LineType?
+  private var onPageTransitionArgument: Page?
   private var refreshCount = 0
 
   // MARK: - View model
 
-  func createViewModel(initialPage: LineType) -> LineSelectorViewModel {
+  func createViewModel(initialPage: Page) -> LineSelectorViewModel {
     // swiftlint:disable:next trailing_closure
     let result = LineSelectorViewModel(
       initialPage: initialPage,
@@ -31,7 +32,7 @@ class LineSelectorViewModelTests: XCTestCase, LineSelectorViewType {
     self.refreshCount += 1
   }
 
-  func onPageTransition(page: LineType) {
+  func onPageTransition(page: Page) {
     self.onPageTransitionArgument = page
   }
 
@@ -85,7 +86,7 @@ class LineSelectorViewModelTests: XCTestCase, LineSelectorViewType {
     let viewModel = self.createViewModel(initialPage: .tram)
     XCTAssertEqual(self.refreshCount, 0)
 
-    viewModel.setLines(lines: self.lines)
+    viewModel.setLines(lines: TestData.lines)
     XCTAssertEqual(self.refreshCount, 0)
 
     let busPage = viewModel.busPageViewModel
@@ -101,7 +102,7 @@ class LineSelectorViewModelTests: XCTestCase, LineSelectorViewType {
     let viewModel = self.createViewModel(initialPage: .tram)
     XCTAssertEqual(self.refreshCount, 0)
 
-    viewModel.setSelectedLines(lines: self.lines)
+    viewModel.setSelectedLines(lines: TestData.lines)
     XCTAssertEqual(self.refreshCount, 0)
 
     let busPage = viewModel.busPageViewModel

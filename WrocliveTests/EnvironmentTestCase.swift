@@ -40,13 +40,24 @@ extension EnvironmentTestCase {
 
   func setUpEnvironment() {
     let bundle = BundleManagerMock()
-    self.environment = Environment(api: ApiMock(),
-                                   bundle: bundle,
-                                   debug: DebugManagerMock(),
-                                   device: DeviceManagerMock(),
-                                   log: LogManager(bundle: bundle),
-                                   storage: StorageManagerMock(),
-                                   userLocation: UserLocationManagerMock(),
-                                   configuration: Configuration())
+
+    let configuration = Configuration(
+      websiteUrl: "websiteUrl",
+      shareUrl: "shareUrl",
+      writeReviewUrl: "writeReviewUrl",
+      vehicleLocationUpdateInterval: TimeInterval(3.0),
+      locationAuthorizationPromptDelay: TimeInterval(5.0)
+    )
+
+    self.environment = Environment(
+      api: ApiMock(),
+      bundle: bundle,
+      debug: DebugManagerMock(),
+      device: DeviceManagerMock(),
+      log: LogManager(bundle: bundle),
+      storage: StorageManagerMock(),
+      userLocation: UserLocationManagerMock(),
+      configuration: configuration
+    )
   }
 }

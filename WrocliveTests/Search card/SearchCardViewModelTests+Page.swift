@@ -7,10 +7,12 @@ import XCTest
 
 extension SearchCardViewModelTests {
 
+  internal typealias Page = SearchCardState.Page
+
   // MARK: - Initial
 
   func test_takesInitialPage_from() {
-    for page in [LineType.bus, LineType.tram] {
+    for page in [Page.bus, Page.tram] {
       let state = SearchCardState(page: page, selectedLines: [])
       let viewModel = self.createViewModel(state: state, response: .inProgress)
       XCTAssertEqual(viewModel.page, page)

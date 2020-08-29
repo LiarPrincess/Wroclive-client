@@ -9,8 +9,7 @@ public struct LineSelectorSection: Equatable {
   private let subtype: LineSubtype
   public let lines: [Line]
 
-  /// Private, use `LineSelectorSection.create` instead.
-  private init(subtype: LineSubtype, lines: [Line]) {
+  public init(subtype: LineSubtype, lines: [Line]) {
     assert(lines.allSatisfy { $0.subtype == subtype })
     self.subtype = subtype
     self.lines = lines

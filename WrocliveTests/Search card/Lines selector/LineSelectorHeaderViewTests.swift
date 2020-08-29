@@ -15,7 +15,7 @@ class LineSelectorHeaderViewTests: XCTestCase {
 
   func test_sections_haveValidNames() {
     for lineSubtype in self.lineSubtypes {
-      let section = LineSelectorSection(for: lineSubtype, lines: [])
+      let section = LineSelectorSection(subtype: lineSubtype, lines: [])
       let text = LineSelectorHeaderView.createText(section: section)
 
       XCTAssertEqual(
