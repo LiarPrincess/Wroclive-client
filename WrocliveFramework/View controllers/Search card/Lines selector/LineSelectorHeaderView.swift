@@ -52,7 +52,9 @@ internal final class LineSelectorHeaderView: UICollectionReusableView {
   }
 
   internal static func createText(section: LineSelectorSection) -> NSAttributedString {
-    let string = section.name
-    return NSAttributedString(string: string, attributes: Constants.textAttributes)
+    return NSAttributedString(
+      string: section.name,
+      attributes: Constants.textAttributes
+    )
   }
 }

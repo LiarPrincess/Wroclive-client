@@ -19,14 +19,16 @@ public protocol SearchCardViewType: AnyObject {
 
 public final class SearchCardViewModel: StoreSubscriber {
 
-  internal private(set) var page: LineType
+  public typealias Page = SearchCardState.Page
+
+  internal private(set) var page: Page
   internal private(set) var isLineSelectorVisible: Bool
   internal private(set) var isPlaceholderVisible: Bool
 
   // swiftlint:disable:next trailing_closure
   internal private(set) lazy var lineSelectorViewModel = LineSelectorViewModel(
     initialPage: self.page,
-    onPageTransition: { [weak self] page in self?.setPage(page: page) }
+    onPageTransition: { [weak self] page in self?.viewDidSelectPage(page: page) }
   )
 
   private let initialState: SearchCardState
@@ -62,7 +64,7 @@ public final class SearchCardViewModel: StoreSubscriber {
     self.store.subscribe(self)
   }
 
-  private func setPage(page: LineType) {
+  private func setPage(page: Page) {
     self.page = page
     self.lineSelectorViewModel.setPage(page: page)
     self.refreshView()
@@ -107,7 +109,7 @@ public final class SearchCardViewModel: StoreSubscriber {
     self.requestLinesFromApi()
   }
 
-  public func viewDidSelectPage(page: LineType) {
+  public func viewDidSelectPage(page: Page) {
     self.setPage(page: page)
   }
 

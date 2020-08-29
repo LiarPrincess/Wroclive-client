@@ -14,14 +14,16 @@ internal final class LineTypeSegmentedControl: UIView {
     internal static let titleAttributes = TextAttributes(style: .body, color: .tint)
   }
 
-  private let pages = [LineType.tram, LineType.bus]
+  internal typealias PageType = SearchCardState.Page
+
+  private let pages = [PageType.tram, PageType.bus]
   private let segmentedControl = UISegmentedControl(frame: .zero)
 
   // MARK: - Init
 
-  private let onPageSelected: (LineType) -> Void
+  private let onPageSelected: (PageType) -> Void
 
-  internal init(onPageSelected: @escaping (LineType) -> Void) {
+  internal init(onPageSelected: @escaping (PageType) -> Void) {
     self.onPageSelected = onPageSelected
     super.init(frame: .zero)
 
@@ -43,8 +45,8 @@ internal final class LineTypeSegmentedControl: UIView {
     self.segmentedControl.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 
-  private static func toPageName(_ lineType: LineType) -> String {
-    switch lineType {
+  private static func toPageName(_ type: PageType) -> String {
+    switch type {
     case .tram: return Localization.Pages.tram
     case .bus: return Localization.Pages.bus
     }
@@ -64,7 +66,7 @@ internal final class LineTypeSegmentedControl: UIView {
     self.onPageSelected(page)
   }
 
-  internal func setPage(page: LineType) {
+  internal func setPage(page: PageType) {
     if let index = self.pages.firstIndex(of: page) {
       self.segmentedControl.selectedSegmentIndex = index
     }

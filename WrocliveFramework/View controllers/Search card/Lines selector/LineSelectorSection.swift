@@ -91,7 +91,7 @@ public struct LineSelectorSection: Equatable {
   private static func sort(sections: inout [LineSelectorSection]) {
     sections.sort { lhs, rhs in
       let lhsOrder = Self.getSectionOrder(subtype: lhs.subtype)
-      let rhsOrder = Self.getSectionOrder(subtype: lhs.subtype)
+      let rhsOrder = Self.getSectionOrder(subtype: rhs.subtype)
       return lhsOrder < rhsOrder
     }
   }

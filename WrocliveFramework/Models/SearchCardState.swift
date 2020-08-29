@@ -4,12 +4,17 @@
 
 public struct SearchCardState: Codable, Equatable, CustomStringConvertible {
 
-  public let page: LineType
+  public enum Page: String, Codable, Equatable {
+    case tram
+    case bus
+  }
+
+  public let page: Page
   public let selectedLines: [Line]
 
   public static let `default` = SearchCardState(page: .tram, selectedLines: [])
 
   public var description: String {
-    return "SearchCardState(\(self.page), \(self.selectedLines))"
+    return "SearchCardState(page: \(self.page), selectedLines: \(self.selectedLines))"
   }
 }

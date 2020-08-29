@@ -10,18 +10,20 @@ public protocol LineSelectorViewType: AnyObject {
 
 public final class LineSelectorViewModel {
 
-  internal private(set) var page: LineType
+  public typealias Page = SearchCardState.Page
+
+  internal private(set) var page: Page
 
   internal let busPageViewModel: LineSelectorPageViewModel
   internal let tramPageViewModel: LineSelectorPageViewModel
 
-  private let onPageTransition: (LineType) -> Void
+  private let onPageTransition: (Page) -> Void
   private weak var view: LineSelectorViewType?
 
   // MARK: - Init
 
-  public init(initialPage page: LineType,
-              onPageTransition: @escaping (LineType) -> Void) {
+  public init(initialPage page: Page,
+              onPageTransition: @escaping (Page) -> Void) {
     self.page = page
     self.onPageTransition = onPageTransition
     self.tramPageViewModel = LineSelectorPageViewModel()
@@ -64,13 +66,13 @@ public final class LineSelectorViewModel {
 
   // MARK: - View input
 
-  public func viewDidTransitionToPage(page: LineType) {
+  public func viewDidTransitionToPage(page: Page) {
     self.onPageTransition(page)
   }
 
   // MARK: - Methods
 
-  public func setPage(page: LineType) {
+  public func setPage(page: Page) {
     if page == self.page {
       return
     }
@@ -80,9 +82,9 @@ public final class LineSelectorViewModel {
   }
 
   public func setLines(lines: [Line]) {
-    let (busses, trams) = self.groupByLineType(lines: lines)
-    self.busPageViewModel.setLines(lines: busses)
-    self.tramPageViewModel.setLines(lines: trams)
+    let sections = LineSelectorSection.create(from: lines)
+    self.tramPageViewModel.setSections(sections: sections.tram)
+    self.busPageViewModel.setSections(sections: sections.bus)
   }
 
   public func setSelectedLines(lines: [Line]) {

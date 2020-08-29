@@ -9,6 +9,8 @@ public final class LineSelector:
   UIPageViewControllerDataSource, UIPageViewControllerDelegate,
   LineSelectorViewType {
 
+  public typealias Page = SearchCardState.Page
+
   // MARK: - Properties
 
   private let viewModel: LineSelectorViewModel
@@ -34,7 +36,7 @@ public final class LineSelector:
     }
   }
 
-  private var currentPage: LineType {
+  private var currentPage: Page {
     let page = self.viewControllers?.first
     if page === self.tramPage { return .tram }
     if page === self.busPage { return .bus }
@@ -70,7 +72,7 @@ public final class LineSelector:
     self.setPage(page: page, animated: true)
   }
 
-  public func setPage(page: LineType, animated: Bool) {
+  public func setPage(page: Page, animated: Bool) {
     let pageView: LineSelectorPage
     let direction: UIPageViewController.NavigationDirection
 

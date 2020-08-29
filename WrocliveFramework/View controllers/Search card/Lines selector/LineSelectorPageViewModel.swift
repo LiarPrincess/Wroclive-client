@@ -68,8 +68,7 @@ internal final class LineSelectorPageViewModel {
 
   // MARK: - Methods
 
-  internal func setLines(lines: [Line]) {
-    let sections = LineSelectorSection.create(from: lines)
+  internal func setSections(sections: [LineSelectorSection]) {
     if sections == self.sections {
       return
     }
