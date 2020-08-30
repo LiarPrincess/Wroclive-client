@@ -118,18 +118,12 @@ internal final class CardPanelPresenter:
 
   @objc
   private func handleDismissGesture(_ gesture: UIPanGestureRecognizer) {
-    guard let dismissGesture = self.dismissGesture, gesture.isEqual(dismissGesture)
-      else { return }
+    guard self.isDismissGesture(gesture) else {
+      return
+    }
 
     if gesture.state == .began {
-      self.dismissGestureHandler = {
-        if let scrollView = self.cardPanel.scrollView {
-          return ScrollViewDismissGestureHandler(cardPanel: self.cardPanel,
-                                                 scrollView: scrollView)
-        }
-
-        return DismissGestureHandler(cardPanel: self.cardPanel)
-      }()
+      self.dismissGestureHandler = self.createDismissGestureHandler(for: gesture)
     }
 
     // If we are reordering cells then reorder has bigger priority than dismiss.
@@ -138,6 +132,30 @@ internal final class CardPanelPresenter:
     if !self.isReorderingTableViewCells() {
       self.dismissGestureHandler?.handleGesture(gesture)
     }
+  }
+
+  private func createDismissGestureHandler(
+    for gesture: UIPanGestureRecognizer
+  ) -> DismissGestureHandler {
+    // No scroll view -> DismissGestureHandler
+    guard let scrollView = self.cardPanel.scrollView else {
+      return DismissGestureHandler(cardPanel: self.cardPanel)
+    }
+
+    // If user is dragging header view -> DismissGestureHandler
+    let headerInset = scrollView.contentInset.top
+    let location = gesture.location(in: self.cardPanel.view)
+    let isDraggingHeaderView = location.y < headerInset
+
+    if isDraggingHeaderView {
+      return DismissGestureHandler(cardPanel: self.cardPanel)
+    }
+
+    // Hard case: we have to handle gesture alongside scroll view
+    return ScrollViewDismissGestureHandler(
+      cardPanel: self.cardPanel,
+      scrollView: scrollView
+    )
   }
 
   private func isReorderingTableViewCells() -> Bool {

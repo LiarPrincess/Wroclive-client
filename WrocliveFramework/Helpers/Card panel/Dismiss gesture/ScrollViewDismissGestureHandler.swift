@@ -27,8 +27,16 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
     self.observation = self.scrollView.observe(
       \.contentOffset,
       options: [.initial],
-      changeHandler: { [weak self] _, _ in self?.scrollViewDidScroll() }
+      changeHandler: { [weak self] _, _ in self?.disableScrollingWhenAboveTop() }
     )
+  }
+
+  private func disableScrollingWhenAboveTop() {
+    let offset = self.calculateScrollViewOffset()
+    let isAboveTop = offset <= 0
+
+    let isScrollingDisabled = isAboveTop && !self.scrollView.isDecelerating
+    self.scrollView.bounces = !isScrollingDisabled
   }
 
   deinit {
@@ -45,6 +53,8 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
     case .changed:
       let offset = self.calculateScrollViewOffset()
+      // Did we scroll so much that the white background above the scroll view
+      // is showing?
       let isScrollViewAboveTop = offset <= 0
 
       if isScrollViewAboveTop {
@@ -71,14 +81,6 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
     default:
       break
     }
-  }
-
-  private func scrollViewDidScroll() {
-    let offset = self.calculateScrollViewOffset()
-    let isAboveTop = offset <= 0
-
-    let isScrollingDisabled = isAboveTop && !self.scrollView.isDecelerating
-    self.scrollView.bounces = !isScrollingDisabled
   }
 
   private func calculateScrollViewOffset() -> CGFloat {
