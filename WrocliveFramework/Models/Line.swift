@@ -9,6 +9,29 @@ public struct Line: Codable, Equatable, Hashable, CustomStringConvertible {
   public let type: LineType
   public let subtype: LineSubtype
 
+  public var annotationColor: UIColor {
+    switch self.type {
+    case .tram:
+      return ColorScheme.tram
+    case .bus:
+      switch self.subtype {
+      case .regular:
+        return ColorScheme.busRegular
+      case .express:
+        return ColorScheme.busExpress
+      case .night:
+        return ColorScheme.busNight
+      case .suburban:
+        return ColorScheme.busSuburban
+      case .peakHour,
+           .zone,
+           .limited,
+           .temporary:
+        return ColorScheme.busOther
+      }
+    }
+  }
+
   public var description: String {
     return "Line(\(self.name), \(self.type), \(self.subtype))"
   }

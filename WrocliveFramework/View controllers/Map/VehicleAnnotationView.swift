@@ -49,7 +49,7 @@ public final class VehicleAnnotationView: MKAnnotationView {
       return
     }
 
-    let color = self.imageColor(for: annotation)
+    let color = annotation.line.annotationColor
     let hasColorChanged = self.roundedRectangle.tintColor != color
 
     let angleDiff = abs(self.roundedRectangle.angle - annotation.angle)
@@ -59,31 +59,6 @@ public final class VehicleAnnotationView: MKAnnotationView {
       self.roundedRectangle.tintColor = color
       self.roundedRectangle.angle = annotation.angle
       self.roundedRectangle.setNeedsDisplay()
-    }
-  }
-
-  private func imageColor(for annotation: VehicleAnnotation) -> UIColor {
-    let line = annotation.line
-
-    switch line.type {
-    case .tram:
-      return ColorScheme.tram
-    case .bus:
-      switch line.subtype {
-      case .regular:
-        return ColorScheme.busRegular
-      case .express:
-        return ColorScheme.busExpress
-      case .night:
-        return ColorScheme.busNight
-      case .suburban:
-        return ColorScheme.busSuburban
-      case .peakHour,
-           .zone,
-           .limited,
-           .temporary:
-        return ColorScheme.busOther
-      }
     }
   }
 

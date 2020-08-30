@@ -16,7 +16,7 @@ extension LineSelector {
 
       // We need to use bold, otherwise text would look too thin on bright background
       internal static let selectedTextAttributes = TextAttributes(style: .bodyBold,
-                                                                  color: .background,
+                                                                  color: .white,
                                                                   alignment: .center)
 
       internal static let notSelectedTextAttributes = TextAttributes(style: .body,

@@ -37,7 +37,7 @@ internal final class LineSelectorCell: UICollectionViewCell {
 
   private func initLayout() {
     self.selectedBackgroundView = UIView()
-    self.selectedBackgroundView?.backgroundColor = ColorScheme.tint
+    self.selectedBackgroundView?.backgroundColor = ColorScheme.tint // For now
     self.selectedBackgroundView?.layer.cornerRadius = Constants.cornerRadius
 
     self.label.numberOfLines = 1
@@ -55,6 +55,7 @@ internal final class LineSelectorCell: UICollectionViewCell {
     // 'tableView(_:cellForRowAt:)' is called
     self.line = line
     self.updateTextLabel()
+    self.updateSelectionColor()
   }
 
   private func updateTextLabel() {
@@ -74,5 +75,18 @@ internal final class LineSelectorCell: UICollectionViewCell {
       Constants.notSelectedTextAttributes
 
     return NSAttributedString(string: string, attributes: attributes)
+  }
+
+  private func updateSelectionColor() {
+    guard let line = self.line else {
+      return
+    }
+
+    guard let backgroundView = self.selectedBackgroundView else {
+      fatalError("'LineSelectorCell' is missing 'selectedBackgroundView'")
+    }
+
+    let color = line.annotationColor
+    backgroundView.backgroundColor = color
   }
 }
