@@ -12,23 +12,23 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
   private let scrollView: UIScrollView
 
-  // Why? If deceleration would force us to lower card, then gesture part would
-  // be already finished
+  // Why?
+  // If deceleration would force us to lower card, then gesture would
+  // be already finished, so we need 'something'.
   private var observation: NSKeyValueObservation?
 
   // MARK: - Init
 
-  internal init(for presentedViewController: UIViewController,
-                scrollView: UIScrollView) {
+  internal init(cardPanel: CardPanelContainer, scrollView: UIScrollView) {
     self.scrollView = scrollView
-    super.init(for: presentedViewController)
+    super.init(cardPanel: cardPanel)
 
+    // swiftlint:disable:next trailing_closure
     self.observation = self.scrollView.observe(
       \.contentOffset,
-      options: [.initial]
-    ) { [weak self] _, _ in
-      self?.scrollViewDidScroll()
-    }
+      options: [.initial],
+      changeHandler: { [weak self] _, _ in self?.scrollViewDidScroll() }
+    )
   }
 
   deinit {
@@ -44,11 +44,11 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
       self.notifyInteractiveDismissalWillBegin()
 
     case .changed:
-      let offset = self.calculateScrollViewOffset(self.scrollView)
+      let offset = self.calculateScrollViewOffset()
       let isScrollViewAboveTop = offset <= 0
 
       if isScrollViewAboveTop {
-        let translation = gesture.translation(in: self.presentedView)
+        let translation = gesture.translation(in: self.cardPanel.view)
         self.updateCardTranslation(movement: translation.y)
         self.dismissIfBelowThreshold(movement: translation.y)
 
@@ -68,20 +68,23 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
     case .cancelled:
       self.notifyInteractiveDismissalDidEnd(completed: true)
 
-    default: break
+    default:
+      break
     }
   }
 
   private func scrollViewDidScroll() {
-    let offset = self.calculateScrollViewOffset(self.scrollView)
+    let offset = self.calculateScrollViewOffset()
     let isAboveTop = offset <= 0
 
     let isScrollingDisabled = isAboveTop && !self.scrollView.isDecelerating
     self.scrollView.bounces = !isScrollingDisabled
   }
 
-  private func calculateScrollViewOffset(_ scrollView: UIScrollView) -> CGFloat {
-    let base = scrollView.contentOffset.y + scrollView.contentInset.top
-    return base + scrollView.safeAreaInsets.top
+  private func calculateScrollViewOffset() -> CGFloat {
+    let contentOffset = self.scrollView.contentOffset.y
+    let contentInset = self.scrollView.contentInset.top
+    let safeAreaInsets = self.scrollView.safeAreaInsets.top
+    return contentOffset + contentInset + safeAreaInsets
   }
 }

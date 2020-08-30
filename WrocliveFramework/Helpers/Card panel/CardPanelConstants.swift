@@ -18,6 +18,8 @@ public enum CardPanelConstants {
   public enum AnimationDurations {
     public static let present = TimeInterval(0.3)
     public static let dismiss = TimeInterval(0.3)
+    /// Go back to initial state after user changed their mind
+    public static let failedGestureDismiss = TimeInterval(0.25)
   }
 
   public enum DismissGesture {
@@ -25,5 +27,8 @@ public enum CardPanelConstants {
     public static let dismissThreshold = CGFloat(240)
 
     public static let translationFactor = CGFloat(0.5)
+
+    /// At which point 'chevronView' should be flat line instead of arrow?
+    public static let makeChevronFlatPercent = CGFloat(0.75)
   }
 }

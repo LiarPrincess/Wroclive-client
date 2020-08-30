@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 
-public final class CardPanelContainer: UIViewController, CustomCardPanelPresentable {
+public final class CardPanelContainer: UIViewController, UIGestureRecognizerDelegate {
 
   // MARK: - Properties
 
@@ -15,7 +15,10 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
   private var child: UIViewController?
   private let childContainer = UIView()
 
-  private var childCard: CustomCardPanelPresentable? {
+  private let dismissGesture = UIPanGestureRecognizer()
+  private var dismissGestureHandler: DismissGestureHandler?
+
+  private var cardPanel: CustomCardPanelPresentable? {
     return self.child as? CustomCardPanelPresentable
   }
 
@@ -38,6 +41,7 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
   override public func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
+    self.initDismissGestureRecognizer()
   }
 
   private func initLayout() {
@@ -62,6 +66,13 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
     }
   }
 
+  private func initDismissGestureRecognizer() {
+    self.dismissGesture.addTarget(self, action: #selector(self.handleDismissGesture))
+    self.dismissGesture.maximumNumberOfTouches = 1
+    self.dismissGesture.cancelsTouchesInView = false
+    self.view.addGestureRecognizer(self.dismissGesture)
+  }
+
   // MARK: - ViewDidDisappear
 
   override public func viewDidDisappear(_ animated: Bool) {
@@ -69,7 +80,7 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
     self.onViewDidDisappear()
   }
 
-  // MARK: - Methods
+  // MARK: - Content
 
   public func setContent(_ controller: UIViewController) {
     guard self.child == nil else {
@@ -84,29 +95,78 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
     controller.didMove(toParent: self)
   }
 
+  // MARK: - Dismiss gesture
+
+  @objc
+  private func handleDismissGesture(_ gesture: UIPanGestureRecognizer) {
+    guard self.isDismissGesture(gesture) else {
+      return
+    }
+
+    if gesture.state == .began {
+      self.dismissGestureHandler = {
+        if let scrollView = self.cardPanel?.scrollView {
+          return ScrollViewDismissGestureHandler(cardPanel: self, scrollView: scrollView)
+        }
+
+        return DismissGestureHandler(cardPanel: self)
+      }()
+    }
+
+    // If we are reordering cells then reorder has bigger priority than dismiss.
+    // Please note that we do not know if we are reordeing, untill AFTER
+    // the gesture has already started (so not in 'gesture.state == .began' case).
+    if !self.isReorderingTableViewCells() {
+      self.dismissGestureHandler?.handleGesture(gesture)
+    }
+  }
+
+  private func isReorderingTableViewCells() -> Bool {
+    guard let tableView = self.cardPanel?.scrollView as? UITableView else {
+      return false
+    }
+
+    return tableView.isEditing && tableView.hasUncommittedUpdates
+  }
+
+  // MARK: - UIGestureRecognizerDelegate
+
+  public func gestureRecognizerShouldBegin(
+    _ gestureRecognizer: UIGestureRecognizer
+  ) -> Bool {
+    return self.isDismissGesture(gestureRecognizer)
+  }
+
+  public func gestureRecognizer(
+    _ gestureRecognizer: UIGestureRecognizer,
+    shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+  ) -> Bool {
+    return self.isDismissGesture(gestureRecognizer)
+  }
+
+  private func isDismissGesture(_ gesture: UIGestureRecognizer) -> Bool {
+    return gesture.isEqual(dismissGesture)
+  }
+
   // MARK: - CustomCardPanelPresentable
 
-  public var scrollView: UIScrollView? {
-    return self.childCard?.scrollView
+  internal func interactiveDismissalWillBegin() {
+    self.cardPanel?.interactiveDismissalWillBegin()
   }
 
-  public func interactiveDismissalWillBegin() {
-    self.childCard?.interactiveDismissalWillBegin()
-  }
-
-  public func interactiveDismissalProgress(percent: CGFloat) {
+  internal func interactiveDismissalProgress(percent: CGFloat) {
     self.updateChevronViewDuringInteractiveDismissal(percent: percent)
-    self.childCard?.interactiveDismissalProgress(percent: percent)
+    self.cardPanel?.interactiveDismissalProgress(percent: percent)
   }
 
-  public func interactiveDismissalDidEnd(completed: Bool) {
+  internal func interactiveDismissalDidEnd(completed: Bool) {
     self.updateChevronViewAfterInteractiveDismissal()
-    self.childCard?.interactiveDismissalDidEnd(completed: completed)
+    self.cardPanel?.interactiveDismissalDidEnd(completed: completed)
   }
 
   private func updateChevronViewDuringInteractiveDismissal(percent: CGFloat) {
     // We assume that before we start chevron is in '.down' position
-    let makeChevronFlatAt = CGFloat(0.75)
+    let makeChevronFlatAt = CardPanelConstants.DismissGesture.makeChevronFlatPercent
     let chevronPercent = CGFloat.minimum(percent, makeChevronFlatAt)
     self.chevronView.angle = -ChevronView.maxAngle * (makeChevronFlatAt - chevronPercent)
   }

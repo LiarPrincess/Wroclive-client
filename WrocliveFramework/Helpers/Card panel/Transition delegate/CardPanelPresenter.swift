@@ -4,21 +4,13 @@
 
 import UIKit
 
-internal final class CardPanelPresenter:
-  UIPresentationController, UIGestureRecognizerDelegate {
+internal final class CardPanelPresenter: UIPresentationController {
 
   // MARK: - Properties
 
   private let height: CGFloat
-
+  /// Dark transparent background behind the card.
   private var dimmingView: UIView?
-
-  private var dismissGesture: UIPanGestureRecognizer?
-  private var dismissGestureHandler: DismissGestureHandlerType?
-
-  private var cardPanel: CustomCardPanelPresentable? {
-    return self.presentedViewController as? CustomCardPanelPresentable
-  }
 
   // MARK: - Init
 
@@ -29,7 +21,7 @@ internal final class CardPanelPresenter:
     super.init(presentedViewController: presented, presenting: presenting)
   }
 
-  // MARK: - Frame
+  // MARK: - Frame of presented view in container view
 
   override internal var frameOfPresentedViewInContainerView: CGRect {
     guard let containerView = self.containerView else {
@@ -42,60 +34,46 @@ internal final class CardPanelPresenter:
                   height: self.height)
   }
 
-  // MARK: - Present
+  // MARK: - Presentation transition will begin
 
   // Prepare dimming view
   override internal func presentationTransitionWillBegin() {
     super.presentationTransitionWillBegin()
 
     guard let containerView = self.containerView,
-          let coordinator = self.presentingViewController.transitionCoordinator
-      else { return }
+          let coordinator = self.presentingViewController.transitionCoordinator else {
+      return
+    }
 
     // swiftlint:disable force_unwrapping
     self.dimmingView = UIView(frame: containerView.frame)
     self.dimmingView!.backgroundColor = CardPanelConstants.DimmingView.color
     self.dimmingView!.alpha = 0
     containerView.addSubview(self.dimmingView!)
+    // swiftlint:enable force_unwrapping
 
     coordinator.animate(
-      alongsideTransition: { [unowned self] _ in
-        self.dimmingView!.alpha = CardPanelConstants.DimmingView.alpha
+      alongsideTransition: { [weak self] _ in
+        self?.dimmingView?.alpha = CardPanelConstants.DimmingView.alpha
       },
       completion: nil
     )
-    // swiftlint:enable force_unwrapping
   }
 
-  // Add dismiss gesture recognizer
-  override internal func presentationTransitionDidEnd(_ completed: Bool) {
-    super.presentationTransitionDidEnd(completed)
-    guard completed else { return }
-
-    // swiftlint:disable force_unwrapping
-    self.dismissGesture = UIPanGestureRecognizer(
-      target: self,
-      action: #selector(self.handleDismissGesture)
-    )
-    self.dismissGesture!.maximumNumberOfTouches = 1
-    self.dismissGesture!.cancelsTouchesInView = false
-    self.dismissGesture!.delegate = self
-
-    self.presentedView?.addGestureRecognizer(self.dismissGesture!)
-    // swiftlint:enable force_unwrapping
-  }
-
-  // MARK: - Dismiss
+  // MARK: - Dismissal transition will begin
 
   // Hide dimming view
   override internal func dismissalTransitionWillBegin() {
     super.dismissalTransitionWillBegin()
 
-    guard let coordinator = presentingViewController.transitionCoordinator
-      else { return }
+    guard let coordinator = presentingViewController.transitionCoordinator else {
+      return
+    }
 
     coordinator.animate(
-      alongsideTransition: { [weak self] _ in self?.dimmingView?.alpha = 0 },
+      alongsideTransition: { [weak self] _ in
+        self?.dimmingView?.alpha = 0
+      },
       completion: nil
     )
   }
@@ -108,63 +86,5 @@ internal final class CardPanelPresenter:
       self.dimmingView?.removeFromSuperview()
       self.dimmingView = nil
     }
-  }
-
-  // MARK: - Dismiss gesture
-
-  @objc
-  private func handleDismissGesture(_ gesture: UIPanGestureRecognizer) {
-    guard let dismissGesture = self.dismissGesture, gesture.isEqual(dismissGesture)
-      else { return }
-
-    if gesture.state == .began {
-      self.dismissGestureHandler = {
-        let presented = self.presentedViewController
-
-        if let scrollView = self.cardPanel?.scrollView {
-          return ScrollViewDismissGestureHandler(for: presented, scrollView: scrollView)
-        }
-
-        return DismissGestureHandler(for: presented)
-      }()
-    }
-
-    // If we are reordering cells then reorder has bigger priority than dismiss.
-    // Please note that we do not know if we are reordeing, untill AFTER
-    // the gesture has already started (so not in 'gesture.state == .began' case).
-    if !self.isReorderingTableViewCells() {
-      self.dismissGestureHandler?.handleGesture(gesture)
-    }
-  }
-
-  private func isReorderingTableViewCells() -> Bool {
-    guard let tableView = self.cardPanel?.scrollView as? UITableView else {
-      return false
-    }
-
-    return tableView.isEditing && tableView.hasUncommittedUpdates
-  }
-
-  // MARK: - UIGestureRecognizerDelegate
-
-  internal func gestureRecognizerShouldBegin(
-    _ gestureRecognizer: UIGestureRecognizer
-  ) -> Bool {
-    return self.isDismissGesture(gestureRecognizer)
-  }
-
-  internal func gestureRecognizer(
-    _ gestureRecognizer: UIGestureRecognizer,
-    shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
-  ) -> Bool {
-    return self.isDismissGesture(gestureRecognizer)
-  }
-
-  private func isDismissGesture(_ gesture: UIGestureRecognizer) -> Bool {
-    guard let dismissGesture = self.dismissGesture else {
-      return false
-    }
-
-    return gesture.isEqual(dismissGesture)
   }
 }
