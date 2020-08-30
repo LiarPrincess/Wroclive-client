@@ -39,7 +39,11 @@ public final class CardPanelTransitionDelegate:
     presenting: UIViewController?,
     source: UIViewController
   ) -> UIPresentationController? {
-    return CardPanelPresenter(forPresented: presented,
+    guard let cardPanel = presented as? CardPanelContainer else {
+      fatalError("'CardPanelTransitionDelegate' should only be used with ''CardPanelContainer")
+    }
+
+    return CardPanelPresenter(forPresented: cardPanel,
                               presenting: presenting,
                               height: self.height)
   }
