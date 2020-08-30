@@ -122,7 +122,8 @@ public final class BookmarksCard:
   // MARK: - CustomCardPanelPresentable
 
   public var scrollView: UIScrollView? {
-    return self.tableView
+    let isTableViewVisible = self.viewModel.isTableViewVisible
+    return isTableViewVisible ? self.tableView : nil
   }
 
   // MARK: - UITableView
