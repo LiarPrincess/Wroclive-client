@@ -177,7 +177,7 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPanelPr
   // MARK: - CustomCardPanelPresentable
 
   public var scrollView: UIScrollView? {
-    let isLineSelectorVisible = self.viewModel.isLineSelectorVisible
+    let isLineSelectorVisible = !self.lineSelector.view.isHidden
     return isLineSelectorVisible ? self.lineSelector.scrollView : nil
   }
 }
