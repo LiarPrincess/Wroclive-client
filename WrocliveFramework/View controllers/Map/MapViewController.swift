@@ -49,12 +49,17 @@ public final class MapViewController:
     self.mapView.isRotateEnabled = false
     // Not needed since we can't rotate.
     self.mapView.showsCompass = false
-    self.mapView.mapType = .standard
 
     self.mapView.delegate = self
 
     self.view.addSubview(self.mapView)
     self.mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
+  }
+
+  // MARK: - Map type
+
+  public func setMapType(mapType: MapType) {
+    self.mapView.mapType = mapType.value
   }
 
   // MARK: - Center

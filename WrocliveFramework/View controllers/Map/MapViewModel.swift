@@ -10,6 +10,7 @@ import PromiseKit
 private typealias Defaults = MapViewController.Constants.Defaults
 
 public protocol MapViewType: AnyObject {
+  func setMapType(mapType: MapType)
   func setCenter(location: CLLocationCoordinate2D, animated: Bool)
   func showVehicles(vehicles: [Vehicle])
 
@@ -68,9 +69,19 @@ public final class MapViewModel: StoreSubscriber {
   public func newState(state: AppState) {
     defer { self.currentState = state }
 
+    self.updateMapType(newState: state)
     self.centerMapIfNeeded(newState: state)
     self.updateVehicleLocationsIfNeeded(newState: state)
   }
+
+  // MARK: - Map type
+
+  private func updateMapType(newState: AppState) {
+    let mapType = newState.mapType
+    self.view?.setMapType(mapType: mapType)
+  }
+
+  // MARK: - Map center
 
   // Center map:
   // 1. Start with default center (set in 'self.setView(view:)')
@@ -107,6 +118,8 @@ public final class MapViewModel: StoreSubscriber {
   private func centerMapOnDefaultLocation(animated: Bool) {
     self.view?.setCenter(location: Defaults.location, animated: animated)
   }
+
+  // MARK: - Vehicle locations
 
   // On vehicle response:
   // - if data -> update map
