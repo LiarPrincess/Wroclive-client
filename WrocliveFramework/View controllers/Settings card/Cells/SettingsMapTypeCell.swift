@@ -18,11 +18,10 @@ public final class SettingsMapTypeCell: UITableViewCell {
     fileprivate let value: MapType
   }
 
-  // TODO: [Map] Translations
   private let items = [
-    Item(text: Localization.map, value: .standard),
+    Item(text: Localization.standard, value: .standard),
     Item(text: Localization.satellite, value: .satellite),
-    Item(text: Localization.transport, value: .hybrid)
+    Item(text: Localization.hybrid, value: .hybrid)
   ]
 
   private let segmentedControl = UISegmentedControl()

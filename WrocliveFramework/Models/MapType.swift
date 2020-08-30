@@ -5,8 +5,11 @@
 import MapKit
 
 public enum MapType: CustomStringConvertible {
+  /// A street map that shows the position of all roads and some road names.
   case standard
+  /// Satellite imagery of the area.
   case satellite
+  /// A satellite image of the area with road and road name information layered on top.
   case hybrid
 
   public var description: String {

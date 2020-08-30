@@ -176,12 +176,12 @@ public enum Localizable {
       enum MapType {
         /// Map type
         static let header = Localizable.tr("Localizable", "Settings.Table.MapType.Header")
-        /// Map
-        static let map = Localizable.tr("Localizable", "Settings.Table.MapType.Map")
+        /// Hybrid
+        static let hybrid = Localizable.tr("Localizable", "Settings.Table.MapType.Hybrid")
         /// Satellite
         static let satellite = Localizable.tr("Localizable", "Settings.Table.MapType.Satellite")
-        /// Transport
-        static let transport = Localizable.tr("Localizable", "Settings.Table.MapType.Transport")
+        /// Standard
+        static let standard = Localizable.tr("Localizable", "Settings.Table.MapType.Standard")
       }
     }
   }
