@@ -6,7 +6,7 @@ import UIKit
 
 public protocol CustomCardPanelPresentable: AnyObject {
 
-  /// Scroll view that can be used to dismiss card.
+  /// Scroll view has to work alongside the card dismiss gesture.
   var scrollView: UIScrollView? { get }
 
   func interactiveDismissalWillBegin()
@@ -20,27 +20,4 @@ extension CustomCardPanelPresentable {
   public func interactiveDismissalWillBegin() {}
   public func interactiveDismissalProgress(percent: CGFloat) {}
   public func interactiveDismissalDidEnd(completed: Bool) {}
-}
-
-extension UINavigationController: CustomCardPanelPresentable {
-
-  private var card: CustomCardPanelPresentable? {
-    return self.topViewController as? CustomCardPanelPresentable
-  }
-
-  public var scrollView: UIScrollView? {
-    return self.card?.scrollView
-  }
-
-  public func interactiveDismissalWillBegin() {
-    self.card?.interactiveDismissalWillBegin()
-  }
-
-  public func interactiveDismissalProgress(percent: CGFloat) {
-    self.card?.interactiveDismissalProgress(percent: percent)
-  }
-
-  public func interactiveDismissalDidEnd(completed: Bool) {
-    self.card?.interactiveDismissalDidEnd(completed: completed)
-  }
 }
