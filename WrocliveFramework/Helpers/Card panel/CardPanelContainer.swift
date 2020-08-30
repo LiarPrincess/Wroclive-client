@@ -55,7 +55,7 @@ public final class CardPanelContainer: UIViewController, CustomCardPanelPresenta
 
     self.view.addSubview(self.chevronView)
     self.chevronView.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(8.0)
+      make.top.equalToSuperview().offset(CardPanelConstants.chevronViewTopOffset)
       make.centerX.equalToSuperview()
       make.width.equalTo(ChevronView.nominalSize.width)
       make.height.equalTo(ChevronView.nominalSize.height)

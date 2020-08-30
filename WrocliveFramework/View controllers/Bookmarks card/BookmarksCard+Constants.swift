@@ -17,7 +17,7 @@ extension BookmarksCard {
 
     public enum Header {
       public enum Title {
-        public static let topOffset = CardPanelConstants.chevronViewSpace + 8.0
+        public static let topOffset = CardPanelConstants.recommendedContentTopOffset + 8.0
         public static let bottomOffset = CGFloat(8.0)
 
         public static let attributes = TextAttributes(style: .largeTitle)
