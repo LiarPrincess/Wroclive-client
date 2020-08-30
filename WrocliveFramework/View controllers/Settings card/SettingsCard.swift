@@ -9,7 +9,8 @@ private typealias Localization = Localizable.Settings
 
 public final class SettingsCard:
   UIViewController, UITableViewDataSource, UITableViewDelegate,
-  CustomCardPanelPresentable {
+  CardPanelPresentable {
+
   // MARK: - Properties
 
   public let headerView = ExtraLightVisualEffectView()

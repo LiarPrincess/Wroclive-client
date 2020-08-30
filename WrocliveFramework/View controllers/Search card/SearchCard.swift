@@ -6,8 +6,7 @@ import UIKit
 
 private typealias Localization = Localizable.Search
 
-public final class SearchCard:
-  UIViewController, SearchCardViewType, CustomCardPanelPresentable {
+public final class SearchCard: UIViewController, SearchCardViewType, CardPanelPresentable {
 
   // MARK: - Properties
 

@@ -11,16 +11,10 @@ public final class CardPanelContainer: UIViewController, UIGestureRecognizerDele
 
   /// Animated arrow at the top of the card.
   public let chevronView = ChevronView()
-
-  private var child: UIViewController?
-  private let childContainer = UIView()
+  private var child: CardPanelPresentable?
 
   private let dismissGesture = UIPanGestureRecognizer()
   private var dismissGestureHandler: DismissGestureHandler?
-
-  private var cardPanel: CustomCardPanelPresentable? {
-    return self.child as? CustomCardPanelPresentable
-  }
 
   private let onViewDidDisappear: () -> Void
 
@@ -47,13 +41,6 @@ public final class CardPanelContainer: UIViewController, UIGestureRecognizerDele
   private func initLayout() {
     self.view.backgroundColor = ColorScheme.background
     self.view.roundTopCorners(radius: CardPanelConstants.topCornerRadius)
-
-    // 'self.childContainer' has to be before 'self.chevronView',
-    // otherwise it would be covered behind it.
-    self.view.addSubview(self.childContainer)
-    self.childContainer.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
 
     self.chevronView.setState(.down)
 
@@ -82,7 +69,7 @@ public final class CardPanelContainer: UIViewController, UIGestureRecognizerDele
 
   // MARK: - Content
 
-  public func setContent(_ controller: UIViewController) {
+  public func setContent(_ controller: CardPanelPresentable) {
     guard self.child == nil else {
       fatalError("Card panel content was already set!")
     }
@@ -90,7 +77,13 @@ public final class CardPanelContainer: UIViewController, UIGestureRecognizerDele
     self.child = controller
     self.addChild(controller)
 
-    self.childContainer.addSubview(controller.view)
+    // 'controller.view' has to be below 'self.chevronView',
+    // otherwise it would cover it.
+    self.view.insertSubview(controller.view, belowSubview: self.chevronView)
+    controller.view.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
+
     controller.view.snp.makeConstraints { $0.edges.equalToSuperview() }
     controller.didMove(toParent: self)
   }
@@ -105,7 +98,7 @@ public final class CardPanelContainer: UIViewController, UIGestureRecognizerDele
 
     if gesture.state == .began {
       self.dismissGestureHandler = {
-        if let scrollView = self.cardPanel?.scrollView {
+        if let scrollView = self.child?.scrollView {
           return ScrollViewDismissGestureHandler(cardPanel: self, scrollView: scrollView)
         }
 
@@ -122,7 +115,7 @@ public final class CardPanelContainer: UIViewController, UIGestureRecognizerDele
   }
 
   private func isReorderingTableViewCells() -> Bool {
-    guard let tableView = self.cardPanel?.scrollView as? UITableView else {
+    guard let tableView = self.child?.scrollView as? UITableView else {
       return false
     }
 
@@ -151,17 +144,17 @@ public final class CardPanelContainer: UIViewController, UIGestureRecognizerDele
   // MARK: - CustomCardPanelPresentable
 
   internal func interactiveDismissalWillBegin() {
-    self.cardPanel?.interactiveDismissalWillBegin()
+    self.child?.interactiveDismissalWillBegin()
   }
 
   internal func interactiveDismissalProgress(percent: CGFloat) {
     self.updateChevronViewDuringInteractiveDismissal(percent: percent)
-    self.cardPanel?.interactiveDismissalProgress(percent: percent)
+    self.child?.interactiveDismissalProgress(percent: percent)
   }
 
   internal func interactiveDismissalDidEnd(completed: Bool) {
     self.updateChevronViewAfterInteractiveDismissal()
-    self.cardPanel?.interactiveDismissalDidEnd(completed: completed)
+    self.child?.interactiveDismissalDidEnd(completed: completed)
   }
 
   private func updateChevronViewDuringInteractiveDismissal(percent: CGFloat) {

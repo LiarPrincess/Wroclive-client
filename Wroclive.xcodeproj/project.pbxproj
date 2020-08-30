@@ -33,7 +33,7 @@
 		9013FAB424D6B1890006D1B9 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9A24D6B1880006D1B9 /* ChevronView.swift */; };
 		9013FAB524D6B1890006D1B9 /* CardPanelPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9B24D6B1880006D1B9 /* CardPanelPresentationTransition.swift */; };
 		9013FAB624D6B1890006D1B9 /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9C24D6B1880006D1B9 /* CardPanelPresenter.swift */; };
-		9013FAB724D6B1890006D1B9 /* CustomCardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9D24D6B1880006D1B9 /* CustomCardPanelPresentable.swift */; };
+		9013FAB724D6B1890006D1B9 /* CardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9D24D6B1880006D1B9 /* CardPanelPresentable.swift */; };
 		9013FAB824D6B1890006D1B9 /* CardPanelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9E24D6B1880006D1B9 /* CardPanelContainer.swift */; };
 		9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */; };
 		9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */; };
@@ -225,7 +225,7 @@
 		9013FA9A24D6B1880006D1B9 /* ChevronView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
 		9013FA9B24D6B1880006D1B9 /* CardPanelPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentationTransition.swift; sourceTree = "<group>"; };
 		9013FA9C24D6B1880006D1B9 /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
-		9013FA9D24D6B1880006D1B9 /* CustomCardPanelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCardPanelPresentable.swift; sourceTree = "<group>"; };
+		9013FA9D24D6B1880006D1B9 /* CardPanelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentable.swift; sourceTree = "<group>"; };
 		9013FA9E24D6B1880006D1B9 /* CardPanelContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelContainer.swift; sourceTree = "<group>"; };
 		9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
 		9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
@@ -479,7 +479,7 @@
 				9013FA9A24D6B1880006D1B9 /* ChevronView.swift */,
 				9013FA9E24D6B1880006D1B9 /* CardPanelContainer.swift */,
 				9013FAA524D6B1880006D1B9 /* CardPanelConstants.swift */,
-				9013FA9D24D6B1880006D1B9 /* CustomCardPanelPresentable.swift */,
+				9013FA9D24D6B1880006D1B9 /* CardPanelPresentable.swift */,
 			);
 			path = "Card panel";
 			sourceTree = "<group>";
@@ -1105,7 +1105,7 @@
 				90CDCFD424D60CF100595D89 /* CollectionExtensions.swift in Sources */,
 				90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */,
 				905893CF24D4A95D0046EFA5 /* CachedStorageManager.swift in Sources */,
-				9013FAB724D6B1890006D1B9 /* CustomCardPanelPresentable.swift in Sources */,
+				9013FAB724D6B1890006D1B9 /* CardPanelPresentable.swift in Sources */,
 				90D57B0724DC490100A0EF53 /* LineSelectorSection.swift in Sources */,
 				90F72F3024E31AA400D20EB2 /* ApiError.swift in Sources */,
 				905893D324D4A95D0046EFA5 /* Configuration.swift in Sources */,

@@ -4,7 +4,8 @@
 
 import UIKit
 
-public protocol CustomCardPanelPresentable: AnyObject {
+/// This view can be presented in `CardPanelContainer`.
+public protocol CardPanelPresentable: UIViewController {
 
   /// Scroll view has to work alongside the card dismiss gesture.
   var scrollView: UIScrollView? { get }
@@ -14,7 +15,7 @@ public protocol CustomCardPanelPresentable: AnyObject {
   func interactiveDismissalDidEnd(completed: Bool)
 }
 
-extension CustomCardPanelPresentable {
+extension CardPanelPresentable {
   public var scrollView: UIScrollView? { return nil }
 
   public func interactiveDismissalWillBegin() {}

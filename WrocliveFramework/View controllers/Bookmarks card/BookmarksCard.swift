@@ -6,7 +6,7 @@ import UIKit
 
 public final class BookmarksCard:
   UIViewController, UITableViewDataSource, UITableViewDelegate,
-  BookmarksCardViewType, CustomCardPanelPresentable {
+  BookmarksCardViewType, CardPanelPresentable {
 
   // MARK: - Properties
 

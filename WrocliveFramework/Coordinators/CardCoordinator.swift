@@ -19,7 +19,7 @@ extension CardCoordinator {
 
   /// Helper!
   /// Should be called only inside `CardCoordinator` implementation!
-  internal func present(card: UIViewController,
+  internal func present(card: CardPanelPresentable,
                         withHeight height: CGFloat,
                         animated: Bool) -> Guarantee<Void> {
     let transitionDelegate = CardPanelTransitionDelegate(height: height)
