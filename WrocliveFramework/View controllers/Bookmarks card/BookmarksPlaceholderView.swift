@@ -60,16 +60,33 @@ public final class BookmarksPlaceholderView: UIView {
   }
 
   private func createContentText() -> NSAttributedString {
-    let heartAttachment = NSTextAttachment()
-    heartAttachment.image = ImageAsset.bookmarksPlaceholderHeart.value
-    heartAttachment.adjustsImageSizeForAccessibilityContentSizeCategory = true
+    let heartAttachment = self.createHeartAttachment()
     let heartAttributedString = NSAttributedString(attachment: heartAttachment)
-
-    let replacement = TextReplacement("<heart>", heartAttributedString)
+    let heartReplacement = TextReplacement("<heart>", heartAttributedString)
 
     return NSAttributedString(
       string: Localization.content,
       attributes: Constants.Content.textAttributes
-    ).withReplacements([replacement])
+    ).withReplacements([heartReplacement])
+  }
+
+  private func createHeartAttachment() -> NSTextAttachment {
+    let image = ImageAsset.bookmarksPlaceholderHeart.value
+    let imageSize = image.size
+
+    let result = NSTextAttachment()
+    result.image = image
+    result.adjustsImageSizeForAccessibilityContentSizeCategory = true
+
+    // Make it a little bit lower to make it Y centered (more or less).
+    // (and yes there is a difference between 1.0, 1.5 and 2.0).
+    result.bounds = CGRect(
+      x: 0.0,
+      y: -1.5,
+      width: imageSize.width,
+      height: imageSize.height
+    )
+
+    return result
   }
 }

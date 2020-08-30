@@ -28,6 +28,7 @@ public struct ImageAsset {
   public let name: String
 
   public static let shareImage = ImageAsset(name: "ShareImage")
+  public static let bookmarksPlaceholderHeart = ImageAsset(name: "bookmarks-placeholder-heart")
   public static let searchHeart = ImageAsset(name: "search-heart")
   public static let settingsAbout = ImageAsset(name: "settings-about")
   public static let settingsRate = ImageAsset(name: "settings-rate")
