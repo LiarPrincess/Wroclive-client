@@ -16,8 +16,8 @@ public enum UserLocationAuthorizationAction: Action, CustomStringConvertible {
 
   public var description: String {
     switch self {
-    case .set:
-      return "UserLocationAuthorizationAction.set"
+    case .set(let value):
+      return "UserLocationAuthorizationAction.set(\(value))"
     case .requestWhenInUseAuthorization:
       return "UserLocationAuthorizationAction.requestWhenInUseAuthorization"
     }
@@ -26,16 +26,30 @@ public enum UserLocationAuthorizationAction: Action, CustomStringConvertible {
 
 // MARK: - User data
 
+public enum MapTypeAction: Action, CustomStringConvertible {
+  case set(MapType)
+
+  public var description: String {
+    switch self {
+    case .set(let value):
+      return "MapTypeAction.set(\(value))"
+    }
+  }
+}
+
 public enum BookmarksAction: Action, CustomStringConvertible {
   case add(name: String, lines: [Line])
-  case remove(at: Int)
+  case remove(index: Int)
   case move(from: Int, to: Int)
 
   public var description: String {
     switch self {
-    case .add: return "BookmarksAction.add"
-    case .remove: return "BookmarksAction.remove"
-    case .move: return "BookmarksAction.move"
+    case .add:
+      return "BookmarksAction.add"
+    case let .remove(index):
+      return "BookmarksAction.remove(index: \(index))"
+    case let .move(from, to):
+      return "BookmarksAction.move(from: \(from), to: \(to))"
     }
   }
 }
@@ -45,7 +59,8 @@ public enum TrackedLinesAction: Action, CustomStringConvertible {
 
   public var description: String {
     switch self {
-    case .startTracking: return "TrackedLinesAction.startTracking"
+    case .startTracking:
+      return "TrackedLinesAction.startTracking"
     }
   }
 }
@@ -59,8 +74,10 @@ public enum ApiMiddlewareActions: Action, CustomStringConvertible {
 
   public var description: String {
     switch self {
-    case .requestLines: return "ApiMiddlewareActions.updateLines"
-    case .requestVehicleLocations: return "ApiMiddlewareActions.updateVehicleLocations"
+    case .requestLines:
+      return "ApiMiddlewareActions.updateLines"
+    case .requestVehicleLocations:
+      return "ApiMiddlewareActions.updateVehicleLocations"
     }
   }
 }
@@ -82,9 +99,13 @@ public enum ApiAction: Action, CustomStringConvertible {
 
 private func describe<Data>(_ resonse: AppState.ApiResponseState<Data>) -> String {
   switch resonse {
-  case .none: return ".none"
-  case .inProgress: return ".inProgress"
-  case .data: return ".data"
-  case let .error(error): return ".error(\(String(describing: error)))"
+  case .none:
+    return ".none"
+  case .inProgress:
+    return ".inProgress"
+  case .data:
+    return ".data"
+  case .error(let error):
+    return ".error(\(String(describing: error)))"
   }
 }

@@ -6,6 +6,7 @@ import Foundation
 import ReSwift
 
 // swiftlint:disable implicit_return
+// swiftlint:disable closure_body_length
 // swiftlint:disable discouraged_optional_collection
 
 extension AppState {
@@ -15,6 +16,11 @@ extension AppState {
   public static func createReducer(environment: Environment) -> ReducerType {
     return { (action: Action, state: AppState?) -> AppState in
       return AppState(
+        mapType: mapTypeReducer(
+          action: action,
+          state: state?.mapType,
+          environment: environment
+        ),
         userLocationAuthorization: userLocationAuthorizationReducer(
           action: action,
           state: state?.userLocationAuthorization,
@@ -64,6 +70,22 @@ private func userLocationAuthorizationReducer(
 }
 
 // MARK: - User data
+
+private func mapTypeReducer(action: Action,
+                            state: MapType?,
+                            environment: Environment) -> MapType {
+  switch action {
+  case let MapTypeAction.set(value):
+    return value
+  default:
+    if let oldState = state {
+      return oldState
+    }
+
+    // TODO: [Map] Read from env
+    return .standard
+  }
+}
 
 private func bookmarksReducer(action: Action, state: [Bookmark]?) -> [Bookmark] {
   var state = state ?? []

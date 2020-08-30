@@ -7,6 +7,7 @@ import ReSwift
 
 public struct AppState: StateType {
 
+  public var mapType: MapType
   public var userLocationAuthorization: UserLocationAuthorization
 
   public var bookmarks: [Bookmark]
@@ -62,6 +63,7 @@ public struct AppState: StateType {
     let userLocation = environment.userLocation
 
     return AppState(
+      mapType: .standard, // TODO: [Map] Save
       userLocationAuthorization: userLocation.getAuthorizationStatus(),
       bookmarks: storage.readBookmarks() ?? bookmarksIfNotSaved(),
       trackedLines: storage.readTrackedLines() ?? trackedLinesIfNotSaved(),
