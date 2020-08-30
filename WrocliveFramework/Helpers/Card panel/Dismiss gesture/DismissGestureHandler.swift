@@ -6,7 +6,7 @@ import UIKit
 
 private typealias Constants = CardPanelConstants.DismissGesture
 
-internal class DismissGestureHandler: DismissGestureHandlerType {
+internal class DismissGestureHandler {
 
   // MARK: - Properties
 

@@ -36,7 +36,6 @@
 		9013FAB724D6B1890006D1B9 /* CustomCardPanelPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9D24D6B1880006D1B9 /* CustomCardPanelPresentable.swift */; };
 		9013FAB824D6B1890006D1B9 /* CardPanelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9E24D6B1880006D1B9 /* CardPanelContainer.swift */; };
 		9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */; };
-		9013FABA24D6B1890006D1B9 /* DismissGestureHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA124D6B1880006D1B9 /* DismissGestureHandlerType.swift */; };
 		9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */; };
 		9013FABC24D6B1890006D1B9 /* ScrollViewDismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA324D6B1880006D1B9 /* ScrollViewDismissGestureHandler.swift */; };
 		9013FABD24D6B1890006D1B9 /* CardPanelDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */; };
@@ -229,7 +228,6 @@
 		9013FA9D24D6B1880006D1B9 /* CustomCardPanelPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCardPanelPresentable.swift; sourceTree = "<group>"; };
 		9013FA9E24D6B1880006D1B9 /* CardPanelContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelContainer.swift; sourceTree = "<group>"; };
 		9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
-		9013FAA124D6B1880006D1B9 /* DismissGestureHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissGestureHandlerType.swift; sourceTree = "<group>"; };
 		9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
 		9013FAA324D6B1880006D1B9 /* ScrollViewDismissGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewDismissGestureHandler.swift; sourceTree = "<group>"; };
 		9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelDismissTransition.swift; sourceTree = "<group>"; };
@@ -489,7 +487,6 @@
 		9013FAA024D6B1880006D1B9 /* Dismiss gesture */ = {
 			isa = PBXGroup;
 			children = (
-				9013FAA124D6B1880006D1B9 /* DismissGestureHandlerType.swift */,
 				9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */,
 				9013FAA324D6B1880006D1B9 /* ScrollViewDismissGestureHandler.swift */,
 			);
@@ -1047,7 +1044,6 @@
 				90F38E4924E19ECE000D4192 /* SettingsCard+Layout.swift in Sources */,
 				905893CD24D4A95D0046EFA5 /* BundleManager.swift in Sources */,
 				905893C924D4A95D0046EFA5 /* StorageManager.swift in Sources */,
-				9013FABA24D6B1890006D1B9 /* DismissGestureHandlerType.swift in Sources */,
 				900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */,
 				90CE742124D9BB7800419166 /* BookmarksCard.swift in Sources */,
 				9013FAB824D6B1890006D1B9 /* CardPanelContainer.swift in Sources */,
