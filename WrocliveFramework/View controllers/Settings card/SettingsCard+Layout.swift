@@ -48,7 +48,7 @@ extension SettingsCard {
   // MARK: - Table view
 
   private func initTableView() {
-    self.tableView.registerCell(SettingsTextCell.self)
+    self.tableView.registerCell(SettingsLinkCell.self)
     self.tableView.registerSupplementary(SettingsSectionHeaderView.self)
 
     self.tableView.separatorStyle = .none

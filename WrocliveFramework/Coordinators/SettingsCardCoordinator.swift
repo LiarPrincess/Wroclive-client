@@ -27,12 +27,12 @@ public final class SettingsCardCoordinator: CardCoordinator, SettingsCardViewMod
   }
 
   public func start() -> Guarantee<Void> {
-    let viewModel = SettingsCardViewModel(delegate: self)
+    let viewModel = SettingsCardViewModel(store: self.store, delegate: self)
     let card = SettingsCard(viewModel: viewModel, environment: self.environment)
 
     let height = min(
       0.75 * self.environment.device.screenBounds.height,
-      CGFloat(400.0)
+      CGFloat(500.0)
     )
 
     self.card = card

@@ -5,10 +5,10 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = SettingsCard.Constants.Cell
+private typealias Constants = SettingsCard.Constants.LinkCell
 
 /// Cell that contains only text.
-public final class SettingsTextCell: UITableViewCell {
+public final class SettingsLinkCell: UITableViewCell {
 
   // MARK: - Properties
 
@@ -57,19 +57,20 @@ public final class SettingsTextCell: UITableViewCell {
 
   // MARK: - Update
 
-  public func update(kind: SettingsSection.CellKind,
+  public func update(image: ImageAsset,
+                     text: String,
                      isLastCellInSection: Bool,
                      device: DeviceManagerType) {
     // 'accessoryType' may depend on 'kind'
     self.accessoryType = .disclosureIndicator
 
     self.textLabel?.attributedText = NSAttributedString(
-      string: kind.text,
+      string: text,
       attributes: Constants.textAttributes
     )
 
     if let imageView = self.imageView {
-      imageView.image = kind.image?.value
+      imageView.image = image.value
     }
 
     self.isBottomBorderVisible = !isLastCellInSection

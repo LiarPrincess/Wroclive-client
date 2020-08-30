@@ -172,6 +172,17 @@ public enum Localizable {
         /// Share
         static let share = Localizable.tr("Localizable", "Settings.Table.General.Share")
       }
+
+      enum MapType {
+        /// Map type
+        static let header = Localizable.tr("Localizable", "Settings.Table.MapType.Header")
+        /// Map
+        static let map = Localizable.tr("Localizable", "Settings.Table.MapType.Map")
+        /// Satellite
+        static let satellite = Localizable.tr("Localizable", "Settings.Table.MapType.Satellite")
+        /// Transport
+        static let transport = Localizable.tr("Localizable", "Settings.Table.MapType.Transport")
+      }
     }
   }
 

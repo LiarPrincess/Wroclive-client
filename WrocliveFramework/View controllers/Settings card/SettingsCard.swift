@@ -9,7 +9,7 @@ private typealias Localization = Localizable.Settings
 
 public final class SettingsCard:
   UIViewController, UITableViewDataSource, UITableViewDelegate,
-  CardPanelPresentable {
+  SettingsCardViewType, CardPanelPresentable {
 
   // MARK: - Properties
 
@@ -17,15 +17,23 @@ public final class SettingsCard:
   public let titleLabel = UILabel()
   public let tableView = UITableView(frame: .zero, style: .grouped)
 
+  private let mapTypeCell: SettingsMapTypeCell
+
   internal let viewModel: SettingsCardViewModel
   internal let environment: Environment
 
   // MARK: - Init
 
   public init(viewModel: SettingsCardViewModel, environment: Environment) {
+    // swiftlint:disable:next trailing_closure
+    self.mapTypeCell = SettingsMapTypeCell(
+      onValueChanged: { viewModel.viewDidSelectMapType(mapType: $0) }
+    )
+
     self.viewModel = viewModel
     self.environment = environment
     super.init(nibName: nil, bundle: nil)
+    viewModel.setView(view: self)
   }
 
   // swiftlint:disable:next unavailable_function
@@ -67,6 +75,12 @@ public final class SettingsCard:
     }
   }
 
+  // MARK: - Map type
+
+  public func setMapType(mapType: MapType) {
+    self.mapTypeCell.setMapType(mapType: mapType)
+  }
+
   // MARK: - CustomCardPanelPresentable
 
   public var scrollView: UIScrollView? {
@@ -82,23 +96,34 @@ public final class SettingsCard:
   public func tableView(_ tableView: UITableView,
                         numberOfRowsInSection section: Int) -> Int {
     let section = self.viewModel.sections[section]
-    return section.cells.count
+    switch section {
+    case .mapType:
+      return 1
+    case .general(let cells):
+      return cells.count
+    }
   }
 
   public func tableView(_ tableView: UITableView,
                         cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let (section, cellKind) = self.viewModel.getCell(at: indexPath) else {
-      fatalError("No settings cell at: \(indexPath)")
+    let section = self.viewModel.sections[indexPath.section]
+    switch section {
+    case .mapType:
+      return self.mapTypeCell
+
+    case .general(let cells):
+      let cell = cells[indexPath.row]
+      let view = self.tableView.dequeueCell(ofType: SettingsLinkCell.self,
+                                            forIndexPath: indexPath)
+
+      let isLastCellInSection = indexPath.row == cells.count - 1
+      view.update(image: cell.image,
+                  text: cell.text,
+                  isLastCellInSection: isLastCellInSection,
+                  device: self.environment.device)
+
+      return view
     }
-
-    let cell = self.tableView.dequeueCell(ofType: SettingsTextCell.self,
-                                          forIndexPath: indexPath)
-
-    let isLastCellInSection = indexPath.row == section.cells.count - 1
-    cell.update(kind: cellKind,
-                isLastCellInSection: isLastCellInSection,
-                device: self.environment.device)
-    return cell
   }
 
   public func tableView(_ tableView: UITableView,
@@ -122,7 +147,7 @@ public final class SettingsCard:
     let width = tableView.bounds.width - C.leftInset - C.rightInset
     let bounds = CGSize(width: width, height: .greatestFiniteMagnitude)
 
-    let text = NSAttributedString(string: section.kind.text,
+    let text = NSAttributedString(string: section.text,
                                   attributes: C.titleAttributes)
     let textSize = text.boundingRect(with: bounds,
                                      options: .usesLineFragmentOrigin,

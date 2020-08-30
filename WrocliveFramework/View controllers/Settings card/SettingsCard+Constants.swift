@@ -28,12 +28,23 @@ extension SettingsCard {
       public static let estimatedCellHeight = CGFloat(50.0)
     }
 
-    public enum Cell {
+    public enum LinkCell {
       public enum BottomBorder {
         public static let leftInset = CGFloat(16.0)
       }
 
       public static let textAttributes = TextAttributes(style: .body)
+    }
+
+    public enum MapTypeCell {
+      static let topInset:    CGFloat = 8.0
+      static let bottomInset: CGFloat = 2.0
+
+      static let leftInset:  CGFloat = 16.0
+      static let rightInset: CGFloat = leftInset
+
+      /// Proposed height
+      static let nominalHeight: CGFloat = 30.0
     }
 
     public enum SectionHeader {

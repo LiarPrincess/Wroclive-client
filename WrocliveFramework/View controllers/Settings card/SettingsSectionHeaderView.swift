@@ -47,7 +47,7 @@ public final class SettingsSectionHeaderView: UITableViewHeaderFooterView {
 
   public func update(section: SettingsSection) {
     self.label.attributedText = NSAttributedString(
-      string: section.kind.text,
+      string: section.text,
       attributes: Constants.titleAttributes
     )
   }

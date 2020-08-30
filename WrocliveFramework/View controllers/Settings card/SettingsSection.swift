@@ -4,19 +4,20 @@
 
 private typealias Localization = Localizable.Settings.Table
 
-public struct SettingsSection {
+public enum SettingsSection {
+  case mapType
+  case general([GeneralCell])
 
-  public enum Kind {
-    case general
-
-    public var text: String {
-      switch self {
-      case .general: return Localization.General.header
-      }
+  public var text: String {
+    switch self {
+    case .mapType:
+      return Localization.MapType.header
+    case .general:
+      return Localization.General.header
     }
   }
 
-  public enum CellKind {
+  public enum GeneralCell {
     case share
     case rate
     case about
@@ -29,20 +30,12 @@ public struct SettingsSection {
       }
     }
 
-    public var image: ImageAsset? {
+    public var image: ImageAsset {
       switch self {
       case .about: return ImageAsset.settingsAbout
       case .share: return ImageAsset.settingsShare
       case .rate: return ImageAsset.settingsRate
       }
     }
-  }
-
-  public let kind: Kind
-  public let cells: [CellKind]
-
-  public init(kind: Kind, cells: [CellKind]) {
-    self.kind = kind
-    self.cells = cells
   }
 }

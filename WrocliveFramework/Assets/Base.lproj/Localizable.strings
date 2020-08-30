@@ -38,6 +38,11 @@
 "Settings.Title"  = "Settings";
 "Settings.Footer" = "Data provided by MPK Wrocław";
 
+"Settings.Table.MapType.Header"    = "Map type";
+"Settings.Table.MapType.Map"       = "Map";
+"Settings.Table.MapType.Transport" = "Transport";
+"Settings.Table.MapType.Satellite" = "Satellite";
+
 "Settings.Table.General.Header" = "General";
 "Settings.Table.General.Share"  = "Share";
 "Settings.Table.General.Rate"   = "Rate app";
