@@ -24,11 +24,12 @@ public class Environment {
   public init(apiMode: ApiMode, configuration: Configuration) {
     let bundle = Bundle.main
     let device = UIDevice.current
+    let deviceModel = DeviceManager.getPreciseModel()
     let screen = UIScreen.main
 
     self.bundle = BundleManager(bundle: bundle)
     self.debug = DebugManager()
-    self.device = DeviceManager(device: device, screen: screen)
+    self.device = DeviceManager(model: deviceModel, device: device, screen: screen)
     self.log = LogManager(bundle: self.bundle)
     self.userDefaults = UserDefaultsManager()
     self.userLocation = UserLocationManager()

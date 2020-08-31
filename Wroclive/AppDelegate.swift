@@ -16,10 +16,13 @@ import WrocliveFramework
 // TODO: Remove Overcast from Configuration.init
 private let apiUrl = "https://wroclive.app"
 private let websiteUrl = "https://www.overcast.fm"
+private let githubUrl = "https://github.com/apple/swift"
+private let reportErrorRecipient = "mail@wroclive.app"
 
 private let appId = "888422857"
-private let shareUrl = "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8"
-private let reviewUrl = "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8"
+private let appStoreUrl = "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8"
+private let writeReviewUrl = "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8"
+// swiftlint:disable:previous line_length
 
 @UIApplicationMain
 public final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -92,10 +95,18 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   private func createEnvironment(apiMode: Environment.ApiMode) -> Environment {
     let configuration = Configuration(
       websiteUrl: websiteUrl,
-      shareUrl: shareUrl,
-      writeReviewUrl: reviewUrl,
-      vehicleLocationUpdateInterval: 5.0,
-      locationAuthorizationPromptDelay: 2.0
+      githubUrl: githubUrl,
+      reportErrorRecipient: reportErrorRecipient,
+
+      appStore: .init(
+        url: appStoreUrl,
+        writeReview: writeReviewUrl
+      ),
+
+      timing: .init(
+        vehicleLocationUpdateInterval: 5.0,
+        locationAuthorizationPromptDelay: 2.0
+      )
     )
 
     return Environment(apiMode: apiMode, configuration: configuration)

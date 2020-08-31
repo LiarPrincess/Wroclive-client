@@ -9,6 +9,8 @@ public protocol SettingsCardViewModelDelegate: AnyObject {
   func rateApp()
   func showAboutPage()
   func showShareActivity()
+  func reportError()
+  func showCode()
 }
 
 public protocol SettingsCardViewType: AnyObject {
@@ -85,8 +87,8 @@ public final class SettingsCardViewModel: StoreSubscriber {
       }
 
       switch cells[index.row] {
-      case .reportError: print("reportError")
-      case .showCode: print("showCode")
+      case .reportError: self.delegate?.reportError()
+      case .showCode: self.delegate?.showCode()
       }
     }
   }

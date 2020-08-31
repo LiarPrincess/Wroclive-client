@@ -9,34 +9,44 @@ import Foundation
 public struct Configuration {
 
   public let websiteUrl: URL
+  public let githubUrl: URL
+  public let reportErrorRecipient: String
+
   public let appStore: AppStore
   public let timing: Timing
 
   public struct AppStore {
-    public let shareUrl: URL
-    public let writeReviewUrl: URL
+    public let url: URL
+    public let writeReview: URL
+
+    public init(url: String, writeReview: String) {
+      self.url = URL(string: url)!
+      self.writeReview = URL(string: writeReview)!
+    }
   }
 
   public struct Timing {
     public let vehicleLocationUpdateInterval: TimeInterval
     public let locationAuthorizationPromptDelay: TimeInterval
+
+    public init(
+      vehicleLocationUpdateInterval: TimeInterval,
+      locationAuthorizationPromptDelay: TimeInterval
+    ) {
+      self.vehicleLocationUpdateInterval = vehicleLocationUpdateInterval
+      self.locationAuthorizationPromptDelay = locationAuthorizationPromptDelay
+    }
   }
 
   public init(websiteUrl: String,
-              shareUrl: String,
-              writeReviewUrl: String,
-              vehicleLocationUpdateInterval: TimeInterval,
-              locationAuthorizationPromptDelay: TimeInterval) {
+              githubUrl: String,
+              reportErrorRecipient: String,
+              appStore: AppStore,
+              timing: Timing) {
     self.websiteUrl = URL(string: websiteUrl)!
-
-    self.appStore = AppStore(
-      shareUrl: URL(string: shareUrl)!,
-      writeReviewUrl: URL(string: writeReviewUrl)!
-    )
-
-    self.timing = Timing(
-      vehicleLocationUpdateInterval: vehicleLocationUpdateInterval,
-      locationAuthorizationPromptDelay: locationAuthorizationPromptDelay
-    )
+    self.githubUrl = URL(string: githubUrl)!
+    self.reportErrorRecipient = reportErrorRecipient
+    self.appStore = appStore
+    self.timing = timing
   }
 }

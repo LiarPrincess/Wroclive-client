@@ -35,10 +35,10 @@ public final class Api: ApiType {
     self.vehicleLocationsEndpoint = VehicleLocationsEndpoint(baseUrl: baseUrl)
   }
 
-  /// `Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)`
+  /// `Wroclive/1.0 (pl.nopoint.wroclive; iPhone 5s; iOS 10.3.1)`
   private static func createUserAgent(bundle: BundleManagerType,
                                       device: DeviceManagerType) -> String {
-    let deviceInfo = "\(device.model) \(device.systemName) \(device.systemVersion)"
+    let deviceInfo = "\(device.model); \(device.systemName) \(device.systemVersion)"
     return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
   }
 
