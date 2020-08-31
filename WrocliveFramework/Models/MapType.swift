@@ -5,6 +5,9 @@
 import MapKit
 
 public enum MapType: CustomStringConvertible {
+
+  public static let `default` = MapType.standard
+
   /// A street map that shows the position of all roads and some road names.
   case standard
   /// Satellite imagery of the area.

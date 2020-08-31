@@ -59,6 +59,7 @@
 		9023EBE524E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9023EBE124E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift */; };
 		902C018724F83BD7008F87B1 /* HTTPHeaders+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C018624F83BD7008F87B1 /* HTTPHeaders+init.swift */; };
 		902C2FCC24FC45160010B019 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C2FCB24FC45160010B019 /* SettingsSection.swift */; };
+		902C2FCE24FCF5C20010B019 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C2FCD24FCF5C20010B019 /* UserDefaultsManager.swift */; };
 		90462B7224EC42F300305F3F /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90462B7124EC42F300305F3F /* Fonts.swift */; };
 		9047995924D56BCA00111F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995824D56BCA00111F2C /* Environment.swift */; };
 		9047996724D575C500111F2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995B24D575C500111F2C /* AppState.swift */; };
@@ -253,6 +254,7 @@
 		9023EBE124E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Bookmarks.swift"; sourceTree = "<group>"; };
 		902C018624F83BD7008F87B1 /* HTTPHeaders+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPHeaders+init.swift"; sourceTree = "<group>"; };
 		902C2FCB24FC45160010B019 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		902C2FCD24FCF5C20010B019 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		90462B7124EC42F300305F3F /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		9047995824D56BCA00111F2C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9047995B24D575C500111F2C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 				905893C024D4A95D0046EFA5 /* BundleManager.swift */,
 				905893BF24D4A95D0046EFA5 /* DebugManager.swift */,
 				905893C124D4A95D0046EFA5 /* DeviceManager.swift */,
+				902C2FCD24FCF5C20010B019 /* UserDefaultsManager.swift */,
 				905893C624D4A95D0046EFA5 /* LogManager.swift */,
 				905893C724D4A95D0046EFA5 /* Configuration.swift */,
 				9047995824D56BCA00111F2C /* Environment.swift */,
@@ -1096,6 +1099,7 @@
 				902C018724F83BD7008F87B1 /* HTTPHeaders+init.swift in Sources */,
 				90F72F3324E31CC900D20EB2 /* UserLocationError.swift in Sources */,
 				90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */,
+				902C2FCE24FCF5C20010B019 /* UserDefaultsManager.swift in Sources */,
 				9013FAC924D721410006D1B9 /* Assets.swift in Sources */,
 				9047996B24D575C500111F2C /* LoggingMiddleware.swift in Sources */,
 				907FD0BD24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift in Sources */,

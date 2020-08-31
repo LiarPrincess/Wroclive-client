@@ -82,8 +82,11 @@ private func mapTypeReducer(action: Action,
       return oldState
     }
 
-    // TODO: [Map] Read from env
-    return .standard
+    if let savedState = environment.userDefaults.getPreferredMapType() {
+      return savedState
+    }
+
+    return .default
   }
 }
 

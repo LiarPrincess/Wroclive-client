@@ -60,10 +60,11 @@ public struct AppState: StateType {
     bookmarksIfNotSaved: @autoclosure () -> [Bookmark]
   ) -> AppState {
     let storage = environment.storage
+    let userDefaults = environment.userDefaults
     let userLocation = environment.userLocation
 
     return AppState(
-      mapType: .standard, // TODO: [Map] Save
+      mapType: userDefaults.getPreferredMapType() ?? .default,
       userLocationAuthorization: userLocation.getAuthorizationStatus(),
       bookmarks: storage.readBookmarks() ?? bookmarksIfNotSaved(),
       trackedLines: storage.readTrackedLines() ?? trackedLinesIfNotSaved(),

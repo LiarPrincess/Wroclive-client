@@ -10,6 +10,7 @@ public class Environment {
   public let device: DeviceManagerType
   public let log: LogManagerType
   public let storage: StorageManagerType
+  public let userDefaults: UserDefaultsManagerType
   public let userLocation: UserLocationManagerType
   public let configuration: Configuration
 
@@ -29,6 +30,7 @@ public class Environment {
     self.debug = DebugManager()
     self.device = DeviceManager(device: device, screen: screen)
     self.log = LogManager(bundle: self.bundle)
+    self.userDefaults = UserDefaultsManager()
     self.userLocation = UserLocationManager()
     self.configuration = configuration
 
@@ -55,6 +57,7 @@ public class Environment {
               device: DeviceManagerType,
               log: LogManagerType,
               storage: StorageManagerType,
+              userDefaults: UserDefaultsManagerType,
               userLocation: UserLocationManagerType,
               configuration: Configuration) {
     self.api = api
@@ -63,6 +66,7 @@ public class Environment {
     self.device = device
     self.log = log
     self.storage = storage
+    self.userDefaults = userDefaults
     self.userLocation = userLocation
     self.configuration = configuration
   }
