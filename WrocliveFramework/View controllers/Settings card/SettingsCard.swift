@@ -180,9 +180,16 @@ public final class SettingsCard:
     return textSize.height + C.topInset + C.bottomInset + 1.0
   }
 
+  // We need this to hide section footer.
   public func tableView(_ tableView: UITableView,
                         heightForFooterInSection section: Int) -> CGFloat {
     return 1
+  }
+
+  // We need this to hide section footer.
+  public func tableView(_ tableView: UITableView,
+                        viewForFooterInSection section: Int) -> UIView? {
+    return nil
   }
 
   public func tableView(_ tableView: UITableView,

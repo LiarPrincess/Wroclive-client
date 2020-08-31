@@ -32,6 +32,8 @@ public final class SettingsCardFooterView: UIView {
     let frame = CGRect(x: 0.0, y: 0.0, width: 1.0, height: textHeight)
     super.init(frame: frame)
 
+    self.backgroundColor = ColorScheme.background
+
     self.label.attributedText = text
     self.label.numberOfLines = 0
     self.label.adjustsFontForContentSizeCategory = true
@@ -39,7 +41,8 @@ public final class SettingsCardFooterView: UIView {
     self.addSubview(self.label)
     self.label.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(Constants.topOffset)
-      make.bottom.left.right.equalToSuperview()
+      make.bottom.equalToSuperview().offset(-Constants.bottomOffset)
+      make.left.right.equalToSuperview()
     }
   }
 

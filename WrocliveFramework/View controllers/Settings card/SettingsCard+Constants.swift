@@ -37,18 +37,18 @@ extension SettingsCard {
     }
 
     public enum MapTypeCell {
-      static let topInset:    CGFloat = 8.0
-      static let bottomInset: CGFloat = 2.0
+      static let topInset = CGFloat(8.0)
+      static let bottomInset = CGFloat(2.0)
 
-      static let leftInset:  CGFloat = 16.0
-      static let rightInset: CGFloat = leftInset
+      static let leftInset = CGFloat(16.0)
+      static let rightInset = leftInset
 
       /// Proposed height
-      static let nominalHeight: CGFloat = 30.0
+      static let nominalHeight = CGFloat(30.0)
     }
 
     public enum SectionHeader {
-      public static let topInset = CGFloat(20.0)
+      public static let topInset = CGFloat(16.0)
       public static let bottomInset = CGFloat(6.0)
 
       public static let leftInset = CGFloat(16.0)
@@ -60,7 +60,7 @@ extension SettingsCard {
     // MARK: - Footer
 
     public enum Footer {
-      public static let topOffset = CGFloat(5.0)
+      public static let topOffset = CGFloat(16.0)
       public static let bottomOffset = CGFloat(20.0)
       public static let lineSpacing = CGFloat(5.0)
 
