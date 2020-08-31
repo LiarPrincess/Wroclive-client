@@ -101,6 +101,8 @@ public final class SettingsCard:
       return 1
     case .general(let cells):
       return cells.count
+    case .programming(let cells):
+      return cells.count
     }
   }
 
@@ -112,18 +114,40 @@ public final class SettingsCard:
       return self.mapTypeCell
 
     case .general(let cells):
-      let cell = cells[indexPath.row]
-      let view = self.tableView.dequeueCell(ofType: SettingsLinkCell.self,
-                                            forIndexPath: indexPath)
-
+      let model = cells[indexPath.row]
       let isLastCellInSection = indexPath.row == cells.count - 1
-      view.update(image: cell.image,
-                  text: cell.text,
-                  isLastCellInSection: isLastCellInSection,
-                  device: self.environment.device)
 
-      return view
+      let cell = self.dequeueLinkCell(image: model.image,
+                                      text: model.text,
+                                      isLastCellInSection: isLastCellInSection,
+                                      forRowAt: indexPath)
+      return cell
+
+    case .programming(let cells):
+      let model = cells[indexPath.row]
+      let isLastCellInSection = indexPath.row == cells.count - 1
+
+      let cell = self.dequeueLinkCell(image: model.image,
+                                      text: model.text,
+                                      isLastCellInSection: isLastCellInSection,
+                                      forRowAt: indexPath)
+      return cell
     }
+  }
+
+  private func dequeueLinkCell(image: ImageAsset,
+                               text: String,
+                               isLastCellInSection: Bool,
+                               forRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = self.tableView.dequeueCell(ofType: SettingsLinkCell.self,
+                                          forIndexPath: indexPath)
+
+    cell.update(image: image,
+                text: text,
+                isLastCellInSection: isLastCellInSection,
+                device: self.environment.device)
+
+    return cell
   }
 
   public func tableView(_ tableView: UITableView,

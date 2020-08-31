@@ -183,6 +183,15 @@ public enum Localizable {
         /// Standard
         static let standard = Localizable.tr("Localizable", "Settings.Table.MapType.Standard")
       }
+
+      enum Programming {
+        /// Programming
+        static let header = Localizable.tr("Localizable", "Settings.Table.Programming.Header")
+        /// Report error
+        static let reportError = Localizable.tr("Localizable", "Settings.Table.Programming.ReportError")
+        /// Show code
+        static let showCode = Localizable.tr("Localizable", "Settings.Table.Programming.ShowCode")
+      }
     }
   }
 

@@ -48,6 +48,10 @@
 "Settings.Table.General.Rate"   = "Oceń";
 "Settings.Table.General.About"  = "O nas";
 
+"Settings.Table.Programming.Header" = "Programowanie";
+"Settings.Table.Programming.ReportError"  = "Zgłoś błąd";
+"Settings.Table.Programming.ShowCode"     = "Pokaż kod";
+
 /* App */
 
 "Share.Message" = "Wroclive - Komunikacja miejska na żywo! %@";

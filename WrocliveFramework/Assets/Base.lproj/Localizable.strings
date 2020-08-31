@@ -48,6 +48,10 @@
 "Settings.Table.General.Rate"   = "Rate app";
 "Settings.Table.General.About"  = "About";
 
+"Settings.Table.Programming.Header" = "Programming";
+"Settings.Table.Programming.ReportError"  = "Report error";
+"Settings.Table.Programming.ShowCode"     = "Show code";
+
 /* App */
 
 "Share.Message" = "Wroclive - Real time public transport! %@";

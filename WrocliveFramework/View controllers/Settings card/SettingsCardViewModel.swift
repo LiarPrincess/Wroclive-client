@@ -25,6 +25,10 @@ public final class SettingsCardViewModel: StoreSubscriber {
       .share,
       .rate,
       .about
+    ]),
+    SettingsSection.programming([
+      .reportError,
+      .showCode
     ])
   ]
 
@@ -54,6 +58,7 @@ public final class SettingsCardViewModel: StoreSubscriber {
     self.store.dispatch(action)
   }
 
+  // swiftlint:disable:next cyclomatic_complexity
   public func viewDidSelectRow(at index: IndexPath) {
     guard let section = self.getSection(at: index.section) else {
       return
@@ -62,16 +67,26 @@ public final class SettingsCardViewModel: StoreSubscriber {
     switch section {
     case .mapType:
       break
+
     case .general(let cells):
       guard cells.indices.contains(index.row) else {
         return
       }
 
-      let cell = cells[index.row]
-      switch cell {
+      switch cells[index.row] {
       case .share: self.delegate?.showShareActivity()
       case .rate: self.delegate?.rateApp()
       case .about: self.delegate?.showAboutPage()
+      }
+
+    case .programming(let cells):
+      guard cells.indices.contains(index.row) else {
+        return
+      }
+
+      switch cells[index.row] {
+      case .reportError: print("reportError")
+      case .showCode: print("showCode")
       }
     }
   }
