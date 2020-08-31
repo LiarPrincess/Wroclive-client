@@ -7,8 +7,8 @@ import PromiseKit
 
 extension Notification.Name {
 
-  public static let didChangeUserlocationAuthorization =
-    Notification.Name("didChangeUserlocationAuthorization")
+  public static let didChangeUserLocationAuthorization =
+    Notification.Name("didChangeUserLocationAuthorization")
 }
 
 public class UserLocationManager:
@@ -57,7 +57,7 @@ public class UserLocationManager:
   public func locationManager(_ manager: CLLocationManager,
                               didChangeAuthorization status: CLAuthorizationStatus) {
     NotificationCenter.default.post(
-      name: .didChangeUserlocationAuthorization,
+      name: .didChangeUserLocationAuthorization,
       object: nil
     )
   }

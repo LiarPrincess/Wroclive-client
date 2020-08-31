@@ -20,14 +20,14 @@ public final class DispatchStoreUpdatesFromAppleFrameworks: NSObject {
 
     NotificationCenter.default.addObserver(
       self,
-      selector: #selector(self.didChangeUserlocationAuthorization(_:)),
-      name: .didChangeUserlocationAuthorization,
+      selector: #selector(self.didChangeUserLocationAuthorization(_:)),
+      name: .didChangeUserLocationAuthorization,
       object: nil
     )
   }
 
   @objc
-  private func didChangeUserlocationAuthorization(_ notification: Notification) {
+  private func didChangeUserLocationAuthorization(_ notification: Notification) {
     let authorization = self.environment.userLocation.getAuthorizationStatus()
     self.store.dispatch(UserLocationAuthorizationAction.set(authorization))
   }
