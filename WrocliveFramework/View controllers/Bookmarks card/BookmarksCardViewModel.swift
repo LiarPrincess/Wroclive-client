@@ -66,7 +66,8 @@ public final class BookmarksCardViewModel: StoreSubscriber {
   }
 
   public func viewDidDeleteItem(index: Int) {
-    self.store.dispatch(BookmarksAction.remove(at: index))
+    let action = BookmarksAction.remove(index: index)
+    self.store.dispatch(action)
   }
 
   public func viewDidPressEditButton() {

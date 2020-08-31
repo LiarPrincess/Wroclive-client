@@ -21,10 +21,10 @@ internal final class LineTypeSegmentedControl: UIView {
 
   // MARK: - Init
 
-  private let onPageSelected: (PageType) -> Void
+  private let onValueChanged: (PageType) -> Void
 
-  internal init(onPageSelected: @escaping (PageType) -> Void) {
-    self.onPageSelected = onPageSelected
+  internal init(onValueChanged: @escaping (PageType) -> Void) {
+    self.onValueChanged = onValueChanged
     super.init(frame: .zero)
 
     let titleAttributes = Constants.titleAttributes.value
@@ -63,12 +63,14 @@ internal final class LineTypeSegmentedControl: UIView {
   private func selectedIndexChanged(_ sender: UISegmentedControl) {
     let index = self.segmentedControl.selectedSegmentIndex
     let page = self.pages[index]
-    self.onPageSelected(page)
+    self.onValueChanged(page)
   }
 
   internal func setPage(page: PageType) {
-    if let index = self.pages.firstIndex(of: page) {
-      self.segmentedControl.selectedSegmentIndex = index
+    guard let index = self.pages.firstIndex(where: { $0 == page }) else {
+      fatalError("LineTypeSegmentedControl does not support '\(page)'")
     }
+
+    self.segmentedControl.selectedSegmentIndex = index
   }
 }

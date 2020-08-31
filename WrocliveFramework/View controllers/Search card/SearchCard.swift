@@ -30,7 +30,7 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPanelPr
 
     // swiftlint:disable:next trailing_closure
     self.lineTypeSelector = LineTypeSegmentedControl(
-      onPageSelected: { viewModel.viewDidSelectPage(page: $0) }
+      onValueChanged: { viewModel.viewDidSelectPage(page: $0) }
     )
 
     self.lineSelector = LineSelector(

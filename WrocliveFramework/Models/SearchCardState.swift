@@ -4,9 +4,16 @@
 
 public struct SearchCardState: Codable, Equatable, CustomStringConvertible {
 
-  public enum Page: String, Codable, Equatable {
+  public enum Page: String, Codable, Equatable, CustomStringConvertible {
     case tram
     case bus
+
+    public var description: String {
+      switch self {
+      case .tram: return "Tram"
+      case .bus: return "Bus"
+      }
+    }
   }
 
   public let page: Page
