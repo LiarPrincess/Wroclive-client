@@ -20,6 +20,7 @@ class MapViewModelTests:
   var environment: Environment!
   var viewModel: MapViewModel!
 
+  var mapType: MapType?
   var center = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
   var vehicles = [Vehicle]()
   var isShowingDeniedLocationAuthorizationAlert = false
@@ -33,6 +34,7 @@ class MapViewModelTests:
     self.setUpRedux()
     self.setUpEnvironment()
 
+    self.mapType = nil
     self.center = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     self.vehicles = [Vehicle]()
     self.isShowingDeniedLocationAuthorizationAlert = false
@@ -48,6 +50,10 @@ class MapViewModelTests:
     let result = MapViewModel(store: self.store, environment: self.environment)
     result.setView(view: self)
     return result
+  }
+
+  func setMapType(mapType: MapType) {
+    self.mapType = mapType
   }
 
   func setCenter(location: CLLocationCoordinate2D, animated: Bool) {

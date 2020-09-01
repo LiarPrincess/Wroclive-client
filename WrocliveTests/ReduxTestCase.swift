@@ -24,6 +24,7 @@ extension ReduxTestCase {
 
   func setUpRedux() {
     let state = AppState(
+      mapType: .default,
       userLocationAuthorization: .notDetermined,
       bookmarks: [],
       trackedLines: [],

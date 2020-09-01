@@ -30,6 +30,10 @@ extension EnvironmentTestCase {
     return self.environment.storage as! StorageManagerMock
   }
 
+  var userDefaultsManager: UserDefaultsManagerMock {
+    return self.environment.userDefaults as! UserDefaultsManagerMock
+  }
+
   var userLocationManager: UserLocationManagerMock {
     return self.environment.userLocation as! UserLocationManagerMock
   }
@@ -43,10 +47,16 @@ extension EnvironmentTestCase {
 
     let configuration = Configuration(
       websiteUrl: "websiteUrl",
-      shareUrl: "shareUrl",
-      writeReviewUrl: "writeReviewUrl",
-      vehicleLocationUpdateInterval: TimeInterval(3.0),
-      locationAuthorizationPromptDelay: TimeInterval(5.0)
+      githubUrl: "githubUrl",
+      reportErrorRecipient: "reportErrorRecipient",
+      appStore: .init(
+        url: "appStore-url",
+        writeReview: "appStore-writeReview"
+      ),
+      timing: .init(
+        vehicleLocationUpdateInterval: TimeInterval(3.0),
+        locationAuthorizationPromptDelay: TimeInterval(5.0)
+      )
     )
 
     self.environment = Environment(
@@ -56,6 +66,7 @@ extension EnvironmentTestCase {
       device: DeviceManagerMock(),
       log: LogManager(bundle: bundle),
       storage: StorageManagerMock(),
+      userDefaults: UserDefaultsManagerMock(),
       userLocation: UserLocationManagerMock(),
       configuration: configuration
     )
