@@ -6,6 +6,7 @@ import UIKit
 
 // swiftlint:disable object_literal
 // swiftlint:disable discouraged_object_literal
+// swiftformat:disable numberFormatting
 
 public enum ColorScheme {
 

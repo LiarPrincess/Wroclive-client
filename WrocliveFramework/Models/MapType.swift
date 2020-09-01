@@ -25,9 +25,9 @@ public enum MapType: CustomStringConvertible {
 
   public var value: MKMapType {
     switch self {
-    case .standard:  return .standard
+    case .standard: return .standard
     case .satellite: return .satellite
-    case .hybrid:    return .hybrid
+    case .hybrid: return .hybrid
     }
   }
 }

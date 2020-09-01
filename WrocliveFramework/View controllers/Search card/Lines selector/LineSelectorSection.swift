@@ -16,7 +16,7 @@ public struct LineSelectorSection: Equatable {
   }
 
   public var name: String {
-    switch subtype {
+    switch self.subtype {
     case .regular: return SectionNames.regular
     case .express: return SectionNames.express
     case .peakHour: return SectionNames.peakHour
