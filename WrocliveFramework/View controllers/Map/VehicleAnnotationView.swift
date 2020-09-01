@@ -49,17 +49,15 @@ public final class VehicleAnnotationView: MKAnnotationView {
       return
     }
 
-    let color = annotation.line.annotationColor
-    let hasColorChanged = self.roundedRectangle.tintColor != color
-
-    let angleDiff = abs(self.roundedRectangle.angle - annotation.angle)
-    let hasAngleChanged = angleDiff > Constants.minAngleChangeToRedraw
-
-    if hasColorChanged || hasAngleChanged {
-      self.roundedRectangle.tintColor = color
-      self.roundedRectangle.angle = annotation.angle
-      self.roundedRectangle.setNeedsDisplay()
-    }
+    // We could decrease number of calls to 'setNeedsDisplay' by comparing
+    // new color and angle to previous values. But since we refresh vehicle
+    // locations every X seconds (not frames) that would not save a lot energy
+    //
+    // If you change this code, then remember to check what happens when we show
+    // alert (all annotation go grey -> do they recover without 'setNeedsDisplay'?).
+    self.roundedRectangle.tintColor = annotation.line.annotationColor
+    self.roundedRectangle.angle = annotation.angle
+    self.roundedRectangle.setNeedsDisplay()
   }
 
   // MARK: Update label
@@ -108,10 +106,8 @@ private class RoundedRectangleWithArrow: UIView {
   }
 
   override func draw(_ rect: CGRect) {
-    let color = self.tintColor ?? UIColor.black
-    let resizing = StyleKit.ResizingBehavior.aspectFit
     StyleKit.drawVehicleAnnotation(frame: self.bounds,
-                                   color: color,
-                                   resizing: resizing)
+                                   color: self.tintColor ?? .black,
+                                   resizing: .aspectFit)
   }
 }

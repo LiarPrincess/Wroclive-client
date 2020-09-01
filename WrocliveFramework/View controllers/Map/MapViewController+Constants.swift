@@ -16,7 +16,6 @@ extension MapViewController {
 
     public enum Pin {
       public static let imageSize = CGSize(width: 50.0, height: 50.0)
-      public static let minAngleChangeToRedraw = CGFloat(3.0)
       public static let animationDuration = TimeInterval(1.5)
     }
 
