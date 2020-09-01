@@ -24,10 +24,6 @@ public protocol DeviceManagerType {
 
   /// Screen resolution
   var screenBounds: CGRect { get }
-
-  /// May vary depending on user settings.
-  /// By default 17pt for UIContentSizeCategoryLarge
-  var preferredFontSize: CGFloat { get }
 }
 
 public struct DeviceManager: DeviceManagerType {
@@ -45,11 +41,6 @@ public struct DeviceManager: DeviceManagerType {
     self.systemVersion = device.systemVersion
     self.screenScale = screen.scale
     self.screenBounds = screen.bounds
-  }
-
-  // TODO: DeviceManager.preferredFontSize (+Theme?)
-  public var preferredFontSize: CGFloat {
-    return UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).pointSize
   }
 
   // MARK: - Precise model
