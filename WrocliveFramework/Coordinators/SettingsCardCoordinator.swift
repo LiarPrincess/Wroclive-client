@@ -59,7 +59,7 @@ public final class SettingsCardCoordinator: NSObject,
 
     let url = self.environment.configuration.appStore.url
     let text = Localizable.Share.message(url.absoluteString)
-    let image = ImageAsset.shareImage.value
+    let image = ImageAsset.share.value
     let items = [text, image] as [Any]
 
     let activityViewController = UIActivityViewController(

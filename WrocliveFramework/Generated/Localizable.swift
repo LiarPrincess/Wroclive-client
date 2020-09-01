@@ -163,7 +163,7 @@ public enum Localizable {
     enum Table {
 
       enum General {
-        /// About
+        /// About Wroclive
         static let about = Localizable.tr("Localizable", "Settings.Table.General.About")
         /// General
         static let header = Localizable.tr("Localizable", "Settings.Table.General.Header")

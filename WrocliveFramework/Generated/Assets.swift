@@ -27,7 +27,6 @@ public struct ImageAsset {
 
   public let name: String
 
-  public static let shareImage = ImageAsset(name: "ShareImage")
   public static let bookmarksPlaceholderHeart = ImageAsset(name: "bookmarks-placeholder-heart")
   public static let searchHeart = ImageAsset(name: "search-heart")
   public static let settingsAbout = ImageAsset(name: "settings-about")
@@ -35,6 +34,7 @@ public struct ImageAsset {
   public static let settingsReportError = ImageAsset(name: "settings-report-error")
   public static let settingsShare = ImageAsset(name: "settings-share")
   public static let settingsShowCode = ImageAsset(name: "settings-show-code")
+  public static let share = ImageAsset(name: "share")
   public static let toolbarGear = ImageAsset(name: "toolbar-gear")
   public static let toolbarHeart = ImageAsset(name: "toolbar-heart")
   public static let toolbarTram = ImageAsset(name: "toolbar-tram")
