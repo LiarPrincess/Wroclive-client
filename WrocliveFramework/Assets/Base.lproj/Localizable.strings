@@ -68,6 +68,8 @@
 "Alert.Bookmark.NoLinesSelected.Ok"      = "OK";
 "Alert.Bookmark.NoLinesSelected.Title"   = "No lines selected";
 
+"Alert.Bookmark.Saved" = "Bookmark saved";
+
 "Alert.Location.Denied.Message"  = "Turn on Location Services in Settings > Privacy to allow to determine your current location.";
 "Alert.Location.Denied.Ok"       = "OK";
 "Alert.Location.Denied.Settings" = "Settings";

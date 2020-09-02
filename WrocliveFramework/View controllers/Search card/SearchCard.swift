@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import SPAlert
 
 private typealias Localization = Localizable.Search
 
@@ -135,6 +136,9 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPanelPr
         }
 
         self?.viewModel.viewDidEnterBookmarkName(value: name)
+
+        let savedText = Localizable.Alert.Bookmark.saved
+        SPAlert.present(title: savedText, preset: .done)
       }
 
     case .alreadyShowingDifferentAlert:

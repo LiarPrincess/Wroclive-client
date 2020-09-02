@@ -136,6 +136,7 @@
 		90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39E924D8570900ADE4B9 /* MapViewController.swift */; };
 		90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */; };
 		90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */; };
+		90E0193624FFB8E1000670CD /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 90E0193524FFB8E1000670CD /* SPAlert */; };
 		90EF089A24FC333400376B0C /* SettingsMapTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EF089924FC333400376B0C /* SettingsMapTypeCell.swift */; };
 		90EF089C24FC357700376B0C /* MapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EF089B24FC357700376B0C /* MapType.swift */; };
 		90F38E4524E19ECE000D4192 /* SettingsCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3924E19ECE000D4192 /* SettingsCardViewModel.swift */; };
@@ -379,6 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90E0193624FFB8E1000670CD /* SPAlert in Frameworks */,
 				900EA0E224D46A9B0054C03F /* ReSwift in Frameworks */,
 				900EA0F124D46AE30054C03F /* Reachability in Frameworks */,
 				900EA0EB24D46AC80054C03F /* Alamofire in Frameworks */,
@@ -908,6 +910,7 @@
 				900EA0E724D46AB90054C03F /* PromiseKit */,
 				900EA0EA24D46AC80054C03F /* Alamofire */,
 				900EA0F024D46AE30054C03F /* Reachability */,
+				90E0193524FFB8E1000670CD /* SPAlert */,
 			);
 			productName = WrocliveFramework;
 			productReference = 900EA0CF24D469D90054C03F /* WrocliveFramework.framework */;
@@ -987,6 +990,7 @@
 				900EA0E624D46AB90054C03F /* XCRemoteSwiftPackageReference "PromiseKit" */,
 				900EA0E924D46AC80054C03F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				900EA0EF24D46AE30054C03F /* XCRemoteSwiftPackageReference "Reachability" */,
+				90E0193424FFB8E1000670CD /* XCRemoteSwiftPackageReference "SPAlert" */,
 			);
 			productRefGroup = 9052380824D459E500E4F8A7 /* Products */;
 			projectDirPath = "";
@@ -1602,6 +1606,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		90E0193424FFB8E1000670CD /* XCRemoteSwiftPackageReference "SPAlert" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1629,6 +1641,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 900EA0EF24D46AE30054C03F /* XCRemoteSwiftPackageReference "Reachability" */;
 			productName = Reachability;
+		};
+		90E0193524FFB8E1000670CD /* SPAlert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90E0193424FFB8E1000670CD /* XCRemoteSwiftPackageReference "SPAlert" */;
+			productName = SPAlert;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

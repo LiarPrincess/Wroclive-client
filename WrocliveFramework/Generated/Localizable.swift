@@ -20,6 +20,8 @@ public enum Localizable {
   enum Alert {
 
     enum Bookmark {
+      /// Bookmark saved
+      static let saved = Localizable.tr("Localizable", "Alert.Bookmark.Saved")
 
       enum NameInput {
         /// Cancel

@@ -68,6 +68,8 @@
 "Alert.Bookmark.NoLinesSelected.Ok"      = "OK";
 "Alert.Bookmark.NoLinesSelected.Title"   = "Nie wybrano żadnych linii";
 
+"Alert.Bookmark.Saved" = "Dodano zakładkę";
+
 "Alert.Location.Denied.Message"  = "Aby określać bieżące położenie, włącz usługi lokalizacji (Ustawienia > Prywatność).";
 "Alert.Location.Denied.Ok"       = "OK";
 "Alert.Location.Denied.Settings" = "Ustawienia";
