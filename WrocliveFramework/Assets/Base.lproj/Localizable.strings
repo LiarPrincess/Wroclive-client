@@ -36,7 +36,7 @@
 /* Settings */
 
 "Settings.Title"  = "Settings";
-"Settings.Footer" = "Data provided by MPK Wrocław";
+"Settings.Footer" = "Data provided by MPK Wrocław.";
 
 "Settings.Table.MapType.Header"    = "Map type";
 "Settings.Table.MapType.Standard"  = "Standard";
@@ -48,7 +48,7 @@
 "Settings.Table.General.Rate"   = "Rate app";
 "Settings.Table.General.About"  = "About Wroclive";
 
-"Settings.Table.Programming.Header" = "Programming";
+"Settings.Table.Programming.Header" = "Application";
 "Settings.Table.Programming.ReportError"  = "Report error";
 "Settings.Table.Programming.ShowCode"     = "Show code";
 

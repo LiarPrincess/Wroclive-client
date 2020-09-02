@@ -36,7 +36,7 @@
 /* Settings */
 
 "Settings.Title"  = "Ustawienia";
-"Settings.Footer" = "Dane uzyskano dzięki uprzejmości MPK Wrocław";
+"Settings.Footer" = "Dane uzyskano dzięki uprzejmości MPK Wrocław.";
 
 "Settings.Table.MapType.Header"    = "Typ mapy";
 "Settings.Table.MapType.Standard"  = "Standardowa";
@@ -48,8 +48,8 @@
 "Settings.Table.General.Rate"   = "Oceń";
 "Settings.Table.General.About"  = "O Wroclive";
 
-"Settings.Table.Programming.Header" = "Programowanie";
-"Settings.Table.Programming.ReportError"  = "Zgłoś błąd";
+"Settings.Table.Programming.Header" = "Aplikacja";
+"Settings.Table.Programming.ReportError"  = "Zgłoś problem";
 "Settings.Table.Programming.ShowCode"     = "Pokaż kod";
 
 /* App */
