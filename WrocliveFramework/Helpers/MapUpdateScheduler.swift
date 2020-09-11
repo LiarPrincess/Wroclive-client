@@ -2,8 +2,8 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import Foundation
 import os.log
+import Foundation
 import ReSwift
 import PromiseKit
 
@@ -13,7 +13,8 @@ public final class MapUpdateScheduler: StoreSubscriber {
   private let environment: Environment
 
   private var timer: Timer?
-  private var trackedLines: [Line] = []
+  private var trackedLines = [Line]()
+  private var isSubscribedToStore = false
 
   private var log: OSLog {
     return self.environment.log.mapUpdate
@@ -22,14 +23,29 @@ public final class MapUpdateScheduler: StoreSubscriber {
   public init(store: Store<AppState>, environment: Environment) {
     self.store = store
     self.environment = environment
-    store.subscribe(self)
   }
 
   public func start() {
     os_log("Start", log: self.log, type: .info)
+
+    // Calling 'store.subscribe(self)' will call 'newState(state:)' which:
+    // 1. fills 'self.trackedLines'
+    // 2. calls 'self.start()' again
+    //
+    // If we subscribed in 'init' then that would call 'self.start' and dispatch
+    // request, we don't want that.
+    guard self.isSubscribedToStore else {
+      self.isSubscribedToStore = true
+      self.store.subscribe(self)
+      return
+    }
+
+    // Stop updates for the lines that we are currently tracking.
+    // If we have request in-flight then we have minor race condition,
+    // but that's ok, we will not try to handle this special case.
     self.clearTimer()
 
-    // If we don't have any lines then just send single update to reset map
+    // If are not tracking any lines -> send single update to reset map.
     guard self.trackedLines.any else {
       os_log("Tick (empty)!", log: self.log, type: .debug)
       os_log("Stoping updates as there are no lines to track", log: self.log, type: .debug)
@@ -37,6 +53,7 @@ public final class MapUpdateScheduler: StoreSubscriber {
       return
     }
 
+    // We are tracking some lines -> start timer.
     let interval = self.environment.configuration.timing.vehicleLocationUpdateInterval
     self.timer = Timer.scheduledTimer(timeInterval: interval,
                                       target: self,

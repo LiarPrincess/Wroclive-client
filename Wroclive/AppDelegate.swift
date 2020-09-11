@@ -90,7 +90,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     self.updateScheduler = self.startMapUpdates()
 
-    os_log("Finished 'application(_:didFinishLaunchingWithOptions:)'",
+    os_log("application(_:didFinishLaunchingWithOptions:) - finished",
            log: self.log,
            type: .debug)
     return true
