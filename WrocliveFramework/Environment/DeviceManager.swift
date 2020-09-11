@@ -46,7 +46,7 @@ public struct DeviceManager: DeviceManagerType {
   // MARK: - Precise model
 
   // See: https://stackoverflow.com/a/11197770
-  internal static func getPreciseModel() -> String {
+  internal static func getNamedModel() -> String {
     var info = utsname()
     uname(&info)
 

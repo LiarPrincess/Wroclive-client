@@ -15,7 +15,7 @@ public class Environment {
   public let configuration: Configuration
 
   public enum ApiMode {
-    case online(host: String)
+    case online
     #if DEBUG
     case offline
     #endif
@@ -24,7 +24,7 @@ public class Environment {
   public init(apiMode: ApiMode, configuration: Configuration) {
     let bundle = Bundle.main
     let device = UIDevice.current
-    let deviceModel = DeviceManager.getPreciseModel()
+    let deviceModel = DeviceManager.getNamedModel()
     let screen = UIScreen.main
 
     self.bundle = BundleManager(bundle: bundle)
@@ -40,9 +40,10 @@ public class Environment {
     self.storage = CachedStorageManager(using: storageInner)
 
     switch apiMode {
-    case .online(let host):
+    case .online:
       let network = Network()
-      self.api = Api(host: host,
+      let baseUrl = configuration.apiUrl.absoluteString
+      self.api = Api(baseUrl: baseUrl,
                      network: network,
                      bundle: self.bundle,
                      device: self.device,

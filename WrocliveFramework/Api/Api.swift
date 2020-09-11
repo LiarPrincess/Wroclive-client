@@ -21,7 +21,7 @@ public final class Api: ApiType {
 
   // MARK: - Init
 
-  public init(host: String,
+  public init(baseUrl: String,
               network: NetworkType,
               bundle: BundleManagerType,
               device: DeviceManagerType,
@@ -30,7 +30,7 @@ public final class Api: ApiType {
     self.logManager = log
     self.userAgent = Self.createUserAgent(bundle: bundle, device: device)
 
-    let baseUrl = host.appendingPathComponent("/api/v1")
+    let baseUrl = baseUrl.appendingPathComponent("/v1")
     self.linesEndpoint = LinesEndpoint(baseUrl: baseUrl)
     self.vehicleLocationsEndpoint = VehicleLocationsEndpoint(baseUrl: baseUrl)
   }
