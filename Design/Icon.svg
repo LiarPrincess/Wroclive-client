@@ -1,47 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg id="svg2" version="1.1" width="1024px" height="1024px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
   <defs>
-    <pattern id="pattern-0" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" viewBox="0 0 100 100">
-      <path d="M 0 0 L 50 0 L 50 100 L 0 100 Z" style="fill: black;"/>
-    </pattern>
+    <linearGradient id="color-1" bx:pinned="true">
+      <title>Blue - background</title>
+      <stop style="stop-color: rgb(41, 38, 65);"/>
+    </linearGradient>
+    <linearGradient id="color-0">
+      <title>White - bus</title>
+      <stop style="stop-color: rgb(255, 255, 255);"/>
+    </linearGradient>
   </defs>
-  <g id="layer2" style="display: inline; visibility: hidden;" transform="matrix(1, 0, 0, 1, 0, -2.205444)">
-    <title>Guides</title>
-    <path d="M 354.787 2.91 L 674.379 2.91 C 775.794 2.91 826.502 2.91 881.087 20.17 C 940.684 41.862 987.632 88.809 1009.323 148.406 C 1026.583 202.991 1026.583 253.699 1026.583 355.115 L 1026.583 674.706 C 1026.583 776.122 1026.583 826.829 1009.323 881.414 C 987.632 941.012 940.684 987.959 881.087 1009.651 C 826.502 1026.91 775.794 1026.91 674.379 1026.91 L 354.787 1026.91 C 253.372 1026.91 202.664 1026.91 148.079 1009.651 C 88.482 987.959 41.534 941.012 19.843 881.414 C 2.583 826.829 2.583 776.122 2.583 674.706 L 2.583 355.115 C 2.583 253.699 2.583 202.991 19.843 148.406 C 41.534 88.809 88.482 41.862 148.079 20.17 C 202.664 2.91 253.372 2.91 354.787 2.91 L 354.787 2.91" id="path5" style="stroke-opacity: 1; fill: none; stroke: rgb(0, 0, 0); stroke-width: 2;">
-      <title>Shape</title>
+  <rect width="1023.999" height="1024" style="fill: url(#color-1);">
+    <title>Background</title>
+  </rect>
+  <g transform="matrix(0.911458, 0, 0, 0.911458, 45.333412, 45.333496)" style="">
+    <title>Bus</title>
+    <path d="M 163.399 314.728 L 768.379 314.097 L 811.645 314.728 C 904.264 324.098 895.798 575.777 895.798 586.098 L 895.798 643.699 C 895.798 663.252 879.951 679.099 860.399 679.099 L 833.929 679.099 C 836.997 670.848 838.666 661.917 838.666 652.597 C 838.666 610.497 804.538 576.369 762.438 576.369 C 720.338 576.369 686.209 610.497 686.209 652.597 C 686.209 661.917 687.877 670.848 690.945 679.099 L 331.248 679.099 C 334.315 670.848 335.983 661.917 335.983 652.597 C 335.983 610.497 301.855 576.369 259.755 576.369 C 217.656 576.369 183.526 610.497 183.526 652.597 C 183.526 661.917 185.196 670.848 188.263 679.099 L 163.399 679.099 C 143.847 679.099 128 663.252 128 643.699 L 128 350.127 C 128 330.575 143.847 314.728 163.399 314.728 Z M 801.014 345.846 L 711.926 345.422 C 709.85 345.422 708.165 347.109 708.165 349.185 L 708.564 484.054 C 727.23 491.019 743.093 504.189 752.517 521.401 L 854.144 521.401 C 856.086 521.401 857.683 519.931 857.883 518.047 C 858.163 480.309 854.161 351.222 801.014 345.846 Z M 162.377 349.185 L 162.377 479.525 C 162.377 481.602 164.062 483.287 166.139 483.287 L 313.572 483.287 C 315.648 483.287 317.335 481.602 317.335 479.525 L 317.335 349.185 C 317.335 347.109 315.648 345.422 313.572 345.422 L 166.139 345.422 C 164.062 345.422 162.377 347.109 162.377 349.185 Z M 340.6 349.185 L 340.6 479.525 C 340.6 481.602 342.285 483.287 344.362 483.287 L 502.897 483.287 C 504.974 483.287 506.659 481.602 506.659 479.525 L 506.659 349.185 C 506.659 347.109 504.974 345.422 502.897 345.422 L 344.362 345.422 C 342.285 345.422 340.6 347.109 340.6 349.185 Z M 684.891 479.525 L 684.891 349.185 C 684.891 347.109 683.206 345.422 681.13 345.422 L 533.695 345.422 C 532.218 345.422 530.94 346.27 530.325 347.508 C 529.901 348.122 529.654 348.857 529.654 349.655 L 529.654 479.997 C 529.654 482.074 531.339 483.759 533.416 483.759 L 680.85 483.759 C 682.318 483.759 683.596 482.912 684.22 481.674 C 684.642 481.068 684.891 480.324 684.891 479.525 Z" style="fill: url(#color-0);">
+      <title>Main</title>
     </path>
-    <path style="color: rgb(0, 0, 0); stroke-width: 1.00571; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" id="path3129" d="m 600.32144,298.86218 a 138,138 0 1 1 -276,0 138,138 0 1 1 276,0 z" transform="matrix(1.988799,0,0,1.988471,-407.91018,-80.585593)"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 0.620861; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" id="path3129-9" d="m 600.32144,298.86218 a 138,138 0 1 1 -276,0 138,138 0 1 1 276,0 z" transform="matrix(3.2215081,0,0,3.2211587,-977.38931,-448.55899)"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="M 67.351921,69.489974 956.5625,958.70544" id="path4011"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="m 0.99801467,707.31189 1022.00298533,0" id="path4028"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="m 0.99801467,513.69318 1022.00298533,0" id="path4030"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="m 0.99801467,321.0352 1022.00298533,0" id="path4032"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="m 319.08193,1026.2054 0,-1023.9999557" id="path4034"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="m 511.68014,2.2054443 0,1023.9999557" id="path4036"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="m 706.1875,1026.2054 0,-1023.9999557" id="path4038"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="M 67.351921,958.70544 956.5625,69.489974" id="path4001"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="m 956.5625,69.489974 0,889.215466" id="path4003"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="m 67.351921,69.489974 889.210579,0" id="path4009"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="m 67.351921,958.70544 0,-889.215466" id="path4007"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 2; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" d="m 956.5625,958.70544 -889.210579,-3e-5" id="path4005"/>
-    <path style="color: rgb(0, 0, 0); stroke-width: 1.42908; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; marker: none; display: inline; overflow: visible; stroke: rgb(0, 0, 0); fill: none;" id="path3129-7" d="m 600.32144,298.86218 a 138,138 0 1 1 -276,0 138,138 0 1 1 276,0 z" transform="matrix(1.4025564,0,0,1.3964479,-135.79717,96.569794)"/>
-  </g>
-  <g transform="matrix(1.000976, 0, 0, 1, -1050.409668, 30.643002)">
-    <title>Icon</title>
-    <rect width="1062.962" height="1064" x="1029.405" y="-50.643" style="fill: rgb(255, 255, 255);">
-      <title>Background</title>
-    </rect>
-    <polygon style="fill:#43B05C;" points="1445.714 446.835 1255.783 256.905 1228.567 262.949 1228.567 781.688 1253.889 776.066 1445.714 584.229"/>
-    <polygon style="fill:#48A0DC;" points="1341.628 756.559 1445.714 733.433 1445.714 652.473"/>
-    <polygon style="fill:#43B05C;" points="1445.714 214.694 1311.614 244.491 1445.714 378.591"/>
-    <polygon style="fill:#43B05C;" points="1825.105 204.85 1650.797 262.949 1650.797 379.146"/>
-    <polygon style="fill:#48A0DC;" points="1650.797 447.39 1650.797 769.624 1867.943 685.178 1867.943 230.244"/>
-    <polygon style="fill:#3D994F;" points="1548.533 481.41 1650.797 379.146 1650.797 262.949 1445.714 214.694 1445.714 378.591"/>
-    <polygon style="fill:#3D994F;" points="1445.714 446.835 1445.714 584.229 1514.417 515.538"/>
-    <polygon style="fill:#4393BF;" points="1445.714 652.473 1445.714 733.433 1650.797 769.624 1650.797 447.39"/>
-    <polygon style="fill:#EFCE4A;" points="1445.714 378.591 1311.614 244.491 1255.783 256.905 1445.714 446.835"/>
-    <polygon style="fill:#EFCE4A;" points="1445.714 584.229 1253.889 776.066 1341.628 756.559 1445.714 652.473"/>
-    <polygon style="fill:#EFCE4A;" points="1650.797 447.39 1867.943 230.244 1867.943 190.566 1825.105 204.85 1650.797 379.146"/>
-    <polygon style="fill:#D6B445;" points="1548.533 481.41 1445.714 378.591 1445.714 446.835 1514.417 515.538 1445.714 584.229 1445.714 652.473 1650.797 447.39 1650.797 379.146"/>
+    <circle style="fill: url(#color-0);" cx="762.438" cy="652.596" r="57.307">
+      <title>Wheel right</title>
+    </circle>
+    <circle style="fill: url(#color-0);" cx="259.755" cy="652.596" r="57.307">
+      <title>Wheel left</title>
+    </circle>
   </g>
 </svg>
