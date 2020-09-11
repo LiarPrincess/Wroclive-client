@@ -20,17 +20,17 @@ extension Middlewares {
           let after = getState()
 
           if let after = after?.mapType, after != before?.mapType {
-            os_log("Saving preferred map type", log: environment.log.redux, type: .info)
+            os_log("Saving preferred map type", log: environment.log.redux, type: .debug)
             environment.userDefaults.setPreferredMapType(mapType: after)
           }
 
           if let after = after?.bookmarks, after != before?.bookmarks {
-            os_log("Saving bookmarks", log: environment.log.redux, type: .info)
+            os_log("Saving bookmarks", log: environment.log.redux, type: .debug)
             environment.storage.writeBookmarks(after)
           }
 
           if let after = after?.trackedLines, after != before?.trackedLines {
-            os_log("Saving tracked lines", log: environment.log.redux, type: .info)
+            os_log("Saving tracked lines", log: environment.log.redux, type: .debug)
             environment.storage.writeTrackedLines(after)
           }
         }

@@ -16,7 +16,7 @@ extension Middlewares {
       return { next in
         return { action in
           let log = environment.log.redux
-          os_log("%{public}@", log: log, type: .info, String(describing: action))
+          os_log("%{public}@", log: log, type: .debug, String(describing: action))
           next(action)
         }
       }

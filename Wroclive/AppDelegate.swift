@@ -69,19 +69,19 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
     self.logSimulatorDocumentsDirectory()
 
-    os_log("Initializing redux store", log: self.log, type: .info)
+    os_log("Initializing redux store", log: self.log, type: .debug)
     self.store = self.createStore()
 
-    os_log("Adding observers for Apple frameworks", log: self.log, type: .info)
+    os_log("Adding observers for Apple frameworks", log: self.log, type: .debug)
     self.storeUpdater = self.dispatchStoreUpdatesFromAppleFrameworks()
 
     // 'os_log' is inside the function
     self.overrideLocaleIfPossible(.pl)
 
-    os_log("Setting up theme", log: self.log, type: .info)
+    os_log("Setting up theme", log: self.log, type: .debug)
     self.setupTheme()
 
-    os_log("Creating app coordinator", log: self.log, type: .info)
+    os_log("Creating app coordinator", log: self.log, type: .debug)
     self.window = UIWindow(frame: self.environment.device.screenBounds)
     self.coordinator = AppCoordinator(window: self.window!,
                                       store: self.store,
@@ -92,7 +92,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     os_log("Finished 'application(_:didFinishLaunchingWithOptions:)'",
            log: self.log,
-           type: .info)
+           type: .debug)
     return true
   }
 
@@ -111,7 +111,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     os_log(
       "Simulator documents directory: %{public}@",
       log: self.log,
-      type: .info,
+      type: .debug,
       documentDir
     )
     #endif
@@ -169,7 +169,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   private func overrideLocaleIfPossible(_ value: Localizable.Locale) {
     #if DEBUG
     let description = String(describing: value)
-    os_log("Setting locale: %{public}@", log: self.log, type: .info, description)
+    os_log("Setting locale: %{public}@", log: self.log, type: .debug, description)
     Localizable.setLocale(value)
     #endif
   }
@@ -183,7 +183,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func startMapUpdates() -> MapUpdateScheduler {
-    os_log("Creating map update scheduler", log: self.log, type: .info)
+    os_log("Creating map update scheduler", log: self.log, type: .debug)
     return MapUpdateScheduler(
       store: self.store,
       environment: self.environment

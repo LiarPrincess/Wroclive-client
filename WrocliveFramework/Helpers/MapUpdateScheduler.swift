@@ -31,8 +31,8 @@ public final class MapUpdateScheduler: StoreSubscriber {
 
     // If we don't have any lines then just send single update to reset map
     guard self.trackedLines.any else {
-      os_log("Tick (empty)!", log: self.log, type: .info)
-      os_log("Stoping updates as there are no lines to track", log: self.log, type: .info)
+      os_log("Tick (empty)!", log: self.log, type: .debug)
+      os_log("Stoping updates as there are no lines to track", log: self.log, type: .debug)
       self.store.dispatch(ApiAction.setVehicleLocations(.data([])))
       return
     }
@@ -53,7 +53,7 @@ public final class MapUpdateScheduler: StoreSubscriber {
   internal func timerFired(timer: Timer) {
     guard timer.isValid else { return }
 
-    os_log("Tick!", log: self.log, type: .info)
+    os_log("Tick!", log: self.log, type: .debug)
     self.store.dispatch(ApiMiddlewareActions.requestVehicleLocations)
   }
 
@@ -70,7 +70,7 @@ public final class MapUpdateScheduler: StoreSubscriber {
   public func newState(state: AppState) {
     let newTrackedLines = state.trackedLines
     if newTrackedLines != self.trackedLines {
-      os_log("Setting new tracked lines", log: self.log, type: .info)
+      os_log("Setting new tracked lines", log: self.log, type: .debug)
       self.trackedLines = newTrackedLines
       self.start()
     }

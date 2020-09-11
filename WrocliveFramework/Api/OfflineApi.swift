@@ -25,7 +25,7 @@ public final class OfflineApi: ApiType {
   }
 
   public func getLines() -> Promise<[Line]> {
-    os_log("[offline] Sending 'getLines' request", log: self.log, type: .info)
+    os_log("[offline] Sending 'getLines' request", log: self.log, type: .debug)
 
     return after(seconds: networkDelay)
       .then { _ in Promise.value(DummyData.lines) }
@@ -33,11 +33,11 @@ public final class OfflineApi: ApiType {
 
   public func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
     if lines.isEmpty {
-      os_log("No lines requested in 'getVehicleLocations'", log: self.log, type: .info)
+      os_log("No lines requested in 'getVehicleLocations'", log: self.log, type: .debug)
       return .value([])
     }
 
-    os_log("[offline] Sending 'getVehicleLocations' request", log: self.log, type: .info)
+    os_log("[offline] Sending 'getVehicleLocations' request", log: self.log, type: .debug)
 
     let vehicles: [Vehicle]
     if let oldVehicles = self.lastSendVehicles {

@@ -45,18 +45,18 @@ public final class Api: ApiType {
   // MARK: - Endpoints
 
   public func getLines() -> Promise<[Line]> {
-    os_log("Sending 'getLines' request", log: self.log, type: .info)
+    os_log("Sending 'getLines' request", log: self.log, type: .debug)
     let endpoint = self.linesEndpoint
     return self.sendRequest(endpoint: endpoint, data: ())
   }
 
   public func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
     if lines.isEmpty {
-      os_log("No lines requested in 'getVehicleLocations'", log: self.log, type: .info)
+      os_log("No lines requested in 'getVehicleLocations'", log: self.log, type: .debug)
       return .value([])
     }
 
-    os_log("Sending 'getVehicleLocations' request", log: self.log, type: .info)
+    os_log("Sending 'getVehicleLocations' request", log: self.log, type: .debug)
     let endpoint = self.vehicleLocationsEndpoint
     return self.sendRequest(endpoint: endpoint, data: lines)
   }

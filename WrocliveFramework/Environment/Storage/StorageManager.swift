@@ -63,7 +63,7 @@ public struct StorageManager: StorageManagerType {
     var state = ReadingState.beforeRead
     do {
       let data = try self.fileSystem.read(url: url)
-      os_log("File found", log: self.log, type: .info)
+      os_log("File found", log: self.log, type: .debug)
 
       state = .beforeDecode
       let result = try self.decoder.decode(T.self, from: data)

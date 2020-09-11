@@ -156,7 +156,7 @@ public final class SettingsCardCoordinator: NSObject,
     }
 
     let log = self.environment.log.app
-    os_log("Unable to send error report mail", log: log, type: .info)
+    os_log("Unable to send error report mail", log: log, type: .error)
   }
 
   public func mailComposeController(_ controller: MFMailComposeViewController,
