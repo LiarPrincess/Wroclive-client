@@ -8,8 +8,9 @@ import Foundation
 
 public struct Configuration {
 
-  public let websiteUrl: URL
+  public let apiUrl: URL
   public let githubUrl: URL
+  public let privacyPolicyUrl: URL
   public let reportErrorRecipient: String
 
   public let appStore: AppStore
@@ -38,13 +39,15 @@ public struct Configuration {
     }
   }
 
-  public init(websiteUrl: String,
+  public init(apiUrl: String,
               githubUrl: String,
+              privacyPolicyUrl: String,
               reportErrorRecipient: String,
               appStore: AppStore,
               timing: Timing) {
-    self.websiteUrl = URL(string: websiteUrl)!
+    self.apiUrl = URL(string: apiUrl)!
     self.githubUrl = URL(string: githubUrl)!
+    self.privacyPolicyUrl = URL(string: privacyPolicyUrl)!
     self.reportErrorRecipient = reportErrorRecipient
     self.appStore = appStore
     self.timing = timing

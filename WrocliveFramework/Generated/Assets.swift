@@ -30,6 +30,7 @@ public struct ImageAsset {
   public static let bookmarksPlaceholderHeart = ImageAsset(name: "bookmarks-placeholder-heart")
   public static let searchHeart = ImageAsset(name: "search-heart")
   public static let settingsAbout = ImageAsset(name: "settings-about")
+  public static let settingsPrivacyPolicy = ImageAsset(name: "settings-privacy-policy")
   public static let settingsRate = ImageAsset(name: "settings-rate")
   public static let settingsReportError = ImageAsset(name: "settings-report-error")
   public static let settingsShare = ImageAsset(name: "settings-share")

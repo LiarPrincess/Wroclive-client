@@ -46,7 +46,7 @@
 "Settings.Table.General.Header" = "Ogólne";
 "Settings.Table.General.Share"  = "Udostępnij";
 "Settings.Table.General.Rate"   = "Oceń";
-"Settings.Table.General.About"  = "O Wroclive";
+"Settings.Table.General.PrivacyPolicy"  = "Polityka prywatności";
 
 "Settings.Table.Programming.Header" = "Aplikacja";
 "Settings.Table.Programming.ReportError"  = "Zgłoś problem";

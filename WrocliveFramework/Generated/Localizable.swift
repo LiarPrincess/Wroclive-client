@@ -157,7 +157,7 @@ public enum Localizable {
   }
 
   enum Settings {
-    /// Data provided by MPK Wrocław
+    /// Data provided by MPK Wrocław.
     static let footer = Localizable.tr("Localizable", "Settings.Footer")
     /// Settings
     static let title = Localizable.tr("Localizable", "Settings.Title")
@@ -165,10 +165,10 @@ public enum Localizable {
     enum Table {
 
       enum General {
-        /// About Wroclive
-        static let about = Localizable.tr("Localizable", "Settings.Table.General.About")
         /// General
         static let header = Localizable.tr("Localizable", "Settings.Table.General.Header")
+        /// Privacy policy
+        static let privacyPolicy = Localizable.tr("Localizable", "Settings.Table.General.PrivacyPolicy")
         /// Rate app
         static let rate = Localizable.tr("Localizable", "Settings.Table.General.Rate")
         /// Share
@@ -187,7 +187,7 @@ public enum Localizable {
       }
 
       enum Programming {
-        /// Programming
+        /// Application
         static let header = Localizable.tr("Localizable", "Settings.Table.Programming.Header")
         /// Report error
         static let reportError = Localizable.tr("Localizable", "Settings.Table.Programming.ReportError")

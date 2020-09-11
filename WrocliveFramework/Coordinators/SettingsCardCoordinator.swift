@@ -81,10 +81,10 @@ public final class SettingsCardCoordinator: NSObject,
     card.present(activityViewController, animated: true, completion: nil)
   }
 
-  // MARK: - About
+  // MARK: - Privacy policy
 
-  public func showAboutPage() {
-    let url = self.environment.configuration.websiteUrl
+  public func showPrivacyPolicy() {
+    let url = self.environment.configuration.privacyPolicyUrl
     self.openSafari(url: url)
   }
 

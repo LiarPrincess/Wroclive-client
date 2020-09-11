@@ -46,7 +46,7 @@
 "Settings.Table.General.Header" = "General";
 "Settings.Table.General.Share"  = "Share";
 "Settings.Table.General.Rate"   = "Rate app";
-"Settings.Table.General.About"  = "About Wroclive";
+"Settings.Table.General.PrivacyPolicy"  = "Privacy policy";
 
 "Settings.Table.Programming.Header" = "Application";
 "Settings.Table.Programming.ReportError"  = "Report error";

@@ -23,21 +23,21 @@ public enum SettingsSection {
   public enum GeneralCell {
     case share
     case rate
-    case about
+    case privacyPolicy
 
     public var text: String {
       switch self {
-      case .about: return Localization.General.about
       case .share: return Localization.General.share
       case .rate: return Localization.General.rate
+      case .privacyPolicy: return Localization.General.privacyPolicy
       }
     }
 
     public var image: ImageAsset {
       switch self {
-      case .about: return ImageAsset.settingsAbout
       case .share: return ImageAsset.settingsShare
       case .rate: return ImageAsset.settingsRate
+      case .privacyPolicy: return ImageAsset.settingsPrivacyPolicy
       }
     }
   }

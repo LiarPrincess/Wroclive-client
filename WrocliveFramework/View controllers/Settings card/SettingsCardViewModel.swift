@@ -7,7 +7,7 @@ import ReSwift
 
 public protocol SettingsCardViewModelDelegate: AnyObject {
   func rateApp()
-  func showAboutPage()
+  func showPrivacyPolicy()
   func showShareActivity()
   func reportError()
   func showCode()
@@ -26,7 +26,7 @@ public final class SettingsCardViewModel: StoreSubscriber {
     SettingsSection.general([
       .share,
       .rate,
-      .about
+      .privacyPolicy
     ]),
     SettingsSection.programming([
       .reportError,
@@ -78,7 +78,7 @@ public final class SettingsCardViewModel: StoreSubscriber {
       switch cells[index.row] {
       case .share: self.delegate?.showShareActivity()
       case .rate: self.delegate?.rateApp()
-      case .about: self.delegate?.showAboutPage()
+      case .privacyPolicy: self.delegate?.showPrivacyPolicy()
       }
 
     case .programming(let cells):

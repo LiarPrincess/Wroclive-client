@@ -14,15 +14,24 @@ import WrocliveFramework
 // swiftlint:disable discouraged_optional_collection
 
 // TODO: Remove Overcast from Configuration.init
-private let apiUrl = "https://wroclive.app"
-private let websiteUrl = "https://www.overcast.fm"
-private let githubUrl = "https://github.com/apple/swift"
-private let reportErrorRecipient = "mail@wroclive.app"
-
 private let appId = "888422857"
-private let appStoreUrl = "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8"
-private let writeReviewUrl = "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8"
-// swiftlint:disable:previous line_length
+
+private let configuration = Configuration(
+  apiUrl: "https://wroclive.app/api",
+  githubUrl: "https://github.com/apple/swift",
+  privacyPolicyUrl: "https://wroclive.app/privacy",
+  reportErrorRecipient: "mail@wroclive.app",
+
+  appStore: .init(
+    url: "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8",
+    writeReview: "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8"
+  ),
+
+  timing: .init(
+    vehicleLocationUpdateInterval: 5.0,
+    locationAuthorizationPromptDelay: 2.0
+  )
+)
 
 @UIApplicationMain
 public final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,7 +50,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // MARK: - Did finish launching with options
 
-  /// Example: Wroclive/1.0 (pl.nopoint.wroclive; iPhone iOS 10.3.1)
+  /// Example: Wroclive/2020.9 (pl.nopoint.wroclive; iPhone iOS 10.3.1)
   private var appInfo: String {
     let device = self.environment.device
     let bundle = self.environment.bundle
@@ -53,7 +62,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    self.environment = self.createEnvironment(apiMode: .online(host: apiUrl))
+    self.environment = self.createEnvironment(apiMode: .online)
 //    self.environment = self.createEnvironment(apiMode: .offline)
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
@@ -93,22 +102,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   // Every call that interacts with native frameworks has to go through Environment.
   // And don't worry, 'debug' modes will fail to compile in release builds.
   private func createEnvironment(apiMode: Environment.ApiMode) -> Environment {
-    let configuration = Configuration(
-      websiteUrl: websiteUrl,
-      githubUrl: githubUrl,
-      reportErrorRecipient: reportErrorRecipient,
-
-      appStore: .init(
-        url: appStoreUrl,
-        writeReview: writeReviewUrl
-      ),
-
-      timing: .init(
-        vehicleLocationUpdateInterval: 5.0,
-        locationAuthorizationPromptDelay: 2.0
-      )
-    )
-
     return Environment(apiMode: apiMode, configuration: configuration)
   }
 
