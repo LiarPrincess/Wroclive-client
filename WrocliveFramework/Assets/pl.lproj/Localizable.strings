@@ -36,7 +36,7 @@
 /* Settings */
 
 "Settings.Title"  = "Ustawienia";
-"Settings.Footer" = "Dane uzyskano dzięki uprzejmości MPK Wrocław.";
+"Settings.Footer" = "";
 
 "Settings.Table.MapType.Header"    = "Typ mapy";
 "Settings.Table.MapType.Standard"  = "Standardowa";
