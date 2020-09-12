@@ -1,11 +1,11 @@
-fastlane_version "2.64.0"
+fastlane_version "2.159.0"
 
 default_platform :ios
 
-# desc "Runs all the tests"
-# lane :test do
-#   scan
-# end
+desc "Runs all the tests"
+lane :test do
+  run_tests(scheme: "WrocliveFramework", device: "iPhone 8")
+end
 
 desc "Creates new app screenshots"
 lane :screenshot do

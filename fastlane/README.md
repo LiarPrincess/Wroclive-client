@@ -12,19 +12,19 @@ Install _fastlane_ using
 ```
 [sudo] gem install fastlane -NV
 ```
-or alternatively using `brew cask install fastlane`
+or alternatively using `brew install fastlane`
 
 # Available Actions
+### test
+```
+fastlane test
+```
+Runs all the tests
 ### screenshot
 ```
 fastlane screenshot
 ```
 Creates new app screenshots
-### generate_code
-```
-fastlane generate_code
-```
-Regenerate all of the generated files (./Sources/Generated directory)
 
 ----
 
