@@ -46,8 +46,9 @@ extension EnvironmentTestCase {
     let bundle = BundleManagerMock()
 
     let configuration = Configuration(
-      websiteUrl: "websiteUrl",
+      apiUrl: "apiUrl",
       githubUrl: "githubUrl",
+      privacyPolicyUrl: "privacyPolicyUrl",
       reportErrorRecipient: "reportErrorRecipient",
       appStore: .init(
         url: "appStore-url",
