@@ -20,6 +20,7 @@ public struct AppState: StateType {
     /// No response recieved (yet).
     /// Default state, just after starting the app.
     case none
+    // TODO: Add 'Request' associated value, with single 'cancel' method
     /// Request was send, no response (yet).
     case inProgress
     case data(Data)

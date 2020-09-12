@@ -13,7 +13,7 @@ import WrocliveFramework
 // swiftlint:disable implicitly_unwrapped_optional
 // swiftlint:disable discouraged_optional_collection
 
-// TODO: Remove Overcast from Configuration.init
+// TODO: Remove Overcast from Configuration.init (+ on server)
 private let appId = "888422857"
 
 private let configuration = Configuration(
