@@ -16,13 +16,13 @@ public final class SettingsCardFooterView: UIView {
 
   // MARK: - Init
 
-  public init(device: DeviceManagerType) {
+  public init() {
     let text = NSAttributedString(string: Localization.footer,
                                   attributes: Constants.textAttributes)
 
     let textHeight: CGFloat = {
-      let textRect = CGSize(width: device.screenBounds.width,
-                            height: CGFloat.infinity)
+      let screenBounds = UIScreen.main.bounds
+      let textRect = CGSize(width: screenBounds.width, height: CGFloat.infinity)
       let textSize = text.boundingRect(with: textRect,
                                        options: .usesLineFragmentOrigin,
                                        context: nil)

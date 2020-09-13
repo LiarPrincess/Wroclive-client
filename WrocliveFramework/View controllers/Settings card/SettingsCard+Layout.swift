@@ -57,8 +57,7 @@ extension SettingsCard {
     self.tableView.delegate = self
     self.tableView.dataSource = self
 
-    let device = self.environment.device
-    self.tableView.tableFooterView = SettingsCardFooterView(device: device)
+    self.tableView.tableFooterView = SettingsCardFooterView()
 
     self.view.insertSubview(self.tableView, belowSubview: self.headerView)
     self.tableView.snp.makeConstraints { $0.edges.equalToSuperview() }
