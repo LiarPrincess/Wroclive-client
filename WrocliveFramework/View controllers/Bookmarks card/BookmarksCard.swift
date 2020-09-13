@@ -20,13 +20,11 @@ public final class BookmarksCard:
   /// `self.tableView` data source
   internal var bookmarks = [Bookmark]()
   internal let viewModel: BookmarksCardViewModel
-  internal let environment: Environment
 
   // MARK: - Init
 
-  public init(viewModel: BookmarksCardViewModel, environment: Environment) {
+  public init(viewModel: BookmarksCardViewModel) {
     self.viewModel = viewModel
-    self.environment = environment
     super.init(nibName: nil, bundle: nil)
     viewModel.setView(view: self)
   }

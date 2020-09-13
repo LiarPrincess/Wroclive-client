@@ -14,7 +14,6 @@ public final class SettingsLinkCell: UITableViewCell {
 
   private let bottomBorder = UIView()
   private var isBottomBorderVisible = true
-  private var hasAddedBottomBorderHeightConstraints = false
 
   override public var alpha: CGFloat {
     get { return 1.0 }
@@ -45,6 +44,7 @@ public final class SettingsLinkCell: UITableViewCell {
       make.bottom.equalToSuperview()
       make.left.equalToSuperview().offset(Constants.BottomBorder.leftInset)
       make.right.equalToSuperview()
+      make.height.equalTo(1.0 / UIScreen.main.scale)
     }
   }
 
@@ -59,8 +59,7 @@ public final class SettingsLinkCell: UITableViewCell {
 
   public func update(image: ImageAsset,
                      text: String,
-                     isLastCellInSection: Bool,
-                     device: DeviceManagerType) {
+                     isLastCellInSection: Bool) {
     // 'accessoryType' may depend on 'kind'
     self.accessoryType = .disclosureIndicator
 
@@ -74,12 +73,5 @@ public final class SettingsLinkCell: UITableViewCell {
     }
 
     self.isBottomBorderVisible = !isLastCellInSection
-    if self.isBottomBorderVisible && !self.hasAddedBottomBorderHeightConstraints {
-      self.bottomBorder.snp.makeConstraints { make in
-        make.height.equalTo(1.0 / device.screenScale)
-      }
-
-      self.hasAddedBottomBorderHeightConstraints = true
-    }
   }
 }

@@ -21,13 +21,11 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPanelPr
   internal var lineTypeSelector: LineTypeSegmentedControl
 
   internal let viewModel: SearchCardViewModel
-  internal let environment: Environment
 
   // MARK: - Init
 
-  public init(viewModel: SearchCardViewModel, environment: Environment) {
+  public init(viewModel: SearchCardViewModel) {
     self.viewModel = viewModel
-    self.environment = environment
 
     // swiftlint:disable:next trailing_closure
     self.lineTypeSelector = LineTypeSegmentedControl(

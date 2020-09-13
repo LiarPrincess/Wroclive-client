@@ -24,9 +24,7 @@ public final class AppCoordinator: MainViewModelDelegate {
     let viewModel = MainViewModel(store: self.store,
                                   environment: self.environment,
                                   delegate: self)
-
-    self.mainViewController = MainViewController(viewModel: viewModel,
-                                                 environment: self.environment)
+    self.mainViewController = MainViewController(viewModel: viewModel)
 
     self.window.rootViewController = self.mainViewController
     self.window.makeKeyAndVisible()

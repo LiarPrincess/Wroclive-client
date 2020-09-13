@@ -109,37 +109,34 @@ extension UIView {
 
 extension UIView {
 
+  private var onePixel: CGFloat {
+    let scale = UIScreen.main.scale
+    return CGFloat(1.0) / scale
+  }
+
   private var borderColor: UIColor {
     return ColorScheme.accent
   }
 
-  public func addTopBorder(device: DeviceManagerType) {
+  public func addTopBorder() {
     let view = UIView()
     view.backgroundColor = self.borderColor
 
-    let width = self.onePixel(device: device)
-
     self.addSubview(view)
     view.snp.makeConstraints { make in
-      make.height.equalTo(width)
+      make.height.equalTo(self.onePixel)
       make.top.left.right.equalToSuperview()
     }
   }
 
-  public func addBottomBorder(device: DeviceManagerType) {
+  public func addBottomBorder() {
     let view = UIView()
     view.backgroundColor = self.borderColor
 
-    let width = self.onePixel(device: device)
-
     self.addSubview(view)
     view.snp.makeConstraints { make in
-      make.height.equalTo(width)
+      make.height.equalTo(self.onePixel)
       make.bottom.left.right.equalToSuperview()
     }
-  }
-
-  private func onePixel(device: DeviceManagerType) -> CGFloat {
-    return CGFloat(1.0) / device.screenScale
   }
 }

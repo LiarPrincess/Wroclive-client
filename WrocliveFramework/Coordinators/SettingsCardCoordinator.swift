@@ -32,7 +32,7 @@ public final class SettingsCardCoordinator: NSObject,
 
   public func start() -> Guarantee<Void> {
     let viewModel = SettingsCardViewModel(store: self.store, delegate: self)
-    let card = SettingsCard(viewModel: viewModel, environment: self.environment)
+    let card = SettingsCard(viewModel: viewModel)
 
     let height = min(
       0.8 * self.environment.device.screenBounds.height,

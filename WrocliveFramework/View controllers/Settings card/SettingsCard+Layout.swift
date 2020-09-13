@@ -18,8 +18,7 @@ extension SettingsCard {
   // MARK: - Header
 
   private func initHeader() {
-    let device = self.environment.device
-    self.headerView.contentView.addBottomBorder(device: device)
+    self.headerView.contentView.addBottomBorder()
     self.headerView.setContentHuggingPriority(900, for: .vertical)
 
     self.view.addSubview(self.headerView)

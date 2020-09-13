@@ -26,8 +26,9 @@ public final class SearchCardCoordinator: CardCoordinator {
   }
 
   public func start() -> Guarantee<Void> {
-    let viewModel = SearchCardViewModel(store: self.store, environment: self.environment)
-    let card = SearchCard(viewModel: viewModel, environment: self.environment)
+    let viewModel = SearchCardViewModel(store: self.store,
+                                        environment: self.environment)
+    let card = SearchCard(viewModel: viewModel)
 
     let height = min(
       0.9 * self.environment.device.screenBounds.height,

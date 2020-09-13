@@ -42,10 +42,9 @@ extension MainViewController {
   }
 
   private func initToolbarView() {
-    let device = self.environment.device
-    self.toolbar.contentView.addTopBorder(device: device)
+    self.toolbar.contentView.addTopBorder()
 
-    // 'stackView' is responsible for an actual frame on iPhone X+
+    // 'stackView' is responsible for an actual frame on iPhone X and newer
     // (it has constraint to safe area).
     self.view.addSubview(self.toolbar)
     self.toolbar.snp.makeConstraints { make in

@@ -20,18 +20,16 @@ public final class SettingsCard:
   private let mapTypeCell: SettingsMapTypeCell
 
   internal let viewModel: SettingsCardViewModel
-  internal let environment: Environment
 
   // MARK: - Init
 
-  public init(viewModel: SettingsCardViewModel, environment: Environment) {
+  public init(viewModel: SettingsCardViewModel) {
     // swiftlint:disable:next trailing_closure
     self.mapTypeCell = SettingsMapTypeCell(
       onValueChanged: { viewModel.viewDidSelectMapType(mapType: $0) }
     )
 
     self.viewModel = viewModel
-    self.environment = environment
     super.init(nibName: nil, bundle: nil)
     viewModel.setView(view: self)
   }
@@ -144,8 +142,7 @@ public final class SettingsCard:
 
     cell.update(image: image,
                 text: text,
-                isLastCellInSection: isLastCellInSection,
-                device: self.environment.device)
+                isLastCellInSection: isLastCellInSection)
 
     return cell
   }

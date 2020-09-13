@@ -20,13 +20,11 @@ public final class MainViewController: UIViewController {
   public let configurationButton = UIButton(type: .custom)
 
   internal let viewModel: MainViewModel
-  internal let environment: Environment
 
   // MARK: - Init
 
-  public init(viewModel: MainViewModel, environment: Environment) {
+  public init(viewModel: MainViewModel) {
     self.viewModel = viewModel
-    self.environment = environment
     self.mapViewController = MapViewController(viewModel: viewModel.mapViewModel)
     super.init(nibName: nil, bundle: nil)
   }
