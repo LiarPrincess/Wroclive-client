@@ -69,10 +69,6 @@ public final class CardPanelContainer: UIViewController {
     // 'controller.view' has to be below 'self.chevronView',
     // otherwise it would cover it.
     self.view.insertSubview(controller.view, belowSubview: self.chevronView)
-    controller.view.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
-
     controller.view.snp.makeConstraints { $0.edges.equalToSuperview() }
     controller.didMove(toParent: self)
   }

@@ -47,22 +47,28 @@ public final class BookmarksCard:
   }
 
   private func insetTableViewContentBelowHeaderView() {
-    let currentInset = self.tableView.contentInset
     let headerHeight = self.headerView.bounds.height
+    // contentInset - The custom distance that the content view is inset from
+    // the safe area or scroll view edges.
+    let contentInset = self.tableView.contentInset
+    // adjustedContentInset - The insets derived from the content insets
+    // and the safe area of the scroll view.
+    let adjustedContentInset = self.tableView.adjustedContentInset
 
-    if currentInset.top < headerHeight {
-      let newInset = UIEdgeInsets(top: headerHeight,
-                                  left: currentInset.left,
-                                  bottom: currentInset.bottom,
-                                  right: currentInset.right)
+    let neededTopInset = headerHeight - adjustedContentInset.top
+    if neededTopInset > 0 {
+      var newInset = contentInset
+      newInset.top += neededTopInset
+
       self.tableView.contentInset = newInset
       self.tableView.scrollIndicatorInsets = newInset
 
-      // Scroll up to preserve current scroll position
-      let currentOffset = self.tableView.contentOffset
-      let newOffset = CGPoint(x: currentOffset.x,
-                              y: currentOffset.y + currentInset.top - headerHeight)
-      self.tableView.setContentOffset(newOffset, animated: false)
+      // We added inset, but that means that the top 'neededTopInset' points
+      // are now invisible -> we need to scroll up by 'neededTopInset' points.
+      // (If you want to test it then comment following lines and run on iPhone X).
+      var offset = self.tableView.contentOffset
+      offset.y -= neededTopInset
+      self.tableView.setContentOffset(offset, animated: false)
     }
   }
 

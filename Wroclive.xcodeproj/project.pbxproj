@@ -133,6 +133,8 @@
 		90D57B0724DC490100A0EF53 /* LineSelectorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF624DC490000A0EF53 /* LineSelectorSection.swift */; };
 		90D57B0824DC490100A0EF53 /* LineSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF724DC490000A0EF53 /* LineSelectorViewModel.swift */; };
 		90D57B0924DC490100A0EF53 /* LineSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF824DC490000A0EF53 /* LineSelectorCell.swift */; };
+		90DBD5CE250E5E2E006CDA9A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 90DBD5CD250E5E2E006CDA9A /* SnapshotTesting */; };
+		90DBD5D0250E5E7E006CDA9A /* BookmarksCardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBD5CF250E5E7E006CDA9A /* BookmarksCardSnapshotTests.swift */; };
 		90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39E924D8570900ADE4B9 /* MapViewController.swift */; };
 		90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */; };
 		90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */; };
@@ -334,6 +336,7 @@
 		90D57AF624DC490000A0EF53 /* LineSelectorSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorSection.swift; sourceTree = "<group>"; };
 		90D57AF724DC490000A0EF53 /* LineSelectorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorViewModel.swift; sourceTree = "<group>"; };
 		90D57AF824DC490000A0EF53 /* LineSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorCell.swift; sourceTree = "<group>"; };
+		90DBD5CF250E5E7E006CDA9A /* BookmarksCardSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardSnapshotTests.swift; sourceTree = "<group>"; };
 		90DE39E924D8570900ADE4B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationAuthorization.swift; sourceTree = "<group>"; };
@@ -403,6 +406,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90DBD5CE250E5E2E006CDA9A /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,6 +862,7 @@
 				90F72F3724E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift */,
 				90F72F3924E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift */,
 				90F72F3A24E31D9600D20EB2 /* BookmarksCardViewModelTests+Selection.swift */,
+				90DBD5CF250E5E7E006CDA9A /* BookmarksCardSnapshotTests.swift */,
 			);
 			path = "Bookmarks card";
 			sourceTree = "<group>";
@@ -949,6 +954,9 @@
 				90F72F1524E315D100D20EB2 /* PBXTargetDependency */,
 			);
 			name = WrocliveTests;
+			packageProductDependencies = (
+				90DBD5CD250E5E2E006CDA9A /* SnapshotTesting */,
+			);
 			productName = WrocliveTests;
 			productReference = 9052381D24D459EB00E4F8A7 /* WrocliveTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -991,6 +999,7 @@
 				900EA0E924D46AC80054C03F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				900EA0EF24D46AE30054C03F /* XCRemoteSwiftPackageReference "Reachability" */,
 				90E0193424FFB8E1000670CD /* XCRemoteSwiftPackageReference "SPAlert" */,
+				90DBD5CC250E5E2E006CDA9A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 9052380824D459E500E4F8A7 /* Products */;
 			projectDirPath = "";
@@ -1191,6 +1200,7 @@
 				90F72F3E24E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift in Sources */,
 				90F72F3D24E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
 				90F72F4D24E426EB00D20EB2 /* MapViewModelTests+Vehicles.swift in Sources */,
+				90DBD5D0250E5E7E006CDA9A /* BookmarksCardSnapshotTests.swift in Sources */,
 				9066DDFD24E72FEB0096F536 /* SearchCardViewModelTests+Page.swift in Sources */,
 				9023EBE524E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift in Sources */,
 				90F72F4424E4082D00D20EB2 /* ReduxTestCase.swift in Sources */,
@@ -1606,6 +1616,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		90DBD5CC250E5E2E006CDA9A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
 		90E0193424FFB8E1000670CD /* XCRemoteSwiftPackageReference "SPAlert" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
@@ -1641,6 +1659,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 900EA0EF24D46AE30054C03F /* XCRemoteSwiftPackageReference "Reachability" */;
 			productName = Reachability;
+		};
+		90DBD5CD250E5E2E006CDA9A /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90DBD5CC250E5E2E006CDA9A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 		90E0193524FFB8E1000670CD /* SPAlert */ = {
 			isa = XCSwiftPackageProductDependency;
