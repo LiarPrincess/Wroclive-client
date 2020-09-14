@@ -56,6 +56,17 @@ class BookmarksCardSnapshots: XCTestCase,
     }
   }
 
+  func test_dark() {
+    self.setBookmarks(self.bookmarks)
+
+    self.inDarkMode { assertSnapshot in
+      let viewModel = BookmarksCardViewModel(store: self.store)
+      let view = BookmarksCard(viewModel: viewModel)
+
+      assertSnapshot(view, .errorOnThisLine())
+    }
+  }
+
   // MARK: - Helpers
 
   func setBookmarks(_ bookmarks: [Bookmark]) {

@@ -36,10 +36,7 @@ extension SnapshotTestCase {
 
   func onAllDevicesInAllLocales(file: StaticString = #file,
                                 fn: (CreateSnapshots) -> Void) {
-
-    let fileUrl = URL(fileURLWithPath: "\(file)", isDirectory: false)
-    let fileName = fileUrl.deletingPathExtension().lastPathComponent
-    let snapshotDirectory = rootSnapshotDirectory.appendingPathComponent(fileName)
+    let snapshotDirectory = self.getSnapshotDirectory(testFilePath: file)
 
     for locale in locales {
       Localizable.setLocale(locale)
@@ -64,23 +61,79 @@ extension SnapshotTestCase {
       let name = "\(counter)-\(device.name)-\(locale)"
       counter += 1
 
-      let failure = verifySnapshot(
+      self.assertSnapshot(
         matching: view,
         as: .image(on: device.config),
         named: name,
-        snapshotDirectory: snapshotDirectory.absoluteString,
-        file: errorLocation.file,
-        testName: errorLocation.function,
-        line: errorLocation.line
+        snapshotDirectory: snapshotDirectory,
+        errorLocation: errorLocation
       )
-
-      guard let message = failure else { return }
-      XCTFail(message, file: errorLocation.file, line: errorLocation.line)
     }
 
     fn(snapshot(view:errorLocation:))
   }
+
+  // MARK: - Dark mode
+
+  func inDarkMode(file: StaticString = #file,
+                  fn: (CreateSnapshots) -> Void) {
+    let snapshotDirectory = self.getSnapshotDirectory(testFilePath: file)
+    Localizable.setLocale(.pl)
+
+    // We will only test 'iPhoneX', just to check if it works.
+    let device = iPhoneX
+    let traits = UITraitCollection(userInterfaceStyle: .dark)
+
+    var counter = 1
+
+    func snapshot(view: UIViewController,
+                  errorLocation: SnapshotErrorLocation) {
+      let name = "\(counter)-\(device.name)"
+      counter += 1
+
+      self.assertSnapshot(
+        matching: view,
+        as: .image(on: device.config, traits: traits),
+        named: name,
+        snapshotDirectory: snapshotDirectory,
+        errorLocation: errorLocation
+      )
+    }
+
+    fn(snapshot(view:errorLocation:))
+  }
+
+  // MARK: - Helpers
+
+  private func getSnapshotDirectory(testFilePath: StaticString) -> URL {
+    let fileUrl = URL(fileURLWithPath: "\(testFilePath)", isDirectory: false)
+    let fileName = fileUrl.deletingPathExtension().lastPathComponent
+    return rootSnapshotDirectory.appendingPathComponent(fileName)
+  }
+
+  private func assertSnapshot<UIViewController, Format>(
+    matching value: UIViewController,
+    as snapshotting: Snapshotting<UIViewController, Format>,
+    named name: String?,
+    snapshotDirectory: URL,
+    errorLocation: SnapshotErrorLocation
+  ) {
+    let failure = verifySnapshot(
+      matching: value,
+      as: snapshotting,
+      named: name,
+      snapshotDirectory: snapshotDirectory.absoluteString,
+      file: errorLocation.file,
+      testName: errorLocation.function,
+      line: errorLocation.line
+    )
+
+    guard let message = failure else { return }
+    XCTFail(message, file: errorLocation.file, line: errorLocation.line)
+  }
 }
+
+// MARK: - SnapshotErrorLocation
 
 // We can't have default argument values in 'typealias CreateSnapshots',
 // so we have to do it in a different way.
