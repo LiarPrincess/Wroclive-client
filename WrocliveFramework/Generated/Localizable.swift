@@ -15,68 +15,71 @@
 import Foundation
 
 
+// Do not add your own caching layer (for example by using 'static let').
+// iOS has its own cache that correctly reacts to language changes etc.
+// (And also we want to be able ti change language in snapshot tests.)
 public enum Localizable {
 
   enum Alert {
 
     enum Bookmark {
       /// Bookmark saved
-      static let saved = Localizable.tr("Localizable", "Alert.Bookmark.Saved")
+      static var saved: String { Localizable.tr("Localizable", "Alert.Bookmark.Saved") }
 
       enum NameInput {
         /// Cancel
-        static let cancel = Localizable.tr("Localizable", "Alert.Bookmark.NameInput.Cancel")
+        static var cancel: String { Localizable.tr("Localizable", "Alert.Bookmark.NameInput.Cancel") }
         /// Enter name for this bookmark.
-        static let message = Localizable.tr("Localizable", "Alert.Bookmark.NameInput.Message")
+        static var message: String { Localizable.tr("Localizable", "Alert.Bookmark.NameInput.Message") }
         /// Name
-        static let placeholder = Localizable.tr("Localizable", "Alert.Bookmark.NameInput.Placeholder")
+        static var placeholder: String { Localizable.tr("Localizable", "Alert.Bookmark.NameInput.Placeholder") }
         /// Save
-        static let save = Localizable.tr("Localizable", "Alert.Bookmark.NameInput.Save")
+        static var save: String { Localizable.tr("Localizable", "Alert.Bookmark.NameInput.Save") }
         /// New bookmark
-        static let title = Localizable.tr("Localizable", "Alert.Bookmark.NameInput.Title")
+        static var title: String { Localizable.tr("Localizable", "Alert.Bookmark.NameInput.Title") }
       }
 
       enum NoLinesSelected {
         /// Please select some lines before trying to create bookmark.
-        static let message = Localizable.tr("Localizable", "Alert.Bookmark.NoLinesSelected.Message")
+        static var message: String { Localizable.tr("Localizable", "Alert.Bookmark.NoLinesSelected.Message") }
         /// OK
-        static let ok = Localizable.tr("Localizable", "Alert.Bookmark.NoLinesSelected.Ok")
+        static var ok: String { Localizable.tr("Localizable", "Alert.Bookmark.NoLinesSelected.Ok") }
         /// No lines selected
-        static let title = Localizable.tr("Localizable", "Alert.Bookmark.NoLinesSelected.Title")
+        static var title: String { Localizable.tr("Localizable", "Alert.Bookmark.NoLinesSelected.Title") }
       }
     }
 
     enum InvalidCity {
       /// Wroclive works best in Wrocław.\nWould you like to visit?
-      static let message = Localizable.tr("Localizable", "Alert.InvalidCity.Message")
+      static var message: String { Localizable.tr("Localizable", "Alert.InvalidCity.Message") }
       /// No
-      static let no = Localizable.tr("Localizable", "Alert.InvalidCity.No")
+      static var no: String { Localizable.tr("Localizable", "Alert.InvalidCity.No") }
       /// Adventure time!
-      static let title = Localizable.tr("Localizable", "Alert.InvalidCity.Title")
+      static var title: String { Localizable.tr("Localizable", "Alert.InvalidCity.Title") }
       /// Yes
-      static let yes = Localizable.tr("Localizable", "Alert.InvalidCity.Yes")
+      static var yes: String { Localizable.tr("Localizable", "Alert.InvalidCity.Yes") }
     }
 
     enum Location {
 
       enum Denied {
         /// Turn on Location Services in Settings > Privacy to allow to determine your current location.
-        static let message = Localizable.tr("Localizable", "Alert.Location.Denied.Message")
+        static var message: String { Localizable.tr("Localizable", "Alert.Location.Denied.Message") }
         /// OK
-        static let ok = Localizable.tr("Localizable", "Alert.Location.Denied.Ok")
+        static var ok: String { Localizable.tr("Localizable", "Alert.Location.Denied.Ok") }
         /// Settings
-        static let settings = Localizable.tr("Localizable", "Alert.Location.Denied.Settings")
+        static var settings: String { Localizable.tr("Localizable", "Alert.Location.Denied.Settings") }
         /// Location Services Off
-        static let title = Localizable.tr("Localizable", "Alert.Location.Denied.Title")
+        static var title: String { Localizable.tr("Localizable", "Alert.Location.Denied.Title") }
       }
 
       enum GloballyDenied {
         /// Turn on Location Services in Settings > Privacy to allow to determine your current location.
-        static let message = Localizable.tr("Localizable", "Alert.Location.GloballyDenied.Message")
+        static var message: String { Localizable.tr("Localizable", "Alert.Location.GloballyDenied.Message") }
         /// OK
-        static let ok = Localizable.tr("Localizable", "Alert.Location.GloballyDenied.Ok")
+        static var ok: String { Localizable.tr("Localizable", "Alert.Location.GloballyDenied.Ok") }
         /// Location Services Off
-        static let title = Localizable.tr("Localizable", "Alert.Location.GloballyDenied.Title")
+        static var title: String { Localizable.tr("Localizable", "Alert.Location.GloballyDenied.Title") }
       }
     }
 
@@ -84,115 +87,115 @@ public enum Localizable {
 
       enum ConnectionError {
         /// Could not connect to server.
-        static let message = Localizable.tr("Localizable", "Alert.Network.ConnectionError.Message")
+        static var message: String { Localizable.tr("Localizable", "Alert.Network.ConnectionError.Message") }
         /// Unable to retrieve data
-        static let title = Localizable.tr("Localizable", "Alert.Network.ConnectionError.Title")
+        static var title: String { Localizable.tr("Localizable", "Alert.Network.ConnectionError.Title") }
         /// Try again
-        static let tryAgain = Localizable.tr("Localizable", "Alert.Network.ConnectionError.TryAgain")
+        static var tryAgain: String { Localizable.tr("Localizable", "Alert.Network.ConnectionError.TryAgain") }
       }
 
       enum NoInternet {
         /// Please check your internet connection.
-        static let message = Localizable.tr("Localizable", "Alert.Network.NoInternet.Message")
+        static var message: String { Localizable.tr("Localizable", "Alert.Network.NoInternet.Message") }
         /// Unable to retrieve data
-        static let title = Localizable.tr("Localizable", "Alert.Network.NoInternet.Title")
+        static var title: String { Localizable.tr("Localizable", "Alert.Network.NoInternet.Title") }
         /// Try again
-        static let tryAgain = Localizable.tr("Localizable", "Alert.Network.NoInternet.TryAgain")
+        static var tryAgain: String { Localizable.tr("Localizable", "Alert.Network.NoInternet.TryAgain") }
       }
     }
   }
 
   enum Bookmarks {
     /// Bookmarks
-    static let title = Localizable.tr("Localizable", "Bookmarks.Title")
+    static var title: String { Localizable.tr("Localizable", "Bookmarks.Title") }
 
     enum Edit {
       /// Done
-      static let done = Localizable.tr("Localizable", "Bookmarks.Edit.Done")
+      static var done: String { Localizable.tr("Localizable", "Bookmarks.Edit.Done") }
       /// Edit
-      static let edit = Localizable.tr("Localizable", "Bookmarks.Edit.Edit")
+      static var edit: String { Localizable.tr("Localizable", "Bookmarks.Edit.Edit") }
     }
 
     enum Placeholder {
       /// To add bookmark press <heart> when selecting lines.
-      static let content = Localizable.tr("Localizable", "Bookmarks.Placeholder.Content")
+      static var content: String { Localizable.tr("Localizable", "Bookmarks.Placeholder.Content") }
       /// You have not saved any bookmarks
-      static let title = Localizable.tr("Localizable", "Bookmarks.Placeholder.Title")
+      static var title: String { Localizable.tr("Localizable", "Bookmarks.Placeholder.Title") }
     }
   }
 
   enum Search {
     /// Loading…
-    static let loading = Localizable.tr("Localizable", "Search.Loading")
+    static var loading: String { Localizable.tr("Localizable", "Search.Loading") }
     /// Select
-    static let search = Localizable.tr("Localizable", "Search.Search")
+    static var search: String { Localizable.tr("Localizable", "Search.Search") }
     /// Lines
-    static let title = Localizable.tr("Localizable", "Search.Title")
+    static var title: String { Localizable.tr("Localizable", "Search.Title") }
 
     enum Pages {
       /// Buses
-      static let bus = Localizable.tr("Localizable", "Search.Pages.Bus")
+      static var bus: String { Localizable.tr("Localizable", "Search.Pages.Bus") }
       /// Trams
-      static let tram = Localizable.tr("Localizable", "Search.Pages.Tram")
+      static var tram: String { Localizable.tr("Localizable", "Search.Pages.Tram") }
     }
 
     enum Sections {
       /// Express
-      static let express = Localizable.tr("Localizable", "Search.Sections.Express")
+      static var express: String { Localizable.tr("Localizable", "Search.Sections.Express") }
       /// Limited
-      static let limited = Localizable.tr("Localizable", "Search.Sections.Limited")
+      static var limited: String { Localizable.tr("Localizable", "Search.Sections.Limited") }
       /// Night
-      static let night = Localizable.tr("Localizable", "Search.Sections.Night")
+      static var night: String { Localizable.tr("Localizable", "Search.Sections.Night") }
       /// Peak-hour
-      static let peakHour = Localizable.tr("Localizable", "Search.Sections.PeakHour")
+      static var peakHour: String { Localizable.tr("Localizable", "Search.Sections.PeakHour") }
       /// Regular
-      static let regular = Localizable.tr("Localizable", "Search.Sections.Regular")
+      static var regular: String { Localizable.tr("Localizable", "Search.Sections.Regular") }
       /// Suburban
-      static let suburban = Localizable.tr("Localizable", "Search.Sections.Suburban")
+      static var suburban: String { Localizable.tr("Localizable", "Search.Sections.Suburban") }
       /// Temporary
-      static let temporary = Localizable.tr("Localizable", "Search.Sections.Temporary")
+      static var temporary: String { Localizable.tr("Localizable", "Search.Sections.Temporary") }
       /// Zone
-      static let zone = Localizable.tr("Localizable", "Search.Sections.Zone")
+      static var zone: String { Localizable.tr("Localizable", "Search.Sections.Zone") }
     }
   }
 
   enum Settings {
-    /// Data provided by MPK Wrocław.
-    static let footer = Localizable.tr("Localizable", "Settings.Footer")
+    /// 
+    static var footer: String { Localizable.tr("Localizable", "Settings.Footer") }
     /// Settings
-    static let title = Localizable.tr("Localizable", "Settings.Title")
+    static var title: String { Localizable.tr("Localizable", "Settings.Title") }
 
     enum Table {
 
       enum General {
         /// General
-        static let header = Localizable.tr("Localizable", "Settings.Table.General.Header")
+        static var header: String { Localizable.tr("Localizable", "Settings.Table.General.Header") }
         /// Privacy policy
-        static let privacyPolicy = Localizable.tr("Localizable", "Settings.Table.General.PrivacyPolicy")
+        static var privacyPolicy: String { Localizable.tr("Localizable", "Settings.Table.General.PrivacyPolicy") }
         /// Rate app
-        static let rate = Localizable.tr("Localizable", "Settings.Table.General.Rate")
+        static var rate: String { Localizable.tr("Localizable", "Settings.Table.General.Rate") }
         /// Share
-        static let share = Localizable.tr("Localizable", "Settings.Table.General.Share")
+        static var share: String { Localizable.tr("Localizable", "Settings.Table.General.Share") }
       }
 
       enum MapType {
         /// Map type
-        static let header = Localizable.tr("Localizable", "Settings.Table.MapType.Header")
+        static var header: String { Localizable.tr("Localizable", "Settings.Table.MapType.Header") }
         /// Hybrid
-        static let hybrid = Localizable.tr("Localizable", "Settings.Table.MapType.Hybrid")
+        static var hybrid: String { Localizable.tr("Localizable", "Settings.Table.MapType.Hybrid") }
         /// Satellite
-        static let satellite = Localizable.tr("Localizable", "Settings.Table.MapType.Satellite")
+        static var satellite: String { Localizable.tr("Localizable", "Settings.Table.MapType.Satellite") }
         /// Standard
-        static let standard = Localizable.tr("Localizable", "Settings.Table.MapType.Standard")
+        static var standard: String { Localizable.tr("Localizable", "Settings.Table.MapType.Standard") }
       }
 
       enum Programming {
         /// Application
-        static let header = Localizable.tr("Localizable", "Settings.Table.Programming.Header")
+        static var header: String { Localizable.tr("Localizable", "Settings.Table.Programming.Header") }
         /// Report error
-        static let reportError = Localizable.tr("Localizable", "Settings.Table.Programming.ReportError")
+        static var reportError: String { Localizable.tr("Localizable", "Settings.Table.Programming.ReportError") }
         /// Show code
-        static let showCode = Localizable.tr("Localizable", "Settings.Table.Programming.ShowCode")
+        static var showCode: String { Localizable.tr("Localizable", "Settings.Table.Programming.ShowCode") }
       }
     }
   }
@@ -263,7 +266,7 @@ extension Localizable {
     }
   }
 
-  private static var currentLocale = Locale.base
+  public private(set) static var currentLocale = Locale.base
 
 #if DEBUG
   /// This will only affect UI text! Nothing else!

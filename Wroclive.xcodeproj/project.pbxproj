@@ -134,7 +134,8 @@
 		90D57B0824DC490100A0EF53 /* LineSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF724DC490000A0EF53 /* LineSelectorViewModel.swift */; };
 		90D57B0924DC490100A0EF53 /* LineSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D57AF824DC490000A0EF53 /* LineSelectorCell.swift */; };
 		90DBD5CE250E5E2E006CDA9A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 90DBD5CD250E5E2E006CDA9A /* SnapshotTesting */; };
-		90DBD5D0250E5E7E006CDA9A /* BookmarksCardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBD5CF250E5E7E006CDA9A /* BookmarksCardSnapshotTests.swift */; };
+		90DBD5D0250E5E7E006CDA9A /* BookmarksCardSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBD5CF250E5E7E006CDA9A /* BookmarksCardSnapshots.swift */; };
+		90DBD5D2250E7B76006CDA9A /* SnapshotTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DBD5D1250E7B76006CDA9A /* SnapshotTestCase.swift */; };
 		90DE39EA24D8570900ADE4B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39E924D8570900ADE4B9 /* MapViewController.swift */; };
 		90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */; };
 		90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */; };
@@ -336,7 +337,8 @@
 		90D57AF624DC490000A0EF53 /* LineSelectorSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorSection.swift; sourceTree = "<group>"; };
 		90D57AF724DC490000A0EF53 /* LineSelectorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorViewModel.swift; sourceTree = "<group>"; };
 		90D57AF824DC490000A0EF53 /* LineSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSelectorCell.swift; sourceTree = "<group>"; };
-		90DBD5CF250E5E7E006CDA9A /* BookmarksCardSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardSnapshotTests.swift; sourceTree = "<group>"; };
+		90DBD5CF250E5E7E006CDA9A /* BookmarksCardSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCardSnapshots.swift; sourceTree = "<group>"; };
+		90DBD5D1250E7B76006CDA9A /* SnapshotTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTestCase.swift; sourceTree = "<group>"; };
 		90DE39E924D8570900ADE4B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationAuthorization.swift; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 				904F1CE724E556EB00EF77A0 /* Search card */,
 				90F72F4324E4082D00D20EB2 /* ReduxTestCase.swift */,
 				90F72F4124E3FB8D00D20EB2 /* EnvironmentTestCase.swift */,
+				90DBD5D1250E7B76006CDA9A /* SnapshotTestCase.swift */,
 				9052382324D459EB00E4F8A7 /* Info.plist */,
 				904F1CE524E43C0700EF77A0 /* XCTAsserts.swift */,
 			);
@@ -862,7 +865,7 @@
 				90F72F3724E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift */,
 				90F72F3924E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift */,
 				90F72F3A24E31D9600D20EB2 /* BookmarksCardViewModelTests+Selection.swift */,
-				90DBD5CF250E5E7E006CDA9A /* BookmarksCardSnapshotTests.swift */,
+				90DBD5CF250E5E7E006CDA9A /* BookmarksCardSnapshots.swift */,
 			);
 			path = "Bookmarks card";
 			sourceTree = "<group>";
@@ -1200,7 +1203,7 @@
 				90F72F3E24E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift in Sources */,
 				90F72F3D24E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
 				90F72F4D24E426EB00D20EB2 /* MapViewModelTests+Vehicles.swift in Sources */,
-				90DBD5D0250E5E7E006CDA9A /* BookmarksCardSnapshotTests.swift in Sources */,
+				90DBD5D0250E5E7E006CDA9A /* BookmarksCardSnapshots.swift in Sources */,
 				9066DDFD24E72FEB0096F536 /* SearchCardViewModelTests+Page.swift in Sources */,
 				9023EBE524E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift in Sources */,
 				90F72F4424E4082D00D20EB2 /* ReduxTestCase.swift in Sources */,
@@ -1223,6 +1226,7 @@
 				904F1CF724E556EB00EF77A0 /* LineSelectorPageViewModelTests.swift in Sources */,
 				904F1CFE24E5592000EF77A0 /* LineSelectorHeaderViewTests.swift in Sources */,
 				90F72F4C24E426EB00D20EB2 /* MapViewModelTests+FirstLaunch.swift in Sources */,
+				90DBD5D2250E7B76006CDA9A /* SnapshotTestCase.swift in Sources */,
 				9091F75C24FE6659009B5778 /* UserDefaultsManagerMock.swift in Sources */,
 				90F72F3F24E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift in Sources */,
 				90F72F3124E31B6B00D20EB2 /* ApiManagerMock.swift in Sources */,

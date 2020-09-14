@@ -9,7 +9,8 @@ import SnapshotTesting
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-class BookmarksCardSnapshotTests: XCTestCase, ReduxTestCase, EnvironmentTestCase {
+class BookmarksCardSnapshots: XCTestCase,
+  ReduxTestCase, EnvironmentTestCase, SnapshotTestCase {
 
   var store: Store<AppState>!
   var dispatchedActions: [Action]!
@@ -24,28 +25,35 @@ class BookmarksCardSnapshotTests: XCTestCase, ReduxTestCase, EnvironmentTestCase
   // MARK: - Tests
 
   func test_noBookmarks() {
-    let viewModel = BookmarksCardViewModel(store: self.store)
-    let view = BookmarksCard(viewModel: viewModel)
-    assertSnapshot(matching: view, as: .image(on: .iPhoneX))
+    self.onAllDevicesInAllLocales { assertSnapshot in
+      let viewModel = BookmarksCardViewModel(store: self.store)
+      let view = BookmarksCard(viewModel: viewModel)
+
+      assertSnapshot(view, .errorOnThisLine())
+    }
   }
 
   func test_bookmarks() {
     self.setBookmarks(self.bookmarks)
 
-    let viewModel = BookmarksCardViewModel(store: self.store)
-    let view = BookmarksCard(viewModel: viewModel)
+    self.onAllDevicesInAllLocales { assertSnapshot in
+      let viewModel = BookmarksCardViewModel(store: self.store)
+      let view = BookmarksCard(viewModel: viewModel)
 
-    assertSnapshot(matching: view, as: .image(on: .iPhoneX))
+      assertSnapshot(view, .errorOnThisLine())
+    }
   }
 
   func test_bookmarks_edit() {
     self.setBookmarks(self.bookmarks)
 
-    let viewModel = BookmarksCardViewModel(store: self.store)
-    let view = BookmarksCard(viewModel: viewModel)
+    self.onAllDevicesInAllLocales { assertSnapshot in
+      let viewModel = BookmarksCardViewModel(store: self.store)
+      let view = BookmarksCard(viewModel: viewModel)
 
-    viewModel.viewDidPressEditButton()
-    assertSnapshot(matching: view, as: .image(on: .iPhoneX))
+      viewModel.viewDidPressEditButton()
+      assertSnapshot(view, .errorOnThisLine())
+    }
   }
 
   // MARK: - Helpers

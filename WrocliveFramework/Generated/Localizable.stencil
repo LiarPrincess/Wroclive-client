@@ -35,7 +35,7 @@ import Foundation
 {{sp}}    return {{enumName}}.tr("{{table}}", "{{string.key}}", {% call argumentsBlock string.types %})
 {{sp}}  }
 {{sp}}  {% else %}
-{{sp}}  static let {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{enumName}}.tr("{{table}}", "{{string.key}}")
+{{sp}}  static var {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}: String { {{enumName}}.tr("{{table}}", "{{string.key}}") }
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
 {{sp}}  {% for child in item.children %}
@@ -47,6 +47,9 @@ import Foundation
 {{sp}}  {% endfor %}
 {% endmacro %}
 
+// Do not add your own caching layer (for example by using 'static let').
+// iOS has its own cache that correctly reacts to language changes etc.
+// (And also we want to be able ti change language in snapshot tests.)
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 public enum {{enumName}} {
   {% if tables.count > 1 %}
@@ -118,7 +121,7 @@ extension {{enumName}} {
     }
   }
 
-  private static var currentLocale = Locale.base
+  public private(set) static var currentLocale = Locale.base
 
 #if DEBUG
   /// This will only affect UI text! Nothing else!
