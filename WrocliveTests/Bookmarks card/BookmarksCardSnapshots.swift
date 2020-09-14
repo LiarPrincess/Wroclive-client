@@ -69,12 +69,14 @@ class BookmarksCardSnapshots: XCTestCase,
 
   // MARK: - Helpers
 
-  func setBookmarks(_ bookmarks: [Bookmark]) {
+  private func setBookmarks(_ bookmarks: [Bookmark]) {
     self.setState { $0.bookmarks = bookmarks }
   }
 
+  // MARK: - Test data
+
   // swiftlint:disable:next closure_body_length
-  var bookmarks: [Bookmark] = {
+  private var bookmarks: [Bookmark] = {
     let tram1 = Line(name: "1", type: .tram, subtype: .regular)
     let tram3 = Line(name: "3", type: .tram, subtype: .regular)
     let tram4 = Line(name: "4", type: .tram, subtype: .regular)
