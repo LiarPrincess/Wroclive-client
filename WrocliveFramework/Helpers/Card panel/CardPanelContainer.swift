@@ -36,7 +36,6 @@ public final class CardPanelContainer: UIViewController {
 
   private func initLayout() {
     self.view.backgroundColor = ColorScheme.background
-    self.view.roundTopCorners(radius: CardPanelConstants.topCornerRadius)
 
     self.chevronView.setState(.down)
 
@@ -47,6 +46,16 @@ public final class CardPanelContainer: UIViewController {
       make.width.equalTo(ChevronView.nominalSize.width)
       make.height.equalTo(ChevronView.nominalSize.height)
     }
+  }
+
+  // MARK: - ViewDidLayoutSubviews
+
+  override public func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+
+    // This has to be in 'viewDidLayoutSubviews' because it uses 'view.bounds'.
+    let radius = CardPanelConstants.topCornerRadius
+    self.view.roundTopCorners(radius: radius)
   }
 
   // MARK: - ViewDidDisappear
