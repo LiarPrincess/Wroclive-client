@@ -26,16 +26,6 @@ internal final class LineSelectorPage:
     collectionViewLayout: self.collectionViewLayout
   )
 
-  internal var contentInset: UIEdgeInsets {
-    get { return self.collectionView.contentInset }
-    set { self.collectionView.contentInset = newValue }
-  }
-
-  internal var scrollIndicatorInsets: UIEdgeInsets {
-    get { return self.collectionView.scrollIndicatorInsets }
-    set { self.collectionView.scrollIndicatorInsets = newValue }
-  }
-
   internal var scrollView: UIScrollView {
     return self.collectionView
   }

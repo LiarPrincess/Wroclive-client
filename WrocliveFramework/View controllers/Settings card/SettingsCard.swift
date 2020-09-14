@@ -50,27 +50,7 @@ public final class SettingsCard:
 
   override public func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    self.insetTableViewContentBelowHeaderView()
-  }
-
-  private func insetTableViewContentBelowHeaderView() {
-    let currentInset = self.tableView.contentInset
-    let headerHeight = self.headerView.bounds.height
-
-    if currentInset.top < headerHeight {
-      let newInset = UIEdgeInsets(top: headerHeight,
-                                  left: currentInset.left,
-                                  bottom: currentInset.bottom,
-                                  right: currentInset.right)
-      self.tableView.contentInset = newInset
-      self.tableView.scrollIndicatorInsets = newInset
-
-      // Scroll up to preserve current scroll position
-      let currentOffset = self.tableView.contentOffset
-      let newOffset = CGPoint(x: currentOffset.x,
-                              y: currentOffset.y + currentInset.top - headerHeight)
-      self.tableView.setContentOffset(newOffset, animated: false)
-    }
+    self.inset(scrollView: self.tableView, below: self.headerView)
   }
 
   // MARK: - Map type

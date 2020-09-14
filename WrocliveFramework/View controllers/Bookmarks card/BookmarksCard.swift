@@ -43,33 +43,7 @@ public final class BookmarksCard:
 
   override public func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    self.insetTableViewContentBelowHeaderView()
-  }
-
-  private func insetTableViewContentBelowHeaderView() {
-    let headerHeight = self.headerView.bounds.height
-    // contentInset - The custom distance that the content view is inset from
-    // the safe area or scroll view edges.
-    let contentInset = self.tableView.contentInset
-    // adjustedContentInset - The insets derived from the content insets
-    // and the safe area of the scroll view.
-    let adjustedContentInset = self.tableView.adjustedContentInset
-
-    let neededTopInset = headerHeight - adjustedContentInset.top
-    if neededTopInset > 0 {
-      var newInset = contentInset
-      newInset.top += neededTopInset
-
-      self.tableView.contentInset = newInset
-      self.tableView.scrollIndicatorInsets = newInset
-
-      // We added inset, but that means that the top 'neededTopInset' points
-      // are now invisible -> we need to scroll up by 'neededTopInset' points.
-      // (If you want to test it then comment following lines and run on iPhone X).
-      var offset = self.tableView.contentOffset
-      offset.y -= neededTopInset
-      self.tableView.setContentOffset(offset, animated: false)
-    }
+    self.inset(scrollView: self.tableView, below: self.headerView)
   }
 
   // MARK: - View model

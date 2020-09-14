@@ -140,3 +140,39 @@ extension UIView {
     }
   }
 }
+
+// MARK: - UIViewController + insetScrollView
+
+extension UIViewController {
+
+  /// Modify `scrollView.contentInset.top` so that `scrollView`
+  /// content is below given `minTopInsetView`.
+  ///
+  /// It assumes that `scrollView.frame.minY == minTopInsetView.frame.minY`.
+  func inset(scrollView: UIScrollView, below otherView: UIView) {
+    let minTopInset = otherView.bounds.height
+
+    // safeAreaInsets - The insets that you use to determine the safe area
+    // for this view.
+    let safeAreaInsets = self.view.safeAreaInsets.top
+    // contentInset - The custom distance that the content view is inset
+    // from the safe area or scroll view edges.
+    let contentInset = scrollView.contentInset.top
+    // adjustedContentInset - The insets derived from the content insets
+    // and the safe area of the scroll view.
+    let adjustedContentInset = safeAreaInsets + contentInset
+
+    let additionalTopInset = minTopInset - adjustedContentInset
+    if additionalTopInset > 0 {
+      scrollView.contentInset.top += additionalTopInset
+      scrollView.scrollIndicatorInsets.top += additionalTopInset
+
+      // We added inset, but that means that the top 'additionalTopInset' points
+      // are now invisible -> we need to scroll up by 'additionalTopInset' points.
+      // (If you want to test it then comment following lines and run on iPhone X).
+      var offset = scrollView.contentOffset
+      offset.y -= additionalTopInset
+      scrollView.setContentOffset(offset, animated: false)
+    }
+  }
+}

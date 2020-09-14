@@ -19,16 +19,6 @@ public final class LineSelector:
   private let busPage: LineSelectorPage
   private lazy var pages = [self.tramPage, self.busPage]
 
-  public var contentInset: UIEdgeInsets {
-    get { return self.tramPage.contentInset }
-    set { self.pages.forEach { $0.contentInset = newValue } }
-  }
-
-  public var scrollIndicatorInsets: UIEdgeInsets {
-    get { return self.tramPage.scrollIndicatorInsets }
-    set { self.pages.forEach { $0.scrollIndicatorInsets = newValue } }
-  }
-
   public var scrollView: UIScrollView {
     switch self.currentPage {
     case .tram: return self.tramPage.scrollView
@@ -63,6 +53,22 @@ public final class LineSelector:
   // swiftlint:disable:next unavailable_function
   public required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: - Content insets
+
+  internal func insetScrollViews(below otherView: UIView,
+                                 bottom: CGFloat,
+                                 left: CGFloat,
+                                 right: CGFloat) {
+    for page in self.pages {
+      let scrollView = page.scrollView
+
+      self.inset(scrollView: scrollView, below: otherView)
+      scrollView.contentInset.left = left
+      scrollView.contentInset.right = right
+      scrollView.contentInset.bottom = bottom
+    }
   }
 
   // MARK: - LineSelectorViewType

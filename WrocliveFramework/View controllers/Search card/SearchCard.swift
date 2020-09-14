@@ -56,28 +56,13 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPanelPr
 
   override public func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    self.insetLineSelectorBelowHeaderView()
-  }
 
-  private func insetLineSelectorBelowHeaderView() {
-    let currentInset = self.lineSelector.contentInset
-    let headerHeight = self.headerView.bounds.height
-
-    if currentInset.top < headerHeight {
-      let topInset = headerHeight
-      let leftInset = Constants.leftInset
-      let rightInset = Constants.rightInset
-      let bottomInset = Constants.LineSelector.bottomInset
-
-      self.lineSelector.contentInset = UIEdgeInsets(top: topInset,
-                                                    left: leftInset,
-                                                    bottom: bottomInset,
-                                                    right: rightInset)
-      self.lineSelector.scrollIndicatorInsets = UIEdgeInsets(top: topInset,
-                                                             left: 0.0,
-                                                             bottom: 0.0,
-                                                             right: 0.0)
-    }
+    self.lineSelector.insetScrollViews(
+      below: self.headerView,
+      bottom: Constants.LineSelector.bottomInset,
+      left: Constants.leftInset,
+      right: Constants.rightInset
+    )
   }
 
   // MARK: - ViewDidDisappear
