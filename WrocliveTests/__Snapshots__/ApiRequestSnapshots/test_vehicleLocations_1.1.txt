@@ -1,0 +1,4 @@
+GET API_URL/v1/vehicles?lines=A%3B4
+Accept-Encoding: br, gzip, deflate
+Accept: application/json
+User-Agent: BUNDLE_NAME/BUNDLE_VERSION (BUNDLE_IDENTIFIER; DEVICE_MODEL; DEVICE_SYSTEM_NAME DEVICE_SYSTEM_VERSION)

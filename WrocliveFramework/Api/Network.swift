@@ -7,6 +7,8 @@ import Alamofire
 import PromiseKit
 import Reachability
 
+// MARK: - NetworkType
+
 public protocol NetworkType {
 
   /// Send network request.
@@ -29,12 +31,33 @@ public protocol NetworkType {
   func setNetworkActivityIndicatorVisibility(isVisible: Bool)
 }
 
+// MARK: - Network
+
 public final class Network: NetworkType {
 
+  private let session: Session
   private let reachability: Reachability?
 
-  public init() {
+  public convenience init() {
+    self.init(configuration: URLSessionConfiguration.af.default)
+  }
+
+  public init(configuration: URLSessionConfiguration) {
+    let retryPolicy = Self.createRetryPolicy(retryLimit: 3)
+    self.session = Session(configuration: configuration, interceptor: retryPolicy)
+
     self.reachability = try? Reachability()
+  }
+
+  private static func createRetryPolicy(retryLimit: UInt) -> RetryPolicy {
+    return RetryPolicy(
+      retryLimit: 3,
+      exponentialBackoffBase: RetryPolicy.defaultExponentialBackoffBase,
+      exponentialBackoffScale: RetryPolicy.defaultExponentialBackoffScale,
+      retryableHTTPMethods: RetryPolicy.defaultRetryableHTTPMethods,
+      retryableHTTPStatusCodes: RetryPolicy.defaultRetryableHTTPStatusCodes,
+      retryableURLErrorCodes: RetryPolicy.defaultRetryableURLErrorCodes
+    )
   }
 
   // MARK: - Request
@@ -44,33 +67,14 @@ public final class Network: NetworkType {
                       parameters: Parameters?,
                       encoding: ParameterEncoding,
                       headers: HTTPHeaders?) -> Promise<Data> {
-    // swiftlint:disable:next trailing_closure
-    return self.attempt(
-      maxRetryCount: 3,
-      delayBeforeRetry: .seconds(1),
-      sendRequest: { () in
-        self.sendSingleRequest(
-          url: url,
-          method: method,
-          parameters: parameters,
-          encoding: encoding,
-          headers: headers
-        )
-      }
-    )
-  }
-
-  private func sendSingleRequest(url: URLConvertible,
-                                 method: HTTPMethod,
-                                 parameters: Parameters?,
-                                 encoding: ParameterEncoding,
-                                 headers: HTTPHeaders?) -> Promise<Data> {
     return Promise<Data> { seal in
-      let request = AF.request(url,
-                               method: method,
-                               parameters: parameters,
-                               encoding: encoding,
-                               headers: headers)
+      let request = self.session.request(
+        url,
+        method: method,
+        parameters: parameters,
+        encoding: encoding,
+        headers: headers
+      )
 
       request.responseData { response in
         if let error = response.error {
@@ -82,24 +86,6 @@ public final class Network: NetworkType {
         }
       }
     }
-  }
-
-  private func attempt<T>(maxRetryCount: Int,
-                          delayBeforeRetry: DispatchTimeInterval = .seconds(1),
-                          sendRequest: @escaping () -> Promise<T>) -> Promise<T> {
-    var attempts = 0
-    func attempt() -> Promise<T> {
-      attempts += 1
-      return sendRequest().recover { error -> Promise<T> in
-        guard attempts < maxRetryCount else {
-          throw error
-        }
-
-        return after(delayBeforeRetry).then(on: nil, attempt)
-      }
-    }
-
-    return attempt()
   }
 
   // MARK: - Reachability status
