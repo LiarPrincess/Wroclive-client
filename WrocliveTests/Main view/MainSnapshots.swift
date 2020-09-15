@@ -9,6 +9,7 @@ import SnapshotTesting
 @testable import WrocliveFramework
 
 // swiftlint:disable implicitly_unwrapped_optional
+// swiftformat:disable numberFormatting
 
 class MainSnapshots: XCTestCase,
   ReduxTestCase, EnvironmentTestCase, SnapshotTestCase {

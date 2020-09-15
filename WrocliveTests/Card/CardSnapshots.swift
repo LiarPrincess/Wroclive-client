@@ -8,6 +8,7 @@ import SnapshotTesting
 @testable import WrocliveFramework
 
 // swiftlint:disable trailing_closure
+// swiftformat:disable numberFormatting
 
 private typealias Constants = CardContainer.Constants
 
@@ -119,7 +120,7 @@ private class Content: UIViewController, CardPresentable {
     }
 
     // swiftlint:disable:next force_unwrapping
-    let lastView =  previousView!
+    let lastView = previousView!
     lastView.snp.makeConstraints { make in
       make.right.equalToSuperview()
     }

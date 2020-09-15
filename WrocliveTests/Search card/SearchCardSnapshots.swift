@@ -73,15 +73,15 @@ class SearchCardSnapshots: XCTestCase,
 
   // MARK: - Helpers
 
-  func setLines(state: AppState.ApiResponseState<[Line]>) {
+  private func setLines(state: AppState.ApiResponseState<[Line]>) {
     self.setState { $0.getLinesResponse = state }
   }
 
-  func setLines(lines: [Line]) {
+  private func setLines(lines: [Line]) {
     self.setLines(state: .data(lines))
   }
 
-  func setInitialState(page: SearchCardState.Page, selectedLines: [Line]) {
+  private func setInitialState(page: SearchCardState.Page, selectedLines: [Line]) {
     let state = SearchCardState(page: page, selectedLines: selectedLines)
     self.storageManager.searchCardState = state
   }
