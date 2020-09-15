@@ -10,8 +10,7 @@ import UIKit
 
 private typealias AnimationDurations = CardContainer.Constants.AnimationDurations
 
-public final class CardPanelTransitionDelegate:
-  NSObject, UIViewControllerTransitioningDelegate {
+public final class CardTransitionDelegate: NSObject, UIViewControllerTransitioningDelegate {
 
   private let height: CGFloat
 
@@ -25,13 +24,13 @@ public final class CardPanelTransitionDelegate:
     presenting: UIViewController,
     source: UIViewController
   ) -> UIViewControllerAnimatedTransitioning? {
-    return CardPanelPresentationTransition(AnimationDurations.present)
+    return CardPresentationTransition(AnimationDurations.present)
   }
 
   public func animationController(
     forDismissed dismissed: UIViewController
   ) -> UIViewControllerAnimatedTransitioning? {
-    return CardPanelDismissTransition(AnimationDurations.dismiss)
+    return CardDismissTransition(AnimationDurations.dismiss)
   }
 
   public func presentationController(
@@ -39,12 +38,12 @@ public final class CardPanelTransitionDelegate:
     presenting: UIViewController?,
     source: UIViewController
   ) -> UIPresentationController? {
-    guard let cardPanel = presented as? CardContainer else {
-      fatalError("'CardPanelTransitionDelegate' should only be used with ''CardPanelContainer")
+    guard let card = presented as? CardContainer else {
+      fatalError("'CardTransitionDelegate' should only be used with 'CardContainer'")
     }
 
-    return CardPanelPresenter(forPresented: cardPanel,
-                              presenting: presenting,
-                              height: self.height)
+    return CardPresenter(forPresented: card,
+                         presenting: presenting,
+                         height: self.height)
   }
 }

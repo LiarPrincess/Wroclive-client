@@ -6,8 +6,7 @@ import UIKit
 
 private typealias Constants = CardContainer.Constants
 
-internal final class CardPanelPresenter:
-  UIPresentationController, UIGestureRecognizerDelegate {
+internal final class CardPresenter: UIPresentationController, UIGestureRecognizerDelegate {
 
   // MARK: - Properties
 

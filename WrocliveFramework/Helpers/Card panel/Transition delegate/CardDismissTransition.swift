@@ -4,8 +4,7 @@
 
 import UIKit
 
-internal final class CardPanelPresentationTransition:
-  NSObject, UIViewControllerAnimatedTransitioning {
+internal final class CardDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
   private let duration: TimeInterval
 
@@ -22,25 +21,26 @@ internal final class CardPanelPresentationTransition:
   internal func animateTransition(
     using transitionContext: UIViewControllerContextTransitioning
   ) {
-    guard let presentedViewController = transitionContext.viewController(forKey: .to)
+    guard let presentedViewController = transitionContext.viewController(forKey: .from)
       else { return }
 
     let containerView = transitionContext.containerView
-    containerView.addSubview(presentedViewController.view)
 
-    let onScreenFrame = transitionContext.finalFrame(for: presentedViewController)
+    let onScreenFrame = transitionContext.initialFrame(for: presentedViewController)
     var offScreenFrame = onScreenFrame
     offScreenFrame.origin.y = containerView.bounds.height
 
     // animation
 
-    presentedViewController.view.frame = offScreenFrame
+    let options: UIView.AnimationOptions = transitionContext.isInteractive ?
+      .curveLinear :
+      .curveEaseOut
 
     UIView.animate(
       withDuration: self.transitionDuration(using: transitionContext),
       delay: 0.0,
-      options: .curveEaseOut,
-      animations: { presentedViewController.view.frame = onScreenFrame },
+      options: options,
+      animations: { presentedViewController.view.frame = offScreenFrame },
       completion: { transitionContext.completeTransition($0) }
     )
   }

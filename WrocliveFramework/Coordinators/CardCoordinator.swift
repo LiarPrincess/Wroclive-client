@@ -22,7 +22,7 @@ extension CardCoordinator {
   internal func present(card: CardPresentable,
                         withHeight height: CGFloat,
                         animated: Bool) -> Guarantee<Void> {
-    let transitionDelegate = CardPanelTransitionDelegate(height: height)
+    let transitionDelegate = CardTransitionDelegate(height: height)
     self.cardTransitionDelegate = transitionDelegate
 
     return Guarantee<Void> { resolve in

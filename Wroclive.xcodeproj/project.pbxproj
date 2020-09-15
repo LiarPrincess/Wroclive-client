@@ -31,14 +31,14 @@
 		9013FAAD24D6B1880006D1B9 /* ReusableCell+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9124D6B1880006D1B9 /* ReusableCell+UITableView.swift */; };
 		9013FAAE24D6B1880006D1B9 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9224D6B1880006D1B9 /* ReusableCell.swift */; };
 		9013FAB424D6B1890006D1B9 /* ChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9A24D6B1880006D1B9 /* ChevronView.swift */; };
-		9013FAB524D6B1890006D1B9 /* CardPanelPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9B24D6B1880006D1B9 /* CardPanelPresentationTransition.swift */; };
-		9013FAB624D6B1890006D1B9 /* CardPanelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9C24D6B1880006D1B9 /* CardPanelPresenter.swift */; };
+		9013FAB524D6B1890006D1B9 /* CardPresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9B24D6B1880006D1B9 /* CardPresentationTransition.swift */; };
+		9013FAB624D6B1890006D1B9 /* CardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9C24D6B1880006D1B9 /* CardPresenter.swift */; };
 		9013FAB724D6B1890006D1B9 /* CardPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9D24D6B1880006D1B9 /* CardPresentable.swift */; };
 		9013FAB824D6B1890006D1B9 /* CardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9E24D6B1880006D1B9 /* CardContainer.swift */; };
-		9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */; };
+		9013FAB924D6B1890006D1B9 /* CardTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9F24D6B1880006D1B9 /* CardTransitionDelegate.swift */; };
 		9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */; };
 		9013FABC24D6B1890006D1B9 /* ScrollViewDismissGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA324D6B1880006D1B9 /* ScrollViewDismissGestureHandler.swift */; };
-		9013FABD24D6B1890006D1B9 /* CardPanelDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */; };
+		9013FABD24D6B1890006D1B9 /* CardDismissTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA424D6B1880006D1B9 /* CardDismissTransition.swift */; };
 		9013FABE24D6B1890006D1B9 /* CardContainer+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA524D6B1880006D1B9 /* CardContainer+Constants.swift */; };
 		9013FABF24D6B1890006D1B9 /* MapUpdateScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */; };
 		9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAA924D6B1880006D1B9 /* AlertCreator.swift */; };
@@ -240,14 +240,14 @@
 		9013FA9124D6B1880006D1B9 /* ReusableCell+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+UITableView.swift"; sourceTree = "<group>"; };
 		9013FA9224D6B1880006D1B9 /* ReusableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		9013FA9A24D6B1880006D1B9 /* ChevronView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChevronView.swift; sourceTree = "<group>"; };
-		9013FA9B24D6B1880006D1B9 /* CardPanelPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresentationTransition.swift; sourceTree = "<group>"; };
-		9013FA9C24D6B1880006D1B9 /* CardPanelPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelPresenter.swift; sourceTree = "<group>"; };
+		9013FA9B24D6B1880006D1B9 /* CardPresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPresentationTransition.swift; sourceTree = "<group>"; };
+		9013FA9C24D6B1880006D1B9 /* CardPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPresenter.swift; sourceTree = "<group>"; };
 		9013FA9D24D6B1880006D1B9 /* CardPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPresentable.swift; sourceTree = "<group>"; };
 		9013FA9E24D6B1880006D1B9 /* CardContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContainer.swift; sourceTree = "<group>"; };
-		9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelTransitionDelegate.swift; sourceTree = "<group>"; };
+		9013FA9F24D6B1880006D1B9 /* CardTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTransitionDelegate.swift; sourceTree = "<group>"; };
 		9013FAA224D6B1880006D1B9 /* DismissGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissGestureHandler.swift; sourceTree = "<group>"; };
 		9013FAA324D6B1880006D1B9 /* ScrollViewDismissGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewDismissGestureHandler.swift; sourceTree = "<group>"; };
-		9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPanelDismissTransition.swift; sourceTree = "<group>"; };
+		9013FAA424D6B1880006D1B9 /* CardDismissTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDismissTransition.swift; sourceTree = "<group>"; };
 		9013FAA524D6B1880006D1B9 /* CardContainer+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardContainer+Constants.swift"; sourceTree = "<group>"; };
 		9013FAA624D6B1880006D1B9 /* MapUpdateScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapUpdateScheduler.swift; sourceTree = "<group>"; };
 		9013FAA924D6B1880006D1B9 /* AlertCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertCreator.swift; sourceTree = "<group>"; };
@@ -763,10 +763,10 @@
 		90CE743024DAC10700419166 /* Transition delegate */ = {
 			isa = PBXGroup;
 			children = (
-				9013FA9C24D6B1880006D1B9 /* CardPanelPresenter.swift */,
-				9013FA9F24D6B1880006D1B9 /* CardPanelTransitionDelegate.swift */,
-				9013FA9B24D6B1880006D1B9 /* CardPanelPresentationTransition.swift */,
-				9013FAA424D6B1880006D1B9 /* CardPanelDismissTransition.swift */,
+				9013FA9C24D6B1880006D1B9 /* CardPresenter.swift */,
+				9013FA9F24D6B1880006D1B9 /* CardTransitionDelegate.swift */,
+				9013FA9B24D6B1880006D1B9 /* CardPresentationTransition.swift */,
+				9013FAA424D6B1880006D1B9 /* CardDismissTransition.swift */,
 			);
 			path = "Transition delegate";
 			sourceTree = "<group>";
@@ -1123,7 +1123,7 @@
 				9013FB4124D72C790006D1B9 /* MapViewModel.swift in Sources */,
 				90D57B0324DC490100A0EF53 /* LineSelector.swift in Sources */,
 				90CE742224D9BB7800419166 /* BookmarksCell.swift in Sources */,
-				9013FAB624D6B1890006D1B9 /* CardPanelPresenter.swift in Sources */,
+				9013FAB624D6B1890006D1B9 /* CardPresenter.swift in Sources */,
 				90CE741624D9BB7800419166 /* BookmarksCardViewModel.swift in Sources */,
 				900EA10B24D46F140054C03F /* LinesEndpoint.swift in Sources */,
 				90EF089A24FC333400376B0C /* SettingsMapTypeCell.swift in Sources */,
@@ -1132,7 +1132,7 @@
 				9093AE1724EA92C20094B1CC /* ExtraLightVisualEffectView.swift in Sources */,
 				90D57AFB24DC490100A0EF53 /* LineSelectorPage.swift in Sources */,
 				9076BD5324DDB5D100467075 /* SearchCard.swift in Sources */,
-				9013FAB924D6B1890006D1B9 /* CardPanelTransitionDelegate.swift in Sources */,
+				9013FAB924D6B1890006D1B9 /* CardTransitionDelegate.swift in Sources */,
 				90CE741524D9BB7800419166 /* BookmarksCard+Layout.swift in Sources */,
 				90093B4E24DEB4E100D95645 /* LineSelector+Constants.swift in Sources */,
 				9013FB3C24D72C790006D1B9 /* VehicleAnnotationDiff.swift in Sources */,
@@ -1181,7 +1181,7 @@
 				9013FB4024D72C790006D1B9 /* MapViewController+Constants.swift in Sources */,
 				900EA10D24D46F140054C03F /* Endpoint.swift in Sources */,
 				9047995924D56BCA00111F2C /* Environment.swift in Sources */,
-				9013FAB524D6B1890006D1B9 /* CardPanelPresentationTransition.swift in Sources */,
+				9013FAB524D6B1890006D1B9 /* CardPresentationTransition.swift in Sources */,
 				905893D024D4A95D0046EFA5 /* FileSystem.swift in Sources */,
 				900EA10324D46C110054C03F /* Line.swift in Sources */,
 				907FD0B724D898BC00B6896C /* Reducer.swift in Sources */,
@@ -1199,7 +1199,7 @@
 				900DCC1D24E7FEF7004F000D /* ReachabilityStatus.swift in Sources */,
 				900EA10A24D46F140054C03F /* Api.swift in Sources */,
 				900EA10224D46C110054C03F /* Bookmark.swift in Sources */,
-				9013FABD24D6B1890006D1B9 /* CardPanelDismissTransition.swift in Sources */,
+				9013FABD24D6B1890006D1B9 /* CardDismissTransition.swift in Sources */,
 				9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */,
 				9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */,
 				9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */,
