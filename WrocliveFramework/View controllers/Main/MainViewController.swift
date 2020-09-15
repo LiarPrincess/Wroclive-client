@@ -9,7 +9,7 @@ public final class MainViewController: UIViewController {
 
   // MARK: - Properties
 
-  public let mapViewController: MapViewController
+  public let map: MapViewController
 
   public let toolbar = ExtraLightVisualEffectView()
   public let toolbarStackView = UIStackView()
@@ -25,7 +25,7 @@ public final class MainViewController: UIViewController {
 
   public init(viewModel: MainViewModel) {
     self.viewModel = viewModel
-    self.mapViewController = MapViewController(viewModel: viewModel.mapViewModel)
+    self.map = MapViewController(viewModel: viewModel.mapViewModel)
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -50,10 +50,10 @@ public final class MainViewController: UIViewController {
 
   private func updateMapViewSafeAreaInsetsSoLegalInfoIsVisible() {
     let toolbarHeight = self.toolbarStackView.bounds.height
-    let currentInset = self.mapViewController.additionalSafeAreaInsets.bottom
+    let currentInset = self.map.additionalSafeAreaInsets.bottom
 
     if currentInset < toolbarHeight {
-      self.mapViewController.additionalSafeAreaInsets.bottom = toolbarHeight
+      self.map.additionalSafeAreaInsets.bottom = toolbarHeight
     }
   }
 

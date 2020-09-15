@@ -98,7 +98,7 @@ class MainSnapshots: XCTestCase,
     main.view.setNeedsLayout()
     main.view.layoutIfNeeded()
 
-    let mapView = main.mapViewController.mapView
+    let mapView = main.map.mapView
     let overlay = UIView()
 
     var annotations = mapView.annotations.compactMap { $0 as? VehicleAnnotation }
@@ -115,7 +115,7 @@ class MainSnapshots: XCTestCase,
       overlay.addSubview(copy)
     }
 
-    main.mapViewController.view.addSubview(overlay)
+    main.map.view.addSubview(overlay)
     overlay.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 

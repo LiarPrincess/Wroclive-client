@@ -20,15 +20,15 @@ extension MainViewController {
   // MARK: - Map
 
   private func initMapView() {
-    self.addChild(self.mapViewController)
+    self.addChild(self.map)
 
-    let mapView = self.mapViewController.view!
+    let mapView = self.map.view!
 
     // Ignore safeAreaLayoutGuide, so we are under status bar and toolbar
     self.view.addSubview(mapView)
     mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
 
-    self.mapViewController.didMove(toParent: self)
+    self.map.didMove(toParent: self)
   }
 
   // MARK: - Toolbar
@@ -57,7 +57,7 @@ extension MainViewController {
   private func initToolbarButtons() {
     let buttonColor = ColorScheme.tint
 
-    self.userTrackingButton.mapView = self.mapViewController.mapView
+    self.userTrackingButton.mapView = self.map.mapView
     let userTrackingButtonView = self.userTrackingButton.customView!
     userTrackingButtonView.tintColor = buttonColor
     self.setSize(view: userTrackingButtonView, to: self.buttonSize)
