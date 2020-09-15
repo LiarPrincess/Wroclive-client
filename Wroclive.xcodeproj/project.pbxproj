@@ -110,6 +110,7 @@
 		907FD0BB24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0BA24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift */; };
 		907FD0BD24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */; };
 		90915615250F909D000BF14A /* SearchCardSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915614250F909D000BF14A /* SearchCardSnapshots.swift */; };
+		90915617250FA8ED000BF14A /* MainSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915616250FA8ED000BF14A /* MainSnapshots.swift */; };
 		9091F75C24FE6659009B5778 /* UserDefaultsManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */; };
 		9093AE1724EA92C20094B1CC /* ExtraLightVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */; };
 		90A6262424FAB415005F5C31 /* LineSelectorTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */; };
@@ -186,6 +187,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 900EA0CE24D469D90054C03F;
 			remoteInfo = WrocliveFramework;
+		};
+		906455E2250FD95300382790 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 905237FF24D459E500E4F8A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9052380624D459E500E4F8A7;
+			remoteInfo = Wroclive;
 		};
 		90F72F1424E315D100D20EB2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -315,6 +323,7 @@
 		907FD0BA24D9507A00B6896C /* UserLocationAuthorizationMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationAuthorizationMiddleware.swift; sourceTree = "<group>"; };
 		907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchStoreUpdatesFromAppleFrameworks.swift; sourceTree = "<group>"; };
 		90915614250F909D000BF14A /* SearchCardSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardSnapshots.swift; sourceTree = "<group>"; };
+		90915616250FA8ED000BF14A /* MainSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSnapshots.swift; sourceTree = "<group>"; };
 		9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerMock.swift; sourceTree = "<group>"; };
 		9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLightVisualEffectView.swift; sourceTree = "<group>"; };
 		90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorTestData.swift; sourceTree = "<group>"; };
@@ -642,6 +651,7 @@
 				90F72F4524E426EB00D20EB2 /* Map view */,
 				90F72F3424E31D9600D20EB2 /* Bookmarks card */,
 				904F1CE724E556EB00EF77A0 /* Search card */,
+				90915618250FAA69000BF14A /* Main view */,
 				90F72F4324E4082D00D20EB2 /* ReduxTestCase.swift */,
 				90F72F4124E3FB8D00D20EB2 /* EnvironmentTestCase.swift */,
 				90DBD5D1250E7B76006CDA9A /* SnapshotTestCase.swift */,
@@ -715,6 +725,14 @@
 				90584F4A24E1952F008B7F74 /* StorageManagerType.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		90915618250FAA69000BF14A /* Main view */ = {
+			isa = PBXGroup;
+			children = (
+				90915616250FA8ED000BF14A /* MainSnapshots.swift */,
+			);
+			path = "Main view";
 			sourceTree = "<group>";
 		};
 		90A5FA6A24D588DA00EC24D6 /* Extensions */ = {
@@ -958,6 +976,7 @@
 			);
 			dependencies = (
 				90F72F1524E315D100D20EB2 /* PBXTargetDependency */,
+				906455E3250FD95300382790 /* PBXTargetDependency */,
 			);
 			name = WrocliveTests;
 			packageProductDependencies = (
@@ -1230,6 +1249,7 @@
 				904F1CFE24E5592000EF77A0 /* LineSelectorHeaderViewTests.swift in Sources */,
 				90F72F4C24E426EB00D20EB2 /* MapViewModelTests+FirstLaunch.swift in Sources */,
 				90DBD5D2250E7B76006CDA9A /* SnapshotTestCase.swift in Sources */,
+				90915617250FA8ED000BF14A /* MainSnapshots.swift in Sources */,
 				90915615250F909D000BF14A /* SearchCardSnapshots.swift in Sources */,
 				9091F75C24FE6659009B5778 /* UserDefaultsManagerMock.swift in Sources */,
 				90F72F3F24E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift in Sources */,
@@ -1249,6 +1269,11 @@
 			isa = PBXTargetDependency;
 			target = 900EA0CE24D469D90054C03F /* WrocliveFramework */;
 			targetProxy = 900EA0D424D469D90054C03F /* PBXContainerItemProxy */;
+		};
+		906455E3250FD95300382790 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9052380624D459E500E4F8A7 /* Wroclive */;
+			targetProxy = 906455E2250FD95300382790 /* PBXContainerItemProxy */;
 		};
 		90F72F1524E315D100D20EB2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -55,22 +55,29 @@ extension MainViewController {
   // MARK: - Toolbar button
 
   private func initToolbarButtons() {
+    let buttonColor = ColorScheme.tint
+
     self.userTrackingButton.mapView = self.mapViewController.mapView
-    self.setSize(view: self.userTrackingButton.customView!, to: self.buttonSize)
+    let userTrackingButtonView = self.userTrackingButton.customView!
+    userTrackingButtonView.tintColor = buttonColor
+    self.setSize(view: userTrackingButtonView, to: self.buttonSize)
 
     self.customizeButton(self.searchButton,
                          image: ImageAsset.toolbarTram,
+                         color: buttonColor,
                          action: #selector(searchButtonPressed))
 
     self.customizeButton(self.bookmarksButton,
                          image: ImageAsset.toolbarHeart,
+                         color: buttonColor,
                          action: #selector(bookmarksButtonPressed))
 
     self.customizeButton(self.configurationButton,
                          image: ImageAsset.toolbarGear,
+                         color: buttonColor,
                          action: #selector(settingsButtonPressed))
 
-    self.toolbarStackView.addArrangedSubview(self.userTrackingButton.customView!)
+    self.toolbarStackView.addArrangedSubview(userTrackingButtonView)
     self.toolbarStackView.addArrangedSubview(self.searchButton)
     self.toolbarStackView.addArrangedSubview(self.bookmarksButton)
     self.toolbarStackView.addArrangedSubview(self.configurationButton)
@@ -88,7 +95,9 @@ extension MainViewController {
 
   private func customizeButton(_ button: UIButton,
                                image: ImageAsset,
+                               color: UIColor,
                                action: Selector) {
+    button.tintColor = color
     button.setImage(image.value, for: .normal)
     button.addTarget(self, action: action, for: .touchUpInside)
 

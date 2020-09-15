@@ -42,16 +42,16 @@ extension SnapshotTestCase {
       Localizable.setLocale(locale)
 
       for device in devices {
-        self.assertSnapshot(device: device,
-                            locale: locale,
+        self.assertSnapshot(on: device,
+                            in: locale,
                             snapshotDirectory: snapshotDirectory,
                             fn: fn)
       }
     }
   }
 
-  private func assertSnapshot(device: SnapshotDevice,
-                              locale: Localizable.Locale,
+  private func assertSnapshot(on device: SnapshotDevice,
+                              in locale: Localizable.Locale,
                               snapshotDirectory: URL,
                               fn: (CreateSnapshots) -> Void) {
     var counter = 1
@@ -71,6 +71,32 @@ extension SnapshotTestCase {
     }
 
     fn(snapshot(view:errorLocation:))
+  }
+
+  // MARK: - On all devices
+
+  func onAllDevices(file: StaticString = #file, fn: (CreateSnapshots) -> Void) {
+    let snapshotDirectory = self.getSnapshotDirectory(testFilePath: file)
+
+    for device in devices {
+      var counter = 1
+
+      func snapshot(view: UIViewController,
+                    errorLocation: SnapshotErrorLocation) {
+        let name = "\(counter)-\(device.name)"
+        counter += 1
+
+        self.assertSnapshot(
+          matching: view,
+          as: .image(on: device.config),
+          named: name,
+          snapshotDirectory: snapshotDirectory,
+          errorLocation: errorLocation
+        )
+      }
+
+      fn(snapshot(view:errorLocation:))
+    }
   }
 
   // MARK: - Dark mode
