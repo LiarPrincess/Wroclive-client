@@ -9,7 +9,7 @@ private typealias Localization = Localizable.Settings
 
 public final class SettingsCard:
   UIViewController, UITableViewDataSource, UITableViewDelegate,
-  SettingsCardViewType, CardPanelPresentable {
+  SettingsCardViewType, CardPresentable {
 
   // MARK: - Properties
 
@@ -59,7 +59,7 @@ public final class SettingsCard:
     self.mapTypeCell.setMapType(mapType: mapType)
   }
 
-  // MARK: - CustomCardPanelPresentable
+  // MARK: - CardPresentable
 
   public var scrollView: UIScrollView? {
     return self.tableView

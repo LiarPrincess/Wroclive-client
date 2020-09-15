@@ -8,7 +8,7 @@ import UIKit
 //         http://martinnormark.com/presenting-ios-view-controller-as-bottom-half-modal/
 //         https://stackoverflow.com/a/36775217
 
-private typealias AnimationDurations = CardPanelConstants.AnimationDurations
+private typealias AnimationDurations = CardContainer.Constants.AnimationDurations
 
 public final class CardPanelTransitionDelegate:
   NSObject, UIViewControllerTransitioningDelegate {
@@ -39,7 +39,7 @@ public final class CardPanelTransitionDelegate:
     presenting: UIViewController?,
     source: UIViewController
   ) -> UIPresentationController? {
-    guard let cardPanel = presented as? CardPanelContainer else {
+    guard let cardPanel = presented as? CardContainer else {
       fatalError("'CardPanelTransitionDelegate' should only be used with ''CardPanelContainer")
     }
 

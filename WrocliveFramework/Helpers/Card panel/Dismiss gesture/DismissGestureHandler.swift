@@ -4,18 +4,18 @@
 
 import UIKit
 
-private typealias Constants = CardPanelConstants.DismissGesture
+private typealias Constants = CardContainer.Constants.DismissGesture
 
 internal class DismissGestureHandler {
 
   // MARK: - Properties
 
-  internal unowned var cardPanel: CardPanelContainer
+  internal unowned var card: CardContainer
 
   // MARK: - Init
 
-  internal init(cardPanel: CardPanelContainer) {
-    self.cardPanel = cardPanel
+  internal init(card: CardContainer) {
+    self.card = card
   }
 
   // MARK: - Handle gesture
@@ -27,7 +27,7 @@ internal class DismissGestureHandler {
       self.notifyInteractiveDismissalWillBegin()
 
     case .changed:
-      let translation = gesture.translation(in: self.cardPanel.view)
+      let translation = gesture.translation(in: self.card.view)
       self.updateCardTranslation(movement: translation.y)
       self.dismissIfBelowThreshold(movement: translation.y)
 
@@ -50,7 +50,7 @@ internal class DismissGestureHandler {
   }
 
   internal func resetGestureStartingPosition(_ gesture: UIPanGestureRecognizer) {
-    gesture.setTranslation(.zero, in: self.cardPanel.view)
+    gesture.setTranslation(.zero, in: self.card.view)
   }
 
   internal func updateCardTranslation(movement translation: CGFloat) {
@@ -58,7 +58,7 @@ internal class DismissGestureHandler {
 
     if !isAboveStartingPosition {
       let modalTranslation = self.easeOut(movement: translation)
-      self.cardPanel.view.transform = CGAffineTransform(
+      self.card.view.transform = CGAffineTransform(
         translationX: 0,
         y: modalTranslation
       )
@@ -77,17 +77,17 @@ internal class DismissGestureHandler {
 
   internal func dismissIfBelowThreshold(movement translation: CGFloat) {
     if translation >= Constants.dismissThreshold {
-      self.cardPanel.dismiss(animated: true, completion: nil)
+      self.card.dismiss(animated: true, completion: nil)
     }
   }
 
   internal func moveCardToInitialPosition(animated: Bool) {
     func inner() {
-      self.cardPanel.view.transform = .identity
+      self.card.view.transform = .identity
     }
 
     if animated {
-      let duration = CardPanelConstants.AnimationDurations.failedGestureDismiss
+      let duration = CardContainer.Constants.AnimationDurations.failedGestureDismiss
       UIView.animate(withDuration: duration, animations: inner)
     } else {
       inner()
@@ -101,16 +101,16 @@ internal class DismissGestureHandler {
 
   internal func notifyInteractiveDismissalWillBegin() {
     if !self.hasStartedDismiss {
-      self.cardPanel.interactiveDismissalWillBegin()
+      self.card.interactiveDismissalWillBegin()
       self.hasStartedDismiss = true
     }
   }
 
   internal func notifyInteractiveDismissalProgress(percent: CGFloat) {
-    self.cardPanel.interactiveDismissalProgress(percent: percent)
+    self.card.interactiveDismissalProgress(percent: percent)
   }
 
   internal func notifyInteractiveDismissalDidEnd(completed: Bool) {
-    self.cardPanel.interactiveDismissalDidEnd(completed: completed)
+    self.card.interactiveDismissalDidEnd(completed: completed)
   }
 }

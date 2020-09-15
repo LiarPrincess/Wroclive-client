@@ -4,8 +4,8 @@
 
 import UIKit
 
-/// This view can be presented in `CardPanelContainer`.
-public protocol CardPanelPresentable: UIViewController {
+/// This view can be presented in `CardContainer`.
+public protocol CardPresentable: UIViewController {
 
   /// Scroll view has to work alongside the card dismiss gesture.
   var scrollView: UIScrollView? { get }
@@ -15,7 +15,7 @@ public protocol CardPanelPresentable: UIViewController {
   func interactiveDismissalDidEnd(completed: Bool)
 }
 
-extension CardPanelPresentable {
+extension CardPresentable {
   public var scrollView: UIScrollView? { return nil }
 
   public func interactiveDismissalWillBegin() {}

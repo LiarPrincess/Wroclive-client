@@ -6,6 +6,8 @@ import UIKit
 
 // swiftlint:disable nesting
 
+private typealias CardConstants = CardContainer.Constants
+
 extension SettingsCard {
 
   public enum Constants {
@@ -16,7 +18,7 @@ extension SettingsCard {
     // MARK: - Header
 
     public enum Header {
-      public static let topInset = CardPanelConstants.recommendedContentTopOffset + 8.0
+      public static let topInset = CardConstants.recommendedContentTopOffset + 8.0
       public static let bottomInset = CGFloat(8.0)
 
       public static let titleAttributes = TextAttributes(style: .largeTitle)

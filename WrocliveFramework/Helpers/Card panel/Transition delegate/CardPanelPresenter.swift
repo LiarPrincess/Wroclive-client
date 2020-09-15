@@ -4,13 +4,15 @@
 
 import UIKit
 
+private typealias Constants = CardContainer.Constants
+
 internal final class CardPanelPresenter:
   UIPresentationController, UIGestureRecognizerDelegate {
 
   // MARK: - Properties
 
+  private let card: CardContainer
   private let height: CGFloat
-  private let cardPanel: CardPanelContainer
   /// Dark transparent background behind the card.
   private var dimmingView: UIView?
 
@@ -19,12 +21,12 @@ internal final class CardPanelPresenter:
 
   // MARK: - Init
 
-  internal init(forPresented cardPanel: CardPanelContainer,
+  internal init(forPresented card: CardContainer,
                 presenting: UIViewController?,
                 height: CGFloat) {
+    self.card = card
     self.height = height
-    self.cardPanel = cardPanel
-    super.init(presentedViewController: cardPanel, presenting: presenting)
+    super.init(presentedViewController: card, presenting: presenting)
   }
 
   // MARK: - Frame of presented view in container view
@@ -53,14 +55,14 @@ internal final class CardPanelPresenter:
 
     // swiftlint:disable force_unwrapping
     self.dimmingView = UIView(frame: containerView.frame)
-    self.dimmingView!.backgroundColor = CardPanelConstants.DimmingView.color
+    self.dimmingView!.backgroundColor = Constants.DimmingView.color
     self.dimmingView!.alpha = 0
     containerView.addSubview(self.dimmingView!)
     // swiftlint:enable force_unwrapping
 
     coordinator.animate(
       alongsideTransition: { [weak self] _ in
-        self?.dimmingView?.alpha = CardPanelConstants.DimmingView.alpha
+        self?.dimmingView?.alpha = Constants.DimmingView.alpha
       },
       completion: nil
     )
@@ -138,28 +140,25 @@ internal final class CardPanelPresenter:
     for gesture: UIPanGestureRecognizer
   ) -> DismissGestureHandler {
     // No scroll view -> DismissGestureHandler
-    guard let scrollView = self.cardPanel.scrollView else {
-      return DismissGestureHandler(cardPanel: self.cardPanel)
+    guard let scrollView = self.card.scrollView else {
+      return DismissGestureHandler(card: self.card)
     }
 
     // If user is dragging header view -> DismissGestureHandler
     let headerInset = scrollView.contentInset.top
-    let location = gesture.location(in: self.cardPanel.view)
+    let location = gesture.location(in: self.card.view)
     let isDraggingHeaderView = location.y < headerInset
 
     if isDraggingHeaderView {
-      return DismissGestureHandler(cardPanel: self.cardPanel)
+      return DismissGestureHandler(card: self.card)
     }
 
     // Hard case: we have to handle gesture alongside scroll view
-    return ScrollViewDismissGestureHandler(
-      cardPanel: self.cardPanel,
-      scrollView: scrollView
-    )
+    return ScrollViewDismissGestureHandler(card: self.card, scrollView: scrollView)
   }
 
   private func isReorderingTableViewCells() -> Bool {
-    guard let tableView = self.cardPanel.scrollView as? UITableView else {
+    guard let tableView = self.card.scrollView as? UITableView else {
       return false
     }
 

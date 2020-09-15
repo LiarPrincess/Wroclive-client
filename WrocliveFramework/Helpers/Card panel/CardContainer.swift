@@ -5,13 +5,13 @@
 import UIKit
 import SnapKit
 
-public final class CardPanelContainer: UIViewController {
+public final class CardContainer: UIViewController {
 
   // MARK: - Properties
 
   /// Animated arrow at the top of the card.
   public let chevronView = ChevronView()
-  private var child: CardPanelPresentable?
+  private var child: CardPresentable?
 
   private let onViewDidDisappear: () -> Void
 
@@ -41,7 +41,7 @@ public final class CardPanelContainer: UIViewController {
 
     self.view.addSubview(self.chevronView)
     self.chevronView.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(CardPanelConstants.chevronViewTopOffset)
+      make.top.equalToSuperview().offset(Constants.chevronViewTopOffset)
       make.centerX.equalToSuperview()
       make.width.equalTo(ChevronView.nominalSize.width)
       make.height.equalTo(ChevronView.nominalSize.height)
@@ -54,7 +54,7 @@ public final class CardPanelContainer: UIViewController {
     super.viewDidLayoutSubviews()
 
     // This has to be in 'viewDidLayoutSubviews' because it uses 'view.bounds'.
-    let radius = CardPanelConstants.topCornerRadius
+    let radius = Constants.topCornerRadius
     self.view.roundTopCorners(radius: radius)
   }
 
@@ -67,7 +67,7 @@ public final class CardPanelContainer: UIViewController {
 
   // MARK: - Content
 
-  public func setContent(_ controller: CardPanelPresentable) {
+  public func setContent(_ controller: CardPresentable) {
     guard self.child == nil else {
       fatalError("Card panel content was already set!")
     }
@@ -82,7 +82,7 @@ public final class CardPanelContainer: UIViewController {
     controller.didMove(toParent: self)
   }
 
-  // MARK: - CustomCardPanelPresentable
+  // MARK: - CardPresentable
 
   internal var scrollView: UIScrollView? {
     return self.child?.scrollView
@@ -94,7 +94,7 @@ public final class CardPanelContainer: UIViewController {
 
   internal func interactiveDismissalProgress(percent: CGFloat) {
     // We assume that before we start chevron is in '.down' position
-    let makeChevronFlatAt = CardPanelConstants.DismissGesture.makeChevronFlatPercent
+    let makeChevronFlatAt = Constants.DismissGesture.makeChevronFlatPercent
     let chevronPercent = CGFloat.minimum(percent, makeChevronFlatAt)
     self.chevronView.angle = -ChevronView.maxAngle * (makeChevronFlatAt - chevronPercent)
 

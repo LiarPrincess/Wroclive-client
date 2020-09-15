@@ -19,14 +19,14 @@ extension CardCoordinator {
 
   /// Helper!
   /// Should be called only inside `CardCoordinator` implementation!
-  internal func present(card: CardPanelPresentable,
+  internal func present(card: CardPresentable,
                         withHeight height: CGFloat,
                         animated: Bool) -> Guarantee<Void> {
     let transitionDelegate = CardPanelTransitionDelegate(height: height)
     self.cardTransitionDelegate = transitionDelegate
 
     return Guarantee<Void> { resolve in
-      let container = CardPanelContainer(onViewDidDisappear: { resolve(()) })
+      let container = CardContainer(onViewDidDisappear: { resolve(()) })
       container.setContent(card)
       container.modalPresentationStyle = .custom
       container.transitioningDelegate = transitionDelegate

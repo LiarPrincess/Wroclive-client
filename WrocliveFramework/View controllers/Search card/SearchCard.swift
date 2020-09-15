@@ -7,7 +7,7 @@ import SPAlert
 
 private typealias Localization = Localizable.Search
 
-public final class SearchCard: UIViewController, SearchCardViewType, CardPanelPresentable {
+public final class SearchCard: UIViewController, SearchCardViewType, CardPresentable {
 
   // MARK: - Properties
 
@@ -161,7 +161,7 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPanelPr
     self.dismiss(animated: animated, completion: nil)
   }
 
-  // MARK: - CustomCardPanelPresentable
+  // MARK: - CardPresentable
 
   public var scrollView: UIScrollView? {
     let isLineSelectorVisible = !self.lineSelector.view.isHidden

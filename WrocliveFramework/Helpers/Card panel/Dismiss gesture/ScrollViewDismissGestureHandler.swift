@@ -4,7 +4,7 @@
 
 import UIKit
 
-private typealias Constants = CardPanelConstants.DismissGesture
+private typealias Constants = CardContainer.Constants.DismissGesture
 
 internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
@@ -19,9 +19,9 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
 
   // MARK: - Init
 
-  internal init(cardPanel: CardPanelContainer, scrollView: UIScrollView) {
+  internal init(card: CardContainer, scrollView: UIScrollView) {
     self.scrollView = scrollView
-    super.init(cardPanel: cardPanel)
+    super.init(card: card)
 
     // swiftlint:disable:next trailing_closure
     self.observation = self.scrollView.observe(
@@ -58,7 +58,7 @@ internal final class ScrollViewDismissGestureHandler: DismissGestureHandler {
       let isScrollViewAboveTop = offset <= 0
 
       if isScrollViewAboveTop {
-        let translation = gesture.translation(in: self.cardPanel.view)
+        let translation = gesture.translation(in: self.card.view)
         self.updateCardTranslation(movement: translation.y)
         self.dismissIfBelowThreshold(movement: translation.y)
 

@@ -6,7 +6,7 @@ import UIKit
 
 public final class BookmarksCard:
   UIViewController, UITableViewDataSource, UITableViewDelegate,
-  BookmarksCardViewType, CardPanelPresentable {
+  BookmarksCardViewType, CardPresentable {
 
   // MARK: - Properties
 
@@ -97,7 +97,7 @@ public final class BookmarksCard:
     self.viewModel.viewDidPressEditButton()
   }
 
-  // MARK: - CustomCardPanelPresentable
+  // MARK: - CardPresentable
 
   public var scrollView: UIScrollView? {
     let isTableViewVisible = !self.tableView.isHidden
