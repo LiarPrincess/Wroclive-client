@@ -17,7 +17,6 @@
 		900EA0E524D46AAB0054C03F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0E424D46AAB0054C03F /* SnapKit */; };
 		900EA0E824D46AB90054C03F /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0E724D46AB90054C03F /* PromiseKit */; };
 		900EA0EB24D46AC80054C03F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0EA24D46AC80054C03F /* Alamofire */; };
-		900EA0F124D46AE30054C03F /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 900EA0F024D46AE30054C03F /* Reachability */; };
 		900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F424D46C110054C03F /* SearchCardState.swift */; };
 		900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F624D46C110054C03F /* Vehicle.swift */; };
 		900EA10224D46C110054C03F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F924D46C110054C03F /* Bookmark.swift */; };
@@ -402,7 +401,6 @@
 			files = (
 				90E0193624FFB8E1000670CD /* SPAlert in Frameworks */,
 				900EA0E224D46A9B0054C03F /* ReSwift in Frameworks */,
-				900EA0F124D46AE30054C03F /* Reachability in Frameworks */,
 				900EA0EB24D46AC80054C03F /* Alamofire in Frameworks */,
 				900EA0E824D46AB90054C03F /* PromiseKit in Frameworks */,
 				900EA0E524D46AAB0054C03F /* SnapKit in Frameworks */,
@@ -960,7 +958,6 @@
 				900EA0E424D46AAB0054C03F /* SnapKit */,
 				900EA0E724D46AB90054C03F /* PromiseKit */,
 				900EA0EA24D46AC80054C03F /* Alamofire */,
-				900EA0F024D46AE30054C03F /* Reachability */,
 				90E0193524FFB8E1000670CD /* SPAlert */,
 			);
 			productName = WrocliveFramework;
@@ -1044,7 +1041,6 @@
 				900EA0E324D46AAB0054C03F /* XCRemoteSwiftPackageReference "SnapKit" */,
 				900EA0E624D46AB90054C03F /* XCRemoteSwiftPackageReference "PromiseKit" */,
 				900EA0E924D46AC80054C03F /* XCRemoteSwiftPackageReference "Alamofire" */,
-				900EA0EF24D46AE30054C03F /* XCRemoteSwiftPackageReference "Reachability" */,
 				90E0193424FFB8E1000670CD /* XCRemoteSwiftPackageReference "SPAlert" */,
 				90DBD5CC250E5E2E006CDA9A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
@@ -1665,14 +1661,6 @@
 				minimumVersion = 5.2.2;
 			};
 		};
-		900EA0EF24D46AE30054C03F /* XCRemoteSwiftPackageReference "Reachability" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		90DBD5CC250E5E2E006CDA9A /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
@@ -1711,11 +1699,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 900EA0E924D46AC80054C03F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		900EA0F024D46AE30054C03F /* Reachability */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 900EA0EF24D46AE30054C03F /* XCRemoteSwiftPackageReference "Reachability" */;
-			productName = Reachability;
 		};
 		90DBD5CD250E5E2E006CDA9A /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;

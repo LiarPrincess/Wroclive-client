@@ -5,7 +5,6 @@
 import Foundation
 import Alamofire
 import PromiseKit
-import Reachability
 
 // MARK: - NetworkType
 
@@ -36,7 +35,7 @@ public protocol NetworkType {
 public final class Network: NetworkType {
 
   private let session: Session
-  private let reachability: Reachability?
+  private let reachability: NetworkReachabilityManager?
 
   public convenience init() {
     self.init(configuration: URLSessionConfiguration.af.default)
@@ -46,7 +45,7 @@ public final class Network: NetworkType {
     let retryPolicy = Self.createRetryPolicy(retryLimit: 3)
     self.session = Session(configuration: configuration, interceptor: retryPolicy)
 
-    self.reachability = try? Reachability()
+    self.reachability = NetworkReachabilityManager()
   }
 
   private static func createRetryPolicy(retryLimit: UInt) -> RetryPolicy {
@@ -91,18 +90,22 @@ public final class Network: NetworkType {
   // MARK: - Reachability status
 
   public func getReachabilityStatus() -> ReachabilityStatus {
-    guard let status = self.reachability?.connection else {
+    guard let status = self.reachability?.status else {
       return .unknown
     }
 
     switch status {
-    case .wifi:
-      return .wifi
-    case .cellular:
-      return .cellular
-    case .unavailable,
-         .none: // 'none' is depreciated
+    case .reachable(let connection):
+      switch connection {
+      case .cellular:
+        return .cellular
+      case .ethernetOrWiFi:
+        return .wifi
+      }
+    case .notReachable:
       return .unavailable
+    case .unknown:
+      return .unknown
     }
   }
 

@@ -16,7 +16,7 @@ public enum ReachabilityStatus {
     case .wifi:
       return "WiFi"
     case .unavailable:
-      return "No Connection"
+      return "No connection"
     case .unknown:
       return "Unknown"
     }
