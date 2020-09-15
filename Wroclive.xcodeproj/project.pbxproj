@@ -114,6 +114,7 @@
 		9091F75C24FE6659009B5778 /* UserDefaultsManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */; };
 		9093AE1724EA92C20094B1CC /* ExtraLightVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */; };
 		90A6262424FAB415005F5C31 /* LineSelectorTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */; };
+		90C7938F2510CC3C00279CF9 /* CardSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C7938E2510CC3C00279CF9 /* CardSnapshots.swift */; };
 		90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */; };
 		90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */; };
 		90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFD124D60BEF00595D89 /* StringExtensions.swift */; };
@@ -327,6 +328,7 @@
 		9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerMock.swift; sourceTree = "<group>"; };
 		9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLightVisualEffectView.swift; sourceTree = "<group>"; };
 		90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorTestData.swift; sourceTree = "<group>"; };
+		90C7938E2510CC3C00279CF9 /* CardSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSnapshots.swift; sourceTree = "<group>"; };
 		90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
 		90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitExtensions.swift; sourceTree = "<group>"; };
 		90CDCFD124D60BEF00595D89 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 				90F72F2C24E31A6400D20EB2 /* Mock - Api */,
 				90F72F1624E316BE00D20EB2 /* Mock - Environment */,
 				90F72F0F24E3157C00D20EB2 /* Extensions */,
+				90C7938D2510CBF700279CF9 /* Card */,
 				90F72F4524E426EB00D20EB2 /* Map view */,
 				90F72F3424E31D9600D20EB2 /* Bookmarks card */,
 				904F1CE724E556EB00EF77A0 /* Search card */,
@@ -745,6 +748,14 @@
 				90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		90C7938D2510CBF700279CF9 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				90C7938E2510CC3C00279CF9 /* CardSnapshots.swift */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 		90CE740424D9BB7800419166 /* Bookmarks card */ = {
@@ -1221,6 +1232,7 @@
 			files = (
 				9023EBE324E5B30C00F09D27 /* SearchCardViewModelTests.swift in Sources */,
 				904F1CFC24E5590100EF77A0 /* LineSelectorCellTests.swift in Sources */,
+				90C7938F2510CC3C00279CF9 /* CardSnapshots.swift in Sources */,
 				9023EBE424E5B30C00F09D27 /* SearchCardViewModelTests+Tracking.swift in Sources */,
 				90F72F3E24E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift in Sources */,
 				90F72F3D24E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
