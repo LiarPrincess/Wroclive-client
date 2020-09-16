@@ -16,6 +16,26 @@ public struct AppState: StateType {
   public var getLinesResponse: ApiResponseState<[Line]>
   public var getVehicleLocationsResponse: ApiResponseState<[Vehicle]>
 
+  // MARK: - Init
+
+  public init(
+    mapType: MapType,
+    userLocationAuthorization: UserLocationAuthorization,
+    bookmarks: [Bookmark],
+    trackedLines: [Line],
+    getLinesResponse: ApiResponseState<[Line]>,
+    getVehicleLocationsResponse: ApiResponseState<[Vehicle]>
+  ) {
+    self.mapType = mapType
+    self.userLocationAuthorization = userLocationAuthorization
+    self.bookmarks = bookmarks
+    self.trackedLines = trackedLines
+    self.getLinesResponse = getLinesResponse
+    self.getVehicleLocationsResponse = getVehicleLocationsResponse
+  }
+
+  // MARK: - ApiResponseState
+
   public enum ApiResponseState<Data> {
     /// No response recieved (yet).
     /// Default state, just after starting the app.
@@ -54,6 +74,8 @@ public struct AppState: StateType {
       }
     }
   }
+
+  // MARK: - Load
 
   public static func load(
     from environment: Environment,

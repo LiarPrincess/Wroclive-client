@@ -24,4 +24,9 @@ public struct SearchCardState: Codable, Equatable, CustomStringConvertible {
   public var description: String {
     return "SearchCardState(page: \(self.page), selectedLines: \(self.selectedLines))"
   }
+
+  public init(page: Page, selectedLines: [Line]) {
+    self.page = page
+    self.selectedLines = selectedLines
+  }
 }

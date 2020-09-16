@@ -5,6 +5,7 @@
 // MARK: - Line
 
 public struct Line: Codable, Equatable, Hashable, CustomStringConvertible {
+
   public let name: String
   public let type: LineType
   public let subtype: LineSubtype
@@ -34,6 +35,12 @@ public struct Line: Codable, Equatable, Hashable, CustomStringConvertible {
 
   public var description: String {
     return "Line(\(self.name), \(self.type), \(self.subtype))"
+  }
+
+  public init(name: String, type: LineType, subtype: LineSubtype) {
+    self.name = name
+    self.type = type
+    self.subtype = subtype
   }
 }
 

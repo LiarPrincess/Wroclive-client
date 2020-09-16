@@ -15,4 +15,16 @@ public struct Vehicle: CustomStringConvertible, Equatable {
     let location = "Location(\(self.latitude), \(self.longitude), \(self.angle))"
     return "Vehicle(\(self.id), \(self.line) @ \(location))"
   }
+
+  public init(id: String,
+              line: Line,
+              latitude: Double,
+              longitude: Double,
+              angle: Double) {
+    self.id = id
+    self.line = line
+    self.latitude = latitude
+    self.longitude = longitude
+    self.angle = angle
+  }
 }
