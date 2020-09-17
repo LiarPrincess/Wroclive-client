@@ -15,9 +15,9 @@ public final class SettingsCardCoordinator: NSObject,
   CardCoordinator, SettingsCardViewModelDelegate,
   MFMailComposeViewControllerDelegate {
 
-  public var card: SettingsCard?
-  public let parent: UIViewController
-  public var cardTransitionDelegate: UIViewControllerTransitioningDelegate?
+  public internal(set) var card: SettingsCard?
+  internal let parent: UIViewController
+  internal var cardTransitionDelegate: UIViewControllerTransitioningDelegate?
 
   public let store: Store<AppState>
   public let environment: Environment
@@ -30,17 +30,12 @@ public final class SettingsCardCoordinator: NSObject,
     self.environment = environment
   }
 
-  public func start() -> Guarantee<Void> {
+  public func start(animated: Bool) -> Guarantee<Void> {
     let viewModel = SettingsCardViewModel(store: self.store, delegate: self)
     let card = SettingsCard(viewModel: viewModel)
 
-    let height = min(
-      0.8 * self.environment.device.screenBounds.height,
-      CGFloat(600.0)
-    )
-
     self.card = card
-    return self.present(card: card, withHeight: height, animated: true)
+    return self.present(card: card, animated: animated)
   }
 
   // MARK: - Rate

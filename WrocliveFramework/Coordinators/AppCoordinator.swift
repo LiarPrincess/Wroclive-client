@@ -11,7 +11,7 @@ public final class AppCoordinator: MainViewModelDelegate {
   public let store: Store<AppState>
   public let environment: Environment
 
-  private var mainViewController: MainViewController?
+  public private(set) var mainViewController: MainViewController?
   private var childCoordinator: CardCoordinator?
 
   public init(window: UIWindow, store: Store<AppState>, environment: Environment) {
@@ -38,7 +38,7 @@ public final class AppCoordinator: MainViewModelDelegate {
     let coordinator = SearchCardCoordinator(parent: mainViewController,
                                             store: self.store,
                                             environment: self.environment)
-    self.showCard(coordinator: coordinator)
+    self.showCard(coordinator: coordinator, animated: true)
   }
 
   public func openBookmarksCard() {
@@ -49,7 +49,7 @@ public final class AppCoordinator: MainViewModelDelegate {
     let coordinator = BookmarksCardCoordinator(parent: mainViewController,
                                                store: self.store,
                                                environment: self.environment)
-    self.showCard(coordinator: coordinator)
+    self.showCard(coordinator: coordinator, animated: true)
   }
 
   public func openSettingsCard() {
@@ -60,14 +60,14 @@ public final class AppCoordinator: MainViewModelDelegate {
     let coordinator = SettingsCardCoordinator(parent: mainViewController,
                                               store: self.store,
                                               environment: self.environment)
-    self.showCard(coordinator: coordinator)
+    self.showCard(coordinator: coordinator, animated: true)
   }
 
-  private func showCard<C: CardCoordinator>(coordinator: C) {
+  private func showCard<C: CardCoordinator>(coordinator: C, animated: Bool) {
     assert(self.childCoordinator == nil)
 
     self.childCoordinator = coordinator
-    coordinator.start().done { [weak self] in
+    coordinator.start(animated: animated).done { [weak self] in
       self?.childCoordinator = nil
     }
   }

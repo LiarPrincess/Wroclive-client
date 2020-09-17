@@ -10,9 +10,9 @@ import PromiseKit
 
 public final class SearchCardCoordinator: CardCoordinator {
 
-  public var card: SearchCard?
-  public let parent: UIViewController
-  public var cardTransitionDelegate: UIViewControllerTransitioningDelegate?
+  public internal(set) var card: SearchCard?
+  internal let parent: UIViewController
+  internal var cardTransitionDelegate: UIViewControllerTransitioningDelegate?
 
   public let store: Store<AppState>
   public let environment: Environment
@@ -25,17 +25,12 @@ public final class SearchCardCoordinator: CardCoordinator {
     self.environment = environment
   }
 
-  public func start() -> Guarantee<Void> {
+  public func start(animated: Bool) -> Guarantee<Void> {
     let viewModel = SearchCardViewModel(store: self.store,
                                         environment: self.environment)
     let card = SearchCard(viewModel: viewModel)
 
-    let height = min(
-      0.9 * self.environment.device.screenBounds.height,
-      CGFloat(600.0)
-    )
-
     self.card = card
-    return self.present(card: card, withHeight: height, animated: true)
+    return self.present(card: card, animated: animated)
   }
 }
