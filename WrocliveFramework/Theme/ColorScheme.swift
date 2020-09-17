@@ -3,12 +3,15 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import UIKit
+import MapKit
 
 // swiftlint:disable object_literal
 // swiftlint:disable discouraged_object_literal
 // swiftformat:disable numberFormatting
 
 public enum ColorScheme {
+
+  // MARK: - Colors
 
   public static let tint = #colorLiteral(red: 0.9490196078, green: 0.1411764706, blue: 0.1411764706, alpha: 1)
 
@@ -45,6 +48,8 @@ public enum ColorScheme {
     }
   }()
 
+  // MARK: - Styles
+
   public enum Mode {
     case light
     case dark
@@ -72,5 +77,15 @@ public enum ColorScheme {
     case .light: return UIBlurEffect.Style.extraLight
     case .dark: return UIBlurEffect.Style.dark
     }
+  }
+
+  // MARK: - Initialize
+
+  public static func initialize() {
+    UIWindow.appearance().tintColor = Self.tint
+    UIView.appearance().tintColor = Self.tint
+
+    // Otherwise map would use tint color (which is red).
+    MKAnnotationView.appearance().tintColor = Self.userLocationPin
   }
 }

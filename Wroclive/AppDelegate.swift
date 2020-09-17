@@ -79,7 +79,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     self.overrideLocaleIfPossible(.pl)
 
     os_log("Setting up theme", log: self.log, type: .debug)
-    self.setupTheme()
+    ColorScheme.initialize()
 
     os_log("Creating app coordinator", log: self.log, type: .debug)
     self.window = UIWindow(frame: self.environment.device.screenBounds)
@@ -88,11 +88,10 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
                                       environment: self.environment)
     self.coordinator!.start()
 
+    os_log("Creating (but not starting!) map update scheduler", log: self.log, type: .debug)
     self.updateScheduler = self.startMapUpdates()
 
-    os_log("application(_:didFinishLaunchingWithOptions:) - finished",
-           log: self.log,
-           type: .debug)
+    os_log("application(_:didFinishLaunchingWithOptions:) - finished", log: self.log, type: .debug)
     return true
   }
 
@@ -174,16 +173,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     #endif
   }
 
-  private func setupTheme() {
-    let tintColor = ColorScheme.tint
-    UIWindow.appearance().tintColor = tintColor
-    UIView.appearance().tintColor = tintColor
-
-    MKAnnotationView.appearance().tintColor = ColorScheme.userLocationPin
-  }
-
   private func startMapUpdates() -> MapUpdateScheduler {
-    os_log("Creating map update scheduler", log: self.log, type: .debug)
     return MapUpdateScheduler(
       store: self.store,
       environment: self.environment
