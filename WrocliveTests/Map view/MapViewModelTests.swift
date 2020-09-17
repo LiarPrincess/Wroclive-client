@@ -10,7 +10,7 @@ import PromiseKit
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-private typealias Defaults = MapViewController.Constants.Defaults
+private typealias Defaults = MapViewController.Constants.Default
 
 class MapViewModelTests:
   XCTestCase, ReduxTestCase, EnvironmentTestCase, MapViewType {

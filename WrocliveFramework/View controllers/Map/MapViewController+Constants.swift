@@ -19,9 +19,9 @@ extension MapViewController {
       public static let animationDuration = TimeInterval(1.5)
     }
 
-    public enum Defaults {
-      public static let location = CLLocationCoordinate2D(latitude: 51.109_524,
-                                                          longitude: 17.032_564)
+    public enum Default {
+      public static let center = CLLocationCoordinate2D(latitude: 51.109_524,
+                                                        longitude: 17.032_564)
       public static let zoom = CLLocationDistance(3_500.0) // m
     }
   }

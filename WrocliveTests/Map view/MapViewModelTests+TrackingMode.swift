@@ -6,7 +6,7 @@ import XCTest
 import MapKit
 @testable import WrocliveFramework
 
-private typealias Defaults = MapViewController.Constants.Defaults
+private typealias Defaults = MapViewController.Constants.Default
 
 extension MapViewModelTests {
 

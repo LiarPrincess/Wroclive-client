@@ -7,7 +7,7 @@ import MapKit
 import ReSwift
 import PromiseKit
 
-private typealias Defaults = MapViewController.Constants.Defaults
+private typealias Defaults = MapViewController.Constants.Default
 
 public protocol MapViewType: AnyObject {
   func setMapType(mapType: MapType)
@@ -116,7 +116,7 @@ public final class MapViewModel: StoreSubscriber {
   }
 
   private func centerMapOnDefaultLocation(animated: Bool) {
-    self.view?.setCenter(location: Defaults.location, animated: animated)
+    self.view?.setCenter(location: Defaults.center, animated: animated)
   }
 
   // MARK: - Vehicle locations
