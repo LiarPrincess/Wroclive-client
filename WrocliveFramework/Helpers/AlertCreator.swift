@@ -186,15 +186,23 @@ public final class AlertCreator {
 
   // MARK: - User location authorization
 
+  public enum DeniedLocationAuthorizationAlertResult {
+    /// Do nothing
+    case ok
+    case openSettings
+  }
+
   /// Prompt for authorization change in settings
-  public static func showDeniedLocationAuthorizationAlert() -> ShowAlertResult<Void> {
+  public static func showDeniedLocationAuthorizationAlert() ->
+    ShowAlertResult<DeniedLocationAuthorizationAlertResult> {
+
     typealias L = Localizable.Alert.Location.Denied
     return AlertCreator.show(
       title: L.title,
       message: L.message,
       buttons: [
-        AlertCreator.Button(title: L.settings, style: .default, result: ()),
-        AlertCreator.Button(title: L.ok, style: .default, result: ())
+        AlertCreator.Button(title: L.settings, style: .default, result: .openSettings),
+        AlertCreator.Button(title: L.ok, style: .default, result: .ok)
       ]
     )
   }

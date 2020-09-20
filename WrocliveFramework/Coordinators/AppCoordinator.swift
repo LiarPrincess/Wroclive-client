@@ -2,6 +2,7 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import os.log
 import UIKit
 import ReSwift
 
@@ -30,6 +31,8 @@ public final class AppCoordinator: MainViewModelDelegate {
     self.window.makeKeyAndVisible()
   }
 
+  // MARK: - Search
+
   public func openSearchCard() {
     guard let mainViewController = self.mainViewController else {
       fatalError("AppCoordinator has to be started first")
@@ -41,6 +44,8 @@ public final class AppCoordinator: MainViewModelDelegate {
     self.showCard(coordinator: coordinator, animated: true)
   }
 
+  // MARK: - Bookmarks
+
   public func openBookmarksCard() {
     guard let mainViewController = self.mainViewController else {
       fatalError("AppCoordinator has to be started first")
@@ -51,6 +56,8 @@ public final class AppCoordinator: MainViewModelDelegate {
                                                environment: self.environment)
     self.showCard(coordinator: coordinator, animated: true)
   }
+
+  // MARK: - Settings
 
   public func openSettingsCard() {
     guard let mainViewController = self.mainViewController else {
@@ -69,6 +76,23 @@ public final class AppCoordinator: MainViewModelDelegate {
     self.childCoordinator = coordinator
     coordinator.start(animated: animated).done { [weak self] in
       self?.childCoordinator = nil
+    }
+  }
+
+  // MARK: - Settings app
+
+  public func openSettingsApp() {
+    let urlString = UIApplication.openSettingsURLString
+
+    if let url = URL(string: urlString) {
+      UIApplication.shared.open(url)
+    } else {
+      os_log(
+        "Unable to upen settings app from: %{public}@",
+        log: self.environment.log.app,
+        type: .error,
+        urlString
+      )
     }
   }
 }

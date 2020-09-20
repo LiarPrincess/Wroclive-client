@@ -5,7 +5,7 @@
 import UIKit
 import ReSwift
 
-public protocol MainViewModelDelegate: AnyObject {
+public protocol MainViewModelDelegate: MapViewModelDelegate {
   func openSearchCard()
   func openBookmarksCard()
   func openSettingsCard()
@@ -19,7 +19,10 @@ public final class MainViewModel {
   public init(store: Store<AppState>,
               environment: Environment,
               delegate: MainViewModelDelegate?) {
-    self.mapViewModel = MapViewModel(store: store, environment: environment)
+    self.mapViewModel = MapViewModel(store: store,
+                                     environment: environment,
+                                     delegate: delegate)
+
     self.delegate = delegate
   }
 

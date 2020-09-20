@@ -19,18 +19,26 @@ public protocol MapViewType: AnyObject {
   func showApiErrorAlert(error: ApiError)
 }
 
+public protocol MapViewModelDelegate: AnyObject {
+  func openSettingsApp()
+}
+
 public final class MapViewModel: StoreSubscriber {
 
   private let store: Store<AppState>
   private let environment: Environment
+  private weak var delegate: MapViewModelDelegate?
 
   /// State that is currently being presented.
   private var currentState: AppState?
   private weak var view: MapViewType?
 
-  public init(store: Store<AppState>, environment: Environment) {
+  public init(store: Store<AppState>,
+              environment: Environment,
+              delegate: MapViewModelDelegate?) {
     self.store = store
     self.environment = environment
+    self.delegate = delegate
   }
 
   public func setView(view: MapViewType) {
@@ -44,9 +52,9 @@ public final class MapViewModel: StoreSubscriber {
     self.store.subscribe(self)
   }
 
-  // MARK: - Input
+  // MARK: - View input
 
-  public func didChangeTrackingMode(to trackingMode: MKUserTrackingMode) {
+  public func viewDidChangeTrackingMode(to trackingMode: MKUserTrackingMode) {
     guard let authorization = self.currentState?.userLocationAuthorization else {
       return
     }
@@ -62,6 +70,10 @@ public final class MapViewModel: StoreSubscriber {
     case .restricted:
       self.view?.showGloballyDeniedLocationAuthorizationAlert()
     }
+  }
+
+  public func viewDidRequestOpenSettingsApp() {
+    self.delegate?.openSettingsApp()
   }
 
   // MARK: - Store subscriber

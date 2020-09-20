@@ -141,18 +141,33 @@ public final class MapViewController:
     switch mode {
     case .none,
          .follow:
-      self.viewModel.didChangeTrackingMode(to: mode)
+      self.viewModel.viewDidChangeTrackingMode(to: mode)
     case .followWithHeading:
       self.mapView.setUserTrackingMode(.none, animated: true)
     @unknown default:
-      self.viewModel.didChangeTrackingMode(to: mode)
+      self.viewModel.viewDidChangeTrackingMode(to: mode)
     }
   }
 
   // MARK: - Alerts
 
   public func showDeniedLocationAuthorizationAlert() {
-    _ = AlertCreator.showDeniedLocationAuthorizationAlert()
+    let alertResult = AlertCreator.showDeniedLocationAuthorizationAlert()
+
+    switch alertResult {
+    case .alert(let promise):
+      _ = promise.done { [weak self] result in
+        switch result {
+        case .openSettings:
+          self?.viewModel.viewDidRequestOpenSettingsApp()
+        case .ok:
+          break
+        }
+      }
+
+    case .alreadyShowingDifferentAlert:
+      break
+    }
   }
 
   public func showGloballyDeniedLocationAuthorizationAlert() {
