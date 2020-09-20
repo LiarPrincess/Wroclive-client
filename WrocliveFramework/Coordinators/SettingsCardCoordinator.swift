@@ -34,8 +34,11 @@ public final class SettingsCardCoordinator: NSObject,
     let viewModel = SettingsCardViewModel(store: self.store, delegate: self)
     let card = SettingsCard(viewModel: viewModel)
 
+    let cardHeight = self.getCardHeight(screenPercent: 0.8,
+                                        butNoBiggerThan: 600)
+
     self.card = card
-    return self.present(card: card, animated: animated)
+    return self.present(card: card, withHeight: cardHeight, animated: animated)
   }
 
   // MARK: - Rate

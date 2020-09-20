@@ -29,7 +29,10 @@ public final class BookmarksCardCoordinator: CardCoordinator {
     let viewModel = BookmarksCardViewModel(store: self.store)
     let card = BookmarksCard(viewModel: viewModel)
 
+    let cardHeight = self.getCardHeight(screenPercent: 0.75,
+                                        butNoBiggerThan: 500)
+
     self.card = card
-    return self.present(card: card, animated: animated)
+    return self.present(card: card, withHeight: cardHeight, animated: animated)
   }
 }
