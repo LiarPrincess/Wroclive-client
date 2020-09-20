@@ -112,7 +112,12 @@
 		90915617250FA8ED000BF14A /* MainSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90915616250FA8ED000BF14A /* MainSnapshots.swift */; };
 		9091F75C24FE6659009B5778 /* UserDefaultsManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */; };
 		9093AE1724EA92C20094B1CC /* ExtraLightVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */; };
+		909B7BA3251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */; };
+		909B7BA5251399F200D8A8E0 /* MockUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA4251399F200D8A8E0 /* MockUrlProtocol.swift */; };
+		909B7BA725139B9700D8A8E0 /* ApiTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA625139B9700D8A8E0 /* ApiTestCase.swift */; };
+		909B7BA92513A3A600D8A8E0 /* ApiLinesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */; };
 		90A6262424FAB415005F5C31 /* LineSelectorTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */; };
+		90C5BAEE2514CB1900D41508 /* AppStoreScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */; };
 		90C7938F2510CC3C00279CF9 /* CardSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C7938E2510CC3C00279CF9 /* CardSnapshots.swift */; };
 		90C793922510F40F00279CF9 /* ApiRequestSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C793912510F40F00279CF9 /* ApiRequestSnapshots.swift */; };
 		90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */; };
@@ -327,7 +332,12 @@
 		90915616250FA8ED000BF14A /* MainSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSnapshots.swift; sourceTree = "<group>"; };
 		9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerMock.swift; sourceTree = "<group>"; };
 		9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLightVisualEffectView.swift; sourceTree = "<group>"; };
+		909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVehicleLocationsResponseTests.swift; sourceTree = "<group>"; };
+		909B7BA4251399F200D8A8E0 /* MockUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlProtocol.swift; sourceTree = "<group>"; };
+		909B7BA625139B9700D8A8E0 /* ApiTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTestCase.swift; sourceTree = "<group>"; };
+		909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLinesResponseTests.swift; sourceTree = "<group>"; };
 		90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorTestData.swift; sourceTree = "<group>"; };
+		90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshots.swift; sourceTree = "<group>"; };
 		90C7938E2510CC3C00279CF9 /* CardSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSnapshots.swift; sourceTree = "<group>"; };
 		90C793912510F40F00279CF9 /* ApiRequestSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestSnapshots.swift; sourceTree = "<group>"; };
 		90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
@@ -487,6 +497,7 @@
 				907FD0BC24D99C3C00B6896C /* DispatchStoreUpdatesFromAppleFrameworks.swift */,
 				90CE742E24D9DA3F00419166 /* DummyData.swift */,
 				9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */,
+				90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -762,6 +773,10 @@
 		90C793902510F3F400279CF9 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				909B7BA625139B9700D8A8E0 /* ApiTestCase.swift */,
+				909B7BA4251399F200D8A8E0 /* MockUrlProtocol.swift */,
+				909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */,
+				909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */,
 				90C793912510F40F00279CF9 /* ApiRequestSnapshots.swift */,
 			);
 			path = Api;
@@ -1011,7 +1026,7 @@
 		905237FF24D459E500E4F8A7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = NoPoint;
 				TargetAttributes = {
@@ -1120,6 +1135,7 @@
 				90F38E4924E19ECE000D4192 /* SettingsCard+Layout.swift in Sources */,
 				905893CD24D4A95D0046EFA5 /* BundleManager.swift in Sources */,
 				905893C924D4A95D0046EFA5 /* StorageManager.swift in Sources */,
+				90C5BAEE2514CB1900D41508 /* AppStoreScreenshots.swift in Sources */,
 				900EA0FF24D46C110054C03F /* Vehicle.swift in Sources */,
 				90CE742124D9BB7800419166 /* BookmarksCard.swift in Sources */,
 				9013FAB824D6B1890006D1B9 /* CardContainer.swift in Sources */,
@@ -1250,8 +1266,10 @@
 				90F72F4424E4082D00D20EB2 /* ReduxTestCase.swift in Sources */,
 				904F1D0024E55CA900EF77A0 /* LineSelectorSectionTests.swift in Sources */,
 				90F72F5024E426EB00D20EB2 /* MapViewModelTests+TrackingMode.swift in Sources */,
+				909B7BA3251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift in Sources */,
 				904F1CFA24E556EB00EF77A0 /* LineSelectorViewModelTests.swift in Sources */,
 				90F72F3C24E31D9600D20EB2 /* BookmarksCellTests.swift in Sources */,
+				909B7BA725139B9700D8A8E0 /* ApiTestCase.swift in Sources */,
 				90F72F1224E3157D00D20EB2 /* Collection+GroupTests.swift in Sources */,
 				90F72F5124E426EB00D20EB2 /* VehicleAnnotationDiff.swift in Sources */,
 				9066DDFF24E737670096F536 /* SearchCardViewModelTests+Save.swift in Sources */,
@@ -1260,6 +1278,7 @@
 				90F72F4F24E426EB00D20EB2 /* MapViewModelTests+NextLaunch.swift in Sources */,
 				904F1CE624E43C0700EF77A0 /* XCTAsserts.swift in Sources */,
 				90F72F2524E316BE00D20EB2 /* UserLocationManagerMock.swift in Sources */,
+				909B7BA5251399F200D8A8E0 /* MockUrlProtocol.swift in Sources */,
 				90F72F1F24E316BE00D20EB2 /* DeviceManagerMock.swift in Sources */,
 				90F72F2424E316BE00D20EB2 /* StorageManagerMock.swift in Sources */,
 				90F72F1324E3157D00D20EB2 /* Collection+AnyTests.swift in Sources */,
@@ -1275,6 +1294,7 @@
 				90F72F3124E31B6B00D20EB2 /* ApiManagerMock.swift in Sources */,
 				90F72F4024E31D9600D20EB2 /* BookmarksCardViewModelTests+Selection.swift in Sources */,
 				90F72F4224E3FB8E00D20EB2 /* EnvironmentTestCase.swift in Sources */,
+				909B7BA92513A3A600D8A8E0 /* ApiLinesResponseTests.swift in Sources */,
 				90C793922510F40F00279CF9 /* ApiRequestSnapshots.swift in Sources */,
 				90F72F2624E316BE00D20EB2 /* BundleManagerMock.swift in Sources */,
 				90F72F4E24E426EB00D20EB2 /* MapViewModelTests.swift in Sources */,
