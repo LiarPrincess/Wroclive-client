@@ -1,0 +1,31 @@
+{
+  "device_frame_version": "latest",
+  "default": {
+    "keyword": {
+      "text": ""
+    },
+    "title": {
+      "font": "./fonts/NotoSans-Bold.ttf",
+      "font_size": 80,
+      "color": "#ffffff"
+    },
+    "padding": 50,
+    "title_min_height": 350,
+    "show_complete_frame": false,
+    "use_platform": "IOS"
+  },
+  "data": [
+    {
+      "filter": "01_map",
+      "background": "./01_map_background.jpg"
+    },
+    {
+      "filter": "02_bookmarks",
+      "background": "./02_bookmarks_background.jpg"
+    },
+    {
+      "filter": "03_night",
+      "background": "./03_night_background.jpg"
+    }
+  ]
+}
