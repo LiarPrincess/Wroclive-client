@@ -49,7 +49,7 @@
 "Settings.Table.General.PrivacyPolicy"  = "Privacy policy";
 
 "Settings.Table.Programming.Header" = "Application";
-"Settings.Table.Programming.ReportError"  = "Report error";
+"Settings.Table.Programming.ReportError"  = "Support and feedback";
 "Settings.Table.Programming.ShowCode"     = "Show code";
 
 /* App */

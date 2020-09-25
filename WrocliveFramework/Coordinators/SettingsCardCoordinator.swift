@@ -94,7 +94,7 @@ public final class SettingsCardCoordinator: NSObject,
     let appName = bundle.name
 
     let recipient = self.environment.configuration.reportErrorRecipient
-    let subject = "\(appName): Zgłoszenie błędu/Error report"
+    let subject = "\(appName): Zgłoszenie błędu/sugestii"
     let body = """
 
 

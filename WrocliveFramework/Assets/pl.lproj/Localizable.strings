@@ -44,12 +44,12 @@
 "Settings.Table.MapType.Hybrid"    = "Hybrydowa";
 
 "Settings.Table.General.Header" = "Ogólne";
-"Settings.Table.General.Share"  = "Udostępnij";
+"Settings.Table.General.Share"  = "Poleć znajomym";
 "Settings.Table.General.Rate"   = "Oceń";
 "Settings.Table.General.PrivacyPolicy"  = "Polityka prywatności";
 
 "Settings.Table.Programming.Header" = "Aplikacja";
-"Settings.Table.Programming.ReportError"  = "Zgłoś problem";
+"Settings.Table.Programming.ReportError"  = "Zgłoś problem/sugestię";
 "Settings.Table.Programming.ShowCode"     = "Pokaż kod";
 
 /* App */
