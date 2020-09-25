@@ -9,17 +9,14 @@ import SnapshotTesting
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-class BookmarksCardSnapshots: XCTestCase,
-  ReduxTestCase, EnvironmentTestCase, SnapshotTestCase {
+class BookmarksCardSnapshots: XCTestCase, ReduxTestCase, SnapshotTestCase {
 
   var store: Store<AppState>!
   var dispatchedActions: [Action]!
-  var environment: Environment!
 
   override func setUp() {
     super.setUp()
     self.setUpRedux()
-    self.setUpEnvironment()
   }
 
   // MARK: - Tests
