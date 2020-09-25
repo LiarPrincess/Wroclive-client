@@ -13,7 +13,7 @@ import PromiseKit
 private typealias Defaults = MapViewController.Constants.Default
 
 class MapViewModelTests:
-  XCTestCase, ReduxTestCase, EnvironmentTestCase, MapViewType {
+  XCTestCase, ReduxTestCase, EnvironmentTestCase, MapViewType, MapViewModelDelegate {
 
   var store: Store<AppState>!
   var dispatchedActions: [Action]!
@@ -26,6 +26,7 @@ class MapViewModelTests:
   var isShowingDeniedLocationAuthorizationAlert = false
   var isShowingGloballyDeniedLocationAuthorizationAlert = false
   var isShowingApiErrorAlert: ApiError?
+  var hasOpenedSettingsApp = false
 
   private var setCenterExpectation: XCTestExpectation?
 
@@ -40,6 +41,7 @@ class MapViewModelTests:
     self.isShowingDeniedLocationAuthorizationAlert = false
     self.isShowingGloballyDeniedLocationAuthorizationAlert = false
     self.isShowingApiErrorAlert = nil
+    self.hasOpenedSettingsApp = false
 
     self.setCenterExpectation = nil
   }
@@ -47,9 +49,15 @@ class MapViewModelTests:
   // MARK: - View model
 
   func createViewModel() -> MapViewModel {
-    let result = MapViewModel(store: self.store, environment: self.environment)
+    let result = MapViewModel(store: self.store,
+                              environment: self.environment,
+                              delegate: self)
     result.setView(view: self)
     return result
+  }
+
+  func openSettingsApp() {
+    self.hasOpenedSettingsApp = true
   }
 
   func setMapType(mapType: MapType) {

@@ -24,12 +24,14 @@ extension MapViewModelTests {
     XCTAssert(self.dispatchedActions.isEmpty)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
+    XCTAssertFalse(self.hasOpenedSettingsApp)
 
     for mode in self.trackingModes {
-      self.viewModel.didChangeTrackingMode(to: mode)
+      self.viewModel.viewDidChangeTrackingMode(to: mode)
       XCTAssert(self.dispatchedActions.isEmpty)
       XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
       XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
+      XCTAssertFalse(self.hasOpenedSettingsApp)
     }
   }
 
@@ -42,15 +44,17 @@ extension MapViewModelTests {
     XCTAssert(self.dispatchedActions.isEmpty)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
+    XCTAssertFalse(self.hasOpenedSettingsApp)
 
     for (index, mode) in self.trackingModes.enumerated() {
-      self.viewModel.didChangeTrackingMode(to: mode)
+      self.viewModel.viewDidChangeTrackingMode(to: mode)
 
       XCTAssertEqual(self.dispatchedActions.count, index + 1)
       XCTAssert(self.isRequestWhenInUseAuthorizationAction(at: index))
 
       XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
       XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
+      XCTAssertFalse(self.hasOpenedSettingsApp)
     }
 
     // Dispatch action only, do not call manager
@@ -67,14 +71,21 @@ extension MapViewModelTests {
     XCTAssert(self.dispatchedActions.isEmpty)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
+    XCTAssertFalse(self.hasOpenedSettingsApp)
 
     for mode in self.trackingModes {
-      self.viewModel.didChangeTrackingMode(to: mode)
+      self.viewModel.viewDidChangeTrackingMode(to: mode)
 
       XCTAssertTrue(self.isShowingDeniedLocationAuthorizationAlert)
+      XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
+      XCTAssertFalse(self.hasOpenedSettingsApp)
       self.isShowingDeniedLocationAuthorizationAlert = false // Reset
 
+      self.viewModel.viewDidRequestOpenSettingsApp()
+      XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
       XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
+      XCTAssertTrue(self.hasOpenedSettingsApp)
+      self.hasOpenedSettingsApp = false // Reset
     }
 
     // No actions, just alert
@@ -90,13 +101,14 @@ extension MapViewModelTests {
     XCTAssert(self.dispatchedActions.isEmpty)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
+    XCTAssertFalse(self.hasOpenedSettingsApp)
 
     for mode in self.trackingModes {
-      self.viewModel.didChangeTrackingMode(to: mode)
+      self.viewModel.viewDidChangeTrackingMode(to: mode)
 
       XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
-
       XCTAssertTrue(self.isShowingGloballyDeniedLocationAuthorizationAlert)
+      XCTAssertFalse(self.hasOpenedSettingsApp)
       self.isShowingGloballyDeniedLocationAuthorizationAlert = false // Reset
     }
 
