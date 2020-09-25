@@ -10,6 +10,7 @@ private typealias Localization = Localizable.Settings
 extension SettingsCard {
 
   internal func initLayout() {
+    self.view.tintColor = ColorScheme.tint
     self.view.backgroundColor = ColorScheme.background
     self.initHeader()
     self.initTableView()
@@ -40,7 +41,8 @@ extension SettingsCard {
 
   private func initTitleLabel(text: String,
                               attributes: TextAttributes) {
-    self.titleLabel.attributedText = NSAttributedString(string: text, attributes: attributes)
+    self.titleLabel.attributedText = NSAttributedString(string: text,
+                                                        attributes: attributes)
     self.titleLabel.adjustsFontForContentSizeCategory = true
   }
 

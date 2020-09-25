@@ -40,7 +40,7 @@ public final class SettingsCardViewModel: StoreSubscriber {
 
   // MARK: - Init
 
-  public init(store: Store<AppState>, delegate: SettingsCardViewModelDelegate) {
+  public init(store: Store<AppState>, delegate: SettingsCardViewModelDelegate?) {
     self.store = store
     self.delegate = delegate
   }
