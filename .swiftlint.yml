@@ -21,6 +21,7 @@ disabled_rules:
   - colon # align properties
   - comma # align func params
   - type_body_length # we are using 'file_length' rule
+  - implicit_return # we have too much code written without it
 
 # This may seem like a lot, but basically I like to write some code
 # and then enable all of the optional rules that do not break the project.
