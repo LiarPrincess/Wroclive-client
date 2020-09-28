@@ -13,18 +13,17 @@ import WrocliveFramework
 // swiftlint:disable implicitly_unwrapped_optional
 // swiftlint:disable discouraged_optional_collection
 
-// TODO: Remove Overcast from Configuration.init (+ on server)
-private let appId = "888422857"
+private let appId = "1533532240"
 
 private let configuration = Configuration(
   apiUrl: "https://wroclive.app/api",
-  githubUrl: "https://github.com/apple/swift",
+  githubUrl: "https://github.com/LiarPrincess/Wroclive-client",
   privacyPolicyUrl: "https://wroclive.app/privacy",
   reportErrorRecipient: "mail@wroclive.app",
 
   appStore: .init(
-    url: "https://itunes.apple.com/us/app/overcast/id\(appId)?mt=8",
-    writeReview: "itms-apps://itunes.apple.com/us/app/id\(appId)?action=write-review&mt=8"
+    url: "https://itunes.apple.com/app/id\(appId)",
+    writeReview: "https://itunes.apple.com/app/id\(appId)?action=write-review"
   ),
 
   timing: .init(
