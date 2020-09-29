@@ -48,8 +48,10 @@ public class Environment {
                      bundle: self.bundle,
                      device: self.device,
                      log: self.log)
+    #if DEBUG
     case .offline:
       self.api = OfflineApi(log: self.log)
+    #endif
     }
   }
 
