@@ -53,8 +53,6 @@ public final class SettingsMapTypeCell: UITableViewCell {
                                     action: #selector(self.selectedIndexChanged),
                                     for: .valueChanged)
 
-    self.contentView.translatesAutoresizingMaskIntoConstraints = false
-
     self.contentView.addSubview(self.segmentedControl)
     self.segmentedControl.snp.makeConstraints { make in
       // We need to set 'priority', otherwise we would get 'Encapsulated-Layout-Height'
