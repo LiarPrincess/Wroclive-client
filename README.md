@@ -25,7 +25,7 @@ With Wroclive you will never miss your bus!
 
   - [Design](Design/Images) - all of the button/toolbar images. Use `.svg` files to edit and then export to pdf ([Boxy SVG](https://boxy-svg.com) is an amazing tool for this).
 
-  - [AppStore images](Design/AppStore\ images) - AppStore screenshots (before and after framing). Requires [fastlane](https://fastlane.tools).
+  - [AppStore images](Design/AppStore%20images) - AppStore screenshots (before and after framing). Requires [fastlane](https://fastlane.tools).
 
 - [Wroclive](Wroclive) - iOS app. This dir contains only `AppDelegate.swift` and application icon, everything else is in `WrocliveFramework`.
 
@@ -45,7 +45,7 @@ With Wroclive you will never miss your bus!
 
   - [Helpers](WrocliveFramework/Helpers) - code that did not fit anywhere else.
 
-    - [Card panel](WrocliveFramework/Helpers/Card\ panel) - card is a container view controller that pops from the bottom of the screen. Most of our views (for example: lines, bookmarks and settings) are presented in cards.
+    - [Card panel](WrocliveFramework/Helpers/Card%20panel) - card is a container view controller that pops from the bottom of the screen. Most of our views (for example: lines, bookmarks and settings) are presented in cards.
 
     - [MapUpdateScheduler.swift](WrocliveFramework/Helpers/MapUpdateScheduler.swift) - every 5 seconds it will dispatch `ApiMiddlewareActions.requestVehicleLocations` to update vehicle loctions on the map.
 
@@ -57,17 +57,17 @@ With Wroclive you will never miss your bus!
 
   - [Theme](WrocliveFramework/Theme) - color scheme, fonts and text attributes.
 
-  - [View controllers](WrocliveFramework/View\ controllers) - basically our views. We use `ViewModels` for testability. We also prefer [SnapKit](https://github.com/SnapKit/SnapKit) over storyboards.
+  - [View controllers](WrocliveFramework/View%20controllers) - basically our views. We use `ViewModels` for testability. We also prefer [SnapKit](https://github.com/SnapKit/SnapKit) over storyboards.
 
-    - [Main](WrocliveFramework/View\ controllers/Main) - main view, basically `MapViewController` + toolbar.
+    - [Main](WrocliveFramework/View%20controllers/Main) - main view, basically `MapViewController` + toolbar.
 
-    - [Map](WrocliveFramework/View\ controllers/Map) - view controller responsible for map (duh…), nested in `MainViewController`.
+    - [Map](WrocliveFramework/View%20controllers/Map) - view controller responsible for map (duh…), nested in `MainViewController`.
 
-    - [Bookmarks card](WrocliveFramework/View\ controllers/Bookmarks\ card) - view controller to manage bookmarks (heart icon on main toolbar)
+    - [Bookmarks card](WrocliveFramework/View%20controllers/Bookmarks%20card) - view controller to manage bookmarks (heart icon on main toolbar)
 
-    - [Search card](WrocliveFramework/View\ controllers/Search\ card) - view controller to select lines and create bookmarks (yes, the name is bad, but it is too much work to change it now).
+    - [Search card](WrocliveFramework/View%20controllers/Search%20card) - view controller to select lines and create bookmarks (yes, the name is bad, but it is too much work to change it now).
 
-    - [Settings card](WrocliveFramework/View\ controllers/Settings\ card) - app settings
+    - [Settings card](WrocliveFramework/View%20controllers/Settings%20card) - app settings
 
 - [WrocliveTests](WrocliveTests) - unit/snapshot tests
 
