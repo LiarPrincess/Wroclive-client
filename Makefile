@@ -6,7 +6,7 @@
 
 gen:
 	echo "Generating SwiftGen files"
-	swiftgen config run --config "./swiftgen.yml"
+	swiftgen config run --config "./.swiftgen.yml"
 
 # -----------------
 # -- Lint/format --
