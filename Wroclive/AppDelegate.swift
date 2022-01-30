@@ -66,7 +66,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
-    self.logSimulatorDocumentsDirectory()
+    self.logDocumentsDirectoryIfRunningInSimulator()
 
     os_log("Initializing redux store", log: self.log, type: .debug)
     self.store = self.createStore()
@@ -75,7 +75,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     self.storeUpdater = self.dispatchStoreUpdatesFromAppleFrameworks()
 
     // 'os_log' is inside the function
-    self.overrideLocaleIfPossible(.pl)
+    self.overrideLocaleIfInDebugMode(.pl)
 
     os_log("Setting up theme", log: self.log, type: .debug)
     ColorScheme.initialize()
@@ -103,7 +103,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     return Environment(apiMode: apiMode, configuration: configuration)
   }
 
-  private func logSimulatorDocumentsDirectory() {
+  private func logDocumentsDirectoryIfRunningInSimulator() {
     #if targetEnvironment(simulator)
     let documentDir = self.environment.storage.documentsDirectory.path
     os_log(
@@ -164,7 +164,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // MARK: - UI
 
-  private func overrideLocaleIfPossible(_ value: Localizable.Locale) {
+  private func overrideLocaleIfInDebugMode(_ value: Localizable.Locale) {
     #if DEBUG
     let description = String(describing: value)
     os_log("Setting locale: %{public}@", log: self.log, type: .debug, description)

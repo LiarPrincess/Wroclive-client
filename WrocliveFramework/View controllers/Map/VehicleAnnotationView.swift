@@ -29,7 +29,7 @@ public final class VehicleAnnotationView: MKAnnotationView {
     self.updateLabel()
   }
 
-  // swiftlint:disable:next unavailable_function
+  @available(*, unavailable)
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -100,7 +100,7 @@ private class RoundedRectangleWithArrow: UIView {
     self.backgroundColor = UIColor.clear
   }
 
-  // swiftlint:disable:next unavailable_function
+  @available(*, unavailable)
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

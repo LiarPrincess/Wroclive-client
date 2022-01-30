@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct DummyApiError: Error { }
+struct DummyApiError: Error {}
 
 // See: https://developer.apple.com/videos/play/wwdc2018/417/
 final class MockUrlProtocol: URLProtocol {

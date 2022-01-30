@@ -46,7 +46,7 @@ public final class SettingsCardFooterView: UIView {
     }
   }
 
-  // swiftlint:disable:next unavailable_function
+  @available(*, unavailable)
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

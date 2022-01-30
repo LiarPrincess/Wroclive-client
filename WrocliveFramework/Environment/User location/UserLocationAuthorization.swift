@@ -41,7 +41,9 @@ public enum UserLocationAuthorization {
     switch self {
     case .notDetermined:
       return true
-    case .authorized, .restricted, .denied:
+    case .authorized,
+         .restricted,
+         .denied:
       return false
     }
   }
@@ -50,7 +52,9 @@ public enum UserLocationAuthorization {
     switch self {
     case .authorized:
       return true
-    case .notDetermined, .restricted, .denied:
+    case .notDetermined,
+         .restricted,
+         .denied:
       return false
     }
   }

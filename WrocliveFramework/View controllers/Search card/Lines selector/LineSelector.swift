@@ -50,7 +50,7 @@ public final class LineSelector: UIPageViewController,
     viewModel.setView(view: self)
   }
 
-  // swiftlint:disable:next unavailable_function
+  @available(*, unavailable)
   public required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

@@ -52,7 +52,7 @@ internal final class LineTypeSegmentedControl: UIView {
     }
   }
 
-  // swiftlint:disable:next unavailable_function
+  @available(*, unavailable)
   internal required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

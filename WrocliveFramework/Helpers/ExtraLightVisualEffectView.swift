@@ -14,7 +14,7 @@ public final class ExtraLightVisualEffectView: UIVisualEffectView {
     self.traitCollectionDidChange(nil)
   }
 
-  // swiftlint:disable:next unavailable_function
+  @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

@@ -31,7 +31,7 @@ public final class BookmarksCell: UITableViewCell {
     self.initLayout()
   }
 
-  // swiftlint:disable:next unavailable_function
+  @available(*, unavailable)
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
