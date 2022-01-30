@@ -4,10 +4,10 @@
 
 import UIKit
 
-public final class LineSelector:
-  UIPageViewController,
-  UIPageViewControllerDataSource, UIPageViewControllerDelegate,
-  LineSelectorViewType {
+public final class LineSelector: UIPageViewController,
+                                 UIPageViewControllerDataSource,
+                                 UIPageViewControllerDelegate,
+                                 LineSelectorViewType {
 
   public typealias Page = SearchCardState.Page
 

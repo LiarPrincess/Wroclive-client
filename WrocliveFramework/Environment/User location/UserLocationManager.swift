@@ -11,8 +11,9 @@ extension Notification.Name {
     Notification.Name("didChangeUserLocationAuthorization")
 }
 
-public class UserLocationManager:
-  NSObject, UserLocationManagerType, CLLocationManagerDelegate {
+public class UserLocationManager: NSObject,
+                                  UserLocationManagerType,
+                                  CLLocationManagerDelegate {
 
   private lazy var locationManager: CLLocationManager = {
     let manager = CLLocationManager()

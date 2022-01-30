@@ -4,13 +4,14 @@
 // If a copy of the MPL was not distributed with this file,
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
-// swiftlint:disable nesting
-// swiftlint:disable vertical_whitespace
 // swiftlint:disable explicit_type_interface
 // swiftlint:disable identifier_name
-// swiftlint:disable type_body_length
 // swiftlint:disable line_length
+// swiftlint:disable nesting
+// swiftlint:disable nslocalizedstring_key
 // swiftlint:disable trailing_newline
+// swiftlint:disable type_body_length
+// swiftlint:disable vertical_whitespace
 
 import Foundation
 
@@ -192,7 +193,7 @@ public enum Localizable {
       enum Programming {
         /// Application
         static var header: String { Localizable.tr("Localizable", "Settings.Table.Programming.Header") }
-        /// Report error
+        /// Support and feedback
         static var reportError: String { Localizable.tr("Localizable", "Settings.Table.Programming.ReportError") }
         /// Show code
         static var showCode: String { Localizable.tr("Localizable", "Settings.Table.Programming.ShowCode") }

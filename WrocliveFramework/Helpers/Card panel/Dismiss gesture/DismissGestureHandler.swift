@@ -97,7 +97,7 @@ internal class DismissGestureHandler {
   // MARK: - Card panel events
 
   // In case of scroll view we don't really know if touch was first or not
-  private var hasStartedDismiss: Bool = false
+  private var hasStartedDismiss = false
 
   internal func notifyInteractiveDismissalWillBegin() {
     if !self.hasStartedDismiss {

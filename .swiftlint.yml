@@ -16,115 +16,236 @@ file_length:
   warning: 300
   error:   350
 
-disabled_rules:
-  - identifier_name # annoying
-  - colon # align properties
-  - comma # align func params
-  - type_body_length # we are using 'file_length' rule
-  - implicit_return # we have too much code written without it
+# We will list all of the SwiftLint rules deciding on a case-by-case basis
+# whether we want to enable them or not.
+# Otherwise if some contributor has newer version of SwiftLint installed they
+# my be flooded with errors from rules that Violet was not checked against.
+only_rules:
 
-# This may seem like a lot, but basically I like to write some code
-# and then enable all of the optional rules that do not break the project.
-opt_in_rules:
+  # =============
+  # === Rules ===
+  # =============
+
+  # Here we are listing all of the non-optional rules.
+  # If some rule should be disabled then the line should be commented.
+
+  - block_based_kvo
+  - class_delegate_protocol
+  - closing_brace
+  - closure_parameter_position
+  - colon
+  # - comma # Sometimes we align func params
+  - comment_spacing
+  - compiler_protocol_init
+  - computed_accessors_order
+  - control_statement
+  - custom_rules
+  - cyclomatic_complexity
+  - deployment_target
+  - discouraged_direct_init
+  - duplicate_enum_cases
+  - duplicate_imports
+  - dynamic_inline
+  - empty_enum_arguments
+  - empty_parameters
+  - empty_parentheses_with_trailing_closure
+  - file_length
+  - for_where
+  - force_cast
+  - force_try
+  - function_body_length
+  - function_parameter_count
+  - generic_type_name
+  # - identifier_name # Annoying
+  - implicit_getter
+  - inclusive_language
+  - inert_defer
+  - is_disjoint
+  - large_tuple
+  - leading_whitespace
+  - legacy_cggeometry_functions
+  - legacy_constant
+  - legacy_constructor
+  - legacy_hashing
+  - legacy_nsgeometry_functions
+  - line_length
+  - mark
+  - multiple_closures_with_trailing_closure
+  - nesting
+  - no_fallthrough_only
+  - no_space_in_method_call
+  - notification_center_detachment
+  - nsobject_prefer_isequal
+  - opening_brace
+  - operator_whitespace
+  - orphaned_doc_comment
+  - private_over_fileprivate
+  - private_unit_test
+  - protocol_property_accessors_order
+  - reduce_boolean
+  - redundant_discardable_let
+  - redundant_objc_attribute
+  - redundant_optional_initialization
+  - redundant_set_access_control
+  - redundant_string_enum_value
+  - redundant_void_return
+  - return_arrow_whitespace
+  - shorthand_operator
+  - statement_position
+  - superfluous_disable_command
+  - switch_case_alignment
+  - syntactic_sugar
+  - todo
+  - trailing_comma
+  - trailing_newline
+  - trailing_semicolon
+  - trailing_whitespace
+  # - type_body_length # We are using 'file_length' rule
+  - type_name
+  - unneeded_break_in_switch
+  - unused_capture_list
+  # - unused_closure_parameter # Annoying with 'ReSwift' middlewares
+  - unused_control_flow_label
+  - unused_enumerated
+  - unused_optional_binding
+  - unused_setter_value
+  - valid_ibinspectable
+  - vertical_parameter_alignment
+  - vertical_whitespace
+  - void_return
+  - weak_delegate
+  - xctfail_message
+
+  # ==============================
+  # === Enabled optional rules ===
+  # ==============================
+
+  # This may seem like a lot, but basically we enable all of the optional rules
+  # that do not break existing code.
+
+  - anyobject_protocol
   - array_init
   - attributes
-  - closure_end_indentation
-  - contains_over_first_not_nil
-  - empty_count
-  - explicit_init
-  - fatal_error_message
-  - first_where
-  - implicit_return
-  - implicitly_unwrapped_optional
-  - joined_default_parameter
-  - literal_expression_end_indentation
-  - multiline_parameters
-  - nimble_operator
-  - number_separator
-  - overridden_super_call
-  - pattern_matching_keywords
-  - private_outlet
-  - prohibited_super_call
-  - quick_discouraged_call
-  - redundant_nil_coalescing
-  - single_test_class
-  - unneeded_parentheses_in_closure_argument
-  - vertical_parameter_alignment_on_call
-  - anyobject_protocol
   - closure_body_length
+  - closure_end_indentation
   - closure_spacing
   - collection_alignment
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
   - convenience_type
-  - explicit_self
+  - discouraged_assert
   - discouraged_object_literal
   - discouraged_optional_boolean
   - discouraged_optional_collection
+  - empty_collection_literal
+  - empty_count
   - empty_string
   - empty_xctest_method
+  - enum_case_associated_values_count
+  - explicit_init
+  - explicit_self
   - fallthrough
+  - fatal_error_message
   - file_header
+  - first_where
+  - flatmap_over_map_reduce
   - force_unwrapping
   - function_default_parameter_at_end
   - identical_operands
+  - implicitly_unwrapped_optional
+  - joined_default_parameter
+  - last_where
+  - legacy_multiple
+  - legacy_objc_type
   - legacy_random
+  - let_var_whitespace
+  - literal_expression_end_indentation
   - lower_acl_than_parent
+  - modifier_order
   - multiline_arguments
   - multiline_function_chains
   - multiline_literal_brackets
+  - multiline_parameters
+  - nimble_operator
+  - no_extension_access_modifier
+  - number_separator
   - object_literal
+  - operator_usage_whitespace
+  - optional_enum_case_matching
+  - overridden_super_call
   - override_in_extension
+  - pattern_matching_keywords
+  - prefer_self_type_over_type_of_self
+  - prefer_zero_over_explicit_init
   - private_action
+  - private_outlet
   - prohibited_interface_builder
+  - prohibited_super_call
+  - quick_discouraged_call
   - quick_discouraged_focused_test
   - quick_discouraged_pending_test
+  - reduce_into
+  - redundant_nil_coalescing
   - redundant_type_annotation
   - required_enum_case
+  - single_test_class
   - sorted_first_last
   - static_operator
   - toggle_bool
   - trailing_closure
   - unavailable_function
-  - vertical_whitespace_closing_braces
-  - yoda_condition
-  - no_extension_access_modifier
-  - contains_over_filter_count
-  - contains_over_filter_is_empty
-  - empty_collection_literal
-  - last_where
-  - legacy_multiple
-  - modifier_order
-  - reduce_into
-  - unused_import
+  - unneeded_parentheses_in_closure_argument
+  - unowned_variable_capture
+  - untyped_error_in_catch
   - unused_declaration
+  - unused_import
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace_closing_braces
+  - xct_specific_matcher
+  - yoda_condition
 
-  # Maybe later:
+  # ===================
+  # === Maybe later ===
+  # ===================
+
   # - missing_docs
 
-  # Following optional rules are disabled:
-  # - explicit_enum_raw_value
-  # - strict_fileprivate # this one does not work properly?
+  # ===============================
+  # === Disabled optional rules ===
+  # ===============================
+
+  # - balanced_xctest_lifecycle # This does not make sense for us
+  # - conditional_returns_on_newline # Very often we do 'if X { return Y }'
+  - discarded_notification_center_observer
+  # - expiring_todo # just use TODO, we do not have deadlines
   # - explicit_acl # we don't need acl in tests
-  # - explicit_top_level_acl # this one requires us to put acl before 'extension XXX'
-  # - conditional_returns_on_newline
-  # - explicit_type_interface # this is weird
+  # - explicit_enum_raw_value # 'String' enums do not need explicit value
+  # - explicit_top_level_acl # This one requires us to put acl before 'extension XXX'
+  # - explicit_type_interface # This is weird
   # - extension_access_modifier
-  # - file_name # we heavily use extensions for single type
-  # - file_types_order # declare helper type near usage
-  # - let_var_whitespace # weird, but does not trigger
-  # - multiline_arguments_brackets
-  # - multiline_parameters_brackets
+  # - file_name # We heavily use extensions for single type
+  # - file_name_no_space # We have tons of those
+  # - file_types_order # Declare helper type near usage
+  # - ibinspectable_in_extension # Only for iOS
+  # - implicit_return # Cool for properties, not cool for functions
+  # - indentation_width # Breaks when we have arguments/parameters in multiple lines
+  # - multiline_arguments_brackets # We sometimes put '(' at the same line as call
+  # - multiline_parameters_brackets # We sometimes put '(' at the same line as 'func' declaration
   # - no_grouping_extension
-  # - nslocalizedstring_key # is is not iOS
-  # - nslocalizedstring_require_bundle # is is not iOS
-  # - strong_iboutlet  # is is not iOS
-  # - operator_usage_whitespace # sometimes we align stuff
+  - nslocalizedstring_key # only for iOS
+  - nslocalizedstring_require_bundle # only for iOS
+  # - prefer_nimble # We are using 'XCTAssert'
   # - prefixed_toplevel_constant
+  - private_subject # We do not use 'Combine'
+  # - raw_value_for_camel_cased_codable_enum
   # - required_deinit
   # - sorted_imports
+  # - strict_fileprivate # This one does not work properly?
+  - strong_iboutlet  # Only for iOS
   # - switch_case_on_newline
+  # - test_case_accessibility # We sometimes create class hierarchy
   # - type_contents_order
-  # - unowned_variable_capture
-  # - untyped_error_in_catch
   # - vertical_whitespace_between_cases
   # - vertical_whitespace_opening_braces
-  # - xct_specific_matcher

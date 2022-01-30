@@ -29,9 +29,9 @@ internal enum AppStoreScreenshots {
 // MARK: - 1. MainViewController
 
 // 1. Add this override:
-//override public var prefersStatusBarHidden: Bool {
-//  return true
-//}
+// override public var prefersStatusBarHidden: Bool {
+//   return true
+// }
 
 extension AppStoreScreenshots {
 

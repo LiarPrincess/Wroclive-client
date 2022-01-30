@@ -5,7 +5,6 @@
 import UIKit
 import PromiseKit
 
-// swiftlint:disable nesting
 // swiftlint:disable type_name
 
 // This has to be class because we will be using '@objc'.

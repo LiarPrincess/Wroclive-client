@@ -4,9 +4,9 @@
 
 import UIKit
 
-public final class BookmarksCard:
-  UIViewController, UITableViewDataSource, UITableViewDelegate,
-  BookmarksCardViewType, CardPresentable {
+public final class BookmarksCard: UIViewController,
+                                  UITableViewDataSource, UITableViewDelegate,
+                                  BookmarksCardViewType, CardPresentable {
 
   // MARK: - Properties
 

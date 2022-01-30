@@ -9,8 +9,8 @@ import SnapKit
 private typealias Pin = MapViewController.Constants.Pin
 private typealias Defaults = MapViewController.Constants.Default
 
-public final class MapViewController:
-  UIViewController, MKMapViewDelegate, MapViewType {
+public final class MapViewController: UIViewController,
+                                      MKMapViewDelegate, MapViewType {
 
   // MARK: - Properties
 

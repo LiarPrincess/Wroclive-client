@@ -9,11 +9,11 @@ private typealias HeaderConstants = LineSelector.Constants.Header
 private typealias CellConstants = LineSelector.Constants.Cell
 private typealias Localization = Localizable.Search
 
-internal final class LineSelectorPage:
-  UIViewController,
-  UICollectionViewDelegate, UICollectionViewDataSource,
-  UICollectionViewDelegateFlowLayout,
-  LineSelectorPageType {
+internal final class LineSelectorPage: UIViewController,
+                                       UICollectionViewDelegate,
+                                       UICollectionViewDataSource,
+                                       UICollectionViewDelegateFlowLayout,
+                                       LineSelectorPageType {
 
   // MARK: - Properties
 

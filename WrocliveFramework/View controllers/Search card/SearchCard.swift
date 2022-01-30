@@ -100,7 +100,7 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPresent
   // MARK: - Alerts
 
   public func showBookmarkNameInputAlert() {
-    // swiftlint:disable:next nesting type_name
+    // swiftlint:disable:next type_name
     typealias L = Localizable.Alert.Bookmark.NameInput
 
     let result = AlertCreator.showTextInput(
@@ -133,7 +133,7 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPresent
   }
 
   public func showBookmarkNoLineSelectedAlert() {
-    // swiftlint:disable:next nesting type_name
+    // swiftlint:disable:next type_name
     typealias L = Localizable.Alert.Bookmark.NoLinesSelected
 
     _ = AlertCreator.show(

@@ -12,8 +12,11 @@ import PromiseKit
 
 private typealias Defaults = MapViewController.Constants.Default
 
-class MapViewModelTests:
-  XCTestCase, ReduxTestCase, EnvironmentTestCase, MapViewType, MapViewModelDelegate {
+class MapViewModelTests: XCTestCase,
+                         ReduxTestCase,
+                         EnvironmentTestCase,
+                         MapViewType,
+                         MapViewModelDelegate {
 
   var store: Store<AppState>!
   var dispatchedActions: [Action]!

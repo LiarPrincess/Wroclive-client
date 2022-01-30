@@ -7,9 +7,9 @@ import SafariServices
 
 private typealias Localization = Localizable.Settings
 
-public final class SettingsCard:
-  UIViewController, UITableViewDataSource, UITableViewDelegate,
-  SettingsCardViewType, CardPresentable {
+public final class SettingsCard: UIViewController,
+                                 UITableViewDataSource, UITableViewDelegate,
+                                 SettingsCardViewType, CardPresentable {
 
   // MARK: - Properties
 
@@ -138,7 +138,7 @@ public final class SettingsCard:
 
   public func tableView(_ tableView: UITableView,
                         heightForHeaderInSection sectionIndex: Int) -> CGFloat {
-    // swiftlint:disable:next nesting type_name
+    // swiftlint:disable:next type_name
     typealias C = Constants.SectionHeader
 
     guard let section = self.viewModel.getSection(at: sectionIndex) else {
