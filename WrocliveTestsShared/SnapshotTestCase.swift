@@ -9,23 +9,23 @@ import WrocliveFramework
 // MARK: - Settings
 
 /// Devices for which we will create snapshots
-private let devices: [SnapshotDevice] = [.iPhoneSE, .iPhone8, .iPhoneX]
+private let devices: [Device] = [.iPhoneSE, .iPhone8, .iPhoneX]
 
 /// Locales for which we will create snapshots
 private let locales: [Localizable.Locale] = [.en, .pl]
 
-public struct SnapshotDevice {
+private struct Device {
 
-  public let name: String
-  public let config: ViewImageConfig
+  fileprivate let name: String
+  fileprivate let config: ViewImageConfig
 
-  public static let iPhoneSE = SnapshotDevice(name: "iPhoneSE", config: .iPhoneSe)
-  public static let iPhone8 = SnapshotDevice(name: "iPhone8", config: .iPhone8)
-  public static let iPhone8Plus = SnapshotDevice(name: "iPhone8 Plus", config: .iPhone8Plus)
-  public static let iPhoneX = SnapshotDevice(name: "iPhoneX", config: .iPhoneX)
+  fileprivate static let iPhoneSE = Device(name: "iPhoneSE", config: .iPhoneSe)
+  fileprivate static let iPhone8 = Device(name: "iPhone8", config: .iPhone8)
+  fileprivate static let iPhone8Plus = Device(name: "iPhone8 Plus", config: .iPhone8Plus)
+  fileprivate static let iPhoneX = Device(name: "iPhoneX", config: .iPhoneX)
   // Well… technically there is no X max, but it is easier to type than XS max.
-  public static let iPhoneXMax = SnapshotDevice(name: "iPhoneX Max", config: .iPhoneXsMax)
-  public static let iPhoneXr = SnapshotDevice(name: "iPhoneXr", config: .iPhoneXr)
+  fileprivate static let iPhoneXMax = Device(name: "iPhoneX Max", config: .iPhoneXsMax)
+  fileprivate static let iPhoneXr = Device(name: "iPhoneXr", config: .iPhoneXr)
 
   private init(name: String, config: ViewImageConfig) {
     self.name = name
@@ -65,8 +65,9 @@ extension SnapshotTestCase {
       line: line
     )
 
-    guard let message = failure else { return }
-    XCTFail(message, file: file, line: line)
+    if let message = failure {
+      XCTFail(message, file: file, line: line)
+    }
   }
 
   private func getSnapshotDirectory(swiftFilePath: StaticString) -> URL {
@@ -151,7 +152,7 @@ extension SnapshotTestCase {
     Localizable.setLocale(.pl)
 
     // We will only test 'iPhoneX', just to check if it works.
-    let device = SnapshotDevice.iPhoneX
+    let device = Device.iPhoneX
     let traits = UITraitCollection(userInterfaceStyle: .dark)
 
     var counter = 1
