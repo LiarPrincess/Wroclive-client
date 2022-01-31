@@ -4,14 +4,12 @@
 
 import XCTest
 import ReSwift
-import SnapshotTesting
 import WrocliveTestsShared
 @testable import WrocliveFramework
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-class SearchCardSnapshots: XCTestCase,
-  ReduxTestCase, EnvironmentTestCase, SnapshotTestCase {
+class SearchCardSnapshots: XCTestCase, ReduxTestCase, EnvironmentTestCase, SnapshotTestCase {
 
   var store: Store<AppState>!
   var dispatchedActions: [Action]!

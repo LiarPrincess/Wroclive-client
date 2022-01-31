@@ -6,7 +6,13 @@ import XCTest
 import SnapshotTesting
 import WrocliveFramework
 
-// MARK: - Device
+// MARK: - Settings
+
+/// Devices for which we will create snapshots
+private let devices: [SnapshotDevice] = [.iPhoneSE, .iPhone8, .iPhoneX]
+
+/// Locales for which we will create snapshots
+private let locales: [Localizable.Locale] = [.en, .pl]
 
 public struct SnapshotDevice {
 
@@ -27,21 +33,6 @@ public struct SnapshotDevice {
   }
 }
 
-/// Devices for which we will create snapshots
-private let devices: [SnapshotDevice] = [.iPhoneSE, .iPhone8, .iPhoneX]
-
-// MARK: - Locales
-
-/// Locales for which we will create snapshots
-private let locales: [Localizable.Locale] = [.en, .pl]
-
-// MARK: - Directory
-
-/// Directory that will hold all of the snapshots
-private let rootSnapshotDirectory = URL(fileURLWithPath: #file, isDirectory: false)
-  .deletingLastPathComponent()
-  .appendingPathComponent("__Snapshots__")
-
 // MARK: - SnapshotTestCase
 
 public protocol SnapshotTestCase {}
@@ -60,9 +51,7 @@ extension SnapshotTestCase {
     testName: String = #function,
     line: UInt = #line
   ) {
-    let fileUrl = URL(fileURLWithPath: "\(file)", isDirectory: false)
-    let fileName = fileUrl.deletingPathExtension().lastPathComponent
-    let snapshotDirectory = rootSnapshotDirectory.appendingPathComponent(fileName)
+    let snapshotDirectory = getSnapshotDirectory(swiftFilePath: file)
 
     let failure = verifySnapshot(
       matching: try value(),
@@ -78,6 +67,24 @@ extension SnapshotTestCase {
 
     guard let message = failure else { return }
     XCTFail(message, file: file, line: line)
+  }
+
+  private func getSnapshotDirectory(swiftFilePath: StaticString) -> URL {
+    let swiftFile = URL(fileURLWithPath: String(describing: swiftFilePath),
+                        isDirectory: false)
+
+    // '__Snapshots__' dir is located in the same dir as Swift file.
+    let swiftFileDir = swiftFile.deletingLastPathComponent()
+    let __snapshots__Dir = swiftFileDir.appendingPathComponent("__Snapshots__")
+
+    let fm = FileManager.default
+    if !fm.fileExists(atPath: __snapshots__Dir.path) {
+      fatalError("Unable to find '__Snapshots__': \(__snapshots__Dir)")
+    }
+
+    // Final path is '__Snapshots__/SWIFT_FILE_NAME'.
+    let swiftFileName = swiftFile.deletingPathExtension().lastPathComponent
+    return __snapshots__Dir.appendingPathComponent(swiftFileName)
   }
 
   // MARK: - On all devices in all locales

@@ -6,7 +6,6 @@ import MapKit
 import XCTest
 import ReSwift
 import SnapKit
-import SnapshotTesting
 import WrocliveTestsShared
 @testable import WrocliveFramework
 
