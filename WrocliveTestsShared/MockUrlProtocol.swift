@@ -4,24 +4,26 @@
 
 import Foundation
 
-struct DummyApiError: Error {}
+public struct DummyApiError: Error {
+  public init() { }
+}
 
 // See: https://developer.apple.com/videos/play/wwdc2018/417/
-final class MockUrlProtocol: URLProtocol {
+public final class MockUrlProtocol: URLProtocol {
 
-  typealias RequestHandler = (URLRequest) throws -> (HTTPURLResponse, Data)
+  public typealias RequestHandler = (URLRequest) throws -> (HTTPURLResponse, Data)
 
-  static var requestHandler: RequestHandler?
+  public static var requestHandler: RequestHandler?
 
-  override class func canInit(with request: URLRequest) -> Bool {
+  public override class func canInit(with request: URLRequest) -> Bool {
     return true
   }
 
-  override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+  public override class func canonicalRequest(for request: URLRequest) -> URLRequest {
     return request
   }
 
-  override func startLoading() {
+  public override func startLoading() {
     guard let handler = Self.requestHandler else {
       fatalError("Received unexpected request with no handler set")
     }
@@ -36,5 +38,5 @@ final class MockUrlProtocol: URLProtocol {
     }
   }
 
-  override func stopLoading() {}
+  public override func stopLoading() {}
 }

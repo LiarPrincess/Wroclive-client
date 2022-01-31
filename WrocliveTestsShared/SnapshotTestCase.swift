@@ -8,18 +8,18 @@ import WrocliveFramework
 
 // MARK: - Device
 
-struct SnapshotDevice {
+public struct SnapshotDevice {
 
-  let name: String
-  let config: ViewImageConfig
+  public let name: String
+  public let config: ViewImageConfig
 
-  static let iPhoneSE = SnapshotDevice(name: "iPhoneSE", config: .iPhoneSe)
-  static let iPhone8 = SnapshotDevice(name: "iPhone8", config: .iPhone8)
-  static let iPhone8Plus = SnapshotDevice(name: "iPhone8 Plus", config: .iPhone8Plus)
-  static let iPhoneX = SnapshotDevice(name: "iPhoneX", config: .iPhoneX)
+  public static let iPhoneSE = SnapshotDevice(name: "iPhoneSE", config: .iPhoneSe)
+  public static let iPhone8 = SnapshotDevice(name: "iPhone8", config: .iPhone8)
+  public static let iPhone8Plus = SnapshotDevice(name: "iPhone8 Plus", config: .iPhone8Plus)
+  public static let iPhoneX = SnapshotDevice(name: "iPhoneX", config: .iPhoneX)
   // Well… technically there is no X max, but it is easier to type than XS max.
-  static let iPhoneXMax = SnapshotDevice(name: "iPhoneX Max", config: .iPhoneXsMax)
-  static let iPhoneXr = SnapshotDevice(name: "iPhoneXr", config: .iPhoneXr)
+  public static let iPhoneXMax = SnapshotDevice(name: "iPhoneX Max", config: .iPhoneXsMax)
+  public static let iPhoneXr = SnapshotDevice(name: "iPhoneXr", config: .iPhoneXr)
 
   private init(name: String, config: ViewImageConfig) {
     self.name = name
@@ -44,13 +44,13 @@ private let rootSnapshotDirectory = URL(fileURLWithPath: #file, isDirectory: fal
 
 // MARK: - SnapshotTestCase
 
-protocol SnapshotTestCase {}
+public protocol SnapshotTestCase {}
 
 extension SnapshotTestCase {
 
   // MARK: - Assert snapshot
 
-  func assertSnapshot<Value, Format>(
+  public func assertSnapshot<Value, Format>(
     matching value: @autoclosure () throws -> Value,
     as snapshotting: Snapshotting<Value, Format>,
     named name: String? = nil,
@@ -82,9 +82,9 @@ extension SnapshotTestCase {
 
   // MARK: - On all devices in all locales
 
-  typealias CreateSnapshots = (UIViewController, SnapshotErrorLocation) -> Void
+  public typealias CreateSnapshots = (UIViewController, SnapshotErrorLocation) -> Void
 
-  func onAllDevicesInAllLocales(fn: (CreateSnapshots) -> Void) {
+  public func onAllDevicesInAllLocales(fn: (CreateSnapshots) -> Void) {
     for locale in locales {
       Localizable.setLocale(locale)
 
@@ -113,7 +113,7 @@ extension SnapshotTestCase {
 
   // MARK: - On all devices
 
-  func onAllDevices(fn: (CreateSnapshots) -> Void) {
+  public func onAllDevices(fn: (CreateSnapshots) -> Void) {
     for device in devices {
       var counter = 1
 
@@ -138,7 +138,7 @@ extension SnapshotTestCase {
 
   // MARK: - Dark mode
 
-  func inDarkMode(fn: (CreateSnapshots) -> Void) {
+  public func inDarkMode(fn: (CreateSnapshots) -> Void) {
     // All dark mode screenshots should be in PL,
     // as this will be the most common language.
     Localizable.setLocale(.pl)
@@ -172,15 +172,15 @@ extension SnapshotTestCase {
 
 // We can't have default argument values in 'typealias CreateSnapshots',
 // so we have to do it in a different way.
-struct SnapshotErrorLocation {
+public struct SnapshotErrorLocation {
 
-  let file: StaticString
-  let function: String
-  let line: UInt
+  internal let file: StaticString
+  internal let function: String
+  internal let line: UInt
 
-  static func errorOnThisLine(file: StaticString = #file,
-                              function: String = #function,
-                              line: UInt = #line) -> SnapshotErrorLocation {
+  public static func errorOnThisLine(file: StaticString = #file,
+                                     function: String = #function,
+                                     line: UInt = #line) -> SnapshotErrorLocation {
     return SnapshotErrorLocation(file: file, function: function, line: line)
   }
 }

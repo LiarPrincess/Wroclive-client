@@ -8,41 +8,41 @@
 // swiftlint:disable implicitly_unwrapped_optional
 
 /// Test case that uses `Environment`.
-protocol EnvironmentTestCase: AnyObject {
+public protocol EnvironmentTestCase: AnyObject {
   var environment: Environment! { get set }
 }
 
 extension EnvironmentTestCase {
 
-  var apiMock: ApiMock {
+  public var apiMock: ApiMock {
     return self.environment.api as! ApiMock
   }
 
-  var bundleManager: BundleManagerMock {
+  public var bundleManager: BundleManagerMock {
     return self.environment.bundle as! BundleManagerMock
   }
 
-  var deviceManager: DeviceManagerMock {
+  public var deviceManager: DeviceManagerMock {
     return self.environment.device as! DeviceManagerMock
   }
 
-  var storageManager: StorageManagerMock {
+  public var storageManager: StorageManagerMock {
     return self.environment.storage as! StorageManagerMock
   }
 
-  var userDefaultsManager: UserDefaultsManagerMock {
+  public var userDefaultsManager: UserDefaultsManagerMock {
     return self.environment.userDefaults as! UserDefaultsManagerMock
   }
 
-  var userLocationManager: UserLocationManagerMock {
+  public var userLocationManager: UserLocationManagerMock {
     return self.environment.userLocation as! UserLocationManagerMock
   }
 
-  var configuration: Configuration {
+  public var configuration: Configuration {
     return self.environment.configuration
   }
 
-  func setUpEnvironment() {
+  public func setUpEnvironment() {
     let bundle = BundleManagerMock()
 
     let configuration = Configuration(
