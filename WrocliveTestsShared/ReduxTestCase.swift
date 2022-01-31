@@ -9,7 +9,7 @@ import ReSwift
 // swiftlint:disable implicitly_unwrapped_optional
 
 /// Test case that uses `ReSwift`.
-protocol ReduxTestCase: AnyObject {
+public protocol ReduxTestCase: AnyObject {
   var store: Store<AppState>! { get set }
   var dispatchedActions: [Action]! { get set }
 }
@@ -22,7 +22,7 @@ extension ReduxTestCase {
 
   // MARK: - Set up
 
-  func setUpRedux() {
+  public func setUpRedux() {
     let state = AppState(
       mapType: .default,
       userLocationAuthorization: .notDetermined,
@@ -35,7 +35,7 @@ extension ReduxTestCase {
     self.setUpRedux(state: state)
   }
 
-  func setUpRedux(state: AppState) {
+  public func setUpRedux(state: AppState) {
     self.dispatchedActions = []
 
     let reducer = self.reducer
@@ -74,13 +74,13 @@ extension ReduxTestCase {
 
   // MARK: - Set state
 
-  func setState(_ change: @escaping (inout AppState) -> Void) {
+  public func setState(_ change: @escaping (inout AppState) -> Void) {
     self.store.dispatch(TestActions.setState(change))
   }
 
   // MARK: - User location authorization actions
 
-  func getSetUserLocationAuthorizationAction(at index: Int) -> UserLocationAuthorization? {
+  public func getSetUserLocationAuthorizationAction(at index: Int) -> UserLocationAuthorization? {
     guard index < self.dispatchedActions.count else { return nil }
     switch self.dispatchedActions[index] {
     case let UserLocationAuthorizationAction.set(value): return value
@@ -88,7 +88,7 @@ extension ReduxTestCase {
     }
   }
 
-  func isRequestWhenInUseAuthorizationAction(at index: Int) -> Bool {
+  public func isRequestWhenInUseAuthorizationAction(at index: Int) -> Bool {
     guard index < self.dispatchedActions.count else { return false }
     switch self.dispatchedActions[index] {
     case UserLocationAuthorizationAction.requestWhenInUseAuthorization: return true
@@ -98,7 +98,7 @@ extension ReduxTestCase {
 
   // MARK: - Bookmark actions
 
-  func getAddBookmarkAction(at index: Int) -> (name: String, lines: [Line])? {
+  public func getAddBookmarkAction(at index: Int) -> (name: String, lines: [Line])? {
     guard index < self.dispatchedActions.count else { return nil }
     switch self.dispatchedActions[index] {
     case let BookmarksAction.add(name, lines): return (name, lines)
@@ -106,7 +106,7 @@ extension ReduxTestCase {
     }
   }
 
-  func getRemoveBookmarkAction(at index: Int) -> Int? {
+  public func getRemoveBookmarkAction(at index: Int) -> Int? {
     guard index < self.dispatchedActions.count else { return nil }
     switch self.dispatchedActions[index] {
     case let BookmarksAction.remove(value): return value
@@ -114,7 +114,7 @@ extension ReduxTestCase {
     }
   }
 
-  func getMoveBookmarkAction(at index: Int) -> (from: Int, to: Int)? {
+  public func getMoveBookmarkAction(at index: Int) -> (from: Int, to: Int)? {
     guard index < self.dispatchedActions.count else { return nil }
     switch self.dispatchedActions[index] {
     case let BookmarksAction.move(from, to): return (from, to)
@@ -125,7 +125,7 @@ extension ReduxTestCase {
   // MARK: - Tracked lines actions
 
   // swiftlint:disable:next discouraged_optional_collection
-  func getStartTrackingLinesAction(at index: Int) -> [Line]? {
+  public func getStartTrackingLinesAction(at index: Int) -> [Line]? {
     guard index < self.dispatchedActions.count else { return nil }
     switch self.dispatchedActions[index] {
     case let TrackedLinesAction.startTracking(lines): return lines
@@ -135,7 +135,7 @@ extension ReduxTestCase {
 
   // MARK: - Api response
 
-  func isRequestLinesAction(at index: Int) -> Bool {
+  public func isRequestLinesAction(at index: Int) -> Bool {
     guard index < self.dispatchedActions.count else { return false }
     switch self.dispatchedActions[index] {
     case ApiMiddlewareActions.requestLines: return true
@@ -143,7 +143,7 @@ extension ReduxTestCase {
     }
   }
 
-  func isRequestVehicleLocationsAction(at index: Int) -> Bool {
+  public func isRequestVehicleLocationsAction(at index: Int) -> Bool {
     guard index < self.dispatchedActions.count else { return false }
     switch self.dispatchedActions[index] {
     case ApiMiddlewareActions.requestVehicleLocations: return true

@@ -6,33 +6,33 @@ import Foundation
 import PromiseKit
 @testable import WrocliveFramework
 
-class ApiMock: ApiType {
+public class ApiMock: ApiType {
 
-  private(set) var getLinesCallCount = 0
-  private(set) var getVehicleLocationsCallCount = 0
-  private(set) var setNetworkActivityIndicatorVisibilityCallCount = 0
+  public private(set) var getLinesCallCount = 0
+  public private(set) var getVehicleLocationsCallCount = 0
+  public private(set) var setNetworkActivityIndicatorVisibilityCallCount = 0
 
   // MARK: - Lines
 
-  var lines = [Line]()
+  public var lines = [Line]()
 
-  func getLines() -> Promise<[Line]> {
+  public func getLines() -> Promise<[Line]> {
     self.getLinesCallCount += 1
     return .value(self.lines)
   }
 
   // MARK: - Vehicle locations
 
-  var vehicleLocations = [Vehicle]()
+  public var vehicleLocations = [Vehicle]()
 
-  func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
+  public func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
     self.getVehicleLocationsCallCount += 1
     return .value(self.vehicleLocations)
   }
 
   // MARK: - Network activity indicator visibility
 
-  func setNetworkActivityIndicatorVisibility(isVisible: Bool) {
+  public func setNetworkActivityIndicatorVisibility(isVisible: Bool) {
     self.setNetworkActivityIndicatorVisibilityCallCount += 1
   }
 }

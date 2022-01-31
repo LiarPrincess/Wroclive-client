@@ -5,10 +5,8 @@
 import Foundation
 @testable import WrocliveFramework
 
-class DebugManagerMock: DebugManagerType {
-
-  // swiftlint:disable:next unavailable_function
-  func clearNetworkCache() {
-    fatalError("DebugManagerMock.clearNetworkCache should not be called during tests")
-  }
+public class BundleManagerMock: BundleManagerType {
+  public var name = "BUNDLE_NAME"
+  public var version = "BUNDLE_VERSION"
+  public var identifier = "BUNDLE_IDENTIFIER"
 }

@@ -5,21 +5,21 @@
 import Foundation
 @testable import WrocliveFramework
 
-class UserDefaultsManagerMock: UserDefaultsManagerType {
+public class UserDefaultsManagerMock: UserDefaultsManagerType {
 
   // MARK: - Preferred map type
 
-  private(set) var getPreferredMapTypeCount = 0
-  private(set) var setPreferredMapTypeCount = 0
+  public private(set) var getPreferredMapTypeCount = 0
+  public private(set) var setPreferredMapTypeCount = 0
 
-  var preferredMapType: MapType?
+  public var preferredMapType: MapType?
 
-  func getPreferredMapType() -> MapType? {
+  public func getPreferredMapType() -> MapType? {
     self.getPreferredMapTypeCount += 1
     return self.preferredMapType
   }
 
-  func setPreferredMapType(mapType: MapType) {
+  public func setPreferredMapType(mapType: MapType) {
     self.setPreferredMapTypeCount += 1
     self.preferredMapType = mapType
   }

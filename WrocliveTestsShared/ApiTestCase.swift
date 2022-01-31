@@ -4,11 +4,11 @@
 
 @testable import WrocliveFramework
 
-protocol ApiTestCase {}
+public protocol ApiTestCase {}
 
 extension ApiTestCase {
 
-  func createApi(
+  public func createApi(
     baseUrl: String,
     requestHandler: @escaping MockUrlProtocol.RequestHandler
   ) -> Api {
