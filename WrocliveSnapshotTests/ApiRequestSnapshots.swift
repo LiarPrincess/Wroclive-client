@@ -5,6 +5,7 @@
 import XCTest
 import ReSwift
 import SnapshotTesting
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 private typealias Constants = CardContainer.Constants

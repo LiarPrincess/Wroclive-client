@@ -5,6 +5,7 @@
 import XCTest
 import ReSwift
 import SnapshotTesting
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 // swiftlint:disable trailing_closure
