@@ -7,6 +7,7 @@ import XCTest
 import ReSwift
 import SnapKit
 import SnapshotTesting
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 // swiftlint:disable implicitly_unwrapped_optional
