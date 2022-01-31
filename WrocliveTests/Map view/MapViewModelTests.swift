@@ -6,6 +6,7 @@ import XCTest
 import MapKit
 import ReSwift
 import PromiseKit
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 // swiftlint:disable implicitly_unwrapped_optional

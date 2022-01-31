@@ -4,13 +4,14 @@
 
 import XCTest
 import ReSwift
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 // swiftlint:disable force_unwrapping
 // swiftlint:disable closure_body_length
 // swiftlint:disable function_body_length
 
-class ApiLinesResponseTests: XCTestCase, SnapshotTestCase, ApiTestCase {
+class ApiLinesResponseTests: XCTestCase, ApiTestCase {
 
   func test_lines() {
     let response = """
