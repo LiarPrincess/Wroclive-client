@@ -5,14 +5,14 @@
 import MapKit
 import XCTest
 import ReSwift
+import SnapKit
 import SnapshotTesting
 @testable import WrocliveFramework
 
 // swiftlint:disable implicitly_unwrapped_optional
 // swiftformat:disable numberFormatting
 
-class MainSnapshots: XCTestCase,
-  ReduxTestCase, EnvironmentTestCase, SnapshotTestCase {
+class MainSnapshots: XCTestCase, ReduxTestCase, EnvironmentTestCase, SnapshotTestCase {
 
   var store: Store<AppState>!
   var dispatchedActions: [Action]!
@@ -35,7 +35,9 @@ class MainSnapshots: XCTestCase,
       let viewModel = MainViewModel(store: self.store,
                                     environment: self.environment,
                                     delegate: nil)
+
       let view = MainViewController(viewModel: viewModel)
+      self.renderPinsOnSeparateLayer(main: view)
 
       assertSnapshot(view, .errorOnThisLine())
     }
@@ -50,6 +52,7 @@ class MainSnapshots: XCTestCase,
       let viewModel = MainViewModel(store: self.store,
                                     environment: self.environment,
                                     delegate: nil)
+
       let view = MainViewController(viewModel: viewModel)
       self.renderPinsOnSeparateLayer(main: view)
 
@@ -66,6 +69,7 @@ class MainSnapshots: XCTestCase,
       let viewModel = MainViewModel(store: self.store,
                                     environment: self.environment,
                                     delegate: nil)
+
       let view = MainViewController(viewModel: viewModel)
       self.renderPinsOnSeparateLayer(main: view)
 
@@ -100,7 +104,7 @@ class MainSnapshots: XCTestCase,
     main.view.layoutIfNeeded()
 
     let mapView = main.map.mapView
-    let overlay = UIView()
+    let fakeMap = self.addFakeMapView(to: main)
 
     var annotations = mapView.annotations.compactMap { $0 as? VehicleAnnotation }
     annotations.sort { lhs, rhs in lhs.vehicleId < rhs.vehicleId }
@@ -113,11 +117,66 @@ class MainSnapshots: XCTestCase,
       let copy = VehicleAnnotationView(annotation: annotation, reuseIdentifier: nil)
       let origin = mapView.convert(annotation.coordinate, toPointTo: mapView)
       copy.frame = CGRect(origin: origin, size: pin.frame.size)
-      overlay.addSubview(copy)
+      fakeMap.addSubview(copy)
+    }
+  }
+
+  private func addFakeMapView(to main: MainViewController) -> UIView {
+    let view = UIView()
+
+    let backgroundColor = UIColor(light: #colorLiteral(red: 0.9761956334, green: 0.9593092799, blue: 0.9283472896, alpha: 1), dark: #colorLiteral(red: 0.1676809788, green: 0.1772463322, blue: 0.1819401383, alpha: 1))
+    view.backgroundColor = backgroundColor
+
+    addFakeMapGrid(main: main, map: view)
+    addFakeLegalLabel(main: main)
+
+    main.map.view.addSubview(view)
+    view.snp.makeConstraints { $0.edges.equalToSuperview() }
+
+    return view
+  }
+
+  private func addFakeMapGrid(main: MainViewController, map: UIView) {
+    let gridSize: CGFloat = 68
+    let path = UIBezierPath()
+    let frame = main.view.frame
+
+    var xPosition = gridSize / 2
+    while xPosition < frame.width {
+      path.move(to: CGPoint(x: xPosition, y: 0.0))
+      path.addLine(to: CGPoint(x: xPosition, y: frame.height))
+      xPosition += gridSize
     }
 
-    main.map.view.addSubview(overlay)
-    overlay.snp.makeConstraints { $0.edges.equalToSuperview() }
+    var yPosition = gridSize / 2
+    while yPosition < frame.height {
+      path.move(to: CGPoint(x: 0.0, y: yPosition))
+      path.addLine(to: CGPoint(x: frame.width, y: yPosition))
+      yPosition += gridSize
+    }
+
+    path.close()
+
+    let pathLayer = CAShapeLayer()
+    pathLayer.path = path.cgPath
+    pathLayer.strokeColor = UIColor.lightGray.withAlphaComponent(0.8).cgColor
+    map.layer.addSublayer(pathLayer)
+  }
+
+  private func addFakeLegalLabel(main: MainViewController) {
+    let label = UILabel()
+
+    label.attributedText = NSAttributedString(string: "Legal", attributes: [
+      NSAttributedString.Key.foregroundColor: UIColor.gray,
+      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 9.0, weight: .semibold),
+      NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue
+    ])
+
+    main.view.addSubview(label)
+    label.snp.makeConstraints { make in
+      make.bottom.equalTo(main.toolbar.snp.top).offset(-10.0)
+      make.right.equalToSuperview().offset(-12.0)
+    }
   }
 
   // MARK: - Test data
@@ -143,11 +202,16 @@ class MainSnapshots: XCTestCase,
     let line714 = Line(name: "714", type: .bus, subtype: .temporary)
 
     // Vehicle at default map center.
-    let apple = Line(name: "Apple", type: .bus, subtype: .regular)
-    let appleCar = Vehicle(id: "Apple", line: apple, latitude: 37.334599999999995, longitude: -122.00919999999999, angle: 0.0)
+    let centerLine = Line(name: "❤️", type: .bus, subtype: .suburban)
+    let center = Vehicle(id: "Center", line: centerLine, latitude: 51.109524, longitude: 17.032564, angle: 0.0)
+
+    // Vehicle at default Apple-specified map center.
+    let appleLine = Line(name: "🍎", type: .bus, subtype: .suburban)
+    let appleCenter = Vehicle(id: "Apple", line: appleLine, latitude: 37.334599999999995, longitude: -122.00919999999999, angle: 0.0)
 
     return [
-      appleCar,
+      center,
+      appleCenter,
       Vehicle(id: "0", line: line701, latitude: 51.11017, longitude: 17.063921, angle: -56.046990574206745),
       Vehicle(id: "1", line: line701, latitude: 51.10426, longitude: 17.084019, angle: -94.49158887734279),
       Vehicle(id: "10", line: lineA, latitude: 51.076538, longitude: 16.967363, angle: -79.58853631502052),
