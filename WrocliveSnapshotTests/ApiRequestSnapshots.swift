@@ -7,7 +7,7 @@ import ReSwift
 import WrocliveTestsShared
 @testable import WrocliveFramework
 
-private typealias Constants = CardContainer.Constants
+private struct WeOnlyNeedRequestNotResponse: Error { }
 
 class ApiRequestSnapshots: XCTestCase, SnapshotTestCase, ApiTestCase {
 
@@ -16,11 +16,11 @@ class ApiRequestSnapshots: XCTestCase, SnapshotTestCase, ApiTestCase {
   func test_lines() {
     let api = self.createApi(baseUrl: "API_URL") { request in
       self.assertSnapshot(matching: request, as: .raw)
-      throw DummyApiError()
+      throw WeOnlyNeedRequestNotResponse()
     }
 
     let expectation = XCTestExpectation(description: "response")
-    _ = api.getLines().catch { _ in
+    _ = api.getLines().ensure {
       expectation.fulfill()
     }
 
@@ -32,7 +32,7 @@ class ApiRequestSnapshots: XCTestCase, SnapshotTestCase, ApiTestCase {
   func test_vehicleLocations_1() {
     let api = self.createApi(baseUrl: "API_URL") { request in
       self.assertSnapshot(matching: request, as: .raw)
-      throw DummyApiError()
+      throw WeOnlyNeedRequestNotResponse()
     }
 
     let lines = [
@@ -41,7 +41,7 @@ class ApiRequestSnapshots: XCTestCase, SnapshotTestCase, ApiTestCase {
     ]
 
     let expectation = XCTestExpectation(description: "response")
-    _ = api.getVehicleLocations(for: lines).catch { _ in
+    _ = api.getVehicleLocations(for: lines).ensure {
       expectation.fulfill()
     }
 
@@ -51,7 +51,7 @@ class ApiRequestSnapshots: XCTestCase, SnapshotTestCase, ApiTestCase {
   func test_vehicleLocations_2() {
     let api = self.createApi(baseUrl: "API_URL") { request in
       self.assertSnapshot(matching: request, as: .raw)
-      throw DummyApiError()
+      throw WeOnlyNeedRequestNotResponse()
     }
 
     let lines = [
@@ -74,7 +74,7 @@ class ApiRequestSnapshots: XCTestCase, SnapshotTestCase, ApiTestCase {
     ]
 
     let expectation = XCTestExpectation(description: "response")
-    _ = api.getVehicleLocations(for: lines).catch { _ in
+    _ = api.getVehicleLocations(for: lines).ensure {
       expectation.fulfill()
     }
 
