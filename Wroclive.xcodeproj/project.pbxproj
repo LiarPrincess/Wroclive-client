@@ -782,8 +782,7 @@
 		9060E54D27A7F4FE00C6248C /* WrocliveTestsShared */ = {
 			isa = PBXGroup;
 			children = (
-				90F72F2C24E31A6400D20EB2 /* Mock - Api */,
-				90F72F1624E316BE00D20EB2 /* Mock - Environment */,
+				90F72F1624E316BE00D20EB2 /* Environment mocks */,
 				9060E54E27A7F4FE00C6248C /* WrocliveTestsShared.h */,
 				909B7BA4251399F200D8A8E0 /* MockUrlProtocol.swift */,
 				909B7BA625139B9700D8A8E0 /* ApiTestCase.swift */,
@@ -925,9 +924,10 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		90F72F1624E316BE00D20EB2 /* Mock - Environment */ = {
+		90F72F1624E316BE00D20EB2 /* Environment mocks */ = {
 			isa = PBXGroup;
 			children = (
+				90F72F2A24E31A4700D20EB2 /* ApiManagerMock.swift */,
 				90F72F1E24E316BE00D20EB2 /* BundleManagerMock.swift */,
 				90F72F1924E316BE00D20EB2 /* DebugManagerMock.swift */,
 				90F72F1724E316BE00D20EB2 /* DeviceManagerMock.swift */,
@@ -935,15 +935,7 @@
 				90F72F1D24E316BE00D20EB2 /* UserLocationManagerMock.swift */,
 				9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */,
 			);
-			path = "Mock - Environment";
-			sourceTree = "<group>";
-		};
-		90F72F2C24E31A6400D20EB2 /* Mock - Api */ = {
-			isa = PBXGroup;
-			children = (
-				90F72F2A24E31A4700D20EB2 /* ApiManagerMock.swift */,
-			);
-			path = "Mock - Api";
+			path = "Environment mocks";
 			sourceTree = "<group>";
 		};
 		90F72F3424E31D9600D20EB2 /* Bookmarks card */ = {
