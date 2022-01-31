@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import XCTest
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 // swiftlint:disable implicitly_unwrapped_optional

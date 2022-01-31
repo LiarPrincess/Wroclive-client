@@ -4,6 +4,7 @@
 
 import XCTest
 import ReSwift
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 // swiftlint:disable force_unwrapping
@@ -11,7 +12,7 @@ import ReSwift
 // swiftlint:disable line_length
 // swiftlint:disable function_body_length
 
-class ApiVehicleLocationsResponseTests: XCTestCase, SnapshotTestCase, ApiTestCase {
+class ApiVehicleLocationsResponseTests: XCTestCase, ApiTestCase {
 
   // MARK: - Single line
 
