@@ -6,6 +6,26 @@ import UIKit
 import SnapKit
 import CoreGraphics
 
+// MARK: - UIColor
+
+extension UIColor {
+
+  public convenience init(light: UIColor, dark: UIColor) {
+    if #available(iOS 13.0, *) {
+      self.init { traitCollection in
+        switch traitCollection.userInterfaceStyle {
+        case .light,
+             .unspecified: return light
+        case .dark: return dark
+        @unknown default: return light
+        }
+      }
+    } else {
+      self.init(cgColor: light.cgColor)
+    }
+  }
+}
+
 // MARK: - CGFloat + Radian
 
 extension CGFloat {
