@@ -4,7 +4,6 @@
 
 import XCTest
 import ReSwift
-import SnapshotTesting
 import WrocliveTestsShared
 @testable import WrocliveFramework
 
