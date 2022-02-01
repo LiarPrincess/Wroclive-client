@@ -6,32 +6,6 @@ import Foundation
 import Alamofire
 import PromiseKit
 
-// MARK: - NetworkType
-
-public protocol NetworkType {
-
-  /// Send network request.
-  func request(url: URLConvertible,
-               method: HTTPMethod,
-               parameters: Parameters?,
-               encoding: ParameterEncoding,
-               headers: HTTPHeaders?) -> Promise<Data>
-
-  /// Determine the status of a system's current network configuration and the
-  /// reachability of a target host.
-  ///
-  /// A remote host is considered reachable when a data packet, sent by an
-  /// application into the network stack, can leave the local device.
-  /// Reachability does not guarantee that the data packet will actually be
-  /// received by the host.
-  func getReachabilityStatus() -> ReachabilityStatus
-
-  /// Show/hide network activity indicator (little circle in the upper left corner).
-  func setNetworkActivityIndicatorVisibility(isVisible: Bool)
-}
-
-// MARK: - Network
-
 public final class Network: NetworkType {
 
   private let session: Session
