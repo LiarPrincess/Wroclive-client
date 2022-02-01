@@ -74,8 +74,12 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     os_log("Adding observers for Apple frameworks", log: self.log, type: .debug)
     self.storeUpdater = self.dispatchStoreUpdatesFromAppleFrameworks()
 
-    // 'os_log' is inside the function
-    self.overrideLocaleIfInDebugMode(.pl)
+#if DEBUG
+    let debugLocale = Localizable.Locale.pl
+    let debugLocaleString = String(describing: debugLocale)
+    os_log("Setting locale: %{public}@", log: self.log, type: .debug, debugLocaleString)
+    Localizable.setLocale(debugLocale)
+#endif
 
     os_log("Setting up theme", log: self.log, type: .debug)
     ColorScheme.initialize()
@@ -104,7 +108,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func logDocumentsDirectoryIfRunningInSimulator() {
-    #if targetEnvironment(simulator)
+#if targetEnvironment(simulator)
     let documentDir = self.environment.storage.documentsDirectory.path
     os_log(
       "Simulator documents directory: %{public}@",
@@ -112,7 +116,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
       type: .debug,
       documentDir
     )
-    #endif
+#endif
   }
 
   // MARK: - Redux
@@ -163,14 +167,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   // MARK: - UI
-
-  private func overrideLocaleIfInDebugMode(_ value: Localizable.Locale) {
-    #if DEBUG
-    let description = String(describing: value)
-    os_log("Setting locale: %{public}@", log: self.log, type: .debug, description)
-    Localizable.setLocale(value)
-    #endif
-  }
 
   private func startMapUpdates() -> MapUpdateScheduler {
     return MapUpdateScheduler(
