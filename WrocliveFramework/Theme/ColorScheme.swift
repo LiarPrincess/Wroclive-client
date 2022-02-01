@@ -6,7 +6,7 @@ import UIKit
 import MapKit
 
 // swiftlint:disable object_literal
-// swiftlint:disable discouraged_object_literal
+// swiftlint:disable
 // swiftformat:disable numberFormatting
 
 public enum ColorScheme {
@@ -15,7 +15,7 @@ public enum ColorScheme {
 
   public static let tint = #colorLiteral(red: 0.9490196078, green: 0.1411764706, blue: 0.1411764706, alpha: 1)
 
-  public static let tram = #colorLiteral(red: 0.2784313725, green: 0.5019607843, blue: 0.8, alpha: 1)
+  public static let tram = UIColor(light: #colorLiteral(red: 0.2784313725, green: 0.5019607843, blue: 0.8, alpha: 1), dark: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1))
   public static let busRegular = #colorLiteral(red: 0.8, green: 0.1215686275, blue: 0.1215686275, alpha: 1)
   public static let busNight = #colorLiteral(red: 0.6078431373, green: 0.1607843137, blue: 0.7137254902, alpha: 1)
   public static let busExpress = #colorLiteral(red: 0.968627451, green: 0.7607843137, blue: 0.2431372549, alpha: 1)
