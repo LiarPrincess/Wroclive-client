@@ -13,6 +13,8 @@
 // swiftlint:disable closure_body_length
 // swiftlint:disable file_length
 
+#if DEBUG
+
 import MapKit
 
 private enum CurrentScreenshot {
@@ -337,3 +339,5 @@ extension AppStoreScreenshots {
     ]
   }()
 }
+
+#endif
