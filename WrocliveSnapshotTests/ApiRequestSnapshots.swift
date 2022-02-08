@@ -15,7 +15,7 @@ class ApiRequestSnapshots: XCTestCase, SnapshotTestCase, ApiTestCase {
 
   func test_lines() {
     let api = self.createApi(baseUrl: "API_URL") { request in
-      self.assertSnapshot(matching: request, as: .raw)
+      self.assertSnapshot(matching: request, as: .request(pretty: true))
       throw WeOnlyNeedRequestNotResponse()
     }
 
@@ -31,7 +31,7 @@ class ApiRequestSnapshots: XCTestCase, SnapshotTestCase, ApiTestCase {
 
   func test_vehicleLocations_1() {
     let api = self.createApi(baseUrl: "API_URL") { request in
-      self.assertSnapshot(matching: request, as: .raw)
+      self.assertSnapshot(matching: request, as: .request(pretty: true))
       throw WeOnlyNeedRequestNotResponse()
     }
 
@@ -50,7 +50,7 @@ class ApiRequestSnapshots: XCTestCase, SnapshotTestCase, ApiTestCase {
 
   func test_vehicleLocations_2() {
     let api = self.createApi(baseUrl: "API_URL") { request in
-      self.assertSnapshot(matching: request, as: .raw)
+      self.assertSnapshot(matching: request, as: .request(pretty: true))
       throw WeOnlyNeedRequestNotResponse()
     }
 
