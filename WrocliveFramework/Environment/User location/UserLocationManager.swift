@@ -42,6 +42,7 @@ public class UserLocationManager: NSObject,
         throw UserLocationError.permissionDenied
       }
     }
+    .ensureOnMain()
   }
 
   public func getAuthorizationStatus() -> UserLocationAuthorization {

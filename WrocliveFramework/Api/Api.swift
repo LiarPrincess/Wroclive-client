@@ -86,6 +86,7 @@ public final class Api: ApiType {
       .recover { error -> Promise<E.ResponseData> in
         throw self.toApiError(error: error)
       }
+      .ensureOnMain()
   }
 
   private func toApiError(error: Error) -> ApiError {
