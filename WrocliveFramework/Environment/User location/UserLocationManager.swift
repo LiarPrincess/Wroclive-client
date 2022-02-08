@@ -33,7 +33,8 @@ public class UserLocationManager: NSObject,
 
       let authorization = self.getAuthorizationStatus()
       switch authorization {
-      case .authorized:
+      case .authorized,
+           .unknownValue:
         throw UserLocationError.otherError
       case .notDetermined:
         throw UserLocationError.permissionNotDetermined

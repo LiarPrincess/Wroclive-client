@@ -60,7 +60,8 @@ public final class MapViewModel: StoreSubscriber {
     }
 
     switch authorization {
-    case .authorized:
+    case .authorized,
+         .unknownValue:
       break
     case .notDetermined:
       let action = UserLocationAuthorizationAction.requestWhenInUseAuthorization
@@ -79,11 +80,10 @@ public final class MapViewModel: StoreSubscriber {
   // MARK: - Store subscriber
 
   public func newState(state: AppState) {
-    defer { self.currentState = state }
-
     self.updateMapType(newState: state)
     self.centerMapIfNeeded(newState: state)
     self.updateVehicleLocationsIfNeeded(newState: state)
+    self.currentState = state
   }
 
   // MARK: - Map type
@@ -105,18 +105,52 @@ public final class MapViewModel: StoreSubscriber {
   private func centerMapIfNeeded(newState: AppState) {
     let new = newState.userLocationAuthorization
 
+    // Is this the 1st update?
     guard let previousState = self.currentState else {
-      if new.isAuthorized {
+      switch new {
+      case .authorized,
+           .unknownValue:
         self.centerMapOnUserLocation(animated: false)
+
+      case .notDetermined,
+           .restricted,
+           .denied:
+        break
       }
 
       return
     }
 
     let old = previousState.userLocationAuthorization
+    let wasNotDetermined = self.isNotDeterminedOrUnknown(authorization: old)
+    let isAuthorized = self.isAuthorizedOrUnknownValue(authorization: new)
 
-    if old.isNotDetermined && new.isAuthorized {
+    if wasNotDetermined && isAuthorized {
       self.centerMapOnUserLocation(animated: true)
+    }
+  }
+
+  private func isNotDeterminedOrUnknown(authorization: UserLocationAuthorization) -> Bool {
+    switch authorization {
+    case .notDetermined,
+         .unknownValue:
+      return true
+    case .authorized,
+         .restricted,
+         .denied:
+      return false
+    }
+  }
+
+  private func isAuthorizedOrUnknownValue(authorization: UserLocationAuthorization) -> Bool {
+    switch authorization {
+    case .authorized,
+         .unknownValue:
+      return true
+    case .notDetermined,
+         .restricted,
+         .denied:
+      return false
     }
   }
 

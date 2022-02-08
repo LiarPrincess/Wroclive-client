@@ -180,18 +180,26 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   public func applicationDidBecomeActive(_ application: UIApplication) {
     os_log("applicationDidBecomeActive(_:)", log: self.log, type: .info)
     self.updateScheduler.start()
-    self.askForUserLocationAuthorizationIfNotDetermined()
+    self.askForUserLocationAuthorization()
   }
 
-  private func askForUserLocationAuthorizationIfNotDetermined() {
+  private func askForUserLocationAuthorization() {
     let delay = self.environment.configuration.timing.locationAuthorizationPromptDelay
 
     after(seconds: delay).done { _ in
-      let authorization = self.store.state.userLocationAuthorization
-      if authorization.isNotDetermined {
+      let authorization = self.environment.userLocation.getAuthorizationStatus()
+      switch authorization {
+      case .notDetermined,
+           .unknownValue:
         os_log("Asking for user location authorization", log: self.log, type: .info)
         let action = UserLocationAuthorizationAction.requestWhenInUseAuthorization
         self.store.dispatch(action)
+
+      case .authorized,
+           .restricted,
+           .denied:
+        // Already determined, nothing to do here.
+        break
       }
     }
   }

@@ -19,6 +19,8 @@ public enum UserLocationAuthorization {
   ///
   /// This case merges `authorizedAlways` and `authorizedWhenInUse`.
   case authorized
+  /// Value added in new iOS version.
+  case unknownValue
 
   public init(status: CLAuthorizationStatus) {
     switch status {
@@ -32,30 +34,7 @@ public enum UserLocationAuthorization {
     case .restricted:
       self = .restricted
     @unknown default:
-      // Not sure what to do, we will just assume best case.
-      self = .authorized
-    }
-  }
-
-  public var isNotDetermined: Bool {
-    switch self {
-    case .notDetermined:
-      return true
-    case .authorized,
-         .restricted,
-         .denied:
-      return false
-    }
-  }
-
-  public var isAuthorized: Bool {
-    switch self {
-    case .authorized:
-      return true
-    case .notDetermined,
-         .restricted,
-         .denied:
-      return false
+      self = .unknownValue
     }
   }
 }
