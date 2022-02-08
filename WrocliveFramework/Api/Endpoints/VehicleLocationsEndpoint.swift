@@ -10,7 +10,7 @@ internal struct VehicleLocationsEndpoint: Endpoint {
   internal typealias ParameterData = [Line]
   internal typealias ResponseData = [Vehicle]
 
-  internal var url: URLConvertible
+  internal let url: URLConvertible
   internal let method = HTTPMethod.get
   internal let parameterEncoding: ParameterEncoding = URLEncoding.queryString
   internal let headers = HTTPHeaders(accept: .json, acceptEncoding: .compressed)

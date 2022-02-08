@@ -51,6 +51,11 @@ public final class OfflineApi: ApiType {
       .then { _ in Promise.value(vehicles) }
   }
 
+  public func sendNotificationToken(deviceId: UUID, token: String) -> Promise<()> {
+    os_log("[offline] Sending 'notification-token' request", log: self.log, type: .debug)
+    return Promise.value()
+  }
+
   public func setNetworkActivityIndicatorVisibility(isVisible: Bool) {}
 }
 

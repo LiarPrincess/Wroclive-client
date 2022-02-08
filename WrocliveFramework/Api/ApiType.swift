@@ -12,6 +12,9 @@ public protocol ApiType {
   /// Get current vehicle locations for selected lines
   func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]>
 
+  /// Send token, so that our server can send push notifications to this device.
+  func sendNotificationToken(deviceId: UUID, token: String) -> Promise<()>
+
   /// Show/hide network activity indicator (little circle in the upper left corner).
   func setNetworkActivityIndicatorVisibility(isVisible: Bool)
 }

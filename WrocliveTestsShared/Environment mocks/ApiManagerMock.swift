@@ -10,6 +10,7 @@ public class ApiMock: ApiType {
 
   public private(set) var getLinesCallCount = 0
   public private(set) var getVehicleLocationsCallCount = 0
+  public private(set) var sendNotificationTokenCallCount = 0
   public private(set) var setNetworkActivityIndicatorVisibilityCallCount = 0
 
   // MARK: - Lines
@@ -28,6 +29,13 @@ public class ApiMock: ApiType {
   public func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]> {
     self.getVehicleLocationsCallCount += 1
     return .value(self.vehicleLocations)
+  }
+
+  // MARK: - Notification token
+
+  public func sendNotificationToken(deviceId: UUID, token: String) -> Promise<()> {
+    self.sendNotificationTokenCallCount += 1
+    return Promise.value()
   }
 
   // MARK: - Network activity indicator visibility
