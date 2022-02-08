@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-public class Environment {
+public final class Environment {
 
   public let api: ApiType
   public let bundle: BundleManagerType
@@ -12,6 +12,7 @@ public class Environment {
   public let storage: StorageManagerType
   public let userDefaults: UserDefaultsManagerType
   public let userLocation: UserLocationManagerType
+  public let notification: NotificationManagerType
   public let configuration: Configuration
 
   public enum ApiMode {
@@ -33,6 +34,7 @@ public class Environment {
     self.log = LogManager(bundle: self.bundle)
     self.userDefaults = UserDefaultsManager()
     self.userLocation = UserLocationManager()
+    self.notification = NotificationManager(log: self.log)
     self.configuration = configuration
 
     let fs = FileSystem()
@@ -63,6 +65,7 @@ public class Environment {
               storage: StorageManagerType,
               userDefaults: UserDefaultsManagerType,
               userLocation: UserLocationManagerType,
+              notification: NotificationManagerType,
               configuration: Configuration) {
     self.api = api
     self.bundle = bundle
@@ -72,6 +75,7 @@ public class Environment {
     self.storage = storage
     self.userDefaults = userDefaults
     self.userLocation = userLocation
+    self.notification = notification
     self.configuration = configuration
   }
 }

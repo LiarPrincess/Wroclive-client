@@ -38,6 +38,10 @@ extension EnvironmentTestCase {
     return self.environment.userLocation as! UserLocationManagerMock
   }
 
+  public var notificationManager: NotificationManagerMock {
+    return self.environment.notification as! NotificationManagerMock
+  }
+
   public var configuration: Configuration {
     return self.environment.configuration
   }
@@ -55,8 +59,9 @@ extension EnvironmentTestCase {
         writeReview: "appStore-writeReview"
       ),
       timing: .init(
-        vehicleLocationUpdateInterval: TimeInterval(3.0),
-        locationAuthorizationPromptDelay: TimeInterval(5.0)
+        vehicleLocationUpdateInterval: TimeInterval(5.0),
+        locationAuthorizationPromptDelay: TimeInterval(2.0),
+        notificationAuthorizationPromptDelay: TimeInterval(4.0)
       )
     )
 
@@ -69,6 +74,7 @@ extension EnvironmentTestCase {
       storage: StorageManagerMock(),
       userDefaults: UserDefaultsManagerMock(),
       userLocation: UserLocationManagerMock(),
+      notification: NotificationManagerMock(),
       configuration: configuration
     )
   }

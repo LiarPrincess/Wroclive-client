@@ -7,6 +7,7 @@ import UIKit
 import MapKit
 import ReSwift
 import PromiseKit
+import UserNotifications
 import WrocliveFramework
 
 // swiftlint:disable force_unwrapping
@@ -28,14 +29,16 @@ private let configuration = Configuration(
 
   timing: .init(
     vehicleLocationUpdateInterval: 5.0,
-    locationAuthorizationPromptDelay: 2.0
+    locationAuthorizationPromptDelay: 2.0,
+    notificationAuthorizationPromptDelay: 4.0
   )
 )
 
 @UIApplicationMain
 public final class AppDelegate: UIResponder,
                                 UIApplicationDelegate,
-                                UserLocationManagerDelegate {
+                                UserLocationManagerDelegate,
+                                NotificationCenterDelegate {
 
   public var window: UIWindow?
 
@@ -65,15 +68,24 @@ public final class AppDelegate: UIResponder,
     self.environment = self.createEnvironment(apiMode: .online)
 //    self.environment = self.createEnvironment(apiMode: .offline)
 
-    // Respond to dynamic updates from environment managers.
-    self.environment.userLocation.delegate = self
-
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
     self.logDocumentsDirectoryIfRunningInSimulator()
 
     os_log("Initializing redux store", log: self.log, type: .debug)
     self.store = self.createStore()
+
+    os_log("Creating (but not starting!) map update scheduler", log: self.log, type: .debug)
+    self.updateScheduler = MapUpdateScheduler(
+      store: self.store,
+      environment: self.environment
+    )
+
+    os_log("Setting environment delegates", log: self.log, type: .debug)
+    self.environment.userLocation.delegate = self
+
+    os_log("Attempting to register for remote notifications", log: self.log, type: .debug)
+    self.environment.notification.registerForRemoteNotifications(delegate: self)
 
 #if DEBUG
     let debugLocale = Localizable.Locale.pl
@@ -91,9 +103,6 @@ public final class AppDelegate: UIResponder,
                                       store: self.store,
                                       environment: self.environment)
     self.coordinator!.start()
-
-    os_log("Creating (but not starting!) map update scheduler", log: self.log, type: .debug)
-    self.updateScheduler = self.startMapUpdates()
 
     os_log("application(_:didFinishLaunchingWithOptions:) - finished", log: self.log, type: .debug)
     return true
@@ -158,21 +167,13 @@ public final class AppDelegate: UIResponder,
     return []
   }
 
-  // MARK: - UI
-
-  private func startMapUpdates() -> MapUpdateScheduler {
-    return MapUpdateScheduler(
-      store: self.store,
-      environment: self.environment
-    )
-  }
-
   // MARK: - Did become active
 
   public func applicationDidBecomeActive(_ application: UIApplication) {
     os_log("applicationDidBecomeActive(_:)", log: self.log, type: .info)
     self.updateScheduler.start()
     self.askForUserLocationAuthorization()
+    self.askForNotificationAuthorization()
   }
 
   private func askForUserLocationAuthorization() {
@@ -195,6 +196,14 @@ public final class AppDelegate: UIResponder,
     }
   }
 
+  private func askForNotificationAuthorization() {
+    let delay = self.environment.configuration.timing.notificationAuthorizationPromptDelay
+    after(seconds: delay).done { _ in
+      os_log("Asking for notification authorization", log: self.log, type: .info)
+      _ = self.environment.notification.requestAuthorization()
+    }
+  }
+
   // MARK: - Will resign active
 
   public func applicationWillResignActive(_ application: UIApplication) {
@@ -213,5 +222,31 @@ public final class AppDelegate: UIResponder,
 
     let action = UserLocationAuthorizationAction.set(status)
     self.store.dispatch(action)
+  }
+
+  // MARK: - NotificationCenterDelegate
+
+  public func registerForRemoteNotifications() {
+    UIApplication.shared.registerForRemoteNotifications()
+  }
+
+  public func application(
+    _ application: UIApplication,
+    didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+  ) {
+    os_log("application(_:didRegisterForRemoteNotificationsWithDeviceToken:)",
+           log: self.log,
+           type: .info)
+    self.environment.notification.didRegisterForRemoteNotifications(deviceToken: deviceToken)
+  }
+
+  public func application(
+    _ application: UIApplication,
+    didFailToRegisterForRemoteNotificationsWithError error: Error
+  ) {
+    os_log("application(_:didFailToRegisterForRemoteNotificationsWithError:)",
+           log: self.log,
+           type: .info)
+    self.environment.notification.didFailToRegisterForRemoteNotifications(error: error)
   }
 }

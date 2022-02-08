@@ -11,6 +11,7 @@ public protocol LogManagerType {
   var mapUpdate: OSLog { get }
   var storage: OSLog { get }
   var api: OSLog { get }
+  var notification: OSLog { get }
 }
 
 public struct LogManager: LogManagerType {
@@ -20,6 +21,7 @@ public struct LogManager: LogManagerType {
   public let mapUpdate: OSLog
   public let storage: OSLog
   public let api: OSLog
+  public let notification: OSLog
 
   public init(bundle: BundleManagerType) {
     func createLog(category: String) -> OSLog {
@@ -31,5 +33,6 @@ public struct LogManager: LogManagerType {
     self.mapUpdate = createLog(category: "map-update")
     self.storage = createLog(category: "storage")
     self.api = createLog(category: "api")
+    self.notification = createLog(category: "notification")
   }
 }

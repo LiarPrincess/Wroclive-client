@@ -130,7 +130,11 @@
 		909B7BA3251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */; };
 		909B7BA92513A3A600D8A8E0 /* ApiLinesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */; };
 		909EF1B527A921E9000F4BAB /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EF1B427A921E9000F4BAB /* NetworkType.swift */; };
+		909F3A7927B1787A002D37C5 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A7827B1787A002D37C5 /* NotificationManager.swift */; };
+		909F3A7B27B17888002D37C5 /* NotificationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A7A27B17888002D37C5 /* NotificationManagerType.swift */; };
+		909F3A7D27B186E0002D37C5 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A7C27B186E0002D37C5 /* NotificationSettings.swift */; };
 		909F3A8127B19C54002D37C5 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A8027B19C54002D37C5 /* Promise.swift */; };
+		909F3A8327B27A57002D37C5 /* NotificationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A8227B27A56002D37C5 /* NotificationManagerMock.swift */; };
 		90A6262424FAB415005F5C31 /* LineSelectorTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */; };
 		90C5BAEE2514CB1900D41508 /* AppStoreScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */; };
 		90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */; };
@@ -347,7 +351,13 @@
 		909B7BA625139B9700D8A8E0 /* ApiTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTestCase.swift; sourceTree = "<group>"; };
 		909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLinesResponseTests.swift; sourceTree = "<group>"; };
 		909EF1B427A921E9000F4BAB /* NetworkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkType.swift; sourceTree = "<group>"; };
+		909F3A7827B1787A002D37C5 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		909F3A7A27B17888002D37C5 /* NotificationManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerType.swift; sourceTree = "<group>"; };
+		909F3A7C27B186E0002D37C5 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		909F3A7E27B18E7F002D37C5 /* Wroclive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wroclive.entitlements; sourceTree = "<group>"; };
+		909F3A7F27B1914A002D37C5 /* WrocliveRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WrocliveRelease.entitlements; sourceTree = "<group>"; };
 		909F3A8027B19C54002D37C5 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		909F3A8227B27A56002D37C5 /* NotificationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerMock.swift; sourceTree = "<group>"; };
 		90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorTestData.swift; sourceTree = "<group>"; };
 		90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshots.swift; sourceTree = "<group>"; };
 		90C7938E2510CC3C00279CF9 /* CardSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSnapshots.swift; sourceTree = "<group>"; };
@@ -671,6 +681,8 @@
 		9052380924D459E500E4F8A7 /* Wroclive */ = {
 			isa = PBXGroup;
 			children = (
+				909F3A7F27B1914A002D37C5 /* WrocliveRelease.entitlements */,
+				909F3A7E27B18E7F002D37C5 /* Wroclive.entitlements */,
 				9052383124D45E9A00E4F8A7 /* Assets.xcassets */,
 				9052380A24D459E500E4F8A7 /* AppDelegate.swift */,
 				9052383924D4645300E4F8A7 /* LaunchScreen.storyboard */,
@@ -738,6 +750,7 @@
 			children = (
 				905893C324D4A95D0046EFA5 /* Storage */,
 				90DE39F824D8786700ADE4B9 /* User location */,
+				909F3A7727B1783D002D37C5 /* Notifications */,
 				905893C024D4A95D0046EFA5 /* BundleManager.swift */,
 				905893BF24D4A95D0046EFA5 /* DebugManager.swift */,
 				905893C124D4A95D0046EFA5 /* DeviceManager.swift */,
@@ -804,6 +817,16 @@
 				900DCC1C24E7FEF7004F000D /* ReachabilityStatus.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		909F3A7727B1783D002D37C5 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				909F3A7A27B17888002D37C5 /* NotificationManagerType.swift */,
+				909F3A7827B1787A002D37C5 /* NotificationManager.swift */,
+				909F3A7C27B186E0002D37C5 /* NotificationSettings.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		90A5FA6A24D588DA00EC24D6 /* Extensions */ = {
@@ -947,6 +970,7 @@
 				90F72F1C24E316BE00D20EB2 /* StorageManagerMock.swift */,
 				90F72F1D24E316BE00D20EB2 /* UserLocationManagerMock.swift */,
 				9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */,
+				909F3A8227B27A56002D37C5 /* NotificationManagerMock.swift */,
 			);
 			path = "Environment mocks";
 			sourceTree = "<group>";
@@ -1264,6 +1288,8 @@
 				9013FB4124D72C790006D1B9 /* MapViewModel.swift in Sources */,
 				90D57B0324DC490100A0EF53 /* LineSelector.swift in Sources */,
 				90CE742224D9BB7800419166 /* BookmarksCell.swift in Sources */,
+				909F3A7D27B186E0002D37C5 /* NotificationSettings.swift in Sources */,
+				909F3A7B27B17888002D37C5 /* NotificationManagerType.swift in Sources */,
 				9013FAB624D6B1890006D1B9 /* CardPresenter.swift in Sources */,
 				90CE741624D9BB7800419166 /* BookmarksCardViewModel.swift in Sources */,
 				900EA10B24D46F140054C03F /* LinesEndpoint.swift in Sources */,
@@ -1344,6 +1370,7 @@
 				9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */,
 				9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */,
 				9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */,
+				909F3A7927B1787A002D37C5 /* NotificationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1413,6 +1440,7 @@
 				9060E56227A7F79400C6248C /* DeviceManagerMock.swift in Sources */,
 				9060E55727A7F52A00C6248C /* EnvironmentTestCase.swift in Sources */,
 				9060E56327A7F79400C6248C /* StorageManagerMock.swift in Sources */,
+				909F3A8327B27A57002D37C5 /* NotificationManagerMock.swift in Sources */,
 				9060E55527A7F50600C6248C /* SnapshotTestCase.swift in Sources */,
 				9060E56427A7F79400C6248C /* UserLocationManagerMock.swift in Sources */,
 				9060E56127A7F78D00C6248C /* ApiManagerMock.swift in Sources */,
@@ -1652,6 +1680,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
+				CODE_SIGN_ENTITLEMENTS = Wroclive/Wroclive.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1677,6 +1706,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = Icon;
+				CODE_SIGN_ENTITLEMENTS = Wroclive/WrocliveRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
