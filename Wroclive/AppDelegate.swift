@@ -122,11 +122,11 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Redux
 
   private func createStore() -> Store<AppState> {
-    // Don't worry: all 'IfNotSaved' have '@autoclosure'!
+    // swiftlint:disable:next trailing_closure
     let state = AppState.load(
       from: self.environment,
-      trackedLinesIfNotSaved: self.trackAllLinesOnFirstLaunch(),
-      bookmarksIfNotSaved: []
+      getInitialBookmarks: { [] },
+      getInitialTrackedLines: self.trackAllLinesOnFirstLaunch
     )
 
     let middleware = AppState.createMiddleware(environment: self.environment)
@@ -154,7 +154,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
       self.store.dispatch(ApiAction.setLines(.data(lines)))
     }
 
-    // For now, since we do not have lines (yet)
+    // For now, since we do not have lines (yet).
     return []
   }
 

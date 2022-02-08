@@ -95,18 +95,24 @@ public struct AppState: StateType {
 
   public static func load(
     from environment: Environment,
-    trackedLinesIfNotSaved: @autoclosure () -> [Line],
-    bookmarksIfNotSaved: @autoclosure () -> [Bookmark]
+    getInitialBookmarks: () -> [Bookmark],
+    getInitialTrackedLines: () -> [Line]
   ) -> AppState {
-    let storage = environment.storage
-    let userDefaults = environment.userDefaults
-    let userLocation = environment.userLocation
+    let userDefaultsManager = environment.userDefaults
+    let mapType = userDefaultsManager.getPreferredMapType() ?? .default
+
+    let userLocationManager = environment.userLocation
+    let userLocationAuthorization = userLocationManager.getAuthorizationStatus()
+
+    let storageManager = environment.storage
+    let bookmarks = storageManager.readBookmarks() ?? getInitialBookmarks()
+    let trackedLines = storageManager.readTrackedLines() ?? getInitialTrackedLines()
 
     return AppState(
-      mapType: userDefaults.getPreferredMapType() ?? .default,
-      userLocationAuthorization: userLocation.getAuthorizationStatus(),
-      bookmarks: storage.readBookmarks() ?? bookmarksIfNotSaved(),
-      trackedLines: storage.readTrackedLines() ?? trackedLinesIfNotSaved(),
+      mapType: mapType,
+      userLocationAuthorization: userLocationAuthorization,
+      bookmarks: bookmarks,
+      trackedLines: trackedLines,
       getLinesResponse: .none,
       getVehicleLocationsResponse: .none
     )
