@@ -33,7 +33,9 @@ private let configuration = Configuration(
 )
 
 @UIApplicationMain
-public final class AppDelegate: UIResponder, UIApplicationDelegate {
+public final class AppDelegate: UIResponder,
+                                UIApplicationDelegate,
+                                UserLocationManagerDelegate {
 
   public var window: UIWindow?
 
@@ -41,7 +43,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   private var environment: Environment!
   private var coordinator: AppCoordinator!
   private var updateScheduler: MapUpdateScheduler!
-  private var storeUpdater: DispatchStoreUpdatesFromAppleFrameworks!
 
   private var log: OSLog {
     return self.environment.log.app
@@ -64,15 +65,15 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
     self.environment = self.createEnvironment(apiMode: .online)
 //    self.environment = self.createEnvironment(apiMode: .offline)
 
+    // Respond to dynamic updates from environment managers.
+    self.environment.userLocation.delegate = self
+
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
     self.logDocumentsDirectoryIfRunningInSimulator()
 
     os_log("Initializing redux store", log: self.log, type: .debug)
     self.store = self.createStore()
-
-    os_log("Adding observers for Apple frameworks", log: self.log, type: .debug)
-    self.storeUpdater = self.dispatchStoreUpdatesFromAppleFrameworks()
 
 #if DEBUG
     let debugLocale = Localizable.Locale.pl
@@ -122,7 +123,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Redux
 
   private func createStore() -> Store<AppState> {
-    // swiftlint:disable:next trailing_closure
     let state = AppState.load(
       from: self.environment,
       getInitialBookmarks: { [] },
@@ -156,14 +156,6 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // For now, since we do not have lines (yet).
     return []
-  }
-
-  // swiftlint:disable:next line_length
-  private func dispatchStoreUpdatesFromAppleFrameworks() -> DispatchStoreUpdatesFromAppleFrameworks {
-    return DispatchStoreUpdatesFromAppleFrameworks(
-      store: self.store,
-      environment: self.environment
-    )
   }
 
   // MARK: - UI
@@ -209,5 +201,18 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
   public func applicationWillResignActive(_ application: UIApplication) {
     os_log("applicationWillResignActive(_:)", log: self.log, type: .info)
     self.updateScheduler.stop()
+  }
+
+  // MARK: - UserLocationManagerDelegate
+
+  public func locationManager(_ manager: UserLocationManagerType,
+                              didChangeAuthorization status: UserLocationAuthorization) {
+    os_log("locationManager(_:didChangeAuthorization:) to '%{public}@'",
+           log: self.log,
+           type: .info,
+           String(describing: status))
+
+    let action = UserLocationAuthorizationAction.set(status)
+    self.store.dispatch(action)
   }
 }

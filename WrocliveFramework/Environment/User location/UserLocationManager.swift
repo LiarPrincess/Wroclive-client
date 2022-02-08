@@ -5,12 +5,6 @@
 import MapKit
 import PromiseKit
 
-extension Notification.Name {
-
-  public static let didChangeUserLocationAuthorization =
-    Notification.Name("didChangeUserLocationAuthorization")
-}
-
 public class UserLocationManager: NSObject,
                                   UserLocationManagerType,
                                   CLLocationManagerDelegate {
@@ -23,6 +17,10 @@ public class UserLocationManager: NSObject,
     manager.delegate = self
     return manager
   }()
+
+  public weak var delegate: UserLocationManagerDelegate?
+
+  // MARK: - Get current
 
   public func getCurrent() -> Promise<CLLocationCoordinate2D> {
     return Promise<CLLocationCoordinate2D> { seal in
@@ -46,10 +44,14 @@ public class UserLocationManager: NSObject,
     .ensureOnMain()
   }
 
+  // MARK: - Authorization status
+
   public func getAuthorizationStatus() -> UserLocationAuthorization {
     let status = CLLocationManager.authorizationStatus()
     return UserLocationAuthorization(status: status)
   }
+
+  // MARK: - Request authorization
 
   public func requestWhenInUseAuthorization() {
     self.locationManager.requestWhenInUseAuthorization()
@@ -59,9 +61,7 @@ public class UserLocationManager: NSObject,
 
   public func locationManager(_ manager: CLLocationManager,
                               didChangeAuthorization status: CLAuthorizationStatus) {
-    NotificationCenter.default.post(
-      name: .didChangeUserLocationAuthorization,
-      object: nil
-    )
+    let result = UserLocationAuthorization(status: status)
+    self.delegate?.locationManager(self, didChangeAuthorization: result)
   }
 }

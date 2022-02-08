@@ -5,7 +5,15 @@
 import MapKit
 import PromiseKit
 
-public protocol UserLocationManagerType {
+public protocol UserLocationManagerDelegate: AnyObject {
+  func locationManager(_ manager: UserLocationManagerType,
+                       didChangeAuthorization status: UserLocationAuthorization)
+}
+
+// We need 'AnyObject' to be able to set delegate.
+public protocol UserLocationManagerType: AnyObject {
+
+  var delegate: UserLocationManagerDelegate? { get set }
 
   /// Returns current user location.
   func getCurrent() -> Promise<CLLocationCoordinate2D>

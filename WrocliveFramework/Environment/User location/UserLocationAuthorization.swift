@@ -4,10 +4,14 @@
 
 import MapKit
 
-public enum UserLocationAuthorization {
+public enum UserLocationAuthorization: CustomStringConvertible {
 
   /// User has not yet made a choice with regards to this application
   case notDetermined
+  /// User has authorized this application to use location services.
+  ///
+  /// This case merges `authorizedAlways` and `authorizedWhenInUse`.
+  case authorized
   /// This application is not authorized to use location services.
   /// Due to active restrictions on location services, the user cannot change
   /// this status, and may not have personally denied authorization
@@ -15,22 +19,28 @@ public enum UserLocationAuthorization {
   /// User has explicitly denied authorization for this application,
   /// or location services are disabled in Settings.
   case denied
-  /// User has authorized this application to use location services.
-  ///
-  /// This case merges `authorizedAlways` and `authorizedWhenInUse`.
-  case authorized
   /// Value added in new iOS version.
   case unknownValue
+
+  public var description: String {
+    switch self {
+    case .notDetermined: return "Not determined"
+    case .authorized: return "authorized"
+    case .restricted: return "restricted"
+    case .denied: return "denied"
+    case .unknownValue: return "Unknown value"
+    }
+  }
 
   public init(status: CLAuthorizationStatus) {
     switch status {
     case .notDetermined:
       self = .notDetermined
-    case .denied:
-      self = .denied
     case .authorizedAlways,
          .authorizedWhenInUse:
       self = .authorized
+    case .denied:
+      self = .denied
     case .restricted:
       self = .restricted
     @unknown default:

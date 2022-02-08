@@ -8,9 +8,24 @@ import PromiseKit
 
 public class UserLocationManagerMock: UserLocationManagerType {
 
+  public private(set) var delegateGetCallCount = 0
+  public private(set) var delegateSetCallCount = 0
+
   public private(set) var getCurrentCallCount = 0
   public private(set) var getAuthorizationStatusCallCount = 0
   public private(set) var requestWhenInUseAuthorizationCallCount = 0
+
+  private weak var _delegate: UserLocationManagerDelegate?
+  public var delegate: UserLocationManagerDelegate? {
+    get {
+      self.delegateGetCallCount += 1
+      return self._delegate
+    }
+    set {
+      self.delegateSetCallCount += 1
+      self._delegate = newValue
+    }
+  }
 
   // MARK: - Current
 
