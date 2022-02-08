@@ -184,8 +184,7 @@ public final class AppDelegate: UIResponder,
       case .notDetermined,
            .unknownValue:
         os_log("Asking for user location authorization", log: self.log, type: .info)
-        let action = UserLocationAuthorizationAction.requestWhenInUseAuthorization
-        self.store.dispatch(action)
+        self.environment.userLocation.requestWhenInUseAuthorization()
 
       case .authorized,
            .restricted,

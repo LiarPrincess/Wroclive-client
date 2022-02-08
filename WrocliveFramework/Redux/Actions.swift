@@ -12,14 +12,11 @@ import ReSwift
 
 public enum UserLocationAuthorizationAction: Action, CustomStringConvertible {
   case set(UserLocationAuthorization)
-  case requestWhenInUseAuthorization
 
   public var description: String {
     switch self {
     case .set(let value):
       return "UserLocationAuthorizationAction.set(\(value))"
-    case .requestWhenInUseAuthorization:
-      return "UserLocationAuthorizationAction.requestWhenInUseAuthorization"
     }
   }
 }

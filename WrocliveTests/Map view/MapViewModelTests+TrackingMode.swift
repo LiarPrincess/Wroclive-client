@@ -50,17 +50,13 @@ extension MapViewModelTests {
     for (index, mode) in self.trackingModes.enumerated() {
       self.viewModel.viewDidChangeTrackingMode(to: mode)
 
-      XCTAssertEqual(self.dispatchedActions.count, index + 1)
-      XCTAssert(self.isRequestWhenInUseAuthorizationAction(at: index))
+      let callCount = self.userLocationManager.requestWhenInUseAuthorizationCallCount
+      XCTAssertEqual(callCount, index + 1)
 
       XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
       XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
       XCTAssertFalse(self.hasOpenedSettingsApp)
     }
-
-    // Dispatch action only, do not call manager
-    let count = self.userLocationManager.requestWhenInUseAuthorizationCallCount
-    XCTAssertEqual(count, 0)
   }
 
   // MARK: - Denied

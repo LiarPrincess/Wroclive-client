@@ -13,8 +13,7 @@ extension AppState {
       Middlewares.logging(environment: environment),
       Middlewares.api(environment: environment),
       Middlewares.persistency(environment: environment),
-      Middlewares.networkActivityIndicator(environment: environment),
-      Middlewares.userLocationAuthorization(environment: environment)
+      Middlewares.networkActivityIndicator(environment: environment)
     ]
   }
 }

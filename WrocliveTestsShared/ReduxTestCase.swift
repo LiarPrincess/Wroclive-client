@@ -88,14 +88,6 @@ extension ReduxTestCase {
     }
   }
 
-  public func isRequestWhenInUseAuthorizationAction(at index: Int) -> Bool {
-    guard index < self.dispatchedActions.count else { return false }
-    switch self.dispatchedActions[index] {
-    case UserLocationAuthorizationAction.requestWhenInUseAuthorization: return true
-    default: return false
-    }
-  }
-
   // MARK: - Bookmark actions
 
   public func getAddBookmarkAction(at index: Int) -> (name: String, lines: [Line])? {

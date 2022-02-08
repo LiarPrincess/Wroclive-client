@@ -64,8 +64,7 @@ public final class MapViewModel: StoreSubscriber {
          .unknownValue:
       break
     case .notDetermined:
-      let action = UserLocationAuthorizationAction.requestWhenInUseAuthorization
-      self.store.dispatch(action)
+      self.environment.userLocation.requestWhenInUseAuthorization()
     case .denied:
       self.view?.showDeniedLocationAuthorizationAlert()
     case .restricted:
