@@ -19,11 +19,11 @@ private let configuration = Configuration(
   apiUrl: "https://wroclive.app/api",
   githubUrl: "https://github.com/LiarPrincess/Wroclive-client",
   privacyPolicyUrl: "https://wroclive.app/privacy",
-  reportErrorRecipient: "mail@wroclive.app",
+  reportErrorMailRecipient: "mail@wroclive.app",
 
   appStore: .init(
     url: "https://itunes.apple.com/app/id\(appId)",
-    writeReview: "https://itunes.apple.com/app/id\(appId)?action=write-review"
+    writeReviewUrl: "https://itunes.apple.com/app/id\(appId)?action=write-review"
   ),
 
   timing: .init(

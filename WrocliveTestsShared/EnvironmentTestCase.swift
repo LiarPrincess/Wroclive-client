@@ -46,13 +46,13 @@ extension EnvironmentTestCase {
     let bundle = BundleManagerMock()
 
     let configuration = Configuration(
-      apiUrl: "apiUrl",
-      githubUrl: "githubUrl",
-      privacyPolicyUrl: "privacyPolicyUrl",
-      reportErrorRecipient: "reportErrorRecipient",
+      apiUrl: "API_URL",
+      githubUrl: "GITHUB_URL",
+      privacyPolicyUrl: "PRIVACY_POLICY_URL",
+      reportErrorMailRecipient: "REPORT_ERROR_RECIPIENT",
       appStore: .init(
-        url: "appStore-url",
-        writeReview: "appStore-writeReview"
+        url: "APP_STORE_URL",
+        writeReviewUrl: "APP_STORE_WRITE_REVIEW_URL"
       ),
       timing: .init(
         vehicleLocationUpdateInterval: TimeInterval(3.0),

@@ -11,18 +11,18 @@ public struct Configuration {
   public let apiUrl: URL
   public let githubUrl: URL
   public let privacyPolicyUrl: URL
-  public let reportErrorRecipient: String
+  public let reportErrorMailRecipient: String
 
   public let appStore: AppStore
   public let timing: Timing
 
   public struct AppStore {
     public let url: URL
-    public let writeReview: URL
+    public let writeReviewUrl: URL
 
-    public init(url: String, writeReview: String) {
+    public init(url: String, writeReviewUrl: String) {
       self.url = URL(string: url)!
-      self.writeReview = URL(string: writeReview)!
+      self.writeReviewUrl = URL(string: writeReviewUrl)!
     }
   }
 
@@ -42,13 +42,13 @@ public struct Configuration {
   public init(apiUrl: String,
               githubUrl: String,
               privacyPolicyUrl: String,
-              reportErrorRecipient: String,
+              reportErrorMailRecipient: String,
               appStore: AppStore,
               timing: Timing) {
     self.apiUrl = URL(string: apiUrl)!
     self.githubUrl = URL(string: githubUrl)!
     self.privacyPolicyUrl = URL(string: privacyPolicyUrl)!
-    self.reportErrorRecipient = reportErrorRecipient
+    self.reportErrorMailRecipient = reportErrorMailRecipient
     self.appStore = appStore
     self.timing = timing
   }

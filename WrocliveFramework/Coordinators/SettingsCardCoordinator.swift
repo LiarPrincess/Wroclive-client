@@ -44,7 +44,7 @@ public final class SettingsCardCoordinator: NSObject,
   // MARK: - Rate
 
   public func rateApp() {
-    let url = self.environment.configuration.appStore.writeReview
+    let url = self.environment.configuration.appStore.writeReviewUrl
     UIApplication.shared.open(url)
   }
 
@@ -93,7 +93,7 @@ public final class SettingsCardCoordinator: NSObject,
     let device = self.environment.device
     let appName = bundle.name
 
-    let recipient = self.environment.configuration.reportErrorRecipient
+    let recipient = self.environment.configuration.reportErrorMailRecipient
     let subject = "\(appName): Zgłoszenie błędu/sugestii"
     let body = """
 
