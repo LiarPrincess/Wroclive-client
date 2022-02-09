@@ -22,6 +22,18 @@ final class AppleUserDefaultsMock: AppleUserDefaults {
     return string
   }
 
+  func data(forKey defaultName: String) -> Data? {
+    guard let any = self.values[defaultName] else {
+      return nil
+    }
+
+    guard let data = any as? Data else {
+      fatalError("Expected data, got: '\(String(describing: any))'?")
+    }
+
+    return data
+  }
+
   func setValue(_ value: Any?, forKey key: String) {
     self.values[key] = value
   }

@@ -22,17 +22,19 @@ public final class Environment {
     #endif
   }
 
+  // swiftlint:disable:next function_body_length
   public init(apiMode: ApiMode, configuration: Configuration) {
     let bundle = Bundle.main
     let device = UIDevice.current
     let deviceModel = DeviceManager.getNamedModel()
     let screen = UIScreen.main
+    let userDefaults = UserDefaults.standard
 
     self.bundle = BundleManager(bundle: bundle)
     self.debug = DebugManager()
     self.device = DeviceManager(model: deviceModel, device: device, screen: screen)
     self.log = LogManager(bundle: self.bundle)
-    self.userDefaults = UserDefaultsManager()
+    self.userDefaults = UserDefaultsManager(userDefaults: userDefaults)
     self.userLocation = UserLocationManager()
     self.notification = NotificationManager(log: self.log)
     self.configuration = configuration

@@ -7,13 +7,12 @@ import Foundation
 import WrocliveTestsShared
 @testable import WrocliveFramework
 
-private let preferredMapTypeKey = UserDefaultsManager.StringKey.preferredMapType.value
+private let key = UserDefaultsManager.StringKey.preferredMapType.value
 
-final class UserDefaultsManagerTests: XCTestCase {
+// swiftlint:disable:next type_name
+final class UserDefaultsManager_PreferredMapTypeTests: XCTestCase {
 
-  // MARK: - Preferred map type
-
-  func test_preferredMapType_get_notPresent() {
+  func test_get_notPresent() {
     let apple = AppleUserDefaultsMock()
     let manager = UserDefaultsManager(userDefaults: apple)
 
@@ -21,17 +20,17 @@ final class UserDefaultsManagerTests: XCTestCase {
     XCTAssertNil(result)
   }
 
-  func test_preferredMapType_unknownValue() {
+  func test_get_unknownValue() {
     let apple = AppleUserDefaultsMock()
     let manager = UserDefaultsManager(userDefaults: apple)
 
-    apple.values[preferredMapTypeKey] = "UNKNOWN_VALUE"
+    apple.values[key] = "UNKNOWN_VALUE"
 
     let result = manager.getPreferredMapType()
     XCTAssertNil(result)
   }
 
-  func test_preferredMapType_set_then_get_knownValues() {
+  func test_set_then_get() {
     let knownValues: [(String, MapType)] = [
       ("standard", MapType.standard),
       ("satellite", MapType.satellite),
@@ -44,7 +43,7 @@ final class UserDefaultsManagerTests: XCTestCase {
     for (string, mapType) in knownValues {
       manager.setPreferredMapType(mapType: mapType)
 
-      if let stored = apple.values[preferredMapTypeKey] as? String? {
+      if let stored = apple.values[key] as? String? {
         XCTAssertEqual(stored, string)
       } else {
         XCTFail("Expected string")

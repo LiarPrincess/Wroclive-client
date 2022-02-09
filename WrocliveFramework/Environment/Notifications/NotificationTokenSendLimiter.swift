@@ -8,7 +8,7 @@ private let second = 1.0
 private let minute = 60 * second
 private let hour = 60 * minute
 
-public struct StoredNotificationToken: Equatable {
+public struct StoredNotificationToken: Equatable, Codable {
 
   public let date: Date
   public let value: String

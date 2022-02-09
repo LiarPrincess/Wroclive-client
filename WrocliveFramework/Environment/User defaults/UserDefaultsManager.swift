@@ -6,22 +6,13 @@ import Foundation
 
 public protocol AppleUserDefaults {
   func string(forKey defaultName: String) -> String?
+  func data(forKey defaultName: String) -> Data?
   func setValue(_ value: Any?, forKey key: String)
 }
 
 extension UserDefaults: AppleUserDefaults {}
 
 public final class UserDefaultsManager: UserDefaultsManagerType {
-
-  internal struct StringKey {
-    internal static let preferredMapType = StringKey("String_preferredMapType")
-
-    internal let value: String
-
-    private init(_ value: String) {
-      self.value = value
-    }
-  }
 
   private let userDefaults: AppleUserDefaults
 
@@ -55,13 +46,69 @@ public final class UserDefaultsManager: UserDefaultsManagerType {
     self.setString(key: .preferredMapType, to: string)
   }
 
-  // MARK: - Helpers
+  // MARK: - Notification token
+
+  public func getNotificationToken() -> StoredNotificationToken? {
+    guard let data = self.getData(key: .notificationToken) else {
+      return nil
+    }
+
+    do {
+      // 'StoredNotificationToken' should always decode without problems.
+      let decoder = JSONDecoder()
+      return try decoder.decode(StoredNotificationToken.self, from: data)
+    } catch {
+      return nil
+    }
+  }
+
+  public func setNotificationToken(token: StoredNotificationToken) {
+    do {
+      let encoder = JSONEncoder()
+      let data = try encoder.encode(token)
+      self.setData(key: .notificationToken, to: data)
+    } catch {
+      // Ignore, 'StoredNotificationToken' should always encode without problems.
+    }
+  }
+
+  // MARK: - Helpers - String
+
+  internal struct StringKey {
+    internal static let preferredMapType = StringKey("String_preferredMapType")
+
+    internal let value: String
+
+    private init(_ value: String) {
+      self.value = value
+    }
+  }
 
   private func getString(key: StringKey) -> String? {
     return self.userDefaults.string(forKey: key.value)
   }
 
   private func setString(key: StringKey, to value: String) {
+    self.userDefaults.setValue(value, forKey: key.value)
+  }
+
+  // MARK: - Helpers - Data
+
+  internal struct DataKey {
+    internal static let notificationToken = DataKey("Data_notificationToken")
+
+    internal let value: String
+
+    private init(_ value: String) {
+      self.value = value
+    }
+  }
+
+  private func getData(key: DataKey) -> Data? {
+    return self.userDefaults.data(forKey: key.value)
+  }
+
+  private func setData(key: DataKey, to value: Data) {
     self.userDefaults.setValue(value, forKey: key.value)
   }
 }

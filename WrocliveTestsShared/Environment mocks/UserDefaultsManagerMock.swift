@@ -23,4 +23,21 @@ public class UserDefaultsManagerMock: UserDefaultsManagerType {
     self.setPreferredMapTypeCount += 1
     self.preferredMapType = mapType
   }
+
+  // MARK: - Notification token
+
+  public private(set) var getNotificationTokenCount = 0
+  public private(set) var setNotificationTokenCount = 0
+
+  public var notificationToken: StoredNotificationToken?
+
+  public func getNotificationToken() -> StoredNotificationToken? {
+    self.getNotificationTokenCount += 1
+    return self.notificationToken
+  }
+
+  public func setNotificationToken(token: StoredNotificationToken) {
+    self.setNotificationTokenCount += 1
+    self.notificationToken = token
+  }
 }
