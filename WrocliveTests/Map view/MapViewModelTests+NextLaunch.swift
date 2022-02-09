@@ -4,6 +4,7 @@
 
 import XCTest
 import MapKit
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 private let halfSecond = TimeInterval(0.5)
