@@ -27,6 +27,7 @@ internal struct RegisterNotificationTokenEndpoint: Endpoint {
     var parameters = Parameters()
     parameters["deviceId"] = data.deviceId.uuidString
     parameters["token"] = data.token
+    parameters["platform"] = "iOS"
     return parameters
   }
 

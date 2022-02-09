@@ -1,0 +1,10 @@
+POST API_URL/v1/notification-tokens
+Content-Length: 90
+Content-Type: application/json
+User-Agent: BUNDLE_NAME/BUNDLE_VERSION (BUNDLE_IDENTIFIER; DEVICE_MODEL; DEVICE_SYSTEM_NAME DEVICE_SYSTEM_VERSION)
+
+{
+  "deviceId" : "11111111-AAAA-2222-BBBB-333333333333",
+  "platform" : "iOS",
+  "token" : "TOKEN_VALUE"
+}
