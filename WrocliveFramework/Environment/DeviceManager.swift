@@ -10,18 +10,16 @@ public protocol DeviceManagerType {
 
   /// iPhone 5s
   var model: String { get }
-
   /// iOS, watchOS, tvOS
   var systemName: String { get }
-
   /// 10.2
   var systemVersion: String { get }
+  var identifierForVendor: UUID? { get }
 
   // MARK: - Screen
 
   /// Point to pixel ratio
   var screenScale: CGFloat { get }
-
   /// Screen resolution
   var screenBounds: CGRect { get }
 }
@@ -31,6 +29,7 @@ public struct DeviceManager: DeviceManagerType {
   public let model: String
   public let systemName: String
   public let systemVersion: String
+  public let identifierForVendor: UUID?
 
   public let screenScale: CGFloat
   public let screenBounds: CGRect
@@ -39,6 +38,7 @@ public struct DeviceManager: DeviceManagerType {
     self.model = model
     self.systemName = device.systemName
     self.systemVersion = device.systemVersion
+    self.identifierForVendor = device.identifierForVendor
     self.screenScale = screen.scale
     self.screenBounds = screen.bounds
   }
@@ -143,14 +143,12 @@ public struct DeviceManager: DeviceManagerType {
     "iPad5,4": "iPad AIR 2",
     "iPad6,3": "iPad PRO 9.7",
     "iPad6,4": "iPad PRO 9.7",
-//    "iPad6,4": "iPad PRO 9.7",
     "iPad6,7": "iPad PRO 12.9",
     "iPad6,8": "iPad PRO 12.9",
     "iPad6,11": "iPad (5th generation)",
     "iPad6,12": "iPad (5th generation)",
     "iPad7,1": "iPad PRO 12.9 (2nd Gen)",
     "iPad7,2": "iPad PRO 12.9 (2nd Gen)",
-//    "iPad7,2": "iPad PRO 12.9 (2nd Gen)",
     "iPad7,3": "iPad PRO 10.5",
     "iPad7,4": "iPad PRO 10.5",
     "iPad7,5": "iPad (6th Gen)",

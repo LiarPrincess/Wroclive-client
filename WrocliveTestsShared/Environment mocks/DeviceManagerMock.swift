@@ -6,9 +6,11 @@ import Foundation
 @testable import WrocliveFramework
 
 public class DeviceManagerMock: DeviceManagerType {
+
   public var model = "DEVICE_MODEL"
   public var systemName = "DEVICE_SYSTEM_NAME"
   public var systemVersion = "DEVICE_SYSTEM_VERSION"
+  public var identifierForVendor = UUID(uuidString: "11111111-2222-3333-4444-555555555555")
 
   public var screenScale = CGFloat(2)
   public var screenBounds = CGRect(x: 0, y: 0, width: 640, height: 1_136)
