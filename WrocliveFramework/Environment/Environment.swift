@@ -36,7 +36,6 @@ public final class Environment {
     self.log = LogManager(bundle: self.bundle)
     self.userDefaults = UserDefaultsManager(userDefaults: userDefaults)
     self.userLocation = UserLocationManager()
-    self.notification = NotificationManager(log: self.log)
     self.configuration = configuration
 
     let fs = FileSystem()
@@ -57,6 +56,12 @@ public final class Environment {
       self.api = OfflineApi(log: self.log)
     #endif
     }
+
+    let tokenSendLimiter = NotificationTokenSendLimiter(store: self.userDefaults)
+    self.notification = NotificationManager(api: self.api,
+                                            device: self.device,
+                                            tokenSendLimiter: tokenSendLimiter,
+                                            log: self.log)
   }
 
   public init(api: ApiType,
