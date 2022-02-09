@@ -2,18 +2,32 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-public protocol UserDefaultsManagerType {
-  func getPreferredMapType() -> MapType?
-  func setPreferredMapType(mapType: MapType)
+import Foundation
+
+public protocol AppleUserDefaults {
+  func string(forKey defaultName: String) -> String?
+  func setValue(_ value: Any?, forKey key: String)
 }
 
-public struct UserDefaultsManager: UserDefaultsManagerType {
+extension UserDefaults: AppleUserDefaults {}
 
-  private enum Key: String {
-    case preferredMapType = "String_preferredMapType"
+public final class UserDefaultsManager: UserDefaultsManagerType {
+
+  internal struct StringKey {
+    internal static let preferredMapType = StringKey("String_preferredMapType")
+
+    internal let value: String
+
+    private init(_ value: String) {
+      self.value = value
+    }
   }
 
-  private let defaults = UserDefaults.standard
+  private let userDefaults: AppleUserDefaults
+
+  public init(userDefaults: AppleUserDefaults) {
+    self.userDefaults = userDefaults
+  }
 
   // MARK: - Preferred map type
 
@@ -43,11 +57,11 @@ public struct UserDefaultsManager: UserDefaultsManagerType {
 
   // MARK: - Helpers
 
-  private func getString(key: Key) -> String? {
-    return self.defaults.string(forKey: key.rawValue)
+  private func getString(key: StringKey) -> String? {
+    return self.userDefaults.string(forKey: key.value)
   }
 
-  private func setString(key: Key, to value: String) {
-    self.defaults.setValue(value, forKey: key.rawValue)
+  private func setString(key: StringKey, to value: String) {
+    self.userDefaults.setValue(value, forKey: key.value)
   }
 }
