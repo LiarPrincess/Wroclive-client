@@ -29,7 +29,8 @@ private let configuration = Configuration(
 
   timing: .init(
     vehicleLocationUpdateInterval: 5.0,
-    locationAuthorizationPromptDelay: 2.0
+    locationAuthorizationPromptDelay: 2.0,
+    maxWaitingTimeBeforeShowingNotificationPrompt: 10.0
   )
 )
 
@@ -171,10 +172,7 @@ public final class AppDelegate: UIResponder,
   public func applicationDidBecomeActive(_ application: UIApplication) {
     os_log("applicationDidBecomeActive(_:)", log: self.log, type: .info)
     self.updateScheduler.start()
-
-    let environment = self.environment!
-    AuthorizationPrompts.askForUserLocationAuthorization(environment: environment)
-    AuthorizationPrompts.askForNotificationAuthorization(environment: environment)
+    AuthorizationPrompts.showIfNeeded(environment: self.environment!)
   }
 
   // MARK: - Will resign active

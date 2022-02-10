@@ -59,9 +59,9 @@ extension EnvironmentTestCase {
         writeReview: "appStore-writeReview"
       ),
       timing: .init(
-        vehicleLocationUpdateInterval: TimeInterval(5.0),
-        locationAuthorizationPromptDelay: TimeInterval(2.0),
-        notificationAuthorizationPromptDelay: TimeInterval(4.0)
+        vehicleLocationUpdateInterval: 5.0,
+        locationAuthorizationPromptDelay: 2.0,
+        maxWaitingTimeBeforeShowingNotificationPrompt: 10.0
       )
     )
 

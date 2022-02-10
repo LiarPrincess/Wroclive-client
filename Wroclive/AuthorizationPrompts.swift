@@ -6,68 +6,68 @@ import os.log
 import PromiseKit
 import WrocliveFramework
 
+// swiftlint:disable static_operator
+
+precedencegroup Precedence { higherThan: AssignmentPrecedence associativity: left }
+infix operator ~>: Precedence
+
+/// Basically `Guarantee.then` but with `@autoclosure`.
+///
+/// It is important that this is for 'Guarantee' and not 'Promise',
+/// because we do not want errors in the authorization prompt flow.
+private func ~> (
+  first: Guarantee<Void>,
+  body: @escaping @autoclosure () -> Guarantee<Void>
+) -> Guarantee<Void> {
+  return first.then(body)
+}
+
 internal enum AuthorizationPrompts {
+
+  internal static func showIfNeeded(environment: Environment) {
+    let timing = environment.configuration.timing
+    let locationAuthorizationPromptDelay = timing.locationAuthorizationPromptDelay
+    let notificationPromptDelay = timing.maxWaitingTimeBeforeShowingNotificationPrompt
+
+    // Each function is designed to return imiediatelly if the prompt
+    // does not have to be shown.
+
+    _ = after(seconds: locationAuthorizationPromptDelay)
+      ~> Self.showUserLocationPromptIfNeeded(environment: environment)
+      ~> Self.waitForUserLocationAuthorization(environment: environment,
+                                               maxDelay: notificationPromptDelay)
+      ~> Self.showNotificationPromptIfNeeded(environment: environment)
+  }
 
   // MARK: - User location
 
-  internal static func askForUserLocationAuthorization(environment: Environment) {
-    let delay = environment.configuration.timing.locationAuthorizationPromptDelay
-    after(seconds: delay)
-      .done { _ in
-        let log = environment.log.app
-        let status = environment.userLocation.getAuthorizationStatus()
+  private static func showUserLocationPromptIfNeeded(
+    environment: Environment
+  ) -> Guarantee<Void> {
+    let log = environment.log.app
+    let status = environment.userLocation.getAuthorizationStatus()
 
-        switch status {
-        case .notDetermined,
-             .unknownValue:
-          os_log("Asking for user location authorization", log: log, type: .info)
-          environment.userLocation.requestWhenInUseAuthorization()
+    switch status {
+    case .notDetermined,
+         .unknownValue:
+      os_log("Asking for user location authorization", log: log, type: .info)
+      environment.userLocation.requestWhenInUseAuthorization()
 
-        case .authorized,
-             .restricted,
-             .denied:
-          os_log("User location authorization: '%{public}@'",
-                 log: log,
-                 type: .info,
-                 String(describing: status))
-        }
-      }
+    case .authorized,
+         .restricted,
+         .denied:
+      os_log("User location authorization: '%{public}@'",
+             log: log,
+             type: .info,
+             String(describing: status))
+    }
+
+    return Guarantee()
   }
 
-  // MARK: - Notification
+  // MARK: - Wait for user location authorization
 
-  internal static func askForNotificationAuthorization(environment: Environment) {
-    let maxDelay: TimeInterval = 10.0
-
-    // We want to show notification prompt AFTER location prompt!
-    self.waitWhileLocationAuthorizationIsNotDetermined(environment: environment,
-                                                       maxDelay: maxDelay)
-      .then(environment.notification.getSettings)
-      .then { settings -> Promise<Void> in
-        let log = environment.log.app
-        let authorization = settings.authorization
-
-        switch authorization {
-        case .notDetermined,
-             .unknownValue:
-          os_log("Asking for notification authorization", log: log, type: .info)
-          return environment.notification.requestAuthorization().asVoid()
-
-        case .authorized,
-             .provisional,
-             .ephemeral,
-             .denied:
-          os_log("Notification authorization: '%{public}@'",
-                 log: log,
-                 type: .info,
-                 String(describing: authorization))
-          return Promise()
-        }
-      }
-      .cauterize()
-  }
-
-  private static func waitWhileLocationAuthorizationIsNotDetermined(
+  private static func waitForUserLocationAuthorization(
     environment: Environment,
     maxDelay: TimeInterval
   ) -> Guarantee<Void> {
@@ -112,5 +112,36 @@ internal enum AuthorizationPrompts {
         remainingTime: remainingTimeAfterIncrement
       )
     }
+  }
+
+  // MARK: - Notification
+
+  private static func showNotificationPromptIfNeeded(
+    environment: Environment
+  ) -> Guarantee<Void> {
+    return environment.notification.getSettings()
+      .then { settings -> Guarantee<Void> in
+        let log = environment.log.app
+        let authorization = settings.authorization
+
+        switch authorization {
+        case .notDetermined,
+             .unknownValue:
+          os_log("Asking for notification authorization", log: log, type: .info)
+          return environment.notification.requestAuthorization()
+            .asVoid()
+            .recover { _ in () }
+
+        case .authorized,
+             .provisional,
+             .ephemeral,
+             .denied:
+          os_log("Notification authorization: '%{public}@'",
+                 log: log,
+                 type: .info,
+                 String(describing: authorization))
+          return Guarantee()
+        }
+      }
   }
 }

@@ -29,13 +29,20 @@ public struct Configuration {
   public struct Timing {
     public let vehicleLocationUpdateInterval: TimeInterval
     public let locationAuthorizationPromptDelay: TimeInterval
+    /// We first show 'location authorization prompt' and then 'notification prompt'.
+    /// There is no convinient way to find when the user has answered
+    /// 'location authorization prompt', so we will just introduce delay.
+    public let maxWaitingTimeBeforeShowingNotificationPrompt: TimeInterval
 
     public init(
       vehicleLocationUpdateInterval: TimeInterval,
-      locationAuthorizationPromptDelay: TimeInterval
+      locationAuthorizationPromptDelay: TimeInterval,
+      maxWaitingTimeBeforeShowingNotificationPrompt: TimeInterval
     ) {
       self.vehicleLocationUpdateInterval = vehicleLocationUpdateInterval
       self.locationAuthorizationPromptDelay = locationAuthorizationPromptDelay
+      self.maxWaitingTimeBeforeShowingNotificationPrompt
+        = maxWaitingTimeBeforeShowingNotificationPrompt
     }
   }
 
