@@ -29,7 +29,8 @@ public protocol NotificationTokenStore {
 /// We will send new token to server, but only once in a while.
 /// We don't want to use too much battery when user opens/closes the app repeatedly.
 ///
-/// It also handles the edge case when we did send the token but it got lost.
+/// Btw. It does handle the edge case when we did send the token but it got lost
+/// by setting the send interval to relatively small value (not weeks/years etc.).
 public protocol NotificationTokenSendLimiterType {
   func shouldSend(token: String) -> Bool
   func registerSend(token: String)

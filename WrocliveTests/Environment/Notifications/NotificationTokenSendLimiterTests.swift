@@ -32,8 +32,8 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
     let result = limiter.shouldSend(token: "TOKEN_VALUE")
 
     XCTAssertTrue(result)
-    XCTAssertEqual(store.getNotificationTokenCount, 1)
-    XCTAssertEqual(store.setNotificationTokenCount, 0)
+    XCTAssertEqual(store.getNotificationTokenCallCount, 1)
+    XCTAssertEqual(store.setNotificationTokenCallCount, 0)
   }
 
   func test_shouldSend_when_tokenChanged() {
@@ -49,8 +49,8 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
     let result = limiter.shouldSend(token: "TOKEN_VALUE")
 
     XCTAssertTrue(result)
-    XCTAssertEqual(store.getNotificationTokenCount, 1)
-    XCTAssertEqual(store.setNotificationTokenCount, 0)
+    XCTAssertEqual(store.getNotificationTokenCallCount, 1)
+    XCTAssertEqual(store.setNotificationTokenCallCount, 0)
   }
 
   func test_shouldSend_when_storedToken_isFromFuture() {
@@ -66,8 +66,8 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
     let result = limiter.shouldSend(token: "TOKEN_VALUE")
 
     XCTAssertTrue(result)
-    XCTAssertEqual(store.getNotificationTokenCount, 1)
-    XCTAssertEqual(store.setNotificationTokenCount, 0)
+    XCTAssertEqual(store.getNotificationTokenCallCount, 1)
+    XCTAssertEqual(store.setNotificationTokenCallCount, 0)
   }
 
   func test_shouldSend_after_sendInterval() {
@@ -83,8 +83,8 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
     let result = limiter.shouldSend(token: "TOKEN_VALUE")
 
     XCTAssertTrue(result)
-    XCTAssertEqual(store.getNotificationTokenCount, 1)
-    XCTAssertEqual(store.setNotificationTokenCount, 0)
+    XCTAssertEqual(store.getNotificationTokenCallCount, 1)
+    XCTAssertEqual(store.setNotificationTokenCallCount, 0)
   }
 
   func test_shouldNotSend_within_sendInterval() {
@@ -100,8 +100,8 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
     let result = limiter.shouldSend(token: "TOKEN_VALUE")
 
     XCTAssertFalse(result)
-    XCTAssertEqual(store.getNotificationTokenCount, 1)
-    XCTAssertEqual(store.setNotificationTokenCount, 0)
+    XCTAssertEqual(store.getNotificationTokenCallCount, 1)
+    XCTAssertEqual(store.setNotificationTokenCallCount, 0)
   }
 
   // MARK: - Register send
@@ -118,7 +118,7 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
 
     let expected = StoredNotificationToken(date: dateInitial, value: token)
     XCTAssertEqual(store.storedNotificationToken, expected)
-    XCTAssertEqual(store.setNotificationTokenCount, 1)
-    XCTAssertEqual(store.getNotificationTokenCount, 0)
+    XCTAssertEqual(store.setNotificationTokenCallCount, 1)
+    XCTAssertEqual(store.getNotificationTokenCallCount, 0)
   }
 }
