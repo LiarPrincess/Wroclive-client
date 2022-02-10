@@ -5,6 +5,11 @@
 import PromiseKit
 import UserNotifications
 
+public enum NotificationAuthorization {
+  case granted
+  case notGranted
+}
+
 public protocol NotificationCenterDelegate: UNUserNotificationCenterDelegate {
   func registerForRemoteNotifications()
 }
@@ -15,7 +20,7 @@ public protocol NotificationManagerType {
   func getSettings() -> Guarantee<NotificationSettings>
 
   /// Request authorization for showing notifications.
-  func requestAuthorization() -> Promise<Void>
+  func requestAuthorization() -> Promise<NotificationAuthorization>
 
   /// Registers to receive remote notifications through Apple Push Notification service.
   func registerForRemoteNotifications(delegate: NotificationCenterDelegate)

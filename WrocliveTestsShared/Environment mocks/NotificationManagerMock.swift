@@ -19,29 +19,41 @@ public class NotificationManagerMock: NotificationManagerType {
     timeSensitive: .setting(.disabled)
   )
 
-  public var getSettingsCallCount = 0
-  public var requestAuthorizationCallCount = 0
-  public var registerForRemoteNotificationsCallCount = 0
-  public var didRegisterForRemoteNotificationsCallCount = 0
-  public var didFailToRegisterForRemoteNotificationsCallCount = 0
+  // MARK: - Settings
+
+  public private(set) var getSettingsCallCount = 0
 
   public func getSettings() -> Guarantee<NotificationSettings> {
     self.getSettingsCallCount += 1
     return Guarantee.value(self.settings)
   }
 
-  public func requestAuthorization() -> Promise<Void> {
+  // MARK: - Authorization
+
+  public var requestAuthorizationResult = NotificationAuthorization.granted
+  public private(set) var requestAuthorizationCallCount = 0
+
+  public func requestAuthorization() -> Promise<NotificationAuthorization> {
     self.requestAuthorizationCallCount += 1
-    return Promise.value()
+    return Promise.value(self.requestAuthorizationResult)
   }
+
+  // MARK: - Remote notifications
+
+  public private(set) var registerForRemoteNotificationsCallCount = 0
 
   public func registerForRemoteNotifications(delegate: NotificationCenterDelegate) {
     self.registerForRemoteNotificationsCallCount += 1
   }
 
-  public func didRegisterForRemoteNotifications(deviceToken: Data) {
+  public private(set) var didRegisterForRemoteNotificationsCallCount = 0
+
+  public func didRegisterForRemoteNotifications(deviceToken: Data) -> Promise<Void> {
     self.didRegisterForRemoteNotificationsCallCount += 1
+    return Promise.value()
   }
+
+  public private(set) var didFailToRegisterForRemoteNotificationsCallCount = 0
 
   public func didFailToRegisterForRemoteNotifications(error: Error) {
     self.didFailToRegisterForRemoteNotificationsCallCount += 1

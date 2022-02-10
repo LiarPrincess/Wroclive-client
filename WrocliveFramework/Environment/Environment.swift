@@ -29,6 +29,7 @@ public final class Environment {
     let deviceModel = DeviceManager.getNamedModel()
     let screen = UIScreen.main
     let userDefaults = UserDefaults.standard
+    let notificationCenter = UNUserNotificationCenter.current()
 
     self.bundle = BundleManager(bundle: bundle)
     self.debug = DebugManager()
@@ -61,6 +62,7 @@ public final class Environment {
     self.notification = NotificationManager(api: self.api,
                                             device: self.device,
                                             tokenSendLimiter: tokenSendLimiter,
+                                            notificationCenter: notificationCenter,
                                             log: self.log)
   }
 

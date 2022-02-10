@@ -8,13 +8,23 @@ import UserNotifications
 
 // swiftlint:disable line_length
 
+public protocol AppleUserNotificationCenter: AnyObject {
+  var delegate: UNUserNotificationCenterDelegate? { get set }
+
+  func getNotificationSettings(completionHandler: @escaping (UNNotificationSettings) -> Void)
+  func requestAuthorization(options: UNAuthorizationOptions,
+                            completionHandler: @escaping (Bool, Error?) -> Void)
+}
+
+extension UNUserNotificationCenter: AppleUserNotificationCenter {}
+
 public class NotificationManager: NotificationManagerType {
 
   private let api: ApiType
   private let device: DeviceManagerType
   private let logManager: LogManagerType
   private let tokenSendLimiter: NotificationTokenSendLimiterType
-  private lazy var notificationCenter = UNUserNotificationCenter.current()
+  private let notificationCenter: AppleUserNotificationCenter
 
   private var log: OSLog {
     return self.logManager.notification
@@ -23,11 +33,13 @@ public class NotificationManager: NotificationManagerType {
   public init(api: ApiType,
               device: DeviceManagerType,
               tokenSendLimiter: NotificationTokenSendLimiterType,
+              notificationCenter: AppleUserNotificationCenter,
               log: LogManagerType) {
     self.api = api
     self.device = device
     self.logManager = log
     self.tokenSendLimiter = tokenSendLimiter
+    self.notificationCenter = notificationCenter
   }
 
   // MARK: - Settings
@@ -44,31 +56,31 @@ public class NotificationManager: NotificationManagerType {
 
   // MARK: - Authorization
 
-  public func requestAuthorization() -> Promise<Void> {
+  public func requestAuthorization() -> Promise<NotificationAuthorization> {
     return self.requestAuthorizationPromise()
-      .tap { result in
-        switch result {
-        case .fulfilled(.granted):
-          os_log("Authorization granted", log: self.log, type: .info)
-        case .fulfilled(.notGranted):
-          os_log("Authorization not granted", log: self.log, type: .info)
-        case .rejected(let error):
+      .map { granted, error in
+        if let error = error {
           os_log("Authorization request failed: %{public}@",
                  log: self.log,
                  type: .info,
                  error.localizedDescription)
+
+          throw error
+        }
+
+        switch granted {
+        case true:
+          os_log("Authorization granted", log: self.log, type: .info)
+          return NotificationAuthorization.granted
+        case false:
+          os_log("Authorization not granted", log: self.log, type: .info)
+          return NotificationAuthorization.notGranted
         }
       }
-      .asVoid()
       .ensureOnMain()
   }
 
-  private enum AuthorizationPromiseValue {
-    case granted
-    case notGranted
-  }
-
-  private func requestAuthorizationPromise() -> Promise<AuthorizationPromiseValue> {
+  private func requestAuthorizationPromise() -> Promise<(Bool, Error?)> {
     // Enabled:
     // - alert - we want to show the alert on the lock screen.
     //
@@ -86,12 +98,8 @@ public class NotificationManager: NotificationManagerType {
 
     return Promise { resolver in
       self.notificationCenter.requestAuthorization(options: options) { granted, error in
-        if let error = error {
-          resolver.reject(error)
-        }
-
-        let result: AuthorizationPromiseValue = granted ? .granted : .notGranted
-        resolver.fulfill(result)
+        let tuple = (granted, error)
+        resolver.fulfill(tuple)
       }
     }
   }
