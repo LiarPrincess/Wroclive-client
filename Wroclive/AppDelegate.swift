@@ -29,8 +29,7 @@ private let configuration = Configuration(
 
   timing: .init(
     vehicleLocationUpdateInterval: 5.0,
-    locationAuthorizationPromptDelay: 2.0,
-    notificationAuthorizationPromptDelay: 4.0
+    locationAuthorizationPromptDelay: 2.0
   )
 )
 
@@ -172,36 +171,10 @@ public final class AppDelegate: UIResponder,
   public func applicationDidBecomeActive(_ application: UIApplication) {
     os_log("applicationDidBecomeActive(_:)", log: self.log, type: .info)
     self.updateScheduler.start()
-    self.askForUserLocationAuthorization()
-    self.askForNotificationAuthorization()
-  }
 
-  private func askForUserLocationAuthorization() {
-    let delay = self.environment.configuration.timing.locationAuthorizationPromptDelay
-
-    after(seconds: delay).done { _ in
-      let authorization = self.environment.userLocation.getAuthorizationStatus()
-      switch authorization {
-      case .notDetermined,
-           .unknownValue:
-        os_log("Asking for user location authorization", log: self.log, type: .info)
-        self.environment.userLocation.requestWhenInUseAuthorization()
-
-      case .authorized,
-           .restricted,
-           .denied:
-        // Already determined, nothing to do here.
-        break
-      }
-    }
-  }
-
-  private func askForNotificationAuthorization() {
-    let delay = self.environment.configuration.timing.notificationAuthorizationPromptDelay
-    after(seconds: delay).done { _ in
-      os_log("Asking for notification authorization", log: self.log, type: .info)
-      _ = self.environment.notification.requestAuthorization()
-    }
+    let environment = self.environment!
+    AuthorizationPrompts.askForUserLocationAuthorization(environment: environment)
+    AuthorizationPrompts.askForNotificationAuthorization(environment: environment)
   }
 
   // MARK: - Will resign active

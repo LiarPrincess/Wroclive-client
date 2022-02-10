@@ -29,16 +29,13 @@ public struct Configuration {
   public struct Timing {
     public let vehicleLocationUpdateInterval: TimeInterval
     public let locationAuthorizationPromptDelay: TimeInterval
-    public let notificationAuthorizationPromptDelay: TimeInterval
 
     public init(
       vehicleLocationUpdateInterval: TimeInterval,
-      locationAuthorizationPromptDelay: TimeInterval,
-      notificationAuthorizationPromptDelay: TimeInterval
+      locationAuthorizationPromptDelay: TimeInterval
     ) {
       self.vehicleLocationUpdateInterval = vehicleLocationUpdateInterval
       self.locationAuthorizationPromptDelay = locationAuthorizationPromptDelay
-      self.notificationAuthorizationPromptDelay = notificationAuthorizationPromptDelay
     }
   }
 

@@ -59,6 +59,7 @@
 		902C018724F83BD7008F87B1 /* HTTPHeaders+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C018624F83BD7008F87B1 /* HTTPHeaders+init.swift */; };
 		902C2FCC24FC45160010B019 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C2FCB24FC45160010B019 /* SettingsSection.swift */; };
 		902C2FCE24FCF5C20010B019 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C2FCD24FCF5C20010B019 /* UserDefaultsManager.swift */; };
+		903510AE27B5591E00AE4ED5 /* AuthorizationPrompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903510AD27B5591D00AE4ED5 /* AuthorizationPrompts.swift */; };
 		90462B7224EC42F300305F3F /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90462B7124EC42F300305F3F /* Fonts.swift */; };
 		9047995924D56BCA00111F2C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995824D56BCA00111F2C /* Environment.swift */; };
 		9047996724D575C500111F2C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047995B24D575C500111F2C /* AppState.swift */; };
@@ -297,6 +298,7 @@
 		902C018624F83BD7008F87B1 /* HTTPHeaders+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPHeaders+init.swift"; sourceTree = "<group>"; };
 		902C2FCB24FC45160010B019 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		902C2FCD24FCF5C20010B019 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		903510AD27B5591D00AE4ED5 /* AuthorizationPrompts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPrompts.swift; sourceTree = "<group>"; };
 		90462B7124EC42F300305F3F /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		9047995824D56BCA00111F2C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		9047995B24D575C500111F2C /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				909F3A7E27B18E7F002D37C5 /* Wroclive.entitlements */,
 				9052383124D45E9A00E4F8A7 /* Assets.xcassets */,
 				9052380A24D459E500E4F8A7 /* AppDelegate.swift */,
+				903510AD27B5591D00AE4ED5 /* AuthorizationPrompts.swift */,
 				9052383924D4645300E4F8A7 /* LaunchScreen.storyboard */,
 				900EA0C824D467E30054C03F /* Info.plist */,
 				900EA0C624D467040054C03F /* InfoPlist.strings */,
@@ -1448,6 +1451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				903510AE27B5591E00AE4ED5 /* AuthorizationPrompts.swift in Sources */,
 				9052380B24D459E500E4F8A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

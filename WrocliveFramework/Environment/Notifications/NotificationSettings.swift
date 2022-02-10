@@ -9,7 +9,7 @@ public struct NotificationSettings {
   // MARK: - Types
 
   /// Constants indicating whether the app is allowed to schedule notifications.
-  public enum Authorization {
+  public enum Authorization: CustomStringConvertible {
     /// The user hasn't yet made a choice about whether the app is allowed to
     /// schedule notifications.
     case notDetermined
@@ -25,6 +25,17 @@ public struct NotificationSettings {
     case ephemeral
     /// Value added in new iOS version.
     case unknownValue
+
+    public var description: String {
+      switch self {
+      case .authorized: return "Authorized"
+      case .provisional: return "Provisional"
+      case .ephemeral: return "Ephemeral"
+      case .denied: return "Denied"
+      case .notDetermined: return "Not determined"
+      case .unknownValue: return "Unknown value"
+      }
+    }
 
     fileprivate init(_ status: UNAuthorizationStatus) {
       switch status {
