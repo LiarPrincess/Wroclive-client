@@ -13,8 +13,14 @@ final class AppleUserNotificationCenterMock: AppleUserNotificationCenter {
   // swiftlint:disable:next weak_delegate
   var delegate: UNUserNotificationCenterDelegate?
 
+  var settings: UNNotificationSettings?
+
   func getNotificationSettings(completionHandler: @escaping (UNNotificationSettings) -> Void) {
-    fatalError()
+    guard let settings = self.settings else {
+      fatalError("Forgot to mock 'self.settings'?")
+    }
+
+    completionHandler(settings)
   }
 
   var requestAuthorizationCallCount = 0

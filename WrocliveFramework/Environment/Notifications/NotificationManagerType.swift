@@ -26,7 +26,7 @@ public protocol NotificationManagerType {
   func registerForRemoteNotifications(delegate: NotificationCenterDelegate)
 
   /// App successfully registered with Apple Push Notification service.
-  func didRegisterForRemoteNotifications(deviceToken: Data)
+  func didRegisterForRemoteNotifications(deviceToken: Data) -> Promise<Void>
 
   /// Apple Push Notification service cannot successfully complete the registration process.
   ///

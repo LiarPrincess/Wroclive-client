@@ -93,7 +93,7 @@ public class NotificationManager: NotificationManagerType {
     //   the notification center.
     // - providesAppNotificationSettings - we do not have a specific settings, see:
     //   https://developer.apple.com/documentation/usernotifications/asking_permission_to_use_notifications
-    // TODO: [APN] timeSensitive
+    // TODO: Time sensitive notifications
     let options: UNAuthorizationOptions = [.alert]
 
     return Promise { resolver in
@@ -112,7 +112,12 @@ public class NotificationManager: NotificationManagerType {
     self.notificationCenter.delegate = delegate
   }
 
-  public func didRegisterForRemoteNotifications(deviceToken: Data) {
+  public enum RegisterForRemoteNotificationsError: Error {
+    case deviceIdentifierNotPresent
+    case sendRateLimitExhausted
+  }
+
+  public func didRegisterForRemoteNotifications(deviceToken: Data) -> Promise<Void> {
     let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
     let token = tokenParts.joined()
 
@@ -122,19 +127,22 @@ public class NotificationManager: NotificationManagerType {
 
     guard let deviceId = self.device.identifierForVendor else {
       os_log("Failed to send token: deviceId not present", log: self.log, type: .error)
-      return
+      let error = RegisterForRemoteNotificationsError.deviceIdentifierNotPresent
+      return Promise(error: error)
     }
 
     guard self.tokenSendLimiter.shouldSend(token: token) else {
       os_log("Failed to send token: rate limitter", log: self.log, type: .info)
-      return
+      let error = RegisterForRemoteNotificationsError.sendRateLimitExhausted
+      return Promise(error: error)
     }
 
-    self.api.sendNotificationToken(deviceId: deviceId, token: token)
+    return self.api.sendNotificationToken(deviceId: deviceId, token: token)
       .tap { result in
         switch result {
         case .fulfilled:
           os_log("Token send succesfully", log: self.log, type: .info)
+          self.tokenSendLimiter.registerSend(token: token)
         case .rejected(let error):
           os_log("Failed to send token: %{public}@",
                  log: self.log,
@@ -142,8 +150,6 @@ public class NotificationManager: NotificationManagerType {
                  error.localizedDescription)
         }
       }
-      .done { _ in self.tokenSendLimiter.registerSend(token: token) }
-      .cauterize()
   }
 
   public func didFailToRegisterForRemoteNotifications(error: Error) {

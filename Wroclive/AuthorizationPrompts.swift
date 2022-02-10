@@ -31,6 +31,9 @@ internal enum AuthorizationPrompts {
 
     // Each function is designed to return imiediatelly if the prompt
     // does not have to be shown.
+    //
+    // Btw. the other way to do this is to show prompts in reverse order,
+    // since the new prompt will always override the previous one.
 
     _ = after(seconds: locationAuthorizationPromptDelay)
       ~> Self.showUserLocationPromptIfNeeded(environment: environment)

@@ -65,8 +65,11 @@ public final class AppDelegate: UIResponder,
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    self.environment = self.createEnvironment(apiMode: .online)
-//    self.environment = self.createEnvironment(apiMode: .offline)
+    // Those are the most important lines in the whole app.
+    // Every call that interacts with native frameworks has to go through Environment.
+    // And don't worry, 'debug' modes will fail to compile in release builds.
+    self.environment = Environment(apiMode: .online, configuration: configuration)
+//    self.environment = Environment(apiMode: .offline, configuration: configuration)
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
@@ -106,15 +109,6 @@ public final class AppDelegate: UIResponder,
 
     os_log("application(_:didFinishLaunchingWithOptions:) - finished", log: self.log, type: .debug)
     return true
-  }
-
-  // MARK: - Environment
-
-  // Those are the most important lines in the whole app.
-  // Every call that interacts with native frameworks has to go through Environment.
-  // And don't worry, 'debug' modes will fail to compile in release builds.
-  private func createEnvironment(apiMode: Environment.ApiMode) -> Environment {
-    return Environment(apiMode: apiMode, configuration: configuration)
   }
 
   private func logDocumentsDirectoryIfRunningInSimulator() {
@@ -208,7 +202,10 @@ public final class AppDelegate: UIResponder,
     os_log("application(_:didRegisterForRemoteNotificationsWithDeviceToken:)",
            log: self.log,
            type: .info)
-    self.environment.notification.didRegisterForRemoteNotifications(deviceToken: deviceToken)
+
+    _ = self.environment.notification.didRegisterForRemoteNotifications(
+      deviceToken: deviceToken
+    )
   }
 
   public func application(
@@ -218,6 +215,9 @@ public final class AppDelegate: UIResponder,
     os_log("application(_:didFailToRegisterForRemoteNotificationsWithError:)",
            log: self.log,
            type: .info)
-    self.environment.notification.didFailToRegisterForRemoteNotifications(error: error)
+
+    self.environment.notification.didFailToRegisterForRemoteNotifications(
+      error: error
+    )
   }
 }
