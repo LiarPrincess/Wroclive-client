@@ -5,7 +5,7 @@
 import Foundation
 @testable import WrocliveFramework
 
-public class DeviceManagerMock: DeviceManagerType {
+public final class DeviceManagerMock: DeviceManagerType {
 
   public var model = "DEVICE_MODEL"
   public var systemName = "DEVICE_SYSTEM_NAME"
@@ -15,4 +15,6 @@ public class DeviceManagerMock: DeviceManagerType {
   public var screenScale = CGFloat(2)
   public var screenBounds = CGRect(x: 0, y: 0, width: 640, height: 1_136)
   public var preferredFontSize = CGFloat(17)
+
+  public init() {}
 }
