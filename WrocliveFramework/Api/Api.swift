@@ -69,7 +69,7 @@ public final class Api: ApiType {
     self.network.setNetworkActivityIndicatorVisibility(isVisible: isVisible)
   }
 
-  public func sendNotificationToken(deviceId: UUID, token: String) -> Promise<()> {
+  public func sendNotificationToken(deviceId: UUID, token: String) -> Promise<Void> {
     os_log("Sending 'notification-token' request", log: self.log, type: .debug)
     let data = RegisterNotificationTokenEndpoint.ParameterData(deviceId: deviceId, token: token)
     let endpoint = self.registerNotificationTokenEndpoint

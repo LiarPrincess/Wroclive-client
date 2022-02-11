@@ -31,5 +31,5 @@ internal struct RegisterNotificationTokenEndpoint: Endpoint {
     return parameters
   }
 
-  internal func decodeResponse(_ data: Data) throws { }
+  internal func decodeResponse(_ data: Data) throws {}
 }

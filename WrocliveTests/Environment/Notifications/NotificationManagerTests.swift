@@ -36,6 +36,6 @@ final class NotificationManagerTests: XCTestCase {
   }
 
   func wait(for expectation: XCTestExpectation, timeout: TimeInterval = 2.0) {
-    wait(for: [expectation], timeout: timeout)
+    self.wait(for: [expectation], timeout: timeout)
   }
 }
