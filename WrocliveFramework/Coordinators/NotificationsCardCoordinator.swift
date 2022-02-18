@@ -8,9 +8,9 @@ import PromiseKit
 
 // swiftlint:disable weak_delegate
 
-public final class BookmarksCardCoordinator: CardCoordinator {
+public final class NotificationsCardCoordinator: CardCoordinator {
 
-  public internal(set) var card: BookmarksCard?
+  public internal(set) var card: NotificationsCard?
   internal let parent: UIViewController
   internal var cardTransitionDelegate: UIViewControllerTransitioningDelegate?
 
@@ -26,9 +26,9 @@ public final class BookmarksCardCoordinator: CardCoordinator {
   }
 
   public func start(animated: Bool) -> Guarantee<Void> {
-    let viewModel = BookmarksCardViewModel(store: self.store)
-    let card = BookmarksCard(viewModel: viewModel)
-    let cardHeight = self.getCardHeight(screenPercent: 0.75, butNoBiggerThan: 500)
+    let viewModel = NotificationsCardViewModel(store: self.store)
+    let card = NotificationsCard(viewModel: viewModel)
+    let cardHeight = self.getCardHeight(screenPercent: 0.9, butNoBiggerThan: 600)
 
     self.card = card
     return self.present(card: card, withHeight: cardHeight, animated: animated)

@@ -33,6 +33,11 @@
 "Search.Sections.Temporary" = "Tymczasowe";
 "Search.Sections.Zone"      = "Strefowe";
 
+/* Notifications */
+
+"Notifications.Title" = "Powiadomienia";
+"Notifications.Loading" = "Wczytuję…";
+
 /* Settings */
 
 "Settings.Title"  = "Ustawienia";

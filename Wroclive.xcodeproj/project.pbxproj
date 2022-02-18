@@ -154,6 +154,13 @@
 		90B8517A27B2D8DC0094DD30 /* RegisterNotificationTokenEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8517927B2D8DC0094DD30 /* RegisterNotificationTokenEndpoint.swift */; };
 		90B8517D27B2ECBF0094DD30 /* Snapshotting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8517C27B2ECBF0094DD30 /* Snapshotting.swift */; };
 		90C5BAEE2514CB1900D41508 /* AppStoreScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */; };
+		90C9E3C427BFA97C00D3BFD7 /* NotificationsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3C327BFA97C00D3BFD7 /* NotificationsCard.swift */; };
+		90C9E3C627BFA98900D3BFD7 /* NotificationsCard+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3C527BFA98900D3BFD7 /* NotificationsCard+Layout.swift */; };
+		90C9E3C827BFA99200D3BFD7 /* NotificationsCard+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3C727BFA99200D3BFD7 /* NotificationsCard+Constants.swift */; };
+		90C9E3CA27BFA9B400D3BFD7 /* NotificationsCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3C927BFA9B400D3BFD7 /* NotificationsCardViewModel.swift */; };
+		90C9E3CC27BFA9C900D3BFD7 /* NotificationsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3CB27BFA9C900D3BFD7 /* NotificationsPlaceholderView.swift */; };
+		90C9E3CE27BFA9D700D3BFD7 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3CD27BFA9D700D3BFD7 /* NotificationsCell.swift */; };
+		90C9E3D027BFA9FF00D3BFD7 /* NotificationsCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3CF27BFA9FF00D3BFD7 /* NotificationsCardCoordinator.swift */; };
 		90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */; };
 		90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */; };
 		90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFD124D60BEF00595D89 /* StringExtensions.swift */; };
@@ -396,6 +403,13 @@
 		90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshots.swift; sourceTree = "<group>"; };
 		90C7938E2510CC3C00279CF9 /* CardSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSnapshots.swift; sourceTree = "<group>"; };
 		90C793912510F40F00279CF9 /* ApiRequestSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestSnapshots.swift; sourceTree = "<group>"; };
+		90C9E3C327BFA97C00D3BFD7 /* NotificationsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCard.swift; sourceTree = "<group>"; };
+		90C9E3C527BFA98900D3BFD7 /* NotificationsCard+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationsCard+Layout.swift"; sourceTree = "<group>"; };
+		90C9E3C727BFA99200D3BFD7 /* NotificationsCard+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationsCard+Constants.swift"; sourceTree = "<group>"; };
+		90C9E3C927BFA9B400D3BFD7 /* NotificationsCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCardViewModel.swift; sourceTree = "<group>"; };
+		90C9E3CB27BFA9C900D3BFD7 /* NotificationsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPlaceholderView.swift; sourceTree = "<group>"; };
+		90C9E3CD27BFA9D700D3BFD7 /* NotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
+		90C9E3CF27BFA9FF00D3BFD7 /* NotificationsCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCardCoordinator.swift; sourceTree = "<group>"; };
 		90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
 		90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitExtensions.swift; sourceTree = "<group>"; };
 		90CDCFD124D60BEF00595D89 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -606,6 +620,7 @@
 				9013FA9924D6B1880006D1B9 /* Card container */,
 				90CE747824DB0CAE00419166 /* Search card */,
 				90CE740424D9BB7800419166 /* Bookmarks card */,
+				90C9E3C227BFA96200D3BFD7 /* Notifications card */,
 				90F38E3824E19ECE000D4192 /* Settings card */,
 				9013FB3424D72C790006D1B9 /* Map */,
 				9013FAFE24D721A90006D1B9 /* Main */,
@@ -940,6 +955,19 @@
 			path = Api;
 			sourceTree = "<group>";
 		};
+		90C9E3C227BFA96200D3BFD7 /* Notifications card */ = {
+			isa = PBXGroup;
+			children = (
+				90C9E3C327BFA97C00D3BFD7 /* NotificationsCard.swift */,
+				90C9E3C527BFA98900D3BFD7 /* NotificationsCard+Layout.swift */,
+				90C9E3C727BFA99200D3BFD7 /* NotificationsCard+Constants.swift */,
+				90C9E3C927BFA9B400D3BFD7 /* NotificationsCardViewModel.swift */,
+				90C9E3CB27BFA9C900D3BFD7 /* NotificationsPlaceholderView.swift */,
+				90C9E3CD27BFA9D700D3BFD7 /* NotificationsCell.swift */,
+			);
+			path = "Notifications card";
+			sourceTree = "<group>";
+		};
 		90CE740424D9BB7800419166 /* Bookmarks card */ = {
 			isa = PBXGroup;
 			children = (
@@ -998,6 +1026,7 @@
 			children = (
 				90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */,
 				90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */,
+				90C9E3CF27BFA9FF00D3BFD7 /* NotificationsCardCoordinator.swift */,
 				9076BD3D24DDB57A00467075 /* SearchCardCoordinator.swift */,
 				90CE742C24D9D6E600419166 /* CardCoordinator.swift */,
 				90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */,
@@ -1371,6 +1400,7 @@
 				90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */,
 				90F38E4624E19ECE000D4192 /* SettingsLinkCell.swift in Sources */,
 				9047996C24D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift in Sources */,
+				90C9E3C627BFA98900D3BFD7 /* NotificationsCard+Layout.swift in Sources */,
 				900EA11124D473E70054C03F /* Network.swift in Sources */,
 				90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */,
 				9047996724D575C500111F2C /* AppState.swift in Sources */,
@@ -1392,6 +1422,7 @@
 				90D57AFB24DC490100A0EF53 /* LineSelectorPage.swift in Sources */,
 				9076BD5324DDB5D100467075 /* SearchCard.swift in Sources */,
 				9013FAB924D6B1890006D1B9 /* CardTransitionDelegate.swift in Sources */,
+				90C9E3CC27BFA9C900D3BFD7 /* NotificationsPlaceholderView.swift in Sources */,
 				90CE741524D9BB7800419166 /* BookmarksCard+Layout.swift in Sources */,
 				90093B4E24DEB4E100D95645 /* LineSelector+Constants.swift in Sources */,
 				9013FB3C24D72C790006D1B9 /* VehicleAnnotationDiff.swift in Sources */,
@@ -1424,11 +1455,14 @@
 				90CDCFD424D60CF100595D89 /* CollectionExtensions.swift in Sources */,
 				902C2FCC24FC45160010B019 /* SettingsSection.swift in Sources */,
 				90B8517A27B2D8DC0094DD30 /* RegisterNotificationTokenEndpoint.swift in Sources */,
+				90C9E3C427BFA97C00D3BFD7 /* NotificationsCard.swift in Sources */,
+				90C9E3C827BFA99200D3BFD7 /* NotificationsCard+Constants.swift in Sources */,
 				90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */,
 				90EF089C24FC357700376B0C /* MapType.swift in Sources */,
 				905893CF24D4A95D0046EFA5 /* CachedStorageManager.swift in Sources */,
 				9013FAB724D6B1890006D1B9 /* CardPresentable.swift in Sources */,
 				90D57B0724DC490100A0EF53 /* LineSelectorSection.swift in Sources */,
+				90C9E3CE27BFA9D700D3BFD7 /* NotificationsCell.swift in Sources */,
 				90F72F3024E31AA400D20EB2 /* ApiError.swift in Sources */,
 				905893D324D4A95D0046EFA5 /* Configuration.swift in Sources */,
 				9013FAAE24D6B1880006D1B9 /* ReusableCell.swift in Sources */,
@@ -1436,10 +1470,12 @@
 				9013FAAC24D6B1880006D1B9 /* ReusableCell+UICollectionView.swift in Sources */,
 				9013FABB24D6B1890006D1B9 /* DismissGestureHandler.swift in Sources */,
 				9013FB3324D721A90006D1B9 /* MainViewController+Layout.swift in Sources */,
+				90C9E3CA27BFA9B400D3BFD7 /* NotificationsCardViewModel.swift in Sources */,
 				9076BD5224DDB5D100467075 /* SearchCardViewModel.swift in Sources */,
 				907FD0B924D8A2DC00B6896C /* OfflineApi.swift in Sources */,
 				9013FAC824D721410006D1B9 /* Localizable.swift in Sources */,
 				9013FB4024D72C790006D1B9 /* MapViewController+Constants.swift in Sources */,
+				90C9E3D027BFA9FF00D3BFD7 /* NotificationsCardCoordinator.swift in Sources */,
 				900EA10D24D46F140054C03F /* Endpoint.swift in Sources */,
 				9047995924D56BCA00111F2C /* Environment.swift in Sources */,
 				9013FAB524D6B1890006D1B9 /* CardPresentationTransition.swift in Sources */,

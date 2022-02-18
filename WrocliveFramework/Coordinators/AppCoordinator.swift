@@ -60,7 +60,14 @@ public final class AppCoordinator: MainViewModelDelegate {
   // MARK: - Notificaions
 
   public func openNotificationsCard() {
-    print("openNotificationsCard")
+    guard let mainViewController = self.mainViewController else {
+      fatalError("AppCoordinator has to be started first")
+    }
+
+    let coordinator = NotificationsCardCoordinator(parent: mainViewController,
+                                                   store: self.store,
+                                                   environment: self.environment)
+    self.showCard(coordinator: coordinator, animated: true)
   }
 
   // MARK: - Settings

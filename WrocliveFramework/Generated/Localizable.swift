@@ -125,6 +125,13 @@ public enum Localizable {
     }
   }
 
+  enum Notifications {
+    /// Loading…
+    static var loading: String { Localizable.tr("Localizable", "Notifications.Loading") }
+    /// Notifications
+    static var title: String { Localizable.tr("Localizable", "Notifications.Title") }
+  }
+
   enum Search {
     /// Loading…
     static var loading: String { Localizable.tr("Localizable", "Search.Loading") }

@@ -29,9 +29,7 @@ public final class SearchCardCoordinator: CardCoordinator {
     let viewModel = SearchCardViewModel(store: self.store,
                                         environment: self.environment)
     let card = SearchCard(viewModel: viewModel)
-
-    let cardHeight = self.getCardHeight(screenPercent: 0.9,
-                                        butNoBiggerThan: 600)
+    let cardHeight = self.getCardHeight(screenPercent: 0.9, butNoBiggerThan: 600)
 
     self.card = card
     return self.present(card: card, withHeight: cardHeight, animated: animated)
