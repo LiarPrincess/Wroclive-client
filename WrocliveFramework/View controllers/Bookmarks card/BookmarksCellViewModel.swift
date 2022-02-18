@@ -11,9 +11,9 @@ public struct BookmarksCellViewModel: Equatable {
   public let bookmark: Bookmark
 
   public init(bookmark: Bookmark) {
+    self.bookmark = bookmark
     self.nameText = createNameText(bookmark: bookmark)
     self.linesText = createLinesText(bookmark: bookmark)
-    self.bookmark = bookmark
   }
 
   public static func == (lhs: BookmarksCellViewModel,

@@ -14,6 +14,7 @@ public struct AppState: StateType {
   public var trackedLines: [Line]
 
   public var getLinesResponse: ApiResponseState<[Line]>
+  public var getNotificationsResponse: ApiResponseState<[Notification]>
   public var getVehicleLocationsResponse: ApiResponseState<[Vehicle]>
 
   // MARK: - Init
@@ -24,6 +25,7 @@ public struct AppState: StateType {
     bookmarks: [Bookmark],
     trackedLines: [Line],
     getLinesResponse: ApiResponseState<[Line]>,
+    getNotificationsResponse: ApiResponseState<[Notification]>,
     getVehicleLocationsResponse: ApiResponseState<[Vehicle]>
   ) {
     self.mapType = mapType
@@ -31,6 +33,7 @@ public struct AppState: StateType {
     self.bookmarks = bookmarks
     self.trackedLines = trackedLines
     self.getLinesResponse = getLinesResponse
+    self.getNotificationsResponse = getNotificationsResponse
     self.getVehicleLocationsResponse = getVehicleLocationsResponse
   }
 
@@ -114,6 +117,7 @@ public struct AppState: StateType {
       bookmarks: bookmarks,
       trackedLines: trackedLines,
       getLinesResponse: .none,
+      getNotificationsResponse: .none,
       getVehicleLocationsResponse: .none
     )
   }
