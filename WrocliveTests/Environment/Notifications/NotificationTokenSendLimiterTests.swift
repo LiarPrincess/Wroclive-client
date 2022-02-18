@@ -7,12 +7,17 @@ import Foundation
 import WrocliveTestsShared
 @testable import WrocliveFramework
 
+// swiftlint:disable force_unwrapping
+
 private let interval = NotificationTokenSendLimiter.sendInterval
 private let dateInitial = Date(timeIntervalSince1970: 0.0)
 private let dateWithinInterval = Date(timeInterval: interval - 1.0, since: dateInitial)
 private let dateAfterInterval = Date(timeInterval: interval + 1.0, since: dateInitial)
 
 private var dateMock = dateInitial
+
+private let deviceId = UUID(uuidString: "11111111-2222-3333-4444-555555555555")!
+private let deviceIdOld = UUID(uuidString: "11111111-AAAA-3333-BBBB-555555555555")!
 
 private func getDateMock() -> Date {
   return dateMock
@@ -26,10 +31,10 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
     let store = NotificationTokenStoreMock()
     let limiter = NotificationTokenSendLimiter(store: store, getDate: getDateMock)
 
-    XCTAssertNil(store.storedNotificationToken) // Not stored
+    store.storedNotificationToken = nil // Not stored
 
     dateMock = dateInitial
-    let result = limiter.shouldSend(token: "TOKEN_VALUE")
+    let result = limiter.shouldSend(deviceId: deviceId, token: "TOKEN_VALUE")
 
     XCTAssertTrue(result)
     XCTAssertEqual(store.getNotificationTokenCallCount, 1)
@@ -42,28 +47,48 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
 
     store.storedNotificationToken = StoredNotificationToken(
       date: dateInitial,
-      value: "OLD_TOKEN_VALUE"
+      deviceId: deviceId,
+      token: "OLD_TOKEN_VALUE"
     )
 
     dateMock = dateWithinInterval
-    let result = limiter.shouldSend(token: "TOKEN_VALUE")
+    let result = limiter.shouldSend(deviceId: deviceId, token: "TOKEN_VALUE")
 
     XCTAssertTrue(result)
     XCTAssertEqual(store.getNotificationTokenCallCount, 1)
     XCTAssertEqual(store.setNotificationTokenCallCount, 0)
   }
 
-  func test_shouldSend_when_storedToken_isFromFuture() {
+  func test_shouldSend_when_deviceIdChanged() {
     let store = NotificationTokenStoreMock()
     let limiter = NotificationTokenSendLimiter(store: store, getDate: getDateMock)
 
     store.storedNotificationToken = StoredNotificationToken(
-      date: dateWithinInterval,
-      value: "TOKEN_VALUE"
+      date: dateInitial,
+      deviceId: deviceIdOld,
+      token: "TOKEN_VALUE"
+    )
+
+    dateMock = dateWithinInterval
+    let result = limiter.shouldSend(deviceId: deviceId, token: "TOKEN_VALUE")
+
+    XCTAssertTrue(result)
+    XCTAssertEqual(store.getNotificationTokenCallCount, 1)
+    XCTAssertEqual(store.setNotificationTokenCallCount, 0)
+  }
+
+  func test_shouldSend_when_storedToken_isFromTheFuture() {
+    let store = NotificationTokenStoreMock()
+    let limiter = NotificationTokenSendLimiter(store: store, getDate: getDateMock)
+
+    store.storedNotificationToken = StoredNotificationToken(
+      date: dateWithinInterval, // dateInitial + interval - 1
+      deviceId: deviceId,
+      token: "TOKEN_VALUE"
     )
 
     dateMock = dateInitial
-    let result = limiter.shouldSend(token: "TOKEN_VALUE")
+    let result = limiter.shouldSend(deviceId: deviceId, token: "TOKEN_VALUE")
 
     XCTAssertTrue(result)
     XCTAssertEqual(store.getNotificationTokenCallCount, 1)
@@ -76,11 +101,12 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
 
     store.storedNotificationToken = StoredNotificationToken(
       date: dateInitial,
-      value: "TOKEN_VALUE"
+      deviceId: deviceId,
+      token: "TOKEN_VALUE"
     )
 
     dateMock = dateAfterInterval
-    let result = limiter.shouldSend(token: "TOKEN_VALUE")
+    let result = limiter.shouldSend(deviceId: deviceId, token: "TOKEN_VALUE")
 
     XCTAssertTrue(result)
     XCTAssertEqual(store.getNotificationTokenCallCount, 1)
@@ -93,11 +119,12 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
 
     store.storedNotificationToken = StoredNotificationToken(
       date: dateInitial,
-      value: "TOKEN_VALUE"
+      deviceId: deviceId,
+      token: "TOKEN_VALUE"
     )
 
     dateMock = dateWithinInterval
-    let result = limiter.shouldSend(token: "TOKEN_VALUE")
+    let result = limiter.shouldSend(deviceId: deviceId, token: "TOKEN_VALUE")
 
     XCTAssertFalse(result)
     XCTAssertEqual(store.getNotificationTokenCallCount, 1)
@@ -114,9 +141,12 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
 
     dateMock = dateInitial
     let token = "TOKEN_VALUE"
-    limiter.registerSend(token: token)
+    limiter.registerSend(deviceId: deviceId, token: token)
 
-    let expected = StoredNotificationToken(date: dateInitial, value: token)
+    let expected = StoredNotificationToken(date: dateInitial,
+                                           deviceId: deviceId,
+                                           token: token)
+
     XCTAssertEqual(store.storedNotificationToken, expected)
     XCTAssertEqual(store.setNotificationTokenCallCount, 1)
     XCTAssertEqual(store.getNotificationTokenCallCount, 0)

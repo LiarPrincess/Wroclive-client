@@ -11,11 +11,13 @@ private let hour = 60 * minute
 public struct StoredNotificationToken: Equatable, Codable {
 
   public let date: Date
-  public let value: String
+  public let deviceId: UUID
+  public let token: String
 
-  public init(date: Date, value: String) {
+  public init(date: Date, deviceId: UUID, token: String) {
     self.date = date
-    self.value = value
+    self.deviceId = deviceId
+    self.token = token
   }
 }
 
@@ -32,8 +34,8 @@ public protocol NotificationTokenStore {
 /// Btw. It does handle the edge case when we did send the token but it got lost
 /// by setting the send interval to relatively small value (not weeks/years etc.).
 public protocol NotificationTokenSendLimiterType {
-  func shouldSend(token: String) -> Bool
-  func registerSend(token: String)
+  func shouldSend(deviceId: UUID, token: String) -> Bool
+  func registerSend(deviceId: UUID, token: String)
 }
 
 public final class NotificationTokenSendLimiter: NotificationTokenSendLimiterType {
@@ -50,21 +52,20 @@ public final class NotificationTokenSendLimiter: NotificationTokenSendLimiterTyp
     self.getDate = getDate ?? Date.init
   }
 
-  public func shouldSend(token: String) -> Bool {
-    // No token stored
-    guard let storedToken = self.store.getNotificationToken() else {
+  public func shouldSend(deviceId: UUID, token: String) -> Bool {
+    // No token stored -> send
+    guard let stored = self.store.getNotificationToken() else {
       return true
     }
 
-    let oldToken = storedToken.value
-    let hasTokenChanged = token != oldToken
-
-    if hasTokenChanged {
+    // Changed? -> send
+    let isEqual = deviceId == stored.deviceId && token == stored.token
+    if !isEqual {
       return true
     }
 
     // We will ignore all of the nuances of the time zones.
-    let storeDate = storedToken.date
+    let storeDate = stored.date
     let storeDate1970 = storeDate.timeIntervalSince1970
 
     let now = self.getDate()
@@ -80,9 +81,9 @@ public final class NotificationTokenSendLimiter: NotificationTokenSendLimiterTyp
     return interval >= NotificationTokenSendLimiter.sendInterval
   }
 
-  public func registerSend(token: String) {
+  public func registerSend(deviceId: UUID, token: String) {
     let now = self.getDate()
-    let storedToken = StoredNotificationToken(date: now, value: token)
-    self.store.setNotificationToken(token: storedToken)
+    let stored = StoredNotificationToken(date: now, deviceId: deviceId, token: token)
+    self.store.setNotificationToken(token: stored)
   }
 }

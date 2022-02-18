@@ -131,7 +131,7 @@ public class NotificationManager: NotificationManagerType {
       return Promise(error: error)
     }
 
-    guard self.tokenSendLimiter.shouldSend(token: token) else {
+    guard self.tokenSendLimiter.shouldSend(deviceId: deviceId, token: token) else {
       os_log("Failed to send token: rate limitter", log: self.log, type: .info)
       let error = RegisterForRemoteNotificationsError.sendRateLimitExhausted
       return Promise(error: error)
@@ -142,7 +142,7 @@ public class NotificationManager: NotificationManagerType {
         switch result {
         case .fulfilled:
           os_log("Token send succesfully", log: self.log, type: .info)
-          self.tokenSendLimiter.registerSend(token: token)
+          self.tokenSendLimiter.registerSend(deviceId: deviceId, token: token)
         case .rejected(let error):
           os_log("Failed to send token: %{public}@",
                  log: self.log,

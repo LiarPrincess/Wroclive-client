@@ -3,27 +3,38 @@
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import XCTest
+import Foundation
 @testable import WrocliveFramework
+
+public struct DeviceIdTokenPair: Equatable {
+  public let deviceId: UUID
+  public let token: String
+
+  public init(deviceId: UUID, token: String) {
+    self.deviceId = deviceId
+    self.token = token
+  }
+}
 
 public final class NotificationTokenSendLimiterMock: NotificationTokenSendLimiterType {
 
   public init() {}
 
   public var shouldSendResult = false
-  public private(set) var shouldSendTokenArg: String?
+  public private(set) var shouldSendTokenArg: DeviceIdTokenPair?
   public private(set) var shouldSendCallCount = 0
 
-  public func shouldSend(token: String) -> Bool {
+  public func shouldSend(deviceId: UUID, token: String) -> Bool {
     self.shouldSendCallCount += 1
-    self.shouldSendTokenArg = token
+    self.shouldSendTokenArg = DeviceIdTokenPair(deviceId: deviceId, token: token)
     return self.shouldSendResult
   }
 
   public private(set) var registerSendCallCount = 0
-  public private(set) var registerSendTokenArg: String?
+  public private(set) var registerSendTokenArg: DeviceIdTokenPair?
 
-  public func registerSend(token: String) {
+  public func registerSend(deviceId: UUID,token: String) {
     self.registerSendCallCount += 1
-    self.registerSendTokenArg = token
+    self.registerSendTokenArg = DeviceIdTokenPair(deviceId: deviceId, token: token)
   }
 }
