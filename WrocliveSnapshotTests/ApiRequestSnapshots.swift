@@ -81,6 +81,22 @@ class ApiRequestSnapshots: XCTestCase, SnapshotTestCase, ApiTestCase {
     self.wait(for: [expectation], timeout: 1.0)
   }
 
+  // MARK: - Notifications
+
+  func test_notifications() {
+    let api = self.createApi(baseUrl: "API_URL") { request in
+      self.assertSnapshot(matching: request, as: .request(pretty: true))
+      throw WeOnlyNeedRequestNotResponse()
+    }
+
+    let expectation = XCTestExpectation(description: "response")
+    _ = api.getNotifications().ensure {
+      expectation.fulfill()
+    }
+
+    self.wait(for: [expectation], timeout: 1.0)
+  }
+
   // MARK: - Notification token
 
   func test_registerNotificationToken() {

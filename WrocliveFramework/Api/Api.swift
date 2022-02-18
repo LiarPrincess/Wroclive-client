@@ -14,6 +14,7 @@ public final class Api: ApiType {
   private let logManager: LogManagerType
 
   private let linesEndpoint: LinesEndpoint
+  private let notificationsEndpoint: NotificationsEndpoint
   private let vehicleLocationsEndpoint: VehicleLocationsEndpoint
   private let registerNotificationTokenEndpoint: RegisterNotificationTokenEndpoint
 
@@ -34,6 +35,7 @@ public final class Api: ApiType {
 
     let baseUrl = baseUrl.appendingPathComponent("/v1")
     self.linesEndpoint = LinesEndpoint(baseUrl: baseUrl)
+    self.notificationsEndpoint = NotificationsEndpoint(baseUrl: baseUrl)
     self.vehicleLocationsEndpoint = VehicleLocationsEndpoint(baseUrl: baseUrl)
     self.registerNotificationTokenEndpoint = RegisterNotificationTokenEndpoint(baseUrl: baseUrl)
   }
@@ -63,6 +65,12 @@ public final class Api: ApiType {
     os_log("Sending 'getVehicleLocations' request", log: self.log, type: .debug)
     let endpoint = self.vehicleLocationsEndpoint
     return self.sendRequest(endpoint: endpoint, data: lines)
+  }
+
+  public func getNotifications() -> Promise<[Notification]> {
+    os_log("Sending 'getNotifications' request", log: self.log, type: .debug)
+    let endpoint = self.notificationsEndpoint
+    return self.sendRequest(endpoint: endpoint, data: ())
   }
 
   public func setNetworkActivityIndicatorVisibility(isVisible: Bool) {

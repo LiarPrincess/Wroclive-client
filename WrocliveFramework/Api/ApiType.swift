@@ -6,11 +6,14 @@ import PromiseKit
 
 public protocol ApiType {
 
-  /// Get all currently available mpk lines
+  /// Get all currently available mpk lines.
   func getLines() -> Promise<[Line]>
 
-  /// Get current vehicle locations for selected lines
+  /// Get current vehicle locations for selected lines.
   func getVehicleLocations(for lines: [Line]) -> Promise<[Vehicle]>
+
+  /// Get list of current alerts and stuff.
+  func getNotifications() -> Promise<[Notification]>
 
   /// Send token, so that our server can send push notifications to this device.
   func sendNotificationToken(deviceId: UUID, token: String) -> Promise<Void>

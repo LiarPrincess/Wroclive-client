@@ -51,6 +51,13 @@ public final class OfflineApi: ApiType {
       .then { _ in Promise.value(vehicles) }
   }
 
+  public func getNotifications() -> Promise<[Notification]> {
+    os_log("[offline] Sending 'getNotifications' request", log: self.log, type: .debug)
+
+    return after(seconds: networkDelay)
+      .then { _ in Promise.value(DummyData.notifications) }
+  }
+
   public func sendNotificationToken(deviceId: UUID, token: String) -> Promise<Void> {
     os_log("[offline] Sending 'notification-token' request", log: self.log, type: .debug)
     return Promise.value()

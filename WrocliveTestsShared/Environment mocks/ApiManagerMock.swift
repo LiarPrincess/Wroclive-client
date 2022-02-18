@@ -30,6 +30,16 @@ public final class ApiMock: ApiType {
     return .value(self.vehicleLocations)
   }
 
+  public typealias WrocliveNotification = WrocliveFramework.Notification
+
+  public var notifications = [WrocliveNotification]()
+  public private(set) var getNotificationsCallCount = 0
+
+  public func getNotifications() -> Promise<[WrocliveNotification]> {
+    self.getNotificationsCallCount += 1
+    return .value(self.notifications)
+  }
+
   // MARK: - Notification token
 
   public struct SendNotificationTokenArg {
