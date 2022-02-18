@@ -18,7 +18,7 @@ public final class BookmarksCard: UIViewController,
   public let tableView = UITableView()
 
   /// `self.tableView` data source
-  internal var bookmarks = [Bookmark]()
+  internal var cells = [BookmarksCellViewModel]()
   internal let viewModel: BookmarksCardViewModel
 
   // MARK: - Init
@@ -49,9 +49,9 @@ public final class BookmarksCard: UIViewController,
   // MARK: - View model
 
   public func refresh() {
-    let newBookmarks = self.viewModel.bookmarks
-    if newBookmarks != self.bookmarks {
-      self.bookmarks = newBookmarks
+    let newCells = self.viewModel.cells
+    if newCells != self.cells {
+      self.cells = newCells
       self.tableView.reloadData()
     }
 
@@ -108,16 +108,16 @@ public final class BookmarksCard: UIViewController,
 
   public func tableView(_ tableView: UITableView,
                         numberOfRowsInSection section: Int) -> Int {
-    return self.bookmarks.count
+    return self.cells.count
   }
 
   public func tableView(_ tableView: UITableView,
                         cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let bookmark = self.bookmarks[indexPath.row]
+    let cellViewModel = self.cells[indexPath.row]
     let cell = self.tableView.dequeueCell(ofType: BookmarksCell.self,
                                           forIndexPath: indexPath)
 
-    cell.update(bookmark: bookmark)
+    cell.update(viewModel: cellViewModel)
     return cell
   }
 
@@ -148,7 +148,7 @@ public final class BookmarksCard: UIViewController,
 
     switch editingStyle {
     case .delete:
-      self.bookmarks.remove(at: index)
+      self.cells.remove(at: index)
       self.tableView.deleteRows(at: [indexPath], with: .automatic)
       self.viewModel.viewDidDeleteItem(index: index)
     case .insert,
@@ -165,8 +165,8 @@ public final class BookmarksCard: UIViewController,
     let fromIndex = sourceIndexPath.row
     let toIndex = destinationIndexPath.row
 
-    let bookmark = self.bookmarks.remove(at: fromIndex)
-    self.bookmarks.insert(bookmark, at: toIndex)
+    let cell = self.cells.remove(at: fromIndex)
+    self.cells.insert(cell, at: toIndex)
     self.viewModel.viewDidMoveItem(fromIndex: fromIndex, toIndex: toIndex)
   }
 }

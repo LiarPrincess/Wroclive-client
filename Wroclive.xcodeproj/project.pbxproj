@@ -119,6 +119,7 @@
 		9066DDFF24E737670096F536 /* SearchCardViewModelTests+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9066DDFE24E737670096F536 /* SearchCardViewModelTests+Save.swift */; };
 		906BFDA927BFF9A1001842E9 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BFDA827BFF9A1001842E9 /* DateExtensions.swift */; };
 		906BFDAB27C00F5D001842E9 /* XCTAssertResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BFDAA27C00F5D001842E9 /* XCTAssertResponse.swift */; };
+		906BFDAF27C030FB001842E9 /* BookmarksCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BFDAE27C030FB001842E9 /* BookmarksCellViewModel.swift */; };
 		9076BD3E24DDB57A00467075 /* SearchCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD3D24DDB57A00467075 /* SearchCardCoordinator.swift */; };
 		9076BD4A24DDB5D100467075 /* SearchCard+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD3F24DDB5D000467075 /* SearchCard+Layout.swift */; };
 		9076BD4B24DDB5D100467075 /* SearchCard+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4024DDB5D100467075 /* SearchCard+Constants.swift */; };
@@ -208,7 +209,7 @@
 		90F72F3024E31AA400D20EB2 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F2F24E31AA400D20EB2 /* ApiError.swift */; };
 		90F72F3324E31CC900D20EB2 /* UserLocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3224E31CC900D20EB2 /* UserLocationError.swift */; };
 		90F72F3B24E31D9600D20EB2 /* BookmarksCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3524E31D9600D20EB2 /* BookmarksCardViewModelTests.swift */; };
-		90F72F3C24E31D9600D20EB2 /* BookmarksCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3624E31D9600D20EB2 /* BookmarksCellTests.swift */; };
+		90F72F3C24E31D9600D20EB2 /* BookmarksCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3624E31D9600D20EB2 /* BookmarksCellViewModelTests.swift */; };
 		90F72F3D24E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3724E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift */; };
 		90F72F3E24E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3824E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift */; };
 		90F72F3F24E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F72F3924E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift */; };
@@ -366,6 +367,7 @@
 		9066DDFE24E737670096F536 /* SearchCardViewModelTests+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchCardViewModelTests+Save.swift"; sourceTree = "<group>"; };
 		906BFDA827BFF9A1001842E9 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		906BFDAA27C00F5D001842E9 /* XCTAssertResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertResponse.swift; sourceTree = "<group>"; };
+		906BFDAE27C030FB001842E9 /* BookmarksCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksCellViewModel.swift; sourceTree = "<group>"; };
 		9076BD3D24DDB57A00467075 /* SearchCardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardCoordinator.swift; sourceTree = "<group>"; };
 		9076BD3F24DDB5D000467075 /* SearchCard+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCard+Layout.swift"; sourceTree = "<group>"; };
 		9076BD4024DDB5D100467075 /* SearchCard+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCard+Constants.swift"; sourceTree = "<group>"; };
@@ -469,7 +471,7 @@
 		90F72F2F24E31AA400D20EB2 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		90F72F3224E31CC900D20EB2 /* UserLocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationError.swift; sourceTree = "<group>"; };
 		90F72F3524E31D9600D20EB2 /* BookmarksCardViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCardViewModelTests.swift; sourceTree = "<group>"; };
-		90F72F3624E31D9600D20EB2 /* BookmarksCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCellTests.swift; sourceTree = "<group>"; };
+		90F72F3624E31D9600D20EB2 /* BookmarksCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksCellViewModelTests.swift; sourceTree = "<group>"; };
 		90F72F3724E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Bookmarks.swift"; sourceTree = "<group>"; };
 		90F72F3824E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Edit.swift"; sourceTree = "<group>"; };
 		90F72F3924E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookmarksCardViewModelTests+Visibility.swift"; sourceTree = "<group>"; };
@@ -992,6 +994,7 @@
 				90CE740624D9BB7800419166 /* BookmarksCardViewModel.swift */,
 				90CE740724D9BB7800419166 /* BookmarksPlaceholderView.swift */,
 				90CE741324D9BB7800419166 /* BookmarksCell.swift */,
+				906BFDAE27C030FB001842E9 /* BookmarksCellViewModel.swift */,
 			);
 			path = "Bookmarks card";
 			sourceTree = "<group>";
@@ -1113,7 +1116,7 @@
 		90F72F3424E31D9600D20EB2 /* Bookmarks card */ = {
 			isa = PBXGroup;
 			children = (
-				90F72F3624E31D9600D20EB2 /* BookmarksCellTests.swift */,
+				90F72F3624E31D9600D20EB2 /* BookmarksCellViewModelTests.swift */,
 				90F72F3524E31D9600D20EB2 /* BookmarksCardViewModelTests.swift */,
 				90F72F3824E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift */,
 				90F72F3724E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift */,
@@ -1413,6 +1416,7 @@
 				9013FABC24D6B1890006D1B9 /* ScrollViewDismissGestureHandler.swift in Sources */,
 				90CDCFD624D60D7F00595D89 /* UIExtensions.swift in Sources */,
 				90B8517827B2C9340094DD30 /* NotificationTokenSendLimiter.swift in Sources */,
+				906BFDAF27C030FB001842E9 /* BookmarksCellViewModel.swift in Sources */,
 				90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */,
 				90F38E4624E19ECE000D4192 /* SettingsLinkCell.swift in Sources */,
 				9047996C24D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift in Sources */,
@@ -1554,7 +1558,7 @@
 				9081B83227B43D800043FE4A /* NotificationManagerTests+RequestAuthorization.swift in Sources */,
 				906BFDAB27C00F5D001842E9 /* XCTAssertResponse.swift in Sources */,
 				904F1CFA24E556EB00EF77A0 /* LineSelectorViewModelTests.swift in Sources */,
-				90F72F3C24E31D9600D20EB2 /* BookmarksCellTests.swift in Sources */,
+				90F72F3C24E31D9600D20EB2 /* BookmarksCellViewModelTests.swift in Sources */,
 				90F72F1224E3157D00D20EB2 /* Collection+GroupTests.swift in Sources */,
 				90F72F5124E426EB00D20EB2 /* VehicleAnnotationDiff.swift in Sources */,
 				9066DDFF24E737670096F536 /* SearchCardViewModelTests+Save.swift in Sources */,

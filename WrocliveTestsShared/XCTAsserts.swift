@@ -17,6 +17,19 @@ public func XCTAssertAll(lines: [Line],
   }
 }
 
+// MARK: - Bookmarks
+
+public func XCTAssertBookmarkCellsEqual(_ lhs: [BookmarksCellViewModel],
+                                        _ rhs: [Bookmark],
+                                        file: StaticString = #file,
+                                        line: UInt = #line) {
+  XCTAssertEqual(lhs.count, rhs.count, file: file, line: line)
+
+  for (l, r) in zip(lhs, rhs) {
+    XCTAssertEqual(l.bookmark, r, file: file, line: line)
+  }
+}
+
 // MARK: - Api error
 
 public func XCTAssertEqual(_ lhs: ApiError?,

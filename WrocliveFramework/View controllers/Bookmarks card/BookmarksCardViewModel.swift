@@ -16,7 +16,7 @@ public protocol BookmarksCardViewType: AnyObject {
 
 public final class BookmarksCardViewModel: StoreSubscriber {
 
-  internal private(set) var bookmarks: [Bookmark]
+  internal private(set) var cells: [BookmarksCellViewModel]
   internal private(set) var isTableViewVisible: Bool
   internal private(set) var isPlaceholderVisible: Bool
   internal private(set) var isEditing: Bool
@@ -27,7 +27,7 @@ public final class BookmarksCardViewModel: StoreSubscriber {
 
   public init(store: Store<AppState>) {
     self.store = store
-    self.bookmarks = []
+    self.cells = []
     self.isTableViewVisible = false
     self.isPlaceholderVisible = true
     self.isEditing = false
@@ -51,12 +51,12 @@ public final class BookmarksCardViewModel: StoreSubscriber {
   // MARK: - View input
 
   public func viewDidSelectItem(index: Int) {
-    guard self.bookmarks.indices.contains(index) else {
+    guard self.cells.indices.contains(index) else {
       return
     }
 
-    let bookmark = self.bookmarks[index]
-    self.store.dispatch(TrackedLinesAction.startTracking(bookmark.lines))
+    let cell = self.cells[index]
+    self.store.dispatch(TrackedLinesAction.startTracking(cell.bookmark.lines))
 
     self.view?.close(animated: true)
   }
@@ -90,21 +90,22 @@ public final class BookmarksCardViewModel: StoreSubscriber {
   // MARK: - Store subscriber
 
   public func newState(state: AppState) {
-    self.updateBookmarkListIfNeeded(newState: state)
-    self.refreshView()
-  }
+    let bookmarks = state.bookmarks
 
-  private func updateBookmarkListIfNeeded(newState: AppState) {
-    let new = newState.bookmarks
-    let old = self.bookmarks
+    let noChanges = bookmarks.count == self.cells.count
+      && zip(bookmarks, self.cells).allSatisfy { $0 == $1.bookmark }
 
-    guard new != old else {
+    if noChanges {
       return
     }
 
-    let isTableVisible = new.any
-    self.bookmarks = new
+    let viewModels = bookmarks.map(BookmarksCellViewModel.init(bookmark:))
+
+    let isTableVisible = viewModels.any
+    self.cells = viewModels
     self.isTableViewVisible = isTableVisible
     self.isPlaceholderVisible = !isTableVisible
+
+    self.refreshView()
   }
 }

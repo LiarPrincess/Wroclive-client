@@ -89,60 +89,10 @@ public final class BookmarksCell: UITableViewCell {
     self.linesLabel.preferredMaxLayoutWidth = labelWidth
   }
 
-  // MARK: - Methods
+  // MARK: - Update
 
-  public func update(bookmark: Bookmark) {
-    let name = Self.createNameText(bookmark: bookmark)
-    let lines = Self.createLinesText(bookmark: bookmark)
-
-    self.nameLabel.attributedText = name
-    self.linesLabel.attributedText = lines
-  }
-
-  internal static func createNameText(bookmark: Bookmark) -> NSAttributedString {
-    let string = bookmark.name
-    let attributes = Constants.Name.attributes
-    return NSAttributedString(string: string, attributes: attributes)
-  }
-
-  internal static func createLinesText(bookmark: Bookmark) -> NSAttributedString {
-    var tramLines = [Line]()
-    var busLines = [Line]()
-
-    for line in bookmark.lines {
-      switch line.type {
-      case .tram: tramLines.append(line)
-      case .bus: busLines.append(line)
-      }
-    }
-
-    tramLines.sortByLocalizedName()
-    busLines.sortByLocalizedName()
-
-    let hasTramLines = tramLines.any
-    let hasBusLines = busLines.any
-    let hasTramAndBusLines = hasTramLines && hasBusLines
-
-    var string = ""
-    if hasTramLines { string += self.concat(lines: tramLines) }
-    if hasTramAndBusLines { string += "\n" }
-    if hasBusLines { string += self.concat(lines: busLines) }
-
-    let attributes = Constants.Lines.attributes
-    return NSAttributedString(string: string, attributes: attributes)
-  }
-
-  private static func concat(lines: [Line]) -> String {
-    var result = ""
-    for (index, line) in lines.enumerated() {
-      if index != 0 {
-        let separator = Constants.Lines.horizontalSpacing
-        result.append(separator)
-      }
-
-      result.append(line.name)
-    }
-
-    return result
+  public func update(viewModel: BookmarksCellViewModel) {
+    self.nameLabel.attributedText = viewModel.nameText
+    self.linesLabel.attributedText = viewModel.linesText
   }
 }
