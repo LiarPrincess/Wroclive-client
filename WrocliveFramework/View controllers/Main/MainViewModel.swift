@@ -8,6 +8,7 @@ import ReSwift
 public protocol MainViewModelDelegate: MapViewModelDelegate {
   func openSearchCard()
   func openBookmarksCard()
+  func openNotificationsCard()
   func openSettingsCard()
 }
 
@@ -30,8 +31,12 @@ public final class MainViewModel {
     self.delegate?.openSearchCard()
   }
 
-  public func didPressBookmarkButton() {
+  public func didPressBookmarksButton() {
     self.delegate?.openBookmarksCard()
+  }
+
+  public func didPressNotificationsButton() {
+    self.delegate?.openNotificationsCard()
   }
 
   public func didPressSettingsButton() {

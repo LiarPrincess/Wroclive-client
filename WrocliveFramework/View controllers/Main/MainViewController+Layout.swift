@@ -72,6 +72,11 @@ extension MainViewController {
                          color: buttonColor,
                          action: #selector(bookmarksButtonPressed))
 
+    self.customizeButton(self.notificationsButton,
+                         image: ImageAsset.toolbarBell,
+                         color: buttonColor,
+                         action: #selector(notificationsButtonPressed))
+
     self.customizeButton(self.configurationButton,
                          image: ImageAsset.toolbarGear,
                          color: buttonColor,
@@ -80,6 +85,7 @@ extension MainViewController {
     self.toolbarStackView.addArrangedSubview(userTrackingButtonView)
     self.toolbarStackView.addArrangedSubview(self.searchButton)
     self.toolbarStackView.addArrangedSubview(self.bookmarksButton)
+    self.toolbarStackView.addArrangedSubview(self.notificationsButton)
     self.toolbarStackView.addArrangedSubview(self.configurationButton)
     self.toolbarStackView.axis = .horizontal
     self.toolbarStackView.distribution = .equalCentering

@@ -57,6 +57,12 @@ public final class AppCoordinator: MainViewModelDelegate {
     self.showCard(coordinator: coordinator, animated: true)
   }
 
+  // MARK: - Notificaions
+
+  public func openNotificationsCard() {
+    print("openNotificationsCard")
+  }
+
   // MARK: - Settings
 
   public func openSettingsCard() {

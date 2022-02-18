@@ -36,6 +36,7 @@ public struct ImageAsset {
   public static let settingsShare = ImageAsset(name: "settings-share")
   public static let settingsShowCode = ImageAsset(name: "settings-show-code")
   public static let share = ImageAsset(name: "share")
+  public static let toolbarBell = ImageAsset(name: "toolbar-bell")
   public static let toolbarGear = ImageAsset(name: "toolbar-gear")
   public static let toolbarHeart = ImageAsset(name: "toolbar-heart")
   public static let toolbarTram = ImageAsset(name: "toolbar-tram")
