@@ -88,6 +88,7 @@ public struct TextAttributes {
     case .text: return ColorScheme.text
     case .tint: return ColorScheme.tint
     case .white: return UIColor.white
+    case .gray: return UIColor.gray
     }
   }
 
@@ -98,7 +99,8 @@ public struct TextAttributes {
     case .headline: return preset.headline
     case .body: return preset.body
     case .bodyBold: return preset.bodyBold
-    case .footnote: return preset.footnote
+    case .bodySmall: return preset.bodySmall
+    case .bodySmallBold: return preset.bodySmallBold
     }
   }
 

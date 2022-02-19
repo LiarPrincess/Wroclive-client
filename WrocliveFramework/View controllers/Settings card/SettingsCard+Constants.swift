@@ -66,7 +66,7 @@ extension SettingsCard {
       public static let bottomOffset = CGFloat(20.0)
       public static let lineSpacing = CGFloat(5.0)
 
-      public static let textAttributes = TextAttributes(style: .footnote,
+      public static let textAttributes = TextAttributes(style: .bodySmall,
                                                         alignment: .center,
                                                         lineSpacing: lineSpacing)
     }

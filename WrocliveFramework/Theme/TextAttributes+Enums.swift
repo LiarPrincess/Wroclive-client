@@ -9,7 +9,8 @@ extension TextAttributes {
     case headline
     case body
     case bodyBold
-    case footnote
+    case bodySmall
+    case bodySmallBold
   }
 
   // At some point in time we used 'FontAwesome' for icons,
@@ -23,6 +24,7 @@ extension TextAttributes {
     case text
     case tint
     case white
+    case gray
   }
 
   public enum Alignment {

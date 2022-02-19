@@ -17,7 +17,7 @@ public final class NotificationsCard: UIViewController,
   public let tableView = UITableView()
 
   /// `self.tableView` data source
-  internal var notifications = ["A", "B", "C"]
+  internal var cells = [NotificationCellViewModel]()
   internal let viewModel: NotificationsCardViewModel
 
   // MARK: - Init
@@ -65,16 +65,16 @@ public final class NotificationsCard: UIViewController,
 
   public func tableView(_ tableView: UITableView,
                         numberOfRowsInSection section: Int) -> Int {
-    return self.notifications.count
+    return self.cells.count
   }
 
   public func tableView(_ tableView: UITableView,
                         cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let notification = self.notifications[indexPath.row]
+    let cellViewModel = self.cells[indexPath.row]
     let cell = self.tableView.dequeueCell(ofType: NotificationsCell.self,
                                           forIndexPath: indexPath)
 
-    cell.update(notification: notification)
+    cell.update(viewModel: cellViewModel)
     return cell
   }
 }

@@ -31,6 +31,28 @@ extension NotificationsCard {
     }
 
     public enum Cell {
+      public static let topInset = CGFloat(12.0)
+      public static let bottomInset = CGFloat(topInset)
+
+      public static let leftInset = CGFloat(Constants.leftInset)
+      public static let rightInset = CGFloat(leftInset)
+
+      public enum User {
+        public static let nameAttributes = TextAttributes(style: .bodySmallBold)
+        public static let usernameAttributes = TextAttributes(style: .bodySmall,
+                                                              color: .gray)
+      }
+
+      public enum Date {
+        public static let attributes = TextAttributes(style: .bodySmall,
+                                                      color: .gray)
+      }
+
+      public enum Body {
+        public static let topMargin = CGFloat(8.0)
+        public static let attributes = TextAttributes(style: .bodySmall,
+                                                      lineSpacing: 3.0)
+      }
     }
 
     // MARK: - Placeholder

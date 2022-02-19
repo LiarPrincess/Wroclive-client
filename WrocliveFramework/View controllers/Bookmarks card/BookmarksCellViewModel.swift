@@ -6,9 +6,9 @@ private typealias Constants = BookmarksCard.Constants.Cell
 
 public struct BookmarksCellViewModel: Equatable {
 
+  public let bookmark: Bookmark
   public let nameText: NSAttributedString
   public let linesText: NSAttributedString
-  public let bookmark: Bookmark
 
   public init(bookmark: Bookmark) {
     self.bookmark = bookmark

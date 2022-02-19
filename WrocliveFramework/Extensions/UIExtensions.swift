@@ -94,13 +94,18 @@ extension UITraitCollection {
   }
 }
 
-// MARK: - UIView + setContentHuggingPriority
+// MARK: - UIView + setContent[Hugging/CompressionResistance]Priority
 
 extension UIView {
 
   public func setContentHuggingPriority(_ priority: Float,
                                         for axis: NSLayoutConstraint.Axis) {
     self.setContentHuggingPriority(UILayoutPriority(priority), for: axis)
+  }
+
+  public func setContentCompressionResistancePriority(_ priority: Float,
+                                                      for axis: NSLayoutConstraint.Axis) {
+    self.setContentCompressionResistancePriority(UILayoutPriority(priority), for: axis)
   }
 }
 
