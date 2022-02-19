@@ -17,7 +17,8 @@ private var iso8601Formater: ISO8601DateFormatter {
 struct NotificationModel {
   let id: String
   let url: String
-  let author: String
+  let authorName: String
+  let authorUsername: String
   let date: String
   let body: String
 }
@@ -34,7 +35,18 @@ func XCTAssertResponse(_ lhs: [WrocliveFramework.Notification],
 
     XCTAssertEqual(got.id, expected.id, "\(id) - id", file: file, line: line)
     XCTAssertEqual(got.url, expected.url, "\(id) - url", file: file, line: line)
-    XCTAssertEqual(got.author, expected.author, "\(id) - author", file: file, line: line)
+
+    XCTAssertEqual(got.authorName,
+                   expected.authorName,
+                   "\(id) - authorName",
+                   file: file,
+                   line: line)
+    XCTAssertEqual(got.authorUsername,
+                   expected.authorUsername,
+                   "\(id) - authorUsername",
+                   file: file,
+                   line: line)
+
     XCTAssertEqual(gotDate, expected.date, "\(id) - date", file: file, line: line)
     XCTAssertEqual(got.body, expected.body, "\(id) - body", file: file, line: line)
   }

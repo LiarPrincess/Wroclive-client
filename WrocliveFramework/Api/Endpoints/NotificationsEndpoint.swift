@@ -51,9 +51,14 @@ private struct ResponseModel: Decodable {
 private struct NotificationModel: Decodable {
   let id: String
   let url: String
-  let author: String
+  let author: AuthorModel
   let date: String
   let body: String
+}
+
+private struct AuthorModel: Decodable {
+  let name: String
+  let username: String
 }
 
 private func parseNotification(model: NotificationModel) -> Notification? {
@@ -64,7 +69,8 @@ private func parseNotification(model: NotificationModel) -> Notification? {
   return Notification(
     id: model.id,
     url: model.url,
-    author: model.author,
+    authorName: model.author.name,
+    authorUsername: model.author.username,
     date: date,
     body: model.body
   )
