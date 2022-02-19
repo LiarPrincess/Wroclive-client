@@ -57,6 +57,13 @@
 "Settings.Table.Programming.ReportError"  = "Support and feedback";
 "Settings.Table.Programming.ShowCode"     = "Show code";
 
+/* Relative date */
+
+"RelativeDate.Now" = "Now";
+"RelativeDate.MinuteShort" = "m";
+"RelativeDate.HourShort" = "h";
+"RelativeDate.DayShort" = "d";
+
 /* App */
 
 "Share.Message" = "Wroclive - Real time public transport! %@";

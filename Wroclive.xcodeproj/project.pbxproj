@@ -192,6 +192,8 @@
 		90DE39F224D8685400ADE4B9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */; };
 		90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */; };
 		90E0193624FFB8E1000670CD /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 90E0193524FFB8E1000670CD /* SPAlert */; };
+		90E8E43C27C1296F0035B0F2 /* RelativeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8E43B27C1296F0035B0F2 /* RelativeDateFormatter.swift */; };
+		90E8E43F27C12C000035B0F2 /* RelativeDateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E8E43E27C12C000035B0F2 /* RelativeDateFormatterTests.swift */; };
 		90EF089A24FC333400376B0C /* SettingsMapTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EF089924FC333400376B0C /* SettingsMapTypeCell.swift */; };
 		90EF089C24FC357700376B0C /* MapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EF089B24FC357700376B0C /* MapType.swift */; };
 		90F38E4524E19ECE000D4192 /* SettingsCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F38E3924E19ECE000D4192 /* SettingsCardViewModel.swift */; };
@@ -448,6 +450,8 @@
 		90DE39E924D8570900ADE4B9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		90DE39EC24D8685400ADE4B9 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationAuthorization.swift; sourceTree = "<group>"; };
+		90E8E43B27C1296F0035B0F2 /* RelativeDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatter.swift; sourceTree = "<group>"; };
+		90E8E43E27C12C000035B0F2 /* RelativeDateFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeDateFormatterTests.swift; sourceTree = "<group>"; };
 		90EF089924FC333400376B0C /* SettingsMapTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMapTypeCell.swift; sourceTree = "<group>"; };
 		90EF089B24FC357700376B0C /* MapType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapType.swift; sourceTree = "<group>"; };
 		90F38E3924E19ECE000D4192 /* SettingsCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCardViewModel.swift; sourceTree = "<group>"; };
@@ -591,6 +595,7 @@
 				90CE742E24D9DA3F00419166 /* DummyData.swift */,
 				9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */,
 				90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */,
+				90E8E43B27C1296F0035B0F2 /* RelativeDateFormatter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -761,6 +766,7 @@
 				90C793902510F3F400279CF9 /* Api */,
 				9081B81E27B419180043FE4A /* Environment */,
 				90F72F0F24E3157C00D20EB2 /* Extensions */,
+				90E8E43D27C12BE10035B0F2 /* Helpers */,
 				90F72F4524E426EB00D20EB2 /* Map view */,
 				90F72F3424E31D9600D20EB2 /* Bookmarks card */,
 				904F1CE724E556EB00EF77A0 /* Search card */,
@@ -1061,6 +1067,14 @@
 				90F72F3224E31CC900D20EB2 /* UserLocationError.swift */,
 			);
 			path = "User location";
+			sourceTree = "<group>";
+		};
+		90E8E43D27C12BE10035B0F2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				90E8E43E27C12C000035B0F2 /* RelativeDateFormatterTests.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		90EF089D24FC37C100376B0C /* Cells */ = {
@@ -1420,6 +1434,7 @@
 				90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */,
 				90F38E4624E19ECE000D4192 /* SettingsLinkCell.swift in Sources */,
 				9047996C24D575C500111F2C /* NetworkActivityIndicatorMiddleware.swift in Sources */,
+				90E8E43C27C1296F0035B0F2 /* RelativeDateFormatter.swift in Sources */,
 				90C9E3C627BFA98900D3BFD7 /* NotificationsCard+Layout.swift in Sources */,
 				900EA11124D473E70054C03F /* Network.swift in Sources */,
 				90CDCFD224D60BEF00595D89 /* StringExtensions.swift in Sources */,
@@ -1545,6 +1560,7 @@
 				9081B82127B4195C0043FE4A /* NotificationTokenSendLimiterTests.swift in Sources */,
 				90F72F3E24E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift in Sources */,
 				90F72F3D24E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
+				90E8E43F27C12C000035B0F2 /* RelativeDateFormatterTests.swift in Sources */,
 				9081B83D27B442650043FE4A /* NotificationManagerTests.swift in Sources */,
 				90F72F4D24E426EB00D20EB2 /* MapViewModelTests+Vehicles.swift in Sources */,
 				9066DDFD24E72FEB0096F536 /* SearchCardViewModelTests+Page.swift in Sources */,

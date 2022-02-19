@@ -61,6 +61,13 @@
 
 "Share.Message" = "Wroclive - Komunikacja miejska na żywo! %@";
 
+/* Relative date */
+
+"RelativeDate.Now" = "Teraz";
+"RelativeDate.MinuteShort" = "m";
+"RelativeDate.HourShort" = "h";
+"RelativeDate.DayShort" = "d";
+
 /* Alerts */
 
 "Alert.Bookmark.NameInput.Cancel"      = "Anuluj";
