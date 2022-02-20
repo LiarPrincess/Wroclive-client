@@ -111,3 +111,42 @@ public func XCTAssertContains(_ updates: [VehicleAnnotationDiff.Update],
 
   XCTAssert(containsValue, file: file, line: line)
 }
+
+// MARK: - AttributedString
+
+/// This may not work if `NSAttributedString` does not use grapheme clusters
+/// for counting, but for now it works (at least for EN/PL).
+public func XCTAssertSubstring(of attributedString: NSAttributedString,
+                               startingAt: Int,
+                               is expectedString: String,
+                               withAttributes expectedAttributes: TextAttributes,
+                               file: StaticString = #file,
+                               line: UInt = #line) {
+  let fullRange = NSRange(location: 0, length: attributedString.string.count)
+
+  var attributesRange = NSRange()
+  let attributes = attributedString.attributes(at: startingAt,
+                                               longestEffectiveRange: &attributesRange,
+                                               in: fullRange)
+
+  XCTAssertEqual(attributesRange.location,
+                 startingAt,
+                 "Start location",
+                 file: file,
+                 line: line)
+
+  XCTAssertEqual(attributesRange.length,
+                 expectedString.count,
+                 "Length",
+                 file: file,
+                 line: line)
+
+  let got = NSAttributedString(string: expectedString, attributes: attributes)
+  let expected = NSAttributedString(string: expectedString, attributes: expectedAttributes)
+
+  XCTAssertEqual(got,
+                 expected,
+                 "AttributedString",
+                 file: file,
+                 line: line)
+}
