@@ -29,6 +29,7 @@ extension ReduxTestCase {
       bookmarks: [],
       trackedLines: [],
       getLinesResponse: .none,
+      getNotificationsResponse: .none,
       getVehicleLocationsResponse: .none
     )
 
@@ -131,6 +132,14 @@ extension ReduxTestCase {
     guard index < self.dispatchedActions.count else { return false }
     switch self.dispatchedActions[index] {
     case ApiMiddlewareActions.requestLines: return true
+    default: return false
+    }
+  }
+
+  public func isRequestNotificationsAction(at index: Int) -> Bool {
+    guard index < self.dispatchedActions.count else { return false }
+    switch self.dispatchedActions[index] {
+    case ApiMiddlewareActions.requestNotifications: return true
     default: return false
     }
   }

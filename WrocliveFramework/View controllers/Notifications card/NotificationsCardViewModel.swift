@@ -10,7 +10,6 @@ import PromiseKit
 public protocol NotificationsCardViewType: AnyObject {
   func refresh()
   func showApiErrorAlert(error: ApiError)
-  func close(animated: Bool)
 }
 
 public final class NotificationsCardViewModel: StoreSubscriber {
@@ -56,11 +55,11 @@ public final class NotificationsCardViewModel: StoreSubscriber {
   // MARK: - View input
 
   public func viewDidLoad() {
-    self.requestNotificationssFromApi()
+    self.requestNotificationsFromApi()
   }
 
   public func viewDidPressAlertTryAgainButton() {
-    self.requestNotificationssFromApi()
+    self.requestNotificationsFromApi()
   }
 
   // MARK: - Store subscriber
@@ -127,7 +126,7 @@ public final class NotificationsCardViewModel: StoreSubscriber {
     self.refreshView()
   }
 
-  private func requestNotificationssFromApi() {
+  private func requestNotificationsFromApi() {
     self.store.dispatch(ApiMiddlewareActions.requestNotifications)
   }
 

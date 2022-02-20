@@ -145,6 +145,9 @@
 		9081B83B27B440220043FE4A /* NotificationTokenSendLimiterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83A27B440220043FE4A /* NotificationTokenSendLimiterMock.swift */; };
 		9081B83D27B442650043FE4A /* NotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83C27B442650043FE4A /* NotificationManagerTests.swift */; };
 		9093AE1724EA92C20094B1CC /* ExtraLightVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */; };
+		909819A327C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819A227C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift */; };
+		909819A527C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819A427C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift */; };
+		909819A727C2A9C300AA8B2D /* NotificationsCardViewModelTests+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819A627C2A9C300AA8B2D /* NotificationsCardViewModelTests+Request.swift */; };
 		909B7BA3251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */; };
 		909B7BA92513A3A600D8A8E0 /* ApiLinesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */; };
 		909EF1B527A921E9000F4BAB /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EF1B427A921E9000F4BAB /* NetworkType.swift */; };
@@ -397,6 +400,9 @@
 		90915616250FA8ED000BF14A /* MainSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSnapshots.swift; sourceTree = "<group>"; };
 		9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerMock.swift; sourceTree = "<group>"; };
 		9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLightVisualEffectView.swift; sourceTree = "<group>"; };
+		909819A227C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCellViewModelTests.swift; sourceTree = "<group>"; };
+		909819A427C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCardViewModelTests.swift; sourceTree = "<group>"; };
+		909819A627C2A9C300AA8B2D /* NotificationsCardViewModelTests+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationsCardViewModelTests+Request.swift"; sourceTree = "<group>"; };
 		909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVehicleLocationsResponseTests.swift; sourceTree = "<group>"; };
 		909B7BA625139B9700D8A8E0 /* ApiTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTestCase.swift; sourceTree = "<group>"; };
 		909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLinesResponseTests.swift; sourceTree = "<group>"; };
@@ -771,6 +777,7 @@
 				90F72F4524E426EB00D20EB2 /* Map view */,
 				90F72F3424E31D9600D20EB2 /* Bookmarks card */,
 				904F1CE724E556EB00EF77A0 /* Search card */,
+				909819A127C2991100AA8B2D /* Notifications card */,
 			);
 			path = WrocliveTests;
 			sourceTree = "<group>";
@@ -911,6 +918,16 @@
 				9081B82D27B434720043FE4A /* UserDefaultsManager_NotificationTokenTests.swift */,
 			);
 			path = "User defaults";
+			sourceTree = "<group>";
+		};
+		909819A127C2991100AA8B2D /* Notifications card */ = {
+			isa = PBXGroup;
+			children = (
+				909819A227C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift */,
+				909819A427C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift */,
+				909819A627C2A9C300AA8B2D /* NotificationsCardViewModelTests+Request.swift */,
+			);
+			path = "Notifications card";
 			sourceTree = "<group>";
 		};
 		909EF1B227A92199000F4BAB /* Endpoints */ = {
@@ -1565,6 +1582,7 @@
 				90F72F4D24E426EB00D20EB2 /* MapViewModelTests+Vehicles.swift in Sources */,
 				9066DDFD24E72FEB0096F536 /* SearchCardViewModelTests+Page.swift in Sources */,
 				9023EBE524E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift in Sources */,
+				909819A727C2A9C300AA8B2D /* NotificationsCardViewModelTests+Request.swift in Sources */,
 				90C9E3D627BFBB7A00D3BFD7 /* ApiNotificationsResponseTests.swift in Sources */,
 				904F1D0024E55CA900EF77A0 /* LineSelectorSectionTests.swift in Sources */,
 				9081B82E27B434720043FE4A /* UserDefaultsManager_NotificationTokenTests.swift in Sources */,
@@ -1580,7 +1598,9 @@
 				9066DDFF24E737670096F536 /* SearchCardViewModelTests+Save.swift in Sources */,
 				9081B82A27B428590043FE4A /* AppleUserDefaultsMock.swift in Sources */,
 				9023EBE224E5B30C00F09D27 /* SearchCardViewModelTests+LineSelector.swift in Sources */,
+				909819A527C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift in Sources */,
 				90F72F4F24E426EB00D20EB2 /* MapViewModelTests+NextLaunch.swift in Sources */,
+				909819A327C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift in Sources */,
 				90F72F1324E3157D00D20EB2 /* Collection+AnyTests.swift in Sources */,
 				90A6262424FAB415005F5C31 /* LineSelectorTestData.swift in Sources */,
 				904F1CF724E556EB00EF77A0 /* LineSelectorPageViewModelTests.swift in Sources */,

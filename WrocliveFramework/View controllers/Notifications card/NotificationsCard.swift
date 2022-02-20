@@ -71,10 +71,6 @@ public final class NotificationsCard: UIViewController,
     }
   }
 
-  public func close(animated: Bool) {
-    self.dismiss(animated: animated, completion: nil)
-  }
-
   // MARK: - CardPresentable
 
   public var scrollView: UIScrollView? {
