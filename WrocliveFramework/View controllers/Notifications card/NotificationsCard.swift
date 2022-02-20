@@ -39,6 +39,7 @@ public final class NotificationsCard: UIViewController,
   override public func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
+    self.viewModel.viewDidLoad()
   }
 
   override public func viewDidLayoutSubviews() {
@@ -49,9 +50,25 @@ public final class NotificationsCard: UIViewController,
   // MARK: - View model
 
   public func refresh() {
+    let newCells = self.viewModel.cells
+    if newCells != self.cells {
+      self.cells = newCells
+      self.tableView.reloadData()
+    }
+
     self.tableView.isHidden = !self.viewModel.isTableViewVisible
     self.loadingView.isHidden = !self.viewModel.isLoadingViewVisible
     self.noNotificationsView.isHidden = !self.viewModel.isNoNotificationsViewVisible
+  }
+
+  public func showApiErrorAlert(error: ApiError) {
+    switch error {
+    case .reachabilityError:
+      _ = AlertCreator.showReachabilityAlert()
+    case .invalidResponse,
+         .otherError:
+      _ = AlertCreator.showConnectionErrorAlert()
+    }
   }
 
   public func close(animated: Bool) {
