@@ -35,6 +35,7 @@
 /* Notifications */
 
 "Notifications.Title" = "Notifications";
+"Notifications.NoNotifications" = "No notifications";
 
 /* Settings */
 

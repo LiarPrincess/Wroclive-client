@@ -13,7 +13,8 @@ public final class NotificationsCard: UIViewController,
   public let headerView = ExtraLightVisualEffectView()
 
   public let titleLabel = UILabel()
-  public let placeholderView = NotificationsPlaceholderView()
+  public let loadingView = LoadingView()
+  public let noNotificationsView = UIView()
   public let tableView = UITableView()
 
   /// `self.tableView` data source
@@ -48,6 +49,9 @@ public final class NotificationsCard: UIViewController,
   // MARK: - View model
 
   public func refresh() {
+    self.tableView.isHidden = !self.viewModel.isTableViewVisible
+    self.loadingView.isHidden = !self.viewModel.isLoadingViewVisible
+    self.noNotificationsView.isHidden = !self.viewModel.isNoNotificationsViewVisible
   }
 
   public func close(animated: Bool) {

@@ -14,7 +14,8 @@ extension NotificationsCard {
     self.view.backgroundColor = ColorScheme.background
     self.initHeader()
     self.initTableView()
-    self.initPlaceholder()
+    self.initNoNotificationsView()
+    self.initLoadingView()
   }
 
   // MARK: - Header
@@ -66,17 +67,45 @@ extension NotificationsCard {
     self.tableView.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 
-  // MARK: - Placeholder
+  // MARK: - No notifications
 
-  private func initPlaceholder() {
+  private func initNoNotificationsView() {
     // We can't use 'self.bookmarksTable.backgroundView' as this would result
     // in incorrect left <-> right constraints
 
-    self.view.insertSubview(self.placeholderView, belowSubview: self.tableView)
-    self.placeholderView.snp.makeConstraints { make in
-      make.centerY.equalToSuperview()
-      make.left.equalToSuperview().offset(Constants.Placeholder.leftInset)
-      make.right.equalToSuperview().offset(-Constants.Placeholder.rightInset)
+    let label = UILabel()
+
+    label.attributedText = NSAttributedString(
+      string: Localization.noNotifications,
+      attributes: Constants.NoNotifications.textAttributes
+    )
+
+    label.numberOfLines = 0
+    label.lineBreakMode = .byWordWrapping
+    label.adjustsFontForContentSizeCategory = true
+
+    self.noNotificationsView.addSubview(label)
+    label.snp.makeConstraints { make in
+      make.center.equalToSuperview()
+    }
+
+    self.view.insertSubview(self.noNotificationsView, belowSubview: self.tableView)
+    self.noNotificationsView.snp.makeConstraints { make in
+      make.top.equalTo(self.headerView.contentView.snp.bottom)
+      make.bottom.left.right.equalToSuperview()
+    }
+  }
+
+  // MARK: - Loading view
+
+  private func initLoadingView() {
+    // We can't use 'self.bookmarksTable.backgroundView' as this would result
+    // in incorrect left <-> right constraints
+
+    self.view.insertSubview(self.loadingView, belowSubview: self.noNotificationsView)
+    self.loadingView.snp.makeConstraints { make in
+      make.top.equalTo(self.headerView.contentView.snp.bottom)
+      make.bottom.left.right.equalToSuperview()
     }
   }
 }

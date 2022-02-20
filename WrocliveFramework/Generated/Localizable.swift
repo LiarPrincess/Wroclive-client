@@ -132,6 +132,8 @@ public enum Localizable {
   }
 
   enum Notifications {
+    /// No notifications
+    static var noNotifications: String { Localizable.tr("Localizable", "Notifications.NoNotifications") }
     /// Notifications
     static var title: String { Localizable.tr("Localizable", "Notifications.Title") }
   }

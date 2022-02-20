@@ -55,15 +55,10 @@ extension NotificationsCard {
       }
     }
 
-    // MARK: - Placeholder
+    // MARK: - No notifications
 
-    public enum Placeholder {
-      public static let leftInset = CGFloat(35.0)
-      public static let rightInset = leftInset
-      public static let verticalSpacing = CGFloat(8.0)
-
-      public static let labelAttributes = TextAttributes(style: .body,
-                                                         alignment: .center)
+    public enum NoNotifications {
+      public static let textAttributes = TextAttributes(style: .body)
     }
   }
 }
