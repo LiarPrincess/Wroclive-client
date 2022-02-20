@@ -124,7 +124,7 @@
 		9076BD3E24DDB57A00467075 /* SearchCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD3D24DDB57A00467075 /* SearchCardCoordinator.swift */; };
 		9076BD4A24DDB5D100467075 /* SearchCard+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD3F24DDB5D000467075 /* SearchCard+Layout.swift */; };
 		9076BD4B24DDB5D100467075 /* SearchCard+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4024DDB5D100467075 /* SearchCard+Constants.swift */; };
-		9076BD5024DDB5D100467075 /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4624DDB5D100467075 /* SearchPlaceholderView.swift */; };
+		9076BD5024DDB5D100467075 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4624DDB5D100467075 /* LoadingView.swift */; };
 		9076BD5224DDB5D100467075 /* SearchCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */; };
 		9076BD5324DDB5D100467075 /* SearchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD4924DDB5D100467075 /* SearchCard.swift */; };
 		9076BD5924DDD26C00467075 /* LineTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */; };
@@ -375,7 +375,7 @@
 		9076BD3D24DDB57A00467075 /* SearchCardCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardCoordinator.swift; sourceTree = "<group>"; };
 		9076BD3F24DDB5D000467075 /* SearchCard+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCard+Layout.swift"; sourceTree = "<group>"; };
 		9076BD4024DDB5D100467075 /* SearchCard+Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCard+Constants.swift"; sourceTree = "<group>"; };
-		9076BD4624DDB5D100467075 /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
+		9076BD4624DDB5D100467075 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCardViewModel.swift; sourceTree = "<group>"; };
 		9076BD4924DDB5D100467075 /* SearchCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCard.swift; sourceTree = "<group>"; };
 		9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTypeSegmentedControl.swift; sourceTree = "<group>"; };
@@ -598,6 +598,7 @@
 				9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */,
 				90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */,
 				90E8E43B27C1296F0035B0F2 /* RelativeDateFormatter.swift */,
+				9076BD4624DDB5D100467075 /* LoadingView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1027,7 +1028,6 @@
 				9076BD3F24DDB5D000467075 /* SearchCard+Layout.swift */,
 				9076BD4024DDB5D100467075 /* SearchCard+Constants.swift */,
 				9076BD4824DDB5D100467075 /* SearchCardViewModel.swift */,
-				9076BD4624DDB5D100467075 /* SearchPlaceholderView.swift */,
 				9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */,
 			);
 			path = "Search card";
@@ -1523,7 +1523,7 @@
 				905893D024D4A95D0046EFA5 /* FileSystem.swift in Sources */,
 				900EA10324D46C110054C03F /* Line.swift in Sources */,
 				907FD0B724D898BC00B6896C /* Reducer.swift in Sources */,
-				9076BD5024DDB5D100467075 /* SearchPlaceholderView.swift in Sources */,
+				9076BD5024DDB5D100467075 /* LoadingView.swift in Sources */,
 				9047997024D575C500111F2C /* Actions.swift in Sources */,
 				90F38E4724E19ECE000D4192 /* SettingsCardFooterView.swift in Sources */,
 				9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */,

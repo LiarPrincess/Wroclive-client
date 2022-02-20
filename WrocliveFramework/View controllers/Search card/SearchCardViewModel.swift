@@ -23,7 +23,7 @@ public final class SearchCardViewModel: StoreSubscriber {
 
   internal private(set) var page: Page
   internal private(set) var isLineSelectorVisible: Bool
-  internal private(set) var isPlaceholderVisible: Bool
+  internal private(set) var isLoadingViewVisible: Bool
 
   // swiftlint:disable:next trailing_closure
   internal private(set) lazy var lineSelectorViewModel = LineSelectorViewModel(
@@ -55,7 +55,7 @@ public final class SearchCardViewModel: StoreSubscriber {
 
     self.page = self.initialState.page
     self.isLineSelectorVisible = false
-    self.isPlaceholderVisible = true
+    self.isLoadingViewVisible = true
 
     // This will have side-effect of calling the lazy init! (we do want that)
     let selectedLines = self.initialState.selectedLines
@@ -126,11 +126,11 @@ public final class SearchCardViewModel: StoreSubscriber {
   // MARK: - Store subscriber
 
   public func newState(state: AppState) {
-    self.handleLineRequestChange(newState: state)
+    self.handleLineResponseChange(newState: state)
     self.refreshView()
   }
 
-  private func handleLineRequestChange(newState: AppState) {
+  private func handleLineResponseChange(newState: AppState) {
     let new = newState.getLinesResponse
     let old = self.getLinesResponse
     defer { self.getLinesResponse = new }
@@ -148,7 +148,8 @@ public final class SearchCardViewModel: StoreSubscriber {
       }
 
     case .error(let newError):
-      // If old state is 'nil' then cached resonse was error -> try again
+      // We just opened the card and the result of the previous opening was error.
+      // Try again.
       guard let old = old else {
         self.requestLinesFromApi()
         return
@@ -161,7 +162,7 @@ public final class SearchCardViewModel: StoreSubscriber {
       }
 
       // Otherwise we have to check if error changed
-      if !self.isEqual(lhs: oldError, rhs: newError) {
+      if !ApiError.haveEqualType(oldError, newError) {
         self.view?.showApiErrorAlert(error: newError)
       }
 
@@ -170,22 +171,12 @@ public final class SearchCardViewModel: StoreSubscriber {
       break
 
     case .none:
-      let isTheSameAsPrevious = old?.isNone ?? false
-      if !isTheSameAsPrevious {
+      // Initial state
+      let wasNonePreviously = old?.isNone ?? false
+      if !wasNonePreviously {
         self.requestLinesFromApi()
         self.setIsLineSelectorVisible(value: false)
       }
-    }
-  }
-
-  private func isEqual(lhs: ApiError, rhs: ApiError) -> Bool {
-    switch (lhs, rhs) {
-    case (.invalidResponse, .invalidResponse),
-         (.reachabilityError, .reachabilityError),
-         (.otherError, .otherError):
-      return true
-    default:
-      return false
     }
   }
 
@@ -195,6 +186,6 @@ public final class SearchCardViewModel: StoreSubscriber {
 
   private func setIsLineSelectorVisible(value: Bool) {
     self.isLineSelectorVisible = value
-    self.isPlaceholderVisible = !value
+    self.isLoadingViewVisible = !value
   }
 }

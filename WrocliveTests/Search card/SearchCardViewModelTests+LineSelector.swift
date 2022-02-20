@@ -39,7 +39,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 0)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
 
     XCTAssertEqual(self.dispatchedActions.count, 1)
@@ -49,7 +49,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 1) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
 
@@ -58,7 +58,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 2) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertTrue(viewModel.isLineSelectorVisible) // !!!
-    XCTAssertFalse(viewModel.isPlaceholderVisible)
+    XCTAssertFalse(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: lines)
   }
@@ -70,7 +70,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 0)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
 
     XCTAssertEqual(self.dispatchedActions.count, 1)
@@ -80,7 +80,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 1) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
 
@@ -88,7 +88,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 2) // New state
     XCTAssertEqual(self.apiErrorAlert, .invalidResponse)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
   }
@@ -100,7 +100,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 0)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
 
     XCTAssertEqual(self.dispatchedActions.count, 1)
@@ -110,7 +110,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 1) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
 
@@ -118,7 +118,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 2) // New state
     XCTAssertEqual(self.apiErrorAlert, .invalidResponse)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
   }
@@ -132,7 +132,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 0)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertTrue(viewModel.isLineSelectorVisible)
-    XCTAssertFalse(viewModel.isPlaceholderVisible)
+    XCTAssertFalse(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: lines)
 
     XCTAssertEqual(self.dispatchedActions.count, 0)
@@ -144,7 +144,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 0)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
 
     XCTAssertEqual(self.dispatchedActions.count, 1)
@@ -154,7 +154,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 1) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
 
@@ -163,7 +163,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 2) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertTrue(viewModel.isLineSelectorVisible) // !!!
-    XCTAssertFalse(viewModel.isPlaceholderVisible)
+    XCTAssertFalse(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: lines)
   }
@@ -174,7 +174,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 0)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
 
     XCTAssertEqual(self.dispatchedActions.count, 1)
@@ -184,7 +184,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 1) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
 
@@ -192,7 +192,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 2) // New state
     XCTAssertEqual(self.apiErrorAlert, .invalidResponse)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
   }
@@ -206,7 +206,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 0)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
     XCTAssertEqual(self.dispatchedActions.count, 0)
 
@@ -214,7 +214,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 1) // New state
     XCTAssertEqual(self.apiErrorAlert, .reachabilityError)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
     XCTAssertEqual(self.dispatchedActions.count, 0)
 
@@ -229,7 +229,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 2) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
 
@@ -238,7 +238,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 3) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertTrue(viewModel.isLineSelectorVisible) // !!!
-    XCTAssertFalse(viewModel.isPlaceholderVisible)
+    XCTAssertFalse(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: lines)
   }
@@ -250,7 +250,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 0)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
     XCTAssertEqual(self.dispatchedActions.count, 0)
 
@@ -258,7 +258,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 1) // New state
     XCTAssertEqual(self.apiErrorAlert, .reachabilityError)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
     XCTAssertEqual(self.dispatchedActions.count, 0)
 
@@ -273,7 +273,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 2) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
 
@@ -281,7 +281,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 3) // New state
     XCTAssertEqual(self.apiErrorAlert, .invalidResponse)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
     XCTAssertLines(viewModel: viewModel, lines: [])
   }
@@ -294,7 +294,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 0)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
 
     XCTAssertEqual(self.dispatchedActions.count, 1)
@@ -304,7 +304,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 1) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isPlaceholderVisible)
+    XCTAssertTrue(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: [])
 
     XCTAssertEqual(self.dispatchedActions.count, 1) // No new dispatch!
@@ -319,7 +319,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 0)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertTrue(viewModel.isLineSelectorVisible)
-    XCTAssertFalse(viewModel.isPlaceholderVisible)
+    XCTAssertFalse(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: lines)
 
     XCTAssertEqual(self.dispatchedActions.count, 0)
@@ -328,7 +328,7 @@ extension SearchCardViewModelTests {
     XCTAssertEqual(self.refreshCount, 1) // New state
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertTrue(viewModel.isLineSelectorVisible)
-    XCTAssertFalse(viewModel.isPlaceholderVisible)
+    XCTAssertFalse(viewModel.isLoadingViewVisible)
     XCTAssertLines(viewModel: viewModel, lines: lines)
 
     XCTAssertEqual(self.dispatchedActions.count, 0)
@@ -348,7 +348,7 @@ extension SearchCardViewModelTests {
       XCTAssertEqual(self.refreshCount, 0)
       XCTAssertNil(self.apiErrorAlert)
       XCTAssertFalse(viewModel.isLineSelectorVisible)
-      XCTAssertTrue(viewModel.isPlaceholderVisible)
+      XCTAssertTrue(viewModel.isLoadingViewVisible)
       XCTAssertEqual(self.dispatchedActions.count, 0)
       XCTAssertLines(viewModel: viewModel, lines: [])
 
@@ -356,7 +356,7 @@ extension SearchCardViewModelTests {
       XCTAssertEqual(self.refreshCount, 1) // New state
       XCTAssertEqual(self.apiErrorAlert, apiError)
       XCTAssertFalse(viewModel.isLineSelectorVisible)
-      XCTAssertTrue(viewModel.isPlaceholderVisible)
+      XCTAssertTrue(viewModel.isLoadingViewVisible)
       XCTAssertLines(viewModel: viewModel, lines: [])
       XCTAssertEqual(self.dispatchedActions.count, 0)
 
@@ -366,7 +366,7 @@ extension SearchCardViewModelTests {
       XCTAssertEqual(self.refreshCount, 2) // New state
       XCTAssertNil(self.apiErrorAlert)
       XCTAssertFalse(viewModel.isLineSelectorVisible)
-      XCTAssertTrue(viewModel.isPlaceholderVisible)
+      XCTAssertTrue(viewModel.isLoadingViewVisible)
       XCTAssertLines(viewModel: viewModel, lines: [])
       XCTAssertEqual(self.dispatchedActions.count, 0)
     }

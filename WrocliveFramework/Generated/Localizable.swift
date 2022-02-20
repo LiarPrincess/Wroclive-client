@@ -126,9 +126,12 @@ public enum Localizable {
     }
   }
 
-  enum Notifications {
+  enum Loading {
     /// Loading…
-    static var loading: String { Localizable.tr("Localizable", "Notifications.Loading") }
+    static var text: String { Localizable.tr("Localizable", "Loading.Text") }
+  }
+
+  enum Notifications {
     /// Notifications
     static var title: String { Localizable.tr("Localizable", "Notifications.Title") }
   }
@@ -145,8 +148,6 @@ public enum Localizable {
   }
 
   enum Search {
-    /// Loading…
-    static var loading: String { Localizable.tr("Localizable", "Search.Loading") }
     /// Select
     static var search: String { Localizable.tr("Localizable", "Search.Search") }
     /// Lines

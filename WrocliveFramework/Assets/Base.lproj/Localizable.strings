@@ -19,7 +19,6 @@
 
 "Search.Title"   = "Lines";
 "Search.Search"  = "Select";
-"Search.Loading" = "Loading…";
 
 "Search.Pages.Tram" = "Trams";
 "Search.Pages.Bus"  = "Buses";
@@ -36,7 +35,6 @@
 /* Notifications */
 
 "Notifications.Title" = "Notifications";
-"Notifications.Loading" = "Loading…";
 
 /* Settings */
 
@@ -56,6 +54,10 @@
 "Settings.Table.Programming.Header" = "Application";
 "Settings.Table.Programming.ReportError"  = "Support and feedback";
 "Settings.Table.Programming.ShowCode"     = "Show code";
+
+/* Loading view */
+
+"Loading.Text" = "Loading…";
 
 /* Relative date */
 
