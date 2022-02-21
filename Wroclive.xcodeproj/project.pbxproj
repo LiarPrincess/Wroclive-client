@@ -151,6 +151,8 @@
 		909819A927C2B33D00AA8B2D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819A827C2B33D00AA8B2D /* Coordinator.swift */; };
 		909819AB27C37BBE00AA8B2D /* NotificationsCardViewModelTests+Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819AA27C37BBE00AA8B2D /* NotificationsCardViewModelTests+Details.swift */; };
 		909819AD27C381A700AA8B2D /* NotificationsCardSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819AC27C381A700AA8B2D /* NotificationsCardSnapshots.swift */; };
+		909819B327C3C24600AA8B2D /* UserLocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819B227C3C24600AA8B2D /* UserLocationDelegate.swift */; };
+		909819B527C3C65900AA8B2D /* UserLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819B427C3C65900AA8B2D /* UserLocationManagerDelegate.swift */; };
 		909B7BA3251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */; };
 		909B7BA92513A3A600D8A8E0 /* ApiLinesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */; };
 		909EF1B527A921E9000F4BAB /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EF1B427A921E9000F4BAB /* NetworkType.swift */; };
@@ -409,6 +411,8 @@
 		909819A827C2B33D00AA8B2D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		909819AA27C37BBE00AA8B2D /* NotificationsCardViewModelTests+Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationsCardViewModelTests+Details.swift"; sourceTree = "<group>"; };
 		909819AC27C381A700AA8B2D /* NotificationsCardSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCardSnapshots.swift; sourceTree = "<group>"; };
+		909819B227C3C24600AA8B2D /* UserLocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationDelegate.swift; sourceTree = "<group>"; };
+		909819B427C3C65900AA8B2D /* UserLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManagerDelegate.swift; sourceTree = "<group>"; };
 		909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVehicleLocationsResponseTests.swift; sourceTree = "<group>"; };
 		909B7BA625139B9700D8A8E0 /* ApiTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTestCase.swift; sourceTree = "<group>"; };
 		909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLinesResponseTests.swift; sourceTree = "<group>"; };
@@ -766,6 +770,7 @@
 				9052383124D45E9A00E4F8A7 /* Assets.xcassets */,
 				9052380A24D459E500E4F8A7 /* AppDelegate.swift */,
 				903510AD27B5591D00AE4ED5 /* AuthorizationPrompts.swift */,
+				909819B227C3C24600AA8B2D /* UserLocationDelegate.swift */,
 				9052383924D4645300E4F8A7 /* LaunchScreen.storyboard */,
 				900EA0C824D467E30054C03F /* Info.plist */,
 				900EA0C624D467040054C03F /* InfoPlist.strings */,
@@ -1090,6 +1095,7 @@
 				905893BD24D4A95D0046EFA5 /* UserLocationManager.swift */,
 				90DE39F924D8787D00ADE4B9 /* UserLocationAuthorization.swift */,
 				90F72F2824E318D100D20EB2 /* UserLocationManagerType.swift */,
+				909819B427C3C65900AA8B2D /* UserLocationManagerDelegate.swift */,
 				90F72F3224E31CC900D20EB2 /* UserLocationError.swift */,
 			);
 			path = "User location";
@@ -1454,6 +1460,7 @@
 				9013FAB424D6B1890006D1B9 /* ChevronView.swift in Sources */,
 				9058939E24D4A8600046EFA5 /* StyleKit.swift in Sources */,
 				905893CC24D4A95D0046EFA5 /* DebugManager.swift in Sources */,
+				909819B527C3C65900AA8B2D /* UserLocationManagerDelegate.swift in Sources */,
 				9013FABC24D6B1890006D1B9 /* ScrollViewDismissGestureHandler.swift in Sources */,
 				90CDCFD624D60D7F00595D89 /* UIExtensions.swift in Sources */,
 				90B8517827B2C9340094DD30 /* NotificationTokenSendLimiter.swift in Sources */,
@@ -1572,6 +1579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909819B327C3C24600AA8B2D /* UserLocationDelegate.swift in Sources */,
 				903510AE27B5591E00AE4ED5 /* AuthorizationPrompts.swift in Sources */,
 				9052380B24D459E500E4F8A7 /* AppDelegate.swift in Sources */,
 			);

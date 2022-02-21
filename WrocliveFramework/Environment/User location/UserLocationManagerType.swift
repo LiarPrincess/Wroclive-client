@@ -5,11 +5,6 @@
 import MapKit
 import PromiseKit
 
-public protocol UserLocationManagerDelegate: AnyObject {
-  func locationManager(_ manager: UserLocationManagerType,
-                       didChangeAuthorization status: UserLocationAuthorization)
-}
-
 // We need 'AnyObject' to be able to set delegate.
 public protocol UserLocationManagerType: AnyObject {
 

@@ -10,6 +10,7 @@ import PromiseKit
 import UserNotifications
 import WrocliveFramework
 
+// swiftlint:disable weak_delegate
 // swiftlint:disable force_unwrapping
 // swiftlint:disable implicitly_unwrapped_optional
 // swiftlint:disable discouraged_optional_collection
@@ -37,7 +38,6 @@ private let configuration = Configuration(
 @UIApplicationMain
 public final class AppDelegate: UIResponder,
                                 UIApplicationDelegate,
-                                UserLocationManagerDelegate,
                                 NotificationCenterDelegate {
 
   public var window: UIWindow?
@@ -46,6 +46,8 @@ public final class AppDelegate: UIResponder,
   private var environment: Environment!
   private var coordinator: AppCoordinator!
   private var updateScheduler: MapUpdateScheduler!
+
+  private var userLocationDelegate: UserLocationDelegate!
 
   private var log: OSLog {
     return self.environment.log.app
@@ -61,6 +63,7 @@ public final class AppDelegate: UIResponder,
     return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
   }
 
+  // swiftlint:disable:next function_body_length
   public func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -85,7 +88,11 @@ public final class AppDelegate: UIResponder,
     )
 
     os_log("Setting environment delegates", log: self.log, type: .debug)
-    self.environment.userLocation.delegate = self
+    self.userLocationDelegate = UserLocationDelegate(
+      store: self.store,
+      environment: self.environment
+    )
+    self.environment.userLocation.delegate = self.userLocationDelegate
 
     os_log("Attempting to register for remote notifications", log: self.log, type: .debug)
     self.environment.notification.registerForRemoteNotifications(delegate: self)
@@ -135,11 +142,7 @@ public final class AppDelegate: UIResponder,
     let middleware = AppState.createMiddleware(environment: self.environment)
     let reducer = AppState.createReducer(environment: self.environment)
 
-    return Store<AppState>(
-      reducer: reducer,
-      state: state,
-      middleware: middleware
-    )
+    return Store<AppState>(reducer: reducer, state: state, middleware: middleware)
   }
 
   // When we launch app for the 1st time we want to show all possible vehicles.
@@ -178,15 +181,7 @@ public final class AppDelegate: UIResponder,
 
   // MARK: - UserLocationManagerDelegate
 
-  public func locationManager(_ manager: UserLocationManagerType,
-                              didChangeAuthorization status: UserLocationAuthorization) {
-    os_log("locationManager(_:didChangeAuthorization:) to '%{public}@'",
-           log: self.log,
-           type: .info,
-           String(describing: status))
 
-    let action = UserLocationAuthorizationAction.set(status)
-    self.store.dispatch(action)
   }
 
   // MARK: - NotificationCenterDelegate
