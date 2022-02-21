@@ -44,6 +44,9 @@ public class RemoteNotificationManager: NSObject,
     self.logManager = log
     self.tokenSendLimiter = tokenSendLimiter
     self.notificationCenter = notificationCenter
+    super.init()
+
+    self.notificationCenter.delegate = self
   }
 
   // MARK: - Settings

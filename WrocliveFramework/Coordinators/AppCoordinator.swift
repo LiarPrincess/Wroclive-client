@@ -108,4 +108,24 @@ public final class AppCoordinator: Coordinator, MainViewModelDelegate {
       )
     }
   }
+
+  // MARK: - Push notification
+
+  public func openUrlFromPushNotification(url urlString: String) {
+    guard let url = URL(string: urlString) else {
+      return
+    }
+
+    let topViewController = UIApplication.shared.getTopViewController()
+    switch topViewController {
+    case .viewController(let parent):
+      self.openBrowser(parent: parent, url: url)
+    case .alert:
+      // We can't override alert!
+      break
+    case .noRootViewController:
+      // This would be weird, at least 'self.mainViewController' should be visible.
+      break
+    }
+  }
 }

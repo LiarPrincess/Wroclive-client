@@ -773,6 +773,7 @@
 				9052380A24D459E500E4F8A7 /* AppDelegate.swift */,
 				903510AD27B5591D00AE4ED5 /* AuthorizationPrompts.swift */,
 				909819B227C3C24600AA8B2D /* UserLocationDelegate.swift */,
+				909819B827C3CD6200AA8B2D /* RemoteNotificationDelegate.swift */,
 				9052383924D4645300E4F8A7 /* LaunchScreen.storyboard */,
 				900EA0C824D467E30054C03F /* Info.plist */,
 				900EA0C624D467040054C03F /* InfoPlist.strings */,
@@ -1585,6 +1586,7 @@
 				909819B327C3C24600AA8B2D /* UserLocationDelegate.swift in Sources */,
 				903510AE27B5591E00AE4ED5 /* AuthorizationPrompts.swift in Sources */,
 				9052380B24D459E500E4F8A7 /* AppDelegate.swift in Sources */,
+				909819B927C3CD6200AA8B2D /* RemoteNotificationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

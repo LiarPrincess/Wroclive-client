@@ -36,9 +36,7 @@ private let configuration = Configuration(
 )
 
 @UIApplicationMain
-public final class AppDelegate: UIResponder,
-                                UIApplicationDelegate,
-                                NotificationCenterDelegate {
+public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   public var window: UIWindow?
 
@@ -48,6 +46,7 @@ public final class AppDelegate: UIResponder,
   private var updateScheduler: MapUpdateScheduler!
 
   private var userLocationDelegate: UserLocationDelegate!
+  private var remoteNotificationDelegate: RemoteNotificationDelegate!
 
   private var log: OSLog {
     return self.environment.log.app
@@ -76,16 +75,11 @@ public final class AppDelegate: UIResponder,
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
+    self.logUrlIfStartingWithRemoteNotification(launchOptions: launchOptions)
     self.logDocumentsDirectoryIfRunningInSimulator()
 
     os_log("Initializing redux store", log: self.log, type: .debug)
     self.store = self.createStore()
-
-    os_log("Creating (but not starting!) map update scheduler", log: self.log, type: .debug)
-    self.updateScheduler = MapUpdateScheduler(
-      store: self.store,
-      environment: self.environment
-    )
 
     os_log("Setting environment delegates", log: self.log, type: .debug)
     self.userLocationDelegate = UserLocationDelegate(
@@ -94,8 +88,16 @@ public final class AppDelegate: UIResponder,
     )
     self.environment.userLocation.delegate = self.userLocationDelegate
 
-    os_log("Attempting to register for remote notifications", log: self.log, type: .debug)
-    self.environment.notification.registerForRemoteNotifications(delegate: self)
+    self.remoteNotificationDelegate = RemoteNotificationDelegate(
+      environment: self.environment
+    )
+    self.environment.remoteNotifications.delegate = self.remoteNotificationDelegate
+
+    os_log("Creating (but not starting!) map update scheduler", log: self.log, type: .debug)
+    self.updateScheduler = MapUpdateScheduler(
+      store: self.store,
+      environment: self.environment
+    )
 
 #if DEBUG
     let debugLocale = Localizable.Locale.pl
@@ -114,19 +116,45 @@ public final class AppDelegate: UIResponder,
                                       environment: self.environment)
     self.coordinator!.start()
 
+    // Remote notification can only trigger changes after the coordinator was started!
+    self.remoteNotificationDelegate.coordinator = self.coordinator
+
+    os_log("Attempting to register for remote notifications", log: self.log, type: .debug)
+    self.environment.remoteNotifications.registerForRemoteNotifications()
+
     os_log("application(_:didFinishLaunchingWithOptions:) - finished", log: self.log, type: .debug)
     return true
+  }
+
+  private func logUrlIfStartingWithRemoteNotification(
+    launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) {
+    let result = RemoteNotificationDelegate.getRemoteNotificationUrl(launchOptions: launchOptions)
+
+    switch result {
+    case .url(let url):
+      os_log("Launching as a result of remote notification with url: %{public}@",
+             log: self.log,
+             type: .debug,
+             url)
+
+    case .noUrl:
+      os_log("Launching as a result of remote notification without url",
+             log: self.log,
+             type: .debug)
+
+    case .noRemoteNotification:
+      break
+    }
   }
 
   private func logDocumentsDirectoryIfRunningInSimulator() {
 #if targetEnvironment(simulator)
     let documentDir = self.environment.storage.documentsDirectory.path
-    os_log(
-      "Simulator documents directory: %{public}@",
-      log: self.log,
-      type: .debug,
-      documentDir
-    )
+    os_log("Simulator documents directory: %{public}@",
+           log: self.log,
+           type: .debug,
+           documentDir)
 #endif
   }
 
@@ -177,18 +205,14 @@ public final class AppDelegate: UIResponder,
   public func applicationWillResignActive(_ application: UIApplication) {
     os_log("applicationWillResignActive(_:)", log: self.log, type: .info)
     self.updateScheduler.stop()
+
+#if DEBUG
+    // Make some space in logs, for readability.
+    print("\n\n")
+#endif
   }
 
-  // MARK: - UserLocationManagerDelegate
-
-
-  }
-
-  // MARK: - NotificationCenterDelegate
-
-  public func registerForRemoteNotifications() {
-    UIApplication.shared.registerForRemoteNotifications()
-  }
+  // MARK: - Remote notifications
 
   public func application(
     _ application: UIApplication,
@@ -198,7 +222,7 @@ public final class AppDelegate: UIResponder,
            log: self.log,
            type: .info)
 
-    _ = self.environment.notification.didRegisterForRemoteNotifications(
+    _ = self.environment.remoteNotifications.didRegisterForRemoteNotifications(
       deviceToken: deviceToken
     )
   }
@@ -211,7 +235,7 @@ public final class AppDelegate: UIResponder,
            log: self.log,
            type: .info)
 
-    self.environment.notification.didFailToRegisterForRemoteNotifications(
+    self.environment.remoteNotifications.didFailToRegisterForRemoteNotifications(
       error: error
     )
   }

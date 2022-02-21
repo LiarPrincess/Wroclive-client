@@ -8,7 +8,7 @@ public protocol Coordinator {}
 
 extension Coordinator {
 
-  public func openBrowser(parent: UIViewController, url: URL) {
+  internal func openBrowser(parent: UIViewController, url: URL) {
     let safari = SFSafariViewController(url: url)
     safari.preferredControlTintColor = ColorScheme.tint
     safari.modalPresentationStyle = .overFullScreen
