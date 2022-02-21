@@ -22,8 +22,8 @@
 		900EA10224D46C110054C03F /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0F924D46C110054C03F /* Bookmark.swift */; };
 		900EA10324D46C110054C03F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA0FA24D46C110054C03F /* Line.swift */; };
 		900EA10A24D46F140054C03F /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA10624D46F140054C03F /* Api.swift */; };
-		900EA10B24D46F140054C03F /* LinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA10724D46F140054C03F /* LinesEndpoint.swift */; };
-		900EA10C24D46F140054C03F /* VehicleLocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA10824D46F140054C03F /* VehicleLocationsEndpoint.swift */; };
+		900EA10B24D46F140054C03F /* GetLinesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA10724D46F140054C03F /* GetLinesEndpoint.swift */; };
+		900EA10C24D46F140054C03F /* GetVehicleLocationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA10824D46F140054C03F /* GetVehicleLocationsEndpoint.swift */; };
 		900EA10D24D46F140054C03F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA10924D46F140054C03F /* Endpoint.swift */; };
 		900EA11124D473E70054C03F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA11024D473E70054C03F /* Network.swift */; };
 		9013FAAC24D6B1880006D1B9 /* ReusableCell+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013FA9024D6B1880006D1B9 /* ReusableCell+UICollectionView.swift */; };
@@ -161,7 +161,7 @@
 		909F3A8327B27A57002D37C5 /* NotificationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A8227B27A56002D37C5 /* NotificationManagerMock.swift */; };
 		90A6262424FAB415005F5C31 /* LineSelectorTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */; };
 		90B8517827B2C9340094DD30 /* NotificationTokenSendLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8517727B2C9340094DD30 /* NotificationTokenSendLimiter.swift */; };
-		90B8517A27B2D8DC0094DD30 /* RegisterNotificationTokenEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8517927B2D8DC0094DD30 /* RegisterNotificationTokenEndpoint.swift */; };
+		90B8517A27B2D8DC0094DD30 /* PostNotificationTokenEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8517927B2D8DC0094DD30 /* PostNotificationTokenEndpoint.swift */; };
 		90B8517D27B2ECBF0094DD30 /* Snapshotting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8517C27B2ECBF0094DD30 /* Snapshotting.swift */; };
 		90C5BAEE2514CB1900D41508 /* AppStoreScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */; };
 		90C9E3C427BFA97C00D3BFD7 /* NotificationsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3C327BFA97C00D3BFD7 /* NotificationsCard.swift */; };
@@ -171,7 +171,7 @@
 		90C9E3CE27BFA9D700D3BFD7 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3CD27BFA9D700D3BFD7 /* NotificationsCell.swift */; };
 		90C9E3D027BFA9FF00D3BFD7 /* NotificationsCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3CF27BFA9FF00D3BFD7 /* NotificationsCardCoordinator.swift */; };
 		90C9E3D227BFB1C000D3BFD7 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3D127BFB1C000D3BFD7 /* Notification.swift */; };
-		90C9E3D427BFB6DA00D3BFD7 /* NotificationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3D327BFB6DA00D3BFD7 /* NotificationsEndpoint.swift */; };
+		90C9E3D427BFB6DA00D3BFD7 /* GetNotificationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3D327BFB6DA00D3BFD7 /* GetNotificationsEndpoint.swift */; };
 		90C9E3D627BFBB7A00D3BFD7 /* ApiNotificationsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9E3D527BFBB7A00D3BFD7 /* ApiNotificationsResponseTests.swift */; };
 		90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */; };
 		90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */; };
@@ -289,8 +289,8 @@
 		900EA0F924D46C110054C03F /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		900EA0FA24D46C110054C03F /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		900EA10624D46F140054C03F /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
-		900EA10724D46F140054C03F /* LinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesEndpoint.swift; sourceTree = "<group>"; };
-		900EA10824D46F140054C03F /* VehicleLocationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleLocationsEndpoint.swift; sourceTree = "<group>"; };
+		900EA10724D46F140054C03F /* GetLinesEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLinesEndpoint.swift; sourceTree = "<group>"; };
+		900EA10824D46F140054C03F /* GetVehicleLocationsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetVehicleLocationsEndpoint.swift; sourceTree = "<group>"; };
 		900EA10924D46F140054C03F /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		900EA11024D473E70054C03F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		9013FA9024D6B1880006D1B9 /* ReusableCell+UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReusableCell+UICollectionView.swift"; sourceTree = "<group>"; };
@@ -422,7 +422,7 @@
 		909F3A8227B27A56002D37C5 /* NotificationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerMock.swift; sourceTree = "<group>"; };
 		90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorTestData.swift; sourceTree = "<group>"; };
 		90B8517727B2C9340094DD30 /* NotificationTokenSendLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTokenSendLimiter.swift; sourceTree = "<group>"; };
-		90B8517927B2D8DC0094DD30 /* RegisterNotificationTokenEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNotificationTokenEndpoint.swift; sourceTree = "<group>"; };
+		90B8517927B2D8DC0094DD30 /* PostNotificationTokenEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNotificationTokenEndpoint.swift; sourceTree = "<group>"; };
 		90B8517C27B2ECBF0094DD30 /* Snapshotting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshotting.swift; sourceTree = "<group>"; };
 		90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshots.swift; sourceTree = "<group>"; };
 		90C7938E2510CC3C00279CF9 /* CardSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSnapshots.swift; sourceTree = "<group>"; };
@@ -434,7 +434,7 @@
 		90C9E3CD27BFA9D700D3BFD7 /* NotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
 		90C9E3CF27BFA9FF00D3BFD7 /* NotificationsCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCardCoordinator.swift; sourceTree = "<group>"; };
 		90C9E3D127BFB1C000D3BFD7 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		90C9E3D327BFB6DA00D3BFD7 /* NotificationsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsEndpoint.swift; sourceTree = "<group>"; };
+		90C9E3D327BFB6DA00D3BFD7 /* GetNotificationsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotificationsEndpoint.swift; sourceTree = "<group>"; };
 		90C9E3D527BFBB7A00D3BFD7 /* ApiNotificationsResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiNotificationsResponseTests.swift; sourceTree = "<group>"; };
 		90CDCFB824D60A0E00595D89 /* NSAttributedString+Replacements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Replacements.swift"; sourceTree = "<group>"; };
 		90CDCFCF24D60BA900595D89 /* MapKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitExtensions.swift; sourceTree = "<group>"; };
@@ -942,10 +942,10 @@
 			isa = PBXGroup;
 			children = (
 				900EA10924D46F140054C03F /* Endpoint.swift */,
-				900EA10724D46F140054C03F /* LinesEndpoint.swift */,
-				90C9E3D327BFB6DA00D3BFD7 /* NotificationsEndpoint.swift */,
-				900EA10824D46F140054C03F /* VehicleLocationsEndpoint.swift */,
-				90B8517927B2D8DC0094DD30 /* RegisterNotificationTokenEndpoint.swift */,
+				900EA10724D46F140054C03F /* GetLinesEndpoint.swift */,
+				90C9E3D327BFB6DA00D3BFD7 /* GetNotificationsEndpoint.swift */,
+				900EA10824D46F140054C03F /* GetVehicleLocationsEndpoint.swift */,
+				90B8517927B2D8DC0094DD30 /* PostNotificationTokenEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -1435,7 +1435,7 @@
 				90462B7224EC42F300305F3F /* Fonts.swift in Sources */,
 				90F38E4C24E19ECE000D4192 /* SettingsCard.swift in Sources */,
 				9047996824D575C500111F2C /* Middleware.swift in Sources */,
-				90C9E3D427BFB6DA00D3BFD7 /* NotificationsEndpoint.swift in Sources */,
+				90C9E3D427BFB6DA00D3BFD7 /* GetNotificationsEndpoint.swift in Sources */,
 				90F38E4E24E19ECE000D4192 /* SettingsCard+Constants.swift in Sources */,
 				9058938F24D4A7460046EFA5 /* TextAttributes+Enums.swift in Sources */,
 				909819A927C2B33D00AA8B2D /* Coordinator.swift in Sources */,
@@ -1476,7 +1476,7 @@
 				909F3A7B27B17888002D37C5 /* NotificationManagerType.swift in Sources */,
 				9013FAB624D6B1890006D1B9 /* CardPresenter.swift in Sources */,
 				90CE741624D9BB7800419166 /* BookmarksCardViewModel.swift in Sources */,
-				900EA10B24D46F140054C03F /* LinesEndpoint.swift in Sources */,
+				900EA10B24D46F140054C03F /* GetLinesEndpoint.swift in Sources */,
 				90EF089A24FC333400376B0C /* SettingsMapTypeCell.swift in Sources */,
 				9013FABE24D6B1890006D1B9 /* CardContainer+Constants.swift in Sources */,
 				90CDCFCD24D60A0F00595D89 /* NSAttributedString+Replacements.swift in Sources */,
@@ -1516,7 +1516,7 @@
 				90F72F2E24E31A8600D20EB2 /* ApiType.swift in Sources */,
 				90CDCFD424D60CF100595D89 /* CollectionExtensions.swift in Sources */,
 				902C2FCC24FC45160010B019 /* SettingsSection.swift in Sources */,
-				90B8517A27B2D8DC0094DD30 /* RegisterNotificationTokenEndpoint.swift in Sources */,
+				90B8517A27B2D8DC0094DD30 /* PostNotificationTokenEndpoint.swift in Sources */,
 				90C9E3C427BFA97C00D3BFD7 /* NotificationsCard.swift in Sources */,
 				90C9E3C827BFA99200D3BFD7 /* NotificationsCard+Constants.swift in Sources */,
 				90CDCFD024D60BA900595D89 /* MapKitExtensions.swift in Sources */,
@@ -1551,7 +1551,7 @@
 				90F38E4724E19ECE000D4192 /* SettingsCardFooterView.swift in Sources */,
 				9013FB3024D721A90006D1B9 /* MainViewController.swift in Sources */,
 				905893CE24D4A95D0046EFA5 /* DeviceManager.swift in Sources */,
-				900EA10C24D46F140054C03F /* VehicleLocationsEndpoint.swift in Sources */,
+				900EA10C24D46F140054C03F /* GetVehicleLocationsEndpoint.swift in Sources */,
 				90CE741824D9BB7800419166 /* BookmarksCard+Constants.swift in Sources */,
 				90CE742D24D9D6E600419166 /* CardCoordinator.swift in Sources */,
 				90D57B0924DC490100A0EF53 /* LineSelectorCell.swift in Sources */,

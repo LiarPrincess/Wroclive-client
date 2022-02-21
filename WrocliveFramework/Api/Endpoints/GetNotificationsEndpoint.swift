@@ -6,7 +6,7 @@ import Foundation
 import os.log
 import Alamofire
 
-internal struct NotificationsEndpoint: Endpoint {
+internal struct GetNotificationsEndpoint: Endpoint {
 
   internal typealias ParameterData = Void
   internal typealias ResponseData = [Notification]
@@ -37,7 +37,7 @@ internal struct NotificationsEndpoint: Endpoint {
       return notifications
     case .partialSuccess(let notifications):
       // Some of them failed, but it is better than nothing.
-      os_log("[GetNotificationsEndpoint] Partial parsing success", log: self.log, type: .debug)
+      os_log("[GetNotificationsEndpoint] Partial parsing success", log: self.log, type: .error)
       return notifications
     case .allFailed:
       throw ApiError.invalidResponse

@@ -6,7 +6,7 @@ import Foundation
 import os.log
 import Alamofire
 
-internal struct LinesEndpoint: Endpoint {
+internal struct GetLinesEndpoint: Endpoint {
 
   internal typealias ParameterData = Void
   internal typealias ResponseData = [Line]
@@ -38,7 +38,7 @@ internal struct LinesEndpoint: Endpoint {
       return lines
     case .partialSuccess(let lines):
       // Some of them failed, but it is better than nothing.
-      os_log("[GetLinesEndpoint] Partial parsing success", log: self.log, type: .debug)
+      os_log("[GetLinesEndpoint] Partial parsing success", log: self.log, type: .error)
       return lines
     case .allFailed:
       throw ApiError.invalidResponse

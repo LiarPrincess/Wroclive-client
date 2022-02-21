@@ -5,7 +5,7 @@
 import Foundation
 import Alamofire
 
-internal struct RegisterNotificationTokenEndpoint: Endpoint {
+internal struct PostNotificationTokenEndpoint: Endpoint {
 
   internal struct ParameterData {
     internal let deviceId: UUID

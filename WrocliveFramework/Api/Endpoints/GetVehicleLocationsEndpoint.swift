@@ -6,7 +6,7 @@ import Foundation
 import os.log
 import Alamofire
 
-internal struct VehicleLocationsEndpoint: Endpoint {
+internal struct GetVehicleLocationsEndpoint: Endpoint {
 
   internal typealias ParameterData = [Line]
   internal typealias ResponseData = [Vehicle]
@@ -39,7 +39,7 @@ internal struct VehicleLocationsEndpoint: Endpoint {
       return vehicles
     case .partialSuccess(let vehicles):
       // Some of them failed, but it is better than nothing.
-      os_log("[GetVehicleLocationsEndpoint] Partial parsing success", log: self.log, type: .debug)
+      os_log("[GetVehicleLocationsEndpoint] Partial parsing success", log: self.log, type: .error)
       return vehicles
     case .allFailed:
       throw ApiError.invalidResponse
