@@ -11,7 +11,7 @@ private struct AuthorizationError: Equatable, Error {
   let message: String
 }
 
-extension NotificationManagerTests {
+extension RemoteNotificationManagerTests {
 
   func test_requestAuthorization_granted() {
     self.notificationCenter.requestAuthorizationHandlerArgs = (true, nil)

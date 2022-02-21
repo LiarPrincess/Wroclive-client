@@ -18,13 +18,17 @@ public protocol AppleUserNotificationCenter: AnyObject {
 
 extension UNUserNotificationCenter: AppleUserNotificationCenter {}
 
-public class NotificationManager: NotificationManagerType {
+public class RemoteNotificationManager: NSObject,
+                                        RemoteNotificationManagerType,
+                                        UNUserNotificationCenterDelegate {
 
   private let api: ApiType
   private let device: DeviceManagerType
   private let logManager: LogManagerType
-  private let tokenSendLimiter: NotificationTokenSendLimiterType
+  private let tokenSendLimiter: RemoteNotificationTokenSendLimiterType
   private let notificationCenter: AppleUserNotificationCenter
+
+  public weak var delegate: RemoteNotificationManagerDelegate?
 
   private var log: OSLog {
     return self.logManager.notification
@@ -32,7 +36,7 @@ public class NotificationManager: NotificationManagerType {
 
   public init(api: ApiType,
               device: DeviceManagerType,
-              tokenSendLimiter: NotificationTokenSendLimiterType,
+              tokenSendLimiter: RemoteNotificationTokenSendLimiterType,
               notificationCenter: AppleUserNotificationCenter,
               log: LogManagerType) {
     self.api = api
@@ -44,10 +48,10 @@ public class NotificationManager: NotificationManagerType {
 
   // MARK: - Settings
 
-  public func getSettings() -> Guarantee<NotificationSettings> {
+  public func getSettings() -> Guarantee<RemoteNotificationSettings> {
     return Guarantee { resolve in
       self.notificationCenter.getNotificationSettings { settings in
-        let result = NotificationSettings(settings: settings)
+        let result = RemoteNotificationSettings(settings: settings)
         resolve(result)
       }
     }
@@ -56,7 +60,7 @@ public class NotificationManager: NotificationManagerType {
 
   // MARK: - Authorization
 
-  public func requestAuthorization() -> Promise<NotificationAuthorization> {
+  public func requestAuthorization() -> Promise<RemoteNotificationAuthorization> {
     return self.requestAuthorizationPromise()
       .map { granted, error in
         if let error = error {
@@ -71,10 +75,10 @@ public class NotificationManager: NotificationManagerType {
         switch granted {
         case true:
           os_log("Authorization granted", log: self.log, type: .info)
-          return NotificationAuthorization.granted
+          return RemoteNotificationAuthorization.granted
         case false:
           os_log("Authorization not granted", log: self.log, type: .info)
-          return NotificationAuthorization.notGranted
+          return RemoteNotificationAuthorization.notGranted
         }
       }
       .ensureOnMain()
@@ -106,10 +110,8 @@ public class NotificationManager: NotificationManagerType {
 
   // MARK: - Remote notifications
 
-  public func registerForRemoteNotifications(delegate: NotificationCenterDelegate) {
-    assert(self.notificationCenter.delegate == nil)
-    delegate.registerForRemoteNotifications()
-    self.notificationCenter.delegate = delegate
+  public func registerForRemoteNotifications() {
+    UIApplication.shared.registerForRemoteNotifications()
   }
 
   public enum RegisterForRemoteNotificationsError: Error {
@@ -157,5 +159,39 @@ public class NotificationManager: NotificationManagerType {
            log: self.log,
            type: .error,
            error.localizedDescription)
+  }
+
+  // MARK: - UNUserNotificationCenterDelegate
+
+  public func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    willPresent notification: UNNotification,
+    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+  ) {
+    if let delegate = self.delegate {
+      delegate.remoteNotificationManager(
+        self,
+        willPresent: notification,
+        withCompletionHandler: completionHandler
+      )
+    } else {
+      completionHandler([])
+    }
+  }
+
+  public func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    didReceive response: UNNotificationResponse,
+    withCompletionHandler completionHandler: @escaping () -> Void
+  ) {
+    if let delegate = self.delegate {
+      delegate.remoteNotificationManager(
+        self,
+        didReceive: response,
+        withCompletionHandler: completionHandler
+      )
+    } else {
+      completionHandler()
+    }
   }
 }

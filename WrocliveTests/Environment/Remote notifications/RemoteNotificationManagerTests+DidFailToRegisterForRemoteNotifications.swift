@@ -11,7 +11,7 @@ private struct RegisterError: Equatable, Error {
   let message: String
 }
 
-extension NotificationManagerTests {
+extension RemoteNotificationManagerTests {
 
   func test_didFailToRegisterForRemoteNotifications() {
     let error = RegisterError(message: "MESSAGE")

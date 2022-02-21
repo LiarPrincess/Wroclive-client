@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-public protocol UserDefaultsManagerType: NotificationTokenStore {
+public protocol UserDefaultsManagerType: RemoteNotificationTokenStore {
   func getPreferredMapType() -> MapType?
   func setPreferredMapType(mapType: MapType)
 }

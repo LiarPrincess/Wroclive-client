@@ -122,7 +122,7 @@ internal enum AuthorizationPrompts {
   private static func showNotificationPromptIfNeeded(
     environment: Environment
   ) -> Guarantee<Void> {
-    return environment.notification.getSettings()
+    return environment.remoteNotifications.getSettings()
       .then { settings -> Guarantee<Void> in
         let log = environment.log.app
         let authorization = settings.authorization
@@ -131,7 +131,7 @@ internal enum AuthorizationPrompts {
         case .notDetermined,
              .unknownValue:
           os_log("Asking for notification authorization", log: log, type: .info)
-          return environment.notification.requestAuthorization()
+          return environment.remoteNotifications.requestAuthorization()
             .asVoid()
             .recover { _ in () }
 

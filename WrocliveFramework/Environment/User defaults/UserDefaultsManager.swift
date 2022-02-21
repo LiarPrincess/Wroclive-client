@@ -48,7 +48,7 @@ public final class UserDefaultsManager: UserDefaultsManagerType {
 
   // MARK: - Notification token
 
-  public func getNotificationToken() -> StoredNotificationToken? {
+  public func getRemoteNotificationToken() -> StoredRemoteNotificationToken? {
     guard let data = self.getData(key: .notificationToken) else {
       return nil
     }
@@ -56,13 +56,13 @@ public final class UserDefaultsManager: UserDefaultsManagerType {
     do {
       // 'StoredNotificationToken' should always decode without problems.
       let decoder = JSONDecoder()
-      return try decoder.decode(StoredNotificationToken.self, from: data)
+      return try decoder.decode(StoredRemoteNotificationToken.self, from: data)
     } catch {
       return nil
     }
   }
 
-  public func setNotificationToken(token: StoredNotificationToken) {
+  public func setRemoteNotificationToken(token: StoredRemoteNotificationToken) {
     do {
       let encoder = JSONEncoder()
       let data = try encoder.encode(token)

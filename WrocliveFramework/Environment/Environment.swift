@@ -12,7 +12,7 @@ public final class Environment {
   public let storage: StorageManagerType
   public let userDefaults: UserDefaultsManagerType
   public let userLocation: UserLocationManagerType
-  public let notification: NotificationManagerType
+  public let remoteNotifications: RemoteNotificationManagerType
   public let configuration: Configuration
 
   public enum ApiMode {
@@ -58,12 +58,12 @@ public final class Environment {
     #endif
     }
 
-    let tokenSendLimiter = NotificationTokenSendLimiter(store: self.userDefaults)
-    self.notification = NotificationManager(api: self.api,
-                                            device: self.device,
-                                            tokenSendLimiter: tokenSendLimiter,
-                                            notificationCenter: notificationCenter,
-                                            log: self.log)
+    let sendLimiter = RemoteNotificationTokenSendLimiter(store: self.userDefaults)
+    self.remoteNotifications = RemoteNotificationManager(api: self.api,
+                                                         device: self.device,
+                                                         tokenSendLimiter: sendLimiter,
+                                                         notificationCenter: notificationCenter,
+                                                         log: self.log)
   }
 
   public init(api: ApiType,
@@ -74,7 +74,7 @@ public final class Environment {
               storage: StorageManagerType,
               userDefaults: UserDefaultsManagerType,
               userLocation: UserLocationManagerType,
-              notification: NotificationManagerType,
+              remoteNotifications: RemoteNotificationManagerType,
               configuration: Configuration) {
     self.api = api
     self.bundle = bundle
@@ -84,7 +84,7 @@ public final class Environment {
     self.storage = storage
     self.userDefaults = userDefaults
     self.userLocation = userLocation
-    self.notification = notification
+    self.remoteNotifications = remoteNotifications
     self.configuration = configuration
   }
 }

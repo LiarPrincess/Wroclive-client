@@ -130,20 +130,19 @@
 		9076BD5924DDD26C00467075 /* LineTypeSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */; };
 		907FD0B724D898BC00B6896C /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B624D898BC00B6896C /* Reducer.swift */; };
 		907FD0B924D8A2DC00B6896C /* OfflineApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FD0B824D8A2DC00B6896C /* OfflineApi.swift */; };
-		9081B82127B4195C0043FE4A /* NotificationTokenSendLimiterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B82027B4195C0043FE4A /* NotificationTokenSendLimiterTests.swift */; };
+		9081B82127B4195C0043FE4A /* RemoteNotificationTokenSendLimiterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B82027B4195C0043FE4A /* RemoteNotificationTokenSendLimiterTests.swift */; };
 		9081B82227B419640043FE4A /* XCTAsserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904F1CE524E43C0700EF77A0 /* XCTAsserts.swift */; };
 		9081B82727B426900043FE4A /* UserDefaultsManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B82627B426900043FE4A /* UserDefaultsManagerType.swift */; };
 		9081B82A27B428590043FE4A /* AppleUserDefaultsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B82927B428590043FE4A /* AppleUserDefaultsMock.swift */; };
 		9081B82C27B429D60043FE4A /* UserDefaultsManager_PreferredMapTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B82B27B429D60043FE4A /* UserDefaultsManager_PreferredMapTypeTests.swift */; };
 		9081B82E27B434720043FE4A /* UserDefaultsManager_NotificationTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B82D27B434720043FE4A /* UserDefaultsManager_NotificationTokenTests.swift */; };
 		9081B83027B43BC70043FE4A /* AppleUserNotificationCenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B82F27B43BC70043FE4A /* AppleUserNotificationCenterMock.swift */; };
-		9081B83227B43D800043FE4A /* NotificationManagerTests+RequestAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83127B43D800043FE4A /* NotificationManagerTests+RequestAuthorization.swift */; };
-		9081B83427B43D8E0043FE4A /* NotificationManagerTests+RegisterForRemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83327B43D8E0043FE4A /* NotificationManagerTests+RegisterForRemoteNotifications.swift */; };
-		9081B83627B43D980043FE4A /* NotificationManagerTests+DidRegisterForRemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83527B43D980043FE4A /* NotificationManagerTests+DidRegisterForRemoteNotifications.swift */; };
-		9081B83827B43DA20043FE4A /* NotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83727B43DA20043FE4A /* NotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift */; };
-		9081B83927B43F870043FE4A /* NotificationTokenStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B82327B41BE00043FE4A /* NotificationTokenStoreMock.swift */; };
-		9081B83B27B440220043FE4A /* NotificationTokenSendLimiterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83A27B440220043FE4A /* NotificationTokenSendLimiterMock.swift */; };
-		9081B83D27B442650043FE4A /* NotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83C27B442650043FE4A /* NotificationManagerTests.swift */; };
+		9081B83227B43D800043FE4A /* RemoteNotificationManagerTests+RequestAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83127B43D800043FE4A /* RemoteNotificationManagerTests+RequestAuthorization.swift */; };
+		9081B83627B43D980043FE4A /* RemoteNotificationManagerTests+DidRegisterForRemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83527B43D980043FE4A /* RemoteNotificationManagerTests+DidRegisterForRemoteNotifications.swift */; };
+		9081B83827B43DA20043FE4A /* RemoteNotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83727B43DA20043FE4A /* RemoteNotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift */; };
+		9081B83927B43F870043FE4A /* RemoteNotificationTokenStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B82327B41BE00043FE4A /* RemoteNotificationTokenStoreMock.swift */; };
+		9081B83B27B440220043FE4A /* RemoteNotificationTokenSendLimiterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83A27B440220043FE4A /* RemoteNotificationTokenSendLimiterMock.swift */; };
+		9081B83D27B442650043FE4A /* RemoteNotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081B83C27B442650043FE4A /* RemoteNotificationManagerTests.swift */; };
 		9093AE1724EA92C20094B1CC /* ExtraLightVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9093AE1624EA92C20094B1CC /* ExtraLightVisualEffectView.swift */; };
 		909819A327C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819A227C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift */; };
 		909819A527C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819A427C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift */; };
@@ -153,16 +152,18 @@
 		909819AD27C381A700AA8B2D /* NotificationsCardSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819AC27C381A700AA8B2D /* NotificationsCardSnapshots.swift */; };
 		909819B327C3C24600AA8B2D /* UserLocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819B227C3C24600AA8B2D /* UserLocationDelegate.swift */; };
 		909819B527C3C65900AA8B2D /* UserLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819B427C3C65900AA8B2D /* UserLocationManagerDelegate.swift */; };
+		909819B727C3C6E200AA8B2D /* RemoteNotificationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819B627C3C6E200AA8B2D /* RemoteNotificationManagerDelegate.swift */; };
+		909819B927C3CD6200AA8B2D /* RemoteNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819B827C3CD6200AA8B2D /* RemoteNotificationDelegate.swift */; };
 		909B7BA3251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */; };
 		909B7BA92513A3A600D8A8E0 /* ApiLinesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */; };
 		909EF1B527A921E9000F4BAB /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EF1B427A921E9000F4BAB /* NetworkType.swift */; };
-		909F3A7927B1787A002D37C5 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A7827B1787A002D37C5 /* NotificationManager.swift */; };
-		909F3A7B27B17888002D37C5 /* NotificationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A7A27B17888002D37C5 /* NotificationManagerType.swift */; };
-		909F3A7D27B186E0002D37C5 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A7C27B186E0002D37C5 /* NotificationSettings.swift */; };
+		909F3A7927B1787A002D37C5 /* RemoteNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A7827B1787A002D37C5 /* RemoteNotificationManager.swift */; };
+		909F3A7B27B17888002D37C5 /* RemoteNotificationManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A7A27B17888002D37C5 /* RemoteNotificationManagerType.swift */; };
+		909F3A7D27B186E0002D37C5 /* RemoteNotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A7C27B186E0002D37C5 /* RemoteNotificationSettings.swift */; };
 		909F3A8127B19C54002D37C5 /* PromiseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A8027B19C54002D37C5 /* PromiseExtensions.swift */; };
-		909F3A8327B27A57002D37C5 /* NotificationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A8227B27A56002D37C5 /* NotificationManagerMock.swift */; };
+		909F3A8327B27A57002D37C5 /* RemoteNotificationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909F3A8227B27A56002D37C5 /* RemoteNotificationManagerMock.swift */; };
 		90A6262424FAB415005F5C31 /* LineSelectorTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */; };
-		90B8517827B2C9340094DD30 /* NotificationTokenSendLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8517727B2C9340094DD30 /* NotificationTokenSendLimiter.swift */; };
+		90B8517827B2C9340094DD30 /* RemoteNotificationTokenSendLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8517727B2C9340094DD30 /* RemoteNotificationTokenSendLimiter.swift */; };
 		90B8517A27B2D8DC0094DD30 /* PostNotificationTokenEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8517927B2D8DC0094DD30 /* PostNotificationTokenEndpoint.swift */; };
 		90B8517D27B2ECBF0094DD30 /* Snapshotting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B8517C27B2ECBF0094DD30 /* Snapshotting.swift */; };
 		90C5BAEE2514CB1900D41508 /* AppStoreScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */; };
@@ -388,19 +389,18 @@
 		9076BD5824DDD26C00467075 /* LineTypeSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTypeSegmentedControl.swift; sourceTree = "<group>"; };
 		907FD0B624D898BC00B6896C /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 		907FD0B824D8A2DC00B6896C /* OfflineApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineApi.swift; sourceTree = "<group>"; };
-		9081B82027B4195C0043FE4A /* NotificationTokenSendLimiterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTokenSendLimiterTests.swift; sourceTree = "<group>"; };
-		9081B82327B41BE00043FE4A /* NotificationTokenStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTokenStoreMock.swift; sourceTree = "<group>"; };
+		9081B82027B4195C0043FE4A /* RemoteNotificationTokenSendLimiterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationTokenSendLimiterTests.swift; sourceTree = "<group>"; };
+		9081B82327B41BE00043FE4A /* RemoteNotificationTokenStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationTokenStoreMock.swift; sourceTree = "<group>"; };
 		9081B82627B426900043FE4A /* UserDefaultsManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerType.swift; sourceTree = "<group>"; };
 		9081B82927B428590043FE4A /* AppleUserDefaultsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleUserDefaultsMock.swift; sourceTree = "<group>"; };
 		9081B82B27B429D60043FE4A /* UserDefaultsManager_PreferredMapTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager_PreferredMapTypeTests.swift; sourceTree = "<group>"; };
 		9081B82D27B434720043FE4A /* UserDefaultsManager_NotificationTokenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager_NotificationTokenTests.swift; sourceTree = "<group>"; };
 		9081B82F27B43BC70043FE4A /* AppleUserNotificationCenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleUserNotificationCenterMock.swift; sourceTree = "<group>"; };
-		9081B83127B43D800043FE4A /* NotificationManagerTests+RequestAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationManagerTests+RequestAuthorization.swift"; sourceTree = "<group>"; };
-		9081B83327B43D8E0043FE4A /* NotificationManagerTests+RegisterForRemoteNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationManagerTests+RegisterForRemoteNotifications.swift"; sourceTree = "<group>"; };
-		9081B83527B43D980043FE4A /* NotificationManagerTests+DidRegisterForRemoteNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationManagerTests+DidRegisterForRemoteNotifications.swift"; sourceTree = "<group>"; };
-		9081B83727B43DA20043FE4A /* NotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift"; sourceTree = "<group>"; };
-		9081B83A27B440220043FE4A /* NotificationTokenSendLimiterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTokenSendLimiterMock.swift; sourceTree = "<group>"; };
-		9081B83C27B442650043FE4A /* NotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerTests.swift; sourceTree = "<group>"; };
+		9081B83127B43D800043FE4A /* RemoteNotificationManagerTests+RequestAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteNotificationManagerTests+RequestAuthorization.swift"; sourceTree = "<group>"; };
+		9081B83527B43D980043FE4A /* RemoteNotificationManagerTests+DidRegisterForRemoteNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteNotificationManagerTests+DidRegisterForRemoteNotifications.swift"; sourceTree = "<group>"; };
+		9081B83727B43DA20043FE4A /* RemoteNotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteNotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift"; sourceTree = "<group>"; };
+		9081B83A27B440220043FE4A /* RemoteNotificationTokenSendLimiterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationTokenSendLimiterMock.swift; sourceTree = "<group>"; };
+		9081B83C27B442650043FE4A /* RemoteNotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationManagerTests.swift; sourceTree = "<group>"; };
 		90915614250F909D000BF14A /* SearchCardSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardSnapshots.swift; sourceTree = "<group>"; };
 		90915616250FA8ED000BF14A /* MainSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSnapshots.swift; sourceTree = "<group>"; };
 		9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerMock.swift; sourceTree = "<group>"; };
@@ -413,19 +413,21 @@
 		909819AC27C381A700AA8B2D /* NotificationsCardSnapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCardSnapshots.swift; sourceTree = "<group>"; };
 		909819B227C3C24600AA8B2D /* UserLocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationDelegate.swift; sourceTree = "<group>"; };
 		909819B427C3C65900AA8B2D /* UserLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManagerDelegate.swift; sourceTree = "<group>"; };
+		909819B627C3C6E200AA8B2D /* RemoteNotificationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationManagerDelegate.swift; sourceTree = "<group>"; };
+		909819B827C3CD6200AA8B2D /* RemoteNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationDelegate.swift; sourceTree = "<group>"; };
 		909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVehicleLocationsResponseTests.swift; sourceTree = "<group>"; };
 		909B7BA625139B9700D8A8E0 /* ApiTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTestCase.swift; sourceTree = "<group>"; };
 		909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLinesResponseTests.swift; sourceTree = "<group>"; };
 		909EF1B427A921E9000F4BAB /* NetworkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkType.swift; sourceTree = "<group>"; };
-		909F3A7827B1787A002D37C5 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		909F3A7A27B17888002D37C5 /* NotificationManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerType.swift; sourceTree = "<group>"; };
-		909F3A7C27B186E0002D37C5 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		909F3A7827B1787A002D37C5 /* RemoteNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationManager.swift; sourceTree = "<group>"; };
+		909F3A7A27B17888002D37C5 /* RemoteNotificationManagerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationManagerType.swift; sourceTree = "<group>"; };
+		909F3A7C27B186E0002D37C5 /* RemoteNotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationSettings.swift; sourceTree = "<group>"; };
 		909F3A7E27B18E7F002D37C5 /* Wroclive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wroclive.entitlements; sourceTree = "<group>"; };
 		909F3A7F27B1914A002D37C5 /* WrocliveRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WrocliveRelease.entitlements; sourceTree = "<group>"; };
 		909F3A8027B19C54002D37C5 /* PromiseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseExtensions.swift; sourceTree = "<group>"; };
-		909F3A8227B27A56002D37C5 /* NotificationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerMock.swift; sourceTree = "<group>"; };
+		909F3A8227B27A56002D37C5 /* RemoteNotificationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationManagerMock.swift; sourceTree = "<group>"; };
 		90A6262324FAB415005F5C31 /* LineSelectorTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSelectorTestData.swift; sourceTree = "<group>"; };
-		90B8517727B2C9340094DD30 /* NotificationTokenSendLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTokenSendLimiter.swift; sourceTree = "<group>"; };
+		90B8517727B2C9340094DD30 /* RemoteNotificationTokenSendLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationTokenSendLimiter.swift; sourceTree = "<group>"; };
 		90B8517927B2D8DC0094DD30 /* PostNotificationTokenEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNotificationTokenEndpoint.swift; sourceTree = "<group>"; };
 		90B8517C27B2ECBF0094DD30 /* Snapshotting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshotting.swift; sourceTree = "<group>"; };
 		90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshots.swift; sourceTree = "<group>"; };
@@ -839,7 +841,7 @@
 				905893C324D4A95D0046EFA5 /* Storage */,
 				90DE39F824D8786700ADE4B9 /* User location */,
 				9081B82527B426750043FE4A /* User defaults */,
-				909F3A7727B1783D002D37C5 /* Notifications */,
+				909F3A7727B1783D002D37C5 /* Remote notifications */,
 				905893C024D4A95D0046EFA5 /* BundleManager.swift */,
 				905893BF24D4A95D0046EFA5 /* DebugManager.swift */,
 				905893C124D4A95D0046EFA5 /* DeviceManager.swift */,
@@ -894,23 +896,22 @@
 			isa = PBXGroup;
 			children = (
 				9081B82827B428410043FE4A /* User defaults */,
-				9081B81F27B419440043FE4A /* Notifications */,
+				9081B81F27B419440043FE4A /* Remote notifications */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
 		};
-		9081B81F27B419440043FE4A /* Notifications */ = {
+		9081B81F27B419440043FE4A /* Remote notifications */ = {
 			isa = PBXGroup;
 			children = (
 				9081B82F27B43BC70043FE4A /* AppleUserNotificationCenterMock.swift */,
-				9081B82027B4195C0043FE4A /* NotificationTokenSendLimiterTests.swift */,
-				9081B83C27B442650043FE4A /* NotificationManagerTests.swift */,
-				9081B83127B43D800043FE4A /* NotificationManagerTests+RequestAuthorization.swift */,
-				9081B83327B43D8E0043FE4A /* NotificationManagerTests+RegisterForRemoteNotifications.swift */,
-				9081B83527B43D980043FE4A /* NotificationManagerTests+DidRegisterForRemoteNotifications.swift */,
-				9081B83727B43DA20043FE4A /* NotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift */,
+				9081B82027B4195C0043FE4A /* RemoteNotificationTokenSendLimiterTests.swift */,
+				9081B83C27B442650043FE4A /* RemoteNotificationManagerTests.swift */,
+				9081B83127B43D800043FE4A /* RemoteNotificationManagerTests+RequestAuthorization.swift */,
+				9081B83527B43D980043FE4A /* RemoteNotificationManagerTests+DidRegisterForRemoteNotifications.swift */,
+				9081B83727B43DA20043FE4A /* RemoteNotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift */,
 			);
-			path = Notifications;
+			path = "Remote notifications";
 			sourceTree = "<group>";
 		};
 		9081B82527B426750043FE4A /* User defaults */ = {
@@ -965,15 +966,16 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		909F3A7727B1783D002D37C5 /* Notifications */ = {
+		909F3A7727B1783D002D37C5 /* Remote notifications */ = {
 			isa = PBXGroup;
 			children = (
-				909F3A7A27B17888002D37C5 /* NotificationManagerType.swift */,
-				909F3A7827B1787A002D37C5 /* NotificationManager.swift */,
-				909F3A7C27B186E0002D37C5 /* NotificationSettings.swift */,
-				90B8517727B2C9340094DD30 /* NotificationTokenSendLimiter.swift */,
+				909F3A7A27B17888002D37C5 /* RemoteNotificationManagerType.swift */,
+				909819B627C3C6E200AA8B2D /* RemoteNotificationManagerDelegate.swift */,
+				909F3A7827B1787A002D37C5 /* RemoteNotificationManager.swift */,
+				909F3A7C27B186E0002D37C5 /* RemoteNotificationSettings.swift */,
+				90B8517727B2C9340094DD30 /* RemoteNotificationTokenSendLimiter.swift */,
 			);
-			path = Notifications;
+			path = "Remote notifications";
 			sourceTree = "<group>";
 		};
 		90A5FA6A24D588DA00EC24D6 /* Extensions */ = {
@@ -1152,9 +1154,9 @@
 				90F72F1C24E316BE00D20EB2 /* StorageManagerMock.swift */,
 				90F72F1D24E316BE00D20EB2 /* UserLocationManagerMock.swift */,
 				9091F75B24FE6659009B5778 /* UserDefaultsManagerMock.swift */,
-				909F3A8227B27A56002D37C5 /* NotificationManagerMock.swift */,
-				9081B82327B41BE00043FE4A /* NotificationTokenStoreMock.swift */,
-				9081B83A27B440220043FE4A /* NotificationTokenSendLimiterMock.swift */,
+				909F3A8227B27A56002D37C5 /* RemoteNotificationManagerMock.swift */,
+				9081B82327B41BE00043FE4A /* RemoteNotificationTokenStoreMock.swift */,
+				9081B83A27B440220043FE4A /* RemoteNotificationTokenSendLimiterMock.swift */,
 			);
 			path = "Environment mocks";
 			sourceTree = "<group>";
@@ -1463,7 +1465,7 @@
 				909819B527C3C65900AA8B2D /* UserLocationManagerDelegate.swift in Sources */,
 				9013FABC24D6B1890006D1B9 /* ScrollViewDismissGestureHandler.swift in Sources */,
 				90CDCFD624D60D7F00595D89 /* UIExtensions.swift in Sources */,
-				90B8517827B2C9340094DD30 /* NotificationTokenSendLimiter.swift in Sources */,
+				90B8517827B2C9340094DD30 /* RemoteNotificationTokenSendLimiter.swift in Sources */,
 				906BFDAF27C030FB001842E9 /* BookmarksCellViewModel.swift in Sources */,
 				90DE39FA24D8787D00ADE4B9 /* UserLocationAuthorization.swift in Sources */,
 				90F38E4624E19ECE000D4192 /* SettingsLinkCell.swift in Sources */,
@@ -1479,8 +1481,8 @@
 				9013FB4124D72C790006D1B9 /* MapViewModel.swift in Sources */,
 				90D57B0324DC490100A0EF53 /* LineSelector.swift in Sources */,
 				90CE742224D9BB7800419166 /* BookmarksCell.swift in Sources */,
-				909F3A7D27B186E0002D37C5 /* NotificationSettings.swift in Sources */,
-				909F3A7B27B17888002D37C5 /* NotificationManagerType.swift in Sources */,
+				909F3A7D27B186E0002D37C5 /* RemoteNotificationSettings.swift in Sources */,
+				909F3A7B27B17888002D37C5 /* RemoteNotificationManagerType.swift in Sources */,
 				9013FAB624D6B1890006D1B9 /* CardPresenter.swift in Sources */,
 				90CE741624D9BB7800419166 /* BookmarksCardViewModel.swift in Sources */,
 				900EA10B24D46F140054C03F /* GetLinesEndpoint.swift in Sources */,
@@ -1509,6 +1511,7 @@
 				90F72F0E24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift in Sources */,
 				9076BD4A24DDB5D100467075 /* SearchCard+Layout.swift in Sources */,
 				900EA0FD24D46C110054C03F /* SearchCardState.swift in Sources */,
+				909819B727C3C6E200AA8B2D /* RemoteNotificationManagerDelegate.swift in Sources */,
 				905893D224D4A95D0046EFA5 /* LogManager.swift in Sources */,
 				90D57B0824DC490100A0EF53 /* LineSelectorViewModel.swift in Sources */,
 				9013FB3124D721A90006D1B9 /* MainViewController+Constants.swift in Sources */,
@@ -1571,7 +1574,7 @@
 				9013FAC124D6B1890006D1B9 /* AlertCreator.swift in Sources */,
 				9013FB3F24D72C790006D1B9 /* VehicleAnnotation.swift in Sources */,
 				9058938E24D4A7460046EFA5 /* TextAttributes.swift in Sources */,
-				909F3A7927B1787A002D37C5 /* NotificationManager.swift in Sources */,
+				909F3A7927B1787A002D37C5 /* RemoteNotificationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1592,11 +1595,11 @@
 				9023EBE324E5B30C00F09D27 /* SearchCardViewModelTests.swift in Sources */,
 				904F1CFC24E5590100EF77A0 /* LineSelectorCellTests.swift in Sources */,
 				9023EBE424E5B30C00F09D27 /* SearchCardViewModelTests+Tracking.swift in Sources */,
-				9081B82127B4195C0043FE4A /* NotificationTokenSendLimiterTests.swift in Sources */,
+				9081B82127B4195C0043FE4A /* RemoteNotificationTokenSendLimiterTests.swift in Sources */,
 				90F72F3E24E31D9600D20EB2 /* BookmarksCardViewModelTests+Edit.swift in Sources */,
 				90F72F3D24E31D9600D20EB2 /* BookmarksCardViewModelTests+Bookmarks.swift in Sources */,
 				90E8E43F27C12C000035B0F2 /* RelativeDateFormatterTests.swift in Sources */,
-				9081B83D27B442650043FE4A /* NotificationManagerTests.swift in Sources */,
+				9081B83D27B442650043FE4A /* RemoteNotificationManagerTests.swift in Sources */,
 				90F72F4D24E426EB00D20EB2 /* MapViewModelTests+Vehicles.swift in Sources */,
 				9066DDFD24E72FEB0096F536 /* SearchCardViewModelTests+Page.swift in Sources */,
 				9023EBE524E5B30C00F09D27 /* SearchCardViewModelTests+Bookmarks.swift in Sources */,
@@ -1606,8 +1609,8 @@
 				9081B82E27B434720043FE4A /* UserDefaultsManager_NotificationTokenTests.swift in Sources */,
 				90F72F5024E426EB00D20EB2 /* MapViewModelTests+TrackingMode.swift in Sources */,
 				909B7BA3251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift in Sources */,
-				9081B83627B43D980043FE4A /* NotificationManagerTests+DidRegisterForRemoteNotifications.swift in Sources */,
-				9081B83227B43D800043FE4A /* NotificationManagerTests+RequestAuthorization.swift in Sources */,
+				9081B83627B43D980043FE4A /* RemoteNotificationManagerTests+DidRegisterForRemoteNotifications.swift in Sources */,
+				9081B83227B43D800043FE4A /* RemoteNotificationManagerTests+RequestAuthorization.swift in Sources */,
 				906BFDAB27C00F5D001842E9 /* XCTAssertResponse.swift in Sources */,
 				904F1CFA24E556EB00EF77A0 /* LineSelectorViewModelTests.swift in Sources */,
 				90F72F3C24E31D9600D20EB2 /* BookmarksCellViewModelTests.swift in Sources */,
@@ -1622,10 +1625,9 @@
 				90F72F1324E3157D00D20EB2 /* Collection+AnyTests.swift in Sources */,
 				90A6262424FAB415005F5C31 /* LineSelectorTestData.swift in Sources */,
 				904F1CF724E556EB00EF77A0 /* LineSelectorPageViewModelTests.swift in Sources */,
-				9081B83427B43D8E0043FE4A /* NotificationManagerTests+RegisterForRemoteNotifications.swift in Sources */,
 				909819AB27C37BBE00AA8B2D /* NotificationsCardViewModelTests+Details.swift in Sources */,
 				904F1CFE24E5592000EF77A0 /* LineSelectorHeaderViewTests.swift in Sources */,
-				9081B83827B43DA20043FE4A /* NotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift in Sources */,
+				9081B83827B43DA20043FE4A /* RemoteNotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift in Sources */,
 				90F72F4C24E426EB00D20EB2 /* MapViewModelTests+FirstLaunch.swift in Sources */,
 				90F72F3F24E31D9600D20EB2 /* BookmarksCardViewModelTests+Visibility.swift in Sources */,
 				90F72F4024E31D9600D20EB2 /* BookmarksCardViewModelTests+Selection.swift in Sources */,
@@ -1658,12 +1660,12 @@
 				9060E56527A7F79400C6248C /* UserDefaultsManagerMock.swift in Sources */,
 				9060E56727A7F79400C6248C /* DebugManagerMock.swift in Sources */,
 				9060E56227A7F79400C6248C /* DeviceManagerMock.swift in Sources */,
-				9081B83927B43F870043FE4A /* NotificationTokenStoreMock.swift in Sources */,
+				9081B83927B43F870043FE4A /* RemoteNotificationTokenStoreMock.swift in Sources */,
 				9060E55727A7F52A00C6248C /* EnvironmentTestCase.swift in Sources */,
 				9060E56327A7F79400C6248C /* StorageManagerMock.swift in Sources */,
 				9081B82227B419640043FE4A /* XCTAsserts.swift in Sources */,
-				9081B83B27B440220043FE4A /* NotificationTokenSendLimiterMock.swift in Sources */,
-				909F3A8327B27A57002D37C5 /* NotificationManagerMock.swift in Sources */,
+				9081B83B27B440220043FE4A /* RemoteNotificationTokenSendLimiterMock.swift in Sources */,
+				909F3A8327B27A57002D37C5 /* RemoteNotificationManagerMock.swift in Sources */,
 				9060E55527A7F50600C6248C /* SnapshotTestCase.swift in Sources */,
 				9060E56427A7F79400C6248C /* UserLocationManagerMock.swift in Sources */,
 				90B8517D27B2ECBF0094DD30 /* Snapshotting.swift in Sources */,

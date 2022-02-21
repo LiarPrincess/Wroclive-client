@@ -8,7 +8,7 @@ private let second = 1.0
 private let minute = 60 * second
 private let hour = 60 * minute
 
-public struct StoredNotificationToken: Equatable, Codable {
+public struct StoredRemoteNotificationToken: Equatable, Codable {
 
   public let date: Date
   public let deviceId: UUID
@@ -21,9 +21,9 @@ public struct StoredNotificationToken: Equatable, Codable {
   }
 }
 
-public protocol NotificationTokenStore {
-  func getNotificationToken() -> StoredNotificationToken?
-  func setNotificationToken(token: StoredNotificationToken)
+public protocol RemoteNotificationTokenStore {
+  func getRemoteNotificationToken() -> StoredRemoteNotificationToken?
+  func setRemoteNotificationToken(token: StoredRemoteNotificationToken)
 }
 
 // MARK: - Send limiter
@@ -33,28 +33,28 @@ public protocol NotificationTokenStore {
 ///
 /// Btw. It does handle the edge case when we did send the token but it got lost
 /// by setting the send interval to relatively small value (not weeks/years etc.).
-public protocol NotificationTokenSendLimiterType {
+public protocol RemoteNotificationTokenSendLimiterType {
   func shouldSend(deviceId: UUID, token: String) -> Bool
   func registerSend(deviceId: UUID, token: String)
 }
 
-public final class NotificationTokenSendLimiter: NotificationTokenSendLimiterType {
+public final class RemoteNotificationTokenSendLimiter: RemoteNotificationTokenSendLimiterType {
 
   public typealias GetDate = () -> Date
 
   public static let sendInterval = 23 * hour
 
-  private let store: NotificationTokenStore
+  private let store: RemoteNotificationTokenStore
   private let getDate: GetDate
 
-  public init(store: NotificationTokenStore, getDate: GetDate? = nil) {
+  public init(store: RemoteNotificationTokenStore, getDate: GetDate? = nil) {
     self.store = store
     self.getDate = getDate ?? Date.init
   }
 
   public func shouldSend(deviceId: UUID, token: String) -> Bool {
     // No token stored -> send
-    guard let stored = self.store.getNotificationToken() else {
+    guard let stored = self.store.getRemoteNotificationToken() else {
       return true
     }
 
@@ -78,12 +78,12 @@ public final class NotificationTokenSendLimiter: NotificationTokenSendLimiterTyp
     }
 
     let interval = now1970 - storeDate1970
-    return interval >= NotificationTokenSendLimiter.sendInterval
+    return interval >= RemoteNotificationTokenSendLimiter.sendInterval
   }
 
   public func registerSend(deviceId: UUID, token: String) {
     let now = self.getDate()
-    let stored = StoredNotificationToken(date: now, deviceId: deviceId, token: token)
-    self.store.setNotificationToken(token: stored)
+    let stored = StoredRemoteNotificationToken(date: now, deviceId: deviceId, token: token)
+    self.store.setRemoteNotificationToken(token: stored)
   }
 }

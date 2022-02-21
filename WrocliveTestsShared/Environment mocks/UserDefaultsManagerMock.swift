@@ -29,14 +29,14 @@ public class UserDefaultsManagerMock: UserDefaultsManagerType {
   public private(set) var getNotificationTokenCount = 0
   public private(set) var setNotificationTokenCount = 0
 
-  public var notificationToken: StoredNotificationToken?
+  public var notificationToken: StoredRemoteNotificationToken?
 
-  public func getNotificationToken() -> StoredNotificationToken? {
+  public func getRemoteNotificationToken() -> StoredRemoteNotificationToken? {
     self.getNotificationTokenCount += 1
     return self.notificationToken
   }
 
-  public func setNotificationToken(token: StoredNotificationToken) {
+  public func setRemoteNotificationToken(token: StoredRemoteNotificationToken) {
     self.setNotificationTokenCount += 1
     self.notificationToken = token
   }

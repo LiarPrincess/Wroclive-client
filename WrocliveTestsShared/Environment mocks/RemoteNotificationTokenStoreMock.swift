@@ -5,22 +5,22 @@
 import XCTest
 @testable import WrocliveFramework
 
-public final class NotificationTokenStoreMock: NotificationTokenStore {
+public final class RemoteNotificationTokenStoreMock: RemoteNotificationTokenStore {
 
   public init() {}
 
-  public var storedNotificationToken: StoredNotificationToken?
+  public var storedToken: StoredRemoteNotificationToken?
   public private(set) var getNotificationTokenCallCount = 0
 
-  public func getNotificationToken() -> StoredNotificationToken? {
+  public func getRemoteNotificationToken() -> StoredRemoteNotificationToken? {
     self.getNotificationTokenCallCount += 1
-    return self.storedNotificationToken
+    return self.storedToken
   }
 
   public private(set) var setNotificationTokenCallCount = 0
 
-  public func setNotificationToken(token: StoredNotificationToken) {
+  public func setRemoteNotificationToken(token: StoredRemoteNotificationToken) {
     self.setNotificationTokenCallCount += 1
-    self.storedNotificationToken = token
+    self.storedToken = token
   }
 }

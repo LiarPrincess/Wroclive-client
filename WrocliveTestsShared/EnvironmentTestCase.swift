@@ -38,8 +38,8 @@ extension EnvironmentTestCase {
     return self.environment.userLocation as! UserLocationManagerMock
   }
 
-  public var notificationManager: NotificationManagerMock {
-    return self.environment.notification as! NotificationManagerMock
+  public var remoteNotificationsManager: RemoteNotificationManagerMock {
+    return self.environment.remoteNotifications as! RemoteNotificationManagerMock
   }
 
   public var configuration: Configuration {
@@ -74,7 +74,7 @@ extension EnvironmentTestCase {
       storage: StorageManagerMock(),
       userDefaults: UserDefaultsManagerMock(),
       userLocation: UserLocationManagerMock(),
-      notification: NotificationManagerMock(),
+      remoteNotifications: RemoteNotificationManagerMock(),
       configuration: configuration
     )
   }

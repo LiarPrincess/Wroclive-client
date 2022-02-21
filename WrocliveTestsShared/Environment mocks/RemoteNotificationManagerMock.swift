@@ -6,9 +6,13 @@ import Foundation
 import PromiseKit
 @testable import WrocliveFramework
 
-public class NotificationManagerMock: NotificationManagerType {
+public class RemoteNotificationManagerMock: RemoteNotificationManagerType {
 
-  public var settings = NotificationSettings(
+  public var delegate: RemoteNotificationManagerDelegate?
+
+  // MARK: - Settings
+
+  public var settings = RemoteNotificationSettings(
     authorization: .notDetermined,
     notificationCenter: .disabled,
     lockScreen: .disabled,
@@ -19,21 +23,19 @@ public class NotificationManagerMock: NotificationManagerType {
     timeSensitive: .setting(.disabled)
   )
 
-  // MARK: - Settings
-
   public private(set) var getSettingsCallCount = 0
 
-  public func getSettings() -> Guarantee<NotificationSettings> {
+  public func getSettings() -> Guarantee<RemoteNotificationSettings> {
     self.getSettingsCallCount += 1
     return Guarantee.value(self.settings)
   }
 
   // MARK: - Authorization
 
-  public var requestAuthorizationResult = NotificationAuthorization.granted
+  public var requestAuthorizationResult = RemoteNotificationAuthorization.granted
   public private(set) var requestAuthorizationCallCount = 0
 
-  public func requestAuthorization() -> Promise<NotificationAuthorization> {
+  public func requestAuthorization() -> Promise<RemoteNotificationAuthorization> {
     self.requestAuthorizationCallCount += 1
     return Promise.value(self.requestAuthorizationResult)
   }
@@ -42,7 +44,7 @@ public class NotificationManagerMock: NotificationManagerType {
 
   public private(set) var registerForRemoteNotificationsCallCount = 0
 
-  public func registerForRemoteNotifications(delegate: NotificationCenterDelegate) {
+  public func registerForRemoteNotifications() {
     self.registerForRemoteNotificationsCallCount += 1
   }
 

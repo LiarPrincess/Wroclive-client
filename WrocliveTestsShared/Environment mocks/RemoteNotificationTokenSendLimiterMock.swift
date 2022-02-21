@@ -16,7 +16,7 @@ public struct DeviceIdTokenPair: Equatable {
   }
 }
 
-public final class NotificationTokenSendLimiterMock: NotificationTokenSendLimiterType {
+public final class RemoteNotificationTokenSendLimiterMock: RemoteNotificationTokenSendLimiterType {
 
   public init() {}
 

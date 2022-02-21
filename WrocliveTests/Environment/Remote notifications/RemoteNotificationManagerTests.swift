@@ -9,13 +9,13 @@ import WrocliveTestsShared
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-final class NotificationManagerTests: XCTestCase {
+final class RemoteNotificationManagerTests: XCTestCase {
 
   var api: ApiMock!
   var device: DeviceManagerMock!
   var notificationCenter: AppleUserNotificationCenterMock!
-  var tokenSendLimiter: NotificationTokenSendLimiterMock!
-  var manager: NotificationManager!
+  var tokenSendLimiter: RemoteNotificationTokenSendLimiterMock!
+  var manager: RemoteNotificationManager!
 
   override func setUp() {
     super.setUp()
@@ -23,16 +23,18 @@ final class NotificationManagerTests: XCTestCase {
     self.api = ApiMock()
     self.device = DeviceManagerMock()
     self.notificationCenter = AppleUserNotificationCenterMock()
-    self.tokenSendLimiter = NotificationTokenSendLimiterMock()
+    self.tokenSendLimiter = RemoteNotificationTokenSendLimiterMock()
 
     let bundle = BundleManagerMock()
     let log = LogManager(bundle: bundle)
 
-    self.manager = NotificationManager(api: self.api,
-                                       device: self.device,
-                                       tokenSendLimiter: self.tokenSendLimiter,
-                                       notificationCenter: self.notificationCenter,
-                                       log: log)
+    self.manager = RemoteNotificationManager(
+      api: self.api,
+      device: self.device,
+      tokenSendLimiter: self.tokenSendLimiter,
+      notificationCenter: self.notificationCenter,
+      log: log
+    )
   }
 
   func wait(for expectation: XCTestExpectation, timeout: TimeInterval = 2.0) {

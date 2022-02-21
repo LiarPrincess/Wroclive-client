@@ -4,7 +4,7 @@
 
 import UserNotifications
 
-public struct NotificationSettings {
+public struct RemoteNotificationSettings {
 
   // MARK: - Types
 

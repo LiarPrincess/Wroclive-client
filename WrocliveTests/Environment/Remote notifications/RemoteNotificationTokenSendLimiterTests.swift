@@ -9,7 +9,7 @@ import WrocliveTestsShared
 
 // swiftlint:disable force_unwrapping
 
-private let interval = NotificationTokenSendLimiter.sendInterval
+private let interval = RemoteNotificationTokenSendLimiter.sendInterval
 private let dateInitial = Date(timeIntervalSince1970: 0.0)
 private let dateWithinInterval = Date(timeInterval: interval - 1.0, since: dateInitial)
 private let dateAfterInterval = Date(timeInterval: interval + 1.0, since: dateInitial)
@@ -23,15 +23,15 @@ private func getDateMock() -> Date {
   return dateMock
 }
 
-final class NotificationTokenSendLimiterTests: XCTestCase {
+final class RemoteNotificationTokenSendLimiterTests: XCTestCase {
 
   // MARK: - Should send
 
   func test_shouldSend_if_tokenWasNotStored() {
-    let store = NotificationTokenStoreMock()
-    let limiter = NotificationTokenSendLimiter(store: store, getDate: getDateMock)
+    let store = RemoteNotificationTokenStoreMock()
+    let limiter = RemoteNotificationTokenSendLimiter(store: store, getDate: getDateMock)
 
-    store.storedNotificationToken = nil // Not stored
+    store.storedToken = nil // Not stored
 
     dateMock = dateInitial
     let result = limiter.shouldSend(deviceId: deviceId, token: "TOKEN_VALUE")
@@ -42,10 +42,10 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
   }
 
   func test_shouldSend_when_tokenChanged() {
-    let store = NotificationTokenStoreMock()
-    let limiter = NotificationTokenSendLimiter(store: store, getDate: getDateMock)
+    let store = RemoteNotificationTokenStoreMock()
+    let limiter = RemoteNotificationTokenSendLimiter(store: store, getDate: getDateMock)
 
-    store.storedNotificationToken = StoredNotificationToken(
+    store.storedToken = StoredRemoteNotificationToken(
       date: dateInitial,
       deviceId: deviceId,
       token: "OLD_TOKEN_VALUE"
@@ -60,10 +60,10 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
   }
 
   func test_shouldSend_when_deviceIdChanged() {
-    let store = NotificationTokenStoreMock()
-    let limiter = NotificationTokenSendLimiter(store: store, getDate: getDateMock)
+    let store = RemoteNotificationTokenStoreMock()
+    let limiter = RemoteNotificationTokenSendLimiter(store: store, getDate: getDateMock)
 
-    store.storedNotificationToken = StoredNotificationToken(
+    store.storedToken = StoredRemoteNotificationToken(
       date: dateInitial,
       deviceId: deviceIdOld,
       token: "TOKEN_VALUE"
@@ -78,10 +78,10 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
   }
 
   func test_shouldSend_when_storedToken_isFromTheFuture() {
-    let store = NotificationTokenStoreMock()
-    let limiter = NotificationTokenSendLimiter(store: store, getDate: getDateMock)
+    let store = RemoteNotificationTokenStoreMock()
+    let limiter = RemoteNotificationTokenSendLimiter(store: store, getDate: getDateMock)
 
-    store.storedNotificationToken = StoredNotificationToken(
+    store.storedToken = StoredRemoteNotificationToken(
       date: dateWithinInterval, // dateInitial + interval - 1
       deviceId: deviceId,
       token: "TOKEN_VALUE"
@@ -96,10 +96,10 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
   }
 
   func test_shouldSend_after_sendInterval() {
-    let store = NotificationTokenStoreMock()
-    let limiter = NotificationTokenSendLimiter(store: store, getDate: getDateMock)
+    let store = RemoteNotificationTokenStoreMock()
+    let limiter = RemoteNotificationTokenSendLimiter(store: store, getDate: getDateMock)
 
-    store.storedNotificationToken = StoredNotificationToken(
+    store.storedToken = StoredRemoteNotificationToken(
       date: dateInitial,
       deviceId: deviceId,
       token: "TOKEN_VALUE"
@@ -114,10 +114,10 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
   }
 
   func test_shouldNotSend_within_sendInterval() {
-    let store = NotificationTokenStoreMock()
-    let limiter = NotificationTokenSendLimiter(store: store, getDate: getDateMock)
+    let store = RemoteNotificationTokenStoreMock()
+    let limiter = RemoteNotificationTokenSendLimiter(store: store, getDate: getDateMock)
 
-    store.storedNotificationToken = StoredNotificationToken(
+    store.storedToken = StoredRemoteNotificationToken(
       date: dateInitial,
       deviceId: deviceId,
       token: "TOKEN_VALUE"
@@ -134,20 +134,22 @@ final class NotificationTokenSendLimiterTests: XCTestCase {
   // MARK: - Register send
 
   func test_registerSend_storesToken() {
-    let store = NotificationTokenStoreMock()
-    let limiter = NotificationTokenSendLimiter(store: store, getDate: getDateMock)
+    let store = RemoteNotificationTokenStoreMock()
+    let limiter = RemoteNotificationTokenSendLimiter(store: store, getDate: getDateMock)
 
-    XCTAssertNil(store.storedNotificationToken)
+    XCTAssertNil(store.storedToken)
 
     dateMock = dateInitial
     let token = "TOKEN_VALUE"
     limiter.registerSend(deviceId: deviceId, token: token)
 
-    let expected = StoredNotificationToken(date: dateInitial,
-                                           deviceId: deviceId,
-                                           token: token)
+    let expected = StoredRemoteNotificationToken(
+      date: dateInitial,
+      deviceId: deviceId,
+      token: token
+    )
 
-    XCTAssertEqual(store.storedNotificationToken, expected)
+    XCTAssertEqual(store.storedToken, expected)
     XCTAssertEqual(store.setNotificationTokenCallCount, 1)
     XCTAssertEqual(store.getNotificationTokenCallCount, 0)
   }

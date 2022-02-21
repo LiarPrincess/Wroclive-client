@@ -14,7 +14,7 @@ private let tokenToSend = "544f4b454e5f56414c5545"
 
 private let deviceId = UUID(uuidString: "11111111-2222-3333-4444-555555555555")
 
-private typealias RegisterError = NotificationManager.RegisterForRemoteNotificationsError
+private typealias RegisterError = RemoteNotificationManager.RegisterForRemoteNotificationsError
 
 private func XCTAssertRejection(_ result: PromiseKit.Result<Void>,
                                 _ expectedError: RegisterError,
@@ -34,7 +34,7 @@ private func XCTAssertRejection(_ result: PromiseKit.Result<Void>,
   }
 }
 
-extension NotificationManagerTests {
+extension RemoteNotificationManagerTests {
 
   func test_didRegisterForRemoteNotifications_without_deviceId_doesNothing() {
     self.device.identifierForVendor = nil

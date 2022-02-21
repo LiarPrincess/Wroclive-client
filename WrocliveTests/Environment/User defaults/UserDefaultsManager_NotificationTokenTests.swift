@@ -20,7 +20,7 @@ final class UserDefaultsManager_NotificationTokenTests: XCTestCase {
     let apple = AppleUserDefaultsMock()
     let manager = UserDefaultsManager(userDefaults: apple)
 
-    let result = manager.getNotificationToken()
+    let result = manager.getRemoteNotificationToken()
     XCTAssertNil(result)
   }
 
@@ -30,7 +30,7 @@ final class UserDefaultsManager_NotificationTokenTests: XCTestCase {
 
     apple.values[key] = Data([1, 2, 3, 4])
 
-    let result = manager.getNotificationToken()
+    let result = manager.getRemoteNotificationToken()
     XCTAssertNil(result)
   }
 
@@ -42,12 +42,12 @@ final class UserDefaultsManager_NotificationTokenTests: XCTestCase {
     let json = "{\"date\":-978294855,\"value\":\"11111111-2222-3333-4444-555555555555\"}"
     apple.values[key] = json.data(using: .utf8)
 
-    let result = manager.getNotificationToken()
+    let result = manager.getRemoteNotificationToken()
     XCTAssertNil(result)
   }
 
   func test_set_then_get() {
-    let token = StoredNotificationToken(
+    let token = StoredRemoteNotificationToken(
       date: Date(timeIntervalSince1970: 12_345.0),
       deviceId: deviceId,
       token: "11111111-2222-3333-4444-555555555555"
@@ -56,7 +56,7 @@ final class UserDefaultsManager_NotificationTokenTests: XCTestCase {
     let apple = AppleUserDefaultsMock()
     let manager = UserDefaultsManager(userDefaults: apple)
 
-    manager.setNotificationToken(token: token)
+    manager.setRemoteNotificationToken(token: token)
 
     if let stored = apple.values[key] as? Data {
       let string = String(bytes: stored, encoding: .utf8)
@@ -66,7 +66,7 @@ final class UserDefaultsManager_NotificationTokenTests: XCTestCase {
       XCTFail("Expected data")
     }
 
-    let result = manager.getNotificationToken()
+    let result = manager.getRemoteNotificationToken()
     XCTAssertEqual(result, token)
   }
 }
