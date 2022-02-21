@@ -44,9 +44,8 @@ public final class NotificationsCardViewModel: StoreSubscriber {
     self.isLoadingViewVisible = false
     self.now = date ?? Date()
 
-    self.store.subscribe(self)
-
     self.setVisibleView(view: .loadingView)
+    self.store.subscribe(self)
   }
 
   // MARK: - View
