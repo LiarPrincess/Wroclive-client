@@ -4,6 +4,8 @@
 
 import Foundation
 
+// swiftlint:disable legacy_objc_type
+
 extension String {
 
   public static var empty: String {

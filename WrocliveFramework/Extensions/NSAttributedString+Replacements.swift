@@ -5,6 +5,8 @@
 import UIKit
 import Foundation
 
+// swiftlint:disable legacy_objc_type
+
 public struct TextReplacement {
   public let text: String
   public let value: NSAttributedString

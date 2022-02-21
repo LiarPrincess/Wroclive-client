@@ -43,7 +43,7 @@ public struct AppState: StateType {
     /// No response recieved (yet).
     /// Default state, just after starting the app.
     case none
-    // TODO: Add 'Request' associated value, with single 'cancel' method
+    // TODO: Add 'struct Request' associated value, with single 'cancel' method
     /// Request was send, no response (yet).
     case inProgress
     case data(Data)
@@ -111,14 +111,12 @@ public struct AppState: StateType {
     let bookmarks = storageManager.readBookmarks() ?? getInitialBookmarks()
     let trackedLines = storageManager.readTrackedLines() ?? getInitialTrackedLines()
 
-    return AppState(
-      mapType: mapType,
-      userLocationAuthorization: userLocationAuthorization,
-      bookmarks: bookmarks,
-      trackedLines: trackedLines,
-      getLinesResponse: .none,
-      getNotificationsResponse: .none,
-      getVehicleLocationsResponse: .none
-    )
+    return AppState(mapType: mapType,
+                    userLocationAuthorization: userLocationAuthorization,
+                    bookmarks: bookmarks,
+                    trackedLines: trackedLines,
+                    getLinesResponse: .none,
+                    getNotificationsResponse: .none,
+                    getVehicleLocationsResponse: .none)
   }
 }
