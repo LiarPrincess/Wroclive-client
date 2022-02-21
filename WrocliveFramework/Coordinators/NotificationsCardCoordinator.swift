@@ -4,11 +4,13 @@
 
 import UIKit
 import ReSwift
+import Foundation
 import PromiseKit
 
 // swiftlint:disable weak_delegate
 
-public final class NotificationsCardCoordinator: CardCoordinator {
+public final class NotificationsCardCoordinator: CardCoordinator,
+                                                 NotificationsCardViewModelDelegate {
 
   public internal(set) var card: NotificationsCard?
   internal let parent: UIViewController
@@ -26,11 +28,23 @@ public final class NotificationsCardCoordinator: CardCoordinator {
   }
 
   public func start(animated: Bool) -> Guarantee<Void> {
-    let viewModel = NotificationsCardViewModel(store: self.store)
+    let viewModel = NotificationsCardViewModel(store: self.store, delegate: self)
     let card = NotificationsCard(viewModel: viewModel)
     let cardHeight = self.getCardHeight(screenPercent: 0.9, butNoBiggerThan: 600)
 
     self.card = card
     return self.present(card: card, withHeight: cardHeight, animated: animated)
+  }
+
+  public func showDetails(notification: Notification) {
+    guard let card = self.card else {
+      fatalError("NotificationsCardCoordinator has to be started first")
+    }
+
+    guard let url = URL(string: notification.url) else {
+      return
+    }
+
+    self.openBrowser(parent: card, url: url)
   }
 }

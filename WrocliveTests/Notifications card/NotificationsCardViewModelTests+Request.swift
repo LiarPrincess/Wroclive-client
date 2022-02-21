@@ -10,10 +10,10 @@ import WrocliveTestsShared
 
 // swiftlint:disable function_body_length
 
-private func XCTAssertCells(viewModel: NotificationsCardViewModel,
-                            expected: [WrocliveFramework.Notification],
-                            file: StaticString = #file,
-                            line: UInt = #line) {
+func XCTAssertCells(viewModel: NotificationsCardViewModel,
+                    expected: [WrocliveFramework.Notification],
+                    file: StaticString = #file,
+                    line: UInt = #line) {
   let cells = viewModel.cells
 
   XCTAssertEqual(cells.count,

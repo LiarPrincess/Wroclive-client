@@ -6,7 +6,7 @@ import os.log
 import UIKit
 import ReSwift
 
-public final class AppCoordinator: MainViewModelDelegate {
+public final class AppCoordinator: Coordinator, MainViewModelDelegate {
 
   public let window: UIWindow
   public let store: Store<AppState>

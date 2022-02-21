@@ -54,6 +54,7 @@ extension MainViewController {
 
   // MARK: - Toolbar button
 
+  // swiftlint:disable:next function_body_length
   private func initToolbarButtons() {
     let buttonColor = ColorScheme.tint
 

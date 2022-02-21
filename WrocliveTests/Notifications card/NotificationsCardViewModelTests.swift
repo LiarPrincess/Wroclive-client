@@ -14,7 +14,10 @@ import WrocliveTestsShared
 class NotificationsCardViewModelTests: XCTestCase,
                                        ReduxTestCase,
                                        EnvironmentTestCase,
-                                       NotificationsCardViewType {
+                                       NotificationsCardViewType,
+                                       NotificationsCardViewModelDelegate {
+
+  typealias WrocliveNotification = WrocliveFramework.Notification
 
   var store: Store<AppState>!
   var dispatchedActions: [Action]!
@@ -22,6 +25,7 @@ class NotificationsCardViewModelTests: XCTestCase,
 
   var refreshCount = 0
   var apiErrorAlert: ApiError?
+  var showDetailsNotification: WrocliveNotification?
   let now = Date(iso8601: "2022-01-01T00:00:00.000Z")!
 
   override func setUp() {
@@ -30,6 +34,7 @@ class NotificationsCardViewModelTests: XCTestCase,
     self.setUpEnvironment()
     self.refreshCount = 0
     self.apiErrorAlert = nil
+    self.showDetailsNotification = nil
   }
 
   // MARK: - View model
@@ -42,8 +47,14 @@ class NotificationsCardViewModelTests: XCTestCase,
     self.apiErrorAlert = error
   }
 
+  func showDetails(notification: WrocliveNotification) {
+    self.showDetailsNotification = notification
+  }
+
   func createViewModel() -> NotificationsCardViewModel {
-    let result = NotificationsCardViewModel(store: self.store, date: now)
+    let result = NotificationsCardViewModel(store: self.store,
+                                            delegate: self,
+                                            date: now)
     result.setView(view: self)
     self.refreshCount = 0
     return result
@@ -51,25 +62,25 @@ class NotificationsCardViewModelTests: XCTestCase,
 
   // MARK: - Data
 
-  lazy var notifications: [WrocliveFramework.Notification] = [
+  lazy var notifications: [WrocliveNotification] = [
     self.createNotification(suffix: "1"),
     self.createNotification(suffix: "2"),
     self.createNotification(suffix: "3"),
     self.createNotification(suffix: "4")
   ]
 
-  private func createNotification(suffix: String) -> WrocliveFramework.Notification {
-    return WrocliveFramework.Notification(id: "ID" + suffix,
-                                          url: "URL" + suffix,
-                                          authorName: "AUTHOR_NAME" + suffix,
-                                          authorUsername: "AUTHOR_USERNAME" + suffix,
-                                          date: self.now,
-                                          body: "BODY" + suffix)
+  private func createNotification(suffix: String) -> WrocliveNotification {
+    return WrocliveNotification(id: "ID" + suffix,
+                                url: "URL" + suffix,
+                                authorName: "AUTHOR_NAME" + suffix,
+                                authorUsername: "AUTHOR_USERNAME" + suffix,
+                                date: self.now,
+                                body: "BODY" + suffix)
   }
 
   // MARK: - State
 
-  typealias Response = AppState.ApiResponseState<[WrocliveFramework.Notification]>
+  typealias Response = AppState.ApiResponseState<[WrocliveNotification]>
 
   func setResponseState(_ response: Response) {
     self.setState { $0.getNotificationsResponse = response }

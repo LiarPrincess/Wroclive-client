@@ -148,6 +148,8 @@
 		909819A327C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819A227C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift */; };
 		909819A527C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819A427C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift */; };
 		909819A727C2A9C300AA8B2D /* NotificationsCardViewModelTests+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819A627C2A9C300AA8B2D /* NotificationsCardViewModelTests+Request.swift */; };
+		909819A927C2B33D00AA8B2D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819A827C2B33D00AA8B2D /* Coordinator.swift */; };
+		909819AB27C37BBE00AA8B2D /* NotificationsCardViewModelTests+Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819AA27C37BBE00AA8B2D /* NotificationsCardViewModelTests+Details.swift */; };
 		909B7BA3251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */; };
 		909B7BA92513A3A600D8A8E0 /* ApiLinesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */; };
 		909EF1B527A921E9000F4BAB /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EF1B427A921E9000F4BAB /* NetworkType.swift */; };
@@ -403,6 +405,8 @@
 		909819A227C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCellViewModelTests.swift; sourceTree = "<group>"; };
 		909819A427C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCardViewModelTests.swift; sourceTree = "<group>"; };
 		909819A627C2A9C300AA8B2D /* NotificationsCardViewModelTests+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationsCardViewModelTests+Request.swift"; sourceTree = "<group>"; };
+		909819A827C2B33D00AA8B2D /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		909819AA27C37BBE00AA8B2D /* NotificationsCardViewModelTests+Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationsCardViewModelTests+Details.swift"; sourceTree = "<group>"; };
 		909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVehicleLocationsResponseTests.swift; sourceTree = "<group>"; };
 		909B7BA625139B9700D8A8E0 /* ApiTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTestCase.swift; sourceTree = "<group>"; };
 		909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLinesResponseTests.swift; sourceTree = "<group>"; };
@@ -926,6 +930,7 @@
 				909819A227C29A5F00AA8B2D /* NotificationsCellViewModelTests.swift */,
 				909819A427C2A7B900AA8B2D /* NotificationsCardViewModelTests.swift */,
 				909819A627C2A9C300AA8B2D /* NotificationsCardViewModelTests+Request.swift */,
+				909819AA27C37BBE00AA8B2D /* NotificationsCardViewModelTests+Details.swift */,
 			);
 			path = "Notifications card";
 			sourceTree = "<group>";
@@ -1065,6 +1070,7 @@
 		90DE39EB24D8685400ADE4B9 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				909819A827C2B33D00AA8B2D /* Coordinator.swift */,
 				90CE742A24D9D6E000419166 /* BookmarksCardCoordinator.swift */,
 				90F72F0D24E2EFCA00D20EB2 /* SettingsCardCoordinator.swift */,
 				90C9E3CF27BFA9FF00D3BFD7 /* NotificationsCardCoordinator.swift */,
@@ -1429,6 +1435,7 @@
 				90C9E3D427BFB6DA00D3BFD7 /* NotificationsEndpoint.swift in Sources */,
 				90F38E4E24E19ECE000D4192 /* SettingsCard+Constants.swift in Sources */,
 				9058938F24D4A7460046EFA5 /* TextAttributes+Enums.swift in Sources */,
+				909819A927C2B33D00AA8B2D /* Coordinator.swift in Sources */,
 				9013FAAD24D6B1880006D1B9 /* ReusableCell+UITableView.swift in Sources */,
 				9058938D24D4A7460046EFA5 /* ColorScheme.swift in Sources */,
 				9076BD4B24DDB5D100467075 /* SearchCard+Constants.swift in Sources */,
@@ -1605,6 +1612,7 @@
 				90A6262424FAB415005F5C31 /* LineSelectorTestData.swift in Sources */,
 				904F1CF724E556EB00EF77A0 /* LineSelectorPageViewModelTests.swift in Sources */,
 				9081B83427B43D8E0043FE4A /* NotificationManagerTests+RegisterForRemoteNotifications.swift in Sources */,
+				909819AB27C37BBE00AA8B2D /* NotificationsCardViewModelTests+Details.swift in Sources */,
 				904F1CFE24E5592000EF77A0 /* LineSelectorHeaderViewTests.swift in Sources */,
 				9081B83827B43DA20043FE4A /* NotificationManagerTests+DidFailToRegisterForRemoteNotifications.swift in Sources */,
 				90F72F4C24E426EB00D20EB2 /* MapViewModelTests+FirstLaunch.swift in Sources */,

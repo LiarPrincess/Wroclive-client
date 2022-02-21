@@ -7,6 +7,10 @@ import ReSwift
 import Foundation
 import PromiseKit
 
+public protocol NotificationsCardViewModelDelegate: AnyObject {
+  func showDetails(notification: Notification)
+}
+
 public protocol NotificationsCardViewType: AnyObject {
   func refresh()
   func showApiErrorAlert(error: ApiError)
@@ -26,9 +30,14 @@ public final class NotificationsCardViewModel: StoreSubscriber {
 
   private let store: Store<AppState>
   private weak var view: NotificationsCardViewType?
+  private weak var delegate: NotificationsCardViewModelDelegate?
 
-  public init(store: Store<AppState>, date: Date? = nil) {
+  public init(store: Store<AppState>,
+              delegate: NotificationsCardViewModelDelegate?,
+              date: Date? = nil) {
     self.store = store
+    self.delegate = delegate
+
     self.cells = []
     self.isTableViewVisible = false
     self.isNoNotificationsViewVisible = false
@@ -56,6 +65,16 @@ public final class NotificationsCardViewModel: StoreSubscriber {
 
   public func viewDidLoad() {
     self.requestNotificationsFromApi()
+  }
+
+  public func viewDidSelectItem(index: Int) {
+    guard self.cells.indices.contains(index) else {
+      return
+    }
+
+    let cell = self.cells[index]
+    let notification = cell.notification
+    self.delegate?.showDetails(notification: notification)
   }
 
   public func viewDidPressAlertTryAgainButton() {

@@ -94,4 +94,10 @@ public final class NotificationsCard: UIViewController,
     cell.update(viewModel: cellViewModel)
     return cell
   }
+
+  public func tableView(_ tableView: UITableView,
+                        didSelectRowAt indexPath: IndexPath) {
+    self.tableView.deselectRow(at: indexPath, animated: false)
+    self.viewModel.viewDidSelectItem(index: indexPath.row)
+  }
 }
