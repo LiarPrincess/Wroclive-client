@@ -124,6 +124,9 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPresent
         SPAlert.present(title: savedText, preset: .done)
       }
 
+    case .noRootViewController:
+      // This would be weird. At least 'self' should be visible.
+      break
     case .alreadyShowingDifferentAlert:
       // How?
       // If we are showing different alert then it blocks bookmark button.

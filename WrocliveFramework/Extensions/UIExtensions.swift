@@ -40,18 +40,28 @@ extension CGFloat {
 
 extension UIApplication {
 
-  public static var topViewController: UIViewController {
+  public enum TopViewController {
+    case viewController(UIViewController)
+    case alert(UIAlertController)
+    case noRootViewController
+  }
+
+  public func getTopViewController() -> TopViewController {
     guard var result = UIApplication.shared.keyWindow?.rootViewController else {
-      fatalError("Could not get 'keyWindow.rootViewController'.")
+      return .noRootViewController
     }
 
     var child = result.presentedViewController
-    while child != nil {
-      result = child! // swiftlint:disable:this force_unwrapping
+    while let c = child {
+      result = c
       child = result.presentedViewController
     }
 
-    return result
+    if let alert = result as? UIAlertController {
+      return .alert(alert)
+    }
+
+    return .viewController(result)
   }
 }
 

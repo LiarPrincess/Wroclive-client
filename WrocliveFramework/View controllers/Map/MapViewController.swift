@@ -165,6 +165,9 @@ public final class MapViewController: UIViewController,
         }
       }
 
+    case .noRootViewController:
+      // This would be weird. At least 'self' should be visible.
+      break
     case .alreadyShowingDifferentAlert:
       break
     }

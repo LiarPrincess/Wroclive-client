@@ -16,6 +16,7 @@ public final class AlertCreator {
 
   public enum ShowAlertResult<Result> {
     case alert(Promise<Result>)
+    case noRootViewController
     case alreadyShowingDifferentAlert
   }
 
@@ -47,6 +48,8 @@ public final class AlertCreator {
 
       return .alert(promise)
 
+    case .noRootViewController:
+      return .noRootViewController
     case .alreadyShowingDifferentAlert:
       return .alreadyShowingDifferentAlert
     }
@@ -56,6 +59,7 @@ public final class AlertCreator {
 
   public enum ShowTextInputAlertResult {
     case alert(Promise<String?>)
+    case noRootViewController
     case alreadyShowingDifferentAlert
   }
 
@@ -106,6 +110,8 @@ public final class AlertCreator {
 
       return .alert(promise)
 
+    case .noRootViewController:
+      return .noRootViewController
     case .alreadyShowingDifferentAlert:
       return .alreadyShowingDifferentAlert
     }
@@ -133,18 +139,22 @@ public final class AlertCreator {
   // MARK: - Present, dismiss
 
   private enum TopViewController {
+    case noRootViewController
     case viewController(UIViewController)
     case alreadyShowingDifferentAlert
   }
 
   private static func getTopViewController() -> TopViewController {
-    let viewController = UIApplication.topViewController
+    let topViewController = UIApplication.shared.getTopViewController()
 
-    if viewController is UIAlertController {
+    switch topViewController {
+    case .noRootViewController:
+      return .noRootViewController
+    case .viewController(let viewController):
+      return .viewController(viewController)
+    case .alert:
       return .alreadyShowingDifferentAlert
     }
-
-    return .viewController(viewController)
   }
 
   private static func present(alert: UIAlertController,
