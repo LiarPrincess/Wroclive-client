@@ -21,4 +21,15 @@ public enum ApiError: Error, CustomStringConvertible {
       return "Other error: \(e)"
     }
   }
+
+  public static func haveEqualType(_ lhs: ApiError, _ rhs: ApiError) -> Bool {
+    switch (lhs, rhs) {
+    case (.invalidResponse, .invalidResponse),
+         (.reachabilityError, .reachabilityError),
+         (.otherError, .otherError):
+      return true
+    default:
+      return false
+    }
+  }
 }

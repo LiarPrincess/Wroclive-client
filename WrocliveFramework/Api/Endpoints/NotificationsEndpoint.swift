@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import Foundation
+import os.log
 import Alamofire
 
 internal struct NotificationsEndpoint: Endpoint {
@@ -14,9 +15,11 @@ internal struct NotificationsEndpoint: Endpoint {
   internal let method = HTTPMethod.get
   internal let parameterEncoding: ParameterEncoding = JSONEncoding.default
   internal let headers = HTTPHeaders(accept: .json, acceptEncoding: .compressed)
+  private let log: OSLog
 
-  internal init(baseUrl: String) {
+  internal init(baseUrl: String, log: OSLog) {
     self.url = baseUrl.appendingPathComponent("/notifications")
+    self.log = log
   }
 
   internal func encodeParameters(_ data: Void) -> Parameters? {
@@ -34,6 +37,7 @@ internal struct NotificationsEndpoint: Endpoint {
       return notifications
     case .partialSuccess(let notifications):
       // Some of them failed, but it is better than nothing.
+      os_log("[GetNotificationsEndpoint] Partial parsing success", log: self.log, type: .debug)
       return notifications
     case .allFailed:
       throw ApiError.invalidResponse

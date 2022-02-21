@@ -9,18 +9,14 @@ import PromiseKit
 
 public final class Api: ApiType {
 
+  private let log: OSLog
   private let userAgent: String
   private let network: NetworkType
-  private let logManager: LogManagerType
 
   private let linesEndpoint: LinesEndpoint
   private let notificationsEndpoint: NotificationsEndpoint
   private let vehicleLocationsEndpoint: VehicleLocationsEndpoint
   private let registerNotificationTokenEndpoint: RegisterNotificationTokenEndpoint
-
-  private var log: OSLog {
-    return self.logManager.api
-  }
 
   // MARK: - Init
 
@@ -29,14 +25,14 @@ public final class Api: ApiType {
               bundle: BundleManagerType,
               device: DeviceManagerType,
               log: LogManagerType) {
+    self.log = log.api
     self.network = network
-    self.logManager = log
     self.userAgent = Self.createUserAgent(bundle: bundle, device: device)
 
     let baseUrl = baseUrl.appendingPathComponent("/v1")
-    self.linesEndpoint = LinesEndpoint(baseUrl: baseUrl)
-    self.notificationsEndpoint = NotificationsEndpoint(baseUrl: baseUrl)
-    self.vehicleLocationsEndpoint = VehicleLocationsEndpoint(baseUrl: baseUrl)
+    self.linesEndpoint = LinesEndpoint(baseUrl: baseUrl, log: self.log)
+    self.notificationsEndpoint = NotificationsEndpoint(baseUrl: baseUrl, log: self.log)
+    self.vehicleLocationsEndpoint = VehicleLocationsEndpoint(baseUrl: baseUrl, log: self.log)
     self.registerNotificationTokenEndpoint = RegisterNotificationTokenEndpoint(baseUrl: baseUrl)
   }
 

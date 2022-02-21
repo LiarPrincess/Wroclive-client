@@ -10,10 +10,75 @@ import WrocliveTestsShared
 // swiftlint:disable force_unwrapping
 // swiftlint:disable closure_body_length
 // swiftlint:disable function_body_length
+// swiftlint:disable file_length
 
 class ApiLinesResponseTests: XCTestCase, ApiTestCase {
 
-  func test_lines() {
+  func test_single() {
+    let response = """
+{
+  "timestamp": "2020-09-17T01:00:27.506Z",
+  "data": [
+    { "name": "A", "subtype": "Express", "type": "Bus" },
+  ]
+}
+"""
+
+    let api = self.createApi(baseUrl: "API_URL") { _ in
+      let data = response.data(using: .utf8)!
+      return (HTTPURLResponse(), data)
+    }
+
+    let expectation = XCTestExpectation(description: "response")
+    _ = api.getLines().done { lines in
+        let linesSorted = lines.sorted { $0.name < $1.name }
+        XCTAssertEqual(linesSorted, [
+          Line(name: "A", type: .bus, subtype: .express)
+        ])
+
+      expectation.fulfill()
+    }
+
+    self.wait(for: [expectation], timeout: 1.0)
+  }
+
+  func test_partial_success() {
+    let response = """
+  {
+    "timestamp": "2020-09-17T01:00:27.506Z",
+    "data": [
+      { "subtype": "Regular", "type": "Tram", "name": "0L" },
+      { "subtype": "Regular", "type": "Tram", "name": "0P" },
+      { "type": "Tram", "subtype": "INVALID_SUBTYPE", "name": "1" },
+      { "name": "10", "subtype": "Regular", "type": "Tram" },
+      { "type": "INVALID_TYPE", "name": "11", "subtype": "Regular" },
+      { "subtype": "Regular", "type": "Tram", "name": "15" }
+    ]
+  }
+"""
+
+    let api = self.createApi(baseUrl: "API_URL") { _ in
+      let data = response.data(using: .utf8)!
+      return (HTTPURLResponse(), data)
+    }
+
+    let expectation = XCTestExpectation(description: "response")
+    _ = api.getLines().done { lines in
+        let linesSorted = lines.sorted { $0.name < $1.name }
+        XCTAssertEqual(linesSorted, [
+          Line(name: "0L", type: .tram, subtype: .regular),
+          Line(name: "0P", type: .tram, subtype: .regular),
+          Line(name: "10", type: .tram, subtype: .regular),
+          Line(name: "15", type: .tram, subtype: .regular)
+        ])
+
+      expectation.fulfill()
+    }
+
+    self.wait(for: [expectation], timeout: 1.0)
+  }
+
+  func test_full() {
     let response = """
 {
   "timestamp": "2020-09-17T01:00:27.506Z",

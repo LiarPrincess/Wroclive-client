@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import Foundation
+import os.log
 import Alamofire
 
 internal struct LinesEndpoint: Endpoint {
@@ -14,9 +15,11 @@ internal struct LinesEndpoint: Endpoint {
   internal let method = HTTPMethod.get
   internal let parameterEncoding: ParameterEncoding = JSONEncoding.default
   internal let headers = HTTPHeaders(accept: .json, acceptEncoding: .compressed)
+  private let log: OSLog
 
-  internal init(baseUrl: String) {
+  internal init(baseUrl: String, log: OSLog) {
     self.url = baseUrl.appendingPathComponent("/lines")
+    self.log = log
   }
 
   internal func encodeParameters(_ data: Void) -> Parameters? {
@@ -24,12 +27,22 @@ internal struct LinesEndpoint: Endpoint {
   }
 
   internal func decodeResponse(_ data: Data) throws -> ResponseData {
-    let model = try self.parseJSON(ResponseModel.self, from: data)
-    let parsed = try model.data.map(parseLine(model:))
+    let responseModel = try self.parseJSON(ResponseModel.self, from: data)
+    let mapResult = self.map(models: responseModel.data, fn: parseLine(model:))
 
-    // Just in case we will check for empty...
-    // It should not happen, but you know how it is...
-    return parsed.isEmpty ? predefinedLines : parsed
+    switch mapResult {
+    case .noModels:
+      // It should not happen, but we all know how it is...
+      return predefinedLines
+    case .success(let lines):
+      return lines
+    case .partialSuccess(let lines):
+      // Some of them failed, but it is better than nothing.
+      os_log("[GetLinesEndpoint] Partial parsing success", log: self.log, type: .debug)
+      return lines
+    case .allFailed:
+      throw ApiError.invalidResponse
+    }
   }
 }
 
@@ -46,10 +59,10 @@ private struct LineModel: Decodable {
   let subtype: String
 }
 
-private func parseLine(model: LineModel) throws -> Line {
+private func parseLine(model: LineModel) -> Line? {
   guard let type = parseLineType(model: model.type),
         let subtype = parseLineSubtype(model: model.subtype) else {
-    throw ApiError.invalidResponse
+    return nil
   }
 
   return Line(name: model.name, type: type, subtype: subtype)
