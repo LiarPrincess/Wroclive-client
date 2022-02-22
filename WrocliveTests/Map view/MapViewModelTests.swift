@@ -29,7 +29,7 @@ class MapViewModelTests: XCTestCase,
   var vehicles = [Vehicle]()
   var isShowingDeniedLocationAuthorizationAlert = false
   var isShowingGloballyDeniedLocationAuthorizationAlert = false
-  var isShowingApiErrorAlert: ApiError?
+  var apiErrorAlert: ApiError?
   var hasOpenedSettingsApp = false
 
   private var setCenterExpectation: XCTestExpectation?
@@ -44,7 +44,7 @@ class MapViewModelTests: XCTestCase,
     self.vehicles = [Vehicle]()
     self.isShowingDeniedLocationAuthorizationAlert = false
     self.isShowingGloballyDeniedLocationAuthorizationAlert = false
-    self.isShowingApiErrorAlert = nil
+    self.apiErrorAlert = nil
     self.hasOpenedSettingsApp = false
 
     self.setCenterExpectation = nil
@@ -95,7 +95,7 @@ class MapViewModelTests: XCTestCase,
   }
 
   func showApiErrorAlert(error: ApiError) {
-    self.isShowingApiErrorAlert = error
+    self.apiErrorAlert = error
   }
 
   // MARK: - Set state

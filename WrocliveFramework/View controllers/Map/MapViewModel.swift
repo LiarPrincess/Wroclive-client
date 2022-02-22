@@ -30,7 +30,8 @@ public final class MapViewModel: StoreSubscriber {
   private weak var delegate: MapViewModelDelegate?
 
   /// State that is currently being presented.
-  private var currentState: AppState?
+  private let getVehicleLocationsState = StoreApiResponseTracker<[Vehicle]>()
+  private let userLocationAuthorizationState = StoreStateTracker<UserLocationAuthorization>()
   private weak var view: MapViewType?
 
   public init(store: Store<AppState>,
@@ -44,18 +45,20 @@ public final class MapViewModel: StoreSubscriber {
   public func setView(view: MapViewType) {
     assert(self.view == nil, "View was already assigned")
     self.view = view
-
-    // We have to start map in the center, it may be later overriden with
-    // user location (when we finally retrieve it).
-    self.centerMapOnDefaultLocation(animated: false)
-
-    self.store.subscribe(self)
   }
 
   // MARK: - View input
 
+  public func viewDidLoad() {
+    // We have to start map in the center, it may be later overriden with
+    // user location (when we finally retrieve it).
+    self.centerMapOnDefaultLocation(animated: false)
+    // Will automatically call 'newState(state:)'.
+    self.store.subscribe(self)
+  }
+
   public func viewDidChangeTrackingMode(to trackingMode: MKUserTrackingMode) {
-    guard let authorization = self.currentState?.userLocationAuthorization else {
+    guard let authorization = self.userLocationAuthorizationState.currentValue else {
       return
     }
 
@@ -82,7 +85,6 @@ public final class MapViewModel: StoreSubscriber {
     self.updateMapType(newState: state)
     self.centerMapIfNeeded(newState: state)
     self.updateVehicleLocationsIfNeeded(newState: state)
-    self.currentState = state
   }
 
   // MARK: - Map type
@@ -95,18 +97,20 @@ public final class MapViewModel: StoreSubscriber {
   // MARK: - Map center
 
   // Center map:
-  // 1. Start with default center (set in 'self.setView(view:)')
+  // 1. Start with default center (set in 'self.viewDidLoad()')
   // 2. On first recieved state:
   //   - if we are 'authorized' -> center on user location
   //   - otherwise -> center on default location - already done in 1
   // 3. On any other state change:
   //   - user just authorized app -> center on user location
   private func centerMapIfNeeded(newState: AppState) {
-    let new = newState.userLocationAuthorization
+    let state = newState.userLocationAuthorization
+    let result = self.userLocationAuthorizationState.update(from: state)
 
-    // Is this the 1st update?
-    guard let previousState = self.currentState else {
-      switch new {
+    switch result {
+    case let .initial(value):
+      // 1st update
+      switch value {
       case .authorized,
            .unknownValue:
         self.centerMapOnUserLocation(animated: false)
@@ -117,15 +121,16 @@ public final class MapViewModel: StoreSubscriber {
         break
       }
 
-      return
-    }
+    case let .changed(new: new, old: old):
+      let wasNotDetermined = self.isNotDeterminedOrUnknown(authorization: old)
+      let isAuthorized = self.isAuthorizedOrUnknownValue(authorization: new)
 
-    let old = previousState.userLocationAuthorization
-    let wasNotDetermined = self.isNotDeterminedOrUnknown(authorization: old)
-    let isAuthorized = self.isAuthorizedOrUnknownValue(authorization: new)
+      if wasNotDetermined && isAuthorized {
+        self.centerMapOnUserLocation(animated: true)
+      }
 
-    if wasNotDetermined && isAuthorized {
-      self.centerMapOnUserLocation(animated: true)
+    case .sameAsBefore:
+      break
     }
   }
 
@@ -170,42 +175,36 @@ public final class MapViewModel: StoreSubscriber {
   // - if data -> update map
   // - if error -> show alert
   private func updateVehicleLocationsIfNeeded(newState: AppState) {
-    let new = newState.getVehicleLocationsResponse
-    let old = self.currentState?.getVehicleLocationsResponse
+    let response = newState.getVehicleLocationsResponse
+    let result = self.getVehicleLocationsState.update(from: response)
 
-    switch new {
-    case .none,
-         .inProgress:
-      break // Leave map exactly as it is.
+    switch result {
+    case .final:
+      // Should not happen, we never call 'self.getVehicleLocationsState.markAsFinal'.
+      break
 
-    case .data(let vehicles):
-      let oldVehicles = old?.getData()
-      if vehicles != oldVehicles {
-        self.view?.showVehicles(vehicles: vehicles)
-      }
+    case .initialData(let vehicles),
+         .newData(let vehicles):
+      self.view?.showVehicles(vehicles: vehicles)
 
-    case .error(let newError):
-      // If previously we did not have an error -> just show new error
-      guard let oldError = old?.getError() else {
-        self.view?.showApiErrorAlert(error: newError)
-        return
-      }
+    case .sameDataAsBefore:
+      // Nothing to do, it will not update the map anyway.
+      break
 
-      // Otherwise we have to check if error changed
-      if !self.isEqual(lhs: oldError, rhs: newError) {
-        self.view?.showApiErrorAlert(error: newError)
-      }
-    }
-  }
+    case .initialError(let error),
+         .newError(let error):
+      self.view?.showApiErrorAlert(error: error)
 
-  private func isEqual(lhs: ApiError, rhs: ApiError) -> Bool {
-    switch (lhs, rhs) {
-    case (.invalidResponse, .invalidResponse),
-         (.reachabilityError, .reachabilityError),
-         (.otherError, .otherError):
-      return true
-    default:
-      return false
+    case .sameErrorAsBefore:
+      // Nothing to do, we have already shown this error.
+      break
+
+    case .initialInProgres,
+         .inProgres,
+         .initialNone,
+         .none:
+      // Leave map exactly as it is.
+      break
     }
   }
 }

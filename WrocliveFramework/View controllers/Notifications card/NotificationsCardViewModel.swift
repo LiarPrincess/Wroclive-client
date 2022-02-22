@@ -26,7 +26,7 @@ public final class NotificationsCardViewModel: StoreSubscriber {
   /// Time used for calculations of relative time offsets in cells.
   private let now: Date
   /// State of the `store.getNotificationsResponse`.
-  private let getNotificationsState = ApiResponseState<[Notification]>()
+  private let getNotificationsState = StoreApiResponseTracker<[Notification]>()
 
   private let store: Store<AppState>
   private weak var view: NotificationsCardViewType?
@@ -80,15 +80,15 @@ public final class NotificationsCardViewModel: StoreSubscriber {
   public func newState(state: AppState) {
     self.needsRefreshView = false
 
-    let response = state.getNotificationsResponse
-    self.handleNewNotifications(response: response)
+    self.handleNewNotifications(newState: state)
 
     if self.needsRefreshView {
       self.refreshView()
     }
   }
 
-  private func handleNewNotifications(response: AppState.ApiResponseState<[Notification]>) {
+  private func handleNewNotifications(newState: AppState) {
+    let response = newState.getNotificationsResponse
     let result = self.getNotificationsState.update(from: response)
 
     switch result {

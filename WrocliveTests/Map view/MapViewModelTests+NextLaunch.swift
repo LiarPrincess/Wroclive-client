@@ -31,6 +31,8 @@ extension MapViewModelTests {
     self.setUserLocation(userLocation)
 
     self.viewModel = self.createViewModel()
+    viewModel.viewDidLoad()
+
     XCTAssertEqual(self.center, defaultCenter)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
@@ -57,6 +59,8 @@ extension MapViewModelTests {
     self.setUserLocation(error: DummyError())
 
     self.viewModel = self.createViewModel()
+    viewModel.viewDidLoad()
+
     XCTAssertEqual(self.center, defaultCenter)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
@@ -86,6 +90,8 @@ extension MapViewModelTests {
     self.setAuthorization(.denied)
 
     self.viewModel = self.createViewModel()
+    viewModel.viewDidLoad()
+
     XCTAssertEqual(self.center, defaultCenter)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
@@ -114,6 +120,8 @@ extension MapViewModelTests {
     self.setAuthorization(.restricted)
 
     self.viewModel = self.createViewModel()
+    viewModel.viewDidLoad()
+
     XCTAssertEqual(self.center, defaultCenter)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)

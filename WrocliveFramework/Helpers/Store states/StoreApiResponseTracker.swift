@@ -2,12 +2,9 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import SwiftUI
-
-/// React to new response from api.
-///
+/// React to a new response from store.
 /// Basically a link between stateless `Redux` and statefull `UI`.
-public final class ApiResponseState<Data: Equatable> {
+public final class StoreApiResponseTracker<Data: Equatable> {
 
   private var old: AppState.ApiResponseState<Data>?
   private var finalState: Data?
