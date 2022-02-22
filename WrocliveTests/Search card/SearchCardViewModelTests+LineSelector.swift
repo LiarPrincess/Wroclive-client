@@ -6,332 +6,198 @@ import XCTest
 import WrocliveTestsShared
 @testable import WrocliveFramework
 
-// swiftlint:disable function_body_length
-// swiftlint:disable file_length
-
-private func XCTAssertLines(viewModel: SearchCardViewModel,
-                            lines expectedLines: [Line],
-                            file: StaticString = #file,
-                            line: UInt = #line) {
-  let busPage = viewModel.lineSelectorViewModel.busPageViewModel
-  let tramPage = viewModel.lineSelectorViewModel.tramPageViewModel
-
-  let busLines = busPage.sections.flatMap { $0.lines }
-  let tramLines = tramPage.sections.flatMap { $0.lines }
-  let lines = busLines + tramLines
-
-  XCTAssertEqual(lines.count, expectedLines.count, "Count", file: file, line: line)
-
-  // Order may be different!
-  for l in lines {
-    XCTAssert(expectedLines.contains(l), "\(l)", file: file, line: line)
-  }
-}
-
 extension SearchCardViewModelTests {
 
-  // MARK: - No response
+  // MARK: - Response
 
-  func test_noneLineResponse_dispatchAction_showLines() {
-    // none
+  func test_response_withLines_showLineSelector() {
     let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .none)
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    let viewModel = self.createViewModel(state: state)
 
-    XCTAssertEqual(self.dispatchedActions.count, 1)
-    XCTAssertTrue(self.isRequestLinesAction(at: 0))
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
 
     self.setLineResponseState(.inProgress)
-    XCTAssertEqual(self.refreshCount, 1) // New state
+    XCTAssertEqual(self.refreshCount, 1)
     XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
 
     let lines = self.lines
     self.setLineResponseState(.data(lines))
-    XCTAssertEqual(self.refreshCount, 2) // New state
+    XCTAssertEqual(self.refreshCount, 2)
     XCTAssertNil(self.apiErrorAlert)
-    XCTAssertTrue(viewModel.isLineSelectorVisible) // !!!
-    XCTAssertFalse(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: lines)
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    self.assertCurrentView(viewModel: viewModel, view: .lineSelector)
+    self.assertLines(viewModel: viewModel, lines: lines)
   }
 
-  func test_noneLineResponse_dispatchAction_emptyResponse_showsError() {
-    // none
+  func test_response_withoutLines_showsError() {
     let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .none)
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    let viewModel = self.createViewModel(state: state)
 
-    XCTAssertEqual(self.dispatchedActions.count, 1)
-    XCTAssertTrue(self.isRequestLinesAction(at: 0))
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
 
     self.setLineResponseState(.inProgress)
-    XCTAssertEqual(self.refreshCount, 1) // New state
+    XCTAssertEqual(self.refreshCount, 1)
     XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
 
     self.setLineResponseState(.data([]))
-    XCTAssertEqual(self.refreshCount, 2) // New state
-    XCTAssertEqual(self.apiErrorAlert, .invalidResponse)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    XCTAssertEqual(self.refreshCount, 1) // Still loading
+    XCTAssertEqual(self.apiErrorAlert, .invalidResponse) // <-- This
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
   }
 
-  func test_noneLineResponse_dispatchAction_handleError() {
-    // none
+  func test_response_withError_handlesError() {
     let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .none)
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    let viewModel = self.createViewModel(state: state)
 
-    XCTAssertEqual(self.dispatchedActions.count, 1)
-    XCTAssertTrue(self.isRequestLinesAction(at: 0))
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
 
     self.setLineResponseState(.inProgress)
-    XCTAssertEqual(self.refreshCount, 1) // New state
+    XCTAssertEqual(self.refreshCount, 1)
     XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
 
     self.setLineResponseState(.error(.invalidResponse))
-    XCTAssertEqual(self.refreshCount, 2) // New state
-    XCTAssertEqual(self.apiErrorAlert, .invalidResponse)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
-  }
-
-  // MARK: - Cached response
-
-  func test_cachedLineResponse_showsLines() {
-    let lines = self.lines
-    let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .data(lines))
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertTrue(viewModel.isLineSelectorVisible)
-    XCTAssertFalse(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: lines)
-
-    XCTAssertEqual(self.dispatchedActions.count, 0)
-  }
-
-  func test_cachedLineResponseError_dispatchAction_showLines() {
-    let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .error(.invalidResponse))
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
-
+    XCTAssertEqual(self.refreshCount, 1) // Still loading
+    XCTAssertEqual(self.apiErrorAlert, .invalidResponse) // <-- This
     XCTAssertEqual(self.dispatchedActions.count, 1)
-    XCTAssertTrue(self.isRequestLinesAction(at: 0))
-
-    self.setLineResponseState(.inProgress)
-    XCTAssertEqual(self.refreshCount, 1) // New state
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
-
-    let lines = self.lines
-    self.setLineResponseState(.data(lines))
-    XCTAssertEqual(self.refreshCount, 2) // New state
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertTrue(viewModel.isLineSelectorVisible) // !!!
-    XCTAssertFalse(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: lines)
-  }
-
-  func test_cachedLineResponseError_dispatchAction_handleError() {
-    let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .error(.invalidResponse))
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
-
-    XCTAssertEqual(self.dispatchedActions.count, 1)
-    XCTAssertTrue(self.isRequestLinesAction(at: 0))
-
-    self.setLineResponseState(.inProgress)
-    XCTAssertEqual(self.refreshCount, 1) // New state
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
-
-    self.setLineResponseState(.error(.invalidResponse))
-    XCTAssertEqual(self.refreshCount, 2) // New state
-    XCTAssertEqual(self.apiErrorAlert, .invalidResponse)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
   }
 
   // MARK: - Again button
 
-  func test_tryAgainLineResponse_dispatchAction_showLines() {
-    // inProgress
+  func test_response_withError_tryAgain_dispatchesAction_showLines() {
     let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .inProgress)
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
-    XCTAssertEqual(self.dispatchedActions.count, 0)
+    let viewModel = self.createViewModel(state: state)
+
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
 
     self.setLineResponseState(.error(.reachabilityError))
-    XCTAssertEqual(self.refreshCount, 1) // New state
+    XCTAssertEqual(self.refreshCount, 1)
     XCTAssertEqual(self.apiErrorAlert, .reachabilityError)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
-    XCTAssertEqual(self.dispatchedActions.count, 0)
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
 
     // Reset, so we don't miss next error (which should NOT happen)
     self.apiErrorAlert = nil
 
     viewModel.viewDidPressAlertTryAgainButton()
-    XCTAssertEqual(self.dispatchedActions.count, 1)
-    XCTAssertTrue(self.isRequestLinesAction(at: 0))
+    XCTAssertEqual(self.dispatchedActions.count, 2)
+    XCTAssertTrue(self.isRequestLinesAction(at: 1))
 
     self.setLineResponseState(.inProgress)
-    XCTAssertEqual(self.refreshCount, 2) // New state
+    XCTAssertEqual(self.refreshCount, 1)
     XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    XCTAssertEqual(self.dispatchedActions.count, 2)
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
 
     let lines = self.lines
     self.setLineResponseState(.data(lines))
-    XCTAssertEqual(self.refreshCount, 3) // New state
+    XCTAssertEqual(self.refreshCount, 2)
     XCTAssertNil(self.apiErrorAlert)
-    XCTAssertTrue(viewModel.isLineSelectorVisible) // !!!
-    XCTAssertFalse(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: lines)
+    XCTAssertEqual(self.dispatchedActions.count, 2)
+    self.assertCurrentView(viewModel: viewModel, view: .lineSelector)
+    self.assertLines(viewModel: viewModel, lines: lines)
   }
 
-  func test_tryAgainLineResponse_dispatchAction_handleError() {
-    // inProgress
+  func test_response_withError_tryAgain_dispatchesAction_handlesError() {
     let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .inProgress)
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
-    XCTAssertEqual(self.dispatchedActions.count, 0)
+    let viewModel = self.createViewModel(state: state)
+
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
 
     self.setLineResponseState(.error(.reachabilityError))
-    XCTAssertEqual(self.refreshCount, 1) // New state
+    XCTAssertEqual(self.refreshCount, 1)
     XCTAssertEqual(self.apiErrorAlert, .reachabilityError)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
-    XCTAssertEqual(self.dispatchedActions.count, 0)
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
 
     // Reset, so we don't miss next error (which should NOT happen)
     self.apiErrorAlert = nil
 
     viewModel.viewDidPressAlertTryAgainButton()
-    XCTAssertEqual(self.dispatchedActions.count, 1)
-    XCTAssertTrue(self.isRequestLinesAction(at: 0))
+    XCTAssertEqual(self.dispatchedActions.count, 2)
+    XCTAssertTrue(self.isRequestLinesAction(at: 1))
 
     self.setLineResponseState(.inProgress)
-    XCTAssertEqual(self.refreshCount, 2) // New state
+    XCTAssertEqual(self.refreshCount, 1)
     XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    XCTAssertEqual(self.dispatchedActions.count, 2)
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
 
     self.setLineResponseState(.error(.invalidResponse))
-    XCTAssertEqual(self.refreshCount, 3) // New state
+    XCTAssertEqual(self.refreshCount, 1)
     XCTAssertEqual(self.apiErrorAlert, .invalidResponse)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new actions
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    XCTAssertEqual(self.dispatchedActions.count, 2)
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
   }
 
   // MARK: - Other
 
-  func test_duplicateResponse_none_doesNothing() {
+  func test_duplicateResponse_inProgress_doesNothing() {
     let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .none)
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
+    let viewModel = self.createViewModel(state: state)
 
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
+
+    self.setLineResponseState(.inProgress)
+    XCTAssertEqual(self.refreshCount, 1)
+    XCTAssertNil(self.apiErrorAlert)
     XCTAssertEqual(self.dispatchedActions.count, 1)
-    XCTAssertTrue(self.isRequestLinesAction(at: 0))
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
 
-    self.setLineResponseState(.none)
-    XCTAssertEqual(self.refreshCount, 1) // New state
+    self.setLineResponseState(.inProgress)
+    XCTAssertEqual(self.refreshCount, 1)
     XCTAssertNil(self.apiErrorAlert)
-    XCTAssertFalse(viewModel.isLineSelectorVisible)
-    XCTAssertTrue(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: [])
-
-    XCTAssertEqual(self.dispatchedActions.count, 1) // No new dispatch!
-    XCTAssertTrue(self.isRequestLinesAction(at: 0))
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+    self.assertLines(viewModel: viewModel, lines: [])
   }
 
   func test_duplicateResponse_data_doesNothing() {
+    let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
+    let viewModel = self.createViewModel(state: state)
+
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
+
     let lines = self.lines
 
-    let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .data(lines))
-    XCTAssertEqual(self.refreshCount, 0)
+    self.setLineResponseState(.data(lines))
+    XCTAssertEqual(self.refreshCount, 2)
     XCTAssertNil(self.apiErrorAlert)
-    XCTAssertTrue(viewModel.isLineSelectorVisible)
-    XCTAssertFalse(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: lines)
-
-    XCTAssertEqual(self.dispatchedActions.count, 0)
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    self.assertCurrentView(viewModel: viewModel, view: .lineSelector)
+    self.assertLines(viewModel: viewModel, lines: lines)
 
     self.setLineResponseState(.data(lines))
-    XCTAssertEqual(self.refreshCount, 1) // New state
+    XCTAssertEqual(self.refreshCount, 2)
     XCTAssertNil(self.apiErrorAlert)
-    XCTAssertTrue(viewModel.isLineSelectorVisible)
-    XCTAssertFalse(viewModel.isLoadingViewVisible)
-    XCTAssertLines(viewModel: viewModel, lines: lines)
-
-    XCTAssertEqual(self.dispatchedActions.count, 0)
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    self.assertCurrentView(viewModel: viewModel, view: .lineSelector)
+    self.assertLines(viewModel: viewModel, lines: lines)
   }
 
   func test_duplicateResponse_error_doesNothing() {
@@ -342,33 +208,33 @@ extension SearchCardViewModelTests {
     ]
 
     for apiError in apiErrors {
+      self.refreshCount = 0
+      self.dispatchedActions = []
+      self.apiErrorAlert = nil
+      self.setLineResponseState(.none)
+
       // We have to start with some other (non-error) state
       let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-      let viewModel = self.createViewModel(state: state, response: .inProgress)
-      XCTAssertEqual(self.refreshCount, 0)
-      XCTAssertNil(self.apiErrorAlert)
-      XCTAssertFalse(viewModel.isLineSelectorVisible)
-      XCTAssertTrue(viewModel.isLoadingViewVisible)
-      XCTAssertEqual(self.dispatchedActions.count, 0)
-      XCTAssertLines(viewModel: viewModel, lines: [])
+      let viewModel = self.createViewModel(state: state)
+
+      viewModel.viewDidLoad()
+      self.assertStateAfterViewDidLoad(viewModel: viewModel)
 
       self.setLineResponseState(.error(apiError))
-      XCTAssertEqual(self.refreshCount, 1) // New state
+      XCTAssertEqual(self.refreshCount, 1)
       XCTAssertEqual(self.apiErrorAlert, apiError)
-      XCTAssertFalse(viewModel.isLineSelectorVisible)
-      XCTAssertTrue(viewModel.isLoadingViewVisible)
-      XCTAssertLines(viewModel: viewModel, lines: [])
-      XCTAssertEqual(self.dispatchedActions.count, 0)
+      XCTAssertEqual(self.dispatchedActions.count, 1)
+      self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+      self.assertLines(viewModel: viewModel, lines: [])
 
       self.apiErrorAlert = nil // Reset to check if we call it again
 
       self.setLineResponseState(.error(apiError))
-      XCTAssertEqual(self.refreshCount, 2) // New state
-      XCTAssertNil(self.apiErrorAlert)
-      XCTAssertFalse(viewModel.isLineSelectorVisible)
-      XCTAssertTrue(viewModel.isLoadingViewVisible)
-      XCTAssertLines(viewModel: viewModel, lines: [])
-      XCTAssertEqual(self.dispatchedActions.count, 0)
+      XCTAssertEqual(self.refreshCount, 1)
+      XCTAssertNil(self.apiErrorAlert) // Not set again!
+      XCTAssertEqual(self.dispatchedActions.count, 1)
+      self.assertCurrentView(viewModel: viewModel, view: .loadingView)
+      self.assertLines(viewModel: viewModel, lines: [])
     }
   }
 }

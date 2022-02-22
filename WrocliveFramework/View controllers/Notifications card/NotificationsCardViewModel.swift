@@ -96,18 +96,18 @@ public final class NotificationsCardViewModel: StoreSubscriber {
       // We already got to the state we wanted. Ignore.
       break
 
-    case .initialData(let data),
-         .newData(let data):
-      // We don't wan't any more updates.
+    case .initialData(let notifications),
+         .newData(let notifications):
+      // We don't want any more updates.
       // We already got to the state we wanted.
-      self.getNotificationsState.markAsFinal(state: data)
+      self.getNotificationsState.markAsFinal(state: notifications)
 
-      if data.isEmpty {
+      if notifications.isEmpty {
         self.setVisibleView(view: .noNotificationsView)
         return
       }
 
-      var viewModels = data.map { notification in
+      var viewModels = notifications.map { notification in
         NotificationCellViewModel(notification: notification, now: self.now)
       }
 
@@ -126,6 +126,7 @@ public final class NotificationsCardViewModel: StoreSubscriber {
          .newError(let error):
       // New error -> show it.
       self.view?.showApiErrorAlert(error: error)
+
     case .sameErrorAsBefore:
       // The same error as before. Nothing to do.
       break
@@ -141,12 +142,6 @@ public final class NotificationsCardViewModel: StoreSubscriber {
     }
   }
 
-  private func dispatchGetNotificationsAction() {
-    self.store.dispatch(ApiMiddlewareActions.requestNotifications)
-  }
-
-  // MARK: - Visible view
-
   private enum VisibleView: Equatable {
     case loadingView
     case noNotificationsView
@@ -159,12 +154,19 @@ public final class NotificationsCardViewModel: StoreSubscriber {
     let isLoadingViewVisible = view == .loadingView
     let isNoNotificationsViewVisible = view == .noNotificationsView
 
-    self.needsRefreshView = isTableViewVisible != self.isTableViewVisible
+    self.needsRefreshView = self.needsRefreshView
+      || isTableViewVisible != self.isTableViewVisible
       || isLoadingViewVisible != self.isLoadingViewVisible
       || isNoNotificationsViewVisible != self.isNoNotificationsViewVisible
 
     self.isTableViewVisible = isTableViewVisible
     self.isLoadingViewVisible = isLoadingViewVisible
     self.isNoNotificationsViewVisible = isNoNotificationsViewVisible
+  }
+
+  // MARK: - Helpers
+
+  private func dispatchGetNotificationsAction() {
+    self.store.dispatch(ApiMiddlewareActions.requestNotifications)
   }
 }

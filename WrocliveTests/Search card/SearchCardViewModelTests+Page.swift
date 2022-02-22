@@ -11,13 +11,19 @@ extension SearchCardViewModelTests {
 
   // MARK: - Initial
 
-  func test_takesInitialPage_from() {
+  func test_takesInitialPage_fromStorage() {
     for page in [Page.bus, Page.tram] {
+      self.dispatchedActions = []
+      self.refreshCount = 0
+
       let state = SearchCardState(page: page, selectedLines: [])
-      let viewModel = self.createViewModel(state: state, response: .inProgress)
+      let viewModel = self.createViewModel(state: state)
+
+      viewModel.viewDidLoad()
+      self.assertStateAfterViewDidLoad(viewModel: viewModel)
+
       XCTAssertEqual(viewModel.page, page)
       XCTAssertEqual(viewModel.lineSelectorViewModel.page, page)
-      XCTAssertEqual(self.refreshCount, 0)
     }
   }
 
@@ -25,53 +31,62 @@ extension SearchCardViewModelTests {
 
   func test_viewDidSelectPage() {
     let state = SearchCardState(page: .tram, selectedLines: [])
-    let viewModel = self.createViewModel(state: state, response: .inProgress)
+    let viewModel = self.createViewModel(state: state)
+
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
+    XCTAssertEqual(self.refreshCount, 1)
+
     XCTAssertEqual(viewModel.page, .tram)
     XCTAssertEqual(viewModel.lineSelectorViewModel.page, .tram)
-    XCTAssertEqual(self.refreshCount, 0)
+    XCTAssertEqual(self.refreshCount, 1)
 
     // Bus
     viewModel.viewDidSelectPage(page: .bus)
     XCTAssertEqual(viewModel.page, .bus)
     XCTAssertEqual(viewModel.lineSelectorViewModel.page, .bus)
-    XCTAssertEqual(self.refreshCount, 1)
+    XCTAssertEqual(self.refreshCount, 2)
 
     // Bus again
     viewModel.viewDidSelectPage(page: .bus)
     XCTAssertEqual(viewModel.page, .bus)
     XCTAssertEqual(viewModel.lineSelectorViewModel.page, .bus)
-    XCTAssertEqual(self.refreshCount, 2)
+    XCTAssertEqual(self.refreshCount, 3)
 
     // Tram
     viewModel.viewDidSelectPage(page: .tram)
     XCTAssertEqual(viewModel.page, .tram)
     XCTAssertEqual(viewModel.lineSelectorViewModel.page, .tram)
-    XCTAssertEqual(self.refreshCount, 3)
+    XCTAssertEqual(self.refreshCount, 4)
 
     // Tram again
     viewModel.viewDidSelectPage(page: .tram)
     XCTAssertEqual(viewModel.page, .tram)
     XCTAssertEqual(viewModel.lineSelectorViewModel.page, .tram)
-    XCTAssertEqual(self.refreshCount, 4)
+    XCTAssertEqual(self.refreshCount, 5)
   }
 
   // MARK: - Line selector did select page
 
   func test_lineSelectorDidSelectPage() {
     let state = SearchCardState(page: .tram, selectedLines: [])
-    let viewModel = self.createViewModel(state: state, response: .inProgress)
+    let viewModel = self.createViewModel(state: state)
+
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
+
     XCTAssertEqual(viewModel.page, .tram)
     XCTAssertEqual(viewModel.lineSelectorViewModel.page, .tram)
-    XCTAssertEqual(self.refreshCount, 0)
+    XCTAssertEqual(self.refreshCount, 1)
 
     viewModel.lineSelectorViewModel.viewDidTransitionToPage(page: .bus)
     XCTAssertEqual(viewModel.page, .bus)
     XCTAssertEqual(viewModel.lineSelectorViewModel.page, .bus)
-    XCTAssertEqual(self.refreshCount, 1)
+    XCTAssertEqual(self.refreshCount, 2)
 
     viewModel.lineSelectorViewModel.viewDidTransitionToPage(page: .tram)
     XCTAssertEqual(viewModel.page, .tram)
     XCTAssertEqual(viewModel.lineSelectorViewModel.page, .tram)
-    XCTAssertEqual(self.refreshCount, 2)
+    XCTAssertEqual(self.refreshCount, 3)
   }
 }

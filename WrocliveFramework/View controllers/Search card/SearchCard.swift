@@ -50,6 +50,7 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPresent
   override public func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
+    self.viewModel.viewDidLoad()
   }
 
   // MARK: - ViewDidLayoutSubviews

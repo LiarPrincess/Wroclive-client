@@ -54,7 +54,7 @@ class NotificationsCardViewModelTests: XCTestCase,
   func createViewModel() -> NotificationsCardViewModel {
     let result = NotificationsCardViewModel(store: self.store,
                                             delegate: self,
-                                            date: now)
+                                            date: self.now)
     result.setView(view: self)
     self.refreshCount = 0
     return result
