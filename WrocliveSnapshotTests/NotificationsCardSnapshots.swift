@@ -35,35 +35,45 @@ class NotificationsCardSnapshots: XCTestCase, ReduxTestCase, EnvironmentTestCase
 
   func test_loading() {
     self.onAllDevicesInAllLocales { assertSnapshot in
-      self.setNotifications(state: .inProgress)
-
       let viewModel = self.createViewModel()
       let view = NotificationsCard(viewModel: viewModel)
+      self.setNotifications(state: .inProgress)
       assertSnapshot(view, .errorOnThisLine())
     }
   }
 
   func test_notifications() {
     self.onAllDevicesInAllLocales { assertSnapshot in
-      self.setNotifications(state: .data(self.notifications))
-
       let viewModel = self.createViewModel()
       let view = NotificationsCard(viewModel: viewModel)
+      self.setNotifications(state: .data(self.notifications))
       assertSnapshot(view, .errorOnThisLine())
     }
   }
 
   func test_noNotifications() {
     self.onAllDevicesInAllLocales { assertSnapshot in
-      self.setNotifications(state: .data([]))
-
       let viewModel = self.createViewModel()
       let view = NotificationsCard(viewModel: viewModel)
+      self.setNotifications(state: .data([]))
       assertSnapshot(view, .errorOnThisLine())
     }
   }
 
-  func test_dark() {
+  func test_dark_notifications() {
+    self.inDarkMode { assertSnapshot in
+      let viewModel = self.createViewModel()
+      let view = NotificationsCard(viewModel: viewModel)
+
+      self.setNotifications(state: .inProgress)
+      assertSnapshot(view, .errorOnThisLine())
+
+      self.setNotifications(state: .data(self.notifications))
+      assertSnapshot(view, .errorOnThisLine())
+    }
+  }
+
+  func test_dark_noNotifications() {
     self.inDarkMode { assertSnapshot in
       let viewModel = self.createViewModel()
       let view = NotificationsCard(viewModel: viewModel)
@@ -72,9 +82,6 @@ class NotificationsCardSnapshots: XCTestCase, ReduxTestCase, EnvironmentTestCase
       assertSnapshot(view, .errorOnThisLine())
 
       self.setNotifications(state: .data([]))
-      assertSnapshot(view, .errorOnThisLine())
-
-      self.setNotifications(state: .data(self.notifications))
       assertSnapshot(view, .errorOnThisLine())
     }
   }

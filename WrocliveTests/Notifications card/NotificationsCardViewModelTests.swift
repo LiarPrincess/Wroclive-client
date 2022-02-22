@@ -60,6 +60,14 @@ class NotificationsCardViewModelTests: XCTestCase,
     return result
   }
 
+  func loadView(viewModel: NotificationsCardViewModel,
+                file: StaticString = #file,
+                line: UInt = #line) {
+    // This is how the store would react to 'ApiMiddlewareActions.requestNotifications'
+    self.setResponseState(.inProgress)
+    viewModel.viewDidLoad()
+  }
+
   // MARK: - Data
 
   lazy var notifications: [WrocliveNotification] = [
@@ -84,5 +92,60 @@ class NotificationsCardViewModelTests: XCTestCase,
 
   func setResponseState(_ response: Response) {
     self.setState { $0.getNotificationsResponse = response }
+  }
+
+  // MARK: - Assert
+
+  func assertLoadingViewAfterViewDidLoad(viewModel: NotificationsCardViewModel,
+                                         file: StaticString = #file,
+                                         line: UInt = #line) {
+    XCTAssertEqual(self.dispatchedActions.count,
+                   1,
+                   "Dispatched actions count",
+                   file: file,
+                   line: line)
+
+    XCTAssertTrue(self.isRequestNotificationsAction(at: 0),
+                  "Expected to dispatch RequestNotificationsAction",
+                  file: file,
+                  line: line)
+
+    XCTAssertFalse(viewModel.isTableViewVisible,
+                   "isTableViewVisible",
+                   file: file,
+                   line: line)
+    XCTAssertFalse(viewModel.isNoNotificationsViewVisible,
+                   "isNoNotificationsViewVisible",
+                   file: file,
+                   line: line)
+    XCTAssertTrue(viewModel.isLoadingViewVisible,
+                  "isLoadingViewVisible",
+                  file: file,
+                  line: line)
+
+    XCTAssertEqual(self.refreshCount, 1, "Refresh count", file: file, line: line)
+    XCTAssertNil(self.apiErrorAlert, "Expected no alert", file: file, line: line)
+    self.assertCells(viewModel: viewModel, expected: [], file: file, line: line)
+  }
+
+  func assertCells(viewModel: NotificationsCardViewModel,
+                   expected: [WrocliveFramework.Notification],
+                   file: StaticString = #file,
+                   line: UInt = #line) {
+    let cells = viewModel.cells
+
+    XCTAssertEqual(cells.count,
+                   expected.count,
+                   "Notification count",
+                   file: file,
+                   line: line)
+
+    for (index, (cell, notification)) in zip(cells, expected).enumerated() {
+      XCTAssertEqual(cell.notification,
+                     notification,
+                     "Notification at \(index)",
+                     file: file,
+                     line: line)
+    }
   }
 }

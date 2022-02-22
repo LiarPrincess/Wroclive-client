@@ -18,15 +18,15 @@ public protocol NotificationsCardViewType: AnyObject {
 
 public final class NotificationsCardViewModel: StoreSubscriber {
 
-  internal private(set) var cells: [NotificationCellViewModel]
-  internal private(set) var isTableViewVisible: Bool
-  internal private(set) var isNoNotificationsViewVisible: Bool
-  internal private(set) var isLoadingViewVisible: Bool
+  internal private(set) var cells = [NotificationCellViewModel]()
+  internal private(set) var isTableViewVisible = false
+  internal private(set) var isLoadingViewVisible = false
+  internal private(set) var isNoNotificationsViewVisible = false
 
   /// Time used for calculations of relative time offsets in cells.
   private let now: Date
-  /// Previous response, so we know how to react to new state.
-  private var getNotificationsResponse: AppState.ApiResponseState<[Notification]>?
+  /// State of the `store.getNotificationsResponse`.
+  private let getNotificationsState = ApiResponseState<[Notification]>()
 
   private let store: Store<AppState>
   private weak var view: NotificationsCardViewType?
@@ -37,15 +37,7 @@ public final class NotificationsCardViewModel: StoreSubscriber {
               date: Date? = nil) {
     self.store = store
     self.delegate = delegate
-
-    self.cells = []
-    self.isTableViewVisible = false
-    self.isNoNotificationsViewVisible = false
-    self.isLoadingViewVisible = false
     self.now = date ?? Date()
-
-    self.setVisibleView(view: .loadingView)
-    self.store.subscribe(self)
   }
 
   // MARK: - View
@@ -53,7 +45,6 @@ public final class NotificationsCardViewModel: StoreSubscriber {
   public func setView(view: NotificationsCardViewType) {
     assert(self.view == nil, "View was already assigned")
     self.view = view
-    self.refreshView()
   }
 
   private func refreshView() {
@@ -63,7 +54,9 @@ public final class NotificationsCardViewModel: StoreSubscriber {
   // MARK: - View input
 
   public func viewDidLoad() {
-    self.requestNotificationsFromApi()
+    self.dispatchGetNotificationsAction()
+    // Will automatically call 'newState(state:)' which will call 'self.refreshView'.
+    self.store.subscribe(self)
   }
 
   public func viewDidSelectItem(index: Int) {
@@ -77,74 +70,78 @@ public final class NotificationsCardViewModel: StoreSubscriber {
   }
 
   public func viewDidPressAlertTryAgainButton() {
-    self.requestNotificationsFromApi()
+    self.dispatchGetNotificationsAction()
   }
 
   // MARK: - Store subscriber
 
+  private var needsRefreshView = false
+
   public func newState(state: AppState) {
-    let newResponse = state.getNotificationsResponse
-    defer { self.getNotificationsResponse = newResponse }
+    self.needsRefreshView = false
 
-    switch newResponse {
-    case .data(let notifications):
-      self.handleResponseWithNotifications(notifications)
+    let response = state.getNotificationsResponse
+    self.handleNewNotifications(response: response)
 
-    case .error(let newError):
-      // We just opened the card and the result of the previous opening was error.
-      // Do nothing - we will fire our own request to override the error.
-      guard let oldResponse = self.getNotificationsResponse else {
-        break
-      }
-
-      // If previously we did not have an error -> just show new error
-      guard let oldError = oldResponse.getError() else {
-        self.view?.showApiErrorAlert(error: newError)
-        break
-      }
-
-      // Otherwise we have to check if error changed
-      if !ApiError.haveEqualType(oldError, newError) {
-        self.view?.showApiErrorAlert(error: newError)
-      }
-
-    case .inProgress:
-      // Leave it as it is
-      break
-
-    case .none:
-      // Initial state, soon we will be 'inProgres'
-      break
-    }
-  }
-
-  private func handleResponseWithNotifications(_ notifications: [Notification]) {
-    if notifications.isEmpty {
-      self.setVisibleView(view: .noNotificationsView)
+    if self.needsRefreshView {
       self.refreshView()
-      return
     }
-
-    let noChanges = notifications.count == self.cells.count
-      && zip(notifications, self.cells).allSatisfy { $0 == $1.notification }
-
-    if noChanges {
-      return
-    }
-
-    var viewModels = notifications.map { notification in
-      NotificationCellViewModel(notification: notification, now: self.now)
-    }
-
-    // Bigger date -> later in list
-    viewModels.sort { $0.notification.date > $1.notification.date }
-
-    self.cells = viewModels
-    self.setVisibleView(view: .tableView)
-    self.refreshView()
   }
 
-  private func requestNotificationsFromApi() {
+  private func handleNewNotifications(response: AppState.ApiResponseState<[Notification]>) {
+    let result = self.getNotificationsState.update(from: response)
+
+    switch result {
+    case .final:
+      // We already got to the state we wanted. Ignore.
+      break
+
+    case .initialData(let data),
+         .newData(let data):
+      // We don't wan't any more updates.
+      // We already got to the state we wanted.
+      self.getNotificationsState.markAsFinal(state: data)
+
+      if data.isEmpty {
+        self.setVisibleView(view: .noNotificationsView)
+        return
+      }
+
+      var viewModels = data.map { notification in
+        NotificationCellViewModel(notification: notification, now: self.now)
+      }
+
+      // Bigger date -> later in list
+      viewModels.sort { $0.notification.date > $1.notification.date }
+
+      self.cells = viewModels
+      self.setVisibleView(view: .tableView)
+      self.needsRefreshView = true
+
+    case .sameDataAsBefore:
+      // Nothing to change.
+      break
+
+    case .initialError(let error),
+         .newError(let error):
+      // New error -> show it.
+      self.view?.showApiErrorAlert(error: error)
+    case .sameErrorAsBefore:
+      // The same error as before. Nothing to do.
+      break
+
+    case .initialInProgres,
+         .inProgres:
+      self.setVisibleView(view: .loadingView)
+
+    case .initialNone,
+         .none:
+      // Initial state, soon we will be 'inProgres'
+      self.setVisibleView(view: .loadingView)
+    }
+  }
+
+  private func dispatchGetNotificationsAction() {
     self.store.dispatch(ApiMiddlewareActions.requestNotifications)
   }
 
@@ -156,9 +153,18 @@ public final class NotificationsCardViewModel: StoreSubscriber {
     case tableView
   }
 
+  /// Will set `needsRefreshView` if needed.
   private func setVisibleView(view: VisibleView) {
-    self.isTableViewVisible = view == .tableView
-    self.isNoNotificationsViewVisible = view == .noNotificationsView
-    self.isLoadingViewVisible = view == .loadingView
+    let isTableViewVisible = view == .tableView
+    let isLoadingViewVisible = view == .loadingView
+    let isNoNotificationsViewVisible = view == .noNotificationsView
+
+    self.needsRefreshView = isTableViewVisible != self.isTableViewVisible
+      || isLoadingViewVisible != self.isLoadingViewVisible
+      || isNoNotificationsViewVisible != self.isNoNotificationsViewVisible
+
+    self.isTableViewVisible = isTableViewVisible
+    self.isLoadingViewVisible = isLoadingViewVisible
+    self.isNoNotificationsViewVisible = isNoNotificationsViewVisible
   }
 }

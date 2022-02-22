@@ -154,6 +154,7 @@
 		909819B527C3C65900AA8B2D /* UserLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819B427C3C65900AA8B2D /* UserLocationManagerDelegate.swift */; };
 		909819B727C3C6E200AA8B2D /* RemoteNotificationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819B627C3C6E200AA8B2D /* RemoteNotificationManagerDelegate.swift */; };
 		909819B927C3CD6200AA8B2D /* RemoteNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909819B827C3CD6200AA8B2D /* RemoteNotificationDelegate.swift */; };
+		90981A6227C4CB50004D592B /* ApiResponseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90981A6127C4CB50004D592B /* ApiResponseState.swift */; };
 		909B7BA3251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */; };
 		909B7BA92513A3A600D8A8E0 /* ApiLinesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */; };
 		909EF1B527A921E9000F4BAB /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EF1B427A921E9000F4BAB /* NetworkType.swift */; };
@@ -415,6 +416,7 @@
 		909819B427C3C65900AA8B2D /* UserLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManagerDelegate.swift; sourceTree = "<group>"; };
 		909819B627C3C6E200AA8B2D /* RemoteNotificationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationManagerDelegate.swift; sourceTree = "<group>"; };
 		909819B827C3CD6200AA8B2D /* RemoteNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationDelegate.swift; sourceTree = "<group>"; };
+		90981A6127C4CB50004D592B /* ApiResponseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponseState.swift; sourceTree = "<group>"; };
 		909B7BA2251399AF00D8A8E0 /* ApiVehicleLocationsResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVehicleLocationsResponseTests.swift; sourceTree = "<group>"; };
 		909B7BA625139B9700D8A8E0 /* ApiTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTestCase.swift; sourceTree = "<group>"; };
 		909B7BA82513A3A600D8A8E0 /* ApiLinesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLinesResponseTests.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				90C5BAED2514CB1900D41508 /* AppStoreScreenshots.swift */,
 				90E8E43B27C1296F0035B0F2 /* RelativeDateFormatter.swift */,
 				9076BD4624DDB5D100467075 /* LoadingView.swift */,
+				90981A6127C4CB50004D592B /* ApiResponseState.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1564,6 +1567,7 @@
 				905893CE24D4A95D0046EFA5 /* DeviceManager.swift in Sources */,
 				900EA10C24D46F140054C03F /* GetVehicleLocationsEndpoint.swift in Sources */,
 				90CE741824D9BB7800419166 /* BookmarksCard+Constants.swift in Sources */,
+				90981A6227C4CB50004D592B /* ApiResponseState.swift in Sources */,
 				90CE742D24D9D6E600419166 /* CardCoordinator.swift in Sources */,
 				90D57B0924DC490100A0EF53 /* LineSelectorCell.swift in Sources */,
 				90F72F2924E318D100D20EB2 /* UserLocationManagerType.swift in Sources */,

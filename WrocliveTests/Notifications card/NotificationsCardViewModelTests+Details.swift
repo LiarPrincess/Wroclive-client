@@ -11,27 +11,28 @@ import WrocliveTestsShared
 extension NotificationsCardViewModelTests {
 
   func test_tappingCell_showsDetails() {
-    self.setState { $0.getNotificationsResponse = .none }
     let viewModel = self.createViewModel()
+
+    // Start state updates
+    self.loadView(viewModel: viewModel)
+    self.assertLoadingViewAfterViewDidLoad(viewModel: viewModel)
 
     // Response with notifications
     let notifications = self.notifications
     self.setResponseState(.data(notifications))
-    XCTAssertEqual(self.dispatchedActions.count, 0)
-    XCTAssertEqual(self.refreshCount, 1)
+    XCTAssertEqual(self.dispatchedActions.count, 1)
+    XCTAssertEqual(self.refreshCount, 2)
     XCTAssertNil(self.apiErrorAlert)
     XCTAssertTrue(viewModel.isTableViewVisible)
     XCTAssertFalse(viewModel.isNoNotificationsViewVisible)
     XCTAssertFalse(viewModel.isLoadingViewVisible)
-    XCTAssertCells(viewModel: viewModel, expected: notifications)
+    self.assertCells(viewModel: viewModel, expected: notifications)
 
-    XCTAssertNil(self.showDetailsNotification)
-
+    self.showDetailsNotification = nil
     viewModel.viewDidSelectItem(index: 0)
     XCTAssertEqual(self.showDetailsNotification, notifications[0])
 
     self.showDetailsNotification = nil
-
     viewModel.viewDidSelectItem(index: 2)
     XCTAssertEqual(self.showDetailsNotification, notifications[2])
   }
