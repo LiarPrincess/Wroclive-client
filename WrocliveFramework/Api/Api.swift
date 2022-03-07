@@ -9,15 +9,14 @@ import PromiseKit
 
 public final class Api: ApiType {
 
+  private let log: OSLog
   private let userAgent: String
-  private let linesEndpoint: LinesEndpoint
-  private let vehicleLocationsEndpoint: VehicleLocationsEndpoint
   private let network: NetworkType
-  private let logManager: LogManagerType
 
-  private var log: OSLog {
-    return self.logManager.api
-  }
+  private let getLinesEndpoint: GetLinesEndpoint
+  private let getNotificationsEndpoint: GetNotificationsEndpoint
+  private let getVehicleLocationsEndpoint: GetVehicleLocationsEndpoint
+  private let postNotificationTokenEndpoint: PostNotificationTokenEndpoint
 
   // MARK: - Init
 
@@ -26,18 +25,21 @@ public final class Api: ApiType {
               bundle: BundleManagerType,
               device: DeviceManagerType,
               log: LogManagerType) {
+    self.log = log.api
     self.network = network
-    self.logManager = log
     self.userAgent = Self.createUserAgent(bundle: bundle, device: device)
 
     let baseUrl = baseUrl.appendingPathComponent("/v1")
-    self.linesEndpoint = LinesEndpoint(baseUrl: baseUrl)
-    self.vehicleLocationsEndpoint = VehicleLocationsEndpoint(baseUrl: baseUrl)
+    self.getLinesEndpoint = GetLinesEndpoint(baseUrl: baseUrl, log: self.log)
+    self.getNotificationsEndpoint = GetNotificationsEndpoint(baseUrl: baseUrl, log: self.log)
+    self.getVehicleLocationsEndpoint = GetVehicleLocationsEndpoint(baseUrl: baseUrl, log: self.log)
+    self.postNotificationTokenEndpoint = PostNotificationTokenEndpoint(baseUrl: baseUrl)
   }
 
   /// `Wroclive/1.0 (pl.nopoint.wroclive; iPhone 5s; iOS 10.3.1)`
   private static func createUserAgent(bundle: BundleManagerType,
                                       device: DeviceManagerType) -> String {
+    // TODO: Add 'device.identifierForVendor'
     let deviceInfo = "\(device.model); \(device.systemName) \(device.systemVersion)"
     return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
   }
@@ -46,7 +48,7 @@ public final class Api: ApiType {
 
   public func getLines() -> Promise<[Line]> {
     os_log("Sending 'getLines' request", log: self.log, type: .debug)
-    let endpoint = self.linesEndpoint
+    let endpoint = self.getLinesEndpoint
     return self.sendRequest(endpoint: endpoint, data: ())
   }
 
@@ -57,12 +59,25 @@ public final class Api: ApiType {
     }
 
     os_log("Sending 'getVehicleLocations' request", log: self.log, type: .debug)
-    let endpoint = self.vehicleLocationsEndpoint
+    let endpoint = self.getVehicleLocationsEndpoint
     return self.sendRequest(endpoint: endpoint, data: lines)
+  }
+
+  public func getNotifications() -> Promise<[Notification]> {
+    os_log("Sending 'getNotifications' request", log: self.log, type: .debug)
+    let endpoint = self.getNotificationsEndpoint
+    return self.sendRequest(endpoint: endpoint, data: ())
   }
 
   public func setNetworkActivityIndicatorVisibility(isVisible: Bool) {
     self.network.setNetworkActivityIndicatorVisibility(isVisible: isVisible)
+  }
+
+  public func sendNotificationToken(deviceId: UUID, token: String) -> Promise<Void> {
+    os_log("Sending 'notification-token' request", log: self.log, type: .debug)
+    let data = PostNotificationTokenEndpoint.ParameterData(deviceId: deviceId, token: token)
+    let endpoint = self.postNotificationTokenEndpoint
+    return self.sendRequest(endpoint: endpoint, data: data)
   }
 
   // MARK: - Helpers

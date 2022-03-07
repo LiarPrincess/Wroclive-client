@@ -3,20 +3,23 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import Foundation
+import os.log
 import Alamofire
 
-internal struct VehicleLocationsEndpoint: Endpoint {
+internal struct GetVehicleLocationsEndpoint: Endpoint {
 
   internal typealias ParameterData = [Line]
   internal typealias ResponseData = [Vehicle]
 
-  internal var url: URLConvertible
+  internal let url: URLConvertible
   internal let method = HTTPMethod.get
   internal let parameterEncoding: ParameterEncoding = URLEncoding.queryString
   internal let headers = HTTPHeaders(accept: .json, acceptEncoding: .compressed)
+  private let log: OSLog
 
-  internal init(baseUrl: String) {
+  internal init(baseUrl: String, log: OSLog) {
     self.url = baseUrl.appendingPathComponent("/vehicles")
+    self.log = log
   }
 
   internal func encodeParameters(_ data: [Line]) -> Parameters? {
@@ -26,8 +29,21 @@ internal struct VehicleLocationsEndpoint: Endpoint {
   }
 
   internal func decodeResponse(_ data: Data) throws -> ResponseData {
-    let model = try self.parseJSON(ResponseModel.self, from: data)
-    return try model.data.flatMap(parseVehicleLocations)
+    let responseModel = try self.parseJSON(ResponseModel.self, from: data)
+    let mapResult = self.compactMap(models: responseModel.data, fn: parseVehicleLocations(_:))
+
+    switch mapResult {
+    case .noModels:
+      return []
+    case .success(let vehicles):
+      return vehicles
+    case .partialSuccess(let vehicles):
+      // Some of them failed, but it is better than nothing.
+      os_log("[GetVehicleLocationsEndpoint] Partial parsing success", log: self.log, type: .error)
+      return vehicles
+    case .allFailed:
+      throw ApiError.invalidResponse
+    }
   }
 }
 
@@ -77,8 +93,12 @@ private struct VehicleModel: Decodable {
   let angle: Double
 }
 
-private func parseVehicleLocations(_ model: LineLocationModel) throws -> [Vehicle] {
-  let line = try parseLine(model: model.line)
+// swiftlint:disable:next discouraged_optional_collection
+private func parseVehicleLocations(_ model: LineLocationModel) -> [Vehicle]? {
+  guard let line = parseLine(model: model.line) else {
+    return nil
+  }
+
   return model.vehicles.map {
     Vehicle(id: $0.id,
             line: line,
@@ -88,10 +108,10 @@ private func parseVehicleLocations(_ model: LineLocationModel) throws -> [Vehicl
   }
 }
 
-private func parseLine(model: LineModel) throws -> Line {
+private func parseLine(model: LineModel) -> Line? {
   guard let type = parseLineType(model: model.type),
         let subtype = parseLineSubtype(model: model.subtype) else {
-    throw ApiError.invalidResponse
+    return nil
   }
 
   return Line(name: model.name, type: type, subtype: subtype)

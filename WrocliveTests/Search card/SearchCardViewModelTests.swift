@@ -38,14 +38,11 @@ class SearchCardViewModelTests: XCTestCase,
 
   // MARK: - View model
 
-  func createViewModel(state: SearchCardState,
-                       response: LineResponse) -> SearchCardViewModel {
+  func createViewModel(state: SearchCardState) -> SearchCardViewModel {
     self.storageManager.searchCardState = state
-    self.setLineResponseState(response)
 
     let result = SearchCardViewModel(store: self.store, environment: self.environment)
     result.setView(view: self)
-    self.refreshCount = 0
     return result
   }
 
@@ -100,6 +97,97 @@ class SearchCardViewModelTests: XCTestCase,
     static func == (lhs: SearchCardViewModelTests.DummyError,
                     rhs: SearchCardViewModelTests.DummyError) -> Bool {
       return lhs === rhs
+    }
+  }
+
+  // MARK: - Assert
+
+  func assertStateAfterViewDidLoad(viewModel: SearchCardViewModel,
+                                   file: StaticString = #file,
+                                   line: UInt = #line) {
+    XCTAssertEqual(self.dispatchedActions.count,
+                   1,
+                   "Dispatched actions count",
+                   file: file,
+                   line: line)
+    XCTAssertTrue(self.isRequestLinesAction(at: 0),
+                  "Expected to dispatch RequestLinesAction",
+                  file: file,
+                  line: line)
+
+    self.assertCurrentView(viewModel: viewModel,
+                           view: .loadingView,
+                           file: file,
+                           line: line)
+    self.assertLines(viewModel: viewModel,
+                     lines: [],
+                     file: file,
+                     line: line)
+
+    XCTAssertFalse(self.isShowingBookmarkNameInputAlert,
+                   "isShowingBookmarkNameInputAlert",
+                   file: file,
+                   line: line)
+    XCTAssertFalse(self.isShowingBookmarkNoLineSelectedAlert,
+                   "isShowingBookmarkNoLineSelectedAlert",
+                   file: file,
+                   line: line)
+
+    XCTAssertEqual(self.refreshCount, 1, "refreshCount", file: file, line: line)
+    XCTAssertNil(self.apiErrorAlert, "apiErrorAlert", file: file, line: line)
+  }
+
+  enum CurrentView: Equatable {
+    case lineSelector
+    case loadingView
+  }
+
+  func assertCurrentView(viewModel: SearchCardViewModel,
+                         view expectedView: CurrentView,
+                         file: StaticString = #file,
+                         line: UInt = #line) {
+    switch expectedView {
+    case .lineSelector:
+      XCTAssertTrue(viewModel.isLineSelectorVisible,
+                    "isLineSelectorVisible",
+                    file: file,
+                    line: line)
+      XCTAssertFalse(viewModel.isLoadingViewVisible,
+                     "isLoadingViewVisible",
+                     file: file,
+                     line: line)
+    case .loadingView:
+      XCTAssertFalse(viewModel.isLineSelectorVisible,
+                     "isLineSelectorVisible",
+                     file: file,
+                     line: line)
+      XCTAssertTrue(viewModel.isLoadingViewVisible,
+                    "isLoadingViewVisible",
+                    file: file,
+                    line: line)
+    }
+  }
+
+  func assertLines(viewModel: SearchCardViewModel,
+                   lines expectedLines: [Line],
+                   file: StaticString = #file,
+                   line: UInt = #line) {
+    let busPage = viewModel.lineSelectorViewModel.busPageViewModel
+    let tramPage = viewModel.lineSelectorViewModel.tramPageViewModel
+
+    let busLines = busPage.sections.flatMap { $0.lines }
+    let tramLines = tramPage.sections.flatMap { $0.lines }
+    let lines = busLines + tramLines
+
+    XCTAssertEqual(lines.count,
+                   expectedLines.count,
+                   "Lines - count",
+                   file: file,
+                   line: line)
+
+    // Order may be different!
+    for l in lines {
+      XCTAssert(expectedLines.contains(l), "\(l)", file: file, line: line)
     }
   }
 }

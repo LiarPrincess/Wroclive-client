@@ -25,9 +25,9 @@ public enum UserLocationAuthorization: CustomStringConvertible {
   public var description: String {
     switch self {
     case .notDetermined: return "Not determined"
-    case .authorized: return "authorized"
-    case .restricted: return "restricted"
-    case .denied: return "denied"
+    case .authorized: return "Authorized"
+    case .restricted: return "Restricted"
+    case .denied: return "Denied"
     case .unknownValue: return "Unknown value"
     }
   }

@@ -5,8 +5,18 @@
 .PHONY: gen
 
 gen:
-	echo "Generating SwiftGen files"
+	@echo "Generating SwiftGen files"
 	swiftgen config run --config "./.swiftgen.yml"
+
+# ------------------------
+# -- Push notifications --
+# ------------------------
+
+.PHONY: push
+
+push:
+	@echo "Sending push notification to simulator"
+	xcrun simctl push booted app.wroclive "./misc/simulator-push-payload.json"
 
 # -----------------
 # -- Lint/format --

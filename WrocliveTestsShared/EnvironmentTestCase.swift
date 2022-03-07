@@ -38,6 +38,10 @@ extension EnvironmentTestCase {
     return self.environment.userLocation as! UserLocationManagerMock
   }
 
+  public var remoteNotificationsManager: RemoteNotificationManagerMock {
+    return self.environment.remoteNotifications as! RemoteNotificationManagerMock
+  }
+
   public var configuration: Configuration {
     return self.environment.configuration
   }
@@ -55,8 +59,9 @@ extension EnvironmentTestCase {
         writeReviewUrl: "APP_STORE_WRITE_REVIEW_URL"
       ),
       timing: .init(
-        vehicleLocationUpdateInterval: TimeInterval(3.0),
-        locationAuthorizationPromptDelay: TimeInterval(5.0)
+        vehicleLocationUpdateInterval: 5.0,
+        locationAuthorizationPromptDelay: 2.0,
+        maxWaitingTimeBeforeShowingNotificationPrompt: 10.0
       )
     )
 
@@ -69,6 +74,7 @@ extension EnvironmentTestCase {
       storage: StorageManagerMock(),
       userDefaults: UserDefaultsManagerMock(),
       userLocation: UserLocationManagerMock(),
+      remoteNotifications: RemoteNotificationManagerMock(),
       configuration: configuration
     )
   }

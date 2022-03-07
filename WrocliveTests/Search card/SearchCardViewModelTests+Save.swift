@@ -9,7 +9,10 @@ extension SearchCardViewModelTests {
 
   func test_viewDidDisappear_withoutChanges_doesNotSaveState() {
     let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .inProgress)
+    let viewModel = self.createViewModel(state: state)
+
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
 
     viewModel.viewDidDisappear()
     XCTAssertEqual(self.storageManager.writeSearchCardStateCount, 0)
@@ -17,7 +20,10 @@ extension SearchCardViewModelTests {
 
   func test_viewDidDisappear_withPageChanged_savesState() {
     let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .inProgress)
+    let viewModel = self.createViewModel(state: state)
+
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
 
     viewModel.viewDidSelectPage(page: .bus)
     viewModel.viewDidDisappear()
@@ -27,7 +33,10 @@ extension SearchCardViewModelTests {
 
   func test_viewDidDisappear_withSelectedLinesChanged_savesState() {
     let state = SearchCardState(page: .tram, selectedLines: self.selectedLines)
-    let viewModel = self.createViewModel(state: state, response: .inProgress)
+    let viewModel = self.createViewModel(state: state)
+
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
 
     viewModel.lineSelectorViewModel.setSelectedLines(lines: [])
     viewModel.viewDidDisappear()

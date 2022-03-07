@@ -19,7 +19,6 @@
 
 "Search.Title"   = "Lines";
 "Search.Search"  = "Select";
-"Search.Loading" = "Loading…";
 
 "Search.Pages.Tram" = "Trams";
 "Search.Pages.Bus"  = "Buses";
@@ -32,6 +31,11 @@
 "Search.Sections.Suburban"  = "Suburban";
 "Search.Sections.Temporary" = "Temporary";
 "Search.Sections.Zone"      = "Zone";
+
+/* Notifications */
+
+"Notifications.Title" = "Notifications";
+"Notifications.NoNotifications" = "No notifications";
 
 /* Settings */
 
@@ -51,6 +55,17 @@
 "Settings.Table.Programming.Header" = "Application";
 "Settings.Table.Programming.ReportError"  = "Support and feedback";
 "Settings.Table.Programming.ShowCode"     = "Show code";
+
+/* Loading view */
+
+"Loading.Text" = "Loading…";
+
+/* Relative date */
+
+"RelativeDate.Now" = "Now";
+"RelativeDate.MinuteShort" = "m";
+"RelativeDate.HourShort" = "h";
+"RelativeDate.DayShort" = "d";
 
 /* App */
 

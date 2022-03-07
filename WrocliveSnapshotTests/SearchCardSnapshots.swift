@@ -25,22 +25,21 @@ class SearchCardSnapshots: XCTestCase, ReduxTestCase, EnvironmentTestCase, Snaps
 
   func test_lines_inProgress() {
     self.onAllDevicesInAllLocales { assertSnapshot in
-      self.setLines(state: .inProgress)
-
       let viewModel = SearchCardViewModel(store: self.store, environment: self.environment)
       let view = SearchCard(viewModel: viewModel)
-
+      self.setLines(state: .inProgress)
       assertSnapshot(view, .errorOnThisLine())
     }
   }
 
   func test_lines() {
     self.onAllDevicesInAllLocales { assertSnapshot in
-      self.setLines(lines: self.allLines)
       self.setInitialState(page: .tram, selectedLines: self.selectedLines)
 
       let viewModel = SearchCardViewModel(store: self.store, environment: self.environment)
       let view = SearchCard(viewModel: viewModel)
+
+      self.setLines(lines: self.allLines)
 
       XCTAssertEqual(viewModel.page, .tram)
       assertSnapshot(view, .errorOnThisLine())
@@ -52,13 +51,12 @@ class SearchCardSnapshots: XCTestCase, ReduxTestCase, EnvironmentTestCase, Snaps
 
   func test_dark() {
     self.inDarkMode { assertSnapshot in
-      self.setLines(state: .inProgress)
       self.setInitialState(page: .tram, selectedLines: self.selectedLines)
 
       let viewModel = SearchCardViewModel(store: self.store, environment: self.environment)
       let view = SearchCard(viewModel: viewModel)
 
-      // lines: inProgress
+      self.setLines(state: .inProgress)
       assertSnapshot(view, .errorOnThisLine())
 
       self.setLines(lines: self.allLines)

@@ -6,7 +6,7 @@ import os.log
 import UIKit
 import ReSwift
 
-public final class AppCoordinator: MainViewModelDelegate {
+public final class AppCoordinator: Coordinator, MainViewModelDelegate {
 
   public let window: UIWindow
   public let store: Store<AppState>
@@ -57,6 +57,19 @@ public final class AppCoordinator: MainViewModelDelegate {
     self.showCard(coordinator: coordinator, animated: true)
   }
 
+  // MARK: - Notificaions
+
+  public func openNotificationsCard() {
+    guard let mainViewController = self.mainViewController else {
+      fatalError("AppCoordinator has to be started first")
+    }
+
+    let coordinator = NotificationsCardCoordinator(parent: mainViewController,
+                                                   store: self.store,
+                                                   environment: self.environment)
+    self.showCard(coordinator: coordinator, animated: true)
+  }
+
   // MARK: - Settings
 
   public func openSettingsCard() {
@@ -93,6 +106,26 @@ public final class AppCoordinator: MainViewModelDelegate {
         type: .error,
         urlString
       )
+    }
+  }
+
+  // MARK: - Push notification
+
+  public func openUrlFromPushNotification(url urlString: String) {
+    guard let url = URL(string: urlString) else {
+      return
+    }
+
+    let topViewController = UIApplication.shared.getTopViewController()
+    switch topViewController {
+    case .viewController(let parent):
+      self.openBrowser(parent: parent, url: url)
+    case .alert:
+      // We can't override alert!
+      break
+    case .noRootViewController:
+      // This would be weird, at least 'self.mainViewController' should be visible.
+      break
     }
   }
 }

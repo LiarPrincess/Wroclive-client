@@ -15,7 +15,7 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPresent
   public let titleLabel = UILabel()
   public let bookmarkButton = UIButton()
   public let searchButton = UIButton()
-  public let placeholderView = SearchPlaceholderView()
+  public let loadingView = LoadingView()
 
   internal var lineSelector: LineSelector
   internal var lineTypeSelector: LineTypeSegmentedControl
@@ -50,6 +50,7 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPresent
   override public func viewDidLoad() {
     super.viewDidLoad()
     self.initLayout()
+    self.viewModel.viewDidLoad()
   }
 
   // MARK: - ViewDidLayoutSubviews
@@ -81,8 +82,8 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPresent
     let isLineSelectorVisible = self.viewModel.isLineSelectorVisible
     self.lineSelector.view.isHidden = !isLineSelectorVisible
 
-    let isPlaceholderVisible = self.viewModel.isPlaceholderVisible
-    self.placeholderView.isHidden = !isPlaceholderVisible
+    let isPlaceholderVisible = self.viewModel.isLoadingViewVisible
+    self.loadingView.isHidden = !isPlaceholderVisible
   }
 
   // MARK: - Actions
@@ -124,6 +125,9 @@ public final class SearchCard: UIViewController, SearchCardViewType, CardPresent
         SPAlert.present(title: savedText, preset: .done)
       }
 
+    case .noRootViewController:
+      // This would be weird. At least 'self' should be visible.
+      break
     case .alreadyShowingDifferentAlert:
       // How?
       // If we are showing different alert then it blocks bookmark button.

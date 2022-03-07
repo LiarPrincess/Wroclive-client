@@ -67,12 +67,15 @@ public enum TrackedLinesAction: Action, CustomStringConvertible {
 /// This type of api action is intended for ApiMiddleware
 public enum ApiMiddlewareActions: Action, CustomStringConvertible {
   case requestLines
+  case requestNotifications
   case requestVehicleLocations
 
   public var description: String {
     switch self {
     case .requestLines:
       return "ApiMiddlewareActions.updateLines"
+    case .requestNotifications:
+      return "ApiMiddlewareActions.requestNotifications"
     case .requestVehicleLocations:
       return "ApiMiddlewareActions.updateVehicleLocations"
     }
@@ -82,12 +85,15 @@ public enum ApiMiddlewareActions: Action, CustomStringConvertible {
 /// This type of api action is dispatched by ApiMiddleware
 public enum ApiAction: Action, CustomStringConvertible {
   case setLines(AppState.ApiResponseState<[Line]>)
+  case setNotifications(AppState.ApiResponseState<[Notification]>)
   case setVehicleLocations(AppState.ApiResponseState<[Vehicle]>)
 
   public var description: String {
     switch self {
     case let .setLines(response):
       return "ApiAction.setLines(\(describe(response)))"
+    case let .setNotifications(response):
+      return "ApiAction.setNotifications(\(describe(response)))"
     case let .setVehicleLocations(response):
       return "ApiAction.setVehicleLocations(\(describe(response)))"
     }

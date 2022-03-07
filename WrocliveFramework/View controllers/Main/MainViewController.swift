@@ -17,6 +17,7 @@ public final class MainViewController: UIViewController {
   public let userTrackingButton = MKUserTrackingBarButtonItem()
   public let searchButton = UIButton(type: .custom)
   public let bookmarksButton = UIButton(type: .custom)
+  public let notificationsButton = UIButton(type: .custom)
   public let configurationButton = UIButton(type: .custom)
 
   internal let viewModel: MainViewModel
@@ -66,7 +67,12 @@ public final class MainViewController: UIViewController {
 
   @objc
   public func bookmarksButtonPressed() {
-    self.viewModel.didPressBookmarkButton()
+    self.viewModel.didPressBookmarksButton()
+  }
+
+  @objc
+  public func notificationsButtonPressed() {
+    self.viewModel.didPressNotificationsButton()
   }
 
   @objc

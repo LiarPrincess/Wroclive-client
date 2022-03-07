@@ -23,7 +23,7 @@ public final class SearchCardViewModel: StoreSubscriber {
 
   internal private(set) var page: Page
   internal private(set) var isLineSelectorVisible: Bool
-  internal private(set) var isPlaceholderVisible: Bool
+  internal private(set) var isLoadingViewVisible: Bool
 
   // swiftlint:disable:next trailing_closure
   internal private(set) lazy var lineSelectorViewModel = LineSelectorViewModel(
@@ -31,18 +31,14 @@ public final class SearchCardViewModel: StoreSubscriber {
     onPageTransition: { [weak self] page in self?.viewDidSelectPage(page: page) }
   )
 
+  /// State with which we started.
   private let initialState: SearchCardState
-
-  /// Previous response, so we know how to react to new state.
-  private var getLinesResponse: AppState.ApiResponseState<[Line]>?
+  /// State of the `store.getLinesResponse`.
+  private var getLinesState = StoreApiResponseTracker<[Line]>()
 
   private let store: Store<AppState>
   private let environment: Environment
   private weak var view: SearchCardViewType?
-
-  internal var selectedLines: LineSelectorViewModel.SelectedLines {
-    return self.lineSelectorViewModel.selectedLines
-  }
 
   // MARK: - Init
 
@@ -55,19 +51,11 @@ public final class SearchCardViewModel: StoreSubscriber {
 
     self.page = self.initialState.page
     self.isLineSelectorVisible = false
-    self.isPlaceholderVisible = true
+    self.isLoadingViewVisible = false
 
     // This will have side-effect of calling the lazy init! (we do want that)
     let selectedLines = self.initialState.selectedLines
     self.lineSelectorViewModel.setSelectedLines(lines: selectedLines)
-
-    self.store.subscribe(self)
-  }
-
-  private func setPage(page: Page) {
-    self.page = page
-    self.lineSelectorViewModel.setPage(page: page)
-    self.refreshView()
   }
 
   // MARK: - View
@@ -75,7 +63,6 @@ public final class SearchCardViewModel: StoreSubscriber {
   public func setView(view: SearchCardViewType) {
     assert(self.view == nil, "View was already assigned")
     self.view = view
-    self.refreshView()
   }
 
   private func refreshView() {
@@ -84,38 +71,45 @@ public final class SearchCardViewModel: StoreSubscriber {
 
   // MARK: - View input
 
-  public func viewDidPressBookmarkButton() {
-    let selectedLines = self.selectedLines
+  public func viewDidLoad() {
+    self.dispatchGetLinesAction()
+    // Will automatically call 'newState(state:)' which will call 'self.refreshView'.
+    self.store.subscribe(self)
+  }
 
-    if selectedLines.isAnyLineSelected {
-      self.view?.showBookmarkNameInputAlert()
-    } else {
+  public func viewDidPressBookmarkButton() {
+    let selectedLines = self.getSelectedLines()
+
+    if selectedLines.isEmpty {
       self.view?.showBookmarkNoLineSelectedAlert()
+    } else {
+      self.view?.showBookmarkNameInputAlert()
     }
   }
 
   public func viewDidEnterBookmarkName(value: String) {
-    let lines = self.selectedLines.merge()
+    let lines = self.getSelectedLines()
     self.store.dispatch(BookmarksAction.add(name: value, lines: lines))
   }
 
   public func viewDidPressSearchButton() {
-    let lines = self.selectedLines.merge()
+    let lines = self.getSelectedLines()
     self.store.dispatch(TrackedLinesAction.startTracking(lines))
     self.view?.close(animated: true)
   }
 
   public func viewDidPressAlertTryAgainButton() {
-    self.requestLinesFromApi()
+    self.dispatchGetLinesAction()
   }
 
   public func viewDidSelectPage(page: Page) {
     self.setPage(page: page)
+    self.refreshView()
   }
 
   public func viewDidDisappear() {
     let page = self.page
-    let lines = self.selectedLines.merge()
+    let lines = self.getSelectedLines()
     let state = SearchCardState(page: page, selectedLines: lines)
 
     if state != self.initialState {
@@ -123,78 +117,105 @@ public final class SearchCardViewModel: StoreSubscriber {
     }
   }
 
+  internal func getSelectedLines() -> [Line] {
+    let selectedLines = self.lineSelectorViewModel.selectedLines
+    return selectedLines.merge()
+  }
+
   // MARK: - Store subscriber
 
+  private var needsRefreshView = false
+
   public func newState(state: AppState) {
-    self.handleLineRequestChange(newState: state)
-    self.refreshView()
+    self.needsRefreshView = false
+
+    self.handleLineResponseChange(newState: state)
+
+    if self.needsRefreshView {
+      self.refreshView()
+    }
   }
 
-  private func handleLineRequestChange(newState: AppState) {
-    let new = newState.getLinesResponse
-    let old = self.getLinesResponse
-    defer { self.getLinesResponse = new }
+  private func handleLineResponseChange(newState: AppState) {
+    let response = newState.getLinesResponse
+    let result = self.getLinesState.update(from: response)
 
-    switch new {
-    case .data(let newLines):
-      let oldLines = old?.getData()
-      if newLines != oldLines {
-        if newLines.isEmpty {
-          self.view?.showApiErrorAlert(error: .invalidResponse)
-        } else {
-          self.lineSelectorViewModel.setLines(lines: newLines)
-          self.setIsLineSelectorVisible(value: true)
-        }
-      }
-
-    case .error(let newError):
-      // If old state is 'nil' then cached resonse was error -> try again
-      guard let old = old else {
-        self.requestLinesFromApi()
-        return
-      }
-
-      // If previously we did not have an error -> just show new error
-      guard let oldError = old.getError() else {
-        self.view?.showApiErrorAlert(error: newError)
-        return
-      }
-
-      // Otherwise we have to check if error changed
-      if !self.isEqual(lhs: oldError, rhs: newError) {
-        self.view?.showApiErrorAlert(error: newError)
-      }
-
-    case .inProgress:
-      // Leave it as it is
+    switch result {
+    case .final:
+      // We already got to the state we wanted. Ignore.
       break
 
-    case .none:
-      let isTheSameAsPrevious = old?.isNone ?? false
-      if !isTheSameAsPrevious {
-        self.requestLinesFromApi()
-        self.setIsLineSelectorVisible(value: false)
+    case .initialData(let lines),
+         .newData(let lines):
+      if lines.isEmpty {
+        self.setVisibleView(view: .loadingView)
+        self.view?.showApiErrorAlert(error: .invalidResponse)
+        return
       }
+
+      // We don't want any more updates.
+      // We already got to the state we wanted.
+      self.getLinesState.markAsFinal(state: lines)
+
+      self.lineSelectorViewModel.setLines(lines: lines)
+      self.setVisibleView(view: .lineSelector)
+      self.needsRefreshView = true
+
+    case .sameDataAsBefore:
+      // Nothing to change.
+      break
+
+    case .initialError(let error),
+         .newError(let error):
+      // New error -> show it.
+      self.view?.showApiErrorAlert(error: error)
+
+    case .sameErrorAsBefore:
+      // The same error as before. Nothing to do.
+      break
+
+    case .initialInProgres,
+         .inProgres:
+      self.setVisibleView(view: .loadingView)
+
+    case .initialNone,
+         .none:
+      // Initial state, soon we will be 'inProgres'
+      self.setVisibleView(view: .loadingView)
     }
   }
 
-  private func isEqual(lhs: ApiError, rhs: ApiError) -> Bool {
-    switch (lhs, rhs) {
-    case (.invalidResponse, .invalidResponse),
-         (.reachabilityError, .reachabilityError),
-         (.otherError, .otherError):
-      return true
-    default:
-      return false
-    }
+  private enum VisibleView {
+    case lineSelector
+    case loadingView
   }
 
-  private func requestLinesFromApi() {
+  /// Will set `needsRefreshView` if needed.
+  private func setVisibleView(view: VisibleView) {
+    let isLineSelectorVisible = view == .lineSelector
+    let isLoadingViewVisible = view == .loadingView
+
+    self.needsRefreshView = self.needsRefreshView
+      || isLineSelectorVisible != self.isLineSelectorVisible
+      || isLoadingViewVisible != self.isLoadingViewVisible
+
+    self.isLineSelectorVisible = isLineSelectorVisible
+    self.isLoadingViewVisible = isLoadingViewVisible
+  }
+
+  /// Will set `needsRefreshView` if needed.
+  private func setPage(page: Page) {
+    self.needsRefreshView = self.needsRefreshView
+      || self.page != page
+      || self.lineSelectorViewModel.page != page
+
+    self.page = page
+    self.lineSelectorViewModel.setPage(page: page)
+  }
+
+  // MARK: - Helpers
+
+  private func dispatchGetLinesAction() {
     self.store.dispatch(ApiMiddlewareActions.requestLines)
-  }
-
-  private func setIsLineSelectorVisible(value: Bool) {
-    self.isLineSelectorVisible = value
-    self.isPlaceholderVisible = !value
   }
 }

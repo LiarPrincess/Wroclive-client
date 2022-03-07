@@ -5,10 +5,18 @@
 import UIKit
 import SnapKit
 
-private typealias Constants = SearchCard.Constants.Placeholder
-private typealias Localization = Localizable.Search
+public typealias SearchPlaceholderView = LoadingView
 
-public final class SearchPlaceholderView: UIView {
+/// Simple view with an activity indicator (spinner) and a 'Loading' label below.
+///
+/// Hide it to stop animation.
+public final class LoadingView: UIView {
+
+  private enum Constants {
+    fileprivate static let verticalSpacing = CGFloat(8.0)
+    fileprivate static let textAttributes = TextAttributes(style: .body,
+                                                           alignment: .center)
+  }
 
   // MARK: - Properties
 
@@ -30,14 +38,14 @@ public final class SearchPlaceholderView: UIView {
 
     self.addSubview(self.spinner)
     self.spinner.snp.makeConstraints { make in
-      make.top.centerX.equalToSuperview()
       make.centerX.equalToSuperview()
     }
 
     self.label.attributedText = NSAttributedString(
-      string: Localization.loading,
-      attributes: Constants.labelAttributes
+      string: Localizable.Loading.text,
+      attributes: Constants.textAttributes
     )
+
     self.label.numberOfLines = 0
     self.label.lineBreakMode = .byWordWrapping
     self.label.adjustsFontForContentSizeCategory = true
@@ -45,7 +53,8 @@ public final class SearchPlaceholderView: UIView {
     self.addSubview(self.label)
     self.label.snp.makeConstraints { make in
       make.top.equalTo(self.spinner.snp.bottom).offset(Constants.verticalSpacing)
-      make.bottom.left.right.equalToSuperview()
+      make.bottom.equalTo(self.snp.centerY)
+      make.centerX.equalToSuperview()
     }
   }
 

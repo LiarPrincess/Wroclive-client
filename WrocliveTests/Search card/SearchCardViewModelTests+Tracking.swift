@@ -12,10 +12,11 @@ extension SearchCardViewModelTests {
     let selectedLines = [Line]()
 
     let state = SearchCardState(page: .tram, selectedLines: selectedLines)
-    let response = LineResponse.data(lines)
-    let viewModel = self.createViewModel(state: state, response: response)
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertFalse(self.isClosing)
+    let viewModel = self.createViewModel(state: state)
+
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
+    self.setLineResponseState(.data(lines))
 
     viewModel.viewDidPressSearchButton()
     XCTAssertFalse(self.isShowingBookmarkNameInputAlert)
@@ -24,8 +25,8 @@ extension SearchCardViewModelTests {
 //    XCTAssertEqual(self.refreshCount, 1) // Not a part of the contract
     XCTAssertTrue(self.isClosing)
 
-    XCTAssertEqual(self.dispatchedActions.count, 1)
-    if let l = self.getStartTrackingLinesAction(at: 0) {
+    XCTAssertEqual(self.dispatchedActions.count, 2)
+    if let l = self.getStartTrackingLinesAction(at: 1) {
       XCTAssertEqual(l, selectedLines)
     }
   }
@@ -36,10 +37,11 @@ extension SearchCardViewModelTests {
     assert(selectedLines.any)
 
     let state = SearchCardState(page: .tram, selectedLines: selectedLines)
-    let response = LineResponse.data(lines)
-    let viewModel = self.createViewModel(state: state, response: response)
-    XCTAssertEqual(self.refreshCount, 0)
-    XCTAssertFalse(self.isClosing)
+    let viewModel = self.createViewModel(state: state)
+
+    viewModel.viewDidLoad()
+    self.assertStateAfterViewDidLoad(viewModel: viewModel)
+    self.setLineResponseState(.data(lines))
 
     viewModel.viewDidPressSearchButton()
     XCTAssertFalse(self.isShowingBookmarkNameInputAlert)
@@ -48,8 +50,8 @@ extension SearchCardViewModelTests {
 //    XCTAssertEqual(self.refreshCount, 1) // Not a part of the contract
     XCTAssertTrue(self.isClosing)
 
-    XCTAssertEqual(self.dispatchedActions.count, 1)
-    if let l = self.getStartTrackingLinesAction(at: 0) {
+    XCTAssertEqual(self.dispatchedActions.count, 2)
+    if let l = self.getStartTrackingLinesAction(at: 1) {
       XCTAssertEqual(l, selectedLines)
     }
   }

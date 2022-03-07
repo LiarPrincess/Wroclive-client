@@ -5,8 +5,10 @@
 import Foundation
 @testable import WrocliveFramework
 
-public class BundleManagerMock: BundleManagerType {
+public final class BundleManagerMock: BundleManagerType {
   public var name = "BUNDLE_NAME"
   public var version = "BUNDLE_VERSION"
   public var identifier = "BUNDLE_IDENTIFIER"
+
+  public init() {}
 }

@@ -13,7 +13,7 @@ extension SearchCard {
     self.view.backgroundColor = ColorScheme.background
     self.initHeader()
     self.initLinesSelector()
-    self.initPlaceholder()
+    self.initLoadingView()
   }
 
   // MARK: - Header
@@ -109,22 +109,13 @@ extension SearchCard {
     self.lineSelector.didMove(toParent: self)
   }
 
-  // MARK: - Placeholder
+  // MARK: - Loading view
 
-  private func initPlaceholder() {
-    let container = UIView()
-
-    self.view.insertSubview(container, belowSubview: self.lineSelector.view)
-    container.snp.makeConstraints { make in
+  private func initLoadingView() {
+    self.view.insertSubview(self.loadingView, belowSubview: self.lineSelector.view)
+    self.loadingView.snp.makeConstraints { make in
       make.top.equalTo(self.headerView.contentView.snp.bottom)
       make.bottom.left.right.equalToSuperview()
-    }
-
-    container.addSubview(self.placeholderView)
-    self.placeholderView.snp.makeConstraints { make in
-      make.bottom.equalTo(container.snp.centerY)
-      make.left.equalToSuperview().offset(Constants.Placeholder.leftInset)
-      make.right.equalToSuperview().offset(-Constants.Placeholder.rightInset)
     }
   }
 }

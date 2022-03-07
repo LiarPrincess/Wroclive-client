@@ -19,8 +19,11 @@ extension Middlewares {
 
           switch action {
           case ApiMiddlewareActions.requestLines:
-            requestLines(environment: environment,
-                         dispatch: dispatch)
+            requestLines(environment: environment, dispatch: dispatch)
+
+          case ApiMiddlewareActions.requestNotifications:
+            requestNotifications(environment: environment, dispatch: dispatch)
+
           case ApiMiddlewareActions.requestVehicleLocations:
             requestVehicleLocations(environment: environment,
                                     state: state,
@@ -44,6 +47,20 @@ extension Middlewares {
       .catch { error in
         let apiError = Self.toApiError(error: error)
         dispatch(ApiAction.setLines(.error(apiError)))
+      }
+  }
+
+  private static func requestNotifications(
+    environment: Environment,
+    dispatch: @escaping DispatchFunction
+  ) {
+    dispatch(ApiAction.setNotifications(.inProgress))
+
+    _ = environment.api.getNotifications()
+      .done { dispatch(ApiAction.setNotifications(.data($0))) }
+      .catch { error in
+        let apiError = Self.toApiError(error: error)
+        dispatch(ApiAction.setNotifications(.error(apiError)))
       }
   }
 

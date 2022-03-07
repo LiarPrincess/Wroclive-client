@@ -88,6 +88,8 @@ extension BookmarksCard {
     self.tableView.snp.makeConstraints { $0.edges.equalToSuperview() }
   }
 
+  // MARK: - Placeholder
+
   private func initPlaceholder() {
     // We can't use 'self.bookmarksTable.backgroundView' as this would result
     // in incorrect left <-> right constraints

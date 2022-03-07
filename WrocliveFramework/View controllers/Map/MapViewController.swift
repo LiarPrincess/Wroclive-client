@@ -54,6 +54,9 @@ public final class MapViewController: UIViewController,
 
     self.view.addSubview(self.mapView)
     self.mapView.snp.makeConstraints { $0.edges.equalToSuperview() }
+
+    // Very important:
+    self.viewModel.viewDidLoad()
   }
 
   // MARK: - Map type
@@ -165,6 +168,9 @@ public final class MapViewController: UIViewController,
         }
       }
 
+    case .noRootViewController:
+      // This would be weird. At least 'self' should be visible.
+      break
     case .alreadyShowingDifferentAlert:
       break
     }

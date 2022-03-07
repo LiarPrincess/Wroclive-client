@@ -12,6 +12,7 @@
 // swiftlint:disable trailing_newline
 // swiftlint:disable type_body_length
 // swiftlint:disable vertical_whitespace
+// swiftlint:disable file_length
 
 import Foundation
 
@@ -125,9 +126,30 @@ public enum Localizable {
     }
   }
 
-  enum Search {
+  enum Loading {
     /// Loading…
-    static var loading: String { Localizable.tr("Localizable", "Search.Loading") }
+    static var text: String { Localizable.tr("Localizable", "Loading.Text") }
+  }
+
+  enum Notifications {
+    /// No notifications
+    static var noNotifications: String { Localizable.tr("Localizable", "Notifications.NoNotifications") }
+    /// Notifications
+    static var title: String { Localizable.tr("Localizable", "Notifications.Title") }
+  }
+
+  enum RelativeDate {
+    /// d
+    static var dayShort: String { Localizable.tr("Localizable", "RelativeDate.DayShort") }
+    /// h
+    static var hourShort: String { Localizable.tr("Localizable", "RelativeDate.HourShort") }
+    /// m
+    static var minuteShort: String { Localizable.tr("Localizable", "RelativeDate.MinuteShort") }
+    /// Now
+    static var now: String { Localizable.tr("Localizable", "RelativeDate.Now") }
+  }
+
+  enum Search {
     /// Select
     static var search: String { Localizable.tr("Localizable", "Search.Search") }
     /// Lines

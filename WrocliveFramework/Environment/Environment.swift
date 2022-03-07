@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-public class Environment {
+public final class Environment {
 
   public let api: ApiType
   public let bundle: BundleManagerType
@@ -12,6 +12,7 @@ public class Environment {
   public let storage: StorageManagerType
   public let userDefaults: UserDefaultsManagerType
   public let userLocation: UserLocationManagerType
+  public let remoteNotifications: RemoteNotificationManagerType
   public let configuration: Configuration
 
   public enum ApiMode {
@@ -21,17 +22,20 @@ public class Environment {
     #endif
   }
 
+  // swiftlint:disable:next function_body_length
   public init(apiMode: ApiMode, configuration: Configuration) {
     let bundle = Bundle.main
     let device = UIDevice.current
     let deviceModel = DeviceManager.getNamedModel()
     let screen = UIScreen.main
+    let userDefaults = UserDefaults.standard
+    let notificationCenter = UNUserNotificationCenter.current()
 
     self.bundle = BundleManager(bundle: bundle)
     self.debug = DebugManager()
     self.device = DeviceManager(model: deviceModel, device: device, screen: screen)
     self.log = LogManager(bundle: self.bundle)
-    self.userDefaults = UserDefaultsManager()
+    self.userDefaults = UserDefaultsManager(userDefaults: userDefaults)
     self.userLocation = UserLocationManager()
     self.configuration = configuration
 
@@ -53,6 +57,13 @@ public class Environment {
       self.api = OfflineApi(log: self.log)
     #endif
     }
+
+    let sendLimiter = RemoteNotificationTokenSendLimiter(store: self.userDefaults)
+    self.remoteNotifications = RemoteNotificationManager(api: self.api,
+                                                         device: self.device,
+                                                         tokenSendLimiter: sendLimiter,
+                                                         notificationCenter: notificationCenter,
+                                                         log: self.log)
   }
 
   public init(api: ApiType,
@@ -63,6 +74,7 @@ public class Environment {
               storage: StorageManagerType,
               userDefaults: UserDefaultsManagerType,
               userLocation: UserLocationManagerType,
+              remoteNotifications: RemoteNotificationManagerType,
               configuration: Configuration) {
     self.api = api
     self.bundle = bundle
@@ -72,6 +84,7 @@ public class Environment {
     self.storage = storage
     self.userDefaults = userDefaults
     self.userLocation = userLocation
+    self.remoteNotifications = remoteNotifications
     self.configuration = configuration
   }
 }

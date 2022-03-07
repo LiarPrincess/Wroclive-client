@@ -19,7 +19,6 @@
 
 "Search.Title"   = "Linie";
 "Search.Search"  = "Wybierz";
-"Search.Loading" = "Wczytywanie…";
 
 "Search.Pages.Tram" = "Tramwaje";
 "Search.Pages.Bus"  = "Autobusy";
@@ -32,6 +31,11 @@
 "Search.Sections.Suburban"  = "Podmiejskie";
 "Search.Sections.Temporary" = "Tymczasowe";
 "Search.Sections.Zone"      = "Strefowe";
+
+/* Notifications */
+
+"Notifications.Title" = "Powiadomienia";
+"Notifications.NoNotifications" = "Brak powiadomień";
 
 /* Settings */
 
@@ -55,6 +59,17 @@
 /* App */
 
 "Share.Message" = "Wroclive - Komunikacja miejska na żywo! %@";
+
+/* Loading view */
+
+"Loading.Text" = "Wczytywanie…";
+
+/* Relative date */
+
+"RelativeDate.Now" = "Teraz";
+"RelativeDate.MinuteShort" = "m";
+"RelativeDate.HourShort" = "h";
+"RelativeDate.DayShort" = "d";
 
 /* Alerts */
 

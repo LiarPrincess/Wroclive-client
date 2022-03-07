@@ -40,6 +40,10 @@ extension AppState {
           action: action,
           state: state?.getLinesResponse
         ),
+        getNotificationsResponse: getNotificationsResponseReducer(
+          action: action,
+          state: state?.getNotificationsResponse
+        ),
         getVehicleLocationsResponse: getVehicleLocationsResponseReducer(
           action: action,
           state: state?.getVehicleLocationsResponse
@@ -129,6 +133,17 @@ private func getLinesResponseReducer(
   state: AppState.ApiResponseState<[Line]>?
 ) -> AppState.ApiResponseState<[Line]> {
   if case let ApiAction.setLines(response) = action {
+    return response
+  }
+
+  return state ?? .none
+}
+
+private func getNotificationsResponseReducer(
+  action: Action,
+  state: AppState.ApiResponseState<[Notification]>?
+) -> AppState.ApiResponseState<[Notification]> {
+  if case let ApiAction.setNotifications(response) = action {
     return response
   }
 

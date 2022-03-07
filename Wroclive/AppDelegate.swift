@@ -7,8 +7,10 @@ import UIKit
 import MapKit
 import ReSwift
 import PromiseKit
+import UserNotifications
 import WrocliveFramework
 
+// swiftlint:disable weak_delegate
 // swiftlint:disable force_unwrapping
 // swiftlint:disable implicitly_unwrapped_optional
 // swiftlint:disable discouraged_optional_collection
@@ -28,14 +30,13 @@ private let configuration = Configuration(
 
   timing: .init(
     vehicleLocationUpdateInterval: 5.0,
-    locationAuthorizationPromptDelay: 2.0
+    locationAuthorizationPromptDelay: 2.0,
+    maxWaitingTimeBeforeShowingNotificationPrompt: 10.0
   )
 )
 
 @UIApplicationMain
-public final class AppDelegate: UIResponder,
-                                UIApplicationDelegate,
-                                UserLocationManagerDelegate {
+public final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   public var window: UIWindow?
 
@@ -43,6 +44,9 @@ public final class AppDelegate: UIResponder,
   private var environment: Environment!
   private var coordinator: AppCoordinator!
   private var updateScheduler: MapUpdateScheduler!
+
+  private var userLocationDelegate: UserLocationDelegate!
+  private var remoteNotificationDelegate: RemoteNotificationDelegate!
 
   private var log: OSLog {
     return self.environment.log.app
@@ -58,22 +62,42 @@ public final class AppDelegate: UIResponder,
     return "\(bundle.name)/\(bundle.version) (\(bundle.identifier); \(deviceInfo))"
   }
 
+  // swiftlint:disable:next function_body_length
   public func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    self.environment = self.createEnvironment(apiMode: .online)
-//    self.environment = self.createEnvironment(apiMode: .offline)
-
-    // Respond to dynamic updates from environment managers.
-    self.environment.userLocation.delegate = self
+    // Those are the most important lines in the whole app.
+    // Every call that interacts with native frameworks has to go through Environment.
+    // And don't worry, 'debug' modes will fail to compile in release builds.
+    self.environment = Environment(apiMode: .online, configuration: configuration)
+//    self.environment = Environment(apiMode: .offline, configuration: configuration)
 
     os_log("application(_:didFinishLaunchingWithOptions:)", log: self.log, type: .info)
     os_log("Starting: %{public}@", log: self.log, type: .info, self.appInfo)
+    self.logUrlIfStartingWithRemoteNotification(launchOptions: launchOptions)
     self.logDocumentsDirectoryIfRunningInSimulator()
 
     os_log("Initializing redux store", log: self.log, type: .debug)
     self.store = self.createStore()
+
+    os_log("Setting environment delegates", log: self.log, type: .debug)
+    self.userLocationDelegate = UserLocationDelegate(
+      store: self.store,
+      environment: self.environment
+    )
+    self.environment.userLocation.delegate = self.userLocationDelegate
+
+    self.remoteNotificationDelegate = RemoteNotificationDelegate(
+      environment: self.environment
+    )
+    self.environment.remoteNotifications.delegate = self.remoteNotificationDelegate
+
+    os_log("Creating (but not starting!) map update scheduler", log: self.log, type: .debug)
+    self.updateScheduler = MapUpdateScheduler(
+      store: self.store,
+      environment: self.environment
+    )
 
 #if DEBUG
     let debugLocale = Localizable.Locale.pl
@@ -92,31 +116,45 @@ public final class AppDelegate: UIResponder,
                                       environment: self.environment)
     self.coordinator!.start()
 
-    os_log("Creating (but not starting!) map update scheduler", log: self.log, type: .debug)
-    self.updateScheduler = self.startMapUpdates()
+    // Remote notification can only trigger changes after the coordinator was started!
+    self.remoteNotificationDelegate.coordinator = self.coordinator
+
+    os_log("Attempting to register for remote notifications", log: self.log, type: .debug)
+    self.environment.remoteNotifications.registerForRemoteNotifications()
 
     os_log("application(_:didFinishLaunchingWithOptions:) - finished", log: self.log, type: .debug)
     return true
   }
 
-  // MARK: - Environment
+  private func logUrlIfStartingWithRemoteNotification(
+    launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) {
+    let result = RemoteNotificationDelegate.getRemoteNotificationUrl(launchOptions: launchOptions)
 
-  // Those are the most important lines in the whole app.
-  // Every call that interacts with native frameworks has to go through Environment.
-  // And don't worry, 'debug' modes will fail to compile in release builds.
-  private func createEnvironment(apiMode: Environment.ApiMode) -> Environment {
-    return Environment(apiMode: apiMode, configuration: configuration)
+    switch result {
+    case .url(let url):
+      os_log("Launching as a result of remote notification with url: %{public}@",
+             log: self.log,
+             type: .debug,
+             url)
+
+    case .noUrl:
+      os_log("Launching as a result of remote notification without url",
+             log: self.log,
+             type: .debug)
+
+    case .noRemoteNotification:
+      break
+    }
   }
 
   private func logDocumentsDirectoryIfRunningInSimulator() {
 #if targetEnvironment(simulator)
     let documentDir = self.environment.storage.documentsDirectory.path
-    os_log(
-      "Simulator documents directory: %{public}@",
-      log: self.log,
-      type: .debug,
-      documentDir
-    )
+    os_log("Simulator documents directory: %{public}@",
+           log: self.log,
+           type: .debug,
+           documentDir)
 #endif
   }
 
@@ -132,11 +170,7 @@ public final class AppDelegate: UIResponder,
     let middleware = AppState.createMiddleware(environment: self.environment)
     let reducer = AppState.createReducer(environment: self.environment)
 
-    return Store<AppState>(
-      reducer: reducer,
-      state: state,
-      middleware: middleware
-    )
+    return Store<AppState>(reducer: reducer, state: state, middleware: middleware)
   }
 
   // When we launch app for the 1st time we want to show all possible vehicles.
@@ -158,41 +192,12 @@ public final class AppDelegate: UIResponder,
     return []
   }
 
-  // MARK: - UI
-
-  private func startMapUpdates() -> MapUpdateScheduler {
-    return MapUpdateScheduler(
-      store: self.store,
-      environment: self.environment
-    )
-  }
-
   // MARK: - Did become active
 
   public func applicationDidBecomeActive(_ application: UIApplication) {
     os_log("applicationDidBecomeActive(_:)", log: self.log, type: .info)
     self.updateScheduler.start()
-    self.askForUserLocationAuthorization()
-  }
-
-  private func askForUserLocationAuthorization() {
-    let delay = self.environment.configuration.timing.locationAuthorizationPromptDelay
-
-    after(seconds: delay).done { _ in
-      let authorization = self.environment.userLocation.getAuthorizationStatus()
-      switch authorization {
-      case .notDetermined,
-           .unknownValue:
-        os_log("Asking for user location authorization", log: self.log, type: .info)
-        self.environment.userLocation.requestWhenInUseAuthorization()
-
-      case .authorized,
-           .restricted,
-           .denied:
-        // Already determined, nothing to do here.
-        break
-      }
-    }
+    AuthorizationPrompts.showIfNeeded(environment: self.environment!)
   }
 
   // MARK: - Will resign active
@@ -200,18 +205,38 @@ public final class AppDelegate: UIResponder,
   public func applicationWillResignActive(_ application: UIApplication) {
     os_log("applicationWillResignActive(_:)", log: self.log, type: .info)
     self.updateScheduler.stop()
+
+#if DEBUG
+    // Make some space in logs, for readability.
+    print("\n\n")
+#endif
   }
 
-  // MARK: - UserLocationManagerDelegate
+  // MARK: - Remote notifications
 
-  public func locationManager(_ manager: UserLocationManagerType,
-                              didChangeAuthorization status: UserLocationAuthorization) {
-    os_log("locationManager(_:didChangeAuthorization:) to '%{public}@'",
+  public func application(
+    _ application: UIApplication,
+    didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+  ) {
+    os_log("application(_:didRegisterForRemoteNotificationsWithDeviceToken:)",
            log: self.log,
-           type: .info,
-           String(describing: status))
+           type: .info)
 
-    let action = UserLocationAuthorizationAction.set(status)
-    self.store.dispatch(action)
+    _ = self.environment.remoteNotifications.didRegisterForRemoteNotifications(
+      deviceToken: deviceToken
+    )
+  }
+
+  public func application(
+    _ application: UIApplication,
+    didFailToRegisterForRemoteNotificationsWithError error: Error
+  ) {
+    os_log("application(_:didFailToRegisterForRemoteNotificationsWithError:)",
+           log: self.log,
+           type: .info)
+
+    self.environment.remoteNotifications.didFailToRegisterForRemoteNotifications(
+      error: error
+    )
   }
 }

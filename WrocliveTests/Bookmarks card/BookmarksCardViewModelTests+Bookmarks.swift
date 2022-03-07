@@ -3,6 +3,7 @@
 // You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import XCTest
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 extension BookmarksCardViewModelTests {
@@ -13,11 +14,11 @@ extension BookmarksCardViewModelTests {
 
     self.setBookmarks(initalBookmarks)
     let viewModel = self.createViewModel()
-    XCTAssertEqual(viewModel.bookmarks, initalBookmarks)
+    XCTAssertBookmarkCellsEqual(viewModel.cells, initalBookmarks)
     XCTAssertEqual(self.refreshCallCount, 0)
 
     self.setBookmarks(changedBookmarks)
-    XCTAssertEqual(viewModel.bookmarks, changedBookmarks)
+    XCTAssertBookmarkCellsEqual(viewModel.cells, changedBookmarks)
     XCTAssertEqual(self.refreshCallCount, 1)
 
     // We should get bookmarks from the store, not storage

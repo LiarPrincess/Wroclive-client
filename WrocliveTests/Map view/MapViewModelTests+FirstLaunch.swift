@@ -4,6 +4,7 @@
 
 import XCTest
 import MapKit
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 private let halfSecond = TimeInterval(0.5)
@@ -16,6 +17,8 @@ extension MapViewModelTests {
 
   func test_lauching_centersOnDefaultLocation() {
     self.viewModel = self.createViewModel()
+    viewModel.viewDidLoad()
+
     XCTAssertEqual(self.center, defaultCenter)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
@@ -34,6 +37,8 @@ extension MapViewModelTests {
     self.setAuthorization(.notDetermined)
 
     self.viewModel = self.createViewModel()
+    viewModel.viewDidLoad()
+
     XCTAssertEqual(self.center, defaultCenter)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
@@ -66,6 +71,8 @@ extension MapViewModelTests {
     self.setUserLocation(userLocation)
 
     self.viewModel = self.createViewModel()
+    viewModel.viewDidLoad()
+
     XCTAssertEqual(self.center, defaultCenter)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
@@ -95,6 +102,8 @@ extension MapViewModelTests {
     self.setUserLocation(error: DummyError())
 
     self.viewModel = self.createViewModel()
+    viewModel.viewDidLoad()
+
     XCTAssertEqual(self.center, defaultCenter)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
@@ -126,6 +135,8 @@ extension MapViewModelTests {
     self.setAuthorization(.notDetermined)
 
     self.viewModel = self.createViewModel()
+    viewModel.viewDidLoad()
+
     XCTAssertEqual(self.center, defaultCenter)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)
@@ -157,6 +168,8 @@ extension MapViewModelTests {
     self.setAuthorization(.notDetermined)
 
     self.viewModel = self.createViewModel()
+    viewModel.viewDidLoad()
+
     XCTAssertEqual(self.center, defaultCenter)
     XCTAssertFalse(self.isShowingDeniedLocationAuthorizationAlert)
     XCTAssertFalse(self.isShowingGloballyDeniedLocationAuthorizationAlert)

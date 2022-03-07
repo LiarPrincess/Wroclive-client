@@ -33,9 +33,7 @@ public final class SettingsCardCoordinator: NSObject,
   public func start(animated: Bool) -> Guarantee<Void> {
     let viewModel = SettingsCardViewModel(store: self.store, delegate: self)
     let card = SettingsCard(viewModel: viewModel)
-
-    let cardHeight = self.getCardHeight(screenPercent: 0.8,
-                                        butNoBiggerThan: 600)
+    let cardHeight = self.getCardHeight(screenPercent: 0.8, butNoBiggerThan: 600)
 
     self.card = card
     return self.present(card: card, withHeight: cardHeight, animated: animated)
@@ -83,7 +81,7 @@ public final class SettingsCardCoordinator: NSObject,
 
   public func showPrivacyPolicy() {
     let url = self.environment.configuration.privacyPolicyUrl
-    self.openSafari(url: url)
+    self.openBrowser(url: url)
   }
 
   // MARK: - Report error
@@ -109,20 +107,17 @@ public final class SettingsCardCoordinator: NSObject,
 
   public func showCode() {
     let url = self.environment.configuration.githubUrl
-    self.openSafari(url: url)
+    self.openBrowser(url: url)
   }
 
   // MARK: - Helper - open Safari
 
-  private func openSafari(url: URL) {
+  private func openBrowser(url: URL) {
     guard let card = self.card else {
       fatalError("SettingsCardCoordinator has to be started first")
     }
 
-    let safari = SFSafariViewController(url: url)
-    safari.preferredControlTintColor = ColorScheme.tint
-    safari.modalPresentationStyle = .overFullScreen
-    card.present(safari, animated: true, completion: nil)
+    self.openBrowser(parent: card, url: url)
   }
 
   // MARK: - Helper - send mail

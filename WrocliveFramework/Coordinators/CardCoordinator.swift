@@ -5,7 +5,7 @@
 import UIKit
 import PromiseKit
 
-internal protocol CardCoordinator: AnyObject {
+internal protocol CardCoordinator: AnyObject, Coordinator {
   var parent: UIViewController { get }
   var cardTransitionDelegate: UIViewControllerTransitioningDelegate? { get set }
 

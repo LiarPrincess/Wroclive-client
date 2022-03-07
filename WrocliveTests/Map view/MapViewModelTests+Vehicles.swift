@@ -4,58 +4,66 @@
 
 import XCTest
 import MapKit
+import WrocliveTestsShared
 @testable import WrocliveFramework
 
 extension MapViewModelTests {
 
-  /// Steps:
-  /// 1. In progress - no changes
-  /// 2. Vehicles reponse 1
-  /// 3. Api general error
-  /// 4. Api invalid response error
-  /// 5. In progress - no changes
-  /// 6. Vehicles reponse 2
-  /// 7. Api no internet error
-  ///
-  /// This has to be in a single sequence (and not in separate func),
-  /// to test interactions between new states.
+  // swiftlint:disable:next function_body_length
   func test_getVehicleResponses_updateVehicles_orShowError() {
     self.viewModel = self.createViewModel()
-    XCTAssertTrue(self.vehicles.isEmpty)
-    XCTAssertNil(self.isShowingApiErrorAlert)
+    viewModel.viewDidLoad()
 
+    XCTAssertTrue(self.vehicles.isEmpty)
+    XCTAssertNil(self.apiErrorAlert)
+
+    // In progress - no changes
     self.setVehicleResponse(.inProgress)
     XCTAssertTrue(self.vehicles.isEmpty)
-    XCTAssertNil(self.isShowingApiErrorAlert)
+    XCTAssertNil(self.apiErrorAlert)
 
+    // Vehicles reponse 1
     let vehicles1 = self.dummyVehicles1
     self.setVehicleResponse(.data(vehicles1))
     XCTAssertEqual(self.vehicles, vehicles1)
-    XCTAssertNil(self.isShowingApiErrorAlert)
+    XCTAssertNil(self.apiErrorAlert)
 
+    // Api general error
     let error = DummyError()
     self.setVehicleResponse(.error(.otherError(error)))
     XCTAssertEqual(self.vehicles, vehicles1) // Same positions!
-    XCTAssertEqual(self.isShowingApiErrorAlert, .otherError(error))
-    self.isShowingApiErrorAlert = nil // Reset
+    XCTAssertEqual(self.apiErrorAlert, .otherError(error))
+    self.apiErrorAlert = nil // Reset
 
+    // Api invalid response error - different error type
     self.setVehicleResponse(.error(.invalidResponse))
     XCTAssertEqual(self.vehicles, vehicles1)
-    XCTAssertEqual(self.isShowingApiErrorAlert, .invalidResponse)
-    self.isShowingApiErrorAlert = nil // Reset
+    XCTAssertEqual(self.apiErrorAlert, .invalidResponse)
+    self.apiErrorAlert = nil // Reset
 
+    // Vehicles reponse 2
     self.setVehicleResponse(.inProgress)
     XCTAssertEqual(self.vehicles, vehicles1)
-    XCTAssertNil(self.isShowingApiErrorAlert)
+    XCTAssertNil(self.apiErrorAlert)
 
     let vehicles2 = self.dummyVehicles2
     self.setVehicleResponse(.data(vehicles2))
     XCTAssertEqual(self.vehicles, vehicles2)
-    XCTAssertNil(self.isShowingApiErrorAlert)
+    XCTAssertNil(self.apiErrorAlert)
 
-    self.setVehicleResponse(.error(.reachabilityError))
+    // Back to vehicles reponse 1
+    self.setVehicleResponse(.inProgress)
     XCTAssertEqual(self.vehicles, vehicles2)
-    XCTAssertEqual(self.isShowingApiErrorAlert, .reachabilityError)
+    XCTAssertNil(self.apiErrorAlert)
+
+    self.setVehicleResponse(.data(vehicles1))
+    XCTAssertEqual(self.vehicles, vehicles1)
+    XCTAssertNil(self.apiErrorAlert)
+
+    // Api no internet error
+    self.setVehicleResponse(.error(.reachabilityError))
+    XCTAssertEqual(self.vehicles, vehicles1)
+    XCTAssertEqual(self.apiErrorAlert, .reachabilityError)
   }
 
   private var dummyVehicles1: [Vehicle] {

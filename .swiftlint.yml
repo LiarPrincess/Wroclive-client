@@ -135,8 +135,8 @@ only_rules:
   - contains_over_first_not_nil
   - contains_over_range_nil_comparison
   - convenience_type
+  - discarded_notification_center_observer
   - discouraged_assert
-  - discouraged_object_literal
   - discouraged_optional_boolean
   - discouraged_optional_collection
   - empty_collection_literal
@@ -170,6 +170,8 @@ only_rules:
   - multiline_parameters
   - nimble_operator
   - no_extension_access_modifier
+  - nslocalizedstring_key
+  - nslocalizedstring_require_bundle
   - number_separator
   - object_literal
   - operator_usage_whitespace
@@ -181,6 +183,7 @@ only_rules:
   - prefer_zero_over_explicit_init
   - private_action
   - private_outlet
+  - private_subject
   - prohibited_interface_builder
   - prohibited_super_call
   - quick_discouraged_call
@@ -193,6 +196,7 @@ only_rules:
   - single_test_class
   - sorted_first_last
   - static_operator
+  - strong_iboutlet
   - toggle_bool
   - trailing_closure
   - unavailable_function
@@ -218,7 +222,7 @@ only_rules:
 
   # - balanced_xctest_lifecycle # This does not make sense for us
   # - conditional_returns_on_newline # Very often we do 'if X { return Y }'
-  - discarded_notification_center_observer
+  # - discouraged_object_literal
   # - expiring_todo # just use TODO, we do not have deadlines
   # - explicit_acl # we don't need acl in tests
   # - explicit_enum_raw_value # 'String' enums do not need explicit value
@@ -234,16 +238,12 @@ only_rules:
   # - multiline_arguments_brackets # We sometimes put '(' at the same line as call
   # - multiline_parameters_brackets # We sometimes put '(' at the same line as 'func' declaration
   # - no_grouping_extension
-  - nslocalizedstring_key # only for iOS
-  - nslocalizedstring_require_bundle # only for iOS
   # - prefer_nimble # We are using 'XCTAssert'
   # - prefixed_toplevel_constant
-  - private_subject # We do not use 'Combine'
   # - raw_value_for_camel_cased_codable_enum
   # - required_deinit
   # - sorted_imports
   # - strict_fileprivate # This one does not work properly?
-  - strong_iboutlet  # Only for iOS
   # - switch_case_on_newline
   # - test_case_accessibility # We sometimes create class hierarchy
   # - type_contents_order

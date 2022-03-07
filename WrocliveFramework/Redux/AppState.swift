@@ -14,6 +14,7 @@ public struct AppState: StateType {
   public var trackedLines: [Line]
 
   public var getLinesResponse: ApiResponseState<[Line]>
+  public var getNotificationsResponse: ApiResponseState<[Notification]>
   public var getVehicleLocationsResponse: ApiResponseState<[Vehicle]>
 
   // MARK: - Init
@@ -24,6 +25,7 @@ public struct AppState: StateType {
     bookmarks: [Bookmark],
     trackedLines: [Line],
     getLinesResponse: ApiResponseState<[Line]>,
+    getNotificationsResponse: ApiResponseState<[Notification]>,
     getVehicleLocationsResponse: ApiResponseState<[Vehicle]>
   ) {
     self.mapType = mapType
@@ -31,6 +33,7 @@ public struct AppState: StateType {
     self.bookmarks = bookmarks
     self.trackedLines = trackedLines
     self.getLinesResponse = getLinesResponse
+    self.getNotificationsResponse = getNotificationsResponse
     self.getVehicleLocationsResponse = getVehicleLocationsResponse
   }
 
@@ -40,7 +43,7 @@ public struct AppState: StateType {
     /// No response recieved (yet).
     /// Default state, just after starting the app.
     case none
-    // TODO: Add 'Request' associated value, with single 'cancel' method
+    // TODO: Add 'struct Request' associated value, with single 'cancel' method
     /// Request was send, no response (yet).
     case inProgress
     case data(Data)
@@ -108,13 +111,12 @@ public struct AppState: StateType {
     let bookmarks = storageManager.readBookmarks() ?? getInitialBookmarks()
     let trackedLines = storageManager.readTrackedLines() ?? getInitialTrackedLines()
 
-    return AppState(
-      mapType: mapType,
-      userLocationAuthorization: userLocationAuthorization,
-      bookmarks: bookmarks,
-      trackedLines: trackedLines,
-      getLinesResponse: .none,
-      getVehicleLocationsResponse: .none
-    )
+    return AppState(mapType: mapType,
+                    userLocationAuthorization: userLocationAuthorization,
+                    bookmarks: bookmarks,
+                    trackedLines: trackedLines,
+                    getLinesResponse: .none,
+                    getNotificationsResponse: .none,
+                    getVehicleLocationsResponse: .none)
   }
 }

@@ -12,6 +12,7 @@
 // swiftlint:disable trailing_newline
 // swiftlint:disable type_body_length
 // swiftlint:disable vertical_whitespace
+// swiftlint:disable file_length
 
 {% if tables.count > 0 %}
 import Foundation

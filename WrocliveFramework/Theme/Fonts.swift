@@ -9,7 +9,8 @@ public protocol FontPreset {
   var headline: UIFont { get }
   var body: UIFont { get }
   var bodyBold: UIFont { get }
-  var footnote: UIFont { get }
+  var bodySmall: UIFont { get }
+  var bodySmallBold: UIFont { get }
 }
 
 public struct SystemFont: FontPreset {
@@ -18,10 +19,11 @@ public struct SystemFont: FontPreset {
   public let headline: UIFont
   public let body: UIFont
   public let bodyBold: UIFont
-  public let footnote: UIFont
+  public let bodySmall: UIFont
+  public let bodySmallBold: UIFont
 
   public init() {
-    // we use 'title1', because '.largeTitle' will not scale
+    // We use 'title1', because '.largeTitle' will not scale
     let largeMetrics = UIFontMetrics(forTextStyle: .title1)
     let headlineMetrics = UIFontMetrics(forTextStyle: .headline)
     let bodyMetrics = UIFontMetrics(forTextStyle: .body)
@@ -31,6 +33,7 @@ public struct SystemFont: FontPreset {
     self.headline = headlineMetrics.scaledFont(for: .systemFont(ofSize: 18.0, weight: .bold))
     self.body = bodyMetrics.scaledFont(for: .systemFont(ofSize: 17.0))
     self.bodyBold = bodyMetrics.scaledFont(for: .systemFont(ofSize: 17.0, weight: .bold))
-    self.footnote = footnoteMetrics.scaledFont(for: .systemFont(ofSize: 14.0))
+    self.bodySmall = footnoteMetrics.scaledFont(for: .systemFont(ofSize: 15.0))
+    self.bodySmallBold = bodyMetrics.scaledFont(for: .systemFont(ofSize: 15.0, weight: .bold))
   }
 }
