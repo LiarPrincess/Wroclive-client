@@ -13,6 +13,8 @@ This will help you decide whether it is worth rushing to a stop or to calmly fin
 
 If you are only interested in specific lines, you can use our filtering functionality. You can also save the most frequently used connections for easier access.
 
+It will also send you push notifications with all of the sudden and unforeseen changes, like when the tree is blocking tram tracks and the replacement-bus was dispatched.
+
 With Wroclive you will never miss your bus!
 
 ![AppStore screenshots](https://raw.githubusercontent.com/LiarPrincess/Wroclive-client/main/Design/GitHub/appstore_screens.png)
